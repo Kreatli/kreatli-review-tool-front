@@ -1,0 +1,22 @@
+{
+  "cSpell.words": [
+    "Dismissable",
+    "Hoverable",
+    "kreatli",
+    "myusername",
+    "heroui",
+    "Pressable",
+    "signin",
+    "signup",
+    "splitted",
+    "svgr",
+    "tailwindcss",
+    "zustand"
+  ],
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+}
