@@ -33,8 +33,12 @@ import type {
   FolderDto,
   FolderEditBodyDto,
   GetChatIdQueryParams,
+  GetNotificationsQueryParams,
   GetProjectIdLogsQueryParams,
   GetProjectsQueryParams,
+  MarkAsReadBodyDto,
+  NotificationDto,
+  NotificationsDto,
   ProjectArchivedAssetsDto,
   ProjectAssetEditDto,
   ProjectAssetsResponseDto,
@@ -69,6 +73,7 @@ import {
   getAssetFileIdComments,
   getAssetFolderId,
   getChatId,
+  getNotifications,
   getProject,
   getProjectId,
   getProjectIdAssets,
@@ -97,6 +102,8 @@ import {
   postProjectIdMember,
   postUserAvatar,
   putChatId,
+  putNotificationId,
+  putNotificationsMarkAllAsRead,
   putProjectId,
   putProjectIdFileFileId,
   putProjectIdFolderFolderId,
@@ -450,6 +457,45 @@ useGetChatId.prefetch = (
     queryParams,
     configOverride,
   );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetNotifications = (
+  queryParams: GetNotificationsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<NotificationsDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetNotifications.info(queryParams, configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetNotifications.info = (queryParams: GetNotificationsQueryParams, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getNotifications.key, queryParams] as QueryKey,
+    fun: () =>
+      getNotifications(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetNotifications.prefetch = (
+  client: QueryClient,
+  queryParams: GetNotificationsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<NotificationsDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetNotifications.info(queryParams, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -1308,6 +1354,46 @@ export const usePutChatId = <TExtra,>(
 
         configOverride,
       );
+    },
+    ...options,
+  });
+};
+
+export const usePutNotificationId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    NotificationDto,
+    { id: string; requestBody: MarkAsReadBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        id,
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return putNotificationId(
+        id,
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePutNotificationsMarkAllAsRead = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptionsVoid<NotificationsDto, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { configOverride } = _o || {};
+
+      return putNotificationsMarkAllAsRead(configOverride);
     },
     ...options,
   });

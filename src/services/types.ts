@@ -361,6 +361,11 @@ export interface GetChatIdQueryParams {
   offset: number;
 }
 
+export interface GetNotificationsQueryParams {
+  limit: number;
+  offset: number;
+}
+
 export interface GetProjectIdLogsQueryParams {
   createAtFrom?: string;
   createAtTo?: string;
@@ -384,8 +389,59 @@ export interface InterfaceImageDto {
   width: number;
 }
 
+export interface MarkAsReadBodyDto {
+  /**
+   *
+   * Whether the notification is read
+   */
+  isRead: boolean;
+}
+
 export interface MemberDetails {
   email: string;
+}
+
+export interface NotificationData {
+  commentId?: string;
+  commentMessage?: string;
+  fileId?: string;
+  fileName?: string;
+  projectId?: string;
+  projectName?: string;
+  userId?: string;
+  userName?: string;
+}
+
+export interface NotificationDto {
+  /**
+   *
+   * - Format: date-time
+   */
+  createdAt: string;
+  data: NotificationData;
+  id: string;
+  isRead: boolean;
+  type:
+    | 'project_invitation'
+    | 'project_member_removed'
+    | 'project_member_left'
+    | 'file_status_changed'
+    | 'file_assigned'
+    | 'file_comment_added'
+    | 'file_comment_reply'
+    | 'file_comment_resolve';
+  /**
+   *
+   * - Format: date-time
+   */
+  updatedAt: string;
+  userId: string;
+}
+
+export interface NotificationsDto {
+  notifications: NotificationDto[];
+  total: number;
+  unreadCount: number;
 }
 
 export interface ProjectArchivedAssetsDto {

@@ -14,6 +14,7 @@ import type {
   GetProjectIdLogsQueryParams,
   GetProjectsQueryParams,
   GetChatIdQueryParams,
+  GetNotificationsQueryParams,
   UserDto,
   SignUpBodyDto,
   SignUpResultDto,
@@ -51,6 +52,9 @@ import type {
   AssetCommentDto,
   AssetCommentsResponse,
   AssetCommentEditDto,
+  NotificationDto,
+  NotificationsDto,
+  MarkAsReadBodyDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -256,6 +260,22 @@ export const getChatId = (
 
 /** Key is end point string without base url */
 getChatId.key = '/chat/{id}';
+
+export const getNotifications = (
+  queryParams: GetNotificationsQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<NotificationsDto>> => {
+  return Http.getRequest(
+    getNotifications.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getNotifications.key = '/notifications';
 
 export const getProject = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<ProjectInvitationDto>> => {
   return Http.getRequest(getProject.key, undefined, undefined, undefined, overrideConfig(_CONSTANT0, configOverride));
@@ -690,6 +710,38 @@ export const putChatId = (
 
 /** Key is end point string without base url */
 putChatId.key = '/chat/{id}';
+
+export const putNotificationId = (
+  id: string,
+  requestBody: MarkAsReadBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<NotificationDto>> => {
+  return Http.putRequest(
+    template(putNotificationId.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putNotificationId.key = '/notification/{id}';
+
+export const putNotificationsMarkAllAsRead = (
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<NotificationsDto>> => {
+  return Http.putRequest(
+    putNotificationsMarkAllAsRead.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putNotificationsMarkAllAsRead.key = '/notifications/mark-all-as-read';
 
 export const putProjectId = (
   id: string,

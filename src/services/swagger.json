@@ -627,6 +627,49 @@
           }
         }
       }
+    },
+    "/notifications": {
+      "get": {
+        "operationId": "NotificationsController_getNotifications",
+        "parameters": [
+          { "name": "offset", "required": true, "in": "query", "schema": { "type": "number" } },
+          { "name": "limit", "required": true, "in": "query", "schema": { "type": "number" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/NotificationsDto" } } }
+          }
+        }
+      }
+    },
+    "/notifications/mark-all-as-read": {
+      "put": {
+        "operationId": "NotificationsController_markAllAsRead",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/NotificationsDto" } } }
+          }
+        }
+      }
+    },
+    "/notification/{id}": {
+      "put": {
+        "operationId": "NotificationController_markAsRead",
+        "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MarkAsReadBodyDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/NotificationDto" } } }
+          }
+        }
+      }
     }
   },
   "info": {
@@ -1603,6 +1646,58 @@
         "type": "object",
         "properties": { "isResolved": { "type": "boolean" } },
         "required": ["isResolved"]
+      },
+      "NotificationData": {
+        "type": "object",
+        "properties": {
+          "projectId": { "type": "string" },
+          "projectName": { "type": "string" },
+          "fileId": { "type": "string" },
+          "fileName": { "type": "string" },
+          "commentId": { "type": "string" },
+          "commentMessage": { "type": "string" },
+          "userId": { "type": "string" },
+          "userName": { "type": "string" }
+        }
+      },
+      "NotificationDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "userId": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": [
+              "project_invitation",
+              "project_member_removed",
+              "project_member_left",
+              "file_status_changed",
+              "file_assigned",
+              "file_comment_added",
+              "file_comment_reply",
+              "file_comment_resolve"
+            ]
+          },
+          "data": { "$ref": "#/components/schemas/NotificationData" },
+          "isRead": { "type": "boolean" },
+          "createdAt": { "format": "date-time", "type": "string" },
+          "updatedAt": { "format": "date-time", "type": "string" }
+        },
+        "required": ["id", "userId", "type", "data", "isRead", "createdAt", "updatedAt"]
+      },
+      "NotificationsDto": {
+        "type": "object",
+        "properties": {
+          "notifications": { "type": "array", "items": { "$ref": "#/components/schemas/NotificationDto" } },
+          "total": { "type": "number" },
+          "unreadCount": { "type": "number" }
+        },
+        "required": ["notifications", "total", "unreadCount"]
+      },
+      "MarkAsReadBodyDto": {
+        "type": "object",
+        "properties": { "isRead": { "type": "boolean", "description": "Whether the notification is read" } },
+        "required": ["isRead"]
       }
     }
   }

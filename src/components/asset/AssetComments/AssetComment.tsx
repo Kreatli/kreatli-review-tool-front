@@ -117,7 +117,7 @@ export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, o
             </Tooltip>
           )}
           {isResolvable && (
-            <Tooltip content={isResolved ? 'Unresolve comment' : 'Resolve comment'} offset={20}>
+            <Tooltip content={isResolved ? 'Unresolve comment' : 'Resolve comment'} offset={0}>
               <Checkbox
                 radius="full"
                 size="sm"

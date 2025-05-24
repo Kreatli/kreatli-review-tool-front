@@ -8,6 +8,7 @@ import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { Layout } from '../../../typings/layout';
 import { Icon } from '../../various/Icon';
 import { UserWidget } from './UserWidget';
+import { Notifications } from '../Notifications/Notifications';
 
 export const Header = () => {
   const { isSignedIn } = useSession();
@@ -39,6 +40,11 @@ export const Header = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
+        {isSignedIn && (
+          <NavbarItem>
+            <Notifications />
+          </NavbarItem>
+        )}
         <NavbarItem>
           <Button isIconOnly aria-label="Toggle theme" variant="light" radius="full" onClick={toggleTheme}>
             <Icon icon={theme === 'dark' ? 'sun' : 'moon'} size={18} />
