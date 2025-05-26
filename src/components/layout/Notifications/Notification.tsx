@@ -38,6 +38,21 @@ export const Notification = ({ notification }: Props) => {
     );
   };
 
+  const handleLinkClick = () => {
+    if (!isRead) {
+      setIsRead(true);
+
+      updateNotification(
+        { id: notification.id, requestBody: { isRead: true } },
+        {
+          onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [getNotifications.key] });
+          },
+        },
+      );
+    }
+  };
+
   const notificationTitle = useMemo(() => {
     if (notification.type === 'file_assigned') {
       return 'File assignment';
@@ -86,6 +101,8 @@ export const Notification = ({ notification }: Props) => {
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
             className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
           >
             {fileName}
           </Link>{' '}
@@ -103,6 +120,8 @@ export const Notification = ({ notification }: Props) => {
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
             className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
           >
             {fileName}
           </Link>{' '}
@@ -115,7 +134,14 @@ export const Notification = ({ notification }: Props) => {
       return (
         <>
           {userName} has invited you to the{' '}
-          <Link as={NextLink} href={`/project/${projectId}`} size="sm" className="inline break-all z-10">
+          <Link
+            as={NextLink}
+            href={`/project/${projectId}`}
+            size="sm"
+            className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
+          >
             {projectName}
           </Link>{' '}
           project.
@@ -139,6 +165,8 @@ export const Notification = ({ notification }: Props) => {
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
             className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
           >
             {fileName}
           </Link>{' '}
@@ -159,6 +187,8 @@ export const Notification = ({ notification }: Props) => {
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
             className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
           >
             {fileName}
           </Link>{' '}
@@ -179,6 +209,8 @@ export const Notification = ({ notification }: Props) => {
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
             className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
           >
             {fileName}
           </Link>{' '}
@@ -191,7 +223,14 @@ export const Notification = ({ notification }: Props) => {
       return (
         <>
           {userName} has left the{' '}
-          <Link as={NextLink} href={`/project/${projectId}`} size="sm" className="inline break-all z-10">
+          <Link
+            as={NextLink}
+            href={`/project/${projectId}`}
+            size="sm"
+            className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
+          >
             {projectName}
           </Link>{' '}
           project.

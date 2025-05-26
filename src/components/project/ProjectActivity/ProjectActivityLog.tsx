@@ -12,6 +12,7 @@ import {
   FolderCreatedLogDto,
   ProjectLogsDto,
   ProjectMemberInvitedLogDto,
+  ProjectMemberLeftLogDto,
   ProjectMemberRemovedLogDto,
   ProjectUpdatedLogDto,
 } from '../../../services/types';
@@ -28,7 +29,7 @@ const AssetUploadedLog = ({ log }: { log: AssetUploadedLogDto }) => {
   return (
     <div>
       Uploaded{' '}
-      <Link as={NextLink} href={`/project/${project.id}/assets/${id}`} size="sm" color="foreground" underline="always">
+      <Link as={NextLink} href={`/project/${project.id}/assets/${id}`} size="sm" underline="hover">
         {name}
       </Link>
     </div>
@@ -44,7 +45,7 @@ const AssetUpdatedLog = ({ log }: { log: AssetUpdatedLogDto }) => {
 
   const href = type === 'file' ? `/project/${project.id}/assets/${id}` : `/project/${project.id}/assets/folder/${id}`;
   const link = (
-    <Link as={NextLink} href={href} size="sm" color="foreground" underline="always">
+    <Link as={NextLink} href={href} size="sm" underline="hover">
       {updatedFields?.name ?? name}
     </Link>
   );
@@ -114,13 +115,7 @@ const FolderCreatedLog = ({ log }: { log: FolderCreatedLogDto }) => {
   return (
     <div>
       Created{' '}
-      <Link
-        as={NextLink}
-        href={`/project/${project.id}/assets/folder/${id}`}
-        size="sm"
-        color="foreground"
-        underline="always"
-      >
+      <Link as={NextLink} href={`/project/${project.id}/assets/folder/${id}`} size="sm" underline="hover">
         {name}
       </Link>{' '}
       folder
@@ -140,8 +135,7 @@ const AssetsArchivedLog = ({ log }: { log: AssetsArchivedLogDto }) => {
           as={NextLink}
           href={`/project/${project.id}/assets${assets[0].type === 'file' ? '' : '/folder'}/${assets[0].id}`}
           size="sm"
-          color="foreground"
-          underline="always"
+          underline="hover"
         >
           {assets[0].name}
         </Link>{' '}
@@ -169,8 +163,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
           as={NextLink}
           href={`/project/${project.id}/assets${asset.type === 'file' ? '' : '/folder'}/${asset.id}`}
           size="sm"
-          color="foreground"
-          underline="always"
+          underline="hover"
         >
           {asset.name}
         </Link>{' '}
@@ -187,8 +180,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
           as="button"
           type="button"
           size="sm"
-          color="foreground"
-          underline="always"
+          underline="hover"
           onClick={() => setIsExpanded((expanded) => !expanded)}
         >
           {isExpanded ? 'Hide' : 'See'} items
@@ -207,8 +199,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
                     : `/project/${project.id}/assets/folder/${asset.id}`
                 }
                 size="sm"
-                color="foreground"
-                underline="always"
+                underline="hover"
               >
                 {asset.name}
               </Link>
@@ -243,8 +234,7 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
           as="button"
           type="button"
           size="sm"
-          color="foreground"
-          underline="always"
+          underline="hover"
           onClick={() => setIsExpanded((expanded) => !expanded)}
         >
           See items
@@ -301,7 +291,7 @@ export const ProjectMemberInvitedLog = ({ log }: { log: ProjectMemberInvitedLogD
   return (
     <>
       Invited{' '}
-      <Link href={`mailto:${log.details.user.email}`} size="sm" color="foreground" underline="always">
+      <Link href={`mailto:${log.details.user.email}`} size="sm" underline="hover">
         {log.details.user.email}
       </Link>{' '}
       to join the project
@@ -315,6 +305,10 @@ export const ProjectMemberJoinedLog = () => {
 
 export const ProjectMemberRemovedLog = ({ log }: { log: ProjectMemberRemovedLogDto }) => {
   return <>Removed {log.details.user.name} from the project</>;
+};
+
+export const ProjectMemberLeftLog = ({ log }: { log: ProjectMemberLeftLogDto }) => {
+  return <>{log.user.name} left the project</>;
 };
 
 export const ProjectActivityLog = ({ log }: Props) => {
@@ -364,6 +358,10 @@ export const ProjectActivityLog = ({ log }: Props) => {
 
   if (log.type === 'PROJECT_MEMBER_REMOVED') {
     return <ProjectMemberRemovedLog log={log} />;
+  }
+
+  if (log.type === 'PROJECT_MEMBER_LEFT') {
+    return <ProjectMemberLeftLog log={log} />;
   }
 
   return <div>{log.type}</div>;

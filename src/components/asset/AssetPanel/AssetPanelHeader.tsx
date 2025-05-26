@@ -5,6 +5,7 @@ import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { Layout } from '../../../typings/layout';
 import { Icon } from '../../various/Icon';
 import { UserWidget } from '../../layout/Header/UserWidget';
+import { Notifications } from '../../layout/Notifications/Notifications';
 
 export const AssetPanelHeader = () => {
   const [theme, setTheme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });
@@ -25,6 +26,7 @@ export const AssetPanelHeader = () => {
 
   return (
     <div className="bg-foreground-50 p-3 px-6 flex gap-4 items-center justify-end h-16">
+      <Notifications />
       <Button isIconOnly aria-label="Toggle theme" variant="light" radius="full" onClick={toggleTheme}>
         <Icon icon={theme === 'dark' ? 'sun' : 'moon'} size={18} />
       </Button>
