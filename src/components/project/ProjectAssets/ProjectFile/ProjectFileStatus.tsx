@@ -45,6 +45,8 @@ export const ProjectFileStatus = ({ file, projectId, memberRole, className }: Pr
     return (user?.id === file.createdBy?.id || user?.id === file.assignee?.id) && status !== 'approved';
   }, [file, memberRole, status, user]);
 
+  const isDisabledForOwner = memberRole === 'owner' && !file.assignee;
+
   React.useEffect(() => {
     setSelectedKeys(new Set([status ?? 'none']));
   }, [status]);
@@ -72,6 +74,10 @@ export const ProjectFileStatus = ({ file, projectId, memberRole, className }: Pr
       {STATUS_LABEL[selectedKeys.values().next().value]}
     </Chip>
   );
+
+  if (isDisabledForOwner) {
+    return <Tooltip content="You need to assign the file before changing its status">{chip}</Tooltip>;
+  }
 
   if (!isEditable) {
     return <Tooltip content="You can't change the status of this file">{chip}</Tooltip>;
