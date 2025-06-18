@@ -5,6 +5,7 @@ import React from 'react';
 import { useSession } from '../../../../hooks/useSession';
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
 import { ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
+import { STATUS_COLOR, STATUS_LABEL } from '../../../../utils/status';
 
 interface Props {
   projectId: string;
@@ -12,22 +13,6 @@ interface Props {
   memberRole?: ProjectMemberDto['role'];
   className?: string;
 }
-
-export const STATUS_LABEL = {
-  none: 'No status',
-  'in-progress': 'In progress',
-  'changes-required': 'Changes required',
-  'review-needed': 'Review needed',
-  approved: 'Approved',
-} as Record<string, string>;
-
-const STATUS_COLOR = {
-  none: 'default',
-  'in-progress': 'primary',
-  'changes-required': 'danger',
-  'review-needed': 'warning',
-  approved: 'success',
-} as Record<string, 'default' | 'primary' | 'danger' | 'warning' | 'success'>;
 
 export const ProjectFileStatus = ({ file, projectId, memberRole, className }: Props) => {
   const { status } = file;

@@ -27,6 +27,7 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.4.0",
     "framer-motion": "^11.16.7",
+    "frimousse": "^0.2.0",
     "konva": "^9.3.19",
     "nanoid": "^3.3.7",
     "next": "^14.2.28",

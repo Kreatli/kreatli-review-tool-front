@@ -59,6 +59,8 @@ import MailIcon from '../../../assets/icons/mail.svg';
 import MedalIcon from '../../../assets/icons/medal.svg';
 import MoonIcon from '../../../assets/icons/moon.svg';
 import PaintIcon from '../../../assets/icons/paint.svg';
+import PaperclipIcon from '../../../assets/icons/paperclip.svg';
+import SmileIcon from '../../../assets/icons/smile.svg';
 import PauseIcon from '../../../assets/icons/pause.svg';
 import PaypalIcon from '../../../assets/icons/paypal.svg';
 import PlayIcon from '../../../assets/icons/play.svg';
@@ -148,6 +150,8 @@ const ICONS = {
   medal: MedalIcon,
   moon: MoonIcon,
   paint: PaintIcon,
+  paperclip: PaperclipIcon,
+  smile: SmileIcon,
   pause: PauseIcon,
   paypal: PaypalIcon,
   play: PlayIcon,

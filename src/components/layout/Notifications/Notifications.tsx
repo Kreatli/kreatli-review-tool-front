@@ -35,7 +35,7 @@ export const Notifications = () => {
       return;
     }
 
-    const newSocket = io(process.env.API_URL, {
+    const newSocket = io(`${process.env.API_URL}/notifications`, {
       path: '/socket.io',
       transports: ['websocket'],
       reconnection: true,

@@ -514,21 +514,24 @@
         }
       }
     },
-    "/chat/{id}": {
+    "/conversation/{id}/messages": {
       "get": {
         "operationId": "ChatController_getChat",
         "parameters": [
           { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } },
           { "name": "offset", "required": true, "in": "query", "schema": { "type": "number" } },
-          { "name": "limit", "required": true, "in": "query", "schema": { "type": "number" } }
+          { "name": "limit", "required": true, "in": "query", "schema": { "type": "number" } },
+          { "name": "search", "required": true, "in": "query", "schema": { "type": "string" } }
         ],
         "responses": {
           "200": {
             "description": "",
-            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ChatResponseDto" } } }
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ChatMessagesDto" } } }
           }
         }
-      },
+      }
+    },
+    "/conversation/{id}": {
       "put": {
         "operationId": "ChatController_updateChat",
         "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
@@ -667,6 +670,23 @@
           "200": {
             "description": "",
             "content": { "application/json": { "schema": { "$ref": "#/components/schemas/NotificationDto" } } }
+          }
+        }
+      }
+    },
+    "/assets": {
+      "get": {
+        "operationId": "AssetsController_searchAssets",
+        "parameters": [
+          { "name": "projectId", "required": true, "in": "query", "schema": { "type": "string" } },
+          { "name": "query", "required": true, "in": "query", "schema": { "type": "string" } },
+          { "name": "offset", "required": true, "in": "query", "schema": { "type": "number" } },
+          { "name": "limit", "required": true, "in": "query", "schema": { "type": "number" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AssetsDto" } } }
           }
         }
       }
@@ -1053,16 +1073,46 @@
       },
       "ChatBodyDto": {
         "type": "object",
-        "properties": { "name": { "type": "string" }, "members": { "type": "string" } },
+        "properties": { "name": { "type": "string" }, "members": { "type": "array", "items": { "type": "string" } } },
         "required": ["members"]
       },
-      "ProjectAssetDto": { "type": "object", "properties": {} },
+      "AssetDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["review-needed", "in-progress", "changes-required", "approved"],
+            "nullable": true
+          },
+          "assignee": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDto" }] },
+          "fileSize": { "type": "number" },
+          "fileType": { "type": "string" },
+          "format": { "type": "string" },
+          "url": { "type": "string" },
+          "metadata": { "type": "object" }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "status",
+          "assignee",
+          "fileSize",
+          "fileType",
+          "format",
+          "url",
+          "metadata"
+        ]
+      },
       "ChatMessageDto": {
         "type": "object",
         "properties": {
           "id": { "type": "string" },
           "sender": { "$ref": "#/components/schemas/UserDto" },
-          "assets": { "type": "array", "items": { "$ref": "#/components/schemas/ProjectAssetDto" } },
+          "assets": { "type": "array", "items": { "$ref": "#/components/schemas/AssetDto" } },
           "content": { "type": "string" },
           "createdAt": { "type": "string" },
           "readBy": { "type": "array", "items": { "type": "string" } },
@@ -1075,6 +1125,7 @@
         "properties": {
           "id": { "type": "string" },
           "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["project", "private"] },
           "members": { "type": "array", "items": { "$ref": "#/components/schemas/UserDto" } },
           "cover": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/InterfaceImageDto" }] },
           "createdAt": { "type": "string" },
@@ -1087,6 +1138,7 @@
         "required": [
           "id",
           "name",
+          "type",
           "members",
           "cover",
           "createdAt",
@@ -1540,14 +1592,13 @@
         },
         "required": ["projects", "totals"]
       },
-      "ChatResponseDto": {
+      "ChatMessagesDto": {
         "type": "object",
         "properties": {
-          "chat": { "$ref": "#/components/schemas/ChatDto" },
           "messages": { "type": "array", "items": { "$ref": "#/components/schemas/ChatMessageDto" } },
           "messagesCount": { "type": "number" }
         },
-        "required": ["chat", "messages", "messagesCount"]
+        "required": ["messages", "messagesCount"]
       },
       "ChatEditBodyDto": { "type": "object", "properties": { "name": { "type": "string" } }, "required": ["name"] },
       "FileDto": {
@@ -1698,6 +1749,14 @@
         "type": "object",
         "properties": { "isRead": { "type": "boolean", "description": "Whether the notification is read" } },
         "required": ["isRead"]
+      },
+      "AssetsDto": {
+        "type": "object",
+        "properties": {
+          "files": { "type": "array", "items": { "$ref": "#/components/schemas/AssetDto" } },
+          "fileCount": { "type": "number" }
+        },
+        "required": ["files", "fileCount"]
       }
     }
   }

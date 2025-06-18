@@ -38,3 +38,35 @@ export const formatRelativeTime = (dateString: Date | string, showTime?: boolean
 
   return dateFormatter(dateToCompare);
 };
+
+export const formatChatMessageDate = (dateString: Date | string) => {
+  const date = new Date(dateString);
+
+  return date.toLocaleString('en', { timeStyle: 'short' });
+};
+
+export const formatChatMessagesGroupDate = (dateString: Date | string) => {
+  const currentDate = new Date();
+  const dateToCompare = new Date(dateString);
+
+  const isToday = currentDate.toDateString() === dateToCompare.toDateString();
+  const isThisYear = currentDate.getFullYear() === dateToCompare.getFullYear();
+
+  if (isToday) {
+    return 'Today';
+  }
+
+  if (isThisYear) {
+    return dateToCompare.toLocaleDateString('en', { day: 'numeric', month: 'long' });
+  }
+
+  return dateToCompare.toLocaleDateString('en', { day: 'numeric', month: 'long', year: 'numeric' });
+};
+
+export const getIsSameDay = (date1: Date, date2: Date) => {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+};

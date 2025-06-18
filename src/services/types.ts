@@ -101,6 +101,19 @@ export interface AssetDownloadedDetails {
   asset: AssetDetails;
 }
 
+export interface AssetDto {
+  description: string;
+  fileSize: number;
+  fileType: string;
+  format: string;
+  id: string;
+  metadata: { [x in string | number]: any };
+  name: string;
+  url: string;
+  assignee?: UserDto;
+  status?: 'review-needed' | 'in-progress' | 'changes-required' | 'approved';
+}
+
 export interface AssetMoveBodyDto {
   assetIds: string[];
   fromId?: string;
@@ -164,6 +177,11 @@ export interface AssetsDownloadedLogDto {
   user: UserDto;
 }
 
+export interface AssetsDto {
+  fileCount: number;
+  files: AssetDto[];
+}
+
 export interface AssetsMovedDetails {
   assets: AssetDetails[];
   from?: FolderDetails;
@@ -215,7 +233,7 @@ export interface Blob {
 }
 
 export interface ChatBodyDto {
-  members: string;
+  members: string[];
   name?: string;
 }
 
@@ -225,6 +243,7 @@ export interface ChatDto {
   members: UserDto[];
   name: string;
   pinnedMessages: ChatMessageDto[];
+  type: 'project' | 'private';
   cover?: InterfaceImageDto;
   createdBy?: UserDto;
   lastMessage?: ChatMessageDto;
@@ -237,7 +256,7 @@ export interface ChatEditBodyDto {
 }
 
 export interface ChatMessageDto {
-  assets: ProjectAssetDto[];
+  assets: AssetDto[];
   content: string;
   createdAt: string;
   id: string;
@@ -246,8 +265,7 @@ export interface ChatMessageDto {
   sender: UserDto;
 }
 
-export interface ChatResponseDto {
-  chat: ChatDto;
+export interface ChatMessagesDto {
   messages: ChatMessageDto[];
   messagesCount: number;
 }
@@ -356,9 +374,17 @@ export interface FolderEditBodyDto {
   parentId?: string;
 }
 
-export interface GetChatIdQueryParams {
+export interface GetAssetsQueryParams {
   limit: number;
   offset: number;
+  projectId: string;
+  query: string;
+}
+
+export interface GetConversationIdMessagesQueryParams {
+  limit: number;
+  offset: number;
+  search: string;
 }
 
 export interface GetNotificationsQueryParams {
@@ -450,10 +476,6 @@ export interface ProjectArchivedAssetsDto {
    * An array of assets which can be folders or files.
    */
   assets: (ProjectFolderDto | ProjectFileDto)[];
-}
-
-export interface ProjectAssetDto {
-  [(x in string) | number]: any;
 }
 
 export interface ProjectAssetEditDto {

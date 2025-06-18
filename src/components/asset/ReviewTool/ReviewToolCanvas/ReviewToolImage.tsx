@@ -12,18 +12,20 @@ interface Props {
 export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
   const { fileRef } = useReviewToolContext();
 
+  const imageUrl = imageFile.fileType.startsWith('image') ? imageFile.url : imageFile.metadata.thumbnailUrl;
+
   return (
     <>
       <div className="absolute -inset-12">
         <Image
-          src={imageFile.url}
+          src={imageUrl}
           removeWrapper
           radius="none"
           className="absolute inset-0 h-full w-full blur-xl grayscale pointer-events-none select-none"
         />
       </div>
       <Image
-        src={imageFile.url}
+        src={imageUrl}
         // @ts-ignore
         ref={fileRef}
         radius="sm"

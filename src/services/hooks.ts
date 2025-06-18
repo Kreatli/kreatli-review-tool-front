@@ -23,16 +23,18 @@ import type {
   AssetCommentsResponse,
   AssetMoveBodyDto,
   AssetRemoveBodyDto,
+  AssetsDto,
   ChatBodyDto,
   ChatDto,
   ChatEditBodyDto,
-  ChatResponseDto,
+  ChatMessagesDto,
   FileDto,
   FileEditBodyDto,
   FolderBodyDto,
   FolderDto,
   FolderEditBodyDto,
-  GetChatIdQueryParams,
+  GetAssetsQueryParams,
+  GetConversationIdMessagesQueryParams,
   GetNotificationsQueryParams,
   GetProjectIdLogsQueryParams,
   GetProjectsQueryParams,
@@ -72,7 +74,8 @@ import {
   getAssetFileId,
   getAssetFileIdComments,
   getAssetFolderId,
-  getChatId,
+  getAssets,
+  getConversationIdMessages,
   getNotifications,
   getProject,
   getProjectId,
@@ -101,7 +104,7 @@ import {
   postProjectIdFolder,
   postProjectIdMember,
   postUserAvatar,
-  putChatId,
+  putConversationId,
   putNotificationId,
   putNotificationsMarkAllAsRead,
   putProjectId,
@@ -413,13 +416,52 @@ useGetAssetFolderId.prefetch = (
         ...options,
       });
 };
-export const useGetChatId = (
-  id: string,
-  queryParams: GetChatIdQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ChatResponseDto>,
+export const useGetAssets = (
+  queryParams: GetAssetsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<AssetsDto>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetChatId.info(
+  const { key, fun } = useGetAssets.info(queryParams, configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetAssets.info = (queryParams: GetAssetsQueryParams, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getAssets.key, queryParams] as QueryKey,
+    fun: () =>
+      getAssets(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetAssets.prefetch = (
+  client: QueryClient,
+  queryParams: GetAssetsQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<AssetsDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAssets.info(queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetConversationIdMessages = (
+  id: string,
+  queryParams: GetConversationIdMessagesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ChatMessagesDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetConversationIdMessages.info(
     id,
 
     queryParams,
@@ -431,11 +473,15 @@ export const useGetChatId = (
     ...options,
   });
 };
-useGetChatId.info = (id: string, queryParams: GetChatIdQueryParams, configOverride?: AxiosRequestConfig) => {
+useGetConversationIdMessages.info = (
+  id: string,
+  queryParams: GetConversationIdMessagesQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
   return {
-    key: [getChatId.key, id, queryParams] as QueryKey,
+    key: [getConversationIdMessages.key, id, queryParams] as QueryKey,
     fun: () =>
-      getChatId(
+      getConversationIdMessages(
         id,
 
         queryParams,
@@ -444,14 +490,14 @@ useGetChatId.info = (id: string, queryParams: GetChatIdQueryParams, configOverri
       ),
   };
 };
-useGetChatId.prefetch = (
+useGetConversationIdMessages.prefetch = (
   client: QueryClient,
   id: string,
-  queryParams: GetChatIdQueryParams,
-  options?: SwaggerTypescriptUseQueryOptions<ChatResponseDto>,
+  queryParams: GetConversationIdMessagesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<ChatMessagesDto>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetChatId.info(
+  const { key, fun } = useGetConversationIdMessages.info(
     id,
 
     queryParams,
@@ -1336,7 +1382,7 @@ export const usePostUserAvatar = <TExtra,>(options?: SwaggerTypescriptUseMutatio
   });
 };
 
-export const usePutChatId = <TExtra,>(
+export const usePutConversationId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<ChatDto, { id: string; requestBody: ChatEditBodyDto }, TExtra>,
 ) => {
   return useMutation({
@@ -1348,7 +1394,7 @@ export const usePutChatId = <TExtra,>(
         configOverride,
       } = _o || {};
 
-      return putChatId(
+      return putConversationId(
         id,
         requestBody,
 

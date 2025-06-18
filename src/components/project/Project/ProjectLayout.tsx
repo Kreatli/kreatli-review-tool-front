@@ -27,7 +27,6 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
     error,
   } = useGetProjectId(router.query.id as string, {
     enabled: !!router.query.id,
-    refetchInterval: 10000,
   });
 
   React.useEffect(() => {
@@ -56,7 +55,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
   return (
     <>
       <Header />
-      <div className="p-6 pt-2 border-t border-foreground-200">
+      <div className="p-6 pt-2 border-t border-foreground-200 flex-1 flex flex-col">
         {isPending || isError ? (
           <ProjectLoader />
         ) : (
@@ -64,7 +63,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
             {hideHeader ? (
               children
             ) : (
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 flex-1">
                 <ProjectHeader project={project} />
                 <div className="flex gap-6">
                   <Tabs selectedKey={router.pathname.split('/')[3]}>
@@ -74,7 +73,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
                   </Tabs>
                   {actions}
                 </div>
-                <div>{children}</div>
+                <div className="flex-1 flex flex-col">{children}</div>
               </div>
             )}
           </ProjectContextProvider>

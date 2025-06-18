@@ -71,6 +71,13 @@ export const VALIDATION_RULES = {
     min: 1,
     max: 999999999,
   },
+  VERY_SHORT_TEXT: {
+    required: true,
+    maxLength: {
+      message: 'This field must not exceed 50 characters',
+      value: 50,
+    },
+  },
   SHORT_TEXT: {
     required: true,
     maxLength: {

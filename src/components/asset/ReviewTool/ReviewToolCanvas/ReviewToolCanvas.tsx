@@ -186,7 +186,9 @@ export const ReviewToolCanvas = ({ file }: Props) => {
 
   return (
     <div className="relative flex-1 flex flex-col items-center overflow-hidden justify-center">
-      {file.fileType.startsWith('image') && <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />}
+      {(file.fileType.startsWith('image') || file.fileType.includes('pdf')) && (
+        <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />
+      )}
       {file.fileType.startsWith('video') && <ReviewToolVideo videoFile={file} onLoad={handleFileLoad} />}
       <Stage
         ref={canvasRef}

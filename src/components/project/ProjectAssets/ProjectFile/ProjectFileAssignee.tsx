@@ -7,6 +7,7 @@ import { ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { getProjectMemberLetter } from '../../../../utils/shortNames';
 import { Icon } from '../../../various/Icon';
+import { ProjectMemberItem } from '../../ProjectMemberItem';
 
 interface Props {
   projectId: string;
@@ -92,19 +93,7 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled }: Pr
           .filter((member) => member.status === 'joined')
           .map((member) => (
             <DropdownItem key={member.user?.id ?? member.id}>
-              <div className="flex items-center gap-3">
-                <Avatar
-                  size="sm"
-                  src={member.user?.avatar?.url ?? ''}
-                  fallback={
-                    <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(member)}</div>
-                  }
-                />
-                <div>
-                  <div className="text-small">{member.user?.name}</div>
-                  <div className="text-foreground-500 text-tiny">{member.user?.email}</div>
-                </div>
-              </div>
+              <ProjectMemberItem member={member} />
             </DropdownItem>
           ))}
       </DropdownMenu>

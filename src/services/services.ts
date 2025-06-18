@@ -13,8 +13,9 @@ import qs from 'qs';
 import type {
   GetProjectIdLogsQueryParams,
   GetProjectsQueryParams,
-  GetChatIdQueryParams,
+  GetConversationIdMessagesQueryParams,
   GetNotificationsQueryParams,
+  GetAssetsQueryParams,
   UserDto,
   SignUpBodyDto,
   SignUpResultDto,
@@ -45,7 +46,7 @@ import type {
   ProjectLogsDto,
   AssetMoveBodyDto,
   ProjectsResponseDto,
-  ChatResponseDto,
+  ChatMessagesDto,
   ChatEditBodyDto,
   FileDto,
   AssetCommentBodyDto,
@@ -55,6 +56,7 @@ import type {
   NotificationDto,
   NotificationsDto,
   MarkAsReadBodyDto,
+  AssetsDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -244,13 +246,23 @@ export const getAssetFolderId = (
 /** Key is end point string without base url */
 getAssetFolderId.key = '/asset/folder/{id}';
 
-export const getChatId = (
-  id: string,
-  queryParams: GetChatIdQueryParams,
+export const getAssets = (
+  queryParams: GetAssetsQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ChatResponseDto>> => {
+): Promise<SwaggerResponse<AssetsDto>> => {
+  return Http.getRequest(getAssets.key, queryParams, undefined, undefined, overrideConfig(_CONSTANT0, configOverride));
+};
+
+/** Key is end point string without base url */
+getAssets.key = '/assets';
+
+export const getConversationIdMessages = (
+  id: string,
+  queryParams: GetConversationIdMessagesQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ChatMessagesDto>> => {
   return Http.getRequest(
-    template(getChatId.key, { id }),
+    template(getConversationIdMessages.key, { id }),
     queryParams,
     undefined,
     undefined,
@@ -259,7 +271,7 @@ export const getChatId = (
 };
 
 /** Key is end point string without base url */
-getChatId.key = '/chat/{id}';
+getConversationIdMessages.key = '/conversation/{id}/messages';
 
 export const getNotifications = (
   queryParams: GetNotificationsQueryParams,
@@ -694,13 +706,13 @@ export const postUserAvatar = (configOverride?: AxiosRequestConfig): Promise<Swa
 /** Key is end point string without base url */
 postUserAvatar.key = '/user/avatar';
 
-export const putChatId = (
+export const putConversationId = (
   id: string,
   requestBody: ChatEditBodyDto,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<ChatDto>> => {
   return Http.putRequest(
-    template(putChatId.key, { id }),
+    template(putConversationId.key, { id }),
     undefined,
     requestBody,
     undefined,
@@ -709,7 +721,7 @@ export const putChatId = (
 };
 
 /** Key is end point string without base url */
-putChatId.key = '/chat/{id}';
+putConversationId.key = '/conversation/{id}';
 
 export const putNotificationId = (
   id: string,

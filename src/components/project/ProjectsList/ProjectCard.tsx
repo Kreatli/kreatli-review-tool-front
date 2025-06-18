@@ -52,7 +52,7 @@ export const ProjectCard = ({ project }: Props) => {
       >
         <ProjectCardImage image={project.cover} />
       </button>
-      <div className="absolute top-1 left-2 right-2 flex justify-between items-center gap-2">
+      <div className="absolute top-1 left-2 right-2 flex pointer-events-none justify-between items-center gap-2">
         <Chip size="sm" variant="dot" color={getStatusColor(project.status)} className="bg-default-100 z-10">
           {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
         </Chip>
@@ -64,7 +64,7 @@ export const ProjectCard = ({ project }: Props) => {
                 size="sm"
                 isIconOnly
                 radius="full"
-                className="mt-1"
+                className="mt-1 pointer-events-auto"
                 variant="faded"
                 aria-label={`Open project ${project.name} options`}
               >

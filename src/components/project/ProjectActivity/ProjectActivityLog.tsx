@@ -16,7 +16,7 @@ import {
   ProjectMemberRemovedLogDto,
   ProjectUpdatedLogDto,
 } from '../../../services/types';
-import { STATUS_LABEL } from '../ProjectAssets/ProjectFile/ProjectFileStatus';
+import { STATUS_LABEL } from '../../../utils/status';
 
 interface Props {
   log: ProjectLogsDto['logs'][number];
