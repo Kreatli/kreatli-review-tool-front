@@ -85,6 +85,26 @@ export const ChatMessages = ({ conversationId }: Props) => {
     };
   }, []);
 
+  useEffect(() => {
+    webSocketRef.current?.on('message-notification', () => {
+      queryClient.invalidateQueries({ queryKey: [getProjectIdChats.key, project.id] });
+    });
+
+    return () => {
+      webSocketRef.current?.off('message-notification');
+    };
+  }, []);
+
+  useEffect(() => {
+    webSocketRef.current?.on('joined', () => {
+      queryClient.invalidateQueries({ queryKey: [getProjectIdChats.key, project.id] });
+    });
+
+    return () => {
+      webSocketRef.current?.off('joined');
+    };
+  }, []);
+
   const loadMessages = async (offset: number) => {
     isFetching.current = true;
     const data = await getConversationIdMessages(conversationId, { limit: 50, offset, search: '' });
