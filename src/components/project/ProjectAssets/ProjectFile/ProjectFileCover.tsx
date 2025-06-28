@@ -3,6 +3,8 @@ import React from 'react';
 
 import { ProjectFileDto } from '../../../../services/types';
 import { formatBytes } from '../../../../utils/formatBytes';
+import { Icon } from '../../../various/Icon';
+import { AssetIcon } from '../../../asset/AssetIcon';
 
 interface Props {
   file: ProjectFileDto;
@@ -10,18 +12,32 @@ interface Props {
 }
 
 export const ProjectFileCover = ({ file, isLoading = false }: Props) => {
+  const [isError, setIsError] = React.useState(false);
+
   const previewUrl = file.metadata.thumbnailUrl ?? file.url;
+
+  const handleError = () => {
+    setIsError(true);
+  };
 
   return (
     <div className="relative overflow-hidden aspect-video border border-foreground-300 rounded-2xl bg-foreground-50 flex justify-center">
-      <Image
-        src={previewUrl}
-        radius="none"
-        classNames={{ wrapper: 'flex items-center select-none' }}
-        className="max-h-full"
-        draggable={false}
-        alt={file.name}
-      />
+      {isError ? (
+        <AssetIcon fileType={file.fileType} />
+      ) : (
+        <Image
+          src={previewUrl}
+          radius="none"
+          classNames={{ wrapper: 'flex items-center select-none' }}
+          className="max-h-full"
+          {...(file.format === 'svg' && {
+            width: file.metadata.width,
+          })}
+          draggable={false}
+          alt={file.name}
+          onError={handleError}
+        />
+      )}
       <Chip size="sm" variant="faded" className="absolute border-1 bottom-2 right-2 z-10">
         <span className="font-medium text-foreground-700">{formatBytes(file.fileSize)}</span>
       </Chip>

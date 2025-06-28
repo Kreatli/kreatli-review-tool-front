@@ -37,9 +37,11 @@ import FileIcon from '../../../assets/icons/file.svg';
 import FileDocIcon from '../../../assets/icons/file-doc.svg';
 import FileGifIcon from '../../../assets/icons/file-gif.svg';
 import FileJpgIcon from '../../../assets/icons/file-jpg.svg';
+import FileJsonIcon from '../../../assets/icons/file-json.svg';
 import FilePdfIcon from '../../../assets/icons/file-pdf.svg';
 import FilePngIcon from '../../../assets/icons/file-png.svg';
 import FileSolidIcon from '../../../assets/icons/file-solid.svg';
+import FileTxtIcon from '../../../assets/icons/file-txt.svg';
 import FilterIcon from '../../../assets/icons/filter.svg';
 import FolderIcon from '../../../assets/icons/folder.svg';
 import FullscreenIcon from '../../../assets/icons/fullscreen.svg';
@@ -57,6 +59,7 @@ import LocationIcon from '../../../assets/icons/location.svg';
 import LogoIcon from '../../../assets/icons/logo.svg';
 import MailIcon from '../../../assets/icons/mail.svg';
 import MedalIcon from '../../../assets/icons/medal.svg';
+import MusicIcon from '../../../assets/icons/music.svg';
 import MoonIcon from '../../../assets/icons/moon.svg';
 import PaintIcon from '../../../assets/icons/paint.svg';
 import PaperclipIcon from '../../../assets/icons/paperclip.svg';
@@ -128,9 +131,11 @@ const ICONS = {
   fileDoc: FileDocIcon,
   fileGif: FileGifIcon,
   fileJpg: FileJpgIcon,
+  fileJson: FileJsonIcon,
   filePdf: FilePdfIcon,
   filePng: FilePngIcon,
   fileSolid: FileSolidIcon,
+  fileTxt: FileTxtIcon,
   fullscreen: FullscreenIcon,
   google: GoogleIcon,
   filter: FilterIcon,
@@ -148,6 +153,7 @@ const ICONS = {
   logo: LogoIcon,
   mail: MailIcon,
   medal: MedalIcon,
+  music: MusicIcon,
   moon: MoonIcon,
   paint: PaintIcon,
   paperclip: PaperclipIcon,

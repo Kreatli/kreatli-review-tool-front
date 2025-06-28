@@ -13,6 +13,8 @@ import styles from './ReviewToolCanvas.module.scss';
 import { ReviewToolCanvasShapes } from './ReviewToolCanvasShapes';
 import { ReviewToolImage } from './ReviewToolImage';
 import { ReviewToolVideo } from './ReviewToolVideo';
+import { ReviewToolAudio } from './ReviewToolAudio';
+import { ReviewToolUnsupportedFile } from './ReviewToolUnsupportedFile';
 
 interface Props {
   file: FileDto;
@@ -184,41 +186,52 @@ export const ReviewToolCanvas = ({ file }: Props) => {
     pushHistory(newShapes);
   };
 
+  const isSupportedFile =
+    file.fileType.startsWith('image') ||
+    file.fileType.includes('pdf') ||
+    file.fileType.startsWith('video') ||
+    file.fileType.startsWith('audio');
+
   return (
     <div className="relative flex-1 flex flex-col items-center overflow-hidden justify-center">
       {(file.fileType.startsWith('image') || file.fileType.includes('pdf')) && (
         <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />
       )}
       {file.fileType.startsWith('video') && <ReviewToolVideo videoFile={file} onLoad={handleFileLoad} />}
-      <Stage
-        ref={canvasRef}
-        className={cn(styles.canvas, activeTool && styles[activeTool], { 'pointer-events-none': isReadOnly })}
-        width={width}
-        height={height}
-        style={
-          {
-            '--canvas-ratio': canvasWidth / width,
-            pointerEvents: activeTool ? 'auto' : 'none',
-            cursor:
-              activeTool === 'eraser'
-                ? 'url("/cursors/eraser.svg") 4 7, auto'
-                : `url("/cursors/dots/${activeColor}.svg") 3 3, auto`,
-          } as React.CSSProperties
-        }
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-      >
-        <Layer>
-          <ReviewToolCanvasShapes
-            shapes={shapes}
-            isDrawing={isDrawing}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
-            onRemove={handleRemove}
-          />
-        </Layer>
-      </Stage>
+      {file.fileType.startsWith('audio') && <ReviewToolAudio audioFile={file} />}
+      {isSupportedFile ? (
+        <Stage
+          ref={canvasRef}
+          className={cn(styles.canvas, activeTool && styles[activeTool], { 'pointer-events-none': isReadOnly })}
+          width={width}
+          height={height}
+          style={
+            {
+              '--canvas-ratio': canvasWidth / width,
+              pointerEvents: activeTool ? 'auto' : 'none',
+              cursor:
+                activeTool === 'eraser'
+                  ? 'url("/cursors/eraser.svg") 4 7, auto'
+                  : `url("/cursors/dots/${activeColor}.svg") 3 3, auto`,
+            } as React.CSSProperties
+          }
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+        >
+          <Layer>
+            <ReviewToolCanvasShapes
+              shapes={shapes}
+              isDrawing={isDrawing}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+              onRemove={handleRemove}
+            />
+          </Layer>
+        </Stage>
+      ) : (
+        <ReviewToolUnsupportedFile file={file} />
+      )}
     </div>
   );
 };
