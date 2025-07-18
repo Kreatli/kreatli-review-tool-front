@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useSession } from '../../../hooks/useSession';
 import { useDeleteProjectIdMemberMemberId, usePostProjectIdMember } from '../../../services/hooks';
-import { getProjectId, getProjects } from '../../../services/services';
+import { getProjectId, getProjects, getUser } from '../../../services/services';
 import { ProjectDto, ProjectMemberDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { InviteProjectMemberForm } from './InviteProjectMemberForm';
@@ -35,6 +35,7 @@ export const ProjectMembersModal = ({ project, isOpen, onClose }: Props) => {
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: [getProjects.key] });
           queryClient.invalidateQueries({ queryKey: [getProjectId.key, project.id] });
+          queryClient.invalidateQueries({ queryKey: [getUser.key] });
           addToast({ title: 'The member was removed', color: 'success', variant: 'flat' });
         },
         onError: (error) => {

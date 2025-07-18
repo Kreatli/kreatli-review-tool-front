@@ -9,16 +9,20 @@ import { GetProjectsQueryParams } from '../../../services/types';
 import { Icon } from '../../various/Icon';
 import { CreateProjectModal } from '../ProjectModals/CreateProjectModal';
 import { ProjectsList } from '../ProjectsList';
+import { useSession } from '../../../hooks/useSession';
+import { UpgradeModal } from '../../account/UpgradeModal';
 
 export const Projects = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { user } = useSession();
 
   const [search, setSearch] = React.useState('');
   const [status, setStatus] = React.useState<GetProjectsQueryParams['status']>(
     (searchParams.get('tab') as GetProjectsQueryParams['status']) ?? 'active',
   );
   const [isCreateModalOpen, setIsCreateModalOpen] = React.useState(false);
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
 
   const activeTab = (searchParams.get('tab') as GetProjectsQueryParams['status']) ?? 'active';
 
@@ -41,11 +45,23 @@ export const Projects = () => {
     setStatus(newStatus.toString() as GetProjectsQueryParams['status']);
   };
 
+  const handleCreateProjectClick = () => {
+    if (
+      user?.subscription.limits.projectsCount.used &&
+      user.subscription.limits.projectsCount.used >= user.subscription.limits.projectsCount.max
+    ) {
+      setIsUpgradeModalOpen(true);
+      return;
+    }
+
+    setIsCreateModalOpen(true);
+  };
+
   return (
     <div className="p-6 border-t border-foreground-200">
       <div className="flex justify-between gap-4 mb-2">
         <h2 className="text-3xl font-semibold">Projects</h2>
-        <Button className="bg-foreground text-content1" onClick={() => setIsCreateModalOpen(true)}>
+        <Button className="bg-foreground text-content1" onClick={handleCreateProjectClick}>
           <Icon icon="plus" size={16} />
           Create project
         </Button>
@@ -77,6 +93,7 @@ export const Projects = () => {
         onCreateProject={() => setIsCreateModalOpen(true)}
       />
       <CreateProjectModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
+      <UpgradeModal type="projects" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
     </div>
   );
 };

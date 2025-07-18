@@ -126,7 +126,7 @@ export const Notifications = () => {
             <Spinner size="sm" />
           </div>
         ) : notifications.length > 0 ? (
-          <div className="max-h-[min(calc(100vh-120px),500px)] overflow-auto">
+          <div className="max-h-[min(calc(100vh-120px),500px)] w-full overflow-auto">
             {notifications.map((notification) => (
               <Notification key={notification.id} notification={notification} />
             ))}

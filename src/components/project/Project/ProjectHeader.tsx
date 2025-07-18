@@ -23,6 +23,9 @@ import { CreateFolderModal } from '../../asset/AssetModals/CreateFolderModal';
 import { ProjectMembersModal, ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectBreadcrumbs } from './ProjectBreadcrumbs';
 import { ProjectDescriptionModal } from './ProjectDescriptionModal';
+import { getCanAddAssets } from '../../../utils/limits';
+import { UpgradeModal } from '../../account/UpgradeModal';
+import { ContactOwnerModal } from '../../account/UpgradeModal/ContactOwnerModal';
 
 interface Props {
   project: ProjectDto;
@@ -32,11 +35,13 @@ export const ProjectHeader = ({ project }: Props) => {
   const coverUrl = project.cover?.url;
   const queryClient = useQueryClient();
   const { mutateAsync } = usePostProjectIdFile();
-  const { getProjectActions, setUploadingFiles } = useProjectContext();
+  const { isProjectOwner, getProjectActions, setUploadingFiles } = useProjectContext();
 
   const [isMembersModalOpen, setIsMembersModalOpen] = React.useState(false);
   const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = React.useState(false);
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
+  const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -48,6 +53,18 @@ export const ProjectHeader = ({ project }: Props) => {
     const files = Array.from(event.target.files ?? []);
 
     if (!inputRef.current) {
+      return;
+    }
+
+    if (project.createdBy && !getCanAddAssets(project.createdBy, files)) {
+      if (isProjectOwner) {
+        setIsUpgradeModalOpen(true);
+
+        return;
+      }
+
+      setIsContactOwnerModalOpen(true);
+
       return;
     }
 
@@ -194,6 +211,12 @@ export const ProjectHeader = ({ project }: Props) => {
           isOpen={isDescriptionModalOpen}
           project={project}
           onClose={() => setIsDescriptionModalOpen(false)}
+        />
+        <UpgradeModal type="storage" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
+        <ContactOwnerModal
+          type="storage"
+          isOpen={isContactOwnerModalOpen}
+          onClose={() => setIsContactOwnerModalOpen(false)}
         />
       </div>
     </div>

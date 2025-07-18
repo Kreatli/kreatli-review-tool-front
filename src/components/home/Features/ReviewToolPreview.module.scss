@@ -1,0 +1,11 @@
+.canvas {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  :global(.konvajs-content) {
+    transform: scale(var(--canvas-ratio, 1));
+  }
+}

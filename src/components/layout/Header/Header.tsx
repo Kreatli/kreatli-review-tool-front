@@ -58,17 +58,12 @@ export const Header = () => {
         {!isSignedIn && (
           <>
             <NavbarItem>
-              <Link as={NextLink} href="https://marketplace.krealti.com" color="foreground" target="_blank">
-                Kreatli marketplace
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
               <Link as={NextLink} href="/sign-in" color="foreground">
                 Sign in
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Button as={NextLink} href="/sign-up" color="secondary">
+              <Button as={NextLink} href="/sign-up" className="text-content1 bg-foreground">
                 Start for free
               </Button>
             </NavbarItem>

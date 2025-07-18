@@ -59,6 +59,7 @@ import LocationIcon from '../../../assets/icons/location.svg';
 import LogoIcon from '../../../assets/icons/logo.svg';
 import MailIcon from '../../../assets/icons/mail.svg';
 import MedalIcon from '../../../assets/icons/medal.svg';
+import MinusIcon from '../../../assets/icons/minus.svg';
 import MusicIcon from '../../../assets/icons/music.svg';
 import MoonIcon from '../../../assets/icons/moon.svg';
 import PaintIcon from '../../../assets/icons/paint.svg';
@@ -153,6 +154,7 @@ const ICONS = {
   logo: LogoIcon,
   mail: MailIcon,
   medal: MedalIcon,
+  minus: MinusIcon,
   music: MusicIcon,
   moon: MoonIcon,
   paint: PaintIcon,

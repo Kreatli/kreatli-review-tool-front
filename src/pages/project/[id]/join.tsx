@@ -10,6 +10,7 @@ import { useAppLoader } from '../../../hooks/useAppLoader';
 import { useGetProject, useGetUser, usePutProjectIdMember } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { getHasToken } from '../../../utils/token';
+import { AxiosError } from 'axios';
 
 export default function JoinProject() {
   const hasUserToken = getHasToken();
@@ -56,7 +57,12 @@ export default function JoinProject() {
           router.push(`/project/${data.projectId}`);
         },
         onError: (error) => {
-          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+          const errorMessage =
+            'response' in error && error.response?.data?.isLinkExpired
+              ? 'The link has expired. Please contact the project owner to get a new link.'
+              : getErrorMessage(error);
+
+          addToast({ title: errorMessage, color: 'danger', variant: 'flat' });
         },
       },
     );

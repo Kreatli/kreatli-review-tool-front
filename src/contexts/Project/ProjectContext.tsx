@@ -98,6 +98,7 @@ export const ProjectContextProvider = ({
             icon: 'door' as const,
             color: 'danger' as const,
             onClick: () => {
+              setSelectedProjectId?.(project.id);
               setIsLeaveModalOpen(true);
             },
           },

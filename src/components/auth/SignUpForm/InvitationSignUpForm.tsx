@@ -38,7 +38,12 @@ export const InvitationSignUpForm = ({ email, token, onSuccess }: Props) => {
           onSuccess();
         },
         onError: (error) => {
-          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+          const errorMessage =
+            'response' in error && error.response?.data?.isLinkExpired
+              ? 'The link has expired. Please contact the project owner to get a new link.'
+              : getErrorMessage(error);
+
+          addToast({ title: errorMessage, color: 'danger', variant: 'flat' });
         },
       },
     );

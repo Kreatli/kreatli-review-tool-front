@@ -17,6 +17,7 @@ import {
 import { RequestError, SwaggerResponse } from './config';
 
 import type {
+  AddonBodyDto,
   AssetCommentBodyDto,
   AssetCommentDto,
   AssetCommentEditDto,
@@ -38,6 +39,7 @@ import type {
   GetNotificationsQueryParams,
   GetProjectIdLogsQueryParams,
   GetProjectsQueryParams,
+  InvoiceDto,
   MarkAsReadBodyDto,
   NotificationDto,
   NotificationsDto,
@@ -60,8 +62,11 @@ import type {
   SignUpBodyDto,
   SignUpResultDto,
   SignUpWithTokenBodyDto,
+  SubscriptionBodyDto,
+  SubscriptionResponseDto,
   TokenBodyDto,
   UpdateProjectMemberDto,
+  UpdateUserDto,
   UserDto,
 } from './types';
 import {
@@ -70,6 +75,8 @@ import {
   deleteProjectIdAssets,
   deleteProjectIdMember,
   deleteProjectIdMemberMemberId,
+  deleteUserAddonId,
+  deleteUserSubscription,
   get,
   getAssetFileId,
   getAssetFileIdComments,
@@ -86,6 +93,7 @@ import {
   getProjectIdPaths,
   getProjects,
   getUser,
+  getUserBillingHistory,
   getUserId,
   patchAssetFileIdCommentCommentId,
   postAssetFileIdComment,
@@ -103,7 +111,9 @@ import {
   postProjectIdFile,
   postProjectIdFolder,
   postProjectIdMember,
-  postUserAvatar,
+  postStripeWebhook,
+  postUserAddon,
+  postUserSubscription,
   putConversationId,
   putNotificationId,
   putNotificationsMarkAllAsRead,
@@ -112,6 +122,8 @@ import {
   putProjectIdFolderFolderId,
   putProjectIdMember,
   putProjectIdStatus,
+  putUser,
+  putUserAddonId,
 } from './services';
 
 export type SwaggerTypescriptMutationDefaultParams<TExtra> = {
@@ -241,6 +253,40 @@ export const useDeleteProjectIdMemberMemberId = <TExtra,>(
 
         configOverride,
       );
+    },
+    ...options,
+  });
+};
+
+export const useDeleteUserAddonId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<UserDto, { id: string }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        id,
+
+        configOverride,
+      } = _o || {};
+
+      return deleteUserAddonId(
+        id,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const useDeleteUserSubscription = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptionsVoid<UserDto, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { configOverride } = _o || {};
+
+      return deleteUserSubscription(configOverride);
     },
     ...options,
   });
@@ -946,6 +992,38 @@ useGetUser.prefetch = (
         ...options,
       });
 };
+export const useGetUserBillingHistory = (
+  options?: SwaggerTypescriptUseQueryOptions<InvoiceDto[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserBillingHistory.info(configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetUserBillingHistory.info = (configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getUserBillingHistory.key] as QueryKey,
+    fun: () => getUserBillingHistory(configOverride),
+  };
+};
+useGetUserBillingHistory.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<InvoiceDto[]>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserBillingHistory.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
 export const useGetUserId = (
   id: string,
   options?: SwaggerTypescriptUseQueryOptions<UserDto>,
@@ -1371,12 +1449,56 @@ export const usePostProjectIdMember = <TExtra,>(
   });
 };
 
-export const usePostUserAvatar = <TExtra,>(options?: SwaggerTypescriptUseMutationOptionsVoid<UserDto, TExtra>) => {
+export const usePostStripeWebhook = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<any, { headerParams?: { 'stripe-signature': string } }, TExtra>,
+) => {
   return useMutation({
     mutationFn: (_o) => {
-      const { configOverride } = _o || {};
+      const { headerParams, configOverride } = _o || {};
 
-      return postUserAvatar(configOverride);
+      return postStripeWebhook(headerParams, configOverride);
+    },
+    ...options,
+  });
+};
+
+export const usePostUserAddon = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<UserDto, { requestBody: AddonBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postUserAddon(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostUserSubscription = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<SubscriptionResponseDto, { requestBody: SubscriptionBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postUserSubscription(
+        requestBody,
+
+        configOverride,
+      );
     },
     ...options,
   });
@@ -1566,6 +1688,50 @@ export const usePutProjectIdStatus = <TExtra,>(
       } = _o || {};
 
       return putProjectIdStatus(
+        id,
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePutUser = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<UserDto, { requestBody: UpdateUserDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return putUser(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePutUserAddonId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<UserDto, { id: string; requestBody: AddonBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        id,
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return putUserAddonId(
         id,
         requestBody,
 

@@ -5,6 +5,18 @@
  * @version 6
  */
 
+export interface AddonBodyDto {
+  count: number;
+}
+
+export interface AddonDto {
+  count: number;
+  id: string;
+  price: number;
+  type: string;
+  value: number;
+}
+
 export interface AssetAfterDetails {
   assignee?: UserDetails;
   description?: string;
@@ -415,6 +427,35 @@ export interface InterfaceImageDto {
   width: number;
 }
 
+export interface InvoiceDto {
+  amount: number;
+  createdAt: string;
+  lines: InvoiceLineDto[];
+  description?: string;
+  id?: string;
+  invoicePdf?: string;
+  status?: string;
+}
+
+export interface InvoiceLineDto {
+  amount: number;
+  id: string;
+  quantity: number;
+  description?: string;
+  price?: number;
+}
+
+export interface Limit {
+  max: number;
+  used: number;
+}
+
+export interface LimitsDto {
+  projectsCount: Limit;
+  storage: Limit;
+  usersCount: Limit;
+}
+
 export interface MarkAsReadBodyDto {
   /**
    *
@@ -761,12 +802,37 @@ export interface SignUpWithTokenBodyDto {
   token: string;
 }
 
+export interface SubscriptionBodyDto {
+  plan: 'free' | 'pro' | 'advanced';
+}
+
+export interface SubscriptionDto {
+  addons: AddonDto[];
+  limits: LimitsDto;
+  plan: 'free' | 'pro' | 'advanced';
+  planName: string;
+  price: number;
+}
+
+export interface SubscriptionResponseDto {
+  url: string;
+}
+
 export interface TokenBodyDto {
   token: string;
 }
 
 export interface UpdateProjectMemberDto {
   token: string;
+}
+
+export interface UpdateUserDto {
+  /**
+   *
+   * - Format: binary
+   */
+  avatar?: Blob;
+  name?: string;
 }
 
 export interface UserDetails {
@@ -778,5 +844,6 @@ export interface UserDto {
   email: string;
   id: string;
   name: string;
+  subscription: SubscriptionDto;
   avatar?: InterfaceImageDto;
 }

@@ -17,6 +17,11 @@ import type {
   GetNotificationsQueryParams,
   GetAssetsQueryParams,
   UserDto,
+  InvoiceDto,
+  UpdateUserDto,
+  SubscriptionBodyDto,
+  SubscriptionResponseDto,
+  AddonBodyDto,
   SignUpBodyDto,
   SignUpResultDto,
   SignUpWithTokenBodyDto,
@@ -193,6 +198,35 @@ export const deleteProjectIdMemberMemberId = (
 
 /** Key is end point string without base url */
 deleteProjectIdMemberMemberId.key = '/project/{id}/member/{memberId}';
+
+export const deleteUserAddonId = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserDto>> => {
+  return Http.deleteRequest(
+    template(deleteUserAddonId.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteUserAddonId.key = '/user/addon/{id}';
+
+export const deleteUserSubscription = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<UserDto>> => {
+  return Http.deleteRequest(
+    deleteUserSubscription.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteUserSubscription.key = '/user/subscription';
 
 export const get = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<any>> => {
   return Http.getRequest(get.key, undefined, undefined, undefined, overrideConfig(_CONSTANT0, configOverride));
@@ -412,6 +446,19 @@ export const getUser = (configOverride?: AxiosRequestConfig): Promise<SwaggerRes
 
 /** Key is end point string without base url */
 getUser.key = '/user';
+
+export const getUserBillingHistory = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<InvoiceDto[]>> => {
+  return Http.getRequest(
+    getUserBillingHistory.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getUserBillingHistory.key = '/user/billing-history';
 
 export const getUserId = (id: string, configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<UserDto>> => {
   return Http.getRequest(
@@ -693,18 +740,61 @@ export const postProjectIdMember = (
 /** Key is end point string without base url */
 postProjectIdMember.key = '/project/{id}/member';
 
-export const postUserAvatar = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<UserDto>> => {
+export const postStripeWebhook = (
+  headerParams?: { 'stripe-signature': string },
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<any>> => {
   return Http.postRequest(
-    postUserAvatar.key,
+    postStripeWebhook.key,
     undefined,
     undefined,
+    undefined,
+    overrideConfig(
+      {
+        headers: {
+          ..._CONSTANT2,
+          ...headerParams,
+        },
+      },
+      configOverride,
+    ),
+  );
+};
+
+/** Key is end point string without base url */
+postStripeWebhook.key = '/stripe-webhook';
+
+export const postUserAddon = (
+  requestBody: AddonBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserDto>> => {
+  return Http.postRequest(
+    postUserAddon.key,
+    undefined,
+    requestBody,
     undefined,
     overrideConfig(_CONSTANT0, configOverride),
   );
 };
 
 /** Key is end point string without base url */
-postUserAvatar.key = '/user/avatar';
+postUserAddon.key = '/user/addon';
+
+export const postUserSubscription = (
+  requestBody: SubscriptionBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SubscriptionResponseDto>> => {
+  return Http.postRequest(
+    postUserSubscription.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postUserSubscription.key = '/user/subscription';
 
 export const putConversationId = (
   id: string,
@@ -841,6 +931,39 @@ export const putProjectIdStatus = (
 
 /** Key is end point string without base url */
 putProjectIdStatus.key = '/project/{id}/status';
+
+export const putUser = (
+  requestBody: UpdateUserDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserDto>> => {
+  return Http.putRequest(
+    putUser.key,
+    undefined,
+    objToForm(requestBody),
+    undefined,
+    overrideConfig(_CONSTANT1, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putUser.key = '/user';
+
+export const putUserAddonId = (
+  id: string,
+  requestBody: AddonBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserDto>> => {
+  return Http.putRequest(
+    template(putUserAddonId.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putUserAddonId.key = '/user/addon/{id}';
 export const _CONSTANT0 = {
   headers: {
     'Content-Type': 'application/json',
@@ -852,4 +975,8 @@ export const _CONSTANT1 = {
     'Content-Type': 'multipart/form-data',
     Accept: 'application/json',
   },
+};
+export const _CONSTANT2 = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
 };

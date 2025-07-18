@@ -28,10 +28,19 @@ export const UserWidget = () => {
           }
         />
       </DropdownTrigger>
-      <DropdownMenu variant="flat">
-        <DropdownItem as={NextLink} href="https://marketplace.kreatli.com" key="marketplace" target="_blank">
-          Kreatli marketplace
+      <DropdownMenu variant="flat" className="w-52">
+        <DropdownItem as={NextLink} href="/account" key="account">
+          General information
         </DropdownItem>
+        <DropdownItem as={NextLink} href="/account/subscription" key="subscription">
+          Subscription
+        </DropdownItem>
+        <DropdownItem as={NextLink} showDivider href="/account/billing-history" key="billing-history">
+          Billing history
+        </DropdownItem>
+        {/* <DropdownItem as={NextLink} href="https://marketplace.kreatli.com" key="marketplace" target="_blank">
+          Kreatli marketplace
+        </DropdownItem> */}
         <DropdownItem key="log-out" onClick={handleLogoutClick}>
           Log out
         </DropdownItem>

@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import React from 'react';
 
 import { useDeleteProjectId } from '../../../../services/hooks';
-import { getProjects } from '../../../../services/services';
+import { getProjects, getUser } from '../../../../services/services';
 import { ProjectDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
@@ -27,6 +27,7 @@ export const DeleteProjectModal = ({ project, isOpen, onClose }: Props) => {
       {
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: [getProjects.key] });
+          queryClient.invalidateQueries({ queryKey: [getUser.key] });
           addToast({ title: 'The project was successfully deleted', color: 'success', variant: 'flat' });
           onClose();
         },

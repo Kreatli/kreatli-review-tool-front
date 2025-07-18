@@ -18,6 +18,36 @@
             "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserDto" } } }
           }
         }
+      },
+      "put": {
+        "operationId": "UserController_updateUser",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "multipart/form-data": { "schema": { "$ref": "#/components/schemas/UpdateUserDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserDto" } } }
+          }
+        }
+      }
+    },
+    "/user/billing-history": {
+      "get": {
+        "operationId": "UserController_getUserBillingHistory",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/InvoiceDto" } }
+              }
+            }
+          }
+        }
       }
     },
     "/user/{id}": {
@@ -32,10 +62,66 @@
         }
       }
     },
-    "/user/avatar": {
+    "/user/subscription": {
       "post": {
-        "operationId": "UserController_test",
+        "operationId": "UserController_generatePaymentUrl",
         "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SubscriptionBodyDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SubscriptionResponseDto" } } }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "UserController_cancelSubscription",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserDto" } } }
+          }
+        }
+      }
+    },
+    "/user/addon": {
+      "post": {
+        "operationId": "UserController_addAddon",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AddonBodyDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserDto" } } }
+          }
+        }
+      }
+    },
+    "/user/addon/{id}": {
+      "put": {
+        "operationId": "UserController_updateAddon",
+        "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AddonBodyDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserDto" } } }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "UserController_cancelAddon",
+        "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
         "responses": {
           "200": {
             "description": "",
@@ -690,6 +776,15 @@
           }
         }
       }
+    },
+    "/stripe-webhook": {
+      "post": {
+        "operationId": "StripeWebhookController_handleStripeWebhook",
+        "parameters": [
+          { "name": "stripe-signature", "required": true, "in": "header", "schema": { "type": "string" } }
+        ],
+        "responses": { "201": { "description": "" } }
+      }
     }
   },
   "info": {
@@ -715,16 +810,97 @@
         },
         "required": ["url", "originalFileName", "fileSize", "width", "height", "createdAt", "description"]
       },
+      "Limit": {
+        "type": "object",
+        "properties": { "used": { "type": "number" }, "max": { "type": "number" } },
+        "required": ["used", "max"]
+      },
+      "LimitsDto": {
+        "type": "object",
+        "properties": {
+          "usersCount": { "$ref": "#/components/schemas/Limit" },
+          "storage": { "$ref": "#/components/schemas/Limit" },
+          "projectsCount": { "$ref": "#/components/schemas/Limit" }
+        },
+        "required": ["usersCount", "storage", "projectsCount"]
+      },
+      "AddonDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "value": { "type": "number" },
+          "count": { "type": "number" },
+          "price": { "type": "number" }
+        },
+        "required": ["id", "type", "value", "count", "price"]
+      },
+      "SubscriptionDto": {
+        "type": "object",
+        "properties": {
+          "plan": { "type": "string", "enum": ["free", "pro", "advanced"] },
+          "planName": { "type": "string" },
+          "limits": { "$ref": "#/components/schemas/LimitsDto" },
+          "addons": { "type": "array", "items": { "$ref": "#/components/schemas/AddonDto" } },
+          "price": { "type": "number" }
+        },
+        "required": ["plan", "planName", "limits", "addons", "price"]
+      },
       "UserDto": {
         "type": "object",
         "properties": {
           "id": { "type": "string" },
           "email": { "type": "string" },
           "name": { "type": "string" },
-          "avatar": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/InterfaceImageDto" }] }
+          "avatar": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/InterfaceImageDto" }] },
+          "subscription": { "$ref": "#/components/schemas/SubscriptionDto" }
         },
-        "required": ["id", "email", "name", "avatar"]
+        "required": ["id", "email", "name", "avatar", "subscription"]
       },
+      "InvoiceLineDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "amount": { "type": "number" },
+          "quantity": { "type": "number" },
+          "price": { "type": "number", "nullable": true },
+          "description": { "type": "string", "nullable": true }
+        },
+        "required": ["id", "amount", "quantity", "price", "description"]
+      },
+      "InvoiceDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "amount": { "type": "number" },
+          "description": { "type": "string", "nullable": true },
+          "createdAt": { "type": "string" },
+          "status": { "type": "string", "nullable": true },
+          "invoicePdf": { "type": "string", "nullable": true },
+          "lines": { "type": "array", "items": { "$ref": "#/components/schemas/InvoiceLineDto" } }
+        },
+        "required": ["amount", "description", "createdAt", "status", "invoicePdf", "lines"]
+      },
+      "Blob": { "type": "object", "properties": {} },
+      "UpdateUserDto": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "avatar": { "format": "binary", "nullable": true, "allOf": [{ "$ref": "#/components/schemas/Blob" }] }
+        },
+        "required": ["avatar"]
+      },
+      "SubscriptionBodyDto": {
+        "type": "object",
+        "properties": { "plan": { "type": "string", "enum": ["free", "pro", "advanced"] } },
+        "required": ["plan"]
+      },
+      "SubscriptionResponseDto": {
+        "type": "object",
+        "properties": { "url": { "type": "string" } },
+        "required": ["url"]
+      },
+      "AddonBodyDto": { "type": "object", "properties": { "count": { "type": "number" } }, "required": ["count"] },
       "SignUpBodyDto": {
         "type": "object",
         "properties": { "email": { "type": "string" }, "password": { "type": "string" }, "name": { "type": "string" } },
@@ -927,7 +1103,6 @@
         },
         "required": ["assets"]
       },
-      "Blob": { "type": "object", "properties": {} },
       "ProjectCoverDto": {
         "type": "object",
         "properties": {

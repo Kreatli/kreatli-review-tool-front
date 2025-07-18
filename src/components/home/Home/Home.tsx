@@ -1,5 +1,22 @@
 import React from 'react';
+import { HeroSection } from '../Hero';
+import { FeaturesSection } from '../Features';
+import { KreatliForSection } from '../KreatliFor';
+import { FaqSection } from '../Faq';
+import { FooterSection } from '../Footer/FooterSection';
+import { HowItWorksSection } from '../HowItWorks';
+import { PricingSection } from '../PricingSection';
 
 export const Home = () => {
-  return <div className="max-w-screen-xl mx-auto w-full">Landing page</div>;
+  return (
+    <main className="w-full">
+      <HeroSection />
+      <FeaturesSection />
+      <KreatliForSection />
+      <HowItWorksSection />
+      <PricingSection />
+      <FaqSection />
+      <FooterSection />
+    </main>
+  );
 };

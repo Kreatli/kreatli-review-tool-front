@@ -7,6 +7,9 @@ import { VALIDATION_RULES } from '../../../../constants/validationRules';
 import { usePostProject } from '../../../../services/hooks';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { Icon } from '../../../various/Icon';
+import { useQueryClient } from '@tanstack/react-query';
+import { getUser } from '../../../../services/services';
+import { useSession } from '../../../../hooks/useSession';
 
 const DEFAULT_VALUES = {
   name: '',
@@ -26,6 +29,8 @@ export const CreateProjectForm = () => {
 
   const [isAddingMembers, setIsAddingMembers] = React.useState(false);
   const { mutate, isPending } = usePostProject();
+  const queryClient = useQueryClient();
+  const { user } = useSession();
 
   const onSubmit = ({ members, ...data }: typeof DEFAULT_VALUES) => {
     mutate(
@@ -33,6 +38,7 @@ export const CreateProjectForm = () => {
       {
         onSuccess: (response) => {
           router.push(`/project/${response.id}`);
+          queryClient.invalidateQueries({ queryKey: [getUser.key] });
         },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
@@ -57,6 +63,9 @@ export const CreateProjectForm = () => {
       setIsAddingMembers(false);
     }
   };
+
+  const shouldShowAddMore =
+    user?.subscription.plan === 'advanced' || fields.length < (user?.subscription.limits.usersCount.max ?? 0) - 1;
 
   return (
     <form className="flex flex-col gap-4" noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -101,11 +110,22 @@ export const CreateProjectForm = () => {
               </Button>
             </div>
           ))}
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <Link as="button" type="button" color="foreground" className="w-fit gap-1" size="sm" onClick={handleAddMore}>
-            <Icon icon="plus" size={14} />
-            Add more
-          </Link>
+          {shouldShowAddMore && (
+            <>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              <Link
+                as="button"
+                type="button"
+                color="foreground"
+                className="w-fit gap-1"
+                size="sm"
+                onClick={handleAddMore}
+              >
+                <Icon icon="plus" size={14} />
+                Add more
+              </Link>
+            </>
+          )}
         </div>
       )}
       {!isAddingMembers && (
