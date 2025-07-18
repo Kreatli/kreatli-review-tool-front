@@ -5,6 +5,7 @@ import { addToast, HeroUIProvider, ToastProvider } from '@heroui/react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Query, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
+import { GoogleTagManager } from '@next/third-parties/google';
 import Head from 'next/head';
 import React from 'react';
 
@@ -54,6 +55,8 @@ const App = ({ Component, pageProps }: AppProps) => {
           content="Supercharge Your Collaboration with Kreatli! All your projects, chats, and files in one place. Organize, collaborate, and create effortlessly."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+        <meta property="og:url" content="https://kreatli.com" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli" />
         <meta
           property="og:description"
@@ -71,6 +74,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           </GoogleOAuthProvider>
         </HeroUIProvider>
       </QueryClientProvider>
+      {process.env.GTM_ID && <GoogleTagManager gtmId={process.env.GTM_ID} />}
     </>
   );
 };
