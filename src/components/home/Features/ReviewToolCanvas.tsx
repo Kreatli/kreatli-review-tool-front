@@ -97,6 +97,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
         src="https://videos.pexels.com/video-files/4436060/4436060-uhd_2560_1440_25fps.mp4"
         controls={false}
         loop
+        playsInline
         autoPlay
         muted
       />
