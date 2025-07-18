@@ -17,7 +17,6 @@ export default function BillingHistoryPage() {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <BillingHistory />
     </>

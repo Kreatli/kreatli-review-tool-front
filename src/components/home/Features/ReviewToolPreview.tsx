@@ -1,11 +1,11 @@
 import { Avatar, Button, Card, CardBody, Textarea } from '@heroui/react';
 import { Icon } from '../../various/Icon';
 import { ReviewToolComment } from './ReviewToolComment';
-import { useRef, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 import { ReviewToolCanvas } from './ReviewToolCanvas';
 import { ReviewTool } from '../../../typings/reviewTool';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 
 export const ReviewToolPreview = () => {
   const [comment, setComment] = useState('');
@@ -13,11 +13,11 @@ export const ReviewToolPreview = () => {
   const [shapes, setShapes] = useState<ReviewTool.Shape[]>([]);
   const [hasNewCommentShapes, setHasNewCommentShapes] = useState(false);
 
-  const router = useRouter();
+  const { openSignUpModal } = useSignUpModalVisibility();
 
   const handleSendComment = () => {
     if (newComment) {
-      router.push('/sign-up');
+      openSignUpModal();
 
       return;
     }
@@ -58,10 +58,7 @@ export const ReviewToolPreview = () => {
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
-
-                    if (!newComment) {
-                      handleSendComment();
-                    }
+                    handleSendComment();
                   }
                 }}
               />

@@ -28,7 +28,7 @@ export default function ProjectActivityPage() {
   return (
     <>
       <Head>
-        <meta name="description" content="Kreatli" />
+        <title>Activity | Kreatli</title>
       </Head>
       {isPending ? (
         <ProjectActivitySkeleton />

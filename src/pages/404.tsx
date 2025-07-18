@@ -13,7 +13,6 @@ const NotFound = () => {
     <>
       <Head>
         <title>Page not found | Kreatli</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <Header />
       <div className="container max-w-screen-lg mx-auto px-6 text-center">

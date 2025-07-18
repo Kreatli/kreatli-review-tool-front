@@ -78,7 +78,6 @@ export default function JoinProject() {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <StartPageLayout
         title={`You were invited to join "${data?.projectName}" project`}

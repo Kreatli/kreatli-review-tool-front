@@ -9,13 +9,12 @@ import { useSession } from '../hooks/useSession';
 export default function HomePage() {
   const { isSignedIn } = useSession();
 
-  const title = `${isSignedIn ? 'Projects' : 'Review Hub'} | Kreatli`;
+  const title = `${isSignedIn ? 'Projects' : 'Collaboration Platform for YouTube Creators'} | Kreatli`;
 
   return (
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <Header />
       {isSignedIn ? <Projects /> : <Home />}

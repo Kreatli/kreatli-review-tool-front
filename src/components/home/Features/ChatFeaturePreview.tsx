@@ -3,17 +3,17 @@ import { Icon } from '../../various/Icon';
 import { ChatFeatureMessage } from './ChatFeatureMessage';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 
 export const ChatFeaturePreview = () => {
-  const router = useRouter();
-
   const [message, setMessage] = useState('');
   const [newMessage, setNewMessage] = useState('');
 
+  const { openSignUpModal } = useSignUpModalVisibility();
+
   const handleSendMessage = () => {
     if (newMessage) {
-      router.push('/sign-up');
+      openSignUpModal();
 
       return;
     }
@@ -27,15 +27,29 @@ export const ChatFeaturePreview = () => {
   };
 
   return (
-    <Card>
+    <Card className="group">
       <CardBody className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-2 sm:gap-4 p-4">
         <div className="flex sm:flex-col gap-2 sm:gap-4 py-2">
-          <div className="bg-foreground-100 size-10 flex items-center outline-2 outline-foreground-200 outline outline-offset-2 justify-center rounded-full">
+          <button
+            type="button"
+            className="bg-foreground-100 size-10 flex items-center outline-2 outline-foreground-200 outline outline-offset-2 justify-center rounded-full"
+            onClick={openSignUpModal}
+          >
             <Icon icon="slides" size={20} className="text-foreground-500" />
-          </div>
-          <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
-          <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" />
-          <Button as={Link} href="/sign-up" variant="faded" radius="full" isIconOnly>
+          </button>
+          <Avatar
+            as="button"
+            type="button"
+            src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+            onClick={openSignUpModal}
+          />
+          <Avatar
+            as="button"
+            type="button"
+            src="https://i.pravatar.cc/150?u=a042581f4e29026024f"
+            onClick={openSignUpModal}
+          />
+          <Button variant="faded" radius="full" isIconOnly onClick={openSignUpModal}>
             <Icon icon="plus" size={20} />
           </Button>
         </div>
@@ -48,7 +62,7 @@ export const ChatFeaturePreview = () => {
               <div className="text-medium sm:text-large font-semibold">Project chat</div>
             </div>
             <div className="flex items-center gap-2">
-              <Button size="sm" variant="light" radius="full" isIconOnly>
+              <Button size="sm" variant="light" radius="full" isIconOnly onClick={openSignUpModal}>
                 <Icon icon="search" size={20} />
               </Button>
               <AvatarGroup size="sm" max={2} total={6}>
@@ -85,10 +99,7 @@ export const ChatFeaturePreview = () => {
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                   e.preventDefault();
-
-                  if (!newMessage) {
-                    handleSendMessage();
-                  }
+                  handleSendMessage();
                 }
               }}
             />

@@ -9,7 +9,7 @@ export default function ProjectAssetsPage() {
   return (
     <>
       <Head>
-        <meta name="description" content="Kreatli" />
+        <title>Media | Kreatli</title>
       </Head>
       <ProjectAssets />
     </>

@@ -17,7 +17,6 @@ export default function GeneralInformationPage() {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <GeneralInformation user={user} />
     </>

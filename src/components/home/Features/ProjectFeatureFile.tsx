@@ -1,15 +1,4 @@
-import {
-  Avatar,
-  Badge,
-  Chip,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Selection,
-  SharedSelection,
-} from '@heroui/react';
-import { Icon } from '../../various/Icon';
+import { Avatar, Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
 import { useState } from 'react';
 
 const statuses = {
@@ -37,6 +26,7 @@ interface Props {
   assignee?: string;
   comments: number;
   status: 'in-progress' | 'review-needed' | 'approved';
+  onClick?: () => void;
 }
 
 export const ProjectFeatureFile = ({
@@ -45,6 +35,7 @@ export const ProjectFeatureFile = ({
   assignee: initialAssignee,
   comments,
   status: initialStatus,
+  onClick,
 }: Props) => {
   const [assignee, setAssignee] = useState<string | undefined>(initialAssignee);
   const [status, setStatus] = useState<keyof typeof statuses>(initialStatus);
@@ -76,8 +67,13 @@ export const ProjectFeatureFile = ({
         {assignee && (
           <div className="text-sm text-foreground-500">
             <Dropdown placement="bottom-end">
-              <DropdownTrigger>
-                <Avatar size="sm" src={`https://i.pravatar.cc/150?u=${assignee}`} className="cursor-pointer" />
+              <DropdownTrigger onClick={onClick}>
+                <Avatar
+                  size="sm"
+                  isBordered
+                  src={`https://i.pravatar.cc/150?u=${assignee}`}
+                  className="cursor-pointer"
+                />
               </DropdownTrigger>
               <DropdownMenu
                 selectionMode="single"
@@ -93,7 +89,7 @@ export const ProjectFeatureFile = ({
           </div>
         )}
         <Dropdown placement="bottom-start">
-          <DropdownTrigger>
+          <DropdownTrigger onClick={onClick}>
             <Chip
               size="sm"
               variant="dot"

@@ -28,7 +28,6 @@ export default function SignIn() {
     <>
       <Head>
         <title>Sign in | Kreatli</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <StartPageLayout title="Sign in to get started." backgroundType="light">
         <SignInForm onSuccess={handleSuccess} />

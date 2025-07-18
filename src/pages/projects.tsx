@@ -16,7 +16,6 @@ export default function ProjectsPage() {
     <>
       <Head>
         <title>Projects | Kreatli</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <Header />
       <Projects />

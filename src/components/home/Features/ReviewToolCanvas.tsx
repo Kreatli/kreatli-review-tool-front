@@ -9,6 +9,9 @@ import { Vector2d } from 'konva/lib/types';
 import { ReviewTool } from '../../../typings/reviewTool';
 import { simplifyLine } from '../../../utils/canvas';
 import { EDITOR_COLOR_HEX } from '../../../constants/colors';
+import { Icon } from '../../various/Icon';
+import { cn } from '@heroui/react';
+import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 
 interface Props {
   shapes: ReviewTool.Shape[];
@@ -20,7 +23,10 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
   const isDrawing = useRef(false);
   const lastPointRef = React.useRef<Vector2d | null>(null);
 
+  const isTouchScreen = useIsTouchScreen();
+
   const [canvasWidth, setCanvasWidth] = useState(0);
+  const [shouldShowStartDrawing, setShouldShowStartDrawing] = useState(true);
 
   useScreenResize(() => {
     setCanvasWidth(fileRef.current?.clientWidth ?? 0);
@@ -93,6 +99,15 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
 
   return (
     <div ref={fileRef} className="aspect-video rounded-lg overflow-hidden relative">
+      <div
+        className={cn(
+          'absolute inset-0 transition-opacity delay-500 duration-300 bg-foreground/50 text-foreground-300 flex flex-col items-center justify-center gap-2 pointer-events-none',
+          shouldShowStartDrawing && !isTouchScreen ? 'opacity-100' : 'opacity-0',
+        )}
+      >
+        <Icon icon="paint" className="text-foreground-300" size={36} />
+        <span className="text-xl font-semibold">Start drawing</span>
+      </div>
       <video
         src="https://videos.pexels.com/video-files/4436060/4436060-uhd_2560_1440_25fps.mp4"
         controls={false}
@@ -108,12 +123,13 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
         style={
           {
             '--canvas-ratio': canvasWidth / 960,
-            cursor: 'url("/cursors/dots/red.svg") 3 3, auto',
+            cursor: 'url("/cursors/pencil.svg") 8 28, auto',
           } as React.CSSProperties
         }
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
+        onMouseEnter={() => setShouldShowStartDrawing(false)}
       >
         <Layer>
           {shapes.map((shape) => (

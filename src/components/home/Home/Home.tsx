@@ -6,6 +6,7 @@ import { FaqSection } from '../Faq';
 import { FooterSection } from '../Footer/FooterSection';
 import { HowItWorksSection } from '../HowItWorks';
 import { PricingSection } from '../PricingSection';
+import { SignUpModal } from '../../auth/SignUpForm/SignUpModal';
 
 export const Home = () => {
   return (
@@ -17,6 +18,7 @@ export const Home = () => {
       <PricingSection />
       <FaqSection />
       <FooterSection />
+      <SignUpModal />
     </main>
   );
 };

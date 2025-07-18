@@ -17,7 +17,6 @@ export default function SubscriptionPage() {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content="Kreatli" />
       </Head>
       <Subscription user={user} />
     </>

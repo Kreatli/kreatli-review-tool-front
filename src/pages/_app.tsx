@@ -6,7 +6,6 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { Query, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Script from 'next/script';
 import React from 'react';
 
 import { Layout } from '../components/layout/Layout';
@@ -52,12 +51,19 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Kreatli</title>
         <meta
           name="description"
-          content="Kreatli is a place where Editors, Designers, and Producers find YouTube Creators to work with and build a professional network."
+          content="Supercharge Your Collaboration with Kreatli! All your projects, chats, and files in one place. Organize, collaborate, and create effortlessly."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+        <meta property="og:title" content="Kreatli" />
+        <meta
+          property="og:description"
+          content="Supercharge Your Collaboration with Kreatli! All your projects, chats, and files in one place. Organize, collaborate, and create effortlessly."
+        />
+        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
       </Head>
       <QueryClientProvider client={queryClient}>
-        {/* @ts-ignore */}
         <HeroUIProvider id="heroUiProvider">
           <ToastProvider />
           <GoogleOAuthProvider clientId={process.env.GOOGLE_OAUTH_CLIENT_ID as string}>
@@ -65,17 +71,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           </GoogleOAuthProvider>
         </HeroUIProvider>
       </QueryClientProvider>
-      {process.env.ENABLE_REDDIT_PIXEL === 'true' && (
-        <Script
-          id="reddit-pixel"
-          dangerouslySetInnerHTML={{
-            // eslint-disable-next-line max-len
-            __html:
-              // eslint-disable-next-line max-len, @typescript-eslint/quotes
-              `!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_erzexreig3w8');rdt('track', 'PageVisit');`,
-          }}
-        />
-      )}
     </>
   );
 };
