@@ -60,8 +60,8 @@ const App = ({ Component, pageProps }: AppProps) => {
           content="Supercharge Your Collaboration with Kreatli! All your projects, chats, and files in one place. Organize, collaborate, and create effortlessly."
         />
         <meta property="og:image" content="/og-image.png" />
-        <meta property="og:image:width" content="800" />
-        <meta property="og:image:height" content="600" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
       </Head>
       <QueryClientProvider client={queryClient}>
         <HeroUIProvider id="heroUiProvider">
