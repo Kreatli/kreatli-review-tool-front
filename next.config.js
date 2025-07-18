@@ -15,6 +15,25 @@ const nextConfig = {
   },
   productionBrowserSourceMaps: true,
   swcMinify: false,
+  async redirects() {
+    return [
+      {
+        source: '/signup/professional',
+        destination: '/sign-up',
+        permanent: true,
+      },
+      {
+        source: '/signup/professional',
+        destination: '/sign-up',
+        permanent: true,
+      },
+      {
+        source: '/faq',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
 
