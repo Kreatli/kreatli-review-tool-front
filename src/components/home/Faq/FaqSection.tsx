@@ -1,4 +1,5 @@
-import { Accordion, AccordionItem, Button, Link } from '@heroui/react';
+import { Accordion, AccordionItem, Button } from '@heroui/react';
+import Link from 'next/link';
 
 const faq = [
   {

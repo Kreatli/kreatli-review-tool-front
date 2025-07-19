@@ -14,7 +14,7 @@ export const FooterSection = () => {
         <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
           Get Started for Free
         </Button>
-        <Button size="lg" variant="light">
+        <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">
           Book a Demo
         </Button>
       </div>

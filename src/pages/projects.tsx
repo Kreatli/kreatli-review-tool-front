@@ -15,7 +15,7 @@ export default function ProjectsPage() {
   return (
     <>
       <Head>
-        <title>Projects | Kreatli</title>
+        <title>Kreatli | Projects</title>
       </Head>
       <Header />
       <Projects />

@@ -72,7 +72,7 @@ export default function JoinProject() {
     return null;
   }
 
-  const title = `Join "${data?.projectName}" | Kreatli`;
+  const title = `Kreatli | Join "${data?.projectName}"`;
 
   return (
     <>

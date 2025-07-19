@@ -23,7 +23,7 @@ export default function SignUp() {
   return (
     <>
       <Head>
-        <title>Sign up | Kreatli</title>
+        <title>Kreatli | Sign up</title>
       </Head>
       <StartPageLayout title="Create an account to get started!">
         <SignUpForm />

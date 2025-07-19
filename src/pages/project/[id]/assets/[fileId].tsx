@@ -18,7 +18,7 @@ export default function ProjectAssetsPage() {
   return (
     <>
       <Head>
-        <title>Media | Kreatli</title>
+        <title>Kreatli | Media</title>
       </Head>
       <FileContextProvider fileId={router.query.fileId.toString()} projectId={router.query.id.toString()}>
         <div className="grid grid-cols-[1fr,350px] h-screen">

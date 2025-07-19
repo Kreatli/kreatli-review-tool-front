@@ -52,7 +52,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Kreatli</title>
         <meta
           name="description"
-          content="Supercharge Your Collaboration with Kreatli! All your projects, chats, and files in one place. Organize, collaborate, and create effortlessly."
+          content="We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
         <meta property="og:url" content="https://kreatli.com" />
@@ -60,7 +60,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta property="og:title" content="Kreatli" />
         <meta
           property="og:description"
-          content="Supercharge Your Collaboration with Kreatli! All your projects, chats, and files in one place. Organize, collaborate, and create effortlessly."
+          content="We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc."
         />
         <meta property="og:image" content="/og-image.png" />
         <meta property="og:image:width" content="1200" />

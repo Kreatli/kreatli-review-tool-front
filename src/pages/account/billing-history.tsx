@@ -11,7 +11,7 @@ export default function BillingHistoryPage() {
     return null;
   }
 
-  const title = `${user.name} | Kreatli`;
+  const title = `Kreatli | ${user.name}`;
 
   return (
     <>

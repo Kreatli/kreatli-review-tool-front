@@ -27,7 +27,7 @@ export default function SignIn() {
   return (
     <>
       <Head>
-        <title>Sign in | Kreatli</title>
+        <title>Kreatli | Sign in</title>
       </Head>
       <StartPageLayout title="Sign in to get started." backgroundType="light">
         <SignInForm onSuccess={handleSuccess} />

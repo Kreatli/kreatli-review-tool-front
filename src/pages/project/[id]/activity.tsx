@@ -28,7 +28,7 @@ export default function ProjectActivityPage() {
   return (
     <>
       <Head>
-        <title>Activity | Kreatli</title>
+        <title>Kreatli | Activity</title>
       </Head>
       {isPending ? (
         <ProjectActivitySkeleton />

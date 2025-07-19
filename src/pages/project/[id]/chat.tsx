@@ -14,7 +14,7 @@ export default function ProjectChat() {
   return (
     <>
       <Head>
-        <title>Chat | Kreatli</title>
+        <title>Kreatli | Chat</title>
       </Head>
       <ChatProvider projectId={projectId}>
         <Chat />

@@ -15,7 +15,7 @@ export default function ProjectAssetsPage() {
   return (
     <>
       <Head>
-        <title>Folder | Kreatli</title>
+        <title>Kreatli | Folder</title>
       </Head>
       <ProjectFolderAssets folderId={router.query.folderId as string} />
     </>

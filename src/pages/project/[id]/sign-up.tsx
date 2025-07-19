@@ -40,7 +40,7 @@ export default function JoinProject() {
     router.push(`/project/${data?.projectId}`);
   };
 
-  const title = `Join "${data?.projectName}" | Kreatli`;
+  const title = `Kreatli | Join "${data?.projectName}"`;
 
   if (isLoading || !data || !token) {
     return null;

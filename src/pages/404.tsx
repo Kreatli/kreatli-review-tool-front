@@ -12,7 +12,7 @@ const NotFound = () => {
   return (
     <>
       <Head>
-        <title>Page not found | Kreatli</title>
+        <title>Kreatli | Page not found</title>
       </Head>
       <Header />
       <div className="container max-w-screen-lg mx-auto px-6 text-center">
