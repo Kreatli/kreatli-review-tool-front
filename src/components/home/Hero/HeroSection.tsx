@@ -26,7 +26,7 @@ export const HeroSection = () => {
           </h1>
           <p className="text-lg sm:text-xl text-foreground-500 font-sans">
             Kreatli helps Creative Teams streamline and simplify post-production workflows. No more juggling multiple
-            platforms. All your projects, chats, and files in one place.
+            platforms. All projects, chats, and files in one place.
           </p>
         </div>
         <div className="flex flex-wrap justify-between gap-4 items-center w-full md:w-auto">
