@@ -10,9 +10,8 @@ export const FeaturesSection = () => {
         <div className="flex flex-col gap-4 max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-5xl font-bold font-sans">Simplify your workflows with Kreatli</h2>
           <p className="text-lg text-foreground-500">
-            We bring everything you need to manage into one platform. From intuitive file organization to real-time file
-            reviews and powerful storage. Stay on top of every project update, chat message, and file exchange - all in
-            one shared workspace.
+            Everything you need to manage on one platform. From intuitive file organization to real-time file reviews
+            and powerful storage. Stay on top of every project update, chat message, and file exchange.
           </p>
         </div>
         <div className="w-full flex flex-col gap-24 lg:gap-[max(20vh,100px)]">
