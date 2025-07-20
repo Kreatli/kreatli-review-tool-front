@@ -1,17 +1,5 @@
-import {
-  Badge,
-  Button,
-  Chip,
-  Spinner,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-} from '@heroui/react';
+import { Button, Chip, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
 import { useGetUserBillingHistory } from '../../../services/hooks';
-import { UserDto } from '../../../services/types';
 import { EmptyState } from '../../various/EmptyState';
 import { formatFullDate } from '../../../utils/dates';
 import { formatPrice } from '../../../utils/formatNumber';
@@ -33,7 +21,7 @@ export const BillingHistory = () => {
   const { data: billingHistory, isPending } = useGetUserBillingHistory();
 
   return (
-    <div className="shadow-small rounded-medium px-5 p-4">
+    <div className="shadow-small rounded-medium dark:border border-foreground-300 px-5 p-4">
       <div>
         <div className="text-xl font-semibold">Billing history</div>
         <div className="text-foreground-500">View your billing history here.</div>

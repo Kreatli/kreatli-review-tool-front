@@ -37,9 +37,12 @@ export const KreatliForSection = () => {
             </CardBody>
           </Card>
         </div>
-        <div>
+        <div className="flex items-center gap-4">
           <Button as={Link} href="/sign-up" size="lg" className="text-content1 bg-foreground">
             Join Kreatli
+          </Button>
+          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">
+            Book a Demo
           </Button>
         </div>
       </div>

@@ -8,12 +8,11 @@ export const FeaturesSection = () => {
     <section id="features-section" className="relative backdrop-blur-lg scroll-mt-12 px-6 lg:pb-32 py-16">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-16">
         <div className="flex flex-col gap-4 max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-5xl font-bold font-sans">Simplify your workflow with Kreatli</h2>
+          <h2 className="text-3xl sm:text-5xl font-bold font-sans">Simplify your workflows with Kreatli</h2>
           <p className="text-lg text-foreground-500">
-            Kreatli brings everything you need to manage creative projects into one platform. From intuitive file
-            organization to real-time file reviews and powerful storage, Kreatli ensures seamless collaboration between
-            creators and freelancers. Stay on top of every project update, chat message, and file exchange - all in one
-            shared workspace.
+            We bring everything you need to manage into one platform. From intuitive file organization to real-time file
+            reviews and powerful storage. Stay on top of every project update, chat message, and file exchange - all in
+            one shared workspace.
           </p>
         </div>
         <div className="w-full flex flex-col gap-24 lg:gap-[max(20vh,100px)]">

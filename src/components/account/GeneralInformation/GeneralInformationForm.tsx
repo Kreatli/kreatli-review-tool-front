@@ -106,6 +106,7 @@ export const GeneralInformationForm = ({ user }: Props) => {
 
   return (
     <form className="flex flex-col gap-4 mt-6" noValidate onSubmit={handleSubmit(onSubmit)}>
+      <Input placeholder="Email" label="Email" isDisabled value={user.email} />
       <Input
         placeholder="Name"
         label="Name"

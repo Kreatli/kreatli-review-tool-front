@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Chip } from '@heroui/react';
+import { Button, Card, CardBody, Chip, Tooltip } from '@heroui/react';
 import { Icon } from '../../various/Icon';
 import Link from 'next/link';
 
@@ -21,7 +21,9 @@ export const PricingSection = () => {
                 <Chip size="lg" variant="faded">
                   Free
                 </Chip>
-                <div className="text-5xl font-bold font-sans mt-4 mb-2">$0</div>
+                <div className="flex items-end gap-2 mt-4 mb-4">
+                  <span className="text-5xl font-bold font-sans leading-10">$0</span>
+                </div>
                 <p className="text-foreground-500">Ideal for individuals or small teams just getting started.</p>
               </div>
               <ul className="text-lg flex flex-col gap-2 text-foreground-500">
@@ -31,9 +33,17 @@ export const PricingSection = () => {
                 <li className="flex items-start gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />2 members
                 </li>
-                <li className="flex items-start gap-1">
+                <li className="flex items-center gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />
                   5GB Total Upload*
+                  <Tooltip
+                    content="“Total upload” tracks the cumulative size of all files a user has uploaded, even if some are later deleted. This means deleted files still count toward the user's upload limit."
+                    className="max-w-sm"
+                  >
+                    <div>
+                      <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
+                    </div>
+                  </Tooltip>
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -47,10 +57,15 @@ export const PricingSection = () => {
                 <Chip size="lg" variant="faded">
                   Pro
                 </Chip>
-                <div className="text-5xl font-bold font-sans mt-4 mb-2">
-                  $15<span className="text-foreground-500 text-sm font-normal"> /per user monthly</span>
+                <div className="flex items-end gap-2 mt-4 mb-4">
+                  <span className="text-5xl font-bold font-sans leading-10">$15</span>
+                  <span className="text-foreground-500 text-sm leading-4">
+                    per user <br /> per month
+                  </span>
                 </div>
-                <p className="text-foreground-500">Ideal for individuals or small teams just getting started.</p>
+                <p className="text-foreground-500">
+                  Perfect for small teams looking to manage multiple projects efficiently.
+                </p>
               </div>
               <ul className="text-lg flex flex-col gap-2 text-foreground-500">
                 <li className="flex items-start gap-1">
@@ -61,8 +76,13 @@ export const PricingSection = () => {
                   <Icon icon="check" className="text-foreground-500" size={24} />
                   Up to 5 Members
                 </li>
-                <li className="flex items-start gap-1">
+                <li className="flex items-center gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />1 TB Storage
+                  <Tooltip content="$5 per month per additional 100GB" className="max-w-sm">
+                    <div>
+                      <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
+                    </div>
+                  </Tooltip>
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -76,10 +96,15 @@ export const PricingSection = () => {
                 <Chip size="lg" variant="faded">
                   Advanced
                 </Chip>
-                <div className="text-5xl font-bold font-sans mt-4 mb-2">
-                  $20<span className="text-foreground-500 text-sm font-normal"> /per user monthly</span>
+                <div className="flex items-end gap-2 mt-4 mb-4">
+                  <span className="text-5xl font-bold font-sans leading-10">$20</span>
+                  <span className="text-foreground-500 text-sm leading-4">
+                    per user <br /> per month
+                  </span>
                 </div>
-                <p className="text-foreground-500">Ideal for individuals or small teams just getting started.</p>
+                <p className="text-foreground-500">
+                  Designed for growing teams needing more extensive collaboration tools.
+                </p>
               </div>
               <ul className="text-lg flex flex-col gap-2 text-foreground-500">
                 <li className="flex items-start gap-1">
@@ -90,8 +115,13 @@ export const PricingSection = () => {
                   <Icon icon="check" className="text-foreground-500" size={24} />
                   Unlimited Members
                 </li>
-                <li className="flex items-start gap-1">
+                <li className="flex items-center gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />2 TB Storage
+                  <Tooltip content="$3 per month per additional 100GB" className="max-w-sm">
+                    <div>
+                      <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
+                    </div>
+                  </Tooltip>
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -100,12 +130,8 @@ export const PricingSection = () => {
             </CardBody>
           </Card>
         </div>
-        <p className="text-foreground-500 text-center">
-          *"Total upload" tracks the cumulative size of all files a user has uploaded, even if some are later deleted.
-          This means deleted files still count toward the user's upload limit.
-        </p>
         <div>
-          <Button size="lg" variant="flat">
+          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="flat">
             Contact Sales for Custom Plan
           </Button>
         </div>

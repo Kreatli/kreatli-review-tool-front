@@ -24,7 +24,7 @@ export const Subscription = ({ user }: Props) => {
   const { usersCount, projectsCount, storage } = user.subscription.limits;
 
   return (
-    <div className="shadow-small rounded-medium px-5 p-4">
+    <div className="shadow-small rounded-medium dark:border border-foreground-300 px-5 p-4">
       <div className="mb-4">
         <div className="text-xl font-semibold">Subscription</div>
         <div className="text-foreground-500">Manage your subscription here.</div>
@@ -88,7 +88,7 @@ export const Subscription = ({ user }: Props) => {
       {user.subscription.plan === 'free' && (
         <Alert
           color="primary"
-          description="*Total upload means that even if you delete files, their size will still count towards this limit. Upgrade to a higher plan to have usage-based storage."
+          description="*Total upload tracks the cumulative size of all files a user has uploaded, even if some are later deleted. This means deleted files still count toward the user's upload limit."
         />
       )}
       {user.subscription.plan !== 'free' && (

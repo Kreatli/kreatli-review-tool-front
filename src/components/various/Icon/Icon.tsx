@@ -52,6 +52,7 @@ import HelpCircleIcon from '../../../assets/icons/help-circle.svg';
 import HideIcon from '../../../assets/icons/hide.svg';
 import InboxIcon from '../../../assets/icons/inbox.svg';
 import InfoIcon from '../../../assets/icons/info.svg';
+import InfoCircleIcon from '../../../assets/icons/info-circle.svg';
 import InstagramIcon from '../../../assets/icons/instagram.svg';
 import ItalicIcon from '../../../assets/icons/italic.svg';
 import LinkIcon from '../../../assets/icons/link.svg';
@@ -147,6 +148,7 @@ const ICONS = {
   hide: HideIcon,
   inbox: InboxIcon,
   info: InfoIcon,
+  infoCircle: InfoCircleIcon,
   instagram: InstagramIcon,
   italic: ItalicIcon,
   link: LinkIcon,

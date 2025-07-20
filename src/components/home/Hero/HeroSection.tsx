@@ -2,21 +2,31 @@ import { Button, Card, CardBody, Chip } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../../various/Icon';
 import styles from './HeroSection.module.css';
+import { MouseEventHandler } from 'react';
 
 export const HeroSection = () => {
+  const handleSeeHowItWorks = (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    const featuresSection = document.getElementById('features-section');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative h-[calc(100vh-4rem)] min-h-fit flex items-center justify-center overflow-hidden">
       <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-16 px-6 pt-4 pb-20 relative z-10">
         <div className="flex flex-col items-center gap-4">
           <Chip size="lg" variant="faded">
-            The Future of Creative Collaboration
+            All-in-One Collaboration Platform
           </Chip>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">
-            Stop Drowning in Emails, WhatsApp Chats & Files
+            Stop Drowning in Emails, Slack & Dropbox
           </h1>
           <p className="text-lg sm:text-xl text-foreground-500 font-sans">
-            Supercharge Your Collaboration with Kreatli! All your projects, chats, and files in one place. Organize,
-            collaborate, and create effortlessly.
+            Kreatli helps Creative Teams streamline and simplify post-production workflows. No more juggling multiple
+            platforms. All your projects, chats, and files in one place.
           </p>
         </div>
         <div className="flex flex-wrap justify-between gap-4 items-center w-full md:w-auto">
@@ -47,7 +57,7 @@ export const HeroSection = () => {
             Start your journey
             <Icon icon="arrowRight" />
           </Button>
-          <Button as="a" href="#features-section" variant="light" size="lg">
+          <Button as="a" href="#features-section" variant="light" size="lg" onClick={handleSeeHowItWorks}>
             <Icon icon="slides" />
             See how it works
           </Button>

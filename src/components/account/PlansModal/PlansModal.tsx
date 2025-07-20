@@ -1,20 +1,9 @@
-import {
-  addToast,
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  Radio,
-  RadioGroup,
-} from '@heroui/react';
+import { addToast, Modal, ModalBody, ModalContent, ModalHeader } from '@heroui/react';
 import { useState } from 'react';
 import { UserDto } from '../../../services/types';
 import { usePostUserSubscription } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { useQueryClient } from '@tanstack/react-query';
-import { getUser } from '../../../services/services';
 import { Plan } from './Plan';
 
 const PLANS = [
@@ -22,21 +11,37 @@ const PLANS = [
     id: 'free' as const,
     name: 'Free',
     description: 'Ideal for individuals or small teams just getting started.',
-    features: ['1 project', '2 members', '5GB Total Upload'],
+    features: [
+      { label: '1 project' },
+      { label: '2 members' },
+      {
+        label: '5GB Total Upload',
+        tooltip:
+          "“Total upload” tracks the cumulative size of all files a user has uploaded, even if some are later deleted. This means deleted files still count toward the user's upload limit.",
+      },
+    ],
     price: 0,
   },
   {
     id: 'pro' as const,
     name: 'Pro',
     description: 'Perfect for small teams looking to manage multiple projects efficiently.',
-    features: ['Up to 10 projects', 'Up to 5 members', '1TB Storage', '+100GB for $5'],
+    features: [
+      { label: 'Up to 10 projects' },
+      { label: 'Up to 5 members' },
+      { label: '1TB Storage', tooltip: '$5 per month per additional 100GB' },
+    ],
     price: 15,
   },
   {
     id: 'advanced' as const,
     name: 'Advanced',
     description: 'Designed for growing teams needing more extensive collaboration tools.',
-    features: ['Unlimited projects', 'Unlimited members', '2TB Storage', '+100GB for $3'],
+    features: [
+      { label: 'Unlimited projects' },
+      { label: 'Unlimited members' },
+      { label: '2TB Storage', tooltip: '$3 per month per additional 100GB' },
+    ],
     price: 20,
   },
 ];
@@ -79,19 +84,11 @@ export const PlansModal = ({ user, isOpen, onClose }: Props) => {
   const plans = user.subscription.plan === 'free' ? PLANS : PLANS.slice(1);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="2xl">
+    <Modal isOpen={isOpen} onClose={onClose} size="2xl" scrollBehavior="inside">
       <ModalContent>
         <ModalHeader>Select a plan</ModalHeader>
-        <ModalBody className="pb-6">
-          {/* <RadioGroup
-            value={selectedPlan}
-            onValueChange={(value) => setSelectedPlan(value as 'free' | 'pro' | 'advanced')}
-          >
-            <Radio value="free">Free</Radio>
-            <Radio value="pro">Pro</Radio>
-            <Radio value="advanced">Advanced</Radio>
-          </RadioGroup> */}
-          <div className="flex gap-4">
+        <ModalBody className="py-6">
+          <div className="flex gap-4 flex-col md:flex-row">
             {plans.map(({ id, name, description, price, features }) => (
               <Plan
                 key={id}

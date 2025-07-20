@@ -37,6 +37,8 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
   }, []);
 
   const handleMouseDown = (event: Konva.KonvaEventObject<MouseEvent>) => {
+    setShouldShowStartDrawing(false);
+
     isDrawing.current = true;
 
     const position = event.target.getStage()?.getPointerPosition();
@@ -101,7 +103,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
     <div ref={fileRef} className="aspect-video rounded-lg overflow-hidden relative">
       <div
         className={cn(
-          'absolute inset-0 transition-opacity delay-500 duration-300 bg-foreground/50 text-foreground-300 flex flex-col items-center justify-center gap-2 pointer-events-none',
+          'absolute inset-0 transition-opacity duration-300 bg-foreground/50 text-foreground-300 flex flex-col items-center justify-center gap-2 pointer-events-none',
           shouldShowStartDrawing && !isTouchScreen ? 'opacity-100' : 'opacity-0',
         )}
       >
@@ -129,7 +131,6 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onMouseEnter={() => setShouldShowStartDrawing(false)}
       >
         <Layer>
           {shapes.map((shape) => (
