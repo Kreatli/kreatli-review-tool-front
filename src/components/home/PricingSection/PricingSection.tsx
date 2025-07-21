@@ -14,7 +14,7 @@ export const PricingSection = () => {
             Flexible options to support your growth and ambition
           </p>
         </div>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 items-center lg:grid-cols-3 gap-8 w-full">
           <Card isHoverable className="dark:border border-foreground-300">
             <CardBody className="p-6 flex flex-col gap-8">
               <div>
@@ -51,12 +51,14 @@ export const PricingSection = () => {
               </Button>
             </CardBody>
           </Card>
-          <Card isHoverable className="dark:border border-foreground-300">
+          <Card isHoverable className="relative shadow-large">
             <CardBody className="p-6 flex flex-col gap-8">
-              <div>
-                <Chip size="lg" variant="faded">
-                  Pro
-                </Chip>
+              <div className="w-full">
+                <div className="w-full flex items-center justify-between">
+                  <Chip size="lg" variant="faded">
+                    Pro
+                  </Chip>
+                </div>
                 <div className="flex items-end gap-2 mt-4 mb-4">
                   <span className="text-5xl font-bold font-sans leading-10">$15</span>
                   <span className="text-foreground-500 text-sm leading-4">
@@ -86,7 +88,7 @@ export const PricingSection = () => {
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Get Started for Free
+                Choose Pro Plan
               </Button>
             </CardBody>
           </Card>
@@ -125,14 +127,14 @@ export const PricingSection = () => {
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Get Started for Free
+                Choose Advanced Plan
               </Button>
             </CardBody>
           </Card>
         </div>
         <div>
           <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="flat">
-            Contact Sales for Custom Plan
+            Create your own Plan
           </Button>
         </div>
       </div>

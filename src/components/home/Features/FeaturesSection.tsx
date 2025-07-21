@@ -18,21 +18,21 @@ export const FeaturesSection = () => {
           <Feature
             icon="search"
             title="Never Lose a File Again"
-            description="Say goodbye to clutter. Easily organize and categorize all your files by project, type, or relevance with Kreatli's intuitive file system. Find exactly what you need in seconds—no more searching through endless folders or inboxes."
+            description="Say goodbye to clutter, endless folders or inboxes. Easily organize and categorize all your files by project, status, or size with Kreatli's intuitive file system."
           >
             <ProjectFeaturePreview />
           </Feature>
           <Feature
             icon="paint"
             title="Real-Time File Review Tool"
-            description="Review files, give feedback, and make updates in real-time. Kreatli's file review tool allows you to comment on and revise documents, videos, and images without needing to download or email back and forth, ensuring seamless collaboration."
+            description="Review and edit files in real-time. Comment on and revise documents, videos, and images. No downloading or emailing back and forth - everything stays in one place."
           >
             <ReviewToolPreview />
           </Feature>
           <Feature
             icon="chat"
             title="Crystal Clear Communication"
-            description="Never miss an important update or message again. With Kreatli, all project milestones, chat conversations, and file changes are stored in one shared workspace, ensuring everyone stays on the same page from start to finish."
+            description="Never miss an important update or message again. All project milestones, conversations, and file revisions are stored in one shared workspace, ensuring everyone stays on the same page."
           >
             <ChatFeaturePreview />
           </Feature>

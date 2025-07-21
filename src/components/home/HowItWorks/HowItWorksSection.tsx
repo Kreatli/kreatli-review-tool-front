@@ -19,7 +19,7 @@ export const HowItWorksSection = () => {
             <div className="flex flex-col gap-2 items-center">
               <h3 className="text-lg font-semibold text-center">Set Up Projects</h3>
               <p className="text-foreground-500 text-center">
-                Create your project workspace and invite team members and freelancers to collaborate.
+                Create your project workspace and invite team members and contractors to collaborate.
               </p>
             </div>
           </div>
@@ -41,7 +41,7 @@ export const HowItWorksSection = () => {
             <div className="flex flex-col gap-2 items-center">
               <h3 className="text-lg font-semibold text-center">Organize Your Files</h3>
               <p className="text-foreground-500 text-center">
-                Upload and categorize all your project files by type and relevance for easy access.
+                Upload and arrange all your files by project, status, or size for easy access.
               </p>
             </div>
           </div>

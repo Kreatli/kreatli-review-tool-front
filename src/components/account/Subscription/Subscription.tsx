@@ -35,7 +35,9 @@ export const Subscription = ({ user }: Props) => {
             <div className="text-lg">
               Current plan: <span className="font-semibold">{user.subscription.planName}</span>
             </div>
-            <div className="text-foreground-500 text-sm">${user.subscription.price} per user monthly</div>
+            {user.subscription.price > 0 && (
+              <div className="text-foreground-500 text-sm">${user.subscription.price} per user monthly</div>
+            )}
           </div>
           <div className="flex items-center gap-2">
             {user.subscription.plan !== 'free' && (
@@ -74,10 +76,7 @@ export const Subscription = ({ user }: Props) => {
         )}
         <div className="flex flex-col gap-1">
           <div className="flex gap-2 items-center justify-between">
-            <div className="text-sm">
-              Storage{' '}
-              {user.subscription.plan === 'free' && <span className="text-foreground-500">(Total upload*)</span>}
-            </div>
+            <div className="text-sm">{user.subscription.plan === 'free' ? 'Total upload*' : 'Storage'}</div>
             <div className="text-sm text-foreground-500">
               {formatBytes(storage.used)}/{formatBytes(storage.max)}
             </div>
