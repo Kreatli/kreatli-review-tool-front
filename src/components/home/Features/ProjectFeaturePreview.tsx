@@ -22,7 +22,7 @@ export const ProjectFeaturePreview = () => {
   return (
     <Card className="relative group">
       <div
-        className={`opacity-0 transition-opacity duration-300 pointer-events-none absolute inset-0 bg-foreground/30 z-10 ${
+        className={`opacity-0 transition-opacity duration-300 pointer-events-none absolute inset-0 bg-black/30 dark:bg-black/60 z-10 ${
           shouldHide || isTouchScreen ? '' : 'group-hover:opacity-100'
         }`}
       />

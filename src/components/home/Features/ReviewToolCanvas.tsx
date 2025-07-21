@@ -103,11 +103,11 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
     <div ref={fileRef} className="aspect-video rounded-lg overflow-hidden relative">
       <div
         className={cn(
-          'absolute inset-0 transition-opacity duration-300 bg-foreground/50 text-foreground-300 flex flex-col items-center justify-center gap-2 pointer-events-none',
+          'absolute inset-0 transition-opacity duration-300 bg-black/50 dark:bg-black/70 dark:text-foreground-600 text-foreground-300 flex flex-col items-center justify-center gap-2 pointer-events-none',
           shouldShowStartDrawing && !isTouchScreen ? 'opacity-100' : 'opacity-0',
         )}
       >
-        <Icon icon="paint" className="text-foreground-300" size={36} />
+        <Icon icon="paint" className="text-foreground-300 dark:text-foreground-600" size={36} />
         <span className="text-xl font-semibold">Start drawing</span>
       </div>
       <video
