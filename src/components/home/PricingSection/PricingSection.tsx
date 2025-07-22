@@ -51,7 +51,7 @@ export const PricingSection = () => {
               </Button>
             </CardBody>
           </Card>
-          <Card isHoverable className="relative shadow-large">
+          <Card isHoverable className="dark:border border-foreground-300">
             <CardBody className="p-6 flex flex-col gap-8">
               <div className="w-full">
                 <div className="w-full flex items-center justify-between">
