@@ -10,6 +10,7 @@ import { ProjectDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { getIsTouchScreen } from '../../../../utils/getIsTouchScreen';
 import { Icon } from '../../../various/Icon';
+import { updateProjectData } from '../../../../services/utils';
 
 interface Props {
   project: ProjectDto;
@@ -38,7 +39,7 @@ export const ChangeProjectCoverForm = ({ project, onSuccess }: Props) => {
       { id: project.id, requestBody: { cover } },
       {
         onSuccess: (data) => {
-          queryClient.invalidateQueries({ queryKey: [getProjects.key] });
+          updateProjectData(data);
           queryClient.setQueryData([getProjectId.key, project.id], data);
           addToast({ title: 'Cover image was successfully updated', color: 'success', variant: 'flat' });
           onSuccess?.();
