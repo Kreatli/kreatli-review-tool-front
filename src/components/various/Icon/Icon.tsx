@@ -56,6 +56,7 @@ import InfoCircleIcon from '../../../assets/icons/info-circle.svg';
 import InstagramIcon from '../../../assets/icons/instagram.svg';
 import ItalicIcon from '../../../assets/icons/italic.svg';
 import LinkIcon from '../../../assets/icons/link.svg';
+import LinkedinIcon from '../../../assets/icons/linkedin.svg';
 import LocationIcon from '../../../assets/icons/location.svg';
 import LogoIcon from '../../../assets/icons/logo.svg';
 import MailIcon from '../../../assets/icons/mail.svg';
@@ -93,6 +94,7 @@ import UploadIcon from '../../../assets/icons/upload.svg';
 import UserIcon from '../../../assets/icons/user.svg';
 import UserPlusIcon from '../../../assets/icons/user-plus.svg';
 import WarningIcon from '../../../assets/icons/warning.svg';
+import XIcon from '../../../assets/icons/x.svg';
 import YoutubeIcon from '../../../assets/icons/youtube.svg';
 
 const ICONS = {
@@ -152,6 +154,7 @@ const ICONS = {
   instagram: InstagramIcon,
   italic: ItalicIcon,
   link: LinkIcon,
+  linkedin: LinkedinIcon,
   location: LocationIcon,
   logo: LogoIcon,
   mail: MailIcon,
@@ -189,6 +192,7 @@ const ICONS = {
   user: UserIcon,
   userPlus: UserPlusIcon,
   warning: WarningIcon,
+  x: XIcon,
   youtube: YoutubeIcon,
 };
 
