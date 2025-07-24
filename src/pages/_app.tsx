@@ -11,6 +11,7 @@ import React from 'react';
 
 import { Layout } from '../components/layout/Layout';
 import { getErrorMessage } from '../utils/getErrorMessage';
+import { queryClient } from '../lib/queryClient';
 
 interface QueryErrorMeta {
   showErrorNotification?: boolean;
@@ -18,31 +19,6 @@ interface QueryErrorMeta {
 }
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const [queryClient] = React.useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: true,
-            retry: false,
-          },
-        },
-        queryCache: new QueryCache({
-          onError: (error, meta: Query<any, any, any> & QueryErrorMeta) => {
-            if (!meta.showErrorNotification && !meta.errorMessage) {
-              return;
-            }
-
-            addToast({
-              title: meta.errorMessage || getErrorMessage(error),
-              color: 'danger',
-              variant: 'flat',
-            });
-          },
-        }),
-      }),
-  );
-
   // @ts-ignore
   const getLayout = Component.getLayout || ((page) => page);
 

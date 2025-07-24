@@ -8,6 +8,7 @@ import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { getProjectMemberLetter } from '../../../../utils/shortNames';
 import { Icon } from '../../../various/Icon';
 import { ProjectMemberItem } from '../../ProjectMemberItem';
+import { updateProjectFile } from '../../../../services/utils';
 
 interface Props {
   projectId: string;
@@ -44,7 +45,9 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled }: Pr
         },
         {
           onSuccess: ({ file: updatedFile }) => {
-            setAssigneeId(updatedFile?.assignee?.id ?? null);
+            if (updatedFile) {
+              updateProjectFile(projectId, updatedFile);
+            }
           },
           onError: (error) => {
             addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });

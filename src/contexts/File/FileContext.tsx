@@ -44,7 +44,7 @@ export const FileContextProvider = ({ children, projectId, fileId }: React.Props
 
   if (error && 'status' in error && error.status === 404) {
     return (
-      <div className="flex items-center justify-center p-20 flex flex-col">
+      <div className="flex items-center justify-center p-20 flex-col">
         <div className="text-foreground-500">Asset was removed</div>
         <div>TODO: improve this view</div>
       </div>
