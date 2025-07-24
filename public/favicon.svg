@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(41.666666666666664,0,0,41.666666666666664,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.797 13.696C11.9842 13.511 12.2368 13.4072 12.5 13.4072C12.7632 13.4072 13.0158 13.511 13.203 13.696L19.865 20.289C20.5 20.918 20.055 22 19.161 22H5.84C4.946 22 4.501 20.918 5.136 20.29L11.798 13.696H11.797ZM13.204 11.304C13.0168 11.4893 12.764 11.5933 12.5005 11.5933C12.237 11.5933 11.9842 11.4893 11.797 11.304L5.135 4.71C4.5 4.082 4.945 3 5.84 3H19.16C20.054 3 20.499 4.082 19.864 4.71L13.203 11.304H13.204ZM11.304 11.796C11.4896 11.9833 11.5938 12.2363 11.5938 12.5C11.5938 12.7637 11.4896 13.0167 11.304 13.204L4.711 19.864C4.082 20.5 3 20.055 3 19.162V5.84C3 4.945 4.082 4.5 4.71 5.135L11.304 11.797V11.796Z" fill="#232323"></path>
+</svg></svg></g></g></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(41.666666666666664,0,0,41.666666666666664,0,0)"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.797 13.696C11.9842 13.511 12.2368 13.4072 12.5 13.4072C12.7632 13.4072 13.0158 13.511 13.203 13.696L19.865 20.289C20.5 20.918 20.055 22 19.161 22H5.84C4.946 22 4.501 20.918 5.136 20.29L11.798 13.696H11.797ZM13.204 11.304C13.0168 11.4893 12.764 11.5933 12.5005 11.5933C12.237 11.5933 11.9842 11.4893 11.797 11.304L5.135 4.71C4.5 4.082 4.945 3 5.84 3H19.16C20.054 3 20.499 4.082 19.864 4.71L13.203 11.304H13.204ZM11.304 11.796C11.4896 11.9833 11.5938 12.2363 11.5938 12.5C11.5938 12.7637 11.4896 13.0167 11.304 13.204L4.711 19.864C4.082 20.5 3 20.055 3 19.162V5.84C3 4.945 4.082 4.5 4.71 5.135L11.304 11.797V11.796Z" fill="white"></path>
+</svg></svg></g></g></svg></g></svg>
