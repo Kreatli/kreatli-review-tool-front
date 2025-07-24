@@ -41,6 +41,7 @@ import type {
   GetProjectsQueryParams,
   InvoiceDto,
   MarkAsReadBodyDto,
+  NewPasswordBodyDto,
   NotificationDto,
   NotificationsDto,
   ProjectArchivedAssetsDto,
@@ -57,6 +58,7 @@ import type {
   ProjectPathDto,
   ProjectStatusBodyDto,
   ProjectsResponseDto,
+  ResetPasswordBodyDto,
   SignInBodyDto,
   SignInResultDto,
   SignUpBodyDto,
@@ -97,6 +99,8 @@ import {
   getUserId,
   patchAssetFileIdCommentCommentId,
   postAssetFileIdComment,
+  postAuthNewPassword,
+  postAuthResetPassword,
   postAuthSignIn,
   postAuthSignUp,
   postAuthSignUpInvitation,
@@ -1118,6 +1122,48 @@ export const usePostAssetFileIdComment = <TExtra,>(
 
       return postAssetFileIdComment(
         id,
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostAuthNewPassword = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<SignInResultDto, { requestBody: NewPasswordBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postAuthNewPassword(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostAuthResetPassword = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<SignInResultDto, { requestBody: ResetPasswordBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postAuthResetPassword(
         requestBody,
 
         configOverride,

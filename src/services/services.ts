@@ -28,6 +28,8 @@ import type {
   SignInResultDto,
   SignInBodyDto,
   TokenBodyDto,
+  ResetPasswordBodyDto,
+  NewPasswordBodyDto,
   ProjectBodyDto,
   ProjectDto,
   ProjectEditBodyDto,
@@ -507,6 +509,38 @@ export const postAssetFileIdComment = (
 
 /** Key is end point string without base url */
 postAssetFileIdComment.key = '/asset/file/{id}/comment';
+
+export const postAuthNewPassword = (
+  requestBody: NewPasswordBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SignInResultDto>> => {
+  return Http.postRequest(
+    postAuthNewPassword.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAuthNewPassword.key = '/auth/new-password';
+
+export const postAuthResetPassword = (
+  requestBody: ResetPasswordBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SignInResultDto>> => {
+  return Http.postRequest(
+    postAuthResetPassword.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAuthResetPassword.key = '/auth/reset-password';
 
 export const postAuthSignIn = (
   requestBody: SignInBodyDto,

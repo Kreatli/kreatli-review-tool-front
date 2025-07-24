@@ -97,7 +97,7 @@ export default function JoinProject() {
         ) : (
           <div>
             <p className="mb-4 text-foreground-500">Please log in to join the project.</p>
-            <SignInForm email={data?.email} showSignUpLink={false} onSuccess={handleSignInSuccess} />
+            <SignInForm email={data?.email} showLinks={false} onSuccess={handleSignInSuccess} />
           </div>
         )}
       </StartPageLayout>

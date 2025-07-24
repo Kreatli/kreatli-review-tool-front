@@ -17,11 +17,11 @@ const DEFAULT_VALUES = {
 
 interface Props {
   email?: string;
-  showSignUpLink?: boolean;
+  showLinks?: boolean;
   onSuccess: () => void;
 }
 
-export const SignInForm = ({ email, showSignUpLink = true, onSuccess }: Props) => {
+export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
   const {
     formState: { errors },
     register,
@@ -107,12 +107,20 @@ export const SignInForm = ({ email, showSignUpLink = true, onSuccess }: Props) =
           Sign in with <Icon icon="google" size={18} />
         </Button>
       </div>
-      {showSignUpLink && (
-        <div className="text-center">
-          Don&apos;t have an account?{' '}
-          <Link as={NextLink} href="/sign-up" color="foreground" underline="always">
-            Sign up
-          </Link>
+      {showLinks && (
+        <div className="flex flex-col gap-2">
+          <div className="text-center">
+            Don&apos;t have an account?{' '}
+            <Link as={NextLink} href="/sign-up" color="foreground" underline="always">
+              Sign up
+            </Link>
+          </div>
+          <div className="text-center text-foreground-500">
+            Forgot password?{' '}
+            <Link as={NextLink} href="/reset-password" className="text-foreground-500" underline="always">
+              Reset it
+            </Link>
+          </div>
         </div>
       )}
     </form>

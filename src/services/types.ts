@@ -468,6 +468,11 @@ export interface MemberDetails {
   email: string;
 }
 
+export interface NewPasswordBodyDto {
+  password: string;
+  token: string;
+}
+
 export interface NotificationData {
   commentId?: string;
   commentMessage?: string;
@@ -774,6 +779,10 @@ export interface ProjectUpdatedLogDto {
 export interface ProjectsResponseDto {
   projects: ProjectDto[];
   totals: ProjectTotals;
+}
+
+export interface ResetPasswordBodyDto {
+  email: string;
 }
 
 export interface SignInBodyDto {

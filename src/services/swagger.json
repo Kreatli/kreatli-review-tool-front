@@ -210,6 +210,38 @@
         }
       }
     },
+    "/auth/reset-password": {
+      "post": {
+        "operationId": "AuthController_resetPassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ResetPasswordBodyDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SignInResultDto" } } }
+          }
+        }
+      }
+    },
+    "/auth/new-password": {
+      "post": {
+        "operationId": "AuthController_setNewPassword",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/NewPasswordBodyDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SignInResultDto" } } }
+          }
+        }
+      }
+    },
     "/project": {
       "post": {
         "operationId": "ProjectController_createProject",
@@ -927,6 +959,16 @@
         "required": ["email", "password"]
       },
       "TokenBodyDto": { "type": "object", "properties": { "token": { "type": "string" } }, "required": ["token"] },
+      "ResetPasswordBodyDto": {
+        "type": "object",
+        "properties": { "email": { "type": "string" } },
+        "required": ["email"]
+      },
+      "NewPasswordBodyDto": {
+        "type": "object",
+        "properties": { "token": { "type": "string" }, "password": { "type": "string" } },
+        "required": ["token", "password"]
+      },
       "ProjectBodyDto": {
         "type": "object",
         "properties": {
