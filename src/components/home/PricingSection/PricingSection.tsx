@@ -46,13 +46,16 @@ export const PricingSection = () => {
                   </Tooltip>
                 </li>
               </ul>
-              <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              <Button as={Link} href="/sign-up" size="lg" variant="bordered">
                 Get Started for Free
               </Button>
             </CardBody>
           </Card>
-          <Card isHoverable className="dark:border border-foreground-300">
-            <CardBody className="p-6 flex flex-col gap-8">
+          <Card isHoverable className="relative border border-foreground overflow-visible">
+            <Chip className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-foreground text-content1">
+              Best Cost/Value Ratio
+            </Chip>
+            <CardBody className="p-6 py-10 flex flex-col gap-8">
               <div className="w-full">
                 <div className="w-full flex items-center justify-between">
                   <Chip size="lg" variant="faded">
@@ -126,14 +129,20 @@ export const PricingSection = () => {
                   </Tooltip>
                 </li>
               </ul>
-              <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              <Button as={Link} href="/sign-up" size="lg" variant="bordered">
                 Choose Advanced Plan
               </Button>
             </CardBody>
           </Card>
         </div>
         <div>
-          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="flat">
+          <Button
+            as="a"
+            href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+            target="_blank"
+            size="lg"
+            variant="bordered"
+          >
             Create your own Plan
           </Button>
         </div>
