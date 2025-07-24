@@ -38,7 +38,7 @@ export const AppLoader = ({ children }: Props) => {
         aria-hidden={!isLoading}
       >
         <LogoIcon className="w-40 h-auto pointer-events-none" viewBox="0 0 90 22" />
-        <Spinner size="lg" color="secondary" className="" />
+        <Spinner size="lg" color="current" className="text-foreground" />
       </div>
     </>
   );

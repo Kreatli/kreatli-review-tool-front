@@ -43,7 +43,7 @@ export const ProjectFileCover = ({ file, isLoading = false }: Props) => {
       </Chip>
       {isLoading && (
         <div className="absolute bg-foreground-50/75 p-4 inset-0 z-10 flex items-center justify-center">
-          <Spinner color="secondary" />
+          <Spinner color="current" className="text-foreground" />
         </div>
       )}
     </div>
