@@ -147,17 +147,19 @@ export const ProjectHeader = ({ project }: Props) => {
           </div>
         </ProjectBreadcrumbs>
         <div className="flex gap-4">
-          <div className="p-1">
-            <Avatar
-              as="button"
-              aria-label="Add project member"
-              fallback="+"
-              isBordered
-              size="sm"
-              className="text-lg font-medium text-foreground-500"
-              onClick={() => setIsMembersModalOpen(true)}
-            />
-          </div>
+          {isProjectOwner && (
+            <div className="p-1">
+              <Avatar
+                as="button"
+                aria-label="Add project member"
+                fallback="+"
+                isBordered
+                size="sm"
+                className="text-lg font-medium text-foreground-500"
+                onClick={() => setIsMembersModalOpen(true)}
+              />
+            </div>
+          )}
           <div className="p-1">
             <button
               type="button"

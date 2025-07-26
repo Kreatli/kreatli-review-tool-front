@@ -108,7 +108,7 @@ export const Notifications = () => {
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-96 max-w-full p-0 items-start">
+      <PopoverContent className="w-96 max-w-full p-0 items-start overflow-hidden">
         <div className="py-2 flex items-center justify-between pl-4 pr-2 w-full border-b border-foreground-200">
           <h4 className="text-large font-semibold">Notifications</h4>
           <div className="flex gap-2">
