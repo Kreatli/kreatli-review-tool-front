@@ -86,11 +86,15 @@ export const Notification = ({ notification }: Props) => {
       return 'Project member left';
     }
 
+    if (notification.type === 'chat_message_unread') {
+      return 'You have unread messages';
+    }
+
     return 'Notification';
   }, [notification.type, notification.data]);
 
   const notificationDescription = useMemo(() => {
-    const { fileId, fileName, projectId, projectName, userId, userName, commentId, commentMessage } = notification.data;
+    const { fileId, fileName, projectId, projectName, userName, commentMessage, chatId, chatName } = notification.data;
 
     if (notification.type === 'file_assigned') {
       return (
@@ -238,6 +242,25 @@ export const Notification = ({ notification }: Props) => {
       );
     }
 
+    if (notification.type === 'chat_message_unread') {
+      return (
+        <>
+          {userName} has sent a new message in the{' '}
+          <Link
+            as={NextLink}
+            href={`/project/${projectId}/chat?conversationId=${chatId}`}
+            size="sm"
+            className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
+          >
+            {chatName || 'chat'}
+          </Link>
+          .
+        </>
+      );
+    }
+
     return '';
   }, [notification.type, notification.data]);
 
@@ -272,6 +295,10 @@ export const Notification = ({ notification }: Props) => {
 
     if (notification.type === 'project_member_left') {
       return 'crossCircle';
+    }
+
+    if (notification.type === 'chat_message_unread') {
+      return 'chat';
     }
 
     return 'bell';

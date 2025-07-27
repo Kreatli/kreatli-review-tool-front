@@ -474,6 +474,8 @@ export interface NewPasswordBodyDto {
 }
 
 export interface NotificationData {
+  chatId?: string;
+  chatName?: string;
   commentId?: string;
   commentMessage?: string;
   fileId?: string;
@@ -501,7 +503,8 @@ export interface NotificationDto {
     | 'file_assigned'
     | 'file_comment_added'
     | 'file_comment_reply'
-    | 'file_comment_resolve';
+    | 'file_comment_resolve'
+    | 'chat_message_unread';
   /**
    *
    * - Format: date-time
