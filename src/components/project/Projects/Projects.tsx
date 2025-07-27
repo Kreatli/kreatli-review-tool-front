@@ -90,7 +90,7 @@ export const Projects = () => {
         search={searchDebounced}
         isLoading={isLoading}
         isError={isError}
-        onCreateProject={() => setIsCreateModalOpen(true)}
+        onCreateProject={handleCreateProjectClick}
       />
       <CreateProjectModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
       <UpgradeModal type="projects" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />

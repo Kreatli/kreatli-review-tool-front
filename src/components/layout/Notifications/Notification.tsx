@@ -62,10 +62,6 @@ export const Notification = ({ notification }: Props) => {
       return 'File status changed';
     }
 
-    if (notification.type === 'project_invitation') {
-      return 'Project invitation';
-    }
-
     if (notification.type === 'project_member_removed') {
       return 'Removed from project';
     }
@@ -88,6 +84,10 @@ export const Notification = ({ notification }: Props) => {
 
     if (notification.type === 'chat_message_unread') {
       return 'You have unread messages';
+    }
+
+    if (notification.type === 'project_member_joined') {
+      return 'New project member';
     }
 
     return 'Notification';
@@ -130,25 +130,6 @@ export const Notification = ({ notification }: Props) => {
             {fileName}
           </Link>{' '}
           file.
-        </>
-      );
-    }
-
-    if (notification.type === 'project_invitation') {
-      return (
-        <>
-          {userName} has invited you to the{' '}
-          <Link
-            as={NextLink}
-            href={`/project/${projectId}`}
-            size="sm"
-            className="inline break-all z-10"
-            underline="hover"
-            onClick={handleLinkClick}
-          >
-            {projectName}
-          </Link>{' '}
-          project.
         </>
       );
     }
@@ -261,6 +242,25 @@ export const Notification = ({ notification }: Props) => {
       );
     }
 
+    if (notification.type === 'project_member_joined') {
+      return (
+        <>
+          {userName} just accepted your invite and joined the{' '}
+          <Link
+            as={NextLink}
+            href={`/project/${projectId}`}
+            size="sm"
+            className="inline break-all z-10"
+            underline="hover"
+            onClick={handleLinkClick}
+          >
+            {projectName}
+          </Link>{' '}
+          project.
+        </>
+      );
+    }
+
     return '';
   }, [notification.type, notification.data]);
 
@@ -285,16 +285,16 @@ export const Notification = ({ notification }: Props) => {
       return 'checkCircle';
     }
 
-    if (notification.type === 'project_invitation') {
-      return 'userPlus';
-    }
-
     if (notification.type === 'project_member_removed') {
       return 'crossCircle';
     }
 
     if (notification.type === 'project_member_left') {
       return 'crossCircle';
+    }
+
+    if (notification.type === 'project_member_joined') {
+      return 'userPlus';
     }
 
     if (notification.type === 'chat_message_unread') {

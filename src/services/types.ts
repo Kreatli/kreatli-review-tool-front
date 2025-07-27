@@ -496,9 +496,9 @@ export interface NotificationDto {
   id: string;
   isRead: boolean;
   type:
-    | 'project_invitation'
     | 'project_member_removed'
     | 'project_member_left'
+    | 'project_member_joined'
     | 'file_status_changed'
     | 'file_assigned'
     | 'file_comment_added'
