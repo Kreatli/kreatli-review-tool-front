@@ -34,6 +34,10 @@ export default function JoinProject() {
     if (isSignedIn && data && user?.email !== data?.email) {
       router.replace('/');
     }
+
+    if (data?.hasAccount) {
+      router.replace(`/project/${data?.projectId}/join?token=${token}`);
+    }
   }, [router, user, isSignedIn, data]);
 
   const handleSignUpSuccess = () => {

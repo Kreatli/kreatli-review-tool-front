@@ -245,7 +245,7 @@ export const Notification = ({ notification }: Props) => {
     if (notification.type === 'project_member_joined') {
       return (
         <>
-          {userName} just accepted your invite and joined the{' '}
+          {userName} just accepted your invitation and joined the{' '}
           <Link
             as={NextLink}
             href={`/project/${projectId}`}

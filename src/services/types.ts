@@ -640,6 +640,7 @@ export interface ProjectFolderDto {
 
 export interface ProjectInvitationDto {
   email: string;
+  hasAccount: boolean;
   projectId: string;
   projectName: string;
   projectCover?: InterfaceImageDto;

@@ -1125,9 +1125,10 @@
           "email": { "type": "string" },
           "projectId": { "type": "string" },
           "projectName": { "type": "string" },
-          "projectCover": { "$ref": "#/components/schemas/InterfaceImageDto" }
+          "projectCover": { "$ref": "#/components/schemas/InterfaceImageDto" },
+          "hasAccount": { "type": "boolean" }
         },
-        "required": ["email", "projectId", "projectName"]
+        "required": ["email", "projectId", "projectName", "hasAccount"]
       },
       "ProjectAssetsResponseDto": {
         "type": "object",
