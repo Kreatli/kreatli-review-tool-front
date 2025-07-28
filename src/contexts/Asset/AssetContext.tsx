@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import { MenuItemProps } from '@heroui/react';
+import { addToast, MenuItemProps } from '@heroui/react';
 import React from 'react';
 
 import { ArchiveAssetModal } from '../../components/asset/AssetModals/ArchiveAssetModal';
@@ -11,6 +11,7 @@ import { IconType } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { ProjectDto, ProjectFileDto, ProjectFolderDto } from '../../services/types';
 import { downloadFromUrl } from '../../utils/download';
+import { getAssetFileIdDownload } from '../../services/services';
 
 interface Context {
   getAssetActions: (asset: ProjectFileDto | ProjectFolderDto) => {
@@ -155,8 +156,18 @@ export const AssetContextProvider = ({
             {
               label: 'Download',
               icon: 'download' as const,
-              onClick: () => {
-                downloadFromUrl(asset.url, asset.name);
+              onClick: async () => {
+                try {
+                  const assetUrl = await getAssetFileIdDownload(asset.id);
+
+                  downloadFromUrl(assetUrl, asset.name);
+                } catch {
+                  addToast({
+                    title: 'Failed to download file. Please try again later.',
+                    variant: 'flat',
+                    color: 'danger',
+                  });
+                }
               },
             },
             {

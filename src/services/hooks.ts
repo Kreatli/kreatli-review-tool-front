@@ -82,6 +82,7 @@ import {
   get,
   getAssetFileId,
   getAssetFileIdComments,
+  getAssetFileIdDownload,
   getAssetFolderId,
   getAssets,
   getConversationIdMessages,
@@ -406,6 +407,53 @@ useGetAssetFileIdComments.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAssetFileIdComments.info(
+    id,
+
+    configOverride,
+  );
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetAssetFileIdDownload = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<string>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAssetFileIdDownload.info(
+    id,
+
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetAssetFileIdDownload.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getAssetFileIdDownload.key, id] as QueryKey,
+    fun: () =>
+      getAssetFileIdDownload(
+        id,
+
+        configOverride,
+      ),
+  };
+};
+useGetAssetFileIdDownload.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<string>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAssetFileIdDownload.info(
     id,
 
     configOverride,

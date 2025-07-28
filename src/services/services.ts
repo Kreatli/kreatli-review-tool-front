@@ -266,6 +266,22 @@ export const getAssetFileIdComments = (
 /** Key is end point string without base url */
 getAssetFileIdComments.key = '/asset/file/{id}/comments';
 
+export const getAssetFileIdDownload = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<string>> => {
+  return Http.getRequest(
+    template(getAssetFileIdDownload.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAssetFileIdDownload.key = '/asset/file/{id}/download';
+
 export const getAssetFolderId = (
   id: string,
   configOverride?: AxiosRequestConfig,
