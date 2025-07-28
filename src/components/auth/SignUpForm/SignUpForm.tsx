@@ -2,6 +2,7 @@ import { addToast, Button, Input, Link } from '@heroui/react';
 import { useGoogleLogin } from '@react-oauth/google';
 import NextLink from 'next/link';
 import React from 'react';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
@@ -31,8 +32,10 @@ export const SignUpForm = ({ onSuccess }: Props) => {
     mode: 'onTouched',
   });
 
+  const router = useRouter();
+
   const { mutate, isPending, isSuccess } = usePostAuthSignUp();
-  const { mutate: ssoSignUp } = usePostAuthSsoGoogle();
+  const { mutate: ssoSignUp, isPending: isSsoPending } = usePostAuthSsoGoogle();
 
   const onSubmit = (data: typeof DEFAULT_VALUES) => {
     mutate(
@@ -57,6 +60,8 @@ export const SignUpForm = ({ onSuccess }: Props) => {
             localStorage.setItem('token', token);
             getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
             onSuccess?.();
+
+            router.push('/');
           },
           onError: (error) => {
             addToast({
@@ -117,7 +122,7 @@ export const SignUpForm = ({ onSuccess }: Props) => {
         <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
           Sign up
         </Button>
-        <Button variant="bordered" fullWidth onClick={() => googleLogin()}>
+        <Button variant="bordered" isLoading={isSsoPending} fullWidth onClick={() => googleLogin()}>
           Sign up with <Icon icon="google" size={18} />
         </Button>
       </div>
