@@ -41,9 +41,6 @@ export const SignUpForm = ({ onSuccess }: Props) => {
     mutate(
       { requestBody: data },
       {
-        onSuccess: () => {
-          onSuccess?.();
-        },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         },
@@ -83,7 +80,7 @@ export const SignUpForm = ({ onSuccess }: Props) => {
   });
 
   if (isSuccess) {
-    return <SignUpThankYouMessage />;
+    return <SignUpThankYouMessage onClick={onSuccess} />;
   }
 
   return (

@@ -10,7 +10,7 @@ export const SignUpModal = () => {
       <ModalContent>
         <ModalHeader className="text-xl">Create an account to get started!</ModalHeader>
         <ModalBody>
-          <SignUpForm />
+          <SignUpForm onSuccess={() => setIsSignUpModalOpen(false)} />
         </ModalBody>
         <ModalFooter />
       </ModalContent>
