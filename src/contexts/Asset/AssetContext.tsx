@@ -61,10 +61,12 @@ export const AssetContextProvider = ({
 
   const { user } = useSession();
   const isProjectOwner = project.createdBy?.id === user?.id;
+  const shouldDisableDownload =
+    project.createdBy?.id === '6888a3e160c0280177d507e8' && user?.id !== '6888a3e160c0280177d507e8';
 
   const getAssetActions = (asset: ProjectFolderDto | ProjectFileDto) => {
     if (!isProjectOwner && user?.id !== asset?.createdBy?.id) {
-      if (asset?.type === 'file') {
+      if (asset?.type === 'file' && !shouldDisableDownload) {
         return [
           {
             label: 'Download',
@@ -153,23 +155,27 @@ export const AssetContextProvider = ({
             },
           ]
         : [
-            {
-              label: 'Download',
-              icon: 'download' as const,
-              onClick: async () => {
-                try {
-                  const assetUrl = await getAssetFileIdDownload(asset.id);
+            ...(shouldDisableDownload
+              ? []
+              : [
+                  {
+                    label: 'Download',
+                    icon: 'download' as const,
+                    onClick: async () => {
+                      try {
+                        const assetUrl = await getAssetFileIdDownload(asset.id);
 
-                  downloadFromUrl(assetUrl, asset.name);
-                } catch {
-                  addToast({
-                    title: 'Failed to download file. Please try again later.',
-                    variant: 'flat',
-                    color: 'danger',
-                  });
-                }
-              },
-            },
+                        downloadFromUrl(assetUrl, asset.name);
+                      } catch {
+                        addToast({
+                          title: 'Failed to download file. Please try again later.',
+                          variant: 'flat',
+                          color: 'danger',
+                        });
+                      }
+                    },
+                  },
+                ]),
             {
               label: 'Archive file',
               icon: 'trash' as const,
