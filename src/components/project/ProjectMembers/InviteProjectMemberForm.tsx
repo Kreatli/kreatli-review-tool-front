@@ -57,7 +57,7 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
         errorMessage={errors.email?.message}
         {...register('email', VALIDATION_RULES.EMAIL)}
       />
-      {user?.subscription.plan !== 'advanced' && (
+      {user?.subscription.plan === 'free' && (
         <Alert
           color="primary"
           description="You can send unlimited invites, but once your capacity reaches the maximum number of joined users, all new users will get expired invites. Upgrade your plan to increase your user limit and keep collaboration flowing."
