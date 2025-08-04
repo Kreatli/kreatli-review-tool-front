@@ -71,8 +71,18 @@ export const AssetContextProvider = ({
           {
             label: 'Download',
             icon: 'download' as const,
-            onClick: () => {
-              downloadFromUrl(asset.url, asset.name);
+            onClick: async () => {
+              try {
+                const assetUrl = await getAssetFileIdDownload(asset.id);
+
+                downloadFromUrl(assetUrl, asset.name);
+              } catch {
+                addToast({
+                  title: 'Failed to download file. Please try again later.',
+                  variant: 'flat',
+                  color: 'danger',
+                });
+              }
             },
           },
         ];
