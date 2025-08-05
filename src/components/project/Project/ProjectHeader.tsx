@@ -23,7 +23,7 @@ import { CreateFolderModal } from '../../asset/AssetModals/CreateFolderModal';
 import { ProjectMembersModal, ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectBreadcrumbs } from './ProjectBreadcrumbs';
 import { ProjectDescriptionModal } from './ProjectDescriptionModal';
-import { getCanAddAssets } from '../../../utils/limits';
+import { getCanAddAssets, getIsValidSize } from '../../../utils/limits';
 import { UpgradeModal } from '../../account/UpgradeModal';
 import { ContactOwnerModal } from '../../account/UpgradeModal/ContactOwnerModal';
 
@@ -56,14 +56,27 @@ export const ProjectHeader = ({ project }: Props) => {
       return;
     }
 
+    inputRef.current.value = '';
+
+    if (project.createdBy && !getIsValidSize(project.createdBy, files)) {
+      addToast({
+        title:
+          project.createdBy.subscription.plan === 'free'
+            ? "Files over 1GB can't be uploaded on the Free Plan."
+            : 'Files must be less than 10 GB.',
+        variant: 'flat',
+        color: 'warning',
+      });
+
+      return;
+    }
+
     if (project.createdBy && !getCanAddAssets(project.createdBy, files)) {
       if (isProjectOwner) {
         setIsUpgradeModalOpen(true);
-
-        return;
+      } else {
+        setIsContactOwnerModalOpen(true);
       }
-
-      setIsContactOwnerModalOpen(true);
 
       return;
     }
