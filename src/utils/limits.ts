@@ -15,5 +15,5 @@ export const getIsValidSize = (user: UserDto, files: File[]) => {
     return !files.some((file) => file.size > 1024 * 1024 * 1024 * 1); // 1GB
   }
 
-  return !files.some((file) => file.size > 1024 * 1024 * 1024 * 10); // 10GB
+  return !files.some((file) => file.size > 1024 * 1024 * 1024 * 100); // 100GB
 };
