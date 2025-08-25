@@ -26,6 +26,9 @@ import { ProjectDescriptionModal } from './ProjectDescriptionModal';
 import { getCanAddAssets, getIsValidSize } from '../../../utils/limits';
 import { UpgradeModal } from '../../account/UpgradeModal';
 import { ContactOwnerModal } from '../../account/UpgradeModal/ContactOwnerModal';
+import { useMultipartUpload } from '../../../hooks/useMultipartUpload';
+import { useProjectUploads } from '../../../hooks/useProjectUploads';
+import { nanoid } from 'nanoid';
 
 interface Props {
   project: ProjectDto;
@@ -35,7 +38,7 @@ export const ProjectHeader = ({ project }: Props) => {
   const coverUrl = project.cover?.url;
   const queryClient = useQueryClient();
   const { mutateAsync } = usePostProjectIdFile();
-  const { isProjectOwner, getProjectActions, setUploadingFiles } = useProjectContext();
+  const { isProjectOwner, getProjectActions } = useProjectContext();
 
   const [isMembersModalOpen, setIsMembersModalOpen] = React.useState(false);
   const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
@@ -44,6 +47,11 @@ export const ProjectHeader = ({ project }: Props) => {
   const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const setFileUpload = useProjectUploads((state) => state.setFileUpload);
+  const setFileUploadError = useProjectUploads((state) => state.setFileUploadError);
+  const updateFileUploadProgress = useProjectUploads((state) => state.updateFileUploadProgress);
+  const uploadFile = useMultipartUpload({ projectId: project.id });
 
   const uploadAssets = () => {
     inputRef.current?.click();
@@ -81,37 +89,57 @@ export const ProjectHeader = ({ project }: Props) => {
       return;
     }
 
-    setUploadingFiles((currentFiles) => [...files, ...currentFiles]);
-
     inputRef.current.value = '';
 
     // eslint-disable-next-line no-restricted-syntax
     for (const file of files) {
-      const promise = mutateAsync({ id: project.id, requestBody: { file } });
-      addToast({
-        title: file.name,
-        description: 'Uploading file...',
-        promise,
-        timeout: 1,
-        classNames: {
-          base: 'overflow-hidden',
-          content: 'overflow-hidden',
-          wrapper: 'overflow-hidden',
-          title: 'break-words',
-        },
-        hideCloseButton: true,
-      });
+      const id = nanoid();
 
-      promise
-        .then(({ project: data }) => {
-          setUploadingFiles((uploadingFiles) => uploadingFiles.filter((f) => f !== file));
-          queryClient.setQueryData([getProjectId.key, project.id], data);
-          queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
-        })
-        .catch((error) => {
-          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-          setUploadingFiles((uploadingFiles) => uploadingFiles.filter((f) => f !== file));
-        });
+      setFileUpload({
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        id,
+        progress: 0,
+        previewUrl:
+          file.type.startsWith('image') && !file.type.includes('adobe') ? URL.createObjectURL(file) : undefined,
+      });
+      uploadFile(file, {
+        onSuccess: (data) => {
+          const promise = mutateAsync({
+            id: project.id,
+            requestBody: {
+              contentType: file.type,
+              fileOriginalName: file.name,
+              key: data.key,
+              fileId: data.fileId,
+              fileSize: file.size,
+            },
+          });
+
+          promise
+            .then(({ project: data }) => {
+              queryClient.setQueryData([getProjectId.key, project.id], data);
+              queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
+              updateFileUploadProgress(id, 100);
+            })
+            .catch((error) => {
+              addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+              setFileUploadError(id);
+            });
+        },
+        onError: () => {
+          addToast({ title: "Something went wrong. We couldn't upload your file.", color: 'danger', variant: 'flat' });
+          setFileUploadError(id);
+        },
+        onProgressChange: (progress) => {
+          if (progress === 100) {
+            return;
+          }
+
+          updateFileUploadProgress(id, progress);
+        },
+      });
     }
   };
 

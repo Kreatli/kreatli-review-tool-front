@@ -9,6 +9,7 @@ import { Layout } from '../../../typings/layout';
 import { Icon } from '../../various/Icon';
 import { UserWidget } from './UserWidget';
 import { Notifications } from '../Notifications/Notifications';
+import { ProjectUploadsButton } from '../../project/ProjectUploads';
 
 export const Header = () => {
   const { isSignedIn } = useSession();
@@ -41,9 +42,14 @@ export const Header = () => {
       </NavbarContent>
       <NavbarContent justify="end">
         {isSignedIn && (
-          <NavbarItem>
-            <Notifications />
-          </NavbarItem>
+          <>
+            <NavbarItem>
+              <ProjectUploadsButton />
+            </NavbarItem>
+            <NavbarItem>
+              <Notifications />
+            </NavbarItem>
+          </>
         )}
         <NavbarItem>
           <Button isIconOnly aria-label="Toggle theme" variant="light" radius="full" onClick={toggleTheme}>

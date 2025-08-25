@@ -468,6 +468,38 @@ export interface MemberDetails {
   email: string;
 }
 
+export interface MultipartPresignedUrlBodyDto {
+  key: string;
+  partNumber: number;
+  uploadId: string;
+}
+
+export interface MultipartPresignedUrlDto {
+  url: string;
+}
+
+export interface MultipartUploadCompleteBodyDto {
+  key: string;
+  parts: array;
+  uploadId: string;
+}
+
+export interface MultipartUploadCompleteDto {
+  url: string;
+}
+
+export interface MultipartUploadStartBodyDto {
+  contentType: string;
+  fileName: string;
+  projectId: string;
+}
+
+export interface MultipartUploadStartDto {
+  fileId: string;
+  key: string;
+  uploadId: string;
+}
+
 export interface NewPasswordBodyDto {
   password: string;
   token: string;
@@ -517,6 +549,18 @@ export interface NotificationsDto {
   notifications: NotificationDto[];
   total: number;
   unreadCount: number;
+}
+
+export interface PresignedUrlBodyDto {
+  contentType: string;
+  fileName: string;
+  projectId: string;
+}
+
+export interface PresignedUrlDto {
+  fileId: string;
+  key: string;
+  url: string;
 }
 
 export interface ProjectArchivedAssetsDto {
@@ -591,11 +635,11 @@ export interface ProjectEditBodyDto {
 }
 
 export interface ProjectFileBodyDto {
-  /**
-   *
-   * - Format: binary
-   */
-  file: Blob;
+  contentType: string;
+  fileId: string;
+  fileOriginalName: string;
+  fileSize: number;
+  key: string;
   parentId?: string;
 }
 

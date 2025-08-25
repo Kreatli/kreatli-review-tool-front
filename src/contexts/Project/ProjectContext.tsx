@@ -37,8 +37,6 @@ interface Context {
   filters: ProjectAssetsFilters;
   setFilters: (filters: ProjectAssetsFilters) => void;
   isProjectOwner: boolean;
-  uploadingFiles: File[];
-  setUploadingFiles: React.Dispatch<React.SetStateAction<File[]>>;
   project: ProjectDto;
 }
 
@@ -74,7 +72,6 @@ export const ProjectContextProvider = ({
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
   const [isLeaveModalOpen, setIsLeaveModalOpen] = React.useState(false);
 
-  const [uploadingFiles, setUploadingFiles] = React.useState<File[]>([]);
   const [search, setSearch] = React.useState('');
   const [filters, setFilters] = React.useState<ProjectAssetsFilters>({});
   const { user } = useSession();
@@ -223,8 +220,6 @@ export const ProjectContextProvider = ({
       value={{
         getProjectActions,
         project: selectedProject as ProjectDto,
-        uploadingFiles,
-        setUploadingFiles,
         isProjectOwner,
         search,
         setSearch,

@@ -5,6 +5,7 @@ import LogoIcon from '../../../assets/images/logo.svg';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useAppLoader } from '../../../hooks/useAppLoader';
 import { Layout } from '../../../typings/layout';
+import { useProjectUploads } from '../../../hooks/useProjectUploads';
 
 interface Props {
   children: React.ReactNode;
@@ -12,6 +13,9 @@ interface Props {
 
 export const AppLoader = ({ children }: Props) => {
   const isLoading = useAppLoader((state) => state.isLoading);
+  const isUploading = useProjectUploads((state) =>
+    state.uploads.some((fileUpload) => fileUpload.progress < 100 && !fileUpload.isError),
+  );
 
   const [theme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });
 
@@ -24,6 +28,23 @@ export const AppLoader = ({ children }: Props) => {
 
     document.documentElement.classList.remove('dark');
   }, [theme]);
+
+  React.useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (isUploading) {
+        event.preventDefault();
+        // For most browsers, you must set returnValue
+        event.returnValue = 'You have an upload in progress. Are you sure you want to leave?';
+        return event.returnValue;
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [isUploading]);
 
   return (
     <>

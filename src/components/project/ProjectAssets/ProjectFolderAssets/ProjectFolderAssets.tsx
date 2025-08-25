@@ -24,6 +24,9 @@ import { ProjectFolderAssetsLoading } from './ProjectFolderAssetsLoading';
 import { getCanAddAssets, getIsValidSize } from '../../../../utils/limits';
 import { UpgradeModal } from '../../../account/UpgradeModal';
 import { ContactOwnerModal } from '../../../account/UpgradeModal/ContactOwnerModal';
+import { nanoid } from 'nanoid';
+import { useProjectUploads } from '../../../../hooks/useProjectUploads';
+import { useMultipartUpload } from '../../../../hooks/useMultipartUpload';
 
 interface Props {
   folderId: string;
@@ -31,7 +34,7 @@ interface Props {
 
 export const ProjectFolderAssets = ({ folderId }: Props) => {
   const queryClient = useQueryClient();
-  const { project, isProjectOwner, setUploadingFiles } = useProjectContext();
+  const { project, isProjectOwner } = useProjectContext();
   const { data: folder, isLoading } = useGetAssetFolderId(folderId);
   const { mutateAsync } = usePostProjectIdFile();
 
@@ -39,6 +42,11 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
   const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
   const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
+
+  const setFileUpload = useProjectUploads((state) => state.setFileUpload);
+  const updateFileUploadProgress = useProjectUploads((state) => state.updateFileUploadProgress);
+  const setFileUploadError = useProjectUploads((state) => state.setFileUploadError);
+  const uploadFile = useMultipartUpload({ projectId: project.id });
 
   const uploadAssets = () => {
     inputRef.current?.click();
@@ -76,39 +84,57 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
       return;
     }
 
-    setUploadingFiles((currentFiles) => [...files, ...currentFiles]);
-
     // eslint-disable-next-line no-restricted-syntax
     for (const file of files) {
-      const promise = mutateAsync({
-        id: project.id,
-        requestBody: { file, parentId: folderId },
-      });
-      addToast({
-        title: file.name,
-        description: 'Uploading file...',
-        promise,
-        timeout: 1,
-        classNames: {
-          base: 'overflow-hidden',
-          content: 'overflow-hidden',
-          wrapper: 'overflow-hidden',
-          title: 'break-words',
-        },
-        hideCloseButton: true,
-      });
+      const id = nanoid();
 
-      promise
-        .then(({ project: projectData, parent: folderData }) => {
-          setUploadingFiles((uploadingFiles) => uploadingFiles.filter((f) => f !== file));
-          queryClient.setQueryData([getProjectId.key, project.id], projectData);
-          queryClient.setQueryData([getAssetFolderId.key, folderId], folderData);
-          queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
-        })
-        .catch((error) => {
-          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-          setUploadingFiles((uploadingFiles) => uploadingFiles.filter((f) => f !== file));
-        });
+      setFileUpload({
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        id,
+        progress: 0,
+        previewUrl:
+          file.type.startsWith('image') && !file.type.includes('adobe') ? URL.createObjectURL(file) : undefined,
+      });
+      uploadFile(file, {
+        onSuccess: (data) => {
+          const promise = mutateAsync({
+            id: project.id,
+            requestBody: {
+              parentId: folderId,
+              contentType: file.type,
+              fileOriginalName: file.name,
+              key: data.key,
+              fileId: data.fileId,
+              fileSize: file.size,
+            },
+          });
+
+          promise
+            .then(({ project: projectData, parent: folderData }) => {
+              queryClient.setQueryData([getProjectId.key, project.id], projectData);
+              queryClient.setQueryData([getAssetFolderId.key, folderId], folderData);
+              queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
+              updateFileUploadProgress(id, 100);
+            })
+            .catch((error) => {
+              addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+              setFileUploadError(id);
+            });
+        },
+        onError: () => {
+          addToast({ title: "Something went wrong. We couldn't upload your file.", color: 'danger', variant: 'flat' });
+          setFileUploadError(id);
+        },
+        onProgressChange: (progress) => {
+          if (progress === 100) {
+            return;
+          }
+
+          updateFileUploadProgress(id, progress);
+        },
+      });
     }
   };
 

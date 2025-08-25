@@ -423,7 +423,7 @@
         "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
         "requestBody": {
           "required": true,
-          "content": { "multipart/form-data": { "schema": { "$ref": "#/components/schemas/ProjectFileBodyDto" } } }
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ProjectFileBodyDto" } } }
         },
         "responses": {
           "200": {
@@ -818,6 +818,78 @@
         }
       }
     },
+    "/assets/url": {
+      "post": {
+        "operationId": "AssetsController_generatePresignedUrl",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PresignedUrlBodyDto" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PresignedUrlDto" } } }
+          }
+        }
+      }
+    },
+    "/assets/multipart/start": {
+      "post": {
+        "operationId": "AssetsController_startMultipartUpload",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/MultipartUploadStartBodyDto" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MultipartUploadStartDto" } } }
+          }
+        }
+      }
+    },
+    "/assets/multipart/url": {
+      "post": {
+        "operationId": "AssetsController_generateMultipartPresignedUrl",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/MultipartPresignedUrlBodyDto" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/MultipartPresignedUrlDto" } } }
+          }
+        }
+      }
+    },
+    "/assets/multipart/complete": {
+      "post": {
+        "operationId": "AssetsController_completeMultipartUpload",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/MultipartUploadCompleteBodyDto" } }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": { "schema": { "$ref": "#/components/schemas/MultipartUploadCompleteDto" } }
+            }
+          }
+        }
+      }
+    },
     "/stripe-webhook": {
       "post": {
         "operationId": "StripeWebhookController_handleStripeWebhook",
@@ -1183,10 +1255,14 @@
       "ProjectFileBodyDto": {
         "type": "object",
         "properties": {
-          "file": { "format": "binary", "allOf": [{ "$ref": "#/components/schemas/Blob" }] },
+          "key": { "type": "string" },
+          "contentType": { "type": "string" },
+          "fileSize": { "type": "number" },
+          "fileOriginalName": { "type": "string" },
+          "fileId": { "type": "string" },
           "parentId": { "type": "string" }
         },
-        "required": ["file"]
+        "required": ["key", "contentType", "fileSize", "fileOriginalName", "fileId"]
       },
       "FolderDto": {
         "type": "object",
@@ -1987,6 +2063,58 @@
           "fileCount": { "type": "number" }
         },
         "required": ["files", "fileCount"]
+      },
+      "PresignedUrlBodyDto": {
+        "type": "object",
+        "properties": {
+          "projectId": { "type": "string" },
+          "fileName": { "type": "string" },
+          "contentType": { "type": "string" }
+        },
+        "required": ["projectId", "fileName", "contentType"]
+      },
+      "PresignedUrlDto": {
+        "type": "object",
+        "properties": { "url": { "type": "string" }, "key": { "type": "string" }, "fileId": { "type": "string" } },
+        "required": ["url", "key", "fileId"]
+      },
+      "MultipartUploadStartBodyDto": {
+        "type": "object",
+        "properties": {
+          "projectId": { "type": "string" },
+          "fileName": { "type": "string" },
+          "contentType": { "type": "string" }
+        },
+        "required": ["projectId", "fileName", "contentType"]
+      },
+      "MultipartUploadStartDto": {
+        "type": "object",
+        "properties": { "uploadId": { "type": "string" }, "fileId": { "type": "string" }, "key": { "type": "string" } },
+        "required": ["uploadId", "fileId", "key"]
+      },
+      "MultipartPresignedUrlBodyDto": {
+        "type": "object",
+        "properties": {
+          "key": { "type": "string" },
+          "uploadId": { "type": "string" },
+          "partNumber": { "type": "number" }
+        },
+        "required": ["key", "uploadId", "partNumber"]
+      },
+      "MultipartPresignedUrlDto": {
+        "type": "object",
+        "properties": { "url": { "type": "string" } },
+        "required": ["url"]
+      },
+      "MultipartUploadCompleteBodyDto": {
+        "type": "object",
+        "properties": { "key": { "type": "string" }, "uploadId": { "type": "string" }, "parts": { "type": "array" } },
+        "required": ["key", "uploadId", "parts"]
+      },
+      "MultipartUploadCompleteDto": {
+        "type": "object",
+        "properties": { "url": { "type": "string" } },
+        "required": ["url"]
       }
     }
   }

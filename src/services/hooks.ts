@@ -41,9 +41,17 @@ import type {
   GetProjectsQueryParams,
   InvoiceDto,
   MarkAsReadBodyDto,
+  MultipartPresignedUrlBodyDto,
+  MultipartPresignedUrlDto,
+  MultipartUploadCompleteBodyDto,
+  MultipartUploadCompleteDto,
+  MultipartUploadStartBodyDto,
+  MultipartUploadStartDto,
   NewPasswordBodyDto,
   NotificationDto,
   NotificationsDto,
+  PresignedUrlBodyDto,
+  PresignedUrlDto,
   ProjectArchivedAssetsDto,
   ProjectAssetEditDto,
   ProjectAssetsResponseDto,
@@ -100,6 +108,10 @@ import {
   getUserId,
   patchAssetFileIdCommentCommentId,
   postAssetFileIdComment,
+  postAssetsMultipartComplete,
+  postAssetsMultipartStart,
+  postAssetsMultipartUrl,
+  postAssetsUrl,
   postAuthNewPassword,
   postAuthResetPassword,
   postAuthSignIn,
@@ -1170,6 +1182,102 @@ export const usePostAssetFileIdComment = <TExtra,>(
 
       return postAssetFileIdComment(
         id,
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostAssetsMultipartComplete = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    MultipartUploadCompleteDto,
+    { requestBody: MultipartUploadCompleteBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postAssetsMultipartComplete(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostAssetsMultipartStart = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    MultipartUploadStartDto,
+    { requestBody: MultipartUploadStartBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postAssetsMultipartStart(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostAssetsMultipartUrl = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    MultipartPresignedUrlDto,
+    { requestBody: MultipartPresignedUrlBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postAssetsMultipartUrl(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostAssetsUrl = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<PresignedUrlDto, { requestBody: PresignedUrlBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postAssetsUrl(
         requestBody,
 
         configOverride,

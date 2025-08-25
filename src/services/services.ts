@@ -64,6 +64,14 @@ import type {
   NotificationsDto,
   MarkAsReadBodyDto,
   AssetsDto,
+  PresignedUrlBodyDto,
+  PresignedUrlDto,
+  MultipartUploadStartBodyDto,
+  MultipartUploadStartDto,
+  MultipartPresignedUrlBodyDto,
+  MultipartPresignedUrlDto,
+  MultipartUploadCompleteBodyDto,
+  MultipartUploadCompleteDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -526,6 +534,70 @@ export const postAssetFileIdComment = (
 /** Key is end point string without base url */
 postAssetFileIdComment.key = '/asset/file/{id}/comment';
 
+export const postAssetsMultipartComplete = (
+  requestBody: MultipartUploadCompleteBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<MultipartUploadCompleteDto>> => {
+  return Http.postRequest(
+    postAssetsMultipartComplete.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAssetsMultipartComplete.key = '/assets/multipart/complete';
+
+export const postAssetsMultipartStart = (
+  requestBody: MultipartUploadStartBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<MultipartUploadStartDto>> => {
+  return Http.postRequest(
+    postAssetsMultipartStart.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAssetsMultipartStart.key = '/assets/multipart/start';
+
+export const postAssetsMultipartUrl = (
+  requestBody: MultipartPresignedUrlBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<MultipartPresignedUrlDto>> => {
+  return Http.postRequest(
+    postAssetsMultipartUrl.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAssetsMultipartUrl.key = '/assets/multipart/url';
+
+export const postAssetsUrl = (
+  requestBody: PresignedUrlBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<PresignedUrlDto>> => {
+  return Http.postRequest(
+    postAssetsUrl.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAssetsUrl.key = '/assets/url';
+
 export const postAuthNewPassword = (
   requestBody: NewPasswordBodyDto,
   configOverride?: AxiosRequestConfig,
@@ -747,9 +819,9 @@ export const postProjectIdFile = (
   return Http.postRequest(
     template(postProjectIdFile.key, { id }),
     undefined,
-    objToForm(requestBody),
+    requestBody,
     undefined,
-    overrideConfig(_CONSTANT1, configOverride),
+    overrideConfig(_CONSTANT0, configOverride),
   );
 };
 
