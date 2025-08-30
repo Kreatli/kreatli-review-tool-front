@@ -6,16 +6,17 @@ import React from 'react';
 
 interface Props {
   chat: ChatDto;
+  isDisabled?: boolean;
 }
 
-export const ChatConversationOptions = ({ chat }: Props) => {
+export const ChatConversationOptions = ({ chat, isDisabled = false }: Props) => {
   const [isRenameModalVisible, setIsRenameModalVisible] = React.useState(false);
 
   return (
     <>
       <Dropdown placement="bottom-start">
         <DropdownTrigger>
-          <Button size="sm" variant="light" isIconOnly radius="full">
+          <Button size="sm" isDisabled={isDisabled} variant="light" isIconOnly radius="full">
             <Icon icon="dots" size={20} />
           </Button>
         </DropdownTrigger>

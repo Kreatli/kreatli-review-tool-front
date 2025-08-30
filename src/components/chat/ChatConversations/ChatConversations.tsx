@@ -12,9 +12,10 @@ interface ChatConversationsProps {
   chats: ChatDto[];
   isPending: boolean;
   isError: boolean;
+  isDisabled?: boolean;
 }
 
-export const ChatConversations = ({ chats, isPending, isError }: ChatConversationsProps) => {
+export const ChatConversations = ({ chats, isPending, isError, isDisabled = false }: ChatConversationsProps) => {
   const { selectedConversation, setSelectedConversation } = useChatContext();
   const router = useRouter();
 
@@ -52,7 +53,7 @@ export const ChatConversations = ({ chats, isPending, isError }: ChatConversatio
           <Tab key={chat.id} title={<ChatConversation chat={chat} />} />
         ))}
       </Tabs>
-      <ChatConversationCreateButton />
+      <ChatConversationCreateButton isDisabled={isDisabled} />
     </div>
   );
 };

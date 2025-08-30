@@ -11,8 +11,15 @@ export const Chat = () => {
 
   return (
     <div className="grid grid-cols-[300px_1fr] grid-rows-1 gap-4 flex-1 max-h-[max(300px,calc(100vh-255px))] min-h-[max(300px,calc(100vh-255px))] overflow-hidden">
-      <ChatConversations chats={chats} isPending={isPending} isError={isError} />
-      {selectedConversation && <ChatConversation chat={selectedConversation} />}
+      <ChatConversations
+        chats={chats}
+        isDisabled={project.status !== 'active'}
+        isPending={isPending}
+        isError={isError}
+      />
+      {selectedConversation && (
+        <ChatConversation chat={selectedConversation} isDisabled={project.status !== 'active'} />
+      )}
       {isPending && <Skeleton className="h-full w-full rounded-medium" />}
     </div>
   );

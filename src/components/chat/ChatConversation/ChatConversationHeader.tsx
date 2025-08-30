@@ -11,10 +11,11 @@ import { useChatContext } from '../../../contexts/Chat';
 interface Props {
   search: string;
   chat: ChatDto;
+  isDisabled?: boolean;
   onSearchChange: (search: string) => void;
 }
 
-export const ChatConversationHeader = ({ chat, search, onSearchChange }: Props) => {
+export const ChatConversationHeader = ({ isDisabled = false, chat, search, onSearchChange }: Props) => {
   const { isUserProjectOwner } = useChatContext();
 
   const [isSearchFocused, setIsSearchFocused] = React.useState(false);
@@ -26,7 +27,9 @@ export const ChatConversationHeader = ({ chat, search, onSearchChange }: Props) 
       <div className="flex items-center gap-2">
         <ChatAvatar chat={chat} />
         <ChatConversationName chat={chat} />
-        {chat.type === 'project' && isUserProjectOwner && <ChatConversationOptions chat={chat} />}
+        {chat.type === 'project' && isUserProjectOwner && (
+          <ChatConversationOptions isDisabled={isDisabled} chat={chat} />
+        )}
       </div>
       <div className="flex items-center gap-2">
         <label>

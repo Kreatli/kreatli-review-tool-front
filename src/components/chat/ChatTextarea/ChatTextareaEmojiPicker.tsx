@@ -4,10 +4,11 @@ import { Emoji, EmojiPicker } from 'frimousse';
 import React from 'react';
 
 interface Props {
+  isDisabled?: boolean;
   onEmojiSelect: (emoji: string) => void;
 }
 
-export const ChatTextareaEmojiPicker = ({ onEmojiSelect }: Props) => {
+export const ChatTextareaEmojiPicker = ({ isDisabled, onEmojiSelect }: Props) => {
   const handleEmojiSelect = (emoji: Emoji) => {
     onEmojiSelect(emoji.emoji);
   };
@@ -15,7 +16,7 @@ export const ChatTextareaEmojiPicker = ({ onEmojiSelect }: Props) => {
   return (
     <Popover placement="top-start" crossOffset={-32}>
       <PopoverTrigger>
-        <Button variant="light" size="sm" isIconOnly radius="full">
+        <Button variant="light" isDisabled={isDisabled} size="sm" isIconOnly radius="full">
           <Icon icon="smile" className="text-foreground-500" size={20} />
         </Button>
       </PopoverTrigger>

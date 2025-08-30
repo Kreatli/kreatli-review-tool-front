@@ -209,6 +209,7 @@ export const ProjectHeader = ({ project }: Props) => {
                 aria-label="Add project member"
                 fallback="+"
                 isBordered
+                disabled={project.status !== 'active'}
                 size="sm"
                 className="text-lg font-medium text-foreground-500"
                 onClick={() => setIsMembersModalOpen(true)}
@@ -219,6 +220,7 @@ export const ProjectHeader = ({ project }: Props) => {
             <button
               type="button"
               aria-label="Project members"
+              disabled={project.status !== 'active'}
               className="outline-offset-4 rounded-full"
               onClick={() => setIsMembersModalOpen(true)}
             >
@@ -227,13 +229,17 @@ export const ProjectHeader = ({ project }: Props) => {
           </div>
           <div>
             <ButtonGroup>
-              <Button className="text-content1 bg-foreground pr-1" onClick={uploadAssets}>
+              <Button
+                className="text-content1 bg-foreground pr-1"
+                isDisabled={project.status !== 'active'}
+                onClick={uploadAssets}
+              >
                 <Icon icon="plus" size={16} />
                 New
               </Button>
               <Dropdown>
                 <DropdownTrigger>
-                  <Button isIconOnly className="text-content1 bg-foreground">
+                  <Button isIconOnly isDisabled={project.status !== 'active'} className="text-content1 bg-foreground">
                     <Icon icon="chevronDown" size={20} />
                   </Button>
                 </DropdownTrigger>

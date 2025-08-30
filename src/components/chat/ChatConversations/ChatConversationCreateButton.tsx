@@ -11,7 +11,11 @@ import { useRouter } from 'next/router';
 import { useChatContext } from '../../../contexts/Chat';
 import { useState } from 'react';
 
-export const ChatConversationCreateButton = () => {
+interface Props {
+  isDisabled?: boolean;
+}
+
+export const ChatConversationCreateButton = ({ isDisabled = false }) => {
   const { user } = useSession();
   const { project } = useProjectContext();
   const queryClient = useQueryClient();
@@ -49,6 +53,7 @@ export const ChatConversationCreateButton = () => {
         <Button
           className="absolute bottom-2 right-2 bg-foreground text-content1"
           isIconOnly
+          isDisabled={isDisabled}
           radius="full"
           isLoading={isLoading}
         >

@@ -24,7 +24,11 @@ const SHAPES = [
   },
 ] as const;
 
-export const ReviewToolShapes = () => {
+interface Props {
+  isDisabled?: boolean;
+}
+
+export const ReviewToolShapes = ({ isDisabled = false }) => {
   const { isReadOnly, shapes } = useReviewToolCanvasShapesContext();
   const { activeTool, setActiveTool, fileRef } = useReviewToolContext();
 
@@ -42,7 +46,7 @@ export const ReviewToolShapes = () => {
         <Button
           key={value}
           size="sm"
-          isDisabled={isReadOnly || (value === 'eraser' && shapes.length === 0)}
+          isDisabled={isReadOnly || isDisabled || (value === 'eraser' && shapes.length === 0)}
           variant={activeTool === value ? 'flat' : 'light'}
           color={activeTool === value ? 'primary' : 'default'}
           isIconOnly

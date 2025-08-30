@@ -283,12 +283,14 @@ export const ProjectAssets = () => {
                   {asset.type === 'folder' ? (
                     <ProjectFolder
                       folder={asset}
+                      isReadonly={project.status !== 'active'}
                       isSelected={selectedAssetIds.has(asset.id)}
                       onSelectionChange={() => handleSelectionChange(asset.id)}
                     />
                   ) : (
                     <ProjectFile
                       file={asset}
+                      isReadonly={project.status !== 'active'}
                       isSelected={selectedAssetIds.has(asset.id)}
                       onSelectionChange={() => handleSelectionChange(asset.id)}
                     />

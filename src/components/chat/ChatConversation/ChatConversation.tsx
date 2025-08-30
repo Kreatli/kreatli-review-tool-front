@@ -7,20 +7,21 @@ import { ChatConversationSearchMessages } from './ChatConversationSearchMessages
 
 interface Props {
   chat: ChatDto;
+  isDisabled?: boolean;
 }
 
-export const ChatConversation = ({ chat }: Props) => {
+export const ChatConversation = ({ chat, isDisabled = false }: Props) => {
   const [search, setSearch] = React.useState('');
 
   return (
     <div key={chat.id} className="bg-foreground-100 rounded-small grid grid-rows-[auto_1fr_auto]">
-      <ChatConversationHeader chat={chat} search={search} onSearchChange={setSearch} />
+      <ChatConversationHeader chat={chat} isDisabled={isDisabled} search={search} onSearchChange={setSearch} />
       {!!search ? (
         <ChatConversationSearchMessages search={search} conversationId={chat.id} />
       ) : (
         <>
           <ChatMessages conversationId={chat.id} />
-          <ChatTextarea conversationId={chat.id} />
+          <ChatTextarea isDisabled={isDisabled} conversationId={chat.id} />
         </>
       )}
     </div>

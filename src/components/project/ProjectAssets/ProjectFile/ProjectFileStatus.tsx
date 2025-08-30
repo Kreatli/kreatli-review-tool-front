@@ -12,9 +12,10 @@ interface Props {
   file: ProjectFileDto;
   memberRole?: ProjectMemberDto['role'];
   className?: string;
+  isDisabled?: boolean;
 }
 
-export const ProjectFileStatus = ({ file, projectId, memberRole, className }: Props) => {
+export const ProjectFileStatus = ({ file, projectId, memberRole, className, isDisabled }: Props) => {
   const { status } = file;
   const { user } = useSession();
   const [selectedKeys, setSelectedKeys] = React.useState<Set<string>>(new Set([status ?? 'none']));
@@ -53,6 +54,7 @@ export const ProjectFileStatus = ({ file, projectId, memberRole, className }: Pr
     <Chip
       size="sm"
       variant="dot"
+      isDisabled={isDisabled}
       color={STATUS_COLOR[selectedKeys.values().next().value]}
       className={cn('bg-default-100 cursor-pointer', className)}
     >

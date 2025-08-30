@@ -12,9 +12,10 @@ const MAX_ROWS = 10;
 
 interface Props {
   conversationId: string;
+  isDisabled?: boolean;
 }
 
-export const ChatTextarea = ({ conversationId }: Props) => {
+export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
   const { user } = useSession();
   const { webSocketRef } = useChatContext();
 
@@ -107,8 +108,8 @@ export const ChatTextarea = ({ conversationId }: Props) => {
           </div>
         )}
         <div className="flex gap-px">
-          <ChatTextareaAssetPicker isDisabled={assets.length >= 5} onSelect={handleSelectAsset} />
-          <ChatTextareaEmojiPicker onEmojiSelect={handleEmojiSelect} />
+          <ChatTextareaAssetPicker isDisabled={assets.length >= 5 || isDisabled} onSelect={handleSelectAsset} />
+          <ChatTextareaEmojiPicker isDisabled={isDisabled} onEmojiSelect={handleEmojiSelect} />
         </div>
       </div>
       <div className="flex relative w-full">
@@ -116,6 +117,7 @@ export const ChatTextarea = ({ conversationId }: Props) => {
           ref={textareaRef}
           placeholder="Type a message"
           rows={rows}
+          disabled={isDisabled}
           value={message}
           className="min-h-[26px] placeholder:text-foreground-400 text-small resize-none w-full bg-transparent outline-none"
           onChange={handleChange}

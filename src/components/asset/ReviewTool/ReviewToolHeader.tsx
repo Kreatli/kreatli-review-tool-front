@@ -48,7 +48,12 @@ export const ReviewToolHeader = ({ file, project }: Props) => {
           startContent={<Icon icon="chevronDown" className="rotate-90" size={20} />}
           isIconOnly
         />
-        <ProjectFileAssignee projectId={project.id} file={file} members={project.members} />
+        <ProjectFileAssignee
+          isDisabled={project.status !== 'active'}
+          projectId={project.id}
+          file={file}
+          members={project.members}
+        />
         <div className="ml-2">
           <div className="flex items-center gap-2">
             <span className="font-semibold">{file.name}</span>
@@ -64,11 +69,22 @@ export const ReviewToolHeader = ({ file, project }: Props) => {
           </div>
         </div>
       </div>
-      <ProjectFileStatus projectId={project.id} file={file} memberRole={memberRole} />
+      <ProjectFileStatus
+        isDisabled={project.status !== 'active'}
+        projectId={project.id}
+        file={file}
+        memberRole={memberRole}
+      />
       <div>
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
-            <Button startContent={<Icon icon="dots" />} radius="full" isIconOnly variant="flat" />
+            <Button
+              startContent={<Icon icon="dots" />}
+              isDisabled={project.status !== 'active'}
+              radius="full"
+              isIconOnly
+              variant="flat"
+            />
           </DropdownTrigger>
           <DropdownMenu aria-label="File actions" variant="flat">
             {actions.map((action, index) => (

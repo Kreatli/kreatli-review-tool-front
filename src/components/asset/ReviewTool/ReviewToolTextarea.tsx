@@ -13,7 +13,11 @@ import { AssetCommentsResponse } from '../../../services/types';
 import { getIsMediaHtmlElement } from '../../../utils/getIsMediaHtmlElement';
 import { Icon } from '../../various/Icon';
 
-export const ReviewToolTextarea = () => {
+interface Props {
+  isDisabled?: boolean;
+}
+
+export const ReviewToolTextarea = ({ isDisabled = false }) => {
   const [message, setMessage] = React.useState('');
   const { fileRef, setActiveTool } = useReviewToolContext();
   const { file, replyingComment, commentsRef, setActiveComment, setReplyingComment } = useFileContext();
@@ -139,6 +143,7 @@ export const ReviewToolTextarea = () => {
         placeholder="Click here to start typing or drawing"
         isInvalid={isInvalid}
         rows={2}
+        disabled={isDisabled}
         maxRows={2}
         onKeyDown={handleTextareaKeyDown}
         onFocus={handleFocus}
@@ -147,6 +152,7 @@ export const ReviewToolTextarea = () => {
       <Button
         size="sm"
         isIconOnly
+        isDisabled={isDisabled}
         variant="light"
         radius="full"
         className="absolute bottom-1 right-1"

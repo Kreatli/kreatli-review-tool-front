@@ -17,11 +17,12 @@ import { ProjectFolderCover } from './ProjectFolderCover';
 interface Props {
   isDisabled?: boolean;
   isSelected?: boolean;
+  isReadonly?: boolean;
   folder: ProjectFolderDto;
   onSelectionChange?: () => void;
 }
 
-export const ProjectFolder = ({ isSelected, isDisabled, folder, onSelectionChange }: Props) => {
+export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSelectionChange }: Props) => {
   const { name, createdBy } = folder;
 
   const { user } = useSession();
@@ -47,7 +48,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, folder, onSelectionChang
     setDroppableNodeRef,
   } = useSortable({
     id: folder.id,
-    disabled: isDisabled || !canEdit || isSelected,
+    disabled: isDisabled || !canEdit || isSelected || isReadonly,
     animateLayoutChanges: () => true,
   });
 
@@ -97,7 +98,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, folder, onSelectionChang
               radius="full"
               variant="faded"
               className="absolute top-2 right-2"
-              isDisabled={isSelected}
+              isDisabled={isSelected || isReadonly}
               isIconOnly
             >
               <Icon icon="dots" size={20} />
@@ -121,6 +122,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, folder, onSelectionChang
       {isSelected !== undefined && canEdit && (
         <Checkbox
           isSelected={isSelected}
+          isDisabled={isReadonly}
           color="default"
           className="absolute top-2 left-2"
           onChange={onSelectionChange}

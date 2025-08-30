@@ -23,7 +23,7 @@ export const ReviewTool = () => {
             <ReviewToolHeader file={file} project={project} />
           </AssetContextProvider>
           <ReviewToolCanvas file={file} />
-          <ReviewToolFooter />
+          <ReviewToolFooter isDisabled={project.status !== 'active'} />
         </ReviewToolCanvasShapesContextProvider>
       </ReviewToolContextProvider>
     </div>

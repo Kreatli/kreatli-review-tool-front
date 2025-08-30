@@ -17,11 +17,12 @@ import { ProjectFileStatus } from './ProjectFileStatus';
 interface Props {
   isSelected?: boolean;
   isDisabled?: boolean;
+  isReadonly?: boolean;
   file: ProjectFileDto;
   onSelectionChange?: () => void;
 }
 
-export const ProjectFile = ({ isSelected, isDisabled, file, onSelectionChange }: Props) => {
+export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelectionChange }: Props) => {
   const { name, metadata, createdBy, commentsCount } = file;
   const { isUploading = false } = metadata;
 
@@ -53,7 +54,7 @@ export const ProjectFile = ({ isSelected, isDisabled, file, onSelectionChange }:
     setDroppableNodeRef,
   } = useSortable({
     id: file.id,
-    disabled: isDisabled || !canEdit || isSelected,
+    disabled: isDisabled || !canEdit || isSelected || isReadonly,
     animateLayoutChanges: () => true,
   });
 
@@ -94,6 +95,7 @@ export const ProjectFile = ({ isSelected, isDisabled, file, onSelectionChange }:
             className="border-1 z-10 absolute bottom-2 left-2"
             projectId={project.id}
             file={file}
+            isDisabled={isReadonly}
             memberRole={memberRole}
           />
         </div>
@@ -102,6 +104,7 @@ export const ProjectFile = ({ isSelected, isDisabled, file, onSelectionChange }:
         <Checkbox
           isSelected={isSelected}
           color="default"
+          isDisabled={isReadonly}
           className="absolute top-2 left-2 right-2 z-10"
           onChange={onSelectionChange}
         />
@@ -111,7 +114,7 @@ export const ProjectFile = ({ isSelected, isDisabled, file, onSelectionChange }:
           <Button
             size="sm"
             radius="full"
-            isDisabled={isUploading || isSelected}
+            isDisabled={isUploading || isSelected || isReadonly}
             className="z-10 absolute top-2 right-2"
             variant="faded"
             isIconOnly
@@ -138,7 +141,12 @@ export const ProjectFile = ({ isSelected, isDisabled, file, onSelectionChange }:
           <div className="text-lg font-semibold truncate">{name}</div>
         </div>
         <div className="flex gap-2 items-start justify-between">
-          <ProjectFileAssignee projectId={project.id} file={file} members={project.members} isDisabled={isDisabled} />
+          <ProjectFileAssignee
+            projectId={project.id}
+            file={file}
+            members={project.members}
+            isDisabled={isDisabled || isReadonly}
+          />
           <div className="text-sm text-foreground-500">
             {commentsCount} {commentsCount === 1 ? 'comment' : 'comments'}
           </div>

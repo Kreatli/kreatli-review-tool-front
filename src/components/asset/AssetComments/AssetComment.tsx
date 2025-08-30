@@ -111,7 +111,15 @@ export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, o
         <div className="flex items-center gap-1 z-10">
           {isRemovable && (
             <Tooltip content="Delete comment">
-              <Button variant="light" radius="full" size="sm" isLoading={isRemoving} isIconOnly onClick={handleRemove}>
+              <Button
+                variant="light"
+                radius="full"
+                size="sm"
+                isDisabled={project?.status !== 'active'}
+                isLoading={isRemoving}
+                isIconOnly
+                onClick={handleRemove}
+              >
                 <Icon icon="trash" size={16} />
               </Button>
             </Tooltip>
@@ -121,6 +129,7 @@ export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, o
               <Checkbox
                 radius="full"
                 size="sm"
+                isDisabled={project?.status !== 'active'}
                 color="default"
                 isSelected={isResolved}
                 onChange={handleCheckboxChange}
@@ -141,6 +150,7 @@ export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, o
       <div className="relative flex justify-between items-end">
         <button
           type="button"
+          disabled={project?.status !== 'active'}
           className={cn('text-foreground-500 text-xs flex items-center', {
             'text-primary': comment === replyingComment,
           })}
