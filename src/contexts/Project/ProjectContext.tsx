@@ -38,6 +38,7 @@ interface Context {
   setFilters: (filters: ProjectAssetsFilters) => void;
   isProjectOwner: boolean;
   project: ProjectDto;
+  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 export const ProjectContext = React.createContext<Context | null>(null);
@@ -78,6 +79,8 @@ export const ProjectContextProvider = ({
   const router = useRouter();
 
   const isProjectOwner = selectedProject?.createdBy?.id === user?.id;
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const getProjectActions = (project: ProjectDto) => {
     if (project.createdBy?.id !== user?.id) {
@@ -225,6 +228,7 @@ export const ProjectContextProvider = ({
         setSearch,
         filters,
         setFilters,
+        inputRef,
       }}
     >
       {children}

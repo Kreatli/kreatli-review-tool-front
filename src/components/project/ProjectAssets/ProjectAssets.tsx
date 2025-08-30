@@ -30,7 +30,7 @@ import { ProjectFolder } from './ProjectFolder';
 import { ProjectFolderCover } from './ProjectFolder/ProjectFolderCover';
 
 export const ProjectAssets = () => {
-  const { project, search, filters } = useProjectContext();
+  const { project, search, filters, inputRef } = useProjectContext();
 
   const { data: assetsData, isPending: isLoadingAssets } = useGetProjectIdAssets(project.id, undefined, {
     params: filters,
@@ -109,7 +109,17 @@ export const ProjectAssets = () => {
       <EmptyState
         title="No files"
         text="You don't have any files here yet. Go ahead and upload one or create a new folder"
-      />
+      >
+        <Button
+          className="text-content1 bg-foreground mt-4"
+          onClick={() => {
+            inputRef.current?.click();
+          }}
+        >
+          <Icon icon="plus" size={16} />
+          Upload your first file
+        </Button>
+      </EmptyState>
     );
   }
 

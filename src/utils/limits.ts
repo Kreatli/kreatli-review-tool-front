@@ -10,10 +10,6 @@ export const getCanAddAssets = (user: UserDto, files: File[]) => {
   return true;
 };
 
-export const getIsValidSize = (user: UserDto, files: File[]) => {
-  if (user.subscription.plan === 'free') {
-    return !files.some((file) => file.size > 1024 * 1024 * 1024 * 1); // 1GB
-  }
-
+export const getIsValidSize = (files: File[]) => {
   return !files.some((file) => file.size > 1024 * 1024 * 1024 * 100); // 100GB
 };

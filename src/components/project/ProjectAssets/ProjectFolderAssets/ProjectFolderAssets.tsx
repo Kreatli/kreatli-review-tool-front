@@ -46,6 +46,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
   const setFileUpload = useProjectUploads((state) => state.setFileUpload);
   const updateFileUploadProgress = useProjectUploads((state) => state.updateFileUploadProgress);
   const setFileUploadError = useProjectUploads((state) => state.setFileUploadError);
+  const setIsUploadedToS3 = useProjectUploads((state) => state.setIsUploadedToS3);
   const uploadFile = useMultipartUpload({ projectId: project.id });
 
   const uploadAssets = () => {
@@ -61,7 +62,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
 
     inputRef.current.value = '';
 
-    if (project.createdBy && !getIsValidSize(project.createdBy, files)) {
+    if (project.createdBy && !getIsValidSize(files)) {
       addToast({
         title:
           project.createdBy.subscription.plan === 'free'
@@ -88,52 +89,68 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
     for (const file of files) {
       const id = nanoid();
 
+      const cancelUpload = uploadFile(
+        { file, clientId: id },
+        {
+          onSuccess: (data) => {
+            const promise = mutateAsync({
+              id: project.id,
+              requestBody: {
+                parentId: folderId,
+                contentType: file.type,
+                fileOriginalName: file.name,
+                key: data.key,
+                fileId: data.fileId,
+                fileSize: file.size,
+              },
+            });
+
+            promise
+              .then(({ project: projectData, parent: folderData }) => {
+                queryClient.setQueryData([getProjectId.key, project.id], projectData);
+                queryClient.setQueryData([getAssetFolderId.key, folderId], folderData);
+                queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
+                updateFileUploadProgress(id, 100);
+              })
+              .catch((error) => {
+                addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+                setFileUploadError(id);
+              });
+          },
+          onError: (type) => {
+            if (type !== 'user') {
+              addToast({
+                title: "Something went wrong. We couldn't upload your file.",
+                color: 'danger',
+                variant: 'flat',
+              });
+            }
+
+            setFileUploadError(id);
+          },
+          onProgressChange: (progress) => {
+            if (progress === 100) {
+              setIsUploadedToS3(id);
+
+              return;
+            }
+
+            updateFileUploadProgress(id, progress);
+          },
+        },
+      );
+
       setFileUpload({
         name: file.name,
         type: file.type,
         size: file.size,
         id,
         progress: 0,
+        projectId: project.id,
+        folderId,
         previewUrl:
           file.type.startsWith('image') && !file.type.includes('adobe') ? URL.createObjectURL(file) : undefined,
-      });
-      uploadFile(file, {
-        onSuccess: (data) => {
-          const promise = mutateAsync({
-            id: project.id,
-            requestBody: {
-              parentId: folderId,
-              contentType: file.type,
-              fileOriginalName: file.name,
-              key: data.key,
-              fileId: data.fileId,
-              fileSize: file.size,
-            },
-          });
-
-          promise
-            .then(({ project: projectData, parent: folderData }) => {
-              queryClient.setQueryData([getProjectId.key, project.id], projectData);
-              queryClient.setQueryData([getAssetFolderId.key, folderId], folderData);
-              queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
-              updateFileUploadProgress(id, 100);
-            })
-            .catch((error) => {
-              addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-              setFileUploadError(id);
-            });
-        },
-        onError: () => {
-          addToast({ title: "Something went wrong. We couldn't upload your file.", color: 'danger', variant: 'flat' });
-          setFileUploadError(id);
-        },
-        onProgressChange: (progress) => {
-          if (progress === 100) {
-            return;
-          }
-
-          updateFileUploadProgress(id, progress);
-        },
+        cancelUpload,
       });
     }
   };

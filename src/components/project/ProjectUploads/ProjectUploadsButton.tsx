@@ -41,34 +41,32 @@ export const ProjectUploadsButton = () => {
     return (progress / (ongoingUploadsSize * 100)) * 100;
   }, [ongoingUploads]);
 
+  const progressColor = useMemo(() => {
+    if (uploads.length > 0 && uploads.every((upload) => upload.isError)) {
+      return 'danger';
+    }
+
+    return totalProgress === 100 ? 'success' : 'primary';
+  }, [uploads, totalProgress]);
+
   return (
-    <div
-      className={cn('flex flex-col gap-px opacity-0 -mb-1 transition-opacity pointer-events-none', {
-        'opacity-100 pointer-events-auto': uploads.length > 0,
-      })}
-    >
+    <div className="flex flex-col gap-px -mb-1">
       <Popover placement="bottom" offset={20} isOpen={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger>
-          <Button
-            disabled={uploads.length === 0}
-            aria-label="Project uploads"
-            isIconOnly
-            size="sm"
-            variant="light"
-            radius="full"
-          >
+          <Button aria-label="Project uploads" isIconOnly size="sm" variant="light" radius="full">
             <Icon icon="upload" size={20} className="text-foreground" />
           </Button>
         </PopoverTrigger>
         <PopoverContent>
-          <ProjectUploads uploads={uploads} onClose={() => setIsOpen(false)} />
+          <ProjectUploads onClose={() => setIsOpen(false)} />
         </PopoverContent>
       </Popover>
       <Progress
         disableAnimation
         size="sm"
+        className={cn('opacity-0 transition-opacity', { 'opacity-100': uploads.length > 0 })}
         value={totalProgress}
-        color={totalProgress === 100 ? 'success' : 'primary'}
+        color={progressColor}
       />
     </div>
   );

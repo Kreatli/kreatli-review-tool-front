@@ -5,13 +5,19 @@ import {
   usePostAssetsMultipartUrl,
   usePostAssetsUrl,
 } from '../services/hooks';
+import { FileUpload } from './useProjectUploads';
 
 const CHUNK_SIZE = 20 * 1024 * 1024;
 const MULTIPART_UPLOAD_THRESHOLD = 10 * 1024 * 1024;
 
+interface UploadFileData {
+  clientId: string;
+  file: File;
+}
+
 interface UploadFileOptions {
   onSuccess: (data: { key: string; fileId: string }) => void;
-  onError: () => void;
+  onError: (type?: 'user') => void;
   onSettled?: () => void;
   onProgressChange?: (progress: number) => void;
 }
@@ -27,7 +33,7 @@ export const useMultipartUpload = ({ projectId }: Props) => {
   const { mutateAsync: getMultipartPresignedUrl } = usePostAssetsMultipartUrl();
   const { mutateAsync: completeMultipartUpload } = usePostAssetsMultipartComplete();
 
-  const uploadFile = async (file: File, onProgressChange?: (progress: number) => void) => {
+  const uploadFile = async ({ file }: UploadFileData, onProgressChange?: (progress: number) => void) => {
     const { url, key, fileId } = await getPresignedUrl({
       requestBody: { fileName: file.name, contentType: file.type, projectId },
     });
@@ -44,7 +50,10 @@ export const useMultipartUpload = ({ projectId }: Props) => {
     return { key, fileId };
   };
 
-  const uploadFileInChunks = async (file: File, onProgressChange?: (progress: number) => void) => {
+  const uploadFileInChunks = async (
+    { file, clientId }: UploadFileData,
+    onProgressChange?: (progress: number) => void,
+  ) => {
     const { uploadId, fileId, key } = await startMultipartUpload({
       requestBody: { fileName: file.name, contentType: file.type, projectId },
     });
@@ -53,6 +62,12 @@ export const useMultipartUpload = ({ projectId }: Props) => {
     const uploadedParts: any[] = [];
 
     for (let partNumber = 1; partNumber <= chunksCount; partNumber++) {
+      const failedFileUploads = JSON.parse(localStorage.getItem('failedFileUploads') ?? '[]') as FileUpload[];
+
+      if (failedFileUploads.find((upload) => upload.id === clientId)) {
+        throw new Error();
+      }
+
       const start = (partNumber - 1) * CHUNK_SIZE;
       const end = Math.min(partNumber * CHUNK_SIZE, file.size);
       const blob = file.slice(start, end);
@@ -80,29 +95,33 @@ export const useMultipartUpload = ({ projectId }: Props) => {
     return { fileId, key };
   };
 
-  return async (file: File, { onSuccess, onError, onSettled, onProgressChange }: UploadFileOptions) => {
-    if (file.size < MULTIPART_UPLOAD_THRESHOLD) {
-      try {
-        const data = await uploadFile(file, onProgressChange);
+  return (
+    { file, clientId }: UploadFileData,
+    { onSuccess, onError, onSettled, onProgressChange }: UploadFileOptions,
+  ) => {
+    let isError = false;
+    const uploadFn = file.size < MULTIPART_UPLOAD_THRESHOLD ? uploadFile : uploadFileInChunks;
 
-        onSuccess(data);
-        onSettled?.();
-      } catch {
-        onError();
-        onSettled?.();
-      }
+    uploadFn({ file, clientId }, onProgressChange)
+      .then((data) => {
+        if (!isError) {
+          onSuccess(data);
+        }
+      })
+      .catch(() => {
+        if (!isError) {
+          onError();
+        }
+      })
+      .finally(() => {
+        if (!isError) {
+          onSettled?.();
+        }
+      });
 
-      return;
-    }
-
-    try {
-      const data = await uploadFileInChunks(file, onProgressChange);
-
-      onSuccess(data);
-      onSettled?.();
-    } catch {
-      onError();
-      onSettled?.();
-    }
+    return () => {
+      isError = true;
+      onError('user');
+    };
   };
 };

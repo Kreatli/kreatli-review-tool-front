@@ -7,6 +7,7 @@ import { useGetUser } from '../services/hooks';
 import { getUser } from '../services/services';
 import { getHasToken } from '../utils/token';
 import { useAppLoader } from './useAppLoader';
+import { useProjectUploads } from './useProjectUploads';
 
 export const useSession = () => {
   const queryClient = useQueryClient();
@@ -14,6 +15,7 @@ export const useSession = () => {
   const hasToken = getHasToken();
 
   const setIsLoading = useAppLoader((state) => state.setIsLoading);
+  const resetProjectUploads = useProjectUploads((state) => state.reset);
 
   const { data, isLoading, isError } = useGetUser({
     enabled: hasToken,
@@ -41,8 +43,10 @@ export const useSession = () => {
 
   const signOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('failedFileUploads');
     getAxiosInstance(undefined).defaults.headers.Authorization = null;
     queryClient.resetQueries({ queryKey: [getUser.key] });
+    resetProjectUploads();
     router.push('/');
   };
 

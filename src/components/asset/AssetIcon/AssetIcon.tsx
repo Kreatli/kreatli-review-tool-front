@@ -8,6 +8,14 @@ interface Props {
 
 export const AssetIcon = ({ fileType, size = 32 }: Props) => {
   const icon = useMemo((): IconType => {
+    if (fileType.startsWith('video')) {
+      return 'addVideo';
+    }
+
+    if (fileType.includes('pdf')) {
+      return 'filePdf';
+    }
+
     if (fileType.startsWith('audio')) {
       return 'music';
     }
