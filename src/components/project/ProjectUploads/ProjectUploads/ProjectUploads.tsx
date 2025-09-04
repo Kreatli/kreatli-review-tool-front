@@ -2,8 +2,7 @@ import { Button } from '@heroui/react';
 import { ProjectUploadItem } from './ProjectUploadItem';
 import { Icon } from '../../../various/Icon';
 import { FileUpload, useProjectUploads } from '../../../../hooks/useProjectUploads';
-import { useEffect, useMemo } from 'react';
-import { useLocalStorage } from '../../../../hooks/useLocalStorage';
+import { useMemo } from 'react';
 
 interface Props {
   onClose: () => void;
@@ -14,26 +13,13 @@ export const ProjectUploads = ({ onClose }: Props) => {
   const removeFileUpload = useProjectUploads((state) => state.removeFileUpload);
   const removeUploadedFiles = useProjectUploads((state) => state.removeUploadedFiles);
 
-  const [failedFileUploads] = useLocalStorage<FileUpload[]>({
-    defaultValue: [],
-    key: 'failedFileUploads',
-    asJson: true,
-  });
-
-  const allUploads = useMemo(() => {
-    return [
-      ...uploads,
-      ...failedFileUploads.filter((failedUpload) => !uploads.find((upload) => upload.id === failedUpload.id)),
-    ];
-  }, [uploads, failedFileUploads]);
-
   const ongoingUploadsCount = useMemo(() => {
-    return allUploads.filter((upload) => upload.progress < 100).length;
-  }, [allUploads]);
+    return uploads.filter((upload) => upload.progress < 100).length;
+  }, [uploads]);
 
   const hasCompletedUploads = useMemo(() => {
-    return allUploads.filter((upload) => upload.progress === 100 || upload.isError).length > 0;
-  }, [allUploads]);
+    return uploads.filter((upload) => upload.progress === 100 || upload.isError).length > 0;
+  }, [uploads]);
 
   const handleFileUploadCancel = (fileUpload: FileUpload) => {
     fileUpload.cancelUpload();
@@ -51,10 +37,10 @@ export const ProjectUploads = ({ onClose }: Props) => {
     <div className="w-96 max-w-full">
       <div className="py-1 pl-2 border-b border-foreground-200 flex justify-between gap-2 items-center">
         <div className="font-semibold">
-          {allUploads.length === 0
+          {uploads.length === 0
             ? 'File uploads'
             : ongoingUploadsCount === 0
-              ? `Uploaded ${allUploads.length} item${allUploads.length === 1 ? '' : 's'}`
+              ? `Uploaded ${uploads.length} item${uploads.length === 1 ? '' : 's'}`
               : `Uploading ${ongoingUploadsCount} item${ongoingUploadsCount === 1 ? '' : 's'}...`}
         </div>
         <div className="flex items-center gap-2">
@@ -76,7 +62,7 @@ export const ProjectUploads = ({ onClose }: Props) => {
       </div>
       <div className="py-2 max-h-96 -mx-1 overflow-auto">
         <div className="flex flex-col">
-          {allUploads.map((fileUpload) => (
+          {uploads.map((fileUpload) => (
             <ProjectUploadItem
               key={fileUpload.id}
               previewUrl={fileUpload.previewUrl}
@@ -92,7 +78,7 @@ export const ProjectUploads = ({ onClose }: Props) => {
               onCancel={() => handleFileUploadCancel(fileUpload)}
             />
           ))}
-          {allUploads.length === 0 && <div className="p-2 text-foreground-500">No file upload in progress</div>}
+          {uploads.length === 0 && <div className="p-2 text-foreground-500">No file upload in progress</div>}
         </div>
       </div>
     </div>

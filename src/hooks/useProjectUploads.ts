@@ -23,34 +23,44 @@ interface State {
   setIsUploadedToS3: (fileId: string) => void;
   removeFileUpload: (fileId: string) => void;
   removeUploadedFiles: () => void;
-  reset: () => void;
 }
 
 export const useProjectUploads = create<State>((set) => ({
   uploads: [],
-  setFileUpload: (fileUpload: FileUpload) =>
-    set((state) => ({
-      uploads: [fileUpload, ...state.uploads],
-    })),
   setFileUploads: (fileUploads: FileUpload[]) => set(() => ({ uploads: fileUploads })),
+  setFileUpload: (fileUpload: FileUpload) =>
+    set((state) => {
+      localStorage.setItem('uploads', JSON.stringify([fileUpload, ...state.uploads]));
+
+      return {
+        uploads: [fileUpload, ...state.uploads],
+      };
+    }),
   setFileUploadError: (fileId: string) =>
     set((state) => {
       const newUploads = state.uploads.map((fileUpload) =>
         fileUpload.id === fileId ? { ...fileUpload, isError: true, progress: 100 } : fileUpload,
       );
 
-      localStorage.setItem('failedFileUploads', JSON.stringify(newUploads.filter((upload) => upload.isError)));
+      localStorage.setItem('uploads', JSON.stringify(newUploads));
 
-      return {
-        uploads: newUploads,
-      };
+      return { uploads: newUploads };
     }),
   updateFileUploadProgress: (fileId: string, progress: number) =>
-    set((state) => ({
-      uploads: state.uploads.map((fileUpload) =>
+    set((state) => {
+      const newUploads = state.uploads.map((fileUpload) =>
         fileUpload.id === fileId && !fileUpload.isError ? { ...fileUpload, progress } : fileUpload,
-      ),
-    })),
+      );
+
+      if (progress === 100) {
+        localStorage.setItem(
+          'uploads',
+          JSON.stringify(newUploads.filter((upload) => upload.progress !== 100 && !upload.isError)),
+        );
+      }
+
+      return { uploads: newUploads };
+    }),
   setIsUploadedToS3: (fileId: string) =>
     set((state) => ({
       uploads: state.uploads.map((fileUpload) =>
@@ -61,21 +71,16 @@ export const useProjectUploads = create<State>((set) => ({
     set((state) => {
       const newUploads = state.uploads.filter((fileUpload) => fileUpload.id !== fileId);
 
-      localStorage.setItem('failedFileUploads', JSON.stringify(newUploads.filter((upload) => upload.isError)));
+      localStorage.setItem('uploads', JSON.stringify(newUploads));
 
-      return {
-        uploads: newUploads,
-      };
+      return { uploads: newUploads };
     }),
   removeUploadedFiles: () =>
     set((state) => {
       const newUploads = state.uploads.filter((upload) => !upload.isError && upload.progress !== 100);
 
-      localStorage.setItem('failedFileUploads', JSON.stringify(newUploads.filter((upload) => upload.isError)));
+      localStorage.setItem('uploads', JSON.stringify(newUploads));
 
-      return {
-        uploads: newUploads,
-      };
+      return { uploads: newUploads };
     }),
-  reset: () => set((state) => ({ uploads: [] })),
 }));

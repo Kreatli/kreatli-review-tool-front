@@ -62,9 +62,9 @@ export const useMultipartUpload = ({ projectId }: Props) => {
     const uploadedParts: any[] = [];
 
     for (let partNumber = 1; partNumber <= chunksCount; partNumber++) {
-      const failedFileUploads = JSON.parse(localStorage.getItem('failedFileUploads') ?? '[]') as FileUpload[];
+      const uploads = JSON.parse(localStorage.getItem('uploads') ?? '[]') as FileUpload[];
 
-      if (failedFileUploads.find((upload) => upload.id === clientId)) {
+      if (uploads.find((upload) => upload.id === clientId && upload.isError)) {
         throw new Error();
       }
 

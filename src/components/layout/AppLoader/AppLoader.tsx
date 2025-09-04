@@ -1,11 +1,11 @@
 import { cn, Spinner } from '@heroui/react';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import LogoIcon from '../../../assets/images/logo.svg';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useAppLoader } from '../../../hooks/useAppLoader';
 import { Layout } from '../../../typings/layout';
-import { useProjectUploads } from '../../../hooks/useProjectUploads';
+import { FileUpload, useProjectUploads } from '../../../hooks/useProjectUploads';
 
 interface Props {
   children: React.ReactNode;
@@ -18,6 +18,14 @@ export const AppLoader = ({ children }: Props) => {
   );
 
   const [theme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });
+
+  const setFileUploads = useProjectUploads((state) => state.setFileUploads);
+
+  useEffect(() => {
+    const uploadsFromLocalStorage = JSON.parse(localStorage.getItem('uploads') ?? '[]') as FileUpload[];
+
+    setFileUploads(uploadsFromLocalStorage.map((upload) => ({ ...upload, progress: 100, isError: true })));
+  }, []);
 
   React.useEffect(() => {
     if (theme === 'dark') {
