@@ -1,5 +1,6 @@
 import {
   addToast,
+  Alert,
   Button,
   ButtonGroup,
   Dropdown,
@@ -198,13 +199,17 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
           />
           <div>
             <ButtonGroup>
-              <Button className="text-content1 bg-foreground pr-1" onClick={uploadAssets}>
+              <Button
+                className="text-content1 bg-foreground pr-1"
+                isDisabled={project.status !== 'active'}
+                onClick={uploadAssets}
+              >
                 <Icon icon="plus" size={16} />
                 New
               </Button>
               <Dropdown>
                 <DropdownTrigger>
-                  <Button isIconOnly className="text-content1 bg-foreground">
+                  <Button isIconOnly isDisabled={project.status !== 'active'} className="text-content1 bg-foreground">
                     <Icon icon="chevronDown" size={20} />
                   </Button>
                 </DropdownTrigger>
@@ -225,6 +230,18 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
             <input ref={inputRef} multiple type="file" className="sr-only" onChange={handleInputChange} />
           </div>
         </div>
+        {project.status !== 'active' && (
+          <div>
+            <Alert
+              color="primary"
+              title={
+                project.status === 'archived'
+                  ? 'This project is archived, you can restore it to make it active again.'
+                  : 'This project is completed, you can reactivate it to make it active again.'
+              }
+            />
+          </div>
+        )}
         {folder && <ProjectFolderAssetsList project={project} folder={folder} />}
         <CreateFolderModal
           isOpen={isFolderModalOpen}

@@ -1,4 +1,4 @@
-import { addToast, Button, Tab, Tabs } from '@heroui/react';
+import { addToast, Alert, Button, Tab, Tabs } from '@heroui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -65,6 +65,18 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
             ) : (
               <div className="flex flex-col gap-4 flex-1">
                 <ProjectHeader project={project} />
+                {project.status !== 'active' && (
+                  <div>
+                    <Alert
+                      color="primary"
+                      title={
+                        project.status === 'archived'
+                          ? 'This project is archived, you can restore it to make it active again.'
+                          : 'This project is completed, you can reactivate it to make it active again.'
+                      }
+                    />
+                  </div>
+                )}
                 <div className="flex gap-6">
                   <Tabs selectedKey={router.pathname.split('/')[3]}>
                     <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />
