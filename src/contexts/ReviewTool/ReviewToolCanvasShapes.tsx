@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 
 import { ReviewTool } from '../../typings/reviewTool';
 import { useFileContext } from '../File';
@@ -30,7 +30,7 @@ export const useReviewToolCanvasShapesContext = () => {
 const MAX_HISTORY_LENGTH = 10;
 
 export const ReviewToolCanvasShapesContextProvider = ({ children }: React.PropsWithChildren) => {
-  const { activeComment } = useFileContext();
+  const { activeComment, activeFile } = useFileContext();
 
   const [shapes, setShapes] = React.useState<ReviewTool.Shape[]>([]);
 
@@ -49,6 +49,10 @@ export const ReviewToolCanvasShapesContextProvider = ({ children }: React.PropsW
     history.current = [[]];
     historyStep.current = 0;
   }, [activeComment]);
+
+  useLayoutEffect(() => {
+    resetCanvas();
+  }, [activeFile?.id]);
 
   const pushHistory = (historyItem: ReviewTool.Shape[]) => {
     history.current = history.current.slice(-MAX_HISTORY_LENGTH, historyStep.current + 1);

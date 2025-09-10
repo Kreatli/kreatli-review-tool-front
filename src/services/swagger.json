@@ -808,7 +808,13 @@
           { "name": "projectId", "required": true, "in": "query", "schema": { "type": "string" } },
           { "name": "query", "required": true, "in": "query", "schema": { "type": "string" } },
           { "name": "offset", "required": true, "in": "query", "schema": { "type": "number" } },
-          { "name": "limit", "required": true, "in": "query", "schema": { "type": "number" } }
+          { "name": "limit", "required": true, "in": "query", "schema": { "type": "number" } },
+          {
+            "name": "skipIds",
+            "required": true,
+            "in": "query",
+            "schema": { "type": "array", "items": { "type": "string" } }
+          }
         ],
         "responses": {
           "200": {

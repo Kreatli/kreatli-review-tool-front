@@ -66,7 +66,7 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled }: Pr
       size="sm"
       isBordered
       isDisabled={isDisabled}
-      className={cn({ 'cursor-default': !isEditable })}
+      className={cn('shrink-0', { 'cursor-default': !isEditable })}
       fallback={
         selectedMember ? (
           <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(selectedMember)}</div>

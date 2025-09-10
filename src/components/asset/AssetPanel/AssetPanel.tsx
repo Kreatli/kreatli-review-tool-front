@@ -7,14 +7,14 @@ import { AssetPanelHeader } from './AssetPanelHeader';
 import { AssetPanelLoading } from './AssetPanelLoading';
 
 export const AssetPanel = () => {
-  const { file, isLoading, commentsRef } = useFileContext();
+  const { activeFile, isLoading, commentsRef } = useFileContext();
 
   return (
     <div className="overflow-hidden flex flex-col">
       <AssetPanelHeader />
       <div ref={commentsRef} className="overflow-auto">
-        {isLoading || !file ? <AssetPanelLoading /> : <AssetDescription file={file} />}
-        {file && <AssetComments fileId={file.id} />}
+        {isLoading || !activeFile ? <AssetPanelLoading /> : <AssetDescription file={activeFile} />}
+        {activeFile && <AssetComments fileId={activeFile.id} />}
       </div>
     </div>
   );

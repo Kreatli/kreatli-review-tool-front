@@ -21,6 +21,7 @@ import CheckShieldIcon from '../../../assets/icons/check-shield.svg';
 import ChevronDownIcon from '../../../assets/icons/chevron-down.svg';
 import CoinIcon from '../../../assets/icons/coin.svg';
 import ConversationIcon from '../../../assets/icons/conversation.svg';
+import CompareIcon from '../../../assets/icons/compare.svg';
 import CreditCardIcon from '../../../assets/icons/credit-card.svg';
 import CrossIcon from '../../../assets/icons/cross.svg';
 import CrossCircleIcon from '../../../assets/icons/cross-circle.svg';
@@ -117,6 +118,7 @@ const ICONS = {
   checkCircle: CheckCircleIcon,
   checkShield: CheckShieldIcon,
   coin: CoinIcon,
+  compare: CompareIcon,
   conversation: ConversationIcon,
   chevronDown: ChevronDownIcon,
   creditCard: CreditCardIcon,

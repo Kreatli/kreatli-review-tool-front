@@ -10,7 +10,7 @@ interface Props {
 
 export const AssetDescription = ({ file }: Props) => {
   return (
-    <div className="sticky top-0 bg-background p-3 z-10">
+    <div className="hidden md:block sticky top-0 bg-background p-3 z-10">
       <div className="text-sm flex items-center gap-2">
         <Tooltip content={file.createdBy?.name}>
           <Avatar

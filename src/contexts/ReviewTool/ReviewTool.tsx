@@ -8,6 +8,7 @@ interface Context {
   activeColor: ReviewTool.Color;
   canvasRef: React.RefObject<Stage>;
   fileRef: React.RefObject<HTMLImageElement | HTMLVideoElement>;
+  compareFileRef: React.RefObject<HTMLImageElement | HTMLVideoElement>;
   setActiveTool: (shape: ReviewTool.ToolType | null) => void;
   setActiveColor: (color: ReviewTool.Color) => void;
 }
@@ -31,8 +32,20 @@ export const ReviewToolContextProvider = ({ children }: React.PropsWithChildren)
   const canvasRef = React.useRef<Stage>(null);
   const fileRef = React.useRef<HTMLImageElement | HTMLVideoElement>(null);
 
+  const compareFileRef = React.useRef<HTMLImageElement | HTMLVideoElement>(null);
+
   return (
-    <ReviewToolContext.Provider value={{ activeColor, activeTool, fileRef, canvasRef, setActiveColor, setActiveTool }}>
+    <ReviewToolContext.Provider
+      value={{
+        activeColor,
+        activeTool,
+        fileRef,
+        canvasRef,
+        compareFileRef,
+        setActiveColor,
+        setActiveTool,
+      }}
+    >
       {children}
     </ReviewToolContext.Provider>
   );

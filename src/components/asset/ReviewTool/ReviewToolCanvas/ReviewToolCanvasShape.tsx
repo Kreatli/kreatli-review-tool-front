@@ -8,16 +8,18 @@ import { ReviewToolCanvasLine } from './ReviewToolCanvasLine';
 interface Props {
   shape: ReviewTool.Shape;
   isDrawing: React.RefObject<boolean>;
+  ratio: number;
   onDragStart: (shape: ReviewTool.Shape, event: Konva.KonvaEventObject<MouseEvent>) => void;
   onDragEnd: (shape: ReviewTool.Shape, event: Konva.KonvaEventObject<DragEvent>) => void;
   onRemove: (shape: ReviewTool.Shape) => void;
 }
 
-export const ReviewToolCanvasShape = ({ shape, isDrawing, onDragStart, onDragEnd, onRemove }: Props) => {
+export const ReviewToolCanvasShape = ({ shape, isDrawing, ratio, onDragStart, onDragEnd, onRemove }: Props) => {
   if (shape.type === 'arrow') {
     return (
       <ReviewToolCanvasArrow
         arrow={shape}
+        ratio={ratio}
         isDrawing={isDrawing}
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
@@ -26,5 +28,5 @@ export const ReviewToolCanvasShape = ({ shape, isDrawing, onDragStart, onDragEnd
     );
   }
 
-  return <ReviewToolCanvasLine line={shape} onRemove={onRemove} />;
+  return <ReviewToolCanvasLine line={shape} ratio={ratio} onRemove={onRemove} />;
 };

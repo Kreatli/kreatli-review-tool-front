@@ -4,9 +4,9 @@ import React, { useEffect, useLayoutEffect } from 'react';
 import { useChatContext } from '../../../contexts/Chat';
 import { useSession } from '../../../hooks/useSession';
 import { ChatTextareaEmojiPicker } from './ChatTextareaEmojiPicker';
-import { ChatTextareaAssetPicker } from './ChatTextareaAssetPicker';
 import { AssetDto } from '../../../services/types';
 import { ChatTextareaAssetPreview } from './ChatTextareaAssetPreview';
+import { AssetPicker } from '../../asset/AssetPicker';
 
 const MAX_ROWS = 10;
 
@@ -17,7 +17,7 @@ interface Props {
 
 export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
   const { user } = useSession();
-  const { webSocketRef } = useChatContext();
+  const { project, webSocketRef } = useChatContext();
 
   const messageRef = React.useRef<HTMLDivElement>(null);
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
@@ -108,7 +108,11 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
           </div>
         )}
         <div className="flex gap-px">
-          <ChatTextareaAssetPicker isDisabled={assets.length >= 5 || isDisabled} onSelect={handleSelectAsset} />
+          <AssetPicker projectId={project.id} onSelect={handleSelectAsset}>
+            <Button variant="light" size="sm" isIconOnly radius="full" isDisabled={assets.length >= 5 || isDisabled}>
+              <Icon icon="paperclip" className="text-foreground-500" size={20} />
+            </Button>
+          </AssetPicker>
           <ChatTextareaEmojiPicker isDisabled={isDisabled} onEmojiSelect={handleEmojiSelect} />
         </div>
       </div>

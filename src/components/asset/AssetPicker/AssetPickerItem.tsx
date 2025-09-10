@@ -1,20 +1,19 @@
-import { Image } from '@heroui/react';
 import { AssetDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { STATUS_LABEL } from '../../../utils/status';
-import { ChatTextareaAssetPreview } from './ChatTextareaAssetPreview';
+import { AssetPreview } from './AssetPreview';
 
 interface Props {
   asset: AssetDto;
   onClick: () => void;
 }
 
-export const ChatTextareaAssetPickerItem = ({ asset, onClick }: Props) => {
+export const AssetPickerItem = ({ asset, onClick }: Props) => {
   return (
     <div className="relative">
       <div className="flex gap-2 hover:bg-foreground-100 rounded-large p-1.5">
         <div className="shrink-0">
-          <ChatTextareaAssetPreview asset={asset} width={44} height={44} />
+          <AssetPreview asset={asset} width={44} height={44} />
         </div>
         <div className="flex flex-col gap-0.5 overflow-hidden">
           <button

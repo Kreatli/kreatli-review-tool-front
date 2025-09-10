@@ -7,13 +7,14 @@ import { ReviewTool } from '../../../../typings/reviewTool';
 
 interface Props {
   line: ReviewTool.Line;
+  ratio: number;
   onRemove: (line: ReviewTool.Line) => void;
   // isDrawing: React.RefObject<boolean>;
   // onDragStart: (line: ReviewTool.Line, event: Konva.KonvaEventObject<MouseEvent>) => void;
   // onDragEnd: (line: ReviewTool.Line, event: Konva.KonvaEventObject<DragEvent>) => void;
 }
 
-export const ReviewToolCanvasLine = ({ line, onRemove }: Props) => {
+export const ReviewToolCanvasLine = ({ line, ratio, onRemove }: Props) => {
   const { activeTool } = useReviewToolContext();
   // const isDragging = React.useRef(false);
   // const isOver = React.useRef(false);
@@ -64,7 +65,7 @@ export const ReviewToolCanvasLine = ({ line, onRemove }: Props) => {
       <Line
         points={line.points}
         stroke={EDITOR_COLOR_HEX[line.color]}
-        strokeWidth={5}
+        strokeWidth={5 / ratio}
         tension={0.4}
         lineCap="round"
         lineJoin="round"
@@ -77,7 +78,7 @@ export const ReviewToolCanvasLine = ({ line, onRemove }: Props) => {
       <Line
         points={line.points}
         stroke={EDITOR_COLOR_HEX[line.color]}
-        strokeWidth={14}
+        strokeWidth={15 / ratio}
         opacity={0}
         lineCap="round"
         lineJoin="round"

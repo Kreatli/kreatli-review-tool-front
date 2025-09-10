@@ -9,12 +9,13 @@ import { ReviewTool } from '../../../../typings/reviewTool';
 interface Props {
   arrow: ReviewTool.Arrow;
   isDrawing: React.RefObject<boolean>;
+  ratio: number;
   onRemove: (shape: ReviewTool.Shape) => void;
   onDragStart: (shape: ReviewTool.Shape, event: Konva.KonvaEventObject<MouseEvent>) => void;
   onDragEnd: (shape: ReviewTool.Shape, event: Konva.KonvaEventObject<DragEvent>) => void;
 }
 
-export const ReviewToolCanvasArrow = ({ arrow, isDrawing, onDragStart, onDragEnd, onRemove }: Props) => {
+export const ReviewToolCanvasArrow = ({ arrow, isDrawing, ratio, onDragStart, onDragEnd, onRemove }: Props) => {
   const { activeTool, canvasRef } = useReviewToolContext();
 
   const isDragging = React.useRef(false);
@@ -74,7 +75,7 @@ export const ReviewToolCanvasArrow = ({ arrow, isDrawing, onDragStart, onDragEnd
       <Arrow
         points={arrow.points}
         stroke={EDITOR_COLOR_HEX[arrow.color]}
-        strokeWidth={5}
+        strokeWidth={5 / ratio}
         draggable={activeTool !== 'eraser'}
         onMouseDown={handleMouseDown}
         onDragEnd={handleDragEnd}
@@ -85,7 +86,7 @@ export const ReviewToolCanvasArrow = ({ arrow, isDrawing, onDragStart, onDragEnd
       <Arrow
         points={arrow.points}
         stroke={EDITOR_COLOR_HEX[arrow.color]}
-        strokeWidth={15}
+        strokeWidth={15 / ratio}
         opacity={0}
         listening={activeTool === 'eraser'}
         onClick={handleClick}

@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { FileDto } from '../../../../services/types';
+import { useFileContext } from '../../../../contexts/File';
 
 interface Props {
   imageFile: FileDto;
@@ -10,7 +11,8 @@ interface Props {
 }
 
 export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
-  const { fileRef } = useReviewToolContext();
+  const { fileRef, compareFileRef } = useReviewToolContext();
+  const { compareFile } = useFileContext();
 
   const imageUrl = imageFile.metadata.thumbnailUrl ?? imageFile.url;
   const isSvg = imageFile.format === 'svg';
@@ -30,7 +32,7 @@ export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
       <Image
         src={imageUrl}
         // @ts-ignore
-        ref={fileRef}
+        ref={compareFile?.id === imageFile.id ? compareFileRef : fileRef}
         radius="sm"
         shadow="lg"
         {...(isSvg && {

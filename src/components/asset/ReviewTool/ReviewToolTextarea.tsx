@@ -17,10 +17,11 @@ interface Props {
   isDisabled?: boolean;
 }
 
-export const ReviewToolTextarea = ({ isDisabled = false }) => {
+export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
   const [message, setMessage] = React.useState('');
-  const { fileRef, setActiveTool } = useReviewToolContext();
-  const { file, replyingComment, commentsRef, setActiveComment, setReplyingComment } = useFileContext();
+  const { fileRef, compareFileRef, setActiveTool } = useReviewToolContext();
+  const { replyingComment, activeFile, compareFile, commentsRef, setActiveComment, setReplyingComment } =
+    useFileContext();
   const { shapes, resetCanvas } = useReviewToolCanvasShapesContext();
 
   const { user } = useSession();
@@ -30,7 +31,11 @@ export const ReviewToolTextarea = ({ isDisabled = false }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isInvalid, setIsInvalid] = useState(false);
 
-  const isMediaFile = getIsMediaHtmlElement(fileRef.current);
+  const activeRef = activeFile?.id === compareFile?.id ? compareFileRef : fileRef;
+
+  // const isMediaFile = getIsMediaHtmlElement(fileRef.current);
+  // const isMediaCompareFile = getIsMediaHtmlElement(compareFileRef.current);
+  // const isActiveMediaFile = getIsMediaHtmlElement(activeRef.current);
 
   React.useEffect(() => {
     if (replyingComment) {
@@ -40,7 +45,7 @@ export const ReviewToolTextarea = ({ isDisabled = false }) => {
   }, [replyingComment]);
 
   const handleSubmit = () => {
-    if (!file || !message) {
+    if (!activeFile || !message) {
       setIsInvalid(true);
 
       return;
@@ -52,8 +57,12 @@ export const ReviewToolTextarea = ({ isDisabled = false }) => {
     setReplyingComment(null);
     textareaRef.current?.blur();
 
-    if (isMediaFile) {
+    if (getIsMediaHtmlElement(fileRef.current)) {
       fileRef.current.play();
+    }
+
+    if (getIsMediaHtmlElement(compareFileRef.current)) {
+      compareFileRef.current.play();
     }
 
     const parent = replyingComment?.parent ?? replyingComment?.id;
@@ -67,10 +76,12 @@ export const ReviewToolTextarea = ({ isDisabled = false }) => {
       replies: [],
       parent,
       canvas: { shapes },
-      timestamp: isMediaFile ? [fileRef.current.currentTime, fileRef.current.currentTime] : undefined,
+      timestamp: getIsMediaHtmlElement(activeRef.current)
+        ? [activeRef.current.currentTime, activeRef.current.currentTime]
+        : undefined,
     };
 
-    queryClient.setQueryData<AssetCommentsResponse>([getAssetFileIdComments.key, file.id], (data) => {
+    queryClient.setQueryData<AssetCommentsResponse>([getAssetFileIdComments.key, activeFile.id], (data) => {
       const dataComments = data?.comments ?? [];
 
       if (commentPlaceholder.parent) {
@@ -101,17 +112,19 @@ export const ReviewToolTextarea = ({ isDisabled = false }) => {
 
     mutate(
       {
-        id: file.id,
+        id: activeFile.id,
         requestBody: {
           message,
           parent,
-          timestamp: isMediaFile ? [fileRef.current.currentTime, fileRef.current.currentTime] : undefined,
+          timestamp: getIsMediaHtmlElement(activeRef.current)
+            ? [activeRef.current.currentTime, activeRef.current.currentTime]
+            : undefined,
           ...(shapes.length > 0 && { canvas: { shapes } }),
         },
       },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: [getAssetFileIdComments.key, file.id] });
+          queryClient.invalidateQueries({ queryKey: [getAssetFileIdComments.key, activeFile.id] });
         },
       },
     );
@@ -128,8 +141,11 @@ export const ReviewToolTextarea = ({ isDisabled = false }) => {
     setIsInvalid(false);
     setActiveComment(null);
 
-    if (isMediaFile) {
+    if (getIsMediaHtmlElement(fileRef.current)) {
       fileRef.current.pause();
+    }
+    if (getIsMediaHtmlElement(compareFileRef.current)) {
+      compareFileRef.current.pause();
     }
   };
 

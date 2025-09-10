@@ -28,6 +28,7 @@ import { ProjectFile } from './ProjectFile';
 import { ProjectFileCover } from './ProjectFile/ProjectFileCover';
 import { ProjectFolder } from './ProjectFolder';
 import { ProjectFolderCover } from './ProjectFolder/ProjectFolderCover';
+import { useRouter } from 'next/router';
 
 export const ProjectAssets = () => {
   const { project, search, filters, inputRef } = useProjectContext();
@@ -35,6 +36,8 @@ export const ProjectAssets = () => {
   const { data: assetsData, isPending: isLoadingAssets } = useGetProjectIdAssets(project.id, undefined, {
     params: filters,
   });
+
+  const router = useRouter();
 
   const assets = React.useMemo(() => {
     return assetsData?.assets ?? [];
@@ -224,6 +227,12 @@ export const ProjectAssets = () => {
     }
   };
 
+  const handleCompareSelectedAssets = () => {
+    const [assetId, assetToCompareId] = Array.from(selectedAssetIds);
+
+    router.push(`/project/${project.id}/assets/${assetId}?compareFileId=${assetToCompareId}`);
+  };
+
   return (
     <div className="-mt-4">
       <div
@@ -261,6 +270,12 @@ export const ProjectAssets = () => {
             <Icon icon="trash" size={14} />
             Archive
           </Button>
+          {selectedAssetIds.size === 2 && (
+            <Button size="sm" variant="flat" color="primary" onClick={handleCompareSelectedAssets}>
+              <Icon icon="compare" size={16} />
+              Compare
+            </Button>
+          )}
         </div>
       </div>
       <AssetContextProvider

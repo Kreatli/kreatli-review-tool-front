@@ -30,13 +30,16 @@ interface Props {
 
 export const ReviewToolShapes = ({ isDisabled = false }) => {
   const { isReadOnly, shapes } = useReviewToolCanvasShapesContext();
-  const { activeTool, setActiveTool, fileRef } = useReviewToolContext();
+  const { activeTool, setActiveTool, fileRef, compareFileRef } = useReviewToolContext();
 
   const handleClick = (shape: ReviewTool.ToolType) => () => {
     setActiveTool(activeTool === shape ? null : shape);
 
     if (getIsMediaHtmlElement(fileRef.current)) {
       fileRef.current.pause();
+    }
+    if (getIsMediaHtmlElement(compareFileRef.current)) {
+      compareFileRef.current.pause();
     }
   };
 

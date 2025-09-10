@@ -391,6 +391,7 @@ export interface GetAssetsQueryParams {
   offset: number;
   projectId: string;
   query: string;
+  skipIds: string[];
 }
 
 export interface GetConversationIdMessagesQueryParams {

@@ -1,7 +1,7 @@
 import { cn } from '@heroui/react';
 import Konva from 'konva';
 import { Vector2d } from 'konva/lib/types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layer, Stage } from 'react-konva';
 
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../../contexts/ReviewTool';
@@ -15,13 +15,16 @@ import { ReviewToolImage } from './ReviewToolImage';
 import { ReviewToolVideo } from './ReviewToolVideo';
 import { ReviewToolAudio } from './ReviewToolAudio';
 import { ReviewToolUnsupportedFile } from './ReviewToolUnsupportedFile';
+import { useFileContext } from '../../../../contexts/File';
 
 interface Props {
   file: FileDto;
+  onClick?: () => void;
 }
 
-export const ReviewToolCanvas = ({ file }: Props) => {
-  const { activeTool, activeColor, canvasRef, fileRef } = useReviewToolContext();
+export const ReviewToolCanvas = ({ file, onClick }: Props) => {
+  const { activeFile, compareFile } = useFileContext();
+  const { activeTool, activeColor, canvasRef, fileRef, compareFileRef } = useReviewToolContext();
   const { shapes, isReadOnly, setShapes, pushHistory } = useReviewToolCanvasShapesContext();
 
   const [width, setWidth] = React.useState(0);
@@ -33,8 +36,14 @@ export const ReviewToolCanvas = ({ file }: Props) => {
 
   const lastPointRef = React.useRef<Vector2d | null>(null);
 
+  const ref = compareFile?.id === file.id ? compareFileRef : fileRef;
+
+  useEffect(() => {
+    setCanvasWidth(ref.current?.clientWidth ?? 0);
+  }, [compareFile]);
+
   useScreenResize(() => {
-    setCanvasWidth(fileRef.current?.clientWidth ?? 0);
+    setCanvasWidth(ref.current?.clientWidth ?? 0);
   });
 
   const handleFileLoad = (event: React.SyntheticEvent<HTMLImageElement | HTMLVideoElement>) => {
@@ -48,7 +57,7 @@ export const ReviewToolCanvas = ({ file }: Props) => {
       setHeight(imageOrVideo.height);
     }
 
-    setCanvasWidth(fileRef.current?.clientWidth ?? 0);
+    setCanvasWidth(ref.current?.clientWidth ?? 0);
   };
 
   const handleMouseDown = (event: Konva.KonvaEventObject<MouseEvent>) => {
@@ -193,16 +202,21 @@ export const ReviewToolCanvas = ({ file }: Props) => {
     file.fileType.startsWith('audio');
 
   return (
-    <div className="relative flex-1 flex flex-col items-center overflow-hidden justify-center">
+    <div
+      className={cn('relative flex-1 flex flex-col items-center overflow-hidden justify-center', {
+        '[&>*]:pointer-events-none': activeFile?.id !== file.id && activeTool,
+      })}
+      onClick={onClick}
+    >
       {(file.fileType.startsWith('image') || file.fileType.includes('pdf')) && (
         <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />
       )}
       {file.fileType.startsWith('video') && <ReviewToolVideo videoFile={file} onLoad={handleFileLoad} />}
       {file.fileType.startsWith('audio') && <ReviewToolAudio audioFile={file} />}
-      {isSupportedFile ? (
+      {isSupportedFile && activeFile?.id === file.id && (
         <Stage
-          ref={canvasRef}
-          className={cn(styles.canvas, activeTool && styles[activeTool], { 'pointer-events-none': isReadOnly })}
+          ref={activeFile?.id === file.id ? canvasRef : undefined}
+          className={cn(styles.canvas, { 'pointer-events-none': isReadOnly })}
           width={width}
           height={height}
           style={
@@ -222,6 +236,7 @@ export const ReviewToolCanvas = ({ file }: Props) => {
           <Layer>
             <ReviewToolCanvasShapes
               shapes={shapes}
+              ratio={canvasWidth / width}
               isDrawing={isDrawing}
               onDragStart={handleDragStart}
               onDragEnd={handleDragEnd}
@@ -229,9 +244,8 @@ export const ReviewToolCanvas = ({ file }: Props) => {
             />
           </Layer>
         </Stage>
-      ) : (
-        <ReviewToolUnsupportedFile file={file} />
       )}
+      {!isSupportedFile && <ReviewToolUnsupportedFile file={file} />}
     </div>
   );
 };

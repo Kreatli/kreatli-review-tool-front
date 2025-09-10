@@ -1,20 +1,17 @@
-import { Button, Input, Popover, PopoverContent, PopoverTrigger, Spinner } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import React, { useCallback, useRef } from 'react';
+import { Input, Popover, PopoverContent, PopoverTrigger, Spinner } from '@heroui/react';
+import React, { PropsWithChildren, useCallback, useRef } from 'react';
 import { AssetDto } from '../../../services/types';
 import { getAssets } from '../../../services/services';
-import { useChatContext } from '../../../contexts/Chat';
 import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
-import { ChatTextareaAssetPickerItem } from './ChatTextareaAssetPickerItem';
+import { AssetPickerItem } from './AssetPickerItem';
 
 interface Props {
-  isDisabled?: boolean;
+  projectId: string;
+  skipIds?: string[];
   onSelect: (asset: AssetDto) => void;
 }
 
-export const ChatTextareaAssetPicker = ({ isDisabled = false, onSelect }: Props) => {
-  const { project } = useChatContext();
-
+export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: PropsWithChildren<Props>) => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [search, setSearch] = React.useState('');
   const [offset, setOffset] = React.useState(0);
@@ -32,7 +29,7 @@ export const ChatTextareaAssetPicker = ({ isDisabled = false, onSelect }: Props)
       setIsLoading(true);
       isFetching.current = true;
 
-      const data = await getAssets({ projectId: project.id, limit: 50, offset: 0, query: '' });
+      const data = await getAssets({ projectId, limit: 50, offset: 0, query: '', skipIds });
       setAssetsCount(data.fileCount);
       setAssets(data.files);
       setIsLoading(false);
@@ -49,7 +46,7 @@ export const ChatTextareaAssetPicker = ({ isDisabled = false, onSelect }: Props)
       setIsLoading(true);
     }
 
-    const data = await getAssets({ projectId: project.id, limit: 50, offset, query: search });
+    const data = await getAssets({ projectId, limit: 50, offset, query: search, skipIds });
 
     setAssetsCount(data.fileCount);
 
@@ -121,20 +118,16 @@ export const ChatTextareaAssetPicker = ({ isDisabled = false, onSelect }: Props)
 
   return (
     <Popover placement="top-start" onOpenChange={handleOpenChange} isOpen={isVisible}>
-      <PopoverTrigger>
-        <Button variant="light" size="sm" isIconOnly isDisabled={isDisabled} radius="full">
-          <Icon icon="paperclip" className="text-foreground-500" size={20} />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent>
-        <div className="h-96 overflow-auto w-80 -mx-2">
-          <div className="p-2 sticky top-0 z-20">
+      <PopoverTrigger>{children}</PopoverTrigger>
+      <PopoverContent className="p-1">
+        <div className="h-96 overflow-auto max-w-full w-[500px]">
+          <div className="p-2 sticky top-0 z-30">
             <Input placeholder="Search..." value={search} onChange={handleSearchChange} size="sm" />
           </div>
           {assets.length > 0 && !isLoading && (
             <div className="flex flex-col p-2">
               {assets.map((asset) => (
-                <ChatTextareaAssetPickerItem key={asset.id} asset={asset} onClick={() => handleAssetSelect(asset)} />
+                <AssetPickerItem key={asset.id} asset={asset} onClick={() => handleAssetSelect(asset)} />
               ))}
               {assetsCount > assets.length && (
                 <div ref={spinnerRef} className="flex justify-center p-2">

@@ -2,7 +2,7 @@ import { cn, Image } from '@heroui/react';
 import React from 'react';
 
 import { useFileContext } from '../../../../contexts/File';
-import { useReviewToolContext } from '../../../../contexts/ReviewTool';
+import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { useGetAssetFileIdComments } from '../../../../services/hooks';
 import { AssetCommentDto, FileDto } from '../../../../services/types';
 import { getIsMediaHtmlElement } from '../../../../utils/getIsMediaHtmlElement';
@@ -14,8 +14,9 @@ interface Props {
 }
 
 export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
-  const { activeTool, fileRef } = useReviewToolContext();
-  const { activeComment, replyingComment, setActiveComment } = useFileContext();
+  const { activeTool, fileRef, compareFileRef } = useReviewToolContext();
+  const { activeComment, replyingComment, compareFile, setActiveComment, setActiveFileId } = useFileContext();
+  const { resetCanvas } = useReviewToolCanvasShapesContext();
   const { data: commentsData } = useGetAssetFileIdComments(videoFile.id, { refetchOnMount: false });
 
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -37,11 +38,24 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
   }, [commentsData?.comments]);
 
   React.useEffect(() => {
+    if (getIsMediaHtmlElement(fileRef.current)) {
+      fileRef.current.currentTime = 0;
+    }
+  }, [compareFile]);
+
+  React.useEffect(() => {
     if (getIsMediaHtmlElement(fileRef.current) && activeComment) {
       fileRef.current.pause();
 
       if (activeComment?.timestamp?.[0]) {
         fileRef.current.currentTime = activeComment?.timestamp[0];
+      }
+    }
+    if (getIsMediaHtmlElement(compareFileRef.current) && activeComment) {
+      compareFileRef.current.pause();
+
+      if (activeComment?.timestamp?.[0]) {
+        compareFileRef.current.currentTime = activeComment?.timestamp[0];
       }
     }
   }, [activeComment, fileRef]);
@@ -54,10 +68,17 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
         fileRef.current.currentTime = replyingComment?.timestamp[0];
       }
     }
-  }, [replyingComment, fileRef]);
+    if (getIsMediaHtmlElement(compareFileRef.current) && replyingComment) {
+      compareFileRef.current.pause();
+
+      if (replyingComment?.timestamp?.[0]) {
+        compareFileRef.current.currentTime = replyingComment?.timestamp[0];
+      }
+    }
+  }, [replyingComment]);
 
   const updateSliderPosition = (e: MouseEvent) => {
-    if (!sliderRef.current || !getIsMediaHtmlElement(fileRef.current)) {
+    if (!sliderRef.current) {
       return;
     }
 
@@ -65,9 +86,17 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
     const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
     const percentage = x / rect.width;
     const newTime = percentage * duration;
-    setDragTime(newTime);
-    setCurrentTime(newTime);
-    fileRef.current.currentTime = newTime;
+
+    if (getIsMediaHtmlElement(fileRef.current)) {
+      setDragTime(newTime);
+      setCurrentTime(newTime);
+      fileRef.current.currentTime = newTime;
+    }
+    if (getIsMediaHtmlElement(compareFileRef.current)) {
+      setDragTime(newTime);
+      setCurrentTime(newTime);
+      compareFileRef.current.currentTime = newTime;
+    }
   };
 
   React.useEffect(() => {
@@ -83,6 +112,12 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
         if (getIsMediaHtmlElement(fileRef.current)) {
           if (wasPlaying) {
             fileRef.current.play();
+            setIsPlaying(true);
+          }
+        }
+        if (getIsMediaHtmlElement(compareFileRef.current)) {
+          if (wasPlaying) {
+            compareFileRef.current.play();
             setIsPlaying(true);
           }
         }
@@ -121,14 +156,22 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
   };
 
   const handleVideoClick = () => {
-    if (!getIsMediaHtmlElement(fileRef.current)) {
-      return;
+    if (getIsMediaHtmlElement(fileRef.current)) {
+      if (fileRef.current.paused) {
+        fileRef.current.play();
+        resetCanvas();
+      } else {
+        fileRef.current.pause();
+      }
     }
 
-    if (fileRef.current.paused) {
-      fileRef.current.play();
-    } else {
-      fileRef.current.pause();
+    if (getIsMediaHtmlElement(compareFileRef.current)) {
+      if (compareFileRef.current.paused) {
+        compareFileRef.current.play();
+        resetCanvas();
+      } else {
+        compareFileRef.current.pause();
+      }
     }
   };
 
@@ -146,6 +189,11 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
       fileRef.current.pause();
       setIsPlaying(false);
     }
+    if (getIsMediaHtmlElement(compareFileRef.current)) {
+      setWasPlaying(!compareFileRef.current.paused);
+      compareFileRef.current.pause();
+      setIsPlaying(false);
+    }
     setActiveComment(null);
     setIsDragging(true);
     updateSliderPosition(e.nativeEvent);
@@ -153,13 +201,14 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
 
   const handleCommentAnchorClick = (comment: AssetCommentDto) => {
     setActiveComment(comment);
+    setActiveFileId(videoFile.id);
   };
 
   const toggleFullscreen = () => {
-    if (!fileRef.current) return;
+    const ref = videoFile.id === compareFile?.id ? compareFileRef : fileRef;
 
     if (!document.fullscreenElement) {
-      fileRef.current.requestFullscreen();
+      ref.current?.requestFullscreen();
     } else {
       document.exitFullscreen();
     }
@@ -197,7 +246,7 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
             src={videoFile.metadata.thumbnailUrl}
             removeWrapper
             radius="none"
-            className="absolute inset-0 h-full w-full blur-xl grayscale select-none"
+            className="absolute inset-0 h-full w-full blur-md invert-[20%] object-cover select-none"
           />
         </div>
       )}
@@ -209,7 +258,7 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video
           // @ts-ignore
-          ref={fileRef}
+          ref={compareFile?.id === videoFile.id ? compareFileRef : fileRef}
           controls={false}
           className="relative max-h-full max-w-full h-auto z-10 cursor-pointer"
           onPlay={handlePlay}

@@ -8,7 +8,7 @@ interface Props {
   height: number;
 }
 
-export const ChatTextareaAssetPreview = ({ asset, width, height }: Props) => {
+export const AssetPreview = ({ asset, width, height }: Props) => {
   const imageUrl = asset.fileType.startsWith('image') ? asset.url : asset.metadata.thumbnailUrl;
 
   if (!imageUrl) {
