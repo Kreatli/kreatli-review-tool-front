@@ -31,6 +31,7 @@ export const ReviewTool = () => {
                 isCompareMode={!!compareFile}
                 onClick={() => setActiveFileId(file.id)}
                 onClose={() => {
+                  setActiveComment(null);
                   setActiveFileId(compareFile?.id ?? '');
                   router.push(`/project/${project.id}/assets/${compareFile?.id}`);
                 }}
@@ -43,6 +44,7 @@ export const ReviewTool = () => {
                   isActive={activeFile?.id === compareFile.id && !!compareFile}
                   onClick={() => setActiveFileId(compareFile.id)}
                   onClose={() => {
+                    setActiveComment(null);
                     setActiveFileId(file?.id ?? '');
                     router.push(`/project/${project.id}/assets/${file?.id}`);
                   }}

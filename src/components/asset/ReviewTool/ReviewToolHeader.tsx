@@ -10,7 +10,6 @@ import { Icon } from '../../various/Icon';
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
 import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
 import { AssetPicker } from '../AssetPicker';
-import { useFileContext } from '../../../contexts/File';
 import { useRouter } from 'next/router';
 
 interface Props {
@@ -52,7 +51,7 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
     <div
       className={cn('flex flex-1 items-center gap-4 transition-colors bg-foreground-50 p-3 overflow-hidden', {
         'bg-primary-100': isActive,
-        'cursor-pointer': !!onClick,
+        'cursor-pointer': isCompareMode,
       })}
       onClick={onClick}
     >
