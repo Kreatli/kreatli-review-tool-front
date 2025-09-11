@@ -5,7 +5,7 @@ import { ReviewToolPreview } from './ReviewToolPreview';
 
 export const FeaturesSection = () => {
   return (
-    <section id="features-section" className="relative backdrop-blur-lg scroll-mt-12 px-6 lg:pb-32 py-16">
+    <section className="relative backdrop-blur-lg scroll-mt-12 px-6 lg:pb-32 py-16">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-16">
         <div className="flex flex-col gap-4 max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-5xl font-bold font-sans">Simplify your workflows with Kreatli</h2>

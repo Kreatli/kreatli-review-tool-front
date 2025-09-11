@@ -64,6 +64,7 @@ import MailIcon from '../../../assets/icons/mail.svg';
 import MedalIcon from '../../../assets/icons/medal.svg';
 import MinusIcon from '../../../assets/icons/minus.svg';
 import MusicIcon from '../../../assets/icons/music.svg';
+import MonitorPlayIcon from '../../../assets/icons/monitor-play.svg';
 import MoonIcon from '../../../assets/icons/moon.svg';
 import PaintIcon from '../../../assets/icons/paint.svg';
 import PaperclipIcon from '../../../assets/icons/paperclip.svg';
@@ -163,6 +164,7 @@ const ICONS = {
   medal: MedalIcon,
   minus: MinusIcon,
   music: MusicIcon,
+  monitorPlay: MonitorPlayIcon,
   moon: MoonIcon,
   paint: PaintIcon,
   paperclip: PaperclipIcon,

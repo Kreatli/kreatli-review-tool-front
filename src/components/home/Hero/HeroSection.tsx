@@ -1,17 +1,14 @@
-import { Button, Card, CardBody, Chip } from '@heroui/react';
+import { Button, Card, CardBody, Chip, Modal, ModalContent } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../../various/Icon';
 import styles from './HeroSection.module.css';
-import { MouseEventHandler } from 'react';
+import { useState } from 'react';
 
 export const HeroSection = () => {
-  const handleSeeHowItWorks = (event: React.MouseEvent) => {
-    event.preventDefault();
+  const [isArcadeModalOpen, setIsArcadeModalOpen] = useState(false);
 
-    const featuresSection = document.getElementById('features-section');
-    if (featuresSection) {
-      featuresSection.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleSeeHowItWorks = () => {
+    setIsArcadeModalOpen(true);
   };
 
   return (
@@ -57,9 +54,9 @@ export const HeroSection = () => {
             Start your journey
             <Icon icon="arrowRight" />
           </Button>
-          <Button as="a" href="#features-section" variant="light" size="lg" onClick={handleSeeHowItWorks}>
-            <Icon icon="slides" />
-            See how it works
+          <Button variant="light" size="lg" onClick={handleSeeHowItWorks}>
+            <Icon icon="monitorPlay" />
+            Discover demo
           </Button>
         </div>
       </div>
@@ -105,6 +102,35 @@ export const HeroSection = () => {
           className={`absolute bottom-28 right-1 left-10 w-4 h-4 bg-indigo-400/50 rounded-full ${styles.animateFloatMedium}`}
         />
       </div>
+      <Modal
+        isOpen={isArcadeModalOpen}
+        size="4xl"
+        placement="center"
+        onClose={() => {
+          setIsArcadeModalOpen(false);
+        }}
+      >
+        <ModalContent>
+          <div className="relative h-0 w-full -my-1 pb-[calc(51%)]">
+            <iframe
+              src="https://demo.arcade.software/VjKossEqxy9whTH4jioe?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+              title="All-in-One Collaboration Platform"
+              frameBorder="0"
+              loading="lazy"
+              allowFullScreen
+              allow="clipboard-write"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                colorScheme: 'light',
+              }}
+            />
+          </div>
+        </ModalContent>
+      </Modal>
     </section>
   );
 };
