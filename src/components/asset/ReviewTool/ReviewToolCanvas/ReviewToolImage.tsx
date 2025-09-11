@@ -33,7 +33,7 @@ export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
         src={imageUrl}
         // @ts-ignore
         ref={compareFile?.id === imageFile.id ? compareFileRef : fileRef}
-        radius="sm"
+        radius="none"
         shadow="lg"
         {...(isSvg && {
           width: '100%',

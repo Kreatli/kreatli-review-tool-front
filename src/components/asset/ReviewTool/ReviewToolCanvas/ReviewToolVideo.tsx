@@ -15,7 +15,8 @@ interface Props {
 
 export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
   const { activeTool, fileRef, compareFileRef } = useReviewToolContext();
-  const { activeComment, replyingComment, compareFile, setActiveComment, setActiveFileId } = useFileContext();
+  const { activeComment, replyingComment, activeFile, compareFile, setActiveComment, setActiveFileId } =
+    useFileContext();
   const { resetCanvas } = useReviewToolCanvasShapesContext();
   const { data: commentsData } = useGetAssetFileIdComments(videoFile.id, { refetchOnMount: false });
 
@@ -251,7 +252,7 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
         </div>
       )}
       <div
-        className="relative w-auto h-auto max-w-full max-h-full overflow-hidden rounded-lg"
+        className="relative w-auto h-auto max-w-full max-h-full overflow-hidden"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -260,6 +261,7 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
           // @ts-ignore
           ref={compareFile?.id === videoFile.id ? compareFileRef : fileRef}
           controls={false}
+          muted={videoFile.id !== activeFile?.id}
           className="relative max-h-full max-w-full h-auto z-10 cursor-pointer"
           onPlay={handlePlay}
           onPause={handlePause}
