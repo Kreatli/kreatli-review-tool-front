@@ -1,4 +1,4 @@
-import { addToast, Alert, Button, Tab, Tabs } from '@heroui/react';
+import { addToast, Button, Tab, Tabs } from '@heroui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -11,6 +11,7 @@ import { EmptyState } from '../../various/EmptyState';
 import { Header } from '../../layout/Header';
 import { ProjectHeader } from './ProjectHeader';
 import { ProjectLoader } from './ProjectLoader';
+import { NotActiveProjectAlert } from './NotActiveProjectAlert';
 
 interface Props {
   hideHeader?: boolean;
@@ -67,14 +68,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
                 <ProjectHeader project={project} />
                 {project.status !== 'active' && (
                   <div>
-                    <Alert
-                      color="primary"
-                      title={
-                        project.status === 'archived'
-                          ? 'This project is archived, you can restore it to make it active again.'
-                          : 'This project is completed, you can reactivate it to make it active again.'
-                      }
-                    />
+                    <NotActiveProjectAlert />
                   </div>
                 )}
                 <div className="flex gap-6">

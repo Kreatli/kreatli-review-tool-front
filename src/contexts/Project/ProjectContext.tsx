@@ -32,6 +32,7 @@ interface Context {
     color?: MenuItemProps['color'];
     onClick: () => void;
   }[];
+  restoreProject: (project: ProjectDto) => void;
   search: string;
   setSearch: (search: string) => void;
   filters: ProjectAssetsFilters;
@@ -81,6 +82,11 @@ export const ProjectContextProvider = ({
   const isProjectOwner = selectedProject?.createdBy?.id === user?.id;
 
   const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const restoreProject = (project: ProjectDto) => {
+    setSelectedProjectId?.(project.id);
+    setIsRestoreModalOpen(true);
+  };
 
   const getProjectActions = (project: ProjectDto) => {
     if (project.createdBy?.id !== user?.id) {
@@ -179,8 +185,7 @@ export const ProjectContextProvider = ({
               label: 'Restore project',
               icon: 'update' as const,
               onClick: () => {
-                setSelectedProjectId?.(project.id);
-                setIsRestoreModalOpen(true);
+                restoreProject(project);
               },
             },
             {
@@ -200,8 +205,7 @@ export const ProjectContextProvider = ({
               label: 'Reactivate project',
               icon: 'update' as const,
               onClick: () => {
-                setSelectedProjectId?.(project.id);
-                setIsRestoreModalOpen(true);
+                restoreProject(project);
               },
             },
             {
@@ -222,6 +226,7 @@ export const ProjectContextProvider = ({
     <ProjectContext.Provider
       value={{
         getProjectActions,
+        restoreProject,
         project: selectedProject as ProjectDto,
         isProjectOwner,
         search,

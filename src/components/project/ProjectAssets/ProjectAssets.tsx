@@ -115,6 +115,7 @@ export const ProjectAssets = () => {
       >
         <Button
           className="text-content1 bg-foreground mt-4"
+          isDisabled={project.status !== 'active'}
           onClick={() => {
             inputRef.current?.click();
           }}

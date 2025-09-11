@@ -28,6 +28,7 @@ import { ContactOwnerModal } from '../../../account/UpgradeModal/ContactOwnerMod
 import { nanoid } from 'nanoid';
 import { useProjectUploads } from '../../../../hooks/useProjectUploads';
 import { useMultipartUpload } from '../../../../hooks/useMultipartUpload';
+import { NotActiveProjectAlert } from '../../Project/NotActiveProjectAlert';
 
 interface Props {
   folderId: string;
@@ -232,14 +233,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
         </div>
         {project.status !== 'active' && (
           <div>
-            <Alert
-              color="primary"
-              title={
-                project.status === 'archived'
-                  ? 'This project is archived, you can restore it to make it active again.'
-                  : 'This project is completed, you can reactivate it to make it active again.'
-              }
-            />
+            <NotActiveProjectAlert />
           </div>
         )}
         {folder && <ProjectFolderAssetsList project={project} folder={folder} />}
