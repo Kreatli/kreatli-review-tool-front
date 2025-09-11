@@ -104,7 +104,7 @@ export const HeroSection = () => {
       </div>
       <Modal
         isOpen={isArcadeModalOpen}
-        size="4xl"
+        size="5xl"
         placement="center"
         onClose={() => {
           setIsArcadeModalOpen(false);
