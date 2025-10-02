@@ -1,32 +1,67 @@
-import { Button, Card, CardBody, Chip, Modal, ModalContent } from '@heroui/react';
+import { Button } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../../various/Icon';
 import styles from './HeroSection.module.css';
-import { useState } from 'react';
+import { LogoSlideshow } from './LogoSlideshow';
 
 export const HeroSection = () => {
-  const [isArcadeModalOpen, setIsArcadeModalOpen] = useState(false);
-
-  const handleSeeHowItWorks = () => {
-    setIsArcadeModalOpen(true);
-  };
-
   return (
-    <section className="relative h-[calc(100vh-4rem)] min-h-fit flex items-center justify-center overflow-hidden">
-      <div className="max-w-3xl mx-auto text-center flex flex-col items-center gap-16 px-6 pt-4 pb-20 relative z-10">
-        <div className="flex flex-col items-center gap-4">
-          <Chip size="lg" variant="faded">
-            All-in-One Collaboration Platform
-          </Chip>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">
-            Stop Drowning in Emails, Slack & Dropbox
-          </h1>
-          <p className="text-lg sm:text-xl text-foreground-500 font-sans">
-            Kreatli helps Creative Teams streamline and simplify post-production workflows. No more juggling multiple
-            platforms. All projects, chats, and files in one place.
+    <section className="relative w-full flex items-center justify-center overflow-hidden">
+      <div className="text-center w-full flex flex-col gap-16 px-6 pt-10 pb-20 relative z-10">
+        <div className="max-w-2xl mx-auto flex flex-col items-center gap-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">One Workspace to Rule Them All</h1>
+          <p className="text-lg sm:text-xl text-foreground-500 font-sans leading-8 sm:leading-8">
+            Stop juggling{' '}
+            <span className="sm:hidden">
+              <br />
+            </span>
+            <LogoSlideshow logos={['/logos/google-drive.svg', '/logos/dropbox.svg', '/logos/we-transfer.svg']} />{' '}
+            <LogoSlideshow
+              logos={['/logos/asana.svg', '/logos/monday.svg', '/logos/click-up.svg']}
+              direction="top"
+              delay={1}
+            />{' '}
+            <LogoSlideshow logos={['/logos/autodesk.svg', '/logos/ziflow.svg', '/logos/frame-io.svg']} delay={2} />{' '}
+            <br /> Only pay for the <span className="line-through">tools</span> tool you actually use. Pay for Kreatli.
           </p>
+          <div className="flex flex-col mt-4 md:flex-row gap-6">
+            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              Start for Free
+              <Icon icon="arrowRight" size={20} />
+            </Button>
+            <Button
+              as="a"
+              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+              target="_blank"
+              size="lg"
+              variant="light"
+            >
+              <Icon icon="calendar" />
+              Book a Demo
+            </Button>
+          </div>
         </div>
-        <div className="flex flex-wrap justify-between gap-4 items-center w-full md:w-auto">
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="relative h-0 w-full pb-[calc(51%)]">
+            <iframe
+              src="https://demo.arcade.software/VjKossEqxy9whTH4jioe?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+              title="All-in-One Collaboration Platform"
+              frameBorder="0"
+              loading="lazy"
+              allowFullScreen
+              allow="clipboard-write"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                colorScheme: 'light',
+              }}
+            />
+          </div>
+        </div>
+        {/* <div className="flex flex-wrap justify-between gap-4 items-center w-full md:w-auto">
           <Card isHoverable isPressable className="flex-1 md:min-w-36 dark:border border-foreground-300">
             <CardBody className="flex flex-col gap-2 text-foreground-500 text-xs sm:text-medium">
               <Icon icon="folder" className="text-foreground-600" />
@@ -48,8 +83,8 @@ export const HeroSection = () => {
               Updates
             </CardBody>
           </Card>
-        </div>
-        <div className="flex flex-col md:flex-row gap-6">
+        </div> */}
+        {/* <div className="flex flex-col md:flex-row gap-6">
           <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
             Start your journey
             <Icon icon="arrowRight" />
@@ -58,7 +93,7 @@ export const HeroSection = () => {
             <Icon icon="monitorPlay" />
             Discover demo
           </Button>
-        </div>
+        </div> */}
       </div>
 
       <div className="fixed inset-y-8 inset-x-0 pointer-events-none">
@@ -102,35 +137,6 @@ export const HeroSection = () => {
           className={`absolute bottom-28 right-1 left-10 w-4 h-4 bg-indigo-400/50 rounded-full ${styles.animateFloatMedium}`}
         />
       </div>
-      <Modal
-        isOpen={isArcadeModalOpen}
-        size="5xl"
-        placement="center"
-        onClose={() => {
-          setIsArcadeModalOpen(false);
-        }}
-      >
-        <ModalContent>
-          <div className="relative h-0 w-full -my-1 pb-[calc(51%)]">
-            <iframe
-              src="https://demo.arcade.software/VjKossEqxy9whTH4jioe?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
-              title="All-in-One Collaboration Platform"
-              frameBorder="0"
-              loading="lazy"
-              allowFullScreen
-              allow="clipboard-write"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                colorScheme: 'light',
-              }}
-            />
-          </div>
-        </ModalContent>
-      </Modal>
     </section>
   );
 };

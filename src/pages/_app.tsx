@@ -1,16 +1,15 @@
 import '../styles/globals.scss';
 import 'react-image-crop/dist/ReactCrop.css';
 
-import { addToast, HeroUIProvider, ToastProvider } from '@heroui/react';
+import { HeroUIProvider, ToastProvider } from '@heroui/react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { Query, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 import { GoogleTagManager } from '@next/third-parties/google';
 import Head from 'next/head';
 import React from 'react';
 
 import { Layout } from '../components/layout/Layout';
-import { getErrorMessage } from '../utils/getErrorMessage';
 import { queryClient } from '../lib/queryClient';
 
 interface QueryErrorMeta {
