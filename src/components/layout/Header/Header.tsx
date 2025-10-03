@@ -60,32 +60,27 @@ export const Header = () => {
         <NavbarContent className="hidden lg:flex">
           <NavbarItem>
             <Link href="#product" color="foreground">
-              Product
+              Features
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link href="#software-cost-calculator" color="foreground">
-              Software Cost Calculator
+              Cost Calculator
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link href="#for-whom" color="foreground">
-              For whom?
+              Who We Help
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link href="#how-it-works" color="foreground">
-              How it Works?
+              How it Works
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link href="#pricing" color="foreground">
               Pricing
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#faq" color="foreground">
-              FAQ
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -131,32 +126,27 @@ export const Header = () => {
         <NavbarMenu className="pl-16">
           <NavbarMenuItem>
             <Link href="#product" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Product
+              Features
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link href="#software-cost-calculator" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Software Cost Calculator
+              Cost Calculator
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link href="#for-whom" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              For whom?
+              Who We Help
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link href="#how-it-works" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              How it Works?
+              How it Works
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link href="#pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Pricing
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link href="#faq" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              FAQ
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>

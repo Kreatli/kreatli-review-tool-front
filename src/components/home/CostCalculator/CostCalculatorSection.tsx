@@ -1,7 +1,8 @@
-import { Card, CardBody, cn, Slider } from '@heroui/react';
+import { Card, CardBody, cn, Slider, Tooltip } from '@heroui/react';
 import { useMemo, useState } from 'react';
 import { LogoCheckbox } from './LogoCheckbox';
 import { formatPrice } from '../../../utils/formatNumber';
+import { Icon } from '../../various/Icon';
 
 export const pricing = {
   'google-drive': [[101, 15]],
@@ -67,7 +68,6 @@ export const CostCalculatorSection = () => {
   const [activeTools, setActiveTools] = useState<Tool[]>(['google-drive', 'asana', 'frame-io']);
 
   const handleSelectionChange = (tool: Tool) => (isSelected: boolean) => {
-    console.log(tool, isSelected);
     if (isSelected) {
       setActiveTools([...activeTools, tool]);
 
@@ -103,7 +103,7 @@ export const CostCalculatorSection = () => {
         <div className="flex flex-col gap-4 w-full">
           <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">Software Cost Calculator</h2>
           <p className="text-lg text-foreground-500 text-center">
-            Calculate how much companies/teams could save vs. what they are paying now
+            Estimate monthly and annual software spend based on team size and tools
           </p>
         </div>
         <div className="grid md:grid-cols-2 w-full gap-4">
@@ -129,9 +129,9 @@ export const CostCalculatorSection = () => {
             </Card>
             <Card className="dark:border border-foreground-300 w-full">
               <CardBody className="p-4 sm:p-6 flex flex-col gap-4">
-                <h3 className="text-xl sm:text-2xl font-bold font-sans">Tools You're Using</h3>
+                <h3 className="text-xl sm:text-2xl font-bold font-sans">Tool Stack</h3>
                 <div className="flex flex-col gap-2">
-                  <h4 className="text-foreground-500">File storage/Sharing:</h4>
+                  <h4 className="text-foreground-500">File Storage/Sharing:</h4>
                   <div className="flex flex-wrap gap-2">
                     <LogoCheckbox
                       src="/logos/google-drive.svg"
@@ -189,7 +189,7 @@ export const CostCalculatorSection = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h4 className="text-foreground-500">Media review & approval:</h4>
+                  <h4 className="text-foreground-500">Media Review & Approval:</h4>
                   <div className="flex flex-wrap gap-2">
                     <LogoCheckbox
                       src="/logos/frame-io.svg"
@@ -251,7 +251,17 @@ export const CostCalculatorSection = () => {
             <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
               <Card className="dark:border border-foreground-300">
                 <CardBody className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3">
-                  <h3 className="text-lg sm:text-xl font-bold font-sans">Current Tools Cost</h3>
+                  <h3 className="text-lg sm:text-xl flex gap-1 items-center font-bold font-sans">
+                    Current Tool Stack
+                    <Tooltip
+                      className="max-w-xs"
+                      content="Estimates use list pricing; actual savings depend on contracts and discounts."
+                    >
+                      <span className="inline-block">
+                        <Icon icon="infoCircle" size="20" />
+                      </span>
+                    </Tooltip>
+                  </h3>
                   <div className="flex md:flex-row lg:flex-col gap-3">
                     <div className="flex flex-col">
                       <div className="text-foreground-500 text-sm sm:text-md">Cost per month:</div>
@@ -270,17 +280,17 @@ export const CostCalculatorSection = () => {
               </Card>
               <Card className="dark:border border-foreground-300">
                 <CardBody className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3">
-                  <h3 className="text-lg sm:text-xl font-bold font-sans">Kreatli Cost</h3>
+                  <h3 className="text-lg sm:text-xl font-bold font-sans">Kreatli</h3>
                   <div className="flex md:flex-row lg:flex-col gap-3">
                     <div className="flex flex-col">
                       <div className="text-foreground-500 text-sm sm:text-md">Cost per month:</div>
-                      <div className="text-2xl sm:text-3xl font-bold font-sans">
+                      <div className="text-2xl sm:text-3xl font-bold font-sans text-success-600">
                         {formatPrice(kreatliCost, { minimumFractionDigits: 0 })}
                       </div>
                     </div>
                     <div className="flex flex-col">
                       <div className="text-foreground-500 text-sm sm:text-md">Cost per year:</div>
-                      <div className="text-2xl sm:text-3xl font-bold font-sans">
+                      <div className="text-2xl sm:text-3xl font-bold font-sans text-success-600">
                         {formatPrice(kreatliCost * 12, { minimumFractionDigits: 0 })}
                       </div>
                     </div>
