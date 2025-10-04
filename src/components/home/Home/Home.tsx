@@ -7,12 +7,14 @@ import { FooterSection } from '../Footer/FooterSection';
 import { HowItWorksSection } from '../HowItWorks';
 import { PricingSection } from '../PricingSection';
 import { SignUpModal } from '../../auth/SignUpForm/SignUpModal';
+import { CostCalculatorSection } from '../CostCalculator';
 
 export const Home = () => {
   return (
     <main className="w-full">
       <HeroSection />
       <FeaturesSection />
+      <CostCalculatorSection />
       <KreatliForSection />
       <HowItWorksSection />
       <PricingSection />

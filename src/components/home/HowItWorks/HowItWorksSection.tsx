@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const HowItWorksSection = () => {
   return (
-    <section className="backdrop-blur-lg lg:py-32 py-16 px-6">
+    <section id="how-it-works" className="backdrop-blur-lg lg:py-32 py-16 px-6">
       <div className="max-w-5xl mx-auto flex flex-col gap-16 items-center">
         <div className="flex flex-col gap-4 w-full">
           <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">How Does Kreatli Work?</h2>
@@ -17,10 +17,8 @@ export const HowItWorksSection = () => {
               1
             </div>
             <div className="flex flex-col gap-2 items-center">
-              <h3 className="text-lg font-semibold text-center">Set Up Projects</h3>
-              <p className="text-foreground-500 text-center">
-                Create your project workspace and invite team members and contractors to collaborate.
-              </p>
+              <h3 className="text-lg font-semibold text-center">Create a Project</h3>
+              <p className="text-foreground-500 text-center">Upload your files or connect Google Drive/Dropbox.</p>
             </div>
           </div>
           <div className="flex flex-col gap-6 items-center">
@@ -28,9 +26,9 @@ export const HowItWorksSection = () => {
               2
             </div>
             <div className="flex flex-col gap-2 items-center">
-              <h3 className="text-lg font-semibold text-center">Collaborate in Real Time </h3>
+              <h3 className="text-lg font-semibold text-center">Invite Collaborators</h3>
               <p className="text-foreground-500 text-center">
-                Chat with your team and track project progress with real-time updates and notifications.
+                Invite team members or send no-signup guest links to clients.
               </p>
             </div>
           </div>
@@ -39,7 +37,7 @@ export const HowItWorksSection = () => {
               3
             </div>
             <div className="flex flex-col gap-2 items-center">
-              <h3 className="text-lg font-semibold text-center">Organize Your Files</h3>
+              <h3 className="text-lg font-semibold text-center">Review & Assign</h3>
               <p className="text-foreground-500 text-center">
                 Upload and arrange all your files by project, status, or size for easy access.
               </p>
@@ -50,10 +48,8 @@ export const HowItWorksSection = () => {
               4
             </div>
             <div className="flex flex-col gap-2 items-center">
-              <h3 className="text-lg font-semibold text-center">Track Progress</h3>
-              <p className="text-foreground-500 text-center">
-                Monitor project timelines and milestones to ensure everything stays on track.
-              </p>
+              <h3 className="text-lg font-semibold text-center">Deliver</h3>
+              <p className="text-foreground-500 text-center">Track your deliverables and export approved media.</p>
             </div>
           </div>
         </div>

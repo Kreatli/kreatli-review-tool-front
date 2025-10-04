@@ -5,36 +5,42 @@ import { ReviewToolPreview } from './ReviewToolPreview';
 
 export const FeaturesSection = () => {
   return (
-    <section className="relative backdrop-blur-lg scroll-mt-12 px-6 lg:pb-32 py-16">
+    <section id="product" className="relative backdrop-blur-lg scroll-mt-12 px-6 lg:pb-32 py-16">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-16">
-        <div className="flex flex-col gap-4 max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-5xl font-bold font-sans">Simplify your workflows with Kreatli</h2>
-          <p className="text-lg text-foreground-500">
-            Everything you need to manage on one platform. From intuitive file organization to real-time file reviews
-            and powerful storage. Stay on top of every project update, chat message, and file exchange.
-          </p>
+        <div className="flex flex-col gap-4 max-w-4xl mx-auto sm:text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold font-sans">
+            Kreatli offers functionality creative teams{' '}
+            <span className="relative after:absolute after:-left-1 after:bg-contain after:-right-4 after:h-4 after:-z-10 after:bottom-0 after:bg-no-repeat after:bg-[url(/highlight-line.svg)]">
+              actually
+            </span>{' '}
+            need.{' '}
+            <span className="hidden lg:inline">
+              <br />
+            </span>
+            No unnecessary features. All in one place.
+          </h2>
         </div>
         <div className="w-full flex flex-col gap-24 lg:gap-[max(20vh,100px)]">
           <Feature
-            icon="search"
-            title="Never Lose a File Again"
-            description="Say goodbye to clutter, endless folders or inboxes. Easily organize and categorize all your files by project, status, or size with Kreatli's intuitive file system."
-          >
-            <ProjectFeaturePreview />
-          </Feature>
-          <Feature
             icon="paint"
-            title="Real-Time File Review Tool"
-            description="Review and edit files in real-time. Comment on and revise documents, videos, and images. No downloading or emailing back and forth - everything stays in one place."
+            title="Frame-accurate Revisions"
+            description="Pin comments to exact frames and timestamps - no more “which clip?” or lost feedback."
           >
             <ReviewToolPreview />
           </Feature>
           <Feature
             icon="chat"
-            title="Crystal Clear Communication"
-            description="Never miss an important update or message again. All project milestones, conversations, and file revisions are stored in one shared workspace, ensuring everyone stays on the same page."
+            title="Conversations, Not Noise"
+            description="Project-tied chats, asset-linked comments and guest review links - keep feedback with the asset, not scattered across multiple platforms."
           >
             <ChatFeaturePreview />
+          </Feature>
+          <Feature
+            icon="upload"
+            title="Project Management Meets Reliable Media Storage"
+            description="Assign files, track deliverables and share heavy media securely - within the same workspace."
+          >
+            <ProjectFeaturePreview />
           </Feature>
         </div>
       </div>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const PricingSection = () => {
   return (
-    <section className="bg-foreground-50 lg:py-32 py-16 px-6">
+    <section id="pricing" className="bg-foreground-50 lg:py-32 py-16 px-6">
       <div className="flex flex-col gap-12 items-center">
         <div className="max-w-2xl mx-auto flex flex-col gap-4 w-full">
           <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">
@@ -26,7 +26,7 @@ export const PricingSection = () => {
                 </div>
                 <p className="text-foreground-500">Ideal for individuals or small teams just getting started.</p>
               </div>
-              <ul className="text-lg flex flex-col gap-2 text-foreground-500">
+              <ul className="text-lg flex flex-col gap-1 text-foreground-500">
                 <li className="flex items-start gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />1 Project
                 </li>
@@ -72,7 +72,7 @@ export const PricingSection = () => {
                   Perfect for small teams looking to manage multiple projects efficiently.
                 </p>
               </div>
-              <ul className="text-lg flex flex-col gap-2 text-foreground-500">
+              <ul className="text-lg flex flex-col gap-1 text-foreground-500">
                 <li className="flex items-start gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />
                   Up to 10 Projects
@@ -88,6 +88,22 @@ export const PricingSection = () => {
                       <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
                     </div>
                   </Tooltip>
+                </li>
+                <li className="flex items-start gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={24} />
+                  Google Drive/Dropbox Upload
+                </li>
+                <li className="flex items-start gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={24} />
+                  Guest links
+                </li>
+                <li className="flex items-start gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={24} />
+                  Shareable Projects
+                </li>
+                <li className="flex items-start gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={24} />
+                  Watermarked Media
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -111,7 +127,8 @@ export const PricingSection = () => {
                   Designed for growing teams needing more extensive collaboration tools.
                 </p>
               </div>
-              <ul className="text-lg flex flex-col gap-2 text-foreground-500">
+              <ul className="text-lg flex flex-col gap-1 text-foreground-500">
+                <li className="flex items-start gap-1">Everything in Pro, plus:</li>
                 <li className="flex items-start gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />
                   Unlimited Projects
