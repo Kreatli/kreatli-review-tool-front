@@ -46,7 +46,7 @@ export const Header = () => {
 
   return (
     <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="full">
-      <NavbarContent>
+      <NavbarContent className="lg:gap-12">
         {!isSignedIn && <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="lg:hidden" />}
         <NavbarItem>
           <NavbarBrand>
@@ -55,36 +55,36 @@ export const Header = () => {
             </NextLink>
           </NavbarBrand>
         </NavbarItem>
+        {!isSignedIn && (
+          <NavbarContent className="hidden lg:flex">
+            <NavbarItem>
+              <Link href="#product" color="foreground">
+                Features
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link href="#software-cost-calculator" color="foreground">
+                Cost Calculator
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link href="#for-whom" color="foreground">
+                Who We Help
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link href="#how-it-works" color="foreground">
+                How it Works
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link href="#pricing" color="foreground">
+                Pricing
+              </Link>
+            </NavbarItem>
+          </NavbarContent>
+        )}
       </NavbarContent>
-      {!isSignedIn && (
-        <NavbarContent className="hidden lg:flex">
-          <NavbarItem>
-            <Link href="#product" color="foreground">
-              Features
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#software-cost-calculator" color="foreground">
-              Cost Calculator
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#for-whom" color="foreground">
-              Who We Help
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#how-it-works" color="foreground">
-              How it Works
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link href="#pricing" color="foreground">
-              Pricing
-            </Link>
-          </NavbarItem>
-        </NavbarContent>
-      )}
       <NavbarContent justify="end">
         {isSignedIn && (
           <>

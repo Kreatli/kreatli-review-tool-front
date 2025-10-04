@@ -217,12 +217,10 @@ export const CostCalculatorSection = () => {
           <div className="flex flex-col gap-4">
             <Card className="dark:border border-foreground-300">
               <CardBody className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3">
-                <h3 className="text-xl font-bold font-sans text-center">
-                  How much you are not saving with current tools:
-                </h3>
+                <h3 className="text-xl font-bold font-sans text-center">How much you are overpaying</h3>
                 <div className="flex sm:flex-row md:flex-col lg:flex-row gap-x-6 gap-y-3 justify-center">
                   <div className="flex flex-col items-center">
-                    <div className="text-foreground-500 text-sm sm:text-md">Not saving per month:</div>
+                    <div className="text-foreground-500 text-sm sm:text-md">Per month:</div>
                     <div
                       className={cn('text-2xl sm:text-3xl font-bold font-sans', {
                         'text-danger': activeToolsCost - kreatliCost > 0,
@@ -234,7 +232,7 @@ export const CostCalculatorSection = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="text-foreground-500 text-sm sm:text-md">Not saving per year:</div>
+                    <div className="text-foreground-500 text-sm sm:text-md">Per year:</div>
                     <div
                       className={cn('text-2xl sm:text-3xl font-bold font-sans', {
                         'text-danger': activeToolsCost - kreatliCost > 0,
