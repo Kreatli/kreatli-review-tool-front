@@ -38,7 +38,7 @@ export const FeaturesSection = () => {
           <Feature
             icon="upload"
             title="Project Management Meets Reliable Media Storage"
-            description="Assign files, track deliverables and share heavy files securely - within the same workspace."
+            description="Assign files, track deliverables and share heavy media securely - within the same workspace."
           >
             <ProjectFeaturePreview />
           </Feature>

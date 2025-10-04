@@ -48,6 +48,10 @@ export const pricing = {
     [25, 20],
     [101, 25],
   ],
+  filestage: [
+    [5, 10],
+    [101, 15],
+  ],
 };
 
 type Tool =
@@ -61,7 +65,8 @@ type Tool =
   | 'trello'
   | 'dropbox'
   | 'autodesk'
-  | 'ziflow';
+  | 'ziflow'
+  | 'filestage';
 
 export const CostCalculatorSection = () => {
   const [usersCount, setUsersCount] = useState(5);
@@ -208,6 +213,12 @@ export const CostCalculatorSection = () => {
                       label="Ziflow"
                       isSelected={activeTools.includes('ziflow')}
                       onSelectionChange={handleSelectionChange('ziflow')}
+                    />
+                    <LogoCheckbox
+                      src="/logos/filestage.png"
+                      label="Filestage"
+                      isSelected={activeTools.includes('filestage')}
+                      onSelectionChange={handleSelectionChange('filestage')}
                     />
                   </div>
                 </div>
