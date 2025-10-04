@@ -49,8 +49,8 @@ export const pricing = {
     [101, 25],
   ],
   filestage: [
-    [5, 10],
-    [101, 15],
+    [15, 110],
+    [101, 295],
   ],
 };
 
@@ -85,6 +85,10 @@ export const CostCalculatorSection = () => {
   const activeToolsCost = useMemo(() => {
     return activeTools.reduce((acc, tool) => {
       const price = pricing[tool].find(([users]) => users > usersCount)?.[1];
+
+      if (price && tool === 'filestage') {
+        return acc + price;
+      }
 
       if (price) {
         return acc + price * usersCount;
