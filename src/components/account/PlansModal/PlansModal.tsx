@@ -27,6 +27,10 @@ const PLANS = [
     name: 'Pro',
     description: 'Perfect for small teams looking to manage multiple projects efficiently.',
     features: [
+      { label: 'Google Drive/Dropbox Upload' },
+      { label: 'Guest links' },
+      { label: 'Shareable Projects' },
+      { label: 'Watermarked Media' },
       { label: 'Up to 10 projects' },
       { label: 'Up to 5 members' },
       { label: '1TB Storage', tooltip: '$5 per month per additional 100GB' },
@@ -38,6 +42,7 @@ const PLANS = [
     name: 'Advanced',
     description: 'Designed for growing teams needing more extensive collaboration tools.',
     features: [
+      { label: 'Everything in Pro, plus:', hideIcon: true },
       { label: 'Unlimited projects' },
       { label: 'Unlimited members' },
       { label: '2TB Storage', tooltip: '$3 per month per additional 100GB' },
@@ -84,7 +89,12 @@ export const PlansModal = ({ user, isOpen, onClose }: Props) => {
   const plans = user.subscription.plan === 'free' ? PLANS : PLANS.slice(1);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="2xl" scrollBehavior="inside">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      size={user.subscription.plan === 'free' ? '4xl' : '2xl'}
+      scrollBehavior="inside"
+    >
       <ModalContent>
         <ModalHeader>Select a plan</ModalHeader>
         <ModalBody className="py-6">

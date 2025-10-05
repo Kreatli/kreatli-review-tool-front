@@ -8,7 +8,7 @@ interface Props {
   isLoading: boolean;
   isSelected: boolean;
   isCurrent: boolean;
-  features: { label: string; tooltip?: string }[];
+  features: { label: string; tooltip?: string; hideIcon?: boolean }[];
   onClick: () => void;
 }
 
@@ -30,13 +30,13 @@ export const Plan = ({ name, price, description, features, isCurrent, isSelected
             )}
           </div>
         </div>
-        <div className="flex-1 text-sm text-foreground-500 pb-2">{description}</div>
-        <div>
+        <div className="text-sm text-foreground-500 pb-2">{description}</div>
+        <div className="flex-1">
           <ul className="flex flex-col gap-0.5">
             {features.map((feature, idx) => (
               <li key={idx}>
-                <div className="text-md items-center flex gap-1">
-                  <Icon icon="check" size={16} />
+                <div className="text-sm items-center flex gap-1">
+                  {!feature.hideIcon && <Icon icon="check" size={16} />}
                   {feature.label}
                   {feature.tooltip && (
                     <Tooltip content={feature.tooltip} className="max-w-sm">
