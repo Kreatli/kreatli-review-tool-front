@@ -12,7 +12,7 @@ const PLANS = [
     name: 'Free',
     description: 'Ideal for individuals or small teams just getting started.',
     features: [
-      { label: '1 project' },
+      { label: '2 projects' },
       { label: '2 members' },
       {
         label: '5GB Total Upload',

@@ -28,7 +28,7 @@ export const PricingSection = () => {
               </div>
               <ul className="text-lg flex flex-col gap-1 text-foreground-500">
                 <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />1 Project
+                  <Icon icon="check" className="text-foreground-500" size={24} />2 Projects
                 </li>
                 <li className="flex items-start gap-1">
                   <Icon icon="check" className="text-foreground-500" size={24} />2 members

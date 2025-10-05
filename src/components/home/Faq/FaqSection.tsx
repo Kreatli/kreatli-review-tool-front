@@ -19,7 +19,7 @@ const faq = [
   {
     question: 'Is there a limit to how many projects I can manage with Kreatli?',
     answer:
-      'Yes, there are limits to how many projects you can manage with Kreatli, depending on the pricing plan you choose:\n\n- Free Plan: You can manage 1 project with up to 2 users.\n- Pro Plan: This plan allows you to manage up to 10 projects and supports up to 5 users.\n- Advanced Plan: With this plan, you have unlimited projects and users.\n\nFor teams or organizations with specific needs, a Custom Plan is available, which allows for tailored project management capabilities.',
+      'Yes, there are limits to how many projects you can manage with Kreatli, depending on the pricing plan you choose:\n\n- Free Plan: You can manage 2 projects with up to 2 users.\n- Pro Plan: This plan allows you to manage up to 10 projects and supports up to 5 users.\n- Advanced Plan: With this plan, you have unlimited projects and users.\n\nFor teams or organizations with specific needs, a Custom Plan is available, which allows for tailored project management capabilities.',
   },
   {
     question: 'Can multiple team members work on the same project in Kreatli?',
