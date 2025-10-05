@@ -48,14 +48,14 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
     if (getIsMediaHtmlElement(fileRef.current) && activeComment) {
       fileRef.current.pause();
 
-      if (activeComment?.timestamp?.[0]) {
+      if (typeof activeComment?.timestamp?.[0] === 'number') {
         fileRef.current.currentTime = activeComment?.timestamp[0];
       }
     }
     if (getIsMediaHtmlElement(compareFileRef.current) && activeComment) {
       compareFileRef.current.pause();
 
-      if (activeComment?.timestamp?.[0]) {
+      if (typeof activeComment?.timestamp?.[0] === 'number') {
         compareFileRef.current.currentTime = activeComment?.timestamp[0];
       }
     }
@@ -65,14 +65,14 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
     if (getIsMediaHtmlElement(fileRef.current) && replyingComment) {
       fileRef.current.pause();
 
-      if (replyingComment?.timestamp?.[0]) {
+      if (typeof replyingComment?.timestamp?.[0] === 'number') {
         fileRef.current.currentTime = replyingComment?.timestamp[0];
       }
     }
     if (getIsMediaHtmlElement(compareFileRef.current) && replyingComment) {
       compareFileRef.current.pause();
 
-      if (replyingComment?.timestamp?.[0]) {
+      if (typeof replyingComment?.timestamp?.[0] === 'number') {
         compareFileRef.current.currentTime = replyingComment?.timestamp[0];
       }
     }
