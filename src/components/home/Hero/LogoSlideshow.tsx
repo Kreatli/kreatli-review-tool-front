@@ -1,6 +1,6 @@
 'use client';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Props {
   logos: string[];
@@ -11,18 +11,54 @@ interface Props {
 export const LogoSlideshow = ({ logos, delay = 0, direction = 'bottom' }: Props) => {
   const [activeIndex, setActiveIndex] = useState(logos.length - 1);
 
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const pauseSlideshow = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = null;
+  };
+
+  const resumeSlideshow = () => {
+    if (intervalRef.current) {
+      return;
+    }
+
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % logos.length);
+    }, 3000);
+  };
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       setActiveIndex(0);
     }, 0);
 
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % logos.length);
     }, 3000);
+
     return () => {
       clearTimeout(timeout);
-      clearInterval(interval);
+
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
     };
+  }, []);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        pauseSlideshow();
+      } else {
+        resumeSlideshow();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, []);
 
   return (
