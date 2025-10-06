@@ -12,11 +12,6 @@ import React from 'react';
 import { Layout } from '../components/layout/Layout';
 import { queryClient } from '../lib/queryClient';
 
-interface QueryErrorMeta {
-  showErrorNotification?: boolean;
-  errorMessage?: string;
-}
-
 const App = ({ Component, pageProps }: AppProps) => {
   // @ts-ignore
   const getLayout = Component.getLayout || ((page) => page);

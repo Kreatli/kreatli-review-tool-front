@@ -11,6 +11,7 @@ import { usePostAuthSignUp, usePostAuthSsoGoogle } from '../../../services/hooks
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Icon } from '../../various/Icon';
 import { SignUpThankYouMessage } from './SignUpThankYouMessage';
+import { sendGTMEvent } from '@next/third-parties/google';
 
 const DEFAULT_VALUES = {
   name: '',
@@ -59,6 +60,7 @@ export const SignUpForm = ({ onSuccess }: Props) => {
             onSuccess?.();
 
             router.push('/');
+            sendGTMEvent({ event: 'sign_up' });
           },
           onError: (error) => {
             addToast({
