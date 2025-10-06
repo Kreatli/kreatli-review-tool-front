@@ -42,6 +42,9 @@ export const SignUpForm = ({ onSuccess }: Props) => {
     mutate(
       { requestBody: data },
       {
+        onSuccess: () => {
+          sendGTMEvent({ event: 'sign_up' });
+        },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         },
