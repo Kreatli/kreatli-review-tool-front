@@ -11,13 +11,14 @@ import React from 'react';
 
 import { Layout } from '../components/layout/Layout';
 import { queryClient } from '../lib/queryClient';
+import { StoryblokProvider } from '../components/layout/Storyblok/StoryblokProvider';
 
 const App = ({ Component, pageProps }: AppProps) => {
   // @ts-ignore
   const getLayout = Component.getLayout || ((page) => page);
 
   return (
-    <>
+    <StoryblokProvider>
       <Head>
         <title>Kreatli - Ultimate Workspace for Creators & Content Teams</title>
         <meta
@@ -45,7 +46,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         </HeroUIProvider>
       </QueryClientProvider>
       {process.env.GTM_ID && <GoogleTagManager gtmId={process.env.GTM_ID} />}
-    </>
+    </StoryblokProvider>
   );
 };
 

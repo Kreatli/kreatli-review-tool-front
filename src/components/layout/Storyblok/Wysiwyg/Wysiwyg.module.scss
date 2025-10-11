@@ -1,0 +1,106 @@
+.wysiwyg {
+  hr {
+    @apply my-6 mx-0 border-foreground-300;
+  }
+
+  h1,
+  h2 {
+    @apply text-3xl font-sans font-bold mb-2 mt-8;
+  }
+
+  h3 {
+    @apply text-2xl font-sans font-bold mb-2 mt-6;
+  }
+
+  h4 {
+    @apply text-xl font-sans font-bold mb-1 mt-6;
+  }
+
+  h5 {
+    @apply text-lg font-sans font-bold mb-1 mt-4;
+  }
+
+  p {
+    @apply text-lg mb-4;
+  }
+
+  a {
+    @apply text-primary underline underline-offset-4;
+  }
+
+  img {
+    @apply max-h-[450px] mx-auto rounded-medium shadow-medium outline outline-1 outline-offset-2 outline-foreground-300;
+  }
+
+  ol,
+  ul {
+    margin-left: 20px;
+
+    li p {
+      @apply mb-2;
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  .tableWrapper {
+    @apply shadow-medium p-3 w-full rounded-medium mt-4;
+  }
+
+  table {
+    @apply w-full;
+
+    p {
+      @apply m-0 text-medium;
+    }
+
+    tbody tr th {
+      @apply bg-foreground-100 px-4 py-2;
+
+      p {
+        @apply text-sm font-semibold text-start uppercase text-foreground-500 font-sans;
+      }
+    }
+
+    tbody tr:first-child th {
+      &:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+    }
+
+    tbody tr:first-child th:only-of-type {
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 6px;
+    }
+
+    tbody tr:not(:first-child) th {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    tbody tr:last-child th {
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    tbody tr td {
+      @apply px-4 py-2;
+    }
+  }
+
+  .alert p {
+    @apply m-0 text-small;
+  }
+}

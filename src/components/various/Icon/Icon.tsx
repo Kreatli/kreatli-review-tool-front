@@ -67,6 +67,7 @@ import MinusIcon from '../../../assets/icons/minus.svg';
 import MusicIcon from '../../../assets/icons/music.svg';
 import MonitorPlayIcon from '../../../assets/icons/monitor-play.svg';
 import MoonIcon from '../../../assets/icons/moon.svg';
+import NewsletterIcon from '../../../assets/icons/newsletter.svg';
 import PaintIcon from '../../../assets/icons/paint.svg';
 import PaperclipIcon from '../../../assets/icons/paperclip.svg';
 import SmileIcon from '../../../assets/icons/smile.svg';
@@ -169,6 +170,7 @@ const ICONS = {
   music: MusicIcon,
   monitorPlay: MonitorPlayIcon,
   moon: MoonIcon,
+  newsletter: NewsletterIcon,
   paint: PaintIcon,
   paperclip: PaperclipIcon,
   smile: SmileIcon,
