@@ -6,6 +6,7 @@ import { PageStoryblok } from '../typings/storyblok';
 import { Header } from '../components/layout/Header';
 import { Icon } from '../components/various/Icon';
 import { useEffect, useState } from 'react';
+import { Decorations } from '../components/layout/Storyblok/Decorations';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
@@ -41,6 +42,7 @@ export default function Page({ story, slug }: Props) {
   return (
     <>
       <Header />
+      <Decorations />
       <div className="max-w-4xl mx-auto px-6 w-full py-8">
         {storyState?.content.readTime && (
           <div className="flex gap-1 text-primary items-center mb-1">

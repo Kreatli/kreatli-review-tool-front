@@ -9,7 +9,14 @@ import { PricingSection } from '../PricingSection';
 import { SignUpModal } from '../../auth/SignUpForm/SignUpModal';
 import { CostCalculatorSection } from '../CostCalculator';
 
-export const Home = () => {
+interface Props {
+  footerLinks?: {
+    label: string;
+    url: string;
+  }[];
+}
+
+export const Home = ({ footerLinks }: Props) => {
   return (
     <main className="w-full">
       <HeroSection />
@@ -19,7 +26,7 @@ export const Home = () => {
       <HowItWorksSection />
       <PricingSection />
       <FaqSection />
-      <FooterSection />
+      <FooterSection links={footerLinks} />
       <SignUpModal />
     </main>
   );

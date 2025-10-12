@@ -2,7 +2,7 @@ import { BlockTypes, MarkTypes, storyblokEditable, StoryblokRichText } from '@st
 import { WysiwygStoryblok } from '../../../../typings/storyblok';
 
 import styles from './Wysiwyg.module.scss';
-import { Alert } from '@heroui/react';
+import { Alert, cn } from '@heroui/react';
 
 interface Props {
   blok: WysiwygStoryblok;
@@ -23,7 +23,7 @@ export const Wysiwyg = ({ blok }: Props) => {
             </a>
           ),
           [BlockTypes.TABLE]: (node) => (
-            <div className={styles.tableWrapper}>
+            <div className={cn(styles.tableWrapper, 'dark:border dark:border-foreground-300')}>
               <table>
                 <tbody>{node.children}</tbody>
               </table>
