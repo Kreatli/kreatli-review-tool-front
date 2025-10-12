@@ -29,7 +29,7 @@ export default function Page({ story }: Props) {
           </div>
         )}
         <div className="flex w-full flex-col gap-8">
-          {storyState?.content.body.map((blok) => <StoryblokComponent key={blok.uuid} blok={blok} />)}
+          {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok.uuid} blok={blok} />)}
         </div>
       </div>
     </>
