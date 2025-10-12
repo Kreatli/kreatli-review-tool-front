@@ -5,18 +5,38 @@ import { ISbStoryData, StoryblokComponent, useStoryblokState } from '@storyblok/
 import { PageStoryblok } from '../typings/storyblok';
 import { Header } from '../components/layout/Header';
 import { Icon } from '../components/various/Icon';
+import { useEffect, useState } from 'react';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
 
 interface Props {
   story: ISbStoryData<PageStoryblok>;
+  slug: string;
 }
 
-export default function Page({ story }: Props) {
+export default function Page({ story, slug }: Props) {
   useSession();
 
-  const storyState = useStoryblokState(story);
+  const [fetchedStory, setFetchedStory] = useState(story);
+
+  const storyState = useStoryblokState(fetchedStory);
+
+  useEffect(() => {
+    if (process.env.STORYBLOK_STATUS !== 'draft' || !slug) {
+      return;
+    }
+
+    const fetchStory = async () => {
+      const data = await getStoryblokApi().getStory(slug, {
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+      });
+
+      setFetchedStory(data.data.story as ISbStoryData<PageStoryblok>);
+    };
+
+    fetchStory();
+  }, [slug]);
 
   return (
     <>
@@ -51,6 +71,7 @@ export const getStaticProps = (async ({ params }) => {
   return {
     props: {
       story: data.data.story,
+      slug: slugString,
     },
     revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
   };
