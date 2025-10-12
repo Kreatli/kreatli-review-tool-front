@@ -52,46 +52,48 @@ export const FooterSection = ({ links = [] }: Props) => {
             </a>
           </div>
         </div>
-        <div className="flex gap-8 w-full sm:w-auto">
-          <div>
-            <ul className="flex flex-col gap-1">
-              {links.map((link) => (
-                <li key={link.url}>
-                  <Link href={link.url} className="text-foreground-500 hover:underline underline-offset-2">
-                    {link.label}
+        {links.length > 0 && (
+          <div className="flex gap-8 w-full sm:w-auto">
+            <div>
+              <ul className="flex flex-col gap-1">
+                {links.map((link) => (
+                  <li key={link.url}>
+                    <Link href={link.url} className="text-foreground-500 hover:underline underline-offset-2">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <ul className="flex flex-col gap-1">
+                <li>
+                  <Link
+                    href="mailto:support@kreatli.com"
+                    className="text-foreground-500 hover:underline underline-offset-2"
+                  >
+                    Contact us
                   </Link>
                 </li>
-              ))}
-            </ul>
+                <li>
+                  <Link className="text-foreground-500 hover:underline underline-offset-2" href="/terms-and-conditions">
+                    Terms and Conditions
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-foreground-500 hover:underline underline-offset-2" href="/privacy-policy">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-foreground-500 hover:underline underline-offset-2" href="/cookie-policy">
+                    Cookie Policy
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div>
-            <ul className="flex flex-col gap-1">
-              <li>
-                <Link
-                  href="mailto:support@kreatli.com"
-                  className="text-foreground-500 hover:underline underline-offset-2"
-                >
-                  Contact us
-                </Link>
-              </li>
-              <li>
-                <Link className="text-foreground-500 hover:underline underline-offset-2" href="/terms-and-conditions">
-                  Terms and Conditions
-                </Link>
-              </li>
-              <li>
-                <Link className="text-foreground-500 hover:underline underline-offset-2" href="/privacy-policy">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link className="text-foreground-500 hover:underline underline-offset-2" href="/cookie-policy">
-                  Cookie Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+        )}
       </div>
       <div className="text-sm text-foreground-500 p-6 text-center">Copyright 2025 Kreatli. All rights reserved.</div>
     </footer>
