@@ -34,6 +34,7 @@ import Download from '../../../assets/icons/download.svg';
 import EditIcon from '../../../assets/icons/edit.svg';
 import EraserIcon from '../../../assets/icons/eraser.svg';
 import ErrorIcon from '../../../assets/icons/error.svg';
+import FacebookIcon from '../../../assets/icons/facebook.svg';
 import FileIcon from '../../../assets/icons/file.svg';
 import FileDocIcon from '../../../assets/icons/file-doc.svg';
 import FileGifIcon from '../../../assets/icons/file-gif.svg';
@@ -87,6 +88,7 @@ import SuitcaseIcon from '../../../assets/icons/suitcase.svg';
 import SunIcon from '../../../assets/icons/sun.svg';
 import TimeIcon from '../../../assets/icons/time.svg';
 import TimerIcon from '../../../assets/icons/timer.svg';
+import TiktokIcon from '../../../assets/icons/tiktok.svg';
 import TrashIcon from '../../../assets/icons/trash.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';
 import UnderlineIcon from '../../../assets/icons/underline.svg';
@@ -134,6 +136,7 @@ const ICONS = {
   edit: EditIcon,
   eraser: EraserIcon,
   error: ErrorIcon,
+  facebook: FacebookIcon,
   file: FileIcon,
   fileDoc: FileDocIcon,
   fileGif: FileGifIcon,
@@ -187,6 +190,7 @@ const ICONS = {
   sun: SunIcon,
   time: TimeIcon,
   timer: TimerIcon,
+  tiktok: TiktokIcon,
   trash: TrashIcon,
   twitter: TwitterIcon,
   underline: UnderlineIcon,
