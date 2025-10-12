@@ -61,6 +61,6 @@ export const getStaticPaths = (async () => {
 
   return {
     paths: Object.values(data.links ?? {}).map((link) => ({ params: { slug: link.slug } })),
-    fallback: false,
+    fallback: true,
   };
 }) satisfies GetStaticPaths;
