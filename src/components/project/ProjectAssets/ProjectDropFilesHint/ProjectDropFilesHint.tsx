@@ -9,7 +9,7 @@ export const ProjectDropFilesHint = ({ isVisible }: Props) => {
   return (
     <div
       className={cn(
-        'absolute inset-0 rounded-medium bg-black/80 z-20 flex justify-center items-center transition-opacity opacity-0 pointer-events-none',
+        'fixed inset-0 rounded-medium bg-black/80 z-20 flex justify-center items-center transition-opacity opacity-0 pointer-events-none',
         {
           'opacity-100': isVisible,
         },
