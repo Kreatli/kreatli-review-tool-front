@@ -1,5 +1,4 @@
 import {
-  addToast,
   Avatar,
   Button,
   ButtonGroup,
@@ -9,26 +8,17 @@ import {
   DropdownTrigger,
   Link,
 } from '@heroui/react';
-import { useQueryClient } from '@tanstack/react-query';
 import NextLink from 'next/link';
 import React from 'react';
 
 import { useProjectContext } from '../../../contexts/Project';
-import { usePostProjectIdFile } from '../../../services/hooks';
-import { getProjectId, getProjectIdAssets } from '../../../services/services';
 import { ProjectDto } from '../../../services/types';
-import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Icon } from '../../various/Icon';
 import { CreateFolderModal } from '../../asset/AssetModals/CreateFolderModal';
 import { ProjectMembersModal, ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectBreadcrumbs } from './ProjectBreadcrumbs';
 import { ProjectDescriptionModal } from './ProjectDescriptionModal';
-import { getCanAddAssets, getIsValidSize } from '../../../utils/limits';
-import { UpgradeModal } from '../../account/UpgradeModal';
-import { ContactOwnerModal } from '../../account/UpgradeModal/ContactOwnerModal';
-import { useMultipartUpload } from '../../../hooks/useMultipartUpload';
-import { useProjectUploads } from '../../../hooks/useProjectUploads';
-import { nanoid } from 'nanoid';
+import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 
 interface Props {
   project: ProjectDto;
@@ -36,125 +26,15 @@ interface Props {
 
 export const ProjectHeader = ({ project }: Props) => {
   const coverUrl = project.cover?.url;
-  const queryClient = useQueryClient();
-  const { mutateAsync } = usePostProjectIdFile();
-  const { isProjectOwner, inputRef, getProjectActions } = useProjectContext();
+  const { isProjectOwner, getProjectActions } = useProjectContext();
+  const { inputRef, getInputProps } = useProjectUploadContext();
 
   const [isMembersModalOpen, setIsMembersModalOpen] = React.useState(false);
   const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] = React.useState(false);
-  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
-  const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
-
-  const setFileUpload = useProjectUploads((state) => state.setFileUpload);
-  const setFileUploadError = useProjectUploads((state) => state.setFileUploadError);
-  const updateFileUploadProgress = useProjectUploads((state) => state.updateFileUploadProgress);
-  const setIsUploadedToS3 = useProjectUploads((state) => state.setIsUploadedToS3);
-  const uploadFile = useMultipartUpload({ projectId: project.id });
 
   const uploadAssets = () => {
     inputRef.current?.click();
-  };
-
-  const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files ?? []);
-
-    if (!inputRef.current) {
-      return;
-    }
-
-    inputRef.current.value = '';
-
-    if (project.createdBy && !getIsValidSize(files)) {
-      addToast({
-        title:
-          project.createdBy.subscription.plan === 'free'
-            ? "Files over 1GB can't be uploaded on the Free Plan."
-            : 'Files must be less than 10 GB.',
-        variant: 'flat',
-        color: 'warning',
-      });
-
-      return;
-    }
-
-    if (project.createdBy && !getCanAddAssets(project.createdBy, files)) {
-      if (isProjectOwner) {
-        setIsUpgradeModalOpen(true);
-      } else {
-        setIsContactOwnerModalOpen(true);
-      }
-
-      return;
-    }
-
-    inputRef.current.value = '';
-
-    // eslint-disable-next-line no-restricted-syntax
-    for (const file of files) {
-      const id = nanoid();
-
-      const cancelUpload = uploadFile(
-        { file, clientId: id },
-        {
-          onSuccess: (data) => {
-            const promise = mutateAsync({
-              id: project.id,
-              requestBody: {
-                contentType: file.type,
-                fileOriginalName: file.name,
-                key: data.key,
-                fileId: data.fileId,
-                fileSize: file.size,
-              },
-            });
-
-            promise
-              .then(({ project: data }) => {
-                queryClient.setQueryData([getProjectId.key, project.id], data);
-                queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
-                updateFileUploadProgress(id, 100);
-              })
-              .catch((error) => {
-                addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-                setFileUploadError(id);
-              });
-          },
-          onError: (type) => {
-            if (type !== 'user') {
-              addToast({
-                title: "Something went wrong. We couldn't upload your file.",
-                color: 'danger',
-                variant: 'flat',
-              });
-            }
-
-            setFileUploadError(id);
-          },
-          onProgressChange: (progress) => {
-            if (progress === 100) {
-              setIsUploadedToS3(id);
-
-              return;
-            }
-
-            updateFileUploadProgress(id, progress);
-          },
-        },
-      );
-
-      setFileUpload({
-        name: file.name,
-        type: file.type,
-        size: file.size,
-        id,
-        projectId: project.id,
-        progress: 0,
-        previewUrl:
-          file.type.startsWith('image') && !file.type.includes('adobe') ? URL.createObjectURL(file) : undefined,
-        cancelUpload,
-      });
-    }
   };
 
   const projectActions = getProjectActions(project);
@@ -257,7 +137,7 @@ export const ProjectHeader = ({ project }: Props) => {
                 </DropdownMenu>
               </Dropdown>
             </ButtonGroup>
-            <input ref={inputRef} multiple type="file" className="sr-only" onChange={handleInputChange} />
+            <input {...getInputProps()} />
           </div>
         </div>
         <ProjectMembersModal
@@ -274,12 +154,6 @@ export const ProjectHeader = ({ project }: Props) => {
           isOpen={isDescriptionModalOpen}
           project={project}
           onClose={() => setIsDescriptionModalOpen(false)}
-        />
-        <UpgradeModal type="storage" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
-        <ContactOwnerModal
-          type="storage"
-          isOpen={isContactOwnerModalOpen}
-          onClose={() => setIsContactOwnerModalOpen(false)}
         />
       </div>
     </div>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import { MenuItemProps } from '@heroui/react';
+import { addToast, MenuItemProps } from '@heroui/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -15,6 +15,9 @@ import { RestoreProjectModal } from '../../components/project/ProjectModals/Rest
 import { IconType } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { ProjectDto } from '../../services/types';
+import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzone';
+import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
+import { nanoid } from 'nanoid';
 
 export interface ProjectAssetsFilters {
   status?: string;
@@ -39,7 +42,6 @@ interface Context {
   setFilters: (filters: ProjectAssetsFilters) => void;
   isProjectOwner: boolean;
   project: ProjectDto;
-  inputRef: React.RefObject<HTMLInputElement>;
 }
 
 export const ProjectContext = React.createContext<Context | null>(null);
@@ -80,8 +82,6 @@ export const ProjectContextProvider = ({
   const router = useRouter();
 
   const isProjectOwner = selectedProject?.createdBy?.id === user?.id;
-
-  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const restoreProject = (project: ProjectDto) => {
     setSelectedProjectId?.(project.id);
@@ -233,7 +233,6 @@ export const ProjectContextProvider = ({
         setSearch,
         filters,
         setFilters,
-        inputRef,
       }}
     >
       {children}

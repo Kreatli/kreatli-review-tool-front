@@ -12,6 +12,7 @@ import { Header } from '../../layout/Header';
 import { ProjectHeader } from './ProjectHeader';
 import { ProjectLoader } from './ProjectLoader';
 import { NotActiveProjectAlert } from './NotActiveProjectAlert';
+import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
 
 interface Props {
   hideHeader?: boolean;
@@ -61,27 +62,29 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
           <ProjectLoader />
         ) : (
           <ProjectContextProvider selectedProject={project}>
-            {hideHeader ? (
-              children
-            ) : (
-              <div className="flex flex-col gap-4 flex-1">
-                <ProjectHeader project={project} />
-                {project.status !== 'active' && (
-                  <div>
-                    <NotActiveProjectAlert />
+            <ProjectUploadContextProvider project={project} folderId={router.query.folderId?.toString()}>
+              {hideHeader ? (
+                children
+              ) : (
+                <div className="flex flex-col gap-4 flex-1">
+                  <ProjectHeader project={project} />
+                  {project.status !== 'active' && (
+                    <div>
+                      <NotActiveProjectAlert />
+                    </div>
+                  )}
+                  <div className="flex gap-6">
+                    <Tabs selectedKey={router.pathname.split('/')[3]}>
+                      <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />
+                      <Tab as={NextLink} href={`/project/${project.id}/chat`} title="Chat" key="chat" />
+                      <Tab as={NextLink} href={`/project/${project.id}/activity`} title="Activity" key="activity" />
+                    </Tabs>
+                    {actions}
                   </div>
-                )}
-                <div className="flex gap-6">
-                  <Tabs selectedKey={router.pathname.split('/')[3]}>
-                    <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />
-                    <Tab as={NextLink} href={`/project/${project.id}/chat`} title="Chat" key="chat" />
-                    <Tab as={NextLink} href={`/project/${project.id}/activity`} title="Activity" key="activity" />
-                  </Tabs>
-                  {actions}
+                  <div className="flex-1 flex flex-col">{children}</div>
                 </div>
-                <div className="flex-1 flex flex-col">{children}</div>
-              </div>
-            )}
+              )}
+            </ProjectUploadContextProvider>
           </ProjectContextProvider>
         )}
       </div>

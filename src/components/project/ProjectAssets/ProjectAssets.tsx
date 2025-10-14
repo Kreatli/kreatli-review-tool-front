@@ -29,9 +29,12 @@ import { ProjectFileCover } from './ProjectFile/ProjectFileCover';
 import { ProjectFolder } from './ProjectFolder';
 import { ProjectFolderCover } from './ProjectFolder/ProjectFolderCover';
 import { useRouter } from 'next/router';
+import { ProjectDropFilesHint } from './ProjectDropFilesHint';
+import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 
 export const ProjectAssets = () => {
-  const { project, search, filters, inputRef } = useProjectContext();
+  const { project, search, filters } = useProjectContext();
+  const { inputRef, isDragActive, getRootProps } = useProjectUploadContext();
 
   const { data: assetsData, isPending: isLoadingAssets } = useGetProjectIdAssets(project.id, undefined, {
     params: filters,
@@ -109,21 +112,24 @@ export const ProjectAssets = () => {
 
   if (assets.length === 0) {
     return (
-      <EmptyState
-        title="No files"
-        text="You don't have any files here yet. Go ahead and upload one or create a new folder"
-      >
-        <Button
-          className="text-content1 bg-foreground mt-4"
-          isDisabled={project.status !== 'active'}
-          onClick={() => {
-            inputRef.current?.click();
-          }}
+      <div className="flex-1" {...getRootProps()}>
+        <EmptyState
+          title="No files"
+          text="You don't have any files here yet. Go ahead and upload one or create a new folder"
         >
-          <Icon icon="plus" size={16} />
-          Upload your first file
-        </Button>
-      </EmptyState>
+          <Button
+            className="text-content1 bg-foreground mt-4"
+            isDisabled={project.status !== 'active'}
+            onClick={() => {
+              inputRef.current?.click();
+            }}
+          >
+            <Icon icon="plus" size={16} />
+            Upload your first file
+          </Button>
+        </EmptyState>
+        <ProjectDropFilesHint isVisible={isDragActive} />
+      </div>
     );
   }
 
@@ -235,7 +241,8 @@ export const ProjectAssets = () => {
   };
 
   return (
-    <div className="-mt-4">
+    <div className="-mt-4 flex-1" {...getRootProps()}>
+      <ProjectDropFilesHint isVisible={isDragActive} />
       <div
         className={cn('sticky top-16 z-20 bg-background h-4 overflow-hidden opacity-0 transition-[height,opacity]', {
           'h-12 opacity-100': hasSelectedAssets,
