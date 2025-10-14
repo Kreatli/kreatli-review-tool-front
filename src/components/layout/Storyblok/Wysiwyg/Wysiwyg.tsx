@@ -19,7 +19,7 @@ export const Wysiwyg = ({ blok }: Props) => {
         resolvers={{
           [MarkTypes.LINK]: (node) => (
             <a href={node.attrs?.href} target="_blank">
-              {node.children}
+              {node.text}
             </a>
           ),
           [BlockTypes.TABLE]: (node) => (
