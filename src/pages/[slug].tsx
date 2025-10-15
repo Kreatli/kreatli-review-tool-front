@@ -40,7 +40,9 @@ export default function Page({ story, slug }: Props) {
     fetchStory();
   }, [slug]);
 
-  const title = storyState?.content.metaFields?.title || 'Ultimate Workspace for Creators & Content Teams';
+  const title = storyState?.content.metaFields?.title
+    ? `Kreatli | ${storyState?.content.metaFields?.title}`
+    : 'Ultimate Workspace for Creators & Content Teams';
   const description =
     storyState?.content.metaFields?.description ||
     'We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc.';
@@ -48,7 +50,7 @@ export default function Page({ story, slug }: Props) {
   return (
     <>
       <Head>
-        <title>Kreatli | {title}</title>
+        <title>{title}</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
