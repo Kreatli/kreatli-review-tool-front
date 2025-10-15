@@ -28,7 +28,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
         <meta property="og:url" content="https://kreatli.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli" />
+        <meta property="og:title" content="Kreatli - Ultimate Workspace for Creators & Content Teams" />
         <meta
           property="og:description"
           content="We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc."
