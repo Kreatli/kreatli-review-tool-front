@@ -61,39 +61,6 @@ export const HeroSection = () => {
             />
           </div>
         </div>
-        {/* <div className="flex flex-wrap justify-between gap-4 items-center w-full md:w-auto">
-          <Card isHoverable isPressable className="flex-1 md:min-w-36 dark:border border-foreground-300">
-            <CardBody className="flex flex-col gap-2 text-foreground-500 text-xs sm:text-medium">
-              <Icon icon="folder" className="text-foreground-600" />
-              Organized <br />
-              Files
-            </CardBody>
-          </Card>
-          <Card isHoverable isPressable className="flex-1 md:min-w-36 dark:border border-foreground-300">
-            <CardBody className="flex flex-col gap-2 text-foreground-500 text-xs sm:text-medium">
-              <Icon icon="chat" className="text-foreground-600" />
-              Team <br />
-              Collaboration
-            </CardBody>
-          </Card>
-          <Card isHoverable isPressable className="flex-1 md:min-w-36 dark:border border-foreground-300">
-            <CardBody className="flex flex-col gap-2 text-foreground-500 text-xs sm:text-medium">
-              <Icon icon="bell" className="text-foreground-600" />
-              Real-Time <br />
-              Updates
-            </CardBody>
-          </Card>
-        </div> */}
-        {/* <div className="flex flex-col md:flex-row gap-6">
-          <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-            Start your journey
-            <Icon icon="arrowRight" />
-          </Button>
-          <Button variant="light" size="lg" onClick={handleSeeHowItWorks}>
-            <Icon icon="monitorPlay" />
-            Discover demo
-          </Button>
-        </div> */}
       </div>
 
       <div className="fixed inset-y-8 inset-x-0 pointer-events-none">
