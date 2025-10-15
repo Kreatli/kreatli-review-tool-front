@@ -7,6 +7,7 @@ import { Header } from '../components/layout/Header';
 import { Icon } from '../components/various/Icon';
 import { useEffect, useState } from 'react';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
+import Head from 'next/head';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
@@ -41,17 +42,25 @@ export default function Page({ story, slug }: Props) {
 
   return (
     <>
+      <Head>
+        {story.content.metaFields?.title && <title>Kreatli | {story.content.metaFields.title}</title>}
+        {story.content.metaFields?.description && (
+          <meta name="description" content={story.content.metaFields.description} />
+        )}
+      </Head>
       <Header />
       <Decorations />
-      <div className="max-w-4xl mx-auto px-6 w-full py-8">
-        {storyState?.content.readTime && (
-          <div className="flex gap-1 text-primary items-center mb-1">
-            <Icon icon="newsletter" size={20} />
-            {storyState.content.readTime} minutes read
+      <div className="backdrop-blur-lg">
+        <div className="max-w-4xl mx-auto px-6 w-full py-8">
+          {storyState?.content.readTime && (
+            <div className="flex gap-1 text-primary items-center mb-1">
+              <Icon icon="newsletter" size={20} />
+              {storyState.content.readTime} minutes read
+            </div>
+          )}
+          <div className="flex w-full flex-col gap-8">
+            {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok.uuid} blok={blok} />)}
           </div>
-        )}
-        <div className="flex w-full flex-col gap-8">
-          {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok.uuid} blok={blok} />)}
         </div>
       </div>
     </>

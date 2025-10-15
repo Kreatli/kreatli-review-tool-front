@@ -27,7 +27,6 @@ export type MultilinkStoryblok =
 export interface ButtonStoryblok {
   label: string;
   url: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
-  newTab: boolean;
   variant?: "" | "solid" | "light" | "flat" | "bordered";
   _uid: string;
   component: "button";
@@ -37,6 +36,13 @@ export interface ButtonStoryblok {
 export interface PageStoryblok {
   readTime?: string;
   body: (SectionStoryblok | WysiwygStoryblok)[];
+  metaFields?: {
+    _uid?: string;
+    title?: string;
+    plugin?: string;
+    description?: string;
+    [k: string]: any;
+  };
   _uid: string;
   component: "page";
   uuid?: string;
