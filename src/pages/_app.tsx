@@ -20,7 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <StoryblokProvider>
       <Head>
-        <title>Kreatli - Ultimate Workspace for Creators & Content Teams</title>
+        <title>Kreatli | Ultimate Workspace for Creators & Content Teams</title>
         <meta
           name="description"
           content="We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc."
