@@ -43,9 +43,9 @@ export default function Page({ story, slug }: Props) {
   return (
     <>
       <Head>
-        {story.content.metaFields?.title && <title>Kreatli | {story.content.metaFields.title}</title>}
-        {story.content.metaFields?.description && (
-          <meta name="description" content={story.content.metaFields.description} />
+        {storyState?.content.metaFields?.title && <title>Kreatli | {storyState.content.metaFields.title}</title>}
+        {storyState?.content.metaFields?.description && (
+          <meta name="description" content={storyState.content.metaFields.description} />
         )}
       </Head>
       <Header />
