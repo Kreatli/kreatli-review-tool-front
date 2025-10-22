@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 import { useGetAssetFileIdComments } from '../../../services/hooks';
 import { getAssetFileIdComments } from '../../../services/services';
-import { AssetCommentsResponse } from '../../../services/types';
+import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
 import { AssetComment } from './AssetComment';
 import { AssetCommentsEmptyState } from './AssetCommentsEmptyState';
 import { AssetCommentsLoading } from './AssetCommentsLoading';
@@ -13,11 +13,13 @@ type CommentsStatus = 'all' | 'unresolved' | 'resolved';
 
 interface Props {
   fileId: string;
+  project?: ProjectDto;
+  shareableLinkId?: string;
 }
 
-export const AssetComments = ({ fileId }: Props) => {
+export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
   const queryClient = useQueryClient();
-  const { data, isPending, isError } = useGetAssetFileIdComments(fileId);
+  const { data, isPending, isError } = useGetAssetFileIdComments(fileId, { shareableLinkId: shareableLinkId ?? '' });
   const [commentsStatus, setCommentsStatus] = useState<CommentsStatus>('unresolved');
 
   const { comments = [] } = data ?? {};
@@ -80,6 +82,7 @@ export const AssetComments = ({ fileId }: Props) => {
         {commentsToShow.map((comment) => (
           <div key={comment.id}>
             <AssetComment
+              project={project}
               fileId={fileId}
               comment={comment}
               onUpdate={handleUpdate}

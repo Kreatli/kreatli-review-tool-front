@@ -12,6 +12,7 @@ import { useSession } from '../../hooks/useSession';
 import { ProjectDto, ProjectFileDto, ProjectFolderDto } from '../../services/types';
 import { downloadFromUrl } from '../../utils/download';
 import { getAssetFileIdDownload } from '../../services/services';
+import { ShareAssetModal } from '../../components/asset/AssetModals/ShareAssetModal';
 
 interface Context {
   getAssetActions: (asset: ProjectFileDto | ProjectFolderDto) => {
@@ -58,22 +59,31 @@ export const AssetContextProvider = ({
   const [isArchiveModalOpen, setIsArchiveModalOpen] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
   const [isRestoreModalOpen, setIsRestoreModalOpen] = React.useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = React.useState(false);
 
   const { user } = useSession();
   const isProjectOwner = project.createdBy?.id === user?.id;
-  const shouldDisableDownload =
-    project.createdBy?.id === '6888a3e160c0280177d507e8' && user?.id !== '6888a3e160c0280177d507e8';
 
   const getAssetActions = (asset: ProjectFolderDto | ProjectFileDto) => {
+    const shareAction = {
+      label: 'Share',
+      icon: 'share' as const,
+      onClick: async () => {
+        setSelectedAssetId?.(asset.id);
+        setIsShareModalOpen(true);
+      },
+    };
+
     if (!isProjectOwner && user?.id !== asset?.createdBy?.id) {
-      if (asset?.type === 'file' && !shouldDisableDownload) {
+      if (asset?.type === 'file') {
         return [
+          shareAction,
           {
             label: 'Download',
             icon: 'download' as const,
             onClick: async () => {
               try {
-                const assetUrl = await getAssetFileIdDownload(asset.id);
+                const assetUrl = await getAssetFileIdDownload(asset.id, { shareableLinkId: '' });
 
                 downloadFromUrl(assetUrl, asset.name);
               } catch {
@@ -144,6 +154,7 @@ export const AssetContextProvider = ({
           setIsRenameModalOpen(true);
         },
       },
+      ...(asset.type === 'file' ? [shareAction] : []),
       {
         label: 'Move to...',
         icon: 'arrowRight' as const,
@@ -165,27 +176,23 @@ export const AssetContextProvider = ({
             },
           ]
         : [
-            ...(shouldDisableDownload
-              ? []
-              : [
-                  {
-                    label: 'Download',
-                    icon: 'download' as const,
-                    onClick: async () => {
-                      try {
-                        const assetUrl = await getAssetFileIdDownload(asset.id);
+            {
+              label: 'Download',
+              icon: 'download' as const,
+              onClick: async () => {
+                try {
+                  const assetUrl = await getAssetFileIdDownload(asset.id, { shareableLinkId: '' });
 
-                        downloadFromUrl(assetUrl, asset.name);
-                      } catch {
-                        addToast({
-                          title: 'Failed to download file. Please try again later.',
-                          variant: 'flat',
-                          color: 'danger',
-                        });
-                      }
-                    },
-                  },
-                ]),
+                  downloadFromUrl(assetUrl, asset.name);
+                } catch {
+                  addToast({
+                    title: 'Failed to download file. Please try again later.',
+                    variant: 'flat',
+                    color: 'danger',
+                  });
+                }
+              },
+            },
             {
               label: 'Archive file',
               icon: 'trash' as const,
@@ -234,6 +241,7 @@ export const AssetContextProvider = ({
         isOpen={isRestoreModalOpen}
         onClose={() => setIsRestoreModalOpen(false)}
       />
+      <ShareAssetModal asset={selectedAsset} isOpen={isShareModalOpen} onClose={() => setIsShareModalOpen(false)} />
     </AssetContext.Provider>
   );
 };

@@ -22,6 +22,7 @@ import ChevronDownIcon from '../../../assets/icons/chevron-down.svg';
 import CoinIcon from '../../../assets/icons/coin.svg';
 import ConversationIcon from '../../../assets/icons/conversation.svg';
 import CompareIcon from '../../../assets/icons/compare.svg';
+import CopyIcon from '../../../assets/icons/copy.svg';
 import CreditCardIcon from '../../../assets/icons/credit-card.svg';
 import CrossIcon from '../../../assets/icons/cross.svg';
 import CrossCircleIcon from '../../../assets/icons/cross-circle.svg';
@@ -80,6 +81,7 @@ import RedoIcon from '../../../assets/icons/redo.svg';
 import ReplyIcon from '../../../assets/icons/reply.svg';
 import SearchIcon from '../../../assets/icons/search.svg';
 import SendIcon from '../../../assets/icons/send.svg';
+import ShareIcon from '../../../assets/icons/share.svg';
 import ShowIcon from '../../../assets/icons/show.svg';
 import SlidesIcon from '../../../assets/icons/slides.svg';
 import StarIcon from '../../../assets/icons/star.svg';
@@ -123,6 +125,7 @@ const ICONS = {
   checkShield: CheckShieldIcon,
   coin: CoinIcon,
   compare: CompareIcon,
+  copy: CopyIcon,
   conversation: ConversationIcon,
   chevronDown: ChevronDownIcon,
   creditCard: CreditCardIcon,
@@ -183,6 +186,7 @@ const ICONS = {
   reply: ReplyIcon,
   search: SearchIcon,
   send: SendIcon,
+  share: ShareIcon,
   show: ShowIcon,
   slides: SlidesIcon,
   star: StarIcon,

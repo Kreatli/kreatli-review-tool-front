@@ -14,6 +14,8 @@ import type {
   GetProjectIdLogsQueryParams,
   GetProjectsQueryParams,
   GetConversationIdMessagesQueryParams,
+  GetAssetFileIdDownloadQueryParams,
+  GetAssetFileIdCommentsQueryParams,
   GetNotificationsQueryParams,
   GetAssetsQueryParams,
   UserDto,
@@ -72,6 +74,9 @@ import type {
   MultipartPresignedUrlDto,
   MultipartUploadCompleteBodyDto,
   MultipartUploadCompleteDto,
+  ShareableLinkBody,
+  CreateShareableLinkDto,
+  ShareableAssetDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -260,11 +265,12 @@ getAssetFileId.key = '/asset/file/{id}';
 
 export const getAssetFileIdComments = (
   id: string,
+  queryParams: GetAssetFileIdCommentsQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<AssetCommentsResponse>> => {
   return Http.getRequest(
     template(getAssetFileIdComments.key, { id }),
-    undefined,
+    queryParams,
     undefined,
     undefined,
     overrideConfig(_CONSTANT0, configOverride),
@@ -276,11 +282,12 @@ getAssetFileIdComments.key = '/asset/file/{id}/comments';
 
 export const getAssetFileIdDownload = (
   id: string,
+  queryParams: GetAssetFileIdDownloadQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<string>> => {
   return Http.getRequest(
     template(getAssetFileIdDownload.key, { id }),
-    undefined,
+    queryParams,
     undefined,
     undefined,
     overrideConfig(_CONSTANT0, configOverride),
@@ -465,6 +472,22 @@ export const getProjects = (
 
 /** Key is end point string without base url */
 getProjects.key = '/projects';
+
+export const getShareableLinkAssetId = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ShareableAssetDto>> => {
+  return Http.getRequest(
+    template(getShareableLinkAssetId.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getShareableLinkAssetId.key = '/shareable-link/asset/{id}';
 
 export const getUser = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<UserDto>> => {
   return Http.getRequest(getUser.key, undefined, undefined, undefined, overrideConfig(_CONSTANT0, configOverride));
@@ -861,6 +884,22 @@ export const postProjectIdMember = (
 
 /** Key is end point string without base url */
 postProjectIdMember.key = '/project/{id}/member';
+
+export const postShareableLink = (
+  requestBody: ShareableLinkBody,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<CreateShareableLinkDto>> => {
+  return Http.postRequest(
+    postShareableLink.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postShareableLink.key = '/shareable-link';
 
 export const postStripeWebhook = (
   headerParams?: { 'stripe-signature': string },

@@ -1,24 +1,29 @@
 import { cn, Image } from '@heroui/react';
 import React from 'react';
 
-import { useFileContext } from '../../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { useGetAssetFileIdComments } from '../../../../services/hooks';
 import { AssetCommentDto, FileDto } from '../../../../services/types';
 import { getIsMediaHtmlElement } from '../../../../utils/getIsMediaHtmlElement';
 import { Icon } from '../../../various/Icon';
+import { useFileStateContext } from '../../../../contexts/File';
 
 interface Props {
   videoFile: FileDto;
+  shareableLinkId?: string;
   onLoad: (event: React.SyntheticEvent<HTMLVideoElement>) => void;
 }
 
-export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
+export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) => {
   const { activeTool, fileRef, compareFileRef } = useReviewToolContext();
-  const { activeComment, replyingComment, activeFile, compareFile, setActiveComment, setActiveFileId } =
-    useFileContext();
+  const { activeFile, compareFile, activeComment, replyingComment, setActiveComment, setActiveFileId } =
+    useFileStateContext();
   const { resetCanvas } = useReviewToolCanvasShapesContext();
-  const { data: commentsData } = useGetAssetFileIdComments(videoFile.id, { refetchOnMount: false });
+  const { data: commentsData } = useGetAssetFileIdComments(
+    videoFile.id,
+    { shareableLinkId: shareableLinkId ?? '' },
+    { refetchOnMount: false },
+  );
 
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
@@ -329,7 +334,7 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
                     }}
                     aria-label={`Jump to comment at ${formatTime(comment.timestamp![0])}`}
                   >
-                    {comment.createdBy.avatar ? (
+                    {comment.createdBy?.avatar ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={comment.createdBy.avatar.url}
@@ -338,7 +343,7 @@ export const ReviewToolVideo = ({ videoFile, onLoad }: Props) => {
                       />
                     ) : (
                       <span className="text-[8px] leading-[9px] select-none text-foreground-500">
-                        {comment.createdBy.name.slice(0, 1)}
+                        {comment.createdBy.name?.slice(0, 1)}
                       </span>
                     )}
                   </button>

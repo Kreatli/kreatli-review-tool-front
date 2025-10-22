@@ -692,7 +692,10 @@
     "/asset/file/{id}/download": {
       "get": {
         "operationId": "AssetController_downloadFile",
-        "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } },
+          { "name": "shareableLinkId", "required": true, "in": "query", "schema": { "type": "string" } }
+        ],
         "responses": {
           "200": { "description": "", "content": { "application/json": { "schema": { "type": "string" } } } }
         }
@@ -717,7 +720,10 @@
     "/asset/file/{id}/comments": {
       "get": {
         "operationId": "AssetController_getFileComments",
-        "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "parameters": [
+          { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } },
+          { "name": "shareableLinkId", "required": true, "in": "query", "schema": { "type": "string" } }
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -903,6 +909,34 @@
           { "name": "stripe-signature", "required": true, "in": "header", "schema": { "type": "string" } }
         ],
         "responses": { "201": { "description": "" } }
+      }
+    },
+    "/shareable-link": {
+      "post": {
+        "operationId": "ShareableLinkController_generateShareableLink",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ShareableLinkBody" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CreateShareableLinkDto" } } }
+          }
+        }
+      }
+    },
+    "/shareable-link/asset/{id}": {
+      "get": {
+        "operationId": "ShareableLinkController_getShareableAsset",
+        "parameters": [{ "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ShareableAssetDto" } } }
+          }
+        }
       }
     }
   },
@@ -1978,9 +2012,21 @@
           "message": { "type": "string", "maxLength": 1000 },
           "parent": { "type": "string" },
           "timestamp": { "type": "array", "items": { "type": "number" } },
-          "canvas": { "$ref": "#/components/schemas/AssetCommentCanvas" }
+          "canvas": { "$ref": "#/components/schemas/AssetCommentCanvas" },
+          "shareableLinkId": { "type": "string" },
+          "name": { "type": "string" }
         },
         "required": ["message"]
+      },
+      "PartialTypeClass": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "email": { "type": "string" },
+          "name": { "type": "string" },
+          "avatar": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/InterfaceImageDto" }] },
+          "subscription": { "$ref": "#/components/schemas/SubscriptionDto" }
+        }
       },
       "AssetCommentDto": {
         "type": "object",
@@ -1988,7 +2034,7 @@
           "id": { "type": "string" },
           "message": { "type": "string" },
           "createdAt": { "format": "date-time", "type": "string" },
-          "createdBy": { "$ref": "#/components/schemas/UserDto" },
+          "createdBy": { "$ref": "#/components/schemas/PartialTypeClass" },
           "canvas": { "$ref": "#/components/schemas/AssetCommentCanvas" },
           "timestamp": { "type": "array", "items": { "type": "number", "maxLength": 2, "minLength": 2 } },
           "isResolved": { "type": "boolean" },
@@ -2121,6 +2167,47 @@
         "type": "object",
         "properties": { "url": { "type": "string" } },
         "required": ["url"]
+      },
+      "ShareableLinkBody": {
+        "type": "object",
+        "properties": { "assetId": { "type": "string" } },
+        "required": ["assetId"]
+      },
+      "CreateShareableLinkDto": {
+        "type": "object",
+        "properties": { "id": { "type": "string" }, "assetId": { "type": "string" } },
+        "required": ["id", "assetId"]
+      },
+      "ShareableAssetDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "commentsCount": { "type": "number" },
+          "description": { "type": "string" },
+          "fileSize": { "type": "number" },
+          "createdAt": { "type": "string" },
+          "fileType": { "type": "string" },
+          "format": { "type": "string" },
+          "metadata": { "type": "object" },
+          "path": { "type": "array" },
+          "url": { "type": "string" },
+          "type": { "type": "string", "enum": ["file"] }
+        },
+        "required": [
+          "id",
+          "name",
+          "commentsCount",
+          "description",
+          "fileSize",
+          "createdAt",
+          "fileType",
+          "format",
+          "metadata",
+          "path",
+          "url",
+          "type"
+        ]
       }
     }
   }

@@ -15,15 +15,16 @@ import { ReviewToolImage } from './ReviewToolImage';
 import { ReviewToolVideo } from './ReviewToolVideo';
 import { ReviewToolAudio } from './ReviewToolAudio';
 import { ReviewToolUnsupportedFile } from './ReviewToolUnsupportedFile';
-import { useFileContext } from '../../../../contexts/File';
+import { useFileStateContext } from '../../../../contexts/File';
 
 interface Props {
   file: FileDto;
+  shareableLinkId?: string;
   onClick?: () => void;
 }
 
-export const ReviewToolCanvas = ({ file, onClick }: Props) => {
-  const { activeFile, compareFile } = useFileContext();
+export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
+  const { activeFile, compareFile } = useFileStateContext();
   const { activeTool, activeColor, canvasRef, fileRef, compareFileRef } = useReviewToolContext();
   const { shapes, isReadOnly, setShapes, pushHistory } = useReviewToolCanvasShapesContext();
 
@@ -211,7 +212,9 @@ export const ReviewToolCanvas = ({ file, onClick }: Props) => {
       {(file.fileType.startsWith('image') || file.fileType.includes('pdf')) && (
         <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />
       )}
-      {file.fileType.startsWith('video') && <ReviewToolVideo videoFile={file} onLoad={handleFileLoad} />}
+      {file.fileType.startsWith('video') && (
+        <ReviewToolVideo shareableLinkId={shareableLinkId} videoFile={file} onLoad={handleFileLoad} />
+      )}
       {file.fileType.startsWith('audio') && <ReviewToolAudio audioFile={file} />}
       {isSupportedFile && activeFile?.id === file.id && (
         <Stage

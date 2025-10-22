@@ -2,11 +2,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import { AssetPanel } from '../../../../components/asset/AssetPanel';
-import { ReviewTool } from '../../../../components/asset/ReviewTool';
-import { FileContextProvider } from '../../../../contexts/File';
 import { useProtectedPage } from '../../../../hooks/useProtectedPage';
 import { useSearchParams } from 'next/navigation';
+import { Asset } from '../../../../components/asset/Asset/Asset';
 
 export default function ProjectAssetsPage() {
   const { isSignedIn } = useProtectedPage();
@@ -17,21 +15,16 @@ export default function ProjectAssetsPage() {
     return null;
   }
 
+  const fileId = router.query.fileId.toString();
+  const projectId = router.query.id.toString();
+  const compareFileId = searchParams.get('compareFileId');
+
   return (
     <>
       <Head>
         <title>Kreatli | Media</title>
       </Head>
-      <FileContextProvider
-        fileId={router.query.fileId.toString()}
-        projectId={router.query.id.toString()}
-        compareFileId={searchParams.get('compareFileId')}
-      >
-        <div className="md:grid grid-cols-[1fr,350px] md:h-screen">
-          <ReviewTool />
-          <AssetPanel />
-        </div>
-      </FileContextProvider>
+      <Asset fileId={fileId} projectId={projectId} compareFileId={compareFileId} />
     </>
   );
 }

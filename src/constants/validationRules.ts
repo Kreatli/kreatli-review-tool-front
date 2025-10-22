@@ -1,4 +1,4 @@
-const EMAIL_PATTERN =
+export const EMAIL_PATTERN =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 const URL_PATTERN = /^(http(s)?:\/\/)[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/;
 const YOUTUBE_CHANNEL_URL_PATTERN =
