@@ -41,8 +41,6 @@ export default function SharePage() {
       <Head>
         <title>{title}</title>
         <meta name="robots" content="noindex" />
-        <meta property="og:title" content={title} />
-        {fileUrl && <meta property="og:image" content={fileUrl} />}
       </Head>
       <Header />
       <FileStateContextProvider fileId={data?.id ?? ''} file={data}>
