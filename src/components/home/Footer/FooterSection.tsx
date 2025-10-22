@@ -29,8 +29,8 @@ export const FooterSection = ({ links = [] }: Props) => {
           </Button>
         </div>
       </div>
-      <div className="px-6 w-full max-w-6xl mx-auto py-8 flex flex-col sm:flex-row justify-between items-end gap-8">
-        <div className="flex flex-col gap-4 w-full sm:w-auto">
+      <div className="px-6 w-full max-w-6xl mx-auto py-8 flex flex-col lg:flex-row justify-between items-end gap-8">
+        <div className="flex flex-col gap-4 w-full lg:w-auto">
           <Link href="/">
             <LogoIcon viewBox="0 0 90 22" />
           </Link>
@@ -52,10 +52,10 @@ export const FooterSection = ({ links = [] }: Props) => {
             </a>
           </div>
         </div>
-        <div className="flex gap-8 w-full sm:w-auto">
+        <div className="flex md:flex-row md:justify-between flex-col gap-3 w-full lg:w-auto">
           {links.length > 0 && (
             <div>
-              <ul className="flex flex-col gap-1">
+              <ul className="grid sm:grid-cols-2 gap-y-1 gap-x-3">
                 {links.map((link) => (
                   <li key={link.url}>
                     <Link href={link.url} className="text-foreground-500 hover:underline underline-offset-2">
