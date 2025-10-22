@@ -34,11 +34,15 @@ export default function SharePage() {
     return null;
   }
 
+  const fileUrl = data.fileType.startsWith('image') ? data.url : data.metadata.thumbnailUrl;
+
   return (
     <div>
       <Head>
         <title>{title}</title>
         <meta name="robots" content="noindex" />
+        <meta property="og:title" content={title} />
+        {fileUrl && <meta property="og:image" content={fileUrl} />}
       </Head>
       <Header />
       <FileStateContextProvider fileId={data?.id ?? ''} file={data}>
