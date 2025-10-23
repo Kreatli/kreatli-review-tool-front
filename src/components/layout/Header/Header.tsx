@@ -58,27 +58,27 @@ export const Header = () => {
         {!isSignedIn && (
           <NavbarContent className="hidden lg:flex">
             <NavbarItem>
-              <Link href="#product" color="foreground">
+              <Link as={NextLink} href="/#product" color="foreground">
                 Features
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="#software-cost-calculator" color="foreground">
+              <Link as={NextLink} href="/#software-cost-calculator" color="foreground">
                 Cost Calculator
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="#for-whom" color="foreground">
+              <Link as={NextLink} href="/#for-whom" color="foreground">
                 Who We Help
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="#how-it-works" color="foreground">
+              <Link as={NextLink} href="/#how-it-works" color="foreground">
                 How it Works
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="#pricing" color="foreground">
+              <Link as={NextLink} href="/#pricing" color="foreground">
                 Pricing
               </Link>
             </NavbarItem>
@@ -125,27 +125,33 @@ export const Header = () => {
       {!isSignedIn && (
         <NavbarMenu className="pl-16">
           <NavbarMenuItem>
-            <Link href="#product" size="lg" color="foreground" onClick={closeNavbarMenu}>
+            <Link as={NextLink} href="/#product" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Features
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link href="#software-cost-calculator" size="lg" color="foreground" onClick={closeNavbarMenu}>
+            <Link
+              as={NextLink}
+              href="/#software-cost-calculator"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
               Cost Calculator
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link href="#for-whom" size="lg" color="foreground" onClick={closeNavbarMenu}>
+            <Link as={NextLink} href="/#for-whom" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Who We Help
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link href="#how-it-works" size="lg" color="foreground" onClick={closeNavbarMenu}>
+            <Link as={NextLink} href="/#how-it-works" size="lg" color="foreground" onClick={closeNavbarMenu}>
               How it Works
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link href="#pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
+            <Link as={NextLink} href="/#pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Pricing
             </Link>
           </NavbarMenuItem>

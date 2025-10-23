@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 
 import { ReviewTool } from '../../typings/reviewTool';
-import { useFileContext } from '../File';
+import { useFileStateContext } from '../File';
 
 interface Context {
   shapes: ReviewTool.Shape[];
@@ -30,7 +30,7 @@ export const useReviewToolCanvasShapesContext = () => {
 const MAX_HISTORY_LENGTH = 10;
 
 export const ReviewToolCanvasShapesContextProvider = ({ children }: React.PropsWithChildren) => {
-  const { activeComment, activeFile } = useFileContext();
+  const { activeFile, activeComment } = useFileStateContext();
 
   const [shapes, setShapes] = React.useState<ReviewTool.Shape[]>([]);
 

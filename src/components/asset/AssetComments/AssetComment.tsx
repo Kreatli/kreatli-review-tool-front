@@ -1,16 +1,17 @@
-import { addToast, Avatar, Button, Checkbox, cn, Tooltip } from '@heroui/react';
+import { addToast, Avatar, Button, Checkbox, Chip, cn, Tooltip } from '@heroui/react';
 import React, { useEffect, useState } from 'react';
 
-import { useFileContext } from '../../../contexts/File';
 import { useSession } from '../../../hooks/useSession';
 import { useDeleteAssetFileIdCommentCommentId, usePatchAssetFileIdCommentCommentId } from '../../../services/hooks';
-import { AssetCommentDto } from '../../../services/types';
+import { AssetCommentDto, ProjectDto } from '../../../services/types';
 import { formatRelativeTime } from '../../../utils/dates';
 import { formatDuration } from '../../../utils/formatDuration';
 import { Icon } from '../../various/Icon';
+import { useFileStateContext } from '../../../contexts/File';
 
 interface Props {
   fileId: string;
+  project?: ProjectDto;
   comment: AssetCommentDto;
   isResolvable?: boolean;
   isResolved?: boolean;
@@ -18,12 +19,12 @@ interface Props {
   onRemove: () => void;
 }
 
-export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, onRemove, ...rest }: Props) => {
+export const AssetComment = ({ fileId, project, comment, isResolvable = true, onUpdate, onRemove, ...rest }: Props) => {
   const { user } = useSession();
   const { createdBy, id, message, createdAt, timestamp, canvas } = comment;
   const { mutate: updateComment, isPending: isUpdatingComment } = usePatchAssetFileIdCommentCommentId();
   const { mutate: removeComment, isPending: isRemoving } = useDeleteAssetFileIdCommentCommentId();
-  const { activeComment, replyingComment, project, setActiveComment, setReplyingComment } = useFileContext();
+  const { activeComment, replyingComment, setActiveComment, setReplyingComment } = useFileStateContext();
 
   const commentRef = React.useRef<HTMLDivElement>(null);
   const [isResolved, setIsResolved] = useState(comment.isResolved || (rest.isResolved ?? false));
@@ -38,8 +39,8 @@ export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, o
     }
   }, [activeComment, id]);
 
-  const isProjectOwner = project?.createdBy?.id === user?.id;
-  const isRemovable = user?.id === createdBy.id || isProjectOwner;
+  const isProjectOwner = user && project?.createdBy?.id === user?.id;
+  const isRemovable = user && (user?.id === createdBy.id || isProjectOwner);
 
   const handleRemove = () => {
     if (replyingComment === comment) {
@@ -97,16 +98,21 @@ export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, o
       )}
     >
       <div className="flex justify-between items-start gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 overflow-hidden">
           <Avatar
             src={createdBy.avatar?.url ?? ''}
             size="sm"
-            className="cursor-pointer !size-6"
+            className="cursor-pointer !size-6 shrink-0"
             fallback={
-              <div className="text-xs text-foreground-500 select-none">{createdBy.name.slice(0, 1).toUpperCase()}</div>
+              <div className="text-xs text-foreground-500 select-none">{createdBy.name?.slice(0, 1).toUpperCase()}</div>
             }
           />
-          <div className="text-xs">{createdBy.name}</div>
+          <div className="text-xs text-ellipsis overflow-hidden">{createdBy.name}</div>
+          {!createdBy.id && (
+            <Chip size="sm" variant="flat" color="primary" className="h-auto p-px">
+              Guest
+            </Chip>
+          )}
         </div>
         <div className="flex items-center gap-1 z-10">
           {isRemovable && (
@@ -150,7 +156,7 @@ export const AssetComment = ({ fileId, comment, isResolvable = true, onUpdate, o
       <div className="relative flex justify-between items-end">
         <button
           type="button"
-          disabled={project?.status !== 'active'}
+          disabled={project && project.status !== 'active'}
           className={cn('text-foreground-500 text-xs flex items-center', {
             'text-primary': comment === replyingComment,
           })}

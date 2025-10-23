@@ -5,10 +5,10 @@ import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../..
 import { formatDuration } from '../../../utils/formatDuration';
 import { getIsMediaHtmlElement } from '../../../utils/getIsMediaHtmlElement';
 import { Icon } from '../../various/Icon';
-import { useFileContext } from '../../../contexts/File';
+import { useFileStateContext } from '../../../contexts/File';
 
 export const ReviewToolTimestamp = () => {
-  const { compareFile, activeFile } = useFileContext();
+  const { compareFile, activeFile } = useFileStateContext();
   const { resetCanvas } = useReviewToolCanvasShapesContext();
   const { activeTool, fileRef, compareFileRef, setActiveTool } = useReviewToolContext();
 

@@ -47,6 +47,10 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
     router.push(`${location.pathname}?compareFileId=${asset.id}`);
   };
 
+  const shareAction = useMemo(() => {
+    return actions.find((action) => action.icon === 'share');
+  }, [actions]);
+
   return (
     <div
       className={cn('flex flex-1 items-center gap-4 transition-colors bg-foreground-50 p-3 overflow-hidden', {
@@ -92,6 +96,12 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
           </div>
         </div>
       </div>
+      {!isCompareMode && (
+        <Button size="sm" variant="flat" onClick={shareAction?.onClick}>
+          <Icon icon="share" size={18} />
+          {shareAction?.label}
+        </Button>
+      )}
       {!isCompareMode && (
         <AssetPicker projectId={project.id} skipIds={[file.id]} onSelect={handleCompareSelect}>
           <Button size="sm" variant="flat" color="primary">

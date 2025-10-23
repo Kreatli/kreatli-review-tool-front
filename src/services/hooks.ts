@@ -29,11 +29,14 @@ import type {
   ChatDto,
   ChatEditBodyDto,
   ChatMessagesDto,
+  CreateShareableLinkDto,
   FileDto,
   FileEditBodyDto,
   FolderBodyDto,
   FolderDto,
   FolderEditBodyDto,
+  GetAssetFileIdCommentsQueryParams,
+  GetAssetFileIdDownloadQueryParams,
   GetAssetsQueryParams,
   GetConversationIdMessagesQueryParams,
   GetNotificationsQueryParams,
@@ -67,6 +70,9 @@ import type {
   ProjectStatusBodyDto,
   ProjectsResponseDto,
   ResetPasswordBodyDto,
+  ShareableLinkBody,
+  ShareableLinkDto,
+  ShareableLinkSendEmailBodyDto,
   SignInBodyDto,
   SignInResultDto,
   SignUpBodyDto,
@@ -103,6 +109,7 @@ import {
   getProjectIdLogs,
   getProjectIdPaths,
   getProjects,
+  getShareableLinkAssetId,
   getUser,
   getUserBillingHistory,
   getUserId,
@@ -128,6 +135,8 @@ import {
   postProjectIdFile,
   postProjectIdFolder,
   postProjectIdMember,
+  postShareableLink,
+  postShareableLinkSendEmail,
   postStripeWebhook,
   postUserAddon,
   postUserSubscription,
@@ -387,12 +396,14 @@ useGetAssetFileId.prefetch = (
 };
 export const useGetAssetFileIdComments = (
   id: string,
+  queryParams: GetAssetFileIdCommentsQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<AssetCommentsResponse>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAssetFileIdComments.info(
     id,
 
+    queryParams,
     configOverride,
   );
   return useQuery({
@@ -401,12 +412,18 @@ export const useGetAssetFileIdComments = (
     ...options,
   });
 };
-useGetAssetFileIdComments.info = (id: string, configOverride?: AxiosRequestConfig) => {
+useGetAssetFileIdComments.info = (
+  id: string,
+  queryParams: GetAssetFileIdCommentsQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
   return {
-    key: [getAssetFileIdComments.key, id] as QueryKey,
+    key: [getAssetFileIdComments.key, id, queryParams] as QueryKey,
     fun: () =>
       getAssetFileIdComments(
         id,
+
+        queryParams,
 
         configOverride,
       ),
@@ -415,12 +432,14 @@ useGetAssetFileIdComments.info = (id: string, configOverride?: AxiosRequestConfi
 useGetAssetFileIdComments.prefetch = (
   client: QueryClient,
   id: string,
+  queryParams: GetAssetFileIdCommentsQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<AssetCommentsResponse>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAssetFileIdComments.info(
     id,
 
+    queryParams,
     configOverride,
   );
 
@@ -434,12 +453,14 @@ useGetAssetFileIdComments.prefetch = (
 };
 export const useGetAssetFileIdDownload = (
   id: string,
+  queryParams: GetAssetFileIdDownloadQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<string>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAssetFileIdDownload.info(
     id,
 
+    queryParams,
     configOverride,
   );
   return useQuery({
@@ -448,12 +469,18 @@ export const useGetAssetFileIdDownload = (
     ...options,
   });
 };
-useGetAssetFileIdDownload.info = (id: string, configOverride?: AxiosRequestConfig) => {
+useGetAssetFileIdDownload.info = (
+  id: string,
+  queryParams: GetAssetFileIdDownloadQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
   return {
-    key: [getAssetFileIdDownload.key, id] as QueryKey,
+    key: [getAssetFileIdDownload.key, id, queryParams] as QueryKey,
     fun: () =>
       getAssetFileIdDownload(
         id,
+
+        queryParams,
 
         configOverride,
       ),
@@ -462,12 +489,14 @@ useGetAssetFileIdDownload.info = (id: string, configOverride?: AxiosRequestConfi
 useGetAssetFileIdDownload.prefetch = (
   client: QueryClient,
   id: string,
+  queryParams: GetAssetFileIdDownloadQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<string>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAssetFileIdDownload.info(
     id,
 
+    queryParams,
     configOverride,
   );
 
@@ -1015,6 +1044,53 @@ useGetProjects.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetProjects.info(queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetShareableLinkAssetId = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<ShareableLinkDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetShareableLinkAssetId.info(
+    id,
+
+    configOverride,
+  );
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetShareableLinkAssetId.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getShareableLinkAssetId.key, id] as QueryKey,
+    fun: () =>
+      getShareableLinkAssetId(
+        id,
+
+        configOverride,
+      ),
+  };
+};
+useGetShareableLinkAssetId.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<ShareableLinkDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetShareableLinkAssetId.info(
+    id,
+
+    configOverride,
+  );
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -1642,6 +1718,52 @@ export const usePostProjectIdMember = <TExtra,>(
 
       return postProjectIdMember(
         id,
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostShareableLink = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<CreateShareableLinkDto, { requestBody: ShareableLinkBody }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postShareableLink(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostShareableLinkSendEmail = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    { [x in string | number]: any },
+    { requestBody: ShareableLinkSendEmailBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postShareableLinkSendEmail(
         requestBody,
 
         configOverride,

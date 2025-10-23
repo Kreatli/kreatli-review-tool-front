@@ -3,7 +3,7 @@ import React from 'react';
 
 import { useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { FileDto } from '../../../../services/types';
-import { useFileContext } from '../../../../contexts/File';
+import { useFileStateContext } from '../../../../contexts/File';
 
 interface Props {
   imageFile: FileDto;
@@ -12,7 +12,7 @@ interface Props {
 
 export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
   const { fileRef, compareFileRef } = useReviewToolContext();
-  const { compareFile } = useFileContext();
+  const { compareFile } = useFileStateContext();
 
   const imageUrl = imageFile.metadata.thumbnailUrl ?? imageFile.url;
   const isSvg = imageFile.format === 'svg';

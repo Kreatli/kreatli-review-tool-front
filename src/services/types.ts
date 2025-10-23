@@ -49,7 +49,9 @@ export interface AssetCommentBodyDto {
    */
   message: string;
   canvas?: AssetCommentCanvas;
+  name?: string;
   parent?: string;
+  shareableLinkId?: string;
   timestamp?: number[];
 }
 
@@ -77,7 +79,7 @@ export interface AssetCommentDto {
    * - Format: date-time
    */
   createdAt: string;
-  createdBy: UserDto;
+  createdBy: PartialTypeClass;
   id: string;
   isResolved: boolean;
   message: string;
@@ -286,6 +288,11 @@ export interface CommentDetails {
   id: string;
 }
 
+export interface CreateShareableLinkDto {
+  assetId: string;
+  id: string;
+}
+
 export interface FileCommentAddedDetails {
   asset: FileDetails;
   comment: CommentDetails;
@@ -384,6 +391,14 @@ export interface FolderEditBodyDto {
   description?: string;
   name?: string;
   parentId?: string;
+}
+
+export interface GetAssetFileIdCommentsQueryParams {
+  shareableLinkId: string;
+}
+
+export interface GetAssetFileIdDownloadQueryParams {
+  shareableLinkId: string;
 }
 
 export interface GetAssetsQueryParams {
@@ -550,6 +565,14 @@ export interface NotificationsDto {
   notifications: NotificationDto[];
   total: number;
   unreadCount: number;
+}
+
+export interface PartialTypeClass {
+  avatar?: InterfaceImageDto;
+  email?: string;
+  id?: string;
+  name?: string;
+  subscription?: SubscriptionDto;
 }
 
 export interface PresignedUrlBodyDto {
@@ -832,6 +855,36 @@ export interface ProjectsResponseDto {
 
 export interface ResetPasswordBodyDto {
   email: string;
+}
+
+export interface ShareableAssetDto {
+  commentsCount: number;
+  createdAt: string;
+  description: string;
+  fileSize: number;
+  fileType: string;
+  format: string;
+  id: string;
+  metadata: { [x in string | number]: any };
+  name: string;
+  path: array;
+  type: 'file';
+  url: string;
+}
+
+export interface ShareableLinkBody {
+  assetId: string;
+}
+
+export interface ShareableLinkDto {
+  file: ShareableAssetDto;
+  hasAccessToProject: boolean;
+  projectId?: string;
+}
+
+export interface ShareableLinkSendEmailBodyDto {
+  emails: string[];
+  url: string;
 }
 
 export interface SignInBodyDto {

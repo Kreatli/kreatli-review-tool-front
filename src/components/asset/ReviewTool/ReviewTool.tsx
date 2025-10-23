@@ -1,18 +1,24 @@
 import React from 'react';
 
 import { AssetContextProvider } from '../../../contexts/Asset';
-import { useFileContext } from '../../../contexts/File';
 import { ReviewToolCanvasShapesContextProvider, ReviewToolContextProvider } from '../../../contexts/ReviewTool';
 import { ReviewToolCanvas } from './ReviewToolCanvas';
 import { ReviewToolFooter } from './ReviewToolFooter';
 import { ReviewToolHeader } from './ReviewToolHeader';
 import { ReviewToolLoading } from './ReviewToolLoading';
 import { useRouter } from 'next/router';
+import { useFileStateContext } from '../../../contexts/File';
+import { ProjectDto } from '../../../services/types';
 
-export const ReviewTool = () => {
+interface Props {
+  project: ProjectDto | undefined;
+  isLoading: boolean;
+}
+
+export const ReviewTool = ({ project, isLoading }: Props) => {
   const router = useRouter();
 
-  const { activeFile, file, compareFile, project, isLoading, setActiveFileId, setActiveComment } = useFileContext();
+  const { activeFile, file, compareFile, setActiveFileId, setActiveComment } = useFileStateContext();
 
   if (isLoading || !file || !project) {
     return <ReviewToolLoading />;

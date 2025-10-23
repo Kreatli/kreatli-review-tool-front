@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/indent */
-import { Avatar, Button, Textarea } from '@heroui/react';
+import { Avatar, Button, Popover, PopoverContent, PopoverTrigger, Textarea } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { nanoid } from 'nanoid';
 import React, { useRef, useState } from 'react';
 
-import { useFileContext } from '../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../contexts/ReviewTool';
 import { useSession } from '../../../hooks/useSession';
 import { usePostAssetFileIdComment } from '../../../services/hooks';
@@ -12,16 +11,25 @@ import { getAssetFileIdComments } from '../../../services/services';
 import { AssetCommentsResponse } from '../../../services/types';
 import { getIsMediaHtmlElement } from '../../../utils/getIsMediaHtmlElement';
 import { Icon } from '../../various/Icon';
+import { useFileStateContext } from '../../../contexts/File';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { ReviewToolTextareaAnonymousForm } from './ReviewToolTextareaAnonymousForm';
 
 interface Props {
+  shareableLinkId?: string;
   isDisabled?: boolean;
 }
 
-export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
+export const ReviewToolTextarea = ({ shareableLinkId, isDisabled = false }: Props) => {
+  const [anonymousName, setAnonymousName] = useLocalStorage<string | undefined>({
+    key: 'anonymousName',
+    defaultValue: undefined,
+  });
+  const [isAnonymousFormVisible, setIsAnonymousFormVisible] = useState(false);
   const [message, setMessage] = React.useState('');
   const { fileRef, compareFileRef, setActiveTool } = useReviewToolContext();
-  const { replyingComment, activeFile, compareFile, commentsRef, setActiveComment, setReplyingComment } =
-    useFileContext();
+  const { activeFile, compareFile, replyingComment, commentsRef, setActiveComment, setReplyingComment } =
+    useFileStateContext();
   const { shapes, resetCanvas } = useReviewToolCanvasShapesContext();
 
   const { user } = useSession();
@@ -33,18 +41,24 @@ export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
 
   const activeRef = activeFile?.id === compareFile?.id ? compareFileRef : fileRef;
 
-  // const isMediaFile = getIsMediaHtmlElement(fileRef.current);
-  // const isMediaCompareFile = getIsMediaHtmlElement(compareFileRef.current);
-  // const isActiveMediaFile = getIsMediaHtmlElement(activeRef.current);
-
   React.useEffect(() => {
-    if (replyingComment) {
+    if (replyingComment && replyingComment.createdBy.name) {
       setMessage(`${replyingComment.createdBy.name}, `);
       textareaRef.current?.focus();
     }
   }, [replyingComment]);
 
   const handleSubmit = () => {
+    if (!user && !anonymousName) {
+      setIsAnonymousFormVisible(true);
+
+      return;
+    }
+
+    addComment(user?.name ?? anonymousName);
+  };
+
+  const addComment = (name?: string) => {
     if (!activeFile || !message) {
       setIsInvalid(true);
 
@@ -71,7 +85,9 @@ export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
       id: `placeholder-${nanoid()}`,
       message,
       createdAt: new Date().toString(),
-      createdBy: user!,
+      createdBy: user ?? {
+        name,
+      },
       isResolved: false,
       replies: [],
       parent,
@@ -81,28 +97,31 @@ export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
         : undefined,
     };
 
-    queryClient.setQueryData<AssetCommentsResponse>([getAssetFileIdComments.key, activeFile.id], (data) => {
-      const dataComments = data?.comments ?? [];
+    queryClient.setQueryData<AssetCommentsResponse>(
+      [getAssetFileIdComments.key, activeFile.id, { shareableLinkId: shareableLinkId ?? '' }],
+      (data) => {
+        const dataComments = data?.comments ?? [];
 
-      if (commentPlaceholder.parent) {
-        const parentComment = dataComments.find((comment) => comment.id === commentPlaceholder.parent);
+        if (commentPlaceholder.parent) {
+          const parentComment = dataComments.find((comment) => comment.id === commentPlaceholder.parent);
+
+          return {
+            comments: dataComments.map((comment) =>
+              parentComment === comment
+                ? {
+                    ...parentComment,
+                    replies: [...parentComment.replies, commentPlaceholder],
+                  }
+                : comment,
+            ),
+          };
+        }
 
         return {
-          comments: dataComments.map((comment) =>
-            parentComment === comment
-              ? {
-                  ...parentComment,
-                  replies: [...parentComment.replies, commentPlaceholder],
-                }
-              : comment,
-          ),
+          comments: [...dataComments, commentPlaceholder],
         };
-      }
-
-      return {
-        comments: [...dataComments, commentPlaceholder],
-      };
-    });
+      },
+    );
 
     if (!parent) {
       setTimeout(() => {
@@ -116,6 +135,8 @@ export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
         requestBody: {
           message,
           parent,
+          name,
+          shareableLinkId,
           timestamp: getIsMediaHtmlElement(activeRef.current)
             ? [activeRef.current.currentTime, activeRef.current.currentTime]
             : undefined,
@@ -149,6 +170,12 @@ export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
     }
   };
 
+  const handleAnonymousFormSubmit = (name: string) => {
+    setAnonymousName(name);
+    setIsAnonymousFormVisible(false);
+    addComment(name);
+  };
+
   return (
     <form className="relative w-full max-w-screen-xl" onSubmit={handleSubmit}>
       <Textarea
@@ -165,18 +192,29 @@ export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
         onFocus={handleFocus}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <Button
-        size="sm"
-        isIconOnly
-        isDisabled={isDisabled}
-        variant="light"
-        radius="full"
-        className="absolute bottom-1 right-1"
-        onClick={handleSubmit}
+      <Popover
+        isOpen={isAnonymousFormVisible}
+        placement="top-end"
+        onOpenChange={(open) => (open ? null : setIsAnonymousFormVisible(open))}
       >
-        <Icon icon="send" size={20} />
-      </Button>
-      {user && (
+        <PopoverTrigger>
+          <Button
+            size="sm"
+            isIconOnly
+            isDisabled={isDisabled}
+            variant="light"
+            radius="full"
+            className="absolute bottom-1 right-1"
+            onClick={handleSubmit}
+          >
+            <Icon icon="send" size={20} />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="p-3 w-64">
+          <ReviewToolTextareaAnonymousForm onSubmit={handleAnonymousFormSubmit} />
+        </PopoverContent>
+      </Popover>
+      {user ? (
         <Avatar
           src={user.avatar?.url ?? ''}
           size="sm"
@@ -185,6 +223,10 @@ export const ReviewToolTextarea = ({ isDisabled = false }: Props) => {
             <div className="text-xs text-foreground-500 select-none">{user.name.slice(0, 1).toUpperCase()}</div>
           }
         />
+      ) : (
+        <div className="text-xs text-foreground-500 bg-foreground-300 size-6 rounded-full absolute top-1.5 left-1.5 flex items-center justify-center">
+          {anonymousName?.slice(0, 1).toUpperCase() || <Icon icon="user" size={16} />}
+        </div>
       )}
       {replyingComment && (
         <div className="absolute bottom-full pb-0.5 flex items-center gap-1 left-2 right-2 text-primary">
