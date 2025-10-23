@@ -876,6 +876,11 @@ export interface ShareableLinkBody {
   assetId: string;
 }
 
+export interface ShareableLinkSendEmailBodyDto {
+  emails: string[];
+  url: string;
+}
+
 export interface SignInBodyDto {
   email: string;
   password: string;

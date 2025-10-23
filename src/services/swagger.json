@@ -938,6 +938,21 @@
           }
         }
       }
+    },
+    "/shareable-link/send-email": {
+      "post": {
+        "operationId": "ShareableLinkController_sendEmails",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/ShareableLinkSendEmailBodyDto" } }
+          }
+        },
+        "responses": {
+          "200": { "description": "", "content": { "application/json": { "schema": { "type": "object" } } } }
+        }
+      }
     }
   },
   "info": {
@@ -2208,6 +2223,11 @@
           "url",
           "type"
         ]
+      },
+      "ShareableLinkSendEmailBodyDto": {
+        "type": "object",
+        "properties": { "emails": { "type": "array", "items": { "type": "string" } }, "url": { "type": "string" } },
+        "required": ["emails", "url"]
       }
     }
   }

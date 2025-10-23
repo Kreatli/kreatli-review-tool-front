@@ -72,6 +72,7 @@ import type {
   ResetPasswordBodyDto,
   ShareableAssetDto,
   ShareableLinkBody,
+  ShareableLinkSendEmailBodyDto,
   SignInBodyDto,
   SignInResultDto,
   SignUpBodyDto,
@@ -135,6 +136,7 @@ import {
   postProjectIdFolder,
   postProjectIdMember,
   postShareableLink,
+  postShareableLinkSendEmail,
   postStripeWebhook,
   postUserAddon,
   postUserSubscription,
@@ -1737,6 +1739,31 @@ export const usePostShareableLink = <TExtra,>(
       } = _o || {};
 
       return postShareableLink(
+        requestBody,
+
+        configOverride,
+      );
+    },
+    ...options,
+  });
+};
+
+export const usePostShareableLinkSendEmail = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    { [x in string | number]: any },
+    { requestBody: ShareableLinkSendEmailBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const {
+        requestBody,
+
+        configOverride,
+      } = _o || {};
+
+      return postShareableLinkSendEmail(
         requestBody,
 
         configOverride,

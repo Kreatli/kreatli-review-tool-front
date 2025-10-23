@@ -77,6 +77,7 @@ import type {
   ShareableLinkBody,
   CreateShareableLinkDto,
   ShareableAssetDto,
+  ShareableLinkSendEmailBodyDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -900,6 +901,22 @@ export const postShareableLink = (
 
 /** Key is end point string without base url */
 postShareableLink.key = '/shareable-link';
+
+export const postShareableLinkSendEmail = (
+  requestBody: ShareableLinkSendEmailBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<{ [x in string | number]: any }>> => {
+  return Http.postRequest(
+    postShareableLinkSendEmail.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postShareableLinkSendEmail.key = '/shareable-link/send-email';
 
 export const postStripeWebhook = (
   headerParams?: { 'stripe-signature': string },

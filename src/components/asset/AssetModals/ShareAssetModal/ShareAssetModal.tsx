@@ -12,9 +12,9 @@ import {
 } from '@heroui/react';
 import { ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
 import { Icon } from '../../../various/Icon';
-import { FocusEvent, KeyboardEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useState } from 'react';
 import { EMAIL_PATTERN } from '../../../../constants/validationRules';
-import { usePostShareableLink } from '../../../../services/hooks';
+import { usePostShareableLink, usePostShareableLinkSendEmail } from '../../../../services/hooks';
 
 interface Props {
   asset?: ProjectFolderDto | ProjectFileDto;
@@ -27,6 +27,9 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
   const [input, setInput] = useState('');
 
   const { mutate, data, isPending } = usePostShareableLink();
+  const { mutate: sendEmails, isPending: isSendingEmails } = usePostShareableLinkSendEmail();
+
+  const url = `${location.origin}/share/${data?.id}`;
 
   useEffect(() => {
     if (isOpen && asset) {
@@ -41,6 +44,16 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      setEmails([]);
+    }
+  }, [isOpen]);
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInput(event.target.value);
+  };
+
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {
     const { value } = event.target;
 
@@ -54,8 +67,33 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
 
   const handleInputKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleInputBlur({ target: { value: event.currentTarget.value } } as FocusEvent<HTMLInputElement>);
+      if (event.currentTarget.value) {
+        handleInputBlur({ target: { value: event.currentTarget.value } } as FocusEvent<HTMLInputElement>);
+
+        return;
+      }
+
+      handleSendLink();
     }
+  };
+
+  const handleSendLink = () => {
+    if (emails.length === 0) {
+      return;
+    }
+
+    sendEmails(
+      { requestBody: { emails, url } },
+      {
+        onSuccess: () => {
+          addToast({ title: 'Shareable link was sent!', color: 'success', variant: 'flat' });
+          onClose();
+        },
+        onError: () => {
+          addToast({ title: 'Failed to send link. Please try again later.', color: 'danger', variant: 'flat' });
+        },
+      },
+    );
   };
 
   return (
@@ -65,7 +103,7 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
         <ModalBody className="pb-6">
           <div className="flex flex-col gap-4">
             <Input
-              value={isPending ? 'Generating link...' : `${location.origin}/share/${data?.id}`}
+              value={isPending ? 'Generating link...' : url}
               label="Copy shareable link"
               readOnly
               endContent={
@@ -79,7 +117,7 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
                       variant="light"
                       startContent={<Icon icon="copy" size={20} className="text-foreground-500" />}
                       onClick={() => {
-                        navigator.clipboard.writeText(`${location.origin}/share/${data?.id}`);
+                        navigator.clipboard.writeText(url);
                       }}
                     />
                   </Tooltip>
@@ -91,7 +129,7 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
             </div>
             <div className="flex flex-col gap-2">
               {emails.length > 0 && (
-                <div className="flex gap-2">
+                <div className="flex gap-2 gap-y-1 flex-wrap">
                   {emails.map((email) => (
                     <Chip
                       key={email}
@@ -109,26 +147,22 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
                   label="Share via email"
                   placeholder="Enter email address"
                   value={input}
+                  isDisabled={emails.length >= 5 || isPending}
                   onBlur={handleInputBlur}
                   onKeyDown={handleInputKeyDown}
-                  onChange={(event) => setInput(event.target.value)}
+                  onChange={handleInputChange}
                 />
-                <Button size="sm" isDisabled={emails.length === 0} className="text-content1 bg-foreground">
+                <Button
+                  size="sm"
+                  isDisabled={emails.length === 0}
+                  isLoading={isSendingEmails}
+                  className="text-content1 bg-foreground"
+                  onClick={handleSendLink}
+                >
                   Send link via email
                 </Button>
               </div>
             </div>
-            {/* <div className="text-medium">
-              Are you sure you want to restore <span className="font-semibold">&quot;{asset?.name}&quot;</span>?
-            </div>
-            <div className="flex gap-2 justify-end">
-              <Button variant="light" isDisabled={isPending} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button className="bg-foreground text-content1" isLoading={isPending} onClick={handleRestore}>
-                Restore
-              </Button>
-            </div> */}
           </div>
         </ModalBody>
       </ModalContent>
