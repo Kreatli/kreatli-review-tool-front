@@ -876,6 +876,12 @@ export interface ShareableLinkBody {
   assetId: string;
 }
 
+export interface ShareableLinkDto {
+  file: ShareableAssetDto;
+  hasAccessToProject: boolean;
+  projectId?: string;
+}
+
 export interface ShareableLinkSendEmailBodyDto {
   emails: string[];
   url: string;

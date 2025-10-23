@@ -76,7 +76,7 @@ import type {
   MultipartUploadCompleteDto,
   ShareableLinkBody,
   CreateShareableLinkDto,
-  ShareableAssetDto,
+  ShareableLinkDto,
   ShareableLinkSendEmailBodyDto,
 } from './types';
 
@@ -477,7 +477,7 @@ getProjects.key = '/projects';
 export const getShareableLinkAssetId = (
   id: string,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ShareableAssetDto>> => {
+): Promise<SwaggerResponse<ShareableLinkDto>> => {
   return Http.getRequest(
     template(getShareableLinkAssetId.key, { id }),
     undefined,

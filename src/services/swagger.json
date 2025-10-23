@@ -934,7 +934,7 @@
         "responses": {
           "200": {
             "description": "",
-            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ShareableAssetDto" } } }
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ShareableLinkDto" } } }
           }
         }
       }
@@ -2223,6 +2223,15 @@
           "url",
           "type"
         ]
+      },
+      "ShareableLinkDto": {
+        "type": "object",
+        "properties": {
+          "file": { "$ref": "#/components/schemas/ShareableAssetDto" },
+          "hasAccessToProject": { "type": "boolean" },
+          "projectId": { "type": "string" }
+        },
+        "required": ["file", "hasAccessToProject"]
       },
       "ShareableLinkSendEmailBodyDto": {
         "type": "object",

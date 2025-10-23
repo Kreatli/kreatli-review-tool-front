@@ -70,8 +70,8 @@ import type {
   ProjectStatusBodyDto,
   ProjectsResponseDto,
   ResetPasswordBodyDto,
-  ShareableAssetDto,
   ShareableLinkBody,
+  ShareableLinkDto,
   ShareableLinkSendEmailBodyDto,
   SignInBodyDto,
   SignInResultDto,
@@ -1055,7 +1055,7 @@ useGetProjects.prefetch = (
 };
 export const useGetShareableLinkAssetId = (
   id: string,
-  options?: SwaggerTypescriptUseQueryOptions<ShareableAssetDto>,
+  options?: SwaggerTypescriptUseQueryOptions<ShareableLinkDto>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetShareableLinkAssetId.info(
@@ -1083,7 +1083,7 @@ useGetShareableLinkAssetId.info = (id: string, configOverride?: AxiosRequestConf
 useGetShareableLinkAssetId.prefetch = (
   client: QueryClient,
   id: string,
-  options?: SwaggerTypescriptUseQueryOptions<ShareableAssetDto>,
+  options?: SwaggerTypescriptUseQueryOptions<ShareableLinkDto>,
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetShareableLinkAssetId.info(

@@ -28,13 +28,17 @@ export default function SharePage() {
     }
   }, [isError, router]);
 
-  const title = `Kreatli | ${data?.name}`;
+  useEffect(() => {
+    if (data?.hasAccessToProject) {
+      router.replace(`/project/${data.projectId}/assets/${data.file.id}`);
+    }
+  }, [data?.hasAccessToProject]);
 
-  if (isError || !data || !shareableLinkId) {
+  const title = `Kreatli | ${data?.file?.name}`;
+
+  if (isError || !data || !shareableLinkId || data.hasAccessToProject) {
     return null;
   }
-
-  const fileUrl = data.fileType.startsWith('image') ? data.url : data.metadata.thumbnailUrl;
 
   return (
     <div>
@@ -43,8 +47,8 @@ export default function SharePage() {
         <meta name="robots" content="noindex" />
       </Head>
       <Header />
-      <FileStateContextProvider fileId={data?.id ?? ''} file={data}>
-        <ShareableAsset file={data} shareableLinkId={shareableLinkId.toString()} />
+      <FileStateContextProvider fileId={data.file.id ?? ''} file={data.file}>
+        <ShareableAsset file={data.file} shareableLinkId={shareableLinkId.toString()} />
       </FileStateContextProvider>
     </div>
   );
