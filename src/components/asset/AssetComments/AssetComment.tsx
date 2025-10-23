@@ -1,4 +1,4 @@
-import { addToast, Avatar, Button, Checkbox, cn, Tooltip } from '@heroui/react';
+import { addToast, Avatar, Button, Checkbox, Chip, cn, Tooltip } from '@heroui/react';
 import React, { useEffect, useState } from 'react';
 
 import { useSession } from '../../../hooks/useSession';
@@ -98,16 +98,21 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
       )}
     >
       <div className="flex justify-between items-start gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 overflow-hidden">
           <Avatar
             src={createdBy.avatar?.url ?? ''}
             size="sm"
-            className="cursor-pointer !size-6"
+            className="cursor-pointer !size-6 shrink-0"
             fallback={
               <div className="text-xs text-foreground-500 select-none">{createdBy.name?.slice(0, 1).toUpperCase()}</div>
             }
           />
-          <div className="text-xs">{createdBy.name}</div>
+          <div className="text-xs text-ellipsis overflow-hidden">{createdBy.name}</div>
+          {!createdBy.id && (
+            <Chip size="sm" variant="flat" color="primary" className="h-auto p-px">
+              Guest
+            </Chip>
+          )}
         </div>
         <div className="flex items-center gap-1 z-10">
           {isRemovable && (
