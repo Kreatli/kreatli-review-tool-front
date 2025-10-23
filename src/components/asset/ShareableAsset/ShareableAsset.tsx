@@ -38,7 +38,7 @@ export const ShareableAsset = ({ file, shareableLinkId }: Props) => {
       <div className="px-6 py-1 flex gap-2 items-center border-b border-foreground-300">
         <div className="text-md font-semibold truncate">{file.name}</div>
         <div className="text-sm text-foreground-500 whitespace-nowrap">{formatBytes(file.fileSize)}</div>
-        <Button size="sm" variant="light" radius="full" onClick={handleDownload}>
+        <Button size="sm" variant="flat" color="primary" onClick={handleDownload}>
           <Icon icon="download" size={16} />
           <span className="font-medium">Download</span>
         </Button>
