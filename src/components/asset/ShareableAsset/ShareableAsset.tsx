@@ -35,7 +35,7 @@ export const ShareableAsset = ({ file, shareableLinkId }: Props) => {
 
   return (
     <div className="border-t border-foreground-300">
-      <div className="px-6 py-1 flex gap-2 items-center">
+      <div className="px-6 py-1 flex gap-2 items-center border-b border-foreground-300">
         <div className="text-md font-semibold truncate">{file.name}</div>
         <div className="text-sm text-foreground-500 whitespace-nowrap">{formatBytes(file.fileSize)}</div>
         <Button size="sm" variant="light" radius="full" onClick={handleDownload}>
@@ -52,7 +52,7 @@ export const ShareableAsset = ({ file, shareableLinkId }: Props) => {
             </ReviewToolCanvasShapesContextProvider>
           </ReviewToolContextProvider>
         </div>
-        <div ref={commentsRef} className="overflow-auto">
+        <div ref={commentsRef} className="overflow-auto border-l border-foreground-300 pt-3">
           <AssetComments shareableLinkId={shareableLinkId} fileId={file.id} />
         </div>
       </div>
