@@ -15,7 +15,7 @@ interface Props {
 
 export const MoveToAssetsModal = ({ project, assetIds, currentParentId, isOpen, onClose, onSuccess }: Props) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isDismissable={false}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
         <ModalHeader>
           Move {assetIds.length} asset{assetIds.length === 1 ? '' : 's'}

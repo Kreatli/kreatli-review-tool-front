@@ -13,7 +13,7 @@ interface Props {
 
 export const MoveToModal = ({ asset, project, isOpen, onClose }: Props) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isDismissable={false}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
         <ModalHeader>Move &quot;{asset?.name}&quot;</ModalHeader>
         <ModalBody className="pb-6">

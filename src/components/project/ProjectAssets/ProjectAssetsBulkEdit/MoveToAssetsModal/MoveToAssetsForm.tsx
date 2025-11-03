@@ -81,13 +81,13 @@ export const MoveToAssetsForm = ({ project, assetIds, currentParentId, onCancel,
           <p className="text-default-500">Loading destinations...</p>
         </div>
       )}
-      {!isLoadingProjectPaths && filteredPaths.length === 0 && (
+      {!isLoadingProjectPaths && filteredPaths.length === 0 && !currentParentId && (
         <div className="flex flex-col items-center justify-center gap-2 p-4 text-center">
           <Icon icon="folder" size={24} className="text-default-400" />
           <p className="text-default-500">There are no available destinations to move these assets to.</p>
         </div>
       )}
-      {!isLoadingProjectPaths && filteredPaths.length > 0 && (
+      {!isLoadingProjectPaths && (filteredPaths.length > 0 || currentParentId) && (
         <Select
           aria-label="Select destination"
           placeholder="Select destination"
@@ -103,14 +103,16 @@ export const MoveToAssetsForm = ({ project, assetIds, currentParentId, onCancel,
               {project.name}
             </SelectItem>
           )}
-          <SelectSection title="Folders">
-            {filteredPaths.map((folder: ProjectPathDto) => (
-              <SelectItem key={folder.id} textValue={folder.name} startContent={<Icon icon="folder" size={16} />}>
-                {folder.path.map((path: { name: string }) => `${path.name} / `)}
-                {folder.name}
-              </SelectItem>
-            ))}
-          </SelectSection>
+          {filteredPaths.length > 0 && (
+            <SelectSection title="Folders">
+              {filteredPaths.map((folder: ProjectPathDto) => (
+                <SelectItem key={folder.id} textValue={folder.name} startContent={<Icon icon="folder" size={16} />}>
+                  {folder.path.map((path: { name: string }) => `${path.name} / `)}
+                  {folder.name}
+                </SelectItem>
+              ))}
+            </SelectSection>
+          )}
         </Select>
       )}
       <div className="flex justify-end gap-2">
