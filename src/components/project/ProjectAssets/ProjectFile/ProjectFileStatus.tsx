@@ -31,7 +31,7 @@ export const ProjectFileStatus = ({ file, projectId, memberRole, className, isDi
     setSelectedKeys(keys as Set<string>);
     const newStatus = keys.values().next().value;
 
-    // @ts-expect-error
+    // @ts-ignore
     mutate({ id: projectId, fileId: file.id, requestBody: { status: newStatus === 'none' ? null : newStatus } });
   };
 
