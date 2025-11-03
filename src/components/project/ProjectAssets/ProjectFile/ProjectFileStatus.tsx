@@ -1,8 +1,6 @@
-// @ts-nocheck
-import { Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection, Tooltip } from '@heroui/react';
+import { Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
 import React from 'react';
 
-import { useSession } from '../../../../hooks/useSession';
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
 import { ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
 import { STATUS_COLOR, STATUS_LABEL } from '../../../../utils/status';
@@ -17,21 +15,7 @@ interface Props {
 
 export const ProjectFileStatus = ({ file, projectId, memberRole, className, isDisabled }: Props) => {
   const { status } = file;
-  const { user } = useSession();
   const [selectedKeys, setSelectedKeys] = React.useState<Set<string>>(new Set([status ?? 'none']));
-
-  const hasAssigneeStatuses =
-    file.assignee?.id === user?.id || (memberRole === 'contributor' && file.createdBy?.id === user?.id);
-
-  const isEditable = React.useMemo(() => {
-    if (memberRole === 'owner') {
-      return true;
-    }
-
-    return (user?.id === file.createdBy?.id || user?.id === file.assignee?.id) && status !== 'approved';
-  }, [file, memberRole, status, user]);
-
-  const isDisabledForOwner = memberRole === 'owner' && !file.assignee;
 
   React.useEffect(() => {
     setSelectedKeys(new Set([status ?? 'none']));
@@ -47,32 +31,25 @@ export const ProjectFileStatus = ({ file, projectId, memberRole, className, isDi
     setSelectedKeys(keys as Set<string>);
     const newStatus = keys.values().next().value;
 
+    // @ts-expect-error
     mutate({ id: projectId, fileId: file.id, requestBody: { status: newStatus === 'none' ? null : newStatus } });
   };
 
-  const chip = (
-    <Chip
-      size="sm"
-      variant="dot"
-      isDisabled={isDisabled}
-      color={STATUS_COLOR[selectedKeys.values().next().value]}
-      className={cn('bg-default-100 cursor-pointer', className)}
-    >
-      {STATUS_LABEL[selectedKeys.values().next().value]}
-    </Chip>
-  );
-
-  if (isDisabledForOwner) {
-    return <Tooltip content="You need to assign the file before changing its status">{chip}</Tooltip>;
-  }
-
-  if (!isEditable) {
-    return <Tooltip content="You can't change the status of this file">{chip}</Tooltip>;
-  }
+  const selectedKey = selectedKeys.values().next().value ?? 'none';
 
   return (
     <Dropdown>
-      <DropdownTrigger>{chip}</DropdownTrigger>
+      <DropdownTrigger>
+        <Chip
+          size="sm"
+          variant="dot"
+          isDisabled={isDisabled}
+          color={STATUS_COLOR[selectedKey]}
+          className={cn('bg-default-100 cursor-pointer', className)}
+        >
+          {STATUS_LABEL[selectedKey]}
+        </Chip>
+      </DropdownTrigger>
       <DropdownMenu
         variant="flat"
         selectionMode="single"
@@ -83,26 +60,18 @@ export const ProjectFileStatus = ({ file, projectId, memberRole, className, isDi
         <DropdownItem key="none" startContent={<span className="w-2 h-2 rounded-full bg-default" />}>
           No status
         </DropdownItem>
-        {hasAssigneeStatuses && (
-          <DropdownItem key="in-progress" startContent={<span className="w-2 h-2 rounded-full bg-primary" />}>
-            In progress
-          </DropdownItem>
-        )}
-        {!hasAssigneeStatuses && (
-          <DropdownItem key="changes-required" startContent={<span className="w-2 h-2 rounded-full bg-danger" />}>
-            Changes required
-          </DropdownItem>
-        )}
-        {hasAssigneeStatuses && (
-          <DropdownItem key="review-needed" startContent={<span className="w-2 h-2 rounded-full bg-warning" />}>
-            Review needed
-          </DropdownItem>
-        )}
-        {!hasAssigneeStatuses && (
-          <DropdownItem key="approved" startContent={<span className="w-2 h-2 rounded-full bg-success" />}>
-            Approved
-          </DropdownItem>
-        )}
+        <DropdownItem key="in-progress" startContent={<span className="w-2 h-2 rounded-full bg-primary" />}>
+          In progress
+        </DropdownItem>
+        <DropdownItem key="review-needed" startContent={<span className="w-2 h-2 rounded-full bg-warning" />}>
+          Review needed
+        </DropdownItem>
+        <DropdownItem key="changes-required" startContent={<span className="w-2 h-2 rounded-full bg-danger" />}>
+          Changes required
+        </DropdownItem>
+        <DropdownItem key="approved" startContent={<span className="w-2 h-2 rounded-full bg-success" />}>
+          Approved
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

@@ -31,6 +31,7 @@ import { ProjectFileCover } from '../ProjectFile/ProjectFileCover';
 import { ProjectFolder } from '../ProjectFolder';
 import { ProjectFolderCover } from '../ProjectFolder/ProjectFolderCover';
 import { useRouter } from 'next/router';
+import { useSession } from '../../../../hooks/useSession';
 
 interface Props {
   project: ProjectDto;
@@ -48,6 +49,8 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   });
 
   const router = useRouter();
+  const { user } = useSession();
+  const isProjectOwner = user && project?.createdBy?.id === user?.id;
 
   const assets = React.useMemo(() => {
     return assetsData?.assets ?? [];
@@ -264,16 +267,18 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             <Icon icon="arrowRight" size={14} />
             Move to
           </Button>
-          <Button
-            variant="light"
-            size="sm"
-            color="danger"
-            isDisabled={!hasSelectedAssets}
-            onClick={() => setIsArchiveModalOpen(true)}
-          >
-            <Icon icon="trash" size={14} />
-            Archive
-          </Button>
+          {isProjectOwner && (
+            <Button
+              variant="light"
+              size="sm"
+              color="danger"
+              isDisabled={!hasSelectedAssets}
+              onClick={() => setIsArchiveModalOpen(true)}
+            >
+              <Icon icon="trash" size={14} />
+              Archive
+            </Button>
+          )}
           {selectedAssetIds.size === 2 && (
             <Button size="sm" variant="flat" color="primary" onClick={handleCompareSelectedAssets}>
               <Icon icon="compare" size={16} />

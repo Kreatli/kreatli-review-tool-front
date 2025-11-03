@@ -6,8 +6,6 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { useAssetContext } from '../../../../contexts/Asset';
-import { useProjectContext } from '../../../../contexts/Project';
-import { useSession } from '../../../../hooks/useSession';
 import { ProjectFolderDto } from '../../../../services/types';
 import { formatBytes } from '../../../../utils/formatBytes';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
@@ -23,14 +21,10 @@ interface Props {
 }
 
 export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSelectionChange }: Props) => {
-  const { name, createdBy } = folder;
+  const { name } = folder;
 
-  const { user } = useSession();
-  const { isProjectOwner } = useProjectContext();
   const { getAssetActions } = useAssetContext();
   const router = useRouter();
-
-  const canEdit = isProjectOwner || user?.id === createdBy?.id;
 
   const handleClick = () => {
     router.push(`/project/${router.query.id}/assets/folder/${folder.id}`);
@@ -48,7 +42,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
     setDroppableNodeRef,
   } = useSortable({
     id: folder.id,
-    disabled: isDisabled || !canEdit || isSelected || isReadonly,
+    disabled: isDisabled || isSelected || isReadonly,
     animateLayoutChanges: () => true,
   });
 
@@ -119,7 +113,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
           </DropdownMenu>
         </Dropdown>
       )}
-      {isSelected !== undefined && canEdit && (
+      {isSelected !== undefined && (
         <Checkbox
           isSelected={isSelected}
           isDisabled={isReadonly}

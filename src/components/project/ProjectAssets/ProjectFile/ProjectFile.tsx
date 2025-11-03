@@ -23,16 +23,15 @@ interface Props {
 }
 
 export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelectionChange }: Props) => {
-  const { name, metadata, createdBy, commentsCount } = file;
+  const { name, metadata, commentsCount } = file;
   const { isUploading = false } = metadata;
 
   const { user } = useSession();
   const router = useRouter();
-  const { project, isProjectOwner } = useProjectContext();
+  const { project } = useProjectContext();
   const { getAssetActions } = useAssetContext();
 
   const memberRole = project.members.find((member) => member.user?.id === user?.id)?.role;
-  const canEdit = isProjectOwner || user?.id === createdBy?.id;
 
   const handleClick = () => {
     if (isDisabled) {
@@ -54,7 +53,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
     setDroppableNodeRef,
   } = useSortable({
     id: file.id,
-    disabled: isDisabled || !canEdit || isSelected || isReadonly,
+    disabled: isDisabled || isSelected || isReadonly,
     animateLayoutChanges: () => true,
   });
 
@@ -100,7 +99,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
           />
         </div>
       </div>
-      {isSelected !== undefined && canEdit && (
+      {isSelected !== undefined && (
         <Checkbox
           isSelected={isSelected}
           color="default"

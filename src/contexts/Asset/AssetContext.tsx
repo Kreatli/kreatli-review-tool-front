@@ -74,10 +74,20 @@ export const AssetContextProvider = ({
       },
     };
 
+    const moveToAction = {
+      label: 'Move to...',
+      icon: 'arrowRight' as const,
+      onClick: () => {
+        setSelectedAssetId?.(asset.id);
+        setIsMoveToModalOpen(true);
+      },
+    };
+
     if (!isProjectOwner && user?.id !== asset?.createdBy?.id) {
       if (asset?.type === 'file') {
         return [
           shareAction,
+          moveToAction,
           {
             label: 'Download',
             icon: 'download' as const,
@@ -98,7 +108,7 @@ export const AssetContextProvider = ({
         ];
       }
 
-      return [];
+      return [moveToAction];
     }
 
     if (isArchived) {
@@ -155,14 +165,7 @@ export const AssetContextProvider = ({
         },
       },
       ...(asset.type === 'file' ? [shareAction] : []),
-      {
-        label: 'Move to...',
-        icon: 'arrowRight' as const,
-        onClick: () => {
-          setSelectedAssetId?.(asset.id);
-          setIsMoveToModalOpen(true);
-        },
-      },
+      moveToAction,
       ...(asset.type === 'folder'
         ? [
             {

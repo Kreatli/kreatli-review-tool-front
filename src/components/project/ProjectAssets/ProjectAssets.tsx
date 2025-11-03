@@ -31,6 +31,7 @@ import { ProjectFolderCover } from './ProjectFolder/ProjectFolderCover';
 import { useRouter } from 'next/router';
 import { ProjectDropFilesHint } from './ProjectDropFilesHint';
 import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
+import { useSession } from '../../../hooks/useSession';
 
 export const ProjectAssets = () => {
   const { project, search, filters } = useProjectContext();
@@ -41,6 +42,8 @@ export const ProjectAssets = () => {
   });
 
   const router = useRouter();
+  const { user } = useSession();
+  const isProjectOwner = user && project?.createdBy?.id === user?.id;
 
   const assets = React.useMemo(() => {
     return assetsData?.assets ?? [];
@@ -268,16 +271,18 @@ export const ProjectAssets = () => {
             <Icon icon="arrowRight" size={14} />
             Move to
           </Button>
-          <Button
-            variant="light"
-            size="sm"
-            color="danger"
-            isDisabled={!hasSelectedAssets}
-            onClick={() => setIsArchiveModalOpen(true)}
-          >
-            <Icon icon="trash" size={14} />
-            Archive
-          </Button>
+          {isProjectOwner && (
+            <Button
+              variant="light"
+              size="sm"
+              color="danger"
+              isDisabled={!hasSelectedAssets}
+              onClick={() => setIsArchiveModalOpen(true)}
+            >
+              <Icon icon="trash" size={14} />
+              Archive
+            </Button>
+          )}
           {selectedAssetIds.size === 2 && (
             <Button size="sm" variant="flat" color="primary" onClick={handleCompareSelectedAssets}>
               <Icon icon="compare" size={16} />
