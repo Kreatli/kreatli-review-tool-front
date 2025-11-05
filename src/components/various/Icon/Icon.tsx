@@ -50,6 +50,7 @@ import FolderIcon from '../../../assets/icons/folder.svg';
 import FullscreenIcon from '../../../assets/icons/fullscreen.svg';
 import GoogleIcon from '../../../assets/icons/google.svg';
 import GroupIcon from '../../../assets/icons/group.svg';
+import GridIcon from '../../../assets/icons/grid.svg';
 import HeartIcon from '../../../assets/icons/heart.svg';
 import HelpCircleIcon from '../../../assets/icons/help-circle.svg';
 import HideIcon from '../../../assets/icons/hide.svg';
@@ -60,6 +61,7 @@ import InstagramIcon from '../../../assets/icons/instagram.svg';
 import ItalicIcon from '../../../assets/icons/italic.svg';
 import LinkIcon from '../../../assets/icons/link.svg';
 import LinkedinIcon from '../../../assets/icons/linkedin.svg';
+import ListIcon from '../../../assets/icons/list.svg';
 import LocationIcon from '../../../assets/icons/location.svg';
 import LogoIcon from '../../../assets/icons/logo.svg';
 import MailIcon from '../../../assets/icons/mail.svg';
@@ -152,9 +154,10 @@ const ICONS = {
   fileTxt: FileTxtIcon,
   fullscreen: FullscreenIcon,
   google: GoogleIcon,
+  group: GroupIcon,
+  grid: GridIcon,
   filter: FilterIcon,
   folder: FolderIcon,
-  group: GroupIcon,
   helpCircle: HelpCircleIcon,
   heart: HeartIcon,
   hide: HideIcon,
@@ -165,6 +168,7 @@ const ICONS = {
   italic: ItalicIcon,
   link: LinkIcon,
   linkedin: LinkedinIcon,
+  list: ListIcon,
   location: LocationIcon,
   logo: LogoIcon,
   mail: MailIcon,

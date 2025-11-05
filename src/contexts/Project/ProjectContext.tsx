@@ -42,6 +42,7 @@ interface Context {
   setFilters: (filters: ProjectAssetsFilters) => void;
   isProjectOwner: boolean;
   project: ProjectDto;
+  setIsMembersModalOpen: (isOpen: boolean) => void;
 }
 
 export const ProjectContext = React.createContext<Context | null>(null);
@@ -233,6 +234,7 @@ export const ProjectContextProvider = ({
         setSearch,
         filters,
         setFilters,
+        setIsMembersModalOpen,
       }}
     >
       {children}

@@ -1,16 +1,18 @@
 import { Button, Input, Tab, Tabs } from '@heroui/react';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useGetProjects } from '../../../services/hooks';
 import { GetProjectsQueryParams } from '../../../services/types';
 import { Icon } from '../../various/Icon';
 import { CreateProjectModal } from '../ProjectModals/CreateProjectModal';
-import { ProjectsList } from '../ProjectsList';
+import { ProjectsGrid } from '../ProjectsGrid';
 import { useSession } from '../../../hooks/useSession';
 import { UpgradeModal } from '../../account/UpgradeModal';
+import { ProjectsList } from '../ProjectsList/ProjectsList';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 
 export const Projects = () => {
   const router = useRouter();
@@ -23,6 +25,8 @@ export const Projects = () => {
   );
   const [isCreateModalOpen, setIsCreateModalOpen] = React.useState(false);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
+
+  const [view, setView] = useLocalStorage({ key: 'projectsView', defaultValue: 'list' });
 
   const activeTab = (searchParams.get('tab') as GetProjectsQueryParams['status']) ?? 'active';
 
@@ -66,32 +70,56 @@ export const Projects = () => {
           Create project
         </Button>
       </div>
-      <div className="flex gap-6 mb-4">
-        <Tabs selectedKey={status} onSelectionChange={handleTabChange}>
-          <Tab title={`All (${data?.totals.all ?? 0})`} key="all" />
-          <Tab title={`Active (${data?.totals.active ?? 0})`} key="active" />
-          <Tab title={`Completed (${data?.totals.completed ?? 0})`} key="completed" />
-          <Tab title={`Archived (${data?.totals.archived ?? 0})`} key="archived" />
-        </Tabs>
-        <Input
-          value={search}
-          placeholder="Search"
-          className="w-fit"
-          variant="underlined"
-          isClearable
-          startContent={<Icon icon="search" />}
-          onChange={handleInputChange}
-          onClear={() => setSearch('')}
-        />
+      <div className="mb-4">
+        <div className="flex gap-6 justify-between">
+          <div className="flex gap-6">
+            <Tabs selectedKey={status} onSelectionChange={handleTabChange}>
+              <Tab title={`All (${data?.totals.all ?? 0})`} key="all" />
+              <Tab title={`Active (${data?.totals.active ?? 0})`} key="active" />
+              <Tab title={`Completed (${data?.totals.completed ?? 0})`} key="completed" />
+              <Tab title={`Archived (${data?.totals.archived ?? 0})`} key="archived" />
+            </Tabs>
+            <Input
+              value={search}
+              placeholder="Search"
+              className="w-fit"
+              variant="underlined"
+              isClearable
+              startContent={<Icon icon="search" />}
+              onChange={handleInputChange}
+              onClear={() => setSearch('')}
+            />
+          </div>
+          <Tabs
+            selectedKey={view}
+            classNames={{ tabList: 'gap-1' }}
+            onSelectionChange={(key) => setView(key as string)}
+          >
+            <Tab key="list" title={<Icon icon="list" size={18} />} className="p-2" />
+            <Tab key="grid" title={<Icon icon="grid" size={18} />} className="p-2" />
+          </Tabs>
+        </div>
       </div>
-      <ProjectsList
-        projects={data?.projects}
-        status={status}
-        search={searchDebounced}
-        isLoading={isLoading}
-        isError={isError}
-        onCreateProject={handleCreateProjectClick}
-      />
+      {view === 'list' && (
+        <ProjectsList
+          projects={data?.projects ?? []}
+          search={searchDebounced}
+          status={status}
+          isError={isError}
+          isLoading={isLoading}
+          onCreateProject={handleCreateProjectClick}
+        />
+      )}
+      {view === 'grid' && (
+        <ProjectsGrid
+          projects={data?.projects}
+          status={status}
+          search={searchDebounced}
+          isLoading={isLoading}
+          isError={isError}
+          onCreateProject={handleCreateProjectClick}
+        />
+      )}
       <CreateProjectModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
       <UpgradeModal type="projects" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
     </div>

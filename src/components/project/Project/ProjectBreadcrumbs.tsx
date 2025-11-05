@@ -40,7 +40,7 @@ export const ProjectBreadcrumbs = ({
               <React.Fragment key={item.url}>
                 {index !== 0 && <Icon icon="chevronDown" className="text-foreground-400 -rotate-90" />}
                 {index === path.length - 1 ? (
-                  <h2 className="text-2xl font-semibold">{item.name}</h2>
+                  <h2 className="text-2xl font-semibold line-clamp-1">{item.name}</h2>
                 ) : (
                   <Link href={item.url} className="text-2xl font-semibold text-foreground-400 hover:text-foreground">
                     {item.name}

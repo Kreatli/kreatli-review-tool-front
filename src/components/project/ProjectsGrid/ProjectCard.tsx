@@ -10,6 +10,7 @@ import { handleSpaceAndEnter } from '../../../utils/keydown';
 import { Icon } from '../../various/Icon';
 import { ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectCardImage } from './ProjectCardImage';
+import { ProjectStatus } from '../Project/ProjectStatus';
 
 interface Props {
   project: ProjectDto;
@@ -28,34 +29,18 @@ export const ProjectCard = ({ project }: Props) => {
     [getProjectActions, project],
   );
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active':
-        return 'primary';
-      case 'completed':
-        return 'success';
-      case 'archived':
-        return 'default';
-      default:
-        return 'default';
-    }
-  };
-
   return (
-    <div className="relative flex flex-col">
+    <div className="group/card relative flex flex-col">
       <button
         type="button"
         aria-label={`Open project ${project.name}`}
-        className="cursor-default absolute-cursor border border-foreground-300 p-px rounded-2xl focus:outline-2 focus:outline outline-focus outline-offset-2 relative"
-        onKeyDown={handleSpaceAndEnter(handleClick)}
-        onDoubleClick={handleClick}
+        className="absolute-cursor group-hover/card:opacity-70 group-hover/card:border-foreground-500 transition-all border border-foreground-300 p-px rounded-2xl outline-focus outline-offset-2"
+        onClick={handleClick}
       >
         <ProjectCardImage image={project.cover} />
       </button>
       <div className="absolute top-1 left-2 right-2 flex pointer-events-none justify-between items-center gap-2">
-        <Chip size="sm" variant="dot" color={getStatusColor(project.status)} className="bg-default-100 z-10">
-          {project.status.charAt(0).toUpperCase() + project.status.slice(1)}
-        </Chip>
+        <ProjectStatus status={project.status} />
         {projectActions.length > 0 && (
           <Dropdown>
             <DropdownTrigger>
@@ -89,7 +74,7 @@ export const ProjectCard = ({ project }: Props) => {
       </div>
       <div className="flex justify-between px-2 mt-4">
         <div className="select-none">
-          <h3 className="text-lg font-semibold">{project.name}</h3>
+          <h3 className="text-lg font-semibold group-hover/card:underline underline-offset-2">{project.name}</h3>
           <div>
             {project.fileCount} items, {formatBytes(project.totalFileSize)}
           </div>
@@ -98,7 +83,7 @@ export const ProjectCard = ({ project }: Props) => {
           </div>
         </div>
         <div className="flex flex-col items-end">
-          <div className="p-1">
+          <div className="p-1 pointer-events-none">
             <ProjectMembersThumbnails members={project.members} />
           </div>
         </div>

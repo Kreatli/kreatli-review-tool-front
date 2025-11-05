@@ -19,5 +19,5 @@ export const ProjectCardImage = ({ image }: Props) => {
 
   const { url } = image;
 
-  return <Image src={url} removeWrapper className="aspect-video object-cover w-full" />;
+  return <Image src={url} removeWrapper className="aspect-video object-cover w-full pointer-events-none" />;
 };
