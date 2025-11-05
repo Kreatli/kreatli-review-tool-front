@@ -107,6 +107,6 @@ export const getStaticPaths = (async () => {
 
   return {
     paths: Object.values(data.links ?? {}).map((link) => ({ params: { slug: link.slug } })),
-    fallback: true,
+    fallback: process.env.STORYBLOK_STATUS === 'draft',
   };
 }) satisfies GetStaticPaths;
