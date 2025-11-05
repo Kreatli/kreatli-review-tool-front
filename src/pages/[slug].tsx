@@ -76,23 +76,30 @@ export default function Page({ story, slug }: Props) {
 
 export const getStaticProps = (async ({ params }) => {
   const slugString = [params?.slug ?? []].flat().join('/');
-  const data = await getStoryblokApi().getStory(slugString, {
-    version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-  });
 
-  if (!data.data.story) {
+  try {
+    const data = await getStoryblokApi().getStory(slugString, {
+      version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+    });
+
+    if (!data.data.story) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        story: data.data.story,
+        slug: slugString,
+      },
+      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
+    };
+  } catch {
     return {
       notFound: true,
     };
   }
-
-  return {
-    props: {
-      story: data.data.story,
-      slug: slugString,
-    },
-    revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
-  };
 }) satisfies GetStaticProps<{}>;
 
 export const getStaticPaths = (async () => {
