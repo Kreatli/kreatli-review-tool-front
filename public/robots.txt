@@ -1,0 +1,6 @@
+# robots.txt for kreatli.com
+
+User-agent: *
+Allow: /
+
+# No sitemap provided yet
