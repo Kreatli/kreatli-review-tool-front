@@ -6,6 +6,7 @@ import { Header } from '../components/layout/Header';
 import { Projects } from '../components/project/Projects';
 import { useSession } from '../hooks/useSession';
 import { getStoryblokApi } from '../lib/storyblok';
+import { GetStaticProps } from 'next';
 
 interface Props {
   footerLinks?: {
@@ -30,12 +31,22 @@ export default function HomePage({ footerLinks }: Props) {
   );
 }
 
-HomePage.getInitialProps = async () => {
-  const { data } = await getStoryblokApi().get('cdn/links', {
-    version: process.env.STORYBLOK_STATUS as 'draft' | 'published',
-  });
+export const getStaticProps = (async () => {
+  try {
+    const { data } = await getStoryblokApi().get('cdn/links', {
+      version: process.env.STORYBLOK_STATUS as 'draft' | 'published',
+    });
 
-  return {
-    footerLinks: Object.values(data.links ?? {}).map((link) => ({ label: link.name, url: link.slug })),
-  };
-};
+    return {
+      props: {
+        footerLinks: Object.values(data.links ?? {}).map((link) => ({ label: link.name, url: link.slug })),
+      },
+    };
+  } catch {
+    return {
+      props: {
+        footerLinks: [],
+      },
+    };
+  }
+}) satisfies GetStaticProps<{}>;
