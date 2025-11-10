@@ -1,7 +1,6 @@
-import { addToast, Avatar, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
+import { addToast, Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
 import React from 'react';
 
-import { useSession } from '../../../../hooks/useSession';
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
 import { ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
@@ -19,10 +18,6 @@ interface Props {
 
 export const ProjectFileAssignee = ({ projectId, file, members, isDisabled }: Props) => {
   const [assigneeId, setAssigneeId] = React.useState<string | null>(file.assignee?.id ?? null);
-
-  const { user } = useSession();
-  const memberRole = members?.find((member) => member.user?.id === user?.id)?.role;
-  const isEditable = memberRole === 'owner';
 
   const { assignee } = file;
 
@@ -59,31 +54,25 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled }: Pr
 
   const selectedMember = members.find((member) => member.user?.id === assigneeId);
 
-  const avatar = (
-    <Avatar
-      as="button"
-      src={selectedMember?.user?.avatar?.url ?? ''}
-      size="sm"
-      isBordered
-      isDisabled={isDisabled}
-      className={cn('shrink-0', { 'cursor-default': !isEditable })}
-      fallback={
-        selectedMember ? (
-          <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(selectedMember)}</div>
-        ) : (
-          <Icon icon="user" size={16} />
-        )
-      }
-    />
-  );
-
-  if (!isEditable) {
-    return avatar;
-  }
-
   return (
     <Dropdown placement="bottom-start" offset={10}>
-      <DropdownTrigger>{avatar}</DropdownTrigger>
+      <DropdownTrigger>
+        <Avatar
+          as="button"
+          src={selectedMember?.user?.avatar?.url ?? ''}
+          size="sm"
+          isBordered
+          isDisabled={isDisabled}
+          className="shrink-0"
+          fallback={
+            selectedMember ? (
+              <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(selectedMember)}</div>
+            ) : (
+              <Icon icon="user" size={16} />
+            )
+          }
+        />
+      </DropdownTrigger>
       <DropdownMenu
         variant="flat"
         className="max-h-64 overflow-y-scroll"
