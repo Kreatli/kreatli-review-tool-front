@@ -17,12 +17,13 @@ const getStatusColor = (status: string) => {
 interface Props {
   status: ProjectDto['status'];
   variant?: 'light';
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export const ProjectStatus = ({ status, variant }: Props) => {
+export const ProjectStatus = ({ status, variant, size = 'sm' }: Props) => {
   return (
     <Chip
-      size="sm"
+      size={size}
       variant="dot"
       color={getStatusColor(status)}
       className={cn('bg-default-100  z-10', {

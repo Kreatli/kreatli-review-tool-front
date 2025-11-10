@@ -54,7 +54,7 @@ export const ProjectsListTable = ({
     getProjectActions(project).filter((action) => !action.hideInCard);
 
   return (
-    <Table>
+    <Table isStriped={projects.length > 3}>
       <TableHeader>
         <TableColumn>Project Name</TableColumn>
         <TableColumn>Members</TableColumn>
@@ -82,7 +82,7 @@ export const ProjectsListTable = ({
         {projects.map((project) => (
           <TableRow
             key={project.id}
-            className="group/row hover:bg-foreground-100 hover:cursor-pointer"
+            className="group/row hover:opacity-70 hover:cursor-pointer"
             onClick={() => handleRowClick(project)}
           >
             <TableCell>
@@ -91,13 +91,13 @@ export const ProjectsListTable = ({
                   {project.cover?.url ? (
                     <Image
                       src={project.cover?.url}
-                      width={40}
-                      height={40}
+                      width={48}
+                      height={48}
                       radius="full"
                       className="object-cover pointer-events-none"
                     />
                   ) : (
-                    <div className="size-10 bg-foreground-100 text-foreground-500 rounded-full flex items-center justify-center">
+                    <div className="size-12 bg-foreground-100 text-foreground-500 rounded-full flex items-center justify-center">
                       <Icon icon="slides" size={18} />
                     </div>
                   )}
@@ -105,11 +105,11 @@ export const ProjectsListTable = ({
                 <div className="max-w-96">
                   <Link
                     href={`/project/${project.id}`}
-                    className="text-md line-clamp-2 group-hover/row:underline underline-offset-2 font-semibold"
+                    className="text-medium line-clamp-2 group-hover/row:underline underline-offset-2 font-semibold"
                   >
                     {project.name}
                   </Link>
-                  <div className="text-foreground-500">
+                  <div className="text-foreground-500 text-md">
                     {project.fileCount} items, {formatBytes(project.totalFileSize)}
                   </div>
                 </div>
@@ -131,7 +131,7 @@ export const ProjectsListTable = ({
               </button>
             </TableCell>
             <TableCell>
-              <ProjectStatus status={project.status} variant="light" />
+              <ProjectStatus status={project.status} variant="light" size="md" />
             </TableCell>
             <TableCell>{formatFullDate(project.updatedAt ?? project.createdAt)}</TableCell>
             <TableCell>{formatFullDate(project.createdAt)}</TableCell>
