@@ -22,7 +22,7 @@ export const HeroSection = () => {
               delay={1}
             />{' '}
             <LogoSlideshow logos={['/logos/autodesk.svg', '/logos/ziflow.svg', '/logos/frame-io.svg']} delay={2} />{' '}
-            <br /> Only pay for the <span className="line-through">tools</span> tool you actually use. Pay for Kreatli.
+            <br /> Only pay for the <span className="line-through">tools</span> tool you actually use. Use Kreatli.
           </p>
           <div className="flex flex-col mt-4 md:flex-row gap-6">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
