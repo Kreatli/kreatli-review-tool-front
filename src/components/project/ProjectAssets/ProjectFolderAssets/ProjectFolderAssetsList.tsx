@@ -100,6 +100,13 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
     return selectedAssetIds.size > 0;
   }, [selectedAssetIds]);
 
+  const shouldShowCompareButton = React.useMemo(() => {
+    return (
+      selectedAssetIds.size === 2 &&
+      selectedAssetIds.values().every((id: string) => assets.find((asset) => asset.id === id && asset.type === 'file'))
+    );
+  }, [selectedAssetIds, assets]);
+
   if (isLoadingAssets) {
     return (
       <div className="overflow-hidden p-6 -m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8">
@@ -279,7 +286,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
               Archive
             </Button>
           )}
-          {selectedAssetIds.size === 2 && (
+          {shouldShowCompareButton && (
             <Button size="sm" variant="flat" color="primary" onClick={handleCompareSelectedAssets}>
               <Icon icon="compare" size={16} />
               Compare
