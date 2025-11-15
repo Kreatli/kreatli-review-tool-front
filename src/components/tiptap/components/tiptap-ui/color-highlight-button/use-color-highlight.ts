@@ -125,11 +125,7 @@ export function canColorHighlight(editor: Editor | null, mode: HighlightMode = '
   } else {
     if (!isExtensionAvailable(editor, ['nodeBackground'])) return false;
 
-    try {
-      return editor.can().toggleNodeBackgroundColor('test');
-    } catch {
-      return false;
-    }
+    return false;
   }
 }
 
@@ -173,11 +169,7 @@ export function removeHighlight(editor: Editor | null, mode: HighlightMode = 'ma
   if (!editor || !editor.isEditable) return false;
   if (!canColorHighlight(editor, mode)) return false;
 
-  if (mode === 'mark') {
-    return editor.chain().focus().unsetMark('highlight').run();
-  } else {
-    return editor.chain().focus().unsetNodeBackgroundColor().run();
-  }
+  return editor.chain().focus().unsetMark('highlight').run();
 }
 
 /**
@@ -242,31 +234,22 @@ export function useColorHighlight(config: UseColorHighlightConfig) {
   const handleColorHighlight = useCallback(() => {
     if (!editor || !canColorHighlightState || !highlightColor || !label) return false;
 
-    if (mode === 'mark') {
-      if (editor.state.storedMarks) {
-        const highlightMarkType = editor.schema.marks.highlight;
-        if (highlightMarkType) {
-          editor.view.dispatch(editor.state.tr.removeStoredMark(highlightMarkType));
-        }
+    if (editor.state.storedMarks) {
+      const highlightMarkType = editor.schema.marks.highlight;
+      if (highlightMarkType) {
+        editor.view.dispatch(editor.state.tr.removeStoredMark(highlightMarkType));
       }
+    }
 
-      setTimeout(() => {
-        const success = editor.chain().focus().toggleMark('highlight', { color: highlightColor }).run();
-        if (success) {
-          onApplied?.({ color: highlightColor, label, mode });
-        }
-        return success;
-      }, 0);
-
-      return true;
-    } else {
-      const success = editor.chain().focus().toggleNodeBackgroundColor(highlightColor).run();
-
+    setTimeout(() => {
+      const success = editor.chain().focus().toggleMark('highlight', { color: highlightColor }).run();
       if (success) {
         onApplied?.({ color: highlightColor, label, mode });
       }
       return success;
-    }
+    }, 0);
+
+    return true;
   }, [canColorHighlightState, highlightColor, editor, label, onApplied, mode]);
 
   const handleRemoveHighlight = useCallback(() => {
