@@ -17,7 +17,7 @@ export const DashboardChatConversation = ({ projectId, conversation }: Props) =>
     conversation.type === 'private' ? conversation.members.find((member) => member.id !== user?.id) : undefined;
   const conversationName = conversation.name || conversationMember?.name;
 
-  const isReadByUser = conversation.lastMessage && conversation.lastMessage?.readBy.includes(user?.id ?? '');
+  const isReadByUser = !conversation.lastMessage || conversation.lastMessage?.readBy.includes(user?.id ?? '');
 
   return (
     <div className="relative border border-foreground-200 transition-colors hover:border-foreground-400 rounded-md p-3 flex justify-between gap-3 items-end">
