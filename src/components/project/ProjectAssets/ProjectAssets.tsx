@@ -93,7 +93,9 @@ export const ProjectAssets = () => {
   const shouldShowCompareButton = React.useMemo(() => {
     return (
       selectedAssetIds.size === 2 &&
-      selectedAssetIds.values().every((id: string) => assets.find((asset) => asset.id === id && asset.type === 'file'))
+      Array.from(selectedAssetIds.values()).every((id: string) =>
+        assets.find((asset) => asset.id === id && asset.type === 'file'),
+      )
     );
   }, [selectedAssetIds, assets]);
 
