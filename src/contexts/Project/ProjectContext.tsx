@@ -8,16 +8,12 @@ import { ArchiveProjectModal } from '../../components/project/ProjectModals/Arch
 import { ChangeProjectCoverModal } from '../../components/project/ProjectModals/ChangeProjectCoverModal';
 import { CompleteProjectModal } from '../../components/project/ProjectModals/CompleteProjectModal';
 import { DeleteProjectModal } from '../../components/project/ProjectModals/DeleteProjectModal';
-import { EditProjectModal } from '../../components/project/ProjectModals/EditProjectModal';
 import { LeaveProjectModal } from '../../components/project/ProjectModals/LeaveProjectModal';
 import { RenameProjectModal } from '../../components/project/ProjectModals/RenameProjectModal';
 import { RestoreProjectModal } from '../../components/project/ProjectModals/RestoreProjectModal';
 import { IconType } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { ProjectDto } from '../../services/types';
-import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzone';
-import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
-import { nanoid } from 'nanoid';
 
 export interface ProjectAssetsFilters {
   status?: string;
@@ -68,7 +64,6 @@ export const ProjectContextProvider = ({
   setSelectedProjectId,
 }: React.PropsWithChildren<Props>) => {
   const [isRenameModalOpen, setIsRenameModalOpen] = React.useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
   const [isCoverModalOpen, setIsCoverModalOpen] = React.useState(false);
   const [isMembersModalOpen, setIsMembersModalOpen] = React.useState(false);
   const [isCompleteModalOpen, setIsCompleteModalOpen] = React.useState(false);
@@ -124,15 +119,6 @@ export const ProjectContextProvider = ({
               onClick: () => {
                 setSelectedProjectId?.(project.id);
                 setIsRenameModalOpen(true);
-              },
-            },
-            {
-              label: 'Edit description',
-              icon: 'file' as const,
-              hideInCard: true,
-              onClick: () => {
-                setSelectedProjectId?.(project.id);
-                setIsEditModalOpen(true);
               },
             },
             {
@@ -243,7 +229,6 @@ export const ProjectContextProvider = ({
         isOpen={isRenameModalOpen}
         onClose={() => setIsRenameModalOpen(false)}
       />
-      <EditProjectModal project={selectedProject} isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)} />
       <ChangeProjectCoverModal
         project={selectedProject}
         isOpen={isCoverModalOpen}

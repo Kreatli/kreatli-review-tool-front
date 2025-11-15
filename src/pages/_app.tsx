@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import '../styles/tiptap.scss';
 import 'react-image-crop/dist/ReactCrop.css';
 
 import { HeroUIProvider, ToastProvider } from '@heroui/react';

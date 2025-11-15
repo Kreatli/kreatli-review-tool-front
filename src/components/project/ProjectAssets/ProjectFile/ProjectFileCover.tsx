@@ -3,7 +3,6 @@ import React from 'react';
 
 import { ProjectFileDto } from '../../../../services/types';
 import { formatBytes } from '../../../../utils/formatBytes';
-import { Icon } from '../../../various/Icon';
 import { AssetIcon } from '../../../asset/AssetIcon';
 
 interface Props {

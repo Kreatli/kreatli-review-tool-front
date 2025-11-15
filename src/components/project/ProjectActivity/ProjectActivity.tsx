@@ -42,7 +42,7 @@ export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) 
                 <Avatar
                   src={log.user.avatar?.url ?? ''}
                   size="sm"
-                  radius="md"
+                  radius="full"
                   fallback={
                     <div className="text-lg text-foreground-500 select-none">{log.user.name[0].toUpperCase()}</div>
                   }

@@ -3,13 +3,14 @@ import { ChatDto, ProjectDto } from '../../services/types';
 import { useGetProjectId } from '../../services/hooks';
 import { useSession } from '../../hooks/useSession';
 import { io, Socket } from 'socket.io-client';
+import { useRouter } from 'next/router';
 
 interface Context {
   project: ProjectDto;
   isUserProjectOwner: boolean;
   webSocketRef: React.RefObject<Socket | null>;
-  selectedConversation: ChatDto | null;
-  setSelectedConversation: (conversation: ChatDto | null) => void;
+  selectedConversationId: string | null;
+  setSelectedConversationId: (conversation: string | null) => void;
 }
 
 export const ChatContext = React.createContext<null | Context>(null);
@@ -30,7 +31,11 @@ interface Props {
 }
 
 export const ChatProvider = ({ projectId, children }: Props) => {
-  const [selectedConversation, setSelectedConversation] = React.useState<ChatDto | null>(null);
+  const router = useRouter();
+
+  const [selectedConversationId, setSelectedConversationId] = React.useState<string | null>(
+    (router.query.conversationId as string | undefined) ?? null,
+  );
   const webSocketRef = React.useRef<Socket | null>(null);
 
   const { user } = useSession();
@@ -65,7 +70,7 @@ export const ChatProvider = ({ projectId, children }: Props) => {
 
   return (
     <ChatContext.Provider
-      value={{ project, isUserProjectOwner, selectedConversation, webSocketRef, setSelectedConversation }}
+      value={{ project, isUserProjectOwner, selectedConversationId, webSocketRef, setSelectedConversationId }}
     >
       {children}
     </ChatContext.Provider>

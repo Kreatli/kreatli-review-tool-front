@@ -5,7 +5,7 @@ import { ProjectDto } from '../../services/types';
 import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzone';
 import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
 import { nanoid } from 'nanoid';
-import { getAssetFolderId, getProjectId, getProjectIdAssets } from '../../services/services';
+import { getAssetFolderId, getAssets, getProjectId, getProjectIdAssets } from '../../services/services';
 import { useSession } from '../../hooks/useSession';
 import { useProjectUploads } from '../../hooks/useProjectUploads';
 import { useMultipartUpload } from '../../hooks/useMultipartUpload';
@@ -116,6 +116,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
               .then(({ project: data, parent: folderData }) => {
                 queryClient.setQueryData([getProjectId.key, project.id], data);
                 queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
+                queryClient.invalidateQueries({ queryKey: [getAssets.key] });
 
                 if (folderId) {
                   queryClient.setQueryData([getAssetFolderId.key, folderId], folderData);

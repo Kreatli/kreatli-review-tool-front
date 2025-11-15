@@ -1,8 +1,7 @@
-import { Avatar, Image } from '@heroui/react';
+import { Image } from '@heroui/react';
 import { ChatDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
 import { useSession } from '../../../hooks/useSession';
-import { getProjectMemberLetter } from '../../../utils/shortNames';
 
 interface ChatAvatarProps {
   chat: ChatDto;
@@ -20,7 +19,7 @@ export const ChatAvatar = ({ chat }: ChatAvatarProps) => {
   }
 
   return (
-    <div className="size-8 bg-foreground-100 text-foreground-500 rounded-full flex items-center justify-center">
+    <div className="size-8 bg-foreground-100 border border-foreground-200 text-foreground-500 rounded-full flex items-center justify-center">
       {chat.type === 'private' ? (
         <div className="text-lg text-foreground-500 select-none">
           {conversationMember?.name.slice(0, 1).toUpperCase()}

@@ -125,7 +125,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
       <div className="mt-3">
         <div className="text-lg font-semibold break-words overflow-hidden">{name}</div>
         <div className="text-foreground-500">
-          {folder.fileCount} items, {formatBytes(folder.totalFileSize)}
+          {folder.fileCount} file{folder.fileCount === 1 ? '' : 's'}, {formatBytes(folder.totalFileSize)}
         </div>
       </div>
     </div>

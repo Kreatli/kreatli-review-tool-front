@@ -3,7 +3,6 @@ import NextLink from 'next/link';
 import React, { useMemo } from 'react';
 
 import { useAssetContext } from '../../../contexts/Asset';
-import { useSession } from '../../../hooks/useSession';
 import { AssetDto, FileDto, ProjectDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { Icon } from '../../various/Icon';
@@ -23,7 +22,6 @@ interface Props {
 
 export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onClick, onClose }: Props) => {
   const { getAssetActions } = useAssetContext();
-  const { user } = useSession();
   const router = useRouter();
   const actions = useMemo(() => getAssetActions(file), [file, getAssetActions]);
 
@@ -38,10 +36,6 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
   const path = useMemo(() => {
     return [project.name, ...file.path.map((folder) => folder.name)];
   }, [file.path, project.name]);
-
-  const memberRole = useMemo(() => {
-    return project.members.find((member) => member.user?.id === user?.id)?.role;
-  }, [project.members, user?.id]);
 
   const handleCompareSelect = (asset: AssetDto) => {
     router.push(`${location.pathname}?compareFileId=${asset.id}`);
@@ -110,12 +104,7 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
           </Button>
         </AssetPicker>
       )}
-      <ProjectFileStatus
-        isDisabled={project.status !== 'active'}
-        projectId={project.id}
-        file={file}
-        memberRole={memberRole}
-      />
+      <ProjectFileStatus isDisabled={project.status !== 'active'} projectId={project.id} file={file} />
       {isCompareMode ? (
         <Button
           size="sm"
