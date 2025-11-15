@@ -21,7 +21,7 @@ export const ChatConversationCreateButton = ({ isDisabled = false }) => {
   const queryClient = useQueryClient();
   const { mutate: createConversation } = usePostProjectIdChat();
   const router = useRouter();
-  const { setSelectedConversation } = useChatContext();
+  const { setSelectedConversationId } = useChatContext();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,7 +38,7 @@ export const ChatConversationCreateButton = ({ isDisabled = false }) => {
         onSuccess: async (data) => {
           await queryClient.invalidateQueries({ queryKey: [getProjectIdChats.key, project.id] });
           router.push(`/project/${project.id}/chat?conversationId=${data.id}`);
-          setSelectedConversation(data);
+          setSelectedConversationId(data.id);
         },
         onSettled: () => {
           setIsLoading(false);

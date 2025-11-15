@@ -77,14 +77,6 @@ export const CreateProjectForm = () => {
         errorMessage={errors.name?.message}
         {...register('name', VALIDATION_RULES.SHORT_TEXT)}
       />
-      <Textarea
-        label="Description (optional)"
-        placeholder="Describe your project"
-        variant="faded"
-        isInvalid={!!errors.description}
-        errorMessage={errors.description?.message}
-        {...register('description', VALIDATION_RULES.DESCRIPTION.OPTIONAL)}
-      />
       {fields.length > 0 && (
         <div className="flex flex-col gap-2">
           {fields.map((field, index) => (

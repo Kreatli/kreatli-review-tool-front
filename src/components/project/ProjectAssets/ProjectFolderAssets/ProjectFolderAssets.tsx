@@ -29,7 +29,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
   };
 
   const path = React.useMemo(() => {
-    const projectPath = { name: project.name, url: `/project/${project.id}` };
+    const projectPath = { name: project.name, url: `/project/${project.id}/assets` };
 
     if (!folder) {
       return [projectPath];
@@ -44,7 +44,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
 
   const backLink = React.useMemo(() => {
     if (!folder?.parent) {
-      return { name: project.name, href: `/project/${project.id}` };
+      return { name: project.name, href: `/project/${project.id}/assets` };
     }
 
     return { name: folder.parent.name, href: `/project/${project.id}/assets/folder/${folder?.parent?.id}` };

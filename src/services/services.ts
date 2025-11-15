@@ -18,6 +18,7 @@ import type {
   GetAssetFileIdCommentsQueryParams,
   GetNotificationsQueryParams,
   GetAssetsQueryParams,
+  GetAssetsFoldersQueryParams,
   UserDto,
   InvoiceDto,
   UpdateUserDto,
@@ -66,6 +67,7 @@ import type {
   NotificationsDto,
   MarkAsReadBodyDto,
   AssetsDto,
+  FoldersDto,
   PresignedUrlBodyDto,
   PresignedUrlDto,
   MultipartUploadStartBodyDto,
@@ -323,6 +325,22 @@ export const getAssets = (
 
 /** Key is end point string without base url */
 getAssets.key = '/assets';
+
+export const getAssetsFolders = (
+  queryParams: GetAssetsFoldersQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<FoldersDto>> => {
+  return Http.getRequest(
+    getAssetsFolders.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAssetsFolders.key = '/assets/folders';
 
 export const getConversationIdMessages = (
   id: string,
@@ -885,6 +903,19 @@ export const postProjectIdMember = (
 
 /** Key is end point string without base url */
 postProjectIdMember.key = '/project/{id}/member';
+
+export const postProjectMigrateDescription = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    postProjectMigrateDescription.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postProjectMigrateDescription.key = '/project/migrate-description';
 
 export const postShareableLink = (
   requestBody: ShareableLinkBody,

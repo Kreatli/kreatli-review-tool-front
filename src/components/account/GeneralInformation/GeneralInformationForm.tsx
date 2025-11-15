@@ -39,7 +39,6 @@ export const GeneralInformationForm = ({ user }: Props) => {
   const queryClient = useQueryClient();
   const isTouchScreen = getIsTouchScreen();
   const { mutate, isPending } = usePutUser();
-  // const { mutate, isPending } = usePostProjectIdCover();
 
   const onSubmit = ({ avatar, name }: FormData) => {
     mutate(

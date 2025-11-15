@@ -242,6 +242,13 @@
         }
       }
     },
+    "/project/migrate-description": {
+      "post": {
+        "operationId": "ProjectController_migrateDescription",
+        "parameters": [],
+        "responses": { "201": { "description": "" } }
+      }
+    },
     "/project": {
       "post": {
         "operationId": "ProjectController_createProject",
@@ -830,6 +837,29 @@
         }
       }
     },
+    "/assets/folders": {
+      "get": {
+        "operationId": "AssetsController_searchFolders",
+        "parameters": [
+          { "name": "projectId", "required": true, "in": "query", "schema": { "type": "string" } },
+          { "name": "query", "required": true, "in": "query", "schema": { "type": "string" } },
+          { "name": "offset", "required": true, "in": "query", "schema": { "type": "number" } },
+          { "name": "limit", "required": true, "in": "query", "schema": { "type": "number" } },
+          {
+            "name": "skipIds",
+            "required": true,
+            "in": "query",
+            "schema": { "type": "array", "items": { "type": "string" } }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/FoldersDto" } } }
+          }
+        }
+      }
+    },
     "/assets/url": {
       "post": {
         "operationId": "AssetsController_generatePresignedUrl",
@@ -1211,6 +1241,7 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "description": { "type": "string" },
+          "content": { "type": "object" },
           "cover": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/InterfaceImageDto" }] },
           "createdAt": { "type": "string" },
           "createdBy": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDto" }] },
@@ -1235,6 +1266,7 @@
           "id",
           "name",
           "description",
+          "content",
           "cover",
           "createdAt",
           "createdBy",
@@ -1252,7 +1284,8 @@
         "properties": {
           "name": { "type": "string" },
           "description": { "type": "string" },
-          "assets": { "type": "array", "items": { "type": "string" } }
+          "assets": { "type": "array", "items": { "type": "string" } },
+          "content": { "type": "object" }
         }
       },
       "ProjectInvitationDto": {
@@ -2130,6 +2163,14 @@
           "fileCount": { "type": "number" }
         },
         "required": ["files", "fileCount"]
+      },
+      "FoldersDto": {
+        "type": "object",
+        "properties": {
+          "folders": { "type": "array", "items": { "$ref": "#/components/schemas/FolderDto" } },
+          "foldersCount": { "type": "number" }
+        },
+        "required": ["folders", "foldersCount"]
       },
       "PresignedUrlBodyDto": {
         "type": "object",

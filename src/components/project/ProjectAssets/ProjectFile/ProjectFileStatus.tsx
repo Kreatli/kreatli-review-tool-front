@@ -2,18 +2,19 @@ import { Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Select
 import React from 'react';
 
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
-import { ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
+import { AssetDto, ProjectFileDto } from '../../../../services/types';
 import { STATUS_COLOR, STATUS_LABEL } from '../../../../utils/status';
+import { queryClient } from '../../../../lib/queryClient';
+import { getProjectIdLogs } from '../../../../services/services';
 
 interface Props {
   projectId: string;
-  file: ProjectFileDto;
-  memberRole?: ProjectMemberDto['role'];
+  file: ProjectFileDto | AssetDto;
   className?: string;
   isDisabled?: boolean;
 }
 
-export const ProjectFileStatus = ({ file, projectId, memberRole, className, isDisabled }: Props) => {
+export const ProjectFileStatus = ({ file, projectId, className, isDisabled }: Props) => {
   const { status } = file;
   const [selectedKeys, setSelectedKeys] = React.useState<Set<string>>(new Set([status ?? 'none']));
 
@@ -31,8 +32,15 @@ export const ProjectFileStatus = ({ file, projectId, memberRole, className, isDi
     setSelectedKeys(keys as Set<string>);
     const newStatus = keys.values().next().value;
 
-    // @ts-ignore
-    mutate({ id: projectId, fileId: file.id, requestBody: { status: newStatus === 'none' ? null : newStatus } });
+    mutate(
+      // @ts-ignore
+      { id: projectId, fileId: file.id, requestBody: { status: newStatus === 'none' ? null : newStatus } },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: [getProjectIdLogs.key, projectId] });
+        },
+      },
+    );
   };
 
   const selectedKey = selectedKeys.values().next().value ?? 'none';

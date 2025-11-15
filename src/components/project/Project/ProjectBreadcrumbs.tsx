@@ -52,7 +52,7 @@ export const ProjectBreadcrumbs = ({
           {children}
         </div>
         <div className="text-foreground-500">
-          {fileCount} item{fileCount === 1 ? '' : 's'}, {formatBytes(totalFileSize)}
+          {fileCount} file{fileCount === 1 ? '' : 's'}, {formatBytes(totalFileSize)}
         </div>
       </div>
     </div>

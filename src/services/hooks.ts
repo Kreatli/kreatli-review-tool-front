@@ -35,8 +35,10 @@ import type {
   FolderBodyDto,
   FolderDto,
   FolderEditBodyDto,
+  FoldersDto,
   GetAssetFileIdCommentsQueryParams,
   GetAssetFileIdDownloadQueryParams,
+  GetAssetsFoldersQueryParams,
   GetAssetsQueryParams,
   GetConversationIdMessagesQueryParams,
   GetNotificationsQueryParams,
@@ -99,6 +101,7 @@ import {
   getAssetFileIdDownload,
   getAssetFolderId,
   getAssets,
+  getAssetsFolders,
   getConversationIdMessages,
   getNotifications,
   getProject,
@@ -135,6 +138,7 @@ import {
   postProjectIdFile,
   postProjectIdFolder,
   postProjectIdMember,
+  postProjectMigrateDescription,
   postShareableLink,
   postShareableLinkSendEmail,
   postStripeWebhook,
@@ -585,6 +589,45 @@ useGetAssets.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAssets.info(queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetAssetsFolders = (
+  queryParams: GetAssetsFoldersQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<FoldersDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAssetsFolders.info(queryParams, configOverride);
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetAssetsFolders.info = (queryParams: GetAssetsFoldersQueryParams, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getAssetsFolders.key, queryParams] as QueryKey,
+    fun: () =>
+      getAssetsFolders(
+        queryParams,
+
+        configOverride,
+      ),
+  };
+};
+useGetAssetsFolders.prefetch = (
+  client: QueryClient,
+  queryParams: GetAssetsFoldersQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<FoldersDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAssetsFolders.info(queryParams, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -1722,6 +1765,19 @@ export const usePostProjectIdMember = <TExtra,>(
 
         configOverride,
       );
+    },
+    ...options,
+  });
+};
+
+export const usePostProjectMigrateDescription = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { configOverride } = _o || {};
+
+      return postProjectMigrateDescription(configOverride);
     },
     ...options,
   });

@@ -6,7 +6,6 @@ import React from 'react';
 
 import { useAssetContext } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
-import { useSession } from '../../../../hooks/useSession';
 import { ProjectFileDto } from '../../../../services/types';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
 import { Icon } from '../../../various/Icon';
@@ -26,12 +25,9 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
   const { name, metadata, commentsCount } = file;
   const { isUploading = false } = metadata;
 
-  const { user } = useSession();
   const router = useRouter();
   const { project } = useProjectContext();
   const { getAssetActions } = useAssetContext();
-
-  const memberRole = project.members.find((member) => member.user?.id === user?.id)?.role;
 
   const handleClick = () => {
     if (isDisabled) {
@@ -95,7 +91,6 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
             projectId={project.id}
             file={file}
             isDisabled={isReadonly}
-            memberRole={memberRole}
           />
         </div>
       </div>

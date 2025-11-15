@@ -16,7 +16,7 @@ interface ChatConversationsProps {
 }
 
 export const ChatConversations = ({ chats, isPending, isError, isDisabled = false }: ChatConversationsProps) => {
-  const { selectedConversation, setSelectedConversation } = useChatContext();
+  const { selectedConversationId, setSelectedConversationId } = useChatContext();
   const router = useRouter();
 
   if (isPending) {
@@ -30,7 +30,7 @@ export const ChatConversations = ({ chats, isPending, isError, isDisabled = fals
   const handleSelectionChange = (key: string | number) => {
     const chat = chats.find((chat) => chat.id === key);
     if (chat) {
-      setSelectedConversation(chat);
+      setSelectedConversationId(chat.id);
       router.push(`${location.pathname}?conversationId=${chat.id}`);
     }
   };
@@ -39,7 +39,7 @@ export const ChatConversations = ({ chats, isPending, isError, isDisabled = fals
     <div className="relative h-full max-h-full">
       <Tabs
         isVertical
-        selectedKey={selectedConversation?.id ?? null}
+        selectedKey={selectedConversationId}
         classNames={{
           base: 'w-full',
           tabWrapper: 'h-full',

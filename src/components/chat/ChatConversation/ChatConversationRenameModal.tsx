@@ -21,7 +21,6 @@ interface Props {
 
 export const ChatConversationRenameModal = ({ chat, isVisible, onClose }: Props) => {
   const { project } = useChatContext();
-  const { setSelectedConversation } = useChatContext();
   const queryClient = useQueryClient();
 
   const {
@@ -48,8 +47,7 @@ export const ChatConversationRenameModal = ({ chat, isVisible, onClose }: Props)
     updateChat(
       { id: chat.id, requestBody: { name: data.name } },
       {
-        onSuccess: (data) => {
-          setSelectedConversation(data);
+        onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: [getProjectIdChats.key, project.id] });
           addToast({
             title: 'Chat name updated',
