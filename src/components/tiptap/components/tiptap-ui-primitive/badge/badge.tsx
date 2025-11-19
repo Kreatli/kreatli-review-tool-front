@@ -1,7 +1,4 @@
 import { forwardRef } from 'react';
-// import '../../tiptap-ui-primitive/badge/badge-colors.scss';
-// import '../../tiptap-ui-primitive/badge/badge-group.scss';
-// import '../../tiptap-ui-primitive/badge/badge.scss';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: 'default' | 'small';

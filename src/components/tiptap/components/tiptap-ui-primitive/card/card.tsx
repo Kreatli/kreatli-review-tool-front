@@ -2,7 +2,6 @@
 
 import { forwardRef } from 'react';
 import { cn } from '../../../lib/tiptap-utils';
-// import '../../tiptap-ui-primitive/card/card.scss';
 
 const Card = forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(({ className, ...props }, ref) => {
   return <div ref={ref} className={cn('tiptap-card', className)} {...props} />;

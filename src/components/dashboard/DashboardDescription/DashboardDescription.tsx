@@ -4,7 +4,7 @@ import { EditorRef, SimpleEditor } from '../../tiptap/components/tiptap-template
 import { Icon } from '../../various/Icon';
 import { useRef, useState } from 'react';
 
-import { getIsContentEmpty } from '../../tiptap/lib/tiptap-utils';
+import { getIsContentEmpty, getSanitizedContent } from '../../tiptap/lib/tiptap-utils';
 import { DEFAULT_PROJECT_CONTENT } from '../../../constants/tiptap';
 import { usePutProjectId } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
@@ -38,12 +38,7 @@ export const DashboardDescription = ({ project }: Props) => {
     }
 
     const isContentEmpty = getIsContentEmpty(editorJsonRef.current);
-    const sanitizedContent = {
-      ...editorJsonRef.current,
-      content: editorJsonRef.current.content?.at(-1)?.content
-        ? editorJsonRef.current.content
-        : editorJsonRef.current.content?.slice(0, -1),
-    };
+    const sanitizedContent = getSanitizedContent(editorJsonRef.current);
 
     mutate(
       {
@@ -67,6 +62,17 @@ export const DashboardDescription = ({ project }: Props) => {
     );
   };
 
+  const handleEditorAutoSave = () => {
+    if (!editorJsonRef.current) {
+      return;
+    }
+
+    mutate({
+      id: project.id,
+      requestBody: { content: editorJsonRef.current },
+    });
+  };
+
   const handleCancel = () => {
     editorRef.current?.setContent(project.content);
     setIsEditable(false);
@@ -88,7 +94,13 @@ export const DashboardDescription = ({ project }: Props) => {
           ref={scrollRef}
           className={cn('p-3 px-4 overflow-auto max-h-96', { 'max-h-[70vh]': isEditable })}
         >
-          <SimpleEditor editorRef={editorRef} content={project.content} isEditable={isEditable} onUpdate={handleUpdate}>
+          <SimpleEditor
+            editorRef={editorRef}
+            content={project.content}
+            isEditable={isEditable}
+            onUpdate={handleUpdate}
+            onSave={handleEditorAutoSave}
+          >
             {isEditable && (
               <div className="flex justify-end gap-2">
                 <Button size="sm" variant="light" onClick={handleCancel}>

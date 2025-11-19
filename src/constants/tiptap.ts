@@ -9,7 +9,7 @@ export const DEFAULT_PROJECT_CONTENT = {
       content: [
         {
           type: 'text',
-          text: 'Project overview',
+          text: 'Example - Project overview',
         },
       ],
     },
@@ -18,7 +18,7 @@ export const DEFAULT_PROJECT_CONTENT = {
       content: [
         {
           type: 'text',
-          text: 'Use this space to keep track of anything ',
+          text: 'Keep everything ',
         },
         {
           type: 'text',
@@ -31,7 +31,69 @@ export const DEFAULT_PROJECT_CONTENT = {
         },
         {
           type: 'text',
-          text: ' to this project:',
+          text: ' for this project in one place.',
+        },
+      ],
+    },
+    {
+      type: 'bulletList',
+      content: [
+        {
+          type: 'listItem',
+          content: [
+            {
+              type: 'paragraph',
+              content: [
+                {
+                  type: 'text',
+                  text: 'Requirements 📖 - briefs, specs, success criteria, etc.',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'listItem',
+          content: [
+            {
+              type: 'paragraph',
+              content: [
+                {
+                  type: 'text',
+                  text: 'Ideas💡- concepts, experiments, references, etc.',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'listItem',
+          content: [
+            {
+              type: 'paragraph',
+              content: [
+                {
+                  type: 'text',
+                  marks: [
+                    {
+                      type: 'link',
+                      attrs: {
+                        href: 'https://kreatli.com',
+                        target: '_blank',
+                        rel: 'noopener noreferrer nofollow',
+                        class: null,
+                      },
+                    },
+                  ],
+                  text: 'Links',
+                },
+                {
+                  type: 'text',
+                  text: ' 🔗',
+                },
+              ],
+            },
+          ],
         },
       ],
     },
@@ -44,24 +106,6 @@ export const DEFAULT_PROJECT_CONTENT = {
         {
           type: 'taskItem',
           attrs: {
-            id: '5feb4fc1-01dc-4083-9b3c-4b3eea1961fd',
-            checked: false,
-          },
-          content: [
-            {
-              type: 'paragraph',
-              content: [
-                {
-                  type: 'text',
-                  text: 'Requirements 📋',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: 'taskItem',
-          attrs: {
             id: '76ed8eda-75bc-4c07-bd5d-693b55851b3d',
             checked: false,
           },
@@ -71,7 +115,7 @@ export const DEFAULT_PROJECT_CONTENT = {
               content: [
                 {
                   type: 'text',
-                  text: 'Ideas 💡',
+                  text: 'Tracking Progress ✅',
                 },
               ],
             },
@@ -89,7 +133,7 @@ export const DEFAULT_PROJECT_CONTENT = {
               content: [
                 {
                   type: 'text',
-                  text: 'Links 🔗',
+                  text: 'Deliverables 📁',
                 },
               ],
             },
@@ -107,38 +151,11 @@ export const DEFAULT_PROJECT_CONTENT = {
               content: [
                 {
                   type: 'text',
-                  text: 'Progress updates ☑️',
+                  text: 'Tasks 📋',
                 },
               ],
             },
           ],
-        },
-        {
-          type: 'taskItem',
-          attrs: {
-            id: 'cedc46ad-cc2d-4120-956d-f7f771399ebf',
-            checked: false,
-          },
-          content: [
-            {
-              type: 'paragraph',
-              content: [
-                {
-                  type: 'text',
-                  text: 'or anything else that helps you stay organized 🤓',
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: 'paragraph',
-      content: [
-        {
-          type: 'text',
-          text: 'You can format text, add checklists, and structure the information in a way that works best for you.',
         },
       ],
     },

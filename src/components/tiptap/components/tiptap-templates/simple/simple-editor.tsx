@@ -1,15 +1,7 @@
 'use client';
 
-import React, {
-  PropsWithChildren,
-  Ref,
-  useEffect,
-  useImperativeHandle,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
-import { Content, EditorContent, EditorContext, useEditor } from '@tiptap/react';
+import React, { Ref, useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from 'react';
+import { Content, EditorContent, EditorContext, JSONContent, useEditor } from '@tiptap/react';
 
 import { StarterKit } from '@tiptap/starter-kit';
 import { Image } from '@tiptap/extension-image';
@@ -41,6 +33,8 @@ import { LinkIcon } from '../../tiptap-icons/link-icon';
 
 import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
 import UniqueID from '@tiptap/extension-unique-id';
+import { updateTaskItemState } from '../../../lib/tiptap-utils';
+import { useDebounceCallback } from '../../../../../hooks/useDebounceCallback';
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -112,16 +106,21 @@ export interface EditorRef {
 
 interface Props {
   isEditable?: boolean;
-  content: Content;
+  content: JSONContent;
   editorRef: Ref<EditorRef>;
   children?: React.ReactNode;
   onUpdate: (json: Record<string, any>) => void;
+  onSave: () => void;
 }
 
-export const SimpleEditor = ({ content, isEditable = false, editorRef, children, onUpdate }: Props) => {
+export const SimpleEditor = ({ content, isEditable = false, editorRef, children, onUpdate, onSave }: Props) => {
   const isMobile = useIsBreakpoint();
   const [mobileView, setMobileView] = useState<'main' | 'highlighter' | 'link'>('main');
   const toolbarRef = useRef<HTMLDivElement>(null);
+
+  const autoSave = useDebounceCallback(() => {
+    onSave();
+  }, 1500);
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -150,7 +149,21 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
       }),
       HorizontalRule,
       TaskList,
-      TaskItem.configure({ nested: true }),
+      TaskItem.configure({
+        nested: true,
+        onReadOnlyChecked: (node, checked) => {
+          const checkbox = document.querySelector(`[data-id="${node.attrs.id}"]`);
+          const json = updateTaskItemState(content, node.attrs.id, checked);
+
+          checkbox?.setAttribute('data-checked', `${checked}`);
+          checkbox?.querySelector('input')?.setAttribute('checked', `${checked}`);
+
+          onUpdate(json);
+          autoSave();
+
+          return true;
+        },
+      }),
       Highlight.configure({ multicolor: true }),
       Image,
       Typography,
@@ -163,6 +176,7 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
   });
 
   useLayoutEffect(() => {
+    console.log(editor?.getJSON());
     editor?.setEditable(isEditable);
     if (isEditable) {
       editor?.commands.focus('start');

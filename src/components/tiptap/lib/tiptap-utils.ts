@@ -1,7 +1,7 @@
 import type { Node as TiptapNode } from '@tiptap/pm/model';
 import type { Transaction } from '@tiptap/pm/state';
 import { AllSelection, NodeSelection, Selection, TextSelection } from '@tiptap/pm/state';
-import type { Content, Editor, NodeWithPos } from '@tiptap/react';
+import type { Content, Editor, JSONContent, NodeWithPos } from '@tiptap/react';
 
 export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
@@ -464,7 +464,7 @@ export function selectCurrentBlockContent(editor: Editor) {
 }
 
 export const getIsContentEmpty = (content: Content | undefined): boolean => {
-  if (content === null) {
+  if (content === null || content === undefined) {
     return true;
   }
 
@@ -481,4 +481,71 @@ export const getIsContentEmpty = (content: Content | undefined): boolean => {
   }
 
   return content.content.every((item) => !item.content);
+};
+
+export const getSanitizedContent = (content: JSONContent | undefined) => {
+  if (!content || !content.content) {
+    return content;
+  }
+
+  let startCompleted = false;
+  let endCompleted = false;
+
+  const contentWithoutStartSpaces = content.content
+    .map((item) => {
+      if (item.content) {
+        console.log(item);
+        startCompleted = true;
+      }
+
+      return !item.content && !startCompleted ? undefined : item;
+    })
+    .filter((item) => item);
+
+  const contentWithoutEndSpace = [...contentWithoutStartSpaces]
+    .reverse()
+    .map((item) => {
+      if (item?.content) {
+        endCompleted = true;
+      }
+
+      return !item?.content && !endCompleted ? undefined : item;
+    })
+    .filter((item) => item);
+
+  console.log(
+    {
+      ...content,
+      content: [...contentWithoutEndSpace].reverse(),
+    },
+    content,
+  );
+
+  return {
+    ...content,
+    content: [...contentWithoutEndSpace].reverse(),
+  };
+};
+
+export const updateTaskItemState = (content: JSONContent, id: string, checked: boolean): JSONContent => {
+  return {
+    ...content,
+    content: content.content?.map((item) => {
+      if (item.attrs && item.attrs.id === id) {
+        return {
+          ...item,
+          attrs: {
+            ...item.attrs,
+            checked,
+          },
+        };
+      }
+
+      if (item.content) {
+        return updateTaskItemState(item, id, checked);
+      }
+
+      return item;
+    }),
+  };
 };
