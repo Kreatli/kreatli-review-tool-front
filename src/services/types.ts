@@ -393,12 +393,25 @@ export interface FolderEditBodyDto {
   parentId?: string;
 }
 
+export interface FoldersDto {
+  folders: FolderDto[];
+  foldersCount: number;
+}
+
 export interface GetAssetFileIdCommentsQueryParams {
   shareableLinkId: string;
 }
 
 export interface GetAssetFileIdDownloadQueryParams {
   shareableLinkId: string;
+}
+
+export interface GetAssetsFoldersQueryParams {
+  limit: number;
+  offset: number;
+  projectId: string;
+  query: string;
+  skipIds: string[];
 }
 
 export interface GetAssetsQueryParams {
@@ -638,6 +651,7 @@ export interface ProjectDto {
    * An array of assets which can be folders or files.
    */
   assets: (ProjectFolderDto | ProjectFileDto)[];
+  content: { [x in string | number]: any };
   createdAt: string;
   description: string;
   fileCount: number;
@@ -654,6 +668,7 @@ export interface ProjectDto {
 
 export interface ProjectEditBodyDto {
   assets?: string[];
+  content?: { [x in string | number]: any };
   description?: string;
   name?: string;
 }

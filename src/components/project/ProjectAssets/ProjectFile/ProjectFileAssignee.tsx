@@ -1,8 +1,8 @@
-import { addToast, Avatar, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
+import { addToast, Avatar, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
 import React from 'react';
 
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
-import { ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
+import { AssetDto, ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { getProjectMemberLetter } from '../../../../utils/shortNames';
 import { Icon } from '../../../various/Icon';
@@ -11,12 +11,14 @@ import { updateProjectFile } from '../../../../services/utils';
 
 interface Props {
   projectId: string;
-  file: ProjectFileDto;
+  file: ProjectFileDto | AssetDto;
   members: ProjectMemberDto[];
   isDisabled?: boolean;
+  className?: string;
+  size?: 'sm' | 'xs';
 }
 
-export const ProjectFileAssignee = ({ projectId, file, members, isDisabled }: Props) => {
+export const ProjectFileAssignee = ({ projectId, file, members, isDisabled, className, size = 'sm' }: Props) => {
   const [assigneeId, setAssigneeId] = React.useState<string | null>(file.assignee?.id ?? null);
 
   const { assignee } = file;
@@ -61,14 +63,16 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled }: Pr
           as="button"
           src={selectedMember?.user?.avatar?.url ?? ''}
           size="sm"
-          isBordered
+          isBordered={size !== 'xs'}
           isDisabled={isDisabled}
-          className="shrink-0"
+          className={cn('shrink-0', { 'size-7 border border-foreground-300': size === 'xs' }, className)}
           fallback={
             selectedMember ? (
-              <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(selectedMember)}</div>
+              <div className={cn('text-lg text-foreground-500 select-none', { 'text-md': size === 'xs' })}>
+                {getProjectMemberLetter(selectedMember)}
+              </div>
             ) : (
-              <Icon icon="user" size={16} />
+              <Icon icon="user" size={size === 'xs' ? 14 : 16} />
             )
           }
         />

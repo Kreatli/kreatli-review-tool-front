@@ -66,7 +66,7 @@ export const ProjectMembersModal = ({ project, isOpen, onClose }: Props) => {
   };
 
   return (
-    <Modal size="4xl" isOpen={isOpen} onClose={onClose}>
+    <Modal size="4xl" isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
       <ModalContent>
         <ModalHeader>Project members</ModalHeader>
         <ModalBody className="pb-6">
