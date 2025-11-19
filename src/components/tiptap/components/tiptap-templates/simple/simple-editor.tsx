@@ -117,10 +117,11 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
   const isMobile = useIsBreakpoint();
   const [mobileView, setMobileView] = useState<'main' | 'highlighter' | 'link'>('main');
   const toolbarRef = useRef<HTMLDivElement>(null);
+  const editorJsonRef = useRef(content);
 
   const autoSave = useDebounceCallback(() => {
     onSave();
-  }, 1500);
+  }, 500);
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -152,12 +153,17 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
       TaskItem.configure({
         nested: true,
         onReadOnlyChecked: (node, checked) => {
+          if (!editorJsonRef.current) {
+            return true;
+          }
+
           const checkbox = document.querySelector(`[data-id="${node.attrs.id}"]`);
-          const json = updateTaskItemState(content, node.attrs.id, checked);
+          const json = updateTaskItemState(editorJsonRef.current, node.attrs.id, checked);
 
           checkbox?.setAttribute('data-checked', `${checked}`);
           checkbox?.querySelector('input')?.setAttribute('checked', `${checked}`);
 
+          editorJsonRef.current = json;
           onUpdate(json);
           autoSave();
 
@@ -171,7 +177,10 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
     ],
     content,
     onUpdate: ({ editor }) => {
-      onUpdate(editor.getJSON());
+      const json = editor.getJSON();
+
+      editorJsonRef.current = json;
+      onUpdate(json);
     },
   });
 

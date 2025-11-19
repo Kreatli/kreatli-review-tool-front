@@ -67,10 +67,17 @@ export const DashboardDescription = ({ project }: Props) => {
       return;
     }
 
-    mutate({
-      id: project.id,
-      requestBody: { content: editorJsonRef.current },
-    });
+    mutate(
+      {
+        id: project.id,
+        requestBody: { content: editorJsonRef.current },
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: [getProjectId.key, project.id] });
+        },
+      },
+    );
   };
 
   const handleCancel = () => {
