@@ -10,7 +10,7 @@ import {
   NavbarMenuToggle,
 } from '@heroui/react';
 import NextLink from 'next/link';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import LogoIcon from '../../../assets/images/logo.svg';
 import { useSession } from '../../../hooks/useSession';
@@ -25,6 +25,8 @@ export const Header = () => {
   const { isSignedIn } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });
+
+  const headerRef = useRef<HTMLElement>(null);
 
   React.useEffect(() => {
     if (theme === 'dark') {
@@ -45,7 +47,7 @@ export const Header = () => {
   };
 
   return (
-    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="full">
+    <Navbar ref={headerRef} isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="full">
       <NavbarContent className="lg:gap-12">
         {!isSignedIn && <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="lg:hidden" />}
         <NavbarItem>
@@ -89,7 +91,7 @@ export const Header = () => {
         {isSignedIn && (
           <>
             <NavbarItem>
-              <ProjectUploadsButton />
+              <ProjectUploadsButton headerRef={headerRef} />
             </NavbarItem>
             <NavbarItem>
               <Notifications />
