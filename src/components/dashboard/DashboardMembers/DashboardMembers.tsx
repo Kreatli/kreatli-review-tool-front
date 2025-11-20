@@ -1,8 +1,15 @@
-import { Avatar, Button, Card, CardBody, cn } from '@heroui/react';
+import { Avatar, Button, Card, CardBody, Chip, cn } from '@heroui/react';
 import { ProjectDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
 import { getProjectMemberLetter } from '../../../utils/shortNames';
 import { useProjectContext } from '../../../contexts/Project';
+
+const STATUS_COLORS = {
+  invited: 'warning',
+  joined: 'success',
+  left: 'danger',
+  removed: 'danger',
+} as const;
 
 interface Props {
   project: ProjectDto;
@@ -30,24 +37,31 @@ export const DashboardMembers = ({ project }: Props) => {
         </div>
         <div className="flex flex-col">
           {project.members.map((member, index) => (
-            <div key={member.id} className={cn({ 'border-t pt-1.5 mt-1.5 border-foreground-200': index !== 0 })}>
-              <div className="flex items-center gap-2 relative">
-                <Avatar
-                  src={member.user?.avatar?.url}
-                  size="md"
-                  className="border border-foreground-200"
-                  fallback={
-                    <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(member)}</div>
-                  }
-                />
-                <button
-                  tabIndex={-1}
-                  className="flex flex-col after:absolute after:inset-0 text-start"
-                  onClick={openMembersModal}
-                >
-                  {member.user?.name && <div className="text-md font-medium">{member.user.name}</div>}
-                  <div className="text-sm text-foreground-500">{member.email}</div>
-                </button>
+            <div key={member.id} className={cn({ 'border-t pt-2 mt-2 border-foreground-200': index !== 0 })}>
+              <div className="flex items-center gap-2 relative justify-between">
+                <div className="flex items-center gap-2 overflow-hidden">
+                  <Avatar
+                    src={member.user?.avatar?.url}
+                    size="md"
+                    className="border border-foreground-200 shrink-0"
+                    fallback={
+                      <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(member)}</div>
+                    }
+                  />
+                  <button
+                    tabIndex={-1}
+                    className="flex flex-col after:absolute after:inset-0 text-start overflow-hidden"
+                    onClick={openMembersModal}
+                  >
+                    {member.user?.name && <div className="text-md font-medium truncate">{member.user.name}</div>}
+                    <div className="text-sm text-foreground-500 truncate">{member.email}</div>
+                  </button>
+                </div>
+                <div>
+                  <Chip color={STATUS_COLORS[member.status]} size="sm" variant="flat" className="pointer-events-none">
+                    {member.status}
+                  </Chip>
+                </div>
               </div>
             </div>
           ))}

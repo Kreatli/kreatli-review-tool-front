@@ -36,7 +36,9 @@ export const DashboardAssets = ({ project }: Props) => {
           <Link href={`/project/${project.id}/assets`} className="flex items-center gap-1">
             <span className="text-lg font-semibold">Media</span>
             {!isPending && !isError && (
-              <span className="text-foreground-500 font-normal text-medium">({data.fileCount} files)</span>
+              <span className="text-foreground-500 font-normal text-medium">
+                ({data.fileCount} file{data.fileCount === 1 ? '' : 's'})
+              </span>
             )}
           </Link>
           <Button as={Link} href={`/project/${project.id}/assets`} size="sm" variant="flat" color="primary">

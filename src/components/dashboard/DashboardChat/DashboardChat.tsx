@@ -16,12 +16,14 @@ export const DashboardChat = ({ project }: Props) => {
 
   return (
     <Card>
-      <CardBody className="p-3 px-4">
-        <div className="flex justify-between gap-4 mb-2 items-center">
+      <CardBody className="p-3 pt-0 px-4">
+        <div className="flex justify-between gap-4 mb-2 pt-3 items-center sticky top-0 bg-content1 z-10">
           <Link href={`/project/${project.id}/assets`} className="flex items-center gap-1">
             <span className="text-lg font-semibold">Chat</span>
             {!isPending && !isError && (
-              <span className="text-foreground-500 font-normal text-medium">({data.length} conversations)</span>
+              <span className="text-foreground-500 font-normal text-medium">
+                ({data.length} conversation{data.length === 1 ? '' : 's'})
+              </span>
             )}
           </Link>
           <Button as={Link} href={`/project/${project.id}/chat`} size="sm" variant="flat" color="primary">
@@ -34,7 +36,7 @@ export const DashboardChat = ({ project }: Props) => {
         ) : isError ? (
           <DashboardError onReload={refetch} />
         ) : (
-          <DashboardChatConversations projectId={project.id} conversations={data.slice(0, 3)} />
+          <DashboardChatConversations projectId={project.id} conversations={data.slice(0, 4)} />
         )}
       </CardBody>
     </Card>

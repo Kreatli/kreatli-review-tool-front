@@ -1,6 +1,7 @@
 import { Avatar, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
 import { ProjectLogsDto } from '../../../services/types';
 import { ProjectActivityLog } from '../../project/ProjectActivity/ProjectActivityLog';
+import { formatFullDate } from '../../../utils/dates';
 
 interface Props {
   logs: ProjectLogsDto['logs'];
@@ -12,6 +13,7 @@ export const DashboardActivityTable = ({ logs }: Props) => {
       <TableHeader>
         <TableColumn>Name</TableColumn>
         <TableColumn>Activity</TableColumn>
+        <TableColumn width={200}>Date</TableColumn>
       </TableHeader>
       <TableBody>
         {logs.map((log) => (
@@ -33,6 +35,7 @@ export const DashboardActivityTable = ({ logs }: Props) => {
             <TableCell>
               <ProjectActivityLog log={log} />
             </TableCell>
+            <TableCell>{formatFullDate(log.createdAt)}</TableCell>
           </TableRow>
         ))}
       </TableBody>
