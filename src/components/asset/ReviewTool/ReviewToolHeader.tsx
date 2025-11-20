@@ -25,13 +25,9 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
   const router = useRouter();
   const actions = useMemo(() => getAssetActions(file), [file, getAssetActions]);
 
-  const parentPath = useMemo(() => {
-    if (!file.parent) {
-      return `/project/${project.id}`;
-    }
-
-    return `/project/${project.id}/assets/folder/${file.parent.id}`;
-  }, [file.parent, project.id]);
+  const handleBack = () => {
+    router.back();
+  };
 
   const path = useMemo(() => {
     return [project.name, ...file.path.map((folder) => folder.name)];
@@ -56,13 +52,12 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
       <div className="flex-1 flex items-center gap-2 pl-1 overflow-hidden">
         {!isCompareMode && (
           <Button
-            as={NextLink}
-            href={parentPath}
             size="sm"
             variant="light"
             radius="full"
             startContent={<Icon icon="chevronDown" className="rotate-90" size={20} />}
             isIconOnly
+            onClick={handleBack}
           />
         )}
         <ProjectFileAssignee
