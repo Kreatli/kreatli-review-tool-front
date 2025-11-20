@@ -22,8 +22,6 @@ interface Context {
     color?: MenuItemProps['color'];
     onClick: () => void;
   }[];
-  isProjectOwner: boolean;
-  asset: ProjectFileDto | ProjectFolderDto;
 }
 
 export const AssetContext = React.createContext<Context | null>(null);
@@ -82,34 +80,6 @@ export const AssetContextProvider = ({
         setIsMoveToModalOpen(true);
       },
     };
-
-    if (!isProjectOwner && user?.id !== asset?.createdBy?.id) {
-      if (asset?.type === 'file') {
-        return [
-          shareAction,
-          moveToAction,
-          {
-            label: 'Download',
-            icon: 'download' as const,
-            onClick: async () => {
-              try {
-                const assetUrl = await getAssetFileIdDownload(asset.id, { shareableLinkId: '' });
-
-                downloadFromUrl(assetUrl, asset.name);
-              } catch {
-                addToast({
-                  title: 'Failed to download file. Please try again later.',
-                  variant: 'flat',
-                  color: 'danger',
-                });
-              }
-            },
-          },
-        ];
-      }
-
-      return [moveToAction];
-    }
 
     if (isArchived) {
       return [
@@ -210,9 +180,7 @@ export const AssetContextProvider = ({
   };
 
   return (
-    <AssetContext.Provider
-      value={{ getAssetActions, asset: selectedAsset as ProjectFolderDto | ProjectFileDto, isProjectOwner }}
-    >
+    <AssetContext.Provider value={{ getAssetActions }}>
       {children}
       <RenameAssetModal
         projectId={projectId}
