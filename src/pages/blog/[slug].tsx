@@ -126,10 +126,13 @@ export const getStaticProps = (async ({ params }) => {
 }) satisfies GetStaticProps<{}>;
 
 export const getStaticPaths = (async () => {
-  const { data } = await getStoryblokApi().get('cdn/links', {});
+  const { data } = await getStoryblokApi().get('cdn/links', {
+    version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+    starts_with: 'blog/',
+  });
 
   return {
-    paths: Object.values(data.links ?? {}).map((link) => ({ params: { slug: link.slug } })),
+    paths: Object.values(data.links ?? {}).map((link) => ({ params: { slug: link.slug?.replace('blog/', '') } })),
     fallback: process.env.STORYBLOK_STATUS === 'draft',
   };
 }) satisfies GetStaticPaths;
