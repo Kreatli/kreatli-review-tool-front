@@ -34,7 +34,7 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
   }, [file.path, project.name]);
 
   const handleCompareSelect = (asset: AssetDto) => {
-    router.push(`${location.pathname}?compareFileId=${asset.id}`);
+    router.replace(`${location.pathname}?compareFileId=${asset.id}`);
   };
 
   const shareAction = useMemo(() => {

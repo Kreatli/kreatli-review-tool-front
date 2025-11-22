@@ -39,7 +39,7 @@ export const ReviewTool = ({ project, isLoading }: Props) => {
                 onClose={() => {
                   setActiveComment(null);
                   setActiveFileId(compareFile?.id ?? '');
-                  router.push(`/project/${project.id}/assets/${compareFile?.id}`);
+                  router.replace(`/project/${project.id}/assets/${compareFile?.id}`);
                 }}
               />
               {compareFile && (
@@ -52,7 +52,7 @@ export const ReviewTool = ({ project, isLoading }: Props) => {
                   onClose={() => {
                     setActiveComment(null);
                     setActiveFileId(file?.id ?? '');
-                    router.push(`/project/${project.id}/assets/${file?.id}`);
+                    router.replace(`/project/${project.id}/assets/${file?.id}`);
                   }}
                 />
               )}
