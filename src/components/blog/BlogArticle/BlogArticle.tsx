@@ -31,7 +31,7 @@ export const BlogArticle = ({ article }: Props) => {
           </Link>
           {article.content.image && (
             <div className="-mx-4 pointer-events-none">
-              <Image removeWrapper src={article.content.image.filename} radius="none" />
+              <Image removeWrapper src={article.content.image.filename} radius="none" width="800" height="600" />
             </div>
           )}
           <div className="line-clamp-3">{article.content.metaFields?.description}</div>

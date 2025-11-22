@@ -1,6 +1,6 @@
 import { storyblokEditable } from '@storyblok/react';
 import { SectionStoryblok } from '../../../../typings/storyblok';
-import { Button, cn } from '@heroui/react';
+import { Button, cn, Image } from '@heroui/react';
 import NextLink from 'next/link';
 import { Socials } from '../../../home/Socials/Socials';
 
@@ -42,7 +42,16 @@ export const Section = ({ blok }: Props) => {
         </div>
         {image?.filename && (
           <div className="max-h-[500px] shadow-large overflow-hidden mt-4 rounded-medium outline outline-1 outline-offset-2 outline-foreground-300">
-            <img src={image.filename} className="w-full h-auto max-h-[500px] object-cover" alt="" />
+            <Image
+              src={image.filename}
+              removeWrapper
+              radius="none"
+              width="800"
+              shadow="none"
+              height="600"
+              className="w-full h-auto max-h-[500px] object-cover"
+              alt=""
+            />
           </div>
         )}
       </div>
