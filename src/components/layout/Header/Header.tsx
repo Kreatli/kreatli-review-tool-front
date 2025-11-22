@@ -84,6 +84,11 @@ export const Header = () => {
                 Pricing
               </Link>
             </NavbarItem>
+            <NavbarItem>
+              <Link as={NextLink} href="/blog" color="foreground">
+                Blog
+              </Link>
+            </NavbarItem>
           </NavbarContent>
         )}
       </NavbarContent>
@@ -155,6 +160,11 @@ export const Header = () => {
           <NavbarMenuItem>
             <Link as={NextLink} href="/#pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Pricing
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/blog" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Blog
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>

@@ -1,13 +1,15 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useSession } from '../hooks/useSession';
-import { getStoryblokApi } from '../lib/storyblok';
+import { useSession } from '../../hooks/useSession';
+import { getStoryblokApi } from '../../lib/storyblok';
 import { ISbStoryData, StoryblokComponent, useStoryblokState } from '@storyblok/react';
-import { PageStoryblok } from '../typings/storyblok';
-import { Header } from '../components/layout/Header';
-import { Icon } from '../components/various/Icon';
+import { PageStoryblok } from '../../typings/storyblok';
+import { Header } from '../../components/layout/Header';
+import { Icon } from '../../components/various/Icon';
 import { useEffect, useState } from 'react';
-import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import Head from 'next/head';
+import { BreadcrumbItem, Breadcrumbs } from '@heroui/react';
+import Link from 'next/link';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
@@ -59,14 +61,24 @@ export default function Page({ story, slug }: Props) {
       <Decorations />
       <div className="backdrop-blur-lg">
         <div className="max-w-4xl mx-auto px-6 w-full py-8">
+          <Breadcrumbs className="mb-4">
+            <BreadcrumbItem as="div">
+              {/* TODO: link in link issue + truncate issue */}
+              <Link href="/">Home</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem as="div">
+              <Link href="/blog">Blog</Link>
+            </BreadcrumbItem>
+            <BreadcrumbItem>{storyState?.content.metaFields?.title}</BreadcrumbItem>
+          </Breadcrumbs>
           {storyState?.content.readTime && (
             <div className="flex gap-1 text-primary items-center mb-1">
-              <Icon icon="newsletter" size={20} />
+              <Icon icon="time" size={18} />
               {storyState.content.readTime} minutes read
             </div>
           )}
           <div className="flex w-full flex-col gap-8">
-            {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok.uuid} blok={blok} />)}
+            {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok._uid} blok={blok} />)}
           </div>
         </div>
       </div>

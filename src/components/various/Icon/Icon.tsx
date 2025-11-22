@@ -92,7 +92,6 @@ import SuccessIcon from '../../../assets/icons/success.svg';
 import SuitcaseIcon from '../../../assets/icons/suitcase.svg';
 import SunIcon from '../../../assets/icons/sun.svg';
 import TimeIcon from '../../../assets/icons/time.svg';
-import TimerIcon from '../../../assets/icons/timer.svg';
 import TiktokIcon from '../../../assets/icons/tiktok.svg';
 import TrashIcon from '../../../assets/icons/trash.svg';
 import TwitterIcon from '../../../assets/icons/twitter.svg';
@@ -199,7 +198,6 @@ const ICONS = {
   suitcase: SuitcaseIcon,
   sun: SunIcon,
   time: TimeIcon,
-  timer: TimerIcon,
   tiktok: TiktokIcon,
   trash: TrashIcon,
   twitter: TwitterIcon,

@@ -10,6 +10,12 @@ export const formatFullDate = (dateString: Date | string) => {
   return date.toLocaleString('en', { dateStyle: 'medium', timeStyle: 'medium' });
 };
 
+export const formatDate = (dateString: Date | string) => {
+  const date = new Date(dateString);
+
+  return date.toLocaleString('en', { dateStyle: 'medium' });
+};
+
 export const formatRelativeTime = (dateString: Date | string, showTime?: boolean) => {
   const currentDate = new Date();
   const dateToCompare = new Date(dateString);

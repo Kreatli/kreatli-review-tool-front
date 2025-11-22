@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Section = ({ blok }: Props) => {
-  const { title, text, image, orientation, buttons } = blok;
+  const { title, text, image, orientation, buttons, displaySocials } = blok;
 
   return (
     <div
@@ -20,6 +20,7 @@ export const Section = ({ blok }: Props) => {
     >
       <div>
         <h2 className="text-4xl font-sans max-w-xl font-bold mb-4">{title}</h2>
+        {displaySocials && <div>Socials</div>}
         {text && <p className="text-lg text-foreground-500">{text}</p>}
         {buttons && buttons?.length > 0 && (
           <div className="flex flex-wrap gap-4 mt-4">

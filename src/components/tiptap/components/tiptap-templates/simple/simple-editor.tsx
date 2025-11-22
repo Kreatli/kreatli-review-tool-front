@@ -185,7 +185,6 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
   });
 
   useLayoutEffect(() => {
-    console.log(editor?.getJSON());
     editor?.setEditable(isEditable);
     if (isEditable) {
       editor?.commands.focus('start');
