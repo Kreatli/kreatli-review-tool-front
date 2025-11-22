@@ -8,9 +8,11 @@ import { Icon } from '../../components/various/Icon';
 import { useEffect, useState } from 'react';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import Head from 'next/head';
-import { BreadcrumbItem, Breadcrumbs } from '@heroui/react';
+import { BreadcrumbItem, Breadcrumbs, ScrollShadow } from '@heroui/react';
 import Link from 'next/link';
 import { formatDate } from '../../utils/dates';
+import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
+import { getTableOfContentLinks } from '../../utils/storyblok';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
@@ -61,35 +63,41 @@ export default function Page({ story, slug }: Props) {
       <Header />
       <Decorations />
       <div className="backdrop-blur-lg">
-        <div className="max-w-4xl mx-auto px-6 w-full py-8">
-          <Breadcrumbs className="mb-4">
-            <BreadcrumbItem>
-              <Link href="/">Home</Link>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <Link href="/blog">Blog</Link>
-            </BreadcrumbItem>
-            <BreadcrumbItem classNames={{ base: 'overflow-hidden', item: 'truncate block' }}>
-              {storyState?.content.metaFields?.title}
-            </BreadcrumbItem>
-          </Breadcrumbs>
-          <div className="flex items-center gap-3">
-            {storyState?.content.publishDate && (
-              <div className="flex gap-1 text-primary items-center mb-1 font-medium">
-                <Icon icon="calendar" size={18} />
-                {formatDate(storyState.content.publishDate)}
-              </div>
-            )}
-            {storyState?.content.readTime && (
-              <div className="flex gap-1 text-foreground-500 items-center mb-1 font-medium">
-                <Icon icon="time" size={18} />
-                {storyState.content.readTime} minutes read
-              </div>
-            )}
+        <div className="max-w-7xl mx-auto px-6 w-full py-8 grid md:grid-cols-[175px,1fr] lg:grid-cols-[200px,1fr] xl:grid-cols-[200px,1fr,200px] items-start">
+          <ScrollShadow className="sticky top-24 h-[calc(100vh-8rem)] hidden md:block" hideScrollBar>
+            <TableOfContent links={getTableOfContentLinks(storyState?.content.body)} />
+          </ScrollShadow>
+          <div className="w-full overflow-hidden md:pl-8 md:pr-2 lg:pl-16 lg:pr-14">
+            <Breadcrumbs className="mb-4">
+              <BreadcrumbItem>
+                <Link href="/">Home</Link>
+              </BreadcrumbItem>
+              <BreadcrumbItem>
+                <Link href="/blog">Blog</Link>
+              </BreadcrumbItem>
+              <BreadcrumbItem classNames={{ base: 'overflow-hidden', item: 'truncate block' }}>
+                {storyState?.content.metaFields?.title}
+              </BreadcrumbItem>
+            </Breadcrumbs>
+            <div className="flex items-center gap-3">
+              {storyState?.content.publishDate && (
+                <div className="flex gap-1 text-primary items-center mb-1 font-medium">
+                  <Icon icon="calendar" size={18} />
+                  {formatDate(storyState.content.publishDate)}
+                </div>
+              )}
+              {storyState?.content.readTime && (
+                <div className="flex gap-1 text-foreground-500 items-center mb-1 font-medium">
+                  <Icon icon="time" size={18} />
+                  {storyState.content.readTime} minutes read
+                </div>
+              )}
+            </div>
+            <div className="flex w-full flex-col gap-8">
+              {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok._uid} blok={blok} />)}
+            </div>
           </div>
-          <div className="flex w-full flex-col gap-8">
-            {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok._uid} blok={blok} />)}
-          </div>
+          <div />
         </div>
       </div>
     </>

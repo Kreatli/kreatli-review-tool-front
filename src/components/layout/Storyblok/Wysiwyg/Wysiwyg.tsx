@@ -3,6 +3,8 @@ import { WysiwygStoryblok } from '../../../../typings/storyblok';
 
 import styles from './Wysiwyg.module.scss';
 import { Alert, cn } from '@heroui/react';
+import React from 'react';
+import { getHeadingId } from '../../../../utils/storyblok';
 
 interface Props {
   blok: WysiwygStoryblok;
@@ -18,7 +20,7 @@ export const Wysiwyg = ({ blok }: Props) => {
         doc={text}
         resolvers={{
           [MarkTypes.LINK]: (node) => (
-            <a href={node.attrs?.href} target="_blank">
+            <a href={node.attrs?.href} key={node.attrs?.href} target="_blank">
               {node.text}
             </a>
           ),
@@ -30,6 +32,16 @@ export const Wysiwyg = ({ blok }: Props) => {
             </div>
           ),
           [BlockTypes.QUOTE]: (node) => <Alert className={styles.alert} title={node.children} />,
+          [BlockTypes.HEADING]: (node) => {
+            return React.createElement(
+              `h${node.attrs?.level}`,
+              {
+                id: getHeadingId(node.content?.[0]?.text ?? ''),
+                key: getHeadingId(node.content?.[0]?.text ?? ''),
+              },
+              node.children,
+            );
+          },
         }}
       />
     </div>
