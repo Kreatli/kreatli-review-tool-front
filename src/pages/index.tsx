@@ -35,6 +35,8 @@ export const getStaticProps = (async () => {
   try {
     const { data } = await getStoryblokApi().get('cdn/links', {
       version: process.env.STORYBLOK_STATUS as 'draft' | 'published',
+      per_page: 7,
+      starts_with: 'blog/',
     });
 
     return {

@@ -33,22 +33,6 @@ export interface ButtonStoryblok {
   [k: string]: any;
 }
 
-export interface PageStoryblok {
-  readTime?: string;
-  body: (SectionStoryblok | WysiwygStoryblok)[];
-  metaFields?: {
-    _uid?: string;
-    title?: string;
-    plugin?: string;
-    description?: string;
-    [k: string]: any;
-  };
-  _uid: string;
-  component: "page";
-  uuid?: string;
-  [k: string]: any;
-}
-
 export interface AssetStoryblok {
   _uid?: string;
   id: number | null;
@@ -67,12 +51,31 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
+export interface PageStoryblok {
+  readTime?: string;
+  image: AssetStoryblok;
+  publishDate: string;
+  body: (SectionStoryblok | WysiwygStoryblok)[];
+  metaFields?: {
+    _uid?: string;
+    title?: string;
+    plugin?: string;
+    description?: string;
+    [k: string]: any;
+  };
+  _uid: string;
+  component: "page";
+  uuid?: string;
+  [k: string]: any;
+}
+
 export interface SectionStoryblok {
   title: string;
   text?: string;
   image?: AssetStoryblok;
   orientation: "" | "vertical" | "horizontal";
   buttons?: ButtonStoryblok[];
+  displaySocials: boolean;
   _uid: string;
   component: "section";
   [k: string]: any;
