@@ -36,14 +36,14 @@ export const BlogArticle = ({ article }: Props) => {
           )}
           <div className="line-clamp-3">{article.content.metaFields?.description}</div>
         </div>
-        <div className="text-small text-foreground-500 flex items-center gap-3">
+        <div className="text-small flex items-center gap-3">
           {article.content.publishDate && (
-            <div className="flex items-center gap-1.5 font-medium">
+            <div className="flex text-primary items-center gap-1.5 font-medium">
               <Icon icon="calendar" size={18} />
               {formatDate(article.content.publishDate)}
             </div>
           )}
-          <div className="flex items-center gap-1.5 font-medium">
+          <div className="flex text-foreground-500 items-center gap-1.5 font-medium">
             <Icon icon="time" size={18} />
             {article.content.readTime} minutes
           </div>
