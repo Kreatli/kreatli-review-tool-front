@@ -88,9 +88,10 @@ export default function Page({ story, slug }: Props) {
 
 export const getStaticProps = (async ({ params }) => {
   const slugString = [params?.slug ?? []].flat().join('/');
+  const slug = `/blog/${slugString}`;
 
   try {
-    const data = await getStoryblokApi().getStory(slugString, {
+    const data = await getStoryblokApi().getStory(slug, {
       version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
     });
 
@@ -103,7 +104,7 @@ export const getStaticProps = (async ({ params }) => {
     return {
       props: {
         story: data.data.story,
-        slug: slugString,
+        slug,
       },
       revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
     };
