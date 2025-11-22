@@ -39,10 +39,10 @@ export const FooterSection = ({ links = [] }: Props) => {
           </div>
           <Socials />
         </div>
-        <div className="flex md:flex-row md:justify-between flex-col gap-3 w-full lg:w-auto">
+        <div className="flex md:flex-row md:justify-between flex-col gap-6 w-full lg:w-auto">
           {links.length > 0 && (
             <div>
-              <ul className="grid sm:grid-cols-2 gap-y-1 gap-x-3">
+              <ul className="grid sm:grid-cols-2 gap-y-1 gap-x-6">
                 <li key="blog">
                   <Link href="/blog" className="font-semibold hover:underline underline-offset-2">
                     Kreatli Blog
@@ -62,7 +62,7 @@ export const FooterSection = ({ links = [] }: Props) => {
             </div>
           )}
           <div>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col gap-1 whitespace-nowrap">
               <li>
                 <Link
                   href="mailto:support@kreatli.com"
