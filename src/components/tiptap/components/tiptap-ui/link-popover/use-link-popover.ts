@@ -117,16 +117,9 @@ export function useLinkHandler(props: LinkHandlerProps) {
   const setLink = useCallback(() => {
     if (!url || !editor) return;
 
-    const { selection } = editor.state;
-    const isEmpty = selection.empty;
-
     let chain = editor.chain().focus();
 
     chain = chain.extendMarkRange('link').setLink({ href: url });
-
-    if (isEmpty) {
-      chain = chain.insertContent({ type: 'text', text: url });
-    }
 
     chain.run();
 

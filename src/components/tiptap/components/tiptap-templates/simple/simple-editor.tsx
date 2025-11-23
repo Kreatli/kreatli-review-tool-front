@@ -75,7 +75,7 @@ const MainToolbarContent = ({
           </>
         )}
         {!isMobile ? <ColorHighlightPopover /> : <ColorHighlightPopoverButton onClick={onHighlighterClick} />}
-        {!isMobile ? <LinkPopover /> : <LinkButton onClick={onLinkClick} />}
+        {!isMobile ? <LinkPopover autoOpenOnLinkActive={false} /> : <LinkButton onClick={onLinkClick} />}
       </ToolbarGroup>
     </>
   );
