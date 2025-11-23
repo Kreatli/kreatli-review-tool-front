@@ -56,12 +56,7 @@ export const getStaticProps = (async () => {
       starts_with: 'blog/',
       excluding_fields: 'body',
       version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-    });
-
-    const linksData = await getStoryblokApi().get('cdn/links', {
-      version: process.env.STORYBLOK_STATUS as 'draft' | 'published',
-      per_page: 7,
-      starts_with: 'blog/',
+      sort_by: 'content.publishDate:desc',
     });
 
     if (!storiesData?.data?.stories) {
@@ -74,7 +69,7 @@ export const getStaticProps = (async () => {
       props: {
         stories: storiesData.data.stories,
         footerLinks:
-          Object.values(linksData?.data?.links ?? {}).map((link) => ({ label: link.name, url: link.slug })) ?? [],
+          storiesData.data.stories.slice(0, 7).map((story) => ({ label: story.name, url: story.full_slug })) ?? [],
       },
       revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
     };

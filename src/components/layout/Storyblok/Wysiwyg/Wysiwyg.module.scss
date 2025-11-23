@@ -50,7 +50,7 @@
   }
 
   .tableWrapper {
-    @apply shadow-medium p-3 w-full rounded-medium mt-4;
+    @apply shadow-medium p-3 w-full rounded-medium mt-4 overflow-auto;
   }
 
   table {
