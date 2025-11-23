@@ -3,14 +3,38 @@ import Link from 'next/link';
 import LogoIcon from '../../../assets/images/logo.svg';
 import { Socials } from '../Socials/Socials';
 
-interface Props {
-  links?: {
-    label: string;
-    url: string;
-  }[];
-}
+const LINKS = [
+  {
+    label: 'File Sharing vs. File Transfer',
+    url: '/blog/file-sharing-vs-file-transfer',
+  },
+  {
+    label: 'Secure Ways to Send Large Video Files',
+    url: '/blog/secure-ways-to-send-large-video-files',
+  },
+  {
+    label: 'Best Frame.io Alternatives',
+    url: '/blog/best-frameio-alternatives-video-review-2026',
+  },
+  {
+    label: 'Free Online Cloud Storage',
+    url: '/blog/free-online-cloud-storage',
+  },
+  {
+    label: 'MAM vs DAM: For Creative Teams',
+    url: '/blog/mam-vs-dam-which-asset-system-right-for-creative-teams',
+  },
+  {
+    label: 'Minimal Tech Stack for Small Creative Teams',
+    url: '/blog/minimal-tech-stack-small-creative-teams',
+  },
+  {
+    label: 'File Transfer & Cloud Sharing Guide',
+    url: '/blog/ultimate-guide-file-transfer-cloud-sharing-video-teams',
+  },
+];
 
-export const FooterSection = ({ links = [] }: Props) => {
+export const FooterSection = () => {
   return (
     <footer className="bg-foreground-50">
       <div className="px-6 lg:pt-32 pt-16 pb-12 lg:pb-20 flex flex-col items-center gap-8">
@@ -40,27 +64,25 @@ export const FooterSection = ({ links = [] }: Props) => {
           <Socials />
         </div>
         <div className="flex md:flex-row md:justify-between flex-col gap-6 w-full lg:w-auto">
-          {links.length > 0 && (
-            <div>
-              <ul className="grid sm:grid-cols-2 gap-y-1 gap-x-6">
-                <li key="blog">
-                  <Link href="/blog" className="font-semibold hover:underline underline-offset-2">
-                    Kreatli Blog
+          <div>
+            <ul className="grid sm:grid-cols-2 gap-y-1 gap-x-6">
+              <li key="blog">
+                <Link href="/blog" className="font-semibold hover:underline underline-offset-2">
+                  Kreatli Blog
+                </Link>
+              </li>
+              {LINKS.map((link) => (
+                <li key={link.url} className="overflow-hidden flex">
+                  <Link
+                    href={link.url}
+                    className="text-foreground-500 hover:underline underline-offset-2 w-full truncate"
+                  >
+                    {link.label}
                   </Link>
                 </li>
-                {links.map((link) => (
-                  <li key={link.url} className="overflow-hidden flex">
-                    <Link
-                      href={link.url}
-                      className="text-foreground-500 hover:underline underline-offset-2 w-full truncate"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+              ))}
+            </ul>
+          </div>
           <div>
             <ul className="flex flex-col gap-1 whitespace-nowrap">
               <li>

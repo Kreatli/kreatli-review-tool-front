@@ -14,13 +14,9 @@ const PUBLISHED_REVALIDATE_TIME = 3600;
 
 interface Props {
   stories: ISbStoryData<PageStoryblok>[];
-  footerLinks?: {
-    label: string;
-    url: string;
-  }[];
 }
 
-export default function Blog({ stories, footerLinks }: Props) {
+export default function Blog({ stories }: Props) {
   useSession();
 
   return (
@@ -45,7 +41,7 @@ export default function Blog({ stories, footerLinks }: Props) {
           </div>
         </div>
       </div>
-      <FooterSection links={footerLinks} />
+      <FooterSection />
     </>
   );
 }
@@ -68,8 +64,6 @@ export const getStaticProps = (async () => {
     return {
       props: {
         stories: storiesData.data.stories,
-        footerLinks:
-          storiesData.data.stories.slice(0, 7).map((story) => ({ label: story.name, url: story.full_slug })) ?? [],
       },
       revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
     };
