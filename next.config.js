@@ -100,7 +100,7 @@ const nextConfig = {
       },
       {
         source: '/kreatli-vs-frame-io-comparison-2025',
-        destination: '/blog/kreatli-vs-frame-io-comparison-2025',
+        destination: '/blog/kreatli-vs-frame-io-comparison-2026',
         permanent: true,
       },
       {
@@ -150,12 +150,12 @@ const nextConfig = {
       },
       {
         source: '/best-frameio-alternatives-video-review-2025',
-        destination: '/blog/best-frameio-alternatives-video-review-2025',
+        destination: '/blog/best-frameio-alternatives-video-review-2026',
         permanent: true,
       },
       {
         source: '/top-5-video-collaboration-tools-2025',
-        destination: '/blog/top-5-video-collaboration-tools-2025',
+        destination: '/blog/top-5-video-collaboration-tools-2026',
         permanent: true,
       },
     ];
