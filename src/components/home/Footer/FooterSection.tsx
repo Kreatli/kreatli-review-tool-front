@@ -75,7 +75,7 @@ export const FooterSection = () => {
                 <li key={link.url} className="overflow-hidden flex">
                   <Link
                     href={link.url}
-                    className="text-foreground-500 hover:underline underline-offset-2 w-full truncate"
+                    className="text-foreground-500 hover:underline underline-offset-2 truncate w-fit"
                   >
                     {link.label}
                   </Link>
