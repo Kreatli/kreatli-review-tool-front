@@ -22,6 +22,7 @@ import {
 } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../components/various/Icon';
+import styles from '../components/layout/Storyblok/Decorations/Decorations.module.scss';
 
 interface Props {
   footerLinks?: {
@@ -135,8 +136,22 @@ export default function FeaturesPage({ footerLinks }: Props) {
       <div className="backdrop-blur-lg">
         <div className="border-t border-foreground-200">
           {/* Additional Features Grid */}
-          <section className="py-16 px-6 bg-background">
-            <div className="max-w-6xl mx-auto">
+          <section className="relative py-16 px-6 bg-background overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div
+                className={`absolute top-20 left-24 w-32 h-32 bg-gradient-to-br from-blue-300/30 to-purple-300/30 rounded-full ${styles.animateFloatSlow}`}
+              />
+              <div
+                className={`absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-pink-300/30 to-orange-300/30 rounded-full ${styles.animateFloatMedium}`}
+              />
+              <div
+                className={`absolute top-16 left-1/3 w-3 h-3 bg-blue-400/50 rounded-full ${styles.animateFloatFast}`}
+              />
+              <div
+                className={`absolute top-24 right-1/4 w-2 h-2 bg-purple-400/50 rounded-full ${styles.animateFloatMedium}`}
+              />
+            </div>
+            <div className="max-w-6xl mx-auto relative z-10">
               <div className="text-center mb-12">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Everything you need to collaborate</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
@@ -178,11 +193,43 @@ export default function FeaturesPage({ footerLinks }: Props) {
           </section>
 
           {/* Main Features Section */}
-          <FeaturesSection />
+          <section className="relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div
+                className={`absolute bottom-32 left-1/4 w-20 h-20 bg-gradient-to-br from-green-300/30 to-blue-300/30 rounded-full ${styles.animateFloatFast}`}
+              />
+              <div
+                className={`absolute top-1/3 right-1/4 w-16 h-16 bg-gradient-to-br from-yellow-300/25 to-orange-300/25 rounded-full ${styles.animateFloatMedium}`}
+              />
+              <div
+                className={`absolute top-1/2 left-1/3 w-4 h-4 bg-pink-400/50 rounded-full ${styles.animateFloatSlow}`}
+              />
+              <div
+                className={`absolute bottom-24 left-1/4 w-2 h-2 bg-orange-400/50 rounded-full ${styles.animateFloatMedium}`}
+              />
+            </div>
+            <div className="relative z-10">
+              <FeaturesSection />
+            </div>
+          </section>
 
           {/* Comparison Section */}
-          <section className="py-16 px-6 bg-foreground-50">
-            <div className="max-w-6xl mx-auto">
+          <section className="relative py-16 px-6 bg-foreground-50 overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div
+                className={`absolute top-1/2 right-1 left-12 w-12 h-12 bg-gradient-to-br from-cyan-300/25 to-blue-300/25 rounded-full ${styles.animateFloatFast}`}
+              />
+              <div
+                className={`absolute bottom-1/3 left-1/2 w-14 h-14 bg-gradient-to-br from-pink-300/25 to-purple-300/25 rounded-full ${styles.animateFloatSlow}`}
+              />
+              <div
+                className={`absolute top-2/3 right-16 w-3 h-3 bg-green-400/50 rounded-full ${styles.animateFloatFast}`}
+              />
+              <div
+                className={`absolute bottom-32 right-24 w-3 h-3 bg-cyan-400/50 rounded-full ${styles.animateFloatSlow}`}
+              />
+            </div>
+            <div className="max-w-6xl mx-auto relative z-10">
               <div className="text-center mb-12">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Kreatli vs. The Alternatives</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
@@ -258,8 +305,25 @@ export default function FeaturesPage({ footerLinks }: Props) {
           </section>
 
           {/* Use Cases Section */}
-          <section className="py-16 px-6 bg-background">
-            <div className="max-w-6xl mx-auto">
+          <section className="relative py-16 px-6 bg-background overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div
+                className={`absolute top-20 right-1/4 w-28 h-28 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full ${styles.animateFloatSlow}`}
+              />
+              <div
+                className={`absolute bottom-20 left-1/3 w-24 h-24 bg-gradient-to-br from-orange-300/30 to-yellow-300/30 rounded-full ${styles.animateFloatMedium}`}
+              />
+              <div
+                className={`absolute top-1/3 left-1/4 w-16 h-16 bg-gradient-to-br from-yellow-300/25 to-orange-300/25 rounded-full ${styles.animateFloatMedium}`}
+              />
+              <div
+                className={`absolute bottom-16 left-1/2 w-2 h-2 bg-yellow-400/50 rounded-full ${styles.animateFloatFast}`}
+              />
+              <div
+                className={`absolute bottom-28 right-1 left-10 w-4 h-4 bg-indigo-400/50 rounded-full ${styles.animateFloatMedium}`}
+              />
+            </div>
+            <div className="max-w-6xl mx-auto relative z-10">
               <div className="text-center mb-12">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Perfect for any creative workflow</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
@@ -411,8 +475,25 @@ export default function FeaturesPage({ footerLinks }: Props) {
           </section>
 
           {/* CTA Section */}
-          <section className="bg-foreground-50 lg:py-24 py-16 px-6">
-            <div className="max-w-4xl mx-auto text-center flex flex-col gap-6">
+          <section className="relative bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none">
+              <div
+                className={`absolute top-20 left-24 w-32 h-32 bg-gradient-to-br from-blue-300/30 to-purple-300/30 rounded-full ${styles.animateFloatSlow}`}
+              />
+              <div
+                className={`absolute bottom-20 right-1/4 w-28 h-28 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full ${styles.animateFloatSlow}`}
+              />
+              <div
+                className={`absolute top-1/3 right-1/4 w-16 h-16 bg-gradient-to-br from-yellow-300/25 to-orange-300/25 rounded-full ${styles.animateFloatMedium}`}
+              />
+              <div
+                className={`absolute top-1/2 left-1/3 w-4 h-4 bg-pink-400/50 rounded-full ${styles.animateFloatSlow}`}
+              />
+              <div
+                className={`absolute bottom-28 right-1 left-10 w-4 h-4 bg-indigo-400/50 rounded-full ${styles.animateFloatMedium}`}
+              />
+            </div>
+            <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
               <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to streamline your creative workflow?</h2>
               <p className="text-lg text-foreground-500">
                 Start using Kreatli today and experience the difference of a platform built specifically for creative
