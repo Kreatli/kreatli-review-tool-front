@@ -4,6 +4,7 @@ import { Header } from '../components/layout/Header';
 import { Card, CardBody, Chip, Button } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../components/various/Icon';
+import { Decorations } from '../components/layout/Storyblok/Decorations';
 
 interface BlogPost {
   id: string;
@@ -85,74 +86,76 @@ export default function Blog() {
         />
       </Head>
       <Header />
-      <div className="border-t border-foreground-200">
-        {/* Hero Section */}
-        <section className="bg-foreground-50 lg:py-24 py-12 px-6">
-          <div className="max-w-4xl mx-auto text-center flex flex-col gap-4">
-            <h1 className="text-3xl sm:text-5xl font-bold font-sans">Blog</h1>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Insights, tips, and best practices for creative teams. Discover strategies to streamline your workflow and
-              improve collaboration.
-            </p>
-          </div>
-        </section>
+      <Decorations />
+      <div className="backdrop-blur-lg">
+        <div className="border-t border-foreground-200">
+          {/* Hero Section */}
+          <section className="bg-foreground-50 lg:py-24 py-12 px-6">
+            <div className="max-w-4xl mx-auto text-center flex flex-col gap-4">
+              <h1 className="text-3xl sm:text-5xl font-bold font-sans">Blog</h1>
+              <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+                Insights, tips, and best practices for creative teams. Discover strategies to streamline your workflow
+                and improve collaboration.
+              </p>
+            </div>
+          </section>
 
-        {/* Blog Posts Grid */}
-        <section className="py-16 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post) => (
-                <Card key={post.id} isHoverable className="dark:border border-foreground-300 h-full flex flex-col">
-                  <CardBody className="p-6 flex flex-col gap-4 flex-1">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <Chip size="sm" variant="faded">
-                        {post.category}
-                      </Chip>
-                      <span className="text-sm text-foreground-500">{post.date}</span>
-                    </div>
-                    <h2 className="text-xl font-bold font-sans leading-tight line-clamp-2">{post.title}</h2>
-                    <p className="text-foreground-500 text-sm line-clamp-3 flex-1">{post.excerpt}</p>
-                    <div className="flex items-center justify-between pt-2">
-                      <div className="flex items-center gap-2 text-sm text-foreground-500">
-                        <Icon icon="time" size={16} />
-                        <span>{post.readTime}</span>
+          {/* Blog Posts Grid */}
+          <section className="py-16 px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {blogPosts.map((post) => (
+                  <Card key={post.id} isHoverable className="dark:border border-foreground-300 h-full flex flex-col">
+                    <CardBody className="p-6 flex flex-col gap-4 flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <Chip size="sm" variant="faded">
+                          {post.category}
+                        </Chip>
+                        <span className="text-sm text-foreground-500">{post.date}</span>
                       </div>
-                      <Button
-                        as={NextLink}
-                        href={`/blog/${post.id}`}
-                        variant="light"
-                        size="sm"
-                        endContent={<Icon icon="arrowRight" size={16} />}
-                      >
-                        Read more
-                      </Button>
-                    </div>
-                  </CardBody>
-                </Card>
-              ))}
+                      <h2 className="text-xl font-bold font-sans leading-tight line-clamp-2">{post.title}</h2>
+                      <p className="text-foreground-500 text-sm line-clamp-3 flex-1">{post.excerpt}</p>
+                      <div className="flex items-center justify-between pt-2">
+                        <div className="flex items-center gap-2 text-sm text-foreground-500">
+                          <Icon icon="time" size={16} />
+                          <span>{post.readTime}</span>
+                        </div>
+                        <Button
+                          as={NextLink}
+                          href={`/blog/${post.id}`}
+                          variant="light"
+                          size="sm"
+                          endContent={<Icon icon="arrowRight" size={16} />}
+                        >
+                          Read more
+                        </Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Newsletter CTA Section */}
-        <section className="bg-foreground-50 lg:py-24 py-16 px-6">
-          <div className="max-w-2xl mx-auto text-center flex flex-col gap-6">
-            <h2 className="text-2xl sm:text-3xl font-bold font-sans">Stay Updated</h2>
-            <p className="text-lg text-foreground-500">
-              Get the latest tips, insights, and updates delivered straight to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Subscribe to Newsletter
-              </Button>
-              <Button as={NextLink} href="/blog" size="lg" variant="bordered">
-                View All Posts
-              </Button>
+          {/* Newsletter CTA Section */}
+          <section className="bg-foreground-50 lg:py-24 py-16 px-6">
+            <div className="max-w-2xl mx-auto text-center flex flex-col gap-6">
+              <h2 className="text-2xl sm:text-3xl font-bold font-sans">Stay Updated</h2>
+              <p className="text-lg text-foreground-500">
+                Get the latest tips, insights, and updates delivered straight to your inbox.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                  Subscribe to Newsletter
+                </Button>
+                <Button as={NextLink} href="/blog" size="lg" variant="bordered">
+                  View All Posts
+                </Button>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </>
   );
 }
-

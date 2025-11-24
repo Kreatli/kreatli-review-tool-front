@@ -7,6 +7,7 @@ import { FooterSection } from '../components/home/Footer/FooterSection';
 import { useSession } from '../hooks/useSession';
 import { getStoryblokApi } from '../lib/storyblok';
 import { GetStaticProps } from 'next';
+import { Decorations } from '../components/layout/Storyblok/Decorations';
 
 interface Props {
   footerLinks?: {
@@ -28,8 +29,11 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
         />
       </Head>
       <Header />
-      <div className="border-t border-foreground-200">
-        <CostCalculatorSection />
+      <Decorations />
+      <div className="backdrop-blur-lg">
+        <div className="border-t border-foreground-200">
+          <CostCalculatorSection />
+        </div>
       </div>
       <FooterSection links={footerLinks} />
     </>
@@ -55,4 +59,3 @@ export const getStaticProps = (async () => {
     };
   }
 }) satisfies GetStaticProps<{}>;
-

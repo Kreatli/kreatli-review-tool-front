@@ -34,25 +34,37 @@ const LINKS = [
   },
 ];
 
-export const FooterSection = () => {
+interface Props {
+  hideCta?: boolean;
+}
+
+export const FooterSection = ({ hideCta = false }: Props) => {
   return (
     <footer className="bg-foreground-50">
-      <div className="px-6 lg:pt-32 pt-16 pb-12 lg:pb-20 flex flex-col items-center gap-8">
-        <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center max-w-xl mx-auto">
-          Take Control of Your Creative Projects Today!
-        </h2>
-        <p className="text-lg text-center sm:text-2xl text-foreground-500 font-medium">
-          Start using Kreatli for free and experience the value firsthand.
-        </p>
-        <div className="flex items-center gap-4">
-          <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
-            Get Started for Free
-          </Button>
-          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">
-            Book a Demo
-          </Button>
+      {!hideCta && (
+        <div className="px-6 lg:pt-32 pt-16 pb-12 lg:pb-20 flex flex-col items-center gap-8">
+          <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center max-w-xl mx-auto">
+            Take Control of Your Creative Projects Today!
+          </h2>
+          <p className="text-lg text-center sm:text-2xl text-foreground-500 font-medium">
+            Start using Kreatli for free and experience the value firsthand.
+          </p>
+          <div className="flex items-center gap-4">
+            <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              Get Started for Free
+            </Button>
+            <Button
+              as="a"
+              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+              target="_blank"
+              size="lg"
+              variant="light"
+            >
+              Book a Demo
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
       <div className="px-6 w-full max-w-6xl mx-auto py-8 flex flex-col lg:flex-row justify-between items-end gap-8">
         <div className="flex flex-col gap-4 w-full lg:w-auto">
           <Link href="/">
