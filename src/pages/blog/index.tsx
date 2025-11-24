@@ -53,6 +53,7 @@ export const getStaticProps = (async () => {
       excluding_fields: 'body',
       version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
       sort_by: 'content.publishDate:desc',
+      per_page: 100,
     });
 
     if (!storiesData?.data?.stories) {

@@ -137,6 +137,7 @@ export const getStaticPaths = (async () => {
   const { data } = await getStoryblokApi().get('cdn/links', {
     version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
     starts_with: 'blog/',
+    per_page: 100,
   });
 
   return {
