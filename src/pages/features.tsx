@@ -152,7 +152,7 @@ export default function FeaturesPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-6xl mx-auto relative z-10">
-              <div className="text-center mb-12">
+              <div className="text-center mb-4">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Everything you need to collaborate</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
                   Powerful features designed specifically for creative workflows and collaboration.
@@ -230,7 +230,7 @@ export default function FeaturesPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-6xl mx-auto relative z-10">
-              <div className="text-center mb-12">
+              <div className="text-center mb-4">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Kreatli vs. The Alternatives</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
                   See how Kreatli compares to using multiple tools or platforms for your creative workflow.
@@ -324,7 +324,7 @@ export default function FeaturesPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-6xl mx-auto relative z-10">
-              <div className="text-center mb-12">
+              <div className="text-center mb-4">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Perfect for any creative workflow</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
                   Whether you're reviewing videos, managing design assets, or coordinating production, Kreatli adapts to
@@ -494,7 +494,9 @@ export default function FeaturesPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to streamline your creative workflow?</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+                Ready to streamline your creative workflow?
+              </h2>
               <p className="text-lg text-foreground-500">
                 Start using Kreatli today and experience the difference of a platform built specifically for creative
                 teams.

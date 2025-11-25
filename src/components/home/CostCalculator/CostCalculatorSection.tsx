@@ -68,7 +68,11 @@ type Tool =
   | 'ziflow'
   | 'filestage';
 
-export const CostCalculatorSection = () => {
+interface CostCalculatorSectionProps {
+  titleClassName?: string;
+}
+
+export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionProps) => {
   const [usersCount, setUsersCount] = useState(5);
   const [activeTools, setActiveTools] = useState<Tool[]>(['google-drive', 'asana', 'frame-io']);
 
@@ -110,7 +114,7 @@ export const CostCalculatorSection = () => {
     <section id="software-cost-calculator" className="backdrop-blur-lg lg:py-32 py-16 px-6">
       <div className="max-w-6xl mx-auto flex flex-col gap-8 sm:gap-12 items-center">
         <div className="flex flex-col gap-4 w-full">
-          <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">Software Cost Calculator</h2>
+          <h2 className={titleClassName || "text-3xl sm:text-5xl font-bold font-sans text-center"}>Software Cost Calculator</h2>
           <p className="text-lg text-foreground-500 text-center">
             Estimate monthly and annual software spend based on team size and tools
           </p>

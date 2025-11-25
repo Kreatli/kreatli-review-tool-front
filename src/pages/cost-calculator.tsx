@@ -62,21 +62,21 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
               <h1 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
                 How Much Are You Really Spending on Software Tools?
               </h1>
-              <p className="text-lg sm:text-xl text-foreground-500 max-w-3xl mx-auto">
+              <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
                 Creative teams often use 5+ different tools for file sharing, project management, and review workflows.
                 See how much you could save by consolidating with Kreatli's all-in-one platform.
               </p>
               <div className="flex flex-wrap gap-6 justify-center mt-4">
                 <div className="flex flex-col items-center">
-                  <div className="text-3xl sm:text-4xl font-bold font-sans text-primary">60%+</div>
+                  <div className="text-2xl sm:text-3xl font-bold font-sans text-primary">60%+</div>
                   <div className="text-sm sm:text-md text-foreground-500">Average Savings</div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="text-3xl sm:text-4xl font-bold font-sans text-primary">$10K+</div>
+                  <div className="text-2xl sm:text-3xl font-bold font-sans text-primary">$10K+</div>
                   <div className="text-sm sm:text-md text-foreground-500">Annual Savings Potential</div>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="text-3xl sm:text-4xl font-bold font-sans text-primary">1 Tool</div>
+                  <div className="text-2xl sm:text-3xl font-bold font-sans text-primary">1 Tool</div>
                   <div className="text-sm sm:text-md text-foreground-500">Instead of 5+</div>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-6xl mx-auto relative z-10">
-              <div className="text-center mb-12">
+              <div className="text-center mb-4">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Why Calculate Your Software Costs?</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
                   Hidden costs add up quickly. Understanding your true software spend helps you make smarter decisions.
@@ -218,7 +218,7 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-6xl mx-auto relative z-10">
-              <div className="text-center mb-12">
+              <div className="text-center mb-4">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Real-World Cost Examples</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
                   See how typical tool combinations compare to Kreatli across different team sizes.
@@ -345,7 +345,7 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
               />
             </div>
             <div className="relative z-10">
-              <CostCalculatorSection />
+              <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" />
             </div>
           </section>
 
@@ -366,7 +366,7 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-4xl mx-auto relative z-10">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans text-center mb-12">Frequently Asked Questions</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold font-sans text-center mb-4">Frequently Asked Questions</h2>
 
               <div className="flex flex-col gap-6">
                 <Card className="border border-foreground-300">
@@ -384,7 +384,8 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
                   <CardBody className="p-6">
                     <h3 className="text-lg font-bold font-sans mb-2">Does Kreatli really replace all these tools?</h3>
                     <p className="text-foreground-500">
-                      Yes! Kreatli combines file storage, project management, and media review/approval into one
+                      Depending on your current needs, Kreatli can become an end-to-end production management platform
+                      for you! Kreatli combines file storage, project management, and media review/approval into one
                       platform. You get frame-accurate video comments, asset-linked conversations, project organization,
                       and secure file sharing—all in one place.
                     </p>
@@ -407,8 +408,7 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
                     <h3 className="text-lg font-bold font-sans mb-2">How does Kreatli pricing work?</h3>
                     <p className="text-foreground-500">
                       Kreatli uses simple per-user pricing: $15/user/month for teams up to 5 members, and $20/user/month
-                      for larger teams. There are no hidden fees, no per-GB storage charges, and no limits on projects
-                      or file uploads.
+                      for larger teams. There are no hidden fees - pay only for what you are using!
                     </p>
                   </CardBody>
                 </Card>
@@ -417,9 +417,9 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
                   <CardBody className="p-6">
                     <h3 className="text-lg font-bold font-sans mb-2">Can I try Kreatli before switching?</h3>
                     <p className="text-foreground-500">
-                      Absolutely! We offer a free plan so you can test Kreatli with your team. You can also book a demo
-                      to see how it would work for your specific workflow. We'll help you migrate your projects and
-                      ensure a smooth transition.
+                      Absolutely! We offer a free plan and a trial period for our paid plans so you can test Kreatli
+                      with your team. You can also book a demo to see how it would work for your specific workflow.
+                      We'll help you migrate your projects and ensure a smooth transition.
                     </p>
                   </CardBody>
                 </Card>
@@ -457,7 +457,9 @@ export default function CostCalculatorPage({ footerLinks }: Props) {
               />
             </div>
             <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Start Saving on Software Costs?</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+                Ready to Start Saving on Software Costs?
+              </h2>
               <p className="text-lg text-foreground-500">
                 Join teams that have consolidated their tools and reduced costs by 60% or more. Get started with Kreatli
                 today.
