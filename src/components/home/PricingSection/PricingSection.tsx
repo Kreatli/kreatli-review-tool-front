@@ -2,12 +2,16 @@ import { Button, Card, CardBody, Chip, Tooltip } from '@heroui/react';
 import { Icon } from '../../various/Icon';
 import Link from 'next/link';
 
-export const PricingSection = () => {
+export const PricingSection = ({ titleClassName }: { titleClassName?: string }) => {
   return (
     <section id="pricing" className="bg-foreground-50 lg:py-32 py-16 px-6">
       <div className="flex flex-col gap-12 items-center">
         <div className="max-w-2xl mx-auto flex flex-col gap-4 w-full">
-          <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">
+          <h2
+            className={
+              titleClassName || 'text-3xl sm:text-5xl font-bold font-sans text-center'
+            }
+          >
             Choose the Perfect Plan for Your Creative Journey
           </h2>
           <p className="text-lg text-foreground-500 text-center">

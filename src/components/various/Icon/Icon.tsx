@@ -17,7 +17,7 @@ import CertificationIcon from '../../../assets/icons/certification.svg';
 import ChatIcon from '../../../assets/icons/chat.svg';
 import CheckIcon from '../../../assets/icons/check.svg';
 import CheckCircleIcon from '../../../assets/icons/check-circle.svg';
-import CheckShieldIcon from '../../../assets/icons/check-shield.svg';
+import ShieldIcon from '../../../assets/icons/shield.svg';
 import ChevronDownIcon from '../../../assets/icons/chevron-down.svg';
 import CoinIcon from '../../../assets/icons/coin.svg';
 import ConversationIcon from '../../../assets/icons/conversation.svg';
@@ -123,7 +123,7 @@ const ICONS = {
   chat: ChatIcon,
   check: CheckIcon,
   checkCircle: CheckCircleIcon,
-  checkShield: CheckShieldIcon,
+  shield: ShieldIcon,
   coin: CoinIcon,
   compare: CompareIcon,
   copy: CopyIcon,

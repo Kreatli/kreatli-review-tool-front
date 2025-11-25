@@ -2,13 +2,20 @@ import styles from './Decorations.module.scss';
 
 export const Decorations = () => {
   return (
-    <div className="fixed inset-y-8 inset-x-0 pointer-events-none -z-[1]">
+    <div className="fixed inset-y-8 inset-x-0 pointer-events-none">
+      <div
+        className={`absolute top-20 left-24 w-32 h-32 bg-gradient-to-br from-blue-300/30 to-purple-300/30 rounded-full ${styles.animateFloatSlow}`}
+      />
       <div
         className={`absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-pink-300/30 to-orange-300/30 rounded-full ${styles.animateFloatMedium}`}
       />
       <div
         className={`absolute bottom-32 left-1/4 w-20 h-20 bg-gradient-to-br from-green-300/30 to-blue-300/30 rounded-full ${styles.animateFloatFast}`}
       />
+      <div
+        className={`absolute bottom-20 right-1/4 w-28 h-28 bg-gradient-to-br from-purple-300/30 to-pink-300/30 rounded-full ${styles.animateFloatSlow}`}
+      />
+
       <div
         className={`absolute top-1/3 left-1/4 w-16 h-16 bg-gradient-to-br from-yellow-300/25 to-orange-300/25 rounded-full ${styles.animateFloatMedium}`}
       />
