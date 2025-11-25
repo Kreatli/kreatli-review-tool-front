@@ -98,7 +98,7 @@ export default function PricingPage({ footerLinks }: Props) {
           </section>
 
           {/* Main Pricing Section */}
-          <PricingSection />
+          <PricingSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" />
 
           {/* Benefits/Why Section */}
           <section className="relative py-16 px-6 bg-foreground-50 overflow-hidden">
@@ -120,8 +120,8 @@ export default function PricingPage({ footerLinks }: Props) {
               <div className="text-center mb-4">
                 <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Why Kreatli's Pricing Works for You</h2>
                 <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-                  Transparent pricing designed to grow with your team. No surprises, no hidden fees, just straightforward
-                  plans that make sense.
+                  Transparent pricing designed to grow with your team. No surprises, no hidden fees, just
+                  straightforward plans that make sense.
                 </p>
               </div>
 
@@ -150,8 +150,8 @@ export default function PricingPage({ footerLinks }: Props) {
                       <h3 className="text-lg font-bold font-sans">No Hidden Fees</h3>
                     </div>
                     <p className="text-foreground-500 text-sm">
-                      What you see is what you pay. No setup fees, no per-project charges, no bandwidth limits that
-                      cost extra.
+                      What you see is what you pay. No setup fees, no per-project charges, no bandwidth limits that cost
+                      extra.
                     </p>
                   </CardBody>
                 </Card>
@@ -219,111 +219,7 @@ export default function PricingPage({ footerLinks }: Props) {
           </section>
 
           {/* Additional Pricing Details Section */}
-          <section className="relative py-16 px-6 bg-background overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none">
-              <div
-                className={`absolute top-1/2 right-1 left-12 w-12 h-12 bg-gradient-to-br from-cyan-300/25 to-blue-300/25 rounded-full ${styles.animateFloatFast}`}
-              />
-              <div
-                className={`absolute bottom-1/3 left-1/2 w-14 h-14 bg-gradient-to-br from-pink-300/25 to-purple-300/25 rounded-full ${styles.animateFloatSlow}`}
-              />
-              <div
-                className={`absolute top-2/3 right-16 w-3 h-3 bg-green-400/50 rounded-full ${styles.animateFloatFast}`}
-              />
-              <div
-                className={`absolute bottom-32 right-24 w-3 h-3 bg-cyan-400/50 rounded-full ${styles.animateFloatSlow}`}
-              />
-            </div>
-            <div className="max-w-6xl mx-auto relative z-10">
-              <div className="mb-12 text-center">
-                <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
-                  Everything you need to collaborate effectively
-                </h2>
-                <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-                  All plans include core features designed to streamline your creative workflow and improve team
-                  collaboration.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <Card className="border border-foreground-300">
-                  <CardBody className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Icon icon="checkCircle" size={24} className="text-primary" />
-                      <h3 className="text-lg font-bold font-sans">Unlimited Storage*</h3>
-                    </div>
-                    <p className="text-foreground-500 text-sm">
-                      Upload and store all your creative assets without worrying about running out of space. *Storage
-                      limits vary by plan.
-                    </p>
-                  </CardBody>
-                </Card>
-
-                <Card className="border border-foreground-300">
-                  <CardBody className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Icon icon="checkCircle" size={24} className="text-primary" />
-                      <h3 className="text-lg font-bold font-sans">Real-time Collaboration</h3>
-                    </div>
-                    <p className="text-foreground-500 text-sm">
-                      Work together seamlessly with real-time comments, annotations, and feedback on all your creative
-                      assets.
-                    </p>
-                  </CardBody>
-                </Card>
-
-                <Card className="border border-foreground-300">
-                  <CardBody className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Icon icon="checkCircle" size={24} className="text-primary" />
-                      <h3 className="text-lg font-bold font-sans">Secure File Sharing</h3>
-                    </div>
-                    <p className="text-foreground-500 text-sm">
-                      Share projects securely with team members and clients using password-protected links and access
-                      controls.
-                    </p>
-                  </CardBody>
-                </Card>
-
-                <Card className="border border-foreground-300">
-                  <CardBody className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Icon icon="checkCircle" size={24} className="text-primary" />
-                      <h3 className="text-lg font-bold font-sans">Version History</h3>
-                    </div>
-                    <p className="text-foreground-500 text-sm">
-                      Keep track of all changes with comprehensive version history. Never lose your work again.
-                    </p>
-                  </CardBody>
-                </Card>
-
-                <Card className="border border-foreground-300">
-                  <CardBody className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Icon icon="checkCircle" size={24} className="text-primary" />
-                      <h3 className="text-lg font-bold font-sans">Advanced Review Tools</h3>
-                    </div>
-                    <p className="text-foreground-500 text-sm">
-                      Powerful annotation tools for precise feedback on images, videos, and documents. Perfect for
-                      design reviews.
-                    </p>
-                  </CardBody>
-                </Card>
-
-                <Card className="border border-foreground-300">
-                  <CardBody className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Icon icon="checkCircle" size={24} className="text-primary" />
-                      <h3 className="text-lg font-bold font-sans">24/7 Support</h3>
-                    </div>
-                    <p className="text-foreground-500 text-sm">
-                      Get help when you need it with our responsive support team. All plans include email support.
-                    </p>
-                  </CardBody>
-                </Card>
-              </div>
-            </div>
-          </section>
+          {/* Section removed as per request */}
 
           {/* FAQ Section */}
           <section className="relative py-16 px-6 bg-foreground-50 overflow-hidden">
@@ -435,9 +331,6 @@ export default function PricingPage({ footerLinks }: Props) {
                   variant="bordered"
                 >
                   Book a Demo
-                </Button>
-                <Button as={NextLink} href="/features" size="lg" variant="bordered">
-                  View Features
                 </Button>
               </div>
             </div>

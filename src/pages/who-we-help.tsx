@@ -27,11 +27,6 @@ interface AudienceType {
   painPoints: string[];
   benefits: string[];
   useCases: string[];
-  testimonial?: {
-    quote: string;
-    author: string;
-    role: string;
-  };
 }
 
 const audiences: AudienceType[] = [
@@ -59,12 +54,6 @@ const audiences: AudienceType[] = [
       'Organizing multiple YouTube series or channels',
       'Review and approval cycles for brand partnerships',
     ],
-    testimonial: {
-      quote:
-        "Kreatli eliminated the endless email chains. Now I share a link, clients comment directly on the video, and I know exactly which frame they're referring to.",
-      author: 'Sarah M.',
-      role: 'YouTube Creator',
-    },
   },
   {
     id: 'micro-teams',
@@ -90,12 +79,6 @@ const audiences: AudienceType[] = [
       'Marketing agencies coordinating with clients',
       'Freelance teams working with various stakeholders',
     ],
-    testimonial: {
-      quote:
-        'We manage 15+ client projects simultaneously. Kreatli keeps everything organized and our clients love how easy it is to give feedback.',
-      author: 'Mike T.',
-      role: 'Creative Director',
-    },
   },
   {
     id: 'agencies',
@@ -121,12 +104,6 @@ const audiences: AudienceType[] = [
       'Brand agencies managing multiple client portfolios',
       'Production companies handling complex multi-phase projects',
     ],
-    testimonial: {
-      quote:
-        'As we grew, managing projects became chaotic. Kreatli gave us the structure we needed without sacrificing the creative flexibility our teams require.',
-      author: 'Jennifer K.',
-      role: 'Agency Owner',
-    },
   },
 ];
 
@@ -375,20 +352,6 @@ export default function WhoWeHelpPage({ footerLinks }: Props) {
                             ))}
                           </div>
                         </div>
-
-                        {audience.testimonial && (
-                          <Card className="bg-foreground-50 border border-foreground-200">
-                            <CardBody className="p-6">
-                              <div className="flex items-start gap-3 mb-3">
-                                <Icon icon="checkCircle" size={24} className="text-primary flex-shrink-0 mt-0.5" />
-                                <p className="text-base italic text-foreground-600">{audience.testimonial.quote}</p>
-                              </div>
-                              <div className="text-sm text-foreground-500 ml-9">
-                                — {audience.testimonial.author}, {audience.testimonial.role}
-                              </div>
-                            </CardBody>
-                          </Card>
-                        )}
                       </div>
                     </CardBody>
                   </Card>
