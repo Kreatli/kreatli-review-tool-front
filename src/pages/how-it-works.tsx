@@ -5,22 +5,13 @@ import { Header } from '../components/layout/Header';
 import { HowItWorksSection } from '../components/home/HowItWorks';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { useSession } from '../hooks/useSession';
-import { getStoryblokApi } from '../lib/storyblok';
-import { GetStaticProps } from 'next';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { Card, CardBody, Button, Chip } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../components/various/Icon';
 import styles from '../components/layout/Storyblok/Decorations/Decorations.module.scss';
 
-interface Props {
-  footerLinks?: {
-    label: string;
-    url: string;
-  }[];
-}
-
-export default function HowItWorksPage({ footerLinks }: Props) {
+export default function HowItWorksPage() {
   useSession();
 
   return (
@@ -930,27 +921,7 @@ export default function HowItWorksPage({ footerLinks }: Props) {
           </section>
         </div>
       </div>
-      <FooterSection links={footerLinks} hideCta={true} />
+      <FooterSection hideCta={true} />
     </>
   );
 }
-
-export const getStaticProps = (async () => {
-  try {
-    const { data } = await getStoryblokApi().get('cdn/links', {
-      version: process.env.STORYBLOK_STATUS as 'draft' | 'published',
-    });
-
-    return {
-      props: {
-        footerLinks: Object.values(data.links ?? {}).map((link) => ({ label: link.name, url: link.slug })),
-      },
-    };
-  } catch {
-    return {
-      props: {
-        footerLinks: [],
-      },
-    };
-  }
-}) satisfies GetStaticProps<{}>;
