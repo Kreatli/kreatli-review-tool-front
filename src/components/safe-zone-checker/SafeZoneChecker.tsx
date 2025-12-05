@@ -123,46 +123,46 @@ export const SafeZoneChecker = () => {
                       </div>
                     </div>
 
-                  {suggestedPlatforms.length === 0 && (
-                    <Chip color="warning" variant="flat" size="sm">
-                      Aspect ratio may not match 9:16 format
-                    </Chip>
+                    {suggestedPlatforms.length === 0 && (
+                      <Chip color="warning" variant="flat" size="sm">
+                        Aspect ratio may not match 9:16 format
+                      </Chip>
+                    )}
+                  </div>
+
+                  {isVideo && videoRef.current && (
+                    <SafeZoneVideoControls
+                      video={videoRef.current}
+                      currentTime={currentTime}
+                      duration={duration}
+                      isPlaying={isPlaying}
+                      onTimeChange={handleTimeChange}
+                      onPlayPause={handlePlayPause}
+                    />
                   )}
-                </div>
 
-                {isVideo && videoRef.current && (
-                  <SafeZoneVideoControls
-                    video={videoRef.current}
-                    currentTime={currentTime}
-                    duration={duration}
-                    isPlaying={isPlaying}
-                    onTimeChange={handleTimeChange}
-                    onPlayPause={handlePlayPause}
+                  <SafeZoneExport
+                    file={file}
+                    platform={selectedPlatform}
+                    showSafeZones={showSafeZones}
+                    currentTime={isVideo ? currentTime : undefined}
+                    isVideo={isVideo}
+                    isSignedIn={isSignedIn}
                   />
-                )}
 
-                <SafeZoneExport
-                  file={file}
-                  platform={selectedPlatform}
-                  showSafeZones={showSafeZones}
-                  currentTime={isVideo ? currentTime : undefined}
-                  isVideo={isVideo}
-                  isSignedIn={isSignedIn}
-                />
-
-                <Button
-                  variant="bordered"
-                  onPress={() => {
-                    setFile(null);
-                    setCurrentTime(0);
-                    setDuration(0);
-                    setIsPlaying(false);
-                    videoRef.current = null;
-                  }}
-                >
-                  Upload New File
-                </Button>
-              </>
+                  <Button
+                    variant="bordered"
+                    onPress={() => {
+                      setFile(null);
+                      setCurrentTime(0);
+                      setDuration(0);
+                      setIsPlaying(false);
+                      videoRef.current = null;
+                    }}
+                  >
+                    Upload New File
+                  </Button>
+                </>
               )}
             </div>
 

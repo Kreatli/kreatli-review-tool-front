@@ -133,4 +133,3 @@ export const downloadScreenshot = (dataUrl: string, filename: string) => {
   link.click();
   document.body.removeChild(link);
 };
-

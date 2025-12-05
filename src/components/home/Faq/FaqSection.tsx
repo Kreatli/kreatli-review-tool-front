@@ -4,7 +4,7 @@ const faq = [
   {
     question: 'What exactly is Kreatli?',
     answer:
-      'Kreatli is an All-in-One collaboration platform for Creative Teams. It brings all your projects, communication, and files into one organized space, helping you manage your workflow with features like intuitive file organization, live collaboration tools, and powerful storage solutions.',
+      'Kreatli is an end-to-end production management platform for Creative Teams. It brings all your projects, communication, and files into one organized space, helping you manage your workflow with features like intuitive file organization, live collaboration tools, and powerful storage solutions.',
   },
   {
     question: 'How does Kreatli organize my files?',

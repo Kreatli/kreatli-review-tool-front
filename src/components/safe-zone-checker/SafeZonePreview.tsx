@@ -62,10 +62,7 @@ export const SafeZonePreview = ({ file, platform, showSafeZones, currentTime, on
             muted
             playsInline
           />
-          <PlatformOverlay
-            platform={platform}
-            showSafeZones={showSafeZones}
-          />
+          <PlatformOverlay platform={platform} showSafeZones={showSafeZones} />
         </>
       ) : (
         <>
@@ -78,10 +75,7 @@ export const SafeZonePreview = ({ file, platform, showSafeZones, currentTime, on
               zIndex: 1,
             }}
           />
-          <PlatformOverlay
-            platform={platform}
-            showSafeZones={showSafeZones}
-          />
+          <PlatformOverlay platform={platform} showSafeZones={showSafeZones} />
         </>
       )}
     </div>

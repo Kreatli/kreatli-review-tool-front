@@ -125,8 +125,8 @@ export const SafeZoneGuide = () => {
             <CardBody className="p-5 sm:p-8 lg:p-12">
               <h3 className="text-xl lg:text-2xl font-bold font-sans mb-4">What is a Safe Zone?</h3>
               <p className="text-foreground-500 text-base lg:text-lg mb-4">
-                A safe zone is the area of your video where important content (text, faces, key visuals) should be placed
-                to ensure it remains visible and unobstructed by platform UI elements.
+                A safe zone is the area of your video where important content (text, faces, key visuals) should be
+                placed to ensure it remains visible and unobstructed by platform UI elements.
               </p>
               <p className="text-foreground-500 text-base lg:text-lg">
                 Each social media platform overlays its own interface elements—like buttons, navigation bars, captions,
@@ -157,8 +157,8 @@ export const SafeZoneGuide = () => {
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">•</span>
                   <span>
-                    <strong className="text-foreground">Professional Appearance:</strong> Well-composed content looks more
-                    polished and intentional
+                    <strong className="text-foreground">Professional Appearance:</strong> Well-composed content looks
+                    more polished and intentional
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
@@ -184,8 +184,8 @@ export const SafeZoneGuide = () => {
           <div className="text-center mb-8">
             <h3 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Platform-Specific Guidelines</h3>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Each platform has unique UI elements and requirements. Follow these guidelines to optimize your content for
-              maximum visibility and impact.
+              Each platform has unique UI elements and requirements. Follow these guidelines to optimize your content
+              for maximum visibility and impact.
             </p>
           </div>
 
@@ -195,7 +195,9 @@ export const SafeZoneGuide = () => {
                 key={guideline.platform}
                 aria-label={`${guideline.title} guidelines`}
                 title={
-                  <span className="text-lg font-semibold font-sans">{PLATFORM_LABELS[guideline.platform]} Guidelines</span>
+                  <span className="text-lg font-semibold font-sans">
+                    {PLATFORM_LABELS[guideline.platform]} Guidelines
+                  </span>
                 }
               >
                 <div className="flex flex-col gap-6 pt-2">
@@ -318,4 +320,3 @@ export const SafeZoneGuide = () => {
     </section>
   );
 };
-

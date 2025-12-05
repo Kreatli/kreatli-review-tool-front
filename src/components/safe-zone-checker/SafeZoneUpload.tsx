@@ -104,7 +104,12 @@ export const SafeZoneUpload = ({ onFileSelect }: Props) => {
     [handleFile],
   );
 
-  const { getRootProps, getInputProps, isDragActive: dropzoneIsDragActive, open } = useDropzone({
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive: dropzoneIsDragActive,
+    open,
+  } = useDropzone({
     accept: {
       'image/jpeg': ['.jpg', '.jpeg'],
       'image/png': ['.png'],
@@ -183,4 +188,3 @@ export const SafeZoneUpload = ({ onFileSelect }: Props) => {
     </div>
   );
 };
-
