@@ -64,6 +64,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
       if (isDragging) {
         setIsDragging(false);
         videoRef.current?.play();
+        setIsPaused(false);
       }
     };
 
