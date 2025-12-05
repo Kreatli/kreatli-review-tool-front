@@ -17,7 +17,7 @@ export const FeaturesSection = () => {
             <span className="hidden lg:inline">
               <br />
             </span>
-            No unnecessary features. All in one place.
+            No unnecessary features.
           </h2>
         </div>
         <div className="w-full flex flex-col gap-24 lg:gap-[max(20vh,100px)]">

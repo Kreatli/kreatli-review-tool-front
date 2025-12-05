@@ -89,6 +89,11 @@ export const Header = () => {
                 Blog
               </Link>
             </NavbarItem>
+            <NavbarItem>
+              <Link as={NextLink} href="/safe-zone-checker" color="foreground">
+                Safe Zone Checker
+              </Link>
+            </NavbarItem>
           </NavbarContent>
         )}
       </NavbarContent>
@@ -159,6 +164,11 @@ export const Header = () => {
           <NavbarMenuItem>
             <Link as={NextLink} href="/blog" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Blog
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/safe-zone-checker" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Safe Zone Checker
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>

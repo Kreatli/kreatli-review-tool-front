@@ -9,9 +9,11 @@ export const HeroSection = () => {
     <section className="relative w-full flex items-center justify-center overflow-hidden">
       <div className="text-center w-full flex flex-col gap-16 px-6 pt-10 pb-20 relative z-10">
         <div className="max-w-2xl mx-auto flex flex-col items-center gap-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">One Workspace to Rule Them All</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">
+            End-to-End Creative Production Platform
+          </h1>
           <p className="text-lg sm:text-xl text-foreground-500 font-sans leading-8 sm:leading-8">
-            Stop juggling{' '}
+            Juggling tools is the old way{' '}
             <span className="sm:hidden">
               <br />
             </span>
@@ -22,7 +24,7 @@ export const HeroSection = () => {
               delay={1}
             />{' '}
             <LogoSlideshow logos={['/logos/autodesk.svg', '/logos/ziflow.svg', '/logos/frame-io.svg']} delay={2} />{' '}
-            <br /> Only pay for the <span className="line-through">tools</span> tool you actually use. Use Kreatli.
+            <br /> <span className="font-bold">Try the New Way. The End-to-End Way. The Kreatli Way.</span>
           </p>
           <div className="flex flex-col mt-4 md:flex-row gap-6">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -45,7 +47,7 @@ export const HeroSection = () => {
           <div className="relative h-0 w-full pb-[calc(51%)]">
             <iframe
               src="https://demo.arcade.software/VjKossEqxy9whTH4jioe?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
-              title="All-in-One Collaboration Platform"
+              title="End-to-End Production Management Platform"
               frameBorder="0"
               loading="lazy"
               allowFullScreen
