@@ -144,9 +144,9 @@ export const SafeZoneScreenGuide = () => {
 
           <div className="flex justify-center mt-8">
             <Button
-              as={NextLink}
+              as="a"
               className="bg-foreground text-content1"
-              href="/blog/safe-zone-guide-instagram-reels-youtube-shorts-tiktok"
+              href="https://kreatli.com/blog/safe-zone-guide-instagram-reels-youtube-shorts-tiktok"
               target="_blank"
             >
               Read our complete guide
