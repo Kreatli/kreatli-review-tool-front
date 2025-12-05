@@ -48,8 +48,8 @@ export const Header = () => {
 
   return (
     <Navbar ref={headerRef} isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="full">
-      <NavbarContent className="lg:gap-12">
-        {!isSignedIn && <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="lg:hidden" />}
+      <NavbarContent className="xl:gap-12">
+        {!isSignedIn && <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="xl:hidden" />}
         <NavbarItem>
           <NavbarBrand>
             <NextLink href="/" onClick={closeNavbarMenu}>
@@ -58,7 +58,7 @@ export const Header = () => {
           </NavbarBrand>
         </NavbarItem>
         {!isSignedIn && (
-          <NavbarContent className="hidden lg:flex">
+          <NavbarContent className="hidden xl:flex">
             <NavbarItem>
               <Link as={NextLink} href="/features" color="foreground">
                 Features
@@ -87,6 +87,11 @@ export const Header = () => {
             <NavbarItem>
               <Link as={NextLink} href="/blog" color="foreground">
                 Blog
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link as={NextLink} href="/social-media-safe-zone-checker" color="foreground">
+                Safe Zone Checker
               </Link>
             </NavbarItem>
           </NavbarContent>
@@ -159,6 +164,17 @@ export const Header = () => {
           <NavbarMenuItem>
             <Link as={NextLink} href="/blog" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Blog
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/social-media-safe-zone-checker"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Safe Zone Checker
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>

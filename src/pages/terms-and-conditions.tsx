@@ -36,7 +36,7 @@ export default function TermsAndConditions() {
             the "<span className="font-semibold">Services</span>").
           </div>
           <div className="mt-2">
-            Kreatli is an All-in-One collaboration platform for Creative Teams. It brings all your projects,
+            Kreatli is an end-to-end production management platform for Creative Teams. It brings all your projects,
             communication, and files into one organized space, helping you manage your workflow with features like
             intuitive file organization, live collaboration tools, and powerful storage solutions.
           </div>

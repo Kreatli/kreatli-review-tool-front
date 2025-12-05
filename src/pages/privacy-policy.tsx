@@ -32,9 +32,9 @@ export default function PrivacyPolicy() {
               or any website of ours that links to this Privacy Notice
             </li>
             <li data-custom-class="body_text">
-              Use Kreatli - an All-in-One collaboration platform for Creative Teams. It brings all your projects,
-              communication, and files into one organized space, helping you manage your workflow with features like
-              intuitive file organization, live collaboration tools, and powerful storage solutions.
+              Use Kreatli - an end-to-end production management platform for Creative Teams. It brings all your
+              projects, communication, and files into one organized space, helping you manage your workflow with
+              features like intuitive file organization, live collaboration tools, and powerful storage solutions.
             </li>
             <li data-custom-class="body_text">
               Engage with us in other related ways, including any sales, marketing, or events
