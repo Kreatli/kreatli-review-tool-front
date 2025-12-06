@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const SafeZoneScreenEmptyState = ({ onUploadFile }: Props) => {
-  const { isDragActive, isDragAccept, open, getRootProps, getInputProps } = useDropzone({
+  const { isDragActive, isDragAccept, getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/*': [],
       'video/*': [],
@@ -16,13 +16,11 @@ export const SafeZoneScreenEmptyState = ({ onUploadFile }: Props) => {
       onUploadFile(files[0]);
     },
     multiple: false,
-    noClick: true,
   });
 
   return (
-    <label
+    <div
       {...getRootProps()}
-      onClick={open}
       className={cn('bg-black/75 text-white h-full flex items-center w-full justify-center cursor-pointer', {
         'bg-black/50': isDragActive && isDragAccept,
       })}
@@ -33,7 +31,7 @@ export const SafeZoneScreenEmptyState = ({ onUploadFile }: Props) => {
           {isDragActive && isDragAccept ? 'Drop your file here' : 'Drag and drop your file here or click to upload'}
         </p>
       </div>
-      <input className="sr-only" {...getInputProps()} />
-    </label>
+      <input {...getInputProps()} />
+    </div>
   );
 };

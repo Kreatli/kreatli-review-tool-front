@@ -61,7 +61,7 @@ export const SafeZoneScreen = () => {
     link.click();
   };
 
-  const { open, getRootProps, getInputProps } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/*': [],
       'video/*': [],
@@ -70,7 +70,6 @@ export const SafeZoneScreen = () => {
       setFile(files[0]);
     },
     multiple: false,
-    noClick: true,
   });
 
   return (
@@ -86,8 +85,8 @@ export const SafeZoneScreen = () => {
       </RadioGroup>
       <div className="relative max-w-80 w-full">
         <div className="absolute top-0 left-6 right-6 h-8 z-1 flex justify-between z-10">
-          <button type="button" className="text-white" {...getRootProps()} onClick={open}>
-            <input type="file" className="sr-only" {...getInputProps()} />
+          <button type="button" className="text-white" {...getRootProps()}>
+            <input {...getInputProps()} />
             <Icon icon="upload" size={16} />
           </button>
           <button
