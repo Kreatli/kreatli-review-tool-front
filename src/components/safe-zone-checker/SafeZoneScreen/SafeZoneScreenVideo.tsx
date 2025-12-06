@@ -14,7 +14,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
   const [progress, setProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [duration, setDuration] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
 
   const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
     if (!isDragging && e.currentTarget.duration && isFinite(e.currentTarget.duration)) {
@@ -32,7 +32,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
     }
   };
 
-  const updateSliderPosition = (e: MouseEvent) => {
+  const updateSliderPosition = (clientX: number) => {
     if (!sliderRef.current || !videoRef.current) {
       return;
     }
@@ -43,7 +43,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
     }
 
     const rect = sliderRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+    const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
     const percentage = Math.max(0, Math.min(1, x / rect.width));
     const newTime = percentage * videoDuration;
 
@@ -56,7 +56,14 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging && sliderRef.current) {
-        updateSliderPosition(e);
+        updateSliderPosition(e.clientX);
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isDragging && sliderRef.current && e.touches.length > 0) {
+        e.preventDefault();
+        updateSliderPosition(e.touches[0].clientX);
       }
     };
 
@@ -68,14 +75,26 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
       }
     };
 
+    const handleTouchEnd = () => {
+      if (isDragging) {
+        setIsDragging(false);
+        videoRef.current?.play();
+        setIsPaused(false);
+      }
+    };
+
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
     }
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
     };
   }, [isDragging, duration]);
 
@@ -91,7 +110,24 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
     e.preventDefault();
     videoRef.current.pause();
     setIsDragging(true);
-    updateSliderPosition(e.nativeEvent);
+    updateSliderPosition(e.clientX);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!videoRef.current) return;
+
+    const videoDuration = videoRef.current.duration;
+
+    if (!videoDuration || !isFinite(videoDuration) || videoDuration <= 0) {
+      return;
+    }
+
+    e.preventDefault();
+    videoRef.current.pause();
+    setIsDragging(true);
+    if (e.touches.length > 0) {
+      updateSliderPosition(e.touches[0].clientX);
+    }
   };
 
   const handleVideoClick = () => {
@@ -110,8 +146,11 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
         src={src}
         autoPlay
         playsInline
+        loop
         className="cursor-pointer w-full h-auto max-h-full"
         ref={videoRef}
+        onPlay={() => setIsPaused(false)}
+        onPause={() => setIsPaused(true)}
         onClick={handleVideoClick}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
@@ -129,7 +168,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
       <div
         ref={sliderRef}
         className={cn(
-          'absolute bottom-0 translate-y-1/2 bg-black w-full z-10 cursor-pointer after:absolute after:-inset-y-2 after:inset-x-0 after:cursor-pointer transition-all',
+          'absolute bottom-0 translate-y-1/2 bg-black w-full z-10 cursor-pointer after:absolute after:-inset-y-2 after:inset-x-0 after:cursor-pointer transition-all touch-none',
           {
             'h-[3px]': activeOverlay === 'tiktok',
             'h-0.5': activeOverlay === 'youtube',
@@ -137,6 +176,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
           },
         )}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
       >
         <div
           className={cn('w-full h-full transition-all', {
