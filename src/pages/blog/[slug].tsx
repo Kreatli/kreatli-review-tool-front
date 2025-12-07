@@ -47,10 +47,10 @@ export default function Page({ story, slug }: Props) {
 
   const title = storyState?.content.metaFields?.title
     ? `Kreatli | ${storyState?.content.metaFields?.title}`
-    : 'Ultimate Workspace for Creators & Content Teams';
+    : 'End-to-End Production Management Platform';
   const description =
     storyState?.content.metaFields?.description ||
-    'We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc.';
+    'Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place.';
 
   return (
     <>

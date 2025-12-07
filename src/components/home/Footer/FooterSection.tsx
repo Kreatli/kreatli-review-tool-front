@@ -71,7 +71,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
             <LogoIcon viewBox="0 0 90 22" />
           </Link>
           <div className="text-sm text-foreground-500 max-w-64">
-            We help Creative Teams streamline post production processes and optimize workflows
+            Kreatli helps content teams and creators streamline creative production.
           </div>
           <Socials />
         </div>

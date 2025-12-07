@@ -21,18 +21,18 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <StoryblokProvider>
       <Head>
-        <title>Kreatli | Ultimate Workspace for Creators & Content Teams</title>
+        <title>Kreatli | End-to-End Production Management Platform</title>
         <meta
           name="description"
-          content="We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc."
+          content="Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
         <meta property="og:url" content="https://kreatli.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli - Ultimate Workspace for Creators & Content Teams" />
+        <meta property="og:title" content="Kreatli - End-to-End Production Management Platform" />
         <meta
           property="og:description"
-          content="We help Creative Teams streamline post production processes and optimize workflows. No more juggling between Slack, Discord, GSheets, Docs, WeTransfer, etc."
+          content="Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place."
         />
         <meta property="og:image" content="/og-image.png" />
         <meta property="og:image:width" content="1200" />

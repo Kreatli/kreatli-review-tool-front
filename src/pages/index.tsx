@@ -9,7 +9,7 @@ import { useSession } from '../hooks/useSession';
 export default function HomePage() {
   const { isSignedIn } = useSession();
 
-  const title = `Kreatli | ${isSignedIn ? 'Projects' : 'Ultimate Workspace for Creators & Content Teams'}`;
+  const title = `Kreatli | ${isSignedIn ? 'Projects' : 'End-to-End Production Management Platform'}`;
 
   return (
     <>
