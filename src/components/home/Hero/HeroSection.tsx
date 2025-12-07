@@ -46,8 +46,8 @@ export const HeroSection = () => {
         <div className="max-w-6xl mx-auto w-full">
           <div className="relative h-0 w-full pb-[calc(51%)]">
             <iframe
-              src="https://demo.arcade.software/VjKossEqxy9whTH4jioe?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
-              title="End-to-End Production Management Platform"
+              src="https://demo.arcade.software/PPu2mnyNxXzs5sVzGfOA?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+              title="Review Video Feedback and Compare Creative Asset Versions"
               frameBorder="0"
               loading="lazy"
               allowFullScreen
