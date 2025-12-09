@@ -40,7 +40,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
 
     return commentsData.comments
       .flatMap((comment) => [comment, ...comment.replies])
-      .filter((comment) => comment.timestamp?.[0] !== undefined);
+      .filter((comment) => comment.timestamp?.[0] !== undefined && !comment.isResolved);
   }, [commentsData?.comments]);
 
   React.useEffect(() => {

@@ -72,9 +72,11 @@ export const ProjectCard = ({ project }: Props) => {
           </Dropdown>
         )}
       </div>
-      <div className="flex justify-between px-2 mt-4">
-        <div className="select-none">
-          <h3 className="text-lg font-semibold group-hover/card:underline underline-offset-2">{project.name}</h3>
+      <div className="flex justify-between gap-4 px-2 mt-4">
+        <div className="select-none overflow-hidden">
+          <h3 className="text-lg font-semibold group-hover/card:underline underline-offset-2 line-clamp-2">
+            {project.name}
+          </h3>
           <div>
             {project.fileCount} items, {formatBytes(project.totalFileSize)}
           </div>
