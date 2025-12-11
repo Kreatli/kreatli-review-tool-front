@@ -53,6 +53,7 @@ export const ProjectFeaturePreview = () => {
         </div>
         <div className="flex justify-between items-center gap-4">
           <Tabs selectedKey="media" onSelectionChange={handleClick}>
+            <Tab key="home" title="Home" />
             <Tab key="media" title="Media" />
             <Tab key="chat" title="Chat" />
             <Tab key="activity" title="Activity" />

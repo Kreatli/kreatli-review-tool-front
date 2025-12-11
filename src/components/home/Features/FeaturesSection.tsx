@@ -1,7 +1,10 @@
 import { ChatFeaturePreview } from './ChatFeaturePreview';
+import { CompareFeaturePreview } from './CompareFeaturePreview';
 import { Feature } from './Feature';
+import { HomeDashboardFeaturePreview } from './HomeDashboardFeaturePreview';
 import { ProjectFeaturePreview } from './ProjectFeaturePreview';
 import { ReviewToolPreview } from './ReviewToolPreview';
+import { ShareFeaturePreview } from './ShareFeaturePreview';
 
 export const FeaturesSection = () => {
   return (
@@ -25,6 +28,7 @@ export const FeaturesSection = () => {
             icon="paint"
             title="Frame-accurate Revisions"
             description="Pin comments to exact frames and timestamps - no more “which clip?” or lost feedback."
+            isReversed={false}
           >
             <ReviewToolPreview />
           </Feature>
@@ -32,6 +36,7 @@ export const FeaturesSection = () => {
             icon="chat"
             title="Conversations, Not Noise"
             description="Project-tied chats, asset-linked comments and guest review links - keep feedback with the asset, not scattered across multiple platforms."
+            isReversed={true}
           >
             <ChatFeaturePreview />
           </Feature>
@@ -39,8 +44,33 @@ export const FeaturesSection = () => {
             icon="upload"
             title="Project Management Meets Reliable Media Storage"
             description="Assign files, track deliverables and share heavy media securely - within the same workspace."
+            isReversed={false}
           >
             <ProjectFeaturePreview />
+          </Feature>
+          <Feature
+            icon="compare"
+            title="Compare Versions Side-by-Side"
+            description="Compare different versions of files side-by-side to spot changes instantly and provide precise feedback."
+            isReversed={true}
+          >
+            <CompareFeaturePreview />
+          </Feature>
+          <Feature
+            icon="share"
+            title="Share Files with Anyone"
+            description="Generate secure shareable links or send files directly via email - no account required for reviewers."
+            isReversed={false}
+          >
+            <ShareFeaturePreview />
+          </Feature>
+          <Feature
+            icon="slides"
+            title="Centralized Project Dashboard"
+            description="Everything you need in one place - project overview, media files, team chat, and activity tracking all accessible from a single dashboard."
+            isReversed={true}
+          >
+            <HomeDashboardFeaturePreview />
           </Feature>
         </div>
       </div>
