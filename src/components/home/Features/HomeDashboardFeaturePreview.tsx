@@ -171,11 +171,13 @@ export const HomeDashboardFeaturePreview = () => {
               </Button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 flex-1">
-              {[
-                { status: 'approved', color: 'success', image: 'random=1' },
-                { status: 'changes-required', color: 'danger', image: 'random=2' },
-                { status: 'no-status', color: 'default', image: 'random=3' },
-              ].map((item, idx) => (
+              {(
+                [
+                  { status: 'Approved', color: 'success', image: 'random=1', user: 'a042581f4e29026024d' },
+                  { status: 'Changes required', color: 'danger', image: 'random=2', user: 'a042581f4e29026024d' },
+                  { status: 'No status', color: 'default', image: 'random=3', user: null },
+                ] as const
+              ).map((item, idx) => (
                 <div
                   key={idx}
                   className="rounded-lg overflow-hidden relative border border-foreground-200 cursor-pointer aspect-video"
@@ -188,15 +190,12 @@ export const HomeDashboardFeaturePreview = () => {
                   />
                   <div className="absolute bottom-2 left-2 right-2">
                     <div className="flex items-center justify-between">
-                      <Chip size="sm" variant="dot" color="primary" className="cursor-pointer bg-foreground-50">
-                        In Progress
+                      <Chip size="sm" variant="dot" color={item.color} className="cursor-pointer bg-foreground-50">
+                        {item.status}
                       </Chip>
-                      <Avatar
-                        size="sm"
-                        isBordered
-                        src={`https://i.pravatar.cc/150?u=a042581f4e29026024d`}
-                        className="cursor-pointer"
-                      />
+                      {item.user && (
+                        <Avatar size="sm" src={`https://i.pravatar.cc/150?u=${item.user}`} className="cursor-pointer" />
+                      )}
                     </div>
                   </div>
                 </div>
