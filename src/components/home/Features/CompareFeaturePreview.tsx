@@ -1,0 +1,195 @@
+import { Avatar, Button, Card, CardBody, Textarea, cn } from '@heroui/react';
+import { Icon } from '../../various/Icon';
+import { ReviewToolComment } from './ReviewToolComment';
+import { useState } from 'react';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+
+export const CompareFeaturePreview = () => {
+  const { openSignUpModal } = useSignUpModalVisibility();
+  const [activeFile, setActiveFile] = useState<'left' | 'right'>('left');
+
+  // Shared comment state
+  const [comment, setComment] = useState('');
+  const [leftNewComment, setLeftNewComment] = useState('');
+  const [rightNewComment, setRightNewComment] = useState('');
+
+  const handleFileClick = (side: 'left' | 'right') => {
+    setActiveFile(side);
+  };
+
+  const handleSendComment = () => {
+    if (activeFile === 'left') {
+      if (leftNewComment) {
+        openSignUpModal();
+        return;
+      }
+
+      if (comment.trim() === '') {
+        return;
+      }
+
+      setLeftNewComment(comment);
+      setComment('');
+    } else {
+      if (rightNewComment) {
+        openSignUpModal();
+        return;
+      }
+
+      if (comment.trim() === '') {
+        return;
+      }
+
+      setRightNewComment(comment);
+      setComment('');
+    }
+  };
+
+  return (
+    <Card>
+      <CardBody className="flex flex-col gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_240px] gap-2">
+          {/* Left Column */}
+          <div className="flex flex-col gap-2">
+            {/* File Header */}
+            <div
+              className={cn(
+                'flex items-center gap-2 p-3 rounded-lg transition-colors cursor-pointer',
+                activeFile === 'left' ? 'bg-primary-100' : 'bg-foreground-50',
+              )}
+              onClick={() => handleFileClick('left')}
+            >
+              <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" size="sm" />
+              <div className="flex-1 overflow-hidden">
+                <div className={cn('font-semibold truncate', { 'text-primary': activeFile === 'left' })}>
+                  walkthrough_v2.mp4
+                </div>
+                <div className="text-sm text-foreground-500">278 MB</div>
+              </div>
+              {activeFile === 'left' && (
+                <Button size="sm" variant="flat" radius="full" isIconOnly onClick={(e) => e.stopPropagation()}>
+                  <Icon icon="cross" size={16} />
+                </Button>
+              )}
+            </div>
+            {/* Preview */}
+            <div
+              className={cn(
+                'aspect-video max-h-64 rounded-lg overflow-hidden relative cursor-pointer border-2 transition-colors',
+                activeFile === 'left' ? 'border-primary' : 'border-transparent',
+              )}
+              onClick={() => handleFileClick('left')}
+            >
+              <img
+                src="https://picsum.photos/600/400?random=1"
+                alt="Version 2"
+                className="absolute h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Right Column */}
+          <div className="flex flex-col gap-2">
+            {/* File Header */}
+            <div
+              className={cn(
+                'flex items-center gap-2 p-3 rounded-lg transition-colors cursor-pointer',
+                activeFile === 'right' ? 'bg-primary-100' : 'bg-foreground-50',
+              )}
+              onClick={() => handleFileClick('right')}
+            >
+              <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" size="sm" />
+              <div className="flex-1 overflow-hidden">
+                <div className={cn('font-semibold truncate', { 'text-primary': activeFile === 'right' })}>
+                  walkthrough_v3.mp4
+                </div>
+                <div className="text-sm text-foreground-500">285 MB</div>
+              </div>
+              {activeFile === 'right' && (
+                <Button size="sm" variant="flat" radius="full" isIconOnly onClick={(e) => e.stopPropagation()}>
+                  <Icon icon="cross" size={16} />
+                </Button>
+              )}
+            </div>
+            {/* Preview */}
+            <div
+              className={cn(
+                'aspect-video max-h-64 rounded-lg overflow-hidden relative cursor-pointer border-2 transition-colors',
+                activeFile === 'right' ? 'border-primary' : 'border-transparent',
+              )}
+              onClick={() => handleFileClick('right')}
+            >
+              <img
+                src="https://picsum.photos/600/400?random=2"
+                alt="Version 3"
+                className="absolute h-full w-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Comment Section - Right Side */}
+          <div className="p-1 flex flex-col gap-2 min-h-0">
+            <div className="font-semibold border-b border-foreground-200 pb-2">Comments</div>
+            <div className="flex flex-col gap-2 overflow-auto p-1 -m-1">
+              {activeFile === 'left' ? (
+                <>
+                  <ReviewToolComment
+                    user="a042581f4e29026024t"
+                    userName="Kate L."
+                    date="Jul 24"
+                    comment="The color grading looks better in this version."
+                    timestamp="00:05"
+                  />
+                  {leftNewComment.trim() && (
+                    <ReviewToolComment userName="Guest" comment={leftNewComment.trim()} date="now" timestamp="00:10" />
+                  )}
+                </>
+              ) : (
+                <>
+                  <ReviewToolComment
+                    user="a042581f4e29026024d"
+                    userName="Peter R."
+                    date="Jul 25"
+                    comment="This version has better transitions."
+                    timestamp="00:08"
+                  />
+                  {rightNewComment.trim() && (
+                    <ReviewToolComment userName="Guest" comment={rightNewComment.trim()} date="now" timestamp="00:12" />
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+          {/* Shared Comment Input - Spans left and right columns, aligns with comment section */}
+          <div className="relative md:col-span-2">
+            <Textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Leave your comment here..."
+              minRows={2}
+              rows={2}
+              maxLength={100}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSendComment();
+                }
+              }}
+            />
+            <div className="flex justify-end">
+              <Button
+                size="sm"
+                className="bg-foreground text-content1 absolute bottom-1 right-1"
+                isIconOnly
+                radius="full"
+                onClick={handleSendComment}
+              >
+                <Icon icon="send" size={16} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </CardBody>
+    </Card>
+  );
+};
