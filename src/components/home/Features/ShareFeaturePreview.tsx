@@ -6,16 +6,11 @@ import { ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
 
 export const ShareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
-  const [isShareOpen, setIsShareOpen] = useState(true);
   const [emails, setEmails] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const [linkCopied, setLinkCopied] = useState(false);
 
   const url = `${typeof window !== 'undefined' ? window.location.origin : ''}/share/example-link-id`;
-
-  const handleShareClick = () => {
-    setIsShareOpen(true);
-  };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
@@ -66,11 +61,11 @@ export const ShareFeaturePreview = () => {
             <div className="text-sm text-foreground-500">Vision review - Interviews</div>
           </div>
         </div>
-        <div className={cn('grid gap-4', isShareOpen ? 'grid-cols-1 md:grid-cols-[1fr_280px]' : 'grid-cols-1')}>
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-[1fr_280px]">
           <div className="flex flex-col gap-3">
             <div className="aspect-video max-h-64 rounded-lg overflow-hidden relative border border-foreground-200">
               <img
-                src="https://picsum.photos/600/400?random=3"
+                src="https://picsum.photos/1000/400?random=3"
                 alt="File preview"
                 className="absolute h-full w-full object-cover"
               />
@@ -78,109 +73,87 @@ export const ShareFeaturePreview = () => {
             <div className="flex justify-end">
               <Button
                 size="sm"
-                variant={isShareOpen ? 'solid' : 'flat'}
+                variant="solid"
                 color="default"
-                className={cn('transition-all', isShareOpen && 'bg-black text-white')}
-                onClick={handleShareClick}
+                className="bg-foreground text-content1"
+                onClick={openSignUpModal}
               >
                 <Icon icon="share" size={18} />
                 Share
               </Button>
             </div>
           </div>
-          {isShareOpen && (
-            <div className="bg-foreground-50 rounded-large border border-foreground-200 flex flex-col gap-3 p-4 transition-all duration-300">
-              <div className="flex items-center justify-between border-b border-foreground-200 pb-3">
-                <div className="font-semibold text-base">Share File</div>
-                <Button
-                  isIconOnly
-                  size="sm"
-                  variant="light"
-                  radius="full"
-                  onClick={() => setIsShareOpen(false)}
-                  className="min-w-0"
-                >
-                  <Icon icon="cross" size={16} className="text-foreground-500" />
-                </Button>
-              </div>
-              <div className="flex flex-col gap-3 overflow-auto flex-1 min-h-0">
-                <div className="flex flex-col gap-3">
-                  <div className="flex flex-col gap-2">
-                    <Input
-                      value={url}
-                      label="Copy shareable link"
-                      readOnly
-                      size="sm"
-                      classNames={{
-                        input: 'text-xs',
-                      }}
-                      endContent={
-                        <Tooltip content={linkCopied ? 'Copied!' : 'Copy link'} placement="top">
-                          <Button
-                            isIconOnly
-                            size="sm"
-                            variant="light"
-                            onClick={handleCopyLink}
-                            className={cn('min-w-0 transition-colors', linkCopied && 'bg-black text-white')}
-                          >
-                            <Icon
-                              icon={linkCopied ? 'check' : 'copy'}
-                              size={16}
-                              className={cn(linkCopied && 'text-white')}
-                            />
-                          </Button>
-                        </Tooltip>
-                      }
-                    />
+          <div className="bg-foreground-50 rounded-large border border-foreground-200 flex flex-col gap-3 p-4 transition-all duration-300">
+            <div className="flex items-center justify-between border-b border-foreground-200 pb-3">
+              <div className="font-semibold text-base">Share File</div>
+            </div>
+            <div className="flex flex-col gap-3 overflow-auto flex-1 min-h-0">
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2">
+                  <Input
+                    value={url}
+                    label="Copy shareable link"
+                    readOnly
+                    size="sm"
+                    classNames={{
+                      input: 'text-xs',
+                    }}
+                    endContent={
+                      <Tooltip content={linkCopied ? 'Copied!' : 'Copy link'} placement="top">
+                        <Button isIconOnly size="sm" variant="light" onClick={handleCopyLink}>
+                          <Icon icon={linkCopied ? 'check' : 'copy'} size={16} />
+                        </Button>
+                      </Tooltip>
+                    }
+                  />
+                </div>
+                <div className="relative before:absolute before:bg-foreground-300 before:h-px before:w-full before:top-1/2 before:left-0 before:right-0 text-center">
+                  <span className="bg-foreground-50 relative px-2 text-foreground-500 text-xs">or</span>
+                </div>
+                {emails.length > 0 && (
+                  <div className="flex gap-2 gap-y-1.5 flex-wrap">
+                    {emails.map((email) => (
+                      <Chip
+                        key={email}
+                        variant="flat"
+                        size="sm"
+                        isCloseable
+                        onClose={() => setEmails(emails.filter((e) => e !== email))}
+                        className="transition-all"
+                      >
+                        {email}
+                      </Chip>
+                    ))}
                   </div>
-                  <div className="relative before:absolute before:bg-foreground-300 before:h-px before:w-full before:top-1/2 before:left-0 before:right-0 text-center">
-                    <span className="bg-foreground-50 relative px-2 text-foreground-500 text-xs">or</span>
-                  </div>
-                  {emails.length > 0 && (
-                    <div className="flex gap-2 gap-y-1.5 flex-wrap">
-                      {emails.map((email) => (
-                        <Chip
-                          key={email}
-                          variant="flat"
-                          size="sm"
-                          isCloseable
-                          onClose={() => setEmails(emails.filter((e) => e !== email))}
-                          className="transition-all"
-                        >
-                          {email}
-                        </Chip>
-                      ))}
-                    </div>
-                  )}
-                  <div className="flex flex-col gap-2.5">
-                    <Input
-                      label="Share via email"
-                      placeholder="Enter email address"
-                      value={input}
-                      size="sm"
-                      isDisabled={emails.length >= 5}
-                      onBlur={handleInputBlur}
-                      onKeyDown={handleInputKeyDown}
-                      onChange={handleInputChange}
-                      description={emails.length >= 5 ? 'Maximum 5 emails' : `${emails.length}/5 emails`}
-                      classNames={{
-                        description: 'text-xs',
-                      }}
-                    />
-                    <Button
-                      size="sm"
-                      isDisabled={emails.length === 0}
-                      className="text-white bg-black transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                      onClick={handleSendLink}
-                    >
-                      <Icon icon="send" size={16} />
-                      Send link via email
-                    </Button>
-                  </div>
+                )}
+                <div className="flex flex-col gap-2.5">
+                  <Input
+                    label="Share via email"
+                    placeholder="Enter email address"
+                    value={input}
+                    size="sm"
+                    isDisabled={emails.length >= 5}
+                    onBlur={handleInputBlur}
+                    onKeyDown={handleInputKeyDown}
+                    onChange={handleInputChange}
+                    description={emails.length >= 5 ? 'Maximum 5 emails' : `${emails.length}/5 emails`}
+                    classNames={{
+                      description: 'text-xs',
+                    }}
+                  />
+                  <Button
+                    size="sm"
+                    isDisabled={emails.length === 0}
+                    className="text-content1 bg-foreground transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    onClick={handleSendLink}
+                  >
+                    <Icon icon="send" size={16} />
+                    Send link via email
+                  </Button>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </CardBody>
     </Card>

@@ -40,38 +40,3 @@ body,
     scrollbar-width: none;
   }
 }
-
-/* Override HeroUI Checkbox to use black when selected - remove all blue colors */
-.checkbox-black-override {
-  .checkbox-black {
-    &[data-selected='true'] {
-      background-color: #000000 !important;
-      border-color: #000000 !important;
-      color: #000000 !important;
-
-      &:hover {
-        background-color: #000000 !important;
-        border-color: #000000 !important;
-      }
-
-      &:focus {
-        background-color: #000000 !important;
-        border-color: #000000 !important;
-      }
-
-      &:focus-visible {
-        background-color: #000000 !important;
-        border-color: #000000 !important;
-      }
-    }
-  }
-
-  /* Also target any primary color classes that might be applied */
-  [class*='bg-primary'],
-  [class*='bg-blue'] {
-    &[data-selected='true'] {
-      background-color: #000000 !important;
-      border-color: #000000 !important;
-    }
-  }
-}

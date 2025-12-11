@@ -6,9 +6,8 @@ import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibilit
 
 export const CompareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
-  const [activeFile, setActiveFile] = useState<'left' | 'right'>('left');
 
-  // Shared comment state
+  const [activeFile, setActiveFile] = useState<'left' | 'right'>('left');
   const [comment, setComment] = useState('');
   const [leftNewComment, setLeftNewComment] = useState('');
   const [rightNewComment, setRightNewComment] = useState('');
@@ -66,11 +65,6 @@ export const CompareFeaturePreview = () => {
                 </div>
                 <div className="text-sm text-foreground-500">278 MB</div>
               </div>
-              {activeFile === 'left' && (
-                <Button size="sm" variant="flat" radius="full" isIconOnly onClick={(e) => e.stopPropagation()}>
-                  <Icon icon="cross" size={16} />
-                </Button>
-              )}
             </div>
             {/* Preview */}
             <div
@@ -105,11 +99,6 @@ export const CompareFeaturePreview = () => {
                 </div>
                 <div className="text-sm text-foreground-500">285 MB</div>
               </div>
-              {activeFile === 'right' && (
-                <Button size="sm" variant="flat" radius="full" isIconOnly onClick={(e) => e.stopPropagation()}>
-                  <Icon icon="cross" size={16} />
-                </Button>
-              )}
             </div>
             {/* Preview */}
             <div
