@@ -27,7 +27,7 @@ export const FeaturesSection = () => {
           <Feature
             icon="paint"
             title="Frame-accurate Revisions"
-            description="Pin comments to exact frames and timestamps - no more “which clip?” or lost feedback."
+            description="Pin comments to exact frames and timestamps in your review and approval workflow - no more “which clip?” or lost feedback."
             isReversed={false}
           >
             <ReviewToolPreview />
@@ -35,7 +35,7 @@ export const FeaturesSection = () => {
           <Feature
             icon="chat"
             title="Conversations, Not Noise"
-            description="Project-tied chats, asset-linked comments and guest review links - keep feedback with the asset, not scattered across multiple platforms."
+            description="Project-tied chats, asset-linked comments and guest review links streamline your approval workflow - keep feedback with the asset, not scattered across multiple platforms."
             isReversed={true}
           >
             <ChatFeaturePreview />
@@ -43,7 +43,7 @@ export const FeaturesSection = () => {
           <Feature
             icon="upload"
             title="Project Management Meets Reliable Media Storage"
-            description="Assign files, track deliverables and share heavy media securely - within the same workspace."
+            description="Assign files, track deliverables and share heavy media securely - creative production management within the same workspace."
             isReversed={false}
           >
             <ProjectFeaturePreview />
@@ -51,7 +51,7 @@ export const FeaturesSection = () => {
           <Feature
             icon="compare"
             title="Compare Versions Side-by-Side"
-            description="Compare different versions of files side-by-side to spot changes instantly and provide precise feedback."
+            description="Compare different versions of files side-by-side for creative proofing - spot changes instantly and provide precise feedback in your review workflow."
             isReversed={true}
           >
             <CompareFeaturePreview />
@@ -59,7 +59,7 @@ export const FeaturesSection = () => {
           <Feature
             icon="share"
             title="Share Files with Anyone"
-            description="Generate secure shareable links or send files directly via email - no account required for reviewers."
+            description="Generate secure shareable links or send files directly via email for media review and approval - no account required for reviewers."
             isReversed={false}
           >
             <ShareFeaturePreview />
@@ -67,7 +67,7 @@ export const FeaturesSection = () => {
           <Feature
             icon="slides"
             title="Centralized Project Dashboard"
-            description="Everything you need in one place - project overview, media files, team chat, and activity tracking all accessible from a single dashboard."
+            description="Everything you need in one place - project overview, media files, team chat, and activity tracking for streamlined creative production management, all accessible from a single dashboard."
             isReversed={true}
           >
             <HomeDashboardFeaturePreview />
