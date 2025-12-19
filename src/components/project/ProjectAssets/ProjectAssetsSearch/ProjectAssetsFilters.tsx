@@ -80,10 +80,9 @@ export const ProjectAssetsFilters = () => {
                   startContent={<Icon icon="check" size={18} className="text-foreground-500" />}
                 >
                   <SelectItem key="null">No status</SelectItem>
-                  <SelectItem key="in-progress">In progress</SelectItem>
-                  <SelectItem key="review-needed">Review needed</SelectItem>
-                  <SelectItem key="changes-required">Changes required</SelectItem>
-                  <SelectItem key="approved">Approved</SelectItem>
+                  {project.assetStatuses.map((status) => (
+                    <SelectItem key={status.value}>{status.label}</SelectItem>
+                  ))}
                 </Select>
                 <div className="flex gap-2">
                   <Input
