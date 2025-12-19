@@ -13,6 +13,8 @@ import { ProjectHeader } from './ProjectHeader';
 import { ProjectLoader } from './ProjectLoader';
 import { NotActiveProjectAlert } from './NotActiveProjectAlert';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
+import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 
 interface Props {
   hideHeader?: boolean;
@@ -36,6 +38,9 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
       addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
     }
   }, [isError, error, router]);
+
+  const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
+  const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
 
   if (!isSignedIn) {
     return;
@@ -88,6 +93,11 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
             </ProjectUploadContextProvider>
           </ProjectContextProvider>
         )}
+        <EditProjectStatusesModal
+          project={project}
+          isOpen={isEditProjectStatusesModalOpen}
+          onClose={() => setIsEditProjectStatusesModalOpen(false)}
+        />
       </div>
     </>
   );

@@ -9,13 +9,13 @@ import { useQueryClient } from '@tanstack/react-query';
 import { getProjectIdChats } from '../../../services/services';
 import { useRouter } from 'next/router';
 import { useChatContext } from '../../../contexts/Chat';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 interface Props {
   isDisabled?: boolean;
 }
 
-export const ChatConversationCreateButton = ({ isDisabled = false }) => {
+export const ChatConversationCreateButton = ({ isDisabled = false }: Props) => {
   const { user } = useSession();
   const { project } = useProjectContext();
   const queryClient = useQueryClient();
@@ -47,13 +47,17 @@ export const ChatConversationCreateButton = ({ isDisabled = false }) => {
     );
   };
 
+  const projectMembers = useMemo(() => {
+    return project.members.filter((member) => member.user && member.status === 'joined' && member.user.id !== user?.id);
+  }, [project.members, user]);
+
   return (
     <Dropdown placement="right-end">
       <DropdownTrigger>
         <Button
           className="absolute bottom-2 right-2 bg-foreground text-content1"
           isIconOnly
-          isDisabled={isDisabled}
+          isDisabled={isDisabled || projectMembers.length === 0}
           radius="full"
           isLoading={isLoading}
         >
@@ -61,13 +65,11 @@ export const ChatConversationCreateButton = ({ isDisabled = false }) => {
         </Button>
       </DropdownTrigger>
       <DropdownMenu variant="flat" className="max-h-64 overflow-y-scroll">
-        {project.members
-          .filter((member) => member.user && member.status === 'joined' && member.user.id !== user?.id)
-          .map((member) => (
-            <DropdownItem key={member.user?.id ?? member.id} onClick={handleCreateConversation(member)}>
-              <ProjectMemberItem member={member} />
-            </DropdownItem>
-          ))}
+        {projectMembers.map((member) => (
+          <DropdownItem key={member.user?.id ?? member.id} onClick={handleCreateConversation(member)}>
+            <ProjectMemberItem member={member} />
+          </DropdownItem>
+        ))}
       </DropdownMenu>
     </Dropdown>
   );

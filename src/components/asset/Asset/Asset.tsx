@@ -5,6 +5,8 @@ import { ReviewTool } from '../ReviewTool';
 import { useRouter } from 'next/router';
 import { useGetAssetFileId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
+import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 
 interface Props {
   fileId: string;
@@ -21,6 +23,9 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
   });
   const { data: project, isPending: isProjectLoading } = useGetProjectId(projectId);
 
+  const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
+  const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
+
   const isLoading = isAssetLoading || isProjectLoading || isCompareAssetLoading;
 
   useEffect(() => {
@@ -34,11 +39,18 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
   }
 
   return (
-    <FileStateContextProvider fileId={fileId} file={file} compareFile={compareFile}>
-      <div className="md:grid grid-cols-[1fr,350px] md:h-screen">
-        <ReviewTool project={project} isLoading={isLoading} />
-        <AssetPanel project={project} isLoading={isLoading} />
-      </div>
-    </FileStateContextProvider>
+    <>
+      <FileStateContextProvider fileId={fileId} file={file} compareFile={compareFile}>
+        <div className="md:grid grid-cols-[1fr,350px] md:h-screen">
+          <ReviewTool project={project} isLoading={isLoading} />
+          <AssetPanel project={project} isLoading={isLoading} />
+        </div>
+      </FileStateContextProvider>
+      <EditProjectStatusesModal
+        project={project}
+        isOpen={isEditProjectStatusesModalOpen}
+        onClose={() => setIsEditProjectStatusesModalOpen(false)}
+      />
+    </>
   );
 };

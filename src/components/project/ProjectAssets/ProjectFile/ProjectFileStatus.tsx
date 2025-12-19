@@ -1,22 +1,27 @@
+// @ts-nocheck
 import { Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
 import React from 'react';
 
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
-import { AssetDto, ProjectFileDto } from '../../../../services/types';
-import { STATUS_COLOR, STATUS_LABEL } from '../../../../utils/status';
+import { AssetDto, ProjectDto, ProjectFileDto } from '../../../../services/types';
 import { queryClient } from '../../../../lib/queryClient';
 import { getProjectIdLogs } from '../../../../services/services';
+import { Icon } from '../../../various/Icon';
+import { useProjectStatusesModal } from '../../../../hooks/useProjectStatusesModal';
 
 interface Props {
   projectId: string;
   file: ProjectFileDto | AssetDto;
+  statuses: ProjectDto['assetStatuses'];
   className?: string;
   isDisabled?: boolean;
 }
 
-export const ProjectFileStatus = ({ file, projectId, className, isDisabled }: Props) => {
+export const ProjectFileStatus = ({ file, projectId, statuses, className, isDisabled }: Props) => {
   const { status } = file;
   const [selectedKeys, setSelectedKeys] = React.useState<Set<string>>(new Set([status ?? 'none']));
+
+  const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
 
   React.useEffect(() => {
     setSelectedKeys(new Set([status ?? 'none']));
@@ -28,12 +33,17 @@ export const ProjectFileStatus = ({ file, projectId, className, isDisabled }: Pr
     if (keys === 'all') {
       return;
     }
-
-    setSelectedKeys(keys as Set<string>);
     const newStatus = keys.values().next().value;
 
+    if (newStatus === 'add-new-status') {
+      setIsEditProjectStatusesModalOpen(true);
+
+      return;
+    }
+
+    setSelectedKeys(keys as Set<string>);
+
     mutate(
-      // @ts-ignore
       { id: projectId, fileId: file.id, requestBody: { status: newStatus === 'none' ? null : newStatus } },
       {
         onSuccess: () => {
@@ -44,6 +54,7 @@ export const ProjectFileStatus = ({ file, projectId, className, isDisabled }: Pr
   };
 
   const selectedKey = selectedKeys.values().next().value ?? 'none';
+  const activeStatus = statuses.find((status) => status.value === selectedKey);
 
   return (
     <Dropdown>
@@ -51,11 +62,13 @@ export const ProjectFileStatus = ({ file, projectId, className, isDisabled }: Pr
         <Chip
           size="sm"
           variant="dot"
+          style={{ color: activeStatus?.color ?? '#A1A1AA' }}
           isDisabled={isDisabled}
-          color={STATUS_COLOR[selectedKey]}
+          color="default"
+          classNames={{ dot: 'bg-current', content: 'text-foreground max-w-32 truncate' }}
           className={cn('bg-default-100 cursor-pointer', className)}
         >
-          {STATUS_LABEL[selectedKey]}
+          {activeStatus?.label ?? 'No status'}
         </Chip>
       </DropdownTrigger>
       <DropdownMenu
@@ -68,17 +81,17 @@ export const ProjectFileStatus = ({ file, projectId, className, isDisabled }: Pr
         <DropdownItem key="none" startContent={<span className="w-2 h-2 rounded-full bg-default" />}>
           No status
         </DropdownItem>
-        <DropdownItem key="in-progress" startContent={<span className="w-2 h-2 rounded-full bg-primary" />}>
-          In progress
-        </DropdownItem>
-        <DropdownItem key="review-needed" startContent={<span className="w-2 h-2 rounded-full bg-warning" />}>
-          Review needed
-        </DropdownItem>
-        <DropdownItem key="changes-required" startContent={<span className="w-2 h-2 rounded-full bg-danger" />}>
-          Changes required
-        </DropdownItem>
-        <DropdownItem key="approved" startContent={<span className="w-2 h-2 rounded-full bg-success" />}>
-          Approved
+        {statuses.map((status) => (
+          <DropdownItem
+            key={status.value}
+            className="max-w-60 truncate"
+            startContent={<span className="w-2 h-2 rounded-full bg-current" style={{ color: status.color }} />}
+          >
+            {status.label}
+          </DropdownItem>
+        ))}
+        <DropdownItem key="add-new-status" startContent={<Icon icon="plus" size={16} className="-mx-1" />}>
+          Add status
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

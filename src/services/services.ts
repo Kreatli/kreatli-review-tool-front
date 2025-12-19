@@ -904,19 +904,6 @@ export const postProjectIdMember = (
 /** Key is end point string without base url */
 postProjectIdMember.key = '/project/{id}/member';
 
-export const postProjectMigrateDescription = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<any>> => {
-  return Http.postRequest(
-    postProjectMigrateDescription.key,
-    undefined,
-    undefined,
-    undefined,
-    overrideConfig(_CONSTANT0, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-postProjectMigrateDescription.key = '/project/migrate-description';
-
 export const postShareableLink = (
   requestBody: ShareableLinkBody,
   configOverride?: AxiosRequestConfig,

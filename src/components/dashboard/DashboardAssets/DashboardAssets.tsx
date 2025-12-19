@@ -54,7 +54,7 @@ export const DashboardAssets = ({ project }: Props) => {
           <DashboardAssetsList
             files={data.files}
             folders={foldersData?.folders ?? []}
-            projectId={project.id}
+            project={project}
             members={project.members}
           />
         ) : (

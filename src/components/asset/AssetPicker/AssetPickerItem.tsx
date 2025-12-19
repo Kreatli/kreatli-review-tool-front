@@ -1,6 +1,5 @@
 import { AssetDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
-import { STATUS_LABEL } from '../../../utils/status';
 import { AssetPreview } from './AssetPreview';
 
 interface Props {
@@ -25,7 +24,7 @@ export const AssetPickerItem = ({ asset, onClick }: Props) => {
           </button>
           <div className="text-foreground-500 text-xs">
             {formatBytes(asset.fileSize)}
-            {asset.status && <>, {STATUS_LABEL[asset.status]}</>}
+            {asset.statusLabel && <>, {asset.statusLabel}</>}
           </div>
         </div>
       </div>

@@ -16,7 +16,6 @@ import {
   ProjectMemberRemovedLogDto,
   ProjectUpdatedLogDto,
 } from '../../../services/types';
-import { STATUS_LABEL } from '../../../utils/status';
 
 interface Props {
   log: ProjectLogsDto['logs'][number];
@@ -39,7 +38,7 @@ const AssetUploadedLog = ({ log }: { log: AssetUploadedLogDto }) => {
 const AssetUpdatedLog = ({ log }: { log: AssetUpdatedLogDto }) => {
   const { project } = useProjectContext();
   const {
-    asset: { id, name, parent, type, status, assignee },
+    asset: { id, name, parent, type, status, statusLabel, assignee },
     updatedFields,
   } = log.details;
 
@@ -80,13 +79,17 @@ const AssetUpdatedLog = ({ log }: { log: AssetUpdatedLogDto }) => {
     );
   }
 
-  if ('status' in updatedFields) {
+  if ('statusLabel' in updatedFields) {
     return (
       <>
-        Changed {link} status from &quot;{status ? STATUS_LABEL[status] : 'None'}&quot; to &quot;
-        {updatedFields.status ? STATUS_LABEL[updatedFields.status] : 'None'}&quot;
+        Changed {link} status from &quot;{statusLabel ?? 'None'}&quot; to &quot;
+        {updatedFields.statusLabel ?? 'None'}&quot;
       </>
     );
+  }
+
+  if ('status' in updatedFields) {
+    return <>Updated {link} status</>;
   }
 
   if ('assignee' in updatedFields) {
@@ -254,7 +257,8 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
 };
 
 const ProjectUpdatedLog = ({ log }: { log: ProjectUpdatedLogDto }) => {
-  const { name, description, isCoverChanged, isAssetsOrderChanged, status } = log.details;
+  const { name, description, isCoverChanged, isAssetsOrderChanged, status, isAssetStatusesChanged, isContentChanged } =
+    log.details;
 
   if (name) {
     return `Renamed project to "${name}"`;
@@ -270,6 +274,14 @@ const ProjectUpdatedLog = ({ log }: { log: ProjectUpdatedLogDto }) => {
 
   if (isAssetsOrderChanged) {
     return 'Reordered assets in the project structure';
+  }
+
+  if (isAssetStatusesChanged) {
+    return 'Updated project statuses';
+  }
+
+  if (isContentChanged) {
+    return 'Updated project content';
   }
 
   if (status === 'archived') {

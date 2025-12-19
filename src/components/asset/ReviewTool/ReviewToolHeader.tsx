@@ -99,7 +99,12 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
           </Button>
         </AssetPicker>
       )}
-      <ProjectFileStatus isDisabled={project.status !== 'active'} projectId={project.id} file={file} />
+      <ProjectFileStatus
+        isDisabled={project.status !== 'active'}
+        projectId={project.id}
+        statuses={project.assetStatuses}
+        file={file}
+      />
       {isCompareMode ? (
         <Button
           size="sm"

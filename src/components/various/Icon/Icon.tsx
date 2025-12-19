@@ -37,6 +37,8 @@ import EraserIcon from '../../../assets/icons/eraser.svg';
 import ErrorIcon from '../../../assets/icons/error.svg';
 import EyeIcon from '../../../assets/icons/eye.svg';
 import EyeCrossedIcon from '../../../assets/icons/eye-crossed.svg';
+import DotIcon from '../../../assets/icons/dot.svg';
+import DotsSixIcon from '../../../assets/icons/dots-six.svg';
 import FacebookIcon from '../../../assets/icons/facebook.svg';
 import FileIcon from '../../../assets/icons/file.svg';
 import FileDocIcon from '../../../assets/icons/file-doc.svg';
@@ -145,6 +147,8 @@ const ICONS = {
   error: ErrorIcon,
   eye: EyeIcon,
   eyeCrossed: EyeCrossedIcon,
+  dot: DotIcon,
+  dotsSix: DotsSixIcon,
   facebook: FacebookIcon,
   file: FileIcon,
   fileDoc: FileDocIcon,

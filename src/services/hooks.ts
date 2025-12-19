@@ -138,7 +138,6 @@ import {
   postProjectIdFile,
   postProjectIdFolder,
   postProjectIdMember,
-  postProjectMigrateDescription,
   postShareableLink,
   postShareableLinkSendEmail,
   postStripeWebhook,
@@ -1765,19 +1764,6 @@ export const usePostProjectIdMember = <TExtra,>(
 
         configOverride,
       );
-    },
-    ...options,
-  });
-};
-
-export const usePostProjectMigrateDescription = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { configOverride } = _o || {};
-
-      return postProjectMigrateDescription(configOverride);
     },
     ...options,
   });

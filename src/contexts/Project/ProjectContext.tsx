@@ -14,6 +14,7 @@ import { RestoreProjectModal } from '../../components/project/ProjectModals/Rest
 import { IconType } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { ProjectDto } from '../../services/types';
+import { useProjectStatusesModal } from '../../hooks/useProjectStatusesModal';
 
 export interface ProjectAssetsFilters {
   status?: string;
@@ -79,6 +80,8 @@ export const ProjectContextProvider = ({
 
   const isProjectOwner = selectedProject?.createdBy?.id === user?.id;
 
+  const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
+
   const restoreProject = (project: ProjectDto) => {
     setSelectedProjectId?.(project.id);
     setIsRestoreModalOpen(true);
@@ -140,10 +143,17 @@ export const ProjectContextProvider = ({
             {
               label: 'Invite member',
               icon: 'userPlus' as const,
-              showDivider: true,
               onClick: () => {
                 setSelectedProjectId?.(project.id);
                 setIsMembersModalOpen(true);
+              },
+            },
+            {
+              label: 'Edit statuses',
+              icon: 'dot' as const,
+              showDivider: true,
+              onClick: () => {
+                setIsEditProjectStatusesModalOpen(true);
               },
             },
             {

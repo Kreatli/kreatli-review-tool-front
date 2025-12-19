@@ -89,6 +89,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
           <ProjectFileStatus
             className="border-1 z-10 absolute bottom-2 left-2"
             projectId={project.id}
+            statuses={project.assetStatuses}
             file={file}
             isDisabled={isReadonly}
           />

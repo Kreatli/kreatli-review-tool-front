@@ -242,13 +242,6 @@
         }
       }
     },
-    "/project/migrate-description": {
-      "post": {
-        "operationId": "ProjectController_migrateDescription",
-        "parameters": [],
-        "responses": { "201": { "description": "" } }
-      }
-    },
     "/project": {
       "post": {
         "operationId": "ProjectController_createProject",
@@ -1153,11 +1146,9 @@
           "createdAt": { "type": "string" },
           "createdBy": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDto" }] },
           "commentsCount": { "type": "number", "default": 0 },
-          "status": {
-            "type": "string",
-            "enum": ["review-needed", "in-progress", "changes-required", "approved"],
-            "nullable": true
-          },
+          "status": { "type": "string", "nullable": true },
+          "statusLabel": { "type": "string", "nullable": true },
+          "statusColor": { "type": "string", "nullable": true },
           "assignee": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDto" }] },
           "fileSize": { "type": "number" },
           "fileType": { "type": "string" },
@@ -1175,6 +1166,8 @@
           "createdBy",
           "commentsCount",
           "status",
+          "statusLabel",
+          "statusColor",
           "assignee",
           "fileSize",
           "fileType",
@@ -1235,6 +1228,11 @@
         },
         "required": ["id", "user", "status", "email", "invitedAt", "role"]
       },
+      "AssetStatusDto": {
+        "type": "object",
+        "properties": { "label": { "type": "string" }, "color": { "type": "string" }, "value": { "type": "string" } },
+        "required": ["label", "color", "value"]
+      },
       "ProjectDto": {
         "type": "object",
         "properties": {
@@ -1249,6 +1247,7 @@
           "updatedBy": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDto" }] },
           "members": { "type": "array", "items": { "$ref": "#/components/schemas/ProjectMemberDto" } },
           "status": { "type": "string", "enum": ["active", "completed", "archived"] },
+          "assetStatuses": { "type": "array", "items": { "$ref": "#/components/schemas/AssetStatusDto" } },
           "fileCount": { "type": "number" },
           "totalFileSize": { "type": "number" },
           "assets": {
@@ -1274,6 +1273,7 @@
           "updatedBy",
           "members",
           "status",
+          "assetStatuses",
           "fileCount",
           "totalFileSize",
           "assets"
@@ -1285,7 +1285,8 @@
           "name": { "type": "string" },
           "description": { "type": "string" },
           "assets": { "type": "array", "items": { "type": "string" } },
-          "content": { "type": "object" }
+          "content": { "type": "object" },
+          "assetStatuses": { "type": "array", "items": { "$ref": "#/components/schemas/AssetStatusDto" } }
         }
       },
       "ProjectInvitationDto": {
@@ -1404,11 +1405,7 @@
           "name": { "type": "string" },
           "description": { "type": "string" },
           "parentId": { "type": "string", "nullable": true },
-          "status": {
-            "type": "string",
-            "enum": ["review-needed", "in-progress", "changes-required", "approved"],
-            "nullable": true
-          },
+          "status": { "type": "string", "nullable": true },
           "assigneeId": { "type": "string", "nullable": true }
         },
         "required": ["status"]
@@ -1473,11 +1470,9 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "description": { "type": "string" },
-          "status": {
-            "type": "string",
-            "enum": ["review-needed", "in-progress", "changes-required", "approved"],
-            "nullable": true
-          },
+          "status": { "type": "string", "nullable": true },
+          "statusLabel": { "type": "string", "nullable": true },
+          "statusColor": { "type": "string", "nullable": true },
           "assignee": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDto" }] },
           "fileSize": { "type": "number" },
           "fileType": { "type": "string" },
@@ -1490,6 +1485,8 @@
           "name",
           "description",
           "status",
+          "statusLabel",
+          "statusColor",
           "assignee",
           "fileSize",
           "fileType",
@@ -1741,30 +1738,24 @@
           "id": { "type": "string" },
           "name": { "type": "string" },
           "type": { "type": "string", "enum": ["file", "folder"] },
-          "status": {
-            "type": "string",
-            "enum": [null, "review-needed", "in-progress", "changes-required", "approved"],
-            "nullable": true
-          },
+          "status": { "type": "string", "nullable": true },
+          "statusLabel": { "type": "string", "nullable": true },
           "assignee": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDetails" }] },
           "parent": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/FolderDetails" }] }
         },
-        "required": ["id", "name", "type", "status", "assignee", "parent"]
+        "required": ["id", "name", "type", "status", "statusLabel", "assignee", "parent"]
       },
       "AssetAfterDetails": {
         "type": "object",
         "properties": {
           "name": { "type": "string", "nullable": true },
           "description": { "type": "string", "nullable": true },
-          "status": {
-            "type": "string",
-            "enum": [null, "review-needed", "in-progress", "changes-required", "approved"],
-            "nullable": true
-          },
+          "status": { "type": "string", "nullable": true },
+          "statusLabel": { "type": "string", "nullable": true },
           "assignee": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDetails" }] },
           "parent": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/FolderDetails" }] }
         },
-        "required": ["name", "description", "status", "assignee", "parent"]
+        "required": ["name", "description", "status", "statusLabel", "assignee", "parent"]
       },
       "AssetUpdatedDetails": {
         "type": "object",
@@ -1906,6 +1897,8 @@
           "description": { "type": "string", "nullable": true },
           "isCoverChanged": { "type": "boolean", "nullable": true },
           "isAssetsOrderChanged": { "type": "boolean", "nullable": true },
+          "isAssetStatusesChanged": { "type": "boolean", "nullable": true },
+          "isContentChanged": { "type": "boolean", "nullable": true },
           "status": { "type": "string", "enum": ["active", "completed", "archived"], "nullable": true }
         },
         "required": ["name", "description", "isCoverChanged", "status"]
@@ -2003,11 +1996,9 @@
           "commentsCount": { "type": "number", "default": 0 },
           "parent": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/FolderDto" }] },
           "path": { "type": "array", "items": { "$ref": "#/components/schemas/FolderDto" } },
-          "status": {
-            "type": "string",
-            "enum": ["review-needed", "in-progress", "changes-required", "approved"],
-            "nullable": true
-          },
+          "status": { "type": "string", "nullable": true },
+          "statusLabel": { "type": "string", "nullable": true },
+          "statusColor": { "type": "string", "nullable": true },
           "assignee": { "nullable": true, "allOf": [{ "$ref": "#/components/schemas/UserDto" }] },
           "fileSize": { "type": "number" },
           "fileType": { "type": "string" },
@@ -2026,6 +2017,8 @@
           "parent",
           "path",
           "status",
+          "statusLabel",
+          "statusColor",
           "assignee",
           "fileSize",
           "fileType",

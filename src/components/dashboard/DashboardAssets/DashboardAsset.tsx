@@ -1,5 +1,5 @@
 import { Image } from '@heroui/react';
-import { AssetDto, ProjectMemberDto } from '../../../services/types';
+import { AssetDto, ProjectDto, ProjectMemberDto } from '../../../services/types';
 import React from 'react';
 import { AssetIcon } from '../../asset/AssetIcon';
 import Link from 'next/link';
@@ -7,12 +7,12 @@ import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/Proje
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
 
 interface Props {
-  projectId: string;
+  project: ProjectDto;
   file: AssetDto;
   members: ProjectMemberDto[];
 }
 
-export const DashboardAsset = ({ projectId, file, members }: Props) => {
+export const DashboardAsset = ({ project, file, members }: Props) => {
   const [isError, setIsError] = React.useState(false);
 
   const previewUrl = file.metadata.thumbnailUrl ?? file.url;
@@ -35,7 +35,8 @@ export const DashboardAsset = ({ projectId, file, members }: Props) => {
       </div>
       <ProjectFileStatus
         className="border-1 absolute bottom-2 left-2 z-20"
-        projectId={projectId}
+        projectId={project.id}
+        statuses={project.assetStatuses}
         file={file}
         isDisabled={false}
       />
@@ -43,10 +44,14 @@ export const DashboardAsset = ({ projectId, file, members }: Props) => {
         file={file}
         members={members}
         size="xs"
-        projectId={projectId}
+        projectId={project.id}
         className="absolute bottom-1.5 right-1.5 z-20"
       />
-      <Link href={`/project/${projectId}/assets/${file.id}`} aria-label={file.name} className="absolute inset-0 z-10" />
+      <Link
+        href={`/project/${project.id}/assets/${file.id}`}
+        aria-label={file.name}
+        className="absolute inset-0 z-10"
+      />
     </div>
   );
 };

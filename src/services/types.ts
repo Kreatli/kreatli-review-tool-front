@@ -22,7 +22,8 @@ export interface AssetAfterDetails {
   description?: string;
   name?: string;
   parent?: FolderDetails;
-  status?: null | 'review-needed' | 'in-progress' | 'changes-required' | 'approved';
+  status?: string;
+  statusLabel?: string;
 }
 
 export interface AssetBeforeDetails {
@@ -31,7 +32,8 @@ export interface AssetBeforeDetails {
   type: 'file' | 'folder';
   assignee?: UserDetails;
   parent?: FolderDetails;
-  status?: null | 'review-needed' | 'in-progress' | 'changes-required' | 'approved';
+  status?: string;
+  statusLabel?: string;
 }
 
 export interface AssetCommentAddedLogDto {
@@ -125,7 +127,9 @@ export interface AssetDto {
   name: string;
   url: string;
   assignee?: UserDto;
-  status?: 'review-needed' | 'in-progress' | 'changes-required' | 'approved';
+  status?: string;
+  statusColor?: string;
+  statusLabel?: string;
 }
 
 export interface AssetMoveBodyDto {
@@ -144,6 +148,12 @@ export interface AssetNewVersionUploadedLogDto {
 
 export interface AssetRemoveBodyDto {
   assetIds: string[];
+}
+
+export interface AssetStatusDto {
+  color: string;
+  label: string;
+  value: string;
 }
 
 export interface AssetUpdatedDetails {
@@ -324,7 +334,9 @@ export interface FileDto {
   assignee?: UserDto;
   createdBy?: UserDto;
   parent?: FolderDto;
-  status?: 'review-needed' | 'in-progress' | 'changes-required' | 'approved';
+  status?: string;
+  statusColor?: string;
+  statusLabel?: string;
 }
 
 export interface FileEditBodyDto {
@@ -332,7 +344,7 @@ export interface FileEditBodyDto {
   description?: string;
   name?: string;
   parentId?: string;
-  status?: 'review-needed' | 'in-progress' | 'changes-required' | 'approved';
+  status?: string;
 }
 
 export interface FileNewVersionUploadedDetails {
@@ -646,6 +658,7 @@ export interface ProjectCreatedLogDto {
 }
 
 export interface ProjectDto {
+  assetStatuses: AssetStatusDto[];
   /**
    *
    * An array of assets which can be folders or files.
@@ -667,6 +680,7 @@ export interface ProjectDto {
 }
 
 export interface ProjectEditBodyDto {
+  assetStatuses?: AssetStatusDto[];
   assets?: string[];
   content?: { [x in string | number]: any };
   description?: string;
@@ -697,7 +711,9 @@ export interface ProjectFileDto {
   assignee?: UserDto;
   createdBy?: UserDto;
   parentId?: string;
-  status?: 'review-needed' | 'in-progress' | 'changes-required' | 'approved';
+  status?: string;
+  statusColor?: string;
+  statusLabel?: string;
 }
 
 export interface ProjectFolderChild {
@@ -849,7 +865,9 @@ export interface ProjectTotals {
 
 export interface ProjectUpdatedDetails {
   description?: string;
+  isAssetStatusesChanged?: boolean;
   isAssetsOrderChanged?: boolean;
+  isContentChanged?: boolean;
   isCoverChanged?: boolean;
   name?: string;
   status?: 'active' | 'completed' | 'archived';
