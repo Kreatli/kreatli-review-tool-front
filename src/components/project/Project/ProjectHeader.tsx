@@ -87,7 +87,7 @@ export const ProjectHeader = ({ project }: Props) => {
               <Avatar
                 as="button"
                 aria-label="Add project member"
-                fallback="+"
+                fallback={<Icon icon="userPlus" size={18} />}
                 isBordered
                 disabled={project.status !== 'active'}
                 size="sm"
@@ -129,7 +129,7 @@ export const ProjectHeader = ({ project }: Props) => {
                   </DropdownItem>
                   <DropdownItem
                     key="create-folder"
-                    startContent={<Icon icon="plus" size={16} />}
+                    startContent={<Icon icon="plus" size={18} />}
                     onPress={() => setIsFolderModalOpen(true)}
                   >
                     Create folder

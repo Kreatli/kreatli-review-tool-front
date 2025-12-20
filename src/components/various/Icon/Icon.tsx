@@ -20,7 +20,6 @@ import CheckCircleIcon from '../../../assets/icons/check-circle.svg';
 import ShieldIcon from '../../../assets/icons/shield.svg';
 import ChevronDownIcon from '../../../assets/icons/chevron-down.svg';
 import CoinIcon from '../../../assets/icons/coin.svg';
-import ConversationIcon from '../../../assets/icons/conversation.svg';
 import CompareIcon from '../../../assets/icons/compare.svg';
 import CopyIcon from '../../../assets/icons/copy.svg';
 import CreditCardIcon from '../../../assets/icons/credit-card.svg';
@@ -52,6 +51,7 @@ import FileTxtIcon from '../../../assets/icons/file-txt.svg';
 import FilterIcon from '../../../assets/icons/filter.svg';
 import FolderIcon from '../../../assets/icons/folder.svg';
 import FullscreenIcon from '../../../assets/icons/fullscreen.svg';
+import GearIcon from '../../../assets/icons/gear.svg';
 import GoogleIcon from '../../../assets/icons/google.svg';
 import GroupIcon from '../../../assets/icons/group.svg';
 import GridIcon from '../../../assets/icons/grid.svg';
@@ -80,6 +80,7 @@ import PaperclipIcon from '../../../assets/icons/paperclip.svg';
 import SmileIcon from '../../../assets/icons/smile.svg';
 import PauseIcon from '../../../assets/icons/pause.svg';
 import PaypalIcon from '../../../assets/icons/paypal.svg';
+import PanoramaIcon from '../../../assets/icons/panorama.svg';
 import PlayIcon from '../../../assets/icons/play.svg';
 import PlusIcon from '../../../assets/icons/plus.svg';
 import RankingIcon from '../../../assets/icons/ranking.svg';
@@ -131,7 +132,6 @@ const ICONS = {
   coin: CoinIcon,
   compare: CompareIcon,
   copy: CopyIcon,
-  conversation: ConversationIcon,
   chevronDown: ChevronDownIcon,
   creditCard: CreditCardIcon,
   cross: CrossIcon,
@@ -160,6 +160,7 @@ const ICONS = {
   fileSolid: FileSolidIcon,
   fileTxt: FileTxtIcon,
   fullscreen: FullscreenIcon,
+  gear: GearIcon,
   google: GoogleIcon,
   group: GroupIcon,
   grid: GridIcon,
@@ -189,6 +190,7 @@ const ICONS = {
   paperclip: PaperclipIcon,
   smile: SmileIcon,
   pause: PauseIcon,
+  panorama: PanoramaIcon,
   paypal: PaypalIcon,
   play: PlayIcon,
   plus: PlusIcon,

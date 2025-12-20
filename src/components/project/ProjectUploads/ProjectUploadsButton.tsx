@@ -64,7 +64,7 @@ export const ProjectUploadsButton = ({ headerRef }: Props) => {
         onOpenChange={setIsOpen}
       >
         <PopoverTrigger>
-          <Button aria-label="Project uploads" isIconOnly size="sm" variant="light" radius="full">
+          <Button aria-label="Project uploads" isIconOnly variant="light" radius="full">
             <Icon icon="upload" size={20} className="text-foreground" />
           </Button>
         </PopoverTrigger>

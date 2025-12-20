@@ -274,11 +274,11 @@ export const Notification = ({ notification }: Props) => {
     }
 
     if (notification.type === 'file_comment_added') {
-      return 'conversation';
+      return 'chat';
     }
 
     if (notification.type === 'file_comment_reply') {
-      return 'conversation';
+      return 'chat';
     }
 
     if (notification.type === 'file_comment_resolve') {

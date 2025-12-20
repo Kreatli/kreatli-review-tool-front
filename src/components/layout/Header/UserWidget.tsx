@@ -22,7 +22,7 @@ export const UserWidget = () => {
           src={user.avatar?.url ?? ''}
           size="sm"
           isBordered
-          className="cursor-pointer"
+          className="cursor-pointer ml-2"
           fallback={
             <div className="text-lg text-foreground-500 select-none">{user.name.slice(0, 1).toUpperCase()}</div>
           }

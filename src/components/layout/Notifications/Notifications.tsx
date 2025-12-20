@@ -97,9 +97,10 @@ export const Notifications = () => {
   return (
     <Popover isOpen={isPopoverVisible} onOpenChange={setIsPopoverVisible} placement="bottom-end">
       <PopoverTrigger>
-        <Button aria-label="Notifications" isIconOnly variant="light" radius="full" className="-mr-2">
+        <Button aria-label="Notifications" isIconOnly variant="light" radius="full">
           <Badge
             size="sm"
+            className="text-[10px]"
             color="danger"
             content={unreadNotificationsCount}
             isInvisible={unreadNotificationsCount === 0}

@@ -90,8 +90,8 @@ export const ProjectFileStatus = ({ file, projectId, statuses, className, isDisa
             {status.label}
           </DropdownItem>
         ))}
-        <DropdownItem key="add-new-status" startContent={<Icon icon="plus" size={16} className="-mx-1" />}>
-          Add status
+        <DropdownItem key="add-new-status" startContent={<Icon icon="gear" size={14} className="-ml-0.5 -mr-1" />}>
+          Edit statuses
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>

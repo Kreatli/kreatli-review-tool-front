@@ -126,7 +126,7 @@ export const ProjectContextProvider = ({
             },
             {
               label: 'Change cover image',
-              icon: 'addImage' as const,
+              icon: 'panorama' as const,
               onClick: () => {
                 setSelectedProjectId?.(project.id);
                 setIsCoverModalOpen(true);
@@ -150,7 +150,7 @@ export const ProjectContextProvider = ({
             },
             {
               label: 'Edit statuses',
-              icon: 'dot' as const,
+              icon: 'gear' as const,
               showDivider: true,
               onClick: () => {
                 setIsEditProjectStatusesModalOpen(true);

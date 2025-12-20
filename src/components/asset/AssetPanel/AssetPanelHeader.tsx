@@ -25,7 +25,7 @@ export const AssetPanelHeader = () => {
   };
 
   return (
-    <div className="hidden md:flex bg-foreground-50 p-3 px-6 gap-4 items-center justify-end h-16">
+    <div className="hidden md:flex bg-foreground-50 p-3 px-6 gap-1 items-center justify-end h-16">
       <Notifications />
       <Button isIconOnly aria-label="Toggle theme" variant="light" radius="full" onClick={toggleTheme}>
         <Icon icon={theme === 'dark' ? 'sun' : 'moon'} size={18} />

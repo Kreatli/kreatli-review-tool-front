@@ -51,6 +51,7 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
         label="Invite a new member"
         placeholder="example@mail.com"
         variant="faded"
+        autoFocus
         labelPlacement="outside"
         classNames={{ label: 'text-medium font-semibold' }}
         isInvalid={!!errors.email}

@@ -44,7 +44,7 @@ export const EditProjectStatusesModal = ({ project, isOpen, onClose }: Props) =>
   return (
     <Modal isOpen={isOpen} onClose={onClose} portalContainer={document.body}>
       <ModalContent>
-        <ModalHeader>Edit project statuses</ModalHeader>
+        <ModalHeader>Edit media statuses</ModalHeader>
         <ModalBody>
           <EditProjectStatusesForm statuses={project.assetStatuses} onSubmit={handleSubmit} />
         </ModalBody>

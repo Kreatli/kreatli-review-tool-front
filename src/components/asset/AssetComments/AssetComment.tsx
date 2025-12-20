@@ -157,12 +157,12 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
         <button
           type="button"
           disabled={project && project.status !== 'active'}
-          className={cn('text-foreground-500 text-xs flex items-center', {
+          className={cn('text-foreground-500 text-xs flex items-center gap-0.5', {
             'text-primary': comment === replyingComment,
           })}
           onClick={handleReply}
         >
-          <Icon icon="reply" size={16} />
+          <Icon icon="reply" size={14} />
           Reply
         </button>
         <div className="text-xs text-foreground-500">{formatRelativeTime(createdAt)}</div>

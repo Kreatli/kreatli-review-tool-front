@@ -1,5 +1,6 @@
 import {
   Button,
+  cn,
   Link,
   Navbar,
   NavbarBrand,
@@ -97,7 +98,7 @@ export const Header = () => {
           </NavbarContent>
         )}
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className={cn({ 'gap-1': isSignedIn })}>
         {isSignedIn && (
           <>
             <NavbarItem>
