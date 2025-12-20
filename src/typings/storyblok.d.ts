@@ -71,6 +71,7 @@ export interface PageStoryblok {
 
 export interface SectionStoryblok {
   title: string;
+  titleTag?: "" | "h1" | "h2" | "h3";
   text?: string;
   image?: AssetStoryblok;
   orientation: "" | "vertical" | "horizontal";

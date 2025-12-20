@@ -9,7 +9,9 @@ interface Props {
 }
 
 export const Section = ({ blok }: Props) => {
-  const { title, text, image, orientation, buttons, displaySocials } = blok;
+  const { title, text, image, orientation, buttons, displaySocials, titleTag = 'h2' } = blok;
+
+  const TitleTag = titleTag || 'h2';
 
   return (
     <div className="flex flex-col gap-6">
@@ -21,7 +23,7 @@ export const Section = ({ blok }: Props) => {
         {...storyblokEditable(blok)}
       >
         <div>
-          <h2 className="text-4xl font-sans font-bold mb-4">{title}</h2>
+          <TitleTag className="text-4xl font-sans font-bold mb-4">{title}</TitleTag>
           {text && <p className="text-lg text-foreground-500">{text}</p>}
           {buttons && buttons?.length > 0 && (
             <div className="flex flex-wrap gap-4 mt-4">
