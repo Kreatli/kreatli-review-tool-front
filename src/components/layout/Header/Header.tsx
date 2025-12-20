@@ -21,6 +21,7 @@ import { Icon } from '../../various/Icon';
 import { UserWidget } from './UserWidget';
 import { Notifications } from '../Notifications/Notifications';
 import { ProjectUploadsButton } from '../../project/ProjectUploads';
+import { NavigationDropdown } from './NavigationDropdown';
 
 export const Header = () => {
   const { isSignedIn } = useSession();
@@ -61,38 +62,149 @@ export const Header = () => {
         {!isSignedIn && (
           <NavbarContent className="hidden xl:flex">
             <NavbarItem>
-              <Link as={NextLink} href="/features" color="foreground">
-                Features
-              </Link>
+              <NavigationDropdown
+                triggerLabel="Platform"
+                sections={[
+                  {
+                    title: 'Core Platform',
+                    items: [
+                      {
+                        label: 'The Creative Workspace',
+                        href: '/platform/creative-workspace',
+                        description: 'Unified workspace for creative production',
+                      },
+                      {
+                        label: 'Review & Approval',
+                        href: '/platform/review-approval',
+                        description: 'Frame-accurate revisions and approvals',
+                      },
+                      {
+                        label: 'Project Orchestration',
+                        href: '/platform/project-orchestration',
+                        description: 'Centralized project management',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Storage & Integrations',
+                    items: [
+                      {
+                        label: 'Secure Asset Storage',
+                        href: '/platform/secure-asset-storage',
+                        description: 'Reliable media storage and organization',
+                      },
+                      {
+                        label: 'Integrations',
+                        href: '/platform/integrations',
+                        description: 'Google Drive and Dropbox integrations',
+                      },
+                    ],
+                  },
+                ]}
+              />
             </NavbarItem>
             <NavbarItem>
-              <Link as={NextLink} href="/cost-calculator" color="foreground">
-                Cost Calculator
-              </Link>
+              <NavigationDropdown
+                triggerLabel="Solutions"
+                sections={[
+                  {
+                    title: 'By Industry',
+                    items: [
+                      {
+                        label: 'Advertising & Content Agencies',
+                        href: '/solutions/industry/advertising-content-agencies',
+                        description: 'Solutions for creative agencies',
+                      },
+                      {
+                        label: 'In-House Marketing Teams',
+                        href: '/solutions/industry/in-house-marketing-teams',
+                        description: 'Solutions for marketing teams',
+                      },
+                      {
+                        label: 'Production & Post-Houses',
+                        href: '/solutions/industry/production-post-houses',
+                        description: 'Solutions for production houses',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'By Use-Case',
+                    items: [
+                      {
+                        label: 'Creative Production Management',
+                        href: '/solutions/use-case/creative-production-management',
+                        description: 'End-to-end production workflows',
+                      },
+                      {
+                        label: 'Remote Video Collaboration',
+                        href: '/solutions/use-case/remote-video-collaboration',
+                        description: 'Collaborate on video projects remotely',
+                      },
+                      {
+                        label: 'Centralized Feedback & Annotations',
+                        href: '/solutions/use-case/centralized-feedback-annotations',
+                        description: 'Unified feedback and review system',
+                      },
+                      {
+                        label: 'Secure Client Delivery',
+                        href: '/solutions/use-case/secure-client-delivery',
+                        description: 'Secure file sharing and delivery',
+                      },
+                    ],
+                  },
+                ]}
+              />
             </NavbarItem>
             <NavbarItem>
-              <Link as={NextLink} href="/who-we-help" color="foreground">
-                Who We Help
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link as={NextLink} href="/how-it-works" color="foreground">
-                How it Works
-              </Link>
+              <NavigationDropdown
+                triggerLabel="Resources"
+                sections={[
+                  {
+                    title: 'Support & Learning',
+                    items: [
+                      {
+                        label: 'Help Center',
+                        href: '/help',
+                        description: 'FAQs and support resources',
+                      },
+                      {
+                        label: 'Guides',
+                        href: '/learning/guides',
+                        description: 'Learning guides and tutorials',
+                      },
+                      {
+                        label: 'Blog',
+                        href: '/blog',
+                        description: 'Latest articles and updates',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Tools & Comparisons',
+                    items: [
+                      {
+                        label: 'Comparisons',
+                        href: '/comparisons',
+                        description: 'Compare Kreatli with alternatives',
+                      },
+                      {
+                        label: 'Safe Zone Checker',
+                        href: '/social-media-safe-zone-checker',
+                        description: 'Free tool for safe zone checking',
+                      },
+                      {
+                        label: 'Software Cost Calculator',
+                        href: '/cost-calculator',
+                        description: 'Calculate your tool stack savings',
+                      },
+                    ],
+                  },
+                ]}
+              />
             </NavbarItem>
             <NavbarItem>
               <Link as={NextLink} href="/pricing" color="foreground">
                 Pricing
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link as={NextLink} href="/blog" color="foreground">
-                Blog
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link as={NextLink} href="/social-media-safe-zone-checker" color="foreground">
-                Safe Zone Checker
               </Link>
             </NavbarItem>
           </NavbarContent>
@@ -138,33 +250,142 @@ export const Header = () => {
       {!isSignedIn && (
         <NavbarMenu className="pl-16">
           <NavbarMenuItem>
-            <Link as={NextLink} href="/features" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Features
+            <div className="font-semibold text-foreground-500 mb-2">Platform</div>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/platform/creative-workspace"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              The Creative Workspace
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link as={NextLink} href="/cost-calculator" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Cost Calculator
+            <Link as={NextLink} href="/platform/review-approval" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Review & Approval
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link as={NextLink} href="/who-we-help" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Who We Help
+            <Link
+              as={NextLink}
+              href="/platform/project-orchestration"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Project Orchestration
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link as={NextLink} href="/how-it-works" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              How it Works
+            <Link
+              as={NextLink}
+              href="/platform/secure-asset-storage"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Secure Asset Storage
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link as={NextLink} href="/pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Pricing
+            <Link as={NextLink} href="/platform/integrations" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Integrations
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link as={NextLink} href="/blog" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Blog
+            <div className="font-semibold text-foreground-500 mb-2 mt-4">Solutions</div>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/solutions/industry/advertising-content-agencies"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Advertising & Content Agencies
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/solutions/industry/in-house-marketing-teams"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              In-House Marketing Teams
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/solutions/industry/production-post-houses"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Production & Post-Houses
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/solutions/use-case/creative-production-management"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Creative Production Management
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/solutions/use-case/remote-video-collaboration"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Remote Video Collaboration
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/solutions/use-case/centralized-feedback-annotations"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Centralized Feedback & Annotations
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/solutions/use-case/secure-client-delivery"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Secure Client Delivery
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <div className="font-semibold text-foreground-500 mb-2 mt-4">Resources</div>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/help" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Help Center
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/comparisons" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Comparisons
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
@@ -176,6 +397,29 @@ export const Header = () => {
               onClick={closeNavbarMenu}
             >
               Safe Zone Checker
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/cost-calculator" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Cost Calculator
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/learning" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Learning
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/blog" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Blog
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <div className="font-semibold text-foreground-500 mb-2 mt-4">Other</div>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link as={NextLink} href="/pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Pricing
             </Link>
           </NavbarMenuItem>
         </NavbarMenu>
