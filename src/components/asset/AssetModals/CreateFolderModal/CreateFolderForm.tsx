@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
 import { usePostProjectIdFolder } from '../../../../services/hooks';
-import { getAssetFolderId, getProjectId, getProjectIdAssets } from '../../../../services/services';
+import { getAssetFolderId, getAssets, getProjectId, getProjectIdAssets } from '../../../../services/services';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
 interface Props {
@@ -39,6 +39,7 @@ export const CreateFolderForm = ({ projectId, parentId, onSuccess }: Props) => {
 
           queryClient.setQueryData([getProjectId.key, projectId], project);
           queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, projectId] });
+          queryClient.invalidateQueries({ queryKey: [getAssets.key] });
           onSuccess?.();
         },
         onError: (error) => {
