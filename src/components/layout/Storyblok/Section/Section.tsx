@@ -52,7 +52,7 @@ export const Section = ({ blok }: Props) => {
               shadow="none"
               height="600"
               className="w-full h-auto max-h-[500px] object-cover"
-              alt=""
+              alt={image.alt || ''}
             />
           </div>
         )}
