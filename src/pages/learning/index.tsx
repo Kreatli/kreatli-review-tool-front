@@ -46,7 +46,7 @@ export default function LearningPage() {
               <CardBody className="p-8">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="bg-foreground-100 rounded-lg p-4">
-                    <Icon icon="book" size={32} className="text-primary" />
+                    <Icon icon="file" size={32} className="text-primary" />
                   </div>
                   <div>
                     <h2 className="text-2xl font-bold font-sans">Guides</h2>
@@ -116,4 +116,3 @@ export default function LearningPage() {
     </>
   );
 }
-

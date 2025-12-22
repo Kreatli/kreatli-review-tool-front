@@ -3,9 +3,11 @@ import { Icon } from '../../various/Icon';
 import { ReviewToolComment } from './ReviewToolComment';
 import { useState } from 'react';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { useSession } from '../../../hooks/useSession';
 
 export const CompareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
+  const { isSignedIn } = useSession();
 
   const [activeFile, setActiveFile] = useState<'left' | 'right'>('left');
   const [comment, setComment] = useState('');
@@ -19,7 +21,9 @@ export const CompareFeaturePreview = () => {
   const handleSendComment = () => {
     if (activeFile === 'left') {
       if (leftNewComment) {
-        openSignUpModal();
+        if (!isSignedIn) {
+          openSignUpModal();
+        }
         return;
       }
 
@@ -31,7 +35,9 @@ export const CompareFeaturePreview = () => {
       setComment('');
     } else {
       if (rightNewComment) {
-        openSignUpModal();
+        if (!isSignedIn) {
+          openSignUpModal();
+        }
         return;
       }
 

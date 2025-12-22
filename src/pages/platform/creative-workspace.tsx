@@ -10,6 +10,7 @@ import NextLink from 'next/link';
 import { Icon } from '../../components/various/Icon';
 import { HomeDashboardFeaturePreview } from '../../components/home/Features/HomeDashboardFeaturePreview';
 import { ChatFeaturePreview } from '../../components/home/Features/ChatFeaturePreview';
+import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 
 export default function CreativeWorkspacePage() {
   useSession();
@@ -33,9 +34,7 @@ export default function CreativeWorkspacePage() {
       {/* Hero Section */}
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
-            The Creative Workspace: Everything in One Place
-          </h1>
+          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">One Place to Rule Them All</h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
             A unified workspace designed specifically for creative production teams. Project-tied conversations,
             asset-linked comments, and centralized dashboards keep your entire creative workflow organized and
@@ -215,7 +214,7 @@ export default function CreativeWorkspacePage() {
         </div>
       </section>
       <FooterSection hideCta={true} />
+      <SignUpModal />
     </>
   );
 }
-

@@ -11,6 +11,7 @@ import { Icon } from '../../components/various/Icon';
 import { ReviewToolPreview } from '../../components/home/Features/ReviewToolPreview';
 import { CompareFeaturePreview } from '../../components/home/Features/CompareFeaturePreview';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
+import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 
 export default function ReviewApprovalPage() {
   useSession();
@@ -34,9 +35,7 @@ export default function ReviewApprovalPage() {
       {/* Hero Section */}
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
-            Review & Approval: Frame-Accurate Media Review
-          </h1>
+          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Frame-Accurate Media Review</h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
             Pin comments to exact frames and timestamps in your review and approval workflow. Compare versions
             side-by-side and share files securely with anyone - no more "which clip?" or lost feedback.
@@ -120,8 +119,8 @@ export default function ReviewApprovalPage() {
                   <h3 className="text-lg font-semibold font-sans">Frame-Accurate Comments</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Pin comments to exact frames in videos or specific areas in images. Eliminate "which clip?"
-                  confusion forever.
+                  Pin comments to exact frames in videos or specific areas in images. Eliminate "which clip?" confusion
+                  forever.
                 </p>
               </CardBody>
             </Card>
@@ -229,7 +228,7 @@ export default function ReviewApprovalPage() {
         </div>
       </section>
       <FooterSection hideCta={true} />
+      <SignUpModal />
     </>
   );
 }
-

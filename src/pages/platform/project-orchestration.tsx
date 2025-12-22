@@ -10,6 +10,7 @@ import NextLink from 'next/link';
 import { Icon } from '../../components/various/Icon';
 import { ProjectFeaturePreview } from '../../components/home/Features/ProjectFeaturePreview';
 import { HomeDashboardFeaturePreview } from '../../components/home/Features/HomeDashboardFeaturePreview';
+import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 
 export default function ProjectOrchestrationPage() {
   useSession();
@@ -22,7 +23,10 @@ export default function ProjectOrchestrationPage() {
           name="description"
           content="Kreatli's Project Orchestration provides centralized project management, status tracking, and team coordination for creative production workflows. Manage all your projects from one dashboard."
         />
-        <meta property="og:title" content="Kreatli | Project Orchestration – Centralized Creative Production Management" />
+        <meta
+          property="og:title"
+          content="Kreatli | Project Orchestration – Centralized Creative Production Management"
+        />
         <meta
           property="og:description"
           content="Orchestrate your creative projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined creative production."
@@ -34,7 +38,7 @@ export default function ProjectOrchestrationPage() {
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
-            Project Orchestration: Centralized Creative Production Management
+            Centralized Creative Production Management
           </h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
             Assign files, track deliverables and share heavy media securely - creative production management within the
@@ -216,7 +220,7 @@ export default function ProjectOrchestrationPage() {
         </div>
       </section>
       <FooterSection hideCta={true} />
+      <SignUpModal />
     </>
   );
 }
-

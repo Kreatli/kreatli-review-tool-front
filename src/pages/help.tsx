@@ -1,11 +1,11 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import { Header } from '../components/layout/Header';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { useSession } from '../hooks/useSession';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { Accordion, AccordionItem, Input, Card, CardBody } from '@heroui/react';
+import { Accordion, AccordionItem, Input, Card, CardBody, Tabs, Tab, Chip, Button } from '@heroui/react';
 import { Icon } from '../components/various/Icon';
 
 interface FAQItem {
@@ -13,6 +13,12 @@ interface FAQItem {
   question: string;
   answer: string;
   category: string;
+}
+
+interface CategoryConfig {
+  name: string;
+  icon: string;
+  color: string;
 }
 
 const faqs: FAQItem[] = [
@@ -152,22 +158,68 @@ const faqs: FAQItem[] = [
 
 const categories = ['Features', 'Pricing', 'Who We Help', 'Getting Started', 'Integrations', 'Security'];
 
+const categoryConfig: Record<string, CategoryConfig> = {
+  Features: { name: 'Features', icon: 'star', color: 'primary' },
+  Pricing: { name: 'Pricing', icon: 'dollar', color: 'success' },
+  'Who We Help': { name: 'Who We Help', icon: 'group', color: 'warning' },
+  'Getting Started': { name: 'Getting Started', icon: 'play', color: 'primary' },
+  Integrations: { name: 'Integrations', icon: 'link', color: 'secondary' },
+  Security: { name: 'Security', icon: 'shield', color: 'danger' },
+};
+
+// Helper function to get color classes
+const getColorClasses = (color: string) => {
+  const colorMap: Record<string, { bg: string; text: string }> = {
+    primary: { bg: 'bg-primary/10', text: 'text-primary' },
+    success: { bg: 'bg-success/10', text: 'text-success' },
+    warning: { bg: 'bg-warning/10', text: 'text-warning' },
+    secondary: { bg: 'bg-secondary/10', text: 'text-secondary' },
+    danger: { bg: 'bg-danger/10', text: 'text-danger' },
+    default: { bg: 'bg-foreground-100', text: 'text-foreground-600' },
+  };
+  return colorMap[color] || colorMap.default;
+};
+
+// Popular/featured FAQs for quick access
+const popularFaqKeys = ['getting-started', 'free-trial', 'pricing-structure', 'frame-accurate', 'review-workflow'];
+
 export default function HelpPage() {
   useSession();
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  const filteredFaqs = faqs.filter((faq) => {
-    if (!searchQuery) return true;
-    const query = searchQuery.toLowerCase();
-    return (
-      faq.question.toLowerCase().includes(query) || faq.answer.toLowerCase().includes(query) || faq.category.toLowerCase().includes(query)
-    );
-  });
+  const filteredFaqs = useMemo(() => {
+    return faqs.filter((faq) => {
+      if (!searchQuery) return true;
+      const query = searchQuery.toLowerCase();
+      return (
+        faq.question.toLowerCase().includes(query) ||
+        faq.answer.toLowerCase().includes(query) ||
+        faq.category.toLowerCase().includes(query)
+      );
+    });
+  }, [searchQuery]);
 
-  const faqsByCategory = categories.map((category) => ({
-    category,
-    faqs: filteredFaqs.filter((faq) => faq.category === category),
-  }));
+  const faqsByCategory = useMemo(() => {
+    const categoryMap = categories.map((category) => ({
+      category,
+      faqs: filteredFaqs.filter((faq) => faq.category === category),
+      config: categoryConfig[category],
+    }));
+
+    // Add "All" category
+    return [
+      {
+        category: 'all',
+        faqs: filteredFaqs,
+        config: { name: 'All', icon: 'list', color: 'default' },
+      },
+      ...categoryMap,
+    ];
+  }, [filteredFaqs]);
+
+  const displayedCategory = faqsByCategory.find((cat) => cat.category === selectedCategory) || faqsByCategory[0];
+  const popularFaqs = filteredFaqs.filter((faq) => popularFaqKeys.includes(faq.key));
 
   return (
     <>
@@ -188,52 +240,255 @@ export default function HelpPage() {
       {/* Hero Section */}
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Help Center</h1>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <Icon icon="helpCircle" size={32} className="text-primary" />
+            </div>
+            <h1 className="text-2xl sm:text-4xl font-bold font-sans">Help Center</h1>
+          </div>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
             Find answers to frequently asked questions about Kreatli's creative production platform, features, pricing,
             and more.
           </p>
-          <div className="max-w-2xl mx-auto mt-6">
+          <div className="max-w-2xl mx-auto mt-6 w-full">
             <Input
               placeholder="Search for answers..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               startContent={<Icon icon="search" size={20} className="text-foreground-500" />}
               size="lg"
+              variant="bordered"
               classNames={{
                 input: 'text-base',
+                inputWrapper: 'bg-content1 border-foreground-300 shadow-sm hover:border-foreground-400 focus-within:border-primary',
               }}
             />
+            {searchQuery && (
+              <div className="mt-2 text-sm text-foreground-500">
+                Found {filteredFaqs.length} {filteredFaqs.length === 1 ? 'result' : 'results'}
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* FAQ Sections by Category */}
+      {/* Popular Questions Section */}
+      {!searchQuery && popularFaqs.length > 0 && (
+        <section className="relative py-12 px-6 backdrop-blur-lg overflow-hidden border-t border-foreground-200">
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold font-sans mb-2">Popular Questions</h2>
+              <p className="text-foreground-500">Quick answers to the most common questions</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {popularFaqs.slice(0, 4).map((faq) => (
+                <Card
+                  key={faq.key}
+                  isPressable
+                  className="hover:bg-foreground-100 transition-colors cursor-pointer"
+                  onPress={() => {
+                    setSelectedCategory(faq.category);
+                    setSearchQuery('');
+                    // Scroll to the FAQ after a brief delay
+                    setTimeout(() => {
+                      const element = document.getElementById(`faq-${faq.key}`);
+                      element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      // Open the accordion item
+                      const accordionButton = element?.querySelector('button');
+                      accordionButton?.click();
+                    }, 100);
+                  }}
+                >
+                  <CardBody className="p-5">
+                    <div className="flex items-start gap-4">
+                      <div className="bg-primary/10 p-2.5 rounded-lg flex-shrink-0">
+                        <Icon icon="helpCircle" size={24} className="text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-lg leading-relaxed mb-3 line-clamp-2">{faq.question}</h3>
+                        <Chip size="sm" variant="flat" className="mt-2">
+                          {faq.category}
+                        </Chip>
+                      </div>
+                    </div>
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Category Navigation & FAQ Sections */}
       <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          {faqsByCategory.map(({ category, faqs: categoryFaqs }) => {
-            if (categoryFaqs.length === 0) return null;
+        <div className="max-w-6xl mx-auto relative z-10">
+          {/* Category Tabs */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold font-sans">Browse by Category</h2>
+              {selectedCategory !== 'all' && (
+                <Button
+                  size="sm"
+                  variant="light"
+                  onPress={() => setSelectedCategory('all')}
+                  startContent={<Icon icon="cross" size={16} />}
+                >
+                  Clear filter
+                </Button>
+              )}
+            </div>
+            <Tabs
+              selectedKey={selectedCategory}
+              onSelectionChange={(key) => setSelectedCategory(key as string)}
+              classNames={{
+                tabList: 'gap-2 overflow-x-auto',
+                tab: 'min-w-fit',
+              }}
+            >
+              {faqsByCategory.map(({ category, config, faqs: categoryFaqs }) => {
+                if (category === 'all' && searchQuery) return null; // Hide "All" when searching
+                return (
+                  <Tab
+                    key={category}
+                    title={
+                      <div className="flex items-center gap-2">
+                        <Icon icon={config.icon as any} size={18} />
+                        <span>{config.name}</span>
+                        {category !== 'all' && (
+                          <Chip size="sm" variant="flat" className="ml-1">
+                            {categoryFaqs.length}
+                          </Chip>
+                        )}
+                      </div>
+                    }
+                  />
+                );
+              })}
+            </Tabs>
+          </div>
 
-            return (
-              <div key={category} className="mb-12">
-                <h2 className="text-2xl font-bold font-sans mb-6">{category}</h2>
-                <Accordion variant="splitted">
-                  {categoryFaqs.map((faq) => (
-                    <AccordionItem key={faq.key} title={<span className="font-semibold text-base">{faq.question}</span>}>
-                      <div className="text-foreground-500 space-y-3 whitespace-pre-wrap">{faq.answer}</div>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </div>
-            );
-          })}
-
-          {filteredFaqs.length === 0 && (
+          {/* FAQ Content */}
+          {displayedCategory.faqs.length > 0 ? (
+            <div>
+              {selectedCategory === 'all' && !searchQuery ? (
+                // Show all categories when "All" is selected
+                faqsByCategory
+                  .filter((cat) => cat.category !== 'all' && cat.faqs.length > 0)
+                  .map(({ category, faqs: categoryFaqs, config }) => {
+                    const colors = getColorClasses(config.color);
+                    return (
+                      <div key={category} id={`category-${category}`} className="mb-12 scroll-mt-24">
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className={`${colors.bg} p-2 rounded-lg`}>
+                            <Icon icon={config.icon as any} size={24} className={colors.text} />
+                          </div>
+                          <h3 className="text-xl sm:text-2xl font-bold font-sans">{config.name}</h3>
+                          <Chip size="sm" variant="flat" className="ml-2">
+                            {categoryFaqs.length}
+                          </Chip>
+                        </div>
+                      <Accordion
+                        variant="splitted"
+                        className="gap-3"
+                        itemClasses={{
+                          base: 'py-2',
+                          title: 'text-lg',
+                          trigger: 'py-4 px-4',
+                          content: 'px-4 pb-4',
+                        }}
+                      >
+                        {categoryFaqs.map((faq) => (
+                          <AccordionItem
+                            key={faq.key}
+                            id={`faq-${faq.key}`}
+                            title={
+                              <span className="font-semibold text-lg leading-relaxed text-foreground-900 dark:text-foreground-50">
+                                {faq.question}
+                              </span>
+                            }
+                          >
+                            <div className="text-foreground-500 space-y-3 whitespace-pre-wrap leading-relaxed">
+                              {faq.answer}
+                            </div>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    </div>
+                    );
+                  })
+              ) : (
+                // Show filtered results
+                <div>
+                  {selectedCategory !== 'all' && (() => {
+                    const colors = getColorClasses(displayedCategory.config.color);
+                    return (
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className={`${colors.bg} p-2 rounded-lg`}>
+                          <Icon
+                            icon={displayedCategory.config.icon as any}
+                            size={24}
+                            className={colors.text}
+                          />
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-bold font-sans">{displayedCategory.config.name}</h3>
+                        <Chip size="sm" variant="flat" className="ml-2">
+                          {displayedCategory.faqs.length}
+                        </Chip>
+                      </div>
+                    );
+                  })()}
+                  <Accordion
+                    variant="splitted"
+                    className="gap-3"
+                    itemClasses={{
+                      base: 'py-2',
+                      title: 'text-lg',
+                      trigger: 'py-4 px-4',
+                      content: 'px-4 pb-4',
+                    }}
+                  >
+                    {displayedCategory.faqs.map((faq) => (
+                      <AccordionItem
+                        key={faq.key}
+                        id={`faq-${faq.key}`}
+                        title={
+                          <span className="font-semibold text-lg leading-relaxed text-foreground-900 dark:text-foreground-50">
+                            {faq.question}
+                          </span>
+                        }
+                      >
+                        <div className="text-foreground-500 space-y-3 whitespace-pre-wrap leading-relaxed">
+                          {faq.answer}
+                        </div>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              )}
+            </div>
+          ) : (
             <Card>
-              <CardBody className="p-8 text-center">
-                <Icon icon="search" size={48} className="text-foreground-400 mx-auto mb-4" />
+              <CardBody className="p-12 text-center">
+                <div className="bg-foreground-100 rounded-full p-4 w-fit mx-auto mb-4">
+                  <Icon icon="search" size={48} className="text-foreground-400" />
+                </div>
                 <h3 className="text-xl font-bold mb-2">No results found</h3>
-                <p className="text-foreground-500">Try adjusting your search query or browse by category above.</p>
+                <p className="text-foreground-500 mb-4">
+                  {searchQuery
+                    ? "We couldn't find any FAQs matching your search. Try different keywords or browse by category."
+                    : `No FAQs available in the ${displayedCategory.config.name} category.`}
+                </p>
+                {searchQuery && (
+                  <Button
+                    variant="flat"
+                    onPress={() => {
+                      setSearchQuery('');
+                      setSelectedCategory('all');
+                    }}
+                  >
+                    Clear search and show all
+                  </Button>
+                )}
               </CardBody>
             </Card>
           )}
@@ -241,16 +496,53 @@ export default function HelpPage() {
       </section>
 
       {/* Contact Support Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Still Have Questions?</h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-            <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary">
-              support@kreatli.com
-            </a>{' '}
-            for more detailed answers.
-          </p>
+      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden border-t border-foreground-200">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <Card className="bg-content1">
+            <CardBody className="p-8 sm:p-12">
+              <div className="text-center flex flex-col gap-6">
+                <div className="bg-primary/10 rounded-full p-4 w-fit mx-auto">
+                  <Icon icon="mail" size={32} className="text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Still Have Questions?</h2>
+                  <p className="text-lg text-foreground-500 max-w-2xl mx-auto mb-6">
+                    If you didn't find the answer you were looking for, our support team is here to help. Reach out to
+                    us and we'll get back to you as soon as possible.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <Button
+                    as="a"
+                    href="mailto:support@kreatli.com"
+                    size="lg"
+                    className="bg-foreground text-content1"
+                    startContent={<Icon icon="mail" size={20} />}
+                  >
+                    Email Support
+                  </Button>
+                  <Button
+                    as="a"
+                    href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                    target="_blank"
+                    size="lg"
+                    variant="bordered"
+                    startContent={<Icon icon="calendar" size={20} />}
+                  >
+                    Book a Demo
+                  </Button>
+                </div>
+                <div className="mt-4 pt-6 border-t border-foreground-200">
+                  <p className="text-sm text-foreground-500">
+                    You can also reach us at{' '}
+                    <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-medium">
+                      support@kreatli.com
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </CardBody>
+          </Card>
         </div>
       </section>
       <FooterSection hideCta={true} />

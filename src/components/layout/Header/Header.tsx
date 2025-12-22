@@ -111,19 +111,19 @@ export const Header = () => {
                     title: 'By Industry',
                     items: [
                       {
-                        label: 'Advertising & Content Agencies',
-                        href: '/solutions/industry/advertising-content-agencies',
+                        label: 'Advertising & Marketing Agencies',
+                        href: '/solutions/industry/advertising-marketing-agencies',
                         description: 'Solutions for creative agencies',
                       },
                       {
-                        label: 'In-House Marketing Teams',
-                        href: '/solutions/industry/in-house-marketing-teams',
-                        description: 'Solutions for marketing teams',
+                        label: 'Video Production & Animation Studios',
+                        href: '/solutions/industry/video-production-animation-studios',
+                        description: 'Solutions for production teams',
                       },
                       {
-                        label: 'Production & Post-Houses',
-                        href: '/solutions/industry/production-post-houses',
-                        description: 'Solutions for production houses',
+                        label: 'In-House Creative & Content Teams',
+                        href: '/solutions/industry/in-house-creative-content-teams',
+                        description: 'Solutions for in-house teams',
                       },
                     ],
                   },
@@ -136,19 +136,14 @@ export const Header = () => {
                         description: 'End-to-end production workflows',
                       },
                       {
-                        label: 'Remote Video Collaboration',
-                        href: '/solutions/use-case/remote-video-collaboration',
-                        description: 'Collaborate on video projects remotely',
+                        label: 'Video Project Management & Collaboration',
+                        href: '/solutions/use-case/video-project-management-collaboration',
+                        description: 'Collaborate on video projects',
                       },
                       {
-                        label: 'Centralized Feedback & Annotations',
-                        href: '/solutions/use-case/centralized-feedback-annotations',
-                        description: 'Unified feedback and review system',
-                      },
-                      {
-                        label: 'Secure Client Delivery',
-                        href: '/solutions/use-case/secure-client-delivery',
-                        description: 'Secure file sharing and delivery',
+                        label: 'Media Asset Management & File Sharing',
+                        href: '/solutions/use-case/media-asset-management-file-sharing',
+                        description: 'Secure file sharing and organization',
                       },
                     ],
                   },
@@ -249,9 +244,7 @@ export const Header = () => {
       </NavbarContent>
       {!isSignedIn && (
         <NavbarMenu className="pl-16">
-          <NavbarMenuItem>
-            <div className="font-semibold text-foreground-500 mb-2">Platform</div>
-          </NavbarMenuItem>
+          <div className="font-semibold text-foreground-500 mb-2 px-2">Platform</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -295,42 +288,42 @@ export const Header = () => {
               Integrations
             </Link>
           </NavbarMenuItem>
-          <NavbarMenuItem>
-            <div className="font-semibold text-foreground-500 mb-2 mt-4">Solutions</div>
-          </NavbarMenuItem>
+          <div className="font-semibold text-foreground-500 mb-2 mt-4 px-2">Solutions</div>
+          <div className="text-xs text-foreground-400 mb-1 px-2">By Industry</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
-              href="/solutions/industry/advertising-content-agencies"
+              href="/solutions/industry/advertising-marketing-agencies"
               size="lg"
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              Advertising & Content Agencies
+              Advertising & Marketing Agencies
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link
               as={NextLink}
-              href="/solutions/industry/in-house-marketing-teams"
+              href="/solutions/industry/video-production-animation-studios"
               size="lg"
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              In-House Marketing Teams
+              Video Production & Animation Studios
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link
               as={NextLink}
-              href="/solutions/industry/production-post-houses"
+              href="/solutions/industry/in-house-creative-content-teams"
               size="lg"
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              Production & Post-Houses
+              In-House Creative & Content Teams
             </Link>
           </NavbarMenuItem>
+          <div className="text-xs text-foreground-400 mb-1 mt-2 px-2">By Use-Case</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -345,39 +338,26 @@ export const Header = () => {
           <NavbarMenuItem>
             <Link
               as={NextLink}
-              href="/solutions/use-case/remote-video-collaboration"
+              href="/solutions/use-case/video-project-management-collaboration"
               size="lg"
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              Remote Video Collaboration
+              Video Project Management & Collaboration
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link
               as={NextLink}
-              href="/solutions/use-case/centralized-feedback-annotations"
+              href="/solutions/use-case/media-asset-management-file-sharing"
               size="lg"
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              Centralized Feedback & Annotations
+              Media Asset Management & File Sharing
             </Link>
           </NavbarMenuItem>
-          <NavbarMenuItem>
-            <Link
-              as={NextLink}
-              href="/solutions/use-case/secure-client-delivery"
-              size="lg"
-              color="foreground"
-              onClick={closeNavbarMenu}
-            >
-              Secure Client Delivery
-            </Link>
-          </NavbarMenuItem>
-          <NavbarMenuItem>
-            <div className="font-semibold text-foreground-500 mb-2 mt-4">Resources</div>
-          </NavbarMenuItem>
+          <div className="font-semibold text-foreground-500 mb-2 mt-4 px-2">Resources</div>
           <NavbarMenuItem>
             <Link as={NextLink} href="/help" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Help Center
@@ -414,9 +394,7 @@ export const Header = () => {
               Blog
             </Link>
           </NavbarMenuItem>
-          <NavbarMenuItem>
-            <div className="font-semibold text-foreground-500 mb-2 mt-4">Other</div>
-          </NavbarMenuItem>
+          <div className="font-semibold text-foreground-500 mb-2 mt-4 px-2">Other</div>
           <NavbarMenuItem>
             <Link as={NextLink} href="/pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Pricing

@@ -6,16 +6,20 @@ import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibilit
 import { useState } from 'react';
 import { getIsTouchScreen } from '../../../utils/getIsTouchScreen';
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import { useSession } from '../../../hooks/useSession';
 
 export const ProjectFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
+  const { isSignedIn } = useSession();
 
   const isTouchScreen = useIsTouchScreen();
 
   const [shouldHide, setShouldHide] = useState(false);
 
   const handleClick = () => {
-    openSignUpModal();
+    if (!isSignedIn) {
+      openSignUpModal();
+    }
     setShouldHide(true);
   };
 

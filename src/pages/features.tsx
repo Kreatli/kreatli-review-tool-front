@@ -22,6 +22,7 @@ import {
 } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../components/various/Icon';
+import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 
 const additionalFeatures = [
   {
@@ -795,6 +796,7 @@ export default function FeaturesPage() {
         </div>
       </section>
       <FooterSection hideCta={true} />
+      <SignUpModal />
     </>
   );
 }

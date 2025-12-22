@@ -3,9 +3,11 @@ import { Icon } from '../../various/Icon';
 import { useState } from 'react';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
+import { useSession } from '../../../hooks/useSession';
 
 export const ShareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
+  const { isSignedIn } = useSession();
   const [emails, setEmails] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const [linkCopied, setLinkCopied] = useState(false);
@@ -48,7 +50,9 @@ export const ShareFeaturePreview = () => {
       return;
     }
 
-    openSignUpModal();
+    if (!isSignedIn) {
+      openSignUpModal();
+    }
   };
 
   return (
@@ -76,7 +80,11 @@ export const ShareFeaturePreview = () => {
                 variant="solid"
                 color="default"
                 className="bg-foreground text-content1"
-                onClick={openSignUpModal}
+                onClick={() => {
+                  if (!isSignedIn) {
+                    openSignUpModal();
+                  }
+                }}
               >
                 <Icon icon="share" size={18} />
                 Share

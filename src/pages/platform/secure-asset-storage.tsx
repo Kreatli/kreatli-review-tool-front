@@ -8,7 +8,9 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { Card, CardBody, Button } from '@heroui/react';
 import NextLink from 'next/link';
 import { Icon } from '../../components/various/Icon';
+import { StorageFeaturePreview } from '../../components/home/Features/StorageFeaturePreview';
 import { ProjectFeaturePreview } from '../../components/home/Features/ProjectFeaturePreview';
+import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 
 export default function SecureAssetStoragePage() {
   useSession();
@@ -21,7 +23,10 @@ export default function SecureAssetStoragePage() {
           name="description"
           content="Kreatli provides secure, reliable media storage with enterprise-grade security, smart file organization, and version control for creative production teams. Protect your creative assets."
         />
-        <meta property="og:title" content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams" />
+        <meta
+          property="og:title"
+          content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams"
+        />
         <meta
           property="og:description"
           content="Secure your creative assets with enterprise-grade storage, smart file organization, and version control. Built for creative production teams."
@@ -33,11 +38,11 @@ export default function SecureAssetStoragePage() {
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
-            Secure Asset Storage: Reliable Media Storage for Creative Teams
+            Reliable Media Storage for Creative Teams
           </h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Project Management Meets Reliable Media Storage. Assign files, track deliverables and share heavy media
-            securely - creative production management within the same workspace with enterprise-grade security.
+            Assign files, track deliverables and share heavy media securely - creative production management within the
+            same workspace with enterprise-grade security.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -56,7 +61,21 @@ export default function SecureAssetStoragePage() {
         </div>
       </section>
 
-      {/* Storage Preview Section */}
+      {/* Secure Storage Preview Section */}
+      <section className="relative py-16 px-6 overflow-hidden">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Secure File Upload and Encrypted Storage</h2>
+            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+              Upload large media files with real-time progress tracking. All files are encrypted at rest with
+              enterprise-grade security in a workspace designed for creative production teams.
+            </p>
+          </div>
+          <StorageFeaturePreview />
+        </div>
+      </section>
+
+      {/* Project Management Preview Section */}
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-8">
@@ -64,8 +83,8 @@ export default function SecureAssetStoragePage() {
               Project Management Meets Reliable Media Storage
             </h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Assign files, track deliverables and share heavy media securely - creative production management within
-              the same workspace.
+              Organize files by project, assign team members, track file status, and manage deliverables all in one
+              workspace with built-in project management tools.
             </p>
           </div>
           <ProjectFeaturePreview />
@@ -167,8 +186,8 @@ export default function SecureAssetStoragePage() {
                   <h3 className="text-lg font-semibold font-sans">Reliable Storage</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Dependable media storage infrastructure designed for creative production workflows. Your assets are safe
-                  and accessible.
+                  Dependable media storage infrastructure designed for creative production workflows. Your assets are
+                  safe and accessible.
                 </p>
               </CardBody>
             </Card>
@@ -201,7 +220,7 @@ export default function SecureAssetStoragePage() {
         </div>
       </section>
       <FooterSection hideCta={true} />
+      <SignUpModal />
     </>
   );
 }
-

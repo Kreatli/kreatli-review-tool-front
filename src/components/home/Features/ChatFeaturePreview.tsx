@@ -4,17 +4,20 @@ import { ChatFeatureMessage } from './ChatFeatureMessage';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { useSession } from '../../../hooks/useSession';
 
 export const ChatFeaturePreview = () => {
   const [message, setMessage] = useState('');
   const [newMessage, setNewMessage] = useState('');
 
   const { openSignUpModal } = useSignUpModalVisibility();
+  const { isSignedIn } = useSession();
 
   const handleSendMessage = () => {
     if (newMessage) {
-      openSignUpModal();
-
+      if (!isSignedIn) {
+        openSignUpModal();
+      }
       return;
     }
 
@@ -33,7 +36,11 @@ export const ChatFeaturePreview = () => {
           <button
             type="button"
             className="bg-foreground-100 size-10 flex items-center outline-2 outline-foreground-200 outline outline-offset-2 justify-center rounded-full"
-            onClick={openSignUpModal}
+            onClick={() => {
+              if (!isSignedIn) {
+                openSignUpModal();
+              }
+            }}
           >
             <Icon icon="slides" size={20} className="text-foreground-500" />
           </button>
@@ -41,15 +48,32 @@ export const ChatFeaturePreview = () => {
             as="button"
             type="button"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-            onClick={openSignUpModal}
+            onClick={() => {
+              if (!isSignedIn) {
+                openSignUpModal();
+              }
+            }}
           />
           <Avatar
             as="button"
             type="button"
             src="https://i.pravatar.cc/150?u=a042581f4e29026024f"
-            onClick={openSignUpModal}
+            onClick={() => {
+              if (!isSignedIn) {
+                openSignUpModal();
+              }
+            }}
           />
-          <Button variant="faded" radius="full" isIconOnly onClick={openSignUpModal}>
+          <Button
+            variant="faded"
+            radius="full"
+            isIconOnly
+            onClick={() => {
+              if (!isSignedIn) {
+                openSignUpModal();
+              }
+            }}
+          >
             <Icon icon="plus" size={20} />
           </Button>
         </div>
@@ -62,7 +86,17 @@ export const ChatFeaturePreview = () => {
               <div className="text-medium sm:text-large font-semibold">Project chat</div>
             </div>
             <div className="flex items-center gap-2">
-              <Button size="sm" variant="light" radius="full" isIconOnly onClick={openSignUpModal}>
+              <Button
+                size="sm"
+                variant="light"
+                radius="full"
+                isIconOnly
+                onClick={() => {
+                  if (!isSignedIn) {
+                    openSignUpModal();
+                  }
+                }}
+              >
                 <Icon icon="search" size={20} />
               </Button>
               <AvatarGroup size="sm" max={2} total={6}>

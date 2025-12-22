@@ -65,9 +65,9 @@ export const ProjectFeatureFile = ({
           </div>
         </div>
         {assignee && (
-          <div className="text-sm text-foreground-500">
+          <div className="text-sm text-foreground-500" onClick={(e) => e.stopPropagation()}>
             <Dropdown placement="bottom-end">
-              <DropdownTrigger onClick={onClick}>
+              <DropdownTrigger>
                 <Avatar
                   size="sm"
                   isBordered
@@ -88,27 +88,29 @@ export const ProjectFeatureFile = ({
             </Dropdown>
           </div>
         )}
-        <Dropdown placement="bottom-start">
-          <DropdownTrigger onClick={onClick}>
-            <Chip
-              size="sm"
-              variant="dot"
-              color={statuses[status].color}
-              className="cursor-pointer bg-foreground-50 absolute top-2 left-2"
+        <div onClick={(e) => e.stopPropagation()}>
+          <Dropdown placement="bottom-start">
+            <DropdownTrigger>
+              <Chip
+                size="sm"
+                variant="dot"
+                color={statuses[status].color}
+                className="cursor-pointer bg-foreground-50 absolute top-2 left-2"
+              >
+                {statuses[status].label}
+              </Chip>
+            </DropdownTrigger>
+            <DropdownMenu
+              selectedKeys={[status]}
+              selectionMode="single"
+              disallowEmptySelection
+              onSelectionChange={(keys) => setStatus(keys.currentKey as keyof typeof statuses)}
             >
-              {statuses[status].label}
-            </Chip>
-          </DropdownTrigger>
-          <DropdownMenu
-            selectedKeys={[status]}
-            selectionMode="single"
-            disallowEmptySelection
-            onSelectionChange={(keys) => setStatus(keys.currentKey as keyof typeof statuses)}
-          >
-            <DropdownItem key="changes-required">Changes required</DropdownItem>
-            <DropdownItem key="approved">Approved</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+              <DropdownItem key="changes-required">Changes required</DropdownItem>
+              <DropdownItem key="approved">Approved</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
       </div>
     </div>
   );
