@@ -22,6 +22,14 @@ export const ProjectArchivedAssets = () => {
     );
   }, [data?.assets]);
 
+  const files = React.useMemo(() => {
+    return data?.files ?? [];
+  }, [data]);
+
+  const folders = React.useMemo(() => {
+    return data?.folders ?? [];
+  }, [data]);
+
   const path = [
     {
       name: project.name,
@@ -41,7 +49,7 @@ export const ProjectArchivedAssets = () => {
         path={path}
         coverUrl={project.cover?.url}
       />
-      <ProjectArchivedAssetsList assets={data?.assets ?? []} isError={isError} isPending={isPending} />
+      <ProjectArchivedAssetsList folders={folders} files={files} isError={isError} isPending={isPending} />
     </div>
   );
 };

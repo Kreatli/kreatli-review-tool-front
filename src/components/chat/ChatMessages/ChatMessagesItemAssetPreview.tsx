@@ -1,4 +1,4 @@
-import { Chip, cn, Image } from '@heroui/react';
+import { Chip, cn } from '@heroui/react';
 import { AssetDto } from '../../../services/types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -19,7 +19,6 @@ export const ChatMessagesItemAssetPreview = ({ asset }: Props) => {
         href={`/project/${router.query.id}/assets/${asset.id}`}
         aria-label="Open in review tool"
         className="absolute inset-0 transition-[background,opacity] rounded-medium opacity-0 hover:opacity-100 hover:bg-background/20"
-        target="_blank"
       />
       <img src={imageUrl} className="h-auto max-h-full" />
       <Chip

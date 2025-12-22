@@ -12,18 +12,23 @@ import { ProjectFile } from '../ProjectFile';
 import { ProjectFolder } from '../ProjectFolder';
 
 interface Props {
-  assets: (ProjectFolderDto | ProjectFileDto)[];
+  folders: ProjectFolderDto[];
+  files: ProjectFileDto[];
   isError: boolean;
   isPending: boolean;
 }
 
-export const ProjectArchivedAssetsList = ({ assets, isError, isPending }: Props) => {
+export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }: Props) => {
   const { project } = useProjectContext();
   const [selectedAssetIds, setSelectedAssetIds] = React.useState<Set<string>>(new Set([]));
   const [selectedAssetId, setSelectedAssetId] = React.useState<string | null>(null);
 
   const [isRestoreModalOpen, setIsRestoreModalOpen] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
+
+  const assets = React.useMemo(() => {
+    return [...folders, ...files];
+  }, [folders, files]);
 
   const selectedAsset = React.useMemo(() => {
     return assets.find((asset) => asset.id === selectedAssetId);
@@ -107,26 +112,27 @@ export const ProjectArchivedAssetsList = ({ assets, isError, isPending }: Props)
         setSelectedAssetId={setSelectedAssetId}
         project={project}
       >
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8">
-          {assets.map((asset) =>
-            asset.type === 'folder' ? (
-              <ProjectFolder
-                key={asset.id}
-                isSelected={selectedAssetIds.has(asset.id)}
-                isDisabled
-                folder={asset}
-                onSelectionChange={() => handleSelectionChange(asset.id)}
-              />
-            ) : (
-              <ProjectFile
-                key={asset.id}
-                isSelected={selectedAssetIds.has(asset.id)}
-                isDisabled
-                file={asset}
-                onSelectionChange={() => handleSelectionChange(asset.id)}
-              />
-            ),
-          )}
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 mb-6">
+          {folders.map((folder) => (
+            <ProjectFolder
+              key={folder.id}
+              isSelected={selectedAssetIds.has(folder.id)}
+              isDisabled
+              folder={folder}
+              onSelectionChange={() => handleSelectionChange(folder.id)}
+            />
+          ))}
+        </div>
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
+          {files.map((asset) => (
+            <ProjectFile
+              key={asset.id}
+              isSelected={selectedAssetIds.has(asset.id)}
+              isDisabled
+              file={asset}
+              onSelectionChange={() => handleSelectionChange(asset.id)}
+            />
+          ))}
         </div>
       </AssetContextProvider>
       <RestoreAssetsModal

@@ -23,7 +23,7 @@ export const ProjectFolderAssetsLoading = () => {
             <Skeleton className="h-10 w-24 rounded" />
           </div>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
           {Array.from({ length: 8 }).map((_, index) => (
             <div key={index} className="flex flex-col gap-2">
               <Skeleton className="aspect-video rounded-lg" />

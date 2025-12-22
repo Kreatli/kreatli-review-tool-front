@@ -30,44 +30,12 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
     router.push(`/project/${router.query.id}/assets/folder/${folder.id}`);
   };
 
-  const {
-    attributes,
-    listeners,
-    isSorting,
-    activeIndex,
-    index,
-    transition,
-    transform,
-    setDraggableNodeRef,
-    setDroppableNodeRef,
-  } = useSortable({
-    id: folder.id,
-    disabled: isDisabled || isSelected || isReadonly,
-    animateLayoutChanges: () => true,
-  });
-
   const { setNodeRef, isOver } = useDroppable({ id: `folder-${folder.id}` });
 
   const actions = getAssetActions(folder);
 
   return (
-    <div
-      ref={setDraggableNodeRef}
-      style={{
-        transition,
-        transform: isSorting ? undefined : CSS.Translate.toString(transform),
-      }}
-      {...attributes}
-      {...listeners}
-      tabIndex={-1}
-      className="relative group/project-folder"
-    >
-      {activeIndex > index && (
-        <div ref={setDroppableNodeRef} className="absolute top-0 bottom-0 w-24 -left-16 pointer-events-none" />
-      )}
-      {activeIndex < index && (
-        <div ref={setDroppableNodeRef} className="absolute top-0 bottom-0 w-24 -right-16 pointer-events-none" />
-      )}
+    <div className="relative group/project-folder">
       <div ref={setNodeRef} className="absolute top-0 bottom-0 left-8 right-8" />
       <button
         type="button"
@@ -82,52 +50,45 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
         onKeyDown={handleSpaceAndEnter(handleClick)}
         onDoubleClick={handleClick}
       >
-        <ProjectFolderCover />
+        <ProjectFolderCover>
+          <div className="flex items-center gap-1">
+            {isSelected !== undefined && (
+              <Checkbox isSelected={isSelected} isDisabled={isReadonly} color="default" onChange={onSelectionChange} />
+            )}
+            <div className="flex flex-col items-start flex-1 overflow-hidden first:ml-1">
+              <div className="flex items-center gap-2 overflow-hidden w-full">
+                <Icon icon="folder" className="text-foreground-500 size-5 shrink-0" />
+                <div className="text-foreground font-semibold truncate">{name}</div>
+              </div>
+              <div className="text-foreground-500 text-sm">
+                {folder.fileCount} file{folder.fileCount === 1 ? '' : 's'}, {formatBytes(folder.totalFileSize)}
+              </div>
+            </div>
+            {actions.length > 0 && (
+              <Dropdown placement="bottom-end">
+                <DropdownTrigger>
+                  <Button size="sm" radius="full" variant="faded" isDisabled={isSelected || isReadonly} isIconOnly>
+                    <Icon icon="dots" size={20} />
+                  </Button>
+                </DropdownTrigger>
+                <DropdownMenu variant="flat">
+                  {actions.map((action) => (
+                    <DropdownItem
+                      key={action.label}
+                      color={action.color}
+                      showDivider={action.showDivider}
+                      startContent={<Icon icon={action.icon} size={16} />}
+                      onPress={action.onClick}
+                    >
+                      {action.label}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+            )}
+          </div>
+        </ProjectFolderCover>
       </button>
-      {actions.length > 0 && (
-        <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <Button
-              size="sm"
-              radius="full"
-              variant="faded"
-              className="absolute top-2 right-2"
-              isDisabled={isSelected || isReadonly}
-              isIconOnly
-            >
-              <Icon icon="dots" size={20} />
-            </Button>
-          </DropdownTrigger>
-          <DropdownMenu variant="flat">
-            {actions.map((action) => (
-              <DropdownItem
-                key={action.label}
-                color={action.color}
-                showDivider={action.showDivider}
-                startContent={<Icon icon={action.icon} size={16} />}
-                onPress={action.onClick}
-              >
-                {action.label}
-              </DropdownItem>
-            ))}
-          </DropdownMenu>
-        </Dropdown>
-      )}
-      {isSelected !== undefined && (
-        <Checkbox
-          isSelected={isSelected}
-          isDisabled={isReadonly}
-          color="default"
-          className="absolute top-2 left-2"
-          onChange={onSelectionChange}
-        />
-      )}
-      <div className="mt-3">
-        <div className="text-lg font-semibold break-words overflow-hidden">{name}</div>
-        <div className="text-foreground-500">
-          {folder.fileCount} file{folder.fileCount === 1 ? '' : 's'}, {formatBytes(folder.totalFileSize)}
-        </div>
-      </div>
     </div>
   );
 };

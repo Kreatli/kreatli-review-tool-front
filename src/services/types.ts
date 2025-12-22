@@ -618,6 +618,16 @@ export interface ProjectArchivedAssetsDto {
    * An array of assets which can be folders or files.
    */
   assets: (ProjectFolderDto | ProjectFileDto)[];
+  /**
+   *
+   * An array of files.
+   */
+  files: ProjectFileDto[];
+  /**
+   *
+   * An array of folders.
+   */
+  folders: ProjectFolderDto[];
 }
 
 export interface ProjectAssetEditDto {
@@ -633,6 +643,16 @@ export interface ProjectAssetsResponseDto {
    * An array of assets which can be folders or files.
    */
   assets: (ProjectFolderDto | ProjectFileDto)[];
+  /**
+   *
+   * An array of files.
+   */
+  files: ProjectFileDto[];
+  /**
+   *
+   * An array of folders.
+   */
+  folders: ProjectFolderDto[];
 }
 
 export interface ProjectBodyDto {

@@ -56,17 +56,25 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
     return assetsData?.assets ?? [];
   }, [assetsData]);
 
+  const files = React.useMemo(() => {
+    return assetsData?.files ?? [];
+  }, [assetsData]);
+
+  const folders = React.useMemo(() => {
+    return assetsData?.folders ?? [];
+  }, [assetsData]);
+
   const [draggedId, setDraggedId] = React.useState<string | null>(null);
   const [overId, setOverId] = React.useState<string | null>(null);
   const [selectedAssetId, setSelectedAssetId] = React.useState<string | null>(null);
-  const [assetsOrder, setAssetsOrder] = React.useState<string[]>(assets.map((asset) => asset.id));
+  const [filesOrder, setFilesOrder] = React.useState<string[]>(files.map((file) => file.id));
 
   const [isMoveToAssetsModalOpen, setIsMoveToAssetsModalOpen] = React.useState(false);
   const [isArchiveModalOpen, setIsArchiveModalOpen] = React.useState(false);
   const [selectedAssetIds, setSelectedAssetIds] = React.useState<Set<string>>(new Set([]));
 
   React.useEffect(() => {
-    setAssetsOrder(assets.map((asset) => asset.id));
+    setFilesOrder(assets.map((asset) => asset.id));
   }, [assets]);
 
   const queryClient = useQueryClient();
@@ -86,10 +94,10 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   }, [draggedId, assets]);
 
   const sortedAssets = React.useMemo(() => {
-    return assetsOrder
-      .map((id) => assets.find((asset) => asset.id === id)!)
-      .filter((asset) => asset && asset.name.toLowerCase().includes(search.toLowerCase()));
-  }, [assetsOrder, assets, search]);
+    return filesOrder
+      .map((id) => files.find((file) => file.id === id)!)
+      .filter((file) => file && file.name.toLowerCase().includes(search.toLowerCase()));
+  }, [filesOrder, files, search]);
 
   const dndSensors = useSensors(
     useSensor(MouseSensor, { activationConstraint: { distance: 3 } }),
@@ -111,7 +119,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
 
   if (isLoadingAssets) {
     return (
-      <div className="overflow-hidden p-6 -m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8">
+      <div className="overflow-hidden p-6 -m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
         {Array.from({ length: 8 }).map((_, index) => (
           <div key={index} className="flex flex-col gap-2">
             <Skeleton className="aspect-video rounded-lg" />
@@ -148,14 +156,14 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
       return;
     }
 
-    const oldIndex = assetsOrder.indexOf(active.id as string);
-    const newIndex = assetsOrder.indexOf(overFolderId);
+    const oldIndex = filesOrder.indexOf(active.id as string);
+    const newIndex = filesOrder.indexOf(overFolderId);
 
-    const newAssetsOrder = [...assetsOrder];
-    newAssetsOrder.splice(oldIndex, 1);
-    newAssetsOrder.splice(newIndex, 0, ...(isOverFolder ? [] : [active.id as string]));
+    const newFilesOrder = [...filesOrder];
+    newFilesOrder.splice(oldIndex, 1);
+    newFilesOrder.splice(newIndex, 0, ...(isOverFolder ? [] : [active.id as string]));
 
-    setAssetsOrder(newAssetsOrder);
+    setFilesOrder(newFilesOrder);
 
     if (isOverFolder) {
       if (isFolder) {
@@ -199,7 +207,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
       const { folder: updatedFolder } = await updateFolder({
         id: project.id,
         folderId: folder.id,
-        requestBody: { children: newAssetsOrder },
+        requestBody: { children: newFilesOrder },
       });
 
       queryClient.setQueryData([getAssetFolderId.key, folder.id], updatedFolder);
@@ -315,30 +323,32 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
           onDragOver={handleDragOver}
           onDragEnd={handleDragEnd}
         >
-          <SortableContext items={assetsOrder}>
-            <div className="overflow-hidden p-6 -m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 mb-6 empty:mb-0">
+            {folders.map((folder) => (
+              <ProjectFolder
+                key={folder.id}
+                folder={folder}
+                isReadonly={project.status !== 'active'}
+                isSelected={hasSelectedAssets ? selectedAssetIds.has(folder.id) : undefined}
+                onSelectionChange={() => handleSelectionChange(folder.id)}
+              />
+            ))}
+          </div>
+          <SortableContext items={filesOrder}>
+            <div className="overflow-hidden p-6 -m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
               {sortedAssets.map((asset, index) => (
                 <div key={asset.id} className={cn('relative', { 'opacity-50': draggedId === asset.id })}>
-                  {asset.type === 'folder' ? (
-                    <ProjectFolder
-                      folder={asset}
-                      isReadonly={project.status !== 'active'}
-                      isSelected={selectedAssetIds.has(asset.id)}
-                      onSelectionChange={() => handleSelectionChange(asset.id)}
-                    />
-                  ) : (
-                    <ProjectFile
-                      file={asset}
-                      isReadonly={project.status !== 'active'}
-                      isSelected={selectedAssetIds.has(asset.id)}
-                      onSelectionChange={() => handleSelectionChange(asset.id)}
-                    />
-                  )}
+                  <ProjectFile
+                    file={asset}
+                    isReadonly={project.status !== 'active'}
+                    isSelected={selectedAssetIds.has(asset.id)}
+                    onSelectionChange={() => handleSelectionChange(asset.id)}
+                  />
                   {overId === asset.id && draggedAsset && (
                     <div
                       className={cn('absolute -translate-x-1/2 top-0 bottom-0 w-0.5 bg-foreground-400 rounded-xl', {
-                        '-right-4': assets.indexOf(draggedAsset) < index,
-                        '-left-4': assets.indexOf(draggedAsset) > index,
+                        '-right-2': assets.indexOf(draggedAsset) < index,
+                        '-left-2': assets.indexOf(draggedAsset) > index,
                       })}
                     />
                   )}

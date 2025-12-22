@@ -1312,9 +1312,19 @@
               ]
             },
             "description": "An array of assets which can be folders or files."
+          },
+          "files": {
+            "description": "An array of files.",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProjectFileDto" }
+          },
+          "folders": {
+            "description": "An array of folders.",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProjectFolderDto" }
           }
         },
-        "required": ["assets"]
+        "required": ["assets", "files", "folders"]
       },
       "ProjectCoverDto": {
         "type": "object",
@@ -1455,9 +1465,19 @@
               ]
             },
             "description": "An array of assets which can be folders or files."
+          },
+          "files": {
+            "description": "An array of files.",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProjectFileDto" }
+          },
+          "folders": {
+            "description": "An array of folders.",
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProjectFolderDto" }
           }
         },
-        "required": ["assets"]
+        "required": ["assets", "files", "folders"]
       },
       "ChatBodyDto": {
         "type": "object",

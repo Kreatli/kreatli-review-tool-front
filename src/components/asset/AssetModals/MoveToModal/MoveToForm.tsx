@@ -118,7 +118,12 @@ export const MoveToForm = ({ asset, project, onCancel, onSuccess }: Props) => {
           {filteredPaths.length > 0 && (
             <SelectSection title="Folders">
               {filteredPaths.map((folder) => (
-                <SelectItem key={folder.id} textValue={folder.name} startContent={<Icon icon="folder" size={16} />}>
+                <SelectItem
+                  key={folder.id}
+                  textValue={folder.name}
+                  classNames={{ title: 'truncate' }}
+                  startContent={<Icon icon="folder" size={16} />}
+                >
                   {folder.path.map((path) => `${path.name} / `)}
                   {folder.name}
                 </SelectItem>
