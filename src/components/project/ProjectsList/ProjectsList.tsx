@@ -3,6 +3,8 @@ import React from 'react';
 import { ProjectContextProvider } from '../../../contexts/Project';
 import { ProjectsListTable } from './ProjectsListTable';
 import { EmptyState } from '../../various/EmptyState';
+import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 
 interface Props {
   status: GetProjectsQueryParams['status'];
@@ -20,6 +22,9 @@ export const ProjectsList = ({ projects, status, search, isLoading, isError, onC
     return projects?.find((project) => project.id === selectedProjectId);
   }, [projects, selectedProjectId]);
 
+  const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
+  const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
+
   if (isError) {
     return (
       <EmptyState
@@ -31,15 +36,22 @@ export const ProjectsList = ({ projects, status, search, isLoading, isError, onC
   }
 
   return (
-    <ProjectContextProvider selectedProject={selectedProject} setSelectedProjectId={setSelectedProjectId}>
-      <ProjectsListTable
-        projects={projects}
-        status={status}
-        isLoading={isLoading}
-        search={search}
-        onSelectProjectId={setSelectedProjectId}
-        onCreateProject={onCreateProject}
+    <>
+      <ProjectContextProvider selectedProject={selectedProject} setSelectedProjectId={setSelectedProjectId}>
+        <ProjectsListTable
+          projects={projects}
+          status={status}
+          isLoading={isLoading}
+          search={search}
+          onSelectProjectId={setSelectedProjectId}
+          onCreateProject={onCreateProject}
+        />
+      </ProjectContextProvider>
+      <EditProjectStatusesModal
+        project={selectedProject}
+        isOpen={isEditProjectStatusesModalOpen}
+        onClose={() => setIsEditProjectStatusesModalOpen(false)}
       />
-    </ProjectContextProvider>
+    </>
   );
 };

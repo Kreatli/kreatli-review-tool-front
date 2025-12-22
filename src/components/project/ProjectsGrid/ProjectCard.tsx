@@ -1,4 +1,4 @@
-import { Button, Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 
@@ -6,7 +6,6 @@ import { useProjectContext } from '../../../contexts/Project';
 import { ProjectDto } from '../../../services/types';
 import { formatRelativeTime } from '../../../utils/dates';
 import { formatBytes } from '../../../utils/formatBytes';
-import { handleSpaceAndEnter } from '../../../utils/keydown';
 import { Icon } from '../../various/Icon';
 import { ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectCardImage } from './ProjectCardImage';
@@ -14,9 +13,10 @@ import { ProjectStatus } from '../Project/ProjectStatus';
 
 interface Props {
   project: ProjectDto;
+  onSelectProjectId?: (projectId: string) => void;
 }
 
-export const ProjectCard = ({ project }: Props) => {
+export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
   const router = useRouter();
   const { getProjectActions } = useProjectContext();
 
@@ -52,6 +52,9 @@ export const ProjectCard = ({ project }: Props) => {
                 className="mt-1 pointer-events-auto"
                 variant="faded"
                 aria-label={`Open project ${project.name} options`}
+                onClick={() => {
+                  onSelectProjectId?.(project.id);
+                }}
               >
                 <Icon icon="dots" size={20} />
               </Button>

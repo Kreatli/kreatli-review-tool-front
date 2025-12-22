@@ -4,7 +4,7 @@ import { EditProjectStatusesForm } from './EditProjectStatusesForm';
 import { usePutProjectId } from '../../../../services/hooks';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { useQueryClient } from '@tanstack/react-query';
-import { getProjectId } from '../../../../services/services';
+import { getProjectId, getProjects } from '../../../../services/services';
 
 interface Props {
   project: ProjectDto | undefined;
@@ -31,6 +31,7 @@ export const EditProjectStatusesModal = ({ project, isOpen, onClose }: Props) =>
       {
         onSuccess: (data) => {
           queryClient.setQueryData([getProjectId.key, project.id], data);
+          queryClient.invalidateQueries({ queryKey: [getProjects.key] });
           addToast({ title: 'Project statuses were updated', color: 'success', variant: 'flat' });
           onClose();
         },

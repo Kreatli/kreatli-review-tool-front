@@ -144,6 +144,9 @@ export const ProjectsListTable = ({
                       aria-label={`Open project ${project.name} options`}
                       radius="full"
                       variant="light"
+                      onClick={() => {
+                        onSelectProjectId?.(project.id);
+                      }}
                     >
                       <Icon icon="dots" size={22} className="rotate-90" />
                     </Button>

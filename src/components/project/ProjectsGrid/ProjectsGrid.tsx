@@ -7,6 +7,8 @@ import { EmptyState } from '../../various/EmptyState';
 import { Icon } from '../../various/Icon';
 import { ProjectCard } from './ProjectCard';
 import { useProjectEmptyState } from '../../../hooks/useProjectEmptyState';
+import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 
 interface Props {
   status: GetProjectsQueryParams['status'];
@@ -32,6 +34,9 @@ export const ProjectsGrid = ({
   }, [projects, selectedProjectId]);
 
   const { title, text } = useProjectEmptyState({ search, status });
+
+  const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
+  const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
 
   if (isLoading) {
     return (
@@ -72,10 +77,19 @@ export const ProjectsGrid = ({
   }
 
   return (
-    <ProjectContextProvider selectedProject={selectedProject} setSelectedProjectId={setSelectedProjectId}>
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-8">
-        {projects?.map((project) => <ProjectCard key={project.id} project={project} />)}
-      </div>
-    </ProjectContextProvider>
+    <>
+      <ProjectContextProvider selectedProject={selectedProject} setSelectedProjectId={setSelectedProjectId}>
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-8">
+          {projects?.map((project) => (
+            <ProjectCard key={project.id} project={project} onSelectProjectId={setSelectedProjectId} />
+          ))}
+        </div>
+      </ProjectContextProvider>
+      <EditProjectStatusesModal
+        project={selectedProject}
+        isOpen={isEditProjectStatusesModalOpen}
+        onClose={() => setIsEditProjectStatusesModalOpen(false)}
+      />
+    </>
   );
 };
