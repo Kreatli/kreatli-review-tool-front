@@ -37,8 +37,7 @@ export default function ReviewApprovalPage() {
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Frame-Accurate Media Review</h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Pin comments to exact frames and timestamps in your review and approval workflow. Compare versions
-            side-by-side and share files securely with anyone - no more "which clip?" or lost feedback.
+            Pin comments to exact frames and timestamps. Compare versions side-by-side and share files securely.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -63,8 +62,7 @@ export default function ReviewApprovalPage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frame-Accurate Revisions</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Pin comments to exact frames and timestamps in your review and approval workflow - no more "which clip?"
-              or lost feedback.
+              Pin comments to exact frames and timestamps—no more "which clip?" or lost feedback.
             </p>
           </div>
           <ReviewToolPreview />
@@ -77,8 +75,7 @@ export default function ReviewApprovalPage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Compare Versions Side-by-Side</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Compare different versions of files side-by-side for creative proofing - spot changes instantly and
-              provide precise feedback in your review workflow.
+              Compare different versions side-by-side for creative proofing—spot changes instantly.
             </p>
           </div>
           <CompareFeaturePreview />
@@ -91,8 +88,7 @@ export default function ReviewApprovalPage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Share Files with Anyone</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Generate secure shareable links or send files directly via email for media review and approval - no
-              account required for reviewers.
+              Generate secure shareable links or send files via email—no account required for reviewers.
             </p>
           </div>
           <ShareFeaturePreview />
@@ -134,8 +130,7 @@ export default function ReviewApprovalPage() {
                   <h3 className="text-lg font-semibold font-sans">Version Comparison</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Compare different versions side-by-side to spot changes instantly and provide precise feedback on what
-                  needs adjustment.
+                  Compare different versions side-by-side to spot changes instantly and provide precise feedback.
                 </p>
               </CardBody>
             </Card>
@@ -164,8 +159,7 @@ export default function ReviewApprovalPage() {
                   <h3 className="text-lg font-semibold font-sans">Secure File Sharing</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Generate password-protected links, set expiration dates, and control access to your creative assets
-                  with enterprise-grade security.
+                  Generate password-protected links, set expiration dates, and control access with enterprise-grade security.
                 </p>
               </CardBody>
             </Card>
@@ -179,8 +173,7 @@ export default function ReviewApprovalPage() {
                   <h3 className="text-lg font-semibold font-sans">Approval Workflows</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Track approval status for each asset, see who approved what, and maintain a complete history of all
-                  approvals and feedback.
+                  Track approval status for each asset, see who approved what, and maintain complete history.
                 </p>
               </CardBody>
             </Card>
@@ -194,8 +187,7 @@ export default function ReviewApprovalPage() {
                   <h3 className="text-lg font-semibold font-sans">Real-Time Notifications</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Get instant alerts for new comments, approval requests, and feedback. Stay in sync without constant
-                  checking.
+                  Get instant alerts for new comments, approval requests, and feedback. Stay in sync.
                 </p>
               </CardBody>
             </Card>
@@ -208,8 +200,7 @@ export default function ReviewApprovalPage() {
         <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Streamline Your Review Process?</h2>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Experience frame-accurate review and approval workflows designed for creative production teams. Start using
-            Kreatli today.
+            Experience frame-accurate review and approval workflows designed for creative production teams.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

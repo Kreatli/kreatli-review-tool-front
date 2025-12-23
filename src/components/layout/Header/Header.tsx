@@ -136,14 +136,14 @@ export const Header = () => {
                         description: 'End-to-end production workflows',
                       },
                       {
-                        label: 'Video Project Management & Collaboration',
-                        href: '/solutions/use-case/video-project-management-collaboration',
-                        description: 'Collaborate on video projects',
+                        label: 'Client Approvals',
+                        href: '/solutions/use-case/client-approvals',
+                        description: 'Version-specific client approvals',
                       },
                       {
-                        label: 'Media Asset Management & File Sharing',
-                        href: '/solutions/use-case/media-asset-management-file-sharing',
-                        description: 'Secure file sharing and organization',
+                        label: 'Creative Proofing',
+                        href: '/solutions/use-case/creative-proofing',
+                        description: 'Turn feedback into trackable work',
                       },
                     ],
                   },
@@ -332,29 +332,29 @@ export const Header = () => {
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              Creative Production Management
+              Production Management
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link
               as={NextLink}
-              href="/solutions/use-case/video-project-management-collaboration"
+              href="/solutions/use-case/client-approvals"
               size="lg"
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              Video Project Management & Collaboration
+              Client Approvals
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
             <Link
               as={NextLink}
-              href="/solutions/use-case/media-asset-management-file-sharing"
+              href="/solutions/use-case/creative-proofing"
               size="lg"
               color="foreground"
               onClick={closeNavbarMenu}
             >
-              Media Asset Management & File Sharing
+              Creative Proofing
             </Link>
           </NavbarMenuItem>
           <div className="font-semibold text-foreground-500 mb-2 mt-4 px-2">Resources</div>

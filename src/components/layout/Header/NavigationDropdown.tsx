@@ -76,35 +76,37 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
               <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
           </PopoverTrigger>
-          <PopoverContent className="p-0 w-full max-w-[600px] min-w-[320px]">
-            <div className="p-8 bg-gradient-to-br from-foreground-50 via-background to-background dark:from-foreground-900 dark:via-foreground-800 dark:to-background">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <PopoverContent className="p-0 w-full max-w-[calc(100vw-2rem)] sm:max-w-[600px] min-w-[280px] sm:min-w-[320px]">
+            <div className="p-6 sm:p-8 md:p-10 bg-gradient-to-br from-foreground-50 via-background to-background dark:from-foreground-900 dark:via-foreground-800 dark:to-background">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
                 {sections.map((section, sectionIndex) => (
                   <div
                     key={section.title}
                     className={
                       sectionIndex > 0
-                        ? 'pt-8 md:pt-0 md:pl-8 md:border-l border-t md:border-t-0 border-foreground-200 dark:border-foreground-700'
+                        ? 'pt-6 sm:pt-8 md:pt-0 md:pl-10 md:border-l border-t md:border-t-0 border-foreground-200 dark:border-foreground-700'
                         : ''
                     }
                   >
-                    <h4 className="text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
+                    <h4 className="text-xs sm:text-sm font-semibold text-primary mb-4 sm:mb-5 md:mb-6 uppercase tracking-wider">
                       {section.title}
                     </h4>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 sm:space-y-4">
                       {section.items.map((item) => (
                         <li key={item.href}>
                           <NextLink
                             href={item.href}
                             onClick={handleItemClick}
-                            className="flex items-start group hover:text-primary transition-colors py-2 -mx-2 px-2 rounded w-full"
+                            className="flex items-start group hover:text-primary transition-colors py-2 sm:py-2.5 md:py-3 -mx-2 px-2 rounded w-full"
                           >
                             <div className="flex flex-col min-w-0">
-                              <span className="font-semibold text-base text-foreground group-hover:text-primary">
+                              <span className="font-semibold text-sm sm:text-base text-foreground group-hover:text-primary leading-tight">
                                 {item.label}
                               </span>
                               {item.description && (
-                                <span className="text-sm text-foreground-500 mt-0.5">{item.description}</span>
+                                <span className="text-xs sm:text-sm text-foreground-500 mt-0.5 sm:mt-1 leading-relaxed">
+                                  {item.description}
+                                </span>
                               )}
                             </div>
                           </NextLink>

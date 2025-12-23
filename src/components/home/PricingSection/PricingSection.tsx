@@ -51,7 +51,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" variant="bordered">
-                Get Started for Free
+                Start For Free
               </Button>
             </CardBody>
           </Card>

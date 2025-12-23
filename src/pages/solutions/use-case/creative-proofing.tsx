@@ -10,45 +10,43 @@ import NextLink from 'next/link';
 import { Icon } from '../../../components/various/Icon';
 
 const data = {
-  title: 'Creative Production Management',
+  title: 'Creative Proofing',
   intro:
-    'Manage creative work around the files themselves. Every file, version, comment, and approval connects directly to production status.',
+    'Review creative work and turn feedback into trackable work. Every upload creates a new version for easy comparison.',
   metaDescription:
-    'Production management for creative teams that manages work around files, not abstract tasks. Track status, ownership, and approvals directly on creative assets.',
+    'Creative proofing platform for design, video, and marketing teams. Comment directly on files, compare versions, and turn feedback into trackable work. Every upload creates a new version with complete history.',
   howItWorks: {
-    title: 'How It Works',
-    description: 'Production management follows the natural flow of creative work, from upload through delivery.',
+    title: 'How Proofing Works',
+    description:
+      'Creative proofing follows the natural flow of review cycles, from upload through feedback to the next version.',
     steps: [
       {
         number: 1,
         icon: 'upload',
         title: 'Upload',
-        description: 'Upload files and assign ownership. Files become the foundation of your production workflow.',
+        description:
+          'Upload your creative work. Every upload creates a new version instead of overwriting files, preserving complete history.',
       },
       {
         number: 2,
         icon: 'eye',
         title: 'Review',
-        description: 'Team members and clients review files directly. Comments attach to specific files and versions.',
+        description:
+          'Reviewers comment directly on files, marking specific frames or areas. Comments are tied to the version being reviewed.',
       },
       {
         number: 3,
         icon: 'edit',
         title: 'Changes',
         description:
-          'Create new versions when changes are needed. Tasks automatically link to the files they reference.',
+          "Feedback becomes trackable work with ownership. Teams see what needs addressing, who's responsible, and what's resolved.",
       },
       {
         number: 4,
-        icon: 'checkCircle',
-        title: 'Approval',
-        description: 'Approvals move work forward automatically. Status updates across the project in real time.',
-      },
-      {
-        number: 5,
-        icon: 'send',
-        title: 'Delivery',
-        description: 'Deliver approved files to clients. Complete project history stays connected to every file.',
+        icon: 'compare',
+        title: 'Next Version',
+        description:
+          'Create the next version with changes. Compare versions side-by-side to see what changed. Previous versions remain accessible.',
       },
     ],
   },
@@ -57,120 +55,93 @@ const data = {
     items: [
       {
         icon: 'warning',
-        title: 'Tool Sprawl',
-        description:
-          'Stop juggling review tools and project management separately. Kreatli combines both in one system.',
-      },
-      {
-        icon: 'warning',
-        title: 'Status Chasing',
-        description:
-          'See production status at a glance. Every file shows its current state, owner, and approval status.',
-      },
-      {
-        icon: 'warning',
-        title: 'Disconnected Tasks',
-        description: 'Tasks link directly to files and versions. You always know what work relates to which asset.',
-      },
-      {
-        icon: 'warning',
         title: 'Version Confusion',
-        description: 'Track all versions with their status, comments, and approvals in one place. No more confusion.',
+        description:
+          'Every upload creates a new version instead of overwriting files. Compare versions side-by-side and access any previous version.',
+      },
+      {
+        icon: 'warning',
+        title: 'Lost Feedback',
+        description:
+          'Feedback becomes trackable work with ownership. Unresolved comments are visible and tied to the right people.',
+      },
+      {
+        icon: 'warning',
+        title: 'Isolated Comments',
+        description:
+          'Comments become actionable work with ownership. All feedback stays connected to specific files and versions.',
+      },
+      {
+        icon: 'warning',
+        title: 'No Version Comparison',
+        description:
+          'Compare any two versions side-by-side to see exactly what changed. Verify changes were made and ensure nothing was missed.',
       },
     ],
   },
   whoThisIsFor: {
     title: 'Who This Is For',
-    description: 'Built for teams that manage creative work around files and deliverables.',
+    description:
+      'Built for teams that produce iterative work and need to manage feedback across multiple review rounds.',
     audiences: [
       {
-        icon: 'group',
-        title: 'Agencies',
+        icon: 'paint',
+        title: 'Design Teams',
         description:
-          'Agency producers managing multiple client projects. Track deliverables, approvals, and revisions across campaigns.',
+          'Design teams creating multiple iterations of visuals and graphics. Track feedback across versions and compare designs.',
         href: '/solutions/industry/advertising-marketing-agencies',
       },
       {
         icon: 'monitorPlay',
-        title: 'Production Teams',
+        title: 'Video Teams',
         description:
-          'Video and animation teams managing assets through review cycles. Link tasks to specific files and versions.',
+          'Video production teams managing frame-accurate feedback across cuts and revisions. Comment on specific frames and compare versions.',
         href: '/solutions/industry/video-production-animation-studios',
       },
       {
         icon: 'suitcase',
-        title: 'In-House Content Teams',
+        title: 'In-House Teams',
         description:
-          'In-house creative and content teams producing brand assets at scale. Manage campaigns and track asset status in one place.',
+          'Creative and content teams producing content at scale with multiple stakeholders. Manage review rounds efficiently and track approvals.',
         href: '/solutions/industry/in-house-creative-content-teams',
       },
     ],
   },
   faqs: [
     {
-      question: 'What is production management for creatives?',
+      question: 'What is creative proofing?',
       answer:
-        "Production management for creatives means managing work around the actual creative files—videos, images, designs, and other assets. Unlike generic project management that focuses on abstract tasks, creative production management tracks status, ownership, and approvals directly on files and versions. Producers see what's in progress, blocked, or approved at any time.",
+        'Creative proofing is reviewing creative work and collecting feedback that turns into trackable work. Every upload creates a new version instead of overwriting files, so teams can compare versions and ensure feedback becomes actionable.',
     },
     {
-      question: 'How does production management differ from project management?',
+      question: 'How do I manage feedback across multiple versions?',
       answer:
-        'Production management in Kreatli is file-centric, not task-centric. Instead of managing abstract tasks, you manage work around the actual creative files. Every file, version, comment, and approval connects to production status. Tasks link directly to files and versions, and approvals automatically move work forward.',
+        'In Kreatli, every upload creates a new version, and comments are tied to specific versions. You can compare versions side-by-side to see what changed. Feedback becomes trackable work with ownership, so unresolved comments are visible and tied to the right people.',
     },
     {
-      question: 'What is creative production management software?',
+      question: 'Can reviewers comment directly on videos and images?',
       answer:
-        'Creative production management software is a platform designed specifically for managing creative work around files and assets. Kreatli combines file organization, version control, review workflows, approval tracking, and team collaboration in one system. Unlike generic project management tools, it tracks status and ownership directly on creative files.',
+        'Yes! Reviewers can comment directly on files—videos, images, and documents. For videos, comments are tied to specific frames. For images, comments mark specific areas. All comments are tied to the version being reviewed, keeping feedback in context.',
     },
     {
-      question: 'How do approvals work in Kreatli production management?',
+      question: 'How does version comparison work?',
       answer:
-        'When a file or version is approved, the production status updates automatically. Producers see approvals in real time, and approved work moves forward in the workflow. All approvals are connected to specific files and versions, providing complete history of what was approved, when, and by whom.',
+        'Kreatli allows you to compare any two versions side-by-side to see exactly what changed. This helps teams understand revisions and verify that requested changes were made. Previous versions remain accessible, so you can always reference earlier iterations or revert if needed.',
     },
     {
-      question: 'Can I track tasks and ownership in Kreatli?',
+      question: 'How does feedback become trackable work?',
       answer:
-        "Yes. Tasks in Kreatli link directly to files and versions, so you always know what work relates to which asset. Assign ownership to team members and see who's responsible for each file. Production status shows what's in progress, blocked, or approved.",
+        'In Kreatli, feedback becomes actionable work with ownership. Comments can be assigned to team members, marked as resolved or unresolved, and tracked through the workflow. Unresolved feedback stays visible and tied to the right people, ensuring every comment gets addressed.',
     },
     {
-      question: 'How does Kreatli prevent tool sprawl for production teams?',
+      question: 'What happens when I upload a new version?',
       answer:
-        'Kreatli combines media review and production management in one system. Instead of using Frame.io for review and Asana for project management, everything is in Kreatli. Files, versions, comments, approvals, and status are all connected in one place, eliminating tool-switching and context loss.',
-    },
-    {
-      question: 'What types of files can I manage with production management?',
-      answer:
-        'Kreatli supports all creative file types including videos, images, designs, documents, and more. You can upload, organize, review, and track approval status for any creative asset. Version control works across all file types, keeping your production workflow organized regardless of the media format.',
-    },
-    {
-      question: 'How does version control work in creative production management?',
-      answer:
-        'Version control in Kreatli tracks all versions of your creative files with their status, comments, and approvals in one place. When changes are needed, create new versions that automatically link to tasks and maintain complete history. You can see which version is current, approved, or in review at any time.',
-    },
-    {
-      question: 'Can clients access the production management system?',
-      answer:
-        'Yes. Kreatli allows you to generate secure guest review links that clients can access without creating accounts. Clients can review files, leave comments, and approve work directly in the system. All client feedback stays connected to specific files and versions.',
-    },
-    {
-      question: 'How do I see production status at a glance?',
-      answer:
-        'Kreatli provides a centralized dashboard where you can see all production status in one place. Every file shows its current state, owner, and approval status. Filter by project, status, or file type to quickly find what you need. No more asking "where are we on this?"—the answer is always visible.',
-    },
-    {
-      question: 'Does Kreatli integrate with other tools?',
-      answer:
-        "Yes. Kreatli integrates with Google Drive and Dropbox, allowing you to connect existing file storage and sync files between platforms. You can continue using your preferred cloud storage while leveraging Kreatli's specialized features for production management, media review, and collaboration.",
-    },
-    {
-      question: 'How is production management different from creative project management?',
-      answer:
-        "Production management focuses on managing work around actual creative files and assets, while creative project management typically focuses on abstract tasks and timelines. Kreatli's production management tracks status, ownership, and approvals directly on files and versions, ensuring every task and approval is connected to the actual creative work.",
+        "When you upload a new version in Kreatli, it doesn't overwrite the previous file—it creates a new version in the history. All previous versions remain accessible, so you can compare versions, reference earlier iterations, or revert if needed. Comments from previous versions stay connected.",
     },
   ],
 };
 
-export default function CreativeProductionManagementPage() {
+export default function CreativeProofingPage() {
   useSession();
 
   // Generate FAQ structured data for SEO
@@ -278,8 +249,8 @@ export default function CreativeProductionManagementPage() {
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">{data.problemsSolved.title}</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Production management solves the common challenges creative teams face when managing work across multiple
-              tools.
+              Creative proofing solves the common challenges teams face when managing feedback across multiple review
+              rounds.
             </p>
           </div>
 
@@ -349,7 +320,7 @@ export default function CreativeProductionManagementPage() {
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Get detailed answers about production management for creative teams.
+              Get detailed answers about creative proofing for creative teams.
             </p>
           </div>
           <Accordion variant="splitted">
@@ -375,10 +346,9 @@ export default function CreativeProductionManagementPage() {
       {/* CTA Section */}
       <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Manage Production Around Your Files?</h2>
+          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Turn Feedback Into Trackable Work?</h2>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Experience how Kreatli combines media review and production management in one system. Start using Kreatli
-            today.
+            Experience how Kreatli enables creative proofing across versions and formats. Start using Kreatli today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

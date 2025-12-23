@@ -41,8 +41,7 @@ export default function ProjectOrchestrationPage() {
             Centralized Creative Production Management
           </h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Assign files, track deliverables and share heavy media securely - creative production management within the
-            same workspace. Everything you need to orchestrate your creative projects in one place.
+            Assign files, track deliverables, and share heavy media securely. Everything you need to orchestrate your creative projects in one place.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -69,8 +68,7 @@ export default function ProjectOrchestrationPage() {
               Project Management Meets Reliable Media Storage
             </h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Assign files, track deliverables and share heavy media securely - creative production management within
-              the same workspace.
+              Assign files, track deliverables, and share heavy media securely in one workspace.
             </p>
           </div>
           <ProjectFeaturePreview />
@@ -83,8 +81,7 @@ export default function ProjectOrchestrationPage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Centralized Project Dashboard</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Everything you need in one place - project overview, media files, team chat, and activity tracking for
-              streamlined creative production management, all accessible from a single dashboard.
+              Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
           </div>
           <HomeDashboardFeaturePreview />
@@ -111,8 +108,7 @@ export default function ProjectOrchestrationPage() {
                   <h3 className="text-lg font-semibold font-sans">Project Organization</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Organize files by project, status, type, and more. Find what you need instantly with powerful
-                  filtering and search.
+                  Organize files by project, status, type, and more. Find what you need instantly with powerful filtering.
                 </p>
               </CardBody>
             </Card>
@@ -126,8 +122,7 @@ export default function ProjectOrchestrationPage() {
                   <h3 className="text-lg font-semibold font-sans">File Assignment</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Assign files to team members, track who's working on what, and see the status of all deliverables at a
-                  glance.
+                  Assign files to team members, track who's working on what, and see the status of all deliverables.
                 </p>
               </CardBody>
             </Card>
@@ -141,8 +136,7 @@ export default function ProjectOrchestrationPage() {
                   <h3 className="text-lg font-semibold font-sans">Status Tracking</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Track project status and progress with custom statuses. See what's in review, what's approved, and
-                  what needs attention.
+                  Track project status and progress with custom statuses. See what's in review, approved, and needs attention.
                 </p>
               </CardBody>
             </Card>
@@ -156,8 +150,7 @@ export default function ProjectOrchestrationPage() {
                   <h3 className="text-lg font-semibold font-sans">Centralized Dashboard</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  View all your projects, files, conversations, and activity from one centralized dashboard. No more
-                  switching between tools.
+                  View all your projects, files, conversations, and activity from one centralized dashboard.
                 </p>
               </CardBody>
             </Card>
@@ -171,8 +164,7 @@ export default function ProjectOrchestrationPage() {
                   <h3 className="text-lg font-semibold font-sans">Team Coordination</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Coordinate with your team through project-tied chats, asset-linked comments, and real-time
-                  collaboration features.
+                  Coordinate with your team through project-tied chats, asset-linked comments, and real-time collaboration.
                 </p>
               </CardBody>
             </Card>
@@ -186,8 +178,7 @@ export default function ProjectOrchestrationPage() {
                   <h3 className="text-lg font-semibold font-sans">Activity Tracking</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  See all project activity in one place - file uploads, comments, approvals, and status changes. Stay
-                  informed about everything happening in your projects.
+                  See all project activity in one place—file uploads, comments, approvals, and status changes.
                 </p>
               </CardBody>
             </Card>
@@ -200,8 +191,7 @@ export default function ProjectOrchestrationPage() {
         <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Orchestrate Your Projects?</h2>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Experience centralized project management designed for creative production teams. Start using Kreatli today
-            and streamline your workflow.
+            Experience centralized project management designed for creative production teams. Streamline your workflow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

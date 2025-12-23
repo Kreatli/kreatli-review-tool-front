@@ -11,21 +11,18 @@ import { Icon } from '../../../components/various/Icon';
 import { HomeDashboardFeaturePreview } from '../../../components/home/Features/HomeDashboardFeaturePreview';
 import { ChatFeaturePreview } from '../../../components/home/Features/ChatFeaturePreview';
 import { ShareFeaturePreview } from '../../../components/home/Features/ShareFeaturePreview';
-import { ProjectFeaturePreview } from '../../../components/home/Features/ProjectFeaturePreview';
 
 const data = {
   title: 'In-House Creative & Content Teams',
   description:
-    'Ideal for 2–10 person studios and pods juggling multiple client projects. Give clients a simple review experience while your team gets one organized home for files, feedback, and approvals.',
-  detailedDescription:
-    'In-house creative and content teams face unique challenges managing brand assets, coordinating with external agencies and freelancers, and maintaining brand consistency across multiple campaigns. Kreatli provides a centralized platform for brand asset management, campaign production, and creative workflows. Teams can organize projects by campaign, brand, or client, collaborate seamlessly with external partners, and streamline approval workflows for internal stakeholders. The platform gives clients a simple review experience while providing teams with powerful organization and collaboration tools.',
+    'Streamline brand asset management, campaign production, and stakeholder approvals. Collaborate with external agencies while maintaining brand consistency.',
   painPoints: [
-    'Juggling multiple client projects across different platforms',
-    'Lost feedback in email threads and messaging apps',
-    'Difficulty tracking project status and deliverables',
-    'Managing client access without overwhelming them',
+    'Brand assets scattered across platforms',
+    'Feedback lost in email threads and Slack',
+    'Difficulty coordinating with external agencies',
+    'Stakeholder approval delays',
     'Managing multiple brand campaigns simultaneously',
-    'Coordinating with external agencies and freelancers',
+    'Version confusion causing rework',
   ],
   benefits: [
     '50% faster approvals via no-signup links',
@@ -34,176 +31,189 @@ const data = {
     'Zero lost feedback—all comments linked to assets',
     'Frame-accurate video feedback',
     'Streamlined stakeholder approvals',
-    'Easy external partner collaboration',
-  ],
-  workflowExamples: [
-    {
-      title: 'Brand Campaign Production',
-      scenario: 'Managing a multi-channel brand campaign with internal stakeholders and external agency partners',
-      steps: [
-        {
-          step: '1. Setup',
-          action: 'Create project: "Q4 Brand Campaign"',
-          result: 'All campaign assets organized in one place',
-          feature: 'Campaign Organization',
-        },
-        {
-          step: '2. Collaboration',
-          action: 'Share secure link with external agency',
-          result: 'Agency uploads deliverables without signup',
-          feature: 'External Partner Collaboration',
-        },
-        {
-          step: '3. Review',
-          action: 'Internal stakeholders review via no-signup link',
-          result: 'Frame-accurate comments: "Adjust logo at 00:05:15"',
-          feature: 'Frame-Accurate Review',
-        },
-        {
-          step: '4. Approval',
-          action: 'Marketing Director → Brand Manager → CMO approval chain',
-          result: 'All approvals tracked and recorded',
-          feature: 'Stakeholder Approval Workflows',
-        },
-        {
-          step: '5. Brand Consistency',
-          action: 'Reference approved brand assets from library',
-          result: 'Maintain brand standards across all deliverables',
-          feature: 'Brand Asset Management',
-        },
-      ],
-      outcome: 'Campaign launched 2 days faster with complete brand consistency',
-    },
-    {
-      title: 'Multi-Brand Asset Management',
-      scenario: 'Managing brand assets for 5+ product lines with multiple stakeholders and external freelancers',
-      steps: [
-        {
-          step: '1. Organization',
-          action: 'Create brand asset folders by product line',
-          result: 'All brand assets organized and accessible',
-          feature: 'Brand Asset Management',
-        },
-        {
-          step: '2. Collaboration',
-          action: 'Share brand library with external freelancers',
-          result: 'Freelancers access approved assets without signup',
-          feature: 'External Partner Collaboration',
-        },
-        {
-          step: '3. Feedback',
-          action: 'Team adds asset-linked usage guidelines',
-          result: 'Clear brand usage rules for all stakeholders',
-          feature: 'Asset-Linked Feedback',
-        },
-        {
-          step: '4. Version Control',
-          action: 'Track logo variations and updates',
-          result: 'Complete version history with comparison',
-          feature: 'Version History',
-        },
-      ],
-      outcome: 'Brand asset requests reduced by 50% with centralized, organized library',
-    },
-    {
-      title: 'External Agency Coordination',
-      scenario: 'Coordinating with 3 external agencies on a product launch campaign',
-      steps: [
-        {
-          step: '1. Setup',
-          action: 'Create project: "Product Launch Campaign"',
-          result: 'Centralized hub for all agency deliverables',
-          feature: 'Campaign Organization',
-        },
-        {
-          step: '2. Collaboration',
-          action: 'Share secure review links with each agency',
-          result: 'Agencies upload and review without signup',
-          feature: 'External Partner Collaboration',
-        },
-        {
-          step: '3. Review',
-          action: 'Internal team reviews all agency work in one place',
-          result: 'Asset-linked feedback keeps everything organized',
-          feature: 'Asset-Linked Feedback',
-        },
-        {
-          step: '4. Approval',
-          action: 'Stakeholder approval workflow',
-          result: 'All approvals tracked across agencies',
-          feature: 'Stakeholder Approval Workflows',
-        },
-        {
-          step: '5. Delivery',
-          action: 'Share password-protected final assets',
-          result: 'Secure delivery with access logs',
-          feature: 'Security',
-        },
-      ],
-      outcome: 'Coordinated 3 agencies seamlessly with zero communication gaps',
-    },
   ],
   useCases: [
     'Brand marketing teams managing campaign assets',
     'In-house creative teams coordinating with agencies',
     'Marketing operations managing multiple campaigns',
     'Content teams producing brand content at scale',
-    'Design agencies managing multiple client brands',
-    'Freelance teams working with various stakeholders',
+    'Brand asset management and distribution',
+  ],
+  workflowSteps: [
+    {
+      step: 1,
+      title: 'Brand Asset Organization',
+      icon: 'folder',
+      description:
+        'Set up brand asset libraries and campaign workspaces. Organize assets by brand, product line, or campaign in one centralized platform.',
+      timeToComplete: '2-5 minutes',
+      saves: '2+ hours per campaign',
+      processBreakdown: [
+        'Create brand asset library or campaign project',
+        'Upload brand assets or connect cloud storage',
+        'Organize by brand, product line, or campaign phase',
+      ],
+      challengesAddressed: [
+        'Brand assets scattered across platforms',
+        'Version confusion',
+        'Time wasted searching for approved assets',
+      ],
+      realWorldExample: {
+        scenario:
+          'Instead of managing brand assets in Google Drive, campaign materials in Dropbox, and briefs in email, create one Kreatli project per brand. Your team and external partners access the same organized workspace.',
+        tags: ['Brand Guidelines', 'Campaign Assets', 'Product Line Organization', 'Multi-Brand Management'],
+      },
+    },
+    {
+      step: 2,
+      title: 'External Partner Collaboration',
+      icon: 'userPlus',
+      description:
+        'Invite external agencies and freelancers with no-signup review links. They can access projects, provide feedback, and share deliverables without creating accounts.',
+      timeToComplete: '1-3 minutes',
+      saves: '30+ minutes per external partner',
+      processBreakdown: [
+        'Add team members with permissions',
+        'Generate secure review links for external partners',
+        'Share links—partners start collaborating immediately',
+      ],
+      challengesAddressed: [
+        'External partner signup delays',
+        'Managing permissions across tools',
+        'Security concerns with unsecured links',
+      ],
+      realWorldExample: {
+        scenario:
+          'Generate one password-protected review link for your external agency. Share via email—they click and start uploading deliverables immediately. All their work stays organized in your project.',
+        tags: ['No-Signup Partner Links', 'External Agency Collaboration', 'Secure Sharing', 'Freelancer Access'],
+      },
+    },
+    {
+      step: 3,
+      title: 'Stakeholder Review & Approval',
+      icon: 'chat',
+      description:
+        'Collect precise feedback from internal stakeholders with frame-accurate comments. All feedback stays linked to the exact asset, maintaining complete approval records.',
+      timeToComplete: 'Ongoing',
+      saves: '50% fewer revision cycles',
+      processBreakdown: [
+        'Stakeholders review via no-signup links',
+        'Frame-accurate comments on videos and graphics',
+        'Track approval status for each stakeholder',
+      ],
+      challengesAddressed: [
+        '"Which asset?" confusion',
+        'Feedback lost in email',
+        'Multiple revisions for simple changes',
+        'Unclear approval status',
+      ],
+      realWorldExample: {
+        scenario:
+          'Marketing Director clicks frame 2:34: "Logo needs to be 20% larger." Brand Manager sees exactly which frame with feedback linked. Approval chain tracked—CMO approves final version with complete history.',
+        tags: ['Frame-Accurate Comments', 'Asset-Linked Feedback', 'Stakeholder Approval Chain', 'Approval Tracking'],
+      },
+    },
+    {
+      step: 4,
+      title: 'Campaign Delivery & Archive',
+      icon: 'checkCircle',
+      description:
+        'Deliver approved brand assets and campaign materials with complete documentation. Maintain version history and archive campaigns for future reference.',
+      timeToComplete: '5-10 minutes',
+      saves: 'Hours of campaign wrap-up time',
+      processBreakdown: [
+        'Verify approvals and export final assets',
+        'Generate delivery report with approval history',
+        'Archive campaign with complete brand asset library',
+      ],
+      challengesAddressed: [
+        'Confusion about final vs. draft versions',
+        'Missing brand asset documentation',
+        'Hours to locate "previous campaign assets"',
+      ],
+      realWorldExample: {
+        scenario:
+          'Export final brand assets and campaign materials, generate delivery report. Marketing team asks for "Q3 campaign logo variations" months later—find them instantly in archived campaign, deliver in minutes.',
+        tags: ['Final Brand Assets', 'Delivery Reports', 'Version History', 'Campaign Archive'],
+      },
+    },
   ],
   keyFeatures: [
     {
       icon: 'folder',
       title: 'Brand Asset Management',
       description:
-        'Centralize brand assets, campaign materials, and creative files in organized project spaces. Maintain brand consistency across all projects with easy access to approved assets.',
+        'Centralize brand assets, campaign materials, and creative files. Maintain brand consistency across all projects.',
     },
     {
-      icon: 'user',
+      icon: 'link',
       title: 'External Partner Collaboration',
       description:
-        'Collaborate seamlessly with external agencies and freelancers through secure guest links. They can access projects, provide feedback, and share deliverables without creating accounts.',
+        'Share review links with external agencies and freelancers. They collaborate without creating accounts—reduces delays from days to hours.',
     },
     {
-      icon: 'checkCircle',
-      title: 'Stakeholder Approval Workflows',
-      description:
-        'Streamline approval processes for internal stakeholders. Track who approved what, when, and maintain complete records for campaign deliverables and brand assets.',
-    },
-    {
-      icon: 'slides',
-      title: 'Campaign Organization',
-      description:
-        'Organize projects by campaign, brand, or client. See at a glance which campaigns are in production, which need review, and which are complete.',
+      icon: 'chat',
+      title: 'Asset-Linked Feedback',
+      description: 'Comments stay with files. Example: Stakeholder comments on brand asset—team sees it immediately.',
     },
   ],
   metaDescription:
-    'Creative production platform for in-house creative and content teams. Manage brand assets, campaign production, and creative workflows. Collaborate with agencies, streamline approvals, and maintain brand consistency.',
+    'Creative production platform for in-house creative and content teams. Manage brand assets, campaign production, and creative workflows. Collaborate with agencies, streamline approvals, and maintain brand consistency. Replace Google Drive, Frame.io, and Slack with one unified platform.',
   faqs: [
     {
       question: 'How does Kreatli help in-house teams maintain brand consistency?',
       answer:
-        'Kreatli provides centralized brand asset management, allowing teams to organize approved brand assets, guidelines, and campaign materials in one place. All team members have access to the same brand assets, ensuring consistency across projects. You can organize projects by brand or campaign, making it easy to see what assets are being used and maintain brand standards throughout all creative work.',
+        'Kreatli provides centralized brand asset management, allowing teams to organize approved brand assets, guidelines, and campaign materials in one place. All team members and external partners have access to the same brand assets, ensuring consistency across projects. You can organize projects by brand or campaign, making it easy to see what assets are being used and maintain brand standards throughout all creative work. Version history tracks all asset updates, so you always know which version is approved.',
     },
     {
       question: 'Can we collaborate with external agencies and freelancers?',
       answer:
-        'Yes! Kreatli makes it easy to collaborate with external agencies and freelancers through secure guest review links. They can access projects, provide feedback, and share deliverables without creating accounts. All their work and feedback is organized in your project, keeping everything centralized while allowing external partners to participate seamlessly in your creative workflow.',
+        'Yes! Kreatli makes it easy to collaborate with external agencies and freelancers through secure guest review links. They can access projects, provide feedback, and share deliverables without creating accounts. Simply generate a password-protected review link and share it via email or Slack. External partners click the link and immediately start collaborating—no downloads, no signups, no delays. All their work and feedback is organized in your project, keeping everything centralized while allowing external partners to participate seamlessly in your creative workflow.',
     },
     {
       question: 'How does Kreatli streamline approval workflows for internal stakeholders?',
       answer:
-        "Kreatli provides streamlined approval workflows that allow internal stakeholders to review and approve creative work efficiently. You can set up custom approval processes, track who approved what and when, and maintain complete records for all campaign deliverables. All approvals are linked to specific assets, making it easy to see what's been approved and what still needs attention.",
+        "Kreatli provides streamlined approval workflows that allow internal stakeholders to review and approve creative work efficiently. Share one no-signup review link with all stakeholders—the Marketing Director, Brand Manager, and CMO can all review the same campaign assets simultaneously. Each person's feedback is tracked separately, and you can see approval status for each stakeholder in the campaign dashboard. All approvals are linked to specific assets, making it easy to see what's been approved and what still needs attention. This reduces approval delays from 3-5 days to hours.",
     },
     {
       question: 'Can we organize projects by campaign or brand?',
       answer:
-        'Yes! Kreatli allows you to organize projects by campaign, brand, client, or any other structure that makes sense for your team. You can see at a glance which campaigns are in production, which need review, and which are complete. This organization helps teams manage multiple campaigns simultaneously while maintaining clear visibility into project status and deliverables.',
+        'Yes! Kreatli allows you to organize projects by campaign, brand, product line, or any other structure that makes sense for your team. You can see at a glance which campaigns are in production, which need review, and which are complete. This organization helps teams manage multiple campaigns simultaneously while maintaining clear visibility into project status and deliverables. Each project maintains its own brand assets, creative briefs, and feedback history, so nothing gets mixed up between brands or campaigns.',
     },
     {
       question: 'How does Kreatli help teams manage multiple brand campaigns?',
       answer:
-        "Kreatli provides dedicated project spaces for each campaign, allowing teams to organize files, conversations, and approvals separately while maintaining a centralized view of all campaigns. You can organize by brand, campaign type, or client, making it easy to track what's in production, what needs review, and what's been approved. This organization is essential for teams managing multiple campaigns simultaneously.",
+        "Kreatli provides dedicated project spaces for each campaign, allowing teams to organize files, conversations, and approvals separately while maintaining a centralized view of all campaigns. You can organize by brand, campaign type, or product line, making it easy to track what's in production, what needs review, and what's been approved. The dashboard shows all campaigns, their status, and what needs attention. Filter by brand, campaign phase, or status. This organization is essential for teams managing multiple campaigns simultaneously while maintaining brand consistency.",
+    },
+    {
+      question: 'What security features does Kreatli offer for brand assets?',
+      answer:
+        'Kreatli provides enterprise-grade security for sensitive brand assets. Password-protected links with customizable expiration dates ensure external partner access is time-limited. Access controls let you set permissions by role—internal team members get full access, external partners get review-only access. Complete audit trails track who viewed what and when. All data is encrypted and meets enterprise security requirements, so you can confidently share brand assets with external agencies and stakeholders.',
+    },
+    {
+      question: 'How does Kreatli compare to using multiple tools like Google Drive, Frame.io, and Slack?',
+      answer:
+        'Kreatli replaces Google Drive (file storage), Frame.io (video review), Slack (feedback), and project management tools in one platform. Instead of switching between 4-5 tools, everything happens in Kreatli. This reduces costs by 40-70% compared to multiple tool subscriptions and saves 6+ hours weekly by eliminating tool-switching and context loss. All brand assets, feedback, and approvals stay in one place, making it easier to track campaign progress, maintain brand consistency, and deliver on time.',
+    },
+    {
+      question: 'How does frame-accurate commenting work for brand video reviews?',
+      answer:
+        'Frame-accurate commenting lets stakeholders click directly on specific video frames to add feedback. When a stakeholder clicks frame 2:34 and comments "Make the logo 20% larger," your creative team sees exactly which frame needs changes—no guessing, no back-and-forth emails. Comments automatically link to the exact timestamp and asset, so feedback never gets lost. This precision reduces revision cycles by 50% because everyone knows exactly what needs to change, maintaining brand consistency throughout the review process.',
+    },
+    {
+      question: 'Can I connect existing Google Drive or Dropbox folders to Kreatli projects?',
+      answer:
+        "Yes! Kreatli integrates with Google Drive and Dropbox, so you can connect existing brand asset folders without re-uploading files. Connect a brand asset library or campaign folder, and all files sync to your Kreatli project. Your team can continue using familiar cloud storage while leveraging Kreatli's review, approval, and collaboration features. This makes onboarding new campaigns faster since you don't need to migrate existing file structures.",
+    },
+    {
+      question: 'How long does it take to set up a new brand campaign in Kreatli?',
+      answer:
+        'Setting up a new brand campaign takes 2-5 minutes. Create the campaign project, upload brand assets or connect cloud storage, organize files by campaign phase, and set permissions. Your team and external partners can start collaborating immediately. Most in-house teams find they save 2+ hours per campaign compared to setting up projects across multiple tools, since everything happens in one place with clear organization from day one.',
+    },
+    {
+      question: 'What happens to brand assets after a campaign is completed?',
+      answer:
+        'Completed campaigns are archived with complete history preserved. All versions, feedback, approvals, and final assets remain accessible. When a team member asks for "version 3 of the Q4 brand video" or "approved logo variations from last year" months later, you can find them instantly in the archived campaign with all their approval history. Export final assets, generate delivery reports, and maintain a complete archive—no more searching through old emails or file folders to find previous campaign assets.',
     },
   ],
 };
@@ -230,7 +240,7 @@ export default function InHouseCreativeContentTeamsPage() {
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Solutions for {data.title}</h1>
-          <p className="text-xl text-foreground-600 max-w-2xl mx-auto font-medium">{data.description}</p>
+          <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">{data.description}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
@@ -248,121 +258,184 @@ export default function InHouseCreativeContentTeamsPage() {
         </div>
       </section>
 
-      {/* Workflow Improvements Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
-              How Kreatli Improves In-House Team Workflows
-            </h2>
-            <p className="text-xl text-foreground-600 max-w-2xl mx-auto font-medium">
-              Streamline brand asset management and stakeholder collaboration.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card>
-              <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-success/10 rounded-full p-3">
-                    <Icon icon="checkCircle" size={24} className="text-success" />
-                  </div>
-                  <h3 className="text-lg font-semibold font-sans">50% Faster Approvals</h3>
-                </div>
-                <p className="text-foreground-600 text-base mb-3">
-                  No-signup links reduce approval delays from days to hours.
-                </p>
-                <div className="text-sm text-foreground-500">
-                  <strong>Example:</strong> Brand campaign approved in 2 hours
-                </div>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-primary/10 rounded-full p-3">
-                    <Icon icon="folder" size={24} className="text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold font-sans">Centralized Brand Assets</h3>
-                </div>
-                <p className="text-foreground-600 text-base mb-3">
-                  All brand assets in one place. Maintain consistency across all projects.
-                </p>
-                <div className="text-sm text-foreground-500">
-                  <strong>Example:</strong> Brand asset requests reduced by 50%
-                </div>
-              </CardBody>
-            </Card>
-            <Card>
-              <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-warning/10 rounded-full p-3">
-                    <Icon icon="user" size={24} className="text-warning" />
-                  </div>
-                  <h3 className="text-lg font-semibold font-sans">6+ Hours Saved Weekly</h3>
-                </div>
-                <p className="text-foreground-600 text-base mb-3">
-                  One platform replaces multiple tools. No tool-switching.
-                </p>
-                <div className="text-sm text-foreground-500">
-                  <strong>Example:</strong> All campaigns in one dashboard
-                </div>
-              </CardBody>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Workflow Examples Section */}
-      {data.workflowExamples && (
-        <section className="relative py-16 px-6 overflow-hidden">
-          <div className="max-w-6xl mx-auto relative z-10">
+      {/* Visual Workflow Section */}
+      {data.workflowSteps && (
+        <section className="relative py-16 px-6 backdrop-blur-lg">
+          <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Real Workflow Examples</h2>
-              <p className="text-xl text-foreground-600 max-w-2xl mx-auto font-medium">
-                How Kreatli powers in-house creative team workflows.
+              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Brand Campaign Workflow</h2>
+              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+                From brand asset organization to campaign delivery—see how Kreatli streamlines your in-house team
+                workflow. Organize brand assets, collaborate with external partners, collect stakeholder feedback, and
+                deliver campaigns faster.
               </p>
             </div>
-            <div className="flex flex-col gap-8">
-              {data.workflowExamples.map((example, exampleIndex) => (
-                <Card key={exampleIndex} className="dark:border border-foreground-300">
-                  <CardBody className="p-8">
-                    <div className="mb-6">
-                      <Chip size="lg" variant="flat" color="primary" className="mb-3">
-                        {example.title}
-                      </Chip>
-                      <h3 className="text-2xl font-bold font-sans mb-3 text-foreground-700">{example.scenario}</h3>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-6 mb-6">
-                      {example.steps.map((step, stepIndex) => (
-                        <div key={stepIndex} className="flex flex-col gap-2">
-                          <div className="flex items-start gap-3">
-                            <div className="bg-primary/10 text-primary rounded-full size-6 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">
-                              {stepIndex + 1}
+
+            {/* Workflow Progress Indicator */}
+            <div className="flex justify-center mb-12 sticky top-20 z-10">
+              <div className="flex items-center gap-4 bg-background rounded-full px-6 py-3 shadow-large">
+                <div className="flex items-center gap-2 group cursor-pointer">
+                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                  <a
+                    href="#organize"
+                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  >
+                    Organize
+                  </a>
+                </div>
+                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
+                <div className="flex items-center gap-2 group cursor-pointer">
+                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                  <a
+                    href="#collaborate"
+                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  >
+                    Collaborate
+                  </a>
+                </div>
+                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
+                <div className="flex items-center gap-2 group cursor-pointer">
+                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                  <a
+                    href="#review"
+                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  >
+                    Review
+                  </a>
+                </div>
+                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
+                <div className="flex items-center gap-2 group cursor-pointer">
+                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                  <a
+                    href="#deliver"
+                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  >
+                    Deliver
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-12">
+              {data.workflowSteps.map((step, index) => {
+                const stepIdMap: { [key: number]: string } = {
+                  1: 'organize',
+                  2: 'collaborate',
+                  3: 'review',
+                  4: 'deliver',
+                };
+                const stepId = stepIdMap[step.step] || step.title.toLowerCase().replace(/\s+/g, '-');
+                const isLast = index === data.workflowSteps.length - 1;
+
+                return (
+                  <React.Fragment key={index}>
+                    <Card id={stepId} className="scroll-mt-36">
+                      <CardBody className="p-5 sm:p-8 lg:p-12">
+                        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                          <div className="flex flex-col gap-6 lg:w-1/3">
+                            <div className="flex items-center gap-4">
+                              <div className="shrink-0 size-14 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+                                <Icon icon={step.icon as any} size={32} className="text-primary" />
+                              </div>
+                              <div>
+                                <div className="text-sm font-medium text-primary mb-1">Step {step.step}</div>
+                                <h3 className="text-2xl lg:text-3xl font-bold font-sans">{step.title}</h3>
+                              </div>
                             </div>
-                            <div className="flex-1">
-                              <div className="font-semibold text-base mb-2">{step.step}</div>
-                              <div className="text-foreground-600 text-base mb-2">{step.action}</div>
-                              <div className="text-foreground-500 text-sm italic mb-2">→ {step.result}</div>
-                              <Chip size="md" variant="flat" className="text-sm">
-                                {step.feature}
-                              </Chip>
+                            <p className="text-foreground-500 text-base lg:text-lg line-clamp-2">{step.description}</p>
+                            <div className="flex flex-col gap-2">
+                              <div>⏱️ Time to complete: {step.timeToComplete}</div>
+                              <div>💰 Saves: {step.saves}</div>
+                            </div>
+                          </div>
+
+                          <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
+                            <div className="grid sm:grid-cols-2 gap-8">
+                              <div>
+                                <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                                  <Icon icon="list" size={24} className="text-primary" />
+                                  Process Breakdown
+                                </h4>
+                                <ul className="flex flex-col gap-3">
+                                  {step.processBreakdown.map((item, itemIndex) => (
+                                    <li
+                                      key={itemIndex}
+                                      className="flex items-start gap-3 text-base text-foreground-500"
+                                    >
+                                      <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <span className="text-xs font-bold text-primary">{itemIndex + 1}</span>
+                                      </div>
+                                      <span>{item}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              <div>
+                                <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                                  <Icon icon="warning" size={24} className="text-warning" />
+                                  Challenges Addressed
+                                </h4>
+                                <ul className="flex flex-col gap-3">
+                                  {step.challengesAddressed.map((challenge, challengeIndex) => (
+                                    <li
+                                      key={challengeIndex}
+                                      className="flex items-start gap-2 text-base text-foreground-500"
+                                    >
+                                      <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                                      <span>{challenge}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div>
+                              <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                                <Icon icon="slides" size={24} className="text-success" />
+                                Real-World Example
+                              </h4>
+                              <Card className="bg-success/5">
+                                <CardBody className="p-6">
+                                  <p className="text-base text-foreground-600 mb-3 line-clamp-2">
+                                    {step.realWorldExample.scenario.includes(':') ? (
+                                      <>
+                                        <strong>{step.realWorldExample.scenario.split(':')[0]}:</strong>{' '}
+                                        {step.realWorldExample.scenario.split(':').slice(1).join(':').trim()}
+                                      </>
+                                    ) : (
+                                      step.realWorldExample.scenario
+                                    )}
+                                  </p>
+                                  <div className="flex flex-wrap gap-2">
+                                    {step.realWorldExample.tags.map((tag, tagIndex) => (
+                                      <Chip key={tagIndex} size="sm" variant="flat" color="success">
+                                        {tag}
+                                      </Chip>
+                                    ))}
+                                  </div>
+                                </CardBody>
+                              </Card>
                             </div>
                           </div>
                         </div>
-                      ))}
-                    </div>
-                    <div className="bg-success/10 border border-success/20 rounded-lg p-4">
-                      <div className="flex items-start gap-2">
-                        <Icon icon="checkCircle" size={20} className="text-success flex-shrink-0 mt-0.5" />
-                        <div>
-                          <div className="font-semibold text-base text-success mb-2">Workflow Outcome</div>
-                          <div className="text-foreground-700 text-base font-medium">{example.outcome}</div>
+                      </CardBody>
+                    </Card>
+
+                    {!isLast && (
+                      <div className="flex justify-center items-center">
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-primary"></div>
+                          <div className="size-8 bg-primary/10 rounded-full flex items-center justify-center border-2 border-primary/30">
+                            <Icon icon="chevronDown" size={20} className="text-primary" />
+                          </div>
+                          <div className="w-px h-8 bg-gradient-to-b from-primary to-primary/50"></div>
                         </div>
                       </div>
-                    </div>
-                  </CardBody>
-                </Card>
-              ))}
+                    )}
+                  </React.Fragment>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -379,9 +452,9 @@ export default function InHouseCreativeContentTeamsPage() {
           <div className="mb-16">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold font-sans mb-3">Brand Asset Management</h3>
-              <p className="text-lg text-foreground-600 max-w-2xl mx-auto">
-                Centralize brand assets, campaign materials, and creative files in organized project spaces. Maintain
-                brand consistency across all projects with easy access to approved assets.
+              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+                Centralize brand assets, campaign materials, and creative files. Maintain brand consistency across all
+                projects.
               </p>
             </div>
             <HomeDashboardFeaturePreview />
@@ -391,37 +464,23 @@ export default function InHouseCreativeContentTeamsPage() {
           <div className="mb-16">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold font-sans mb-3">External Partner Collaboration</h3>
-              <p className="text-lg text-foreground-600 max-w-2xl mx-auto">
-                Collaborate seamlessly with external agencies and freelancers through secure guest links. They can
-                access projects, provide feedback, and share deliverables without creating accounts.
+              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+                Share review links with external agencies and freelancers. They collaborate without creating
+                accounts—reduces delays from days to hours.
               </p>
             </div>
             <ShareFeaturePreview />
           </div>
 
-          {/* Stakeholder Approval Workflows */}
+          {/* Asset-Linked Feedback */}
           <div className="mb-16">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">Stakeholder Approval Workflows</h3>
-              <p className="text-lg text-foreground-600 max-w-2xl mx-auto">
-                Streamline approval processes for internal stakeholders. Track who approved what, when, and maintain
-                complete records for campaign deliverables and brand assets. All feedback stays linked to specific
-                assets.
+              <h3 className="text-2xl font-bold font-sans mb-3">Asset-Linked Feedback</h3>
+              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+                Comments stay permanently linked to specific files. No lost feedback in email threads or Slack.
               </p>
             </div>
             <ChatFeaturePreview />
-          </div>
-
-          {/* Campaign Organization */}
-          <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">Campaign Organization</h3>
-              <p className="text-lg text-foreground-600 max-w-2xl mx-auto">
-                Organize projects by campaign, brand, or client. See at a glance which campaigns are in production,
-                which need review, and which are complete.
-              </p>
-            </div>
-            <ProjectFeaturePreview />
           </div>
         </div>
       </section>
@@ -431,20 +490,20 @@ export default function InHouseCreativeContentTeamsPage() {
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-foreground-600 max-w-2xl mx-auto font-medium">
+            <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
               Common questions about Kreatli for {data.title.toLowerCase()}.
             </p>
           </div>
           <Accordion variant="splitted">
             {data.faqs.map((faq, index) => (
               <AccordionItem key={index} title={<span className="font-semibold text-lg">{faq.question}</span>}>
-                <div className="text-foreground-600 text-base space-y-3 leading-relaxed">{faq.answer}</div>
+                <div className="text-foreground-500 text-base space-y-3 leading-relaxed">{faq.answer}</div>
               </AccordionItem>
             ))}
           </Accordion>
           <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-8">
             <h3 className="text-xl font-sans font-bold">Still Have Questions?</h3>
-            <p className="text-foreground-600 text-base">
+            <p className="text-foreground-600 text-base line-clamp-2">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
               <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-semibold">
                 support@kreatli.com
@@ -459,7 +518,7 @@ export default function InHouseCreativeContentTeamsPage() {
       <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Streamline Your Workflow?</h2>
-          <p className="text-xl text-foreground-600 max-w-2xl mx-auto font-medium">
+          <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
             Join {data.title.toLowerCase()} using Kreatli.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">

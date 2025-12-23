@@ -36,8 +36,7 @@ export default function IntegrationsPage() {
             Connect Your Existing Cloud Storage
           </h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while leveraging
-            Kreatli's specialized features for creative production, review, and approval workflows.
+            Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -62,8 +61,7 @@ export default function IntegrationsPage() {
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Available Integrations</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Connect your existing cloud storage and continue using your preferred tools while benefiting from
-              Kreatli's specialized creative production features.
+              Connect your existing cloud storage and continue using your preferred tools while benefiting from Kreatli's features.
             </p>
           </div>
 
@@ -89,8 +87,7 @@ export default function IntegrationsPage() {
                   </div>
                 </div>
                 <p className="text-foreground-500 mb-6">
-                  Import files directly from Google Drive to Kreatli. Upload files from your cloud storage - all benefit
-                  from Kreatli's review and collaboration features.
+                  Import files directly from Google Drive to Kreatli. All files benefit from Kreatli's review and collaboration features.
                 </p>
                 <ul className="flex flex-col gap-3 mb-6">
                   <li className="flex items-start gap-2">
@@ -129,8 +126,7 @@ export default function IntegrationsPage() {
                   </div>
                 </div>
                 <p className="text-foreground-500 mb-6">
-                  Import files directly from Dropbox to Kreatli. Upload files from your cloud storage - all benefit from
-                  Kreatli's review and collaboration features.
+                  Import files directly from Dropbox to Kreatli. All files benefit from Kreatli's review and collaboration features.
                 </p>
                 <ul className="flex flex-col gap-3 mb-6">
                   <li className="flex items-start gap-2">
@@ -160,8 +156,7 @@ export default function IntegrationsPage() {
                   <h3 className="text-2xl font-bold font-sans">Need a Custom Integration?</h3>
                 </div>
                 <p className="text-foreground-500 mb-6 max-w-2xl mx-auto">
-                  Don't see your preferred cloud storage or tool? We can build a custom integration tailored to your
-                  workflow. Contact us to discuss your integration needs.
+                  Don't see your preferred cloud storage? We can build a custom integration tailored to your workflow.
                 </p>
                 <Button
                   as="a"
@@ -185,8 +180,7 @@ export default function IntegrationsPage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Why Integrate Cloud Storage</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Kreatli is designed to work alongside your existing tools rather than requiring you to abandon your
-              current workflow entirely.
+              Kreatli works alongside your existing tools rather than requiring you to abandon your current workflow.
             </p>
           </div>
 
@@ -200,8 +194,7 @@ export default function IntegrationsPage() {
                   <h3 className="text-lg font-semibold font-sans">Seamless Workflow</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Continue using your preferred cloud storage while leveraging Kreatli's specialized features for
-                  creative production management and media review.
+                  Continue using your preferred cloud storage while leveraging Kreatli's specialized features for creative production.
                 </p>
               </CardBody>
             </Card>
@@ -215,8 +208,7 @@ export default function IntegrationsPage() {
                   <h3 className="text-lg font-semibold font-sans">Flexible File Sources</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Upload files directly to Kreatli or import from cloud storage. All files benefit from Kreatli's
-                  organization, review, and collaboration features.
+                  Upload files directly to Kreatli or import from cloud storage. All files benefit from Kreatli's features.
                 </p>
               </CardBody>
             </Card>
@@ -230,8 +222,7 @@ export default function IntegrationsPage() {
                   <h3 className="text-lg font-semibold font-sans">No Migration Required</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  You don't have to abandon your existing file storage solutions. Use Kreatli's specialized features
-                  while keeping your current cloud storage setup.
+                  You don't have to abandon your existing file storage solutions. Use Kreatli's features while keeping your current setup.
                 </p>
               </CardBody>
             </Card>
@@ -244,8 +235,7 @@ export default function IntegrationsPage() {
         <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Connect Your Cloud Storage?</h2>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Integrate Google Drive or Dropbox with Kreatli and experience seamless creative production management. Start
-            using Kreatli today.
+            Integrate Google Drive or Dropbox with Kreatli and experience seamless creative production management.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

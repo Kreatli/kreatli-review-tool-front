@@ -41,8 +41,7 @@ export default function SecureAssetStoragePage() {
             Reliable Media Storage for Creative Teams
           </h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Assign files, track deliverables and share heavy media securely - creative production management within the
-            same workspace with enterprise-grade security.
+            Assign files, track deliverables, and share heavy media securely with enterprise-grade security.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -67,8 +66,8 @@ export default function SecureAssetStoragePage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Secure File Upload and Encrypted Storage</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Upload large media files with real-time progress tracking. All files are encrypted at rest with
-              enterprise-grade security in a workspace designed for creative production teams.
+              Upload large media files with real-time progress tracking. All files encrypted at rest with
+              enterprise-grade security.
             </p>
           </div>
           <StorageFeaturePreview />
@@ -83,8 +82,7 @@ export default function SecureAssetStoragePage() {
               Project Management Meets Reliable Media Storage
             </h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Organize files by project, assign team members, track file status, and manage deliverables all in one
-              workspace with built-in project management tools.
+              Organize files by project, assign team members, track status, and manage deliverables in one workspace.
             </p>
           </div>
           <ProjectFeaturePreview />
@@ -111,8 +109,8 @@ export default function SecureAssetStoragePage() {
                   <h3 className="text-lg font-semibold font-sans">Enterprise Security</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Enterprise-level encryption, secure file sharing, and compliance-ready security features for sensitive
-                  creative work.
+                  Enterprise-level encryption, secure file sharing, and compliance-ready security for sensitive creative
+                  work.
                 </p>
               </CardBody>
             </Card>
@@ -127,7 +125,7 @@ export default function SecureAssetStoragePage() {
                 </div>
                 <p className="text-foreground-500 text-sm">
                   Organize files by project, status, type, and more. Powerful filtering and search help you find what
-                  you need instantly.
+                  you need.
                 </p>
               </CardBody>
             </Card>
@@ -187,7 +185,7 @@ export default function SecureAssetStoragePage() {
                 </div>
                 <p className="text-foreground-500 text-sm">
                   Dependable media storage infrastructure designed for creative production workflows. Your assets are
-                  safe and accessible.
+                  safe.
                 </p>
               </CardBody>
             </Card>
@@ -200,8 +198,7 @@ export default function SecureAssetStoragePage() {
         <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Secure Your Creative Assets?</h2>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Experience enterprise-grade secure asset storage designed for creative production teams. Start using Kreatli
-            today.
+            Experience enterprise-grade secure asset storage designed for creative production teams.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

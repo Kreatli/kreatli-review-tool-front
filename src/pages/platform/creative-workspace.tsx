@@ -10,6 +10,7 @@ import NextLink from 'next/link';
 import { Icon } from '../../components/various/Icon';
 import { HomeDashboardFeaturePreview } from '../../components/home/Features/HomeDashboardFeaturePreview';
 import { ChatFeaturePreview } from '../../components/home/Features/ChatFeaturePreview';
+import { StorageFeaturePreview } from '../../components/home/Features/StorageFeaturePreview';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 
 export default function CreativeWorkspacePage() {
@@ -36,9 +37,7 @@ export default function CreativeWorkspacePage() {
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">One Place to Rule Them All</h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            A unified workspace designed specifically for creative production teams. Project-tied conversations,
-            asset-linked comments, and centralized dashboards keep your entire creative workflow organized and
-            accessible.
+            A unified workspace for creative production teams. Project-tied conversations and asset-linked comments keep your workflow organized.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -63,8 +62,7 @@ export default function CreativeWorkspacePage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Centralized Project Dashboard</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Everything you need in one place - project overview, media files, team chat, and activity tracking for
-              streamlined creative production management, all accessible from a single dashboard.
+              Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
           </div>
           <HomeDashboardFeaturePreview />
@@ -77,11 +75,23 @@ export default function CreativeWorkspacePage() {
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Project-Tied Conversations</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              Project-tied chats, asset-linked comments and guest review links streamline your approval workflow - keep
-              feedback with the asset, not scattered across multiple platforms.
+              Project-tied chats and asset-linked comments streamline your approval workflow—keep feedback with the asset.
             </p>
           </div>
           <ChatFeaturePreview />
+        </div>
+      </section>
+
+      {/* Storage Upload Section */}
+      <section className="relative py-16 px-6 overflow-hidden">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Secure File Storage & Upload</h2>
+            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+              Upload and manage creative assets with drag & drop support, progress tracking, and encrypted storage.
+            </p>
+          </div>
+          <StorageFeaturePreview />
         </div>
       </section>
 
@@ -105,8 +115,7 @@ export default function CreativeWorkspacePage() {
                   <h3 className="text-lg font-semibold font-sans">Asset-Linked Feedback</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Comments and conversations stay with your files. No more searching through email threads or messaging
-                  apps to find feedback.
+                  Comments and conversations stay with your files. No more searching through email threads.
                 </p>
               </CardBody>
             </Card>
@@ -120,8 +129,7 @@ export default function CreativeWorkspacePage() {
                   <h3 className="text-lg font-semibold font-sans">Project Organization</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Organize files by project, status, type, and more. Find what you need instantly with powerful
-                  filtering and search.
+                  Organize files by project, status, type, and more. Find what you need instantly with powerful filtering.
                 </p>
               </CardBody>
             </Card>
@@ -135,8 +143,7 @@ export default function CreativeWorkspacePage() {
                   <h3 className="text-lg font-semibold font-sans">Unified Workspace</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  All your projects, files, conversations, and activity in one centralized dashboard. No more
-                  tool-switching.
+                  All your projects, files, conversations, and activity in one centralized dashboard. No more tool-switching.
                 </p>
               </CardBody>
             </Card>
@@ -150,8 +157,7 @@ export default function CreativeWorkspacePage() {
                   <h3 className="text-lg font-semibold font-sans">Context-Rich Communication</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Project-tied chats ensure all conversations stay with the relevant work, eliminating context loss and
-                  confusion.
+                  Project-tied chats ensure all conversations stay with the relevant work, eliminating context loss.
                 </p>
               </CardBody>
             </Card>
@@ -165,8 +171,7 @@ export default function CreativeWorkspacePage() {
                   <h3 className="text-lg font-semibold font-sans">Real-Time Updates</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Stay in sync with real-time notifications for comments, approvals, and project updates. Never miss
-                  important feedback.
+                  Stay in sync with real-time notifications for comments, approvals, and project updates.
                 </p>
               </CardBody>
             </Card>
@@ -180,8 +185,7 @@ export default function CreativeWorkspacePage() {
                   <h3 className="text-lg font-semibold font-sans">Team Collaboration</h3>
                 </div>
                 <p className="text-foreground-500 text-sm">
-                  Collaborate seamlessly with team members, clients, and external collaborators all within the same
-                  unified workspace.
+                  Collaborate seamlessly with team members, clients, and external collaborators in one unified workspace.
                 </p>
               </CardBody>
             </Card>
@@ -194,8 +198,7 @@ export default function CreativeWorkspacePage() {
         <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
           <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Unify Your Creative Workspace?</h2>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Experience the difference of a platform built specifically for creative teams. Start using Kreatli today and
-            streamline your entire creative production workflow.
+            Experience a platform built specifically for creative teams. Streamline your entire creative production workflow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
