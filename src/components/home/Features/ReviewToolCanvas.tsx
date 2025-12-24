@@ -22,6 +22,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
   const fileRef = useRef<HTMLDivElement>(null);
   const isDrawing = useRef(false);
   const lastPointRef = React.useRef<Vector2d | null>(null);
+  const isHovering = useRef(false);
 
   const isTouchScreen = useIsTouchScreen();
 
@@ -36,24 +37,37 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
     setCanvasWidth(fileRef.current?.clientWidth ?? 0);
   }, []);
 
-  const handleMouseDown = (event: Konva.KonvaEventObject<MouseEvent>) => {
+  const handleMouseEnter = () => {
     setShouldShowStartDrawing(false);
+    isHovering.current = true;
+  };
 
-    isDrawing.current = true;
+  const handleMouseLeave = () => {
+    isHovering.current = false;
+    
+    if (isDrawing.current) {
+      isDrawing.current = false;
 
-    const position = event.target.getStage()?.getPointerPosition();
+      if (shapes[shapes.length - 1]?.points.length <= 2) {
+        onShapesChange(shapes.slice(0, -1));
+        return;
+      }
 
-    if (!position) {
-      return;
+      const newShapes = [...shapes];
+      const lastLine = newShapes[newShapes.length - 1];
+
+      if (lastLine) {
+        lastLine.points = simplifyLine(lastLine.points);
+      }
+
+      onShapesChange(newShapes);
     }
 
-    lastPointRef.current = position;
-
-    onShapesChange([...shapes, { type: 'line', points: [], color: 'red' }]);
+    lastPointRef.current = null;
   };
 
   const handleMouseMove = (event: Konva.KonvaEventObject<MouseEvent>) => {
-    if (!isDrawing.current) {
+    if (!isHovering.current) {
       return;
     }
 
@@ -61,6 +75,15 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
     const point = stage?.getPointerPosition();
 
     if (!point) {
+      return;
+    }
+
+    // Start drawing on first mouse move when hovering
+    if (!isDrawing.current) {
+      isDrawing.current = true;
+      lastPointRef.current = point;
+      // Create new shape with initial point
+      onShapesChange([...shapes, { type: 'line', points: [point.x, point.y], color: 'red' }]);
       return;
     }
 
@@ -74,29 +97,12 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
     }
 
     const newShapes = [...shapes];
-    newShapes[newShapes.length - 1].points = newShapes[newShapes.length - 1].points.concat([point.x, point.y]);
-    onShapesChange(newShapes);
+    if (newShapes.length > 0) {
+      newShapes[newShapes.length - 1].points = newShapes[newShapes.length - 1].points.concat([point.x, point.y]);
+      onShapesChange(newShapes);
+    }
 
     lastPointRef.current = point;
-  };
-
-  const handleMouseUp = () => {
-    isDrawing.current = false;
-
-    if (shapes[shapes.length - 1]?.points.length <= 2) {
-      onShapesChange(shapes.slice(0, -1));
-
-      return;
-    }
-
-    const newShapes = [...shapes];
-    const lastLine = newShapes[newShapes.length - 1];
-
-    if (lastLine) {
-      lastLine.points = simplifyLine(lastLine.points);
-    }
-
-    onShapesChange(newShapes);
   };
 
   return (
@@ -128,9 +134,9 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
             cursor: 'url("/cursors/pencil.svg") 8 28, auto',
           } as React.CSSProperties
         }
-        onMouseDown={handleMouseDown}
+        onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
       >
         <Layer>
           {shapes.map((shape) => (

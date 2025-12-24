@@ -1,24 +1,38 @@
 import { Avatar, Button, Card, CardBody, Textarea, cn } from '@heroui/react';
 import { Icon } from '../../various/Icon';
 import { ReviewToolComment } from './ReviewToolComment';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 
 export const CompareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
+  const isTouchScreen = useIsTouchScreen();
 
   const [activeFile, setActiveFile] = useState<'left' | 'right'>('left');
   const [comment, setComment] = useState('');
   const [leftNewComment, setLeftNewComment] = useState('');
   const [rightNewComment, setRightNewComment] = useState('');
 
+  // Animation state
+  const [isAnimating, setIsAnimating] = useState(true);
+  const isAnimatingRef = useRef(true);
+  const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    isAnimatingRef.current = isAnimating;
+  }, [isAnimating]);
+
   const handleFileClick = (side: 'left' | 'right') => {
+    setIsAnimating(false);
     setActiveFile(side);
   };
 
   const handleSendComment = () => {
+    setIsAnimating(false);
     if (activeFile === 'left') {
       if (leftNewComment) {
         if (!isSignedIn) {
@@ -50,9 +64,142 @@ export const CompareFeaturePreview = () => {
     }
   };
 
+  // Animation sequence
+  useEffect(() => {
+    if (!isAnimating || isTouchScreen) return;
+
+    const clearAllTimeouts = () => {
+      timeoutRefs.current.forEach((timeout) => clearTimeout(timeout));
+      timeoutRefs.current = [];
+    };
+
+    const scheduleAction = (callback: () => void, delay: number) => {
+      const timeout = setTimeout(() => {
+        if (isAnimatingRef.current) {
+          callback();
+        }
+      }, delay);
+      timeoutRefs.current.push(timeout);
+    };
+
+    const typeText = (text: string, targetSetter: (value: string) => void, delay: number, charDelay: number = 50) => {
+      let index = 0;
+      const typeChar = () => {
+        if (index < text.length && isAnimatingRef.current) {
+          targetSetter(text.substring(0, index + 1));
+          index++;
+          const timeout = setTimeout(typeChar, charDelay);
+          timeoutRefs.current.push(timeout);
+        }
+      };
+      scheduleAction(typeChar, delay);
+    };
+
+    const resetToInitialState = () => {
+      setActiveFile('left');
+      setComment('');
+      setLeftNewComment('');
+      setRightNewComment('');
+    };
+
+    const runAnimationSequence = () => {
+      // Start with initial state
+      resetToInitialState();
+
+      // Step 1: Switch to right file (after 1.5s)
+      scheduleAction(() => {
+        setActiveFile('right');
+      }, 1500);
+
+      // Step 2: Type a comment for right file (after 3s)
+      const rightComment1 = 'Great improvements on the transitions!';
+      typeText(rightComment1, setComment, 3000, 40);
+
+      // Step 3: Send the comment (after 6.5s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          setRightNewComment(rightComment1);
+          setComment('');
+        }
+      }, 6500);
+
+      // Step 4: Switch to left file (after 8s)
+      scheduleAction(() => {
+        setActiveFile('left');
+      }, 8000);
+
+      // Step 5: Type a comment for left file (after 9.5s)
+      const leftComment1 = 'The color grading is perfect here.';
+      typeText(leftComment1, setComment, 9500, 40);
+
+      // Step 6: Send the comment (after 13s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          setLeftNewComment(leftComment1);
+          setComment('');
+        }
+      }, 13000);
+
+      // Step 7: Switch back to right file (after 14.5s)
+      scheduleAction(() => {
+        setActiveFile('right');
+      }, 14500);
+
+      // Step 8: Type another comment for right file (after 16s)
+      typeText('Can we adjust the timing slightly?', setComment, 16000, 40);
+
+      // Step 9: Clear comment without sending (after 19.5s)
+      scheduleAction(() => {
+        setComment('');
+      }, 19500);
+
+      // Step 10: Switch to left file again (after 21s)
+      scheduleAction(() => {
+        setActiveFile('left');
+      }, 21000);
+
+      // Step 11: Type a final comment (after 22.5s)
+      const leftComment2 = 'This version is ready for approval.';
+      typeText(leftComment2, setComment, 22500, 40);
+
+      // Step 12: Send the comment (after 26s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          setLeftNewComment(leftComment2);
+          setComment('');
+        }
+      }, 26000);
+
+      // Step 13: Loop back - reset and restart (after 28s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          runAnimationSequence();
+        }
+      }, 28000);
+    };
+
+    // Start animation after a short delay
+    const initialTimeout = setTimeout(() => {
+      if (isAnimatingRef.current) {
+        runAnimationSequence();
+      }
+    }, 500);
+    timeoutRefs.current.push(initialTimeout);
+
+    return () => {
+      clearAllTimeouts();
+      clearTimeout(initialTimeout);
+    };
+  }, [isAnimating, isTouchScreen]);
+
   return (
     <Card>
-      <CardBody className="flex flex-col gap-2">
+      <CardBody
+        className="flex flex-col gap-2"
+        onClick={() => {
+          setIsAnimating(false);
+        }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_240px] gap-2">
           {/* Left Column */}
           <div className="flex flex-col gap-2">
@@ -62,7 +209,10 @@ export const CompareFeaturePreview = () => {
                 'flex items-center gap-2 p-3 rounded-lg transition-colors cursor-pointer',
                 activeFile === 'left' ? 'bg-primary-100' : 'bg-foreground-50',
               )}
-              onClick={() => handleFileClick('left')}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleFileClick('left');
+              }}
             >
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" size="sm" />
               <div className="flex-1 overflow-hidden">
@@ -78,7 +228,10 @@ export const CompareFeaturePreview = () => {
                 'aspect-video max-h-64 rounded-lg overflow-hidden relative cursor-pointer border-2 transition-colors',
                 activeFile === 'left' ? 'border-primary' : 'border-transparent',
               )}
-              onClick={() => handleFileClick('left')}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleFileClick('left');
+              }}
             >
               <img
                 src="https://picsum.photos/600/400?random=1"
@@ -96,7 +249,10 @@ export const CompareFeaturePreview = () => {
                 'flex items-center gap-2 p-3 rounded-lg transition-colors cursor-pointer',
                 activeFile === 'right' ? 'bg-primary-100' : 'bg-foreground-50',
               )}
-              onClick={() => handleFileClick('right')}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleFileClick('right');
+              }}
             >
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" size="sm" />
               <div className="flex-1 overflow-hidden">
@@ -112,7 +268,10 @@ export const CompareFeaturePreview = () => {
                 'aspect-video max-h-64 rounded-lg overflow-hidden relative cursor-pointer border-2 transition-colors',
                 activeFile === 'right' ? 'border-primary' : 'border-transparent',
               )}
-              onClick={() => handleFileClick('right')}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleFileClick('right');
+              }}
             >
               <img
                 src="https://picsum.photos/600/400?random=2"
@@ -159,7 +318,10 @@ export const CompareFeaturePreview = () => {
           <div className="relative md:col-span-2">
             <Textarea
               value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              onChange={(e) => {
+                setIsAnimating(false);
+                setComment(e.target.value);
+              }}
               placeholder="Leave your comment here..."
               minRows={2}
               rows={2}
@@ -170,6 +332,10 @@ export const CompareFeaturePreview = () => {
                   handleSendComment();
                 }
               }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsAnimating(false);
+              }}
             />
             <div className="flex justify-end">
               <Button
@@ -177,7 +343,10 @@ export const CompareFeaturePreview = () => {
                 className="bg-foreground text-content1 absolute bottom-1 right-1"
                 isIconOnly
                 radius="full"
-                onClick={handleSendComment}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSendComment();
+                }}
               >
                 <Icon icon="send" size={16} />
               </Button>

@@ -1,35 +1,40 @@
+'use client';
+
 import { Button } from '@heroui/react';
-import NextLink from 'next/link';
 import { Icon } from '../../various/Icon';
 import styles from './HeroSection.module.css';
-import { LogoSlideshow } from './LogoSlideshow';
+import { Typewriter } from './Typewriter';
 
 export const HeroSection = () => {
+  const scrollToDemo = () => {
+    const demoSection = document.getElementById('arcade-demo');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const typewriterWords = [
+    'Ad & Marketing Agencies',
+    'Animation Studios',
+    'In-House Video Teams',
+    'Creative & Content Teams',
+  ];
+
   return (
     <section className="relative w-full flex items-center justify-center overflow-hidden">
       <div className="text-center w-full flex flex-col gap-16 px-6 pt-10 pb-20 relative z-10">
         <div className="max-w-2xl mx-auto flex flex-col items-center gap-4">
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">
-            End-to-End Creative Production Platform
+            End-to-End Creative
+            <br />
+            Production Platform for
+            <br />
+            <Typewriter words={typewriterWords} />
           </h1>
-          <p className="text-lg sm:text-xl text-foreground-500 font-sans leading-8 sm:leading-8">
-            Juggling tools is the old way{' '}
-            <span className="sm:hidden">
-              <br />
-            </span>
-            <LogoSlideshow logos={['/logos/google-drive.svg', '/logos/dropbox.svg', '/logos/we-transfer.svg']} />{' '}
-            <LogoSlideshow
-              logos={['/logos/asana.svg', '/logos/monday.svg', '/logos/click-up.svg']}
-              direction="top"
-              delay={1}
-            />{' '}
-            <LogoSlideshow logos={['/logos/autodesk.svg', '/logos/ziflow.svg', '/logos/frame-io.svg']} delay={2} />{' '}
-            <br /> <span className="font-bold">Try the New Way. The End-to-End Way. The Kreatli Way.</span>
-          </p>
           <div className="flex flex-col mt-4 md:flex-row gap-6">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start for Free
-              <Icon icon="arrowRight" size={20} />
+            <Button onClick={scrollToDemo} size="lg" className="bg-foreground text-content1">
+              See How it Works
+              <Icon icon="chevronDown" size={20} />
             </Button>
             <Button
               as="a"
@@ -43,7 +48,7 @@ export const HeroSection = () => {
             </Button>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto w-full">
+        <div id="arcade-demo" className="max-w-6xl mx-auto w-full scroll-mt-20">
           <div className="relative h-0 w-full pb-[calc(51%)]">
             <iframe
               src="https://demo.arcade.software/PPu2mnyNxXzs5sVzGfOA?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"

@@ -1,24 +1,38 @@
 import { Avatar, Button, Card, CardBody, Chip, Input, Tooltip, cn } from '@heroui/react';
 import { Icon } from '../../various/Icon';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
 import { useSession } from '../../../hooks/useSession';
+import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 
 export const ShareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
+  const isTouchScreen = useIsTouchScreen();
   const [emails, setEmails] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const [linkCopied, setLinkCopied] = useState(false);
 
+  // Animation state
+  const [isAnimating, setIsAnimating] = useState(true);
+  const isAnimatingRef = useRef(true);
+  const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    isAnimatingRef.current = isAnimating;
+  }, [isAnimating]);
+
   const url = `${typeof window !== 'undefined' ? window.location.origin : ''}/share/example-link-id`;
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsAnimating(false);
     setInput(event.target.value);
   };
 
   const handleInputBlur = (event: FocusEvent<HTMLInputElement>) => {
+    setIsAnimating(false);
     const { value } = event.target;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValidEmail = value.match(emailPattern);
@@ -40,12 +54,14 @@ export const ShareFeaturePreview = () => {
   };
 
   const handleCopyLink = () => {
+    setIsAnimating(false);
     navigator.clipboard.writeText(url);
     setLinkCopied(true);
     setTimeout(() => setLinkCopied(false), 2000);
   };
 
   const handleSendLink = () => {
+    setIsAnimating(false);
     if (emails.length === 0) {
       return;
     }
@@ -55,9 +71,131 @@ export const ShareFeaturePreview = () => {
     }
   };
 
+  // Animation sequence
+  useEffect(() => {
+    if (!isAnimating || isTouchScreen) return;
+
+    const clearAllTimeouts = () => {
+      timeoutRefs.current.forEach((timeout) => clearTimeout(timeout));
+      timeoutRefs.current = [];
+    };
+
+    const scheduleAction = (callback: () => void, delay: number) => {
+      const timeout = setTimeout(() => {
+        if (isAnimatingRef.current) {
+          callback();
+        }
+      }, delay);
+      timeoutRefs.current.push(timeout);
+    };
+
+    const typeText = (text: string, targetSetter: (value: string) => void, delay: number, charDelay: number = 40) => {
+      let index = 0;
+      const typeChar = () => {
+        if (index < text.length && isAnimatingRef.current) {
+          targetSetter(text.substring(0, index + 1));
+          index++;
+          const timeout = setTimeout(typeChar, charDelay);
+          timeoutRefs.current.push(timeout);
+        }
+      };
+      scheduleAction(typeChar, delay);
+    };
+
+    const addEmail = (email: string, delay: number) => {
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          setEmails((prev) => {
+            if (prev.length < 5) {
+              return Array.from(new Set([...prev, email]));
+            }
+            return prev;
+          });
+          setInput('');
+        }
+      }, delay);
+    };
+
+    const resetToInitialState = () => {
+      setEmails([]);
+      setInput('');
+      setLinkCopied(false);
+    };
+
+    const runAnimationSequence = () => {
+      // Start with initial state
+      resetToInitialState();
+
+      // Step 1: Type first email (after 1.5s)
+      const email1 = 'john.doe@example.com';
+      typeText(email1, setInput, 1500, 35);
+
+      // Step 2: Add first email (after 3.5s)
+      addEmail(email1, 3500);
+
+      // Step 3: Type second email (after 4.5s)
+      const email2 = 'sarah.smith@example.com';
+      typeText(email2, setInput, 4500, 35);
+
+      // Step 4: Add second email (after 6.5s)
+      addEmail(email2, 6500);
+
+      // Step 5: Copy link (after 8s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          setLinkCopied(true);
+          setTimeout(() => {
+            if (isAnimatingRef.current) {
+              setLinkCopied(false);
+            }
+          }, 2000);
+        }
+      }, 8000);
+
+      // Step 6: Type third email (after 10s)
+      const email3 = 'mike.johnson@example.com';
+      typeText(email3, setInput, 10000, 35);
+
+      // Step 7: Add third email (after 12s)
+      addEmail(email3, 12000);
+
+      // Step 8: Remove first email (after 14s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          setEmails((prev) => prev.filter((e) => e !== email1));
+        }
+      }, 14000);
+
+      // Step 9: Loop back - reset and restart (after 16s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          runAnimationSequence();
+        }
+      }, 16000);
+    };
+
+    // Start animation after a short delay
+    const initialTimeout = setTimeout(() => {
+      if (isAnimatingRef.current) {
+        runAnimationSequence();
+      }
+    }, 500);
+    timeoutRefs.current.push(initialTimeout);
+
+    return () => {
+      clearAllTimeouts();
+      clearTimeout(initialTimeout);
+    };
+  }, [isAnimating, isTouchScreen]);
+
   return (
     <Card>
-      <CardBody className="flex flex-col gap-4 p-4 min-h-96">
+      <CardBody
+        className="flex flex-col gap-4 p-4 min-h-96"
+        onClick={() => {
+          setIsAnimating(false);
+        }}
+      >
         <div className="flex items-center gap-3">
           <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" size="md" />
           <div className="flex-1 min-w-0">
@@ -80,7 +218,9 @@ export const ShareFeaturePreview = () => {
                 variant="solid"
                 color="default"
                 className="bg-foreground text-content1"
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsAnimating(false);
                   if (!isSignedIn) {
                     openSignUpModal();
                   }
@@ -108,7 +248,15 @@ export const ShareFeaturePreview = () => {
                     }}
                     endContent={
                       <Tooltip content={linkCopied ? 'Copied!' : 'Copy link'} placement="top">
-                        <Button isIconOnly size="sm" variant="light" onClick={handleCopyLink}>
+                        <Button
+                          isIconOnly
+                          size="sm"
+                          variant="light"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleCopyLink();
+                          }}
+                        >
                           <Icon icon={linkCopied ? 'check' : 'copy'} size={16} />
                         </Button>
                       </Tooltip>
@@ -126,7 +274,11 @@ export const ShareFeaturePreview = () => {
                         variant="flat"
                         size="sm"
                         isCloseable
-                        onClose={() => setEmails(emails.filter((e) => e !== email))}
+                        onClose={(e) => {
+                          e?.stopPropagation();
+                          setIsAnimating(false);
+                          setEmails(emails.filter((e) => e !== email));
+                        }}
                         className="transition-all"
                       >
                         {email}
@@ -144,6 +296,10 @@ export const ShareFeaturePreview = () => {
                     onBlur={handleInputBlur}
                     onKeyDown={handleInputKeyDown}
                     onChange={handleInputChange}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsAnimating(false);
+                    }}
                     description={emails.length >= 5 ? 'Maximum 5 emails' : `${emails.length}/5 emails`}
                     classNames={{
                       description: 'text-xs',
@@ -153,7 +309,10 @@ export const ShareFeaturePreview = () => {
                     size="sm"
                     isDisabled={emails.length === 0}
                     className="text-content1 bg-foreground transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    onClick={handleSendLink}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleSendLink();
+                    }}
                   >
                     <Icon icon="send" size={16} />
                     Send link via email

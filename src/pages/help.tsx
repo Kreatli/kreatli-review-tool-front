@@ -167,19 +167,6 @@ const categoryConfig: Record<string, CategoryConfig> = {
   Security: { name: 'Security', icon: 'shield', color: 'danger' },
 };
 
-// Helper function to get color classes
-const getColorClasses = (color: string) => {
-  const colorMap: Record<string, { bg: string; text: string }> = {
-    primary: { bg: 'bg-primary/10', text: 'text-primary' },
-    success: { bg: 'bg-success/10', text: 'text-success' },
-    warning: { bg: 'bg-warning/10', text: 'text-warning' },
-    secondary: { bg: 'bg-secondary/10', text: 'text-secondary' },
-    danger: { bg: 'bg-danger/10', text: 'text-danger' },
-    default: { bg: 'bg-foreground-100', text: 'text-foreground-600' },
-  };
-  return colorMap[color] || colorMap.default;
-};
-
 // Popular/featured FAQs for quick access
 const popularFaqKeys = ['getting-started', 'free-trial', 'pricing-structure', 'frame-accurate', 'review-workflow'];
 
@@ -240,12 +227,9 @@ export default function HelpPage() {
       {/* Hero Section */}
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <div className="flex items-center justify-center gap-3 mb-2">
-            <div className="bg-primary/10 p-3 rounded-full">
-              <Icon icon="helpCircle" size={32} className="text-primary" />
-            </div>
-            <h1 className="text-2xl sm:text-4xl font-bold font-sans">Help Center</h1>
-          </div>
+          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+            Help Center
+          </h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
             Find answers to frequently asked questions about Kreatli's creative production platform, features, pricing,
             and more.
@@ -274,13 +258,15 @@ export default function HelpPage() {
 
       {/* Popular Questions Section */}
       {!searchQuery && popularFaqs.length > 0 && (
-        <section className="relative py-12 px-6 backdrop-blur-lg overflow-hidden border-t border-foreground-200">
+        <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden border-t border-foreground-200">
           <div className="max-w-6xl mx-auto relative z-10">
-            <div className="mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold font-sans mb-2">Popular Questions</h2>
-              <p className="text-foreground-500">Quick answers to the most common questions</p>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Popular Questions</h2>
+              <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+                Quick answers to the most common questions
+              </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-6">
               {popularFaqs.slice(0, 4).map((faq) => (
                 <Card
                   key={faq.key}
@@ -299,10 +285,10 @@ export default function HelpPage() {
                     }, 100);
                   }}
                 >
-                  <CardBody className="p-5">
+                  <CardBody className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-primary/10 p-2.5 rounded-lg flex-shrink-0">
-                        <Icon icon="helpCircle" size={24} className="text-primary" />
+                      <div className="bg-foreground-100 rounded-full p-2 flex-shrink-0">
+                        <Icon icon="helpCircle" size={20} className="text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-lg leading-relaxed mb-3 line-clamp-2">{faq.question}</h3>
@@ -324,8 +310,8 @@ export default function HelpPage() {
         <div className="max-w-6xl mx-auto relative z-10">
           {/* Category Tabs */}
           <div className="mb-8">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl sm:text-2xl font-bold font-sans">Browse by Category</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl sm:text-4xl font-bold font-sans">Browse by Category</h2>
               {selectedCategory !== 'all' && (
                 <Button
                   size="sm"
@@ -375,12 +361,11 @@ export default function HelpPage() {
                 faqsByCategory
                   .filter((cat) => cat.category !== 'all' && cat.faqs.length > 0)
                   .map(({ category, faqs: categoryFaqs, config }) => {
-                    const colors = getColorClasses(config.color);
                     return (
                       <div key={category} id={`category-${category}`} className="mb-12 scroll-mt-24">
                         <div className="flex items-center gap-3 mb-6">
-                          <div className={`${colors.bg} p-2 rounded-lg`}>
-                            <Icon icon={config.icon as any} size={24} className={colors.text} />
+                          <div className="bg-foreground-100 rounded-full p-2">
+                            <Icon icon={config.icon as any} size={20} className="text-primary" />
                           </div>
                           <h3 className="text-xl sm:text-2xl font-bold font-sans">{config.name}</h3>
                           <Chip size="sm" variant="flat" className="ml-2">
@@ -402,7 +387,7 @@ export default function HelpPage() {
                             key={faq.key}
                             id={`faq-${faq.key}`}
                             title={
-                              <span className="font-semibold text-lg leading-relaxed text-foreground-900 dark:text-foreground-50">
+                              <span className="font-semibold text-base">
                                 {faq.question}
                               </span>
                             }
@@ -420,14 +405,13 @@ export default function HelpPage() {
                 // Show filtered results
                 <div>
                   {selectedCategory !== 'all' && (() => {
-                    const colors = getColorClasses(displayedCategory.config.color);
                     return (
                       <div className="flex items-center gap-3 mb-6">
-                        <div className={`${colors.bg} p-2 rounded-lg`}>
+                        <div className="bg-foreground-100 rounded-full p-2">
                           <Icon
                             icon={displayedCategory.config.icon as any}
-                            size={24}
-                            className={colors.text}
+                            size={20}
+                            className="text-primary"
                           />
                         </div>
                         <h3 className="text-xl sm:text-2xl font-bold font-sans">{displayedCategory.config.name}</h3>
@@ -452,7 +436,7 @@ export default function HelpPage() {
                         key={faq.key}
                         id={`faq-${faq.key}`}
                         title={
-                          <span className="font-semibold text-lg leading-relaxed text-foreground-900 dark:text-foreground-50">
+                          <span className="font-semibold text-base">
                             {faq.question}
                           </span>
                         }
@@ -470,10 +454,10 @@ export default function HelpPage() {
             <Card>
               <CardBody className="p-12 text-center">
                 <div className="bg-foreground-100 rounded-full p-4 w-fit mx-auto mb-4">
-                  <Icon icon="search" size={48} className="text-foreground-400" />
+                  <Icon icon="search" size={32} className="text-foreground-400" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">No results found</h3>
-                <p className="text-foreground-500 mb-4">
+                <h3 className="text-xl font-bold font-sans mb-2">No results found</h3>
+                <p className="text-foreground-500 mb-6">
                   {searchQuery
                     ? "We couldn't find any FAQs matching your search. Try different keywords or browse by category."
                     : `No FAQs available in the ${displayedCategory.config.name} category.`}
@@ -498,51 +482,42 @@ export default function HelpPage() {
       {/* Contact Support Section */}
       <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden border-t border-foreground-200">
         <div className="max-w-4xl mx-auto relative z-10">
-          <Card className="bg-content1">
-            <CardBody className="p-8 sm:p-12">
-              <div className="text-center flex flex-col gap-6">
-                <div className="bg-primary/10 rounded-full p-4 w-fit mx-auto">
-                  <Icon icon="mail" size={32} className="text-primary" />
-                </div>
-                <div>
-                  <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Still Have Questions?</h2>
-                  <p className="text-lg text-foreground-500 max-w-2xl mx-auto mb-6">
-                    If you didn't find the answer you were looking for, our support team is here to help. Reach out to
-                    us and we'll get back to you as soon as possible.
-                  </p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <Button
-                    as="a"
-                    href="mailto:support@kreatli.com"
-                    size="lg"
-                    className="bg-foreground text-content1"
-                    startContent={<Icon icon="mail" size={20} />}
-                  >
-                    Email Support
-                  </Button>
-                  <Button
-                    as="a"
-                    href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                    target="_blank"
-                    size="lg"
-                    variant="bordered"
-                    startContent={<Icon icon="calendar" size={20} />}
-                  >
-                    Book a Demo
-                  </Button>
-                </div>
-                <div className="mt-4 pt-6 border-t border-foreground-200">
-                  <p className="text-sm text-foreground-500">
-                    You can also reach us at{' '}
-                    <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-medium">
-                      support@kreatli.com
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </CardBody>
-          </Card>
+          <div className="text-center flex flex-col gap-6">
+            <h2 className="text-2xl sm:text-4xl font-bold font-sans">Still Have Questions?</h2>
+            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+              If you didn't find the answer you were looking for, our support team is here to help. Reach out to
+              us and we'll get back to you as soon as possible.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+              <Button
+                as="a"
+                href="mailto:support@kreatli.com"
+                size="lg"
+                className="bg-foreground text-content1"
+                startContent={<Icon icon="mail" size={20} />}
+              >
+                Email Support
+              </Button>
+              <Button
+                as="a"
+                href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                target="_blank"
+                size="lg"
+                variant="bordered"
+                startContent={<Icon icon="calendar" size={20} />}
+              >
+                Book a Demo
+              </Button>
+            </div>
+            <div className="mt-4 pt-6 border-t border-foreground-200">
+              <p className="text-sm text-foreground-500">
+                You can also reach us at{' '}
+                <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-medium">
+                  support@kreatli.com
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
       <FooterSection hideCta={true} />

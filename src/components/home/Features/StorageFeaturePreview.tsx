@@ -4,6 +4,8 @@ import { AssetIcon } from '../../asset/AssetIcon';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { useSession } from '../../../hooks/useSession';
 import { formatBytes } from '../../../utils/formatBytes';
+import { useState, useEffect, useRef } from 'react';
+import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 
 interface UploadItem {
   id: string;
@@ -15,43 +17,229 @@ interface UploadItem {
   thumbnailUrl?: string;
 }
 
+const initialUploads: UploadItem[] = [
+  {
+    id: '1',
+    name: 'product_launch_v2.mp4',
+    size: 2400000000,
+    fileType: 'video/mp4',
+    progress: 68,
+    status: 'uploading',
+  },
+  {
+    id: '2',
+    name: 'hero_image_final.jpg',
+    size: 5200000,
+    fileType: 'image/jpeg',
+    progress: 100,
+    status: 'completed',
+    thumbnailUrl: 'https://picsum.photos/80/80?random=1',
+  },
+  {
+    id: '3',
+    name: 'presentation_deck.pdf',
+    size: 12000000,
+    fileType: 'application/pdf',
+    progress: 35,
+    status: 'uploading',
+  },
+];
+
 export const StorageFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
+  const isTouchScreen = useIsTouchScreen();
 
-  const uploads: UploadItem[] = [
-    {
-      id: '1',
-      name: 'product_launch_v2.mp4',
-      size: 2400000000,
-      fileType: 'video/mp4',
-      progress: 68,
-      status: 'uploading',
-    },
-    {
-      id: '2',
-      name: 'hero_image_final.jpg',
-      size: 5200000,
-      fileType: 'image/jpeg',
-      progress: 100,
-      status: 'completed',
-      thumbnailUrl: 'https://picsum.photos/80/80?random=1',
-    },
-    {
-      id: '3',
-      name: 'presentation_deck.pdf',
-      size: 12000000,
-      fileType: 'application/pdf',
-      progress: 35,
-      status: 'uploading',
-    },
-  ];
+  // Animation state
+  const [isAnimating, setIsAnimating] = useState(true);
+  const [uploads, setUploads] = useState<UploadItem[]>(initialUploads);
+  const isAnimatingRef = useRef(true);
+  const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    isAnimatingRef.current = isAnimating;
+  }, [isAnimating]);
 
   const handleClick = () => {
+    // Stop animation on any click
+    setIsAnimating(false);
     if (!isSignedIn) {
       openSignUpModal();
     }
   };
+
+  // Animation sequence
+  useEffect(() => {
+    if (!isAnimating || isTouchScreen) return;
+
+    const clearAllTimeouts = () => {
+      timeoutRefs.current.forEach((timeout) => clearTimeout(timeout));
+      timeoutRefs.current = [];
+    };
+
+    const scheduleAction = (callback: () => void, delay: number) => {
+      const timeout = setTimeout(() => {
+        if (isAnimatingRef.current) {
+          callback();
+        }
+      }, delay);
+      timeoutRefs.current.push(timeout);
+    };
+
+    const resetToInitialState = () => {
+      setUploads([...initialUploads]);
+    };
+
+    const runAnimationSequence = () => {
+      // Start with initial state
+      resetToInitialState();
+
+      // Step 1: Increase progress of first video file (after 1s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = { ...updated[0], progress: 85 };
+          return updated;
+        });
+      }, 1000);
+
+      // Step 2: Increase progress of PDF file (after 2s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[2] = { ...updated[2], progress: 60 };
+          return updated;
+        });
+      }, 2000);
+
+      // Step 3: Complete the video file (after 3.5s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = { ...updated[0], progress: 100, status: 'completed' };
+          return updated;
+        });
+      }, 3500);
+
+      // Step 4: Replace completed video with a new file (after 4.5s) - keep 3 files
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = {
+            id: '4',
+            name: 'brand_guidelines.pdf',
+            size: 8500000,
+            fileType: 'application/pdf',
+            progress: 0,
+            status: 'uploading',
+          };
+          return updated;
+        });
+      }, 4500);
+
+      // Step 5: Increase progress of new file and PDF (after 5.5s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = { ...updated[0], progress: 25 };
+          updated[2] = { ...updated[2], progress: 85 };
+          return updated;
+        });
+      }, 5500);
+
+      // Step 6: Complete the PDF file (after 7s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[2] = { ...updated[2], progress: 100, status: 'completed' };
+          return updated;
+        });
+      }, 7000);
+
+      // Step 7: Replace completed PDF with a new image file (after 8s) - keep 3 files
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[2] = {
+            id: '5',
+            name: 'mockup_design.jpg',
+            size: 3200000,
+            fileType: 'image/jpeg',
+            progress: 0,
+            status: 'uploading',
+            thumbnailUrl: 'https://picsum.photos/80/80?random=4',
+          };
+          return updated;
+        });
+      }, 8000);
+
+      // Step 8: Update progress on both uploading files (after 9s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = { ...updated[0], progress: 55 };
+          updated[2] = { ...updated[2], progress: 40 };
+          return updated;
+        });
+      }, 9000);
+
+      // Step 9: Complete both files (after 10.5s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = { ...updated[0], progress: 100, status: 'completed' };
+          updated[2] = { ...updated[2], progress: 100, status: 'completed' };
+          return updated;
+        });
+      }, 10500);
+
+      // Step 10: Replace first completed file with a new video (after 12s) - keep 3 files
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = {
+            id: '6',
+            name: 'tutorial_video.mp4',
+            size: 1800000000,
+            fileType: 'video/mp4',
+            progress: 0,
+            status: 'uploading',
+          };
+          return updated;
+        });
+      }, 12000);
+
+      // Step 11: Update progress on new video (after 13s)
+      scheduleAction(() => {
+        setUploads((prev) => {
+          const updated = [...prev];
+          updated[0] = { ...updated[0], progress: 30 };
+          return updated;
+        });
+      }, 13000);
+
+      // Step 12: Loop back - reset and restart (after 15s)
+      scheduleAction(() => {
+        if (isAnimatingRef.current) {
+          runAnimationSequence();
+        }
+      }, 15000);
+    };
+
+    // Start animation after a short delay
+    const initialTimeout = setTimeout(() => {
+      if (isAnimatingRef.current) {
+        runAnimationSequence();
+      }
+    }, 500);
+    timeoutRefs.current.push(initialTimeout);
+
+    return () => {
+      clearAllTimeouts();
+      clearTimeout(initialTimeout);
+    };
+  }, [isAnimating, isTouchScreen]);
 
   const getFileTypeLabel = (fileType: string) => {
     if (fileType.startsWith('video')) return 'Video';
@@ -117,7 +305,10 @@ export const StorageFeaturePreview = () => {
 
   return (
     <Card className="relative group">
-      <CardBody className="flex flex-col gap-6 p-6">
+      <CardBody
+        className="flex flex-col gap-6 p-6"
+        onClick={handleClick}
+      >
         {/* Header with Security Badge */}
         <div className="flex justify-between items-center border-b border-foreground-200 pb-4">
           <div className="flex items-center gap-3">
@@ -135,7 +326,10 @@ export const StorageFeaturePreview = () => {
             color="success"
             startContent={<Icon icon="shield" size={14} />}
             className="cursor-pointer hover:bg-success-100 transition-colors"
-            onClick={handleClick}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClick();
+            }}
           >
             Encrypted
           </Chip>
@@ -144,7 +338,10 @@ export const StorageFeaturePreview = () => {
         {/* Upload Area */}
         <div
           className="border-2 border-dashed border-foreground-300 rounded-xl p-8 bg-gradient-to-br from-foreground-50 to-foreground-100/50 hover:border-primary hover:from-primary-50/30 hover:to-primary-100/20 transition-all duration-300 cursor-pointer group/upload"
-          onClick={handleClick}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClick();
+          }}
         >
           <div className="flex flex-col items-center gap-4 text-center">
             <div className="bg-primary/10 rounded-full p-4 group-hover/upload:bg-primary/20 transition-colors">
@@ -154,7 +351,14 @@ export const StorageFeaturePreview = () => {
               <div className="font-semibold text-base mb-1.5">Drag & drop files here</div>
               <div className="text-sm text-foreground-500">or click to browse • Supports files up to 10GB</div>
             </div>
-            <Button size="md" className="bg-foreground text-content1" onClick={handleClick}>
+            <Button
+              size="md"
+              className="bg-foreground text-content1"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClick();
+              }}
+            >
               <Icon icon="upload" size={16} />
               Upload Files
             </Button>

@@ -1,5 +1,5 @@
 import { Avatar, Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const statuses = {
   'in-progress': {
@@ -39,6 +39,15 @@ export const ProjectFeatureFile = ({
 }: Props) => {
   const [assignee, setAssignee] = useState<string | undefined>(initialAssignee);
   const [status, setStatus] = useState<keyof typeof statuses>(initialStatus);
+
+  // Sync with props when they change (for animation control)
+  useEffect(() => {
+    setAssignee(initialAssignee);
+  }, [initialAssignee]);
+
+  useEffect(() => {
+    setStatus(initialStatus);
+  }, [initialStatus]);
 
   const handleSelectionChange = (keys: Selection) => {
     if (keys !== 'all') {
