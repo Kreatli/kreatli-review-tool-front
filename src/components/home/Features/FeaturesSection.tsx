@@ -9,19 +9,19 @@ import { StorageFeaturePreview } from './StorageFeaturePreview';
 
 export const FeaturesSection = () => {
   return (
-    <section id="product" className="relative backdrop-blur-lg scroll-mt-12 px-6 lg:pb-32 py-16">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-20">
-        <div className="flex flex-col gap-6 max-w-5xl mx-auto text-center">
-          <h2 className="text-[48px] font-bold font-sans leading-tight">
+    <section id="product" className="relative backdrop-blur-lg scroll-mt-12 px-4 sm:px-6 lg:pb-32 py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-12 sm:gap-16 lg:gap-20">
+        <div className="flex flex-col gap-4 sm:gap-6 max-w-5xl mx-auto text-center px-2 sm:px-0">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-bold font-sans leading-tight sm:leading-tight">
             Built for how creative production{' '}
             <span className="relative inline-block">
               <span className="relative z-10">actually</span>
-              <span className="absolute -left-1 -right-4 bottom-0 h-4 bg-contain bg-no-repeat bg-[url(/highlight-line.svg)] -z-0" />
+              <span className="absolute -left-1 -right-4 bottom-0 h-3 sm:h-4 bg-contain bg-no-repeat bg-[url(/highlight-line.svg)] -z-0" />
             </span>{' '}
             works
           </h2>
         </div>
-        <div className="w-full flex flex-col gap-24 lg:gap-[max(20vh,100px)]">
+        <div className="w-full flex flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-[max(20vh,100px)]">
           <Feature
             icon="slides"
             title="Centralized Project Dashboard"

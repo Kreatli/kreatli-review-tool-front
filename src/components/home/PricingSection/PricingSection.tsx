@@ -19,7 +19,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
           </p>
         </div>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 items-center lg:grid-cols-3 gap-8 w-full">
-          <Card isHoverable className="dark:border border-foreground-300">
+          <Card isHoverable className="dark:border border-foreground-300 transition-all duration-200 hover:shadow-lg">
             <CardBody className="p-6 flex flex-col gap-8">
               <div>
                 <Chip size="lg" variant="faded">
@@ -50,12 +50,18 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                   </Tooltip>
                 </li>
               </ul>
-              <Button as={Link} href="/sign-up" size="lg" variant="bordered">
+              <Button 
+                as={Link} 
+                href="/sign-up" 
+                size="lg" 
+                variant="bordered"
+                className="min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100"
+              >
                 Start For Free
               </Button>
             </CardBody>
           </Card>
-          <Card isHoverable className="relative border border-foreground overflow-visible">
+          <Card isHoverable className="relative border border-foreground overflow-visible transition-all duration-200 hover:shadow-xl hover:scale-[1.02]">
             <Chip className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-foreground text-content1">
               Best Cost/Value Ratio
             </Chip>
@@ -110,12 +116,17 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                   Watermarked Media
                 </li>
               </ul>
-              <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              <Button 
+                as={Link} 
+                href="/sign-up" 
+                size="lg" 
+                className="bg-foreground text-content1 min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-100"
+              >
                 Choose Pro Plan
               </Button>
             </CardBody>
           </Card>
-          <Card isHoverable className="dark:border border-foreground-300">
+          <Card isHoverable className="dark:border border-foreground-300 transition-all duration-200 hover:shadow-lg">
             <CardBody className="p-6 flex flex-col gap-8">
               <div>
                 <Chip size="lg" variant="faded">
@@ -150,7 +161,13 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                   </Tooltip>
                 </li>
               </ul>
-              <Button as={Link} href="/sign-up" size="lg" variant="bordered">
+              <Button 
+                as={Link} 
+                href="/sign-up" 
+                size="lg" 
+                variant="bordered"
+                className="min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100"
+              >
                 Choose Advanced Plan
               </Button>
             </CardBody>
@@ -163,6 +180,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
             target="_blank"
             size="lg"
             variant="bordered"
+            className="min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100"
           >
             Create your own Plan
           </Button>

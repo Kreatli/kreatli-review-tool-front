@@ -229,14 +229,17 @@ export const Header = () => {
         {!isSignedIn && (
           <>
             <NavbarItem>
-              <Link as={NextLink} href="/sign-in" color="foreground">
+              <Link as={NextLink} href="/sign-in" color="foreground" className="transition-opacity hover:opacity-80">
                 Sign in
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Button as={NextLink} href="/sign-up" className="text-content1 bg-foreground">
-                <span className="hidden sm:inline">Start for Free</span>
-                <span className="sm:hidden">Sign up</span>
+              <Button
+                as={NextLink}
+                href="/sign-up"
+                className="text-content1 bg-foreground transition-all duration-200 hover:scale-105 hover:shadow-lg"
+              >
+                Start for Free
               </Button>
             </NavbarItem>
           </>

@@ -49,8 +49,13 @@ export const FooterSection = ({ hideCta = false }: Props) => {
           <p className="text-lg text-center sm:text-2xl text-foreground-500 font-medium">
             Start using Kreatli for free and experience the value firsthand.
           </p>
-          <div className="flex items-center gap-4">
-            <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <Button
+              as={Link}
+              href="/sign-up"
+              size="lg"
+              className="bg-foreground text-content1 min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-100 w-full sm:w-auto"
+            >
               Start For Free
             </Button>
             <Button
@@ -59,6 +64,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
               target="_blank"
               size="lg"
               variant="light"
+              className="min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100 w-full sm:w-auto"
             >
               Book a Demo
             </Button>

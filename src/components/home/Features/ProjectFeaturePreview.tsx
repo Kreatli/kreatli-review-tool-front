@@ -274,20 +274,23 @@ export const ProjectFeaturePreview = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <ProjectFeatureFolder title="Product Launch Assets" items={9} size={2.5} />
-          <ProjectFeatureFolder title="Product Launch Assets" items={4} size={1.12} />
+          <div className="hidden sm:block">
+            <ProjectFeatureFolder title="Product Launch Assets" items={4} size={1.12} />
+          </div>
           {files.map((file, index) => (
-            <ProjectFeatureFile
-              key={index}
-              title={file.title}
-              size={file.size}
-              assignee={file.assignee}
-              comments={file.comments}
-              status={file.status}
-              onClick={() => {
-                setIsAnimating(false);
-                setShouldHide(true);
-              }}
-            />
+            <div key={index} className={index >= 2 ? 'hidden sm:block' : ''}>
+              <ProjectFeatureFile
+                title={file.title}
+                size={file.size}
+                assignee={file.assignee}
+                comments={file.comments}
+                status={file.status}
+                onClick={() => {
+                  setIsAnimating(false);
+                  setShouldHide(true);
+                }}
+              />
+            </div>
           ))}
         </div>
       </CardBody>

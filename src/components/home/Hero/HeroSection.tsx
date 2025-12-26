@@ -22,17 +22,21 @@ export const HeroSection = () => {
 
   return (
     <section className="relative w-full flex items-center justify-center overflow-hidden">
-      <div className="text-center w-full flex flex-col gap-16 px-6 pt-10 pb-20 relative z-10">
-        <div className="max-w-2xl mx-auto flex flex-col items-center gap-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold font-sans">
+      <div className="text-center w-full flex flex-col gap-8 sm:gap-12 lg:gap-16 px-4 sm:px-6 pt-6 sm:pt-10 pb-12 sm:pb-20 relative z-10">
+        <div className="max-w-2xl mx-auto flex flex-col items-center gap-4 sm:gap-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold font-sans leading-tight sm:leading-normal">
             End-to-End Creative
             <br />
             Production Platform for
             <br />
             <Typewriter words={typewriterWords} />
           </h1>
-          <div className="flex flex-col mt-4 md:flex-row gap-6">
-            <Button onClick={scrollToDemo} size="lg" className="bg-foreground text-content1">
+          <div className="flex flex-col mt-4 sm:mt-6 md:flex-row gap-3 sm:gap-4 md:gap-6 w-full sm:w-auto">
+            <Button
+              onClick={scrollToDemo}
+              size="lg"
+              className="bg-foreground text-content1 min-h-[48px] sm:min-h-[52px] transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-100 w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8"
+            >
               See How it Works
               <Icon icon="chevronDown" size={20} />
             </Button>
@@ -42,14 +46,15 @@ export const HeroSection = () => {
               target="_blank"
               size="lg"
               variant="light"
+              className="min-h-[48px] sm:min-h-[52px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100 w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8"
             >
               <Icon icon="calendar" />
               Book a Demo
             </Button>
           </div>
         </div>
-        <div id="arcade-demo" className="max-w-6xl mx-auto w-full scroll-mt-20">
-          <div className="relative h-0 w-full pb-[calc(51%)]">
+        <div id="arcade-demo" className="max-w-6xl mx-auto w-full scroll-mt-16 sm:scroll-mt-20 px-2 sm:px-0">
+          <div className="relative h-0 w-full pb-[calc(51%)] sm:pb-[calc(51%)]">
             <iframe
               src="https://demo.arcade.software/PPu2mnyNxXzs5sVzGfOA?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
               title="Review Video Feedback and Compare Creative Asset Versions"
@@ -57,6 +62,7 @@ export const HeroSection = () => {
               loading="lazy"
               allowFullScreen
               allow="clipboard-write"
+              className="rounded-lg sm:rounded-none"
               style={{
                 position: 'absolute',
                 top: 0,
@@ -70,7 +76,7 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      <div className="fixed inset-y-8 inset-x-0 pointer-events-none">
+      <div className="fixed inset-y-8 inset-x-0 pointer-events-none hidden sm:block">
         <div
           className={`absolute top-20 left-24 w-32 h-32 bg-gradient-to-br from-blue-300/30 to-purple-300/30 rounded-full ${styles.animateFloatSlow}`}
         />

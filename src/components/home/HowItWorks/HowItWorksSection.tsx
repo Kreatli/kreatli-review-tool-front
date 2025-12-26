@@ -69,11 +69,23 @@ export const HowItWorksSection = () => {
             </Card>
           ))}
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-          <Button as={Link} href="/sign-up" size="lg" className="text-content1 bg-foreground">
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto">
+          <Button 
+            as={Link} 
+            href="/sign-up" 
+            size="lg" 
+            className="text-content1 bg-foreground min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-100 w-full sm:w-auto"
+          >
             Start For Free
           </Button>
-          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">
+          <Button 
+            as="a" 
+            href="https://calendar.app.google/NXbAeTAUwaBGh5x49" 
+            target="_blank" 
+            size="lg" 
+            variant="light"
+            className="min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100 w-full sm:w-auto"
+          >
             Book a Demo
           </Button>
         </div>
