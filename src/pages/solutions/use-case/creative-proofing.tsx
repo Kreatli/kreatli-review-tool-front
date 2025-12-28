@@ -205,7 +205,7 @@ export default function CreativeProofingPage() {
             <div className="flex flex-col items-center gap-6">
               {data.howItWorks.steps.map((step, index) => (
                 <React.Fragment key={index}>
-                  <Card className="group w-full border border-foreground-200 hover:border-primary transition-all duration-300 hover:shadow-lg">
+                  <Card className="group w-full">
                     <CardBody className="flex flex-col sm:flex-row gap-6 items-center sm:items-start p-6 sm:p-8">
                       <div className="relative flex-shrink-0">
                         <div className="bg-foreground-100 rounded-full size-16 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-105">
@@ -256,7 +256,7 @@ export default function CreativeProofingPage() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {data.problemsSolved.items.map((problem, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index}>
                 <CardBody className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-warning-50 rounded-full p-2 flex-shrink-0">
@@ -284,16 +284,10 @@ export default function CreativeProofingPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {data.whoThisIsFor.audiences.map((audience, index) => (
-              <Card
-                key={index}
-                as={NextLink}
-                href={audience.href}
-                isPressable
-                className="group h-full border border-foreground-200 hover:border-foreground-300 transition-all duration-300 hover:shadow-md"
-              >
+              <Card key={index} as={NextLink} href={audience.href} isPressable className="group h-full">
                 <CardBody className="p-6 flex flex-col gap-4 h-full">
                   <div className="flex items-center gap-3">
-                    <div className="bg-foreground-100 rounded-full p-2.5 transition-all duration-300 group-hover:bg-foreground-200 group-hover:scale-105">
+                    <div className="bg-foreground-100 rounded-full p-2.5 transition-all duration-300 group-hover:bg-primary-50 group-hover:scale-105">
                       <Icon
                         icon={audience.icon as any}
                         size={20}

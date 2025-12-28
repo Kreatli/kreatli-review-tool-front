@@ -89,19 +89,14 @@ export const SignUpForm = ({ onSuccess }: Props) => {
   }
 
   return (
-    <form noValidate className="flex flex-col gap-6 sm:gap-8" onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-4 sm:gap-5">
+    <form noValidate className="flex flex-col gap-8" onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col gap-4">
         <Input
           label="Name"
           placeholder="John Doe"
           variant="faded"
           isInvalid={!!errors.name}
           labelPlacement="outside"
-          size="lg"
-          classNames={{
-            input: "text-base sm:text-lg",
-            inputWrapper: "min-h-[44px] sm:min-h-[48px]",
-          }}
           {...register('name', VALIDATION_RULES.SHORT_TEXT)}
         />
         <Input
@@ -112,11 +107,6 @@ export const SignUpForm = ({ onSuccess }: Props) => {
           type="email"
           isInvalid={!!errors.email}
           errorMessage={errors.email?.message}
-          size="lg"
-          classNames={{
-            input: "text-base sm:text-lg",
-            inputWrapper: "min-h-[44px] sm:min-h-[48px]",
-          }}
           {...register('email', VALIDATION_RULES.EMAIL)}
         />
         <Input
@@ -127,38 +117,20 @@ export const SignUpForm = ({ onSuccess }: Props) => {
           type="password"
           isInvalid={!!errors.password}
           errorMessage={errors.password?.message}
-          size="lg"
-          classNames={{
-            input: "text-base sm:text-lg",
-            inputWrapper: "min-h-[44px] sm:min-h-[48px]",
-          }}
           {...register('password', VALIDATION_RULES.PASSWORD)}
         />
       </div>
       <div className="flex flex-col items-center gap-4">
-        <Button 
-          type="submit" 
-          className="bg-foreground text-content1 min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-100" 
-          isLoading={isPending} 
-          fullWidth
-          size="lg"
-        >
+        <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
           Sign up
         </Button>
-        <Button 
-          variant="bordered" 
-          isLoading={isSsoPending} 
-          fullWidth 
-          onClick={() => googleLogin()}
-          className="min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100"
-          size="lg"
-        >
+        <Button variant="bordered" isLoading={isSsoPending} fullWidth onClick={() => googleLogin()}>
           Sign up with <Icon icon="google" size={18} />
         </Button>
       </div>
-      <div className="text-center text-sm sm:text-base">
+      <div className="text-center">
         Already have an account?{' '}
-        <Link as={NextLink} href="/sign-in" color="foreground" underline="always" className="transition-opacity hover:opacity-80">
+        <Link as={NextLink} href="/sign-in" color="foreground" underline="always">
           Sign in
         </Link>
       </div>

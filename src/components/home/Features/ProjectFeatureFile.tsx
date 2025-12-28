@@ -34,13 +34,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export const ProjectFeatureFile = ({
-  title,
-  size,
-  comments,
-  status: initialStatus,
-  onClick,
-}: Props) => {
+export const ProjectFeatureFile = ({ title, size, comments, status: initialStatus, onClick }: Props) => {
   const [status, setStatus] = useState<keyof typeof statuses>(initialStatus);
 
   // Sync with props when they change (for animation control)
@@ -59,16 +53,10 @@ export const ProjectFeatureFile = ({
           className="absolute h-full w-full object-cover"
         />
         <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-2">
-          <div onClick={(e) => e.stopPropagation()}>
+          <div>
             <Dropdown placement="top-start">
               <DropdownTrigger>
-                <Chip
-                  size="sm"
-                  variant="dot"
-                  color={statusConfig.color}
-                  className="cursor-pointer bg-foreground-50"
-                  style={statusConfig.color === 'default' ? { color: '#A1A1AA' } : undefined}
-                >
+                <Chip size="sm" variant="dot" color={statusConfig.color} className="cursor-pointer bg-foreground-50">
                   {statusConfig.label}
                 </Chip>
               </DropdownTrigger>
@@ -76,7 +64,10 @@ export const ProjectFeatureFile = ({
                 selectedKeys={[status]}
                 selectionMode="single"
                 disallowEmptySelection
-                onSelectionChange={(keys) => setStatus(keys.currentKey as keyof typeof statuses)}
+                onSelectionChange={(keys) => {
+                  onClick?.();
+                  setStatus(keys.currentKey as keyof typeof statuses);
+                }}
               >
                 <DropdownItem key="no-status">No status</DropdownItem>
                 <DropdownItem key="changes-required">Changes required</DropdownItem>

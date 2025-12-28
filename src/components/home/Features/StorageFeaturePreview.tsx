@@ -265,7 +265,13 @@ export const StorageFeaturePreview = () => {
         {/* Thumbnail/Icon */}
         <div className="size-12 shrink-0 rounded-lg overflow-hidden bg-foreground-100 border border-foreground-200 flex items-center justify-center">
           {isImage && upload.thumbnailUrl ? (
-            <Image src={upload.thumbnailUrl} alt={upload.name} className="w-full h-full object-cover" removeWrapper />
+            <Image
+              src={upload.thumbnailUrl}
+              alt={upload.name}
+              className="w-full h-full object-cover"
+              removeWrapper
+              radius="none"
+            />
           ) : (
             <AssetIcon fileType={upload.fileType} size={24} />
           )}
@@ -305,10 +311,7 @@ export const StorageFeaturePreview = () => {
 
   return (
     <Card className="relative group">
-      <CardBody
-        className="flex flex-col gap-6 p-6"
-        onClick={handleClick}
-      >
+      <CardBody className="flex flex-col gap-6 p-6" onClick={handleClick}>
         {/* Header with Security Badge */}
         <div className="flex justify-between items-center border-b border-foreground-200 pb-4">
           <div className="flex items-center gap-3">

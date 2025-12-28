@@ -164,7 +164,7 @@ export const Header = () => {
                       },
                       {
                         label: 'Guides',
-                        href: '/learning/guides',
+                        href: '/guides',
                         description: 'Learning guides and tutorials',
                       },
                       {
@@ -229,25 +229,22 @@ export const Header = () => {
         {!isSignedIn && (
           <>
             <NavbarItem>
-              <Link as={NextLink} href="/sign-in" color="foreground" className="transition-opacity hover:opacity-80">
+              <Link as={NextLink} href="/sign-in" color="foreground">
                 Sign in
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Button
-                as={NextLink}
-                href="/sign-up"
-                className="text-content1 bg-foreground transition-all duration-200 hover:scale-105 hover:shadow-lg"
-              >
-                Start for Free
+              <Button as={NextLink} href="/sign-up" className="text-content1 bg-foreground">
+                <span className="hidden sm:inline">Start for Free</span>
+                <span className="sm:hidden">Sign up</span>
               </Button>
             </NavbarItem>
           </>
         )}
       </NavbarContent>
       {!isSignedIn && (
-        <NavbarMenu className="pl-16">
-          <div className="font-semibold text-foreground-500 mb-2 px-2">Platform</div>
+        <NavbarMenu className="sm:pl-16">
+          <div className="font-semibold mb-2">Platform</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -291,8 +288,8 @@ export const Header = () => {
               Integrations
             </Link>
           </NavbarMenuItem>
-          <div className="font-semibold text-foreground-500 mb-2 mt-4 px-2">Solutions</div>
-          <div className="text-xs text-foreground-400 mb-1 px-2">By Industry</div>
+          <div className="font-semibold mb-1 mt-4">Solutions</div>
+          <div className="text-sm text-foreground-500 mb-1">By Industry</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -326,7 +323,7 @@ export const Header = () => {
               In-House Creative & Content Teams
             </Link>
           </NavbarMenuItem>
-          <div className="text-xs text-foreground-400 mb-1 mt-2 px-2">By Use-Case</div>
+          <div className="text-sm text-foreground-500 mb-1 mt-2">By Use-Case</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -360,7 +357,7 @@ export const Header = () => {
               Creative Proofing
             </Link>
           </NavbarMenuItem>
-          <div className="font-semibold text-foreground-500 mb-2 mt-4 px-2">Resources</div>
+          <div className="font-semibold mb-1 mt-4">Resources</div>
           <NavbarMenuItem>
             <Link as={NextLink} href="/help" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Help Center
@@ -388,8 +385,8 @@ export const Header = () => {
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link as={NextLink} href="/learning" size="lg" color="foreground" onClick={closeNavbarMenu}>
-              Learning
+            <Link as={NextLink} href="/guides" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              Guides
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
@@ -397,7 +394,7 @@ export const Header = () => {
               Blog
             </Link>
           </NavbarMenuItem>
-          <div className="font-semibold text-foreground-500 mb-2 mt-4 px-2">Other</div>
+          <div className="font-semibold mb-1 mt-4">Other</div>
           <NavbarMenuItem>
             <Link as={NextLink} href="/pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Pricing

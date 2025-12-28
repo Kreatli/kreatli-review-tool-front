@@ -28,7 +28,7 @@ const faqs: FAQItem[] = [
     category: 'Features',
     question: 'How does frame-accurate video review and approval work in Kreatli?',
     answer:
-      "Kreatli's frame-accurate review feature allows you to pin comments, annotations, and feedback to exact frames and timestamps in video files. When reviewing a video, you can click on any specific frame to add a comment that's permanently linked to that moment in the timeline. This eliminates confusion about which clip or scene you're referring to.\n\nThe system supports frame-accurate revisions for video files, meaning reviewers can provide precise feedback like \"change the color at 00:02:15\" or \"add transition between frames 1,234-1,236.\" This level of precision is essential for video production teams who need to communicate exact edit points without ambiguity.\n\nAll frame-accurate comments are integrated into your review and approval workflow, allowing editors to see exactly where changes are needed and mark revisions as complete once addressed. This streamlines the creative production management process by reducing back-and-forth communication.",
+      'Kreatli\'s frame-accurate review feature allows you to pin comments, annotations, and feedback to exact frames and timestamps in video files. When reviewing a video, you can click on any specific frame to add a comment that\'s permanently linked to that moment in the timeline. This eliminates confusion about which clip or scene you\'re referring to.\n\nThe system supports frame-accurate revisions for video files, meaning reviewers can provide precise feedback like "change the color at 00:02:15" or "add transition between frames 1,234-1,236." This level of precision is essential for video production teams who need to communicate exact edit points without ambiguity.\n\nAll frame-accurate comments are integrated into your review and approval workflow, allowing editors to see exactly where changes are needed and mark revisions as complete once addressed. This streamlines the creative production management process by reducing back-and-forth communication.',
   },
   {
     key: 'review-workflow',
@@ -56,7 +56,7 @@ const faqs: FAQItem[] = [
     category: 'Features',
     question: "How does team collaboration work in Kreatli's creative production platform?",
     answer:
-      "Kreatli enables collaboration through multiple integrated features. Project-tied chats keep all conversations organized by project, so team discussions stay with the relevant work. Asset-linked comments ensure feedback is always connected to the specific file being discussed, eliminating confusion about which asset a comment refers to.\n\nThe platform supports real-time collaboration where multiple team members can review and comment on the same file simultaneously. Guest review links allow clients and external collaborators to participate in the review and approval process without requiring accounts, making it easy to include stakeholders in your creative workflow.\n\nAll collaboration happens within the context of your creative production management system, so conversations, feedback, and approvals are all tracked and visible to the team. This reduces tool-switching and keeps everything in one place, from initial planning through final delivery.",
+      'Kreatli enables collaboration through multiple integrated features. Project-tied chats keep all conversations organized by project, so team discussions stay with the relevant work. Asset-linked comments ensure feedback is always connected to the specific file being discussed, eliminating confusion about which asset a comment refers to.\n\nThe platform supports real-time collaboration where multiple team members can review and comment on the same file simultaneously. Guest review links allow clients and external collaborators to participate in the review and approval process without requiring accounts, making it easy to include stakeholders in your creative workflow.\n\nAll collaboration happens within the context of your creative production management system, so conversations, feedback, and approvals are all tracked and visible to the team. This reduces tool-switching and keeps everything in one place, from initial planning through final delivery.',
   },
   {
     key: 'guest-reviews',
@@ -152,7 +152,7 @@ const faqs: FAQItem[] = [
     category: 'Security',
     question: 'What security features does Kreatli offer for creative production files?',
     answer:
-      "Kreatli provides enterprise-level security features designed for sensitive creative work. All files are encrypted both in transit and at rest, ensuring your creative assets are protected. The platform supports secure file sharing with password-protected links and access controls.\n\nYou can set granular permissions for team members, controlling who can view, comment, approve, or download files. Guest review links can be configured with expiration dates and access restrictions, giving you control over external collaboration while maintaining security.\n\nThe platform is compliance-ready and designed to meet security standards required for handling confidential creative work, client materials, and proprietary content. This makes it suitable for agencies and production companies that need to protect sensitive creative assets throughout the media review and approval process.",
+      'Kreatli provides enterprise-level security features designed for sensitive creative work. All files are encrypted both in transit and at rest, ensuring your creative assets are protected. The platform supports secure file sharing with password-protected links and access controls.\n\nYou can set granular permissions for team members, controlling who can view, comment, approve, or download files. Guest review links can be configured with expiration dates and access restrictions, giving you control over external collaboration while maintaining security.\n\nThe platform is compliance-ready and designed to meet security standards required for handling confidential creative work, client materials, and proprietary content. This makes it suitable for agencies and production companies that need to protect sensitive creative assets throughout the media review and approval process.',
   },
 ];
 
@@ -227,9 +227,7 @@ export default function HelpPage() {
       {/* Hero Section */}
       <section className="relative py-16 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
-            Help Center
-          </h1>
+          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Help Center</h1>
           <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
             Find answers to frequently asked questions about Kreatli's creative production platform, features, pricing,
             and more.
@@ -244,7 +242,8 @@ export default function HelpPage() {
               variant="bordered"
               classNames={{
                 input: 'text-base',
-                inputWrapper: 'bg-content1 border-foreground-300 shadow-sm hover:border-foreground-400 focus-within:border-primary',
+                inputWrapper:
+                  'bg-content1 border-foreground-300 shadow-sm hover:border-foreground-400 focus-within:border-primary',
               }}
             />
             {searchQuery && (
@@ -258,7 +257,7 @@ export default function HelpPage() {
 
       {/* Popular Questions Section */}
       {!searchQuery && popularFaqs.length > 0 && (
-        <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden border-t border-foreground-200">
+        <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-8">
               <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Popular Questions</h2>
@@ -271,18 +270,12 @@ export default function HelpPage() {
                 <Card
                   key={faq.key}
                   isPressable
-                  className="hover:bg-foreground-100 transition-colors cursor-pointer"
+                  isHoverable
                   onPress={() => {
                     setSelectedCategory(faq.category);
                     setSearchQuery('');
-                    // Scroll to the FAQ after a brief delay
-                    setTimeout(() => {
-                      const element = document.getElementById(`faq-${faq.key}`);
-                      element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      // Open the accordion item
-                      const accordionButton = element?.querySelector('button');
-                      accordionButton?.click();
-                    }, 100);
+                    const element = document.getElementById('browse-by-category');
+                    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
                 >
                   <CardBody className="p-6">
@@ -291,10 +284,7 @@ export default function HelpPage() {
                         <Icon icon="helpCircle" size={20} className="text-primary" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-lg leading-relaxed mb-3 line-clamp-2">{faq.question}</h3>
-                        <Chip size="sm" variant="flat" className="mt-2">
-                          {faq.category}
-                        </Chip>
+                        <h3 className="font-semibold text-lg leading-relaxed">{faq.question}</h3>
                       </div>
                     </div>
                   </CardBody>
@@ -311,7 +301,9 @@ export default function HelpPage() {
           {/* Category Tabs */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans">Browse by Category</h2>
+              <h2 id="browse-by-category" className="text-2xl sm:text-4xl font-bold font-sans scroll-mt-24">
+                Browse by Category
+              </h2>
               {selectedCategory !== 'all' && (
                 <Button
                   size="sm"
@@ -368,78 +360,61 @@ export default function HelpPage() {
                             <Icon icon={config.icon as any} size={20} className="text-primary" />
                           </div>
                           <h3 className="text-xl sm:text-2xl font-bold font-sans">{config.name}</h3>
-                          <Chip size="sm" variant="flat" className="ml-2">
+                          <Chip size="sm" variant="flat">
                             {categoryFaqs.length}
                           </Chip>
                         </div>
-                      <Accordion
-                        variant="splitted"
-                        className="gap-3"
-                        itemClasses={{
-                          base: 'py-2',
-                          title: 'text-lg',
-                          trigger: 'py-4 px-4',
-                          content: 'px-4 pb-4',
-                        }}
-                      >
-                        {categoryFaqs.map((faq) => (
-                          <AccordionItem
-                            key={faq.key}
-                            id={`faq-${faq.key}`}
-                            title={
-                              <span className="font-semibold text-base">
-                                {faq.question}
-                              </span>
-                            }
-                          >
-                            <div className="text-foreground-500 space-y-3 whitespace-pre-wrap leading-relaxed">
-                              {faq.answer}
-                            </div>
-                          </AccordionItem>
-                        ))}
-                      </Accordion>
-                    </div>
+                        <Accordion
+                          variant="splitted"
+                          className="gap-3"
+                          itemClasses={{
+                            base: 'px-5 py-1',
+                          }}
+                        >
+                          {categoryFaqs.map((faq) => (
+                            <AccordionItem
+                              key={faq.key}
+                              id={`faq-${faq.key}`}
+                              title={<span className="font-semibold text-base">{faq.question}</span>}
+                            >
+                              <div className="text-foreground-500 space-y-3 whitespace-pre-wrap leading-relaxed">
+                                {faq.answer}
+                              </div>
+                            </AccordionItem>
+                          ))}
+                        </Accordion>
+                      </div>
                     );
                   })
               ) : (
                 // Show filtered results
                 <div>
-                  {selectedCategory !== 'all' && (() => {
-                    return (
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="bg-foreground-100 rounded-full p-2">
-                          <Icon
-                            icon={displayedCategory.config.icon as any}
-                            size={20}
-                            className="text-primary"
-                          />
+                  {selectedCategory !== 'all' &&
+                    (() => {
+                      return (
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="bg-foreground-100 rounded-full p-2">
+                            <Icon icon={displayedCategory.config.icon as any} size={20} className="text-primary" />
+                          </div>
+                          <h3 className="text-xl sm:text-2xl font-bold font-sans">{displayedCategory.config.name}</h3>
+                          <Chip size="sm" variant="flat" className="ml-2">
+                            {displayedCategory.faqs.length}
+                          </Chip>
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-bold font-sans">{displayedCategory.config.name}</h3>
-                        <Chip size="sm" variant="flat" className="ml-2">
-                          {displayedCategory.faqs.length}
-                        </Chip>
-                      </div>
-                    );
-                  })()}
+                      );
+                    })()}
                   <Accordion
                     variant="splitted"
                     className="gap-3"
                     itemClasses={{
-                      base: 'py-2',
-                      title: 'text-lg',
-                      trigger: 'py-4 px-4',
-                      content: 'px-4 pb-4',
+                      base: 'px-5 py-1',
                     }}
                   >
                     {displayedCategory.faqs.map((faq) => (
                       <AccordionItem
                         key={faq.key}
                         id={`faq-${faq.key}`}
-                        title={
-                          <span className="font-semibold text-base">
-                            {faq.question}
-                          </span>
-                        }
+                        title={<span className="font-semibold text-base">{faq.question}</span>}
                       >
                         <div className="text-foreground-500 space-y-3 whitespace-pre-wrap leading-relaxed">
                           {faq.answer}
@@ -452,12 +427,12 @@ export default function HelpPage() {
             </div>
           ) : (
             <Card>
-              <CardBody className="p-12 text-center">
+              <CardBody className="p-12 text-center items-center">
                 <div className="bg-foreground-100 rounded-full p-4 w-fit mx-auto mb-4">
-                  <Icon icon="search" size={32} className="text-foreground-400" />
+                  <Icon icon="search" size={28} className="text-foreground-400" />
                 </div>
                 <h3 className="text-xl font-bold font-sans mb-2">No results found</h3>
-                <p className="text-foreground-500 mb-6">
+                <p className="mb-6 max-w-md">
                   {searchQuery
                     ? "We couldn't find any FAQs matching your search. Try different keywords or browse by category."
                     : `No FAQs available in the ${displayedCategory.config.name} category.`}
@@ -480,13 +455,13 @@ export default function HelpPage() {
       </section>
 
       {/* Contact Support Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden border-t border-foreground-200">
+      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center flex flex-col gap-6">
             <h2 className="text-2xl sm:text-4xl font-bold font-sans">Still Have Questions?</h2>
             <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-              If you didn't find the answer you were looking for, our support team is here to help. Reach out to
-              us and we'll get back to you as soon as possible.
+              If you didn't find the answer you were looking for, our support team is here to help. Reach out to us and
+              we'll get back to you as soon as possible.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
               <Button
@@ -509,14 +484,6 @@ export default function HelpPage() {
                 Book a Demo
               </Button>
             </div>
-            <div className="mt-4 pt-6 border-t border-foreground-200">
-              <p className="text-sm text-foreground-500">
-                You can also reach us at{' '}
-                <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-medium">
-                  support@kreatli.com
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -524,4 +491,3 @@ export default function HelpPage() {
     </>
   );
 }
-

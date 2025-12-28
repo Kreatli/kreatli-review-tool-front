@@ -59,15 +59,14 @@ export const Typewriter = ({ words, typingSpeed = 100, deletingSpeed = 50, pause
   const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b), '');
 
   return (
-    <span className="inline-block min-w-[1ch] relative" style={{ minWidth: `${longestWord.length}ch` }}>
+    <span className="inline-block min-w-[1ch] relative leading-tight">
       <span className="relative inline-block px-3 py-1.5">
         {/* Background highlight badge */}
-        <span className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-lg blur-sm -z-10" />
-        <span className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-lg -z-10" />
+        <span className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-lg blur-sm -z-10" />
 
         {/* Main text with vibrant gradient */}
         <span
-          className={`inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent font-extrabold ${styles.animateGradient}`}
+          className={`inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent ${styles.animateGradient}`}
         >
           {currentText}
         </span>

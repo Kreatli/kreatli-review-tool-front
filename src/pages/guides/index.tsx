@@ -5,8 +5,20 @@ import { Header } from '../../components/layout/Header';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { useSession } from '../../hooks/useSession';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { getStoryblokApi } from '../../lib/storyblok';
+import { GetStaticProps } from 'next';
+import { PageStoryblok } from '../../typings/storyblok';
+import { ISbStoryData } from '@storyblok/react';
+import { BlogArticles } from '../../components/blog/Blog';
 
-export default function GuidesPage() {
+const DRAFT_REVALIDATE_TIME = 60;
+const PUBLISHED_REVALIDATE_TIME = 3600;
+
+interface Props {
+  stories: ISbStoryData<PageStoryblok>[];
+}
+
+export default function GuidesPage({ stories }: Props) {
   useSession();
 
   return (
@@ -33,17 +45,43 @@ export default function GuidesPage() {
             Step-by-step guides and tutorials to help you master Kreatli's creative production management platform.
           </p>
         </div>
-      </section>
-
-      {/* Placeholder Content */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10 text-center">
-          <p className="text-foreground-500">Guides coming soon.</p>
+        <div className="backdrop-blur-lg">
+          <div className="max-w-6xl mx-auto pt-6">
+            <BlogArticles articles={stories} />
+          </div>
         </div>
       </section>
 
-      <FooterSection hideCta={true} />
+      <FooterSection />
     </>
   );
 }
 
+export const getStaticProps = (async () => {
+  try {
+    const storiesData = await getStoryblokApi().getStories({
+      starts_with: 'guides/',
+      excluding_fields: 'body',
+      version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+      sort_by: 'content.publishDate:desc',
+      per_page: 100,
+    });
+
+    if (!storiesData?.data?.stories) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        stories: storiesData.data.stories,
+      },
+      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
+    };
+  } catch {
+    return {
+      notFound: true,
+    };
+  }
+}) satisfies GetStaticProps<{}>;

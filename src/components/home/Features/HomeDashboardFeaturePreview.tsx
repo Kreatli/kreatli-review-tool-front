@@ -17,7 +17,7 @@ import {
 } from '@heroui/react';
 import { Icon } from '../../various/Icon';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useSession } from '../../../hooks/useSession';
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 
@@ -26,7 +26,6 @@ export const HomeDashboardFeaturePreview = () => {
   const { isSignedIn } = useSession();
   const isTouchScreen = useIsTouchScreen();
   const [shouldHide, setShouldHide] = useState(false);
-  const [selectedTab, setSelectedTab] = useState('home');
   const [checklistItems, setChecklistItems] = useState({
     inviteGreg: true,
     uploadMedia: false,
@@ -38,24 +37,13 @@ export const HomeDashboardFeaturePreview = () => {
     { status: 'No status', color: 'default', image: 'random=3', user: null },
   ]);
 
-  // Animation state
-  const [isAnimating, setIsAnimating] = useState(true);
-  const isAnimatingRef = useRef(true);
-  const animationStepRef = useRef(0);
-  const timeoutRefs = useRef<NodeJS.Timeout[]>([]);
-
-  // Keep ref in sync with state
-  useEffect(() => {
-    isAnimatingRef.current = isAnimating;
-  }, [isAnimating]);
-
   const handleChecklistChange = (key: keyof typeof checklistItems) => {
-    setIsAnimating(false);
     setChecklistItems((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const handleStatusChange = (idx: number, keys: Selection) => {
-    setIsAnimating(false);
+    setShouldHide(true);
+
     if (keys !== 'all') {
       const newStatus = keys.values().next().value as string;
       setMediaItems((prev) => {
@@ -76,7 +64,8 @@ export const HomeDashboardFeaturePreview = () => {
   };
 
   const handleAssigneeChange = (idx: number, keys: Selection) => {
-    setIsAnimating(false);
+    setShouldHide(true);
+
     if (keys !== 'all') {
       const newUser = keys.values().next().value ?? null;
       setMediaItems((prev) => {
@@ -88,189 +77,17 @@ export const HomeDashboardFeaturePreview = () => {
   };
 
   const handleClick = () => {
-    // Stop animation on any click
-    setIsAnimating(false);
     if (!isSignedIn) {
       openSignUpModal();
     }
     setShouldHide(true);
   };
 
-  // Animation sequence
-  useEffect(() => {
-    if (!isAnimating || isTouchScreen) return;
-
-    const clearAllTimeouts = () => {
-      timeoutRefs.current.forEach((timeout) => clearTimeout(timeout));
-      timeoutRefs.current = [];
-    };
-
-    const scheduleAction = (callback: () => void, delay: number) => {
-      const timeout = setTimeout(() => {
-        if (isAnimatingRef.current) {
-          callback();
-        }
-      }, delay);
-      timeoutRefs.current.push(timeout);
-    };
-
-    const resetToInitialState = () => {
-      setSelectedTab('home');
-      setChecklistItems({
-        inviteGreg: true,
-        uploadMedia: false,
-        makeAdjustments: false,
-      });
-      setMediaItems([
-        { status: 'Approved', color: 'success', image: 'random=1', user: 'a042581f4e29026024d' },
-        { status: 'Changes required', color: 'danger', image: 'random=2', user: 'a042581f4e29026024d' },
-        { status: 'No status', color: 'default', image: 'random=3', user: null },
-      ]);
-    };
-
-    const runAnimationSequence = () => {
-      // Start with initial state
-      resetToInitialState();
-      animationStepRef.current = 0;
-
-      // Step 1: Switch to Media tab (after 1s)
-      scheduleAction(() => {
-        setSelectedTab('media');
-        animationStepRef.current = 1;
-      }, 1000);
-
-      // Step 2: Switch to Chat tab (after 2.5s)
-      scheduleAction(() => {
-        setSelectedTab('chat');
-        animationStepRef.current = 2;
-      }, 2500);
-
-      // Step 3: Switch back to Home tab (after 4s)
-      scheduleAction(() => {
-        setSelectedTab('home');
-        animationStepRef.current = 3;
-      }, 4000);
-
-      // Step 4: Toggle "Upload Media" checkbox (after 5.5s)
-      scheduleAction(() => {
-        setChecklistItems((prev) => ({ ...prev, uploadMedia: !prev.uploadMedia }));
-        animationStepRef.current = 4;
-      }, 5500);
-
-      // Step 5: Toggle "Make Adjustments" checkbox (after 7s)
-      scheduleAction(() => {
-        setChecklistItems((prev) => ({ ...prev, makeAdjustments: !prev.makeAdjustments }));
-        animationStepRef.current = 5;
-      }, 7000);
-
-      // Step 6: Change status of first media item to "Changes required" (after 8.5s)
-      scheduleAction(() => {
-        setMediaItems((prev) => {
-          const updated = [...prev];
-          updated[0] = {
-            ...updated[0],
-            status: 'Changes required',
-            color: 'danger',
-          };
-          return updated;
-        });
-        animationStepRef.current = 6;
-      }, 8500);
-
-      // Step 7: Change status of second media item to "Approved" (after 10s)
-      scheduleAction(() => {
-        setMediaItems((prev) => {
-          const updated = [...prev];
-          updated[1] = {
-            ...updated[1],
-            status: 'Approved',
-            color: 'success',
-          };
-          return updated;
-        });
-        animationStepRef.current = 7;
-      }, 10000);
-
-      // Step 8: Change assignee of first media item (after 11.5s)
-      scheduleAction(() => {
-        setMediaItems((prev) => {
-          const updated = [...prev];
-          updated[0] = {
-            ...updated[0],
-            user: 'a042581f4e29026024f', // Martin D.
-          };
-          return updated;
-        });
-        animationStepRef.current = 8;
-      }, 11500);
-
-      // Step 9: Add assignee to third media item (after 13s)
-      scheduleAction(() => {
-        setMediaItems((prev) => {
-          const updated = [...prev];
-          updated[2] = {
-            ...updated[2],
-            user: 'a042581f4e29026024e', // George M.
-          };
-          return updated;
-        });
-        animationStepRef.current = 9;
-      }, 13000);
-
-      // Step 10: Change status of third media item to "Approved" (after 14.5s)
-      scheduleAction(() => {
-        setMediaItems((prev) => {
-          const updated = [...prev];
-          updated[2] = {
-            ...updated[2],
-            status: 'Approved',
-            color: 'success',
-          };
-          return updated;
-        });
-        animationStepRef.current = 10;
-      }, 14500);
-
-      // Step 11: Toggle "Invite Greg" checkbox (after 16s)
-      scheduleAction(() => {
-        setChecklistItems((prev) => ({ ...prev, inviteGreg: !prev.inviteGreg }));
-        animationStepRef.current = 11;
-      }, 16000);
-
-      // Step 12: Switch to Activity tab (after 17.5s)
-      scheduleAction(() => {
-        setSelectedTab('activity');
-        animationStepRef.current = 12;
-      }, 17500);
-
-      // Step 13: Loop back - reset and restart (after 19s)
-      scheduleAction(() => {
-        if (isAnimatingRef.current) {
-          runAnimationSequence();
-        }
-      }, 19000);
-    };
-
-    // Start animation after a short delay
-    const initialTimeout = setTimeout(() => {
-      if (isAnimatingRef.current) {
-        runAnimationSequence();
-      }
-    }, 500);
-    timeoutRefs.current.push(initialTimeout);
-
-    return () => {
-      clearAllTimeouts();
-      clearTimeout(initialTimeout);
-    };
-  }, [isAnimating, isTouchScreen]);
-
   return (
     <Card className="relative group">
       <CardBody
         className="flex flex-col gap-3 p-4 relative"
         onClick={() => {
-          setIsAnimating(false);
           setShouldHide(true);
         }}
       >
@@ -291,7 +108,7 @@ export const HomeDashboardFeaturePreview = () => {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <div className="relative z-20">
+            <div className="relative">
               <AvatarGroup size="sm" max={2} total={6} isBordered>
                 <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
                 <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" />
@@ -309,14 +126,7 @@ export const HomeDashboardFeaturePreview = () => {
 
         {/* Navigation Tabs */}
         <div className="flex">
-          <Tabs
-            selectedKey={selectedTab}
-            onSelectionChange={(key) => {
-              setIsAnimating(false);
-              setSelectedTab(key as string);
-              handleClick();
-            }}
-          >
+          <Tabs selectedKey="home" onSelectionChange={handleClick}>
             <Tab key="home" title="Home" />
             <Tab key="media" title="Media" />
             <Tab key="chat" title="Chat" />
@@ -361,10 +171,14 @@ export const HomeDashboardFeaturePreview = () => {
                   <span>Links</span>
                 </div>
               </div>
-              <div className="flex flex-col gap-1.5 pt-2 border-t border-foreground-200 checkbox-black-override relative z-20">
+              <div className="flex flex-col gap-1.5 pt-2 border-t border-foreground-200 checkbox-black-override relative">
                 <Checkbox
                   isSelected={checklistItems.inviteGreg}
-                  onValueChange={() => handleChecklistChange('inviteGreg')}
+                  className="z-20"
+                  onValueChange={() => {
+                    handleChecklistChange('inviteGreg');
+                    setShouldHide(true);
+                  }}
                   size="sm"
                   color="default"
                 >
@@ -374,7 +188,11 @@ export const HomeDashboardFeaturePreview = () => {
                 </Checkbox>
                 <Checkbox
                   isSelected={checklistItems.uploadMedia}
-                  onValueChange={() => handleChecklistChange('uploadMedia')}
+                  onValueChange={() => {
+                    handleChecklistChange('uploadMedia');
+                    setShouldHide(true);
+                  }}
+                  className="z-20"
                   size="sm"
                   color="default"
                 >
@@ -384,7 +202,11 @@ export const HomeDashboardFeaturePreview = () => {
                 </Checkbox>
                 <Checkbox
                   isSelected={checklistItems.makeAdjustments}
-                  onValueChange={() => handleChecklistChange('makeAdjustments')}
+                  onValueChange={() => {
+                    handleChecklistChange('makeAdjustments');
+                    setShouldHide(true);
+                  }}
+                  className="z-20"
                   size="sm"
                   color="default"
                 >

@@ -6,9 +6,10 @@ interface Props {
   title: string;
   items: number;
   size: number; // size in bytes
+  onClick?: () => void;
 }
 
-export const ProjectFeatureFolder = ({ title, items, size }: Props) => {
+export const ProjectFeatureFolder = ({ title, items, size, onClick }: Props) => {
   return (
     <div className="bg-foreground-50 border border-foreground-300 rounded-2xl py-2.5 px-4 flex items-center gap-3">
       <Icon icon="folder" className="text-foreground-500 size-5 shrink-0" />
@@ -25,8 +26,12 @@ export const ProjectFeatureFolder = ({ title, items, size }: Props) => {
           </Button>
         </DropdownTrigger>
         <DropdownMenu variant="flat">
-          <DropdownItem key="open">Open</DropdownItem>
-          <DropdownItem key="rename">Rename</DropdownItem>
+          <DropdownItem key="open" onClick={onClick}>
+            Open
+          </DropdownItem>
+          <DropdownItem key="rename" onClick={onClick}>
+            Rename
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </div>

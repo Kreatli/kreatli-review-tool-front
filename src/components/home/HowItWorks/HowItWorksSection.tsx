@@ -44,10 +44,7 @@ export const HowItWorksSection = () => {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
           {steps.map((step, index) => (
-            <Card
-              key={index}
-              className="group h-full border border-foreground-200 hover:border-foreground-300 transition-all duration-300 hover:shadow-md"
-            >
+            <Card key={index} className="group h-full">
               <CardBody className="flex flex-col gap-6 items-center p-6 h-full">
                 <div className="relative">
                   <div className="bg-foreground-100 rounded-full size-16 flex items-center justify-center transition-all duration-300 group-hover:bg-foreground-200 group-hover:scale-105">
@@ -69,23 +66,11 @@ export const HowItWorksSection = () => {
             </Card>
           ))}
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto">
-          <Button 
-            as={Link} 
-            href="/sign-up" 
-            size="lg" 
-            className="text-content1 bg-foreground min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-lg active:scale-100 w-full sm:w-auto"
-          >
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+          <Button as={Link} href="/sign-up" size="lg" className="text-content1 bg-foreground">
             Start For Free
           </Button>
-          <Button 
-            as="a" 
-            href="https://calendar.app.google/NXbAeTAUwaBGh5x49" 
-            target="_blank" 
-            size="lg" 
-            variant="light"
-            className="min-h-[44px] sm:min-h-[48px] transition-all duration-200 hover:scale-105 hover:shadow-md active:scale-100 w-full sm:w-auto"
-          >
+          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">
             Book a Demo
           </Button>
         </div>
