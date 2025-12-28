@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ReviewToolCanvas } from './ReviewToolCanvas';
 import { ReviewTool } from '../../../typings/reviewTool';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { useSession } from '../../../hooks/useSession';
 
 export const ReviewToolPreview = () => {
   const [comment, setComment] = useState('');
@@ -14,11 +15,13 @@ export const ReviewToolPreview = () => {
   const [hasNewCommentShapes, setHasNewCommentShapes] = useState(false);
 
   const { openSignUpModal } = useSignUpModalVisibility();
+  const { isSignedIn } = useSession();
 
   const handleSendComment = () => {
     if (newComment) {
-      openSignUpModal();
-
+      if (!isSignedIn) {
+        openSignUpModal();
+      }
       return;
     }
 

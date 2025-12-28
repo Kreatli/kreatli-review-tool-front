@@ -7,11 +7,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
     <section id="pricing" className="bg-foreground-50 lg:py-32 py-16 px-6">
       <div className="flex flex-col gap-12 items-center">
         <div className="max-w-2xl mx-auto flex flex-col gap-4 w-full">
-          <h2
-            className={
-              titleClassName || 'text-3xl sm:text-5xl font-bold font-sans text-center'
-            }
-          >
+          <h2 className={titleClassName || 'text-3xl sm:text-5xl font-bold font-sans text-center'}>
             Choose the Perfect Plan for Your Creative Journey
           </h2>
           <p className="text-lg text-foreground-500 text-center">
@@ -31,14 +27,14 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                 <p className="text-foreground-500">Ideal for individuals or small teams just getting started.</p>
               </div>
               <ul className="text-lg flex flex-col gap-1 text-foreground-500">
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />2 Projects
-                </li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />2 members
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />2 Projects
                 </li>
                 <li className="flex items-center gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                  <Icon icon="check" className="text-foreground-500" size={18} />2 members
+                </li>
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   5GB Total Upload*
                   <Tooltip
                     content="“Total upload” tracks the cumulative size of all files a user has uploaded, even if some are later deleted. This means deleted files still count toward the user's upload limit."
@@ -51,7 +47,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                 </li>
               </ul>
               <Button as={Link} href="/sign-up" size="lg" variant="bordered">
-                Get Started for Free
+                Start For Free
               </Button>
             </CardBody>
           </Card>
@@ -77,36 +73,36 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                 </p>
               </div>
               <ul className="text-lg flex flex-col gap-1 text-foreground-500">
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Up to 10 Projects
                 </li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Up to 5 Members
                 </li>
                 <li className="flex items-center gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />1 TB Storage
+                  <Icon icon="check" className="text-foreground-500" size={18} />1 TB Storage
                   <Tooltip content="$5 per month per additional 100GB" className="max-w-sm">
                     <div>
                       <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
                     </div>
                   </Tooltip>
                 </li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Google Drive/Dropbox Upload
                 </li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Guest links
                 </li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Shareable Projects
                 </li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Watermarked Media
                 </li>
               </ul>
@@ -132,17 +128,17 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                 </p>
               </div>
               <ul className="text-lg flex flex-col gap-1 text-foreground-500">
-                <li className="flex items-start gap-1">Everything in Pro, plus:</li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">Everything in Pro, plus:</li>
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Unlimited Projects
                 </li>
-                <li className="flex items-start gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />
+                <li className="flex items-center gap-1">
+                  <Icon icon="check" className="text-foreground-500" size={18} />
                   Unlimited Members
                 </li>
                 <li className="flex items-center gap-1">
-                  <Icon icon="check" className="text-foreground-500" size={24} />2 TB Storage
+                  <Icon icon="check" className="text-foreground-500" size={18} />2 TB Storage
                   <Tooltip content="$3 per month per additional 100GB" className="max-w-sm">
                     <div>
                       <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />

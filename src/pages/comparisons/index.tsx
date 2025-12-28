@@ -1,0 +1,87 @@
+import Head from 'next/head';
+import React from 'react';
+
+import { Header } from '../../components/layout/Header';
+import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { useSession } from '../../hooks/useSession';
+import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { GetStaticProps } from 'next';
+import { getStoryblokApi } from '../../lib/storyblok';
+import { PageStoryblok } from '../../typings/storyblok';
+import { ISbStoryData } from '@storyblok/react';
+import { BlogArticles } from '../../components/blog/Blog';
+
+const DRAFT_REVALIDATE_TIME = 60;
+const PUBLISHED_REVALIDATE_TIME = 3600;
+
+interface Props {
+  stories: ISbStoryData<PageStoryblok>[];
+}
+
+export default function ComparisonsPage({ stories }: Props) {
+  useSession();
+
+  return (
+    <>
+      <Head>
+        <title>Kreatli | Comparisons – Creative Production Platform Comparisons</title>
+        <meta
+          name="description"
+          content="Compare Kreatli with other creative production and media review platforms. See how Kreatli stacks up against alternatives."
+        />
+        <meta property="og:title" content="Kreatli | Comparisons – Creative Production Platform Comparisons" />
+        <meta
+          property="og:description"
+          content="Compare Kreatli with other creative production and media review platforms to find the best solution for your team."
+        />
+      </Head>
+      <Header />
+      <Decorations />
+      {/* Hero Section */}
+      <section className="relative px-6 pt-16 overflow-hidden">
+        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
+          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Comparisons</h1>
+          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+            Compare Kreatli with other creative production and media review platforms.
+          </p>
+        </div>
+        <div className="backdrop-blur-lg pb-16">
+          <div className="max-w-6xl mx-auto pt-6">
+            <BlogArticles articles={stories} />
+          </div>
+        </div>
+      </section>
+
+      <FooterSection />
+    </>
+  );
+}
+
+export const getStaticProps = (async () => {
+  try {
+    const storiesData = await getStoryblokApi().getStories({
+      starts_with: 'comparisons/',
+      excluding_fields: 'body',
+      version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+      sort_by: 'content.publishDate:desc',
+      per_page: 100,
+    });
+
+    if (!storiesData?.data?.stories) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        stories: storiesData.data.stories,
+      },
+      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
+    };
+  } catch {
+    return {
+      notFound: true,
+    };
+  }
+}) satisfies GetStaticProps<{}>;

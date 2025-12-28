@@ -2,7 +2,7 @@ import { SafeZoneScreen } from './SafeZoneScreen/SafeZoneScreen';
 
 export const SocialMediaSafeZoneChecker = () => {
   return (
-    <div className="p-6 border-t border-foreground-200 pb-12">
+    <div className="p-6 pb-12">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col gap-4 pt-8 pb-4">
           <h2 className="text-2xl sm:text-4xl font-bold font-sans text-center">Social Media Safe Zone Checker</h2>

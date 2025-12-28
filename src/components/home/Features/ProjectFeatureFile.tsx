@@ -1,5 +1,6 @@
-import { Avatar, Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
-import { useState } from 'react';
+import { Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import { useState, useEffect } from 'react';
+import { formatBytes } from '../../../utils/formatBytes';
 
 const statuses = {
   'in-progress': {
@@ -18,97 +19,74 @@ const statuses = {
     label: 'Approved',
     color: 'success',
   },
+  'no-status': {
+    label: 'No status',
+    color: 'default',
+  },
 } as const;
 
 interface Props {
   title: string;
-  size: number;
+  size: number; // size in bytes
   assignee?: string;
   comments: number;
-  status: 'in-progress' | 'review-needed' | 'approved';
+  status: 'in-progress' | 'review-needed' | 'approved' | 'changes-required' | 'no-status';
   onClick?: () => void;
 }
 
-export const ProjectFeatureFile = ({
-  title,
-  size,
-  assignee: initialAssignee,
-  comments,
-  status: initialStatus,
-  onClick,
-}: Props) => {
-  const [assignee, setAssignee] = useState<string | undefined>(initialAssignee);
+export const ProjectFeatureFile = ({ title, size, comments, status: initialStatus, onClick }: Props) => {
   const [status, setStatus] = useState<keyof typeof statuses>(initialStatus);
 
-  const handleSelectionChange = (keys: Selection) => {
-    if (keys !== 'all') {
-      const newAssignee = keys.values().next().value ?? undefined;
+  // Sync with props when they change (for animation control)
+  useEffect(() => {
+    setStatus(initialStatus);
+  }, [initialStatus]);
 
-      setAssignee(newAssignee as string | undefined);
-    }
-  };
+  const statusConfig = statuses[status] || statuses['no-status'];
 
   return (
-    <div className="relative flex flex-col gap-2">
-      <div className="relative shadow-small aspect-video rounded-md items-center justify-center flex overflow-hidden">
+    <div className="flex flex-col gap-2">
+      <div className="relative aspect-video rounded-2xl overflow-hidden border border-foreground-300 bg-foreground-50">
         <img
           src={`https://picsum.photos/600/400?title=${title}`}
           alt="File"
           className="absolute h-full w-full object-cover"
         />
-      </div>
-      <div className="flex justify-between items-start">
-        <div className="flex flex-col gap-1">
-          <div className="font-semibold">{title}</div>
-          <div className="text-sm text-foreground-500">
-            {comments} comments, {size}MB
-          </div>
-        </div>
-        {assignee && (
-          <div className="text-sm text-foreground-500">
-            <Dropdown placement="bottom-end">
-              <DropdownTrigger onClick={onClick}>
-                <Avatar
-                  size="sm"
-                  isBordered
-                  src={`https://i.pravatar.cc/150?u=${assignee}`}
-                  className="cursor-pointer"
-                />
+        <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-2">
+          <div>
+            <Dropdown placement="top-start">
+              <DropdownTrigger>
+                <Chip size="sm" variant="dot" color={statusConfig.color} className="cursor-pointer bg-foreground-50">
+                  {statusConfig.label}
+                </Chip>
               </DropdownTrigger>
               <DropdownMenu
+                selectedKeys={[status]}
                 selectionMode="single"
                 disallowEmptySelection
-                selectedKeys={[assignee]}
-                onSelectionChange={handleSelectionChange}
+                onSelectionChange={(keys) => {
+                  onClick?.();
+                  setStatus(keys.currentKey as keyof typeof statuses);
+                }}
               >
-                <DropdownItem key="a042581f4e29026024d">Peter R.</DropdownItem>
-                <DropdownItem key="a042581f4e29026024f">Martin D.</DropdownItem>
-                <DropdownItem key="a042581f4e29026024e">George M.</DropdownItem>
+                <DropdownItem key="no-status">No status</DropdownItem>
+                <DropdownItem key="changes-required">Changes required</DropdownItem>
+                <DropdownItem key="approved">Approved</DropdownItem>
+                <DropdownItem key="review-needed">Review Needed</DropdownItem>
+                <DropdownItem key="in-progress">In Progress</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </div>
-        )}
-        <Dropdown placement="bottom-start">
-          <DropdownTrigger onClick={onClick}>
-            <Chip
-              size="sm"
-              variant="dot"
-              color={statuses[status].color}
-              className="cursor-pointer bg-foreground-50 absolute top-2 left-2"
-            >
-              {statuses[status].label}
-            </Chip>
-          </DropdownTrigger>
-          <DropdownMenu
-            selectedKeys={[status]}
-            selectionMode="single"
-            disallowEmptySelection
-            onSelectionChange={(keys) => setStatus(keys.currentKey as keyof typeof statuses)}
-          >
-            <DropdownItem key="changes-required">Changes required</DropdownItem>
-            <DropdownItem key="approved">Approved</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+          <Chip size="sm" variant="faded" className="bg-foreground-50">
+            <span className="font-medium text-foreground-700">{formatBytes(size)}</span>
+          </Chip>
+        </div>
+      </div>
+      <div className="flex flex-col gap-1">
+        <div className="font-semibold text-foreground truncate">{title}</div>
+        <div className="text-sm text-foreground-500">
+          {comments} {comments === 1 ? 'comment' : 'comments'}
+        </div>
       </div>
     </div>
   );

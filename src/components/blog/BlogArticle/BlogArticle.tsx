@@ -24,14 +24,14 @@ export const BlogArticle = ({ article }: Props) => {
         )}
         <div className="flex flex-col gap-2">
           <Link
-            href={`/blog/${article.slug}`}
+            href={article.full_slug}
             className="text-large font-bold font-sans line-clamp-2 after:absolute after:inset-0"
           >
             {article.content.metaFields?.title}
           </Link>
           {article.content.image && (
             <div className="-mx-4 pointer-events-none">
-              <Image removeWrapper src={article.content.image.filename} radius="none" width="800" height="600" />
+              <Image removeWrapper src={article.content.image.filename} radius="none" width="800" height="300" />
             </div>
           )}
           <div className="line-clamp-3">{article.content.metaFields?.description}</div>
