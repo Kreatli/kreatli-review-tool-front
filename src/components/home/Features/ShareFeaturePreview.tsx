@@ -275,7 +275,6 @@ export const ShareFeaturePreview = () => {
                         size="sm"
                         isCloseable
                         onClose={(e) => {
-                          e?.stopPropagation();
                           setIsAnimating(false);
                           setEmails(emails.filter((e) => e !== email));
                         }}
