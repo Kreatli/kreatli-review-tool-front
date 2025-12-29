@@ -47,7 +47,7 @@ export const ReviewToolPreview = () => {
             <div className="text-sm text-foreground-500">Vision review - Interviews</div>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_200px] gap-2">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-[1fr_200px]">
           <div className="flex flex-col gap-2">
             <ReviewToolCanvas shapes={shapes} onShapesChange={setShapes} />
             <div className="relative">
@@ -68,7 +68,7 @@ export const ReviewToolPreview = () => {
               <div className="flex justify-end">
                 <Button
                   size="sm"
-                  className="bg-foreground text-content1 absolute bottom-1 right-1"
+                  className="absolute bottom-1 right-1 bg-foreground text-content1"
                   isIconOnly
                   radius="full"
                   onClick={handleSendComment}
@@ -78,9 +78,9 @@ export const ReviewToolPreview = () => {
               </div>
             </div>
           </div>
-          <div className="p-1 flex flex-col gap-2">
-            <div className="font-semibold border-b border-foreground-200 pb-2">Comments</div>
-            <div className="flex flex-col gap-2 overflow-auto p-1 -m-1 max-h-full">
+          <div className="flex flex-col gap-2 p-1">
+            <div className="border-b border-foreground-200 pb-2 font-semibold">Comments</div>
+            <div className="-m-1 flex max-h-full flex-col gap-2 overflow-auto p-1">
               <ReviewToolComment
                 user="a042581f4e29026024t"
                 userName="Kate L."

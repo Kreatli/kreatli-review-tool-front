@@ -120,8 +120,8 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
     <Popover placement="top-start" onOpenChange={handleOpenChange} isOpen={isVisible}>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent className="p-1">
-        <div className="h-96 overflow-auto max-w-full w-[500px]">
-          <div className="p-2 sticky top-0 z-30">
+        <div className="h-96 w-[500px] max-w-full overflow-auto">
+          <div className="sticky top-0 z-30 p-2">
             <Input placeholder="Search..." value={search} onChange={handleSearchChange} size="sm" />
           </div>
           {assets.length > 0 && !isLoading && (
@@ -137,7 +137,7 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
             </div>
           )}
           {assets.length === 0 && !isLoading && (
-            <div className="text-foreground-500 text-center p-2">No assets found</div>
+            <div className="p-2 text-center text-foreground-500">No assets found</div>
           )}
           {isLoading && (
             <div className="flex items-center justify-center p-2">

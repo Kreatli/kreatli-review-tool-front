@@ -59,14 +59,14 @@ export const AppLoader = ({ children }: Props) => {
       {children}
       <div
         className={cn(
-          'fixed inset-0 transition-transform-opacity delay-200 bg-background z-50 flex items-center justify-center gap-4 flex-col',
+          'fixed inset-0 z-50 flex flex-col items-center justify-center gap-4 bg-background delay-200 transition-transform-opacity',
           {
-            'opacity-0 scale-125 pointer-events-none': !isLoading,
+            'pointer-events-none scale-125 opacity-0': !isLoading,
           },
         )}
         aria-hidden={!isLoading}
       >
-        <LogoIcon className="w-40 h-auto pointer-events-none" viewBox="0 0 90 22" />
+        <LogoIcon className="pointer-events-none h-auto w-40" viewBox="0 0 90 22" />
         <Spinner size="lg" color="current" className="text-foreground" />
       </div>
     </>

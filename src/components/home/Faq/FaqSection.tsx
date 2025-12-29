@@ -96,19 +96,19 @@ const faq = [
 
 export const FaqSection = () => {
   return (
-    <section id="faq" className="backdrop-blur-lg lg:py-32 py-16 px-6 flex flex-col gap-16">
-      <div className="max-w-3xl mx-auto flex flex-col gap-8 w-full">
-        <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">Frequently Asked Questions</h2>
+    <section id="faq" className="flex flex-col gap-16 px-6 py-16 backdrop-blur-lg lg:py-32">
+      <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
+        <h2 className="text-center font-sans text-3xl font-bold sm:text-5xl">Frequently Asked Questions</h2>
         <Accordion variant="splitted">
           {faq.map((item) => (
-            <AccordionItem key={item.question} title={<span className="font-semibold text-base">{item.question}</span>}>
-              <div className="text-foreground-500 space-y-3 whitespace-pre-wrap">{item.answer}</div>
+            <AccordionItem key={item.question} title={<span className="text-base font-semibold">{item.question}</span>}>
+              <div className="space-y-3 whitespace-pre-wrap text-foreground-500">{item.answer}</div>
             </AccordionItem>
           ))}
         </Accordion>
       </div>
-      <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center">
-        <h3 className="text-xl font-sans font-bold">Still Have Questions?</h3>
+      <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+        <h3 className="font-sans text-xl font-bold">Still Have Questions?</h3>
         <p>
           If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
           <a href="mailto:support@kreatli.com" className="underline underline-offset-2">

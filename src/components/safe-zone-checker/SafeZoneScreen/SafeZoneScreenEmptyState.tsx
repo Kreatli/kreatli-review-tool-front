@@ -21,11 +21,11 @@ export const SafeZoneScreenEmptyState = ({ onUploadFile }: Props) => {
   return (
     <div
       {...getRootProps()}
-      className={cn('bg-black/75 text-white h-full flex items-center w-full justify-center cursor-pointer', {
+      className={cn('flex h-full w-full cursor-pointer items-center justify-center bg-black/75 text-white', {
         'bg-black/50': isDragActive && isDragAccept,
       })}
     >
-      <div className="flex flex-col items-center p-14 text-center gap-2 w-full">
+      <div className="flex w-full flex-col items-center gap-2 p-14 text-center">
         <Icon icon="upload" size={24} />
         <p className="text-sm font-medium">
           {isDragActive && isDragAccept ? 'Drop your file here' : 'Drag and drop your file here or click to upload'}

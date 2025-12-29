@@ -64,7 +64,7 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
           description="You can send unlimited invites, but once your capacity reaches the maximum number of joined users, all new users will get expired invites. Upgrade your plan to increase your user limit and keep collaboration flowing."
         />
       )}
-      <div className="flex gap-4 justify-end">
+      <div className="flex justify-end gap-4">
         <Button isDisabled={isPending} variant="light" onClick={onCancel}>
           Cancel
         </Button>

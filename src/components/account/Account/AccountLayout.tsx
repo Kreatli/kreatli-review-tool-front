@@ -34,7 +34,7 @@ export const AccountLayout = ({ children }: Props) => {
     <>
       <Header />
       <div className="border-t border-foreground-200">
-        <div className="max-w-screen-lg mx-auto p-6">
+        <div className="mx-auto max-w-screen-lg p-6">
           <div className="grid grid-cols-[auto_1fr] gap-6">
             <Tabs
               selectedKey={activeTab}

@@ -35,7 +35,7 @@ export const ProjectUploads = ({ onClose }: Props) => {
 
   return (
     <div className="w-96 max-w-full">
-      <div className="py-1 pl-2 border-b border-foreground-200 flex justify-between gap-2 items-center">
+      <div className="flex items-center justify-between gap-2 border-b border-foreground-200 py-1 pl-2">
         <div className="font-semibold">
           {uploads.length === 0
             ? 'File uploads'
@@ -60,7 +60,7 @@ export const ProjectUploads = ({ onClose }: Props) => {
           </Button>
         </div>
       </div>
-      <div className="py-2 max-h-96 -mx-1 overflow-auto">
+      <div className="-mx-1 max-h-96 overflow-auto py-2">
         <div className="flex flex-col">
           {uploads.map((fileUpload) => (
             <ProjectUploadItem

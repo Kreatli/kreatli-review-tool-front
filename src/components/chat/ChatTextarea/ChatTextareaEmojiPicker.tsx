@@ -25,16 +25,16 @@ export const ChatTextareaEmojiPicker = ({ isDisabled, onEmojiSelect }: Props) =>
           <EmojiPicker.Root onEmojiSelect={handleEmojiSelect}>
             <EmojiPicker.Search
               autoFocus
-              className="outline-none appearance-none bg-foreground-100 rounded-small p-2 py-1.5 placeholder:text-foreground-500 w-full"
+              className="w-full appearance-none rounded-small bg-foreground-100 p-2 py-1.5 outline-none placeholder:text-foreground-500"
             />
             <EmojiPicker.Viewport className="h-60 overflow-auto">
-              <EmojiPicker.Empty className="p-2 flex items-center justify-center text-foreground-500">
+              <EmojiPicker.Empty className="flex items-center justify-center p-2 text-foreground-500">
                 No emoji found.
               </EmojiPicker.Empty>
               <EmojiPicker.List
                 components={{
                   CategoryHeader: ({ category, ...props }) => (
-                    <div className="px-1.5 py-1 font-medium bg-background text-sm text-foreground-500" {...props}>
+                    <div className="bg-background px-1.5 py-1 text-sm font-medium text-foreground-500" {...props}>
                       {category.label}
                     </div>
                   ),

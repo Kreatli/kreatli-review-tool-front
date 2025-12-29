@@ -16,10 +16,10 @@ export const ContactOwnerModal = ({ type, isOpen, onClose }: ContactOwnerModalPr
       <ModalContent>
         <ModalHeader className="pb-0">Contact project owner</ModalHeader>
         <ModalBody>
-          <div className="text-foreground-500 text-sm">{DESCRIPTION[type]}</div>
+          <div className="text-sm text-foreground-500">{DESCRIPTION[type]}</div>
         </ModalBody>
         <ModalFooter>
-          <Button className="text-content1 bg-foreground" onClick={onClose}>
+          <Button className="bg-foreground text-content1" onClick={onClose}>
             Got it
           </Button>
         </ModalFooter>

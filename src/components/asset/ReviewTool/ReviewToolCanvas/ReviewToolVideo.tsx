@@ -247,17 +247,17 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
   return (
     <>
       {videoFile.metadata.thumbnailUrl && (
-        <div className="absolute -inset-12 pointer-events-none">
+        <div className="pointer-events-none absolute -inset-12">
           <Image
             src={videoFile.metadata.thumbnailUrl}
             removeWrapper
             radius="none"
-            className="absolute inset-0 h-full w-full blur-md invert-[20%] object-cover select-none"
+            className="absolute inset-0 h-full w-full select-none object-cover blur-md invert-[20%]"
           />
         </div>
       )}
       <div
-        className="relative w-auto h-auto max-w-full max-h-full overflow-hidden"
+        className="relative h-auto max-h-full w-auto max-w-full overflow-hidden"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -267,7 +267,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
           ref={compareFile?.id === videoFile.id ? compareFileRef : fileRef}
           controls={false}
           muted={videoFile.id !== activeFile?.id}
-          className="relative max-h-full max-w-full h-auto z-10 cursor-pointer"
+          className="relative z-10 h-auto max-h-full max-w-full cursor-pointer"
           onPlay={handlePlay}
           onPause={handlePause}
           onTimeUpdate={handleTimeUpdate}
@@ -283,22 +283,22 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
               showControls || !isPlaying ? 'opacity-100' : 'opacity-0',
             )}
           >
-            <div className="flex items-center justify-between gap-2 pl-1 pr-2 pb-1">
+            <div className="flex items-center justify-between gap-2 pb-1 pl-1 pr-2">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="relative z-10 hover:scale-125 transition-transform"
+                  className="relative z-10 transition-transform hover:scale-125"
                   onClick={handleVideoClick}
                 >
                   <Icon icon={isPlaying ? 'pause' : 'play'} size={28} />
                 </button>
-                <span className="text-sm z-10 pointer-events-none select-none">
+                <span className="pointer-events-none z-10 select-none text-sm">
                   {formatTime(displayTime)} <span className="text-white/80">/ {formatTime(duration)}</span>
                 </span>
               </div>
               <button
                 type="button"
-                className="relative z-10 hover:scale-125 transition-transform"
+                className="relative z-10 transition-transform hover:scale-125"
                 onClick={toggleFullscreen}
               >
                 <Icon icon="fullscreen" size={20} />
@@ -307,14 +307,14 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
             {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
             <div
               ref={sliderRef}
-              className="flex items-center gap-2 relative z-20 after:absolute after:-inset-1 after:cursor-pointer"
+              className="relative z-20 flex items-center gap-2 after:absolute after:-inset-1 after:cursor-pointer"
               onMouseDown={handleSliderMouseDown}
             >
-              <div className="flex-1 h-1 bg-white/20 overflow-hidden cursor-pointer relative">
+              <div className="relative h-1 flex-1 cursor-pointer overflow-hidden bg-white/20">
                 <div className="h-full bg-white" style={{ width: `${(displayTime / duration) * 100}%` }} />
               </div>
             </div>
-            <div className="relative border-white/20 h-6 z-10">
+            <div className="relative z-10 h-6 border-white/20">
               {commentsWithTimestamps.map((comment) => {
                 const position = (comment.timestamp![0] / duration) * 100;
                 return (
@@ -322,9 +322,9 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
                     key={comment.id}
                     type="button"
                     className={cn(
-                      'absolute z-10 overflow-hidden bottom-1.5 flex items-center justify-center bg-white w-3 h-3 rounded-full border border-foreground-400 hover:scale-150 transition-transform',
+                      'absolute bottom-1.5 z-10 flex h-3 w-3 items-center justify-center overflow-hidden rounded-full border border-foreground-400 bg-white transition-transform hover:scale-150',
                       {
-                        'z-20 border-blue-400 bg-blue-100 scale-150': comment.id === activeComment?.id,
+                        'z-20 scale-150 border-blue-400 bg-blue-100': comment.id === activeComment?.id,
                       },
                     )}
                     style={{ left: `max(calc(${position}% - 6px), 3px)` }}
@@ -338,11 +338,11 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={comment.createdBy.avatar.url}
-                        className="w-full h-full object-cover select-none"
+                        className="h-full w-full select-none object-cover"
                         alt={comment.createdBy.name}
                       />
                     ) : (
-                      <span className="text-[8px] leading-[9px] select-none text-foreground-500">
+                      <span className="select-none text-[8px] leading-[9px] text-foreground-500">
                         {comment.createdBy.name?.slice(0, 1)}
                       </span>
                     )}
@@ -350,7 +350,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
                 );
               })}
             </div>
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 -top-1/2 bg-gradient-to-b from-transparent to-black/50" />
+            <div className="pointer-events-none absolute -top-1/2 bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-black/50" />
           </div>
         )}
       </div>

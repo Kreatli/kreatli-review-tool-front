@@ -204,7 +204,7 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
 
   return (
     <div
-      className={cn('relative flex-1 flex flex-col items-center overflow-hidden justify-center', {
+      className={cn('relative flex flex-1 flex-col items-center justify-center overflow-hidden', {
         '[&>*]:pointer-events-none': activeFile?.id !== file.id && activeTool,
       })}
       onClick={onClick}

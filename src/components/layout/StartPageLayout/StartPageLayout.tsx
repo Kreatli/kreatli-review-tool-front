@@ -41,32 +41,32 @@ export const StartPageLayout = ({
   };
 
   return (
-    <div className="flex h-full mt-auto md:mt-none md:flex-1">
-      <div className="z-20 relative md:max-w-[50%] lg:max-w-lg w-full shrink-0 flex rounded-t-xl overflow-hidden bg-background flex-col justify-center items-center">
+    <div className="md:mt-none mt-auto flex h-full md:flex-1">
+      <div className="relative z-20 flex w-full shrink-0 flex-col items-center justify-center overflow-hidden rounded-t-xl bg-background md:max-w-[50%] lg:max-w-lg">
         <div className="w-full p-6 md:max-w-md">
           <Link href="/" className="block w-fit">
             <LogoIcon viewBox="0 0 90 22" width="135" height="33" className="mb-4" />
           </Link>
-          <h2 className="text-3xl font-semibold mb-6">{title}</h2>
+          <h2 className="mb-6 text-3xl font-semibold">{title}</h2>
           <div className="w-full">{children}</div>
         </div>
         <Button
           isIconOnly
           aria-label="Toggle theme"
           variant="light"
-          className="absolute top-4 right-4"
+          className="absolute right-4 top-4"
           radius="full"
           onClick={toggleTheme}
         >
           <Icon icon={theme === 'dark' ? 'sun' : 'moon'} size={18} />
         </Button>
       </div>
-      <div className="absolute inset-0 md:relative flex-1 select-none">
+      <div className="absolute inset-0 flex-1 select-none md:relative">
         <Image
           src={backgroundUrl ?? (backgroundType === 'dark' ? BACKGROUNDS[0] : BACKGROUNDS[1])}
           radius="none"
           removeWrapper
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         />
       </div>
     </div>

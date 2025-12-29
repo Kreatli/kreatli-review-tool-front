@@ -9,15 +9,15 @@ export const ProjectDropFilesHint = ({ isVisible }: Props) => {
   return (
     <div
       className={cn(
-        'fixed inset-0 rounded-medium bg-black/80 z-20 flex justify-center items-center transition-opacity opacity-0 pointer-events-none',
+        'pointer-events-none fixed inset-0 z-20 flex items-center justify-center rounded-medium bg-black/80 opacity-0 transition-opacity',
         {
           'opacity-100': isVisible,
         },
       )}
     >
-      <div className="w-full h-full items-center justify-center rounded-medium flex flex-col gap-4">
+      <div className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-medium">
         <Icon icon="upload" size={48} className="text-white" />
-        <div className="text-3xl font-sans font-bold text-white">Drop files here</div>
+        <div className="font-sans text-3xl font-bold text-white">Drop files here</div>
       </div>
     </div>
   );

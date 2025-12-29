@@ -14,11 +14,11 @@ export const ChatMessagesItemAssetPreview = ({ asset }: Props) => {
   const imageUrl = asset.fileType.startsWith('image') ? asset.url : asset.metadata.thumbnailUrl;
 
   return (
-    <div className="w-fit h-60 relative border border-foreground-300 overflow-hidden min-w-56 rounded-medium flex items-center justify-center">
+    <div className="relative flex h-60 w-fit min-w-56 items-center justify-center overflow-hidden rounded-medium border border-foreground-300">
       <Link
         href={`/project/${router.query.id}/assets/${asset.id}`}
         aria-label="Open in review tool"
-        className="absolute inset-0 transition-[background,opacity] rounded-medium opacity-0 hover:opacity-100 hover:bg-background/20"
+        className="absolute inset-0 rounded-medium opacity-0 transition-[background,opacity] hover:bg-background/20 hover:opacity-100"
       />
       <img src={imageUrl} className="h-auto max-h-full" />
       <Chip
@@ -27,17 +27,17 @@ export const ChatMessagesItemAssetPreview = ({ asset }: Props) => {
         style={{ color: asset.statusColor }}
         color="default"
         classNames={{ dot: cn({ 'bg-current': asset.statusColor }), content: 'text-foreground' }}
-        className="bg-default-100 pointer-events-none border-1 absolute bottom-2 left-2"
+        className="pointer-events-none absolute bottom-2 left-2 border-1 bg-default-100"
       >
         {asset.statusLabel ?? 'No status'}
       </Chip>
-      <Chip size="sm" variant="faded" className="absolute border-1 bottom-2 right-2 pointer-events-none">
+      <Chip size="sm" variant="faded" className="pointer-events-none absolute bottom-2 right-2 border-1">
         <span className="font-medium text-foreground-700">{formatBytes(asset.fileSize)}</span>
       </Chip>
       <Chip
         size="sm"
         variant="faded"
-        className="absolute top-2 left-2 right-2 border-1 min-w-[auto] pointer-events-none"
+        className="pointer-events-none absolute left-2 right-2 top-2 min-w-[auto] border-1"
         classNames={{ content: 'max-w-full overflow-hidden text-ellipsis' }}
       >
         {asset.name}

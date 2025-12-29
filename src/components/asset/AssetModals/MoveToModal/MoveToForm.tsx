@@ -136,7 +136,7 @@ export const MoveToForm = ({ asset, project, onCancel, onSuccess }: Props) => {
         <Button variant="light" onClick={onCancel}>
           Cancel
         </Button>
-        <Button type="submit" isLoading={isPending} isDisabled={isDisabled} className="text-content1 bg-foreground">
+        <Button type="submit" isLoading={isPending} isDisabled={isDisabled} className="bg-foreground text-content1">
           Move
         </Button>
       </div>

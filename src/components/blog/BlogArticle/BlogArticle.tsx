@@ -25,25 +25,25 @@ export const BlogArticle = ({ article }: Props) => {
         <div className="flex flex-col gap-2">
           <Link
             href={article.full_slug}
-            className="text-large font-bold font-sans line-clamp-2 after:absolute after:inset-0"
+            className="line-clamp-2 font-sans text-large font-bold after:absolute after:inset-0"
           >
             {article.content.metaFields?.title}
           </Link>
           {article.content.image && (
-            <div className="-mx-4 pointer-events-none">
+            <div className="pointer-events-none -mx-4">
               <Image removeWrapper src={article.content.image.filename} radius="none" width="800" height="300" />
             </div>
           )}
           <div className="line-clamp-3">{article.content.metaFields?.description}</div>
         </div>
-        <div className="text-small flex items-center gap-3">
+        <div className="flex items-center gap-3 text-small">
           {article.content.publishDate && (
-            <div className="flex text-primary items-center gap-1.5 font-medium">
+            <div className="flex items-center gap-1.5 font-medium text-primary">
               <Icon icon="calendar" size={18} />
               {formatDate(article.content.publishDate)}
             </div>
           )}
-          <div className="flex text-foreground-500 items-center gap-1.5 font-medium">
+          <div className="flex items-center gap-1.5 font-medium text-foreground-500">
             <Icon icon="time" size={18} />
             {article.content.readTime} minutes
           </div>

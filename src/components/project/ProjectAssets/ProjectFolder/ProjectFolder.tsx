@@ -35,14 +35,14 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
   const actions = getAssetActions(folder);
 
   return (
-    <div className="relative group/project-folder">
-      <div ref={setNodeRef} className="absolute top-0 bottom-0 left-8 right-8" />
+    <div className="group/project-folder relative">
+      <div ref={setNodeRef} className="absolute bottom-0 left-8 right-8 top-0" />
       <button
         type="button"
         aria-label={`Open ${name}`}
         disabled={isDisabled}
         className={cn(
-          'w-full cursor-default absolute-cursor rounded-2xl focus:outline-2 focus:outline outline-focus outline-offset-2',
+          'absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2',
           {
             'outline-3 outline': isOver,
           },
@@ -55,12 +55,12 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
             {isSelected !== undefined && (
               <Checkbox isSelected={isSelected} isDisabled={isReadonly} color="default" onChange={onSelectionChange} />
             )}
-            <div className="flex flex-col items-start flex-1 overflow-hidden first:ml-1">
-              <div className="flex items-center gap-2 overflow-hidden w-full">
-                <Icon icon="folder" className="text-foreground-500 size-5 shrink-0" />
-                <div className="text-foreground font-semibold truncate">{name}</div>
+            <div className="flex flex-1 flex-col items-start overflow-hidden first:ml-1">
+              <div className="flex w-full items-center gap-2 overflow-hidden">
+                <Icon icon="folder" className="size-5 shrink-0 text-foreground-500" />
+                <div className="truncate font-semibold text-foreground">{name}</div>
               </div>
-              <div className="text-foreground-500 text-sm">
+              <div className="text-sm text-foreground-500">
                 {folder.fileCount} file{folder.fileCount === 1 ? '' : 's'}, {formatBytes(folder.totalFileSize)}
               </div>
             </div>

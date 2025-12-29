@@ -63,8 +63,8 @@ export default function Page({ story, slug }: Props) {
       <Header />
       <Decorations />
       <div className="backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-6 w-full py-8 grid md:grid-cols-[175px,1fr] lg:grid-cols-[200px,1fr] xl:grid-cols-[200px,1fr,200px] items-start">
-          <ScrollShadow className="sticky top-24 h-[calc(100vh-8rem)] hidden md:block" hideScrollBar>
+        <div className="mx-auto grid w-full max-w-7xl items-start px-6 py-8 md:grid-cols-[175px,1fr] lg:grid-cols-[200px,1fr] xl:grid-cols-[200px,1fr,200px]">
+          <ScrollShadow className="sticky top-24 hidden h-[calc(100vh-8rem)] md:block" hideScrollBar>
             <TableOfContent links={getTableOfContentLinks(storyState?.content.body)} />
           </ScrollShadow>
           <div className="w-full overflow-hidden md:pl-8 md:pr-2 lg:pl-16 lg:pr-14">
@@ -81,13 +81,13 @@ export default function Page({ story, slug }: Props) {
             </Breadcrumbs>
             <div className="flex items-center gap-3">
               {storyState?.content.publishDate && (
-                <div className="flex gap-1 text-primary items-center mb-1 font-medium">
+                <div className="mb-1 flex items-center gap-1 font-medium text-primary">
                   <Icon icon="calendar" size={18} />
                   {formatDate(storyState.content.publishDate)}
                 </div>
               )}
               {storyState?.content.readTime && (
-                <div className="flex gap-1 text-foreground-500 items-center mb-1 font-medium">
+                <div className="mb-1 flex items-center gap-1 font-medium text-foreground-500">
                   <Icon icon="time" size={18} />
                   {storyState.content.readTime} minutes read
                 </div>

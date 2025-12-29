@@ -190,7 +190,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
         </Link>
       </div>
       {isExpanded && (
-        <ul className="flex flex-col gap-2 list-disc pl-4">
+        <ul className="flex list-disc flex-col gap-2 pl-4">
           {assets.map((asset) => (
             <li>
               <Link
@@ -244,7 +244,7 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
         </Link>
       </div>
       {isExpanded && (
-        <ul className="flex flex-col gap-2 list-disc pl-4">
+        <ul className="flex list-disc flex-col gap-2 pl-4">
           {assets.map((asset) => (
             <li key={asset.id}>
               &quot;{asset.name}&quot; {asset.type}

@@ -237,11 +237,11 @@ export default function InHouseCreativeContentTeamsPage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Solutions for {data.title}</h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">{data.description}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Solutions for {data.title}</h1>
+          <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">{data.description}</p>
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>
@@ -260,11 +260,11 @@ export default function InHouseCreativeContentTeamsPage() {
 
       {/* Visual Workflow Section */}
       {data.workflowSteps && (
-        <section className="relative py-16 px-6 backdrop-blur-lg">
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Brand Campaign Workflow</h2>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+        <section className="relative px-6 py-16 backdrop-blur-lg">
+          <div className="relative z-10 mx-auto max-w-7xl">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Brand Campaign Workflow</h2>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 From brand asset organization to campaign delivery—see how Kreatli streamlines your in-house team
                 workflow. Organize brand assets, collaborate with external partners, collect stakeholder feedback, and
                 deliver campaigns faster.
@@ -272,43 +272,43 @@ export default function InHouseCreativeContentTeamsPage() {
             </div>
 
             {/* Workflow Progress Indicator */}
-            <div className="flex justify-center mb-12 sticky top-20 z-10">
-              <div className="flex items-center gap-4 bg-background rounded-full px-6 py-3 shadow-large">
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+            <div className="sticky top-20 z-10 mb-12 flex justify-center">
+              <div className="flex items-center gap-4 rounded-full bg-background px-6 py-3 shadow-large">
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#organize"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Organize
                   </a>
                 </div>
-                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#collaborate"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Collaborate
                   </a>
                 </div>
-                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#review"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Review
                   </a>
                 </div>
-                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#deliver"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Deliver
                   </a>
@@ -331,28 +331,28 @@ export default function InHouseCreativeContentTeamsPage() {
                   <React.Fragment key={index}>
                     <Card id={stepId} className="scroll-mt-36">
                       <CardBody className="p-5 sm:p-8 lg:p-12">
-                        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                        <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
                           <div className="flex flex-col gap-6 lg:w-1/3">
                             <div className="flex items-center gap-4">
-                              <div className="shrink-0 size-14 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+                              <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 md:size-20">
                                 <Icon icon={step.icon as any} size={32} className="text-primary" />
                               </div>
                               <div>
-                                <div className="text-sm font-medium text-primary mb-1">Step {step.step}</div>
-                                <h3 className="text-2xl lg:text-3xl font-bold font-sans">{step.title}</h3>
+                                <div className="mb-1 text-sm font-medium text-primary">Step {step.step}</div>
+                                <h3 className="font-sans text-2xl font-bold lg:text-3xl">{step.title}</h3>
                               </div>
                             </div>
-                            <p className="text-foreground-500 text-base lg:text-lg line-clamp-2">{step.description}</p>
+                            <p className="line-clamp-2 text-base text-foreground-500 lg:text-lg">{step.description}</p>
                             <div className="flex flex-col gap-2">
                               <div>⏱️ Time to complete: {step.timeToComplete}</div>
                               <div>💰 Saves: {step.saves}</div>
                             </div>
                           </div>
 
-                          <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
-                            <div className="grid sm:grid-cols-2 gap-8">
+                          <div className="flex flex-col gap-8 border-foreground-200 lg:w-2/3 lg:border-l lg:pl-8">
+                            <div className="grid gap-8 sm:grid-cols-2">
                               <div>
-                                <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                                <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                                   <Icon icon="list" size={24} className="text-primary" />
                                   Process Breakdown
                                 </h4>
@@ -362,7 +362,7 @@ export default function InHouseCreativeContentTeamsPage() {
                                       key={itemIndex}
                                       className="flex items-start gap-3 text-base text-foreground-500"
                                     >
-                                      <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                      <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                                         <span className="text-xs font-bold text-primary">{itemIndex + 1}</span>
                                       </div>
                                       <span>{item}</span>
@@ -372,7 +372,7 @@ export default function InHouseCreativeContentTeamsPage() {
                               </div>
 
                               <div>
-                                <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                                <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                                   <Icon icon="warning" size={24} className="text-warning" />
                                   Challenges Addressed
                                 </h4>
@@ -382,7 +382,7 @@ export default function InHouseCreativeContentTeamsPage() {
                                       key={challengeIndex}
                                       className="flex items-start gap-2 text-base text-foreground-500"
                                     >
-                                      <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                                      <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                                       <span>{challenge}</span>
                                     </li>
                                   ))}
@@ -391,13 +391,13 @@ export default function InHouseCreativeContentTeamsPage() {
                             </div>
 
                             <div>
-                              <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                              <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                                 <Icon icon="slides" size={24} className="text-success" />
                                 Real-World Example
                               </h4>
                               <Card className="bg-success/5">
                                 <CardBody className="p-6">
-                                  <p className="text-base text-foreground-600 mb-3 line-clamp-2">
+                                  <p className="mb-3 line-clamp-2 text-base text-foreground-600">
                                     {step.realWorldExample.scenario.includes(':') ? (
                                       <>
                                         <strong>{step.realWorldExample.scenario.split(':')[0]}:</strong>{' '}
@@ -423,13 +423,13 @@ export default function InHouseCreativeContentTeamsPage() {
                     </Card>
 
                     {!isLast && (
-                      <div className="flex justify-center items-center">
+                      <div className="flex items-center justify-center">
                         <div className="flex flex-col items-center gap-2">
-                          <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-primary"></div>
-                          <div className="size-8 bg-primary/10 rounded-full flex items-center justify-center border-2 border-primary/30">
+                          <div className="h-8 w-px bg-gradient-to-b from-primary/50 to-primary"></div>
+                          <div className="flex size-8 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
                             <Icon icon="chevronDown" size={20} className="text-primary" />
                           </div>
-                          <div className="w-px h-8 bg-gradient-to-b from-primary to-primary/50"></div>
+                          <div className="h-8 w-px bg-gradient-to-b from-primary to-primary/50"></div>
                         </div>
                       </div>
                     )}
@@ -442,17 +442,17 @@ export default function InHouseCreativeContentTeamsPage() {
       )}
 
       {/* Key Features Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Key Features for {data.title}</h2>
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Key Features for {data.title}</h2>
           </div>
 
           {/* Brand Asset Management */}
           <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">Brand Asset Management</h3>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+            <div className="mb-8 text-center">
+              <h3 className="mb-3 font-sans text-2xl font-bold">Brand Asset Management</h3>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 Centralize brand assets, campaign materials, and creative files. Maintain brand consistency across all
                 projects.
               </p>
@@ -462,9 +462,9 @@ export default function InHouseCreativeContentTeamsPage() {
 
           {/* External Partner Collaboration */}
           <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">External Partner Collaboration</h3>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+            <div className="mb-8 text-center">
+              <h3 className="mb-3 font-sans text-2xl font-bold">External Partner Collaboration</h3>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 Share review links with external agencies and freelancers. They collaborate without creating
                 accounts—reduces delays from days to hours.
               </p>
@@ -474,9 +474,9 @@ export default function InHouseCreativeContentTeamsPage() {
 
           {/* Asset-Linked Feedback */}
           <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">Asset-Linked Feedback</h3>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+            <div className="mb-8 text-center">
+              <h3 className="mb-3 font-sans text-2xl font-bold">Asset-Linked Feedback</h3>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 Comments stay permanently linked to specific files. No lost feedback in email threads or Slack.
               </p>
             </div>
@@ -486,26 +486,26 @@ export default function InHouseCreativeContentTeamsPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
               Common questions about Kreatli for {data.title.toLowerCase()}.
             </p>
           </div>
           <Accordion variant="splitted">
             {data.faqs.map((faq, index) => (
-              <AccordionItem key={index} title={<span className="font-semibold text-lg">{faq.question}</span>}>
-                <div className="text-foreground-500 text-base space-y-3 leading-relaxed">{faq.answer}</div>
+              <AccordionItem key={index} title={<span className="text-lg font-semibold">{faq.question}</span>}>
+                <div className="space-y-3 text-base leading-relaxed text-foreground-500">{faq.answer}</div>
               </AccordionItem>
             ))}
           </Accordion>
-          <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-8">
-            <h3 className="text-xl font-sans font-bold">Still Have Questions?</h3>
-            <p className="text-foreground-600 text-base line-clamp-2">
+          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions?</h3>
+            <p className="line-clamp-2 text-base text-foreground-600">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-              <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-semibold">
+              <a href="mailto:support@kreatli.com" className="font-semibold text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
               to learn how Kreatli can help your specific workflow.
@@ -515,13 +515,13 @@ export default function InHouseCreativeContentTeamsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Streamline Your Workflow?</h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Streamline Your Workflow?</h2>
+          <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
             Join {data.title.toLowerCase()} using Kreatli.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

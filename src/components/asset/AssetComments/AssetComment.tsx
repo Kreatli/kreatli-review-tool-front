@@ -89,32 +89,32 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
     <div
       ref={commentRef}
       className={cn(
-        'relative rounded-md p-2 border border-foreground-200 hover:bg-foreground-50 transition-[background-color,border,opacity]',
+        'relative rounded-md border border-foreground-200 p-2 transition-[background-color,border,opacity] hover:bg-foreground-50',
         {
           'opacity-50': isResolved || id.includes('placeholder') || isUpdatingComment,
-          'bg-foreground-50 border border-foreground-400 opacity-100': activeComment?.id === id,
-          'bg-primary-50 hover:bg-primary-50 border-primary-400 opacity-100': comment === replyingComment,
+          'border border-foreground-400 bg-foreground-50 opacity-100': activeComment?.id === id,
+          'border-primary-400 bg-primary-50 opacity-100 hover:bg-primary-50': comment === replyingComment,
         },
       )}
     >
-      <div className="flex justify-between items-start gap-2">
+      <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2 overflow-hidden">
           <Avatar
             src={createdBy.avatar?.url ?? ''}
             size="sm"
-            className="cursor-pointer !size-6 shrink-0"
+            className="!size-6 shrink-0 cursor-pointer"
             fallback={
-              <div className="text-xs text-foreground-500 select-none">{createdBy.name?.slice(0, 1).toUpperCase()}</div>
+              <div className="select-none text-xs text-foreground-500">{createdBy.name?.slice(0, 1).toUpperCase()}</div>
             }
           />
-          <div className="text-xs text-ellipsis overflow-hidden">{createdBy.name}</div>
+          <div className="overflow-hidden text-ellipsis text-xs">{createdBy.name}</div>
           {!createdBy.id && (
             <Chip size="sm" variant="flat" color="primary" className="h-auto p-px">
               Guest
             </Chip>
           )}
         </div>
-        <div className="flex items-center gap-1 z-10">
+        <div className="z-10 flex items-center gap-1">
           {isRemovable && (
             <Tooltip content="Delete comment">
               <Button
@@ -146,18 +146,18 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
       </div>
       <button
         type="button"
-        className="block after:absolute after:inset-0 text-sm font-medium pb-2 text-left whitespace-pre-wrap"
+        className="block whitespace-pre-wrap pb-2 text-left text-sm font-medium after:absolute after:inset-0"
         onClick={handleClick}
       >
-        {(canvas?.shapes?.length ?? 0) > 0 && <Icon icon="paint" size={16} className="inline mr-1 text-primary" />}
+        {(canvas?.shapes?.length ?? 0) > 0 && <Icon icon="paint" size={16} className="mr-1 inline text-primary" />}
         {timestamp?.[0] !== undefined && <span className="text-foreground-500">{formatDuration(timestamp[0])} </span>}
         {message}
       </button>
-      <div className="relative flex justify-between items-end">
+      <div className="relative flex items-end justify-between">
         <button
           type="button"
           disabled={project && project.status !== 'active'}
-          className={cn('text-foreground-500 text-xs flex items-center gap-0.5', {
+          className={cn('flex items-center gap-0.5 text-xs text-foreground-500', {
             'text-primary': comment === replyingComment,
           })}
           onClick={handleReply}

@@ -42,11 +42,11 @@ export const FooterSection = ({ hideCta = false }: Props) => {
   return (
     <footer className="bg-foreground-50">
       {!hideCta && (
-        <div className="px-6 lg:pt-32 pt-16 pb-12 lg:pb-20 flex flex-col items-center gap-8">
-          <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center max-w-xl mx-auto">
+        <div className="flex flex-col items-center gap-8 px-6 pb-12 pt-16 lg:pb-20 lg:pt-32">
+          <h2 className="mx-auto max-w-xl text-center font-sans text-3xl font-bold sm:text-5xl">
             Take Control of Your Creative Projects Today!
           </h2>
-          <p className="text-lg text-center sm:text-2xl text-foreground-500 font-medium">
+          <p className="text-center text-lg font-medium text-foreground-500 sm:text-2xl">
             Start using Kreatli for free and experience the value firsthand.
           </p>
           <div className="flex items-center gap-4">
@@ -65,29 +65,29 @@ export const FooterSection = ({ hideCta = false }: Props) => {
           </div>
         </div>
       )}
-      <div className="px-6 w-full max-w-6xl mx-auto py-8 flex flex-col lg:flex-row justify-between items-end gap-8">
-        <div className="flex flex-col gap-4 w-full lg:w-auto">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-end justify-between gap-8 px-6 py-8 lg:flex-row">
+        <div className="flex w-full flex-col gap-4 lg:w-auto">
           <Link href="/">
             <LogoIcon viewBox="0 0 90 22" />
           </Link>
-          <div className="text-sm text-foreground-500 max-w-64">
+          <div className="max-w-64 text-sm text-foreground-500">
             Kreatli helps content teams and creators streamline creative production.
           </div>
           <Socials />
         </div>
-        <div className="flex md:flex-row md:justify-between flex-col gap-6 w-full lg:w-auto">
+        <div className="flex w-full flex-col gap-6 md:flex-row md:justify-between lg:w-auto">
           <div>
-            <ul className="grid sm:grid-cols-2 gap-y-1 gap-x-6">
+            <ul className="grid gap-x-6 gap-y-1 sm:grid-cols-2">
               <li key="blog">
-                <Link href="/blog" className="font-semibold hover:underline underline-offset-2">
+                <Link href="/blog" className="font-semibold underline-offset-2 hover:underline">
                   Kreatli Blog
                 </Link>
               </li>
               {LINKS.map((link) => (
-                <li key={link.url} className="overflow-hidden flex">
+                <li key={link.url} className="flex overflow-hidden">
                   <Link
                     href={link.url}
-                    className="text-foreground-500 hover:underline underline-offset-2 truncate w-fit"
+                    className="w-fit truncate text-foreground-500 underline-offset-2 hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -100,23 +100,23 @@ export const FooterSection = ({ hideCta = false }: Props) => {
               <li>
                 <Link
                   href="mailto:support@kreatli.com"
-                  className="text-foreground-500 hover:underline underline-offset-2"
+                  className="text-foreground-500 underline-offset-2 hover:underline"
                 >
                   Contact us
                 </Link>
               </li>
               <li>
-                <Link className="text-foreground-500 hover:underline underline-offset-2" href="/terms-and-conditions">
+                <Link className="text-foreground-500 underline-offset-2 hover:underline" href="/terms-and-conditions">
                   Terms and Conditions
                 </Link>
               </li>
               <li>
-                <Link className="text-foreground-500 hover:underline underline-offset-2" href="/privacy-policy">
+                <Link className="text-foreground-500 underline-offset-2 hover:underline" href="/privacy-policy">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link className="text-foreground-500 hover:underline underline-offset-2" href="/cookie-policy">
+                <Link className="text-foreground-500 underline-offset-2 hover:underline" href="/cookie-policy">
                   Cookie Policy
                 </Link>
               </li>
@@ -124,7 +124,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
           </div>
         </div>
       </div>
-      <div className="text-sm text-foreground-500 p-6 text-center">Copyright 2025 Kreatli. All rights reserved.</div>
+      <div className="p-6 text-center text-sm text-foreground-500">Copyright 2025 Kreatli. All rights reserved.</div>
     </footer>
   );
 };

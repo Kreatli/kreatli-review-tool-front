@@ -46,14 +46,14 @@ export const ProjectHeader = ({ project }: Props) => {
         <Icon icon="arrowLeft" size={18} />
         Projects
       </Link>
-      <div className="flex gap-4 justify-between items-start">
+      <div className="flex items-start justify-between gap-4">
         <ProjectBreadcrumbs
           fileCount={project.fileCount}
           coverUrl={coverUrl}
           totalFileSize={project.totalFileSize}
           path={[{ name: project.name, url: '#' }]}
         >
-          <div className="flex gap-2 -ml-1">
+          <div className="-ml-1 flex gap-2">
             <Button isIconOnly size="sm" variant="light" radius="full" onClick={() => setIsDescriptionModalOpen(true)}>
               <Icon icon="helpCircle" size={20} />
             </Button>
@@ -81,7 +81,7 @@ export const ProjectHeader = ({ project }: Props) => {
             )}
           </div>
         </ProjectBreadcrumbs>
-        <div className="flex gap-4 items-center">
+        <div className="flex items-center gap-4">
           {isProjectOwner && (
             <Avatar
               as="button"
@@ -94,12 +94,12 @@ export const ProjectHeader = ({ project }: Props) => {
               onClick={() => setIsMembersModalOpen(true)}
             />
           )}
-          <div className="flex ml-1">
+          <div className="ml-1 flex">
             <button
               type="button"
               aria-label="Project members"
               disabled={project.status !== 'active'}
-              className="outline-offset-4 rounded-full"
+              className="rounded-full outline-offset-4"
               onClick={() => setIsMembersModalOpen(true)}
             >
               <ProjectMembersThumbnails members={project.members} />
@@ -108,7 +108,7 @@ export const ProjectHeader = ({ project }: Props) => {
           <div>
             <ButtonGroup>
               <Button
-                className="text-content1 bg-foreground pr-1"
+                className="bg-foreground pr-1 text-content1"
                 isDisabled={project.status !== 'active'}
                 onClick={uploadAssets}
               >
@@ -117,7 +117,7 @@ export const ProjectHeader = ({ project }: Props) => {
               </Button>
               <Dropdown>
                 <DropdownTrigger>
-                  <Button isIconOnly isDisabled={project.status !== 'active'} className="text-content1 bg-foreground">
+                  <Button isIconOnly isDisabled={project.status !== 'active'} className="bg-foreground text-content1">
                     <Icon icon="chevronDown" size={20} />
                   </Button>
                 </DropdownTrigger>

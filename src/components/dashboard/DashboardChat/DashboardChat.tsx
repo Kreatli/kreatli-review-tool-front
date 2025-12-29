@@ -16,12 +16,12 @@ export const DashboardChat = ({ project }: Props) => {
 
   return (
     <Card>
-      <CardBody className="p-3 pt-0 px-4">
-        <div className="flex justify-between gap-4 mb-2 pt-3 items-center sticky top-0 bg-content1 z-10">
+      <CardBody className="p-3 px-4 pt-0">
+        <div className="sticky top-0 z-10 mb-2 flex items-center justify-between gap-4 bg-content1 pt-3">
           <Link href={`/project/${project.id}/assets`} className="flex items-center gap-1">
             <span className="text-lg font-semibold">Chat</span>
             {!isPending && !isError && (
-              <span className="text-foreground-500 font-normal text-medium">
+              <span className="text-medium font-normal text-foreground-500">
                 ({data.length} conversation{data.length === 1 ? '' : 's'})
               </span>
             )}

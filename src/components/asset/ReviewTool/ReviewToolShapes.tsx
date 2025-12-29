@@ -44,7 +44,7 @@ export const ReviewToolShapes = ({ isDisabled = false }) => {
   };
 
   return (
-    <div className="flex gap-0.5 items-center">
+    <div className="flex items-center gap-0.5">
       {SHAPES.map(({ value, icon, iconSize }) => (
         <Button
           key={value}

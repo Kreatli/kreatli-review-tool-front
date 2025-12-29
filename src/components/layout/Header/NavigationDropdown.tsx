@@ -70,24 +70,24 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
           <PopoverTrigger>
             <button
               type="button"
-              className="text-foreground hover:text-foreground-600 transition-colors font-medium flex items-center gap-1"
+              className="flex items-center gap-1 font-medium text-foreground transition-colors hover:text-foreground-600"
             >
               {triggerLabel}
               <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </button>
           </PopoverTrigger>
-          <PopoverContent className="p-6 w-full max-w-[calc(100vw-2rem)] sm:max-w-[600px] min-w-[280px] sm:min-w-[320px]">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <PopoverContent className="w-full min-w-[280px] max-w-[calc(100vw-2rem)] p-6 sm:min-w-[320px] sm:max-w-[600px]">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {sections.map((section, sectionIndex) => (
                 <div
                   key={section.title}
                   className={
                     sectionIndex > 0
-                      ? 'pt-6 sm:pt-8 md:pt-0 md:pl-10 md:border-l border-t md:border-t-0 border-foreground-200 dark:border-foreground-700'
+                      ? 'border-t border-foreground-200 pt-6 dark:border-foreground-700 sm:pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0'
                       : ''
                   }
                 >
-                  <h4 className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-primary sm:text-sm">
                     {section.title}
                   </h4>
                   <ul>
@@ -96,14 +96,14 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
                         <NextLink
                           href={item.href}
                           onClick={handleItemClick}
-                          className="flex items-start group hover:text-primary transition-colors py-2 sm:py-2.5 md:py-3 -mx-2 px-2 rounded w-full"
+                          className="group -mx-2 flex w-full items-start rounded px-2 py-2 transition-colors hover:text-primary sm:py-2.5 md:py-3"
                         >
-                          <div className="flex flex-col min-w-0">
-                            <span className="font-semibold text-sm sm:text-base text-foreground group-hover:text-primary leading-tight">
+                          <div className="flex min-w-0 flex-col">
+                            <span className="text-sm font-semibold leading-tight text-foreground group-hover:text-primary sm:text-base">
                               {item.label}
                             </span>
                             {item.description && (
-                              <span className="text-xs sm:text-sm text-foreground-500 mt-0.5 sm:mt-1 leading-relaxed">
+                              <span className="mt-0.5 text-xs leading-relaxed text-foreground-500 sm:mt-1 sm:text-sm">
                                 {item.description}
                               </span>
                             )}
@@ -132,7 +132,7 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
         <DropdownTrigger>
           <button
             type="button"
-            className="text-foreground hover:text-foreground-600 transition-colors font-medium flex items-center gap-1"
+            className="flex items-center gap-1 font-medium text-foreground transition-colors hover:text-foreground-600"
           >
             {triggerLabel}
             <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -149,8 +149,8 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
               className="py-3"
             >
               <div className="flex flex-col">
-                <span className="font-semibold text-base">{item.label}</span>
-                {item.description && <span className="text-sm text-foreground-500 mt-1">{item.description}</span>}
+                <span className="text-base font-semibold">{item.label}</span>
+                {item.description && <span className="mt-1 text-sm text-foreground-500">{item.description}</span>}
               </div>
             </DropdownItem>
           ))}

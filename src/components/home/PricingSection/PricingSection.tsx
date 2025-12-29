@@ -4,29 +4,29 @@ import Link from 'next/link';
 
 export const PricingSection = ({ titleClassName }: { titleClassName?: string }) => {
   return (
-    <section id="pricing" className="bg-foreground-50 lg:py-32 py-16 px-6">
-      <div className="flex flex-col gap-12 items-center">
-        <div className="max-w-2xl mx-auto flex flex-col gap-4 w-full">
-          <h2 className={titleClassName || 'text-3xl sm:text-5xl font-bold font-sans text-center'}>
+    <section id="pricing" className="bg-foreground-50 px-6 py-16 lg:py-32">
+      <div className="flex flex-col items-center gap-12">
+        <div className="mx-auto flex w-full max-w-2xl flex-col gap-4">
+          <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-5xl'}>
             Choose the Perfect Plan for Your Creative Journey
           </h2>
-          <p className="text-lg text-foreground-500 text-center">
+          <p className="text-center text-lg text-foreground-500">
             Flexible options to support your growth and ambition
           </p>
         </div>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 items-center lg:grid-cols-3 gap-8 w-full">
-          <Card isHoverable className="dark:border border-foreground-300">
-            <CardBody className="p-6 flex flex-col gap-8">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <Card isHoverable className="border-foreground-300 dark:border">
+            <CardBody className="flex flex-col gap-8 p-6">
               <div>
                 <Chip size="lg" variant="faded">
                   Free
                 </Chip>
-                <div className="flex items-end gap-2 mt-4 mb-4">
-                  <span className="text-5xl font-bold font-sans leading-10">$0</span>
+                <div className="mb-4 mt-4 flex items-end gap-2">
+                  <span className="font-sans text-5xl font-bold leading-10">$0</span>
                 </div>
                 <p className="text-foreground-500">Ideal for individuals or small teams just getting started.</p>
               </div>
-              <ul className="text-lg flex flex-col gap-1 text-foreground-500">
+              <ul className="flex flex-col gap-1 text-lg text-foreground-500">
                 <li className="flex items-center gap-1">
                   <Icon icon="check" className="text-foreground-500" size={18} />2 Projects
                 </li>
@@ -41,7 +41,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                     className="max-w-sm"
                   >
                     <div>
-                      <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
+                      <Icon icon="infoCircle" size={18} className="ml-1 text-foreground-500" />
                     </div>
                   </Tooltip>
                 </li>
@@ -51,20 +51,20 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
               </Button>
             </CardBody>
           </Card>
-          <Card isHoverable className="relative border border-foreground overflow-visible">
-            <Chip className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-foreground text-content1">
+          <Card isHoverable className="relative overflow-visible border border-foreground">
+            <Chip className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-foreground text-content1">
               Best Cost/Value Ratio
             </Chip>
-            <CardBody className="p-6 py-10 flex flex-col gap-8">
+            <CardBody className="flex flex-col gap-8 p-6 py-10">
               <div className="w-full">
-                <div className="w-full flex items-center justify-between">
+                <div className="flex w-full items-center justify-between">
                   <Chip size="lg" variant="faded">
                     Pro
                   </Chip>
                 </div>
-                <div className="flex items-end gap-2 mt-4 mb-4">
-                  <span className="text-5xl font-bold font-sans leading-10">$15</span>
-                  <span className="text-foreground-500 text-sm leading-4">
+                <div className="mb-4 mt-4 flex items-end gap-2">
+                  <span className="font-sans text-5xl font-bold leading-10">$15</span>
+                  <span className="text-sm leading-4 text-foreground-500">
                     per user <br /> per month
                   </span>
                 </div>
@@ -72,7 +72,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                   Perfect for small teams looking to manage multiple projects efficiently.
                 </p>
               </div>
-              <ul className="text-lg flex flex-col gap-1 text-foreground-500">
+              <ul className="flex flex-col gap-1 text-lg text-foreground-500">
                 <li className="flex items-center gap-1">
                   <Icon icon="check" className="text-foreground-500" size={18} />
                   Up to 10 Projects
@@ -85,7 +85,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                   <Icon icon="check" className="text-foreground-500" size={18} />1 TB Storage
                   <Tooltip content="$5 per month per additional 100GB" className="max-w-sm">
                     <div>
-                      <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
+                      <Icon icon="infoCircle" size={18} className="ml-1 text-foreground-500" />
                     </div>
                   </Tooltip>
                 </li>
@@ -111,15 +111,15 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
               </Button>
             </CardBody>
           </Card>
-          <Card isHoverable className="dark:border border-foreground-300">
-            <CardBody className="p-6 flex flex-col gap-8">
+          <Card isHoverable className="border-foreground-300 dark:border">
+            <CardBody className="flex flex-col gap-8 p-6">
               <div>
                 <Chip size="lg" variant="faded">
                   Advanced
                 </Chip>
-                <div className="flex items-end gap-2 mt-4 mb-4">
-                  <span className="text-5xl font-bold font-sans leading-10">$20</span>
-                  <span className="text-foreground-500 text-sm leading-4">
+                <div className="mb-4 mt-4 flex items-end gap-2">
+                  <span className="font-sans text-5xl font-bold leading-10">$20</span>
+                  <span className="text-sm leading-4 text-foreground-500">
                     per user <br /> per month
                   </span>
                 </div>
@@ -127,7 +127,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                   Designed for growing teams needing more extensive collaboration tools.
                 </p>
               </div>
-              <ul className="text-lg flex flex-col gap-1 text-foreground-500">
+              <ul className="flex flex-col gap-1 text-lg text-foreground-500">
                 <li className="flex items-center gap-1">Everything in Pro, plus:</li>
                 <li className="flex items-center gap-1">
                   <Icon icon="check" className="text-foreground-500" size={18} />
@@ -141,7 +141,7 @@ export const PricingSection = ({ titleClassName }: { titleClassName?: string }) 
                   <Icon icon="check" className="text-foreground-500" size={18} />2 TB Storage
                   <Tooltip content="$3 per month per additional 100GB" className="max-w-sm">
                     <div>
-                      <Icon icon="infoCircle" size={18} className="text-foreground-500 ml-1" />
+                      <Icon icon="infoCircle" size={18} className="ml-1 text-foreground-500" />
                     </div>
                   </Tooltip>
                 </li>

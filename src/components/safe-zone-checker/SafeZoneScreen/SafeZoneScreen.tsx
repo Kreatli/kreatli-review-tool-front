@@ -73,7 +73,7 @@ export const SafeZoneScreen = () => {
   });
 
   return (
-    <div className="flex flex-col gap-3 items-center">
+    <div className="flex flex-col items-center gap-3">
       <RadioGroup
         value={activeOverlay}
         orientation="horizontal"
@@ -83,15 +83,15 @@ export const SafeZoneScreen = () => {
         <Radio value="tiktok">TikTok</Radio>
         <Radio value="youtube">YouTube</Radio>
       </RadioGroup>
-      <div className="relative max-w-80 w-full">
-        <div className="absolute top-0 left-6 right-6 h-8 z-1 flex justify-between z-10">
+      <div className="relative w-full max-w-80">
+        <div className="z-1 absolute left-6 right-6 top-0 z-10 flex h-8 justify-between">
           <button type="button" className="text-white" {...getRootProps()}>
             <input {...getInputProps()} />
             <Icon icon="upload" size={16} />
           </button>
           <button
             type="button"
-            className="text-white flex items-center gap-2 text-xs"
+            className="flex items-center gap-2 text-xs text-white"
             onClick={() => setShouldShowSafeZone(!shouldShowSafeZone)}
           >
             <Icon icon={shouldShowSafeZone ? 'eyeCrossed' : 'eye'} size={12} />
@@ -100,7 +100,7 @@ export const SafeZoneScreen = () => {
           <Tooltip content="Download" isDisabled={!filePreviewUrl}>
             <button
               type="button"
-              className={cn('text-white', { 'opacity-50 cursor-not-allowed': !filePreviewUrl })}
+              className={cn('text-white', { 'cursor-not-allowed opacity-50': !filePreviewUrl })}
               disabled={!filePreviewUrl}
               onClick={handleDownload}
             >
@@ -108,7 +108,7 @@ export const SafeZoneScreen = () => {
             </button>
           </Tooltip>
         </div>
-        <div ref={captureRef} className="w-full relative border border-foreground-300">
+        <div ref={captureRef} className="relative w-full border border-foreground-300">
           <div className="aspect-[9/16] w-full">
             {filePreviewUrl && isImageFile && <SafeZoneScreenImage src={filePreviewUrl} />}
             {filePreviewUrl && isVideoFile && (
@@ -119,7 +119,7 @@ export const SafeZoneScreen = () => {
           <AnimatePresence>
             <motion.img
               src={activeOverlayData.src}
-              className={cn('w-full absolute inset-0 rounded-none pointer-events-none')}
+              className={cn('pointer-events-none absolute inset-0 w-full rounded-none')}
               exit={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
@@ -128,7 +128,7 @@ export const SafeZoneScreen = () => {
               alt="Instagram Overlay"
             />
           </AnimatePresence>
-          <div className="w-full h-14 bg-black text-white flex items-center justify-center">
+          <div className="flex h-14 w-full items-center justify-center bg-black text-white">
             <Icon icon={activeOverlay} size={28} />
           </div>
         </div>

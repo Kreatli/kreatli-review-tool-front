@@ -99,21 +99,21 @@ export const ProjectFeaturePreview = () => {
   };
 
   return (
-    <Card className="relative group">
+    <Card className="group relative">
       <div
-        className={`opacity-0 transition-opacity duration-300 pointer-events-none absolute inset-0 bg-black/30 dark:bg-black/60 z-10 ${
+        className={`pointer-events-none absolute inset-0 z-10 bg-black/30 opacity-0 transition-opacity duration-300 dark:bg-black/60 ${
           shouldHide || isTouchScreen ? '' : 'group-hover:opacity-100'
         }`}
       />
       <CardBody
-        className="min-h-96 flex flex-col gap-4 p-4"
+        className="flex min-h-96 flex-col gap-4 p-4"
         onClick={() => {
           setShouldHide(true);
         }}
       >
-        <div className="flex justify-between items-center border-b border-foreground-200 pb-4">
+        <div className="flex items-center justify-between border-b border-foreground-200 pb-4">
           <div className="flex items-center gap-2">
-            <div className="bg-foreground-100 p-2.5 rounded-lg">
+            <div className="rounded-lg bg-foreground-100 p-2.5">
               <Icon icon="slides" />
             </div>
             <div className="flex flex-col">
@@ -127,7 +127,7 @@ export const ProjectFeaturePreview = () => {
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" />
             </AvatarGroup>
             <div className="hidden sm:block">
-              <Button className="text-content1 bg-foreground" onClick={handleClick}>
+              <Button className="bg-foreground text-content1" onClick={handleClick}>
                 <Icon icon="plus" size={16} />
                 New
                 <Icon icon="chevronDown" size={16} />
@@ -135,14 +135,14 @@ export const ProjectFeaturePreview = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-between items-center gap-4">
+        <div className="flex items-center justify-between gap-4">
           <Tabs selectedKey="media" onSelectionChange={handleClick}>
             <Tab key="home" title="Home" />
             <Tab key="media" title="Media" />
             <Tab key="chat" title="Chat" />
             <Tab key="activity" title="Activity" />
           </Tabs>
-          <div className="items-center gap-2 hidden sm:flex">
+          <div className="hidden items-center gap-2 sm:flex">
             <Button size="sm" variant="faded" onClick={handleClick}>
               Filters
             </Button>
@@ -154,7 +154,7 @@ export const ProjectFeaturePreview = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             {initialFolders.map((folder, index) => (
               <div key={folder.id} className={index >= 2 ? 'hidden sm:block' : ''}>
                 <ProjectFeatureFolder
@@ -166,7 +166,7 @@ export const ProjectFeaturePreview = () => {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             {initialFiles.map((file, index) => (
               <div key={file.id} className={index >= 3 ? 'hidden md:block' : ''}>
                 <ProjectFeatureFile

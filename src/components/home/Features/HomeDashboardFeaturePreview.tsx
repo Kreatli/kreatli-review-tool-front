@@ -84,22 +84,22 @@ export const HomeDashboardFeaturePreview = () => {
   };
 
   return (
-    <Card className="relative group">
+    <Card className="group relative">
       <CardBody
-        className="flex flex-col gap-3 p-4 relative"
+        className="relative flex flex-col gap-3 p-4"
         onClick={() => {
           setShouldHide(true);
         }}
       >
         <div
-          className={`opacity-0 transition-opacity duration-300 pointer-events-none absolute inset-0 bg-black/30 dark:bg-black/60 z-10 ${
+          className={`pointer-events-none absolute inset-0 z-10 bg-black/30 opacity-0 transition-opacity duration-300 dark:bg-black/60 ${
             shouldHide || isTouchScreen ? '' : 'group-hover:opacity-100'
           }`}
         />
         {/* Header */}
-        <div className="flex justify-between items-center border-b border-foreground-200 pb-4">
+        <div className="flex items-center justify-between border-b border-foreground-200 pb-4">
           <div className="flex items-center gap-2">
-            <div className="bg-foreground-100 p-2.5 rounded-lg">
+            <div className="rounded-lg bg-foreground-100 p-2.5">
               <Icon icon="slides" />
             </div>
             <div className="flex flex-col">
@@ -115,7 +115,7 @@ export const HomeDashboardFeaturePreview = () => {
               </AvatarGroup>
             </div>
             <div className="hidden sm:block">
-              <Button className="text-content1 bg-foreground" onClick={handleClick}>
+              <Button className="bg-foreground text-content1" onClick={handleClick}>
                 <Icon icon="plus" size={16} />
                 New
                 <Icon icon="chevronDown" size={16} />
@@ -135,13 +135,13 @@ export const HomeDashboardFeaturePreview = () => {
         </div>
 
         {/* Main Content - Three Panel Layout */}
-        <div className="flex flex-col gap-3 flex-1 overflow-hidden">
+        <div className="flex flex-1 flex-col gap-3 overflow-hidden">
           {/* Top Row: Project Overview (left) + Chat (right) */}
-          <div className="grid grid-cols-1 xl:grid-cols-[3fr_2fr] gap-3 flex-shrink-0">
+          <div className="grid flex-shrink-0 grid-cols-1 gap-3 xl:grid-cols-[3fr_2fr]">
             {/* Project Overview */}
-            <div className="rounded-large p-3 flex flex-col gap-1 border border-foreground-200">
+            <div className="flex flex-col gap-1 rounded-large border border-foreground-200 p-3">
               <div className="flex items-center justify-between">
-                <div className="font-semibold text-sm">Example - Project overview</div>
+                <div className="text-sm font-semibold">Example - Project overview</div>
                 <Button
                   isIconOnly
                   size="sm"
@@ -171,7 +171,7 @@ export const HomeDashboardFeaturePreview = () => {
                   <span>Links</span>
                 </div>
               </div>
-              <div className="flex flex-col gap-1.5 pt-2 border-t border-foreground-200 checkbox-black-override relative">
+              <div className="checkbox-black-override relative flex flex-col gap-1.5 border-t border-foreground-200 pt-2">
                 <Checkbox
                   isSelected={checklistItems.inviteGreg}
                   className="z-20"
@@ -182,7 +182,7 @@ export const HomeDashboardFeaturePreview = () => {
                   size="sm"
                   color="default"
                 >
-                  <span className={cn(checklistItems.inviteGreg && 'line-through text-foreground-400')}>
+                  <span className={cn(checklistItems.inviteGreg && 'text-foreground-400 line-through')}>
                     Invite Greg to the Project
                   </span>
                 </Checkbox>
@@ -196,7 +196,7 @@ export const HomeDashboardFeaturePreview = () => {
                   size="sm"
                   color="default"
                 >
-                  <span className={cn(checklistItems.uploadMedia && 'line-through text-foreground-400')}>
+                  <span className={cn(checklistItems.uploadMedia && 'text-foreground-400 line-through')}>
                     Upload Media
                   </span>
                 </Checkbox>
@@ -210,7 +210,7 @@ export const HomeDashboardFeaturePreview = () => {
                   size="sm"
                   color="default"
                 >
-                  <span className={cn(checklistItems.makeAdjustments && 'line-through text-foreground-400')}>
+                  <span className={cn(checklistItems.makeAdjustments && 'text-foreground-400 line-through')}>
                     Make Adjustments to the Landing Page
                   </span>
                 </Checkbox>
@@ -218,8 +218,8 @@ export const HomeDashboardFeaturePreview = () => {
             </div>
 
             {/* Chat Panel */}
-            <div className="rounded-large p-3 flex flex-col gap-2.5 border border-foreground-200">
-              <div className="flex items-center justify-between flex-shrink-0">
+            <div className="flex flex-col gap-2.5 rounded-large border border-foreground-200 p-3">
+              <div className="flex flex-shrink-0 items-center justify-between">
                 <div className="text-sm text-foreground">
                   <span className="font-bold">Chat</span> <span className="font-normal">(2 conversations)</span>
                 </div>
@@ -228,31 +228,31 @@ export const HomeDashboardFeaturePreview = () => {
                   <Icon icon="arrowRight" size={12} />
                 </Button>
               </div>
-              <div className="flex flex-col gap-2 flex-1 overflow-hidden">
+              <div className="flex flex-1 flex-col gap-2 overflow-hidden">
                 <div
-                  className="flex items-start gap-2.5 p-2 rounded-lg bg-foreground-50 border border-foreground-200 hover:bg-background cursor-pointer transition-colors flex-shrink-0"
+                  className="flex flex-shrink-0 cursor-pointer items-start gap-2.5 rounded-lg border border-foreground-200 bg-foreground-50 p-2 transition-colors hover:bg-background"
                   onClick={handleClick}
                 >
                   <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" size="sm" />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5 mb-0.5 flex-wrap">
-                      <div className="font-semibold text-xs text-foreground">George</div>
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0" />
-                      <div className="text-xs text-foreground font-normal">unread messages</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-0.5 flex flex-wrap items-center gap-1.5">
+                      <div className="text-xs font-semibold text-foreground">George</div>
+                      <div className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                      <div className="text-xs font-normal text-foreground">unread messages</div>
                     </div>
-                    <div className="text-xs text-foreground truncate">Kreatli_Logo_v1.png</div>
+                    <div className="truncate text-xs text-foreground">Kreatli_Logo_v1.png</div>
                   </div>
-                  <div className="text-xs text-foreground-500 flex-shrink-0 ml-2">4 days ago</div>
+                  <div className="ml-2 flex-shrink-0 text-xs text-foreground-500">4 days ago</div>
                 </div>
                 <div
-                  className="flex items-start gap-2.5 p-2 rounded-lg bg-foreground-50 border border-foreground-200 hover:bg-background cursor-pointer transition-colors flex-shrink-0"
+                  className="flex flex-shrink-0 cursor-pointer items-start gap-2.5 rounded-lg border border-foreground-200 bg-foreground-50 p-2 transition-colors hover:bg-background"
                   onClick={handleClick}
                 >
-                  <div className="bg-foreground-100 p-1.5 rounded flex-shrink-0">
+                  <div className="flex-shrink-0 rounded bg-foreground-100 p-1.5">
                     <Icon icon="slides" size={14} className="text-foreground-500" />
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-xs text-foreground mb-0.5">Team Chat (Vision review)</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-0.5 text-xs font-semibold text-foreground">Team Chat (Vision review)</div>
                     <div className="text-xs text-foreground">No messages</div>
                   </div>
                 </div>
@@ -261,19 +261,19 @@ export const HomeDashboardFeaturePreview = () => {
           </div>
 
           {/* Bottom Row: Media Panel - Full Width */}
-          <div className="bg-foreground-50 rounded-large p-3 flex flex-col gap-2.5 border border-foreground-200 flex-1">
-            <div className="flex items-center justify-between flex-shrink-0">
-              <div className="font-semibold text-sm">Media (3 files)</div>
+          <div className="flex flex-1 flex-col gap-2.5 rounded-large border border-foreground-200 bg-foreground-50 p-3">
+            <div className="flex flex-shrink-0 items-center justify-between">
+              <div className="text-sm font-semibold">Media (3 files)</div>
               <Button size="sm" variant="flat" color="primary" onClick={handleClick} className="relative z-30">
                 Go to Media
                 <Icon icon="arrowRight" size={12} />
               </Button>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 flex-1">
+            <div className="grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
               {mediaItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="rounded-lg overflow-hidden relative border border-foreground-200 cursor-pointer aspect-video"
+                  className="relative aspect-video cursor-pointer overflow-hidden rounded-lg border border-foreground-200"
                   onClick={handleClick}
                 >
                   <img
@@ -289,7 +289,7 @@ export const HomeDashboardFeaturePreview = () => {
                             size="sm"
                             variant="dot"
                             color={item.color as any}
-                            className="cursor-pointer bg-foreground-50 relative z-20"
+                            className="relative z-20 cursor-pointer bg-foreground-50"
                           >
                             {item.status}
                           </Chip>
@@ -311,7 +311,7 @@ export const HomeDashboardFeaturePreview = () => {
                             <Avatar
                               size="sm"
                               src={`https://i.pravatar.cc/150?u=${item.user}`}
-                              className="cursor-pointer relative z-20"
+                              className="relative z-20 cursor-pointer"
                               isBordered
                             />
                           </DropdownTrigger>

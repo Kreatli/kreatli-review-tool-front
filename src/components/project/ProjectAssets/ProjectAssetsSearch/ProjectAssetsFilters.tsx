@@ -36,7 +36,7 @@ export const ProjectAssetsFilters = () => {
   };
 
   return (
-    <div className="flex justify-end gap-4 w-full">
+    <div className="flex w-full justify-end gap-4">
       <Badge isOneChar size="sm" color="primary" isInvisible={!hasFilters}>
         <Popover
           placement="bottom-end"
@@ -51,7 +51,7 @@ export const ProjectAssetsFilters = () => {
             </Button>
           </PopoverTrigger>
           <PopoverContent>
-            <div className="flex flex-col gap-2 w-64 p-2">
+            <div className="flex w-64 flex-col gap-2 p-2">
               <div className="text-lg font-semibold">Filters</div>
               <div className="flex flex-col gap-4">
                 <Select
@@ -110,7 +110,7 @@ export const ProjectAssetsFilters = () => {
                       Reset filters
                     </Button>
                   )}
-                  <Button size="sm" className="text-content1 bg-foreground" onClick={handleApplyFilters}>
+                  <Button size="sm" className="bg-foreground text-content1" onClick={handleApplyFilters}>
                     Apply filters
                   </Button>
                 </div>

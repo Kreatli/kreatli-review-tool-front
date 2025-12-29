@@ -234,7 +234,7 @@ export const Header = () => {
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Button as={NextLink} href="/sign-up" className="text-content1 bg-foreground">
+              <Button as={NextLink} href="/sign-up" className="bg-foreground text-content1">
                 <span className="hidden sm:inline">Start for Free</span>
                 <span className="sm:hidden">Sign up</span>
               </Button>
@@ -244,7 +244,7 @@ export const Header = () => {
       </NavbarContent>
       {!isSignedIn && (
         <NavbarMenu className="sm:pl-16">
-          <div className="font-semibold mb-2">Platform</div>
+          <div className="mb-2 font-semibold">Platform</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -288,8 +288,8 @@ export const Header = () => {
               Integrations
             </Link>
           </NavbarMenuItem>
-          <div className="font-semibold mb-1 mt-4">Solutions</div>
-          <div className="text-sm text-foreground-500 mb-1">By Industry</div>
+          <div className="mb-1 mt-4 font-semibold">Solutions</div>
+          <div className="mb-1 text-sm text-foreground-500">By Industry</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -323,7 +323,7 @@ export const Header = () => {
               In-House Creative & Content Teams
             </Link>
           </NavbarMenuItem>
-          <div className="text-sm text-foreground-500 mb-1 mt-2">By Use-Case</div>
+          <div className="mb-1 mt-2 text-sm text-foreground-500">By Use-Case</div>
           <NavbarMenuItem>
             <Link
               as={NextLink}
@@ -357,7 +357,7 @@ export const Header = () => {
               Creative Proofing
             </Link>
           </NavbarMenuItem>
-          <div className="font-semibold mb-1 mt-4">Resources</div>
+          <div className="mb-1 mt-4 font-semibold">Resources</div>
           <NavbarMenuItem>
             <Link as={NextLink} href="/help" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Help Center
@@ -394,7 +394,7 @@ export const Header = () => {
               Blog
             </Link>
           </NavbarMenuItem>
-          <div className="font-semibold mb-1 mt-4">Other</div>
+          <div className="mb-1 mt-4 font-semibold">Other</div>
           <NavbarMenuItem>
             <Link as={NextLink} href="/pricing" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Pricing

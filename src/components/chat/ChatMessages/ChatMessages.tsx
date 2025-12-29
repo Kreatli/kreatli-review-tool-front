@@ -122,10 +122,10 @@ export const ChatMessages = ({ conversationId }: Props) => {
   };
 
   return (
-    <div className="px-2 h-full overflow-hidden">
+    <div className="h-full overflow-hidden px-2">
       <div
         ref={ref}
-        className="bg-background px-2 py-4 overflow-auto overscroll-none no-scrollbar rounded-medium h-full"
+        className="no-scrollbar h-full overflow-auto overscroll-none rounded-medium bg-background px-2 py-4"
       >
         {isLoading ? (
           <ChatMessagesLoader />

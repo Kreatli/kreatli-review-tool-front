@@ -74,11 +74,11 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
     <div>
       <div className="text-2xl font-semibold">Archived media</div>
       <div
-        className={cn('sticky top-16 z-20 bg-background h-4 overflow-hidden opacity-0 transition-[height,opacity]', {
+        className={cn('sticky top-16 z-20 h-4 overflow-hidden bg-background opacity-0 transition-[height,opacity]', {
           'h-12 opacity-100': hasSelectedAssets,
         })}
       >
-        <div className="py-2 pl-2 flex items-center gap-4">
+        <div className="flex items-center gap-4 py-2 pl-2">
           <Checkbox
             isDisabled={!hasSelectedAssets}
             isSelected={selectedAssetIds.size === assets.length}
@@ -86,7 +86,7 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
             color="default"
             onChange={handleSelectAllChange}
           />
-          <div className="text-foreground-500 -ml-2">
+          <div className="-ml-2 text-foreground-500">
             {selectedAssetIds.size} item{selectedAssetIds.size === 1 ? '' : 's'} selected
           </div>
           <Button variant="light" size="sm" isDisabled={!hasSelectedAssets} onPress={() => setIsRestoreModalOpen(true)}>
@@ -112,7 +112,7 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
         setSelectedAssetId={setSelectedAssetId}
         project={project}
       >
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 mb-6">
+        <div className="mb-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2">
           {folders.map((folder) => (
             <ProjectFolder
               key={folder.id}

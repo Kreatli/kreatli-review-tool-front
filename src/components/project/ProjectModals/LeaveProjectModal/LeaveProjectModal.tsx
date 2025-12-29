@@ -45,7 +45,7 @@ export const LeaveProjectModal = ({ project, isOpen, onClose }: Props) => {
               Are you sure you want to leave <span className="font-semibold">&quot;{project?.name}&quot;</span> project?
               You will no longer have access to this project.
             </div>
-            <div className="flex gap-2 justify-end">
+            <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isPending} onClick={onClose}>
                 Cancel
               </Button>

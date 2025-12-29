@@ -43,13 +43,13 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
 
   return (
     <div
-      className={cn('flex flex-1 items-center gap-4 transition-colors bg-foreground-50 p-3 overflow-hidden', {
+      className={cn('flex flex-1 items-center gap-4 overflow-hidden bg-foreground-50 p-3 transition-colors', {
         'bg-primary-100': isActive,
         'cursor-pointer': isCompareMode,
       })}
       onClick={onClick}
     >
-      <div className="flex-1 flex items-center gap-2 pl-1 overflow-hidden">
+      <div className="flex flex-1 items-center gap-2 overflow-hidden pl-1">
         {!isCompareMode && (
           <Button
             size="sm"
@@ -68,10 +68,10 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
         />
         <div className="ml-2 overflow-hidden">
           <div className="flex items-center gap-2">
-            <span className={cn('font-semibold truncate transition-colors', { 'text-primary': isActive })}>
+            <span className={cn('truncate font-semibold transition-colors', { 'text-primary': isActive })}>
               {file.name}
             </span>
-            <span className={cn('text-sm text-foreground-500 whitespace-nowrap', { 'text-foreground-600': isActive })}>
+            <span className={cn('whitespace-nowrap text-sm text-foreground-500', { 'text-foreground-600': isActive })}>
               {formatBytes(file.fileSize)}
             </span>
           </div>

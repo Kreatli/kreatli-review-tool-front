@@ -22,12 +22,12 @@ export const UpgradeModal = ({ type, isOpen, onClose }: UpgradeModalProps) => {
         <ModalContent>
           <ModalHeader className="pb-0">Add more storage</ModalHeader>
           <ModalBody>
-            <div className="text-foreground-500 text-sm">
+            <div className="text-sm text-foreground-500">
               You don't have enough storage space. You can add more by purchasing a storage add-on.
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button className="text-content1 bg-foreground" onClick={onClose}>
+            <Button className="bg-foreground text-content1" onClick={onClose}>
               Subscription details
             </Button>
           </ModalFooter>
@@ -41,10 +41,10 @@ export const UpgradeModal = ({ type, isOpen, onClose }: UpgradeModalProps) => {
       <ModalContent>
         <ModalHeader className="pb-0">Upgrade plan</ModalHeader>
         <ModalBody>
-          <div className="text-foreground-500 text-sm">{DESCRIPTION[type]}</div>
+          <div className="text-sm text-foreground-500">{DESCRIPTION[type]}</div>
         </ModalBody>
         <ModalFooter>
-          <Button className="text-content1 bg-foreground" as={NextLink} href="/account/subscription">
+          <Button className="bg-foreground text-content1" as={NextLink} href="/account/subscription">
             Subscription details
           </Button>
         </ModalFooter>

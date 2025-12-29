@@ -66,7 +66,7 @@ export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
   };
 
   return (
-    <div className="p-3 pt-0 pb-9 flex flex-col gap-2">
+    <div className="flex flex-col gap-2 p-3 pb-9 pt-0">
       <div className="text-medium">
         <span className="font-semibold">
           {comments.length} comment{comments.length === 1 ? '' : 's'}
@@ -89,7 +89,7 @@ export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
               onRemove={handleRemove(comment.id)}
             />
             {comment.replies.length > 0 && (
-              <div className="pl-6 pt-2 flex flex-col gap-2">
+              <div className="flex flex-col gap-2 pl-6 pt-2">
                 {comment.replies.map((reply) => (
                   <AssetComment
                     key={reply.id}

@@ -4,7 +4,7 @@ import React from 'react';
 export const ReviewToolLoading = () => {
   return (
     <div className="flex flex-col overflow-hidden">
-      <div className="p-4 border-b">
+      <div className="border-b p-4">
         <div className="flex items-center justify-between">
           <Skeleton className="h-8 w-48 rounded-lg" />
           <div className="flex gap-2">
@@ -13,10 +13,10 @@ export const ReviewToolLoading = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1 relative">
+      <div className="relative flex-1">
         <Skeleton className="absolute inset-0" />
       </div>
-      <div className="p-4 border-t">
+      <div className="border-t p-4">
         <div className="flex items-center justify-between">
           <Skeleton className="h-8 w-32 rounded-lg" />
           <div className="flex gap-2">

@@ -200,13 +200,13 @@ export const CompareFeaturePreview = () => {
           setIsAnimating(false);
         }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_240px] gap-2">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-[1fr_1fr_240px]">
           {/* Left Column */}
           <div className="flex flex-col gap-2">
             {/* File Header */}
             <div
               className={cn(
-                'flex items-center gap-2 p-3 rounded-lg transition-colors cursor-pointer',
+                'flex cursor-pointer items-center gap-2 rounded-lg p-3 transition-colors',
                 activeFile === 'left' ? 'bg-primary-100' : 'bg-foreground-50',
               )}
               onClick={(e) => {
@@ -216,7 +216,7 @@ export const CompareFeaturePreview = () => {
             >
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" size="sm" />
               <div className="flex-1 overflow-hidden">
-                <div className={cn('font-semibold truncate', { 'text-primary': activeFile === 'left' })}>
+                <div className={cn('truncate font-semibold', { 'text-primary': activeFile === 'left' })}>
                   walkthrough_v2.mp4
                 </div>
                 <div className="text-sm text-foreground-500">278 MB</div>
@@ -225,7 +225,7 @@ export const CompareFeaturePreview = () => {
             {/* Preview */}
             <div
               className={cn(
-                'aspect-video max-h-64 rounded-lg overflow-hidden relative cursor-pointer border-2 transition-colors',
+                'relative aspect-video max-h-64 cursor-pointer overflow-hidden rounded-lg border-2 transition-colors',
                 activeFile === 'left' ? 'border-primary' : 'border-transparent',
               )}
               onClick={(e) => {
@@ -246,7 +246,7 @@ export const CompareFeaturePreview = () => {
             {/* File Header */}
             <div
               className={cn(
-                'flex items-center gap-2 p-3 rounded-lg transition-colors cursor-pointer',
+                'flex cursor-pointer items-center gap-2 rounded-lg p-3 transition-colors',
                 activeFile === 'right' ? 'bg-primary-100' : 'bg-foreground-50',
               )}
               onClick={(e) => {
@@ -256,7 +256,7 @@ export const CompareFeaturePreview = () => {
             >
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" size="sm" />
               <div className="flex-1 overflow-hidden">
-                <div className={cn('font-semibold truncate', { 'text-primary': activeFile === 'right' })}>
+                <div className={cn('truncate font-semibold', { 'text-primary': activeFile === 'right' })}>
                   walkthrough_v3.mp4
                 </div>
                 <div className="text-sm text-foreground-500">285 MB</div>
@@ -265,7 +265,7 @@ export const CompareFeaturePreview = () => {
             {/* Preview */}
             <div
               className={cn(
-                'aspect-video max-h-64 rounded-lg overflow-hidden relative cursor-pointer border-2 transition-colors',
+                'relative aspect-video max-h-64 cursor-pointer overflow-hidden rounded-lg border-2 transition-colors',
                 activeFile === 'right' ? 'border-primary' : 'border-transparent',
               )}
               onClick={(e) => {
@@ -282,9 +282,9 @@ export const CompareFeaturePreview = () => {
           </div>
 
           {/* Comment Section - Right Side */}
-          <div className="p-1 flex flex-col gap-2 min-h-0">
-            <div className="font-semibold border-b border-foreground-200 pb-2">Comments</div>
-            <div className="flex flex-col gap-2 overflow-auto p-1 -m-1">
+          <div className="flex min-h-0 flex-col gap-2 p-1">
+            <div className="border-b border-foreground-200 pb-2 font-semibold">Comments</div>
+            <div className="-m-1 flex flex-col gap-2 overflow-auto p-1">
               {activeFile === 'left' ? (
                 <>
                   <ReviewToolComment
@@ -340,7 +340,7 @@ export const CompareFeaturePreview = () => {
             <div className="flex justify-end">
               <Button
                 size="sm"
-                className="bg-foreground text-content1 absolute bottom-1 right-1"
+                className="absolute bottom-1 right-1 bg-foreground text-content1"
                 isIconOnly
                 radius="full"
                 onClick={(e) => {

@@ -48,7 +48,7 @@ export const DeleteProjectModal = ({ project, isOpen, onClose }: Props) => {
               Are you sure you want to delete <span className="font-semibold">&quot;{project?.name}&quot;</span>{' '}
               project? This action can not be undone.
             </div>
-            <div className="flex gap-2 justify-end">
+            <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isPending} onClick={onClose}>
                 Cancel
               </Button>

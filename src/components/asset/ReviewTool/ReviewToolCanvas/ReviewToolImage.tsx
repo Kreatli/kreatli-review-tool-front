@@ -25,7 +25,7 @@ export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
             src={imageUrl}
             removeWrapper
             radius="none"
-            className="absolute inset-0 h-full w-full blur-xl grayscale pointer-events-none select-none"
+            className="pointer-events-none absolute inset-0 h-full w-full select-none blur-xl grayscale"
           />
         )}
       </div>
@@ -40,7 +40,7 @@ export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
           height: '100%',
         })}
         classNames={{ wrapper: 'max-h-full max-w-full h-auto overflow-hidden' }}
-        className="pointer-events-none select-none h-full"
+        className="pointer-events-none h-full select-none"
         alt={imageFile.name}
         onLoad={onLoad}
       />

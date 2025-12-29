@@ -33,41 +33,41 @@ const steps = [
 
 export const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="backdrop-blur-lg lg:py-32 py-16 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col gap-16 items-center">
-        <div className="flex flex-col gap-4 w-full">
-          <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">How Does Kreatli Work?</h2>
-          <p className="text-lg text-foreground-500 text-center max-w-2xl mx-auto">
+    <section id="how-it-works" className="px-6 py-16 backdrop-blur-lg lg:py-32">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-16">
+        <div className="flex w-full flex-col gap-4">
+          <h2 className="text-center font-sans text-3xl font-bold sm:text-5xl">How Does Kreatli Work?</h2>
+          <p className="mx-auto max-w-2xl text-center text-lg text-foreground-500">
             Get started in 4 simple steps. From project setup to final delivery, streamline your entire creative
             workflow.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+        <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <Card key={index} className="group h-full">
-              <CardBody className="flex flex-col gap-6 items-center p-6 h-full">
+              <CardBody className="flex h-full flex-col items-center gap-6 p-6">
                 <div className="relative">
-                  <div className="bg-foreground-100 rounded-full size-16 flex items-center justify-center transition-all duration-300 group-hover:bg-foreground-200 group-hover:scale-105">
+                  <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-foreground-200">
                     <Icon
                       icon={step.icon as any}
                       size={28}
-                      className="text-foreground-500 group-hover:text-primary transition-colors duration-300"
+                      className="text-foreground-500 transition-colors duration-300 group-hover:text-primary"
                     />
                   </div>
-                  <div className="absolute -top-2 -right-2 bg-foreground text-content1 font-bold font-sans text-sm rounded-full size-7 flex items-center justify-center shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
+                  <div className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-foreground font-sans text-sm font-bold text-content1 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
                     {step.number}
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 items-center text-center flex-1">
-                  <h3 className="text-lg font-semibold font-sans">{step.title}</h3>
-                  <p className="text-sm text-foreground-500 leading-relaxed">{step.description}</p>
+                <div className="flex flex-1 flex-col items-center gap-2 text-center">
+                  <h3 className="font-sans text-lg font-semibold">{step.title}</h3>
+                  <p className="text-sm leading-relaxed text-foreground-500">{step.description}</p>
                 </div>
               </CardBody>
             </Card>
           ))}
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-          <Button as={Link} href="/sign-up" size="lg" className="text-content1 bg-foreground">
+        <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row">
+          <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
             Start For Free
           </Button>
           <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">

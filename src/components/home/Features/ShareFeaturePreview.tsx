@@ -191,21 +191,21 @@ export const ShareFeaturePreview = () => {
   return (
     <Card>
       <CardBody
-        className="flex flex-col gap-4 p-4 min-h-96"
+        className="flex min-h-96 flex-col gap-4 p-4"
         onClick={() => {
           setIsAnimating(false);
         }}
       >
         <div className="flex items-center gap-3">
           <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" size="md" />
-          <div className="flex-1 min-w-0">
-            <div className="text-lg font-semibold truncate">interview_v2.mp4</div>
+          <div className="min-w-0 flex-1">
+            <div className="truncate text-lg font-semibold">interview_v2.mp4</div>
             <div className="text-sm text-foreground-500">Vision review - Interviews</div>
           </div>
         </div>
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-[1fr_280px]">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
           <div className="flex flex-col gap-3">
-            <div className="aspect-video max-h-64 rounded-lg overflow-hidden relative border border-foreground-200">
+            <div className="relative aspect-video max-h-64 overflow-hidden rounded-lg border border-foreground-200">
               <img
                 src="https://picsum.photos/1000/400?random=3"
                 alt="File preview"
@@ -231,11 +231,11 @@ export const ShareFeaturePreview = () => {
               </Button>
             </div>
           </div>
-          <div className="bg-foreground-50 rounded-large border border-foreground-200 flex flex-col gap-3 p-4 transition-all duration-300">
+          <div className="flex flex-col gap-3 rounded-large border border-foreground-200 bg-foreground-50 p-4 transition-all duration-300">
             <div className="flex items-center justify-between border-b border-foreground-200 pb-3">
-              <div className="font-semibold text-base">Share File</div>
+              <div className="text-base font-semibold">Share File</div>
             </div>
-            <div className="flex flex-col gap-3 overflow-auto flex-1 min-h-0">
+            <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-auto">
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-2">
                   <Input
@@ -263,11 +263,11 @@ export const ShareFeaturePreview = () => {
                     }
                   />
                 </div>
-                <div className="relative before:absolute before:bg-foreground-300 before:h-px before:w-full before:top-1/2 before:left-0 before:right-0 text-center">
-                  <span className="bg-foreground-50 relative px-2 text-foreground-500 text-xs">or</span>
+                <div className="relative text-center before:absolute before:left-0 before:right-0 before:top-1/2 before:h-px before:w-full before:bg-foreground-300">
+                  <span className="relative bg-foreground-50 px-2 text-xs text-foreground-500">or</span>
                 </div>
                 {emails.length > 0 && (
-                  <div className="flex gap-2 gap-y-1.5 flex-wrap">
+                  <div className="flex flex-wrap gap-2 gap-y-1.5">
                     {emails.map((email) => (
                       <Chip
                         key={email}
@@ -307,7 +307,7 @@ export const ShareFeaturePreview = () => {
                   <Button
                     size="sm"
                     isDisabled={emails.length === 0}
-                    className="text-content1 bg-foreground transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-foreground text-content1 transition-all disabled:cursor-not-allowed disabled:opacity-50"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleSendLink();

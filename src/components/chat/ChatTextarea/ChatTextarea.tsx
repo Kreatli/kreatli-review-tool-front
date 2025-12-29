@@ -89,16 +89,16 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
   };
 
   return (
-    <div className="flex items-end p-2 gap-2">
+    <div className="flex items-end gap-2 p-2">
       <div className="flex flex-col">
         {assets.length > 0 && (
-          <div className="grid grid-cols-2 gap-y-1 gap-px">
+          <div className="grid grid-cols-2 gap-px gap-y-1">
             {assets.map((asset) => (
               <div className="relative" key={asset.id}>
                 <ChatTextareaAssetPreview key={asset.id} asset={asset} width={32} height={32} />
                 <button
                   type="button"
-                  className="size-4 flex items-center justify-center absolute -right-1 -top-1 z-20 border rounded-full bg-background"
+                  className="absolute -right-1 -top-1 z-20 flex size-4 items-center justify-center rounded-full border bg-background"
                   onClick={() => handleRemoveAsset(asset)}
                 >
                   <Icon icon="cross" size={14} />
@@ -116,14 +116,14 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
           <ChatTextareaEmojiPicker isDisabled={isDisabled} onEmojiSelect={handleEmojiSelect} />
         </div>
       </div>
-      <div className="flex relative w-full">
+      <div className="relative flex w-full">
         <textarea
           ref={textareaRef}
           placeholder="Type a message"
           rows={rows}
           disabled={isDisabled}
           value={message}
-          className="min-h-[26px] placeholder:text-foreground-400 text-small resize-none w-full bg-transparent outline-none"
+          className="min-h-[26px] w-full resize-none bg-transparent text-small outline-none placeholder:text-foreground-400"
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           onSelect={(e) => {
@@ -133,7 +133,7 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
         />
         <div
           ref={messageRef}
-          className="text-small whitespace-pre-wrap absolute opacity-0 pointer-events-none"
+          className="pointer-events-none absolute whitespace-pre-wrap text-small opacity-0"
           aria-hidden="true"
         >
           {message}

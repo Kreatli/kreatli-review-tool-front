@@ -80,7 +80,7 @@ export const CreateProjectForm = () => {
       {fields.length > 0 && (
         <div className="flex flex-col gap-2">
           {fields.map((field, index) => (
-            <div key={field.id} className="relative flex gap-2 items-center">
+            <div key={field.id} className="relative flex items-center gap-2">
               <Input
                 label="Member email"
                 placeholder="member@email.com"
@@ -134,7 +134,7 @@ export const CreateProjectForm = () => {
           Add project members
         </Link>
       )}
-      <Button type="submit" isLoading={isPending} className="bg-foreground text-content1 w-fit ml-auto">
+      <Button type="submit" isLoading={isPending} className="ml-auto w-fit bg-foreground text-content1">
         Create
       </Button>
     </form>

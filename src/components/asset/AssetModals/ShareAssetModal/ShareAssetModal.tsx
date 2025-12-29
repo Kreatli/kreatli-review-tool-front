@@ -124,12 +124,12 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
                 )
               }
             />
-            <div className="relative before:absolute before:bg-foreground-300 before:h-px before:w-full before:top-1/2 before:left-0 before:right-0 text-center">
-              <span className="bg-background relative px-1 text-foreground-500">or</span>
+            <div className="relative text-center before:absolute before:left-0 before:right-0 before:top-1/2 before:h-px before:w-full before:bg-foreground-300">
+              <span className="relative bg-background px-1 text-foreground-500">or</span>
             </div>
             <div className="flex flex-col gap-2">
               {emails.length > 0 && (
-                <div className="flex gap-2 gap-y-1 flex-wrap">
+                <div className="flex flex-wrap gap-2 gap-y-1">
                   {emails.map((email) => (
                     <Chip
                       key={email}
@@ -142,7 +142,7 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
                   ))}
                 </div>
               )}
-              <div className="flex flex-col gap-2 items-end">
+              <div className="flex flex-col items-end gap-2">
                 <Input
                   label="Share via email"
                   placeholder="Enter email address"
@@ -156,7 +156,7 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
                   size="sm"
                   isDisabled={emails.length === 0}
                   isLoading={isSendingEmails}
-                  className="text-content1 bg-foreground"
+                  className="bg-foreground text-content1"
                   onClick={handleSendLink}
                 >
                   Send link via email

@@ -13,7 +13,7 @@ export const AssetPreview = ({ asset, width, height }: Props) => {
 
   if (!imageUrl) {
     return (
-      <div style={{ width, height }} className="border rounded-full">
+      <div style={{ width, height }} className="rounded-full border">
         <AssetIcon fileType={asset.fileType} size={20} />
       </div>
     );

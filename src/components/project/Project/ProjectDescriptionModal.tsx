@@ -14,7 +14,7 @@ export const ProjectDescriptionModal = ({ isOpen, project, onClose }: Props) => 
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
         <ModalHeader className="flex flex-col gap-1">Project description</ModalHeader>
-        <ModalBody className="pt-0 pb-6">
+        <ModalBody className="pb-6 pt-0">
           {project.description ? (
             <p className="text-foreground-500">{project.description}</p>
           ) : (

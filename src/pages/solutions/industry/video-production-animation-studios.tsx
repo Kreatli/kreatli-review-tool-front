@@ -265,11 +265,11 @@ export default function VideoProductionAnimationStudiosPage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Solutions for {data.title}</h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">{data.description}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Solutions for {data.title}</h1>
+          <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">{data.description}</p>
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>
@@ -288,54 +288,54 @@ export default function VideoProductionAnimationStudiosPage() {
 
       {/* Visual Workflow Section */}
       {data.workflowSteps && (
-        <section className="relative py-16 px-6 backdrop-blur-lg">
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Video Production Workflow</h2>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+        <section className="relative px-6 py-16 backdrop-blur-lg">
+          <div className="relative z-10 mx-auto max-w-7xl">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Video Production Workflow</h2>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 From project setup to final delivery—see how Kreatli streamlines your video production workflow.
                 Organize projects, collaborate with teams, collect frame-accurate feedback, and deliver faster.
               </p>
             </div>
 
             {/* Workflow Progress Indicator */}
-            <div className="flex justify-center mb-12 sticky top-20 z-10">
-              <div className="flex items-center gap-4 bg-background rounded-full px-6 py-3 shadow-large">
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+            <div className="sticky top-20 z-10 mb-12 flex justify-center">
+              <div className="flex items-center gap-4 rounded-full bg-background px-6 py-3 shadow-large">
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#setup"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Setup
                   </a>
                 </div>
-                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#collaborate"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Collaborate
                   </a>
                 </div>
-                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#review"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Review
                   </a>
                 </div>
-                <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-                <div className="flex items-center gap-2 group cursor-pointer">
-                  <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+                <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+                <div className="group flex cursor-pointer items-center gap-2">
+                  <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                   <a
                     href="#deliver"
-                    className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                    className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                   >
                     Deliver
                   </a>
@@ -358,28 +358,28 @@ export default function VideoProductionAnimationStudiosPage() {
                   <React.Fragment key={index}>
                     <Card id={stepId} className="scroll-mt-36">
                       <CardBody className="p-5 sm:p-8 lg:p-12">
-                        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                        <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
                           <div className="flex flex-col gap-6 lg:w-1/3">
                             <div className="flex items-center gap-4">
-                              <div className="shrink-0 size-14 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+                              <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 md:size-20">
                                 <Icon icon={step.icon as any} size={32} className="text-primary" />
                               </div>
                               <div>
-                                <div className="text-sm font-medium text-primary mb-1">Step {step.step}</div>
-                                <h3 className="text-2xl lg:text-3xl font-bold font-sans">{step.title}</h3>
+                                <div className="mb-1 text-sm font-medium text-primary">Step {step.step}</div>
+                                <h3 className="font-sans text-2xl font-bold lg:text-3xl">{step.title}</h3>
                               </div>
                             </div>
-                            <p className="text-foreground-500 text-base lg:text-lg line-clamp-2">{step.description}</p>
+                            <p className="line-clamp-2 text-base text-foreground-500 lg:text-lg">{step.description}</p>
                             <div className="flex flex-col gap-2">
                               <div>⏱️ Time to complete: {step.timeToComplete}</div>
                               <div>💰 Saves: {step.saves}</div>
                             </div>
                           </div>
 
-                          <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
-                            <div className="grid sm:grid-cols-2 gap-8">
+                          <div className="flex flex-col gap-8 border-foreground-200 lg:w-2/3 lg:border-l lg:pl-8">
+                            <div className="grid gap-8 sm:grid-cols-2">
                               <div>
-                                <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                                <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                                   <Icon icon="list" size={24} className="text-primary" />
                                   Process Breakdown
                                 </h4>
@@ -389,7 +389,7 @@ export default function VideoProductionAnimationStudiosPage() {
                                       key={itemIndex}
                                       className="flex items-start gap-3 text-base text-foreground-500"
                                     >
-                                      <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                      <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                                         <span className="text-xs font-bold text-primary">{itemIndex + 1}</span>
                                       </div>
                                       <span className="line-clamp-2">{item}</span>
@@ -399,7 +399,7 @@ export default function VideoProductionAnimationStudiosPage() {
                               </div>
 
                               <div>
-                                <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                                <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                                   <Icon icon="warning" size={24} className="text-warning" />
                                   Challenges Addressed
                                 </h4>
@@ -409,7 +409,7 @@ export default function VideoProductionAnimationStudiosPage() {
                                       key={challengeIndex}
                                       className="flex items-start gap-2 text-base text-foreground-500"
                                     >
-                                      <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                                      <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                                       <span className="line-clamp-2">{challenge}</span>
                                     </li>
                                   ))}
@@ -418,13 +418,13 @@ export default function VideoProductionAnimationStudiosPage() {
                             </div>
 
                             <div>
-                              <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                              <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                                 <Icon icon="slides" size={24} className="text-success" />
                                 Real-World Example
                               </h4>
                               <Card className="bg-success/5">
                                 <CardBody className="p-6">
-                                  <p className="text-base text-foreground-600 mb-3 line-clamp-2">
+                                  <p className="mb-3 line-clamp-2 text-base text-foreground-600">
                                     {step.realWorldExample.scenario.includes(':') ? (
                                       <>
                                         <strong>{step.realWorldExample.scenario.split(':')[0]}:</strong>{' '}
@@ -450,13 +450,13 @@ export default function VideoProductionAnimationStudiosPage() {
                     </Card>
 
                     {!isLast && (
-                      <div className="flex justify-center items-center">
+                      <div className="flex items-center justify-center">
                         <div className="flex flex-col items-center gap-2">
-                          <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-primary"></div>
-                          <div className="size-8 bg-primary/10 rounded-full flex items-center justify-center border-2 border-primary/30">
+                          <div className="h-8 w-px bg-gradient-to-b from-primary/50 to-primary"></div>
+                          <div className="flex size-8 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
                             <Icon icon="chevronDown" size={20} className="text-primary" />
                           </div>
-                          <div className="w-px h-8 bg-gradient-to-b from-primary to-primary/50"></div>
+                          <div className="h-8 w-px bg-gradient-to-b from-primary to-primary/50"></div>
                         </div>
                       </div>
                     )}
@@ -469,17 +469,17 @@ export default function VideoProductionAnimationStudiosPage() {
       )}
 
       {/* Key Features Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Key Features for {data.title}</h2>
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Key Features for {data.title}</h2>
           </div>
 
           {/* Frame-Accurate Video Review */}
           <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">Frame-Accurate Video Review</h3>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+            <div className="mb-8 text-center">
+              <h3 className="mb-3 font-sans text-2xl font-bold">Frame-Accurate Video Review</h3>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 Pin comments to exact frames and timestamps. Example: "Change at 00:12:30"—editor knows precisely where.
                 Reduces revision cycles by 50%.
               </p>
@@ -489,9 +489,9 @@ export default function VideoProductionAnimationStudiosPage() {
 
           {/* Version History & Comparison */}
           <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">Version History & Comparison</h3>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+            <div className="mb-8 text-center">
+              <h3 className="mb-3 font-sans text-2xl font-bold">Version History & Comparison</h3>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 Compare different video versions side-by-side to spot changes instantly. Complete version history with
                 one-click revert.
               </p>
@@ -501,9 +501,9 @@ export default function VideoProductionAnimationStudiosPage() {
 
           {/* Large Video File Support */}
           <div className="mb-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold font-sans mb-3">Large Video File Support</h3>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+            <div className="mb-8 text-center">
+              <h3 className="mb-3 font-sans text-2xl font-bold">Large Video File Support</h3>
+              <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 Upload and share large video files securely without file size limitations. No more WeTransfer or
                 compressed previews—share full-quality videos directly.
               </p>
@@ -514,26 +514,26 @@ export default function VideoProductionAnimationStudiosPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
               Common questions about Kreatli for {data.title.toLowerCase()}.
             </p>
           </div>
           <Accordion variant="splitted">
             {data.faqs.map((faq, index) => (
-              <AccordionItem key={index} title={<span className="font-semibold text-lg">{faq.question}</span>}>
-                <div className="text-foreground-500 text-base space-y-3 leading-relaxed">{faq.answer}</div>
+              <AccordionItem key={index} title={<span className="text-lg font-semibold">{faq.question}</span>}>
+                <div className="space-y-3 text-base leading-relaxed text-foreground-500">{faq.answer}</div>
               </AccordionItem>
             ))}
           </Accordion>
-          <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-8">
-            <h3 className="text-xl font-sans font-bold">Still Have Questions?</h3>
-            <p className="text-foreground-600 text-base line-clamp-2">
+          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions?</h3>
+            <p className="line-clamp-2 text-base text-foreground-600">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-              <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-semibold">
+              <a href="mailto:support@kreatli.com" className="font-semibold text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
               to learn how Kreatli can help your specific workflow.
@@ -543,13 +543,13 @@ export default function VideoProductionAnimationStudiosPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Streamline Your Workflow?</h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto line-clamp-2">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Streamline Your Workflow?</h2>
+          <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
             Join {data.title.toLowerCase()} using Kreatli.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

@@ -9,19 +9,19 @@ import { StorageFeaturePreview } from './StorageFeaturePreview';
 
 export const FeaturesSection = () => {
   return (
-    <section id="product" className="relative backdrop-blur-lg scroll-mt-12 px-4 sm:px-6 lg:pb-32 py-12 sm:py-16">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-12 sm:gap-16 lg:gap-20">
-        <div className="flex flex-col gap-4 sm:gap-6 max-w-5xl mx-auto text-center px-2 sm:px-0">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-bold font-sans leading-tight sm:leading-tight">
+    <section id="product" className="relative scroll-mt-12 px-4 py-12 backdrop-blur-lg sm:px-6 sm:py-16 lg:pb-32">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 sm:gap-16 lg:gap-20">
+        <div className="mx-auto flex max-w-5xl flex-col gap-4 px-2 text-center sm:gap-6 sm:px-0">
+          <h2 className="font-sans text-2xl font-bold leading-tight sm:text-3xl sm:leading-tight md:text-4xl lg:text-[48px]">
             Built for how creative production{' '}
             <span className="relative inline-block">
               <span className="relative z-10">actually</span>
-              <span className="absolute -left-1 -right-4 bottom-0 h-3 sm:h-4 bg-contain bg-no-repeat bg-[url(/highlight-line.svg)] -z-0" />
+              <span className="absolute -left-1 -right-4 bottom-0 -z-0 h-3 bg-[url(/highlight-line.svg)] bg-contain bg-no-repeat sm:h-4" />
             </span>{' '}
             works
           </h2>
         </div>
-        <div className="w-full flex flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-[max(20vh,100px)]">
+        <div className="flex w-full flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-[max(20vh,100px)]">
           <Feature
             icon="slides"
             title="Centralized Project Dashboard"

@@ -26,31 +26,31 @@ const industryCards = [
 
 export const KreatliForSection = () => {
   return (
-    <section id="for-whom" className="backdrop-blur-lg lg:py-32 py-16 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col gap-8 sm:gap-12 items-center">
-        <div className="flex flex-col gap-4 w-full">
-          <h2 className="text-3xl sm:text-5xl font-bold font-sans text-center">Who is Kreatli for?</h2>
-          <p className="text-lg text-foreground-500 text-center max-w-2xl mx-auto">
+    <section id="for-whom" className="px-6 py-16 backdrop-blur-lg lg:py-32">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 sm:gap-12">
+        <div className="flex w-full flex-col gap-4">
+          <h2 className="text-center font-sans text-3xl font-bold sm:text-5xl">Who is Kreatli for?</h2>
+          <p className="mx-auto max-w-2xl text-center text-lg text-foreground-500">
             Creative teams, agencies, and studios who want to streamline their production workflow—from upload to
             approval to delivery.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+        <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {industryCards.map((card, index) => (
             <Card key={index} as={NextLink} href={card.href} isPressable className="group h-full">
-              <CardBody className="flex flex-col gap-5 items-center p-8 h-full">
-                <div className="bg-foreground-100 rounded-full size-16 flex items-center justify-center transition-all duration-300 group-hover:bg-foreground-200 group-hover:scale-105">
+              <CardBody className="flex h-full flex-col items-center gap-5 p-8">
+                <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-foreground-200">
                   <Icon
                     icon={card.icon as any}
                     size={28}
-                    className="text-foreground-500 group-hover:text-primary transition-colors duration-300"
+                    className="text-foreground-500 transition-colors duration-300 group-hover:text-primary"
                   />
                 </div>
-                <div className="flex flex-col gap-2 items-center text-center flex-1">
-                  <h3 className="text-xl font-semibold font-sans">{card.title}</h3>
-                  <p className="text-sm text-foreground-500 leading-relaxed">{card.description}</p>
+                <div className="flex flex-1 flex-col items-center gap-2 text-center">
+                  <h3 className="font-sans text-xl font-semibold">{card.title}</h3>
+                  <p className="text-sm leading-relaxed text-foreground-500">{card.description}</p>
                 </div>
-                <div className="flex items-center gap-1 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <span>Learn more</span>
                   <Icon icon="arrowRight" size={16} />
                 </div>
@@ -58,8 +58,8 @@ export const KreatliForSection = () => {
             </Card>
           ))}
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-          <Button as={Link} href="/sign-up" size="lg" className="text-content1 bg-foreground">
+        <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row">
+          <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
             Start For Free
           </Button>
           <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">

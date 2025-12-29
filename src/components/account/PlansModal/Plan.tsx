@@ -14,28 +14,28 @@ interface Props {
 
 export const Plan = ({ name, price, description, features, isCurrent, isSelected, isLoading, onClick }: Props) => {
   return (
-    <Card className="w-full dark:border border-foreground-300">
+    <Card className="w-full border-foreground-300 dark:border">
       <CardBody className="flex flex-col gap-4">
         <div className="flex flex-col gap-3">
           <Chip size="sm" variant="faded">
             {name}
           </Chip>
           <div className="flex items-end gap-1.5">
-            <span className="text-4xl font-sans leading-8 font-semibold">${price}</span>
+            <span className="font-sans text-4xl font-semibold leading-8">${price}</span>
             {price > 0 && (
-              <span className="text-xs text-foreground-500 leading-3">
+              <span className="text-xs leading-3 text-foreground-500">
                 {' '}
                 per user <br /> per month
               </span>
             )}
           </div>
         </div>
-        <div className="text-sm text-foreground-500 pb-2">{description}</div>
+        <div className="pb-2 text-sm text-foreground-500">{description}</div>
         <div className="flex-1">
           <ul className="flex flex-col gap-0.5">
             {features.map((feature, idx) => (
               <li key={idx}>
-                <div className="text-sm items-center flex gap-1">
+                <div className="flex items-center gap-1 text-sm">
                   {!feature.hideIcon && <Icon icon="check" size={16} />}
                   {feature.label}
                   {feature.tooltip && (

@@ -19,7 +19,7 @@ export const DashboardAssetsList = ({ project, files, folders, members }: Props)
           ))}
         </div>
       )}
-      <div className="grid grid-rows-1 auto-rows-[0] overflow-hidden grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-x-4">
+      <div className="grid auto-rows-[0] grid-cols-[repeat(auto-fill,minmax(200px,1fr))] grid-rows-1 gap-x-4 overflow-hidden">
         {files.map((file) => (
           <DashboardAsset key={file.id} project={project} file={file} members={members} />
         ))}

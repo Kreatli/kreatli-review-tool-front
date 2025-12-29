@@ -8,7 +8,7 @@ export const ReviewToolHistoryButtons = () => {
   const { canRedo, canUndo, redo, undo } = useReviewToolCanvasShapesContext();
 
   return (
-    <div className="flex gap-0.5 items-center">
+    <div className="flex items-center gap-0.5">
       <Button size="sm" variant="light" isIconOnly radius="full" isDisabled={!canUndo} onClick={undo}>
         <Icon icon="undo" />
       </Button>

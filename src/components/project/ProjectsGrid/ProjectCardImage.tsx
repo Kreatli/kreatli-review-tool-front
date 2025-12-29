@@ -11,7 +11,7 @@ interface Props {
 export const ProjectCardImage = ({ image }: Props) => {
   if (!image) {
     return (
-      <div className="aspect-video rounded-2xl flex items-center justify-center bg-foreground-100">
+      <div className="flex aspect-video items-center justify-center rounded-2xl bg-foreground-100">
         <Icon icon="slides" size={36} className="text-foreground-400" />
       </div>
     );
@@ -19,5 +19,5 @@ export const ProjectCardImage = ({ image }: Props) => {
 
   const { url } = image;
 
-  return <Image src={url} removeWrapper className="aspect-video object-cover w-full pointer-events-none" />;
+  return <Image src={url} removeWrapper className="pointer-events-none aspect-video w-full object-cover" />;
 };

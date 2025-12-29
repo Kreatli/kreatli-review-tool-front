@@ -28,19 +28,19 @@ export const ProjectBreadcrumbs = ({
         {coverUrl ? (
           <Image src={coverUrl} width={48} height={48} radius="full" className="object-cover" />
         ) : (
-          <div className="size-12 bg-foreground-100 text-foreground-500 rounded-full flex items-center justify-center">
+          <div className="flex size-12 items-center justify-center rounded-full bg-foreground-100 text-foreground-500">
             <Icon icon="slides" size={20} />
           </div>
         )}
       </div>
       <div>
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             {path.map((item, index) => (
               <React.Fragment key={item.url}>
-                {index !== 0 && <Icon icon="chevronDown" className="text-foreground-400 -rotate-90" />}
+                {index !== 0 && <Icon icon="chevronDown" className="-rotate-90 text-foreground-400" />}
                 {index === path.length - 1 ? (
-                  <h2 className="text-2xl font-semibold line-clamp-1">{item.name}</h2>
+                  <h2 className="line-clamp-1 text-2xl font-semibold">{item.name}</h2>
                 ) : (
                   <Link href={item.url} className="text-2xl font-semibold text-foreground-400 hover:text-foreground">
                     {item.name}

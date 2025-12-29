@@ -68,10 +68,10 @@ export const ProjectsListTable = ({
         loadingContent={<Spinner color="default" />}
         emptyContent={
           <div>
-            <div className="text-foreground font-semibold">{title}</div>
+            <div className="font-semibold text-foreground">{title}</div>
             <div className="text-foreground-500">{text}</div>
             {!search && (status === 'active' || status === 'all') && (
-              <Button className="bg-foreground text-content1 mt-4" size="sm" onClick={onCreateProject}>
+              <Button className="mt-4 bg-foreground text-content1" size="sm" onClick={onCreateProject}>
                 <Icon icon="plus" size={14} />
                 Create project
               </Button>
@@ -82,7 +82,7 @@ export const ProjectsListTable = ({
         {projects.map((project) => (
           <TableRow
             key={project.id}
-            className="group/row hover:opacity-70 hover:cursor-pointer"
+            className="group/row hover:cursor-pointer hover:opacity-70"
             onClick={() => handleRowClick(project)}
           >
             <TableCell>
@@ -94,10 +94,10 @@ export const ProjectsListTable = ({
                       width={48}
                       height={48}
                       radius="full"
-                      className="object-cover pointer-events-none"
+                      className="pointer-events-none object-cover"
                     />
                   ) : (
-                    <div className="size-12 bg-foreground-100 text-foreground-500 rounded-full flex items-center justify-center">
+                    <div className="flex size-12 items-center justify-center rounded-full bg-foreground-100 text-foreground-500">
                       <Icon icon="slides" size={18} />
                     </div>
                   )}
@@ -105,11 +105,11 @@ export const ProjectsListTable = ({
                 <div className="max-w-96">
                   <Link
                     href={`/project/${project.id}`}
-                    className="text-medium line-clamp-2 group-hover/row:underline underline-offset-2 font-semibold"
+                    className="line-clamp-2 text-medium font-semibold underline-offset-2 group-hover/row:underline"
                   >
                     {project.name}
                   </Link>
-                  <div className="text-foreground-500 text-md whitespace-nowrap">
+                  <div className="text-md whitespace-nowrap text-foreground-500">
                     {project.fileCount} items, {formatBytes(project.totalFileSize)}
                   </div>
                 </div>
@@ -120,7 +120,7 @@ export const ProjectsListTable = ({
                 type="button"
                 aria-label="Project members"
                 disabled={project.status !== 'active'}
-                className="outline-offset-4 rounded-full"
+                className="rounded-full outline-offset-4"
                 onClick={(event) => {
                   event.stopPropagation();
                   onSelectProjectId?.(project.id);

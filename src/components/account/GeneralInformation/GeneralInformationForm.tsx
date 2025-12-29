@@ -104,7 +104,7 @@ export const GeneralInformationForm = ({ user }: Props) => {
   });
 
   return (
-    <form className="flex flex-col gap-4 mt-6" noValidate onSubmit={handleSubmit(onSubmit)}>
+    <form className="mt-6 flex flex-col gap-4" noValidate onSubmit={handleSubmit(onSubmit)}>
       <Input placeholder="Email" label="Email" isDisabled value={user.email} />
       <Input
         placeholder="Name"
@@ -113,14 +113,14 @@ export const GeneralInformationForm = ({ user }: Props) => {
         {...register('name', VALIDATION_RULES.VERY_SHORT_TEXT)}
       />
       <div
-        className="relative overflow-hidden h-40 flex items-center justify-center cursor-pointer rounded-2xl border border-foreground-200"
+        className="relative flex h-40 cursor-pointer items-center justify-center overflow-hidden rounded-2xl border border-foreground-200"
         {...getRootProps()}
       >
         {previewUrl && (
           <>
             <Image disableAnimation src={previewUrl} radius="full" removeWrapper className="size-36 object-cover" />
             {isTouchScreen && (
-              <Button as="div" size="sm" variant="faded" className="absolute top-2 right-12 z-10" isIconOnly>
+              <Button as="div" size="sm" variant="faded" className="absolute right-12 top-2 z-10" isIconOnly>
                 <Icon icon="upload" size={16} />
               </Button>
             )}
@@ -128,7 +128,7 @@ export const GeneralInformationForm = ({ user }: Props) => {
               size="sm"
               variant="faded"
               color="danger"
-              className="absolute top-2 right-2 z-20"
+              className="absolute right-2 top-2 z-20"
               isIconOnly
               onClick={handleRemove}
             >
@@ -138,10 +138,10 @@ export const GeneralInformationForm = ({ user }: Props) => {
         )}
         <div
           className={cn(
-            'absolute inset-0 transition-all flex items-center justify-center bg-foreground-100 gap-2 text-sm z-10',
+            'absolute inset-0 z-10 flex items-center justify-center gap-2 bg-foreground-100 text-sm transition-all',
             {
-              'opacity-0 hover:opacity-100 hover:bg-foreground-100/75': previewUrl,
-              'opacity-100 bg-foreground-100/75': isDragActive && isDragAccept,
+              'opacity-0 hover:bg-foreground-100/75 hover:opacity-100': previewUrl,
+              'bg-foreground-100/75 opacity-100': isDragActive && isDragAccept,
               'hover:opacity-0': isTouchScreen,
             },
           )}
@@ -151,7 +151,7 @@ export const GeneralInformationForm = ({ user }: Props) => {
         </div>
         <input type="file" {...getInputProps()} />
       </div>
-      <Button type="submit" isLoading={isPending} className="bg-foreground text-content1 w-fit ml-auto">
+      <Button type="submit" isLoading={isPending} className="ml-auto w-fit bg-foreground text-content1">
         Save changes
       </Button>
     </form>

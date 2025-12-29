@@ -3,7 +3,7 @@ import React from 'react';
 
 export const AssetCommentsLoading = () => {
   return (
-    <div className="p-3 pt-0 pb-9 flex flex-col gap-2">
+    <div className="flex flex-col gap-2 p-3 pb-9 pt-0">
       <div className="text-medium">
         <Skeleton className="h-6 w-32 rounded-lg" />
       </div>

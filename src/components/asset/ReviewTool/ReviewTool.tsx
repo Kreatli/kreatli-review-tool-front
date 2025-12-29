@@ -58,7 +58,7 @@ export const ReviewTool = ({ project, isLoading }: Props) => {
               )}
             </div>
           </AssetContextProvider>
-          <div className="flex-1 flex overflow-hidden">
+          <div className="flex flex-1 overflow-hidden">
             <ReviewToolCanvas
               file={file}
               onClick={() => {

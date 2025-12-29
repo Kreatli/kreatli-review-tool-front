@@ -13,9 +13,9 @@ export default function Cookies() {
       </Head>
       <Header />
       <div className="border-t border-foreground-200 p-6">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-3xl font-sans font-bold">Cookies Policy</h1>
-          <p className="text-foreground-500 mb-6">Last updated July 20, 2025</p>
+        <div className="mx-auto max-w-5xl">
+          <h1 className="font-sans text-3xl font-bold">Cookies Policy</h1>
+          <p className="mb-6 text-foreground-500">Last updated July 20, 2025</p>
           <div>
             This Cookie Policy explains how Kreatli ("<span className="font-semibold">Company</span>," "
             <span className="font-semibold">we</span>," "<span className="font-semibold">us</span>
@@ -32,7 +32,7 @@ export default function Cookies() {
             combine it with other information.
           </div>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">What are cookies?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">What are cookies?</h2>
           </div>
           <div>
             Cookies are small data files that are placed on your computer or mobile device when you visit a website.
@@ -47,7 +47,7 @@ export default function Cookies() {
             computer both when it visits the website in question and also when it visits certain other websites.
           </div>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">Why do we use cookies?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">Why do we use cookies?</h2>
           </div>
           <div>
             We use first- and third-party cookies for several reasons. Some cookies are required for technical reasons
@@ -57,7 +57,7 @@ export default function Cookies() {
             purposes. This is described in more detail below.
           </div>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">How can I control cookies?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">How can I control cookies?</h2>
           </div>
           <div>
             You have the right to decide whether to accept or reject cookies. You can exercise your cookie rights by
@@ -75,7 +75,7 @@ export default function Cookies() {
             perform are described in the table below (please note that the specific&nbsp;cookies served may vary
             depending on the specific Online Properties you visit):
           </div>
-          <h3 className="text-lg font-semibold mt-4 mb-1">Analytics and customization cookies:</h3>
+          <h3 className="mb-1 mt-4 text-lg font-semibold">Analytics and customization cookies:</h3>
           <div className="mb-2">
             These cookies collect information that is used either in aggregate form to help us understand how our
             Website is being used or how effective our marketing campaigns are, or to help us customize our Website for
@@ -131,14 +131,14 @@ export default function Cookies() {
             </TableBody>
           </Table>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">How can I control cookies on my browser?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">How can I control cookies on my browser?</h2>
           </div>
           <div>
             As the means by which you can refuse cookies through your web browser controls vary from browser to browser,
             you should visit your browser's help menu for more information. The following is information about how to
             manage cookies on the most popular browsers:
           </div>
-          <ul className="list-disc list-inside mt-2">
+          <ul className="mt-2 list-inside list-disc">
             <li>
               <a
                 href="https://support.google.com/chrome/answer/95647#zippy=%2Callow-or-block-cookies"
@@ -204,7 +204,7 @@ export default function Cookies() {
             In addition, most advertising networks offer you a way to opt out of targeted advertising. If you would like
             to find out more information, please visit:
           </div>
-          <ul className="list-disc list-inside mt-2">
+          <ul className="mt-2 list-inside list-disc">
             <li>
               <a
                 href="http://www.aboutads.info/choices/"
@@ -237,7 +237,7 @@ export default function Cookies() {
             </li>
           </ul>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">
               What about other tracking technologies, like web beacons?
             </h2>
           </div>
@@ -253,7 +253,7 @@ export default function Cookies() {
             impair their functioning.
           </div>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">Do you use Flash cookies or Local Shared Objects?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">Do you use Flash cookies or Local Shared Objects?</h2>
           </div>
           <div>
             Websites may also use so-called "Flash Cookies" (also known as Local Shared Objects or "LSOs") to, among
@@ -291,7 +291,7 @@ export default function Cookies() {
             connection with our services or online content.
           </div>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">Do you serve targeted advertising?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">Do you serve targeted advertising?</h2>
           </div>
           <div>
             Third parties may serve cookies on your computer or mobile device to serve advertising through our Website.
@@ -304,7 +304,7 @@ export default function Cookies() {
             that directly identify you unless you choose to provide these.
           </div>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">How often will you update this Cookie Policy?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">How often will you update this Cookie Policy?</h2>
           </div>
           <div>
             We may update&nbsp;this Cookie Policy from time to time in order to reflect, for example, changes to the
@@ -313,7 +313,7 @@ export default function Cookies() {
           </div>
           <div className="mt-2">The date at the top of this Cookie Policy indicates when it was last updated.</div>
           <div>
-            <h2 className="text-2xl mt-6 mb-1 font-semibold">Where can I get further information?</h2>
+            <h2 className="mb-1 mt-6 text-2xl font-semibold">Where can I get further information?</h2>
           </div>
           <div>
             If you have any questions about our use of cookies or other technologies, please contact us at:{' '}

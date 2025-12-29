@@ -51,7 +51,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
       <>
         <Header />
         <EmptyState title="You do not have permission to view this project">
-          <Button as={NextLink} href="/" className="text-content1 bg-foreground mt-2">
+          <Button as={NextLink} href="/" className="mt-2 bg-foreground text-content1">
             Browse my projects
           </Button>
         </EmptyState>
@@ -62,7 +62,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
   return (
     <>
       <Header />
-      <div className="p-6 pt-2 border-t border-foreground-200 flex-1 flex flex-col">
+      <div className="flex flex-1 flex-col border-t border-foreground-200 p-6 pt-2">
         {isPending || isError ? (
           <ProjectLoader />
         ) : (
@@ -71,7 +71,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
               {hideHeader ? (
                 children
               ) : (
-                <div className="flex flex-col gap-4 flex-1">
+                <div className="flex flex-1 flex-col gap-4">
                   <ProjectHeader project={project} />
                   {project.status !== 'active' && (
                     <div>
@@ -87,7 +87,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
                     </Tabs>
                     {actions}
                   </div>
-                  <div className="flex-1 flex flex-col">{children}</div>
+                  <div className="flex flex-1 flex-col">{children}</div>
                 </div>
               )}
             </ProjectUploadContextProvider>

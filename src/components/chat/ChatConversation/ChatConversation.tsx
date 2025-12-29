@@ -14,7 +14,7 @@ export const ChatConversation = ({ chat, isDisabled = false }: Props) => {
   const [search, setSearch] = React.useState('');
 
   return (
-    <div key={chat.id} className="bg-foreground-100 rounded-small grid grid-rows-[auto_1fr_auto]">
+    <div key={chat.id} className="grid grid-rows-[auto_1fr_auto] rounded-small bg-foreground-100">
       <ChatConversationHeader chat={chat} isDisabled={isDisabled} search={search} onSearchChange={setSearch} />
       {!!search ? (
         <ChatConversationSearchMessages search={search} conversationId={chat.id} />

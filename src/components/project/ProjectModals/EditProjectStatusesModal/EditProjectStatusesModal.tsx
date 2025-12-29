@@ -57,7 +57,7 @@ export const EditProjectStatusesModal = ({ project, isOpen, onClose }: Props) =>
             type="submit"
             form="edit-project-statuses-form"
             isLoading={isPending}
-            className="text-content1 bg-foreground"
+            className="bg-foreground text-content1"
           >
             Save
           </Button>

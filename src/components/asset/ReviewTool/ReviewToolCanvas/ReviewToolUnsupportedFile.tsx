@@ -10,10 +10,10 @@ export const ReviewToolUnsupportedFile = ({ file }: Props) => {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <AssetIcon fileType={file.fileType} size={36} />
-      <div className="text-large font-semibold max-w-60 text-center">
+      <div className="max-w-60 text-center text-large font-semibold">
         We don't support previewing this file type yet
       </div>
-      <div className="text-foreground-500 max-w-96 text-center">
+      <div className="max-w-96 text-center text-foreground-500">
         Feel free to use comments section below to collaborate on this file
       </div>
     </div>

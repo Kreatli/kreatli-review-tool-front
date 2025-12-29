@@ -32,7 +32,7 @@ export const ReviewToolTimestamp = () => {
   }
 
   return (
-    <div className="flex items-center gap-2 flex-1 pl-2">
+    <div className="flex flex-1 items-center gap-2 pl-2">
       <Icon icon="paint" size={20} className="text-primary" />
       <div className="text-sm">
         {formatDuration(activeRef.current.currentTime)}{' '}

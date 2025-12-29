@@ -218,15 +218,15 @@ export const ChatFeaturePreview = () => {
   return (
     <Card className="group">
       <CardBody
-        className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-2 sm:gap-4 p-4"
+        className="grid grid-cols-1 gap-2 p-4 sm:grid-cols-[auto_1fr] sm:gap-4"
         onClick={() => {
           setIsAnimating(false);
         }}
       >
-        <div className="flex sm:flex-col gap-2 sm:gap-4 py-2">
+        <div className="flex gap-2 py-2 sm:flex-col sm:gap-4">
           <button
             type="button"
-            className="bg-foreground-100 size-10 flex items-center outline-2 outline-foreground-200 outline outline-offset-2 justify-center rounded-full"
+            className="flex size-10 items-center justify-center rounded-full bg-foreground-100 outline outline-2 outline-offset-2 outline-foreground-200"
             onClick={(e) => {
               e.stopPropagation();
               setIsAnimating(false);
@@ -276,13 +276,13 @@ export const ChatFeaturePreview = () => {
             <Icon icon="plus" size={20} />
           </Button>
         </div>
-        <div className="bg-foreground-100 rounded-large p-2">
+        <div className="rounded-large bg-foreground-100 p-2">
           <div className="flex justify-between gap-4 p-2">
             <div className="flex items-center gap-2">
-              <div className="bg-foreground-100 size-6 flex items-center justify-center rounded-full">
+              <div className="flex size-6 items-center justify-center rounded-full bg-foreground-100">
                 <Icon icon="slides" size={20} className="text-foreground-500" />
               </div>
-              <div className="text-medium sm:text-large font-semibold">Project chat</div>
+              <div className="text-medium font-semibold sm:text-large">Project chat</div>
             </div>
             <div className="flex items-center gap-2">
               <Button
@@ -308,9 +308,9 @@ export const ChatFeaturePreview = () => {
           </div>
           <div
             ref={messagesContainerRef}
-            className="bg-background rounded-medium px-2 py-4 flex flex-col gap-4 mb-2 max-h-96 overflow-y-auto"
+            className="mb-2 flex max-h-96 flex-col gap-4 overflow-y-auto rounded-medium bg-background px-2 py-4"
           >
-            <div className="shadow-small text-sm mx-auto rounded-medium px-3 py-1 w-fit">Today</div>
+            <div className="mx-auto w-fit rounded-medium px-3 py-1 text-sm shadow-small">Today</div>
             {messages.map((msg, index) => (
               <ChatFeatureMessage
                 key={index}
@@ -329,7 +329,7 @@ export const ChatFeaturePreview = () => {
                 setIsAnimating(false);
                 setMessage(e.target.value);
               }}
-              className="bg-transparent resize-none w-full text-sm p-2 outline-none pr-10"
+              className="w-full resize-none bg-transparent p-2 pr-10 text-sm outline-none"
               rows={1}
               maxLength={100}
               placeholder="Type a message..."
@@ -348,7 +348,7 @@ export const ChatFeaturePreview = () => {
               size="sm"
               isIconOnly
               radius="full"
-              className="text-content1 bg-foreground absolute right-2 bottom-2"
+              className="absolute bottom-2 right-2 bg-foreground text-content1"
               onClick={(e) => {
                 e.stopPropagation();
                 handleSendMessage();

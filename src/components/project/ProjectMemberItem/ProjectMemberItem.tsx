@@ -12,11 +12,11 @@ export const ProjectMemberItem = ({ member }: Props) => {
       <Avatar
         size="sm"
         src={member.user?.avatar?.url ?? ''}
-        fallback={<div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(member)}</div>}
+        fallback={<div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>}
       />
       <div>
         <div className="text-small">{member.user?.name}</div>
-        <div className="text-foreground-500 text-tiny">{member.user?.email}</div>
+        <div className="text-tiny text-foreground-500">{member.user?.email}</div>
       </div>
     </div>
   );

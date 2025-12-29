@@ -16,7 +16,7 @@ export const AssetPanel = ({ project, isLoading = false }: Props) => {
   const { activeFile, commentsRef } = useFileStateContext();
 
   return (
-    <div className="overflow-hidden flex flex-col">
+    <div className="flex flex-col overflow-hidden">
       <AssetPanelHeader />
       <div ref={commentsRef} className="overflow-auto">
         {isLoading || !activeFile ? <AssetPanelLoading /> : <AssetDescription file={activeFile} />}

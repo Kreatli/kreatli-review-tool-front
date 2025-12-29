@@ -35,15 +35,16 @@ export default function ProjectOrchestrationPage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
             Centralized Creative Production Management
           </h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
-            Assign files, track deliverables, and share heavy media securely. Everything you need to orchestrate your creative projects in one place.
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+            Assign files, track deliverables, and share heavy media securely. Everything you need to orchestrate your
+            creative projects in one place.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>
@@ -61,13 +62,13 @@ export default function ProjectOrchestrationPage() {
       </section>
 
       {/* Project Management Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
               Project Management Meets Reliable Media Storage
             </h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Assign files, track deliverables, and share heavy media securely in one workspace.
             </p>
           </div>
@@ -76,11 +77,11 @@ export default function ProjectOrchestrationPage() {
       </section>
 
       {/* Centralized Dashboard Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Centralized Project Dashboard</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Centralized Project Dashboard</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
           </div>
@@ -89,39 +90,40 @@ export default function ProjectOrchestrationPage() {
       </section>
 
       {/* Features Grid */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Project Orchestration Features</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Project Orchestration Features</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for creative production workflows with powerful project management capabilities.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="folder" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Project Organization</h3>
+                  <h3 className="font-sans text-lg font-semibold">Project Organization</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
-                  Organize files by project, status, type, and more. Find what you need instantly with powerful filtering.
+                <p className="text-sm text-foreground-500">
+                  Organize files by project, status, type, and more. Find what you need instantly with powerful
+                  filtering.
                 </p>
               </CardBody>
             </Card>
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="user" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">File Assignment</h3>
+                  <h3 className="font-sans text-lg font-semibold">File Assignment</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Assign files to team members, track who's working on what, and see the status of all deliverables.
                 </p>
               </CardBody>
@@ -129,27 +131,28 @@ export default function ProjectOrchestrationPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="checkCircle" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Status Tracking</h3>
+                  <h3 className="font-sans text-lg font-semibold">Status Tracking</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
-                  Track project status and progress with custom statuses. See what's in review, approved, and needs attention.
+                <p className="text-sm text-foreground-500">
+                  Track project status and progress with custom statuses. See what's in review, approved, and needs
+                  attention.
                 </p>
               </CardBody>
             </Card>
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="slides" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Centralized Dashboard</h3>
+                  <h3 className="font-sans text-lg font-semibold">Centralized Dashboard</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   View all your projects, files, conversations, and activity from one centralized dashboard.
                 </p>
               </CardBody>
@@ -157,27 +160,28 @@ export default function ProjectOrchestrationPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Team Coordination</h3>
+                  <h3 className="font-sans text-lg font-semibold">Team Coordination</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
-                  Coordinate with your team through project-tied chats, asset-linked comments, and real-time collaboration.
+                <p className="text-sm text-foreground-500">
+                  Coordinate with your team through project-tied chats, asset-linked comments, and real-time
+                  collaboration.
                 </p>
               </CardBody>
             </Card>
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="bell" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Activity Tracking</h3>
+                  <h3 className="font-sans text-lg font-semibold">Activity Tracking</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   See all project activity in one place—file uploads, comments, approvals, and status changes.
                 </p>
               </CardBody>
@@ -187,13 +191,13 @@ export default function ProjectOrchestrationPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Orchestrate Your Projects?</h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Orchestrate Your Projects?</h2>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience centralized project management designed for creative production teams. Streamline your workflow.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

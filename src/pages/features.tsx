@@ -127,35 +127,35 @@ export default function FeaturesPage() {
       <Header />
       <Decorations />
       {/* Additional Features Grid */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-6 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
               Everything you need for creative production
             </h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Powerful features designed specifically for creative production workflows, media review and approval, and
               collaboration.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {additionalFeatures.map((feature, index) => (
               <Card key={index}>
                 <CardBody className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-foreground-100 rounded-full p-2">
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="rounded-full bg-foreground-100 p-2">
                       <Icon icon={feature.icon as any} size={20} className="text-primary" />
                     </div>
-                    <h3 className="text-lg font-semibold font-sans">{feature.title}</h3>
+                    <h3 className="font-sans text-lg font-semibold">{feature.title}</h3>
                   </div>
-                  <p className="text-foreground-500 text-sm">{feature.description}</p>
+                  <p className="text-sm text-foreground-500">{feature.description}</p>
                 </CardBody>
               </Card>
             ))}
           </div>
 
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Join Kreatli
             </Button>
@@ -180,11 +180,11 @@ export default function FeaturesPage() {
       </section>
 
       {/* Comparison Section */}
-      <section className="py-16 px-6 bg-foreground-50 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Kreatli vs. The Alternatives</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-4 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Kreatli vs. The Alternatives</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               See how Kreatli compares to using multiple tools or platforms for your creative workflow.
             </p>
           </div>
@@ -200,7 +200,7 @@ export default function FeaturesPage() {
             <TableBody>
               {comparisonData.map((row, index) => (
                 <TableRow key={index}>
-                  <TableCell className="font-medium text-base">{row.feature}</TableCell>
+                  <TableCell className="text-base font-medium">{row.feature}</TableCell>
                   <TableCell className="text-base">
                     {row.kreatli ? (
                       <Icon icon="checkCircle" size={20} className="text-success" />
@@ -235,7 +235,7 @@ export default function FeaturesPage() {
           </Table>
 
           <div className="mt-8 text-center">
-            <p className="text-sm text-foreground-500 mb-4">
+            <p className="mb-4 text-sm text-foreground-500">
               Why juggle multiple tools when you can have everything in one place?
             </p>
             <Button as={NextLink} href="/cost-calculator" size="lg" variant="bordered">
@@ -246,36 +246,36 @@ export default function FeaturesPage() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-4 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
               Perfect for any creative production workflow
             </h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Whether you're reviewing videos, managing design assets, or coordinating production, Kreatli adapts to
               your process as an all-in-one creative production and media review platform.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="addVideo" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Video Production</h3>
+                  <h3 className="font-sans text-lg font-semibold">Video Production</h3>
                 </div>
                 <ul className="flex flex-col gap-2 text-sm text-foreground-500">
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Frame-accurate feedback on edits</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Client approval workflows</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Collaboration with editors</span>
                   </li>
                 </ul>
@@ -284,21 +284,21 @@ export default function FeaturesPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="paint" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Design Review</h3>
+                  <h3 className="font-sans text-lg font-semibold">Design Review</h3>
                 </div>
                 <ul className="flex flex-col gap-2 text-sm text-foreground-500">
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Precise annotation on images</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Version control for designs</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Client feedback collection</span>
                   </li>
                 </ul>
@@ -307,21 +307,21 @@ export default function FeaturesPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="folder" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Project Management</h3>
+                  <h3 className="font-sans text-lg font-semibold">Project Management</h3>
                 </div>
                 <ul className="flex flex-col gap-2 text-sm text-foreground-500">
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Organize deliverables by project</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Track project status and progress</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Team collaboration tools</span>
                   </li>
                 </ul>
@@ -330,21 +330,21 @@ export default function FeaturesPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="upload" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">File Sharing</h3>
+                  <h3 className="font-sans text-lg font-semibold">File Sharing</h3>
                 </div>
                 <ul className="flex flex-col gap-2 text-sm text-foreground-500">
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Share large media files securely</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Password-protected links</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Cloud storage integration</span>
                   </li>
                 </ul>
@@ -353,21 +353,21 @@ export default function FeaturesPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="chat" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Team Communication</h3>
+                  <h3 className="font-sans text-lg font-semibold">Team Communication</h3>
                 </div>
                 <ul className="flex flex-col gap-2 text-sm text-foreground-500">
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Asset-linked conversations</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Project-tied chats</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Guest review participation</span>
                   </li>
                 </ul>
@@ -376,21 +376,21 @@ export default function FeaturesPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="shield" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Client Collaboration</h3>
+                  <h3 className="font-sans text-lg font-semibold">Client Collaboration</h3>
                 </div>
                 <ul className="flex flex-col gap-2 text-sm text-foreground-500">
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>No-signup review links</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Access control and permissions</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Icon icon="check" size={16} className="text-success mt-0.5 flex-shrink-0" />
+                    <Icon icon="check" size={16} className="mt-0.5 flex-shrink-0 text-success" />
                     <span>Branded client experience</span>
                   </li>
                 </ul>
@@ -401,11 +401,11 @@ export default function FeaturesPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="backdrop-blur-lg lg:py-32 py-16 px-6 flex flex-col gap-16">
-        <div className="max-w-4xl mx-auto flex flex-col gap-8 w-full">
+      <section className="flex flex-col gap-16 px-6 py-16 backdrop-blur-lg lg:py-32">
+        <div className="mx-auto flex w-full max-w-4xl flex-col gap-8">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about how Kreatli's features work and how they can improve your creative workflow.
             </p>
           </div>
@@ -413,12 +413,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="frame-accurate"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does frame-accurate video review and approval work in Kreatli?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli's frame-accurate review feature allows you to pin comments, annotations, and feedback to exact
                   frames and timestamps in video files. When reviewing a video, you can click on any specific frame to
@@ -442,12 +442,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="review-workflow"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What is a media review and approval workflow, and how does Kreatli handle it?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   A media review and approval workflow is the process creative teams use to review, provide feedback,
                   and get final approval on creative assets like videos, images, and designs. Kreatli streamlines this
@@ -471,12 +471,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="creative-proofing"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does creative proofing work in Kreatli compared to other tools?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Creative proofing in Kreatli combines visual annotation tools with version comparison capabilities.
                   When proofing designs, images, or videos, you can add precise annotations, comments, and markup
@@ -499,12 +499,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="file-organization"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does Kreatli organize and manage creative files and assets?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli provides smart file organization that's specifically designed for creative production
                   workflows. Files can be organized by project, status, file type, size, and custom tags. The platform
@@ -528,12 +528,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="collaboration"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does team collaboration work in Kreatli's creative production platform?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli enables collaboration through multiple integrated features. Project-tied chats keep all
                   conversations organized by project, so team discussions stay with the relevant work. Asset-linked
@@ -557,12 +557,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="guest-reviews"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Can clients and external reviewers use Kreatli without creating an account?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Yes, Kreatli supports no-signup guest reviews through secure shareable links. You can generate a
                   review link for any file or project and share it with clients, stakeholders, or external
@@ -586,12 +586,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="version-comparison"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does the side-by-side version comparison feature work?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli's version comparison feature allows you to view different versions of the same file
                   side-by-side in a split-screen interface. This is particularly useful for creative proofing, as you
@@ -615,12 +615,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="security"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What security features does Kreatli offer for creative production files?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli provides enterprise-level security features designed for sensitive creative work. All files
                   are encrypted both in transit and at rest, ensuring your creative assets are protected. The platform
@@ -643,12 +643,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="integrations"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What cloud storage and integration options does Kreatli support?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli integrates with popular cloud storage services including Google Drive and Dropbox. You can
                   connect your existing cloud storage accounts and either upload files directly to Kreatli or sync
@@ -671,12 +671,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="vs-alternatives"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does Kreatli compare to using Frame.io, Slack, or email for creative review?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli combines the best aspects of specialized review tools like Frame.io with project management
                   and collaboration features that tools like Slack provide, all in one integrated platform. Unlike
@@ -701,12 +701,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="use-cases"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What types of creative projects and workflows is Kreatli best suited for?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli is designed for any creative workflow that involves media review, approval processes, and team
                   collaboration. It's particularly well-suited for video production teams who need frame-accurate
@@ -732,12 +732,12 @@ export default function FeaturesPage() {
             <AccordionItem
               key="notifications"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How do real-time notifications work in Kreatli's creative production platform?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli provides real-time notifications for important events in your creative workflow, including new
                   comments, approval requests, project updates, and file uploads. These notifications help team members
@@ -757,11 +757,11 @@ export default function FeaturesPage() {
               </div>
             </AccordionItem>
           </Accordion>
-          <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-8">
-            <h3 className="text-xl font-sans font-bold">Still Have Questions About Features?</h3>
+          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions About Features?</h3>
             <p className="text-foreground-500">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-              <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary">
+              <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
               for more detailed answers about Kreatli's features and capabilities.
@@ -771,15 +771,15 @@ export default function FeaturesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
             Ready to streamline your creative workflow?
           </h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Start using Kreatli today and experience the difference of a platform built specifically for creative teams.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

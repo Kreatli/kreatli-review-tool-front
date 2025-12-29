@@ -25,10 +25,10 @@ export const DashboardMembers = ({ project }: Props) => {
   return (
     <Card className="max-h-96">
       <CardBody className="p-3 px-4 pt-0">
-        <div className="flex items-center justify-between gap-3 pb-2 pt-3 sticky top-0 bg-content1 z-10">
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-3 bg-content1 pb-2 pt-3">
           <button className="flex items-center gap-1" tabIndex={-1} onClick={openMembersModal}>
             <span className="text-lg font-semibold">Members</span>
-            <span className="text-foreground-500 text-medium">({project.members.length})</span>
+            <span className="text-medium text-foreground-500">({project.members.length})</span>
           </button>
           <Button color="primary" variant="flat" size="sm" onClick={openMembersModal}>
             <Icon icon="edit" size={16} />
@@ -37,24 +37,24 @@ export const DashboardMembers = ({ project }: Props) => {
         </div>
         <div className="flex flex-col">
           {project.members.map((member, index) => (
-            <div key={member.id} className={cn({ 'border-t pt-2 mt-2 border-foreground-200': index !== 0 })}>
-              <div className="flex items-center gap-2 relative justify-between">
+            <div key={member.id} className={cn({ 'mt-2 border-t border-foreground-200 pt-2': index !== 0 })}>
+              <div className="relative flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2 overflow-hidden">
                   <Avatar
                     src={member.user?.avatar?.url}
                     size="md"
-                    className="border border-foreground-200 shrink-0"
+                    className="shrink-0 border border-foreground-200"
                     fallback={
-                      <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(member)}</div>
+                      <div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>
                     }
                   />
                   <button
                     tabIndex={-1}
-                    className="flex flex-col after:absolute after:inset-0 text-start overflow-hidden"
+                    className="flex flex-col overflow-hidden text-start after:absolute after:inset-0"
                     onClick={openMembersModal}
                   >
-                    {member.user?.name && <div className="text-md font-medium truncate">{member.user.name}</div>}
-                    <div className="text-sm text-foreground-500 truncate">{member.email}</div>
+                    {member.user?.name && <div className="text-md truncate font-medium">{member.user.name}</div>}
+                    <div className="truncate text-sm text-foreground-500">{member.email}</div>
                   </button>
                 </div>
                 <div>

@@ -3,5 +3,5 @@ interface Props {
 }
 
 export const SafeZoneScreenImage = ({ src }: Props) => {
-  return <img src={src} alt="File Preview" className="w-full h-full object-contain bg-black" />;
+  return <img src={src} alt="File Preview" className="h-full w-full bg-black object-contain" />;
 };

@@ -26,7 +26,7 @@ export const ChatFeatureMessage = ({ message, user, userName, date, asset }: Pro
             {userName}
             {!isGuest && <span className="text-xs text-foreground-500"> {date}</span>}
           </div>
-          <div className="bg-foreground-100 max-w-[max(80%,400px)] rounded-medium text-sm sm:text-medium p-2">
+          <div className="max-w-[max(80%,400px)] rounded-medium bg-foreground-100 p-2 text-sm sm:text-medium">
             {message}
           </div>
         </div>
@@ -35,7 +35,7 @@ export const ChatFeatureMessage = ({ message, user, userName, date, asset }: Pro
         <div className="pl-10">
           <div className="relative">
             <Image src="https://picsum.photos/600/400" width={350} />
-            <Chip className="absolute top-2 left-2 z-10" size="sm" variant="faded">
+            <Chip className="absolute left-2 top-2 z-10" size="sm" variant="faded">
               {asset}
             </Chip>
             <Chip className="absolute bottom-2 left-2 z-10 bg-foreground-100" size="sm" variant="dot" color="warning">

@@ -26,8 +26,8 @@ export const ProjectStatus = ({ status, variant, size = 'sm' }: Props) => {
       size={size}
       variant="dot"
       color={getStatusColor(status)}
-      className={cn('bg-default-100  z-10', {
-        'bg-transparent border-none': variant === 'light',
+      className={cn('z-10 bg-default-100', {
+        'border-none bg-transparent': variant === 'light',
       })}
     >
       {status.charAt(0).toUpperCase() + status.slice(1)}

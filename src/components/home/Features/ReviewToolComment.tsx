@@ -12,7 +12,7 @@ interface Props {
 
 export const ReviewToolComment = ({ user, userName, comment, timestamp, hasDrawings, date }: Props) => {
   return (
-    <div className="flex flex-col gap-2 [&:not(:last-child)]:border-b border-foreground-200 pb-2">
+    <div className="flex flex-col gap-2 border-foreground-200 pb-2 [&:not(:last-child)]:border-b">
       <div className="flex justify-between gap-2">
         <div className="flex items-center gap-2">
           <Avatar
@@ -27,7 +27,7 @@ export const ReviewToolComment = ({ user, userName, comment, timestamp, hasDrawi
       </div>
       <div className="flex flex-col gap-1">
         <div className="text-sm">
-          {hasDrawings && <Icon icon="paint" className="text-primary inline" size={16} />}
+          {hasDrawings && <Icon icon="paint" className="inline text-primary" size={16} />}
           <span className="font-semibold text-foreground-500"> {timestamp} </span>
           {comment}
         </div>

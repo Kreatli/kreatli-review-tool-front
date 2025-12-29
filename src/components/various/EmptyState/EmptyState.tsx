@@ -22,7 +22,7 @@ export const EmptyState = ({ title, icon = 'inbox', size = 'md', text, link, chi
   return (
     <div className={styles.wrapper}>
       <Icon icon={icon} size={size === 'sm' ? 36 : 48} className={styles.icon} />
-      <h4 className={cn('text-xl font-semibold my-2', size === 'sm' && 'text-lg')}>{title}</h4>
+      <h4 className={cn('my-2 text-xl font-semibold', size === 'sm' && 'text-lg')}>{title}</h4>
       {text && <p className={cn(size === 'sm' && 'text-sm')}>{text}</p>}
       {link && (
         <Button

@@ -210,7 +210,7 @@ export const ReviewToolTextarea = ({ shareableLinkId, isDisabled = false }: Prop
             <Icon icon="send" size={20} />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="p-3 w-64">
+        <PopoverContent className="w-64 p-3">
           <ReviewToolTextareaAnonymousForm onSubmit={handleAnonymousFormSubmit} />
         </PopoverContent>
       </Popover>
@@ -218,20 +218,20 @@ export const ReviewToolTextarea = ({ shareableLinkId, isDisabled = false }: Prop
         <Avatar
           src={user.avatar?.url ?? ''}
           size="sm"
-          className="pointer-events-none !size-6 absolute top-1.5 left-1.5"
+          className="pointer-events-none absolute left-1.5 top-1.5 !size-6"
           fallback={
-            <div className="text-xs text-foreground-500 select-none">{user.name.slice(0, 1).toUpperCase()}</div>
+            <div className="select-none text-xs text-foreground-500">{user.name.slice(0, 1).toUpperCase()}</div>
           }
         />
       ) : (
-        <div className="text-xs text-foreground-500 bg-foreground-300 size-6 rounded-full absolute top-1.5 left-1.5 flex items-center justify-center">
+        <div className="absolute left-1.5 top-1.5 flex size-6 items-center justify-center rounded-full bg-foreground-300 text-xs text-foreground-500">
           {anonymousName?.slice(0, 1).toUpperCase() || <Icon icon="user" size={16} />}
         </div>
       )}
       {replyingComment && (
-        <div className="absolute bottom-full pb-0.5 flex items-center gap-1 left-2 right-2 text-primary">
+        <div className="absolute bottom-full left-2 right-2 flex items-center gap-1 pb-0.5 text-primary">
           <Icon icon="reply" size={16} className="shrink-0" />
-          <div className="text-xs whitespace-nowrap overflow-hidden text-ellipsis">{replyingComment.message}</div>
+          <div className="overflow-hidden text-ellipsis whitespace-nowrap text-xs">{replyingComment.message}</div>
         </div>
       )}
     </form>

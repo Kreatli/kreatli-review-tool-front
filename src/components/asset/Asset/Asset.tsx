@@ -41,7 +41,7 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
   return (
     <>
       <FileStateContextProvider fileId={fileId} file={file} compareFile={compareFile}>
-        <div className="md:grid grid-cols-[1fr,350px] md:h-screen">
+        <div className="grid-cols-[1fr,350px] md:grid md:h-screen">
           <ReviewTool project={project} isLoading={isLoading} />
           <AssetPanel project={project} isLoading={isLoading} />
         </div>

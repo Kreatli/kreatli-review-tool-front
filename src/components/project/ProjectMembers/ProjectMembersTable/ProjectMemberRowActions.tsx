@@ -15,7 +15,7 @@ export const ProjectMemberRowActions = ({ onRemove, onResendInvite, isDisabled, 
   const [isRemovePopoverOpen, setIsRemovePopoverOpen] = React.useState(false);
 
   return (
-    <div className="flex gap-2 justify-end">
+    <div className="flex justify-end gap-2">
       {member.status !== 'joined' && (
         <Tooltip content="Resend invitation">
           <Button isIconOnly size="sm" variant="light" radius="full" isDisabled={isDisabled} onClick={onResendInvite}>
@@ -45,7 +45,7 @@ export const ProjectMemberRowActions = ({ onRemove, onResendInvite, isDisabled, 
           </PopoverTrigger>
           <PopoverContent>
             <div className="flex flex-col gap-4 p-2">
-              <div className="text-medium font-medium max-w-80">
+              <div className="max-w-80 text-medium font-medium">
                 Are you sure you want to remove {member.user?.name ?? member.email} from the project?
               </div>
               <div className="flex justify-end gap-2">

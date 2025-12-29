@@ -55,7 +55,7 @@ export const ArchiveAssetsModal = ({ projectId, assetIds, isOpen, onClose, onSuc
             <div className="text-medium">
               Are you sure you want to archive {assetIds.length} asset{assetIds.length === 1 ? '' : 's'}?
             </div>
-            <div className="flex gap-2 justify-end">
+            <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isLoading} onClick={onClose}>
                 Cancel
               </Button>

@@ -87,7 +87,7 @@ export default function JoinProject() {
         {isSignedIn ? (
           <div className="flex flex-col gap-4">
             <p className="mb-4 text-foreground-500">To join the project click the button below.</p>
-            <Button className="text-content1 bg-foreground" isLoading={isJoining} onClick={joinProject}>
+            <Button className="bg-foreground text-content1" isLoading={isJoining} onClick={joinProject}>
               Join project
             </Button>
             <Button as={NextLink} href="/" variant="light">

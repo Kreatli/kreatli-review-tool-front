@@ -112,12 +112,12 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
   // Touch event handlers for mobile
   const handleTouchStart = (event: Konva.KonvaEventObject<TouchEvent>) => {
     event.evt.preventDefault();
-    
+
     if (!hasStartedDrawing) {
       setShouldShowStartDrawing(false);
       setHasStartedDrawing(true);
     }
-    
+
     const stage = event.target.getStage();
     const point = stage?.getPointerPosition();
 
@@ -132,7 +132,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
 
   const handleTouchMove = (event: Konva.KonvaEventObject<TouchEvent>) => {
     event.evt.preventDefault();
-    
+
     if (!isDrawing.current) {
       return;
     }
@@ -168,19 +168,23 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
   };
 
   return (
-    <div ref={fileRef} className="aspect-video rounded-lg overflow-hidden relative">
+    <div ref={fileRef} className="relative aspect-video overflow-hidden rounded-lg">
       <div
         className={cn(
-          'absolute inset-0 transition-opacity duration-300 bg-black/70 dark:bg-black/80 flex flex-col items-center justify-center gap-3 z-10 pointer-events-none',
-          isTouchScreen && !hasStartedDrawing ? 'opacity-100' : shouldShowStartDrawing && !isTouchScreen ? 'opacity-100' : 'opacity-0',
+          'pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-black/70 transition-opacity duration-300 dark:bg-black/80',
+          isTouchScreen && !hasStartedDrawing
+            ? 'opacity-100'
+            : shouldShowStartDrawing && !isTouchScreen
+              ? 'opacity-100'
+              : 'opacity-0',
         )}
       >
         <Icon icon="paint" className="text-white dark:text-foreground-100" size={40} />
-        <span className="text-xl sm:text-2xl font-semibold text-white dark:text-foreground-100">
+        <span className="text-xl font-semibold text-white dark:text-foreground-100 sm:text-2xl">
           {isTouchScreen ? 'Tap to Draw' : 'Start drawing'}
         </span>
         {isTouchScreen && (
-          <span className="text-sm text-foreground-200 dark:text-foreground-300 text-center px-4">
+          <span className="px-4 text-center text-sm text-foreground-200 dark:text-foreground-300">
             Touch and drag on the screen to draw
           </span>
         )}

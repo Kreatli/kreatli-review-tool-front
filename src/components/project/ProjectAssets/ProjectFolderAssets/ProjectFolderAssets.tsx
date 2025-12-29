@@ -63,7 +63,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
       </Link>
       <div className="flex flex-col gap-4">
         <ProjectDropFilesHint isVisible={isDragActive} />
-        <div className="flex gap-4 justify-between">
+        <div className="flex justify-between gap-4">
           <ProjectBreadcrumbs
             fileCount={folder?.fileCount ?? 0}
             totalFileSize={folder?.totalFileSize ?? 0}
@@ -73,7 +73,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
           <div>
             <ButtonGroup>
               <Button
-                className="text-content1 bg-foreground pr-1"
+                className="bg-foreground pr-1 text-content1"
                 isDisabled={project.status !== 'active'}
                 onClick={uploadAssets}
               >
@@ -82,7 +82,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
               </Button>
               <Dropdown>
                 <DropdownTrigger>
-                  <Button isIconOnly isDisabled={project.status !== 'active'} className="text-content1 bg-foreground">
+                  <Button isIconOnly isDisabled={project.status !== 'active'} className="bg-foreground text-content1">
                     <Icon icon="chevronDown" size={20} />
                   </Button>
                 </DropdownTrigger>

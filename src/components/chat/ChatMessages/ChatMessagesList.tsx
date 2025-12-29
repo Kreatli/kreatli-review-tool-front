@@ -110,7 +110,7 @@ export const ChatMessagesList = ({
       <div className="flex flex-col gap-2">
         {Object.entries(groups).map(([dateString, groups]) => (
           <div key={dateString} className="flex flex-col gap-2">
-            <ChatConversationCloud className="mx-auto sticky top-0">{dateString}</ChatConversationCloud>
+            <ChatConversationCloud className="sticky top-0 mx-auto">{dateString}</ChatConversationCloud>
             <div className="flex flex-col gap-2">
               {groups.map((group) => (
                 <ChatMessagesGroup

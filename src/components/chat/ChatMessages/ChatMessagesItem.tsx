@@ -17,16 +17,16 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
   const isSender = message.sender.id === user?.id;
 
   return (
-    <div className={cn('group flex gap-2 max-w-[80%] w-full', { 'flex-row-reverse ml-auto': isSender })}>
+    <div className={cn('group flex w-full max-w-[80%] gap-2', { 'ml-auto flex-row-reverse': isSender })}>
       {shouldShowSenderName ? (
         <Avatar
           size="sm"
           src={message.sender.avatar?.url}
           className="shrink-0"
-          fallback={<span className="text-lg text-foreground-500 select-none">{message.sender.name.charAt(0)}</span>}
+          fallback={<span className="select-none text-lg text-foreground-500">{message.sender.name.charAt(0)}</span>}
         />
       ) : (
-        <div className="shrink-0 size-8" />
+        <div className="size-8 shrink-0" />
       )}
       <div className={cn('flex flex-col gap-1', { 'pt-0.5': shouldShowSenderName })}>
         {shouldShowSenderName && (
@@ -37,7 +37,7 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
             <div
               key={message.id}
               className={cn(
-                'relative whitespace-pre-wrap items-end bg-foreground-200 text-small p-2 rounded-medium w-fit max-w-[550px]',
+                'relative w-fit max-w-[550px] items-end whitespace-pre-wrap rounded-medium bg-foreground-200 p-2 text-small',
                 {
                   'ml-auto bg-primary text-white': isSender,
                 },
@@ -45,7 +45,7 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
             >
               {message.content}
               <span
-                className={cn('text-xs text-foreground-500 whitespace-nowrap mt-1 ml-1.5 float-right', {
+                className={cn('float-right ml-1.5 mt-1 whitespace-nowrap text-xs text-foreground-500', {
                   'text-neutral-200': isSender,
                 })}
               >
@@ -63,7 +63,7 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
                 type="button"
                 disabled
                 className={cn(
-                  'absolute opacity-0 transition-opacity focus-visible:opacity-100 text-xs text-foreground-400 bottom-1 flex items-center gap-0.5',
+                  'absolute bottom-1 flex items-center gap-0.5 text-xs text-foreground-400 opacity-0 transition-opacity focus-visible:opacity-100',
                   {
                     '-left-2 -translate-x-full': isSender,
                     '-right-2 translate-x-full': !isSender,
@@ -76,7 +76,7 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
             </div>
           )}
           {message.assets.length > 0 && (
-            <div className={cn('flex gap-0.5 flex-col', { 'items-end': isSender })}>
+            <div className={cn('flex flex-col gap-0.5', { 'items-end': isSender })}>
               {message.assets.map((asset) => (
                 <ChatMessagesItemAssetPreview key={asset.id} asset={asset} />
               ))}

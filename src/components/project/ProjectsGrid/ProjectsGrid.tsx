@@ -43,10 +43,10 @@ export const ProjectsGrid = ({
       <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-8">
         {Array.from({ length: 12 }).map((_, index) => (
           <div key={index}>
-            <Skeleton className="aspect-video rounded-2xl mb-4" />
-            <Skeleton className="w-full h-5 rounded-md mb-1" />
-            <Skeleton className="w-[50%] h-5 rounded-md mb-1" />
-            <Skeleton className="w-[50%] h-5 rounded-md" />
+            <Skeleton className="mb-4 aspect-video rounded-2xl" />
+            <Skeleton className="mb-1 h-5 w-full rounded-md" />
+            <Skeleton className="mb-1 h-5 w-[50%] rounded-md" />
+            <Skeleton className="h-5 w-[50%] rounded-md" />
           </div>
         ))}
       </div>
@@ -67,7 +67,7 @@ export const ProjectsGrid = ({
     return (
       <EmptyState title={title} text={text}>
         {!search && (status === 'active' || status === 'all') && (
-          <Button className="bg-foreground text-content1 mt-4" onClick={onCreateProject}>
+          <Button className="mt-4 bg-foreground text-content1" onClick={onCreateProject}>
             <Icon icon="plus" size={18} />
             Create project
           </Button>

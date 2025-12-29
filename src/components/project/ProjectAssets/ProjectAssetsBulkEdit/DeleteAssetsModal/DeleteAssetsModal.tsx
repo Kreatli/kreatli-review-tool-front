@@ -50,7 +50,7 @@ export const DeleteAssetsModal = ({ projectId, assetIds, isOpen, onClose, onSucc
               Are you sure you want to delete {assetIds.length} asset{assetIds.length === 1 ? '' : 's'}? This action can
               not be undone.
             </div>
-            <div className="flex gap-2 justify-end">
+            <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isPending} onClick={onClose}>
                 Cancel
               </Button>

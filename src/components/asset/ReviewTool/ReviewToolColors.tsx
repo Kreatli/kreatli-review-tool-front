@@ -25,7 +25,7 @@ export const ReviewToolColors = () => {
             disabled={isDisabled}
             className={cn(
               // eslint-disable-next-line max-len
-              `w-5 h-5 outline-2 outline border-2 outline-foreground-200 border-background rounded-full bg-red-500 bg-${value}-500`,
+              `h-5 w-5 rounded-full border-2 border-background bg-red-500 outline outline-2 outline-foreground-200 bg-${value}-500`,
               {
                 'outline-focus': activeColor === value,
                 'bg-black': value === 'black',

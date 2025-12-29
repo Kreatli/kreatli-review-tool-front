@@ -13,10 +13,10 @@ interface Props {
 
 export const ReviewToolFooter = ({ shareableLinkId, isDisabled = false }: Props) => {
   return (
-    <div className="relative p-6 md:pb-12 md:h-32 flex flex-col items-center">
+    <div className="relative flex flex-col items-center p-6 md:h-32 md:pb-12">
       <ReviewToolTextarea shareableLinkId={shareableLinkId} isDisabled={isDisabled} />
-      <div className="max-w-screen-xl w-full mx-auto relative">
-        <div className="mt-2 md:mt-0 md:absolute md:right-2 md:top-2 w-full flex-wrap flex gap-4 justify-end items-center">
+      <div className="relative mx-auto w-full max-w-screen-xl">
+        <div className="mt-2 flex w-full flex-wrap items-center justify-end gap-4 md:absolute md:right-2 md:top-2 md:mt-0">
           <ReviewToolTimestamp />
           <ReviewToolHistoryButtons />
           <ReviewToolShapes isDisabled={isDisabled} />

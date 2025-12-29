@@ -63,31 +63,31 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
       {...listeners}
       {...attributes}
       tabIndex={-1}
-      className="flex flex-col gap-3 relative"
+      className="relative flex flex-col gap-3"
     >
       {activeIndex > index && (
         <div
           ref={setDroppableNodeRef}
-          className="absolute top-0 bottom-0 w-[calc(100%+4rem)] -left-16 pointer-events-none"
+          className="pointer-events-none absolute -left-16 bottom-0 top-0 w-[calc(100%+4rem)]"
         />
       )}
       {activeIndex < index && (
         <div
           ref={setDroppableNodeRef}
-          className="absolute top-0 bottom-0 w-[calc(100%+4rem)] -right-16 pointer-events-none"
+          className="pointer-events-none absolute -right-16 bottom-0 top-0 w-[calc(100%+4rem)]"
         />
       )}
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
         tabIndex={isDisabled ? -1 : 0}
-        className="w-full cursor-default absolute-cursor rounded-2xl focus:outline-2 focus:outline outline-focus outline-offset-2"
+        className="absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2"
         onKeyDown={handleSpaceAndEnter(handleClick)}
         onDoubleClick={handleClick}
       >
         <ProjectFileCover file={file} isLoading={isUploading} />
         <div className="relative">
           <ProjectFileStatus
-            className="border-1 z-10 absolute bottom-2 left-2"
+            className="absolute bottom-2 left-2 z-10 border-1"
             projectId={project.id}
             statuses={project.assetStatuses}
             file={file}
@@ -100,7 +100,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
           isSelected={isSelected}
           color="default"
           isDisabled={isReadonly}
-          className="absolute top-2 left-2 right-2 z-10"
+          className="absolute left-2 right-2 top-2 z-10"
           onChange={onSelectionChange}
         />
       )}
@@ -110,7 +110,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
             size="sm"
             radius="full"
             isDisabled={isUploading || isSelected || isReadonly}
-            className="z-10 absolute top-2 right-2"
+            className="absolute right-2 top-2 z-10"
             variant="faded"
             isIconOnly
           >
@@ -132,10 +132,10 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
         </DropdownMenu>
       </Dropdown>
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2 justify-between">
-          <div className="text-lg font-semibold truncate">{name}</div>
+        <div className="flex justify-between gap-2">
+          <div className="truncate text-lg font-semibold">{name}</div>
         </div>
-        <div className="flex gap-2 items-start justify-between">
+        <div className="flex items-start justify-between gap-2">
           <ProjectFileAssignee
             projectId={project.id}
             file={file}

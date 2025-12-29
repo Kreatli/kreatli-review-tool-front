@@ -46,11 +46,11 @@ export const DashboardAssets = ({ project }: Props) => {
   return (
     <Card>
       <CardBody className="p-3 px-4">
-        <div className="flex justify-between gap-4 mb-2 items-center">
+        <div className="mb-2 flex items-center justify-between gap-4">
           <Link href={`/project/${project.id}/assets`} className="flex items-center gap-1">
             <span className="text-lg font-semibold">Media</span>
             {!isPending && !isError && (
-              <span className="text-foreground-500 font-normal text-medium">
+              <span className="text-medium font-normal text-foreground-500">
                 ({data?.fileCount ?? 0} file{data?.fileCount === 1 ? '' : 's'})
               </span>
             )}

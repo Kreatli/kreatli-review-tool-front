@@ -109,8 +109,8 @@ export const Notifications = () => {
           </Badge>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-96 max-w-full p-0 items-start overflow-hidden">
-        <div className="py-2 flex items-center justify-between pl-4 pr-2 w-full border-b border-foreground-200">
+      <PopoverContent className="w-96 max-w-full items-start overflow-hidden p-0">
+        <div className="flex w-full items-center justify-between border-b border-foreground-200 py-2 pl-4 pr-2">
           <h4 className="text-large font-semibold">Notifications</h4>
           <div className="flex gap-2">
             <Button size="sm" variant="flat" isDisabled={unreadNotificationsCount === 0} onClick={handleMarkAllAsRead}>
@@ -123,7 +123,7 @@ export const Notifications = () => {
           </div>
         </div>
         {isPending ? (
-          <div className="w-full flex justify-center items-center p-4 min-h-32">
+          <div className="flex min-h-32 w-full items-center justify-center p-4">
             <Spinner size="sm" />
           </div>
         ) : notifications.length > 0 ? (

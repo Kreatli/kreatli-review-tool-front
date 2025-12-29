@@ -31,53 +31,53 @@ export default function CostCalculatorPage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans mb-4 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto mb-4 max-w-2xl font-sans text-2xl font-bold sm:text-4xl">
             How Much Are You Really Spending on Software?
           </h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Creative teams often use 5+ different tools for file sharing, production management, and media review and
             approval workflows. See how much you could save by consolidating with Kreatli's all-in-one creative
             production platform.
           </p>
-          <div className="flex flex-wrap gap-6 justify-center mt-4">
+          <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-4xl font-bold font-sans">60%+</div>
-              <div className="text-sm sm:text-md text-foreground-500 max-w-32 mx-auto">Average Savings</div>
+              <div className="font-sans text-2xl font-bold sm:text-4xl">60%+</div>
+              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Average Savings</div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-4xl font-bold font-sans">$10K+</div>
-              <div className="text-sm sm:text-md text-foreground-500 max-w-32 mx-auto">Annual Savings Potential</div>
+              <div className="font-sans text-2xl font-bold sm:text-4xl">$10K+</div>
+              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Annual Savings Potential</div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-4xl font-bold font-sans">1 Tool</div>
-              <div className="text-sm sm:text-md text-foreground-500 max-w-32 mx-auto">Instead of 5+</div>
+              <div className="font-sans text-2xl font-bold sm:text-4xl">1 Tool</div>
+              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Instead of 5+</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Why Calculate Your Software Costs?</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-4 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Why Calculate Your Software Costs?</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Hidden costs add up quickly. Understanding your true software spend helps you make smarter decisions.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="dollar" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Hidden Costs Add Up</h3>
+                  <h3 className="font-sans text-lg font-semibold">Hidden Costs Add Up</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Per-user pricing across multiple tools can cost thousands annually. Many teams don't realize their
                   total software spend until they calculate it.
                 </p>
@@ -86,13 +86,13 @@ export default function CostCalculatorPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="compare" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Consolidation Saves Money</h3>
+                  <h3 className="font-sans text-lg font-semibold">Consolidation Saves Money</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Using one platform instead of multiple tools reduces costs, simplifies billing, and eliminates
                   redundant features you're paying for twice.
                 </p>
@@ -101,13 +101,13 @@ export default function CostCalculatorPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="time" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Time is Money</h3>
+                  <h3 className="font-sans text-lg font-semibold">Time is Money</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Switching between tools wastes time. A unified platform improves productivity and reduces context
                   switching, saving hours every week.
                 </p>
@@ -116,13 +116,13 @@ export default function CostCalculatorPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="shield" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Better Security</h3>
+                  <h3 className="font-sans text-lg font-semibold">Better Security</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Fewer tools mean fewer security risks. One platform with enterprise-grade security is easier to manage
                   and audit than multiple vendors.
                 </p>
@@ -131,13 +131,13 @@ export default function CostCalculatorPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Simplified Onboarding</h3>
+                  <h3 className="font-sans text-lg font-semibold">Simplified Onboarding</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   New team members learn one tool instead of five. Faster onboarding means your team is productive
                   sooner.
                 </p>
@@ -146,13 +146,13 @@ export default function CostCalculatorPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="suitcase" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Better ROI</h3>
+                  <h3 className="font-sans text-lg font-semibold">Better ROI</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Get more value from a single platform designed for creative workflows than piecing together multiple
                   generic tools.
                 </p>
@@ -163,26 +163,26 @@ export default function CostCalculatorPage() {
       </section>
 
       {/* Real-World Scenarios Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Real-World Cost Examples</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-6 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Real-World Cost Examples</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               See how typical tool combinations compare to Kreatli across different team sizes.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="user" size={24} className="text-primary" />
-                  <h3 className="text-lg font-bold font-sans">Small Team (5 members)</h3>
+                  <h3 className="font-sans text-lg font-bold">Small Team (5 members)</h3>
                 </div>
                 <div className="flex flex-col gap-3">
                   <div>
-                    <p className="text-base mb-1">Typical Stack:</p>
-                    <ul className="text-base text-foreground-500 space-y-1">
+                    <p className="mb-1 text-base">Typical Stack:</p>
+                    <ul className="space-y-1 text-base text-foreground-500">
                       <li>• Google Drive ($75/mo)</li>
                       <li>• Frame.io ($125/mo)</li>
                       <li>• WeTransfer ($100/mo)</li>
@@ -193,13 +193,13 @@ export default function CostCalculatorPage() {
                     </div>
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
-                    <p className="text-base mb-1">Total Cost:</p>
-                    <p className="text-2xl font-bold font-sans">$300/month</p>
+                    <p className="mb-1 text-base">Total Cost:</p>
+                    <p className="font-sans text-2xl font-bold">$300/month</p>
                     <p className="text-base text-foreground-500">$3,600/year</p>
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
-                    <p className="text-base mb-1">With Kreatli:</p>
-                    <p className="text-2xl font-bold font-sans">$75/month</p>
+                    <p className="mb-1 text-base">With Kreatli:</p>
+                    <p className="font-sans text-2xl font-bold">$75/month</p>
                     <p className="text-base text-foreground-500">$900/year</p>
                   </div>
                   <Alert className="mt-2" color="success" icon={<Icon icon="dollar" />}>
@@ -213,14 +213,14 @@ export default function CostCalculatorPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="group" size={24} className="text-primary" />
-                  <h3 className="text-lg font-bold font-sans">Medium Team (15 members)</h3>
+                  <h3 className="font-sans text-lg font-bold">Medium Team (15 members)</h3>
                 </div>
                 <div className="flex flex-col gap-3">
                   <div>
-                    <p className="text-base mb-1">Typical Stack:</p>
-                    <ul className="text-base text-foreground-500 space-y-1">
+                    <p className="mb-1 text-base">Typical Stack:</p>
+                    <ul className="space-y-1 text-base text-foreground-500">
                       <li>• Dropbox ($345/mo)</li>
                       <li>• Google Workspace ($225/mo)</li>
                       <li>• Monday.com ($405/mo)</li>
@@ -231,13 +231,13 @@ export default function CostCalculatorPage() {
                     </div>
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
-                    <p className="text-base mb-1">Total Cost:</p>
-                    <p className="text-2xl font-bold font-sans">$1,270/month</p>
+                    <p className="mb-1 text-base">Total Cost:</p>
+                    <p className="font-sans text-2xl font-bold">$1,270/month</p>
                     <p className="text-base text-foreground-500">$15,240/year</p>
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
-                    <p className="text-base mb-1">With Kreatli:</p>
-                    <p className="text-2xl font-bold font-sans">$300/month</p>
+                    <p className="mb-1 text-base">With Kreatli:</p>
+                    <p className="font-sans text-2xl font-bold">$300/month</p>
                     <p className="text-base">$3,600/year</p>
                   </div>
                   <Alert className="mt-2" color="success" icon={<Icon icon="dollar" />}>
@@ -251,14 +251,14 @@ export default function CostCalculatorPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="building" size={24} className="text-primary" />
-                  <h3 className="text-lg font-bold font-sans">Large Team (50 members)</h3>
+                  <h3 className="font-sans text-lg font-bold">Large Team (50 members)</h3>
                 </div>
                 <div className="flex flex-col gap-3">
                   <div>
-                    <p className="text-base mb-1">Typical Stack:</p>
-                    <ul className="text-base text-foreground-500 space-y-1">
+                    <p className="mb-1 text-base">Typical Stack:</p>
+                    <ul className="space-y-1 text-base text-foreground-500">
                       <li>• Dropbox ($1,150/mo)</li>
                       <li>• Google Workspace ($750/mo)</li>
                       <li>• Asana ($1,600/mo)</li>
@@ -267,13 +267,13 @@ export default function CostCalculatorPage() {
                     </ul>
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
-                    <p className="text-base mb-1">Total Cost:</p>
-                    <p className="text-2xl font-bold font-sans">$7,350/month</p>
+                    <p className="mb-1 text-base">Total Cost:</p>
+                    <p className="font-sans text-2xl font-bold">$7,350/month</p>
                     <p className="text-base text-foreground-500">$88,200/year</p>
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
-                    <p className="text-base mb-1">With Kreatli:</p>
-                    <p className="text-2xl font-bold font-sans">$1,000/month</p>
+                    <p className="mb-1 text-base">With Kreatli:</p>
+                    <p className="font-sans text-2xl font-bold">$1,000/month</p>
                     <p className="text-base">$12,000/year</p>
                   </div>
                   <Alert className="mt-2 whitespace-nowrap" color="success" icon={<Icon icon="dollar" />}>
@@ -296,11 +296,11 @@ export default function CostCalculatorPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about calculating software costs, tool consolidation, and how Kreatli can reduce your
               expenses.
             </p>
@@ -310,12 +310,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="accuracy"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How accurate is the cost calculator, and what factors affect the results?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   The cost calculator uses current list pricing for each tool based on publicly available pricing
                   information. The calculations are based on standard per-user pricing models and typical team sizes,
@@ -340,12 +340,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="replace-tools"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Does Kreatli really replace all these tools, and what features does it include?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Depending on your current needs, Kreatli can serve as an end-to-end creative production management
                   platform that replaces multiple tools. Kreatli combines file storage (like Google Drive or Dropbox),
@@ -371,12 +371,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="hidden-costs"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What hidden costs should I consider when calculating software expenses?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Beyond the base subscription costs shown in calculators, there are several hidden expenses that add up
                   quickly. Per-user pricing means costs scale linearly with team growth - adding just 5 team members can
@@ -403,12 +403,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="specific-features"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What if I need specific features that aren't in Kreatli?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli is designed specifically for creative workflows and includes the features most teams need for
                   creative production management, media review and approval, and team collaboration. However, if you
@@ -434,12 +434,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="pricing"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does Kreatli pricing work, and are there any hidden fees?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli uses simple, transparent per-user pricing with no hidden fees. For teams up to 5 members, the
                   cost is $15 per user per month. For larger teams (6+ members), the pricing is $20 per user per month.
@@ -466,12 +466,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="roi"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What's the return on investment (ROI) of consolidating tools with Kreatli?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   The ROI of consolidating tools with Kreatli comes from both direct cost savings and productivity
                   improvements. Direct savings typically range from 40-70% compared to using multiple tools, depending
@@ -498,12 +498,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="try-before-switching"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Can I try Kreatli before switching, and what support is available during transition?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Absolutely! Kreatli offers a Free Plan that gives you full access to all features with 2 projects and
                   2 users, allowing you to test the platform with real projects and see how it improves your creative
@@ -528,12 +528,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="data-migration"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What about data migration, and how long does it take to switch to Kreatli?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   We provide comprehensive migration assistance to help you move your files, projects, and team
                   structure to Kreatli. Our team can help with bulk file uploads from your existing storage solutions,
@@ -560,12 +560,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="scaling"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does Kreatli pricing scale as my team grows, compared to multiple tools?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli's pricing scales predictably with your team size. For teams up to 5 members, it's $15 per user
                   per month. For teams of 6 or more, it's $20 per user per month. This simple model means you can easily
@@ -590,12 +590,12 @@ export default function CostCalculatorPage() {
             <AccordionItem
               key="comparison"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How do the real-world cost examples in the calculator compare to actual team scenarios?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   The real-world cost examples shown in the calculator are based on typical tool combinations we see
                   from creative teams. The small team example (5 members) using Google Drive, Frame.io, and WeTransfer
@@ -622,11 +622,11 @@ export default function CostCalculatorPage() {
             </AccordionItem>
           </Accordion>
 
-          <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-8">
-            <h3 className="text-xl font-sans font-bold">Still Have Questions About Costs?</h3>
+          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions About Costs?</h3>
             <p className="text-foreground-500">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-              <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary">
+              <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
               for personalized cost analysis and recommendations for your team.
@@ -636,16 +636,16 @@ export default function CostCalculatorPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-3 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans max-w-xl mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
+          <h2 className="mx-auto max-w-xl font-sans text-2xl font-bold sm:text-4xl">
             Ready to Start Saving on Software Costs?
           </h2>
-          <p className="text-lg text-foreground-500 max-w-xl mx-auto">
+          <p className="mx-auto max-w-xl text-lg text-foreground-500">
             Join teams that have consolidated their tools and reduced costs by 60% or more. Get started with Kreatli
             today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

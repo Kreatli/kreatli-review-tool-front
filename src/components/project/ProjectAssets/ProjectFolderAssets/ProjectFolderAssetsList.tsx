@@ -119,7 +119,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
 
   if (isLoadingAssets) {
     return (
-      <div className="overflow-hidden p-6 -m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
+      <div className="-m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-6">
         {Array.from({ length: 8 }).map((_, index) => (
           <div key={index} className="flex flex-col gap-2">
             <Skeleton className="aspect-video rounded-lg" />
@@ -252,19 +252,19 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex gap-4 items-center justify-between">
-        <div className="text-2xl font-semibold flex items-center gap-2 w-full">
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex w-full items-center gap-2 text-2xl font-semibold">
           <Icon icon="folder" size={24} />
           {folder.name}
         </div>
         <ProjectAssetsFilters />
       </div>
       <div
-        className={cn('sticky top-16 z-20 bg-background h-4 overflow-hidden opacity-0 transition-[height,opacity]', {
+        className={cn('sticky top-16 z-20 h-4 overflow-hidden bg-background opacity-0 transition-[height,opacity]', {
           'h-12 opacity-100': hasSelectedAssets,
         })}
       >
-        <div className="py-2 pl-2 flex items-center gap-4">
+        <div className="flex items-center gap-4 py-2 pl-2">
           <Checkbox
             isDisabled={!hasSelectedAssets}
             isSelected={selectedAssetIds.size === assets.length}
@@ -272,7 +272,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             color="default"
             onChange={handleSelectAllChange}
           />
-          <div className="text-foreground-500 -ml-2">
+          <div className="-ml-2 text-foreground-500">
             {selectedAssetIds.size} item{selectedAssetIds.size === 1 ? '' : 's'} selected
           </div>
           <Button
@@ -323,7 +323,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
           onDragOver={handleDragOver}
           onDragEnd={handleDragEnd}
         >
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 mb-6 empty:mb-0">
+          <div className="mb-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 empty:mb-0">
             {folders.map((folder) => (
               <ProjectFolder
                 key={folder.id}
@@ -335,7 +335,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             ))}
           </div>
           <SortableContext items={filesOrder}>
-            <div className="overflow-hidden p-6 -m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
+            <div className="-m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-6">
               {sortedAssets.map((asset, index) => (
                 <div key={asset.id} className={cn('relative', { 'opacity-50': draggedId === asset.id })}>
                   <ProjectFile
@@ -346,7 +346,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
                   />
                   {overId === asset.id && draggedAsset && (
                     <div
-                      className={cn('absolute -translate-x-1/2 top-0 bottom-0 w-0.5 bg-foreground-400 rounded-xl', {
+                      className={cn('absolute bottom-0 top-0 w-0.5 -translate-x-1/2 rounded-xl bg-foreground-400', {
                         '-right-2': assets.indexOf(draggedAsset) < index,
                         '-left-2': assets.indexOf(draggedAsset) > index,
                       })}
@@ -359,7 +359,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
           <DragOverlay>
             {draggedAsset && (
               <div
-                className={cn('bg-background rounded-2xl transition-transform', {
+                className={cn('rounded-2xl bg-background transition-transform', {
                   'scale-80': overId?.includes('folder') && !overId.endsWith(draggedAsset.id),
                 })}
               >

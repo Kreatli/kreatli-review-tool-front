@@ -34,12 +34,12 @@ export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
       <button
         type="button"
         aria-label={`Open project ${project.name}`}
-        className="absolute-cursor group-hover/card:opacity-70 group-hover/card:border-foreground-500 transition-all border border-foreground-300 p-px rounded-2xl outline-focus outline-offset-2"
+        className="absolute-cursor rounded-2xl border border-foreground-300 p-px outline-offset-2 outline-focus transition-all group-hover/card:border-foreground-500 group-hover/card:opacity-70"
         onClick={handleClick}
       >
         <ProjectCardImage image={project.cover} />
       </button>
-      <div className="absolute top-1 left-2 right-2 flex pointer-events-none justify-between items-center gap-2">
+      <div className="pointer-events-none absolute left-2 right-2 top-1 flex items-center justify-between gap-2">
         <ProjectStatus status={project.status} />
         {projectActions.length > 0 && (
           <Dropdown>
@@ -49,7 +49,7 @@ export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
                 size="sm"
                 isIconOnly
                 radius="full"
-                className="mt-1 pointer-events-auto"
+                className="pointer-events-auto mt-1"
                 variant="faded"
                 aria-label={`Open project ${project.name} options`}
                 onClick={() => {
@@ -75,20 +75,20 @@ export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
           </Dropdown>
         )}
       </div>
-      <div className="flex justify-between gap-4 px-2 mt-4">
+      <div className="mt-4 flex justify-between gap-4 px-2">
         <div className="select-none overflow-hidden">
-          <h3 className="text-lg font-semibold group-hover/card:underline underline-offset-2 line-clamp-2">
+          <h3 className="line-clamp-2 text-lg font-semibold underline-offset-2 group-hover/card:underline">
             {project.name}
           </h3>
           <div>
             {project.fileCount} items, {formatBytes(project.totalFileSize)}
           </div>
-          <div className="text-foreground-500 text-sm">
+          <div className="text-sm text-foreground-500">
             Last modified {formatRelativeTime(project.updatedAt ?? project.createdAt)}
           </div>
         </div>
         <div className="flex flex-col items-end">
-          <div className="p-1 pointer-events-none">
+          <div className="pointer-events-none p-1">
             <ProjectMembersThumbnails members={project.members} />
           </div>
         </div>

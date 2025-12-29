@@ -38,15 +38,15 @@ export default function GuidesPage({ stories }: Props) {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Guides & Tutorials</h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Guides & Tutorials</h1>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Step-by-step guides and tutorials to help you master Kreatli's creative production management platform.
           </p>
         </div>
         <div className="backdrop-blur-lg">
-          <div className="max-w-6xl mx-auto pt-6">
+          <div className="mx-auto max-w-6xl pt-6">
             <BlogArticles articles={stories} />
           </div>
         </div>

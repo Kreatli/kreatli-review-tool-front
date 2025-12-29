@@ -98,7 +98,7 @@ export const PlansModal = ({ user, isOpen, onClose }: Props) => {
       <ModalContent>
         <ModalHeader>Select a plan</ModalHeader>
         <ModalBody className="py-6">
-          <div className="flex gap-4 flex-col md:flex-row">
+          <div className="flex flex-col gap-4 md:flex-row">
             {plans.map(({ id, name, description, price, features }) => (
               <Plan
                 key={id}

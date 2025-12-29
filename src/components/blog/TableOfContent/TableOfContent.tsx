@@ -57,8 +57,8 @@ export const TableOfContent = ({ links }: Props) => {
           <li key={link.url}>
             <Link
               href={link.url}
-              className={cn('text-foreground-400 text-sm leading-5 block hover:text-foreground-500 transition-all', {
-                'text-foreground hover:text-foreground text-shadow-sm': activeIndex === index,
+              className={cn('block text-sm leading-5 text-foreground-400 transition-all hover:text-foreground-500', {
+                'text-shadow-sm text-foreground hover:text-foreground': activeIndex === index,
               })}
             >
               {link.label}

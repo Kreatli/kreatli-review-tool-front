@@ -49,7 +49,7 @@ export const CancelSubscriptionModal = ({ isOpen, onClose }: Props) => {
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button className="text-content1 bg-foreground" onClick={onClose}>
+            <Button className="bg-foreground text-content1" onClick={onClose}>
               Got it
             </Button>
           </ModalFooter>

@@ -19,9 +19,9 @@ export const ChatAvatar = ({ chat }: ChatAvatarProps) => {
   }
 
   return (
-    <div className="size-8 bg-foreground-100 border border-foreground-200 text-foreground-500 rounded-full flex items-center justify-center">
+    <div className="flex size-8 items-center justify-center rounded-full border border-foreground-200 bg-foreground-100 text-foreground-500">
       {chat.type === 'private' ? (
-        <div className="text-lg text-foreground-500 select-none">
+        <div className="select-none text-lg text-foreground-500">
           {conversationMember?.name.slice(0, 1).toUpperCase()}
         </div>
       ) : (

@@ -6,12 +6,12 @@ import { Icon } from '../../../various/Icon';
 export const ProjectFolderAssetsLoading = () => {
   return (
     <div>
-      <div className="flex items-center gap-0.5 text-foreground-500 mb-4">
+      <div className="mb-4 flex items-center gap-0.5 text-foreground-500">
         <Icon icon="arrowLeft" size={18} />
         <Skeleton className="h-4 w-24 rounded" />
       </div>
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4 justify-between">
+        <div className="flex justify-between gap-4">
           <div className="flex items-center gap-2">
             <Skeleton className="size-12 rounded-full" />
             <div className="flex flex-col gap-2">

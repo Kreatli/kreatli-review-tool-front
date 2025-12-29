@@ -44,7 +44,7 @@ export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) 
                   size="sm"
                   radius="full"
                   fallback={
-                    <div className="text-lg text-foreground-500 select-none">{log.user.name[0].toUpperCase()}</div>
+                    <div className="select-none text-lg text-foreground-500">{log.user.name[0].toUpperCase()}</div>
                   }
                 />
                 <div>{log.user.name}</div>

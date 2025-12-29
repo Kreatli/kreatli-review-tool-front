@@ -141,13 +141,13 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
   };
 
   return (
-    <div className="w-full h-full bg-black relative flex items-center justify-center">
+    <div className="relative flex h-full w-full items-center justify-center bg-black">
       <video
         src={src}
         autoPlay
         playsInline
         loop
-        className="cursor-pointer w-full h-auto max-h-full"
+        className="h-auto max-h-full w-full cursor-pointer"
         ref={videoRef}
         onPlay={() => setIsPaused(false)}
         onPause={() => setIsPaused(true)}
@@ -157,18 +157,18 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
       />
       <div
         className={cn(
-          'absolute top-1/2 pointer-events-none left-1/2 backdrop-blur-sm transition-opacity -translate-x-1/2 shadow-large rounded-full p-3 bg-black/10 flex items-center justify-center -translate-y-1/2',
+          'pointer-events-none absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/10 p-3 shadow-large backdrop-blur-sm transition-opacity',
           {
             'opacity-0': !isPaused,
           },
         )}
       >
-        <Icon icon="play" size={42} className="text-white translate-x-0.5" />
+        <Icon icon="play" size={42} className="translate-x-0.5 text-white" />
       </div>
       <div
         ref={sliderRef}
         className={cn(
-          'absolute bottom-0 translate-y-1/2 bg-black w-full z-10 cursor-pointer after:absolute after:-inset-y-2 after:inset-x-0 after:cursor-pointer transition-all touch-none',
+          'absolute bottom-0 z-10 w-full translate-y-1/2 cursor-pointer touch-none bg-black transition-all after:absolute after:-inset-y-2 after:inset-x-0 after:cursor-pointer',
           {
             'h-[3px]': activeOverlay === 'tiktok',
             'h-0.5': activeOverlay === 'youtube',
@@ -179,7 +179,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
         onTouchStart={handleTouchStart}
       >
         <div
-          className={cn('w-full h-full transition-all', {
+          className={cn('h-full w-full transition-all', {
             'bg-[#2A3037]': activeOverlay === 'instagram',
             'bg-[#333333]': activeOverlay === 'tiktok',
             'bg-[#7B7B7B]': activeOverlay === 'youtube',
@@ -187,13 +187,13 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
         >
           <div
             style={{ width: `${progress * 100}%` }}
-            className={cn('bg-white h-full relative pointer-events-none transition-colors', {
+            className={cn('pointer-events-none relative h-full bg-white transition-colors', {
               'bg-[#FF0033]': activeOverlay === 'youtube',
             })}
           >
             {activeOverlay !== 'instagram' && (
               <div
-                className={cn('absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 rounded-full transition-all', {
+                className={cn('absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 rounded-full transition-all', {
                   'size-1.5 bg-white': activeOverlay === 'tiktok',
                   'size-2.5 bg-[#FF0033]': activeOverlay === 'youtube',
                 })}

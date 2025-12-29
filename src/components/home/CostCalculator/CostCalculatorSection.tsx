@@ -111,19 +111,21 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
   }, [usersCount]);
 
   return (
-    <section id="software-cost-calculator" className="backdrop-blur-lg lg:py-32 py-16 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col gap-8 sm:gap-12 items-center">
-        <div className="flex flex-col gap-4 w-full">
-          <h2 className={titleClassName || "text-3xl sm:text-5xl font-bold font-sans text-center"}>Software Cost Calculator</h2>
-          <p className="text-lg text-foreground-500 text-center">
+    <section id="software-cost-calculator" className="px-6 py-16 backdrop-blur-lg lg:py-32">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 sm:gap-12">
+        <div className="flex w-full flex-col gap-4">
+          <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-5xl'}>
+            Software Cost Calculator
+          </h2>
+          <p className="text-center text-lg text-foreground-500">
             Estimate monthly and annual software spend based on team size and tools
           </p>
         </div>
-        <div className="grid md:grid-cols-2 w-full gap-4">
+        <div className="grid w-full gap-4 md:grid-cols-2">
           <div className="flex flex-col gap-4">
-            <Card className="dark:border border-foreground-300 w-full">
-              <CardBody className="p-4 sm:p-6 flex flex-col gap-4">
-                <h3 className="text-xl sm:text-2xl font-bold font-sans">Team Size</h3>
+            <Card className="w-full border-foreground-300 dark:border">
+              <CardBody className="flex flex-col gap-4 p-4 sm:p-6">
+                <h3 className="font-sans text-xl font-bold sm:text-2xl">Team Size</h3>
                 <Slider
                   color="foreground"
                   value={usersCount}
@@ -140,9 +142,9 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
                 />
               </CardBody>
             </Card>
-            <Card className="dark:border border-foreground-300 w-full">
-              <CardBody className="p-4 sm:p-6 flex flex-col gap-4">
-                <h3 className="text-xl sm:text-2xl font-bold font-sans">Tool Stack</h3>
+            <Card className="w-full border-foreground-300 dark:border">
+              <CardBody className="flex flex-col gap-4 p-4 sm:p-6">
+                <h3 className="font-sans text-xl font-bold sm:text-2xl">Tool Stack</h3>
                 <div className="flex flex-col gap-2">
                   <h4 className="text-foreground-500">File Storage/Sharing:</h4>
                   <div className="flex flex-wrap gap-2">
@@ -234,14 +236,14 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
             </Card>
           </div>
           <div className="flex flex-col gap-4">
-            <Card className="dark:border border-foreground-300">
-              <CardBody className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3">
-                <h3 className="text-xl font-bold font-sans text-center">How much you are overpaying</h3>
-                <div className="flex sm:flex-row md:flex-col lg:flex-row gap-x-6 gap-y-3 justify-center">
+            <Card className="border-foreground-300 dark:border">
+              <CardBody className="flex flex-col gap-2 p-4 sm:gap-3 sm:p-6">
+                <h3 className="text-center font-sans text-xl font-bold">How much you are overpaying</h3>
+                <div className="flex justify-center gap-x-6 gap-y-3 sm:flex-row md:flex-col lg:flex-row">
                   <div className="flex flex-col items-center">
-                    <div className="text-foreground-500 text-sm sm:text-md">Per month:</div>
+                    <div className="sm:text-md text-sm text-foreground-500">Per month:</div>
                     <div
-                      className={cn('text-2xl sm:text-3xl font-bold font-sans', {
+                      className={cn('font-sans text-2xl font-bold sm:text-3xl', {
                         'text-danger': activeToolsCost - kreatliCost > 0,
                       })}
                     >
@@ -251,9 +253,9 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
-                    <div className="text-foreground-500 text-sm sm:text-md">Per year:</div>
+                    <div className="sm:text-md text-sm text-foreground-500">Per year:</div>
                     <div
-                      className={cn('text-2xl sm:text-3xl font-bold font-sans', {
+                      className={cn('font-sans text-2xl font-bold sm:text-3xl', {
                         'text-danger': activeToolsCost - kreatliCost > 0,
                       })}
                     >
@@ -265,10 +267,10 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
                 </div>
               </CardBody>
             </Card>
-            <div className="grid sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
-              <Card className="dark:border border-foreground-300">
-                <CardBody className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3">
-                  <h3 className="text-lg sm:text-xl flex gap-1 items-center font-bold font-sans">
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+              <Card className="border-foreground-300 dark:border">
+                <CardBody className="flex flex-col gap-2 p-4 sm:gap-3 sm:p-6">
+                  <h3 className="flex items-center gap-1 font-sans text-lg font-bold sm:text-xl">
                     Current Tool Stack
                     <Tooltip
                       className="max-w-xs"
@@ -279,35 +281,35 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
                       </span>
                     </Tooltip>
                   </h3>
-                  <div className="flex md:flex-row lg:flex-col gap-3">
+                  <div className="flex gap-3 md:flex-row lg:flex-col">
                     <div className="flex flex-col">
-                      <div className="text-foreground-500 text-sm sm:text-md">Cost per month:</div>
-                      <div className="text-2xl sm:text-3xl font-bold font-sans">
+                      <div className="sm:text-md text-sm text-foreground-500">Cost per month:</div>
+                      <div className="font-sans text-2xl font-bold sm:text-3xl">
                         {formatPrice(activeToolsCost, { minimumFractionDigits: 0 })}
                       </div>
                     </div>
                     <div className="flex flex-col">
-                      <div className="text-foreground-500 text-sm sm:text-md">Cost per year:</div>
-                      <div className="text-2xl sm:text-3xl font-bold font-sans">
+                      <div className="sm:text-md text-sm text-foreground-500">Cost per year:</div>
+                      <div className="font-sans text-2xl font-bold sm:text-3xl">
                         {formatPrice(activeToolsCost * 12, { minimumFractionDigits: 0 })}
                       </div>
                     </div>
                   </div>
                 </CardBody>
               </Card>
-              <Card className="dark:border border-foreground-300">
-                <CardBody className="p-4 sm:p-6 flex flex-col gap-2 sm:gap-3">
-                  <h3 className="text-lg sm:text-xl font-bold font-sans">Kreatli</h3>
-                  <div className="flex md:flex-row lg:flex-col gap-3">
+              <Card className="border-foreground-300 dark:border">
+                <CardBody className="flex flex-col gap-2 p-4 sm:gap-3 sm:p-6">
+                  <h3 className="font-sans text-lg font-bold sm:text-xl">Kreatli</h3>
+                  <div className="flex gap-3 md:flex-row lg:flex-col">
                     <div className="flex flex-col">
-                      <div className="text-foreground-500 text-sm sm:text-md">Cost per month:</div>
-                      <div className="text-2xl sm:text-3xl font-bold font-sans text-success-600">
+                      <div className="sm:text-md text-sm text-foreground-500">Cost per month:</div>
+                      <div className="font-sans text-2xl font-bold text-success-600 sm:text-3xl">
                         {formatPrice(kreatliCost, { minimumFractionDigits: 0 })}
                       </div>
                     </div>
                     <div className="flex flex-col">
-                      <div className="text-foreground-500 text-sm sm:text-md">Cost per year:</div>
-                      <div className="text-2xl sm:text-3xl font-bold font-sans text-success-600">
+                      <div className="sm:text-md text-sm text-foreground-500">Cost per year:</div>
+                      <div className="font-sans text-2xl font-bold text-success-600 sm:text-3xl">
                         {formatPrice(kreatliCost * 12, { minimumFractionDigits: 0 })}
                       </div>
                     </div>

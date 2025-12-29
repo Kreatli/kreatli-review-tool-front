@@ -11,10 +11,10 @@ interface Props {
 
 export const ProjectFeatureFolder = ({ title, items, size, onClick }: Props) => {
   return (
-    <div className="bg-foreground-50 border border-foreground-300 rounded-2xl py-2.5 px-4 flex items-center gap-3">
-      <Icon icon="folder" className="text-foreground-500 size-5 shrink-0" />
-      <div className="flex flex-col items-start flex-1 overflow-hidden">
-        <div className="font-semibold text-foreground truncate w-full">{title}</div>
+    <div className="flex items-center gap-3 rounded-2xl border border-foreground-300 bg-foreground-50 px-4 py-2.5">
+      <Icon icon="folder" className="size-5 shrink-0 text-foreground-500" />
+      <div className="flex flex-1 flex-col items-start overflow-hidden">
+        <div className="w-full truncate font-semibold text-foreground">{title}</div>
         <div className="text-sm text-foreground-500">
           {items} file{items === 1 ? '' : 's'}, {formatBytes(size)}
         </div>

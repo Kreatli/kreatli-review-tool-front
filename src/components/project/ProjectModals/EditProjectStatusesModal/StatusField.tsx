@@ -39,11 +39,11 @@ export const StatusField = ({ value, index, onRemove }: Props) => {
   const isInvalid = !!errors?.statuses?.[index]?.label?.message;
 
   return (
-    <div ref={setNodeRef} style={style} className="flex items-center w-full gap-1">
+    <div ref={setNodeRef} style={style} className="flex w-full items-center gap-1">
       <div {...attributes} {...listeners}>
         <Icon icon="dotsSix" size={20} className="text-foreground-500" />
       </div>
-      <div className="flex-1 relative">
+      <div className="relative flex-1">
         <Input
           className="w-full"
           size="sm"
@@ -77,7 +77,7 @@ export const StatusField = ({ value, index, onRemove }: Props) => {
         />
         <Popover placement="bottom" isOpen={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
           <PopoverTrigger>
-            <div className="absolute top-1/2 right-2 -translate-y-1/2">
+            <div className="absolute right-2 top-1/2 -translate-y-1/2">
               <StatusColorDot color={colorField.value} />
             </div>
           </PopoverTrigger>

@@ -31,7 +31,7 @@ export const ProjectMembersThumbnails = ({ members, max = 3 }: Props) => {
               size="sm"
               isBordered
               className="data-[hover=true]:-translate-x-0"
-              fallback={<div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(member)}</div>}
+              fallback={<div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>}
             />
           </Tooltip>
         ))}

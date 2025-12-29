@@ -173,11 +173,11 @@ export default function ClientApprovalsPage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">{data.title}</h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">{data.intro}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">{data.title}</h1>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.intro}</p>
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>
@@ -195,45 +195,45 @@ export default function ClientApprovalsPage() {
       </section>
 
       {/* How It Works Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">{data.howItWorks.title}</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">{data.howItWorks.description}</p>
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.howItWorks.title}</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.howItWorks.description}</p>
           </div>
 
           {/* Steps Flow - Vertical Layout */}
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative mx-auto max-w-2xl">
             <div className="flex flex-col items-center gap-6">
               {data.howItWorks.steps.map((step, index) => (
                 <React.Fragment key={index}>
                   <Card className="group w-full">
-                    <CardBody className="flex flex-col sm:flex-row gap-6 items-center sm:items-start p-6 sm:p-8">
+                    <CardBody className="flex flex-col items-center gap-6 p-6 sm:flex-row sm:items-start sm:p-8">
                       <div className="relative flex-shrink-0">
-                        <div className="bg-foreground-100 rounded-full size-16 flex items-center justify-center transition-all duration-300 group-hover:bg-primary/10 group-hover:scale-105">
+                        <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/10">
                           <Icon
                             icon={step.icon as any}
                             size={28}
                             className="text-primary transition-colors duration-300"
                           />
                         </div>
-                        <div className="absolute -top-2 -right-2 bg-foreground text-content1 font-bold font-sans text-sm rounded-full size-7 flex items-center justify-center shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
+                        <div className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-foreground font-sans text-sm font-bold text-content1 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-md">
                           {step.number}
                         </div>
                       </div>
-                      <div className="flex flex-col gap-3 items-center sm:items-start text-center sm:text-left flex-1">
-                        <h3 className="text-lg font-semibold font-sans">{step.title}</h3>
-                        <p className="text-foreground-500 text-base leading-relaxed">{step.description}</p>
+                      <div className="flex flex-1 flex-col items-center gap-3 text-center sm:items-start sm:text-left">
+                        <h3 className="font-sans text-lg font-semibold">{step.title}</h3>
+                        <p className="text-base leading-relaxed text-foreground-500">{step.description}</p>
                       </div>
                     </CardBody>
                   </Card>
 
                   {/* Arrow Connector - Downward */}
                   {index < data.howItWorks.steps.length - 1 && (
-                    <div className="flex items-center justify-center py-2 flex-shrink-0">
+                    <div className="flex flex-shrink-0 items-center justify-center py-2">
                       <div className="flex flex-col items-center gap-1">
                         <div className="h-4 w-0.5 bg-gradient-to-b from-transparent to-primary/50" />
-                        <Icon icon="arrowRight" size={18} className="text-primary rotate-90" />
+                        <Icon icon="arrowRight" size={18} className="rotate-90 text-primary" />
                         <div className="h-4 w-0.5 bg-gradient-to-b from-primary/50 to-transparent" />
                       </div>
                     </div>
@@ -246,27 +246,27 @@ export default function ClientApprovalsPage() {
       </section>
 
       {/* Problems This Solves Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">{data.problemsSolved.title}</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.problemsSolved.title}</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Client approvals solve the common challenges agencies and production teams face when managing approvals
               through email and chat.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2">
             {data.problemsSolved.items.map((problem, index) => (
               <Card key={index}>
                 <CardBody className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="bg-warning-50 rounded-full p-2 flex-shrink-0">
+                    <div className="flex-shrink-0 rounded-full bg-warning-50 p-2">
                       <Icon icon={problem.icon as any} size={20} className="text-warning" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold font-sans mb-2">{problem.title}</h3>
-                      <p className="text-foreground-500 text-sm leading-relaxed">{problem.description}</p>
+                      <h3 className="mb-2 font-sans text-lg font-semibold">{problem.title}</h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">{problem.description}</p>
                     </div>
                   </div>
                 </CardBody>
@@ -277,29 +277,29 @@ export default function ClientApprovalsPage() {
       </section>
 
       {/* Who This Is For Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">{data.whoThisIsFor.title}</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">{data.whoThisIsFor.description}</p>
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.whoThisIsFor.title}</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.whoThisIsFor.description}</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             {data.whoThisIsFor.audiences.map((audience, index) => (
               <Card key={index} as={NextLink} href={audience.href} isPressable className="group h-full">
-                <CardBody className="p-6 flex flex-col gap-4 h-full">
+                <CardBody className="flex h-full flex-col gap-4 p-6">
                   <div className="flex items-center gap-3">
-                    <div className="bg-foreground-100 rounded-full p-2.5 transition-all duration-300 group-hover:bg-primary-50 group-hover:scale-105">
+                    <div className="rounded-full bg-foreground-100 p-2.5 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary-50">
                       <Icon
                         icon={audience.icon as any}
                         size={20}
                         className="text-primary transition-colors duration-300"
                       />
                     </div>
-                    <h3 className="text-lg font-semibold font-sans">{audience.title}</h3>
+                    <h3 className="font-sans text-lg font-semibold">{audience.title}</h3>
                   </div>
-                  <p className="text-foreground-500 text-sm leading-relaxed flex-1">{audience.description}</p>
-                  <div className="flex items-center gap-1 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <p className="flex-1 text-sm leading-relaxed text-foreground-500">{audience.description}</p>
+                  <div className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span>Learn more</span>
                     <Icon icon="arrowRight" size={16} />
                   </div>
@@ -311,11 +311,11 @@ export default function ClientApprovalsPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about client approvals for agencies and production teams.
             </p>
           </div>
@@ -323,18 +323,18 @@ export default function ClientApprovalsPage() {
             {data.faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
-                title={<span className="font-semibold text-base sm:text-lg">{faq.question}</span>}
+                title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >
-                <div className="text-foreground-500 leading-relaxed text-sm sm:text-base">{faq.answer}</div>
+                <div className="text-sm leading-relaxed text-foreground-500 sm:text-base">{faq.answer}</div>
               </AccordionItem>
             ))}
           </Accordion>
-          <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-12">
-            <h3 className="text-xl font-sans font-bold">Still Have Questions?</h3>
+          <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions?</h3>
             <p className="text-foreground-500">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-              <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary font-medium">
+              <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
               to learn how Kreatli can help your specific workflow.
@@ -344,14 +344,14 @@ export default function ClientApprovalsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Streamline Client Approvals?</h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Streamline Client Approvals?</h2>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience how Kreatli handles client approvals with version-specific tracking and clear accountability.
             Start using Kreatli today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

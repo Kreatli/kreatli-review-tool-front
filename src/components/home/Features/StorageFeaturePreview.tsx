@@ -256,19 +256,19 @@ export const StorageFeaturePreview = () => {
     return (
       <div
         key={upload.id}
-        className={`flex items-center gap-3 p-3 rounded-lg border transition-all ${
+        className={`flex items-center gap-3 rounded-lg border p-3 transition-all ${
           isCompleted
-            ? 'bg-foreground-50 border-foreground-200 hover:bg-foreground-100'
-            : 'bg-foreground-50 border-foreground-200'
+            ? 'border-foreground-200 bg-foreground-50 hover:bg-foreground-100'
+            : 'border-foreground-200 bg-foreground-50'
         }`}
       >
         {/* Thumbnail/Icon */}
-        <div className="size-12 shrink-0 rounded-lg overflow-hidden bg-foreground-100 border border-foreground-200 flex items-center justify-center">
+        <div className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-foreground-200 bg-foreground-100">
           {isImage && upload.thumbnailUrl ? (
             <Image
               src={upload.thumbnailUrl}
               alt={upload.name}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
               removeWrapper
               radius="none"
             />
@@ -278,11 +278,11 @@ export const StorageFeaturePreview = () => {
         </div>
 
         {/* File Info */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="font-medium text-sm truncate">{upload.name}</div>
+        <div className="min-w-0 flex-1">
+          <div className="mb-1 flex items-center gap-2">
+            <div className="truncate text-sm font-medium">{upload.name}</div>
           </div>
-          <div className="text-xs text-foreground-500 mb-1.5">
+          <div className="mb-1.5 text-xs text-foreground-500">
             {formatBytes(upload.size)} • {getFileTypeLabel(upload.fileType)}
           </div>
           <Progress
@@ -310,16 +310,16 @@ export const StorageFeaturePreview = () => {
   };
 
   return (
-    <Card className="relative group">
+    <Card className="group relative">
       <CardBody className="flex flex-col gap-6 p-6" onClick={handleClick}>
         {/* Header with Security Badge */}
-        <div className="flex justify-between items-center border-b border-foreground-200 pb-4">
+        <div className="flex items-center justify-between border-b border-foreground-200 pb-4">
           <div className="flex items-center gap-3">
-            <div className="bg-foreground-100 p-2.5 rounded-lg">
+            <div className="rounded-lg bg-foreground-100 p-2.5">
               <Icon icon="folder" size={20} />
             </div>
             <div className="flex flex-col">
-              <div className="font-semibold text-base">Creative Assets</div>
+              <div className="text-base font-semibold">Creative Assets</div>
               <div className="text-sm text-foreground-500">127 items, 45.2GB</div>
             </div>
           </div>
@@ -328,7 +328,7 @@ export const StorageFeaturePreview = () => {
             variant="flat"
             color="success"
             startContent={<Icon icon="shield" size={14} />}
-            className="cursor-pointer hover:bg-success-100 transition-colors"
+            className="cursor-pointer transition-colors hover:bg-success-100"
             onClick={(e) => {
               e.stopPropagation();
               handleClick();
@@ -340,18 +340,18 @@ export const StorageFeaturePreview = () => {
 
         {/* Upload Area */}
         <div
-          className="border-2 border-dashed border-foreground-300 rounded-xl p-8 bg-gradient-to-br from-foreground-50 to-foreground-100/50 hover:border-primary hover:from-primary-50/30 hover:to-primary-100/20 transition-all duration-300 cursor-pointer group/upload"
+          className="group/upload cursor-pointer rounded-xl border-2 border-dashed border-foreground-300 bg-gradient-to-br from-foreground-50 to-foreground-100/50 p-8 transition-all duration-300 hover:border-primary hover:from-primary-50/30 hover:to-primary-100/20"
           onClick={(e) => {
             e.stopPropagation();
             handleClick();
           }}
         >
           <div className="flex flex-col items-center gap-4 text-center">
-            <div className="bg-primary/10 rounded-full p-4 group-hover/upload:bg-primary/20 transition-colors">
+            <div className="rounded-full bg-primary/10 p-4 transition-colors group-hover/upload:bg-primary/20">
               <Icon icon="upload" size={28} className="text-primary" />
             </div>
             <div>
-              <div className="font-semibold text-base mb-1.5">Drag & drop files here</div>
+              <div className="mb-1.5 text-base font-semibold">Drag & drop files here</div>
               <div className="text-sm text-foreground-500">or click to browse • Supports files up to 10GB</div>
             </div>
             <Button

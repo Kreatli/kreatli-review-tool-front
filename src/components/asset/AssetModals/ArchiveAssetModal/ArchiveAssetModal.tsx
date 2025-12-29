@@ -57,7 +57,7 @@ export const ArchiveAssetModal = ({ projectId, asset, isOpen, onClose }: Props) 
             <div className="text-medium">
               Are you sure you want to archive <span className="font-semibold">&quot;{asset?.name}&quot;</span>?
             </div>
-            <div className="flex gap-2 justify-end">
+            <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isLoading} onClick={onClose}>
                 Cancel
               </Button>

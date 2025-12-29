@@ -20,7 +20,7 @@ export const DashboardChatConversation = ({ projectId, conversation }: Props) =>
   const isReadByUser = !conversation.lastMessage || conversation.lastMessage?.readBy.includes(user?.id ?? '');
 
   return (
-    <div className="relative border border-foreground-200 transition-colors hover:border-foreground-400 rounded-md p-3 flex justify-between gap-3 items-end">
+    <div className="relative flex items-end justify-between gap-3 rounded-md border border-foreground-200 p-3 transition-colors hover:border-foreground-400">
       <div className="flex items-start gap-2">
         <div>
           <ChatAvatar chat={conversation} />
@@ -34,12 +34,12 @@ export const DashboardChatConversation = ({ projectId, conversation }: Props) =>
               {conversationName}
             </Link>
             {!isReadByUser && (
-              <Chip variant="dot" size="sm" className="border-none pointer-events-none" color="primary">
+              <Chip variant="dot" size="sm" className="pointer-events-none border-none" color="primary">
                 You have unread messages
               </Chip>
             )}
           </div>
-          <div className="text-xs text-foreground-500 line-clamp-3">
+          <div className="line-clamp-3 text-xs text-foreground-500">
             {conversation.type === 'project' && conversation.lastMessage && (
               <span>{conversation.lastMessage.sender.name}: </span>
             )}
@@ -50,7 +50,7 @@ export const DashboardChatConversation = ({ projectId, conversation }: Props) =>
         </div>
       </div>
       {conversation.lastMessage?.createdAt && (
-        <div className="text-foreground-500 text-sm whitespace-nowrap">
+        <div className="whitespace-nowrap text-sm text-foreground-500">
           {formatRelativeTime(conversation.lastMessage?.createdAt)}
         </div>
       )}

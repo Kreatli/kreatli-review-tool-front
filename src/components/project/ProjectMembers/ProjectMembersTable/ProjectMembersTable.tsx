@@ -42,7 +42,7 @@ export const ProjectMembersTable = ({ members, isLoading, isEditable = false, on
                 size="sm"
                 isBordered
                 fallback={
-                  <div className="text-lg text-foreground-500 select-none">{getProjectMemberLetter(member)}</div>
+                  <div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>
                 }
               />
             </TableCell>

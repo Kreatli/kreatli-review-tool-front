@@ -24,19 +24,19 @@ export const Subscription = ({ user }: Props) => {
   const { usersCount, projectsCount, storage } = user.subscription.limits;
 
   return (
-    <div className="shadow-small rounded-medium dark:border border-foreground-300 px-5 p-4">
+    <div className="rounded-medium border-foreground-300 p-4 px-5 shadow-small dark:border">
       <div className="mb-4">
         <div className="text-xl font-semibold">Subscription</div>
         <div className="text-foreground-500">Manage your subscription here.</div>
       </div>
-      <div className="flex flex-col gap-2 mb-4">
-        <div className="flex gap-2 items-center justify-between">
+      <div className="mb-4 flex flex-col gap-2">
+        <div className="flex items-center justify-between gap-2">
           <div className="flex flex-col">
             <div className="text-lg">
               Current plan: <span className="font-semibold">{user.subscription.planName}</span>
             </div>
             {user.subscription.price > 0 && (
-              <div className="text-foreground-500 text-sm">${user.subscription.price} per user monthly</div>
+              <div className="text-sm text-foreground-500">${user.subscription.price} per user monthly</div>
             )}
           </div>
           <div className="flex items-center gap-2">
@@ -55,7 +55,7 @@ export const Subscription = ({ user }: Props) => {
         {user.subscription.plan !== 'advanced' && (
           <>
             <div className="flex flex-col gap-1">
-              <div className="flex gap-2 items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <div className="text-sm">Active users</div>
                 <div className="text-sm text-foreground-500">
                   {usersCount.used}/{usersCount.max}
@@ -64,7 +64,7 @@ export const Subscription = ({ user }: Props) => {
               <Progress value={(usersCount.used / usersCount.max) * 100} size="sm" color="default" />
             </div>
             <div className="flex flex-col gap-1">
-              <div className="flex gap-2 items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <div className="text-sm">Projects</div>
                 <div className="text-sm text-foreground-500">
                   {projectsCount.used}/{projectsCount.max}
@@ -75,7 +75,7 @@ export const Subscription = ({ user }: Props) => {
           </>
         )}
         <div className="flex flex-col gap-1">
-          <div className="flex gap-2 items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <div className="text-sm">{user.subscription.plan === 'free' ? 'Total upload*' : 'Storage'}</div>
             <div className="text-sm text-foreground-500">
               {formatBytes(storage.used)}/{formatBytes(storage.max)}
@@ -92,12 +92,12 @@ export const Subscription = ({ user }: Props) => {
       )}
       {user.subscription.plan !== 'free' && (
         <div className="flex flex-col gap-1">
-          <div className="flex gap-2 items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <div className="text-lg">Add-ons</div>
           </div>
           <div className="flex flex-col gap-1">
             {user.subscription.addons.map((addon) => (
-              <div className="flex gap-2 items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <div className="text-sm">
                   {addon.count} x {formatBytes(addon.value)}
                   <span className="text-foreground-500"> (${addon.price * addon.count} monthly)</span>
@@ -133,7 +133,7 @@ export const Subscription = ({ user }: Props) => {
               </div>
             ))}
             {user.subscription.addons.length === 0 && (
-              <Button className="self-start text-content1 bg-foreground" onClick={() => setIsAddAddonModalOpen(true)}>
+              <Button className="self-start bg-foreground text-content1" onClick={() => setIsAddAddonModalOpen(true)}>
                 Add 100GB for $5
               </Button>
             )}

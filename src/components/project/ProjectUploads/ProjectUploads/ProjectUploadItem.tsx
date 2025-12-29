@@ -45,12 +45,12 @@ export const ProjectUploadItem = ({
   };
 
   return (
-    <div className="py-2 px-1 relative hover:bg-foreground-100 transition-colors rounded-medium flex gap-2 items-start">
+    <div className="relative flex items-start gap-2 rounded-medium px-1 py-2 transition-colors hover:bg-foreground-100">
       <div className="size-10 shrink-0">
         {previewUrl ? (
-          <Image className="w-full h-full object-cover" removeWrapper src={previewUrl} alt={name} />
+          <Image className="h-full w-full object-cover" removeWrapper src={previewUrl} alt={name} />
         ) : (
-          <div className="w-full h-full rounded-large bg-foreground-100 flex items-center justify-center">
+          <div className="flex h-full w-full items-center justify-center rounded-large bg-foreground-100">
             <AssetIcon fileType={fileType} size={20} />
           </div>
         )}
@@ -58,7 +58,7 @@ export const ProjectUploadItem = ({
       <div className="flex-1">
         <Link
           href={folderId ? `/project/${projectId}/assets/folder/${folderId}` : `/project/${projectId}`}
-          className="font-medium line-clamp-2 break-all after:absolute after:inset-0"
+          className="line-clamp-2 break-all font-medium after:absolute after:inset-0"
         >
           {name}
         </Link>
@@ -77,7 +77,7 @@ export const ProjectUploadItem = ({
             isIconOnly
             radius="full"
             size="sm"
-            className={cn({ 'opacity-40 cursor-not-allowed': isLoading })}
+            className={cn({ 'cursor-not-allowed opacity-40': isLoading })}
             variant="light"
             onClick={handleCrossClick}
           >

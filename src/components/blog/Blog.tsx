@@ -8,7 +8,7 @@ interface Props {
 
 export const BlogArticles = ({ articles }: Props) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {articles.map((article) => (
         <BlogArticle key={article.id} article={article} />
       ))}

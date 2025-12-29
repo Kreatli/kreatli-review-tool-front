@@ -51,7 +51,7 @@ export const UpdateAddonModal = ({ addon, isOpen, onClose }: Props) => {
       <ModalContent>
         <ModalHeader>Update storage add-on</ModalHeader>
         <ModalBody>
-          <div className="flex items-center w-fit mx-auto gap-2">
+          <div className="mx-auto flex w-fit items-center gap-2">
             <Button
               isIconOnly
               radius="full"
@@ -74,7 +74,7 @@ export const UpdateAddonModal = ({ addon, isOpen, onClose }: Props) => {
               <Icon icon="plus" size={18} />
             </Button>
           </div>
-          <div className="text-foreground-500 text-sm text-center">
+          <div className="text-center text-sm text-foreground-500">
             {count} x 100GB for ${(addon?.price ?? 0) * count} monthly
           </div>
         </ModalBody>

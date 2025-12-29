@@ -54,7 +54,7 @@ export const ProjectUploadsButton = ({ headerRef }: Props) => {
   }, [uploads, totalProgress]);
 
   return (
-    <div className="flex flex-col gap-px -mb-1">
+    <div className="-mb-1 flex flex-col gap-px">
       <Popover
         placement="bottom"
         shouldCloseOnScroll={false}

@@ -46,7 +46,7 @@ export const ProjectFeatureFile = ({ title, size, comments, status: initialStatu
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="relative aspect-video rounded-2xl overflow-hidden border border-foreground-300 bg-foreground-50">
+      <div className="relative aspect-video overflow-hidden rounded-2xl border border-foreground-300 bg-foreground-50">
         <img
           src={`https://picsum.photos/600/400?title=${title}`}
           alt="File"
@@ -83,7 +83,7 @@ export const ProjectFeatureFile = ({ title, size, comments, status: initialStatu
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        <div className="font-semibold text-foreground truncate">{title}</div>
+        <div className="truncate font-semibold text-foreground">{title}</div>
         <div className="text-sm text-foreground-500">
           {comments} {comments === 1 ? 'comment' : 'comments'}
         </div>

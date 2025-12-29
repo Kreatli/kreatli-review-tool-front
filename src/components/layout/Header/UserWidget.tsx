@@ -22,9 +22,9 @@ export const UserWidget = () => {
           src={user.avatar?.url ?? ''}
           size="sm"
           isBordered
-          className="cursor-pointer ml-2"
+          className="ml-2 cursor-pointer"
           fallback={
-            <div className="text-lg text-foreground-500 select-none">{user.name.slice(0, 1).toUpperCase()}</div>
+            <div className="select-none text-lg text-foreground-500">{user.name.slice(0, 1).toUpperCase()}</div>
           }
         />
       </DropdownTrigger>

@@ -119,7 +119,7 @@ export const MoveToAssetsForm = ({ project, assetIds, currentParentId, onCancel,
         <Button variant="light" onClick={onCancel}>
           Cancel
         </Button>
-        <Button type="submit" isLoading={isMoving} isDisabled={isDisabled} className="text-content1 bg-foreground">
+        <Button type="submit" isLoading={isMoving} isDisabled={isDisabled} className="bg-foreground text-content1">
           Move
         </Button>
       </div>

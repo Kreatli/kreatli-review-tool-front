@@ -99,7 +99,7 @@ export const DashboardDescription = ({ project }: Props) => {
         <ScrollShadow
           isEnabled={!isEditable}
           ref={scrollRef}
-          className={cn('p-3 px-4 overflow-auto max-h-96', { 'max-h-[70vh]': isEditable })}
+          className={cn('max-h-96 overflow-auto p-3 px-4', { 'max-h-[70vh]': isEditable })}
         >
           <SimpleEditor
             editorRef={editorRef}
@@ -122,7 +122,7 @@ export const DashboardDescription = ({ project }: Props) => {
           {!isEditable && (
             <Button
               isIconOnly
-              className="absolute top-2 right-2"
+              className="absolute right-2 top-2"
               size="sm"
               variant="flat"
               color="primary"

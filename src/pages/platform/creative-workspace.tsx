@@ -33,14 +33,14 @@ export default function CreativeWorkspacePage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">One Place to Rule Them All</h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">One Place to Rule Them All</h1>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             A unified workspace for creative production teams. Project-tied conversations and asset-linked comments keep
             your workflow organized.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>
@@ -58,11 +58,11 @@ export default function CreativeWorkspacePage() {
       </section>
 
       {/* Centralized Dashboard Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Centralized Project Dashboard</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Centralized Project Dashboard</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
           </div>
@@ -71,11 +71,11 @@ export default function CreativeWorkspacePage() {
       </section>
 
       {/* Project-Tied Conversations Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Project-Tied Conversations</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Project-Tied Conversations</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Project-tied chats and asset-linked comments streamline your approval workflow—keep feedback with the
               asset.
             </p>
@@ -85,11 +85,11 @@ export default function CreativeWorkspacePage() {
       </section>
 
       {/* Storage Upload Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Secure File Storage & Upload</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Secure File Storage & Upload</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Upload and manage creative assets with drag & drop support, progress tracking, and encrypted storage.
             </p>
           </div>
@@ -98,25 +98,25 @@ export default function CreativeWorkspacePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Key Workspace Features</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Key Workspace Features</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for creative production workflows, not adapted from generic project management tools.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="chat" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Asset-Linked Feedback</h3>
+                  <h3 className="font-sans text-lg font-semibold">Asset-Linked Feedback</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Comments and conversations stay with your files. No more searching through email threads.
                 </p>
               </CardBody>
@@ -124,13 +124,13 @@ export default function CreativeWorkspacePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="slides" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Project Organization</h3>
+                  <h3 className="font-sans text-lg font-semibold">Project Organization</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Organize files by project, status, type, and more. Find what you need instantly with powerful
                   filtering.
                 </p>
@@ -139,13 +139,13 @@ export default function CreativeWorkspacePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="folder" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Unified Workspace</h3>
+                  <h3 className="font-sans text-lg font-semibold">Unified Workspace</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   All your projects, files, conversations, and activity in one centralized dashboard. No more
                   tool-switching.
                 </p>
@@ -154,13 +154,13 @@ export default function CreativeWorkspacePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="link" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Context-Rich Communication</h3>
+                  <h3 className="font-sans text-lg font-semibold">Context-Rich Communication</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Project-tied chats ensure all conversations stay with the relevant work, eliminating context loss.
                 </p>
               </CardBody>
@@ -168,13 +168,13 @@ export default function CreativeWorkspacePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="bell" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Real-Time Updates</h3>
+                  <h3 className="font-sans text-lg font-semibold">Real-Time Updates</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Stay in sync with real-time notifications for comments, approvals, and project updates.
                 </p>
               </CardBody>
@@ -182,13 +182,13 @@ export default function CreativeWorkspacePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Team Collaboration</h3>
+                  <h3 className="font-sans text-lg font-semibold">Team Collaboration</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Collaborate seamlessly with team members, clients, and external collaborators in one unified
                   workspace.
                 </p>
@@ -199,14 +199,14 @@ export default function CreativeWorkspacePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Unify Your Creative Workspace?</h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Unify Your Creative Workspace?</h2>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience a platform built specifically for creative teams. Streamline your entire creative production
             workflow.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

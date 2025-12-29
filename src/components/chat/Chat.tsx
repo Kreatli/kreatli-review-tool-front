@@ -15,7 +15,7 @@ export const Chat = () => {
   }, [chats, selectedConversationId]);
 
   return (
-    <div className="grid grid-cols-[300px_1fr] grid-rows-1 gap-4 flex-1 max-h-[max(300px,calc(100vh-255px))] min-h-[max(300px,calc(100vh-255px))] overflow-hidden">
+    <div className="grid max-h-[max(300px,calc(100vh-255px))] min-h-[max(300px,calc(100vh-255px))] flex-1 grid-cols-[300px_1fr] grid-rows-1 gap-4 overflow-hidden">
       <ChatConversations
         chats={chats}
         isDisabled={project.status !== 'active'}

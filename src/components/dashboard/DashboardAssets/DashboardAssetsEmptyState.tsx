@@ -11,7 +11,7 @@ export const DashboardAssetsEmptyState = () => {
       <EmptyState title="No files" text="You don't have any files here yet. Go ahead and upload one." size="sm">
         <Button
           size="sm"
-          className="text-content1 bg-foreground mt-4"
+          className="mt-4 bg-foreground text-content1"
           onClick={() => {
             inputRef.current?.click();
           }}
@@ -22,15 +22,15 @@ export const DashboardAssetsEmptyState = () => {
       </EmptyState>
       <div
         className={cn(
-          'absolute inset-0 rounded-medium bg-black/80 z-20 flex justify-center items-center transition-opacity opacity-0 pointer-events-none',
+          'pointer-events-none absolute inset-0 z-20 flex items-center justify-center rounded-medium bg-black/80 opacity-0 transition-opacity',
           {
             'opacity-100': isDragActive,
           },
         )}
       >
-        <div className="w-full h-full items-center justify-center rounded-medium flex flex-col gap-4">
+        <div className="flex h-full w-full flex-col items-center justify-center gap-4 rounded-medium">
           <Icon icon="upload" size={48} className="text-white" />
-          <div className="text-3xl font-sans font-bold text-white">Drop files here</div>
+          <div className="font-sans text-3xl font-bold text-white">Drop files here</div>
         </div>
       </div>
     </div>

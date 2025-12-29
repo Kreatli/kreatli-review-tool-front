@@ -48,7 +48,7 @@ export const RestoreProjectModal = ({ project, isOpen, onClose }: Props) => {
               Are you sure you want to restore <span className="font-semibold">&quot;{project?.name}&quot;</span>{' '}
               project?
             </div>
-            <div className="flex gap-2 justify-end">
+            <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isPending} onClick={onClose}>
                 Cancel
               </Button>

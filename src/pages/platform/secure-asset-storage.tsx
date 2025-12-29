@@ -35,15 +35,15 @@ export default function SecureAssetStoragePage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
             Reliable Media Storage for Creative Teams
           </h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Assign files, track deliverables, and share heavy media securely with enterprise-grade security.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>
@@ -61,11 +61,11 @@ export default function SecureAssetStoragePage() {
       </section>
 
       {/* Secure Storage Preview Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Secure File Upload and Encrypted Storage</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Secure File Upload and Encrypted Storage</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Upload large media files with real-time progress tracking. All files encrypted at rest with
               enterprise-grade security.
             </p>
@@ -75,13 +75,13 @@ export default function SecureAssetStoragePage() {
       </section>
 
       {/* Project Management Preview Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
               Project Management Meets Reliable Media Storage
             </h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Organize files by project, assign team members, track status, and manage deliverables in one workspace.
             </p>
           </div>
@@ -90,25 +90,25 @@ export default function SecureAssetStoragePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Secure Asset Storage Features</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Secure Asset Storage Features</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Enterprise-grade security and smart organization for your creative assets.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="shield" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Enterprise Security</h3>
+                  <h3 className="font-sans text-lg font-semibold">Enterprise Security</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Enterprise-level encryption, secure file sharing, and compliance-ready security for sensitive creative
                   work.
                 </p>
@@ -117,13 +117,13 @@ export default function SecureAssetStoragePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="folder" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Smart File Organization</h3>
+                  <h3 className="font-sans text-lg font-semibold">Smart File Organization</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Organize files by project, status, type, and more. Powerful filtering and search help you find what
                   you need.
                 </p>
@@ -132,13 +132,13 @@ export default function SecureAssetStoragePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="link" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Version History</h3>
+                  <h3 className="font-sans text-lg font-semibold">Version History</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Track all changes with comprehensive version history. Never lose your work and easily revert to
                   previous versions.
                 </p>
@@ -147,13 +147,13 @@ export default function SecureAssetStoragePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="upload" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Heavy Media Support</h3>
+                  <h3 className="font-sans text-lg font-semibold">Heavy Media Support</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Upload and share large video files, images, and creative assets. No more WeTransfer or cloud storage
                   juggling.
                 </p>
@@ -162,13 +162,13 @@ export default function SecureAssetStoragePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="eyeCrossed" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Access Controls</h3>
+                  <h3 className="font-sans text-lg font-semibold">Access Controls</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Set granular permissions for team members, controlling who can view, comment, approve, or download
                   files.
                 </p>
@@ -177,13 +177,13 @@ export default function SecureAssetStoragePage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="folder" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Reliable Storage</h3>
+                  <h3 className="font-sans text-lg font-semibold">Reliable Storage</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Dependable media storage infrastructure designed for creative production workflows. Your assets are
                   safe.
                 </p>
@@ -194,13 +194,13 @@ export default function SecureAssetStoragePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans">Ready to Secure Your Creative Assets?</h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Secure Your Creative Assets?</h2>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience enterprise-grade secure asset storage designed for creative production teams.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>

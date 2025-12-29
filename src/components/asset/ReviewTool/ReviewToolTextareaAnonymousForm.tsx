@@ -31,7 +31,7 @@ export const ReviewToolTextareaAnonymousForm = ({ onSubmit }: Props) => {
   };
 
   return (
-    <div className="flex flex-col items-start gap-3 w-full">
+    <div className="flex w-full flex-col items-start gap-3">
       <Input
         label="Enter your name"
         placeholder="Name"
@@ -43,7 +43,7 @@ export const ReviewToolTextareaAnonymousForm = ({ onSubmit }: Props) => {
         onKeyDown={handleKeyDown}
         onChange={handleChange}
       />
-      <Button size="sm" className="text-content1 bg-foreground" onClick={handleSubmit}>
+      <Button size="sm" className="bg-foreground text-content1" onClick={handleSubmit}>
         Send comment
       </Button>
     </div>

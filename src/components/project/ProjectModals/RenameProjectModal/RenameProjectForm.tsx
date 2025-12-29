@@ -55,7 +55,7 @@ export const RenameProjectForm = ({ project, onSuccess }: Props) => {
         errorMessage={errors.name?.message}
         {...register('name', VALIDATION_RULES.SHORT_TEXT)}
       />
-      <Button type="submit" isLoading={isPending} className="bg-foreground text-content1 w-fit ml-auto">
+      <Button type="submit" isLoading={isPending} className="ml-auto w-fit bg-foreground text-content1">
         Save changes
       </Button>
     </form>

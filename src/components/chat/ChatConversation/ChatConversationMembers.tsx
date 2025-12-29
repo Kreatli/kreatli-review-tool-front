@@ -26,7 +26,7 @@ export const ChatConversationMembers = ({ chat }: Props) => {
               size="sm"
               isBordered
               className="data-[hover=true]:-translate-x-0"
-              fallback={<div className="text-lg text-foreground-500 select-none">{member.name.at(0)}</div>}
+              fallback={<div className="select-none text-lg text-foreground-500">{member.name.at(0)}</div>}
             />
           </Tooltip>
         ))}

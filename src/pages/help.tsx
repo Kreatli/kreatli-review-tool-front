@@ -225,14 +225,14 @@ export default function HelpPage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">Help Center</h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Help Center</h1>
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Find answers to frequently asked questions about Kreatli's creative production platform, features, pricing,
             and more.
           </p>
-          <div className="max-w-2xl mx-auto mt-6 w-full">
+          <div className="mx-auto mt-6 w-full max-w-2xl">
             <Input
               placeholder="Search for answers..."
               value={searchQuery}
@@ -257,15 +257,15 @@ export default function HelpPage() {
 
       {/* Popular Questions Section */}
       {!searchQuery && popularFaqs.length > 0 && (
-        <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-          <div className="max-w-6xl mx-auto relative z-10">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Popular Questions</h2>
-              <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+        <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="mb-8 text-center">
+              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Popular Questions</h2>
+              <p className="mx-auto max-w-2xl text-lg text-foreground-500">
                 Quick answers to the most common questions
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid gap-6 md:grid-cols-2">
               {popularFaqs.slice(0, 4).map((faq) => (
                 <Card
                   key={faq.key}
@@ -280,11 +280,11 @@ export default function HelpPage() {
                 >
                   <CardBody className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="bg-foreground-100 rounded-full p-2 flex-shrink-0">
+                      <div className="flex-shrink-0 rounded-full bg-foreground-100 p-2">
                         <Icon icon="helpCircle" size={20} className="text-primary" />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-lg leading-relaxed">{faq.question}</h3>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-lg font-semibold leading-relaxed">{faq.question}</h3>
                       </div>
                     </div>
                   </CardBody>
@@ -296,12 +296,12 @@ export default function HelpPage() {
       )}
 
       {/* Category Navigation & FAQ Sections */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
           {/* Category Tabs */}
           <div className="mb-8">
-            <div className="flex items-center justify-between mb-6">
-              <h2 id="browse-by-category" className="text-2xl sm:text-4xl font-bold font-sans scroll-mt-24">
+            <div className="mb-6 flex items-center justify-between">
+              <h2 id="browse-by-category" className="scroll-mt-24 font-sans text-2xl font-bold sm:text-4xl">
                 Browse by Category
               </h2>
               {selectedCategory !== 'all' && (
@@ -355,11 +355,11 @@ export default function HelpPage() {
                   .map(({ category, faqs: categoryFaqs, config }) => {
                     return (
                       <div key={category} id={`category-${category}`} className="mb-12 scroll-mt-24">
-                        <div className="flex items-center gap-3 mb-6">
-                          <div className="bg-foreground-100 rounded-full p-2">
+                        <div className="mb-6 flex items-center gap-3">
+                          <div className="rounded-full bg-foreground-100 p-2">
                             <Icon icon={config.icon as any} size={20} className="text-primary" />
                           </div>
-                          <h3 className="text-xl sm:text-2xl font-bold font-sans">{config.name}</h3>
+                          <h3 className="font-sans text-xl font-bold sm:text-2xl">{config.name}</h3>
                           <Chip size="sm" variant="flat">
                             {categoryFaqs.length}
                           </Chip>
@@ -375,9 +375,9 @@ export default function HelpPage() {
                             <AccordionItem
                               key={faq.key}
                               id={`faq-${faq.key}`}
-                              title={<span className="font-semibold text-base">{faq.question}</span>}
+                              title={<span className="text-base font-semibold">{faq.question}</span>}
                             >
-                              <div className="text-foreground-500 space-y-3 whitespace-pre-wrap leading-relaxed">
+                              <div className="space-y-3 whitespace-pre-wrap leading-relaxed text-foreground-500">
                                 {faq.answer}
                               </div>
                             </AccordionItem>
@@ -392,11 +392,11 @@ export default function HelpPage() {
                   {selectedCategory !== 'all' &&
                     (() => {
                       return (
-                        <div className="flex items-center gap-3 mb-6">
-                          <div className="bg-foreground-100 rounded-full p-2">
+                        <div className="mb-6 flex items-center gap-3">
+                          <div className="rounded-full bg-foreground-100 p-2">
                             <Icon icon={displayedCategory.config.icon as any} size={20} className="text-primary" />
                           </div>
-                          <h3 className="text-xl sm:text-2xl font-bold font-sans">{displayedCategory.config.name}</h3>
+                          <h3 className="font-sans text-xl font-bold sm:text-2xl">{displayedCategory.config.name}</h3>
                           <Chip size="sm" variant="flat" className="ml-2">
                             {displayedCategory.faqs.length}
                           </Chip>
@@ -414,9 +414,9 @@ export default function HelpPage() {
                       <AccordionItem
                         key={faq.key}
                         id={`faq-${faq.key}`}
-                        title={<span className="font-semibold text-base">{faq.question}</span>}
+                        title={<span className="text-base font-semibold">{faq.question}</span>}
                       >
-                        <div className="text-foreground-500 space-y-3 whitespace-pre-wrap leading-relaxed">
+                        <div className="space-y-3 whitespace-pre-wrap leading-relaxed text-foreground-500">
                           {faq.answer}
                         </div>
                       </AccordionItem>
@@ -427,11 +427,11 @@ export default function HelpPage() {
             </div>
           ) : (
             <Card>
-              <CardBody className="p-12 text-center items-center">
-                <div className="bg-foreground-100 rounded-full p-4 w-fit mx-auto mb-4">
+              <CardBody className="items-center p-12 text-center">
+                <div className="mx-auto mb-4 w-fit rounded-full bg-foreground-100 p-4">
                   <Icon icon="search" size={28} className="text-foreground-400" />
                 </div>
-                <h3 className="text-xl font-bold font-sans mb-2">No results found</h3>
+                <h3 className="mb-2 font-sans text-xl font-bold">No results found</h3>
                 <p className="mb-6 max-w-md">
                   {searchQuery
                     ? "We couldn't find any FAQs matching your search. Try different keywords or browse by category."
@@ -455,15 +455,15 @@ export default function HelpPage() {
       </section>
 
       {/* Contact Support Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center flex flex-col gap-6">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans">Still Have Questions?</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="flex flex-col gap-6 text-center">
+            <h2 className="font-sans text-2xl font-bold sm:text-4xl">Still Have Questions?</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               If you didn't find the answer you were looking for, our support team is here to help. Reach out to us and
               we'll get back to you as soon as possible.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+            <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
                 as="a"
                 href="mailto:support@kreatli.com"

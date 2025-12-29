@@ -117,23 +117,23 @@ export default function WhoWeHelpPage() {
       <Header />
       <Decorations />
       {/* Why Kreatli Fits Section - Moved to top */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-6">Why creative teams choose Kreatli</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-4 text-center">
+            <h2 className="mb-6 font-sans text-2xl font-bold sm:text-4xl">Why creative teams choose Kreatli</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for creative workflows, not adapted from project management or file storage tools.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="chat" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Asset-Linked Feedback</h3>
+                  <h3 className="font-sans text-lg font-semibold">Asset-Linked Feedback</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Comments and conversations stay with your files. No more searching through email threads or messaging
                   apps to find feedback.
                 </p>
@@ -142,11 +142,11 @@ export default function WhoWeHelpPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="paint" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Frame-Accurate Reviews</h3>
+                  <h3 className="font-sans text-lg font-semibold">Frame-Accurate Reviews</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Pin comments to exact frames in videos or specific areas in images. Eliminate "which clip?" confusion
                   forever.
                 </p>
@@ -155,11 +155,11 @@ export default function WhoWeHelpPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="link" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">No-Signup Guest Links</h3>
+                  <h3 className="font-sans text-lg font-semibold">No-Signup Guest Links</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Share review links with clients and collaborators instantly. They can review and comment without
                   creating accounts.
                 </p>
@@ -168,11 +168,11 @@ export default function WhoWeHelpPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="folder" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Project Organization</h3>
+                  <h3 className="font-sans text-lg font-semibold">Project Organization</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Organize files by project, status, type, and more. Find what you need instantly with powerful
                   filtering and search.
                 </p>
@@ -181,11 +181,11 @@ export default function WhoWeHelpPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="upload" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Heavy Media Support</h3>
+                  <h3 className="font-sans text-lg font-semibold">Heavy Media Support</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Upload and share large video files, images, and creative assets. No more WeTransfer or cloud storage
                   juggling.
                 </p>
@@ -194,11 +194,11 @@ export default function WhoWeHelpPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="mb-4 flex items-center gap-3">
                   <Icon icon="shield" size={20} className="text-primary" />
-                  <h3 className="text-lg font-semibold font-sans">Secure & Private</h3>
+                  <h3 className="font-sans text-lg font-semibold">Secure & Private</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Enterprise-grade security with password protection, access controls, and secure file sharing for
                   sensitive creative work.
                 </p>
@@ -209,16 +209,16 @@ export default function WhoWeHelpPage() {
       </section>
 
       {/* Hero Section */}
-      <section className="relative backdrop-blur-lg lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h1 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
             Who is Kreatli’s Creative Production Platform For?
           </h1>
-          <p className="text-lg sm:text-xl text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500 sm:text-xl">
             Whether you're a content creator, creative team or digital agency, Kreatli covers all your needs. Discover
             how different creative professionals use Kreatli to streamline their workflows.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Get Started for Free
             </Button>
@@ -236,35 +236,35 @@ export default function WhoWeHelpPage() {
       </section>
 
       {/* Audience Cards Section */}
-      <section className="relative backdrop-blur-lg lg:py-16 py-8 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col gap-12 relative z-10">
+      <section className="relative overflow-hidden px-6 py-8 backdrop-blur-lg lg:py-16">
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-12">
           <div className="grid gap-8">
             {audiences.map((audience) => (
-              <Card key={audience.id} className="dark:border border-foreground-300">
-                <CardBody className="p-8 lg:p-12 flex flex-col lg:flex-row gap-8 lg:gap-12">
+              <Card key={audience.id} className="border-foreground-300 dark:border">
+                <CardBody className="flex flex-col gap-8 p-8 lg:flex-row lg:gap-12 lg:p-12">
                   <div className="flex flex-col gap-6 lg:w-1/3">
-                    <div className="bg-foreground-100 rounded-full size-16 lg:size-20 flex items-center justify-center">
+                    <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 lg:size-20">
                       <Icon
                         icon={audience.icon as any}
                         className="text-foreground-400 dark:text-foreground-600"
                         size={32}
                       />
                     </div>
-                    <h3 className="text-2xl lg:text-3xl font-semibold font-sans">{audience.title}</h3>
-                    <p className="text-foreground-500 text-base lg:text-lg">{audience.description}</p>
+                    <h3 className="font-sans text-2xl font-semibold lg:text-3xl">{audience.title}</h3>
+                    <p className="text-base text-foreground-500 lg:text-lg">{audience.description}</p>
                   </div>
 
-                  <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
-                    <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-8 border-foreground-200 lg:w-2/3 lg:border-l lg:pl-8">
+                    <div className="grid gap-8 sm:grid-cols-2">
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="warning" size={24} className="text-warning" />
                           Common Challenges
                         </h4>
                         <ul className="flex flex-col gap-3">
                           {audience.painPoints.map((point, index) => (
                             <li key={index} className="flex items-start gap-2 text-base text-foreground-500">
-                              <Icon icon="minus" size={18} className="text-foreground-400 mt-0.5 flex-shrink-0" />
+                              <Icon icon="minus" size={18} className="mt-0.5 flex-shrink-0 text-foreground-400" />
                               <span>{point}</span>
                             </li>
                           ))}
@@ -272,14 +272,14 @@ export default function WhoWeHelpPage() {
                       </div>
 
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="checkCircle" size={24} className="text-success" />
                           How Kreatli Helps
                         </h4>
                         <ul className="flex flex-col gap-3">
                           {audience.benefits.map((benefit, index) => (
                             <li key={index} className="flex items-start gap-2 text-base text-foreground-500">
-                              <Icon icon="check" size={18} className="text-success mt-0.5 flex-shrink-0" />
+                              <Icon icon="check" size={18} className="mt-0.5 flex-shrink-0 text-success" />
                               <span>{benefit}</span>
                             </li>
                           ))}
@@ -288,7 +288,7 @@ export default function WhoWeHelpPage() {
                     </div>
 
                     <div>
-                      <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                      <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                         <Icon icon="slides" size={24} className="text-primary" />
                         Popular Use Cases
                       </h4>
@@ -309,11 +309,11 @@ export default function WhoWeHelpPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Learn how different types of creative professionals use Kreatli to improve their workflows and
               collaboration.
             </p>
@@ -323,12 +323,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="video-creators"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does Kreatli help independent video creators and YouTubers?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli is designed specifically for video creators who need to manage multiple projects, collaborate
                   with editors, and get client feedback efficiently. The platform's frame-accurate review feature allows
@@ -354,12 +354,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="micro-teams"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What makes Kreatli ideal for micro-teams working with external clients?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Micro-teams (typically 2-10 people) working with external clients face unique challenges: managing
                   multiple client projects simultaneously, keeping client communications organized, and tracking
@@ -385,12 +385,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="agencies"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How do creative agencies and post-production boutiques benefit from Kreatli?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Creative agencies and post-production boutiques need to scale their operations while maintaining
                   quality and managing complex projects with multiple stakeholders. Kreatli provides unlimited projects
@@ -418,12 +418,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="team-size"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What team sizes is Kreatli best suited for, and does it scale?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli works well for teams of all sizes, from solo creators to large agencies. Solo video creators
                   and freelancers benefit from the platform's organization and client collaboration features. Small
@@ -449,12 +449,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="use-cases"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What are the most common use cases for Kreatli across different creative professionals?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Video creators commonly use Kreatli for client approval workflows on sponsored content, collaboration
                   with freelance editors, organizing multiple YouTube series or channels, and managing review and
@@ -480,12 +480,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="client-collaboration"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does Kreatli handle client collaboration for teams working with external clients?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli is designed specifically for teams that need to collaborate with external clients and
                   stakeholders. The platform's no-signup guest review links allow clients to access review interfaces
@@ -512,12 +512,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="workflow-improvement"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does Kreatli improve workflows compared to using multiple separate tools?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli consolidates multiple tools (file storage, project management, video review, team
                   communication) into one integrated platform, eliminating tool-switching and context loss. Instead of
@@ -544,12 +544,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="getting-started"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How do different types of creative professionals get started with Kreatli?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Getting started with Kreatli is straightforward for all types of creative professionals. The platform
                   offers a Free Plan with full access to all features (2 projects, 2 users), allowing you to test the
@@ -575,12 +575,12 @@ export default function WhoWeHelpPage() {
             <AccordionItem
               key="specific-needs"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Can Kreatli handle the specific needs of different creative industries?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli is designed for creative workflows across industries, including video production, design
                   agencies, marketing agencies, post-production houses, and content creation. The platform's core
@@ -606,11 +606,11 @@ export default function WhoWeHelpPage() {
             </AccordionItem>
           </Accordion>
 
-          <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-8">
-            <h3 className="text-xl font-sans font-bold">Still Have Questions About Who Kreatli Is For?</h3>
+          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions About Who Kreatli Is For?</h3>
             <p className="text-foreground-500">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-              <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary">
+              <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
               to learn how Kreatli can help your specific creative workflow.
@@ -620,15 +620,15 @@ export default function WhoWeHelpPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-3 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
+          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
             Ready to streamline your creative workflow?
           </h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Join thousands of creative professionals who have simplified their collaboration process with Kreatli.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Start Free Trial
             </Button>

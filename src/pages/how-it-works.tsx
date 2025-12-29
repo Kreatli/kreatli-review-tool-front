@@ -30,30 +30,30 @@ export default function HowItWorksPage() {
       <Header />
       <Decorations />
       {/* Hero Section */}
-      <section className="relative py-16 px-6 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h1 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
             Get Started with Kreatli in 4 Simple Steps
           </h1>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Streamline your creative workflow from project creation to final delivery. Kreatli makes collaboration
             simple, organized, and efficient for creative teams of all sizes.
           </p>
-          <div className="flex flex-wrap gap-6 justify-center mt-4">
+          <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-3xl font-bold font-sans">4 Steps</div>
-              <div className="text-sm sm:text-md text-foreground-500">To Get Started</div>
+              <div className="font-sans text-2xl font-bold sm:text-3xl">4 Steps</div>
+              <div className="sm:text-md text-sm text-foreground-500">To Get Started</div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-3xl font-bold font-sans">5 Minutes</div>
-              <div className="text-sm sm:text-md text-foreground-500">Setup Time</div>
+              <div className="font-sans text-2xl font-bold sm:text-3xl">5 Minutes</div>
+              <div className="sm:text-md text-sm text-foreground-500">Setup Time</div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="text-2xl sm:text-3xl font-bold font-sans">Zero</div>
-              <div className="text-sm sm:text-md text-foreground-500">Learning Curve</div>
+              <div className="font-sans text-2xl font-bold sm:text-3xl">Zero</div>
+              <div className="sm:text-md text-sm text-foreground-500">Learning Curve</div>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-6">
+          <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Start Now for Free
             </Button>
@@ -71,56 +71,56 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Visual Workflow Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">
+      <section className="relative px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
               Your Complete Creative Production Workflow
             </h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               See how all the pieces fit together to create a seamless creative collaboration experience that saves time
               and eliminates confusion.
             </p>
           </div>
 
           {/* Workflow Progress Indicator */}
-          <div className="flex justify-center mb-12 sticky top-20 z-10">
-            <div className="flex items-center gap-4 bg-background rounded-full px-6 py-3 shadow-large">
-              <div className="flex items-center gap-2 group cursor-pointer">
-                <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+          <div className="sticky top-20 z-10 mb-12 flex justify-center">
+            <div className="flex items-center gap-4 rounded-full bg-background px-6 py-3 shadow-large">
+              <div className="group flex cursor-pointer items-center gap-2">
+                <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                 <a
                   href="#setup"
-                  className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                 >
                   Setup
                 </a>
               </div>
-              <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-              <div className="flex items-center gap-2 group cursor-pointer">
-                <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+              <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+              <div className="group flex cursor-pointer items-center gap-2">
+                <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                 <a
                   href="#collaborate"
-                  className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                 >
                   Collaborate
                 </a>
               </div>
-              <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-              <div className="flex items-center gap-2 group cursor-pointer">
-                <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+              <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+              <div className="group flex cursor-pointer items-center gap-2">
+                <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                 <a
                   href="#review"
-                  className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                 >
                   Review
                 </a>
               </div>
-              <div className="w-8 hidden md:block h-px bg-gradient-to-r from-primary to-foreground-300"></div>
-              <div className="flex items-center gap-2 group cursor-pointer">
-                <div className="size-2 bg-primary rounded-full transition-transform duration-200"></div>
+              <div className="hidden h-px w-8 bg-gradient-to-r from-primary to-foreground-300 md:block"></div>
+              <div className="group flex cursor-pointer items-center gap-2">
+                <div className="size-2 rounded-full bg-primary transition-transform duration-200"></div>
                 <a
                   href="#deliver"
-                  className="text-sm font-medium group-hover:text-primary transition-colors duration-200"
+                  className="text-sm font-medium transition-colors duration-200 group-hover:text-primary"
                 >
                   Deliver
                 </a>
@@ -132,18 +132,18 @@ export default function HowItWorksPage() {
             {/* Step 1: Project Setup */}
             <Card id="setup" className="scroll-mt-36">
               <CardBody className="p-5 sm:p-8 lg:p-12">
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
                   <div className="flex flex-col gap-6 lg:w-1/3">
                     <div className="flex items-center gap-4">
-                      <div className="shrink-0 size-14 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+                      <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 md:size-20">
                         <Icon icon="folder" size={32} className="text-primary" />
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-primary mb-1">Step 1</div>
-                        <h3 className="text-2xl lg:text-3xl font-bold font-sans">Project Setup</h3>
+                        <div className="mb-1 text-sm font-medium text-primary">Step 1</div>
+                        <h3 className="font-sans text-2xl font-bold lg:text-3xl">Project Setup</h3>
                       </div>
                     </div>
-                    <p className="text-foreground-500 text-base lg:text-lg">
+                    <p className="text-base text-foreground-500 lg:text-lg">
                       Create your project workspace and establish the foundation for seamless collaboration. Upload
                       files, connect cloud storage, and organize everything for your team.
                     </p>
@@ -153,34 +153,34 @@ export default function HowItWorksPage() {
                     </div>
                   </div>
 
-                  <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
-                    <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-8 border-foreground-200 lg:w-2/3 lg:border-l lg:pl-8">
+                    <div className="grid gap-8 sm:grid-cols-2">
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="list" size={24} className="text-primary" />
                           Process Breakdown
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">1</span>
                             </div>
                             <span>Create project and set basic information</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">2</span>
                             </div>
                             <span>Upload files or connect cloud storage</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">3</span>
                             </div>
                             <span>Organize files by folders and categories</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">4</span>
                             </div>
                             <span>Configure project settings and permissions</span>
@@ -189,25 +189,25 @@ export default function HowItWorksPage() {
                       </div>
 
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="warning" size={24} className="text-warning" />
                           Challenges Addressed
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Files scattered across multiple platforms</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Version confusion and lost files</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Time wasted searching for assets</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Inconsistent project organization</span>
                           </li>
                         </ul>
@@ -215,13 +215,13 @@ export default function HowItWorksPage() {
                     </div>
 
                     <div>
-                      <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                      <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                         <Icon icon="slides" size={24} className="text-success" />
                         Real-World Example
                       </h4>
                       <Card className="bg-success/5">
                         <CardBody className="p-6">
-                          <p className="text-base text-foreground-600 mb-3">
+                          <p className="mb-3 text-base text-foreground-600">
                             <strong>Marketing Agency Scenario:</strong> You're starting a new campaign for a client.
                             Instead of creating folders in Google Drive, sharing Dropbox links, and managing files
                             across email, you create one Kreatli project. Upload the brand assets, connect the client's
@@ -251,31 +251,31 @@ export default function HowItWorksPage() {
             </Card>
 
             {/* Enhanced Flow Arrow */}
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-primary"></div>
-                <div className="size-8 bg-primary/10 rounded-full flex items-center justify-center border-2 border-primary/30">
+                <div className="h-8 w-px bg-gradient-to-b from-primary/50 to-primary"></div>
+                <div className="flex size-8 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
                   <Icon icon="chevronDown" size={20} className="text-primary" />
                 </div>
-                <div className="w-px h-8 bg-gradient-to-b from-primary to-primary/50"></div>
+                <div className="h-8 w-px bg-gradient-to-b from-primary to-primary/50"></div>
               </div>
             </div>
 
             {/* Step 2: Team Collaboration */}
             <Card id="collaborate" className="scroll-mt-36">
               <CardBody className="p-5 sm:p-8 lg:p-12">
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
                   <div className="flex flex-col gap-6 lg:w-1/3">
                     <div className="flex items-center gap-4">
-                      <div className="shrink-0 size-14 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+                      <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 md:size-20">
                         <Icon icon="userPlus" size={32} className="text-primary" />
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-primary mb-1">Step 2</div>
-                        <h3 className="text-2xl lg:text-3xl font-bold font-sans">Team Collaboration</h3>
+                        <div className="mb-1 text-sm font-medium text-primary">Step 2</div>
+                        <h3 className="font-sans text-2xl font-bold lg:text-3xl">Team Collaboration</h3>
                       </div>
                     </div>
-                    <p className="text-foreground-500 text-base lg:text-lg">
+                    <p className="text-base text-foreground-500 lg:text-lg">
                       Bring your team and clients into the project with seamless access controls. No friction, no
                       barriers - just smooth collaboration from day one.
                     </p>
@@ -285,34 +285,34 @@ export default function HowItWorksPage() {
                     </div>
                   </div>
 
-                  <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
-                    <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-8 border-foreground-200 lg:w-2/3 lg:border-l lg:pl-8">
+                    <div className="grid gap-8 sm:grid-cols-2">
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="list" size={24} className="text-primary" />
                           Process Breakdown
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">1</span>
                             </div>
                             <span>Add team members with specific roles</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">2</span>
                             </div>
                             <span>Generate secure guest links for clients</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">3</span>
                             </div>
                             <span>Set permissions and access levels</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">4</span>
                             </div>
                             <span>Send invitations and onboard collaborators</span>
@@ -321,25 +321,25 @@ export default function HowItWorksPage() {
                       </div>
 
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="warning" size={24} className="text-warning" />
                           Challenges Addressed
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Client onboarding friction and delays</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Managing multiple tool access permissions</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Email chains for access requests</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Security concerns with file sharing</span>
                           </li>
                         </ul>
@@ -347,13 +347,13 @@ export default function HowItWorksPage() {
                     </div>
 
                     <div>
-                      <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                      <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                         <Icon icon="slides" size={24} className="text-success" />
                         Real-World Example
                       </h4>
                       <Card className="bg-success/5">
                         <CardBody className="p-6">
-                          <p className="text-base text-foreground-600 mb-3">
+                          <p className="mb-3 text-base text-foreground-600">
                             <strong>Video Production Scenario:</strong> You need feedback from the client, the brand
                             manager, and two internal stakeholders. Instead of setting up accounts in multiple tools,
                             you generate one secure link with password protection. Share it via email or Slack. Everyone
@@ -382,31 +382,31 @@ export default function HowItWorksPage() {
             </Card>
 
             {/* Enhanced Flow Arrow */}
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-primary"></div>
-                <div className="size-8 bg-primary/10 rounded-full flex items-center justify-center border-2 border-primary/30">
+                <div className="h-8 w-px bg-gradient-to-b from-primary/50 to-primary"></div>
+                <div className="flex size-8 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
                   <Icon icon="chevronDown" size={20} className="text-primary" />
                 </div>
-                <div className="w-px h-8 bg-gradient-to-b from-primary to-primary/50"></div>
+                <div className="h-8 w-px bg-gradient-to-b from-primary to-primary/50"></div>
               </div>
             </div>
 
             {/* Step 3: Review & Feedback */}
             <Card id="review" className="scroll-mt-36">
               <CardBody className="p-5 sm:p-8 lg:p-12">
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
                   <div className="flex flex-col gap-6 lg:w-1/3">
                     <div className="flex items-center gap-4">
-                      <div className="shrink-0 size-14 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+                      <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 md:size-20">
                         <Icon icon="chat" size={32} className="text-primary" />
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-primary mb-1">Step 3</div>
-                        <h3 className="text-2xl lg:text-3xl font-bold font-sans">Review & Feedback</h3>
+                        <div className="mb-1 text-sm font-medium text-primary">Step 3</div>
+                        <h3 className="font-sans text-2xl font-bold lg:text-3xl">Review & Feedback</h3>
                       </div>
                     </div>
-                    <p className="text-foreground-500 text-base lg:text-lg">
+                    <p className="text-base text-foreground-500 lg:text-lg">
                       Collect precise, actionable feedback that's impossible to misunderstand. Frame-accurate comments
                       and asset-linked conversations eliminate confusion and speed up revisions.
                     </p>
@@ -416,34 +416,34 @@ export default function HowItWorksPage() {
                     </div>
                   </div>
 
-                  <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
-                    <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-8 border-foreground-200 lg:w-2/3 lg:border-l lg:pl-8">
+                    <div className="grid gap-8 sm:grid-cols-2">
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="list" size={24} className="text-primary" />
                           Process Breakdown
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">1</span>
                             </div>
                             <span>Reviewers click on exact frames or image areas</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">2</span>
                             </div>
                             <span>Add detailed comments with context</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">3</span>
                             </div>
                             <span>Assign tasks to specific team members</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">4</span>
                             </div>
                             <span>Track progress and mark items complete</span>
@@ -452,25 +452,25 @@ export default function HowItWorksPage() {
                       </div>
 
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="warning" size={24} className="text-warning" />
                           Challenges Addressed
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>"Which frame?" or "what timestamp?" confusion</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Feedback lost in email threads</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Unclear or vague feedback</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Multiple revision rounds for simple changes</span>
                           </li>
                         </ul>
@@ -478,13 +478,13 @@ export default function HowItWorksPage() {
                     </div>
 
                     <div>
-                      <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                      <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                         <Icon icon="slides" size={24} className="text-success" />
                         Real-World Example
                       </h4>
                       <Card className="bg-success/5">
                         <CardBody className="p-6">
-                          <p className="text-base text-foreground-600 mb-3">
+                          <p className="mb-3 text-base text-foreground-600">
                             <strong>Design Review Scenario:</strong> A client reviews a promotional video and clicks on
                             frame 2:34 to comment "The logo needs to be 20% larger here." The designer sees exactly
                             which frame, at what timestamp, with the specific feedback. No guessing, no back-and-forth
@@ -514,31 +514,31 @@ export default function HowItWorksPage() {
             </Card>
 
             {/* Enhanced Flow Arrow */}
-            <div className="flex justify-center items-center">
+            <div className="flex items-center justify-center">
               <div className="flex flex-col items-center gap-2">
-                <div className="w-px h-8 bg-gradient-to-b from-primary/50 to-primary"></div>
-                <div className="size-8 bg-primary/10 rounded-full flex items-center justify-center border-2 border-primary/30">
+                <div className="h-8 w-px bg-gradient-to-b from-primary/50 to-primary"></div>
+                <div className="flex size-8 items-center justify-center rounded-full border-2 border-primary/30 bg-primary/10">
                   <Icon icon="chevronDown" size={20} className="text-primary" />
                 </div>
-                <div className="w-px h-8 bg-gradient-to-b from-primary to-primary/50"></div>
+                <div className="h-8 w-px bg-gradient-to-b from-primary to-primary/50"></div>
               </div>
             </div>
 
             {/* Step 4: Delivery & Completion */}
             <Card id="deliver" className="scroll-mt-36">
               <CardBody className="p-5 sm:p-8 lg:p-12">
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+                <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
                   <div className="flex flex-col gap-6 lg:w-1/3">
                     <div className="flex items-center gap-4">
-                      <div className="shrink-0 size-14 md:size-20 bg-primary/10 rounded-full flex items-center justify-center">
+                      <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 md:size-20">
                         <Icon icon="checkCircle" size={32} className="text-primary" />
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-primary mb-1">Step 4</div>
-                        <h3 className="text-2xl lg:text-3xl font-bold font-sans">Delivery & Completion</h3>
+                        <div className="mb-1 text-sm font-medium text-primary">Step 4</div>
+                        <h3 className="font-sans text-2xl font-bold lg:text-3xl">Delivery & Completion</h3>
                       </div>
                     </div>
-                    <p className="text-foreground-500 text-base lg:text-lg">
+                    <p className="text-base text-foreground-500 lg:text-lg">
                       Deliver projects with confidence and complete documentation. Track every deliverable, maintain
                       version history, and provide clients with exactly what they approved.
                     </p>
@@ -548,34 +548,34 @@ export default function HowItWorksPage() {
                     </div>
                   </div>
 
-                  <div className="lg:w-2/3 lg:pl-8 lg:border-l border-foreground-200 flex flex-col gap-8">
-                    <div className="grid sm:grid-cols-2 gap-8">
+                  <div className="flex flex-col gap-8 border-foreground-200 lg:w-2/3 lg:border-l lg:pl-8">
+                    <div className="grid gap-8 sm:grid-cols-2">
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="list" size={24} className="text-primary" />
                           Process Breakdown
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">1</span>
                             </div>
                             <span>Review project status and completion</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">2</span>
                             </div>
                             <span>Export approved final versions</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">3</span>
                             </div>
                             <span>Generate delivery reports and documentation</span>
                           </li>
                           <li className="flex items-start gap-3 text-base text-foreground-500">
-                            <div className="size-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="mt-0.5 flex size-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/20">
                               <span className="text-xs font-bold text-primary">4</span>
                             </div>
                             <span>Archive project with complete history</span>
@@ -584,25 +584,25 @@ export default function HowItWorksPage() {
                       </div>
 
                       <div>
-                        <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                        <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                           <Icon icon="warning" size={24} className="text-warning" />
                           Challenges Addressed
                         </h4>
                         <ul className="flex flex-col gap-3">
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Confusion about final vs. draft versions</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Missing deliverables or incomplete projects</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Lack of project completion documentation</span>
                           </li>
                           <li className="flex items-start gap-2 text-base text-foreground-500">
-                            <Icon icon="cross" size={18} className="text-warning mt-0.5 flex-shrink-0" />
+                            <Icon icon="cross" size={18} className="mt-0.5 flex-shrink-0 text-warning" />
                             <span>Client requests for "previous versions"</span>
                           </li>
                         </ul>
@@ -610,13 +610,13 @@ export default function HowItWorksPage() {
                     </div>
 
                     <div>
-                      <h4 className="text-xl font-bold font-sans mb-4 flex items-center gap-2">
+                      <h4 className="mb-4 flex items-center gap-2 font-sans text-xl font-bold">
                         <Icon icon="slides" size={24} className="text-success" />
                         Real-World Example
                       </h4>
                       <Card className="bg-success/5">
                         <CardBody className="p-6">
-                          <p className="text-base text-foreground-600 mb-3">
+                          <p className="mb-3 text-base text-foreground-600">
                             <strong>Campaign Completion Scenario:</strong> Your marketing campaign is approved and ready
                             to launch. You export the final video files, download the approved graphics, and generate a
                             delivery report showing all completed tasks and approvals. Six months later, the client asks
@@ -649,26 +649,26 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Why This Process Works</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-4 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Why This Process Works</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Our simple 4-step workflow eliminates complexity and saves you time at every stage of your creative
               process.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="time" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Saves Time</h3>
+                  <h3 className="font-sans text-lg font-semibold">Saves Time</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   No more switching between multiple tools. Everything you need is in one place, reducing context
                   switching and saving hours every week.
                 </p>
@@ -677,13 +677,13 @@ export default function HowItWorksPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="checkCircle" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Reduces Errors</h3>
+                  <h3 className="font-sans text-lg font-semibold">Reduces Errors</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Frame-accurate comments and asset-linked conversations ensure feedback is never lost or misunderstood.
                   Everyone knows exactly what needs to be changed.
                 </p>
@@ -692,13 +692,13 @@ export default function HowItWorksPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Improves Collaboration</h3>
+                  <h3 className="font-sans text-lg font-semibold">Improves Collaboration</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Clients and team members can collaborate seamlessly without signups or complex onboarding. Everyone
                   stays in sync automatically.
                 </p>
@@ -707,13 +707,13 @@ export default function HowItWorksPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="folder" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Stays Organized</h3>
+                  <h3 className="font-sans text-lg font-semibold">Stays Organized</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   All files, conversations, and project history are organized in one place. Find what you need instantly
                   with powerful search and filtering.
                 </p>
@@ -722,13 +722,13 @@ export default function HowItWorksPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="shield" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Secure & Private</h3>
+                  <h3 className="font-sans text-lg font-semibold">Secure & Private</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Enterprise-grade security with password protection and access controls. Your creative work stays
                   private and secure.
                 </p>
@@ -737,13 +737,13 @@ export default function HowItWorksPage() {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-100 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="update" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Version Control</h3>
+                  <h3 className="font-sans text-lg font-semibold">Version Control</h3>
                 </div>
-                <p className="text-foreground-500 text-sm">
+                <p className="text-sm text-foreground-500">
                   Complete version history for all your files. Never lose work and easily revert to previous versions
                   when needed.
                 </p>
@@ -754,11 +754,11 @@ export default function HowItWorksPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about the 4-step workflow, setup process, and how Kreatli streamlines your creative
               collaboration.
             </p>
@@ -768,12 +768,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="get-started"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How long does it take to get started with Kreatli's 4-step workflow?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   You can be up and running with Kreatli in under 5 minutes. The process is straightforward: create an
                   account (takes 30 seconds), create your first project (1 minute), and start uploading files or
@@ -798,12 +798,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="client-accounts"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Do clients and external collaborators need to create accounts to use Kreatli?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   No! One of Kreatli's key features is no-signup guest review links. You can share secure review links
                   with clients, stakeholders, and external collaborators, and they can review files, add comments, and
@@ -828,12 +828,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="project-setup"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What's involved in the Project Setup step, and how does it save time?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   The Project Setup step involves creating your project workspace, uploading files or connecting cloud
                   storage, organizing files by folders and categories, and configuring project settings and permissions.
@@ -859,12 +859,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="cloud-storage"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Can I connect my existing cloud storage, and how does that work?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Yes! Kreatli integrates with Google Drive and Dropbox, allowing you to connect your existing file
                   storage and sync files between platforms. You can continue using your preferred cloud storage while
@@ -890,12 +890,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="frame-accurate"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does frame-accurate commenting work in the Review & Feedback step?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Frame-accurate commenting allows reviewers to pin comments to exact frames and timestamps in video
                   files. When reviewing a video, you can click on any specific frame to add a comment that's permanently
@@ -921,12 +921,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="team-collaboration"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   How does the Team Collaboration step work, and what makes it efficient?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   The Team Collaboration step involves adding team members with specific roles, generating secure guest
                   links for clients, setting permissions and access levels, and sending invitations to onboard
@@ -954,12 +954,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="delivery"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What happens in the Delivery & Completion step, and how does it help with project closure?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   The Delivery & Completion step involves reviewing project status and completion, exporting approved
                   final versions, generating delivery reports and documentation, and archiving projects with complete
@@ -986,12 +986,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="learning-curve"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Is there a learning curve, and how quickly can teams become productive?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Kreatli is designed to be intuitive with minimal learning curve. The 4-step process is straightforward
                   and sequential, making it easy to understand how the platform works. The interface is built
@@ -1018,12 +1018,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="workflow-benefits"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   What are the main benefits of following Kreatli's 4-step workflow?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   The 4-step workflow (Project Setup, Team Collaboration, Review & Feedback, Delivery & Completion)
                   provides structure and efficiency to creative production management. By following this process, teams
@@ -1051,12 +1051,12 @@ export default function HowItWorksPage() {
             <AccordionItem
               key="try-before-committing"
               title={
-                <span className="font-semibold text-base">
+                <span className="text-base font-semibold">
                   Can I try Kreatli's workflow before committing to a paid plan?
                 </span>
               }
             >
-              <div className="text-foreground-500 space-y-3">
+              <div className="space-y-3 text-foreground-500">
                 <p>
                   Absolutely! Kreatli offers a Free Plan with full access to all features (2 projects, 2 users),
                   allowing you to test the complete 4-step workflow with real projects before committing. There's no
@@ -1081,11 +1081,11 @@ export default function HowItWorksPage() {
             </AccordionItem>
           </Accordion>
 
-          <div className="max-w-3xl mx-auto flex flex-col gap-4 text-center items-center mt-8">
-            <h3 className="text-xl font-sans font-bold">Still Have Questions About How Kreatli Works?</h3>
+          <div className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions About How Kreatli Works?</h3>
             <p className="text-foreground-500">
               If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
-              <a href="mailto:support@kreatli.com" className="underline underline-offset-2 text-primary">
+              <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
               to learn more about the 4-step workflow and how it can streamline your creative collaboration.
@@ -1095,16 +1095,16 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
             Ready to Streamline Your Workflow?
           </h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Join creative teams who have simplified their collaboration process. Get started in 4 simple steps and see
             the difference immediately.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Start Now for Free
             </Button>

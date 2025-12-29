@@ -49,7 +49,7 @@ export const RestoreAssetsModal = ({ projectId, assetIds, isOpen, onClose, onSuc
             <div className="text-medium">
               Are you sure you want to restore {assetIds.length} asset{assetIds.length === 1 ? '' : 's'}?
             </div>
-            <div className="flex gap-2 justify-end">
+            <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isPending} onClick={onClose}>
                 Cancel
               </Button>

@@ -35,15 +35,15 @@ export const ShareableAsset = ({ file, shareableLinkId }: Props) => {
 
   return (
     <div className="border-t border-foreground-300">
-      <div className="px-6 py-1 flex gap-2 items-center border-b border-foreground-300">
-        <div className="text-md font-semibold truncate">{file.name}</div>
-        <div className="text-sm text-foreground-500 whitespace-nowrap">{formatBytes(file.fileSize)}</div>
+      <div className="flex items-center gap-2 border-b border-foreground-300 px-6 py-1">
+        <div className="text-md truncate font-semibold">{file.name}</div>
+        <div className="whitespace-nowrap text-sm text-foreground-500">{formatBytes(file.fileSize)}</div>
         <Button size="sm" variant="flat" color="primary" onClick={handleDownload}>
           <Icon icon="download" size={16} />
           <span className="font-medium">Download</span>
         </Button>
       </div>
-      <div className="md:grid grid-cols-[1fr,350px] md:h-[calc(100vh-106px)]">
+      <div className="grid-cols-[1fr,350px] md:grid md:h-[calc(100vh-106px)]">
         <div className="flex flex-col overflow-hidden">
           <ReviewToolContextProvider>
             <ReviewToolCanvasShapesContextProvider>

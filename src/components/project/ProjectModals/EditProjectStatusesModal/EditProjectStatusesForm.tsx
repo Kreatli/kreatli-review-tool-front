@@ -82,7 +82,7 @@ export const EditProjectStatusesForm = ({ statuses, onSubmit }: Props) => {
   return (
     <FormProvider {...methods}>
       <form id="edit-project-statuses-form" noValidate onSubmit={handleSubmit((data) => onSubmit(data.statuses))}>
-        <div className="w-full flex flex-col gap-2 min-h-60">
+        <div className="flex min-h-60 w-full flex-col gap-2">
           <DndContext
             sensors={sensors}
             modifiers={[restrictToParentElement]}

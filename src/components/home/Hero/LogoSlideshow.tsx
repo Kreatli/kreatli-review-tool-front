@@ -62,7 +62,7 @@ export const LogoSlideshow = ({ logos, delay = 0, direction = 'bottom' }: Props)
   }, []);
 
   return (
-    <span className="inline relative">
+    <span className="relative inline">
       <span className="invisible">
         <img className="inline" src={logos[activeIndex]} width="96" height="24" />
       </span>
@@ -72,7 +72,7 @@ export const LogoSlideshow = ({ logos, delay = 0, direction = 'bottom' }: Props)
           src={logos[activeIndex]}
           width="96"
           height="24"
-          className="absolute inset-0 dark:invert dark:grayscale dark:brightness-50"
+          className="absolute inset-0 dark:brightness-50 dark:grayscale dark:invert"
           initial={{ y: direction === 'top' ? '100%' : '-100%', opacity: 0 }}
           animate={{ y: '0%', opacity: 1 }}
           exit={{ y: direction === 'top' ? '-100%' : '100%', opacity: 0 }}

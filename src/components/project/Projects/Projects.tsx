@@ -62,8 +62,8 @@ export const Projects = () => {
   };
 
   return (
-    <div className="p-6 border-t border-foreground-200">
-      <div className="flex justify-between gap-4 mb-2">
+    <div className="border-t border-foreground-200 p-6">
+      <div className="mb-2 flex justify-between gap-4">
         <h2 className="text-3xl font-semibold">Projects</h2>
         <Button className="bg-foreground text-content1" onClick={handleCreateProjectClick}>
           <Icon icon="plus" size={16} />
@@ -71,7 +71,7 @@ export const Projects = () => {
         </Button>
       </div>
       <div className="mb-4">
-        <div className="flex gap-6 justify-between">
+        <div className="flex justify-between gap-6">
           <div className="flex gap-6">
             <Tabs selectedKey={status} onSelectionChange={handleTabChange}>
               <Tab title={`All (${data?.totals.all ?? 0})`} key="all" />

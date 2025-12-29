@@ -66,7 +66,7 @@ export const ProjectFileStatus = ({ file, projectId, statuses, className, isDisa
           isDisabled={isDisabled}
           color="default"
           classNames={{ dot: 'bg-current', content: 'text-foreground max-w-32 truncate' }}
-          className={cn('bg-default-100 cursor-pointer', className)}
+          className={cn('cursor-pointer bg-default-100', className)}
         >
           {activeStatus?.label ?? 'No status'}
         </Chip>
@@ -78,14 +78,14 @@ export const ProjectFileStatus = ({ file, projectId, statuses, className, isDisa
         selectedKeys={selectedKeys}
         onSelectionChange={handleSelectionChange}
       >
-        <DropdownItem key="none" startContent={<span className="w-2 h-2 rounded-full bg-default" />}>
+        <DropdownItem key="none" startContent={<span className="h-2 w-2 rounded-full bg-default" />}>
           No status
         </DropdownItem>
         {statuses.map((status) => (
           <DropdownItem
             key={status.value}
             className="max-w-60 truncate"
-            startContent={<span className="w-2 h-2 rounded-full bg-current" style={{ color: status.color }} />}
+            startContent={<span className="h-2 w-2 rounded-full bg-current" style={{ color: status.color }} />}
           >
             {status.label}
           </DropdownItem>

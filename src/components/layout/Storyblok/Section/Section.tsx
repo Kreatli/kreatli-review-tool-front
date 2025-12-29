@@ -17,16 +17,16 @@ export const Section = ({ blok }: Props) => {
     <div className="flex flex-col gap-6">
       <div
         className={cn({
-          'grid gap-y-2 gap-x-8 items-center': orientation === 'horizontal',
+          'grid items-center gap-x-8 gap-y-2': orientation === 'horizontal',
           'sm:grid-cols-2': !!image?.filename,
         })}
         {...storyblokEditable(blok)}
       >
         <div>
-          <TitleTag className="text-4xl font-sans font-bold mb-4">{title}</TitleTag>
+          <TitleTag className="mb-4 font-sans text-4xl font-bold">{title}</TitleTag>
           {text && <p className="text-lg text-foreground-500">{text}</p>}
           {buttons && buttons?.length > 0 && (
-            <div className="flex flex-wrap gap-4 mt-4">
+            <div className="mt-4 flex flex-wrap gap-4">
               {buttons.map((button) => (
                 <Button
                   key={button._uid}
@@ -43,7 +43,7 @@ export const Section = ({ blok }: Props) => {
           )}
         </div>
         {image?.filename && (
-          <div className="max-h-[500px] shadow-large overflow-hidden mt-4 rounded-medium outline outline-1 outline-offset-2 outline-foreground-300">
+          <div className="mt-4 max-h-[500px] overflow-hidden rounded-medium shadow-large outline outline-1 outline-offset-2 outline-foreground-300">
             <Image
               src={image.filename}
               removeWrapper
@@ -51,7 +51,7 @@ export const Section = ({ blok }: Props) => {
               width="800"
               shadow="none"
               height="600"
-              className="w-full h-auto max-h-[500px] object-cover"
+              className="h-auto max-h-[500px] w-full object-cover"
               alt={image.alt || ''}
             />
           </div>

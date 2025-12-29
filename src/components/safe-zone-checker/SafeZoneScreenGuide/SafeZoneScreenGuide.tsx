@@ -6,26 +6,26 @@ export const SafeZoneScreenGuide = () => {
   return (
     <div>
       {/* What are Safe Zones Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold max-w-md mx-auto text-center font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mx-auto mb-4 max-w-md text-center font-sans text-2xl font-bold sm:text-4xl">
               What are Safe Zones and Why They Matter
             </h2>
-            <p className="text-lg text-foreground-500 max-w-3xl mx-auto">
+            <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Safe zones are buffer areas inside your video canvas where important visual elements are guaranteed to
               remain visible, regardless of device differences or UI overlays.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid gap-8 md:grid-cols-2">
             <Card>
               <CardBody className="p-6 lg:p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-primary/10 rounded-full p-3">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-primary/10 p-3">
                     <Icon icon="shield" size={24} className="text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold font-sans">Protect Your Content</h3>
+                  <h3 className="font-sans text-xl font-bold">Protect Your Content</h3>
                 </div>
                 <p className="text-foreground-500">
                   Apps like TikTok, Instagram, and YouTube put playback controls, profile bars, comment buttons,
@@ -37,11 +37,11 @@ export const SafeZoneScreenGuide = () => {
 
             <Card>
               <CardBody className="p-6 lg:p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-success/10 rounded-full p-3">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-success/10 p-3">
                     <Icon icon="checkCircle" size={24} className="text-success" />
                   </div>
-                  <h3 className="text-xl font-bold font-sans">Professional Results</h3>
+                  <h3 className="font-sans text-xl font-bold">Professional Results</h3>
                 </div>
                 <p className="text-foreground-500">
                   Treating safe zones as a built-in editing discipline means fewer layout surprises, fewer reworks, and
@@ -53,26 +53,26 @@ export const SafeZoneScreenGuide = () => {
         </div>
       </section>
 
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl max-w-2xl mx-auto text-center font-bold font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <h2 className="mx-auto mb-4 max-w-2xl text-center font-sans text-2xl font-bold sm:text-4xl">
               Platform-Specific Safe Zone Recommendations
             </h2>
-            <p className="text-lg text-foreground-500 max-w-3xl mx-auto">
+            <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Each platform has unique UI overlays and cropping behavior. Follow these recommendations for optimal
               visibility across all devices and viewing contexts.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-500/10 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-500/10 p-2">
                     <Icon icon="instagram" size={20} />
                   </div>
-                  <h3 className="text-lg font-bold font-sans">Instagram Reels</h3>
+                  <h3 className="font-sans text-lg font-bold">Instagram Reels</h3>
                 </div>
                 <div className="space-y-2 text-sm text-foreground-500">
                   <div>
@@ -84,7 +84,7 @@ export const SafeZoneScreenGuide = () => {
                   <div>
                     <strong className="text-foreground">Side padding:</strong> ~60px (UI elements)
                   </div>
-                  <p className="pt-2 border-t border-foreground-200">
+                  <p className="border-t border-foreground-200 pt-2">
                     Ensures text/logos avoid feed/profile crop, and UI overlays won't cover CTAs.
                   </p>
                 </div>
@@ -93,11 +93,11 @@ export const SafeZoneScreenGuide = () => {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-500/10 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-500/10 p-2">
                     <Icon icon="youtube" size={20} />
                   </div>
-                  <h3 className="text-lg font-bold font-sans">YouTube Shorts</h3>
+                  <h3 className="font-sans text-lg font-bold">YouTube Shorts</h3>
                 </div>
                 <div className="space-y-2 text-sm text-foreground-500">
                   <div>
@@ -109,7 +109,7 @@ export const SafeZoneScreenGuide = () => {
                   <div>
                     <strong className="text-foreground">Focus:</strong> Top and center areas
                   </div>
-                  <p className="pt-2 border-t border-foreground-200">
+                  <p className="border-t border-foreground-200 pt-2">
                     Prevents overlay from captions, progress bar, and ensures clear thumbnail visibility.
                   </p>
                 </div>
@@ -118,11 +118,11 @@ export const SafeZoneScreenGuide = () => {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-foreground-500/10 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-500/10 p-2">
                     <Icon icon="tiktok" size={20} />
                   </div>
-                  <h3 className="text-lg font-bold font-sans">TikTok</h3>
+                  <h3 className="font-sans text-lg font-bold">TikTok</h3>
                 </div>
                 <div className="space-y-2 text-sm text-foreground-500">
                   <div>
@@ -134,7 +134,7 @@ export const SafeZoneScreenGuide = () => {
                   <div>
                     <strong className="text-foreground">Side padding:</strong> ~60px
                   </div>
-                  <p className="pt-2 border-t border-foreground-200">
+                  <p className="border-t border-foreground-200 pt-2">
                     Avoids overlap with caption box and action icons; ensures clarity on different device sizes.
                   </p>
                 </div>
@@ -142,7 +142,7 @@ export const SafeZoneScreenGuide = () => {
             </Card>
           </div>
 
-          <div className="flex justify-center mt-8">
+          <div className="mt-8 flex justify-center">
             <Button
               as="a"
               className="bg-foreground text-content1"
@@ -156,13 +156,13 @@ export const SafeZoneScreenGuide = () => {
       </section>
 
       {/* How to Use Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl max-w-xl mx-auto text-center font-bold font-sans mb-4">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mx-auto mb-4 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
               How to Use Safe-Zone Checker in Your Workflow
             </h2>
-            <p className="text-lg text-foreground-500 max-w-3xl mx-auto">
+            <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Follow this step-by-step process to ensure your content looks perfect on every platform.
             </p>
           </div>
@@ -207,18 +207,18 @@ export const SafeZoneScreenGuide = () => {
             ].map((item) => (
               <Card key={item.step} className="scroll-mt-36">
                 <CardBody className="p-6 lg:p-8">
-                  <div className="flex flex-col lg:flex-row gap-6">
+                  <div className="flex flex-col gap-6 lg:flex-row">
                     <div className="flex items-start gap-4 lg:w-96 lg:shrink-0">
-                      <div className="shrink-0 size-12 bg-primary/10 rounded-full flex items-center justify-center">
+                      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
                         <Icon icon={item.icon as any} size={24} className="text-primary" />
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-primary mb-1">Step {item.step}</div>
-                        <h3 className="text-xl font-bold font-sans">{item.title}</h3>
+                        <div className="mb-1 text-sm font-medium text-primary">Step {item.step}</div>
+                        <h3 className="font-sans text-xl font-bold">{item.title}</h3>
                       </div>
                     </div>
-                    <div className="lg:w-auto lg:pl-8 lg:border-l border-foreground-200">
-                      <p className="text-foreground-500 text-base lg:text-lg">{item.description}</p>
+                    <div className="border-foreground-200 lg:w-auto lg:border-l lg:pl-8">
+                      <p className="text-base text-foreground-500 lg:text-lg">{item.description}</p>
                     </div>
                   </div>
                 </CardBody>
@@ -229,24 +229,24 @@ export const SafeZoneScreenGuide = () => {
       </section>
 
       {/* Why This Matters Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold font-sans mb-4">Why This Matters More Than Ever</h2>
-            <p className="text-lg text-foreground-500 max-w-3xl mx-auto">
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Why This Matters More Than Ever</h2>
+            <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               With vertical video reaching everywhere - stories, shorts, social feeds, ads - inconsistent visibility can
               silently erode audience engagement.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-danger/10 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-danger/10 p-2">
                     <Icon icon="cross" size={20} className="text-danger" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Hidden Impact</h3>
+                  <h3 className="font-sans text-lg font-semibold">Hidden Impact</h3>
                 </div>
                 <p className="text-foreground-500">
                   Missed captions, hidden logos, or obscured CTAs don't surface as technical failures - they lower
@@ -257,11 +257,11 @@ export const SafeZoneScreenGuide = () => {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-success/10 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-success/10 p-2">
                     <Icon icon="checkCircle" size={20} className="text-success" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Protect Creative Intent</h3>
+                  <h3 className="font-sans text-lg font-semibold">Protect Creative Intent</h3>
                 </div>
                 <p className="text-foreground-500">
                   By embedding safe-zone discipline early and standardizing across projects via templates and project
@@ -272,11 +272,11 @@ export const SafeZoneScreenGuide = () => {
 
             <Card>
               <CardBody className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-primary/10 rounded-full p-2">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-primary/10 p-2">
                     <Icon icon="shield" size={20} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold font-sans">Reduce Errors</h3>
+                  <h3 className="font-sans text-lg font-semibold">Reduce Errors</h3>
                 </div>
                 <p className="text-foreground-500">
                   Reduce errors and deliver polished content no matter where it lands. Your content will look
@@ -289,9 +289,9 @@ export const SafeZoneScreenGuide = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="relative py-16 px-6 backdrop-blur-lg overflow-hidden">
-        <div className="max-w-4xl mx-auto relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans text-center mb-8">Frequently Asked Questions</h2>
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <h2 className="mb-8 text-center font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
 
           <Accordion variant="splitted">
             <AccordionItem
@@ -366,16 +366,16 @@ export const SafeZoneScreenGuide = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-foreground-50 lg:py-24 py-16 px-6 overflow-hidden">
-        <div className="max-w-4xl mx-auto text-center flex flex-col gap-6 relative z-10">
-          <h2 className="text-2xl sm:text-4xl font-bold font-sans max-w-lg mx-auto">
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
+          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
             Ready to Ensure Your Content Looks Perfect?
           </h2>
-          <p className="text-lg text-foreground-500 max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Use our safe zone checker tool to preview your content with accurate platform overlays. Ensure your videos,
             titles, logos, and CTAs stay visible across all devices and platforms.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Start for Free
             </Button>

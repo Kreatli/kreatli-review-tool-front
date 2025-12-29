@@ -10,12 +10,12 @@ export const Dashboard = () => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="grid lg:grid-cols-2 gap-5">
+      <div className="grid gap-5 lg:grid-cols-2">
         <DashboardDescription project={project} />
         <DashboardChat project={project} />
       </div>
       <DashboardAssets project={project} />
-      <div className="grid lg:grid-cols-[400px,1fr] gap-5">
+      <div className="grid gap-5 lg:grid-cols-[400px,1fr]">
         <DashboardMembers project={project} />
         <DashboardActivity project={project} />
       </div>

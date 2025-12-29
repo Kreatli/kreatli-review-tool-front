@@ -51,8 +51,8 @@ export const ChatConversationSearchMessages = ({ search, conversationId }: Props
   };
 
   return (
-    <div className="px-2 pb-2 overflow-hidden h-full">
-      <div className="bg-background rounded-medium h-full flex flex-col">
+    <div className="h-full overflow-hidden px-2 pb-2">
+      <div className="flex h-full flex-col rounded-medium bg-background">
         {isLoading ? (
           <div className="p-2">
             <ChatMessagesLoader />
@@ -61,10 +61,10 @@ export const ChatConversationSearchMessages = ({ search, conversationId }: Props
           <EmptyState title={`No messages found with "${search}"`} />
         ) : (
           <>
-            <ChatConversationCloud className="sticky top-0 text-small mt-2 mx-auto">
+            <ChatConversationCloud className="sticky top-0 mx-auto mt-2 text-small">
               {messagesCount} message{messagesCount > 1 ? 's' : ''} found with "{search}"
             </ChatConversationCloud>
-            <div className="overflow-auto h-full p-2">
+            <div className="h-full overflow-auto p-2">
               <ChatMessagesList
                 messages={messages}
                 messagesCount={messagesCount}

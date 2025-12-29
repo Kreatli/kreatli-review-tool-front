@@ -11,15 +11,15 @@ export const LogoCheckbox = ({ src, isSelected, label, onSelectionChange }: Prop
   return (
     <label
       className={cn(
-        'bg-foreground-50 outline outline-1 outline-transparent rounded-md w-fit transition-all p-2 border-1 cursor-pointer border-foreground-200 grayscale',
+        'w-fit cursor-pointer rounded-md border-1 border-foreground-200 bg-foreground-50 p-2 outline outline-1 outline-transparent grayscale transition-all',
         {
-          'outline-foreground-300 border-foreground-300 dark:outline-foreground-500 dark:border-foreground-500 grayscale-0':
+          'border-foreground-300 outline-foreground-300 grayscale-0 dark:border-foreground-500 dark:outline-foreground-500':
             isSelected,
         },
       )}
     >
       <input
-        className="opacity-0 w-px h-px absolute"
+        className="absolute h-px w-px opacity-0"
         type="checkbox"
         checked={isSelected}
         aria-label={label}
@@ -27,7 +27,7 @@ export const LogoCheckbox = ({ src, isSelected, label, onSelectionChange }: Prop
       />
       <img
         src={src}
-        className={cn('dark:invert dark:grayscale dark:opacity-50 opacity-75 transition-all', {
+        className={cn('opacity-75 transition-all dark:opacity-50 dark:grayscale dark:invert', {
           'opacity-100 dark:opacity-100 dark:brightness-50': isSelected,
         })}
         width="96"

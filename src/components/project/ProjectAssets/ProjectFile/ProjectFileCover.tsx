@@ -20,7 +20,7 @@ export const ProjectFileCover = ({ file, isLoading = false }: Props) => {
   };
 
   return (
-    <div className="relative overflow-hidden aspect-video border border-foreground-300 rounded-2xl bg-foreground-50 flex justify-center">
+    <div className="relative flex aspect-video justify-center overflow-hidden rounded-2xl border border-foreground-300 bg-foreground-50">
       {isError ? (
         <AssetIcon fileType={file.fileType} />
       ) : (
@@ -37,11 +37,11 @@ export const ProjectFileCover = ({ file, isLoading = false }: Props) => {
           onError={handleError}
         />
       )}
-      <Chip size="sm" variant="faded" className="absolute border-1 bottom-2 right-2 z-10">
+      <Chip size="sm" variant="faded" className="absolute bottom-2 right-2 z-10 border-1">
         <span className="font-medium text-foreground-700">{formatBytes(file.fileSize)}</span>
       </Chip>
       {isLoading && (
-        <div className="absolute bg-foreground-50/75 p-4 inset-0 z-10 flex items-center justify-center">
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-foreground-50/75 p-4">
           <Spinner color="current" className="text-foreground" />
         </div>
       )}

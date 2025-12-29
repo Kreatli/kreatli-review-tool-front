@@ -104,7 +104,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -123,7 +123,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -149,7 +149,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -171,7 +171,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -193,7 +193,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}/assets/${fileId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -212,7 +212,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -231,7 +231,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}/chat?conversationId=${chatId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -250,7 +250,7 @@ export const Notification = ({ notification }: Props) => {
             as={NextLink}
             href={`/project/${projectId}`}
             size="sm"
-            className="inline break-all z-10"
+            className="z-10 inline break-all"
             underline="hover"
             onClick={handleLinkClick}
           >
@@ -307,13 +307,13 @@ export const Notification = ({ notification }: Props) => {
   return (
     <div
       className={cn(
-        'relative py-3 px-4 last:border-none border-b transition-colors hover:bg-foreground-100 border-foreground-200',
+        'relative border-b border-foreground-200 px-4 py-3 transition-colors last:border-none hover:bg-foreground-100',
         {
           'text-foreground-500': isRead,
         },
       )}
     >
-      <div className="flex items-center gap-2 mb-1">
+      <div className="mb-1 flex items-center gap-2">
         <div className={cn('text-primary transition-colors', { 'text-foreground-400': isRead })}>
           <Icon icon={notificationIcon} size={16} />
         </div>
@@ -321,15 +321,15 @@ export const Notification = ({ notification }: Props) => {
         <div className="ml-auto">
           <button
             type="button"
-            className="size-3 after:absolute after:inset-0 flex items-center justify-center rounded-full border-2 border-foreground-200"
+            className="flex size-3 items-center justify-center rounded-full border-2 border-foreground-200 after:absolute after:inset-0"
             onClick={handleClick}
           >
-            <div className={cn('size-1.5 transition-colors bg-danger rounded-full', { 'bg-foreground-200': isRead })} />
+            <div className={cn('size-1.5 rounded-full bg-danger transition-colors', { 'bg-foreground-200': isRead })} />
           </button>
         </div>
       </div>
-      <div className="text-small break-words">{notificationDescription}</div>
-      <div className="text-tiny text-foreground-500 mt-1.5">{formatRelativeTime(notification.createdAt)}</div>
+      <div className="break-words text-small">{notificationDescription}</div>
+      <div className="mt-1.5 text-tiny text-foreground-500">{formatRelativeTime(notification.createdAt)}</div>
     </div>
   );
 };
