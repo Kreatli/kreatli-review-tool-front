@@ -51,7 +51,7 @@ export const DashboardAssets = ({ project }: Props) => {
             <span className="text-lg font-semibold">Media</span>
             {!isPending && !isError && (
               <span className="text-foreground-500 font-normal text-medium">
-                ({data.fileCount} file{data.fileCount === 1 ? '' : 's'})
+                ({data?.fileCount ?? 0} file{data?.fileCount === 1 ? '' : 's'})
               </span>
             )}
           </Link>
@@ -64,9 +64,9 @@ export const DashboardAssets = ({ project }: Props) => {
           <DashboardAssetsSkeleton />
         ) : isError ? (
           <DashboardError onReload={refetch} />
-        ) : data.files.length > 0 || foldersData?.folders.length > 0 ? (
+        ) : (data && data.files.length > 0) || (foldersData && foldersData?.folders.length > 0) ? (
           <DashboardAssetsList
-            files={data.files}
+            files={data?.files ?? []}
             folders={foldersData?.folders ?? []}
             project={project}
             members={project.members}
