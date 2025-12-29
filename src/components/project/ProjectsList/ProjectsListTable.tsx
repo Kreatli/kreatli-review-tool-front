@@ -87,7 +87,7 @@ export const ProjectsListTable = ({
           >
             <TableCell>
               <div className="flex items-center gap-3">
-                <div>
+                <div className="shrink-0">
                   {project.cover?.url ? (
                     <Image
                       src={project.cover?.url}
@@ -109,7 +109,7 @@ export const ProjectsListTable = ({
                   >
                     {project.name}
                   </Link>
-                  <div className="text-foreground-500 text-md">
+                  <div className="text-foreground-500 text-md whitespace-nowrap">
                     {project.fileCount} items, {formatBytes(project.totalFileSize)}
                   </div>
                 </div>
@@ -133,8 +133,10 @@ export const ProjectsListTable = ({
             <TableCell>
               <ProjectStatus status={project.status} variant="light" size="md" />
             </TableCell>
-            <TableCell>{formatFullDate(project.updatedAt ?? project.createdAt)}</TableCell>
-            <TableCell>{formatFullDate(project.createdAt)}</TableCell>
+            <TableCell className="whitespace-nowrap">
+              {formatFullDate(project.updatedAt ?? project.createdAt)}
+            </TableCell>
+            <TableCell className="whitespace-nowrap">{formatFullDate(project.createdAt)}</TableCell>
             <TableCell>
               {getFilteredProjectActions(project).length > 0 && (
                 <Dropdown>
