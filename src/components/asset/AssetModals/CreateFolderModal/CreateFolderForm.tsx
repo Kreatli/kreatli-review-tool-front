@@ -5,7 +5,13 @@ import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
 import { usePostProjectIdFolder } from '../../../../services/hooks';
-import { getAssetFolderId, getAssets, getProjectId, getProjectIdAssets } from '../../../../services/services';
+import {
+  getAssetFolderId,
+  getAssets,
+  getAssetsFolders,
+  getProjectId,
+  getProjectIdAssets,
+} from '../../../../services/services';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
 interface Props {
@@ -39,7 +45,7 @@ export const CreateFolderForm = ({ projectId, parentId, onSuccess }: Props) => {
 
           queryClient.setQueryData([getProjectId.key, projectId], project);
           queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, projectId] });
-          queryClient.invalidateQueries({ queryKey: [getAssets.key] });
+          queryClient.invalidateQueries({ queryKey: [getAssetsFolders.key, { projectId }] });
           onSuccess?.();
         },
         onError: (error) => {
@@ -55,6 +61,7 @@ export const CreateFolderForm = ({ projectId, parentId, onSuccess }: Props) => {
         label="Folder name"
         placeholder="Folder"
         variant="faded"
+        autoFocus
         isInvalid={!!errors.name}
         errorMessage={errors.name?.message}
         {...register('name', VALIDATION_RULES.SHORT_TEXT)}

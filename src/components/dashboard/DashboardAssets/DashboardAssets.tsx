@@ -13,7 +13,12 @@ interface Props {
 }
 
 export const DashboardAssets = ({ project }: Props) => {
-  const { data: foldersData } = useGetAssetsFolders({
+  const {
+    data: foldersData,
+    isPending: isPendingFolders,
+    isError: isErrorFolders,
+    refetch: refetchFolders,
+  } = useGetAssetsFolders({
     limit: 12,
     offset: 0,
     projectId: project.id,
@@ -21,13 +26,22 @@ export const DashboardAssets = ({ project }: Props) => {
     skipIds: [],
   });
 
-  const { data, isPending, isError, refetch } = useGetAssets({
+  const {
+    data,
+    isPending: isPendingAssets,
+    isError: isErrorAssets,
+    refetch: refetchAssets,
+  } = useGetAssets({
     limit: 12,
     offset: 0,
     projectId: project.id,
     query: '',
     skipIds: [],
   });
+
+  const isPending = isPendingFolders || isPendingAssets;
+  const isError = isErrorFolders || isErrorAssets;
+  const refetch = refetchFolders || refetchAssets;
 
   return (
     <Card>
@@ -50,7 +64,7 @@ export const DashboardAssets = ({ project }: Props) => {
           <DashboardAssetsSkeleton />
         ) : isError ? (
           <DashboardError onReload={refetch} />
-        ) : data.files.length > 0 ? (
+        ) : data.files.length > 0 || foldersData?.folders.length > 0 ? (
           <DashboardAssetsList
             files={data.files}
             folders={foldersData?.folders ?? []}
