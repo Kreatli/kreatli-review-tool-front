@@ -46,7 +46,7 @@ export const ProjectHeader = ({ project }: Props) => {
         <Icon icon="arrowLeft" size={18} />
         Projects
       </Link>
-      <div className="flex gap-4 justify-between">
+      <div className="flex gap-4 justify-between items-start">
         <ProjectBreadcrumbs
           fileCount={project.fileCount}
           coverUrl={coverUrl}
@@ -81,22 +81,20 @@ export const ProjectHeader = ({ project }: Props) => {
             )}
           </div>
         </ProjectBreadcrumbs>
-        <div className="flex gap-4">
+        <div className="flex gap-4 items-center">
           {isProjectOwner && (
-            <div className="p-1">
-              <Avatar
-                as="button"
-                aria-label="Add project member"
-                fallback={<Icon icon="userPlus" size={18} />}
-                isBordered
-                disabled={project.status !== 'active'}
-                size="sm"
-                className="text-lg font-medium text-foreground-500"
-                onClick={() => setIsMembersModalOpen(true)}
-              />
-            </div>
+            <Avatar
+              as="button"
+              aria-label="Add project member"
+              fallback={<Icon icon="userPlus" size={18} />}
+              isBordered
+              disabled={project.status !== 'active'}
+              size="sm"
+              className="text-lg font-medium text-foreground-500"
+              onClick={() => setIsMembersModalOpen(true)}
+            />
           )}
-          <div className="p-1">
+          <div className="flex ml-1">
             <button
               type="button"
               aria-label="Project members"
