@@ -47,7 +47,7 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
   }
 
   if (assets.length === 0) {
-    return <EmptyState title="No archived files" text="You don't have any archived files here yet." />;
+    return <EmptyState title="No recently deleted files" text="You don't have any recently deleted files here yet." />;
   }
 
   const handleSelectionChange = (assetId: string) => {
@@ -72,7 +72,7 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
 
   return (
     <div>
-      <div className="text-2xl font-semibold">Archived media</div>
+      <div className="text-2xl font-semibold">Recently deleted</div>
       <div
         className={cn('sticky top-16 z-20 h-4 overflow-hidden bg-background opacity-0 transition-[height,opacity]', {
           'h-12 opacity-100': hasSelectedAssets,
@@ -101,7 +101,7 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
             onPress={() => setIsDeleteModalOpen(true)}
           >
             <Icon icon="trash" size={14} />
-            Delete
+            Delete forever
           </Button>
         </div>
       </div>

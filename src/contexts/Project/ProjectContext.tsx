@@ -92,8 +92,8 @@ export const ProjectContextProvider = ({
       if (project.status === 'active') {
         return [
           {
-            label: 'Archived media',
-            icon: 'trash' as const,
+            label: 'Recently deleted',
+            icon: 'time' as const,
             onClick: () => {
               router.push(`/project/${project.id}/assets/archived`);
             },
@@ -133,14 +133,6 @@ export const ProjectContextProvider = ({
               },
             },
             {
-              label: 'Archived media',
-              icon: 'trash' as const,
-              hideInCard: true,
-              onClick: () => {
-                router.push(`/project/${project.id}/assets/archived`);
-              },
-            },
-            {
               label: 'Invite member',
               icon: 'userPlus' as const,
               onClick: () => {
@@ -151,9 +143,16 @@ export const ProjectContextProvider = ({
             {
               label: 'Edit statuses',
               icon: 'gear' as const,
-              showDivider: true,
               onClick: () => {
                 setIsEditProjectStatusesModalOpen(true);
+              },
+            },
+            {
+              label: 'Recently deleted',
+              icon: 'time' as const,
+              showDivider: true,
+              onClick: () => {
+                router.push(`/project/${project.id}/assets/archived`);
               },
             },
             {
@@ -167,11 +166,20 @@ export const ProjectContextProvider = ({
             },
             {
               label: 'Archive project',
-              icon: 'trash' as const,
+              icon: 'folder' as const,
               color: 'danger' as const,
               onClick: () => {
                 setSelectedProjectId?.(project.id);
                 setIsArchiveModalOpen(true);
+              },
+            },
+            {
+              label: 'Delete project',
+              icon: 'trash' as const,
+              color: 'danger' as const,
+              onClick: () => {
+                setSelectedProjectId?.(project.id);
+                setIsDeleteModalOpen(true);
               },
             },
           ]
@@ -207,7 +215,7 @@ export const ProjectContextProvider = ({
             },
             {
               label: 'Archive project',
-              icon: 'trash' as const,
+              icon: 'folder' as const,
               color: 'danger' as const,
               onClick: () => {
                 setSelectedProjectId?.(project.id);

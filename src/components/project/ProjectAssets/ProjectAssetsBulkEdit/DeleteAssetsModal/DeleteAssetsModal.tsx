@@ -29,7 +29,7 @@ export const DeleteAssetsModal = ({ projectId, assetIds, isOpen, onClose, onSucc
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: [getProjectIdAssetsArchived.key, projectId] });
           queryClient.invalidateQueries({ queryKey: [getProjectId.key, projectId] });
-          addToast({ title: 'Assets were removed', color: 'success', variant: 'flat' });
+          addToast({ title: 'Assets were deleted forever', color: 'success', variant: 'flat' });
           onClose();
           onSuccess();
         },
@@ -55,7 +55,7 @@ export const DeleteAssetsModal = ({ projectId, assetIds, isOpen, onClose, onSucc
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isPending} onClick={handleDelete}>
-                Delete
+                Delete forever
               </Button>
             </div>
           </div>
