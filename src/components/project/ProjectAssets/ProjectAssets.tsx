@@ -32,6 +32,7 @@ import { useRouter } from 'next/router';
 import { ProjectDropFilesHint } from './ProjectDropFilesHint';
 import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 import { useSession } from '../../../hooks/useSession';
+import { CreateFolderModal } from '../../asset/AssetModals/CreateFolderModal';
 
 export const ProjectAssets = () => {
   const { project, search, filters } = useProjectContext();
@@ -65,6 +66,8 @@ export const ProjectAssets = () => {
   const [isMoveToAssetsModalOpen, setIsMoveToAssetsModalOpen] = React.useState(false);
   const [isArchiveModalOpen, setIsArchiveModalOpen] = React.useState(false);
   const [selectedAssetIds, setSelectedAssetIds] = React.useState<Set<string>>(new Set([]));
+  const [contextMenu, setContextMenu] = React.useState<{ x: number; y: number } | null>(null);
+  const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
 
   const queryClient = useQueryClient();
   const { mutateAsync: updateProject } = usePutProjectId({ mutationKey: [putProjectId.key, project.id] });
@@ -260,8 +263,19 @@ export const ProjectAssets = () => {
     router.push(`/project/${project.id}/assets/${assetId}?compareFileId=${assetToCompareId}`);
   };
 
+  const handleContextMenu = (e: React.MouseEvent) => {
+    if (project.status !== 'active') return;
+    e.preventDefault();
+    setContextMenu({ x: e.clientX, y: e.clientY });
+  };
+
+  const uploadAssets = () => {
+    inputRef.current?.click();
+    setContextMenu(null);
+  };
+
   return (
-    <div className="-mt-4 flex-1" {...getRootProps()}>
+    <div className="-mt-4 flex-1" {...getRootProps()} onContextMenu={handleContextMenu}>
       <ProjectDropFilesHint isVisible={isDragActive} />
       <div
         className={cn('sticky top-16 z-20 h-4 overflow-hidden bg-background opacity-0 transition-[height,opacity]', {
@@ -389,6 +403,38 @@ export const ProjectAssets = () => {
         onSuccess={() => {
           setSelectedAssetIds(new Set());
         }}
+      />
+      {contextMenu && (
+        <>
+          <div className="fixed inset-0 z-50" onClick={() => setContextMenu(null)} />
+          <div
+            className="fixed z-50 min-w-[180px] rounded-lg border border-foreground-200 bg-background p-1 shadow-lg"
+            style={{ left: contextMenu.x, top: contextMenu.y }}
+          >
+            <button
+              className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left hover:bg-foreground-100"
+              onClick={uploadAssets}
+            >
+              <Icon icon="upload" size={18} />
+              Upload files
+            </button>
+            <button
+              className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left hover:bg-foreground-100"
+              onClick={() => {
+                setIsFolderModalOpen(true);
+                setContextMenu(null);
+              }}
+            >
+              <Icon icon="plus" size={16} />
+              Create folder
+            </button>
+          </div>
+        </>
+      )}
+      <CreateFolderModal
+        isOpen={isFolderModalOpen}
+        projectId={project.id}
+        onClose={() => setIsFolderModalOpen(false)}
       />
     </div>
   );
