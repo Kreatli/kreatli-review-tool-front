@@ -133,7 +133,7 @@ const AssetsArchivedLog = ({ log }: { log: AssetsArchivedLogDto }) => {
   if (assets.length === 1) {
     return (
       <>
-        Archived{' '}
+        Deleted{' '}
         <Link
           as={NextLink}
           href={`/project/${project.id}/assets${assets[0].type === 'file' ? '' : '/folder'}/${assets[0].id}`}
@@ -147,7 +147,7 @@ const AssetsArchivedLog = ({ log }: { log: AssetsArchivedLogDto }) => {
     );
   }
 
-  return <>Archived {assets.length} assets</>;
+  return <>Deleted {assets.length} assets</>;
 };
 
 const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
@@ -224,7 +224,7 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
 
     return (
       <>
-        Deleted &quot;{asset.name}&quot; {asset.type}
+        Deleted forever &quot;{asset.name}&quot; {asset.type}
       </>
     );
   }
@@ -232,7 +232,7 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
   return (
     <div className="flex flex-col gap-2">
       <div>
-        Deleted {assets.length} items. {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        Deleted forever {assets.length} items. {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <Link
           as="button"
           type="button"

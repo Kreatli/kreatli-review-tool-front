@@ -297,7 +297,7 @@ export const ProjectAssets = () => {
               onClick={() => setIsArchiveModalOpen(true)}
             >
               <Icon icon="trash" size={14} />
-              Archive
+              Delete
             </Button>
           )}
           {shouldShowCompareButton && (

@@ -36,7 +36,7 @@ export const ArchiveAssetModal = ({ projectId, asset, isOpen, onClose }: Props) 
 
           queryClient.setQueryData([getProjectId.key, projectId], project);
           await queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, projectId] });
-          addToast({ title: 'This asset was moved to Archived', color: 'success', variant: 'flat' });
+          addToast({ title: 'This asset was deleted', color: 'success', variant: 'flat' });
           onClose();
           setIsLoading(false);
         },
@@ -51,18 +51,18 @@ export const ArchiveAssetModal = ({ projectId, asset, isOpen, onClose }: Props) 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
-        <ModalHeader>{asset?.type === 'folder' ? 'Archive folder' : 'Archive file'}</ModalHeader>
+        <ModalHeader>{asset?.type === 'folder' ? 'Delete folder' : 'Delete file'}</ModalHeader>
         <ModalBody className="pb-6">
           <div className="flex flex-col gap-4">
             <div className="text-medium">
-              Are you sure you want to archive <span className="font-semibold">&quot;{asset?.name}&quot;</span>?
+              Are you sure you want to delete <span className="font-semibold">&quot;{asset?.name}&quot;</span>?
             </div>
             <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isLoading} onClick={onClose}>
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isLoading} onClick={handleArchive}>
-                Archive
+                Delete
               </Button>
             </div>
           </div>

@@ -28,7 +28,7 @@ export const DeleteAssetModal = ({ asset, projectId, isOpen, onClose }: Props) =
       {
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: [getProjectIdAssetsArchived.key, projectId] });
-          addToast({ title: 'This asset was removed', color: 'success', variant: 'flat' });
+          addToast({ title: 'This asset was deleted forever', color: 'success', variant: 'flat' });
           onClose();
         },
         onError: (error) => {
@@ -53,7 +53,7 @@ export const DeleteAssetModal = ({ asset, projectId, isOpen, onClose }: Props) =
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isPending} onClick={handleDelete}>
-                Delete
+                Delete forever
               </Button>
             </div>
           </div>
