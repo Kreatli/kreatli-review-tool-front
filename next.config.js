@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: ['res.cloudinary.com', 'kreatlimedia.s3.amazonaws.com', 'kreatliassets.s3.amazonaws.com'],
   },

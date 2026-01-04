@@ -62,7 +62,24 @@ function getAxiosInstance(security: Security): AxiosInstance {
         // Do something with response error
 
         if (error.response) {
-          return Promise.reject(new RequestError(error.response.data as string, error.response.status, error.response));
+          // Extract error message from response data
+          let errorMessage = 'Something went wrong';
+          const responseData = error.response.data;
+          
+          if (typeof responseData === 'string') {
+            errorMessage = responseData;
+          } else if (responseData && typeof responseData === 'object') {
+            // Handle object responses like {message, error, statusCode}
+            if ('message' in responseData && typeof responseData.message === 'string') {
+              errorMessage = responseData.message;
+            } else if ('error' in responseData && typeof responseData.error === 'string') {
+              errorMessage = responseData.error;
+            } else if (Array.isArray(responseData.message)) {
+              errorMessage = responseData.message[0] || errorMessage;
+            }
+          }
+          
+          return Promise.reject(new RequestError(errorMessage, error.response.status, error.response));
         }
 
         if (error.isAxiosError) {

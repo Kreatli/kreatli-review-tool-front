@@ -677,6 +677,112 @@ export interface ProjectCreatedLogDto {
   user: UserDto;
 }
 
+export interface ProjectStageDto {
+  id: string;
+  name: string;
+  order: number;
+  color?: string;
+}
+
+export interface DeliverableStatusDto {
+  label: string;
+  color: string;
+  order: number;
+  value: string;
+}
+
+export interface TaskDto {
+  id: string;
+  name: string;
+  description?: string;
+  inCharge: UserDto;
+  assignees: UserDto[];
+  projectStage: string | null;
+  linkedMedia: string[];
+  projectId: string;
+  order: number;
+  createdAt: string;
+  createdBy: UserDto;
+  updatedAt: string;
+  updatedBy: UserDto;
+}
+
+export interface TaskBodyDto {
+  name: string;
+  description?: string;
+  inCharge: string;
+  assignees: string[];
+  projectStage?: string;
+  linkedMedia?: string[];
+}
+
+export interface TaskEditBodyDto {
+  name?: string;
+  description?: string;
+  inCharge?: string;
+  assignees?: string[];
+  projectStage?: string | null;
+  linkedMedia?: string[];
+}
+
+export interface TaskReorderBodyDto {
+  order: number;
+}
+
+export interface DeliverableDto {
+  id: string;
+  name: string;
+  description?: string;
+  inCharge: UserDto;
+  linkedMedia: string[];
+  dueDate: string;
+  status: string;
+  format?: string;
+  version?: string;
+  projectId: string;
+  taskId?: string;
+  linkedTasks: string[];
+  createdAt: string;
+  createdBy: UserDto;
+  updatedAt: string;
+  updatedBy: UserDto;
+}
+
+export interface DeliverableBodyDto {
+  name: string;
+  description?: string;
+  inCharge: string;
+  linkedMedia: string[];
+  dueDate: string;
+  status: string;
+  format?: string;
+  version?: string;
+  linkedTasks?: string[];
+}
+
+export interface DeliverableEditBodyDto {
+  name?: string;
+  description?: string;
+  inCharge?: string;
+  linkedMedia?: string[];
+  dueDate?: string;
+  status?: string;
+  format?: string;
+  version?: string;
+  linkedTasks?: string[];
+}
+
+export interface CreateDeliverableFromTaskDto {
+  name?: string;
+  description?: string;
+  inCharge?: string;
+  dueDate: string;
+  status: string;
+  linkedMedia: string[];
+  format?: string;
+  version?: string;
+}
+
 export interface ProjectDto {
   assetStatuses: AssetStatusDto[];
   /**
@@ -693,6 +799,8 @@ export interface ProjectDto {
   name: string;
   status: 'active' | 'completed' | 'archived';
   totalFileSize: number;
+  projectStages: ProjectStageDto[];
+  deliverableStatuses: DeliverableStatusDto[];
   cover?: InterfaceImageDto;
   createdBy?: UserDto;
   updatedAt?: string;

@@ -1,4 +1,4 @@
-import { addToast, Button, Tab, Tabs } from '@heroui/react';
+import { addToast, Button } from '@heroui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -15,6 +15,7 @@ import { NotActiveProjectAlert } from './NotActiveProjectAlert';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
+import { ProjectSidebar } from './ProjectSidebar';
 
 interface Props {
   hideHeader?: boolean;
@@ -32,6 +33,8 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
   } = useGetProjectId(router.query.id as string, {
     enabled: !!router.query.id,
   });
+
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
 
   React.useEffect(() => {
     if (isError && 'status' in error && error.status !== 403) {
@@ -62,34 +65,43 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
   return (
     <>
       <Header />
-      <div className="flex flex-1 flex-col border-t border-foreground-200 p-6 pt-2">
+      <div className="flex min-h-0 flex-1 flex-col border-t border-foreground-200">
         {isPending || isError ? (
-          <ProjectLoader />
+          <div className="flex flex-1">
+            <ProjectLoader />
+          </div>
         ) : (
           <ProjectContextProvider selectedProject={project}>
             <ProjectUploadContextProvider project={project} folderId={router.query.folderId?.toString()}>
-              {hideHeader ? (
-                children
-              ) : (
-                <div className="flex flex-1 flex-col gap-4">
-                  <ProjectHeader project={project} />
-                  {project.status !== 'active' && (
-                    <div>
-                      <NotActiveProjectAlert />
+              <div className="flex min-h-0 flex-1">
+                {/* Sidebar */}
+                {!hideHeader && (
+                  <div className="flex-shrink-0">
+                    <ProjectSidebar
+                      projectId={project.id}
+                      isCollapsed={isSidebarCollapsed}
+                      onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+                    />
+                  </div>
+                )}
+                {/* Main Content */}
+                <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+                  {hideHeader ? (
+                    children
+                  ) : (
+                    <div className="flex flex-1 flex-col gap-4 p-6 pt-2">
+                      <ProjectHeader project={project} />
+                      {project.status !== 'active' && (
+                        <div>
+                          <NotActiveProjectAlert />
+                        </div>
+                      )}
+                      {actions && <div className="flex gap-6">{actions}</div>}
+                      <div className="flex flex-1 flex-col overflow-auto">{children}</div>
                     </div>
                   )}
-                  <div className="flex gap-6">
-                    <Tabs selectedKey={router.pathname.split('/')[3]}>
-                      <Tab as={NextLink} href={`/project/${project.id}/dashboard`} title="Home" key="dashboard" />
-                      <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />
-                      <Tab as={NextLink} href={`/project/${project.id}/chat`} title="Chat" key="chat" />
-                      <Tab as={NextLink} href={`/project/${project.id}/activity`} title="Activity" key="activity" />
-                    </Tabs>
-                    {actions}
-                  </div>
-                  <div className="flex flex-1 flex-col">{children}</div>
                 </div>
-              )}
+              </div>
             </ProjectUploadContextProvider>
           </ProjectContextProvider>
         )}

@@ -17,52 +17,44 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
   const [offset, setOffset] = React.useState(0);
   const [assets, setAssets] = React.useState<AssetDto[]>([]);
   const [assetsCount, setAssetsCount] = React.useState(0);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const observerRef = useRef<IntersectionObserver | null>(null);
   const isFetching = React.useRef(false);
 
-  React.useEffect(() => {
-    const loadInitialAssets = async () => {
-      isFetching.current = true;
-
-      setIsLoading(true);
-      isFetching.current = true;
-
-      const data = await getAssets({ projectId, limit: 50, offset: 0, query: '', skipIds });
-      setAssetsCount(data.fileCount);
-      setAssets(data.files);
-      setIsLoading(false);
-      isFetching.current = false;
-    };
-
-    loadInitialAssets();
-  }, []);
-
-  const loadAssets = async (offset: number, search: string) => {
+  const loadAssets = useCallback(async (offset: number, search: string) => {
+    if (isFetching.current) return;
+    
     isFetching.current = true;
 
     if (offset === 0) {
       setIsLoading(true);
     }
 
-    const data = await getAssets({ projectId, limit: 50, offset, query: search, skipIds });
+    try {
+      const data = await getAssets({ projectId, limit: 50, offset, query: search, skipIds });
 
-    setAssetsCount(data.fileCount);
+      setAssetsCount(data.fileCount);
 
-    if (offset === 0) {
-      setAssets(data.files);
-    } else {
-      setAssets((prev) => [...prev, ...data.files]);
+      if (offset === 0) {
+        setAssets(data.files);
+      } else {
+        setAssets((prev) => [...prev, ...data.files]);
+      }
+    } catch (error) {
+      console.error('Failed to load assets:', error);
+    } finally {
+      isFetching.current = false;
+      setIsLoading(false);
     }
+  }, [projectId, skipIds]);
 
-    isFetching.current = false;
-    setIsLoading(false);
-  };
+  const searchCallback = useCallback((search: string) => {
+    setOffset(0);
+    loadAssets(0, search);
+  }, [loadAssets]);
 
-  const debouncedSearchAssets = useDebounceCallback((search: string) => {
-    loadAssets(offset, search);
-  }, 300);
+  const debouncedSearchAssets = useDebounceCallback(searchCallback, 300);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -87,9 +79,10 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
   const handleLoadMore = useCallback(() => {
     if (isFetching.current) return;
 
-    setOffset(offset + 50);
-    loadAssets(offset + 50, search);
-  }, [offset, search]);
+    const newOffset = offset + 50;
+    setOffset(newOffset);
+    loadAssets(newOffset, search);
+  }, [offset, search, loadAssets]);
 
   const spinnerRef = useCallback(
     (node: HTMLDivElement) => {
