@@ -166,20 +166,11 @@ export const ProjectContextProvider = ({
             },
             {
               label: 'Archive project',
-              icon: 'folder' as const,
-              color: 'danger' as const,
-              onClick: () => {
-                setSelectedProjectId?.(project.id);
-                setIsArchiveModalOpen(true);
-              },
-            },
-            {
-              label: 'Delete project',
               icon: 'trash' as const,
               color: 'danger' as const,
               onClick: () => {
                 setSelectedProjectId?.(project.id);
-                setIsDeleteModalOpen(true);
+                setIsArchiveModalOpen(true);
               },
             },
           ]
