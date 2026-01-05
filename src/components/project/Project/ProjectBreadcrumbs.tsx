@@ -23,8 +23,8 @@ export const ProjectBreadcrumbs = ({
   totalFileSize,
 }: React.PropsWithChildren<Props>) => {
   return (
-    <div className="flex items-center gap-3">
-      <div>
+    <div className="flex items-center gap-3 overflow-hidden">
+      <div className="shrink-0">
         {coverUrl ? (
           <Image src={coverUrl} width={48} height={48} radius="full" className="object-cover" />
         ) : (
@@ -33,16 +33,19 @@ export const ProjectBreadcrumbs = ({
           </div>
         )}
       </div>
-      <div>
+      <div className="overflow-hidden">
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 overflow-hidden">
             {path.map((item, index) => (
               <React.Fragment key={item.url}>
-                {index !== 0 && <Icon icon="chevronDown" className="-rotate-90 text-foreground-400" />}
+                {index !== 0 && <Icon icon="chevronDown" className="shrink-0 -rotate-90 text-foreground-400" />}
                 {index === path.length - 1 ? (
-                  <h2 className="line-clamp-1 text-2xl font-semibold">{item.name}</h2>
+                  <h2 className="truncate text-2xl font-semibold">{item.name}</h2>
                 ) : (
-                  <Link href={item.url} className="text-2xl font-semibold text-foreground-400 hover:text-foreground">
+                  <Link
+                    href={item.url}
+                    className="flex-1 truncate text-2xl font-semibold text-foreground-400 hover:text-foreground"
+                  >
                     {item.name}
                   </Link>
                 )}

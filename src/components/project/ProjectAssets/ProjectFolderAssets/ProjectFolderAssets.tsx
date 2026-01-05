@@ -70,7 +70,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
             path={path}
             coverUrl={project.cover?.url}
           />
-          <div>
+          <div className="hidden sm:block">
             <ButtonGroup>
               <Button
                 className="bg-foreground pr-1 text-content1"
@@ -101,6 +101,33 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
               </Dropdown>
             </ButtonGroup>
             <input {...getInputProps()} />
+          </div>
+          <div className="sm:hidden">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button
+                  isIconOnly
+                  isDisabled={project.status !== 'active'}
+                  size="sm"
+                  radius="full"
+                  className="bg-foreground text-content1"
+                >
+                  <Icon icon="upload" size={16} />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu variant="flat">
+                <DropdownItem key="upload" startContent={<Icon icon="upload" size={18} />} onPress={uploadAssets}>
+                  Upload files
+                </DropdownItem>
+                <DropdownItem
+                  key="create-folder"
+                  startContent={<Icon icon="plus" size={18} />}
+                  onPress={() => setIsFolderModalOpen(true)}
+                >
+                  Create folder
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </div>
         </div>
         {project.status !== 'active' && (

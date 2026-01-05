@@ -36,7 +36,7 @@ export const ProjectAssetsFilters = () => {
   };
 
   return (
-    <div className="flex w-full justify-end gap-4">
+    <div className="flex w-full flex-row-reverse justify-end gap-4 sm:flex-row">
       <Badge isOneChar size="sm" color="primary" isInvisible={!hasFilters}>
         <Popover
           placement="bottom-end"
@@ -123,7 +123,7 @@ export const ProjectAssetsFilters = () => {
       <Input
         value={search}
         placeholder="Search"
-        className="w-fit"
+        className="w-full sm:w-fit"
         variant="underlined"
         isClearable
         startContent={<Icon icon="search" />}
