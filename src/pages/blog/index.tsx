@@ -29,7 +29,7 @@ export default function Blog({ stories }: Props) {
       <Decorations />
       <div className="w-full px-6 py-8">
         <div className="flex flex-col gap-6 py-8">
-          <h2 className="text-center font-sans text-4xl font-bold">Kreatli Blog</h2>
+          <h1 className="text-center font-sans text-4xl font-bold">Kreatli Blog</h1>
           <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
             Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow
             and improve collaboration.

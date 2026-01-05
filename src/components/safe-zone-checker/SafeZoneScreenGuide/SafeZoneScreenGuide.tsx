@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
+import { Accordion, AccordionItem, Button, Card, CardBody, Image } from '@heroui/react';
 import { Icon } from '../../various/Icon';
 import NextLink from 'next/link';
 
@@ -158,68 +158,103 @@ export const SafeZoneScreenGuide = () => {
       {/* How to Use Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="mx-auto mb-4 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
+          <div className="mb-10 text-center">
+            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
               How to Use Safe-Zone Checker in Your Workflow
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-foreground-500">
+            <p className="mx-auto max-w-2xl text-base text-foreground-500">
               Follow this step-by-step process to ensure your content looks perfect on every platform.
             </p>
           </div>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
             {[
               {
                 step: 1,
-                title: 'Start with a vertical canvas',
+                title: 'Prepare Your Content (Any Format)',
                 description:
-                  'Use 1080 × 1920 px (9:16 aspect ratio) as your base canvas for all vertical video content.',
+                  'Use the Safe Zone Checker with any creative asset—videos, images, thumbnails, or mockups. We recommend 1080 × 1920 (9:16) for vertical platforms, but the tool works with any dimensions.',
                 icon: 'folder',
+                image: null,
               },
               {
                 step: 2,
-                title: 'Upload and preview with overlays',
+                title: 'Open the Safe Zone Checker',
                 description:
-                  'Use our safe-zone checker tool to upload your video and preview it with platform-specific UI overlays and safe zone indicators.',
+                  'Navigate to the Social Media Safe Zone Checker to access a clean interface with upload controls and platform-specific overlays.',
                 icon: 'upload',
+                image: null,
               },
               {
                 step: 3,
-                title: 'Design inside the safe zone',
+                title: 'Upload Your Asset',
                 description:
-                  'Keep all vital text, logos, and CTAs well within the safe margins defined by the overlay for each platform.',
-                icon: 'paint',
+                  'Drag and drop your file or browse to select it. Your content will appear with safe zone overlays, giving you immediate visual feedback on how it will be framed.',
+                icon: 'upload',
+                image: '/safe-zone-guide/upload-asset.png',
               },
               {
                 step: 4,
-                title: 'Preview on device and in-app',
+                title: 'Toggle Between Platform Overlays',
                 description:
-                  'Wherever possible, preview in the native app UI to catch overlays or cropping differences before final export.',
+                  'Switch between TikTok, Instagram Reels, and YouTube Shorts to see where UI elements appear on each platform and ensure your layout works everywhere.',
                 icon: 'addVideo',
+                image: '/safe-zone-guide/toggle-platforms.png',
               },
               {
                 step: 5,
-                title: 'Export and validate',
+                title: 'Review and Share with Your Team',
                 description:
-                  'Run through the validation checklist to ensure all critical elements are visible before final delivery.',
+                  'Check placement of text, logos, CTAs, and key visuals. Use Kreatli as a production management platform to review assets with your team, share feedback, and align on changes before publishing.',
+                icon: 'paint',
+                image: null,
+              },
+              {
+                step: 6,
+                title: 'Export and Download with Safe Zones',
+                description:
+                  'Export your content with safe zone overlays applied. Share with stakeholders for sign-off, align your team on layout constraints, and document guidelines for future iterations.',
                 icon: 'checkCircle',
+                image: '/safe-zone-guide/export-download.png',
               },
             ].map((item) => (
               <Card key={item.step} className="scroll-mt-36">
                 <CardBody className="p-6 lg:p-8">
-                  <div className="flex flex-col gap-6 lg:flex-row">
-                    <div className="flex items-start gap-4 lg:w-96 lg:shrink-0">
-                      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                        <Icon icon={item.icon as any} size={24} className="text-primary" />
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Icon icon={item.icon as any} size={24} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
+                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
+                        </div>
                       </div>
-                      <div>
-                        <div className="mb-1 text-sm font-medium text-primary">Step {item.step}</div>
-                        <h3 className="font-sans text-xl font-bold">{item.title}</h3>
+                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
+                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
                       </div>
                     </div>
-                    <div className="border-foreground-200 lg:w-auto lg:border-l lg:pl-8">
-                      <p className="text-base text-foreground-500 lg:text-lg">{item.description}</p>
-                    </div>
+                    {item.image && (
+                      <div className="mt-6 flex justify-center lg:mt-8">
+                        <div className="relative max-w-[280px]">
+                          {/* Phone Frame */}
+                          <div className="relative mx-auto rounded-[2.5rem] bg-white p-2 shadow-2xl">
+                            {/* Notch */}
+                            <div className="absolute left-1/2 top-0 z-10 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-white"></div>
+                            {/* Screen */}
+                            <div className="overflow-hidden rounded-[2rem] bg-black">
+                              <Image
+                                src={item.image}
+                                alt={`${item.title} screenshot`}
+                                removeWrapper
+                                className="h-auto w-full"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </CardBody>
               </Card>
@@ -295,14 +330,13 @@ export const SafeZoneScreenGuide = () => {
 
           <Accordion variant="splitted">
             <AccordionItem
-              key="what-are-safe-zones"
-              title={<span className="font-semibold">What exactly are safe zones?</span>}
+              key="what-is-safe-zone"
+              title={<span className="font-semibold">What is a "safe zone" in social media content?</span>}
             >
               <span className="text-foreground-500">
-                Safe zones are buffer areas inside your video canvas where important visual elements - text overlays,
-                logos, CTAs - are guaranteed to remain visible, regardless of device differences or UI overlays. Each
-                platform overlays its own interface elements on top of your content, and safe zones ensure your critical
-                content stays visible.
+                A safe zone refers to the area within your creative where important elements (text, logos, CTAs, faces)
+                remain visible after platform UI elements (buttons, captions, profile bars) are applied. Anything
+                outside these zones risks being obscured by platform overlays.
               </span>
             </AccordionItem>
 
@@ -311,54 +345,135 @@ export const SafeZoneScreenGuide = () => {
               title={<span className="font-semibold">Why do different platforms have different safe zones?</span>}
             >
               <span className="text-foreground-500">
-                Each platform (TikTok, Instagram Reels, YouTube Shorts) has unique UI elements, button placements, and
-                overlay behaviors. For example, YouTube Shorts has a larger bottom margin for video titles, while TikTok
-                has significant margins for captions and action buttons. These differences require platform-specific
-                safe zone guidelines.
+                Each platform (TikTok, Instagram Reels, YouTube Shorts) has a unique interface and UI layout, so the
+                areas where elements might be covered differ. The safe zone overlays you see in the checker reflect
+                these platform-specific UI differences.
               </span>
             </AccordionItem>
 
             <AccordionItem
-              key="canvas-size"
-              title={<span className="font-semibold">What canvas size should I use?</span>}
+              key="file-types-sizes"
+              title={<span className="font-semibold">What file types and sizes can I upload?</span>}
             >
               <span className="text-foreground-500">
-                For vertical video content, use 1080 × 1920 px (9:16 aspect ratio) as your base canvas. This is the
-                standard format for TikTok, Instagram Reels, and YouTube Shorts. Design your content within the safe
-                zone margins for each platform to ensure visibility.
+                You can upload almost any content format, including videos, still images, thumbnails, or design mockups.
+                While we recommend using a 1080 × 1920 (9:16) canvas because it matches standard vertical formats,
+                Kreatli does not restrict uploads to that size. The tool remains flexible to fit your workflow.
               </span>
             </AccordionItem>
 
             <AccordionItem
-              key="test-content"
-              title={<span className="font-semibold">How can I test my content before publishing?</span>}
+              key="sign-up-required"
+              title={<span className="font-semibold">Do I need to sign up to use the Safe Zone Checker?</span>}
             >
               <span className="text-foreground-500">
-                Use our safe zone checker tool to upload your video and preview it with platform-specific UI overlays.
-                You can switch between different platform views to see exactly how your content will appear. This helps
-                you catch any issues before final export and publishing.
+                No. The Safe Zone Checker is available for anyone to use without signup. You can upload and preview your
+                content immediately.
               </span>
             </AccordionItem>
 
             <AccordionItem
               key="multiple-platforms"
-              title={<span className="font-semibold">Can I use the same video for multiple platforms?</span>}
+              title={<span className="font-semibold">Can I use the same creative for multiple platforms?</span>}
             >
               <span className="text-foreground-500">
-                Yes, but you need to design for the most restrictive safe zone (YouTube Shorts has the smallest safe
-                zone at 50% of the canvas). If you're creating platform-specific versions, maintain distinct safe-zone
-                overlays in your project to avoid layout mistakes when switching platforms.
+                Yes. The tool lets you toggle between different platform overlays after uploading, so you can see how
+                the same creative behaves across TikTok, Instagram Reels, and YouTube Shorts and adjust accordingly.
               </span>
             </AccordionItem>
 
             <AccordionItem
-              key="text-placement"
-              title={<span className="font-semibold">Where should I place text in my videos?</span>}
+              key="exported-version"
+              title={<span className="font-semibold">How should I use the exported version from the checker?</span>}
             >
               <span className="text-foreground-500">
-                Place important text in the center-upper area of the safe zone for each platform. Avoid the top margins
-                (where navigation bars appear), bottom margins (where captions and UI elements overlay), and side edges
-                (where buttons and profile information appear). Use large, readable fonts with high contrast.
+                After you download your asset with safe zone overlays applied, use it to: Share with your team or
+                stakeholders for review. Align on placement of text and branding elements. Document layout decisions in
+                production workflows. It becomes a reference that ensures everyone understands where key visuals are
+                safe, avoiding layout mishaps before final export.
+              </span>
+            </AccordionItem>
+
+            <AccordionItem
+              key="collaboration"
+              title={<span className="font-semibold">Does the tool help with collaboration?</span>}
+            >
+              <span className="text-foreground-500">
+                Yes. Because you can review and share the safe-zone annotated export, Kreatli encourages collaboration
+                across editors, designers, and reviewers, making it easier to unify feedback and reduce
+                miscommunication.
+              </span>
+            </AccordionItem>
+
+            <AccordionItem
+              key="privacy"
+              title={<span className="font-semibold">Will my content be uploaded to a server or shared publicly?</span>}
+            >
+              <span className="text-foreground-500">
+                The Safe Zone Checker processes your upload in the browser and does not publish your content publicly.
+                Your file is used only to generate the preview and overlays. Visitors should always check the tool's
+                terms for the most current privacy practices.
+              </span>
+            </AccordionItem>
+
+            <AccordionItem
+              key="file-modification"
+              title={<span className="font-semibold">Does the Safe Zone Checker change or edit my original file?</span>}
+            >
+              <span className="text-foreground-500">
+                No. The tool does not modify your original asset. When you export, the safe zone overlays are added only
+                to the downloaded reference version, leaving your original file untouched.
+              </span>
+            </AccordionItem>
+
+            <AccordionItem
+              key="subtitles"
+              title={<span className="font-semibold">Should subtitles always stay inside the safe zone?</span>}
+            >
+              <span className="text-foreground-500">
+                Yes. Subtitles, captions, and on-screen text should always be placed well within the safe zone, as
+                captions are among the most commonly obscured elements by platform UI and dynamic overlays.
+              </span>
+            </AccordionItem>
+
+            <AccordionItem
+              key="early-production"
+              title={
+                <span className="font-semibold">
+                  Can I use this tool during early production, not just before publishing?
+                </span>
+              }
+            >
+              <span className="text-foreground-500">
+                Absolutely. The Safe Zone Checker is intentionally useful during concepting, storyboarding, and design
+                review, not only at the final export stage. Using it early helps prevent layout rework later in the
+                process.
+              </span>
+            </AccordionItem>
+
+            <AccordionItem
+              key="individual-or-teams"
+              title={<span className="font-semibold">Is this tool meant for individual creators or teams?</span>}
+            >
+              <span className="text-foreground-500">
+                Both. Solo creators can quickly validate layouts before posting, while teams can use the exported
+                safe-zone version to review, approve, and align across editors, designers, social managers, and
+                stakeholders.
+              </span>
+            </AccordionItem>
+
+            <AccordionItem
+              key="other-tools"
+              title={
+                <span className="font-semibold">
+                  Does Kreatli offer other tools for managing social video production?
+                </span>
+              }
+            >
+              <span className="text-foreground-500">
+                Yes. Beyond the Safe Zone Checker, Kreatli is a production management platform designed to help creative
+                teams plan, review, and coordinate content across the full production lifecycle, not just at the
+                publishing stage.
               </span>
             </AccordionItem>
           </Accordion>
