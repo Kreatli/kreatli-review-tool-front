@@ -72,6 +72,55 @@ const faqs: FAQItem[] = [
     answer:
       "Kreatli provides real-time notifications for important events in your creative workflow, including new comments, approval requests, project updates, and file uploads. These notifications help team members stay in sync without constantly checking the platform.\n\nNotifications are contextual and linked to specific assets and projects, so you can quickly understand what needs your attention. When someone adds a comment on a video you're working on, requests approval for a design, or uploads a new version, you'll be notified immediately.\n\nThe notification system is integrated with the review and approval workflow, ensuring that approvals and feedback requests don't get missed. This keeps your creative production management process moving forward efficiently, as team members and clients are promptly notified when their input is needed in the media review and approval process.",
   },
+  {
+    key: 'vs-basic-pm-tools',
+    category: 'Features',
+    question: 'What can Kreatli help my creative team accomplish that basic project management tools cannot?',
+    answer:
+      'Kreatli is built specifically for creative production, not generic task tracking. It combines asset review, visual feedback, safe zone validation, approvals, and collaboration into a single production management platform. Unlike traditional project management tools, Kreatli is designed around how creative teams actually produce, review, and deliver content.',
+  },
+  {
+    key: 'vs-competitors',
+    category: 'Features',
+    question: 'How is Kreatli different from tools like Frame.io, Asana, or Notion?',
+    answer:
+      'Kreatli focuses on end‑to‑end production workflows. Unlike review‑only tools, it covers planning, collaboration, review, and delivery. Unlike general PM tools, it understands creative assets, visual context, and platform constraints such as social media safe zones.',
+  },
+  {
+    key: 'replace-multiple-tools',
+    category: 'Features',
+    question: 'Can Kreatli replace multiple tools in my creative workflow?',
+    answer:
+      'Yes. Many teams use Kreatli to reduce reliance on separate tools for task management, file sharing, review, feedback, and approval. This simplifies workflows and reduces context switching.',
+  },
+  {
+    key: 'approval-workflow-recommended',
+    category: 'Features',
+    question: 'Is there a recommended workflow for approvals?',
+    answer:
+      'Yes. Most teams define clear stages such as draft, review, revision, and approved. Kreatli supports this structured approach to reduce ambiguity and rework.',
+  },
+  {
+    key: 'leave-feedback',
+    category: 'Features',
+    question: 'How do I leave feedback on videos or images?',
+    answer:
+      'Kreatli allows reviewers to leave contextual comments directly on assets. This keeps feedback clear, visual, and actionable.',
+  },
+  {
+    key: 'version-history-tracking',
+    category: 'Features',
+    question: 'Can I track version history and resolved feedback?',
+    answer:
+      'Yes. Kreatli maintains version history and lets teams resolve comments so everyone knows what has been addressed.',
+  },
+  {
+    key: 'share-external-stakeholders',
+    category: 'Features',
+    question: 'Can I share content with external stakeholders?',
+    answer:
+      'Yes. You can share assets for review without forcing external clients or stakeholders into complex onboarding flows.',
+  },
   // Pricing Category
   {
     key: 'pricing-structure',
@@ -101,6 +150,20 @@ const faqs: FAQItem[] = [
     answer:
       "Choosing the right plan depends on your team size and the number of projects you need to manage. The Free Plan is perfect for individuals or very small teams getting started - it includes 2 projects with up to 2 users, making it ideal for testing the platform or managing a couple of small projects.\n\nThe Pro Plan ($15/user/month for teams up to 5 members) is ideal for small to medium creative teams that need to manage up to 10 projects with up to 5 users. This plan works well for micro-teams, freelance teams, and small agencies that need more capacity than the Free Plan but don't require unlimited projects or users.\n\nThe Advanced Plan ($20/user/month for teams of 6+ members) provides unlimited projects and users, making it suitable for larger agencies, post-production houses, and creative teams that need to manage multiple client projects simultaneously. If you're unsure which plan is right for your team, you can start with the Free Plan and upgrade as your needs grow. Our support team can also help you evaluate which plan best fits your creative production management requirements.",
   },
+  {
+    key: 'change-cancel-plan',
+    category: 'Pricing',
+    question: 'Can I change or cancel my plan?',
+    answer:
+      'Yes. Plans can be adjusted or canceled according to your subscription terms. Your data remains accessible during the billing period.',
+  },
+  {
+    key: 'pricing-team-size',
+    category: 'Pricing',
+    question: 'Is pricing based on team size?',
+    answer:
+      'Pricing is typically structured around usage and team collaboration needs, making it suitable for small teams and growing organizations.',
+  },
   // Who We Help Category
   {
     key: 'video-creators',
@@ -123,6 +186,20 @@ const faqs: FAQItem[] = [
     answer:
       "Creative agencies and post-production boutiques need to scale their operations while maintaining quality and managing complex projects with multiple stakeholders. Kreatli provides unlimited projects and team members at scale, making it suitable for agencies handling dozens of client projects simultaneously. The platform's advanced review tools support professional workflows with frame-accurate feedback, version control, and comprehensive approval processes.\n\nFor agencies coordinating feedback from multiple stakeholders (clients, account managers, creative directors, producers), Kreatli's media review and approval workflows keep everyone aligned. All feedback is organized by asset and project, making it easy to track what needs attention and ensuring nothing gets missed. Enterprise-grade security and access controls protect high-value creative assets while allowing appropriate access for different team members and clients.\n\nPost-production houses managing film and TV projects benefit from Kreatli's version control and project organization features. The platform handles large-scale projects with hundreds of files, multiple versions, and complex approval chains. Comprehensive project analytics and reporting help agencies track timelines, resource allocation, and project health across their entire portfolio, improving their creative production management at scale.",
   },
+  {
+    key: 'team-types',
+    category: 'Who We Help',
+    question: 'What types of teams benefit most from Kreatli?',
+    answer:
+      'Kreatli is ideal for in‑house creative teams, social media teams, agencies, video editors, and content producers managing recurring production workflows and multiple stakeholders.',
+  },
+  {
+    key: 'large-teams-multiple-brands',
+    category: 'Who We Help',
+    question: 'Can Kreatli support large teams or multiple brands?',
+    answer:
+      'Yes. Kreatli supports structured workflows suitable for agencies and organizations managing multiple brands or content streams.',
+  },
   // Getting Started Category
   {
     key: 'getting-started',
@@ -138,6 +215,27 @@ const faqs: FAQItem[] = [
     answer:
       "Kreatli works well for teams of all sizes, from solo creators to large agencies. Solo video creators and freelancers benefit from the platform's organization and client collaboration features. Small teams (2-10 people) find value in consolidating multiple tools into one platform for creative production management. Medium teams (10-50 people) appreciate the scalability and collaboration features.\n\nFor large teams and agencies (50+ people), Kreatli provides unlimited projects and team members, enterprise-grade security, advanced access controls, and comprehensive project analytics. The platform scales from managing a few projects to hundreds of simultaneous projects across multiple clients and departments.\n\nThe key advantage is that Kreatli's features work consistently regardless of team size. A solo creator gets the same frame-accurate review capabilities as a large agency, and a small team gets the same project organization features as enterprise clients. This means teams can start small and scale without outgrowing the platform or needing to migrate to different tools as they grow.",
   },
+  {
+    key: 'first-steps',
+    category: 'Getting Started',
+    question: 'What should I do first after signing up for Kreatli?',
+    answer:
+      'Start by creating a workspace, inviting your team, and setting up your first project. Upload a sample asset and run it through review to understand how collaboration and feedback work inside Kreatli.',
+  },
+  {
+    key: 'invite-team-members',
+    category: 'Getting Started',
+    question: 'How do I invite team members and assign roles?',
+    answer:
+      'You can invite team members directly via email and control access through roles and permissions. This ensures the right people can view, comment, or approve content.',
+  },
+  {
+    key: 'international-use',
+    category: 'Getting Started',
+    question: 'Can Kreatli be used internationally?',
+    answer:
+      'Yes. Kreatli is used by teams globally and supports distributed collaboration across regions.',
+  },
   // Integrations Category
   {
     key: 'integrations',
@@ -146,6 +244,20 @@ const faqs: FAQItem[] = [
     answer:
       "Kreatli integrates with popular cloud storage services including Google Drive and Dropbox. You can connect your existing cloud storage accounts and either upload files directly to Kreatli or sync existing files from your cloud storage.\n\nThis integration means you don't have to abandon your existing file storage solutions. You can continue using Google Drive or Dropbox for general file storage while leveraging Kreatli's specialized features for creative production management, media review, and approval workflows.\n\nThe platform also supports direct file uploads, so you can work entirely within Kreatli if preferred. Whether you're syncing from cloud storage or uploading directly, all files benefit from Kreatli's organization, review, and collaboration features that are specifically designed for creative workflows.",
   },
+  {
+    key: 'integrations-other-tools',
+    category: 'Integrations',
+    question: 'Does Kreatli integrate with other tools?',
+    answer:
+      'Kreatli is designed to fit into existing workflows and supports common creative file formats. Integration options continue to expand based on user needs.',
+  },
+  {
+    key: 'editing-software',
+    category: 'Integrations',
+    question: 'Can I use Kreatli alongside my editing software?',
+    answer:
+      'Yes. Kreatli complements editing tools like Premiere Pro, Final Cut Pro, and CapCut by handling review and collaboration, not editing itself.',
+  },
   // Security Category
   {
     key: 'security',
@@ -153,6 +265,20 @@ const faqs: FAQItem[] = [
     question: 'What security features does Kreatli offer for creative production files?',
     answer:
       'Kreatli provides enterprise-level security features designed for sensitive creative work. All files are encrypted both in transit and at rest, ensuring your creative assets are protected. The platform supports secure file sharing with password-protected links and access controls.\n\nYou can set granular permissions for team members, controlling who can view, comment, approve, or download files. Guest review links can be configured with expiration dates and access restrictions, giving you control over external collaboration while maintaining security.\n\nThe platform is compliance-ready and designed to meet security standards required for handling confidential creative work, client materials, and proprietary content. This makes it suitable for agencies and production companies that need to protect sensitive creative assets throughout the media review and approval process.',
+  },
+  {
+    key: 'content-security',
+    category: 'Security',
+    question: 'Is my content secure on Kreatli?',
+    answer:
+      'Yes. Kreatli is designed with security and privacy in mind. Uploaded content is not shared publicly unless you choose to share it.',
+  },
+  {
+    key: 'project-visibility',
+    category: 'Security',
+    question: 'Can I control who sees each project?',
+    answer:
+      'Yes. Permissions allow you to restrict access to specific projects or assets.',
   },
 ];
 
