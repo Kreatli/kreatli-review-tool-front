@@ -107,7 +107,7 @@ export const ProjectHeader = ({ project }: Props) => {
                 onClick={uploadAssets}
               >
                 <Icon icon="upload" size={16} />
-                Upload new
+                Upload
               </Button>
               <Dropdown>
                 <DropdownTrigger>
