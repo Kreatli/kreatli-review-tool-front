@@ -94,7 +94,7 @@ export const AssetContextProvider = ({
                 },
               },
               {
-                label: 'Delete folder',
+                label: 'Delete forever',
                 icon: 'trash' as const,
                 color: 'danger' as const,
                 onClick: () => {
@@ -113,7 +113,7 @@ export const AssetContextProvider = ({
                 },
               },
               {
-                label: 'Delete file',
+                label: 'Delete forever',
                 icon: 'trash' as const,
                 color: 'danger' as const,
                 onClick: () => {
@@ -139,7 +139,7 @@ export const AssetContextProvider = ({
       ...(asset.type === 'folder'
         ? [
             {
-              label: 'Archive folder',
+              label: 'Delete folder',
               icon: 'trash' as const,
               color: 'danger' as const,
               onClick: () => {
@@ -167,7 +167,7 @@ export const AssetContextProvider = ({
               },
             },
             {
-              label: 'Archive file',
+              label: 'Delete file',
               icon: 'trash' as const,
               color: 'danger' as const,
               onClick: () => {

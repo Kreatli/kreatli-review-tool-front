@@ -17,7 +17,6 @@ import { Icon } from '../../various/Icon';
 import { CreateFolderModal } from '../../asset/AssetModals/CreateFolderModal';
 import { ProjectMembersModal, ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectBreadcrumbs } from './ProjectBreadcrumbs';
-import { ProjectDescriptionModal } from './ProjectDescriptionModal';
 import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 
 interface Props {
@@ -53,33 +52,28 @@ export const ProjectHeader = ({ project }: Props) => {
           totalFileSize={project.totalFileSize}
           path={[{ name: project.name, url: '#' }]}
         >
-          <div className="-ml-1 flex gap-2">
-            <Button isIconOnly size="sm" variant="light" radius="full" onClick={() => setIsDescriptionModalOpen(true)}>
-              <Icon icon="helpCircle" size={20} />
-            </Button>
-            {projectActions.length > 0 && (
-              <Dropdown placement="bottom-start">
-                <DropdownTrigger>
-                  <Button isIconOnly size="sm" variant="flat" radius="full">
-                    <Icon icon="dots" />
-                  </Button>
-                </DropdownTrigger>
-                <DropdownMenu variant="flat">
-                  {projectActions.map((action) => (
-                    <DropdownItem
-                      key={action.label}
-                      color={action.color}
-                      showDivider={action.showDivider}
-                      startContent={<Icon icon={action.icon} size={16} />}
-                      onPress={action.onClick}
-                    >
-                      {action.label}
-                    </DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
-            )}
-          </div>
+          {projectActions.length > 0 && (
+            <Dropdown placement="bottom-start">
+              <DropdownTrigger>
+                <Button isIconOnly size="sm" variant="flat" radius="full">
+                  <Icon icon="dots" />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu variant="flat">
+                {projectActions.map((action) => (
+                  <DropdownItem
+                    key={action.label}
+                    color={action.color}
+                    showDivider={action.showDivider}
+                    startContent={<Icon icon={action.icon} size={16} />}
+                    onPress={action.onClick}
+                  >
+                    {action.label}
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </Dropdown>
+          )}
         </ProjectBreadcrumbs>
         <div className="flex items-center gap-4">
           {isProjectOwner && (
@@ -147,11 +141,6 @@ export const ProjectHeader = ({ project }: Props) => {
           isOpen={isFolderModalOpen}
           projectId={project.id}
           onClose={() => setIsFolderModalOpen(false)}
-        />
-        <ProjectDescriptionModal
-          isOpen={isDescriptionModalOpen}
-          project={project}
-          onClose={() => setIsDescriptionModalOpen(false)}
         />
       </div>
     </div>

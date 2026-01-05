@@ -36,7 +36,7 @@ export const ProjectArchivedAssets = () => {
       url: `/project/${project.id}/assets`,
     },
     {
-      name: 'Archived media',
+      name: 'Recently deleted',
       url: '#',
     },
   ];
