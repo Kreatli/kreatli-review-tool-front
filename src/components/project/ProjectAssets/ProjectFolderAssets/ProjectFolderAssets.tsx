@@ -77,8 +77,8 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
                 isDisabled={project.status !== 'active'}
                 onClick={uploadAssets}
               >
-                <Icon icon="plus" size={16} />
-                New
+                <Icon icon="upload" size={16} />
+                Upload new
               </Button>
               <Dropdown>
                 <DropdownTrigger>
