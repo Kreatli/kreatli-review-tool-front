@@ -84,11 +84,11 @@ export const ProjectHeader = ({ project }: Props) => {
               isBordered
               disabled={project.status !== 'active'}
               size="sm"
-              className="text-lg font-medium text-foreground-500"
+              className="hidden text-lg font-medium text-foreground-500 sm:block"
               onClick={() => setIsMembersModalOpen(true)}
             />
           )}
-          <div className="ml-1 flex">
+          <div className="ml-1 hidden sm:flex">
             <button
               type="button"
               aria-label="Project members"
@@ -99,7 +99,7 @@ export const ProjectHeader = ({ project }: Props) => {
               <ProjectMembersThumbnails members={project.members} />
             </button>
           </div>
-          <div>
+          <div className="hidden sm:block">
             <ButtonGroup>
               <Button
                 className="bg-foreground pr-1 text-content1"
@@ -130,6 +130,33 @@ export const ProjectHeader = ({ project }: Props) => {
               </Dropdown>
             </ButtonGroup>
             <input {...getInputProps()} />
+          </div>
+          <div className="sm:hidden">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button
+                  isIconOnly
+                  isDisabled={project.status !== 'active'}
+                  size="sm"
+                  radius="full"
+                  className="bg-foreground text-content1"
+                >
+                  <Icon icon="upload" size={16} />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu variant="flat">
+                <DropdownItem key="upload" startContent={<Icon icon="upload" size={18} />} onPress={uploadAssets}>
+                  Upload files
+                </DropdownItem>
+                <DropdownItem
+                  key="create-folder"
+                  startContent={<Icon icon="plus" size={18} />}
+                  onPress={() => setIsFolderModalOpen(true)}
+                >
+                  Create folder
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </div>
         </div>
         <ProjectMembersModal

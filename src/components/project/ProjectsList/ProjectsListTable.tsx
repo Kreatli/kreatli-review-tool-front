@@ -87,7 +87,7 @@ export const ProjectsListTable = ({
           >
             <TableCell>
               <div className="flex items-center gap-3">
-                <div className="shrink-0">
+                <div className="size-12 shrink-0">
                   {project.cover?.url ? (
                     <Image
                       src={project.cover?.url}
@@ -97,7 +97,7 @@ export const ProjectsListTable = ({
                       className="pointer-events-none object-cover"
                     />
                   ) : (
-                    <div className="flex size-12 items-center justify-center rounded-full bg-foreground-100 text-foreground-500">
+                    <div className="flex size-full items-center justify-center rounded-full bg-foreground-100 text-foreground-500">
                       <Icon icon="slides" size={18} />
                     </div>
                   )}

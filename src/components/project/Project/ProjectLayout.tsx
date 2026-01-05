@@ -78,7 +78,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
                       <NotActiveProjectAlert />
                     </div>
                   )}
-                  <div className="flex gap-6">
+                  <div className="flex flex-col gap-6 gap-y-2 sm:flex-row">
                     <Tabs selectedKey={router.pathname.split('/')[3]}>
                       <Tab as={NextLink} href={`/project/${project.id}/dashboard`} title="Home" key="dashboard" />
                       <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />

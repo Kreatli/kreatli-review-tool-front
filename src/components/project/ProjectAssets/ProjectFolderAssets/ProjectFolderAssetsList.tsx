@@ -252,7 +252,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col items-center justify-between gap-4 gap-y-2 sm:flex-row">
         <div className="flex w-full items-center gap-2 text-2xl font-semibold">
           <Icon icon="folder" size={24} />
           {folder.name}
