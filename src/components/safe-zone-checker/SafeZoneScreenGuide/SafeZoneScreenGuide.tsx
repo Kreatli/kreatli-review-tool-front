@@ -5,50 +5,118 @@ import NextLink from 'next/link';
 export const SafeZoneScreenGuide = () => {
   return (
     <div>
-      {/* What are Safe Zones Section */}
+      {/* How to Use Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="mx-auto mb-4 max-w-md text-center font-sans text-2xl font-bold sm:text-4xl">
-              What are Safe Zones and Why They Matter
+          <div className="mb-10 text-center">
+            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
+              How to Use Safe-Zone Checker in Your Workflow
             </h2>
-            <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Safe zones are buffer areas inside your video canvas where important visual elements are guaranteed to
-              remain visible, regardless of device differences or UI overlays.
+            <p className="mx-auto max-w-2xl text-base text-foreground-500">
+              Follow this step-by-step process to ensure your content looks perfect on every platform.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2">
-            <Card>
-              <CardBody className="p-6 lg:p-8">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-primary/10 p-3">
-                    <Icon icon="shield" size={24} className="text-primary" />
+          <div className="flex flex-col gap-6">
+            {[
+              {
+                step: 1,
+                title: 'Prepare Your Content (Any Format)',
+                description:
+                  'Use the Safe Zone Checker with any creative asset—videos, images, thumbnails, or mockups. We recommend 1080 × 1920 (9:16) for vertical platforms, but the tool works with any dimensions.',
+                icon: 'folder',
+                image: null,
+              },
+              {
+                step: 2,
+                title: 'Upload Your Asset',
+                description:
+                  'Drag and drop your file or browse to select it. Your content will appear with safe zone overlays, giving you immediate visual feedback on how it will be framed.',
+                icon: 'upload',
+                image: '/safe-zone-guide/upload-asset.png',
+              },
+              {
+                step: 3,
+                title: 'Toggle Between Platform Overlays',
+                description:
+                  'Switch between TikTok, Instagram Reels, and YouTube Shorts to see where UI elements appear on each platform and ensure your layout works everywhere.',
+                icon: 'addVideo',
+                image: '/safe-zone-guide/toggle-platforms.png',
+              },
+              {
+                step: 4,
+                title: 'Review and Share with Your Team',
+                description:
+                  'Check placement of text, logos, CTAs, and key visuals. Use Kreatli as a production management platform to review assets with your team, share feedback, and align on changes before publishing.',
+                icon: 'paint',
+                image: null,
+              },
+              {
+                step: 5,
+                title: 'Export and Download with Safe Zones',
+                description:
+                  'Export your content with safe zone overlays applied. Share with stakeholders for sign-off, align your team on layout constraints, and document guidelines for future iterations.',
+                icon: 'checkCircle',
+                image: '/safe-zone-guide/export-download.png',
+              },
+            ].map((item) => (
+              <Card key={item.step} className="scroll-mt-36">
+                <CardBody className="p-6 lg:p-8">
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Icon icon={item.icon as any} size={24} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
+                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
+                        </div>
+                      </div>
+                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
+                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                        {item.step === 4 && (
+                          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+                            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                              Start for Free
+                            </Button>
+                            <Button
+                              as="a"
+                              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                              target="_blank"
+                              size="lg"
+                              variant="bordered"
+                            >
+                              Book a Demo
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    {item.image && (
+                      <div className="mt-6 flex justify-center lg:mt-8">
+                        <div className="relative max-w-[280px]">
+                          {/* Phone Frame */}
+                          <div className="relative mx-auto rounded-[2.5rem] bg-white p-2 shadow-2xl">
+                            {/* Notch */}
+                            <div className="absolute left-1/2 top-0 z-10 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-white"></div>
+                            {/* Screen */}
+                            <div className="overflow-hidden rounded-[2rem] bg-black">
+                              <Image
+                                src={item.image}
+                                alt={`${item.title} screenshot`}
+                                removeWrapper
+                                className="h-auto w-full"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <h3 className="font-sans text-xl font-bold">Protect Your Content</h3>
-                </div>
-                <p className="text-foreground-500">
-                  Apps like TikTok, Instagram, and YouTube put playback controls, profile bars, comment buttons,
-                  captions, and overlays on top of your video. Placing critical content too close to the edges risks
-                  accidental cropping or hiding.
-                </p>
-              </CardBody>
-            </Card>
-
-            <Card>
-              <CardBody className="p-6 lg:p-8">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-success/10 p-3">
-                    <Icon icon="checkCircle" size={24} className="text-success" />
-                  </div>
-                  <h3 className="font-sans text-xl font-bold">Professional Results</h3>
-                </div>
-                <p className="text-foreground-500">
-                  Treating safe zones as a built-in editing discipline means fewer layout surprises, fewer reworks, and
-                  fewer delivery delays. Your content looks polished and intentional across all platforms.
-                </p>
-              </CardBody>
-            </Card>
+                </CardBody>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -155,110 +223,50 @@ export const SafeZoneScreenGuide = () => {
         </div>
       </section>
 
-      {/* How to Use Section */}
+      {/* What are Safe Zones Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-10 text-center">
-            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
-              How to Use Safe-Zone Checker in Your Workflow
+          <div className="mb-12 text-center">
+            <h2 className="mx-auto mb-4 max-w-md text-center font-sans text-2xl font-bold sm:text-4xl">
+              What are Safe Zones and Why They Matter
             </h2>
-            <p className="mx-auto max-w-2xl text-base text-foreground-500">
-              Follow this step-by-step process to ensure your content looks perfect on every platform.
+            <p className="mx-auto max-w-3xl text-lg text-foreground-500">
+              Safe zones are buffer areas inside your video canvas where important visual elements are guaranteed to
+              remain visible, regardless of device differences or UI overlays.
             </p>
           </div>
 
-          <div className="flex flex-col gap-6">
-            {[
-              {
-                step: 1,
-                title: 'Prepare Your Content (Any Format)',
-                description:
-                  'Use the Safe Zone Checker with any creative asset—videos, images, thumbnails, or mockups. We recommend 1080 × 1920 (9:16) for vertical platforms, but the tool works with any dimensions.',
-                icon: 'folder',
-                image: null,
-              },
-              {
-                step: 2,
-                title: 'Open the Safe Zone Checker',
-                description:
-                  'Navigate to the Social Media Safe Zone Checker to access a clean interface with upload controls and platform-specific overlays.',
-                icon: 'upload',
-                image: null,
-              },
-              {
-                step: 3,
-                title: 'Upload Your Asset',
-                description:
-                  'Drag and drop your file or browse to select it. Your content will appear with safe zone overlays, giving you immediate visual feedback on how it will be framed.',
-                icon: 'upload',
-                image: '/safe-zone-guide/upload-asset.png',
-              },
-              {
-                step: 4,
-                title: 'Toggle Between Platform Overlays',
-                description:
-                  'Switch between TikTok, Instagram Reels, and YouTube Shorts to see where UI elements appear on each platform and ensure your layout works everywhere.',
-                icon: 'addVideo',
-                image: '/safe-zone-guide/toggle-platforms.png',
-              },
-              {
-                step: 5,
-                title: 'Review and Share with Your Team',
-                description:
-                  'Check placement of text, logos, CTAs, and key visuals. Use Kreatli as a production management platform to review assets with your team, share feedback, and align on changes before publishing.',
-                icon: 'paint',
-                image: null,
-              },
-              {
-                step: 6,
-                title: 'Export and Download with Safe Zones',
-                description:
-                  'Export your content with safe zone overlays applied. Share with stakeholders for sign-off, align your team on layout constraints, and document guidelines for future iterations.',
-                icon: 'checkCircle',
-                image: '/safe-zone-guide/export-download.png',
-              },
-            ].map((item) => (
-              <Card key={item.step} className="scroll-mt-36">
-                <CardBody className="p-6 lg:p-8">
-                  <div className="flex flex-col gap-6">
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
-                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                          <Icon icon={item.icon as any} size={24} className="text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
-                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
-                        </div>
-                      </div>
-                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
-                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
-                      </div>
-                    </div>
-                    {item.image && (
-                      <div className="mt-6 flex justify-center lg:mt-8">
-                        <div className="relative max-w-[280px]">
-                          {/* Phone Frame */}
-                          <div className="relative mx-auto rounded-[2.5rem] bg-white p-2 shadow-2xl">
-                            {/* Notch */}
-                            <div className="absolute left-1/2 top-0 z-10 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-white"></div>
-                            {/* Screen */}
-                            <div className="overflow-hidden rounded-[2rem] bg-black">
-                              <Image
-                                src={item.image}
-                                alt={`${item.title} screenshot`}
-                                removeWrapper
-                                className="h-auto w-full"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
+          <div className="grid gap-8 md:grid-cols-2">
+            <Card>
+              <CardBody className="p-6 lg:p-8">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-primary/10 p-3">
+                    <Icon icon="shield" size={24} className="text-primary" />
                   </div>
-                </CardBody>
-              </Card>
-            ))}
+                  <h3 className="font-sans text-xl font-bold">Protect Your Content</h3>
+                </div>
+                <p className="text-foreground-500">
+                  Apps like TikTok, Instagram, and YouTube put playback controls, profile bars, comment buttons,
+                  captions, and overlays on top of your video. Placing critical content too close to the edges risks
+                  accidental cropping or hiding.
+                </p>
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody className="p-6 lg:p-8">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-success/10 p-3">
+                    <Icon icon="checkCircle" size={24} className="text-success" />
+                  </div>
+                  <h3 className="font-sans text-xl font-bold">Professional Results</h3>
+                </div>
+                <p className="text-foreground-500">
+                  Treating safe zones as a built-in editing discipline means fewer layout surprises, fewer reworks, and
+                  fewer delivery delays. Your content looks polished and intentional across all platforms.
+                </p>
+              </CardBody>
+            </Card>
           </div>
         </div>
       </section>

@@ -8,13 +8,15 @@ import YoutubeOverlay from '../../../assets/images/safe-zone-overlays/youtube-sh
 import InstagramSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/instagram-reels-safe-zone-overlay.png';
 import TiktokSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/tiktok-safe-zone-overlay.png';
 import YoutubeSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-safe-zone-overlay.png';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { cn, Radio, RadioGroup, Tooltip } from '@heroui/react';
 import { SafeZoneScreenEmptyState } from './SafeZoneScreenEmptyState';
 import { SafeZoneScreenImage } from './SafeZoneScreenImage';
 import { SafeZoneScreenVideo } from './SafeZoneScreenVideo';
 import { Icon } from '../../various/Icon';
 import { useDropzone } from 'react-dropzone';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { useSession } from '../../../hooks/useSession';
 
 const OVERLAYS = {
   instagram: InstagramOverlay,
@@ -30,12 +32,35 @@ const SAFE_ZONE_OVERLAYS = {
 
 export const SafeZoneScreen = () => {
   const captureRef = useRef(null);
+  const previousOverlayRef = useRef<keyof typeof OVERLAYS>('instagram');
+  const platformSwitchCountRef = useRef(0);
 
   const [file, setFile] = useState<File | null>(null);
   const [activeOverlay, setActiveOverlay] = useState<keyof typeof OVERLAYS>('instagram');
   const [shouldShowSafeZone, setShouldShowSafeZone] = useState(false);
 
+  const { openSignUpModal } = useSignUpModalVisibility();
+  const { isSignedIn } = useSession();
+
   const activeOverlayData = (shouldShowSafeZone ? SAFE_ZONE_OVERLAYS : OVERLAYS)[activeOverlay];
+
+  useEffect(() => {
+    // Only count switches if the overlay actually changed and it's one of the three platforms
+    // Don't show modal if user is already signed in
+    if (activeOverlay !== previousOverlayRef.current && !isSignedIn) {
+      platformSwitchCountRef.current += 1;
+
+      // Show sign up modal every 3 switches (at 3, 6, 9, 12, etc.)
+      if (platformSwitchCountRef.current % 3 === 0 && platformSwitchCountRef.current > 0) {
+        openSignUpModal();
+      }
+      
+      previousOverlayRef.current = activeOverlay;
+    } else if (activeOverlay !== previousOverlayRef.current) {
+      // Update previous overlay even if user is signed in (but don't count switches)
+      previousOverlayRef.current = activeOverlay;
+    }
+  }, [activeOverlay, openSignUpModal, isSignedIn]);
 
   const isImageFile = file?.type.startsWith('image/');
   const isVideoFile = file?.type.startsWith('video/');
