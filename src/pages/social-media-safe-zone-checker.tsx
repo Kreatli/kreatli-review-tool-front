@@ -7,6 +7,7 @@ import { SocialMediaSafeZoneChecker } from '../components/safe-zone-checker/Soci
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
+import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 
 export default function ProjectsPage() {
   useSession();
@@ -30,6 +31,7 @@ export default function ProjectsPage() {
       <SocialMediaSafeZoneChecker />
       <SafeZoneScreenGuide />
       <FooterSection hideCta />
+      <SignUpModal />
     </>
   );
 }
