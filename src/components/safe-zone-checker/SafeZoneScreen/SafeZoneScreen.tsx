@@ -56,9 +56,6 @@ export const SafeZoneScreen = () => {
       }
       
       previousOverlayRef.current = activeOverlay;
-    } else if (activeOverlay !== previousOverlayRef.current) {
-      // Update previous overlay even if user is signed in (but don't count switches)
-      previousOverlayRef.current = activeOverlay;
     }
   }, [activeOverlay, openSignUpModal, isSignedIn]);
 
