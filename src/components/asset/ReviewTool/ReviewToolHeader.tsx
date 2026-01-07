@@ -77,9 +77,12 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
           </div>
           <div className="flex items-center text-foreground-400">
             {path.map((pathName, index) => (
-              <div key={index} className="flex items-center text-xs">
-                {index !== 0 && <Icon icon="chevronDown" className="rotate-90" size={14} />}
-                <div>{pathName}</div>
+              <div
+                key={index}
+                className={cn('flex items-center text-xs', { 'overflow-hidden': index !== path.length - 1 })}
+              >
+                {index !== 0 && <Icon icon="chevronDown" className="shrink-0 rotate-90" size={14} />}
+                <div className={cn({ truncate: index !== path.length - 1 })}>{pathName}</div>
               </div>
             ))}
           </div>

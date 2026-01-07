@@ -31,6 +31,10 @@ body,
   }
 }
 
+.react-renderer {
+  z-index: 50;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

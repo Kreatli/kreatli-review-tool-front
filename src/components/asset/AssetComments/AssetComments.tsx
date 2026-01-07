@@ -8,6 +8,8 @@ import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
 import { AssetComment } from './AssetComment';
 import { AssetCommentsEmptyState } from './AssetCommentsEmptyState';
 import { AssetCommentsLoading } from './AssetCommentsLoading';
+import { useSearchParams } from 'next/navigation';
+import { useFileStateContext } from '../../../contexts/File';
 
 type CommentsStatus = 'all' | 'unresolved' | 'resolved';
 
@@ -19,9 +21,12 @@ interface Props {
 
 export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
   const queryClient = useQueryClient();
+  const searchParams = useSearchParams();
+  const { setActiveComment } = useFileStateContext();
   const { data, isPending, isError } = useGetAssetFileIdComments(fileId, { shareableLinkId: shareableLinkId ?? '' });
   const [commentsStatus, setCommentsStatus] = useState<CommentsStatus>('unresolved');
 
+  const commentIdFromUrl = searchParams.get('commentId');
   const { comments = [] } = data ?? {};
 
   const commentsToShow = React.useMemo(() => {
@@ -35,6 +40,17 @@ export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
 
     return comments.filter(({ isResolved }) => !isResolved);
   }, [commentsStatus, comments]);
+
+  React.useEffect(() => {
+    if (commentIdFromUrl) {
+      const comment = comments.find((comment) => comment.id === commentIdFromUrl);
+
+      if (comment) {
+        setCommentsStatus(comment.isResolved ? 'resolved' : 'unresolved');
+        setActiveComment(comment);
+      }
+    }
+  }, [commentIdFromUrl, comments]);
 
   if (isPending) {
     return <AssetCommentsLoading />;
@@ -94,6 +110,7 @@ export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
                   <AssetComment
                     key={reply.id}
                     fileId={fileId}
+                    project={project}
                     comment={reply}
                     isResolvable={false}
                     isResolved={comment.isResolved}

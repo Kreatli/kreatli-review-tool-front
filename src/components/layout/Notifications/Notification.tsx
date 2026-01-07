@@ -78,6 +78,10 @@ export const Notification = ({ notification }: Props) => {
       return 'Comment resolved';
     }
 
+    if (notification.type === 'file_comment_mention') {
+      return 'Mention in comment';
+    }
+
     if (notification.type === 'project_member_left') {
       return 'Project member left';
     }
@@ -94,7 +98,8 @@ export const Notification = ({ notification }: Props) => {
   }, [notification.type, notification.data]);
 
   const notificationDescription = useMemo(() => {
-    const { fileId, fileName, projectId, projectName, userName, commentMessage, chatId, chatName } = notification.data;
+    const { fileId, fileName, projectId, projectName, userName, commentMessage, chatId, chatName, commentId } =
+      notification.data;
 
     if (notification.type === 'file_assigned') {
       return (
@@ -204,6 +209,25 @@ export const Notification = ({ notification }: Props) => {
       );
     }
 
+    if (notification.type === 'file_comment_mention') {
+      return (
+        <>
+          {userName} mentioned you in a comment on the{' '}
+          <Link
+            as={NextLink}
+            href={`/project/${projectId}/assets/${fileId}?commentId=${commentId}`}
+            size="sm"
+            className="z-10 inline break-all"
+            underline="hover"
+            onClick={handleLinkClick}
+          >
+            {fileName}
+          </Link>{' '}
+          file.
+        </>
+      );
+    }
+
     if (notification.type === 'project_member_left') {
       return (
         <>
@@ -283,6 +307,10 @@ export const Notification = ({ notification }: Props) => {
 
     if (notification.type === 'file_comment_resolve') {
       return 'checkCircle';
+    }
+
+    if (notification.type === 'file_comment_mention') {
+      return 'chat';
     }
 
     if (notification.type === 'project_member_removed') {

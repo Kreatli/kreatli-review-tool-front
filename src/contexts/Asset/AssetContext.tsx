@@ -8,7 +8,6 @@ import { MoveToModal } from '../../components/asset/AssetModals/MoveToModal';
 import { RenameAssetModal } from '../../components/asset/AssetModals/RenameAssetModal';
 import { RestoreAssetModal } from '../../components/asset/AssetModals/RestoreAssetModal';
 import { IconType } from '../../components/various/Icon';
-import { useSession } from '../../hooks/useSession';
 import { ProjectDto, ProjectFileDto, ProjectFolderDto } from '../../services/types';
 import { downloadFromUrl } from '../../utils/download';
 import { getAssetFileIdDownload } from '../../services/services';
@@ -58,9 +57,6 @@ export const AssetContextProvider = ({
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
   const [isRestoreModalOpen, setIsRestoreModalOpen] = React.useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = React.useState(false);
-
-  const { user } = useSession();
-  const isProjectOwner = project.createdBy?.id === user?.id;
 
   const getAssetActions = (asset: ProjectFolderDto | ProjectFileDto) => {
     const shareAction = {
