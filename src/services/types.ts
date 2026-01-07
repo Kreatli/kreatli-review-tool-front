@@ -51,6 +51,7 @@ export interface AssetCommentBodyDto {
    */
   message: string;
   canvas?: AssetCommentCanvas;
+  content?: { [x in string | number]: any };
   name?: string;
   parent?: string;
   shareableLinkId?: string;
@@ -87,6 +88,7 @@ export interface AssetCommentDto {
   message: string;
   replies: AssetCommentDto[];
   canvas?: AssetCommentCanvas;
+  content?: { [x in string | number]: any };
   parent?: string;
   timestamp?: number[];
 }
@@ -577,6 +579,7 @@ export interface NotificationDto {
     | 'file_comment_added'
     | 'file_comment_reply'
     | 'file_comment_resolve'
+    | 'file_comment_mention'
     | 'chat_message_unread';
   /**
    *

@@ -1,5 +1,9 @@
 import { addToast, Avatar, Button, Checkbox, Chip, cn, Tooltip } from '@heroui/react';
 import React, { useEffect, useState } from 'react';
+import Text from '@tiptap/extension-text';
+import Document from '@tiptap/extension-document';
+import Paragraph from '@tiptap/extension-paragraph';
+import Mention from '@tiptap/extension-mention';
 
 import { useSession } from '../../../hooks/useSession';
 import { useDeleteAssetFileIdCommentCommentId, usePatchAssetFileIdCommentCommentId } from '../../../services/hooks';
@@ -8,6 +12,7 @@ import { formatRelativeTime } from '../../../utils/dates';
 import { formatDuration } from '../../../utils/formatDuration';
 import { Icon } from '../../various/Icon';
 import { useFileStateContext } from '../../../contexts/File';
+import { generateHTML } from '@tiptap/react';
 
 interface Props {
   fileId: string;
@@ -21,7 +26,7 @@ interface Props {
 
 export const AssetComment = ({ fileId, project, comment, isResolvable = true, onUpdate, onRemove, ...rest }: Props) => {
   const { user } = useSession();
-  const { createdBy, id, message, createdAt, timestamp, canvas } = comment;
+  const { createdBy, id, content, message, createdAt, timestamp, canvas } = comment;
   const { mutate: updateComment, isPending: isUpdatingComment } = usePatchAssetFileIdCommentCommentId();
   const { mutate: removeComment, isPending: isRemoving } = useDeleteAssetFileIdCommentCommentId();
   const { activeComment, replyingComment, setActiveComment, setReplyingComment } = useFileStateContext();
@@ -151,7 +156,20 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
       >
         {(canvas?.shapes?.length ?? 0) > 0 && <Icon icon="paint" size={16} className="mr-1 inline text-primary" />}
         {timestamp?.[0] !== undefined && <span className="text-foreground-500">{formatDuration(timestamp[0])} </span>}
-        {message}
+        {content ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: generateHTML(content, [
+                Document,
+                Paragraph,
+                Text,
+                Mention.configure({ HTMLAttributes: { class: 'text-primary bg-primary-50 px-1 rounded-md' } }),
+              ]),
+            }}
+          />
+        ) : (
+          message
+        )}
       </button>
       <div className="relative flex items-end justify-between">
         <button

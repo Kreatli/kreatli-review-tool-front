@@ -76,7 +76,7 @@ export const ReviewTool = ({ project, isLoading }: Props) => {
               />
             )}
           </div>
-          <ReviewToolFooter isDisabled={project.status !== 'active'} />
+          <ReviewToolFooter isDisabled={project.status !== 'active'} project={project} />
         </ReviewToolCanvasShapesContextProvider>
       </ReviewToolContextProvider>
     </div>

@@ -2071,6 +2071,7 @@
         "type": "object",
         "properties": {
           "message": { "type": "string", "maxLength": 1000 },
+          "content": { "type": "object" },
           "parent": { "type": "string" },
           "timestamp": { "type": "array", "items": { "type": "number" } },
           "canvas": { "$ref": "#/components/schemas/AssetCommentCanvas" },
@@ -2094,6 +2095,7 @@
         "properties": {
           "id": { "type": "string" },
           "message": { "type": "string" },
+          "content": { "type": "object" },
           "createdAt": { "format": "date-time", "type": "string" },
           "createdBy": { "$ref": "#/components/schemas/PartialTypeClass" },
           "canvas": { "$ref": "#/components/schemas/AssetCommentCanvas" },
@@ -2145,6 +2147,7 @@
               "file_comment_added",
               "file_comment_reply",
               "file_comment_resolve",
+              "file_comment_mention",
               "chat_message_unread"
             ]
           },
