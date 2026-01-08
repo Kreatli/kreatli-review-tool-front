@@ -1,17 +1,17 @@
+import { cn } from '@heroui/react';
+import Konva from 'konva';
+import { Vector2d } from 'konva/lib/types';
 import { useEffect, useRef, useState } from 'react';
-import { useScreenResize } from '../../../hooks/useScreenResize';
+import React from 'react';
 import { Layer, Line, Stage } from 'react-konva';
 
-import styles from './ReviewToolPreview.module.scss';
-import Konva from 'konva';
-import React from 'react';
-import { Vector2d } from 'konva/lib/types';
+import { EDITOR_COLOR_HEX } from '../../../constants/colors';
+import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import { useScreenResize } from '../../../hooks/useScreenResize';
 import { ReviewTool } from '../../../typings/reviewTool';
 import { simplifyLine } from '../../../utils/canvas';
-import { EDITOR_COLOR_HEX } from '../../../constants/colors';
 import { Icon } from '../../various/Icon';
-import { cn } from '@heroui/react';
-import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import styles from './ReviewToolPreview.module.scss';
 
 interface Props {
   shapes: ReviewTool.Shape[];
@@ -35,6 +35,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
   });
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCanvasWidth(fileRef.current?.clientWidth ?? 0);
   }, []);
 

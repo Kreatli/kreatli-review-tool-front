@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 export const enum Key {
   ESCAPE = 'Escape',
   TAB = 'Tab',

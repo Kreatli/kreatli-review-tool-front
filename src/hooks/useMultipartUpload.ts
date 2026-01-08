@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {
   usePostAssetsMultipartComplete,
   usePostAssetsMultipartStart,
@@ -59,6 +60,7 @@ export const useMultipartUpload = ({ projectId }: Props) => {
     });
 
     const chunksCount = Math.ceil(file.size / CHUNK_SIZE);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const uploadedParts: any[] = [];
 
     for (let partNumber = 1; partNumber <= chunksCount; partNumber++) {

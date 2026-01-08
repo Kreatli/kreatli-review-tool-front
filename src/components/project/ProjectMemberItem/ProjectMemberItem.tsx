@@ -1,6 +1,7 @@
 import { Avatar } from '@heroui/react';
-import { getProjectMemberLetter } from '../../../utils/shortNames';
+
 import { ProjectMemberDto } from '../../../services/types';
+import { getProjectMemberLetter } from '../../../utils/shortNames';
 
 interface Props {
   member: ProjectMemberDto;

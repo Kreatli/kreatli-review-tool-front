@@ -1,10 +1,11 @@
 import { Avatar, cn } from '@heroui/react';
+
 import { useSession } from '../../../hooks/useSession';
 import { ChatMessageDto } from '../../../services/types';
 import { formatChatMessageDate } from '../../../utils/dates';
-import { ChatMessagesItemPointer } from './ChatMessagesItemPointer';
 import { Icon } from '../../various/Icon';
 import { ChatMessagesItemAssetPreview } from './ChatMessagesItemAssetPreview';
+import { ChatMessagesItemPointer } from './ChatMessagesItemPointer';
 
 interface Props {
   message: ChatMessageDto;

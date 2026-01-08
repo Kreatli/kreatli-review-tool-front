@@ -1,16 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import type { Editor } from '@tiptap/react';
+import { useEffect, useState } from 'react';
 
 // --- Hooks ---
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
-
 // --- Icons ---
 import { HeadingIcon } from '../../tiptap-icons/heading-icon';
-
 // --- Tiptap UI ---
-import { headingIcons, type Level, isHeadingActive, canToggle, shouldShowButton } from '../../tiptap-ui/heading-button';
+import { canToggle, headingIcons, isHeadingActive, type Level, shouldShowButton } from '../../tiptap-ui/heading-button';
 
 /**
  * Configuration for the heading dropdown menu functionality

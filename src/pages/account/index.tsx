@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import React from 'react';
-import { useSession } from '../../hooks/useSession';
+
 import { AccountLayout } from '../../components/account/Account';
 import { GeneralInformation } from '../../components/account/GeneralInformation';
+import { useSession } from '../../hooks/useSession';
 
 export default function GeneralInformationPage() {
   const { isSignedIn, user } = useSession();
@@ -23,4 +23,5 @@ export default function GeneralInformationPage() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 GeneralInformationPage.getLayout = (page: any) => <AccountLayout>{page}</AccountLayout>;

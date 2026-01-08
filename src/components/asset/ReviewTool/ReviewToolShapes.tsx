@@ -24,10 +24,6 @@ const SHAPES = [
   },
 ] as const;
 
-interface Props {
-  isDisabled?: boolean;
-}
-
 export const ReviewToolShapes = ({ isDisabled = false }) => {
   const { isReadOnly, shapes } = useReviewToolCanvasShapesContext();
   const { activeTool, setActiveTool, fileRef, compareFileRef } = useReviewToolContext();

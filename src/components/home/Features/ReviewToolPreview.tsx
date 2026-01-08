@@ -1,12 +1,12 @@
 import { Avatar, Button, Card, CardBody, Textarea } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { ReviewToolComment } from './ReviewToolComment';
 import { useState } from 'react';
 
-import { ReviewToolCanvas } from './ReviewToolCanvas';
-import { ReviewTool } from '../../../typings/reviewTool';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { ReviewTool } from '../../../typings/reviewTool';
+import { Icon } from '../../various/Icon';
+import { ReviewToolCanvas } from './ReviewToolCanvas';
+import { ReviewToolComment } from './ReviewToolComment';
 
 export const ReviewToolPreview = () => {
   const [comment, setComment] = useState('');

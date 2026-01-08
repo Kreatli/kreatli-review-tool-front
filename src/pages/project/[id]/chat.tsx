@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
 
+import { Chat } from '../../../components/chat/Chat';
 import { ProjectLayout } from '../../../components/project/Project';
 import { ChatProvider } from '../../../contexts/Chat';
-import { Chat } from '../../../components/chat/Chat';
 
 export default function ProjectChat() {
   const router = useRouter();
@@ -23,4 +22,5 @@ export default function ProjectChat() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ProjectChat.getLayout = (page: any) => <ProjectLayout>{page}</ProjectLayout>;

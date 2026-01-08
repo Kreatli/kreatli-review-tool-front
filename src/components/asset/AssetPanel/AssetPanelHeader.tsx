@@ -3,9 +3,9 @@ import React from 'react';
 
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { Layout } from '../../../typings/layout';
-import { Icon } from '../../various/Icon';
 import { UserWidget } from '../../layout/Header/UserWidget';
 import { Notifications } from '../../layout/Notifications/Notifications';
+import { Icon } from '../../various/Icon';
 
 export const AssetPanelHeader = () => {
   const [theme, setTheme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });

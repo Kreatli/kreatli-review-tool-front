@@ -4,17 +4,17 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { ProjectContextProvider } from '../../../contexts/Project';
+import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { useProtectedPage } from '../../../hooks/useProtectedPage';
 import { useGetProjectId } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
-import { EmptyState } from '../../various/EmptyState';
 import { Header } from '../../layout/Header';
+import { EmptyState } from '../../various/EmptyState';
+import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
+import { NotActiveProjectAlert } from './NotActiveProjectAlert';
 import { ProjectHeader } from './ProjectHeader';
 import { ProjectLoader } from './ProjectLoader';
-import { NotActiveProjectAlert } from './NotActiveProjectAlert';
-import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
-import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
-import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 
 interface Props {
   hideHeader?: boolean;

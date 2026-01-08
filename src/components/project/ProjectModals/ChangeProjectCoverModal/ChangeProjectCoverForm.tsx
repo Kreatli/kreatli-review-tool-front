@@ -5,12 +5,12 @@ import { useDropzone } from 'react-dropzone';
 import { useForm } from 'react-hook-form';
 
 import { usePostProjectIdCover } from '../../../../services/hooks';
-import { getProjectId, getProjects } from '../../../../services/services';
+import { getProjectId } from '../../../../services/services';
 import { ProjectDto } from '../../../../services/types';
+import { updateProjectData } from '../../../../services/utils';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { getIsTouchScreen } from '../../../../utils/getIsTouchScreen';
 import { Icon } from '../../../various/Icon';
-import { updateProjectData } from '../../../../services/utils';
 
 interface Props {
   project: ProjectDto;

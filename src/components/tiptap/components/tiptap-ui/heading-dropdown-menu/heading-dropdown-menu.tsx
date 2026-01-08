@@ -1,26 +1,23 @@
 import { forwardRef, useCallback, useState } from 'react';
 
-// --- Icons ---
-import { ChevronDownIcon } from '../../tiptap-icons/chevron-down-icon';
-
 // --- Hooks ---
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
-
+// --- Icons ---
+import { ChevronDownIcon } from '../../tiptap-icons/chevron-down-icon';
 // --- Tiptap UI ---
 import { HeadingButton } from '../../tiptap-ui/heading-button';
 import type { UseHeadingDropdownMenuConfig } from '../../tiptap-ui/heading-dropdown-menu';
 import { useHeadingDropdownMenu } from '../../tiptap-ui/heading-dropdown-menu';
-
 // --- UI Primitives ---
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
 import { Button, ButtonGroup } from '../../tiptap-ui-primitive/button';
+import { Card, CardBody } from '../../tiptap-ui-primitive/card';
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuTrigger,
 } from '../../tiptap-ui-primitive/dropdown-menu';
-import { Card, CardBody } from '../../tiptap-ui-primitive/card';
 
 export interface HeadingDropdownMenuProps extends Omit<ButtonProps, 'type'>, UseHeadingDropdownMenuConfig {
   /**

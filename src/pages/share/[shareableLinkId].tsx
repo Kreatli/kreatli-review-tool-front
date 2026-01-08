@@ -1,11 +1,12 @@
-import { useRouter } from 'next/router';
-import { useGetShareableLinkAssetId } from '../../services/hooks';
-import { useAppLoader } from '../../hooks/useAppLoader';
-import { useEffect } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+import { ShareableAsset } from '../../components/asset/ShareableAsset';
 import { Header } from '../../components/layout/Header';
 import { FileStateContextProvider } from '../../contexts/File';
-import { ShareableAsset } from '../../components/asset/ShareableAsset';
+import { useAppLoader } from '../../hooks/useAppLoader';
+import { useGetShareableLinkAssetId } from '../../services/hooks';
 
 export default function SharePage() {
   const setIsLoading = useAppLoader((state) => state.setIsLoading);

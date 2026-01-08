@@ -1,14 +1,13 @@
 import { Button } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import React, { useEffect, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
+
 import { useChatContext } from '../../../contexts/Chat';
 import { useSession } from '../../../hooks/useSession';
-import { ChatTextareaEmojiPicker } from './ChatTextareaEmojiPicker';
 import { AssetDto } from '../../../services/types';
-import { ChatTextareaAssetPreview } from './ChatTextareaAssetPreview';
 import { AssetPicker } from '../../asset/AssetPicker';
-
-const MAX_ROWS = 10;
+import { Icon } from '../../various/Icon';
+import { ChatTextareaAssetPreview } from './ChatTextareaAssetPreview';
+import { ChatTextareaEmojiPicker } from './ChatTextareaEmojiPicker';
 
 interface Props {
   conversationId: string;
@@ -28,6 +27,7 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
   const [cursorPosition, setCursorPosition] = React.useState(0);
 
   useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRows(Math.ceil((messageRef.current?.scrollHeight ?? 0) / 20) || 1);
   }, [message]);
 

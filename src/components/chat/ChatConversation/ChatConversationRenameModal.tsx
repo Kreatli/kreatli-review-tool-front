@@ -1,13 +1,14 @@
 import { addToast, Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
-import { ChatDto } from '../../../services/types';
-import { useForm } from 'react-hook-form';
-import { VALIDATION_RULES } from '../../../constants/validationRules';
-import { useEffect } from 'react';
-import { usePutConversationId } from '../../../services/hooks';
-import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { useQueryClient } from '@tanstack/react-query';
-import { getProjectIdChats } from '../../../services/services';
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { useChatContext } from '../../../contexts/Chat';
+import { usePutConversationId } from '../../../services/hooks';
+import { getProjectIdChats } from '../../../services/services';
+import { ChatDto } from '../../../services/types';
+import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface FormData {
   name: string;

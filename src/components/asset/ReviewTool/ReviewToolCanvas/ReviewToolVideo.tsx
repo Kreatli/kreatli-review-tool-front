@@ -1,12 +1,12 @@
 import { cn, Image } from '@heroui/react';
 import React from 'react';
 
+import { useFileStateContext } from '../../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { useGetAssetFileIdComments } from '../../../../services/hooks';
 import { AssetCommentDto, FileDto } from '../../../../services/types';
 import { getIsMediaHtmlElement } from '../../../../utils/getIsMediaHtmlElement';
 import { Icon } from '../../../various/Icon';
-import { useFileStateContext } from '../../../../contexts/File';
 
 interface Props {
   videoFile: FileDto;
@@ -33,7 +33,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
   const [wasPlaying, setWasPlaying] = React.useState(false);
   const [showControls, setShowControls] = React.useState(false);
   const sliderRef = React.useRef<HTMLDivElement>(null);
-  const hideTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const hideTimeoutRef = React.useRef<NodeJS.Timeout>(undefined);
 
   const commentsWithTimestamps = React.useMemo(() => {
     if (!commentsData?.comments) return [];
@@ -41,7 +41,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
     return commentsData.comments
       .flatMap((comment) => [comment, ...comment.replies])
       .filter((comment) => comment.timestamp?.[0] !== undefined && !comment.isResolved);
-  }, [commentsData?.comments]);
+  }, [commentsData]);
 
   React.useEffect(() => {
     if (getIsMediaHtmlElement(fileRef.current)) {
@@ -292,9 +292,9 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        {}
         <video
-          // @ts-ignore
+          // @ts-expect-error - Video element is not typed
           ref={compareFile?.id === videoFile.id ? compareFileRef : fileRef}
           controls={false}
           muted={videoFile.id !== activeFile?.id}
@@ -335,7 +335,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
                 <Icon icon="fullscreen" size={20} />
               </button>
             </div>
-            {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+            {}
             <div
               ref={sliderRef}
               className="relative z-20 flex items-center gap-2 after:absolute after:-inset-1 after:cursor-pointer"

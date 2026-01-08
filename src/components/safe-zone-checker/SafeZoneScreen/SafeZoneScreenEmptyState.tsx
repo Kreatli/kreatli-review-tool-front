@@ -1,6 +1,7 @@
-import { useDropzone } from 'react-dropzone';
-import { Icon } from '../../various/Icon';
 import { cn } from '@heroui/react';
+import { useDropzone } from 'react-dropzone';
+
+import { Icon } from '../../various/Icon';
 
 interface Props {
   onUploadFile: (file: File) => void;

@@ -13,10 +13,13 @@ import {
 import { SortableContext } from '@dnd-kit/sortable';
 import { Button, Checkbox, cn, Skeleton } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { AssetContextProvider } from '../../../contexts/Asset';
 import { useProjectContext } from '../../../contexts/Project';
+import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
+import { useSession } from '../../../hooks/useSession';
 import { useGetProjectIdAssets } from '../../../services/custom-hooks';
 import { usePutProjectId, usePutProjectIdFileFileId, usePutProjectIdFolderFolderId } from '../../../services/hooks';
 import { getProjectIdAssets, putProjectId } from '../../../services/services';
@@ -24,14 +27,11 @@ import { EmptyState } from '../../various/EmptyState';
 import { Icon } from '../../various/Icon';
 import { ArchiveAssetsModal } from './ProjectAssetsBulkEdit/ArchiveAssetsModal/ArchiveAssetsModal';
 import { MoveToAssetsModal } from './ProjectAssetsBulkEdit/MoveToAssetsModal';
+import { ProjectDropFilesHint } from './ProjectDropFilesHint';
 import { ProjectFile } from './ProjectFile';
 import { ProjectFileCover } from './ProjectFile/ProjectFileCover';
 import { ProjectFolder } from './ProjectFolder';
 import { ProjectFolderCover } from './ProjectFolder/ProjectFolderCover';
-import { useRouter } from 'next/router';
-import { ProjectDropFilesHint } from './ProjectDropFilesHint';
-import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
-import { useSession } from '../../../hooks/useSession';
 
 export const ProjectAssets = () => {
   const { project, search, filters } = useProjectContext();

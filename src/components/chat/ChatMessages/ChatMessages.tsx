@@ -1,11 +1,12 @@
-import { ChatMessagesEmptyState } from './ChatMessagesEmptyState';
+import { useQueryClient } from '@tanstack/react-query';
 import React, { useEffect, useLayoutEffect } from 'react';
-import { ChatMessagesLoader } from './ChatMessagesLoader';
-import { ChatMessagesList } from './ChatMessagesList';
+
+import { useChatContext } from '../../../contexts/Chat';
 import { getConversationIdMessages, getProjectIdChats } from '../../../services/services';
 import { ChatMessageDto } from '../../../services/types';
-import { useChatContext } from '../../../contexts/Chat';
-import { useQueryClient } from '@tanstack/react-query';
+import { ChatMessagesEmptyState } from './ChatMessagesEmptyState';
+import { ChatMessagesList } from './ChatMessagesList';
+import { ChatMessagesLoader } from './ChatMessagesLoader';
 
 interface Props {
   conversationId: string;

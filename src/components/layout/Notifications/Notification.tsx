@@ -1,13 +1,14 @@
 import { cn, Link } from '@heroui/react';
-import { Icon, IconType } from '../../various/Icon';
-import { formatRelativeTime } from '../../../utils/dates';
-import { NotificationDto } from '../../../services/types';
-import { useEffect, useMemo, useState } from 'react';
-import { useGetNotifications, usePutNotificationId } from '../../../services/hooks';
-import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
-import NextLink from 'next/link';
 import { useQueryClient } from '@tanstack/react-query';
+import NextLink from 'next/link';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+
+import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
+import { usePutNotificationId } from '../../../services/hooks';
 import { getNotifications } from '../../../services/services';
+import { NotificationDto } from '../../../services/types';
+import { formatRelativeTime } from '../../../utils/dates';
+import { Icon, IconType } from '../../various/Icon';
 
 interface Props {
   notification: NotificationDto;
@@ -17,6 +18,7 @@ export const Notification = ({ notification }: Props) => {
   const [isRead, setIsRead] = useState(notification.isRead);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsRead(notification.isRead);
   }, [notification.isRead]);
 
@@ -38,7 +40,7 @@ export const Notification = ({ notification }: Props) => {
     );
   };
 
-  const handleLinkClick = () => {
+  const handleLinkClick = useCallback(() => {
     if (!isRead) {
       setIsRead(true);
 
@@ -51,7 +53,7 @@ export const Notification = ({ notification }: Props) => {
         },
       );
     }
-  };
+  }, [isRead, notification.id, queryClient, updateNotification]);
 
   const notificationTitle = useMemo(() => {
     if (notification.type === 'file_assigned') {
@@ -286,7 +288,7 @@ export const Notification = ({ notification }: Props) => {
     }
 
     return '';
-  }, [notification.type, notification.data]);
+  }, [notification.data, notification.type, handleLinkClick]);
 
   const notificationIcon = useMemo((): IconType => {
     if (notification.type === 'file_assigned') {

@@ -1,29 +1,26 @@
 'use client';
 
-import { forwardRef, useCallback, useEffect, useState } from 'react';
 import type { Editor } from '@tiptap/react';
+import { forwardRef, useCallback, useEffect, useState } from 'react';
 
 // --- Hooks ---
 import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
-
 // --- Icons ---
 import { CornerDownLeftIcon } from '../../tiptap-icons/corner-down-left-icon';
 import { ExternalLinkIcon } from '../../tiptap-icons/external-link-icon';
 import { LinkIcon } from '../../tiptap-icons/link-icon';
 import { TrashIcon } from '../../tiptap-icons/trash-icon';
-
 // --- Tiptap UI ---
 import type { UseLinkPopoverConfig } from '../../tiptap-ui/link-popover';
 import { useLinkPopover } from '../../tiptap-ui/link-popover';
-
 // --- UI Primitives ---
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
 import { Button, ButtonGroup } from '../../tiptap-ui-primitive/button';
-import { Popover, PopoverContent, PopoverTrigger } from '../../tiptap-ui-primitive/popover';
-import { Separator } from '../../tiptap-ui-primitive/separator';
 import { Card, CardBody, CardItemGroup } from '../../tiptap-ui-primitive/card';
 import { Input, InputGroup } from '../../tiptap-ui-primitive/input';
+import { Popover, PopoverContent, PopoverTrigger } from '../../tiptap-ui-primitive/popover';
+import { Separator } from '../../tiptap-ui-primitive/separator';
 
 export interface LinkMainProps {
   /**
@@ -250,6 +247,7 @@ export const LinkPopover = forwardRef<HTMLButtonElement, LinkPopoverProps>(
 
     useEffect(() => {
       if (autoOpenOnLinkActive && isActive) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsOpen(true);
       }
     }, [autoOpenOnLinkActive, isActive]);

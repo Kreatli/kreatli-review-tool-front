@@ -1,7 +1,7 @@
 import { Button, Card, CardBody } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import Link from 'next/link';
-import NextLink from 'next/link';
+import { default as Link, default as NextLink } from 'next/link';
+
+import { Icon, IconType } from '../../various/Icon';
 
 const industryCards = [
   {
@@ -41,7 +41,7 @@ export const KreatliForSection = () => {
               <CardBody className="flex h-full flex-col items-center gap-5 p-8">
                 <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-foreground-200">
                   <Icon
-                    icon={card.icon as any}
+                    icon={card.icon as IconType}
                     size={28}
                     className="text-foreground-500 transition-colors duration-300 group-hover:text-primary"
                   />

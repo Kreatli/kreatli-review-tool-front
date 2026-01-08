@@ -1,11 +1,12 @@
 import { Button, Card, CardBody } from '@heroui/react';
-import { ProjectDto } from '../../../services/types';
 import Link from 'next/link';
+
+import { useGetProjectIdLogs } from '../../../services/hooks';
+import { ProjectDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
+import { DashboardError } from '../DashboardError';
 import { DashboardActivitySkeleton } from './DashboardActivitySkeleton';
 import { DashboardActivityTable } from './DashboardActivityTable';
-import { useGetProjectIdLogs } from '../../../services/hooks';
-import { DashboardError } from '../DashboardError';
 
 interface Props {
   project: ProjectDto;

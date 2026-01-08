@@ -1,7 +1,8 @@
-import Head from 'next/head';
-import { useSession } from '../hooks/useSession';
-import { Header } from '../components/layout/Header';
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
+import Head from 'next/head';
+
+import { Header } from '../components/layout/Header';
+import { useSession } from '../hooks/useSession';
 
 export default function PrivacyPolicy() {
   useSession();
@@ -10,6 +11,7 @@ export default function PrivacyPolicy() {
     <>
       <Head>
         <title>Kreatli | Privacy Policy</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       <div className="border-t border-foreground-200 p-6">

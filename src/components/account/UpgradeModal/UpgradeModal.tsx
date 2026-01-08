@@ -1,5 +1,6 @@
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
 import NextLink from 'next/link';
+
 import { useSession } from '../../../hooks/useSession';
 
 interface UpgradeModalProps {

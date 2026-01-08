@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { ProjectDto } from '../../../../services/types';
 import { useSortable } from '@dnd-kit/sortable';
-import { useController, useFormContext } from 'react-hook-form';
 import { CSS } from '@dnd-kit/utilities';
 import { Button, Input, Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
+import { useState } from 'react';
+import { useController, useFormContext } from 'react-hook-form';
+
+import { ProjectDto } from '../../../../services/types';
 import { Icon } from '../../../various/Icon';
 import { StatusColorDot } from './StatusColorDot';
 import { StatusColorPicker } from './StatusColorPicker';

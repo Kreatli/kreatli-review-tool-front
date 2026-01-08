@@ -5,13 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
 import { usePostProjectIdFolder } from '../../../../services/hooks';
-import {
-  getAssetFolderId,
-  getAssets,
-  getAssetsFolders,
-  getProjectId,
-  getProjectIdAssets,
-} from '../../../../services/services';
+import { getAssetFolderId, getAssetsFolders, getProjectId, getProjectIdAssets } from '../../../../services/services';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
 interface Props {

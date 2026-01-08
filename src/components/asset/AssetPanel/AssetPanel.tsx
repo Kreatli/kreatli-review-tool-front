@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { useFileStateContext } from '../../../contexts/File';
+import { ProjectDto } from '../../../services/types';
 import { AssetComments } from '../AssetComments';
 import { AssetDescription } from '../AssetDescription';
 import { AssetPanelHeader } from './AssetPanelHeader';
 import { AssetPanelLoading } from './AssetPanelLoading';
-import { useFileStateContext } from '../../../contexts/File';
-import { ProjectDto } from '../../../services/types';
 
 interface Props {
   project?: ProjectDto;

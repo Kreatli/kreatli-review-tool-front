@@ -1,10 +1,11 @@
 import { addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
-import { ProjectDto } from '../../../../services/types';
-import { EditProjectStatusesForm } from './EditProjectStatusesForm';
-import { usePutProjectId } from '../../../../services/hooks';
-import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { useQueryClient } from '@tanstack/react-query';
+
+import { usePutProjectId } from '../../../../services/hooks';
 import { getProjectId, getProjects } from '../../../../services/services';
+import { ProjectDto } from '../../../../services/types';
+import { getErrorMessage } from '../../../../utils/getErrorMessage';
+import { EditProjectStatusesForm } from './EditProjectStatusesForm';
 
 interface Props {
   project: ProjectDto | undefined;

@@ -1,15 +1,16 @@
+import { addToast, Button } from '@heroui/react';
+
 import { useFileStateContext } from '../../../contexts/File';
 import { ReviewToolContextProvider } from '../../../contexts/ReviewTool';
 import { ReviewToolCanvasShapesContextProvider } from '../../../contexts/ReviewTool/ReviewToolCanvasShapes';
+import { getAssetFileIdDownload } from '../../../services/services';
 import { FileDto } from '../../../services/types';
+import { downloadFromUrl } from '../../../utils/download';
+import { formatBytes } from '../../../utils/formatBytes';
+import { Icon } from '../../various/Icon';
 import { AssetComments } from '../AssetComments';
 import { ReviewToolCanvas } from '../ReviewTool/ReviewToolCanvas';
 import { ReviewToolFooter } from '../ReviewTool/ReviewToolFooter';
-import { formatBytes } from '../../../utils/formatBytes';
-import { addToast, Button, Tooltip } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { getAssetFileIdDownload } from '../../../services/services';
-import { downloadFromUrl } from '../../../utils/download';
 
 interface Props {
   file: FileDto;

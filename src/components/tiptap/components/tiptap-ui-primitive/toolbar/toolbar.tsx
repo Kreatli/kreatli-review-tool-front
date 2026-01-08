@@ -1,12 +1,11 @@
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';
-import { Separator } from '../../tiptap-ui-primitive/separator';
-import { cn } from '../../../lib/tiptap-utils';
-import { useMenuNavigation } from '../../../hooks/use-menu-navigation';
+
 import { useComposedRef } from '../../../hooks/use-composed-ref';
+import { useMenuNavigation } from '../../../hooks/use-menu-navigation';
+import { cn } from '../../../lib/tiptap-utils';
+import { Separator } from '../../tiptap-ui-primitive/separator';
 
 type BaseProps = React.HTMLAttributes<HTMLDivElement>;
-
-interface ToolbarProps extends BaseProps {}
 
 const useToolbarNavigation = (toolbarRef: React.RefObject<HTMLDivElement | null>) => {
   const [items, setItems] = useState<HTMLElement[]>([]);
@@ -71,7 +70,7 @@ const useToolbarNavigation = (toolbarRef: React.RefObject<HTMLDivElement | null>
   }, [selectedIndex, items]);
 };
 
-export const Toolbar = forwardRef<HTMLDivElement, ToolbarProps>(({ children, className, ...props }, ref) => {
+export const Toolbar = forwardRef<HTMLDivElement, BaseProps>(({ children, className, ...props }, ref) => {
   const toolbarRef = useRef<HTMLDivElement>(null);
   const composedRef = useComposedRef(toolbarRef, ref);
   useToolbarNavigation(toolbarRef);

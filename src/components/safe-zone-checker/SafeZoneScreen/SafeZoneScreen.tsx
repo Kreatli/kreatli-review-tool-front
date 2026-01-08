@@ -1,22 +1,21 @@
+import { cn, Radio, RadioGroup, Tooltip } from '@heroui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import html2canvas from 'html2canvas';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 
 import InstagramOverlay from '../../../assets/images/safe-zone-overlays/instagram-reels-overlay.png';
-import TiktokOverlay from '../../../assets/images/safe-zone-overlays/tiktok-overlay.png';
-import YoutubeOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-overlay.png';
-
 import InstagramSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/instagram-reels-safe-zone-overlay.png';
+import TiktokOverlay from '../../../assets/images/safe-zone-overlays/tiktok-overlay.png';
 import TiktokSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/tiktok-safe-zone-overlay.png';
+import YoutubeOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-overlay.png';
 import YoutubeSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-safe-zone-overlay.png';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { cn, Radio, RadioGroup, Tooltip } from '@heroui/react';
+import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { Icon } from '../../various/Icon';
 import { SafeZoneScreenEmptyState } from './SafeZoneScreenEmptyState';
 import { SafeZoneScreenImage } from './SafeZoneScreenImage';
 import { SafeZoneScreenVideo } from './SafeZoneScreenVideo';
-import { Icon } from '../../various/Icon';
-import { useDropzone } from 'react-dropzone';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
-import { useSession } from '../../../hooks/useSession';
 
 const OVERLAYS = {
   instagram: InstagramOverlay,
@@ -54,7 +53,7 @@ export const SafeZoneScreen = () => {
       if (platformSwitchCountRef.current % 3 === 0 && platformSwitchCountRef.current > 0) {
         openSignUpModal();
       }
-      
+
       previousOverlayRef.current = activeOverlay;
     }
   }, [activeOverlay, openSignUpModal, isSignedIn]);

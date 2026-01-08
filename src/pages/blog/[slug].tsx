@@ -1,17 +1,18 @@
+import { BreadcrumbItem, Breadcrumbs, ScrollShadow } from '@heroui/react';
+import { ISbStoryData, StoryblokComponent, useStoryblokState } from '@storyblok/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
+import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
+import { Header } from '../../components/layout/Header';
+import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
-import { ISbStoryData, StoryblokComponent, useStoryblokState } from '@storyblok/react';
 import { PageStoryblok } from '../../typings/storyblok';
-import { Header } from '../../components/layout/Header';
-import { Icon } from '../../components/various/Icon';
-import { useEffect, useState } from 'react';
-import { Decorations } from '../../components/layout/Storyblok/Decorations';
-import Head from 'next/head';
-import { BreadcrumbItem, Breadcrumbs, ScrollShadow } from '@heroui/react';
-import Link from 'next/link';
 import { formatDate } from '../../utils/dates';
-import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
 import { getTableOfContentLinks } from '../../utils/storyblok';
 
 const DRAFT_REVALIDATE_TIME = 60;
@@ -94,7 +95,9 @@ export default function Page({ story, slug }: Props) {
               )}
             </div>
             <div className="flex w-full flex-col gap-8">
-              {storyState?.content.body?.map((blok) => <StoryblokComponent key={blok._uid} blok={blok} />)}
+              {storyState?.content.body?.map((blok) => (
+                <StoryblokComponent key={blok._uid} blok={blok} />
+              ))}
             </div>
           </div>
           <div />
@@ -131,7 +134,7 @@ export const getStaticProps = (async ({ params }) => {
       notFound: true,
     };
   }
-}) satisfies GetStaticProps<{}>;
+}) satisfies GetStaticProps<object>;
 
 export const getStaticPaths = (async () => {
   const { data } = await getStoryblokApi().get('cdn/links', {

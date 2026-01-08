@@ -1,6 +1,7 @@
 import { Button, Card, CardBody, Chip, Tooltip } from '@heroui/react';
-import { Icon } from '../../various/Icon';
 import Link from 'next/link';
+
+import { Icon } from '../../various/Icon';
 
 export const PricingSection = ({ titleClassName }: { titleClassName?: string }) => {
   return (

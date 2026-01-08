@@ -1,8 +1,9 @@
-import { ChatDto } from '../../../services/types';
-import { ChatConversationHeader } from './ChatConversationHeader';
 import React from 'react';
+
+import { ChatDto } from '../../../services/types';
 import { ChatMessages } from '../ChatMessages';
 import { ChatTextarea } from '../ChatTextarea';
+import { ChatConversationHeader } from './ChatConversationHeader';
 import { ChatConversationSearchMessages } from './ChatConversationSearchMessages';
 
 interface Props {

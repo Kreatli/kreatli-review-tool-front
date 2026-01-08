@@ -1,7 +1,7 @@
-import { Card, CardBody } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { Button } from '@heroui/react';
+import { Button, Card, CardBody } from '@heroui/react';
 import Link from 'next/link';
+
+import { Icon, IconType } from '../../various/Icon';
 
 const steps = [
   {
@@ -49,7 +49,7 @@ export const HowItWorksSection = () => {
                 <div className="relative">
                   <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-foreground-200">
                     <Icon
-                      icon={step.icon as any}
+                      icon={step.icon as IconType}
                       size={28}
                       className="text-foreground-500 transition-colors duration-300 group-hover:text-primary"
                     />

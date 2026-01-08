@@ -1,16 +1,16 @@
+import { Accordion, AccordionItem, Button, Card, CardBody, Chip } from '@heroui/react';
 import Head from 'next/head';
+import NextLink from 'next/link';
 import React from 'react';
 
-import { Header } from '../../../components/layout/Header';
-import { FooterSection } from '../../../components/home/Footer/FooterSection';
-import { useSession } from '../../../hooks/useSession';
-import { Decorations } from '../../../components/layout/Storyblok/Decorations';
-import { Card, CardBody, Button, Chip, Accordion, AccordionItem } from '@heroui/react';
-import NextLink from 'next/link';
-import { Icon } from '../../../components/various/Icon';
-import { HomeDashboardFeaturePreview } from '../../../components/home/Features/HomeDashboardFeaturePreview';
 import { ChatFeaturePreview } from '../../../components/home/Features/ChatFeaturePreview';
+import { HomeDashboardFeaturePreview } from '../../../components/home/Features/HomeDashboardFeaturePreview';
 import { ShareFeaturePreview } from '../../../components/home/Features/ShareFeaturePreview';
+import { FooterSection } from '../../../components/home/Footer/FooterSection';
+import { Header } from '../../../components/layout/Header';
+import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { Icon, IconType } from '../../../components/various/Icon';
+import { useSession } from '../../../hooks/useSession';
 
 const data = {
   title: 'Advertising & Marketing Agencies',
@@ -320,7 +320,7 @@ export default function AdvertisingMarketingAgenciesPage() {
                           <div className="flex flex-col gap-6 lg:w-1/3">
                             <div className="flex items-center gap-4">
                               <div className="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary/10 md:size-20">
-                                <Icon icon={step.icon as any} size={32} className="text-primary" />
+                                <Icon icon={step.icon as IconType} size={32} className="text-primary" />
                               </div>
                               <div>
                                 <div className="mb-1 text-sm font-medium text-primary">Step {step.step}</div>

@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/indent */
-import { addToast, MenuItemProps } from '@heroui/react';
+import { MenuItemProps } from '@heroui/react';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -12,9 +11,9 @@ import { LeaveProjectModal } from '../../components/project/ProjectModals/LeaveP
 import { RenameProjectModal } from '../../components/project/ProjectModals/RenameProjectModal';
 import { RestoreProjectModal } from '../../components/project/ProjectModals/RestoreProjectModal';
 import { IconType } from '../../components/various/Icon';
+import { useProjectStatusesModal } from '../../hooks/useProjectStatusesModal';
 import { useSession } from '../../hooks/useSession';
 import { ProjectDto } from '../../services/types';
-import { useProjectStatusesModal } from '../../hooks/useProjectStatusesModal';
 
 export interface ProjectAssetsFilters {
   status?: string;

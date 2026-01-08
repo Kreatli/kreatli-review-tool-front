@@ -1,11 +1,12 @@
 import { Button, cn, Popover, PopoverContent, PopoverTrigger, Progress } from '@heroui/react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+
+import { useProjectUploads } from '../../../hooks/useProjectUploads';
 import { Icon } from '../../various/Icon';
 import { ProjectUploads } from './ProjectUploads';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { useProjectUploads } from '../../../hooks/useProjectUploads';
 
 interface Props {
-  headerRef: React.RefObject<HTMLElement>;
+  headerRef: React.RefObject<HTMLElement | null>;
 }
 
 export const ProjectUploadsButton = ({ headerRef }: Props) => {
@@ -58,6 +59,7 @@ export const ProjectUploadsButton = ({ headerRef }: Props) => {
       <Popover
         placement="bottom"
         shouldCloseOnScroll={false}
+        // eslint-disable-next-line react-hooks/refs
         portalContainer={headerRef.current ?? undefined}
         offset={20}
         isOpen={isOpen}

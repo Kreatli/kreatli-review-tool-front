@@ -1,11 +1,12 @@
 import { Tab, Tabs } from '@heroui/react';
-import { useRouter } from 'next/router';
-import NextLink from 'next/link';
-import { Header } from '../../layout/Header';
-import { useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { getUser } from '../../../services/services';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
 import { useProtectedPage } from '../../../hooks/useProtectedPage';
+import { getUser } from '../../../services/services';
+import { Header } from '../../layout/Header';
 
 interface Props {
   children: React.ReactNode;

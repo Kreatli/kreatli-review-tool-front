@@ -13,10 +13,12 @@ import {
 import { SortableContext } from '@dnd-kit/sortable';
 import { Button, Checkbox, cn, Skeleton } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { AssetContextProvider } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
+import { useSession } from '../../../../hooks/useSession';
 import { useGetProjectIdAssets } from '../../../../services/custom-hooks';
 import { usePutProjectIdFileFileId, usePutProjectIdFolderFolderId } from '../../../../services/hooks';
 import { getAssetFolderId, getProjectIdAssets, putProjectIdFolderFolderId } from '../../../../services/services';
@@ -30,8 +32,6 @@ import { ProjectFile } from '../ProjectFile';
 import { ProjectFileCover } from '../ProjectFile/ProjectFileCover';
 import { ProjectFolder } from '../ProjectFolder';
 import { ProjectFolderCover } from '../ProjectFolder/ProjectFolderCover';
-import { useRouter } from 'next/router';
-import { useSession } from '../../../../hooks/useSession';
 
 interface Props {
   project: ProjectDto;

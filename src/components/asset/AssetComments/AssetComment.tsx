@@ -1,18 +1,18 @@
 import { addToast, Avatar, Button, Checkbox, Chip, cn, Tooltip } from '@heroui/react';
-import React, { useEffect, useState } from 'react';
-import Text from '@tiptap/extension-text';
 import Document from '@tiptap/extension-document';
-import Paragraph from '@tiptap/extension-paragraph';
 import Mention from '@tiptap/extension-mention';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
+import { generateHTML } from '@tiptap/react';
+import React, { useEffect, useState } from 'react';
 
+import { useFileStateContext } from '../../../contexts/File';
 import { useSession } from '../../../hooks/useSession';
 import { useDeleteAssetFileIdCommentCommentId, usePatchAssetFileIdCommentCommentId } from '../../../services/hooks';
 import { AssetCommentDto, ProjectDto } from '../../../services/types';
 import { formatRelativeTime } from '../../../utils/dates';
 import { formatDuration } from '../../../utils/formatDuration';
 import { Icon } from '../../various/Icon';
-import { useFileStateContext } from '../../../contexts/File';
-import { generateHTML } from '@tiptap/react';
 
 interface Props {
   fileId: string;
@@ -35,6 +35,7 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
   const [isResolved, setIsResolved] = useState(comment.isResolved || (rest.isResolved ?? false));
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsResolved(comment.isResolved || (rest.isResolved ?? false));
   }, [comment.isResolved, rest.isResolved]);
 

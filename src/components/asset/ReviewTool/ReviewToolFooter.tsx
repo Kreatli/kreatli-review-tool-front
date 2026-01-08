@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { ProjectDto } from '../../../services/types';
 import { ReviewToolColors } from './ReviewToolColors';
+import { ReviewToolEditor } from './ReviewToolEditor';
 import { ReviewToolHistoryButtons } from './ReviewToolHistoryButtons';
 import { ReviewToolShapes } from './ReviewToolShapes';
 import { ReviewToolTimestamp } from './ReviewToolTimestamp';
-import { ProjectDto } from '../../../services/types';
-import { ReviewToolEditor } from './ReviewToolEditor';
 
 interface Props {
   isDisabled?: boolean;

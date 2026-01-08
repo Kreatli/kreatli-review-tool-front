@@ -1,9 +1,10 @@
-import { ISbStoryData } from '@storyblok/react';
-import { PageStoryblok } from '../../../typings/storyblok';
 import { Card, CardBody, Chip, Image } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { formatDate } from '../../../utils/dates';
+import { ISbStoryData } from '@storyblok/react';
 import Link from 'next/link';
+
+import { PageStoryblok } from '../../../typings/storyblok';
+import { formatDate } from '../../../utils/dates';
+import { Icon } from '../../various/Icon';
 
 interface Props {
   article: ISbStoryData<PageStoryblok>;

@@ -1,9 +1,6 @@
 import { useDroppable } from '@dnd-kit/core';
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
 import { Button, Checkbox, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
-import React from 'react';
 
 import { useAssetContext } from '../../../../contexts/Asset';
 import { ProjectFolderDto } from '../../../../services/types';

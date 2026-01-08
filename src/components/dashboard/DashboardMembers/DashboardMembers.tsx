@@ -1,8 +1,9 @@
 import { Avatar, Button, Card, CardBody, Chip, cn } from '@heroui/react';
-import { ProjectDto } from '../../../services/types';
-import { Icon } from '../../various/Icon';
-import { getProjectMemberLetter } from '../../../utils/shortNames';
+
 import { useProjectContext } from '../../../contexts/Project';
+import { ProjectDto } from '../../../services/types';
+import { getProjectMemberLetter } from '../../../utils/shortNames';
+import { Icon } from '../../various/Icon';
 
 const STATUS_COLORS = {
   invited: 'warning',

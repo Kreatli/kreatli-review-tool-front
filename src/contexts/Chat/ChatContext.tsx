@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import { ChatDto, ProjectDto } from '../../services/types';
-import { useGetProjectId } from '../../services/hooks';
-import { useSession } from '../../hooks/useSession';
-import { io, Socket } from 'socket.io-client';
 import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
+import { io, Socket } from 'socket.io-client';
+
+import { useSession } from '../../hooks/useSession';
+import { useGetProjectId } from '../../services/hooks';
+import { ProjectDto } from '../../services/types';
 
 interface Context {
   project: ProjectDto;

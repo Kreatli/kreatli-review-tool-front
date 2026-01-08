@@ -10,7 +10,6 @@ import { useAppLoader } from '../../../hooks/useAppLoader';
 import { useGetProject, useGetUser, usePutProjectIdMember } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { getHasToken } from '../../../utils/token';
-import { AxiosError } from 'axios';
 
 export default function JoinProject() {
   const hasUserToken = getHasToken();

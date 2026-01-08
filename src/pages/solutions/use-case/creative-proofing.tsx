@@ -1,13 +1,13 @@
+import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
+import NextLink from 'next/link';
 import React from 'react';
 
-import { Header } from '../../../components/layout/Header';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
-import { useSession } from '../../../hooks/useSession';
+import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
-import { Card, CardBody, Button, Accordion, AccordionItem } from '@heroui/react';
-import NextLink from 'next/link';
-import { Icon } from '../../../components/various/Icon';
+import { Icon, IconType } from '../../../components/various/Icon';
+import { useSession } from '../../../hooks/useSession';
 
 const data = {
   title: 'Creative Proofing',
@@ -210,7 +210,7 @@ export default function CreativeProofingPage() {
                       <div className="relative flex-shrink-0">
                         <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/10">
                           <Icon
-                            icon={step.icon as any}
+                            icon={step.icon as IconType}
                             size={28}
                             className="text-primary transition-colors duration-300"
                           />
@@ -260,7 +260,7 @@ export default function CreativeProofingPage() {
                 <CardBody className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 rounded-full bg-warning-50 p-2">
-                      <Icon icon={problem.icon as any} size={20} className="text-warning" />
+                      <Icon icon={problem.icon as IconType} size={20} className="text-warning" />
                     </div>
                     <div className="flex-1">
                       <h3 className="mb-2 font-sans text-lg font-semibold">{problem.title}</h3>
@@ -289,7 +289,7 @@ export default function CreativeProofingPage() {
                   <div className="flex items-center gap-3">
                     <div className="rounded-full bg-foreground-100 p-2.5 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary-50">
                       <Icon
-                        icon={audience.icon as any}
+                        icon={audience.icon as IconType}
                         size={20}
                         className="text-primary transition-colors duration-300"
                       />

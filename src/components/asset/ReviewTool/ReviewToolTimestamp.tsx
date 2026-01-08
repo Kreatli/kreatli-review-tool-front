@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/refs */
 import { Button, Tooltip } from '@heroui/react';
 import React from 'react';
 
+import { useFileStateContext } from '../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../contexts/ReviewTool';
 import { formatDuration } from '../../../utils/formatDuration';
 import { getIsMediaHtmlElement } from '../../../utils/getIsMediaHtmlElement';
 import { Icon } from '../../various/Icon';
-import { useFileStateContext } from '../../../contexts/File';
 
 export const ReviewToolTimestamp = () => {
   const { compareFile, activeFile } = useFileStateContext();

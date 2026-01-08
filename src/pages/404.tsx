@@ -1,7 +1,6 @@
 import { Button, Chip } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import React from 'react';
 
 import { Header } from '../components/layout/Header';
 import { useSession } from '../hooks/useSession';
@@ -13,6 +12,7 @@ const NotFound = () => {
     <>
       <Head>
         <title>Kreatli | Page not found</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       <div className="container mx-auto max-w-screen-lg px-6 text-center">

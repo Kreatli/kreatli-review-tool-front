@@ -10,11 +10,12 @@ import {
   Spinner,
   Tooltip,
 } from '@heroui/react';
-import { ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
-import { Icon } from '../../../various/Icon';
 import { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useState } from 'react';
+
 import { EMAIL_PATTERN } from '../../../../constants/validationRules';
 import { usePostShareableLink, usePostShareableLinkSendEmail } from '../../../../services/hooks';
+import { ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
+import { Icon } from '../../../various/Icon';
 
 interface Props {
   asset?: ProjectFolderDto | ProjectFileDto;
@@ -46,6 +47,7 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
 
   useEffect(() => {
     if (isOpen) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setEmails([]);
     }
   }, [isOpen]);

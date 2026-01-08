@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import React from 'react';
-import { useSession } from '../../hooks/useSession';
+
 import { AccountLayout } from '../../components/account/Account';
 import { Subscription } from '../../components/account/Subscription';
+import { useSession } from '../../hooks/useSession';
 
 export default function SubscriptionPage() {
   const { isSignedIn, user } = useSession();
@@ -23,4 +23,5 @@ export default function SubscriptionPage() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 SubscriptionPage.getLayout = (page: any) => <AccountLayout>{page}</AccountLayout>;

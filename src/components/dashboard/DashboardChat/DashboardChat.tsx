@@ -1,11 +1,12 @@
 import { Button, Card, CardBody } from '@heroui/react';
-import { ProjectDto } from '../../../services/types';
 import Link from 'next/link';
-import { Icon } from '../../various/Icon';
+
 import { useGetProjectIdChats } from '../../../services/hooks';
-import { DashboardChatSkeleton } from './DashboardChatSkeleton';
+import { ProjectDto } from '../../../services/types';
+import { Icon } from '../../various/Icon';
 import { DashboardError } from '../DashboardError';
 import { DashboardChatConversations } from './DashboardChatConversations';
+import { DashboardChatSkeleton } from './DashboardChatSkeleton';
 
 interface Props {
   project: ProjectDto;

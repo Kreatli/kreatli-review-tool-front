@@ -1,9 +1,10 @@
 import { Skeleton } from '@heroui/react';
+import { useMemo } from 'react';
+
 import { useChatContext } from '../../contexts/Chat';
 import { useGetProjectIdChats } from '../../services/hooks';
 import { ChatConversation } from './ChatConversation';
 import { ChatConversations } from './ChatConversations';
-import { useMemo } from 'react';
 
 export const Chat = () => {
   const { selectedConversationId, project } = useChatContext();

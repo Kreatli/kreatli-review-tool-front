@@ -1,12 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-import { type Editor } from '@tiptap/react';
 import { NodeSelection, TextSelection } from '@tiptap/pm/state';
+import { type Editor } from '@tiptap/react';
+import { useCallback, useEffect, useState } from 'react';
 
 // --- Hooks ---
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
-
 // --- Lib ---
 import {
   findNodePosition,
@@ -15,14 +14,13 @@ import {
   isValidPosition,
   selectionWithinConvertibleTypes,
 } from '../../../lib/tiptap-utils';
-
+import { HeadingFiveIcon } from '../../tiptap-icons/heading-five-icon';
+import { HeadingFourIcon } from '../../tiptap-icons/heading-four-icon';
 // --- Icons ---
 import { HeadingOneIcon } from '../../tiptap-icons/heading-one-icon';
-import { HeadingTwoIcon } from '../../tiptap-icons/heading-two-icon';
-import { HeadingThreeIcon } from '../../tiptap-icons/heading-three-icon';
-import { HeadingFourIcon } from '../../tiptap-icons/heading-four-icon';
-import { HeadingFiveIcon } from '../../tiptap-icons/heading-five-icon';
 import { HeadingSixIcon } from '../../tiptap-icons/heading-six-icon';
+import { HeadingThreeIcon } from '../../tiptap-icons/heading-three-icon';
+import { HeadingTwoIcon } from '../../tiptap-icons/heading-two-icon';
 
 export type Level = 1 | 2 | 3 | 4 | 5 | 6;
 

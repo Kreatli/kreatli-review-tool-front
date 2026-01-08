@@ -1,5 +1,4 @@
 import { FileDto } from '../../../../services/types';
-
 import { AssetIcon } from '../../AssetIcon';
 
 interface Props {

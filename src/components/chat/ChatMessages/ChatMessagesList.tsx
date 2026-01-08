@@ -1,9 +1,10 @@
 import { Spinner } from '@heroui/react';
-import { ChatMessageDto } from '../../../services/types';
 import React, { useCallback, useRef } from 'react';
-import { ChatMessagesGroup } from './ChatMessagesGroup';
+
+import { ChatMessageDto } from '../../../services/types';
 import { formatChatMessagesGroupDate } from '../../../utils/dates';
 import { ChatConversationCloud } from './ChatConversationCloud';
+import { ChatMessagesGroup } from './ChatMessagesGroup';
 
 interface Props {
   messages: ChatMessageDto[];

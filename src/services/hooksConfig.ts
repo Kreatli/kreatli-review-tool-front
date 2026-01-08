@@ -1,4 +1,4 @@
-/* eslint-disable no-nested-ternary */
+ 
 // @ts-nocheck
 /**
  * AUTO_GENERATED Do not change this file directly, use config.ts file instead

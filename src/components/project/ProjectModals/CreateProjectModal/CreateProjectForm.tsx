@@ -1,15 +1,15 @@
-import { addToast, Button, Input, Link, Textarea } from '@heroui/react';
+import { addToast, Button, Input, Link } from '@heroui/react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
+import { useSession } from '../../../../hooks/useSession';
 import { usePostProject } from '../../../../services/hooks';
+import { getUser } from '../../../../services/services';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { Icon } from '../../../various/Icon';
-import { useQueryClient } from '@tanstack/react-query';
-import { getUser } from '../../../../services/services';
-import { useSession } from '../../../../hooks/useSession';
 
 const DEFAULT_VALUES = {
   name: '',
@@ -104,7 +104,7 @@ export const CreateProjectForm = () => {
           ))}
           {shouldShowAddMore && (
             <>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+              {}
               <Link
                 as="button"
                 type="button"
@@ -121,7 +121,6 @@ export const CreateProjectForm = () => {
         </div>
       )}
       {!isAddingMembers && (
-        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <Link
           as="button"
           type="button"

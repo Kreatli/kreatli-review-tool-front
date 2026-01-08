@@ -1,14 +1,13 @@
+import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
-import React from 'react';
-
-import { Header } from '../components/layout/Header';
-import { PricingSection } from '../components/home/PricingSection';
-import { FooterSection } from '../components/home/Footer/FooterSection';
-import { useSession } from '../hooks/useSession';
-import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { Card, CardBody, Button, Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
+
+import { FooterSection } from '../components/home/Footer/FooterSection';
+import { PricingSection } from '../components/home/PricingSection';
+import { Header } from '../components/layout/Header';
+import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { Icon } from '../components/various/Icon';
+import { useSession } from '../hooks/useSession';
 
 export default function PricingPage() {
   useSession();

@@ -1,14 +1,12 @@
 import { addToast, Alert, Button, Input } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
-import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
+import { useSession } from '../../../hooks/useSession';
 import { usePostProjectIdMember } from '../../../services/hooks';
 import { getProjectId, getProjects } from '../../../services/services';
 import { ProjectDto } from '../../../services/types';
-import { useSession } from '../../../hooks/useSession';
-import NextLink from 'next/link';
 
 interface Props {
   project: ProjectDto;

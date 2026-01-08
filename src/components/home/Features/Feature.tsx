@@ -1,6 +1,7 @@
-import { PropsWithChildren, useRef, useEffect, useState } from 'react';
-import { Icon, IconType } from '../../various/Icon';
 import { cn } from '@heroui/react';
+import { PropsWithChildren, useRef } from 'react';
+
+import { Icon, IconType } from '../../various/Icon';
 
 interface Props {
   icon: IconType;

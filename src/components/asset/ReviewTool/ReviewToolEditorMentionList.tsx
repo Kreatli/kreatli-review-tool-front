@@ -1,10 +1,12 @@
 import { cn, Listbox, ListboxItem } from '@heroui/react';
 import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+
 import { ProjectMemberDto } from '../../../services/types';
 import { ProjectMemberItem } from '../../project/ProjectMemberItem';
 
 interface Props {
   items: ProjectMemberDto[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   command: (item: any) => void;
   ref: React.RefObject<{ onKeyDown: (props: { event: React.KeyboardEvent }) => boolean }>;
 }
@@ -35,6 +37,7 @@ export const ReviewToolEditorMentionList = forwardRef<
     selectItem(selectedIndex);
   };
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setSelectedIndex(0), [items]);
 
   useImperativeHandle(ref, () => ({
@@ -78,3 +81,5 @@ export const ReviewToolEditorMentionList = forwardRef<
     </div>
   );
 });
+
+ReviewToolEditorMentionList.displayName = 'ReviewToolEditorMentionList';

@@ -44,4 +44,5 @@ export default function ProjectActivityPage() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ProjectActivityPage.getLayout = (page: any) => <ProjectLayout>{page}</ProjectLayout>;

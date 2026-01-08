@@ -1,9 +1,10 @@
 import { Chip } from '@heroui/react';
+import Link from 'next/link';
+
 import { useSession } from '../../../hooks/useSession';
 import { ChatDto } from '../../../services/types';
-import { formatChatMessageDate, formatFullDate, formatRelativeTime } from '../../../utils/dates';
+import { formatRelativeTime } from '../../../utils/dates';
 import { ChatAvatar } from '../../chat/ChatAvatar';
-import Link from 'next/link';
 
 interface Props {
   projectId: string;

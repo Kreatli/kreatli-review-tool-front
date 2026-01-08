@@ -1,9 +1,9 @@
 import { addToast, Modal, ModalBody, ModalContent, ModalHeader } from '@heroui/react';
 import { useState } from 'react';
-import { UserDto } from '../../../services/types';
+
 import { usePostUserSubscription } from '../../../services/hooks';
+import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
-import { useQueryClient } from '@tanstack/react-query';
 import { Plan } from './Plan';
 
 const PLANS = [
@@ -60,7 +60,6 @@ interface Props {
 export const PlansModal = ({ user, isOpen, onClose }: Props) => {
   const [selectedPlan, setSelectedPlan] = useState<'free' | 'pro' | 'advanced'>(user.subscription.plan);
 
-  const queryClient = useQueryClient();
   const { mutate: upgradePlan, isPending } = usePostUserSubscription();
 
   const handleUpgradePlan = (plan: 'free' | 'pro' | 'advanced') => {

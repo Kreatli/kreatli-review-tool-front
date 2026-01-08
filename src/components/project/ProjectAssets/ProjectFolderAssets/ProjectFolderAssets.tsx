@@ -3,15 +3,15 @@ import NextLink from 'next/link';
 import React from 'react';
 
 import { useProjectContext } from '../../../../contexts/Project';
+import { useProjectUploadContext } from '../../../../contexts/Project/ProjectUploadContext';
 import { useGetAssetFolderId } from '../../../../services/hooks';
-import { Icon } from '../../../various/Icon';
 import { CreateFolderModal } from '../../../asset/AssetModals/CreateFolderModal';
+import { Icon } from '../../../various/Icon';
+import { NotActiveProjectAlert } from '../../Project/NotActiveProjectAlert';
 import { ProjectBreadcrumbs } from '../../Project/ProjectBreadcrumbs';
+import { ProjectDropFilesHint } from '../ProjectDropFilesHint';
 import { ProjectFolderAssetsList } from './ProjectFolderAssetsList';
 import { ProjectFolderAssetsLoading } from './ProjectFolderAssetsLoading';
-import { NotActiveProjectAlert } from '../../Project/NotActiveProjectAlert';
-import { useProjectUploadContext } from '../../../../contexts/Project/ProjectUploadContext';
-import { ProjectDropFilesHint } from '../ProjectDropFilesHint';
 
 interface Props {
   folderId: string;
@@ -48,7 +48,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
     }
 
     return { name: folder.parent.name, href: `/project/${project.id}/assets/folder/${folder?.parent?.id}` };
-  }, [folder?.parent, project.id, project.name]);
+  }, [folder, project.id, project.name]);
 
   if (isLoading) {
     return <ProjectFolderAssetsLoading />;
@@ -56,7 +56,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
 
   return (
     <div className="flex-1" {...getRootProps()}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      {}
       <Link as={NextLink} href={backLink.href} className="gap-0.5 text-foreground-500">
         <Icon icon="arrowLeft" size={18} />
         {backLink.name}

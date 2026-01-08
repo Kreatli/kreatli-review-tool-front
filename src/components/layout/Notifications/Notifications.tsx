@@ -1,14 +1,15 @@
 import { Badge, Button, Popover, PopoverContent, PopoverTrigger, Spinner } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { Notification } from './Notification';
+import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useMemo, useState } from 'react';
+import { io } from 'socket.io-client';
+
+import { useSession } from '../../../hooks/useSession';
 import { useGetNotifications, usePutNotificationsMarkAllAsRead } from '../../../services/hooks';
 import { getNotifications } from '../../../services/services';
-import { useQueryClient } from '@tanstack/react-query';
-import { useSession } from '../../../hooks/useSession';
-import { io } from 'socket.io-client';
 import { NotificationsDto } from '../../../services/types';
 import { EmptyState } from '../../various/EmptyState';
+import { Icon } from '../../various/Icon';
+import { Notification } from './Notification';
 
 const NOTIFICATIONS_PARAMS = {
   limit: 50,
@@ -66,7 +67,7 @@ export const Notifications = () => {
     });
 
     newSocket.on('unreadCount', (unreadCount: number) => {
-      queryClient.setQueryData([getNotifications.key, NOTIFICATIONS_PARAMS], (oldData: any) => {
+      queryClient.setQueryData([getNotifications.key, NOTIFICATIONS_PARAMS], (oldData: unknown) => {
         if (!oldData) {
           return oldData;
         }

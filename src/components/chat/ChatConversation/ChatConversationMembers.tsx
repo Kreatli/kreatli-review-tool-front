@@ -1,4 +1,5 @@
 import { Avatar, AvatarGroup, Tooltip } from '@heroui/react';
+
 import { ChatDto } from '../../../services/types';
 
 interface Props {

@@ -1,10 +1,10 @@
 import Head from 'next/head';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import { useProtectedPage } from '../../../../hooks/useProtectedPage';
-import { useSearchParams } from 'next/navigation';
 import { Asset } from '../../../../components/asset/Asset/Asset';
+import { useProtectedPage } from '../../../../hooks/useProtectedPage';
 
 export default function ProjectAssetsPage() {
   const { isSignedIn } = useProtectedPage();

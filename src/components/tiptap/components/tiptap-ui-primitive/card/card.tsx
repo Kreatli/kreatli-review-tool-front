@@ -1,6 +1,7 @@
 'use client';
 
 import { forwardRef } from 'react';
+
 import { cn } from '../../../lib/tiptap-utils';
 
 const Card = forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(({ className, ...props }, ref) => {
@@ -40,4 +41,4 @@ const CardFooter = forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(({ cl
 });
 CardFooter.displayName = 'CardFooter';
 
-export { Card, CardHeader, CardFooter, CardBody, CardItemGroup, CardGroupLabel };
+export { Card, CardBody, CardFooter, CardGroupLabel,CardHeader, CardItemGroup };

@@ -1,8 +1,7 @@
 import { forwardRef, Fragment, useMemo } from 'react';
 
-import { Tooltip, TooltipContent, TooltipTrigger } from '../../tiptap-ui-primitive/tooltip';
-
 import { cn, parseShortcutKeys } from '../../../lib/tiptap-utils';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../tiptap-ui-primitive/tooltip';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;

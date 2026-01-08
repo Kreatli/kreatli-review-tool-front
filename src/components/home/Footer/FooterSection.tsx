@@ -1,5 +1,6 @@
 import { Button } from '@heroui/react';
 import Link from 'next/link';
+
 import LogoIcon from '../../../assets/images/logo.svg';
 import { Socials } from '../Socials/Socials';
 

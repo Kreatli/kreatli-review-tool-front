@@ -1,7 +1,8 @@
 import { Chip, cn } from '@heroui/react';
-import { AssetDto } from '../../../services/types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+
+import { AssetDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 
 interface Props {

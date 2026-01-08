@@ -1,13 +1,12 @@
 import Head from 'next/head';
-import React from 'react';
 
-import { Header } from '../components/layout/Header';
-import { useSession } from '../hooks/useSession';
-import { SocialMediaSafeZoneChecker } from '../components/safe-zone-checker/SocialMediaSafeZoneChecker';
-import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { FooterSection } from '../components/home/Footer/FooterSection';
-import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
 import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
+import { FooterSection } from '../components/home/Footer/FooterSection';
+import { Header } from '../components/layout/Header';
+import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
+import { SocialMediaSafeZoneChecker } from '../components/safe-zone-checker/SocialMediaSafeZoneChecker';
+import { useSession } from '../hooks/useSession';
 
 export default function ProjectsPage() {
   useSession();

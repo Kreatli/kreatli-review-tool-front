@@ -77,7 +77,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
           className="pointer-events-none absolute -right-16 bottom-0 top-0 w-[calc(100%+4rem)]"
         />
       )}
-      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      { }
       <div
         tabIndex={isDisabled ? -1 : 0}
         className="absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2"

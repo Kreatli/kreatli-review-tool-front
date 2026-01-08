@@ -7,16 +7,17 @@ import {
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
-import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { restrictToParentElement } from '@dnd-kit/modifiers';
-import { useMemo } from 'react';
-import { Icon } from '../../../various/Icon';
+import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Link } from '@heroui/react';
-import { ProjectDto } from '../../../../services/types';
 import { nanoid } from 'nanoid';
+import { useMemo } from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
-import { StatusField } from './StatusField';
+
+import { ProjectDto } from '../../../../services/types';
+import { Icon } from '../../../various/Icon';
 import { STATUS_COLORS } from './StatusColorPicker';
+import { StatusField } from './StatusField';
 
 interface Props {
   statuses: ProjectDto['assetStatuses'];

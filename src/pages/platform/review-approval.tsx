@@ -1,17 +1,17 @@
+import { Button,Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
+import NextLink from 'next/link';
 import React from 'react';
 
-import { Header } from '../../components/layout/Header';
-import { FooterSection } from '../../components/home/Footer/FooterSection';
-import { useSession } from '../../hooks/useSession';
-import { Decorations } from '../../components/layout/Storyblok/Decorations';
-import { Card, CardBody, Button } from '@heroui/react';
-import NextLink from 'next/link';
-import { Icon } from '../../components/various/Icon';
-import { ReviewToolPreview } from '../../components/home/Features/ReviewToolPreview';
-import { CompareFeaturePreview } from '../../components/home/Features/CompareFeaturePreview';
-import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
+import { CompareFeaturePreview } from '../../components/home/Features/CompareFeaturePreview';
+import { ReviewToolPreview } from '../../components/home/Features/ReviewToolPreview';
+import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
+import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { Header } from '../../components/layout/Header';
+import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { Icon } from '../../components/various/Icon';
+import { useSession } from '../../hooks/useSession';
 
 export default function ReviewApprovalPage() {
   useSession();

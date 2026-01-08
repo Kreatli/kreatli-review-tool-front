@@ -1,7 +1,6 @@
-import { Query, QueryCache } from '@tanstack/react-query';
 import { addToast } from '@heroui/react';
+import { Query, QueryCache, QueryClient } from '@tanstack/react-query';
 
-import { QueryClient } from '@tanstack/react-query';
 import { getErrorMessage } from '../utils/getErrorMessage';
 
 interface QueryErrorMeta {
@@ -17,6 +16,7 @@ export const queryClient = new QueryClient({
     },
   },
   queryCache: new QueryCache({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onError: (error, meta: Query<any, any, any> & QueryErrorMeta) => {
       if (!meta.showErrorNotification && !meta.errorMessage) {
         return;

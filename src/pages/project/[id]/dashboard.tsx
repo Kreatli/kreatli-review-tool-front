@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import React from 'react';
-import { ProjectLayout } from '../../../components/project/Project';
+
 import { Dashboard } from '../../../components/dashboard/Dashboard';
+import { ProjectLayout } from '../../../components/project/Project';
 
 export default function ProjectDashboard() {
   return (
@@ -14,4 +14,5 @@ export default function ProjectDashboard() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ProjectDashboard.getLayout = (page: any) => <ProjectLayout>{page}</ProjectLayout>;

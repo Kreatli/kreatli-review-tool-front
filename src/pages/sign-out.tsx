@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { useSession } from '../hooks/useSession';
-import { getAxiosInstance } from '../services/config';
 import { queryClient } from '../lib/queryClient';
+import { getAxiosInstance } from '../services/config';
 import { getUser } from '../services/services';
 
 export default function SignOut() {
@@ -17,7 +17,7 @@ export default function SignOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('uploads');
     router.replace('/');
-  }, []);
+  }, [router]);
 
   if (!isSignedIn) {
     return null;
@@ -27,6 +27,7 @@ export default function SignOut() {
     <>
       <Head>
         <title>Kreatli | Sign out</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
     </>
   );

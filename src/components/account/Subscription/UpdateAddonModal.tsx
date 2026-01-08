@@ -1,11 +1,12 @@
 import { addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, NumberInput } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { AddonDto, UserDto } from '../../../services/types';
-import { useEffect, useState } from 'react';
-import { usePutUserAddonId } from '../../../services/hooks';
-import { getErrorMessage } from '../../../utils/getErrorMessage';
-import { getUser } from '../../../services/services';
 import { useQueryClient } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
+
+import { usePutUserAddonId } from '../../../services/hooks';
+import { getUser } from '../../../services/services';
+import { AddonDto, UserDto } from '../../../services/types';
+import { getErrorMessage } from '../../../utils/getErrorMessage';
+import { Icon } from '../../various/Icon';
 
 interface Props {
   addon: AddonDto | null;
@@ -18,6 +19,7 @@ export const UpdateAddonModal = ({ addon, isOpen, onClose }: Props) => {
   const [count, setCount] = useState(addon?.count ?? 1);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCount(addon?.count ?? 1);
   }, [isOpen]);
 

@@ -8,7 +8,7 @@ import { ReviewTool } from '../../../../typings/reviewTool';
 
 interface Props {
   arrow: ReviewTool.Arrow;
-  isDrawing: React.RefObject<boolean>;
+  isDrawing: React.RefObject<boolean | null>;
   ratio: number;
   onRemove: (shape: ReviewTool.Shape) => void;
   onDragStart: (shape: ReviewTool.Shape, event: Konva.KonvaEventObject<MouseEvent>) => void;

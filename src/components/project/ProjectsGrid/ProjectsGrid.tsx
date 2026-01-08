@@ -2,13 +2,13 @@ import { Button, Skeleton } from '@heroui/react';
 import React from 'react';
 
 import { ProjectContextProvider } from '../../../contexts/Project';
+import { useProjectEmptyState } from '../../../hooks/useProjectEmptyState';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { GetProjectsQueryParams, ProjectDto } from '../../../services/types';
 import { EmptyState } from '../../various/EmptyState';
 import { Icon } from '../../various/Icon';
-import { ProjectCard } from './ProjectCard';
-import { useProjectEmptyState } from '../../../hooks/useProjectEmptyState';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
-import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
+import { ProjectCard } from './ProjectCard';
 
 interface Props {
   status: GetProjectsQueryParams['status'];

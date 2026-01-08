@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
-import { FileStateContextProvider } from '../../../contexts/File';
-import { AssetPanel } from '../AssetPanel';
-import { ReviewTool } from '../ReviewTool';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+import { FileStateContextProvider } from '../../../contexts/File';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { useGetAssetFileId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
 import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
-import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
+import { AssetPanel } from '../AssetPanel';
+import { ReviewTool } from '../ReviewTool';
 
 interface Props {
   fileId: string;

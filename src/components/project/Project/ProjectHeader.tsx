@@ -12,12 +12,12 @@ import NextLink from 'next/link';
 import React from 'react';
 
 import { useProjectContext } from '../../../contexts/Project';
+import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 import { ProjectDto } from '../../../services/types';
-import { Icon } from '../../various/Icon';
 import { CreateFolderModal } from '../../asset/AssetModals/CreateFolderModal';
+import { Icon } from '../../various/Icon';
 import { ProjectMembersModal, ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectBreadcrumbs } from './ProjectBreadcrumbs';
-import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 
 interface Props {
   project: ProjectDto;
@@ -30,7 +30,6 @@ export const ProjectHeader = ({ project }: Props) => {
 
   const [isMembersModalOpen, setIsMembersModalOpen] = React.useState(false);
   const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
-  const [isDescriptionModalOpen, setIsDescriptionModalOpen] = React.useState(false);
 
   const uploadAssets = () => {
     inputRef.current?.click();
@@ -40,7 +39,7 @@ export const ProjectHeader = ({ project }: Props) => {
 
   return (
     <div>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      {}
       <Link as={NextLink} href="/" className="gap-0.5 text-foreground-500">
         <Icon icon="arrowLeft" size={18} />
         Projects

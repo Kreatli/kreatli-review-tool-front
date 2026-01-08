@@ -1,6 +1,6 @@
 import { Button } from '@heroui/react';
-
 import { Alert } from '@heroui/react';
+
 import { useProjectContext } from '../../../contexts/Project';
 
 export const NotActiveProjectAlert = () => {

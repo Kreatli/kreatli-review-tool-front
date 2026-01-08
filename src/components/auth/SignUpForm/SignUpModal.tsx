@@ -1,6 +1,7 @@
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
-import { SignUpForm } from './SignUpForm';
+
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { SignUpForm } from './SignUpForm';
 
 export const SignUpModal = () => {
   const { isSignUpModalOpen, setIsSignUpModalOpen } = useSignUpModalVisibility();

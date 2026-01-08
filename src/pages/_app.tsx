@@ -1,20 +1,20 @@
+import 'react-image-crop/dist/ReactCrop.css';
 import '../styles/globals.scss';
 import '../styles/tiptap.scss';
-import 'react-image-crop/dist/ReactCrop.css';
 
 import { HeroUIProvider, ToastProvider } from '@heroui/react';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
-import { GoogleTagManager } from '@next/third-parties/google';
 import Head from 'next/head';
-import React from 'react';
 
 import { Layout } from '../components/layout/Layout';
-import { queryClient } from '../lib/queryClient';
 import { StoryblokProvider } from '../components/layout/Storyblok/StoryblokProvider';
+import { queryClient } from '../lib/queryClient';
 
 const App = ({ Component, pageProps }: AppProps) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const getLayout = Component.getLayout || ((page) => page);
 

@@ -2,10 +2,10 @@ import { cn, Spinner } from '@heroui/react';
 import React, { useEffect } from 'react';
 
 import LogoIcon from '../../../assets/images/logo.svg';
-import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useAppLoader } from '../../../hooks/useAppLoader';
-import { Layout } from '../../../typings/layout';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { FileUpload, useProjectUploads } from '../../../hooks/useProjectUploads';
+import { Layout } from '../../../typings/layout';
 
 interface Props {
   children: React.ReactNode;

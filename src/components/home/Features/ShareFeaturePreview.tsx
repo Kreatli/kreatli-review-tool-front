@@ -1,10 +1,10 @@
-import { Avatar, Button, Card, CardBody, Chip, Input, Tooltip, cn } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { useState, useEffect, useRef } from 'react';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
-import { ChangeEvent, FocusEvent, KeyboardEvent } from 'react';
-import { useSession } from '../../../hooks/useSession';
+import { Avatar, Button, Card, CardBody, Chip, Input, Tooltip } from '@heroui/react';
+import { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { Icon } from '../../various/Icon';
 
 export const ShareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
@@ -274,7 +274,7 @@ export const ShareFeaturePreview = () => {
                         variant="flat"
                         size="sm"
                         isCloseable
-                        onClose={(e) => {
+                        onClose={() => {
                           setIsAnimating(false);
                           setEmails(emails.filter((e) => e !== email));
                         }}

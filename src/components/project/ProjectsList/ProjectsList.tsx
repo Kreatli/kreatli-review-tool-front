@@ -1,10 +1,11 @@
-import { GetProjectsQueryParams, ProjectDto } from '../../../services/types';
 import React from 'react';
+
 import { ProjectContextProvider } from '../../../contexts/Project';
-import { ProjectsListTable } from './ProjectsListTable';
+import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
+import { GetProjectsQueryParams, ProjectDto } from '../../../services/types';
 import { EmptyState } from '../../various/EmptyState';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
-import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
+import { ProjectsListTable } from './ProjectsListTable';
 
 interface Props {
   status: GetProjectsQueryParams['status'];

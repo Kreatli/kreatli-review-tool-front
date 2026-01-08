@@ -1,4 +1,5 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+
 import { cn } from '../../../lib/tiptap-utils';
 
 function Popover({ ...props }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
@@ -27,4 +28,4 @@ function PopoverContent({
   );
 }
 
-export { Popover, PopoverTrigger, PopoverContent };
+export { Popover, PopoverContent,PopoverTrigger };

@@ -1,8 +1,9 @@
 import { Card, CardBody, cn, Slider, Tooltip } from '@heroui/react';
 import { useMemo, useState } from 'react';
-import { LogoCheckbox } from './LogoCheckbox';
+
 import { formatPrice } from '../../../utils/formatNumber';
 import { Icon } from '../../various/Icon';
+import { LogoCheckbox } from './LogoCheckbox';
 
 export const pricing = {
   'google-drive': [[101, 15]],

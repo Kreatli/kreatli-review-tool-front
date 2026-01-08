@@ -1,19 +1,16 @@
 import { forwardRef, useCallback } from 'react';
 
+// --- Hooks ---
+import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
+// --- Lib ---
+import { parseShortcutKeys } from '../../../lib/tiptap-utils';
 // --- Tiptap UI ---
 import type { UseBlockquoteConfig } from '../../tiptap-ui/blockquote-button';
 import { BLOCKQUOTE_SHORTCUT_KEY, useBlockquote } from '../../tiptap-ui/blockquote-button';
-
-// --- Hooks ---
-import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
-
-// --- Lib ---
-import { parseShortcutKeys } from '../../../lib/tiptap-utils';
-
+import { Badge } from '../../tiptap-ui-primitive/badge';
 // --- UI Primitives ---
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
 import { Button } from '../../tiptap-ui-primitive/button';
-import { Badge } from '../../tiptap-ui-primitive/badge';
 
 export interface BlockquoteButtonProps extends Omit<ButtonProps, 'type'>, UseBlockquoteConfig {
   /**

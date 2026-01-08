@@ -1,15 +1,16 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { useProjectContext } from '../../../contexts/Project';
-import { ProjectMemberItem } from '../../project/ProjectMemberItem';
-import { useSession } from '../../../hooks/useSession';
-import { ProjectMemberDto } from '../../../services/types';
-import { usePostProjectIdChat } from '../../../services/hooks';
 import { useQueryClient } from '@tanstack/react-query';
-import { getProjectIdChats } from '../../../services/services';
 import { useRouter } from 'next/router';
-import { useChatContext } from '../../../contexts/Chat';
 import { useMemo, useState } from 'react';
+
+import { useChatContext } from '../../../contexts/Chat';
+import { useProjectContext } from '../../../contexts/Project';
+import { useSession } from '../../../hooks/useSession';
+import { usePostProjectIdChat } from '../../../services/hooks';
+import { getProjectIdChats } from '../../../services/services';
+import { ProjectMemberDto } from '../../../services/types';
+import { ProjectMemberItem } from '../../project/ProjectMemberItem';
+import { Icon } from '../../various/Icon';
 
 interface Props {
   isDisabled?: boolean;

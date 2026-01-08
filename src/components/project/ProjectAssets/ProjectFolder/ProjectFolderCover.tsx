@@ -1,6 +1,4 @@
-import React, { PropsWithChildren } from 'react';
-
-import { Icon } from '../../../various/Icon';
+import { PropsWithChildren } from 'react';
 
 export const ProjectFolderCover = ({ children }: PropsWithChildren) => {
   return (

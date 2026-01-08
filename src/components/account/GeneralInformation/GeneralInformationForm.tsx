@@ -4,13 +4,13 @@ import React from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useForm } from 'react-hook-form';
 
-import { getIsTouchScreen } from '../../../utils/getIsTouchScreen';
-import { Icon } from '../../various/Icon';
-import { UserDto } from '../../../services/types';
 import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { usePutUser } from '../../../services/hooks';
 import { getUser } from '../../../services/services';
+import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
+import { getIsTouchScreen } from '../../../utils/getIsTouchScreen';
+import { Icon } from '../../various/Icon';
 
 interface Props {
   user: UserDto;

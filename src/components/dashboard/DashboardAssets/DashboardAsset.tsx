@@ -1,10 +1,11 @@
 import { Image } from '@heroui/react';
-import { AssetDto, ProjectDto, ProjectMemberDto } from '../../../services/types';
-import React from 'react';
-import { AssetIcon } from '../../asset/AssetIcon';
 import Link from 'next/link';
-import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
+import React from 'react';
+
+import { AssetDto, ProjectDto, ProjectMemberDto } from '../../../services/types';
+import { AssetIcon } from '../../asset/AssetIcon';
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
+import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
 
 interface Props {
   project: ProjectDto;

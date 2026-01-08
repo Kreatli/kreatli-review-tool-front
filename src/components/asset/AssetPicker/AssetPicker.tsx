@@ -1,8 +1,9 @@
 import { Input, Popover, PopoverContent, PopoverTrigger, Spinner } from '@heroui/react';
 import React, { PropsWithChildren, useCallback, useRef } from 'react';
-import { AssetDto } from '../../../services/types';
-import { getAssets } from '../../../services/services';
+
 import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
+import { getAssets } from '../../../services/services';
+import { AssetDto } from '../../../services/types';
 import { AssetPickerItem } from './AssetPickerItem';
 
 interface Props {
@@ -89,6 +90,7 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
 
     setOffset(offset + 50);
     loadAssets(offset + 50, search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset, search]);
 
   const spinnerRef = useCallback(

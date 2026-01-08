@@ -6,8 +6,9 @@
  */
 
 import axios, { AxiosRequestConfig, CancelToken } from 'axios';
-import { getAxiosInstance } from './config';
+
 import type { Security, SwaggerResponse } from './config';
+import { getAxiosInstance } from './config';
 
 /**
  * Cancellation handled here, you can cancel request by call promise.cancel()

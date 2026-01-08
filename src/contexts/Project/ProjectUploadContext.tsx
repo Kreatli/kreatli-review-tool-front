@@ -1,19 +1,19 @@
 import { addToast } from '@heroui/react';
-import React from 'react';
-
-import { ProjectDto } from '../../services/types';
-import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzone';
-import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
-import { nanoid } from 'nanoid';
-import { getAssetFolderId, getAssets, getProjectId, getProjectIdAssets } from '../../services/services';
-import { useSession } from '../../hooks/useSession';
-import { useProjectUploads } from '../../hooks/useProjectUploads';
-import { useMultipartUpload } from '../../hooks/useMultipartUpload';
-import { usePostProjectIdFile } from '../../services/hooks';
 import { useQueryClient } from '@tanstack/react-query';
-import { getErrorMessage } from '../../utils/getErrorMessage';
+import { nanoid } from 'nanoid';
+import React from 'react';
+import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzone';
+
 import { UpgradeModal } from '../../components/account/UpgradeModal';
 import { ContactOwnerModal } from '../../components/account/UpgradeModal/ContactOwnerModal';
+import { useMultipartUpload } from '../../hooks/useMultipartUpload';
+import { useProjectUploads } from '../../hooks/useProjectUploads';
+import { useSession } from '../../hooks/useSession';
+import { usePostProjectIdFile } from '../../services/hooks';
+import { getAssetFolderId, getAssets, getProjectId, getProjectIdAssets } from '../../services/services';
+import { ProjectDto } from '../../services/types';
+import { getErrorMessage } from '../../utils/getErrorMessage';
+import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
 
 export interface ProjectAssetsFilters {
   status?: string;
@@ -24,7 +24,7 @@ export interface ProjectAssetsFilters {
 
 interface Context {
   isDragActive: boolean;
-  inputRef: React.RefObject<HTMLInputElement>;
+  inputRef: React.RefObject<HTMLInputElement | null>;
   getInputProps: () => DropzoneInputProps;
   getRootProps: () => DropzoneRootProps;
 }
@@ -92,7 +92,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       return;
     }
 
-    // eslint-disable-next-line no-restricted-syntax
+     
     for (const file of files) {
       const id = nanoid();
 

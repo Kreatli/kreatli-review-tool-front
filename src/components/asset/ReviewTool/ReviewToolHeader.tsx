@@ -1,15 +1,14 @@
 import { Button, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
-import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useMemo } from 'react';
 
 import { useAssetContext } from '../../../contexts/Asset';
 import { AssetDto, FileDto, ProjectDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
-import { Icon } from '../../various/Icon';
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
 import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
+import { Icon } from '../../various/Icon';
 import { AssetPicker } from '../AssetPicker';
-import { useRouter } from 'next/router';
 
 interface Props {
   file: FileDto;

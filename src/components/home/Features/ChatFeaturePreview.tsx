@@ -1,11 +1,11 @@
 import { Avatar, AvatarGroup, Button, Card, CardBody } from '@heroui/react';
+import { useEffect, useRef, useState } from 'react';
+
+import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { Icon } from '../../various/Icon';
 import { ChatFeatureMessage } from './ChatFeatureMessage';
-import { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
-import { useSession } from '../../../hooks/useSession';
-import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 
 interface MessageData {
   message: string;

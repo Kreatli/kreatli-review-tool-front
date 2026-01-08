@@ -3,11 +3,11 @@ import React from 'react';
 
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
 import { AssetDto, ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
+import { updateProjectFile } from '../../../../services/utils';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { getProjectMemberLetter } from '../../../../utils/shortNames';
 import { Icon } from '../../../various/Icon';
 import { ProjectMemberItem } from '../../ProjectMemberItem';
-import { updateProjectFile } from '../../../../services/utils';
 
 interface Props {
   projectId: string;

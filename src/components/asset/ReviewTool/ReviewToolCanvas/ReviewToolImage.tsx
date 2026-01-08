@@ -1,9 +1,9 @@
 import { Image } from '@heroui/react';
 import React from 'react';
 
+import { useFileStateContext } from '../../../../contexts/File';
 import { useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { FileDto } from '../../../../services/types';
-import { useFileStateContext } from '../../../../contexts/File';
 
 interface Props {
   imageFile: FileDto;
@@ -31,7 +31,7 @@ export const ReviewToolImage = ({ imageFile, onLoad }: Props) => {
       </div>
       <Image
         src={imageUrl}
-        // @ts-ignore
+        // @ts-expect-error - Image element is not typed
         ref={compareFile?.id === imageFile.id ? compareFileRef : fileRef}
         radius="none"
         shadow="lg"

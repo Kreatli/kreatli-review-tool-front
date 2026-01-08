@@ -1,7 +1,8 @@
 import { Avatar, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
+
 import { ProjectLogsDto } from '../../../services/types';
-import { ProjectActivityLog } from '../../project/ProjectActivity/ProjectActivityLog';
 import { formatFullDate } from '../../../utils/dates';
+import { ProjectActivityLog } from '../../project/ProjectActivity/ProjectActivityLog';
 
 interface Props {
   logs: ProjectLogsDto['logs'];

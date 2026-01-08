@@ -7,6 +7,7 @@
 import Axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 // @ts-ignore
 import qs from 'qs';
+
 import { getHasToken, getToken } from '../utils/token';
 
 const baseConfig: AxiosRequestConfig = {

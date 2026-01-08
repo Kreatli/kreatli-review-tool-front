@@ -1,11 +1,12 @@
 import { Button, Card, CardBody, Chip, CircularProgress, Image, Progress } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { AssetIcon } from '../../asset/AssetIcon';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
-import { useSession } from '../../../hooks/useSession';
-import { formatBytes } from '../../../utils/formatBytes';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef,useState } from 'react';
+
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { formatBytes } from '../../../utils/formatBytes';
+import { AssetIcon } from '../../asset/AssetIcon';
+import { Icon } from '../../various/Icon';
 
 interface UploadItem {
   id: string;

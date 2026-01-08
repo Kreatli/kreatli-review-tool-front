@@ -38,7 +38,7 @@ const AssetUploadedLog = ({ log }: { log: AssetUploadedLogDto }) => {
 const AssetUpdatedLog = ({ log }: { log: AssetUpdatedLogDto }) => {
   const { project } = useProjectContext();
   const {
-    asset: { id, name, parent, type, status, statusLabel, assignee },
+    asset: { id, name, parent, type, statusLabel, assignee },
     updatedFields,
   } = log.details;
 
@@ -178,7 +178,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
   return (
     <div className="flex flex-col gap-2">
       <div>
-        Restored {assets.length} assets. {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        Restored {assets.length} assets. {}
         <Link
           as="button"
           type="button"
@@ -192,7 +192,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
       {isExpanded && (
         <ul className="flex list-disc flex-col gap-2 pl-4">
           {assets.map((asset) => (
-            <li>
+            <li key={asset.id}>
               <Link
                 key={asset.id}
                 as={NextLink}
@@ -232,7 +232,7 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
   return (
     <div className="flex flex-col gap-2">
       <div>
-        Deleted forever {assets.length} items. {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        Deleted forever {assets.length} items.
         <Link
           as="button"
           type="button"

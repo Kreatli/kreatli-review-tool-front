@@ -1,18 +1,18 @@
 import { Button, Input, Tab, Tabs } from '@heroui/react';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useDebounce } from '../../../hooks/useDebounce';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { useSession } from '../../../hooks/useSession';
 import { useGetProjects } from '../../../services/hooks';
 import { GetProjectsQueryParams } from '../../../services/types';
+import { UpgradeModal } from '../../account/UpgradeModal';
 import { Icon } from '../../various/Icon';
 import { CreateProjectModal } from '../ProjectModals/CreateProjectModal';
 import { ProjectsGrid } from '../ProjectsGrid';
-import { useSession } from '../../../hooks/useSession';
-import { UpgradeModal } from '../../account/UpgradeModal';
 import { ProjectsList } from '../ProjectsList/ProjectsList';
-import { useLocalStorage } from '../../../hooks/useLocalStorage';
 
 export const Projects = () => {
   const router = useRouter();

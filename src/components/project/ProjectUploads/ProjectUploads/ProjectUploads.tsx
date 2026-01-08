@@ -1,8 +1,9 @@
 import { Button } from '@heroui/react';
-import { ProjectUploadItem } from './ProjectUploadItem';
-import { Icon } from '../../../various/Icon';
-import { FileUpload, useProjectUploads } from '../../../../hooks/useProjectUploads';
 import { useMemo } from 'react';
+
+import { FileUpload, useProjectUploads } from '../../../../hooks/useProjectUploads';
+import { Icon } from '../../../various/Icon';
+import { ProjectUploadItem } from './ProjectUploadItem';
 
 interface Props {
   onClose: () => void;

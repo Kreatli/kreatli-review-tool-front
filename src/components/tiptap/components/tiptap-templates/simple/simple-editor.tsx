@@ -1,40 +1,35 @@
 'use client';
 
-import React, { Ref, useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from 'react';
-import { Content, EditorContent, EditorContext, JSONContent, useEditor } from '@tiptap/react';
-
-import { StarterKit } from '@tiptap/starter-kit';
+import { Highlight } from '@tiptap/extension-highlight';
 import { Image } from '@tiptap/extension-image';
 import { TaskItem, TaskList } from '@tiptap/extension-list';
 import { Typography } from '@tiptap/extension-typography';
-import { Highlight } from '@tiptap/extension-highlight';
+import UniqueID from '@tiptap/extension-unique-id';
 import { Placeholder, Selection } from '@tiptap/extensions';
+import { Content, EditorContent, EditorContext, JSONContent, useEditor } from '@tiptap/react';
+import { StarterKit } from '@tiptap/starter-kit';
+import React, { Ref, useEffect, useImperativeHandle, useLayoutEffect, useRef, useState } from 'react';
 
-import { Button } from '../../tiptap-ui-primitive/button';
-import { Toolbar, ToolbarGroup, ToolbarSeparator } from '../../tiptap-ui-primitive/toolbar';
-
-import { HorizontalRule } from '../../tiptap-node/horizontal-rule-node/horizontal-rule-node-extension';
-
-import { HeadingDropdownMenu } from '../../tiptap-ui/heading-dropdown-menu';
-import { ListDropdownMenu } from '../../tiptap-ui/list-dropdown-menu';
-import { BlockquoteButton } from '../../tiptap-ui/blockquote-button';
-import {
-  ColorHighlightPopover,
-  ColorHighlightPopoverContent,
-  ColorHighlightPopoverButton,
-} from '../../tiptap-ui/color-highlight-popover';
-import { LinkPopover, LinkContent, LinkButton } from '../../tiptap-ui/link-popover';
-import { MarkButton } from '../../tiptap-ui/mark-button';
-import { UndoRedoButton } from '../../tiptap-ui/undo-redo-button';
-
+import { useDebounceCallback } from '../../../../../hooks/useDebounceCallback';
+import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
+import { updateTaskItemState } from '../../../lib/tiptap-utils';
 import { ArrowLeftIcon } from '../../tiptap-icons/arrow-left-icon';
 import { HighlighterIcon } from '../../tiptap-icons/highlighter-icon';
 import { LinkIcon } from '../../tiptap-icons/link-icon';
-
-import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
-import UniqueID from '@tiptap/extension-unique-id';
-import { updateTaskItemState } from '../../../lib/tiptap-utils';
-import { useDebounceCallback } from '../../../../../hooks/useDebounceCallback';
+import { HorizontalRule } from '../../tiptap-node/horizontal-rule-node/horizontal-rule-node-extension';
+import { BlockquoteButton } from '../../tiptap-ui/blockquote-button';
+import {
+  ColorHighlightPopover,
+  ColorHighlightPopoverButton,
+  ColorHighlightPopoverContent,
+} from '../../tiptap-ui/color-highlight-popover';
+import { HeadingDropdownMenu } from '../../tiptap-ui/heading-dropdown-menu';
+import { LinkButton, LinkContent, LinkPopover } from '../../tiptap-ui/link-popover';
+import { ListDropdownMenu } from '../../tiptap-ui/list-dropdown-menu';
+import { MarkButton } from '../../tiptap-ui/mark-button';
+import { UndoRedoButton } from '../../tiptap-ui/undo-redo-button';
+import { Button } from '../../tiptap-ui-primitive/button';
+import { Toolbar, ToolbarGroup, ToolbarSeparator } from '../../tiptap-ui-primitive/toolbar';
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -109,7 +104,7 @@ interface Props {
   content: JSONContent;
   editorRef: Ref<EditorRef>;
   children?: React.ReactNode;
-  onUpdate: (json: Record<string, any>) => void;
+  onUpdate: (json: Record<string, unknown>) => void;
   onSave: () => void;
 }
 
@@ -150,6 +145,7 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
       }),
       HorizontalRule,
       TaskList,
+
       TaskItem.configure({
         nested: true,
         onReadOnlyChecked: (node, checked) => {
@@ -191,6 +187,7 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
     } else {
       editor?.commands.blur();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEditable]);
 
   useImperativeHandle(editorRef, () => ({

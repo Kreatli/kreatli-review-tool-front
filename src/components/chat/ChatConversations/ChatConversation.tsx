@@ -1,6 +1,6 @@
+import { useSession } from '../../../hooks/useSession';
 import { ChatDto } from '../../../services/types';
 import { ChatAvatar } from '../ChatAvatar';
-import { useSession } from '../../../hooks/useSession';
 
 interface ChatConversationProps {
   chat: ChatDto;

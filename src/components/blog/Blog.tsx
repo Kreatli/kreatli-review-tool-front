@@ -1,6 +1,7 @@
 import { ISbStoryData } from '@storyblok/react';
-import { BlogArticle } from './BlogArticle';
+
 import { PageStoryblok } from '../../typings/storyblok';
+import { BlogArticle } from './BlogArticle';
 
 interface Props {
   articles: ISbStoryData<PageStoryblok>[];

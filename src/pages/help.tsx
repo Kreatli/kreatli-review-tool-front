@@ -1,12 +1,12 @@
+import { Accordion, AccordionItem, Button, Card, CardBody, Chip, Input, Tab, Tabs } from '@heroui/react';
 import Head from 'next/head';
-import React, { useState, useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
-import { Header } from '../components/layout/Header';
 import { FooterSection } from '../components/home/Footer/FooterSection';
-import { useSession } from '../hooks/useSession';
+import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { Accordion, AccordionItem, Input, Card, CardBody, Tabs, Tab, Chip, Button } from '@heroui/react';
-import { Icon } from '../components/various/Icon';
+import { Icon, IconType } from '../components/various/Icon';
+import { useSession } from '../hooks/useSession';
 
 interface FAQItem {
   key: string;
@@ -456,7 +456,7 @@ export default function HelpPage() {
                     key={category}
                     title={
                       <div className="flex items-center gap-2">
-                        <Icon icon={config.icon as any} size={18} />
+                        <Icon icon={config.icon as IconType} size={18} />
                         <span>{config.name}</span>
                         {category !== 'all' && (
                           <Chip size="sm" variant="flat" className="ml-1">
@@ -483,7 +483,7 @@ export default function HelpPage() {
                       <div key={category} id={`category-${category}`} className="mb-12 scroll-mt-24">
                         <div className="mb-6 flex items-center gap-3">
                           <div className="rounded-full bg-foreground-100 p-2">
-                            <Icon icon={config.icon as any} size={20} className="text-primary" />
+                            <Icon icon={config.icon as IconType} size={20} className="text-primary" />
                           </div>
                           <h3 className="font-sans text-xl font-bold sm:text-2xl">{config.name}</h3>
                           <Chip size="sm" variant="flat">
@@ -520,7 +520,7 @@ export default function HelpPage() {
                       return (
                         <div className="mb-6 flex items-center gap-3">
                           <div className="rounded-full bg-foreground-100 p-2">
-                            <Icon icon={displayedCategory.config.icon as any} size={20} className="text-primary" />
+                            <Icon icon={displayedCategory.config.icon as IconType} size={20} className="text-primary" />
                           </div>
                           <h3 className="font-sans text-xl font-bold sm:text-2xl">{displayedCategory.config.name}</h3>
                           <Chip size="sm" variant="flat" className="ml-2">

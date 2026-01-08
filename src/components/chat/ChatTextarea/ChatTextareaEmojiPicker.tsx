@@ -1,7 +1,8 @@
 import { Button, Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
-import { Icon } from '../../various/Icon';
 import { Emoji, EmojiPicker } from 'frimousse';
 import React from 'react';
+
+import { Icon } from '../../various/Icon';
 
 interface Props {
   isDisabled?: boolean;

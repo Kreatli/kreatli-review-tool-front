@@ -2,9 +2,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 
+import { NewPasswordForm } from '../../components/auth/NewPasswordForm';
 import { StartPageLayout } from '../../components/layout/StartPageLayout';
 import { useSession } from '../../hooks/useSession';
-import { NewPasswordForm } from '../../components/auth/NewPasswordForm';
 
 export default function NewPassword() {
   const router = useRouter();

@@ -1,6 +1,8 @@
 'use client';
 
+import { cn } from '@heroui/react';
 import { useEffect, useState } from 'react';
+
 import styles from './HeroSection.module.css';
 
 interface TypewriterProps {
@@ -56,8 +58,6 @@ export const Typewriter = ({ words, typingSpeed = 100, deletingSpeed = 50, pause
   }, [currentText, currentWordIndex, isDeleting, isPaused, words, typingSpeed, deletingSpeed, pauseTime]);
 
   // Calculate the width needed for the longest word to prevent layout shifts
-  const longestWord = words.reduce((a, b) => (a.length > b.length ? a : b), '');
-
   return (
     <span className="relative inline-block min-w-[1ch] leading-tight">
       <span className="relative inline-block px-3 py-1.5">
@@ -66,7 +66,10 @@ export const Typewriter = ({ words, typingSpeed = 100, deletingSpeed = 50, pause
 
         {/* Main text with vibrant gradient */}
         <span
-          className={`inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent ${styles.animateGradient}`}
+          className={cn(
+            'inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent',
+            styles.animateGradient,
+          )}
         >
           {currentText}
         </span>
@@ -77,7 +80,10 @@ export const Typewriter = ({ words, typingSpeed = 100, deletingSpeed = 50, pause
 
       {/* Enhanced cursor */}
       <span
-        className={`ml-1.5 inline-block h-[1em] w-0.5 rounded-full bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 align-middle ${styles.animateBlink}`}
+        className={cn(
+          'ml-1.5 inline-block h-[1em] w-0.5 rounded-full bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 align-middle',
+          styles.animateBlink,
+        )}
       />
     </span>
   );

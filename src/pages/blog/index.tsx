@@ -1,13 +1,14 @@
-import Head from 'next/head';
-import { useSession } from '../../hooks/useSession';
-import { Header } from '../../components/layout/Header';
-import { Decorations } from '../../components/layout/Storyblok/Decorations';
-import { getStoryblokApi } from '../../lib/storyblok';
-import { GetStaticProps } from 'next';
 import { ISbStoryData } from '@storyblok/react';
-import { PageStoryblok } from '../../typings/storyblok';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+
 import { BlogArticles } from '../../components/blog/Blog';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { Header } from '../../components/layout/Header';
+import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { useSession } from '../../hooks/useSession';
+import { getStoryblokApi } from '../../lib/storyblok';
+import { PageStoryblok } from '../../typings/storyblok';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
@@ -73,4 +74,4 @@ export const getStaticProps = (async () => {
       notFound: true,
     };
   }
-}) satisfies GetStaticProps<{}>;
+}) satisfies GetStaticProps<object>;

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
 
 import { ProjectLayout } from '../../../../../components/project/Project';
 import { ProjectFolderAssets } from '../../../../../components/project/ProjectAssets/ProjectFolderAssets';
@@ -22,4 +21,5 @@ export default function ProjectAssetsPage() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 ProjectAssetsPage.getLayout = (page: any) => <ProjectLayout hideHeader>{page}</ProjectLayout>;

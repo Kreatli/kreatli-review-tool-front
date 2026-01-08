@@ -1,16 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
 import { type Editor } from '@tiptap/react';
+import { useCallback, useEffect, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 
+import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
 // --- Hooks ---
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
-import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
-
 // --- Lib ---
-import { isMarkInSchema, isNodeTypeSelected, isExtensionAvailable } from '../../../lib/tiptap-utils';
-
+import { isExtensionAvailable,isMarkInSchema, isNodeTypeSelected } from '../../../lib/tiptap-utils';
 // --- Icons ---
 import { HighlighterIcon } from '../../tiptap-icons/highlighter-icon';
 

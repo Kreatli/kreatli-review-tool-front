@@ -1,7 +1,7 @@
 import type { RefObject } from "react"
 import { useEffect, useState } from "react"
 
-type ScrollTarget = RefObject<HTMLElement> | Window | null | undefined
+type ScrollTarget = RefObject<HTMLElement | null> | Window | null | undefined
 type EventTargetWithScroll = Window | HTMLElement | Document
 
 interface UseScrollingOptions {
@@ -21,7 +21,7 @@ export function useScrolling(
     const element: EventTargetWithScroll =
       target && typeof Window !== "undefined" && target instanceof Window
         ? target
-        : ((target as RefObject<HTMLElement>)?.current ?? window)
+        : ((target as RefObject<HTMLElement | null>)?.current ?? window)
 
     // Mobile: fallback to document when using window
     const eventTarget: EventTargetWithScroll =

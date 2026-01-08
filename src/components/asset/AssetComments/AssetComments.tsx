@@ -1,15 +1,15 @@
 import { Tab, Tabs } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
+import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 
+import { useFileStateContext } from '../../../contexts/File';
 import { useGetAssetFileIdComments } from '../../../services/hooks';
 import { getAssetFileIdComments } from '../../../services/services';
 import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
 import { AssetComment } from './AssetComment';
 import { AssetCommentsEmptyState } from './AssetCommentsEmptyState';
 import { AssetCommentsLoading } from './AssetCommentsLoading';
-import { useSearchParams } from 'next/navigation';
-import { useFileStateContext } from '../../../contexts/File';
 
 type CommentsStatus = 'all' | 'unresolved' | 'resolved';
 

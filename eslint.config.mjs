@@ -1,61 +1,44 @@
-import { defineConfig, globalIgnores } from 'eslint/config';
-import { fixupConfigRules } from '@eslint/compat';
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-export default defineConfig([
-  globalIgnores(['src/services/**/*']),
+const eslintConfig = [
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   {
-    extends: fixupConfigRules(
-      compat.extends(
-        'next/core-web-vitals',
-        'plugin:react/recommended',
-        'plugin:react-hooks/recommended',
-        'plugin:prettier/recommended'
-      ),
-    ),
-
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'build/**',
+      'next-env.d.ts',
+      'src/typings/storyblok.d.ts',
+      'src/services/*',
+    ],
+  },
+  {
     plugins: {
       'simple-import-sort': simpleImportSort,
     },
-
-    languageOptions: {
-      ecmaVersion: 5,
-      sourceType: 'script',
-
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-    },
-
     rules: {
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+    },
+  },
+  {
+    rules: {
       'react/jsx-props-no-spreading': 'off',
+      'react/no-unescaped-entities': 'off',
       'object-curly-newline': 'off',
       'arrow-body-style': 'off',
       'operator-linebreak': 'off',
-
       'react/jsx-wrap-multilines': [
         'error',
         {
           prop: false,
         },
       ],
-
       'react/function-component-definition': 'off',
-      'import/prefer-default-export': 'off',
       'react/require-default-props': 'off',
       'implicit-arrow-linebreak': 'off',
 
@@ -67,7 +50,6 @@ export default defineConfig([
           caughtErrorsIgnorePattern: '^_',
         },
       ],
-
       'react/jsx-no-constructed-context-values': 'off',
 
       'max-len': [
@@ -78,14 +60,13 @@ export default defineConfig([
           ignoreStrings: true,
         },
       ],
-
       'consistent-return': 'off',
       'react/jsx-one-expression-per-line': 'off',
 
       'no-underscore-dangle': [
         'error',
         {
-          allow: ['_id'],
+          allow: ['_id', '_uid'],
         },
       ],
 
@@ -95,4 +76,6 @@ export default defineConfig([
       'function-paren-newline': 'off',
     },
   },
-]);
+];
+
+export default eslintConfig;

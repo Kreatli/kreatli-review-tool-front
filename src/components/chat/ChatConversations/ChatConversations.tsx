@@ -1,12 +1,11 @@
-import { Button, Tab, Tabs } from '@heroui/react';
+import { Tab, Tabs } from '@heroui/react';
+import { useRouter } from 'next/router';
+
+import { useChatContext } from '../../../contexts/Chat';
 import { ChatDto } from '../../../services/types';
 import { ChatConversation } from './ChatConversation';
-import { ChatConversationsLoader } from './ChatConversationsLoader';
-import { Icon } from '../../various/Icon';
-import { useChatContext } from '../../../contexts/Chat';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
 import { ChatConversationCreateButton } from './ChatConversationCreateButton';
+import { ChatConversationsLoader } from './ChatConversationsLoader';
 
 interface ChatConversationsProps {
   chats: ChatDto[];

@@ -1,12 +1,13 @@
 import { Input } from '@heroui/react';
+import React from 'react';
+
+import { useChatContext } from '../../../contexts/Chat';
 import { ChatDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
-import { ChatConversationOptions } from './ChatConversationOptions';
-import { ChatConversationName } from './ChatConversationName';
-import React from 'react';
-import { ChatConversationMembers } from './ChatConversationMembers';
 import { ChatAvatar } from '../ChatAvatar';
-import { useChatContext } from '../../../contexts/Chat';
+import { ChatConversationMembers } from './ChatConversationMembers';
+import { ChatConversationName } from './ChatConversationName';
+import { ChatConversationOptions } from './ChatConversationOptions';
 
 interface Props {
   search: string;

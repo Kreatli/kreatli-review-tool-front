@@ -1,5 +1,4 @@
 import { Image } from '@heroui/react';
-import React from 'react';
 
 import { InterfaceImageDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
@@ -19,5 +18,5 @@ export const ProjectCardImage = ({ image }: Props) => {
 
   const { url } = image;
 
-  return <Image src={url} removeWrapper className="pointer-events-none aspect-video w-full object-cover" />;
+  return <Image src={url} alt="" removeWrapper className="pointer-events-none aspect-video w-full object-cover" />;
 };

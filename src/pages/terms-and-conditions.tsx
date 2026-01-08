@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import { useSession } from '../hooks/useSession';
+
 import { Header } from '../components/layout/Header';
+import { useSession } from '../hooks/useSession';
 
 export default function TermsAndConditions() {
   useSession();
@@ -9,6 +10,7 @@ export default function TermsAndConditions() {
     <>
       <Head>
         <title>Kreatli | Terms and Conditions</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       <div className="border-t border-foreground-200 p-6">

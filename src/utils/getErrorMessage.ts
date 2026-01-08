@@ -2,8 +2,8 @@ const capitalizeFirstLetter = (value: string) => {
   return String(value).charAt(0).toUpperCase() + String(value).slice(1);
 };
 
-export const getErrorMessage = (error: any) => {
-  const errorMessage = error?.message;
+export const getErrorMessage = (error: unknown) => {
+  const errorMessage = error as { message?: string | string[] };
 
   if (typeof errorMessage === 'string') {
     return errorMessage;

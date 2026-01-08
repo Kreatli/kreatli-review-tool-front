@@ -7,9 +7,9 @@ import { ProjectDto } from '../../../services/types';
 import { formatRelativeTime } from '../../../utils/dates';
 import { formatBytes } from '../../../utils/formatBytes';
 import { Icon } from '../../various/Icon';
+import { ProjectStatus } from '../Project/ProjectStatus';
 import { ProjectMembersThumbnails } from '../ProjectMembers';
 import { ProjectCardImage } from './ProjectCardImage';
-import { ProjectStatus } from '../Project/ProjectStatus';
 
 interface Props {
   project: ProjectDto;

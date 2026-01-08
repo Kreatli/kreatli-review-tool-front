@@ -1,16 +1,16 @@
 import { addToast, Button, Card, CardBody, cn, ScrollShadow } from '@heroui/react';
-import { ProjectDto } from '../../../services/types';
-import { EditorRef, SimpleEditor } from '../../tiptap/components/tiptap-templates/simple/simple-editor';
-import { Icon } from '../../various/Icon';
+import { JSONContent } from '@tiptap/react';
 import { useRef, useState } from 'react';
 
-import { getIsContentEmpty, getSanitizedContent } from '../../tiptap/lib/tiptap-utils';
 import { DEFAULT_PROJECT_CONTENT } from '../../../constants/tiptap';
-import { usePutProjectId } from '../../../services/hooks';
-import { getErrorMessage } from '../../../utils/getErrorMessage';
-import { JSONContent } from '@tiptap/react';
 import { queryClient } from '../../../lib/queryClient';
+import { usePutProjectId } from '../../../services/hooks';
 import { getProjectId } from '../../../services/services';
+import { ProjectDto } from '../../../services/types';
+import { getErrorMessage } from '../../../utils/getErrorMessage';
+import { EditorRef, SimpleEditor } from '../../tiptap/components/tiptap-templates/simple/simple-editor';
+import { getIsContentEmpty, getSanitizedContent } from '../../tiptap/lib/tiptap-utils';
+import { Icon } from '../../various/Icon';
 
 interface Props {
   project: ProjectDto;
@@ -18,7 +18,7 @@ interface Props {
 
 export const DashboardDescription = ({ project }: Props) => {
   const [isEditable, setIsEditable] = useState(false);
-  const editorJsonRef = useRef<JSONContent>();
+  const editorJsonRef = useRef<JSONContent>(undefined);
   const editorRef = useRef<EditorRef>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -89,7 +89,7 @@ export const DashboardDescription = ({ project }: Props) => {
     }
   };
 
-  const handleUpdate = (editorJson: Record<string, any>) => {
+  const handleUpdate = (editorJson: Record<string, unknown>) => {
     editorJsonRef.current = editorJson;
   };
 

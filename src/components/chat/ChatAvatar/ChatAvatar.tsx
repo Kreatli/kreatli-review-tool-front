@@ -1,7 +1,8 @@
 import { Image } from '@heroui/react';
+
+import { useSession } from '../../../hooks/useSession';
 import { ChatDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
-import { useSession } from '../../../hooks/useSession';
 
 interface ChatAvatarProps {
   chat: ChatDto;

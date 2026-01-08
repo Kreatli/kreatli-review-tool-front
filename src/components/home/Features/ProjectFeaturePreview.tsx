@@ -1,11 +1,12 @@
-import { Avatar, AvatarGroup, Button, Card, CardBody, Input, Tab, Tabs } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { ProjectFeatureFolder } from './ProjectFeatureFolder';
-import { ProjectFeatureFile } from './ProjectFeatureFile';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { Avatar, AvatarGroup, Button, Card, CardBody, cn, Input, Tab, Tabs } from '@heroui/react';
 import { useState } from 'react';
+
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { Icon } from '../../various/Icon';
+import { ProjectFeatureFile } from './ProjectFeatureFile';
+import { ProjectFeatureFolder } from './ProjectFeatureFolder';
 
 interface FileData {
   id: string;
@@ -101,9 +102,12 @@ export const ProjectFeaturePreview = () => {
   return (
     <Card className="group relative">
       <div
-        className={`pointer-events-none absolute inset-0 z-10 bg-black/30 opacity-0 transition-opacity duration-300 dark:bg-black/60 ${
-          shouldHide || isTouchScreen ? '' : 'group-hover:opacity-100'
-        }`}
+        className={cn(
+          'pointer-events-none absolute inset-0 z-10 bg-black/30 opacity-0 transition-opacity duration-300 dark:bg-black/60',
+          {
+            'group-hover:opacity-100': !shouldHide && !isTouchScreen,
+          },
+        )}
       />
       <CardBody
         className="flex min-h-96 flex-col gap-4 p-4"

@@ -1,9 +1,10 @@
 import { addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
-import { useDeleteUserAddonId } from '../../../services/hooks';
-import { AddonDto, UserDto } from '../../../services/types';
-import { getUser } from '../../../services/services';
-import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { useQueryClient } from '@tanstack/react-query';
+
+import { useDeleteUserAddonId } from '../../../services/hooks';
+import { getUser } from '../../../services/services';
+import { AddonDto, UserDto } from '../../../services/types';
+import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface Props {
   addon: AddonDto | null; // TODO: remove null

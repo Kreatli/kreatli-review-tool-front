@@ -1,6 +1,3 @@
-import { useRouter } from 'next/router';
-import { GetProjectsQueryParams, ProjectDto } from '../../../services/types';
-import React from 'react';
 import {
   Button,
   Dropdown,
@@ -16,14 +13,17 @@ import {
   TableHeader,
   TableRow,
 } from '@heroui/react';
-import { Icon } from '../../various/Icon';
 import Link from 'next/link';
-import { formatBytes } from '../../../utils/formatBytes';
-import { ProjectMembersThumbnails } from '../ProjectMembers';
-import { ProjectStatus } from '../Project/ProjectStatus';
-import { formatFullDate } from '../../../utils/dates';
+import { useRouter } from 'next/router';
+
 import { useProjectContext } from '../../../contexts/Project';
 import { useProjectEmptyState } from '../../../hooks/useProjectEmptyState';
+import { GetProjectsQueryParams, ProjectDto } from '../../../services/types';
+import { formatFullDate } from '../../../utils/dates';
+import { formatBytes } from '../../../utils/formatBytes';
+import { Icon } from '../../various/Icon';
+import { ProjectStatus } from '../Project/ProjectStatus';
+import { ProjectMembersThumbnails } from '../ProjectMembers';
 
 interface Props {
   status: GetProjectsQueryParams['status'];
@@ -93,6 +93,7 @@ export const ProjectsListTable = ({
                       src={project.cover?.url}
                       width={48}
                       height={48}
+                      alt={project.name}
                       radius="full"
                       className="pointer-events-none object-cover"
                     />

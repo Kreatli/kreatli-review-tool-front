@@ -1,8 +1,9 @@
 import { Button, Chip, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
+
 import { useGetUserBillingHistory } from '../../../services/hooks';
-import { EmptyState } from '../../various/EmptyState';
 import { formatFullDate } from '../../../utils/dates';
 import { formatPrice } from '../../../utils/formatNumber';
+import { EmptyState } from '../../various/EmptyState';
 import { Icon } from '../../various/Icon';
 
 const STATUS_MAP: Record<string, string> = {
@@ -40,7 +41,7 @@ export const BillingHistory = () => {
             loadingContent={<Spinner />}
             emptyContent={<EmptyState size="sm" title="Your billing history will appear here" />}
           >
-            {/* @ts-ignore */}
+            {/* @ts-expect-error - Invoice is not typed */}
             {billingHistory?.map((invoice) => (
               <TableRow key={invoice.id}>
                 <TableCell>

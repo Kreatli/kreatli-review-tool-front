@@ -1,7 +1,8 @@
-import { storyblokEditable } from '@storyblok/react';
-import { SectionStoryblok } from '../../../../typings/storyblok';
 import { Button, cn, Image } from '@heroui/react';
+import { storyblokEditable } from '@storyblok/react';
 import NextLink from 'next/link';
+
+import { SectionStoryblok } from '../../../../typings/storyblok';
 import { Socials } from '../../../home/Socials/Socials';
 
 interface Props {

@@ -7,7 +7,7 @@ interface Context {
   activeFile: FileDto | undefined;
   activeComment: AssetCommentDto | null;
   replyingComment: AssetCommentDto | null;
-  commentsRef: React.RefObject<HTMLDivElement>;
+  commentsRef: React.RefObject<HTMLDivElement | null>;
   isCompareMode: boolean;
   compareFile: FileDto | undefined;
   setActiveFileId: (id: string) => void;

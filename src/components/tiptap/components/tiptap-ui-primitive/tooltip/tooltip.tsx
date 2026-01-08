@@ -1,24 +1,24 @@
 'use client';
 
-import { cloneElement, createContext, forwardRef, isValidElement, useContext, useMemo, useState, version } from 'react';
 import {
-  useFloating,
   autoUpdate,
-  offset,
   flip,
+  FloatingDelayGroup,
+  FloatingPortal,
+  offset,
+  type Placement,
+  type ReferenceType,
   shift,
-  useHover,
-  useFocus,
   useDismiss,
-  useRole,
+  useFloating,
+  type UseFloatingReturn,
+  useFocus,
+  useHover,
   useInteractions,
   useMergeRefs,
-  FloatingPortal,
-  type Placement,
-  type UseFloatingReturn,
-  type ReferenceType,
-  FloatingDelayGroup,
+  useRole,
 } from '@floating-ui/react';
+import { cloneElement, createContext, forwardRef, isValidElement, useContext, useMemo, useState, version } from 'react';
 
 interface TooltipProviderProps {
   children: React.ReactNode;
@@ -156,6 +156,7 @@ export const TooltipTrigger = forwardRef<HTMLElement, TooltipTriggerProps>(funct
 
     return cloneElement(
       children,
+      // eslint-disable-next-line react-hooks/refs
       context.getReferenceProps({
         ref,
         ...props,

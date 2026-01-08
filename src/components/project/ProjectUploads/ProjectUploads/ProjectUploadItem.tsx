@@ -1,9 +1,9 @@
 import { Button, CircularProgress, cn, Image, Tooltip } from '@heroui/react';
-import { formatBytes } from '../../../../utils/formatBytes';
-import { Icon } from '../../../various/Icon';
-import { AssetIcon } from '../../../asset/AssetIcon';
 import Link from 'next/link';
-import { useMemo } from 'react';
+
+import { formatBytes } from '../../../../utils/formatBytes';
+import { AssetIcon } from '../../../asset/AssetIcon';
+import { Icon } from '../../../various/Icon';
 
 interface Props {
   projectId: string;

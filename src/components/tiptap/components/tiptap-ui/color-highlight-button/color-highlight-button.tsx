@@ -1,15 +1,12 @@
 import { forwardRef, useCallback, useMemo } from 'react';
 
-import { parseShortcutKeys } from '../../../lib/tiptap-utils';
-
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
-
+import { parseShortcutKeys } from '../../../lib/tiptap-utils';
 import type { UseColorHighlightConfig } from '../../tiptap-ui/color-highlight-button';
 import { COLOR_HIGHLIGHT_SHORTCUT_KEY, useColorHighlight } from '../../tiptap-ui/color-highlight-button';
-
+import { Badge } from '../../tiptap-ui-primitive/badge';
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
 import { Button } from '../../tiptap-ui-primitive/button';
-import { Badge } from '../../tiptap-ui-primitive/badge';
 
 export interface ColorHighlightButtonProps extends Omit<ButtonProps, 'type'>, UseColorHighlightConfig {
   text?: string;

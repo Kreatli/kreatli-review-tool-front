@@ -1,13 +1,12 @@
+import { Accordion, AccordionItem, Button, Card, CardBody, Chip } from '@heroui/react';
 import Head from 'next/head';
-import React from 'react';
-
-import { Header } from '../components/layout/Header';
-import { FooterSection } from '../components/home/Footer/FooterSection';
-import { useSession } from '../hooks/useSession';
-import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { Card, CardBody, Button, Chip, Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
-import { Icon } from '../components/various/Icon';
+
+import { FooterSection } from '../components/home/Footer/FooterSection';
+import { Header } from '../components/layout/Header';
+import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { Icon, IconType } from '../components/various/Icon';
+import { useSession } from '../hooks/useSession';
 
 interface AudienceType {
   id: string;
@@ -245,7 +244,7 @@ export default function WhoWeHelpPage() {
                   <div className="flex flex-col gap-6 lg:w-1/3">
                     <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 lg:size-20">
                       <Icon
-                        icon={audience.icon as any}
+                        icon={audience.icon as IconType}
                         className="text-foreground-400 dark:text-foreground-600"
                         size={32}
                       />

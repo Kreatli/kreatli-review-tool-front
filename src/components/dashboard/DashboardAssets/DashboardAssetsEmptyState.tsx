@@ -1,7 +1,8 @@
 import { Button, cn } from '@heroui/react';
+
+import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 import { EmptyState } from '../../various/EmptyState';
 import { Icon } from '../../various/Icon';
-import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
 
 export const DashboardAssetsEmptyState = () => {
   const { inputRef, isDragActive, getRootProps } = useProjectUploadContext();

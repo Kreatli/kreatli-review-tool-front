@@ -1,28 +1,29 @@
 'use client';
 
-import { Editor, EditorContent, useEditor } from '@tiptap/react';
-import Text from '@tiptap/extension-text';
-import Document from '@tiptap/extension-document';
-import Paragraph from '@tiptap/extension-paragraph';
-import Mention from '@tiptap/extension-mention';
-import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
-import { useSession } from '../../../hooks/useSession';
 import { Avatar, Button, cn, Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
-import { useLocalStorage } from '../../../hooks/useLocalStorage';
-import { Icon } from '../../various/Icon';
-import { ReviewToolTextareaAnonymousForm } from './ReviewToolTextareaAnonymousForm';
-import { useMemo, useState } from 'react';
-import { reviewToolEditorSuggestion } from './reviewToolEditorSuggestion';
-import { ReviewToolEditorSubmit } from './ReviewToolEditorSubmit';
+import { useQueryClient } from '@tanstack/react-query';
+import Document from '@tiptap/extension-document';
+import Mention from '@tiptap/extension-mention';
+import Paragraph from '@tiptap/extension-paragraph';
+import Text from '@tiptap/extension-text';
 import { Placeholder } from '@tiptap/extensions';
+import { Editor, EditorContent, useEditor } from '@tiptap/react';
+import { nanoid } from 'nanoid';
+import { useMemo, useState } from 'react';
+import React from 'react';
+
 import { useFileStateContext } from '../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../contexts/ReviewTool';
-import { getIsMediaHtmlElement } from '../../../utils/getIsMediaHtmlElement';
-import { nanoid } from 'nanoid';
-import { useQueryClient } from '@tanstack/react-query';
-import { getAssetFileIdComments } from '../../../services/services';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { useSession } from '../../../hooks/useSession';
 import { usePostAssetFileIdComment } from '../../../services/hooks';
-import React from 'react';
+import { getAssetFileIdComments } from '../../../services/services';
+import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
+import { getIsMediaHtmlElement } from '../../../utils/getIsMediaHtmlElement';
+import { Icon } from '../../various/Icon';
+import { ReviewToolEditorSubmit } from './ReviewToolEditorSubmit';
+import { reviewToolEditorSuggestion } from './reviewToolEditorSuggestion';
+import { ReviewToolTextareaAnonymousForm } from './ReviewToolTextareaAnonymousForm';
 
 interface Props {
   shareableLinkId?: string;
@@ -100,7 +101,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
           return `${options.suggestion.char ?? '@'}${node.attrs.label ?? node.attrs.id}`;
         },
       }),
-      ReviewToolEditorSubmit.configure(),
+      ReviewToolEditorSubmit,
     ],
     editable: !isDisabled,
     onFocus: () => {

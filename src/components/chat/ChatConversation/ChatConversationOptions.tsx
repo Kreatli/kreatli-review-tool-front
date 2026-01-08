@@ -1,8 +1,9 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import React from 'react';
+
 import { ChatDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
 import { ChatConversationRenameModal } from './ChatConversationRenameModal';
-import React from 'react';
 
 interface Props {
   chat: ChatDto;

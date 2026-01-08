@@ -1,10 +1,11 @@
-import { Avatar, Button, Card, CardBody, Textarea, cn } from '@heroui/react';
+import { Avatar, Button, Card, CardBody, cn,Textarea } from '@heroui/react';
+import { useEffect, useRef,useState } from 'react';
+
+import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { Icon } from '../../various/Icon';
 import { ReviewToolComment } from './ReviewToolComment';
-import { useState, useEffect, useRef } from 'react';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
-import { useSession } from '../../../hooks/useSession';
-import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 
 export const CompareFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();

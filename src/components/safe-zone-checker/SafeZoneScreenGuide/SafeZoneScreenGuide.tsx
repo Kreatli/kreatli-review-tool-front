@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, Button, Card, CardBody, Image } from '@heroui/react';
-import { Icon } from '../../various/Icon';
 import NextLink from 'next/link';
+
+import { Icon, IconType } from '../../various/Icon';
 
 export const SafeZoneScreenGuide = () => {
   return (
@@ -66,7 +67,7 @@ export const SafeZoneScreenGuide = () => {
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
                       <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
                         <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                          <Icon icon={item.icon as any} size={24} className="text-primary" />
+                          <Icon icon={item.icon as IconType} size={24} className="text-primary" />
                         </div>
                         <div className="flex-1">
                           <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>

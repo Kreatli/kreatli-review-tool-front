@@ -42,7 +42,16 @@ export const ReviewToolCanvasShapesContextProvider = ({ children }: React.PropsW
 
   const isReadOnly = !!activeComment;
 
+  const resetCanvas = () => {
+    setShapes([]);
+    setCanUndo(false);
+    setCanRedo(false);
+    history.current = [[]];
+    historyStep.current = 0;
+  };
+
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShapes(activeComment?.canvas?.shapes ?? []);
     setCanUndo(false);
     setCanRedo(false);
@@ -51,6 +60,7 @@ export const ReviewToolCanvasShapesContextProvider = ({ children }: React.PropsW
   }, [activeComment]);
 
   useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     resetCanvas();
   }, [activeFile?.id]);
 
@@ -80,14 +90,6 @@ export const ReviewToolCanvasShapesContextProvider = ({ children }: React.PropsW
     setCanUndo(historyStep.current !== 0);
     setCanRedo(historyStep.current !== history.current.length - 1);
     setShapes(history.current[historyStep.current]);
-  };
-
-  const resetCanvas = () => {
-    setShapes([]);
-    setCanUndo(false);
-    setCanRedo(false);
-    history.current = [[]];
-    historyStep.current = 0;
   };
 
   return (

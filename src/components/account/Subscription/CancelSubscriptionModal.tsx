@@ -1,10 +1,11 @@
 import { addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
-import { useDeleteUserSubscription } from '../../../services/hooks';
-import { getErrorMessage } from '../../../utils/getErrorMessage';
-import { useSession } from '../../../hooks/useSession';
 import { useQueryClient } from '@tanstack/react-query';
+
+import { useSession } from '../../../hooks/useSession';
+import { useDeleteUserSubscription } from '../../../services/hooks';
 import { getUser } from '../../../services/services';
 import { UserDto } from '../../../services/types';
+import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Icon } from '../../various/Icon';
 
 const MAX_USERS_ON_FREE_PLAN = 2;

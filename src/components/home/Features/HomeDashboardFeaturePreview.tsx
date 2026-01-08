@@ -6,6 +6,8 @@ import {
   CardBody,
   Checkbox,
   Chip,
+  ChipProps,
+  cn,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -13,13 +15,13 @@ import {
   Selection,
   Tab,
   Tabs,
-  cn,
 } from '@heroui/react';
-import { Icon } from '../../various/Icon';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { useState } from 'react';
-import { useSession } from '../../../hooks/useSession';
+
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
+import { useSession } from '../../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { Icon } from '../../various/Icon';
 
 export const HomeDashboardFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
@@ -92,9 +94,12 @@ export const HomeDashboardFeaturePreview = () => {
         }}
       >
         <div
-          className={`pointer-events-none absolute inset-0 z-10 bg-black/30 opacity-0 transition-opacity duration-300 dark:bg-black/60 ${
-            shouldHide || isTouchScreen ? '' : 'group-hover:opacity-100'
-          }`}
+          className={cn(
+            'pointer-events-none absolute inset-0 z-10 bg-black/30 opacity-0 transition-opacity duration-300 dark:bg-black/60',
+            {
+              'group-hover:opacity-100': !shouldHide && !isTouchScreen,
+            },
+          )}
         />
         {/* Header */}
         <div className="flex items-center justify-between border-b border-foreground-200 pb-4">
@@ -288,7 +293,7 @@ export const HomeDashboardFeaturePreview = () => {
                           <Chip
                             size="sm"
                             variant="dot"
-                            color={item.color as any}
+                            color={item.color as ChipProps['color']}
                             className="relative z-20 cursor-pointer bg-foreground-50"
                           >
                             {item.status}

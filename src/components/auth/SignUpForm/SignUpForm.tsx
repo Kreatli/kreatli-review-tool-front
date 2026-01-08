@@ -1,8 +1,9 @@
 import { addToast, Button, Input, Link } from '@heroui/react';
+import { sendGTMEvent } from '@next/third-parties/google';
 import { useGoogleLogin } from '@react-oauth/google';
 import NextLink from 'next/link';
-import React from 'react';
 import { useRouter } from 'next/router';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
@@ -11,7 +12,6 @@ import { usePostAuthSignUp, usePostAuthSsoGoogle } from '../../../services/hooks
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Icon } from '../../various/Icon';
 import { SignUpThankYouMessage } from './SignUpThankYouMessage';
-import { sendGTMEvent } from '@next/third-parties/google';
 
 const DEFAULT_VALUES = {
   name: '',

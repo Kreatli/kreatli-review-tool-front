@@ -7,7 +7,7 @@ import { ReviewToolCanvasShape } from './ReviewToolCanvasShape';
 interface Props {
   shapes: ReviewTool.Shape[];
   ratio: number;
-  isDrawing: React.RefObject<boolean>;
+  isDrawing: React.RefObject<boolean | null>;
   onDragStart: (shape: ReviewTool.Shape, event: Konva.KonvaEventObject<MouseEvent>) => void;
   onDragEnd: (shape: ReviewTool.Shape, event: Konva.KonvaEventObject<DragEvent>) => void;
   onRemove: (shape: ReviewTool.Shape) => void;

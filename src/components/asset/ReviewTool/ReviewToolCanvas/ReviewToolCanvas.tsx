@@ -4,18 +4,18 @@ import { Vector2d } from 'konva/lib/types';
 import React, { useEffect } from 'react';
 import { Layer, Stage } from 'react-konva';
 
+import { useFileStateContext } from '../../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { useScreenResize } from '../../../../hooks/useScreenResize';
 import { FileDto } from '../../../../services/types';
 import { ReviewTool } from '../../../../typings/reviewTool';
 import { simplifyLine } from '../../../../utils/canvas';
+import { ReviewToolAudio } from './ReviewToolAudio';
 import styles from './ReviewToolCanvas.module.scss';
 import { ReviewToolCanvasShapes } from './ReviewToolCanvasShapes';
 import { ReviewToolImage } from './ReviewToolImage';
-import { ReviewToolVideo } from './ReviewToolVideo';
-import { ReviewToolAudio } from './ReviewToolAudio';
 import { ReviewToolUnsupportedFile } from './ReviewToolUnsupportedFile';
-import { useFileStateContext } from '../../../../contexts/File';
+import { ReviewToolVideo } from './ReviewToolVideo';
 
 interface Props {
   file: FileDto;
@@ -40,6 +40,7 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
   const ref = compareFile?.id === file.id ? compareFileRef : fileRef;
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCanvasWidth(ref.current?.clientWidth ?? 0);
   }, [compareFile]);
 

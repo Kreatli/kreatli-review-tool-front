@@ -1,10 +1,10 @@
-import { BlockTypes, MarkTypes, storyblokEditable, StoryblokRichText } from '@storyblok/react';
-import { WysiwygStoryblok } from '../../../../typings/storyblok';
-
-import styles from './Wysiwyg.module.scss';
 import { Alert, cn } from '@heroui/react';
+import { BlockTypes, MarkTypes, storyblokEditable, StoryblokRichText } from '@storyblok/react';
 import React from 'react';
+
+import { WysiwygStoryblok } from '../../../../typings/storyblok';
 import { getHeadingId } from '../../../../utils/storyblok';
+import styles from './Wysiwyg.module.scss';
 
 interface Props {
   blok: WysiwygStoryblok;
@@ -16,6 +16,7 @@ export const Wysiwyg = ({ blok }: Props) => {
   return (
     <div className={styles.wysiwyg} {...storyblokEditable(blok)}>
       <StoryblokRichText
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         doc={text}
         resolvers={{

@@ -1,8 +1,9 @@
 import { QueryClient, QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { getProjectIdAssets } from './services';
 import { AxiosRequestConfig } from 'axios';
-import { ProjectAssetsResponseDto } from './types';
+
 import { RequestError, SwaggerResponse } from './config';
+import { getProjectIdAssets } from './services';
+import { ProjectAssetsResponseDto } from './types';
 
 type SwaggerTypescriptUseQueryOptions<TData> = Omit<
   UseQueryOptions<SwaggerResponse<TData>, RequestError | Error>,

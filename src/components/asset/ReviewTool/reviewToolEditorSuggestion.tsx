@@ -1,6 +1,8 @@
-import { Editor, posToDOMRect, ReactRenderer } from '@tiptap/react';
-import { ReviewToolEditorMentionList } from './ReviewToolEditorMentionList';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { computePosition, flip, shift } from '@floating-ui/react';
+import { Editor, posToDOMRect, ReactRenderer } from '@tiptap/react';
+
+import { ReviewToolEditorMentionList } from './ReviewToolEditorMentionList';
 
 const updatePosition = (editor: Editor, element: HTMLElement) => {
   const virtualElement = {

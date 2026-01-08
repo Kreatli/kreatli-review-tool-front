@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { addToast, MenuItemProps } from '@heroui/react';
 import React from 'react';
 
@@ -7,11 +6,11 @@ import { DeleteAssetModal } from '../../components/asset/AssetModals/DeleteAsset
 import { MoveToModal } from '../../components/asset/AssetModals/MoveToModal';
 import { RenameAssetModal } from '../../components/asset/AssetModals/RenameAssetModal';
 import { RestoreAssetModal } from '../../components/asset/AssetModals/RestoreAssetModal';
+import { ShareAssetModal } from '../../components/asset/AssetModals/ShareAssetModal';
 import { IconType } from '../../components/various/Icon';
+import { getAssetFileIdDownload } from '../../services/services';
 import { ProjectDto, ProjectFileDto, ProjectFolderDto } from '../../services/types';
 import { downloadFromUrl } from '../../utils/download';
-import { getAssetFileIdDownload } from '../../services/services';
-import { ShareAssetModal } from '../../components/asset/AssetModals/ShareAssetModal';
 
 interface Context {
   getAssetActions: (asset: ProjectFileDto | ProjectFolderDto) => {

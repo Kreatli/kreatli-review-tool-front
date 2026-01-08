@@ -6,9 +6,9 @@ import { ReviewTool } from '../../typings/reviewTool';
 interface Context {
   activeTool: ReviewTool.ToolType | null;
   activeColor: ReviewTool.Color;
-  canvasRef: React.RefObject<Stage>;
-  fileRef: React.RefObject<HTMLImageElement | HTMLVideoElement>;
-  compareFileRef: React.RefObject<HTMLImageElement | HTMLVideoElement>;
+  canvasRef: React.RefObject<Stage | null>;
+  fileRef: React.RefObject<HTMLImageElement | HTMLVideoElement | null>;
+  compareFileRef: React.RefObject<HTMLImageElement | HTMLVideoElement | null>;
   setActiveTool: (shape: ReviewTool.ToolType | null) => void;
   setActiveColor: (color: ReviewTool.Color) => void;
 }

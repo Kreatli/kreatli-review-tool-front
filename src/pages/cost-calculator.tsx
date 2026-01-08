@@ -1,14 +1,13 @@
+import { Accordion, AccordionItem, Alert, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
-import React from 'react';
+import NextLink from 'next/link';
 
-import { Header } from '../components/layout/Header';
 import { CostCalculatorSection } from '../components/home/CostCalculator';
 import { FooterSection } from '../components/home/Footer/FooterSection';
-import { useSession } from '../hooks/useSession';
+import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { Card, CardBody, Button, Alert, Accordion, AccordionItem } from '@heroui/react';
-import NextLink from 'next/link';
 import { Icon } from '../components/various/Icon';
+import { useSession } from '../hooks/useSession';
 
 export default function CostCalculatorPage() {
   useSession();

@@ -1,13 +1,14 @@
 import { Alert, Button, Progress } from '@heroui/react';
-import { AddonDto, UserDto } from '../../../services/types';
-import { PlansModal } from '../PlansModal';
 import { useState } from 'react';
+
+import { AddonDto, UserDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { Icon } from '../../various/Icon';
-import { UpdateAddonModal } from './UpdateAddonModal';
-import { CancelSubscriptionModal } from './CancelSubscriptionModal';
-import { CancelAddonModal } from './CancelAddonModal';
+import { PlansModal } from '../PlansModal';
 import { AddAddonModal } from './AddAddonModal';
+import { CancelAddonModal } from './CancelAddonModal';
+import { CancelSubscriptionModal } from './CancelSubscriptionModal';
+import { UpdateAddonModal } from './UpdateAddonModal';
 
 interface Props {
   user: UserDto;
@@ -97,7 +98,7 @@ export const Subscription = ({ user }: Props) => {
           </div>
           <div className="flex flex-col gap-1">
             {user.subscription.addons.map((addon) => (
-              <div className="flex items-center justify-between gap-2">
+              <div key={addon.id} className="flex items-center justify-between gap-2">
                 <div className="text-sm">
                   {addon.count} x {formatBytes(addon.value)}
                   <span className="text-foreground-500"> (${addon.price * addon.count} monthly)</span>

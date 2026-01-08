@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import React from 'react';
 
 import { Header } from '../components/layout/Header';
 import { Projects } from '../components/project/Projects';

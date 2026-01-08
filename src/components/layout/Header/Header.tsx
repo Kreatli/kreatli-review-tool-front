@@ -14,14 +14,14 @@ import NextLink from 'next/link';
 import React, { useRef, useState } from 'react';
 
 import LogoIcon from '../../../assets/images/logo.svg';
-import { useSession } from '../../../hooks/useSession';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { useSession } from '../../../hooks/useSession';
 import { Layout } from '../../../typings/layout';
-import { Icon } from '../../various/Icon';
-import { UserWidget } from './UserWidget';
-import { Notifications } from '../Notifications/Notifications';
 import { ProjectUploadsButton } from '../../project/ProjectUploads';
+import { Icon } from '../../various/Icon';
+import { Notifications } from '../Notifications/Notifications';
 import { NavigationDropdown } from './NavigationDropdown';
+import { UserWidget } from './UserWidget';
 
 export const Header = () => {
   const { isSignedIn } = useSession();

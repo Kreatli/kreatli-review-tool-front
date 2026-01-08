@@ -1,6 +1,7 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
-import { Icon } from '../../various/Icon';
+
 import { formatBytes } from '../../../utils/formatBytes';
+import { Icon } from '../../various/Icon';
 
 interface Props {
   title: string;
