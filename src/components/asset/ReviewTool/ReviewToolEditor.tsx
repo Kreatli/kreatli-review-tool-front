@@ -118,7 +118,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
   });
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       handleSubmit(editor);
     }
   };
