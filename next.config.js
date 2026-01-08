@@ -2,7 +2,20 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ['res.cloudinary.com', 'kreatlimedia.s3.amazonaws.com', 'kreatliassets.s3.amazonaws.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'kreatlimedia.s3.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'kreatliassets.s3.amazonaws.com',
+      },
+    ],
   },
   experimental: {
     scrollRestoration: true,
@@ -15,7 +28,6 @@ const nextConfig = {
     STORYBLOK_CONTENT_API_ACCESS_TOKEN: process.env.STORYBLOK_CONTENT_API_ACCESS_TOKEN,
   },
   productionBrowserSourceMaps: true,
-  swcMinify: false,
   async redirects() {
     return [
       {
