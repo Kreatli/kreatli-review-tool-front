@@ -246,7 +246,11 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || 'editable') {
+        return;
+      }
+
+      if (e.target instanceof HTMLElement && e.target.getAttribute('contenteditable') === 'true') {
         return;
       }
 
@@ -258,7 +262,10 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
         const activeRef = compareFile?.id === videoFile.id ? compareFileRef : fileRef;
         if (getIsMediaHtmlElement(activeRef.current)) {
           const jumpSeconds = e.key === 'ArrowLeft' ? -3 : 3;
-          const newTime = Math.max(0, Math.min(activeRef.current.duration, activeRef.current.currentTime + jumpSeconds));
+          const newTime = Math.max(
+            0,
+            Math.min(activeRef.current.duration, activeRef.current.currentTime + jumpSeconds),
+          );
           activeRef.current.currentTime = newTime;
         }
       }
