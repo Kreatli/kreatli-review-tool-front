@@ -26,6 +26,12 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
   const actions = useMemo(() => getAssetActions(file), [file, getAssetActions]);
 
   const handleBack = () => {
+    if (window.history.length <= 1) {
+      router.push(`/project/${project.id}/assets`);
+
+      return;
+    }
+
     router.back();
   };
 
