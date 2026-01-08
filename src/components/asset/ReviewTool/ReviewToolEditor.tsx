@@ -57,7 +57,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
     );
   }, [project]);
 
-  const handleSubmit = (editor?: Editor) => {
+  const handleSubmit = (editor?: Editor | null) => {
     if (!user && !anonymousName) {
       setIsAnonymousFormVisible(true);
 
@@ -67,59 +67,60 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
     addComment(user?.name ?? anonymousName, editor);
   };
 
-  const editor = useEditor(
-    {
-      immediatelyRender: false,
-      extensions: [
-        Document,
-        Placeholder.configure({
-          placeholder: 'Click here to start typing or drawing...',
-        }),
-        Paragraph.configure({
-          HTMLAttributes: {
-            class: '!text-small !m-0',
+  const editor = useEditor({
+    immediatelyRender: false,
+    extensions: [
+      Document,
+      Placeholder.configure({
+        placeholder: 'Click here to start typing or drawing...',
+      }),
+      Paragraph.configure({
+        HTMLAttributes: {
+          class: '!text-small !m-0',
+        },
+      }),
+      Text.configure({}),
+      Mention.configure({
+        HTMLAttributes: {
+          class: '',
+        },
+        suggestion: {
+          items: ({ query }: { query: string }) => {
+            return activeMembers
+              .filter(
+                (member) =>
+                  member.user?.name.toLowerCase().includes(query.toLowerCase()) ||
+                  member.user?.email.toLowerCase().includes(query.toLowerCase()),
+              )
+              .slice(0, 5);
           },
-        }),
-        Text.configure({}),
-        Mention.configure({
-          HTMLAttributes: {
-            class: '',
-          },
-          suggestion: {
-            items: ({ query }: { query: string }) => {
-              return activeMembers
-                .filter(
-                  (member) =>
-                    member.user?.name.toLowerCase().includes(query.toLowerCase()) ||
-                    member.user?.email.toLowerCase().includes(query.toLowerCase()),
-                )
-                .slice(0, 5);
-            },
-            ...reviewToolEditorSuggestion,
-          },
-          renderText({ options, node }) {
-            return `${options.suggestion.char ?? '@'}${node.attrs.label ?? node.attrs.id}`;
-          },
-        }),
-        ReviewToolEditorSubmit.configure({
-          onSubmit: handleSubmit,
-        }),
-      ],
-      editable: !isDisabled,
-      onFocus: () => {
-        setIsInvalid(false);
-        setActiveComment(null);
+          ...reviewToolEditorSuggestion,
+        },
+        renderText({ options, node }) {
+          return `${options.suggestion.char ?? '@'}${node.attrs.label ?? node.attrs.id}`;
+        },
+      }),
+      ReviewToolEditorSubmit.configure(),
+    ],
+    editable: !isDisabled,
+    onFocus: () => {
+      setIsInvalid(false);
+      setActiveComment(null);
 
-        if (getIsMediaHtmlElement(fileRef.current)) {
-          fileRef.current.pause();
-        }
-        if (getIsMediaHtmlElement(compareFileRef.current)) {
-          compareFileRef.current.pause();
-        }
-      },
+      if (getIsMediaHtmlElement(fileRef.current)) {
+        fileRef.current.pause();
+      }
+      if (getIsMediaHtmlElement(compareFileRef.current)) {
+        compareFileRef.current.pause();
+      }
     },
-    [replyingComment],
-  );
+  });
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter') {
+      handleSubmit(editor);
+    }
+  };
 
   const handleAnonymousFormSubmit = (name: string) => {
     setAnonymousName(name);
@@ -254,7 +255,11 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
           </div>
         )}
       </div>
-      <EditorContent editor={editor} className={cn('h-10 flex-1 overflow-auto [&>div]:h-full', {})} />
+      <EditorContent
+        editor={editor}
+        className={cn('h-10 flex-1 overflow-auto [&>div]:h-full', {})}
+        onKeyDown={handleKeyDown}
+      />
       <div className="self-end">
         <Popover
           isOpen={isAnonymousFormVisible}
@@ -268,7 +273,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
               isDisabled={isDisabled}
               variant="light"
               radius="full"
-              onClick={() => handleSubmit()}
+              onClick={() => handleSubmit(editor)}
             >
               <Icon icon="send" size={20} />
             </Button>
