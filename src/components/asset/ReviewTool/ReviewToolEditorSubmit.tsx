@@ -5,7 +5,7 @@ export const ReviewToolEditorSubmit = Extension.create({
   addKeyboardShortcuts() {
     return {
       Enter: ({ editor }) => {
-        this.options.onSubmit(editor);
+        this.options.onSubmit?.(editor);
         return true;
       },
       'Shift-Enter': () => {
