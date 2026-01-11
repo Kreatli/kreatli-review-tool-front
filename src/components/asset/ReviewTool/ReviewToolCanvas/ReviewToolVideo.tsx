@@ -246,7 +246,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || 'editable') {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return;
       }
 
