@@ -33,9 +33,7 @@ export const CancelSubscriptionModal = ({ isOpen, onClose }: Props) => {
       <ModalContent>
         <ModalHeader className="pb-0">Cancel subscription</ModalHeader>
         <ModalBody>
-          <p>
-            Are you sure you want to cancel your subscription? You won't be able to use currently available resources.
-          </p>
+          <p>Are you sure you want to cancel your subscription? You won't be able to access your projects.</p>
         </ModalBody>
         <ModalFooter>
           <Button variant="light" onClick={onClose}>
