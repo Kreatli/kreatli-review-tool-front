@@ -23,72 +23,6 @@ import { Notifications } from '../Notifications/Notifications';
 import { NavigationDropdown } from './NavigationDropdown';
 import { UserWidget } from './UserWidget';
 
-const MobileExpandableMenuItem = ({
-  label,
-  href,
-  children,
-  onItemClick,
-}: {
-  label: string;
-  href: string;
-  children?: Array<{ label: string; href: string }>;
-  onItemClick: () => void;
-}) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  if (children && children.length > 0) {
-    return (
-      <>
-        <NavbarMenuItem>
-          <div className="flex w-full items-center justify-between">
-            <Link as={NextLink} href={href} size="lg" color="foreground" onClick={onItemClick}>
-              {label}
-            </Link>
-            <button
-              type="button"
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="ml-2 flex items-center justify-center"
-              aria-label={isExpanded ? 'Collapse' : 'Expand'}
-            >
-              <Icon
-                icon="arrowRight"
-                size={16}
-                className={`transition-transform ${isExpanded ? 'rotate-90' : ''}`}
-              />
-            </button>
-          </div>
-        </NavbarMenuItem>
-        {isExpanded && (
-          <>
-            {children.map((child) => (
-              <NavbarMenuItem key={child.href} className="pl-4">
-                <Link
-                  as={NextLink}
-                  href={child.href}
-                  size="lg"
-                  color="foreground"
-                  onClick={onItemClick}
-                  className="text-sm"
-                >
-                  {child.label}
-                </Link>
-              </NavbarMenuItem>
-            ))}
-          </>
-        )}
-      </>
-    );
-  }
-
-  return (
-    <NavbarMenuItem>
-      <Link as={NextLink} href={href} size="lg" color="foreground" onClick={onItemClick}>
-        {label}
-      </Link>
-    </NavbarMenuItem>
-  );
-};
-
 export const Header = () => {
   const { isSignedIn } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -252,23 +186,6 @@ export const Header = () => {
                         label: 'Safe Zone Checker',
                         href: '/social-media-safe-zone-checker',
                         description: 'Free tool for safe zone checking',
-                        children: [
-                      {
-                        label: 'Instagram Reels Checker',
-                        href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-                        description: 'Preview Instagram Reels safe zones',
-                      },
-                      {
-                        label: 'TikTok Checker',
-                        href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
-                        description: 'Preview TikTok safe zones',
-                      },
-                      {
-                        label: 'YouTube Shorts Checker',
-                        href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
-                        description: 'Preview YouTube Shorts safe zones',
-                      },
-                        ],
                       },
                       {
                         label: 'Software Cost Calculator',
@@ -451,25 +368,17 @@ export const Header = () => {
               Comparisons
             </Link>
           </NavbarMenuItem>
-          <MobileExpandableMenuItem
-            label="Safe Zone Checker"
-            href="/social-media-safe-zone-checker"
-            onItemClick={closeNavbarMenu}
-            children={[
-              {
-                label: 'Instagram Reels Checker',
-                href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-              },
-              {
-                label: 'TikTok Checker',
-                href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
-              },
-              {
-                label: 'YouTube Shorts Checker',
-                href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
-              },
-            ]}
-          />
+          <NavbarMenuItem>
+            <Link
+              as={NextLink}
+              href="/social-media-safe-zone-checker"
+              size="lg"
+              color="foreground"
+              onClick={closeNavbarMenu}
+            >
+              Safe Zone Checker
+            </Link>
+          </NavbarMenuItem>
           <NavbarMenuItem>
             <Link as={NextLink} href="/cost-calculator" size="lg" color="foreground" onClick={closeNavbarMenu}>
               Cost Calculator

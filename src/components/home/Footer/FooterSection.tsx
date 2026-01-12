@@ -13,17 +13,14 @@ const PLATFORM_NAV = {
         {
           label: 'The Creative Workspace',
           href: '/platform/creative-workspace',
-          description: 'Unified workspace for creative production',
         },
         {
           label: 'Review & Approval',
           href: '/platform/review-approval',
-          description: 'Frame-accurate revisions and approvals',
         },
         {
           label: 'Project Orchestration',
           href: '/platform/project-orchestration',
-          description: 'Centralized project management',
         },
       ],
     },
@@ -33,12 +30,10 @@ const PLATFORM_NAV = {
         {
           label: 'Secure Asset Storage',
           href: '/platform/secure-asset-storage',
-          description: 'Reliable media storage and organization',
         },
         {
           label: 'Integrations',
           href: '/platform/integrations',
-          description: 'Google Drive and Dropbox integrations',
         },
       ],
     },
@@ -54,17 +49,14 @@ const SOLUTIONS_NAV = {
         {
           label: 'Advertising & Marketing Agencies',
           href: '/solutions/industry/advertising-marketing-agencies',
-          description: 'Solutions for creative agencies',
         },
         {
           label: 'Video Production & Animation Studios',
           href: '/solutions/industry/video-production-animation-studios',
-          description: 'Solutions for production teams',
         },
         {
           label: 'In-House Creative & Content Teams',
           href: '/solutions/industry/in-house-creative-content-teams',
-          description: 'Solutions for in-house teams',
         },
       ],
     },
@@ -74,17 +66,14 @@ const SOLUTIONS_NAV = {
         {
           label: 'Creative Production Management',
           href: '/solutions/use-case/creative-production-management',
-          description: 'End-to-end production workflows',
         },
         {
           label: 'Client Approvals',
           href: '/solutions/use-case/client-approvals',
-          description: 'Version-specific client approvals',
         },
         {
           label: 'Creative Proofing',
           href: '/solutions/use-case/creative-proofing',
-          description: 'Turn feedback into trackable work',
         },
       ],
     },
@@ -100,17 +89,14 @@ const RESOURCES_NAV = {
         {
           label: 'Help Center',
           href: '/help',
-          description: 'FAQs and support resources',
         },
         {
           label: 'Guides',
           href: '/guides',
-          description: 'Learning guides and tutorials',
         },
         {
           label: 'Blog',
           href: '/blog',
-          description: 'Latest articles and updates',
         },
       ],
     },
@@ -120,17 +106,26 @@ const RESOURCES_NAV = {
         {
           label: 'Comparisons',
           href: '/comparisons',
-          description: 'Compare Kreatli with alternatives',
         },
         {
           label: 'Safe Zone Checker',
           href: '/social-media-safe-zone-checker',
-          description: 'Free tool for safe zone checking',
+        },
+        {
+          label: 'Instagram Reels Checker',
+          href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+        },
+        {
+          label: 'TikTok Checker',
+          href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+        },
+        {
+          label: 'YouTube Shorts Checker',
+          href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
         },
         {
           label: 'Software Cost Calculator',
           href: '/cost-calculator',
-          description: 'Calculate your tool stack savings',
         },
       ],
     },
