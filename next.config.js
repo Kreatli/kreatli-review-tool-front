@@ -622,6 +622,21 @@ const nextConfig = {
         destination: '/comparisons/kreatli-vs-frameio',
         permanent: true,
       },
+      {
+        source: '/instagram-safe-zone-checker',
+        destination: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+        permanent: true,
+      },
+      {
+        source: '/tiktok-safe-zone-checker',
+        destination: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+        permanent: true,
+      },
+      {
+        source: '/youtube-safe-zone-checker',
+        destination: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+        permanent: true,
+      },
     ];
   },
   webpack(config) {
