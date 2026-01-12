@@ -71,10 +71,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
 
     if (project.createdBy && !getIsValidSize(files)) {
       addToast({
-        title:
-          project.createdBy.subscription.plan === 'free'
-            ? "Files over 1GB can't be uploaded on the Free Plan."
-            : 'Files must be less than 10 GB.',
+        title: 'Files must be less than 10 GB.',
         variant: 'flat',
         color: 'warning',
       });
@@ -92,7 +89,6 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       return;
     }
 
-     
     for (const file of files) {
       const id = nanoid();
 

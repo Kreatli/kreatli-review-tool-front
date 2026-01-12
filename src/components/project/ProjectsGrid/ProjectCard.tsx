@@ -1,6 +1,6 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { useProjectContext } from '../../../contexts/Project';
 import { ProjectDto } from '../../../services/types';
@@ -49,6 +49,7 @@ export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
                 size="sm"
                 isIconOnly
                 radius="full"
+                isDisabled={!project.createdBy?.subscription.isActive}
                 className="pointer-events-auto mt-1"
                 variant="faded"
                 aria-label={`Open project ${project.name} options`}

@@ -5,10 +5,10 @@ import React from 'react';
 
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
 import { useGetProjects } from '../../../services/hooks';
 import { GetProjectsQueryParams } from '../../../services/types';
-import { UpgradeModal } from '../../account/UpgradeModal';
 import { Icon } from '../../various/Icon';
 import { CreateProjectModal } from '../ProjectModals/CreateProjectModal';
 import { ProjectsGrid } from '../ProjectsGrid';
@@ -24,9 +24,10 @@ export const Projects = () => {
     (searchParams.get('tab') as GetProjectsQueryParams['status']) ?? 'active',
   );
   const [isCreateModalOpen, setIsCreateModalOpen] = React.useState(false);
-  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
 
   const [view, setView] = useLocalStorage({ key: 'projectsView', defaultValue: 'list' });
+
+  const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
 
   const activeTab = (searchParams.get('tab') as GetProjectsQueryParams['status']) ?? 'active';
 
@@ -50,11 +51,9 @@ export const Projects = () => {
   };
 
   const handleCreateProjectClick = () => {
-    if (
-      user?.subscription.limits.projectsCount.used &&
-      user.subscription.limits.projectsCount.used >= user.subscription.limits.projectsCount.max
-    ) {
-      setIsUpgradeModalOpen(true);
+    if (!user?.subscription.isActive) {
+      setIsPlansModalVisible(true);
+
       return;
     }
 
@@ -121,7 +120,6 @@ export const Projects = () => {
         />
       )}
       <CreateProjectModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
-      <UpgradeModal type="projects" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
     </div>
   );
 };

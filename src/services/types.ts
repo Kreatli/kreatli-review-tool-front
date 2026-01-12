@@ -970,15 +970,19 @@ export interface SignUpWithTokenBodyDto {
 }
 
 export interface SubscriptionBodyDto {
-  plan: 'free' | 'pro' | 'advanced';
+  plan: 'creator' | 'team' | 'enterprise';
 }
 
 export interface SubscriptionDto {
   addons: AddonDto[];
+  hasUsedTrial: boolean;
+  isActive: boolean;
+  isTrial: boolean;
   limits: LimitsDto;
-  plan: 'free' | 'pro' | 'advanced';
-  planName: string;
+  plan: 'creator' | 'team' | 'enterprise' | null;
   price: number;
+  planName?: string;
+  startTrialDate?: undefined;
 }
 
 export interface SubscriptionResponseDto {

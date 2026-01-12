@@ -292,7 +292,6 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {}
         <video
           // @ts-expect-error - Video element is not typed
           ref={compareFile?.id === videoFile.id ? compareFileRef : fileRef}
@@ -335,7 +334,6 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
                 <Icon icon="fullscreen" size={20} />
               </button>
             </div>
-            {}
             <div
               ref={sliderRef}
               className="relative z-20 flex items-center gap-2 after:absolute after:-inset-1 after:cursor-pointer"
