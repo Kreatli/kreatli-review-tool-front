@@ -29,13 +29,17 @@ const SAFE_ZONE_OVERLAYS = {
   youtube: YoutubeSafeZoneOverlay,
 };
 
-export const SafeZoneScreen = () => {
+interface SafeZoneScreenProps {
+  defaultPlatform?: keyof typeof OVERLAYS;
+}
+
+export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreenProps = {}) => {
   const captureRef = useRef(null);
-  const previousOverlayRef = useRef<keyof typeof OVERLAYS>('instagram');
+  const previousOverlayRef = useRef<keyof typeof OVERLAYS>(defaultPlatform);
   const platformSwitchCountRef = useRef(0);
 
   const [file, setFile] = useState<File | null>(null);
-  const [activeOverlay, setActiveOverlay] = useState<keyof typeof OVERLAYS>('instagram');
+  const [activeOverlay, setActiveOverlay] = useState<keyof typeof OVERLAYS>(defaultPlatform);
   const [shouldShowSafeZone, setShouldShowSafeZone] = useState(false);
 
   const { openSignUpModal } = useSignUpModalVisibility();
