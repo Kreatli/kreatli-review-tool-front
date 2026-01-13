@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalContent, ModalHeader } from '@heroui/react';
+import { Modal, ModalBody, ModalContent } from '@heroui/react';
 import { useRouter } from 'next/router';
 
 import { UserDto } from '../../../services/types';
@@ -20,10 +20,10 @@ export const PlansModal = ({ user, isOpen, onClose }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="5xl" scrollBehavior="inside">
       <ModalContent>
-        <ModalHeader className="pb-0">
-          {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start your free trial. No credit card required.'}
-        </ModalHeader>
         <ModalBody className="py-6">
+          <h2 className="mb-3 font-sans text-2xl font-bold">
+            {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start your free trial. No credit card required.'}
+          </h2>
           <PlansForm user={user} onTrialSuccess={handleTrialSuccess} />
         </ModalBody>
       </ModalContent>
