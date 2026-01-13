@@ -56,7 +56,6 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
 
   return (
     <div className="flex-1" {...getRootProps()}>
-      {}
       <Link as={NextLink} href={backLink.href} className="gap-0.5 text-foreground-500">
         <Icon icon="arrowLeft" size={18} />
         {backLink.name}

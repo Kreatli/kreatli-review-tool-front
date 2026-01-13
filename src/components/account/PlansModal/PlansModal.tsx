@@ -1,55 +1,8 @@
-import { addToast, Modal, ModalBody, ModalContent, ModalHeader } from '@heroui/react';
-import { useState } from 'react';
+import { Modal, ModalBody, ModalContent, ModalHeader } from '@heroui/react';
+import { useRouter } from 'next/router';
 
-import { usePostUserSubscription } from '../../../services/hooks';
 import { UserDto } from '../../../services/types';
-import { getErrorMessage } from '../../../utils/getErrorMessage';
-import { Plan } from './Plan';
-
-const PLANS = [
-  {
-    id: 'free' as const,
-    name: 'Free',
-    description: 'Ideal for individuals or small teams just getting started.',
-    features: [
-      { label: '2 projects' },
-      { label: '2 members' },
-      {
-        label: '5GB Total Upload',
-        tooltip:
-          "“Total upload” tracks the cumulative size of all files a user has uploaded, even if some are later deleted. This means deleted files still count toward the user's upload limit.",
-      },
-    ],
-    price: 0,
-  },
-  {
-    id: 'pro' as const,
-    name: 'Pro',
-    description: 'Perfect for small teams looking to manage multiple projects efficiently.',
-    features: [
-      { label: 'Google Drive/Dropbox Upload' },
-      { label: 'Guest links' },
-      { label: 'Shareable Projects' },
-      { label: 'Watermarked Media' },
-      { label: 'Up to 10 projects' },
-      { label: 'Up to 5 members' },
-      { label: '1TB Storage', tooltip: '$5 per month per additional 100GB' },
-    ],
-    price: 15,
-  },
-  {
-    id: 'advanced' as const,
-    name: 'Advanced',
-    description: 'Designed for growing teams needing more extensive collaboration tools.',
-    features: [
-      { label: 'Everything in Pro, plus:', hideIcon: true },
-      { label: 'Unlimited projects' },
-      { label: 'Unlimited members' },
-      { label: '2TB Storage', tooltip: '$3 per month per additional 100GB' },
-    ],
-    price: 20,
-  },
-];
+import { PlansForm } from './PlansForm';
 
 interface Props {
   user: UserDto;
@@ -58,60 +11,20 @@ interface Props {
 }
 
 export const PlansModal = ({ user, isOpen, onClose }: Props) => {
-  const [selectedPlan, setSelectedPlan] = useState<'free' | 'pro' | 'advanced'>(user.subscription.plan);
+  const router = useRouter();
 
-  const { mutate: upgradePlan, isPending } = usePostUserSubscription();
-
-  const handleUpgradePlan = (plan: 'free' | 'pro' | 'advanced') => {
-    upgradePlan(
-      {
-        requestBody: {
-          plan,
-        },
-      },
-      {
-        onSuccess: ({ url }) => {
-          location.href = url;
-        },
-        onError: (error) => {
-          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-        },
-      },
-    );
+  const handleTrialSuccess = () => {
+    router.reload();
   };
-
-  const handleSelectPlan = (plan: 'free' | 'pro' | 'advanced') => () => {
-    setSelectedPlan(plan);
-    handleUpgradePlan(plan);
-  };
-
-  const plans = user.subscription.plan === 'free' ? PLANS : PLANS.slice(1);
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      size={user.subscription.plan === 'free' ? '4xl' : '2xl'}
-      scrollBehavior="inside"
-    >
+    <Modal isOpen={isOpen} onClose={onClose} size="5xl" scrollBehavior="inside">
       <ModalContent>
-        <ModalHeader>Select a plan</ModalHeader>
+        <ModalHeader className="pb-0">
+          {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start your free trial. No credit card required.'}
+        </ModalHeader>
         <ModalBody className="py-6">
-          <div className="flex flex-col gap-4 md:flex-row">
-            {plans.map(({ id, name, description, price, features }) => (
-              <Plan
-                key={id}
-                isSelected={selectedPlan === id}
-                isLoading={isPending}
-                isCurrent={user.subscription.plan === id}
-                name={name}
-                description={description}
-                price={price}
-                features={features}
-                onClick={handleSelectPlan(id)}
-              />
-            ))}
-          </div>
+          <PlansForm user={user} onTrialSuccess={handleTrialSuccess} />
         </ModalBody>
       </ModalContent>
     </Modal>

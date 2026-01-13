@@ -6,87 +6,86 @@
  */
 
 import type { AxiosRequestConfig } from 'axios';
-//@ts-ignore
-import qs from 'qs';
-
 import type { SwaggerResponse } from './config';
 import { Http } from './httpRequest';
+//@ts-ignore
+import qs from 'qs';
 import type {
-  AddonBodyDto,
-  AssetCommentBodyDto,
-  AssetCommentDto,
-  AssetCommentEditDto,
-  AssetCommentsResponse,
-  AssetMoveBodyDto,
-  AssetRemoveBodyDto,
-  AssetsDto,
-  ChatBodyDto,
-  ChatDto,
-  ChatEditBodyDto,
-  ChatMessagesDto,
-  CreateShareableLinkDto,
-  FileDto,
-  FileEditBodyDto,
-  FolderBodyDto,
-  FolderDto,
-  FolderEditBodyDto,
-  FoldersDto,
-  GetAssetFileIdCommentsQueryParams,
-  GetAssetFileIdDownloadQueryParams,
-  GetAssetsFoldersQueryParams,
-  GetAssetsQueryParams,
-  GetConversationIdMessagesQueryParams,
-  GetNotificationsQueryParams,
   GetProjectIdLogsQueryParams,
   GetProjectsQueryParams,
+  GetConversationIdMessagesQueryParams,
+  GetAssetFileIdDownloadQueryParams,
+  GetAssetFileIdCommentsQueryParams,
+  GetNotificationsQueryParams,
+  GetAssetsQueryParams,
+  GetAssetsFoldersQueryParams,
+  UserDto,
   InvoiceDto,
+  UpdateUserDto,
+  SubscriptionBodyDto,
+  SubscriptionResponseDto,
+  AddonBodyDto,
+  SignUpBodyDto,
+  SignUpResultDto,
+  SignUpWithTokenBodyDto,
+  SignInResultDto,
+  SignInBodyDto,
+  TokenBodyDto,
+  ResetPasswordBodyDto,
+  NewPasswordBodyDto,
+  ProjectBodyDto,
+  ProjectDto,
+  ProjectEditBodyDto,
+  ProjectInvitationDto,
+  ProjectAssetsResponseDto,
+  ProjectCoverDto,
+  ProjectStatusBodyDto,
+  ProjectMemberBodyDto,
+  UpdateProjectMemberDto,
+  ProjectFileBodyDto,
+  FolderDto,
+  ProjectAssetEditDto,
+  FileEditBodyDto,
+  FolderBodyDto,
+  FolderEditBodyDto,
+  ProjectPathDto,
+  AssetRemoveBodyDto,
+  ProjectArchivedAssetsDto,
+  ChatBodyDto,
+  ChatDto,
+  ProjectLogsDto,
+  AssetMoveBodyDto,
+  ProjectsResponseDto,
+  ChatMessagesDto,
+  ChatEditBodyDto,
+  FileDto,
+  AssetCommentBodyDto,
+  AssetCommentDto,
+  AssetCommentsResponse,
+  AssetCommentEditDto,
+  NotificationDto,
+  NotificationsDto,
   MarkAsReadBodyDto,
+  AssetsDto,
+  FoldersDto,
+  PresignedUrlBodyDto,
+  PresignedUrlDto,
+  MultipartUploadStartBodyDto,
+  MultipartUploadStartDto,
   MultipartPresignedUrlBodyDto,
   MultipartPresignedUrlDto,
   MultipartUploadCompleteBodyDto,
   MultipartUploadCompleteDto,
-  MultipartUploadStartBodyDto,
-  MultipartUploadStartDto,
-  NewPasswordBodyDto,
-  NotificationDto,
-  NotificationsDto,
-  PresignedUrlBodyDto,
-  PresignedUrlDto,
-  ProjectArchivedAssetsDto,
-  ProjectAssetEditDto,
-  ProjectAssetsResponseDto,
-  ProjectBodyDto,
-  ProjectCoverDto,
-  ProjectDto,
-  ProjectEditBodyDto,
-  ProjectFileBodyDto,
-  ProjectInvitationDto,
-  ProjectLogsDto,
-  ProjectMemberBodyDto,
-  ProjectPathDto,
-  ProjectsResponseDto,
-  ProjectStatusBodyDto,
-  ResetPasswordBodyDto,
   ShareableLinkBody,
+  CreateShareableLinkDto,
   ShareableLinkDto,
   ShareableLinkSendEmailBodyDto,
-  SignInBodyDto,
-  SignInResultDto,
-  SignUpBodyDto,
-  SignUpResultDto,
-  SignUpWithTokenBodyDto,
-  SubscriptionBodyDto,
-  SubscriptionResponseDto,
-  TokenBodyDto,
-  UpdateProjectMemberDto,
-  UpdateUserDto,
-  UserDto,
 } from './types';
 
- 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const __DEV__ = process.env.NODE_ENV !== 'production';
 
- 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function overrideConfig(config?: AxiosRequestConfig, configOverride?: AxiosRequestConfig): AxiosRequestConfig {
   return {
     ...config,
@@ -98,7 +97,7 @@ function overrideConfig(config?: AxiosRequestConfig, configOverride?: AxiosReque
   };
 }
 
- 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function template(path: string, obj: { [x: string]: any } = {}) {
   Object.keys(obj).forEach((key) => {
     const re = new RegExp(`{${key}}`, 'i');
@@ -116,7 +115,7 @@ function isFormData(obj: any) {
   );
 }
 
- 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function objToForm(requestBody: object) {
   if (isFormData(requestBody)) {
     return requestBody;
@@ -976,6 +975,22 @@ export const postUserAddon = (
 
 /** Key is end point string without base url */
 postUserAddon.key = '/user/addon';
+
+export const postUserStartTrial = (
+  requestBody: SubscriptionBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<UserDto>> => {
+  return Http.postRequest(
+    postUserStartTrial.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postUserStartTrial.key = '/user/start-trial';
 
 export const postUserSubscription = (
   requestBody: SubscriptionBodyDto,

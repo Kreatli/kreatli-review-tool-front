@@ -1,4 +1,4 @@
-import { Button,Card, CardBody } from '@heroui/react';
+import { Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';

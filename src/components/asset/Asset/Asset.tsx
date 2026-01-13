@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 
 import { FileStateContextProvider } from '../../../contexts/File';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
+import { useSession } from '../../../hooks/useSession';
 import { useGetAssetFileId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
+import { ProjectPaywall } from '../../project/Project/ProjectPaywall';
 import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
 import { AssetPanel } from '../AssetPanel';
 import { ReviewTool } from '../ReviewTool';
@@ -17,6 +19,7 @@ interface Props {
 
 export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
   const router = useRouter();
+  const { user } = useSession();
 
   const { data: file, isPending: isAssetLoading, error } = useGetAssetFileId(fileId);
   const { data: compareFile, isLoading: isCompareAssetLoading } = useGetAssetFileId(compareFileId ?? '', {
@@ -37,6 +40,10 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
 
   if (error && 'status' in error && error.status === 404) {
     return null;
+  }
+
+  if (!isProjectLoading && !error && user && project && !project?.createdBy?.subscription.isActive) {
+    return <ProjectPaywall project={project} user={user} />;
   }
 
   return (

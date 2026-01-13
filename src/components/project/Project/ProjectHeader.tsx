@@ -39,7 +39,6 @@ export const ProjectHeader = ({ project }: Props) => {
 
   return (
     <div>
-      {}
       <Link as={NextLink} href="/" className="gap-0.5 text-foreground-500">
         <Icon icon="arrowLeft" size={18} />
         Projects

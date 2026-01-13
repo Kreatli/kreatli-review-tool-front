@@ -64,8 +64,7 @@ export const CreateProjectForm = () => {
     }
   };
 
-  const shouldShowAddMore =
-    user?.subscription.plan === 'advanced' || fields.length < (user?.subscription.limits.usersCount.max ?? 0) - 1;
+  const shouldShowAddMore = fields.length < (user?.subscription.limits.usersCount.max ?? 0) - 1;
 
   return (
     <form className="flex flex-col gap-4" noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -104,7 +103,6 @@ export const CreateProjectForm = () => {
           ))}
           {shouldShowAddMore && (
             <>
-              {}
               <Link
                 as="button"
                 type="button"

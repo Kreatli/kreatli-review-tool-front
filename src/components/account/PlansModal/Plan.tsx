@@ -5,37 +5,93 @@ import { Icon } from '../../various/Icon';
 interface Props {
   name: string;
   description: string;
-  price: number;
+  price?: number;
+  isTrialAvailable: boolean;
   isLoading: boolean;
   isSelected: boolean;
   isCurrent: boolean;
-  features: { label: string; tooltip?: string; hideIcon?: boolean }[];
+  isCurrentTrial: boolean;
+  previousPlan: string | null;
+  limits: { label: string; tooltip?: string; hideIcon?: boolean }[];
+  uniqueFeatures: { label: string; tooltip?: string; hideIcon?: boolean }[];
   onClick: () => void;
 }
 
-export const Plan = ({ name, price, description, features, isCurrent, isSelected, isLoading, onClick }: Props) => {
+export const Plan = ({
+  name,
+  price,
+  isTrialAvailable,
+  description,
+  previousPlan,
+  limits,
+  uniqueFeatures,
+  isCurrent,
+  isCurrentTrial,
+  isSelected,
+  isLoading,
+  onClick,
+}: Props) => {
   return (
     <Card className="w-full border-foreground-300 dark:border">
       <CardBody className="flex flex-col gap-4">
         <div className="flex flex-col gap-3">
-          <Chip size="sm" variant="faded">
-            {name}
-          </Chip>
-          <div className="flex items-end gap-1.5">
-            <span className="font-sans text-4xl font-semibold leading-8">${price}</span>
-            {price > 0 && (
-              <span className="text-xs leading-3 text-foreground-500">
-                {' '}
-                per user <br /> per month
-              </span>
+          <div className="flex items-center gap-1">
+            <Chip size="sm" variant="faded">
+              {name}
+            </Chip>
+            {isCurrent && !isCurrentTrial && (
+              <Chip size="sm" variant="flat" color="primary">
+                Current plan
+              </Chip>
+            )}
+            {isCurrent && isCurrentTrial && (
+              <Chip size="sm" variant="flat" color="primary">
+                Current trial
+              </Chip>
             )}
           </div>
+          {price ? (
+            <div className="flex items-end gap-1.5">
+              <span className="font-sans text-4xl font-semibold leading-8">${price}</span>
+              {price > 0 && (
+                <span className="text-xs leading-3 text-foreground-500">
+                  {' '}
+                  per user <br /> per month
+                </span>
+              )}
+            </div>
+          ) : (
+            <div className="font-sans text-4xl font-semibold leading-8">Custom</div>
+          )}
         </div>
         <div className="pb-2 text-sm text-foreground-500">{description}</div>
         <div className="flex-1">
           <ul className="flex flex-col gap-0.5">
-            {features.map((feature, idx) => (
-              <li key={idx}>
+            {previousPlan && (
+              <li>
+                <div className="flex items-center gap-1 text-sm font-medium text-foreground-600">
+                  <Icon icon="check" size={16} />
+                  Everything in {previousPlan}
+                </div>
+              </li>
+            )}
+            {limits.map((limit, idx) => (
+              <li key={`limit-${idx}`}>
+                <div className="flex items-center gap-1 text-sm">
+                  {!limit.hideIcon && <Icon icon="check" size={16} />}
+                  {limit.label}
+                  {limit.tooltip && (
+                    <Tooltip content={limit.tooltip} className="max-w-sm">
+                      <div>
+                        <Icon icon="infoCircle" size={16} className="text-foreground-400" />
+                      </div>
+                    </Tooltip>
+                  )}
+                </div>
+              </li>
+            ))}
+            {uniqueFeatures.map((feature, idx) => (
+              <li key={`feature-${idx}`}>
                 <div className="flex items-center gap-1 text-sm">
                   {!feature.hideIcon && <Icon icon="check" size={16} />}
                   {feature.label}
@@ -51,16 +107,27 @@ export const Plan = ({ name, price, description, features, isCurrent, isSelected
             ))}
           </ul>
         </div>
-        <Button
-          disabled={isCurrent}
-          isLoading={isSelected && isLoading}
-          color="default"
-          className={isCurrent ? '' : 'bg-foreground text-content1'}
-          variant={isCurrent ? 'bordered' : 'solid'}
-          onClick={onClick}
-        >
-          {isCurrent ? 'Current plan' : `Upgrade to ${name}`}
-        </Button>
+        {price ? (
+          <Button
+            disabled={isCurrent && !isCurrentTrial}
+            isLoading={isSelected && isLoading}
+            color="default"
+            className={isCurrent && !isCurrentTrial ? '' : 'bg-foreground text-content1'}
+            variant={isCurrent && !isCurrentTrial ? 'bordered' : 'solid'}
+            onClick={onClick}
+          >
+            {isCurrent && !isCurrentTrial ? 'Current plan' : isTrialAvailable ? 'Start free trial' : 'Upgrade'}
+          </Button>
+        ) : (
+          <Button
+            as="a"
+            href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+            target="_blank"
+            className="bg-foreground text-content1"
+          >
+            Book a demo
+          </Button>
+        )}
       </CardBody>
     </Card>
   );

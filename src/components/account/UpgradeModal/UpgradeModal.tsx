@@ -17,7 +17,7 @@ const DESCRIPTION = {
 export const UpgradeModal = ({ type, isOpen, onClose }: UpgradeModalProps) => {
   const { user } = useSession();
 
-  if (user?.subscription.plan === 'advanced' && type === 'storage') {
+  if (user?.subscription.plan === 'team' && type === 'storage') {
     return (
       <Modal isOpen={isOpen} onOpenChange={onClose}>
         <ModalContent>

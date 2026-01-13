@@ -120,7 +120,7 @@ export const ProjectsListTable = ({
               <button
                 type="button"
                 aria-label="Project members"
-                disabled={project.status !== 'active'}
+                disabled={project.status !== 'active' || !project.createdBy?.subscription.isActive}
                 className="rounded-full outline-offset-4"
                 onClick={(event) => {
                   event.stopPropagation();
@@ -146,6 +146,7 @@ export const ProjectsListTable = ({
                       isIconOnly
                       aria-label={`Open project ${project.name} options`}
                       radius="full"
+                      isDisabled={!project.createdBy?.subscription.isActive}
                       variant="light"
                       onClick={() => {
                         onSelectProjectId?.(project.id);

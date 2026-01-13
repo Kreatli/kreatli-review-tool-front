@@ -1,9 +1,8 @@
-import { addToast, Alert, Button, Input } from '@heroui/react';
+import { addToast, Button, Input } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
-import { useSession } from '../../../hooks/useSession';
 import { usePostProjectIdMember } from '../../../services/hooks';
 import { getProjectId, getProjects } from '../../../services/services';
 import { ProjectDto } from '../../../services/types';
@@ -24,7 +23,6 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
     defaultValues: { email: '' },
   });
 
-  const { user } = useSession();
   const queryClient = useQueryClient();
   const { mutate, isPending } = usePostProjectIdMember();
 
@@ -56,12 +54,6 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
         errorMessage={errors.email?.message}
         {...register('email', VALIDATION_RULES.EMAIL)}
       />
-      {user?.subscription.plan === 'free' && (
-        <Alert
-          color="primary"
-          description="You can send unlimited invites, but once your capacity reaches the maximum number of joined users, all new users will get expired invites. Upgrade your plan to increase your user limit and keep collaboration flowing."
-        />
-      )}
       <div className="flex justify-end gap-4">
         <Button isDisabled={isPending} variant="light" onClick={onCancel}>
           Cancel

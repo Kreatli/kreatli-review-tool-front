@@ -222,10 +222,9 @@ export default function HowItWorksPage() {
                         <CardBody className="p-6">
                           <p className="mb-3 text-base text-foreground-600">
                             <strong>Marketing Agency Scenario:</strong> You're starting a new campaign for a client.
-                            Instead of creating folders in Google Drive, sharing Dropbox links, and managing files
-                            across email, you create one Kreatli project. Upload the brand assets, connect the client's
-                            existing Google Drive folder, and organize everything by campaign phase. Your entire team
-                            now has access to the same organized workspace.
+                            Instead of managing files across email and multiple tools, you create one Kreatli project.
+                            Upload the brand assets and organize everything by campaign phase. Your entire team now has
+                            access to the same organized workspace.
                           </p>
                           <div className="flex flex-wrap gap-2">
                             <Chip size="sm" variant="flat" color="success">
@@ -840,10 +839,8 @@ export default function HowItWorksPage() {
                 </p>
                 <p>
                   Kreatli saves time in project setup by consolidating what would typically require multiple tools.
-                  Instead of creating folders in Google Drive, setting up a project in a project management tool, and
-                  configuring access in separate platforms, everything happens in one place. You can connect existing
-                  Google Drive or Dropbox folders, so you don't have to re-upload files you already have stored
-                  elsewhere.
+                  Instead of setting up a project in a project management tool and configuring access in separate
+                  platforms, everything happens in one place. You can upload files directly to get started quickly.
                 </p>
                 <p>
                   The platform's smart organization features help you set up projects quickly. Files can be organized by
@@ -851,37 +848,6 @@ export default function HowItWorksPage() {
                   permissions can be configured once and applied consistently, reducing setup time for subsequent
                   projects. This organized foundation saves 2+ hours per project compared to managing files and projects
                   across multiple disconnected tools.
-                </p>
-              </div>
-            </AccordionItem>
-
-            <AccordionItem
-              key="cloud-storage"
-              title={
-                <span className="text-base font-semibold">
-                  Can I connect my existing cloud storage, and how does that work?
-                </span>
-              }
-            >
-              <div className="space-y-3 text-foreground-500">
-                <p>
-                  Yes! Kreatli integrates with Google Drive and Dropbox, allowing you to connect your existing file
-                  storage and sync files between platforms. You can continue using your preferred cloud storage while
-                  leveraging Kreatli's specialized features for creative production management, media review, and
-                  collaboration.
-                </p>
-                <p>
-                  When you connect cloud storage, you can either sync existing files from your Google Drive or Dropbox
-                  folders into Kreatli projects, or upload files directly to Kreatli. All files benefit from Kreatli's
-                  organization, review, and collaboration features regardless of their source. This means you don't have
-                  to abandon your existing file storage solutions - you can use them alongside Kreatli's specialized
-                  creative workflow features.
-                </p>
-                <p>
-                  The integration keeps your files organized in one central workspace while maintaining the flexibility
-                  to use cloud storage for general file management. This is particularly valuable for teams that have
-                  existing file organization systems but want to add Kreatli's review and approval workflows, project
-                  management, and collaboration features to their creative production management process.
                 </p>
               </div>
             </AccordionItem>
@@ -1031,10 +997,10 @@ export default function HowItWorksPage() {
                 </p>
                 <p>
                   The workflow eliminates tool-switching and context loss by keeping everything in one platform. Instead
-                  of jumping between Google Drive, Frame.io, Slack, and project management software, all project work
-                  happens in Kreatli. This reduces the time spent searching for files, tracking down feedback, and
-                  managing multiple platforms. Frame-accurate comments and asset-linked conversations ensure feedback is
-                  never lost or misunderstood, reducing errors and revision cycles.
+                  of jumping between Frame.io, Slack, and project management software, all project work happens in
+                  Kreatli. This reduces the time spent searching for files, tracking down feedback, and managing
+                  multiple platforms. Frame-accurate comments and asset-linked conversations ensure feedback is never
+                  lost or misunderstood, reducing errors and revision cycles.
                 </p>
                 <p>
                   The structured approach also improves organization and project visibility. All files, conversations,
@@ -1057,24 +1023,25 @@ export default function HowItWorksPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Absolutely! Kreatli offers a Free Plan with full access to all features (2 projects, 2 users),
+                  Absolutely! All Kreatli plans include a 7-day free trial with full access to all features of your
+                  chosen plan. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and immediately
+                  start your trial. The Creator plan includes unlimited projects, up to 3 members, and 500GB storage,
                   allowing you to test the complete 4-step workflow with real projects before committing. There's no
                   credit card required, so you can evaluate how Kreatli fits into your creative production management
                   process risk-free.
                 </p>
                 <p>
-                  The Free Plan includes all core features: project setup, team collaboration, frame-accurate review,
-                  media review and approval workflows, guest review links, file organization, and delivery features.
-                  This means you can fully test the workflow with actual projects and see how it compares to your
-                  current tool stack. Many teams use the Free Plan to onboard their team and run a pilot project before
-                  upgrading to a paid plan.
+                  All plans include all core features during the trial: project setup, team collaboration,
+                  frame-accurate review, media review and approval workflows, guest review links, file organization, and
+                  delivery features. This means you can fully test the workflow with actual projects and see how it
+                  compares to your current tool stack. Many teams use the trial period to onboard their team and run a
+                  pilot project before committing to a paid plan.
                 </p>
                 <p>
-                  For teams ready to commit, we offer trial periods for paid plans so you can test with your full team
-                  before making a long-term commitment. You can also book a personalized demo to see how the 4-step
-                  workflow would work for your specific creative process. We provide migration assistance to help move
-                  files and projects, and our team can help set up your workflows to ensure a smooth transition to
-                  Kreatli's creative production management platform.
+                  After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. You can
+                  also book a personalized demo to see how the 4-step workflow would work for your specific creative
+                  process. We provide migration assistance to help move files and projects, and our team can help set up
+                  your workflows to ensure a smooth transition to Kreatli's creative production management platform.
                 </p>
               </div>
             </AccordionItem>
