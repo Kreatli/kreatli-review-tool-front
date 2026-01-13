@@ -78,28 +78,30 @@ export default function JoinProject() {
       <Head>
         <title>{title}</title>
       </Head>
-      <StartPageLayout
-        title={`You were invited to join "${data?.projectName}" project`}
-        backgroundUrl={data?.projectCover?.url}
-        backgroundType="light"
-      >
-        {isSignedIn ? (
-          <div className="flex flex-col gap-4">
-            <p className="mb-4 text-foreground-500">To join the project click the button below.</p>
-            <Button className="bg-foreground text-content1" isLoading={isJoining} onClick={joinProject}>
-              Join project
-            </Button>
-            <Button as={NextLink} href="/" variant="light">
-              Back to my projects
-            </Button>
-          </div>
-        ) : (
-          <div>
-            <p className="mb-4 text-foreground-500">Please log in to join the project.</p>
-            <SignInForm email={data?.email} showLinks={false} onSuccess={handleSignInSuccess} />
-          </div>
-        )}
-      </StartPageLayout>
+      {data && (
+        <StartPageLayout
+          title={`You were invited to join "${data?.projectName}" project`}
+          backgroundUrl={data?.projectCover?.url}
+          backgroundType="light"
+        >
+          {isSignedIn ? (
+            <div className="flex flex-col gap-4">
+              <p className="mb-4 text-foreground-500">To join the project click the button below.</p>
+              <Button className="bg-foreground text-content1" isLoading={isJoining} onClick={joinProject}>
+                Join project
+              </Button>
+              <Button as={NextLink} href="/" variant="light">
+                Back to my projects
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <p className="mb-4 text-foreground-500">Please log in to join the project.</p>
+              <SignInForm email={data?.email} showLinks={false} onSuccess={handleSignInSuccess} />
+            </div>
+          )}
+        </StartPageLayout>
+      )}
     </>
   );
 }
