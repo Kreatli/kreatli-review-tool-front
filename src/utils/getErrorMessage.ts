@@ -3,7 +3,20 @@ const capitalizeFirstLetter = (value: string) => {
 };
 
 export const getErrorMessage = (error: unknown) => {
-  const errorMessage = error as { message?: string | string[] };
+  const errorMessage = error as { message?: string | string[] | { response?: { data?: { message?: string } } } };
+
+  if (
+    'response' in errorMessage &&
+    errorMessage.response &&
+    typeof errorMessage.response === 'object' &&
+    'data' in errorMessage.response &&
+    errorMessage.response.data &&
+    typeof errorMessage.response.data === 'object' &&
+    'message' in errorMessage.response.data &&
+    typeof errorMessage.response.data.message === 'string'
+  ) {
+    return errorMessage.response.data.message;
+  }
 
   if (typeof errorMessage === 'string') {
     return errorMessage;
