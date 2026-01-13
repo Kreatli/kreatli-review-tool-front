@@ -3,6 +3,10 @@ import { Button, Radio, RadioGroup } from '@heroui/react';
 import { Icon } from '../various/Icon';
 import { ResizeMode } from './YouTubeBannerResizer';
 
+// Canvas dimensions (YouTube recommended)
+const CANVAS_WIDTH = 2560;
+const CANVAS_HEIGHT = 1440;
+
 interface BannerControlsProps {
   resizeMode: ResizeMode;
   onResizeModeChange: (mode: ResizeMode) => void;
@@ -12,6 +16,9 @@ interface BannerControlsProps {
   showSafeAreas: boolean;
   onShowSafeAreasChange: (show: boolean) => void;
   hasImage: boolean;
+  naturalWidth: number;
+  naturalHeight: number;
+  resizeModeValue: ResizeMode;
 }
 
 export const BannerControls = ({
@@ -23,21 +30,68 @@ export const BannerControls = ({
   showSafeAreas,
   onShowSafeAreasChange,
   hasImage,
+  naturalWidth,
+  naturalHeight,
+  resizeModeValue,
 }: BannerControlsProps) => {
+  // Calculate position bounds based on actual image dimensions
+  const calculatePositionBounds = () => {
+    if (!naturalWidth || !naturalHeight) {
+      return { minX: -500, maxX: 500, minY: -500, maxY: 500 };
+    }
+
+    let imgWidth: number;
+    let imgHeight: number;
+
+    if (resizeModeValue === 'cover') {
+      const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
+      const imageAspect = naturalWidth / naturalHeight;
+
+      if (imageAspect > canvasAspect) {
+        imgHeight = CANVAS_HEIGHT;
+        imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
+      } else {
+        imgWidth = CANVAS_WIDTH;
+        imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
+      }
+    } else {
+      const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
+      const imageAspect = naturalWidth / naturalHeight;
+
+      if (imageAspect > canvasAspect) {
+        imgWidth = CANVAS_WIDTH;
+        imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
+      } else {
+        imgHeight = CANVAS_HEIGHT;
+        imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
+      }
+    }
+
+    // Calculate bounds: image can move within canvas bounds
+    const minX = -(imgWidth - CANVAS_WIDTH) / 2;
+    const maxX = (imgWidth - CANVAS_WIDTH) / 2;
+    const minY = -(imgHeight - CANVAS_HEIGHT) / 2;
+    const maxY = (imgHeight - CANVAS_HEIGHT) / 2;
+
+    return { minX, maxX, minY, maxY };
+  };
+
   const handlePositionChange = (direction: 'up' | 'down' | 'left' | 'right', amount: number = 10) => {
+    const bounds = calculatePositionBounds();
     const newPosition = { ...position };
+    
     switch (direction) {
       case 'up':
-        newPosition.y = Math.max(-500, newPosition.y - amount);
+        newPosition.y = Math.max(bounds.minY, newPosition.y - amount);
         break;
       case 'down':
-        newPosition.y = Math.min(500, newPosition.y + amount);
+        newPosition.y = Math.min(bounds.maxY, newPosition.y + amount);
         break;
       case 'left':
-        newPosition.x = Math.max(-500, newPosition.x - amount);
+        newPosition.x = Math.max(bounds.minX, newPosition.x - amount);
         break;
       case 'right':
-        newPosition.x = Math.min(500, newPosition.x + amount);
+        newPosition.x = Math.min(bounds.maxX, newPosition.x + amount);
         break;
     }
     onPositionChange(newPosition);

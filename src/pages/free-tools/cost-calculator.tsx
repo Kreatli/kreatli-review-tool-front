@@ -2,12 +2,12 @@ import { Accordion, AccordionItem, Alert, Button, Card, CardBody } from '@heroui
 import Head from 'next/head';
 import NextLink from 'next/link';
 
-import { CostCalculatorSection } from '../components/home/CostCalculator';
-import { FooterSection } from '../components/home/Footer/FooterSection';
-import { Header } from '../components/layout/Header';
-import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { Icon } from '../components/various/Icon';
-import { useSession } from '../hooks/useSession';
+import { CostCalculatorSection } from '../../components/home/CostCalculator';
+import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { Header } from '../../components/layout/Header';
+import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { Icon } from '../../components/various/Icon';
+import { useSession } from '../../hooks/useSession';
 
 export default function CostCalculatorPage() {
   useSession();

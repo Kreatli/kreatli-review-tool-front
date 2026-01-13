@@ -21,14 +21,15 @@ export const DataTransferPresets = ({ onPresetSelect }: DataTransferPresetsProps
   return (
     <div className="flex flex-col gap-3">
       <h3 className="font-sans text-lg font-semibold text-foreground-700">Quick Presets</h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-col gap-2 lg:min-w-[200px]">
         {PRESETS.map((preset) => (
           <Button
             key={preset.label}
             variant="bordered"
             size="sm"
             onPress={() => onPresetSelect(preset)}
-            className="text-sm"
+            className="w-full justify-start text-left text-sm"
+            aria-label={`Select preset: ${preset.label}`}
           >
             {preset.label}
           </Button>

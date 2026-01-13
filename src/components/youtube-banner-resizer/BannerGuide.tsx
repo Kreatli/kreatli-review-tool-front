@@ -33,11 +33,11 @@ export const BannerGuide = () => {
       key: 'file-formats',
       title: 'What file formats are supported?',
       content:
-        'You can upload PNG or JPG/JPEG images up to 10MB. The tool will resize your image to YouTube\'s recommended dimensions (2560 × 1440px) and export it in PNG or JPG format.',
+        "You can upload PNG or JPG/JPEG images up to 10MB. The tool will resize your image to YouTube's recommended dimensions (2560 × 1440px) and export it in PNG or JPG format.",
     },
     {
       key: 'resize-modes',
-      title: 'What\'s the difference between Cover and Contain modes?',
+      title: "What's the difference between Cover and Contain modes?",
       content:
         'Cover mode scales your image to fill the entire canvas (2560 × 1440px), maintaining aspect ratio. Parts of the image may be cropped. Contain mode scales your image to fit within the canvas, maintaining aspect ratio. There may be empty space filled with white.',
     },
@@ -57,13 +57,13 @@ export const BannerGuide = () => {
       key: 'export-resolution',
       title: 'What resolution is the exported banner?',
       content:
-        'The exported banner is always 2560 × 1440 pixels, which is YouTube\'s recommended size. This ensures your banner looks crisp on all devices, from mobile phones to large TV screens.',
+        "The exported banner is always 2560 × 1440 pixels, which is YouTube's recommended size. This ensures your banner looks crisp on all devices, from mobile phones to large TV screens.",
     },
     {
       key: 'privacy',
       title: 'Is my image uploaded to a server?',
       content:
-        'No. All image processing happens entirely in your browser. Your image is never uploaded to our servers or shared publicly. It stays on your device throughout the entire process.',
+        "No. All image processing happens entirely in your browser. Your image is never uploaded to our servers or shared publicly. It stays on your device throughout the entire process. For secure cloud storage of your creative assets, check out Kreatli's secure asset storage features.",
     },
     {
       key: 'original-file',
@@ -90,7 +90,8 @@ export const BannerGuide = () => {
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Understanding YouTube banner dimensions and safe areas ensures your channel art looks perfect on all
-              devices.
+              devices. This guide covers everything you need to know about creating effective YouTube banners that work
+              across desktop, mobile, tablet, and TV screens.
             </p>
           </div>
 
@@ -139,7 +140,8 @@ export const BannerGuide = () => {
                     <strong className="text-foreground">Purpose:</strong> Guaranteed visibility on all devices
                   </li>
                   <li>
-                    <strong className="text-foreground">Best practice:</strong> Place logos, text, and CTAs within this zone
+                    <strong className="text-foreground">Best practice:</strong> Place logos, text, and CTAs within this
+                    zone
                   </li>
                 </ul>
               </CardBody>
@@ -168,7 +170,12 @@ export const BannerGuide = () => {
               </ul>
               <p className="mt-4 text-foreground-500">
                 This is why the safe area is crucial—it ensures your important content (channel name, tagline, logo)
-                stays visible regardless of the device your viewers use.
+                stays visible regardless of the device your viewers use. For similar considerations when creating video
+                content, check out our{' '}
+                <NextLink href="/social-media-safe-zone-checker" className="text-primary hover:underline">
+                  Social Media Safe Zone Checker
+                </NextLink>{' '}
+                to ensure your YouTube Shorts, Instagram Reels, and TikTok videos display correctly.
               </p>
             </CardBody>
           </Card>
@@ -178,7 +185,12 @@ export const BannerGuide = () => {
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
-          <h2 className="mb-8 text-center font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto max-w-2xl text-foreground-500">
+              Common questions about YouTube banner dimensions, safe areas, and using our free banner resizer tool.
+            </p>
+          </div>
 
           <Accordion variant="splitted">
             {faqItems.map((item) => (
@@ -197,20 +209,26 @@ export const BannerGuide = () => {
             Working with YouTube videos, assets, and feedback at scale?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Kreatli is a production management platform built for creative teams. Manage your YouTube content,
-            coordinate with team members, and streamline your creative workflow.
+            <NextLink href="/" className="text-primary hover:underline">
+              Kreatli
+            </NextLink>{' '}
+            is a production management platform built for creative teams. Manage your YouTube content, coordinate with
+            team members, and streamline your creative workflow. Learn more about{' '}
+            <NextLink href="/platform/creative-workspace" className="text-primary hover:underline">
+              our creative workspace
+            </NextLink>{' '}
+            and{' '}
+            <NextLink href="/platform/review-approval" className="text-primary hover:underline">
+              review & approval features
+            </NextLink>
+            .
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
               Try Kreatli for Free
             </Button>
-            <Button
-              as={NextLink}
-              href="/social-media-safe-zone-checker"
-              size="lg"
-              variant="bordered"
-            >
-              Try Safe Zone Checker
+            <Button as={NextLink} href="/free-tools" size="lg" variant="bordered">
+              Explore All Free Tools
             </Button>
           </div>
         </div>

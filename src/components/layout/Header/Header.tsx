@@ -153,6 +153,8 @@ export const Header = () => {
             <NavbarItem>
               <NavigationDropdown
                 triggerLabel="Free Tools"
+                triggerHref="/free-tools"
+                headerLink={{ label: 'View All Tools', href: '/free-tools' }}
                 sections={[
                   {
                     title: 'Utility Tools',

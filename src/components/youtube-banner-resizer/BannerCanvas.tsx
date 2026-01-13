@@ -36,6 +36,7 @@ interface BannerCanvasProps {
   getRootProps: () => DropzoneRootProps;
   getInputProps: () => DropzoneInputProps;
   isDragActive: boolean;
+  isLoading?: boolean;
 }
 
 export const BannerCanvas = ({
@@ -50,6 +51,7 @@ export const BannerCanvas = ({
   getRootProps,
   getInputProps,
   isDragActive,
+  isLoading = false,
 }: BannerCanvasProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
@@ -202,7 +204,7 @@ export const BannerCanvas = ({
             <img
               ref={imageRef}
               src={imageUrl}
-              alt="Banner preview"
+              alt={`YouTube banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Canvas size: ${CANVAS_WIDTH} × ${CANVAS_HEIGHT} pixels.`}
               className={cn('absolute select-none', {
                 'cursor-move': true,
               })}
@@ -215,7 +217,19 @@ export const BannerCanvas = ({
               }}
               onMouseDown={handleMouseDown}
               draggable={false}
+              role="img"
+              aria-label={`Banner image, ${naturalWidth} by ${naturalHeight} pixels`}
             />
+          )}
+
+          {/* Loading Overlay */}
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+              <div className="flex flex-col items-center gap-2">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+                <p className="text-sm text-white">Processing image...</p>
+              </div>
+            </div>
           )}
 
           {/* Device Viewport Overlay */}
@@ -258,14 +272,17 @@ export const BannerCanvas = ({
       )}
 
       {/* Info Overlay */}
-      {imageUrl && (
+      {imageUrl && !isLoading && (
         <div className="absolute bottom-2 left-2 rounded bg-black/70 px-2 py-1 text-xs text-white">
-          {CANVAS_WIDTH} × {CANVAS_HEIGHT}px
+          Canvas: {CANVAS_WIDTH} × {CANVAS_HEIGHT}px
+          {naturalWidth > 0 && naturalHeight > 0 && (
+            <span className="ml-2">• Image: {naturalWidth} × {naturalHeight}px</span>
+          )}
         </div>
       )}
 
       {/* Drag hint */}
-      {imageUrl && (
+      {imageUrl && !isLoading && (
         <div className="absolute right-2 top-2 hidden rounded bg-black/70 px-2 py-1 text-xs text-white sm:block">
           Click and drag to reposition
         </div>

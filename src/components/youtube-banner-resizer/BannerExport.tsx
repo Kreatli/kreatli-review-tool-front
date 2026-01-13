@@ -1,4 +1,4 @@
-import { Button, Radio, RadioGroup } from '@heroui/react';
+import { addToast, Button, Radio, RadioGroup } from '@heroui/react';
 import { useState } from 'react';
 
 import { Icon } from '../various/Icon';
@@ -95,7 +95,7 @@ export const BannerExport = ({
 
       // Load and draw image
       const img = new Image();
-      img.crossOrigin = 'anonymous';
+      // Note: crossOrigin not needed for blob URLs from createObjectURL
 
       await new Promise<void>((resolve, reject) => {
         img.onload = () => {
@@ -119,7 +119,7 @@ export const BannerExport = ({
             reject(error);
           }
         };
-        img.onerror = () => reject(new Error('Failed to load image'));
+        img.onerror = () => reject(new Error('Failed to load image for export'));
         img.src = imageUrl;
       });
 
@@ -127,7 +127,13 @@ export const BannerExport = ({
       canvas.toBlob(
         (blob) => {
           if (!blob) {
-            throw new Error('Failed to create blob');
+            setIsExporting(false);
+            addToast({ 
+              title: 'Failed to create image file. The image may be too large or corrupted.', 
+              color: 'danger', 
+              variant: 'flat' 
+            });
+            return;
           }
 
           const url = URL.createObjectURL(blob);
@@ -140,13 +146,30 @@ export const BannerExport = ({
           URL.revokeObjectURL(url);
 
           setIsExporting(false);
+          addToast({ 
+            title: 'Banner exported successfully!', 
+            color: 'success', 
+            variant: 'flat' 
+          });
         },
         exportFormat === 'png' ? 'image/png' : 'image/jpeg',
         0.95
       );
     } catch (error) {
       console.error('Export failed:', error);
-      alert('Failed to export banner. Please try again.');
+      let errorMessage = 'Failed to export banner. Please try again.';
+      
+      if (error instanceof Error) {
+        if (error.message.includes('canvas context')) {
+          errorMessage = 'Failed to initialize canvas. Please refresh the page and try again.';
+        } else if (error.message.includes('load image')) {
+          errorMessage = 'Failed to load image for export. The image may be corrupted.';
+        } else if (error.message.includes('dimensions')) {
+          errorMessage = 'Failed to calculate image dimensions. Please try a different image.';
+        }
+      }
+      
+      addToast({ title: errorMessage, color: 'danger', variant: 'flat' });
       setIsExporting(false);
     }
   };

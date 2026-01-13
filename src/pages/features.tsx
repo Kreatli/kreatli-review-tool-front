@@ -236,7 +236,7 @@ export default function FeaturesPage() {
             <p className="mb-4 text-sm text-foreground-500">
               Why juggle multiple tools when you can have everything in one place?
             </p>
-            <Button as={NextLink} href="/cost-calculator" size="lg" variant="bordered">
+            <Button as={NextLink} href="/free-tools/cost-calculator" size="lg" variant="bordered">
               Calculate Your Savings
             </Button>
           </div>
