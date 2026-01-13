@@ -73,7 +73,7 @@ export const AddAddonModal = ({ isOpen, onClose }: Props) => {
             </Button>
           </div>
           <div className="text-center text-sm text-foreground-500">
-            {count} x 100GB for ${5 * count} monthly
+            {count} x 100GB for ${3 * count} monthly
           </div>
         </ModalBody>
         <ModalFooter>

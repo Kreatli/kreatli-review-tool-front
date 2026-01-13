@@ -46,6 +46,9 @@ export const SignUpForm = ({ onSuccess }: Props) => {
           sendGTMEvent({ event: 'sign_up' });
         },
         onError: (error) => {
+          console.dir('error', error);
+          console.log('errorLog', error);
+          console.log('errorMessage', getErrorMessage(error));
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         },
       },
