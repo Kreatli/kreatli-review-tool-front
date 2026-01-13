@@ -550,10 +550,7 @@ export default function WhoWeHelpPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Getting started with Kreatli is straightforward for all types of creative professionals. The platform
-                  offers a Free Plan with full access to all features (2 projects, 2 users), allowing you to test the
-                  platform with real projects before committing. There's no credit card required, so you can evaluate
-                  how Kreatli fits into your workflow risk-free.
+                  Getting started with Kreatli is straightforward for all types of creative professionals. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and immediately start a 7-day free trial with full access to all features of that plan. The Creator plan includes unlimited projects, up to 3 members, and 500GB storage. There's no credit card required, so you can evaluate how Kreatli fits into your workflow risk-free.
                 </p>
                 <p>
                   For video creators, getting started typically involves uploading a few video projects, setting up

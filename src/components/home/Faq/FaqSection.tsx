@@ -25,9 +25,8 @@ const faq = [
   {
     question: 'Is there a limit to how many projects I can manage with Kreatli?',
     answer:
-      'Yes, there are limits to how many projects you can manage with Kreatli, depending on the pricing plan you choose. The Free Plan allows you to manage 2 projects with up to 2 users, making it perfect for individuals or very small teams getting started with creative production management.\n\n' +
-      'The Pro Plan allows you to manage up to 10 projects and supports up to 5 users, which is ideal for small to medium creative teams. The Advanced Plan provides unlimited projects and users, making it suitable for larger agencies and production companies that need to manage multiple client projects simultaneously.\n\n' +
-      'For teams or organizations with specific needs, a Custom Plan is available, which allows for tailored project management capabilities, custom storage limits, and enterprise features. You can upgrade or downgrade your plan at any time based on your evolving needs, and changes will be reflected in your next billing cycle.',
+      "All plans include unlimited projects, so you can manage as many projects as you need. The limits vary by plan for team members and storage. The Creator plan ($7/user/month) supports up to 3 members with 500GB storage. The Team plan ($19/user/month) supports up to 10 members with 2TB storage. The Enterprise plan offers custom members and custom storage based on your organization's needs.\n\n" +
+      'All plans include a 7-day free trial, so you can test any plan before committing. You can upgrade or downgrade your plan at any time based on your evolving needs, and changes will be reflected in your next billing cycle. For teams or organizations with specific needs, the Enterprise plan provides tailored capabilities, custom storage limits, and enterprise features like SSO and dedicated account management.',
   },
   {
     question: 'Can multiple team members work on the same project in Kreatli?',
@@ -53,9 +52,51 @@ const faq = [
   {
     question: 'Can I try Kreatli for free?',
     answer:
-      'Yes! Kreatli offers a Free Plan that gives you full access to all features, so you can experience how it simplifies your workflow and collaboration. The Free Plan includes 2 projects with up to 2 users, allowing you to test the platform with real projects and see how it improves your creative production management.\n\n' +
-      'The free tier includes all core features like frame-accurate video review, media review and approval workflows, file organization, team collaboration, and guest review links. This means you can fully evaluate how Kreatli compares to your current tool stack before making any financial commitment.\n\n' +
-      "There's no credit card required to start, and you can use the Free Plan indefinitely. If you find that Kreatli improves your creative workflow, you can upgrade to a paid plan when you need more projects, users, or storage. Many teams start with the Free Plan to onboard their team and then upgrade as they see the value in consolidating their creative production tools.",
+      "Yes! All Kreatli plans include a 7-day free trial with full access to all features. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and immediately start your 7-day trial with complete access to all features and limits of that plan. There's no credit card required to start your trial, making it completely risk-free.\n\n" +
+      "During the 7-day free trial, you'll have access to all core features including frame-accurate video review, media review and approval workflows, unlimited projects, file organization, team collaboration, guest review links, cloud storage integrations, and project management tools. This means you can fully evaluate how Kreatli compares to your current tool stack before making any financial commitment.\n\n" +
+      "After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. If you don't select a plan, you'll lose access to your projects and data. Many teams use the trial period to onboard their team, run a pilot project, and see the value in consolidating their creative production tools before committing to a paid plan.",
+  },
+  {
+    question: 'How long is the Kreatli free trial?',
+    answer:
+      'The Kreatli free trial lasts for 7 days. During this period, you have full access to all features of your chosen plan (Creator, Team, or Enterprise) without any restrictions. The trial starts immediately when you sign up and create your account.\n\n' +
+      "You'll receive email notifications as your trial progresses, including reminders before it ends so you can decide whether to continue with a paid plan. The 7-day duration gives you enough time to set up projects, invite team members, upload files, test the review and approval workflows, and evaluate how Kreatli fits into your creative production process.\n\n" +
+      "If you need more time to evaluate, you can contact our support team to discuss your needs. However, the standard 7-day trial is designed to give you a comprehensive experience of the platform's capabilities without requiring a long-term commitment.",
+  },
+  {
+    question: 'Do I need a credit card for the Kreatli free trial?',
+    answer:
+      "No, you do not need a credit card to start your Kreatli free trial. The trial is completely free and requires no payment information upfront. This makes it truly risk-free to try Kreatli and see if it's the right fit for your creative production workflow.\n\n" +
+      "When you sign up, you simply choose which plan you'd like to trial (Creator, Team, or Enterprise) and your 7-day trial begins immediately. You'll have full access to all features during the trial period without any payment obligations.\n\n" +
+      "After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. At that point, you'll provide payment information if you decide to continue. If you choose not to continue, you can simply let the trial expire - there are no charges, no commitments, and no hidden fees.",
+  },
+  {
+    question: 'What happens after the Kreatli free trial ends?',
+    answer:
+      "After your 7-day free trial ends, you have two options: select a paid plan to continue using Kreatli, or let your trial expire. If you choose to continue, you'll select either the Creator plan ($7/user/month), Team plan ($19/user/month), or Enterprise plan (custom pricing) and provide payment information to activate your subscription.\n\n" +
+      "If you don't select a paid plan after the trial ends, your account access will be restricted. You'll lose access to your projects, files, and data. We recommend exporting any important files or projects before your trial ends if you're unsure about continuing.\n\n" +
+      "You'll receive email notifications before your trial ends to remind you of the upcoming expiration. If you need more time to decide, you can contact our support team. Once you select a paid plan, billing begins immediately and you'll have full access to continue your work without interruption.",
+  },
+  {
+    question: 'What features are included in the Kreatli free trial?',
+    answer:
+      'The Kreatli free trial includes full access to all features of your chosen plan. This means you get the complete experience, not a limited or watered-down version. All plans include unlimited projects, frame-accurate video review, media review and approval workflows, file organization, team collaboration, guest review links, cloud storage integrations, and project management tools.\n\n' +
+      "The Creator plan trial includes up to 3 team members and 500GB storage. The Team plan trial includes up to 10 team members and 2TB storage. The Enterprise plan trial includes custom limits based on your organization's needs. All features work exactly as they would in a paid plan, giving you a true representation of what Kreatli offers.\n\n" +
+      'You can create real projects, upload files, invite team members, set up review workflows, test collaboration features, and use all the tools your team needs for creative production management. There are no feature restrictions during the trial period - you get the full platform experience.',
+  },
+  {
+    question: 'Can I cancel during the free trial?',
+    answer:
+      "Yes, you can stop using Kreatli at any time during or after the free trial without any charges or cancellation fees. Since no credit card is required to start the trial, there's nothing to cancel during the trial period itself.\n\n" +
+      "If you decide Kreatli isn't the right fit during your 7-day trial, you can simply stop using the platform. Your trial will expire automatically after 7 days, and you won't be charged anything. There's no need to contact support or go through a cancellation process during the trial.\n\n" +
+      "If you've selected a paid plan after your trial ends and then decide to cancel, you can do so at any time through your account settings. You'll retain access until the end of your current billing period, and there are no cancellation fees or long-term commitments.",
+  },
+  {
+    question: 'Is the Kreatli free trial really free?',
+    answer:
+      'Yes, the Kreatli free trial is completely free with no hidden costs, no credit card required, and no automatic charges. You can sign up, use the platform for 7 days with full access to all features, and evaluate whether Kreatli meets your creative production needs - all without spending any money.\n\n' +
+      "There are no setup fees, no trial fees, and no charges of any kind during the 7-day period. The trial gives you access to the same features and capabilities you'd get with a paid subscription, allowing you to make an informed decision about whether Kreatli is right for your team.\n\n" +
+      "The only requirement to continue using Kreatli after the trial is to select a paid plan. If you choose not to continue, you simply let the trial expire - no charges, no commitments, and no obligations. This makes it a truly risk-free way to experience Kreatli's creative production management platform.",
   },
   {
     question: "What's the difference between Kreatli and other project management tools?",

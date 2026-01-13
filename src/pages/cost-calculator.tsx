@@ -198,12 +198,13 @@ export default function CostCalculatorPage() {
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
                     <p className="mb-1 text-base">With Kreatli:</p>
-                    <p className="font-sans text-2xl font-bold">$75/month</p>
-                    <p className="text-base text-foreground-500">$900/year</p>
+                    <p className="font-sans text-2xl font-bold">$95/month</p>
+                    <p className="text-base text-foreground-500">$1,140/year</p>
+                    <p className="text-xs text-foreground-400">Team plan ($19/user)</p>
                   </div>
                   <Alert className="mt-2" color="success" icon={<Icon icon="dollar" />}>
                     <span>
-                      Save <span className="font-bold">$225</span>/month ($2,700/year)
+                      Save <span className="font-bold">$205</span>/month ($2,460/year)
                     </span>
                   </Alert>
                 </div>
@@ -236,12 +237,13 @@ export default function CostCalculatorPage() {
                   </div>
                   <div className="border-t border-foreground-200 pt-3">
                     <p className="mb-1 text-base">With Kreatli:</p>
-                    <p className="font-sans text-2xl font-bold">$300/month</p>
-                    <p className="text-base">$3,600/year</p>
+                    <p className="font-sans text-2xl font-bold">$285/month</p>
+                    <p className="text-base">$3,420/year</p>
+                    <p className="text-xs text-foreground-400">Team plan ($19/user)</p>
                   </div>
                   <Alert className="mt-2" color="success" icon={<Icon icon="dollar" />}>
                     <span>
-                      Save <span className="font-bold">$970</span>/month ($11,640/year)
+                      Save <span className="font-bold">$985</span>/month ($11,820/year)
                     </span>
                   </Alert>
                 </div>
@@ -274,6 +276,7 @@ export default function CostCalculatorPage() {
                     <p className="mb-1 text-base">With Kreatli:</p>
                     <p className="font-sans text-2xl font-bold">$1,000/month</p>
                     <p className="text-base">$12,000/year</p>
+                    <p className="text-xs text-foreground-400">Enterprise plan (estimate - contact for custom pricing)</p>
                   </div>
                   <Alert className="mt-2 whitespace-nowrap" color="success" icon={<Icon icon="dollar" />}>
                     <span>
@@ -440,11 +443,7 @@ export default function CostCalculatorPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli uses simple, transparent per-user pricing with no hidden fees. For teams up to 5 members, the
-                  cost is $15 per user per month. For larger teams (6+ members), the pricing is $20 per user per month.
-                  This pricing includes all core features: unlimited projects, file storage, frame-accurate video
-                  review, media review and approval workflows, project management, team collaboration, guest review
-                  links, and cloud storage integrations.
+                  Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. Enterprise plans have custom pricing based on your organization's needs. All plans include all core features: unlimited projects, file storage, frame-accurate video review, media review and approval workflows, project management, team collaboration, guest review links, and cloud storage integrations.
                 </p>
                 <p>
                   Unlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes
@@ -504,16 +503,10 @@ export default function CostCalculatorPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Absolutely! Kreatli offers a Free Plan that gives you full access to all features with 2 projects and
-                  2 users, allowing you to test the platform with real projects and see how it improves your creative
-                  production management. There's no credit card required, and you can use the Free Plan indefinitely to
-                  evaluate how Kreatli compares to your current tool stack.
+                  Absolutely! All Kreatli plans include a 7-day free trial, giving you full access to all features of your chosen plan. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and immediately start your trial. The Creator plan includes unlimited projects, up to 3 members, and 500GB storage. There's no credit card required, allowing you to test the platform with real projects and see how it improves your creative production management.
                 </p>
                 <p>
-                  For teams ready to commit, we offer trial periods for paid plans so you can test with your full team
-                  before making a long-term commitment. You can also book a personalized demo to see how Kreatli would
-                  work for your specific workflow, review your current tool usage, and get recommendations on
-                  consolidation strategies.
+                  After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. You can also book a personalized demo to see how Kreatli would work for your specific workflow, review your current tool usage, and get recommendations on consolidation strategies.
                 </p>
                 <p>
                   During the transition, our team provides migration assistance to help you move files and projects to
@@ -566,9 +559,7 @@ export default function CostCalculatorPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli's pricing scales predictably with your team size. For teams up to 5 members, it's $15 per user
-                  per month. For teams of 6 or more, it's $20 per user per month. This simple model means you can easily
-                  calculate costs as you grow, and there are no surprise fees when adding team members.
+                  Kreatli's pricing scales predictably with your team size. The Creator plan is $7 per user per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. For larger teams, Enterprise plans offer custom pricing. This simple model means you can easily calculate costs as you grow, and there are no surprise fees when adding team members.
                 </p>
                 <p>
                   In contrast, multiple tools often have complex pricing that scales unpredictably. Some tools charge
@@ -578,10 +569,7 @@ export default function CostCalculatorPage() {
                   members could cost $1,500+/month due to per-user pricing across multiple platforms.
                 </p>
                 <p>
-                  With Kreatli, scaling from 10 to 20 team members means going from $200/month to $400/month - a
-                  predictable, linear increase. You also get all features at every scale, so there's no need to upgrade
-                  to premium tiers or add expensive add-ons as you grow. This predictable scaling makes budgeting easier
-                  and ensures your creative production management costs remain manageable as your team expands.
+                  With Kreatli, you can choose the plan that fits your team size. The Team plan at $19/user/month for up to 10 members provides predictable costs. For larger teams, Enterprise plans offer custom pricing tailored to your needs. You also get all features at every scale, so there's no need to upgrade to premium tiers or add expensive add-ons as you grow. This predictable scaling makes budgeting easier and ensures your creative production management costs remain manageable as your team expands.
                 </p>
               </div>
             </AccordionItem>
@@ -646,7 +634,7 @@ export default function CostCalculatorPage() {
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start Free Trial
             </Button>
             <Button
               as="a"

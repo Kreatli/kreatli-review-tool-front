@@ -104,11 +104,17 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
   }, [usersCount, activeTools]);
 
   const kreatliCost = useMemo(() => {
-    if (usersCount <= 5) {
-      return 15 * usersCount;
+    if (usersCount <= 3) {
+      // Creator plan: $7/user/month for up to 3 members
+      return 7 * usersCount;
+    } else if (usersCount <= 10) {
+      // Team plan: $19/user/month for up to 10 members
+      return 19 * usersCount;
+    } else {
+      // Enterprise plan: Custom pricing (using Team plan rate as conservative estimate)
+      // Note: Actual Enterprise pricing is custom and may offer better rates for large teams
+      return 19 * usersCount;
     }
-
-    return 20 * usersCount;
   }, [usersCount]);
 
   return (
@@ -248,9 +254,18 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
                         'text-danger': activeToolsCost - kreatliCost > 0,
                       })}
                     >
-                      {activeToolsCost - kreatliCost > 0
-                        ? `${formatPrice(activeToolsCost - kreatliCost, { minimumFractionDigits: 0 })}↓`
-                        : '$0'}
+                      {activeToolsCost - kreatliCost > 0 ? (
+                        <>
+                          {formatPrice(activeToolsCost - kreatliCost, { minimumFractionDigits: 0 })}↓
+                          {usersCount > 10 && (
+                            <Tooltip content="Savings estimate based on Team plan rate. Enterprise pricing may offer additional savings.">
+                              <span className="ml-1 cursor-help text-xs">*</span>
+                            </Tooltip>
+                          )}
+                        </>
+                      ) : (
+                        '$0'
+                      )}
                     </div>
                   </div>
                   <div className="flex flex-col items-center">
@@ -260,9 +275,18 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
                         'text-danger': activeToolsCost - kreatliCost > 0,
                       })}
                     >
-                      {activeToolsCost - kreatliCost > 0
-                        ? `${formatPrice((activeToolsCost - kreatliCost) * 12, { minimumFractionDigits: 0 })}↓`
-                        : '$0'}
+                      {activeToolsCost - kreatliCost > 0 ? (
+                        <>
+                          {formatPrice((activeToolsCost - kreatliCost) * 12, { minimumFractionDigits: 0 })}↓
+                          {usersCount > 10 && (
+                            <Tooltip content="Savings estimate based on Team plan rate. Enterprise pricing may offer additional savings.">
+                              <span className="ml-1 cursor-help text-xs">*</span>
+                            </Tooltip>
+                          )}
+                        </>
+                      ) : (
+                        '$0'
+                      )}
                     </div>
                   </div>
                 </div>
@@ -301,17 +325,34 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
               <Card className="border-foreground-300 dark:border">
                 <CardBody className="flex flex-col gap-2 p-4 sm:gap-3 sm:p-6">
                   <h3 className="font-sans text-lg font-bold sm:text-xl">Kreatli</h3>
+                  <div className="mb-1 text-xs text-foreground-400">
+                    {usersCount <= 3
+                      ? 'Creator plan ($7/user/month)'
+                      : usersCount <= 10
+                        ? 'Team plan ($19/user/month)'
+                        : 'Enterprise plan (estimate - contact for custom pricing)'}
+                  </div>
                   <div className="flex gap-3 md:flex-row lg:flex-col">
                     <div className="flex flex-col">
                       <div className="sm:text-md text-sm text-foreground-500">Cost per month:</div>
                       <div className="font-sans text-2xl font-bold text-success-600 sm:text-3xl">
                         {formatPrice(kreatliCost, { minimumFractionDigits: 0 })}
+                        {usersCount > 10 && (
+                          <Tooltip content="Enterprise pricing is custom. Contact us for a quote - rates may be lower for large teams.">
+                            <span className="ml-1 cursor-help text-xs">*</span>
+                          </Tooltip>
+                        )}
                       </div>
                     </div>
                     <div className="flex flex-col">
                       <div className="sm:text-md text-sm text-foreground-500">Cost per year:</div>
                       <div className="font-sans text-2xl font-bold text-success-600 sm:text-3xl">
                         {formatPrice(kreatliCost * 12, { minimumFractionDigits: 0 })}
+                        {usersCount > 10 && (
+                          <Tooltip content="Enterprise pricing is custom. Contact us for a quote - rates may be lower for large teams.">
+                            <span className="ml-1 cursor-help text-xs">*</span>
+                          </Tooltip>
+                        )}
                       </div>
                     </div>
                   </div>

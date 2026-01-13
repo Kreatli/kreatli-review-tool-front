@@ -12,14 +12,14 @@ const PLANS = [
   {
     id: 'creator' as const,
     name: 'Creator',
-    description:
-      'Designed for solo creators and small teams who want to organize projects, review work, and create faster.',
-    features: [
-      { label: 'up to 3 members' },
+    description: 'Designed for solo creators and teams who want to organize projects, review work, and create faster.',
+    previousPlan: null,
+    limits: [
+      { label: 'Up to 3 members' },
       { label: '500GB Storage', tooltip: '$3 per month per additional 100GB' },
-      { label: 'Unlimited projects' },
-      { label: 'Unlimited external reviewers', tooltip: 'does not count toward paid seats' },
+      { label: 'Unlimited projects & reviewers' },
     ],
+    uniqueFeatures: [{ label: 'Frame-accurate video review' }, { label: 'Shared asset libraries' }],
     price: 7,
   },
   {
@@ -27,12 +27,14 @@ const PLANS = [
     name: 'Team',
     description:
       'Built for established teams running multiple projects with shared assets, structured reviews, and consistent workflows.',
-    features: [
-      { label: 'up to 10 members' },
-      { label: '1TB Storage', tooltip: '$3 per month per additional 100GB' },
-      { label: 'Unlimited projects' },
-      { label: 'Unlimited external reviewers', tooltip: 'does not count toward paid seats' },
-      { label: 'Google Drive/Dropbox Upload' },
+    previousPlan: 'Creator',
+    limits: [{ label: 'Up to 10 members' }, { label: '2TB Storage', tooltip: '$3 per month per additional 100GB' }],
+    uniqueFeatures: [
+      { label: 'File organization and management' },
+      { label: 'Versioning and comparison' },
+      { label: 'Asset-linked conversations' },
+      { label: 'Guest review links' },
+      { label: 'Comment threads and annotations' },
     ],
     price: 19,
   },
@@ -41,9 +43,9 @@ const PLANS = [
     name: 'Enterprise',
     description:
       'Tailored for enterprise organizations that need advanced controls, custom workflows, and dedicated support.',
-    features: [
-      { label: 'Custom members' },
-      { label: 'Custom storage' },
+    previousPlan: 'Team',
+    limits: [{ label: 'Custom members' }, { label: 'Custom storage' }],
+    uniqueFeatures: [
       { label: 'Single Sign-On (SSO)' },
       { label: 'Dedicated Account Manager' },
       { label: 'Custom Integrations & Features' },
@@ -108,7 +110,7 @@ export const PlansForm = ({ user, onTrialSuccess }: Props) => {
 
   return (
     <div className="flex flex-col gap-4 md:flex-row">
-      {PLANS.map(({ id, name, description, price, features }) => (
+      {PLANS.map(({ id, name, description, price, previousPlan, limits, uniqueFeatures }) => (
         <Plan
           key={id}
           isSelected={selectedPlan === id}
@@ -119,7 +121,9 @@ export const PlansForm = ({ user, onTrialSuccess }: Props) => {
           isTrialAvailable={!user.subscription.hasUsedTrial}
           description={description}
           price={price}
-          features={features}
+          previousPlan={previousPlan}
+          limits={limits}
+          uniqueFeatures={uniqueFeatures}
           onClick={handleSelectPlan(id)}
         />
       ))}

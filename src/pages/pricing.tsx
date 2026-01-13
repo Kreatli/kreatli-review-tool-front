@@ -23,7 +23,7 @@ export default function PricingPage() {
         <meta property="og:title" content="Kreatli | Pricing – Creative Production & Media Review Platform" />
         <meta
           property="og:description"
-          content="Flexible pricing for creative production teams of all sizes. Plans for production management, media review and approval, and collaboration. Free plan available forever. No credit card required to start."
+          content="Flexible pricing for creative production teams of all sizes. Plans for production management, media review and approval, and collaboration. 7-day free trial on all plans. No credit card required to start."
         />
         <meta property="og:type" content="website" />
       </Head>
@@ -36,26 +36,26 @@ export default function PricingPage() {
             Simple, Transparent Pricing for Creative Production Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Choose the plan that fits your team size and needs. Start free forever, upgrade when you're ready. No credit
-            card required.
+            Choose a plan and start your 7-day free trial. No credit card required. After the trial, select a paid plan
+            to continue.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
               <div className="font-sans text-2xl font-bold sm:text-3xl">3 Plans</div>
-              <div className="sm:text-md text-sm text-foreground-500">Free, Pro & Advanced</div>
+              <div className="sm:text-md text-sm text-foreground-500">Creator, Team & Enterprise</div>
             </div>
             <div className="flex flex-col items-center">
               <div className="font-sans text-2xl font-bold sm:text-3xl">Cancel Anytime</div>
               <div className="sm:text-md text-sm text-foreground-500">No Long-Term Contracts</div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-3xl">Free Forever</div>
+              <div className="font-sans text-2xl font-bold sm:text-3xl">7-Day Free Trial</div>
               <div className="sm:text-md text-sm text-foreground-500">No Credit Card Required</div>
             </div>
           </div>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start Free Forever
+              Start Free Trial
             </Button>
             <Button
               as="a"
@@ -71,7 +71,10 @@ export default function PricingPage() {
       </section>
 
       {/* Main Pricing Section */}
-      <PricingSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" />
+      <PricingSection
+        titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center"
+        showDetailedFeatures={true}
+      />
 
       {/* Benefits/Why Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -150,11 +153,11 @@ export default function PricingPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="checkCircle" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Free Forever Plan</h3>
+                  <h3 className="font-sans text-lg font-semibold">7-Day Free Trial</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Start with our free plan and use it forever. No credit card required. Upgrade only when you need more
-                  features.
+                  All plans include a 7-day free trial. No credit card required. After the trial, select a paid plan to
+                  continue using the platform.
                 </p>
               </CardBody>
             </Card>
@@ -233,11 +236,12 @@ export default function PricingPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli uses simple, transparent per-user pricing with no hidden fees. For teams up to 5 members, the
-                  cost is $15 per user per month. For larger teams (6+ members), the pricing is $20 per user per month.
-                  This pricing includes all core features: unlimited projects, file storage, frame-accurate video
-                  review, media review and approval workflows, project management, team collaboration, guest review
-                  links, and cloud storage integrations.
+                  Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user
+                  per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10
+                  members. Enterprise plans have custom pricing based on your organization's needs. All plans include
+                  all core features: unlimited projects, file storage, frame-accurate video review, media review and
+                  approval workflows, project management, team collaboration, guest review links, and cloud storage
+                  integrations.
                 </p>
                 <p>
                   Unlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes
@@ -289,32 +293,28 @@ export default function PricingPage() {
 
             <AccordionItem
               key="free-trial"
-              title={
-                <span className="text-base font-semibold">
-                  Is there a free trial, and what's included in the Free plan?
-                </span>
-              }
+              title={<span className="text-base font-semibold">How does the 7-day free trial work?</span>}
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli offers a Free Plan that's available forever with no credit card required. This isn't a limited
-                  trial - it's a full-featured plan that you can use indefinitely. The Free Plan includes 2 projects
-                  with up to 2 users, giving you the opportunity to test the platform with real projects and see how it
-                  improves your creative production management.
+                  When you sign up for Kreatli, you'll choose a plan (Creator, Team, or Enterprise) and immediately
+                  start a 7-day free trial of that plan. No credit card is required to start your trial. During the
+                  trial, you'll have full access to all features and limits of your chosen plan, allowing you to test
+                  the platform with real projects and see how it improves your creative production management.
                 </p>
                 <p>
-                  The Free Plan includes all core features: frame-accurate video review, media review and approval
-                  workflows, file organization, team collaboration, guest review links, cloud storage integrations, and
-                  project management. This means you can fully evaluate how Kreatli compares to your current tool stack
-                  before making any financial commitment. You get the complete experience, not a watered-down version
-                  designed to push you toward paid plans.
+                  All plans include all core features during the trial: frame-accurate video review, media review and
+                  approval workflows, file organization, team collaboration, guest review links, cloud storage
+                  integrations, and project management. This means you can fully evaluate how Kreatli compares to your
+                  current tool stack before making any financial commitment. You get the complete experience, not a
+                  watered-down version.
                 </p>
                 <p>
-                  Many teams start with the Free Plan to onboard their team, run a pilot project, and see the value in
-                  consolidating their creative production tools. When you're ready for more projects, users, or storage,
-                  you can upgrade to a paid plan. There's no pressure to upgrade - you can use the Free Plan as long as
-                  it meets your needs, making it a risk-free way to experience Kreatli's creative production management
-                  platform.
+                  After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. If you
+                  don't select a plan, you'll lose access to your projects and data. This ensures you can try Kreatli
+                  risk-free while making it clear that continued use requires a paid subscription. Many teams use the
+                  trial period to onboard their team, run a pilot project, and see the value in consolidating their
+                  creative production tools.
                 </p>
               </div>
             </AccordionItem>
@@ -329,21 +329,22 @@ export default function PricingPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Choosing the right plan depends on your team size and the number of projects you need to manage. The
-                  Free Plan is perfect for individuals or very small teams getting started - it includes 2 projects with
-                  up to 2 users, making it ideal for testing the platform or managing a couple of small projects.
+                  Choosing the right plan depends on your team size and storage needs. All plans include a 7-day free
+                  trial, so you can test any plan before committing. The Creator plan ($7/user/month, up to 3 members,
+                  500GB storage) is perfect for solo creators and teams who want to organize projects, review work, and
+                  create faster.
                 </p>
                 <p>
-                  The Pro Plan ($15/user/month for teams up to 5 members) is ideal for small to medium creative teams
-                  that need to manage up to 10 projects with up to 5 users. This plan works well for micro-teams,
-                  freelance teams, and small agencies that need more capacity than the Free Plan but don't require
-                  unlimited projects or users.
+                  The Team plan ($19/user/month, up to 10 members, 2TB storage) is ideal for established teams running
+                  multiple projects with shared assets, structured reviews, and consistent workflows. This plan works
+                  well for micro-teams, freelance teams, and small agencies that need more capacity and collaboration
+                  features.
                 </p>
                 <p>
-                  The Advanced Plan ($20/user/month for teams of 6+ members) provides unlimited projects and users,
-                  making it suitable for larger agencies, post-production houses, and creative teams that need to manage
-                  multiple client projects simultaneously. If you're unsure which plan is right for your team, you can
-                  start with the Free Plan and upgrade as your needs grow. Our support team can also help you evaluate
+                  The Enterprise plan (custom pricing) provides custom members, custom storage, Single Sign-On (SSO), a
+                  dedicated account manager, and custom integrations & features. This plan is tailored for enterprise
+                  organizations that need advanced controls, custom workflows, and dedicated support. If you're unsure
+                  which plan is right for your team, start with a 7-day trial and our support team can help you evaluate
                   which plan best fits your creative production management requirements.
                 </p>
               </div>
@@ -368,8 +369,8 @@ export default function PricingPage() {
                   nothing is deleted immediately upon cancellation.
                 </p>
                 <p>
-                  After 30 days, your account will be downgraded to the Free Plan if you had a paid subscription. If you
-                  cancel the Free Plan or don't reactivate within 30 days, your data may be archived. We recommend
+                  After 30 days, if you don't reactivate your account, your data may be archived. Since there's no free
+                  plan available, you'll need to select a paid plan to continue accessing your projects. We recommend
                   exporting your important files and projects before canceling to ensure you have backups of your
                   creative work. Our support team can help you with the export process if needed.
                 </p>
@@ -428,10 +429,10 @@ export default function PricingPage() {
                   annual billing at any time, though the discount only applies when you're on an annual plan.
                 </p>
                 <p>
-                  Annual billing is available for all paid plans (Pro and Advanced), and you can upgrade or downgrade
-                  even when on an annual plan. If you upgrade mid-year, you'll be charged a prorated amount for the
-                  remainder of your annual billing cycle. This flexibility ensures annual billing works for teams that
-                  want to save money while maintaining the ability to adjust their plan as needed.
+                  Annual billing is available for all paid plans (Creator, Team, and Enterprise), and you can upgrade or
+                  downgrade even when on an annual plan. If you upgrade mid-year, you'll be charged a prorated amount
+                  for the remainder of your annual billing cycle. This flexibility ensures annual billing works for
+                  teams that want to save money while maintaining the ability to adjust their plan as needed.
                 </p>
               </div>
             </AccordionItem>
@@ -458,11 +459,10 @@ export default function PricingPage() {
                   as needed through your account settings.
                 </p>
                 <p>
-                  The pricing structure also means that if your team size changes significantly (for example, growing
-                  from 5 to 6 members, which moves you from $15/user to $20/user pricing), the new pricing tier applies
-                  to all team members. This ensures pricing is fair and predictable - larger teams get slightly higher
-                  per-user pricing but benefit from unlimited projects and users, while smaller teams get lower per-user
-                  pricing that's more cost-effective for their size.
+                  The pricing structure is straightforward: Creator plan is $7/user/month for teams up to 3 members, and
+                  Team plan is $19/user/month for teams up to 10 members. If your team grows beyond 10 members, you'll
+                  need to contact us for Enterprise pricing. This ensures pricing is fair and predictable based on your
+                  team size and needs.
                 </p>
               </div>
             </AccordionItem>
@@ -516,12 +516,12 @@ export default function PricingPage() {
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Get Started?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Join creative teams who have simplified their collaboration process. Start free forever or book a demo to
-            see how Kreatli works for your team.
+            Join creative teams who have simplified their collaboration process. Start your 7-day free trial or book a
+            demo to see how Kreatli works for your team.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start Free Forever
+              Start Free Trial
             </Button>
             <Button
               as="a"

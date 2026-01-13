@@ -11,7 +11,9 @@ interface Props {
   isSelected: boolean;
   isCurrent: boolean;
   isCurrentTrial: boolean;
-  features: { label: string; tooltip?: string; hideIcon?: boolean }[];
+  previousPlan: string | null;
+  limits: { label: string; tooltip?: string; hideIcon?: boolean }[];
+  uniqueFeatures: { label: string; tooltip?: string; hideIcon?: boolean }[];
   onClick: () => void;
 }
 
@@ -20,7 +22,9 @@ export const Plan = ({
   price,
   isTrialAvailable,
   description,
-  features,
+  previousPlan,
+  limits,
+  uniqueFeatures,
   isCurrent,
   isCurrentTrial,
   isSelected,
@@ -63,8 +67,31 @@ export const Plan = ({
         <div className="pb-2 text-sm text-foreground-500">{description}</div>
         <div className="flex-1">
           <ul className="flex flex-col gap-0.5">
-            {features.map((feature, idx) => (
-              <li key={idx}>
+            {previousPlan && (
+              <li>
+                <div className="flex items-center gap-1 text-sm font-medium text-foreground-600">
+                  <Icon icon="check" size={16} />
+                  Everything in {previousPlan}
+                </div>
+              </li>
+            )}
+            {limits.map((limit, idx) => (
+              <li key={`limit-${idx}`}>
+                <div className="flex items-center gap-1 text-sm">
+                  {!limit.hideIcon && <Icon icon="check" size={16} />}
+                  {limit.label}
+                  {limit.tooltip && (
+                    <Tooltip content={limit.tooltip} className="max-w-sm">
+                      <div>
+                        <Icon icon="infoCircle" size={16} className="text-foreground-400" />
+                      </div>
+                    </Tooltip>
+                  )}
+                </div>
+              </li>
+            ))}
+            {uniqueFeatures.map((feature, idx) => (
+              <li key={`feature-${idx}`}>
                 <div className="flex items-center gap-1 text-sm">
                   {!feature.hideIcon && <Icon icon="check" size={16} />}
                   {feature.label}
