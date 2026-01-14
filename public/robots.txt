@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-# No sitemap provided yet
+Sitemap: https://kreatli.com/sitemap.xml
