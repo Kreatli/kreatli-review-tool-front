@@ -252,13 +252,13 @@ export default function VideoProductionAnimationStudiosPage() {
   return (
     <>
       <Head>
-        <title>Kreatli for {data.title} | Creative Production Platform for Video Production & Animation</title>
+        <title>Kreatli for {data.title} | Video Production Platform for Video Production & Animation</title>
         <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
           content="video production software, animation studio tools, video review platform, frame-accurate feedback, video collaboration platform, post-production workflow, video project management, animation production pipeline"
         />
-        <meta property="og:title" content={`Kreatli for ${data.title} | Creative Production Platform`} />
+        <meta property="og:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
         <meta property="og:description" content={data.metaDescription} />
         <meta property="og:type" content="website" />
       </Head>

@@ -211,7 +211,7 @@ export default function WhoWeHelpPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h1 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
-            Who is Kreatli’s Creative Production Platform For?
+            Who is Kreatli’s Video Production Platform For?
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500 sm:text-xl">
             Whether you're a content creator, creative team or digital agency, Kreatli covers all your needs. Discover

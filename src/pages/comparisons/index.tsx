@@ -23,12 +23,12 @@ export default function ComparisonsPage({ stories }: Props) {
   return (
     <>
       <Head>
-        <title>Kreatli | Comparisons – Creative Production Platform Comparisons</title>
+        <title>Kreatli | Comparisons – Video Production Platform Comparisons</title>
         <meta
           name="description"
           content="Compare Kreatli with other creative production and media review platforms. See how Kreatli stacks up against alternatives."
         />
-        <meta property="og:title" content="Kreatli | Comparisons – Creative Production Platform Comparisons" />
+        <meta property="og:title" content="Kreatli | Comparisons – Video Production Platform Comparisons" />
         <meta
           property="og:description"
           content="Compare Kreatli with other creative production and media review platforms to find the best solution for your team."

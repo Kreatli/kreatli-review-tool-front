@@ -527,7 +527,7 @@ export default function FeaturesPage() {
               key="collaboration"
               title={
                 <span className="text-base font-semibold">
-                  How does team collaboration work in Kreatli's creative production platform?
+                  How does team collaboration work in Kreatli's video production platform?
                 </span>
               }
             >
@@ -721,7 +721,7 @@ export default function FeaturesPage() {
                 <p>
                   Kreatli is also valuable for teams currently juggling multiple tools - if you're using separate
                   platforms for file storage, video review, project management, and team communication, Kreatli can
-                  consolidate these into one streamlined creative production platform with integrated media review and
+                  consolidate these into one streamlined video production platform with integrated media review and
                   approval workflows.
                 </p>
               </div>
@@ -731,7 +731,7 @@ export default function FeaturesPage() {
               key="notifications"
               title={
                 <span className="text-base font-semibold">
-                  How do real-time notifications work in Kreatli's creative production platform?
+                  How do real-time notifications work in Kreatli's video production platform?
                 </span>
               }
             >

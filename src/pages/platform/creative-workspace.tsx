@@ -19,12 +19,12 @@ export default function CreativeWorkspacePage() {
   return (
     <>
       <Head>
-        <title>Kreatli | The Creative Workspace – Unified Creative Production Platform</title>
+        <title>Kreatli | The Creative Workspace – Unified Video Production Platform</title>
         <meta
           name="description"
           content="The Creative Workspace in Kreatli provides a unified platform for creative production management. Project-tied conversations, asset-linked comments, and centralized dashboards streamline your entire creative workflow in one place."
         />
-        <meta property="og:title" content="Kreatli | The Creative Workspace – Unified Creative Production Platform" />
+        <meta property="og:title" content="Kreatli | The Creative Workspace – Unified Video Production Platform" />
         <meta
           property="og:description"
           content="Experience a unified creative workspace with project-tied chats, asset-linked conversations, and centralized project dashboards. Everything you need for creative production management in one place."

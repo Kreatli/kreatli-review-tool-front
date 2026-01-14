@@ -54,7 +54,7 @@ const faqs: FAQItem[] = [
   {
     key: 'collaboration',
     category: 'Features',
-    question: "How does team collaboration work in Kreatli's creative production platform?",
+    question: "How does team collaboration work in Kreatli's video production platform?",
     answer:
       'Kreatli enables collaboration through multiple integrated features. Project-tied chats keep all conversations organized by project, so team discussions stay with the relevant work. Asset-linked comments ensure feedback is always connected to the specific file being discussed, eliminating confusion about which asset a comment refers to.\n\nThe platform supports real-time collaboration where multiple team members can review and comment on the same file simultaneously. Guest review links allow clients and external collaborators to participate in the review and approval process without requiring accounts, making it easy to include stakeholders in your creative workflow.\n\nAll collaboration happens within the context of your creative production management system, so conversations, feedback, and approvals are all tracked and visible to the team. This reduces tool-switching and keeps everything in one place, from initial planning through final delivery.',
   },
@@ -68,7 +68,7 @@ const faqs: FAQItem[] = [
   {
     key: 'notifications',
     category: 'Features',
-    question: "How do real-time notifications work in Kreatli's creative production platform?",
+    question: "How do real-time notifications work in Kreatli's video production platform?",
     answer:
       "Kreatli provides real-time notifications for important events in your creative workflow, including new comments, approval requests, project updates, and file uploads. These notifications help team members stay in sync without constantly checking the platform.\n\nNotifications are contextual and linked to specific assets and projects, so you can quickly understand what needs your attention. When someone adds a comment on a video you're working on, requests approval for a design, or uploads a new version, you'll be notified immediately.\n\nThe notification system is integrated with the review and approval workflow, ensuring that approvals and feedback requests don't get missed. This keeps your creative production management process moving forward efficiently, as team members and clients are promptly notified when their input is needed in the media review and approval process.",
   },
@@ -338,7 +338,7 @@ export default function HelpPage() {
         <title>Kreatli | Help Center – FAQs and Support Resources</title>
         <meta
           name="description"
-          content="Find answers to frequently asked questions about Kreatli's creative production platform, features, pricing, integrations, and more. Get help with your creative workflow."
+          content="Find answers to frequently asked questions about Kreatli's video production platform, features, pricing, integrations, and more. Get help with your creative workflow."
         />
         <meta property="og:title" content="Kreatli | Help Center – FAQs and Support Resources" />
         <meta
@@ -353,8 +353,8 @@ export default function HelpPage() {
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
           <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Help Center</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Find answers to frequently asked questions about Kreatli's creative production platform, features, pricing,
-            and more.
+            Find answers to frequently asked questions about Kreatli's video production platform, features, pricing, and
+            more.
           </p>
           <div className="mx-auto mt-6 w-full max-w-2xl">
             <Input

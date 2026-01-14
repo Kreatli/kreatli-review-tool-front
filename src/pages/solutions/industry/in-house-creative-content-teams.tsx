@@ -158,7 +158,7 @@ const data = {
     },
   ],
   metaDescription:
-    'Creative production platform for in-house creative and content teams. Manage brand assets, campaign production, and creative workflows. Collaborate with agencies, streamline approvals, and maintain brand consistency. Replace Google Drive, Frame.io, and Slack with one unified platform.',
+    'Video production platform for in-house creative and content teams. Manage brand assets, campaign production, and creative workflows. Collaborate with agencies, streamline approvals, and maintain brand consistency. Replace Google Drive, Frame.io, and Slack with one unified platform.',
   faqs: [
     {
       question: 'How does Kreatli help in-house teams maintain brand consistency?',
@@ -224,13 +224,13 @@ export default function InHouseCreativeContentTeamsPage() {
   return (
     <>
       <Head>
-        <title>Kreatli for {data.title} | Creative Production Platform for In-House Teams</title>
+        <title>Kreatli for {data.title} | Video Production Platform for In-House Teams</title>
         <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
           content="in-house creative teams, content production platform, brand asset management, creative workflow software, internal creative teams, brand management platform, creative collaboration tools"
         />
-        <meta property="og:title" content={`Kreatli for ${data.title} | Creative Production Platform`} />
+        <meta property="og:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
         <meta property="og:description" content={data.metaDescription} />
         <meta property="og:type" content="website" />
       </Head>

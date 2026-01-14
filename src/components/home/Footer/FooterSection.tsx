@@ -188,7 +188,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
               <LogoIcon viewBox="0 0 90 22" />
             </Link>
             <div className="max-w-64 text-sm text-foreground-500">
-              End-to-end creative production platform for creative teams.
+              End-to-end video production platform for creative teams.
             </div>
             <Socials />
           </div>
