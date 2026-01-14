@@ -13,7 +13,7 @@ export const FeaturesSection = () => {
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 sm:gap-16 lg:gap-20">
         <div className="mx-auto flex max-w-5xl flex-col gap-4 px-2 text-center sm:gap-6 sm:px-0">
           <h2 className="font-sans text-2xl font-bold leading-tight sm:text-3xl sm:leading-tight md:text-4xl lg:text-[48px]">
-            Built for how creative production{' '}
+            Built for how video production{' '}
             <span className="relative inline-block">
               <span className="relative z-10">actually</span>
               <span className="absolute -left-1 -right-4 bottom-0 -z-0 h-3 bg-[url(/highlight-line.svg)] bg-contain bg-no-repeat sm:h-4" />
@@ -23,12 +23,12 @@ export const FeaturesSection = () => {
         </div>
         <div className="flex w-full flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-[max(20vh,100px)]">
           <Feature
-            icon="slides"
-            title="Centralized Project Dashboard"
-            description="Everything in one place. Project overview, media files, team chat, and activity tracking all accessible from a single dashboard."
+            icon="paint"
+            title="Frame-accurate Revisions"
+            description='Pin comments to exact frames and timestamps. No more "which clip?" confusion. Every piece of feedback is precisely where it needs to be.'
             isReversed={false}
           >
-            <HomeDashboardFeaturePreview />
+            <ReviewToolPreview />
           </Feature>
           <Feature
             icon="folder"
@@ -47,18 +47,10 @@ export const FeaturesSection = () => {
             <ProjectFeaturePreview />
           </Feature>
           <Feature
-            icon="paint"
-            title="Frame-accurate Revisions"
-            description='Pin comments to exact frames and timestamps. No more "which clip?" confusion. Every piece of feedback is precisely where it needs to be.'
-            isReversed={true}
-          >
-            <ReviewToolPreview />
-          </Feature>
-          <Feature
             icon="compare"
             title="Compare Versions Side-by-Side"
             description="Compare different versions side-by-side for creative proofing. Spot changes instantly and provide precise feedback in your review workflow."
-            isReversed={false}
+            isReversed={true}
           >
             <CompareFeaturePreview />
           </Feature>
@@ -66,7 +58,7 @@ export const FeaturesSection = () => {
             icon="chat"
             title="Conversations, Not Noise"
             description="Project-tied chats and asset-linked comments keep feedback organized. Guest review links streamline approvals with no account required."
-            isReversed={true}
+            isReversed={false}
           >
             <ChatFeaturePreview />
           </Feature>
@@ -74,9 +66,17 @@ export const FeaturesSection = () => {
             icon="share"
             title="Share Files with Anyone"
             description="Generate secure shareable links or send files via email. No account required for reviewers to streamline your approval workflow."
-            isReversed={false}
+            isReversed={true}
           >
             <ShareFeaturePreview />
+          </Feature>
+          <Feature
+            icon="slides"
+            title="Centralized Project Dashboard"
+            description="Everything in one place. Project overview, media files, team chat, and activity tracking all accessible from a single dashboard."
+            isReversed={false}
+          >
+            <HomeDashboardFeaturePreview />
           </Feature>
         </div>
       </div>

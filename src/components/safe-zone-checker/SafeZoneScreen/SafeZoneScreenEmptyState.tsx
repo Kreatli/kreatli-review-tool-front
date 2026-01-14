@@ -1,4 +1,4 @@
-import { cn } from '@heroui/react';
+import { Button, cn } from '@heroui/react';
 import { useDropzone } from 'react-dropzone';
 
 import { Icon } from '../../various/Icon';
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const SafeZoneScreenEmptyState = ({ onUploadFile }: Props) => {
-  const { isDragActive, isDragAccept, getRootProps, getInputProps } = useDropzone({
+  const { isDragActive, isDragAccept, open, getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/*': [],
       'video/*': [],
@@ -27,10 +27,13 @@ export const SafeZoneScreenEmptyState = ({ onUploadFile }: Props) => {
       })}
     >
       <div className="flex w-full flex-col items-center gap-2 p-14 text-center">
-        <Icon icon="upload" size={24} />
-        <p className="text-sm font-medium">
+        <p className="mb-2 text-sm font-medium">
           {isDragActive && isDragAccept ? 'Drop your file here' : 'Drag and drop your file here or click to upload'}
         </p>
+        <Button onClick={open}>
+          <Icon icon="addImage" size={16} />
+          Select file
+        </Button>
       </div>
       <input {...getInputProps()} />
     </div>
