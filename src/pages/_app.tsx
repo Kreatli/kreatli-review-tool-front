@@ -34,9 +34,18 @@ const App = ({ Component, pageProps }: AppProps) => {
           property="og:description"
           content="Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place."
         />
-        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli - End-to-End Production Management Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli - End-to-End Production Management Platform" />
+        <meta
+          name="twitter:description"
+          content="Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <QueryClientProvider client={queryClient}>
         <HeroUIProvider id="heroUiProvider">

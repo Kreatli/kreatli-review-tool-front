@@ -23,6 +23,9 @@ export default function SecureAssetStoragePage() {
           name="description"
           content="Kreatli provides secure, reliable media storage with enterprise-grade security, smart file organization, and version control for creative production teams. Protect your creative assets."
         />
+        <link rel="canonical" href="https://kreatli.com/platform/secure-asset-storage" />
+        <meta property="og:url" content="https://kreatli.com/platform/secure-asset-storage" />
+        <meta property="og:type" content="website" />
         <meta
           property="og:title"
           content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams"
@@ -31,6 +34,18 @@ export default function SecureAssetStoragePage() {
           property="og:description"
           content="Secure your creative assets with enterprise-grade storage, smart file organization, and version control. Built for creative production teams."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams" />
+        <meta
+          name="twitter:description"
+          content="Secure your creative assets with enterprise-grade storage, smart file organization, and version control. Built for creative production teams."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

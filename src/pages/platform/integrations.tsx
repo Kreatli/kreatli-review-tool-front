@@ -21,11 +21,26 @@ export default function IntegrationsPage() {
           name="description"
           content="Kreatli integrates with Google Drive and Dropbox, allowing you to connect your existing cloud storage and import files directly. Seamless integration for creative production workflows."
         />
+        <link rel="canonical" href="https://kreatli.com/platform/integrations" />
+        <meta property="og:url" content="https://kreatli.com/platform/integrations" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
         <meta
           property="og:description"
           content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized creative production features."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
+        <meta
+          name="twitter:description"
+          content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized creative production features."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

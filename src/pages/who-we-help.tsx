@@ -107,11 +107,26 @@ export default function WhoWeHelpPage() {
           name="description"
           content="Whether you're a content creator, creative team or digital agency, Kreatli is the creative production and media review platform that covers your workflow. Join independent video creators, micro-teams, and creative agencies."
         />
+        <link rel="canonical" href="https://kreatli.com/who-we-help" />
+        <meta property="og:url" content="https://kreatli.com/who-we-help" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Who We Help – Creative Production Teams & Agencies" />
         <meta
           property="og:description"
           content="Perfect for video creators, micro-teams, and creative agencies that need creative production management and media review and approval workflows. Streamline your workflow and collaborate effectively."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Who We Help – Creative Production Teams & Agencies" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Who We Help – Creative Production Teams & Agencies" />
+        <meta
+          name="twitter:description"
+          content="Perfect for video creators, micro-teams, and creative agencies that need creative production management and media review and approval workflows. Streamline your workflow and collaborate effectively."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

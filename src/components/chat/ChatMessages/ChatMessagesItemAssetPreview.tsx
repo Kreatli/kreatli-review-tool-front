@@ -21,7 +21,7 @@ export const ChatMessagesItemAssetPreview = ({ asset }: Props) => {
         aria-label="Open in review tool"
         className="absolute inset-0 rounded-medium opacity-0 transition-[background,opacity] hover:bg-background/20 hover:opacity-100"
       />
-      <img src={imageUrl} className="h-auto max-h-full" />
+      <img src={imageUrl} alt={asset.name || 'Asset preview'} className="h-auto max-h-full" />
       <Chip
         size="sm"
         variant="dot"

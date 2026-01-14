@@ -101,7 +101,7 @@ export default function YouTubeBannerResizerPage() {
               href="/social-media-safe-zone-checker"
               className="h-full transition-transform hover:scale-[1.02]"
             >
-              <CardBody className="flex flex-col gap-4 p-6">
+              <CardBody className="flex flex-col gap-4 p-6" suppressHydrationWarning>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 rounded-lg bg-foreground-100 p-3">
                     <Icon icon="shield" size={24} className="text-primary" />
@@ -133,7 +133,7 @@ export default function YouTubeBannerResizerPage() {
               href="/free-tools/data-transfer-calculator"
               className="h-full transition-transform hover:scale-[1.02]"
             >
-              <CardBody className="flex flex-col gap-4 p-6">
+              <CardBody className="flex flex-col gap-4 p-6" suppressHydrationWarning>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 rounded-lg bg-foreground-100 p-3">
                     <Icon icon="upload" size={24} className="text-primary" />
@@ -165,7 +165,7 @@ export default function YouTubeBannerResizerPage() {
               href="/free-tools/cost-calculator"
               className="h-full transition-transform hover:scale-[1.02]"
             >
-              <CardBody className="flex flex-col gap-4 p-6">
+              <CardBody className="flex flex-col gap-4 p-6" suppressHydrationWarning>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 rounded-lg bg-foreground-100 p-3">
                     <Icon icon="dollar" size={24} className="text-primary" />
@@ -218,7 +218,7 @@ export default function YouTubeBannerResizerPage() {
               href="/platform/creative-workspace"
               className="h-full transition-transform hover:scale-[1.02]"
             >
-              <CardBody className="flex flex-col gap-3 p-6">
+              <CardBody className="flex flex-col gap-3 p-6" suppressHydrationWarning>
                 <h3 className="font-sans text-lg font-semibold">Creative Workspace</h3>
                 <p className="text-sm text-foreground-500">
                   Unified workspace for creative production. Organize assets, manage projects, and collaborate with your
@@ -243,7 +243,7 @@ export default function YouTubeBannerResizerPage() {
               href="/platform/review-approval"
               className="h-full transition-transform hover:scale-[1.02]"
             >
-              <CardBody className="flex flex-col gap-3 p-6">
+              <CardBody className="flex flex-col gap-3 p-6" suppressHydrationWarning>
                 <h3 className="font-sans text-lg font-semibold">Review & Approval</h3>
                 <p className="text-sm text-foreground-500">
                   Frame-accurate revisions and approvals for video content. Streamline your feedback workflow.
@@ -262,7 +262,7 @@ export default function YouTubeBannerResizerPage() {
             </Card>
 
             <Card isPressable as={NextLink} href="/blog" className="h-full transition-transform hover:scale-[1.02]">
-              <CardBody className="flex flex-col gap-3 p-6">
+              <CardBody className="flex flex-col gap-3 p-6" suppressHydrationWarning>
                 <h3 className="font-sans text-lg font-semibold">Kreatli Blog</h3>
                 <p className="text-sm text-foreground-500">
                   Insights, tips, and best practices for creative teams. Discover strategies to streamline your

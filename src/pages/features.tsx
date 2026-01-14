@@ -116,11 +116,26 @@ export default function FeaturesPage() {
           name="description"
           content="Kreatli is a creative production management and media review platform for modern teams. Get frame-accurate revisions, asset-linked conversations, and production management workflows all in one place."
         />
+        <link rel="canonical" href="https://kreatli.com/features" />
+        <meta property="og:url" content="https://kreatli.com/features" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Creative Production & Media Review Platform" />
         <meta
           property="og:description"
           content="Built for creative production workflows with frame-accurate video review, asset-linked conversations, and end-to-end production management in a single platform."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Creative Production & Media Review Platform" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Creative Production & Media Review Platform" />
+        <meta
+          name="twitter:description"
+          content="Built for creative production workflows with frame-accurate video review, asset-linked conversations, and end-to-end production management in a single platform."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

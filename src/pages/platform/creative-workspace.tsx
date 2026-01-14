@@ -24,11 +24,26 @@ export default function CreativeWorkspacePage() {
           name="description"
           content="The Creative Workspace in Kreatli provides a unified platform for creative production management. Project-tied conversations, asset-linked comments, and centralized dashboards streamline your entire creative workflow in one place."
         />
+        <link rel="canonical" href="https://kreatli.com/platform/creative-workspace" />
+        <meta property="og:url" content="https://kreatli.com/platform/creative-workspace" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | The Creative Workspace – Unified Video Production Platform" />
         <meta
           property="og:description"
           content="Experience a unified creative workspace with project-tied chats, asset-linked conversations, and centralized project dashboards. Everything you need for creative production management in one place."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | The Creative Workspace – Unified Video Production Platform" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | The Creative Workspace – Unified Video Production Platform" />
+        <meta
+          name="twitter:description"
+          content="Experience a unified creative workspace with project-tied chats, asset-linked conversations, and centralized project dashboards. Everything you need for creative production management in one place."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

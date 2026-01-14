@@ -27,6 +27,7 @@ export const LogoCheckbox = ({ src, isSelected, label, onSelectionChange }: Prop
       />
       <img
         src={src}
+        alt={label}
         className={cn('opacity-75 transition-all dark:opacity-50 dark:grayscale dark:invert', {
           'opacity-100 dark:opacity-100 dark:brightness-50': isSelected,
         })}

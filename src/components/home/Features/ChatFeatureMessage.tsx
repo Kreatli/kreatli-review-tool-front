@@ -34,7 +34,7 @@ export const ChatFeatureMessage = ({ message, user, userName, date, asset }: Pro
       {asset && (
         <div className="pl-10">
           <div className="relative">
-            <Image src="https://picsum.photos/600/400" width={350} />
+            <Image src="https://picsum.photos/600/400" width={350} alt={asset || 'Chat attachment preview'} />
             <Chip className="absolute left-2 top-2 z-10" size="sm" variant="faded">
               {asset}
             </Chip>

@@ -19,12 +19,26 @@ export default function HowItWorksPage() {
           name="description"
           content="Learn how Kreatli simplifies creative production management. Get started in 4 simple steps: set up projects, invite collaborators, run media review and approval workflows, and deliver final assets."
         />
+        <link rel="canonical" href="https://kreatli.com/how-it-works" />
+        <meta property="og:url" content="https://kreatli.com/how-it-works" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | How It Works – Creative Production & Media Review in 4 Steps" />
         <meta
           property="og:description"
           content="Discover how Kreatli streamlines creative production, media review and approval, and collaboration in a simple 4-step workflow for creative teams."
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | How It Works – Creative Production & Media Review in 4 Steps" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | How It Works – Creative Production & Media Review in 4 Steps" />
+        <meta
+          name="twitter:description"
+          content="Discover how Kreatli streamlines creative production, media review and approval, and collaboration in a simple 4-step workflow for creative teams."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

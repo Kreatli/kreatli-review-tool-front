@@ -340,11 +340,26 @@ export default function HelpPage() {
           name="description"
           content="Find answers to frequently asked questions about Kreatli's video production platform, features, pricing, integrations, and more. Get help with your creative workflow."
         />
+        <link rel="canonical" href="https://kreatli.com/help" />
+        <meta property="og:url" content="https://kreatli.com/help" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Help Center – FAQs and Support Resources" />
         <meta
           property="og:description"
           content="Comprehensive help center with FAQs about Kreatli's features, pricing, integrations, and creative production management platform."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli Help Center – FAQs and Support Resources" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Help Center – FAQs and Support Resources" />
+        <meta
+          name="twitter:description"
+          content="Comprehensive help center with FAQs about Kreatli's features, pricing, integrations, and creative production management platform."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

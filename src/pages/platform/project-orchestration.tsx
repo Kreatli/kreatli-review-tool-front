@@ -23,6 +23,9 @@ export default function ProjectOrchestrationPage() {
           name="description"
           content="Kreatli's Project Orchestration provides centralized project management, status tracking, and team coordination for creative production workflows. Manage all your projects from one dashboard."
         />
+        <link rel="canonical" href="https://kreatli.com/platform/project-orchestration" />
+        <meta property="og:url" content="https://kreatli.com/platform/project-orchestration" />
+        <meta property="og:type" content="website" />
         <meta
           property="og:title"
           content="Kreatli | Project Orchestration – Centralized Creative Production Management"
@@ -31,6 +34,18 @@ export default function ProjectOrchestrationPage() {
           property="og:description"
           content="Orchestrate your creative projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined creative production."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Project Orchestration – Centralized Creative Production Management" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Project Orchestration – Centralized Creative Production Management" />
+        <meta
+          name="twitter:description"
+          content="Orchestrate your creative projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined creative production."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />
