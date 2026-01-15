@@ -104,13 +104,13 @@ const RESOURCES_NAV = {
       title: 'Tools & Comparisons',
       items: [
         {
-          label: 'View All Free Tools',
-          href: '/free-tools',
-          description: 'Browse all our free tools for creative teams',
-        },
-        {
           label: 'Comparisons',
           href: '/comparisons',
+        },
+        {
+          label: 'All Free Tools',
+          href: '/free-tools',
+          description: 'Browse all our free tools for creative teams',
         },
         {
           label: 'Data Transfer Calculator',

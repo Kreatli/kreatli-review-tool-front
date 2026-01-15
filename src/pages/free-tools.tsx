@@ -210,7 +210,7 @@ export default function FreeToolsPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {utilityTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
-                <Card className="h-full border-foreground-200 transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 hover:shadow-lg">
+                <Card className="h-full">
                   <CardBody className="flex flex-col gap-4 p-6">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 rounded-lg bg-foreground-100 p-3">
@@ -257,7 +257,7 @@ export default function FreeToolsPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {creativeTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
-                <Card className="h-full border-foreground-200 transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 hover:shadow-lg">
+                <Card className="h-full">
                   <CardBody className="flex flex-col gap-4 p-6">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 rounded-lg bg-foreground-100 p-3">

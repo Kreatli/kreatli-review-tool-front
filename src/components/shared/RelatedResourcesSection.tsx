@@ -33,15 +33,15 @@ export function RelatedResourcesSection({
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {resources.map((resource) => (
-            <NextLink key={resource.href} href={resource.href} className="h-full group">
-              <Card className="h-full border-foreground-200 transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 hover:shadow-lg">
+            <NextLink key={resource.href} href={resource.href} className="group h-full">
+              <Card className="h-full">
                 <CardBody className="flex flex-col gap-4 p-6">
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 transition-all duration-300 group-hover:from-primary/20 group-hover:to-primary/10">
                       <Icon icon={resource.icon} size={24} className="text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="mb-2 font-sans text-lg font-semibold group-hover:text-primary transition-colors duration-200">
+                      <h3 className="mb-2 font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
                         {resource.title}
                       </h3>
                       <p className="text-sm leading-relaxed text-foreground-500">{resource.description}</p>
@@ -50,7 +50,7 @@ export function RelatedResourcesSection({
                   <Button
                     variant="light"
                     size="sm"
-                    className="mt-auto w-fit group-hover:bg-primary/10 transition-all duration-200"
+                    className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
                     endContent={
                       <Icon
                         icon="arrowRight"

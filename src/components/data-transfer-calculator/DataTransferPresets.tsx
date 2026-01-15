@@ -47,7 +47,7 @@ interface DataTransferPresetsProps {
 
 export const DataTransferPresets = ({ onPresetSelect }: DataTransferPresetsProps) => {
   return (
-    <Card className="w-full border-foreground-200 shadow-sm">
+    <Card className="w-full">
       <CardBody className="p-5">
         <div className="mb-4 flex items-center gap-2">
           <div className="rounded-lg bg-primary/10 p-1.5">
@@ -66,10 +66,10 @@ export const DataTransferPresets = ({ onPresetSelect }: DataTransferPresetsProps
               className="h-auto w-full justify-start px-4 py-3 text-left transition-colors hover:bg-foreground-100"
               aria-label={`Select preset: ${preset.label}`}
             >
-              <div className="flex w-full items-start gap-3">
+              <div className="flex w-full items-center gap-3">
                 {preset.icon && (
-                  <div className="mt-0.5 flex-shrink-0 rounded-md bg-foreground-100 p-1.5">
-                    <Icon icon={preset.icon} size={16} className="text-foreground-600" />
+                  <div className="mt-0.5 flex-shrink-0 rounded-md p-1.5">
+                    <Icon icon={preset.icon} size={20} className="text-foreground-600" />
                   </div>
                 )}
                 <div className="min-w-0 flex-1">

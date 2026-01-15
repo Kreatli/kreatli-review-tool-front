@@ -316,8 +316,8 @@ export const DataTransferCalculator = () => {
     <div className="flex w-full flex-col gap-6">
       <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[1fr_auto] lg:items-start">
         {/* Left side: Calculator */}
-        <div className="flex w-full min-w-0 flex-col gap-6">
-          <Card className="w-full border-foreground-200 shadow-sm">
+        <div className="flex w-full min-w-0 flex-col gap-6 pt-6">
+          <Card className="w-full">
             <CardBody className="flex flex-col gap-6 p-4 sm:p-6 lg:p-8">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -365,7 +365,7 @@ export const DataTransferCalculator = () => {
                         inputWrapper: 'h-12 border-foreground-200',
                         label: 'hidden',
                       }}
-                      className="min-w-0 flex-1"
+                      className="max-w-32"
                       size="lg"
                       startContent={<Icon icon="file" size={18} className="flex-shrink-0 text-foreground-400" />}
                     />
@@ -390,7 +390,7 @@ export const DataTransferCalculator = () => {
                     </Select>
                   </div>
                   <Tooltip content="Total size of all files you want to transfer">
-                    <p className="flex items-center gap-1 text-xs text-foreground-500">
+                    <p className="flex w-fit items-center gap-1 text-xs text-foreground-500">
                       <Icon icon="info" size={14} className="flex-shrink-0" />
                       Total size of all files combined
                     </p>
@@ -419,7 +419,7 @@ export const DataTransferCalculator = () => {
                         inputWrapper: 'h-12 border-foreground-200',
                         label: 'hidden',
                       }}
-                      className="min-w-0 flex-1"
+                      className="max-w-32"
                       size="lg"
                       startContent={<Icon icon="monitorPlay" size={18} className="flex-shrink-0 text-foreground-400" />}
                     />
@@ -444,7 +444,7 @@ export const DataTransferCalculator = () => {
                   </div>
                   <div className="flex flex-col gap-2">
                     <Tooltip content="Your actual upload or download speed (check with your ISP or use speedtest.net)">
-                      <p className="flex items-center gap-1 text-xs text-foreground-500">
+                      <p className="flex w-fit items-center gap-1 text-xs text-foreground-500">
                         <Icon icon="info" size={14} className="flex-shrink-0" />
                         Your connection speed (upload for uploads, download for downloads)
                       </p>
@@ -506,13 +506,14 @@ export const DataTransferCalculator = () => {
                     errorMessage={fileCountError || undefined}
                     isInvalid={!!fileCountError}
                     placeholder="1"
+                    className="max-w-32"
                     classNames={{
                       input: 'text-right text-lg font-semibold',
                       inputWrapper: 'h-12 border-foreground-200',
                       label: 'hidden',
                     }}
                     size="lg"
-                    startContent={<Icon icon="folder" size={18} className="text-foreground-400" />}
+                    startContent={<Icon icon="folder" size={18} className="flex-shrink-0 text-foreground-400" />}
                   />
                   <Tooltip content="If transferring multiple files of the same size, enter the count here">
                     <p className="flex items-center gap-1 text-xs text-foreground-500">
@@ -527,10 +528,8 @@ export const DataTransferCalculator = () => {
         </div>
 
         {/* Right side: Presets */}
-        <div className="lg:sticky lg:top-6 lg:max-h-[calc(100vh-3rem)] lg:w-[280px] lg:overflow-y-auto">
-          <div className="flex flex-col gap-6">
-            <DataTransferPresets onPresetSelect={handlePresetSelect} />
-          </div>
+        <div className="flex flex-col gap-6 pt-6">
+          <DataTransferPresets onPresetSelect={handlePresetSelect} />
         </div>
       </div>
 

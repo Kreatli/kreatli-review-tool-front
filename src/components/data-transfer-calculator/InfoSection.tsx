@@ -16,7 +16,7 @@ export default function InfoSection() {
             </p>
           </div>
 
-          <div className="space-y-6 text-base text-foreground-600">
+          <div className="space-y-6 text-base">
             <div>
               <h3 className="mb-3 font-sans text-xl font-semibold">Mbps vs MB/s: Understanding the Difference</h3>
               <p className="text-foreground-500">
