@@ -201,38 +201,6 @@ export const BannerGuide = () => {
           </Accordion>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Working with YouTube videos, assets, and feedback at scale?
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            <NextLink href="/" className="text-primary hover:underline">
-              Kreatli
-            </NextLink>{' '}
-            is a production management platform built for creative teams. Manage your YouTube content, coordinate with
-            team members, and streamline your creative workflow. Learn more about{' '}
-            <NextLink href="/platform/creative-workspace" className="text-primary hover:underline">
-              our creative workspace
-            </NextLink>{' '}
-            and{' '}
-            <NextLink href="/platform/review-approval" className="text-primary hover:underline">
-              review & approval features
-            </NextLink>
-            .
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Try Kreatli for Free
-            </Button>
-            <Button as={NextLink} href="/free-tools" size="lg" variant="bordered">
-              Explore All Free Tools
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

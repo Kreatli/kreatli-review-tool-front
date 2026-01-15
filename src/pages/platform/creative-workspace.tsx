@@ -1,4 +1,4 @@
-import { Button,Card, CardBody } from '@heroui/react';
+import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
@@ -13,8 +13,75 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
+const faqs = [
+  {
+    question: 'What is a creative workspace platform?',
+    answer:
+      'A creative workspace platform is a unified system that consolidates all creative production management tools into one place. Kreatli\'s creative workspace combines project organization, file storage, team communication, asset-linked feedback, and approval workflows in a single platform. Instead of switching between Google Drive, Slack, email, and project management tools, everything happens in one centralized workspace designed specifically for creative teams.',
+  },
+  {
+    question: 'How do project-tied conversations work in Kreatli?',
+    answer:
+      'Project-tied conversations in Kreatli keep all team discussions organized within specific projects. When you create a conversation in a project, it stays linked to that project context, making it easy to find relevant discussions later. Unlike generic chat tools where conversations get lost in channels, project-tied chats ensure context is preserved. Team members can see all project-related conversations in one place, eliminating the need to search through multiple platforms or email threads.',
+  },
+  {
+    question: 'What are asset-linked comments and why are they important?',
+    answer:
+      'Asset-linked comments are feedback and conversations that are permanently attached to specific files or media assets. In Kreatli, when you comment on a video, image, or document, that comment stays with the file forever—even across versions. This eliminates lost feedback in email threads or chat apps. You can see all comments, approvals, and discussions directly on the asset, making it clear what needs attention and what has been approved. This is crucial for creative workflows where feedback must stay connected to the exact file being reviewed.',
+  },
+  {
+    question: 'How does a unified creative workspace differ from using multiple tools?',
+    answer:
+      'A unified creative workspace like Kreatli replaces the need for multiple separate tools (Google Drive for storage, Slack for communication, email for approvals, project management tools for tracking). Instead of switching between 4-5 different platforms, everything happens in one place. This eliminates context loss, reduces tool-switching overhead, saves 6-8+ hours weekly, and cuts costs by 40-70% compared to multiple subscriptions. All your projects, files, conversations, and approvals are visible in one centralized dashboard, making it easier to track progress and maintain organization.',
+  },
+  {
+    question: 'Can I organize files by project in the creative workspace?',
+    answer:
+      'Yes. Kreatli\'s creative workspace is built around project organization. You can create projects for different clients, campaigns, or productions, and organize all related files, conversations, and team members within each project. Files can be further organized by folders, status (in production, pending review, approved), file type, and custom tags. The centralized dashboard shows project overviews, making it easy to see what\'s in production, what needs review, and what\'s been approved across all your projects.',
+  },
+  {
+    question: 'How does the centralized dashboard help creative teams?',
+    answer:
+      'The centralized dashboard in Kreatli provides a single view of all your creative work. You can see project status, recent activity, pending approvals, team conversations, and file updates in one place. This eliminates the need to check multiple platforms to understand project status. The dashboard shows what needs attention, tracks progress across projects, and provides visibility into team activity. For creative teams managing multiple projects simultaneously, this centralized view is essential for staying organized and meeting deadlines.',
+  },
+  {
+    question: 'Is the creative workspace suitable for remote creative teams?',
+    answer:
+      'Absolutely. Kreatli\'s creative workspace is designed for distributed creative teams. Project-tied conversations and asset-linked comments ensure remote team members stay in context without being in the same room. Real-time notifications keep everyone updated on comments, approvals, and project changes. The unified platform eliminates the confusion of managing work across multiple tools, which is especially important for remote teams who can\'t rely on in-person communication. All team members, clients, and external collaborators can access the same workspace from anywhere.',
+  },
+  {
+    question: 'How does the creative workspace handle file storage and organization?',
+    answer:
+      'Kreatli\'s creative workspace includes secure file storage with drag-and-drop upload, progress tracking, and encrypted storage. Files are organized within projects and can be filtered by status, type, date, and custom tags. Unlike generic cloud storage, files in Kreatli are connected to conversations, approvals, and project context. You can see file versions, approval status, and all related feedback directly on each file. This organization system is built for creative workflows, not adapted from generic file storage solutions.',
+  },
+  {
+    question: 'Can clients access the creative workspace?',
+    answer:
+      'Yes. Clients and external collaborators can access Kreatli\'s creative workspace through secure, no-signup guest review links. They can review files, provide feedback through asset-linked comments, approve versions, and participate in project conversations without creating an account. This makes client collaboration seamless while maintaining security and organization. All client feedback stays linked to the specific files and projects, creating a clear audit trail of approvals and comments.',
+  },
+  {
+    question: 'What makes Kreatli\'s creative workspace different from project management tools?',
+    answer:
+      'Kreatli\'s creative workspace is built specifically for creative production workflows, not adapted from generic project management tools. It tracks status and ownership directly on creative files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands creative workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat creative files as attachments, Kreatli treats files as the primary focus, with conversations, approvals, and organization built around them.',
+  },
+];
+
 export default function CreativeWorkspacePage() {
   useSession();
+
+  // Generate FAQ structured data for SEO/AEO
+  const faqStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <>
@@ -44,6 +111,7 @@ export default function CreativeWorkspacePage() {
           content="Experience a unified creative workspace with project-tied chats, asset-linked conversations, and centralized project dashboards. Everything you need for creative production management in one place."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       </Head>
       <Header />
       <Decorations />
@@ -209,6 +277,39 @@ export default function CreativeWorkspacePage() {
                 </p>
               </CardBody>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-4xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+              Get detailed answers about Kreatli's unified creative workspace and how it streamlines creative production workflows.
+            </p>
+          </div>
+          <Accordion variant="splitted" className="gap-2">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
+                className="py-2"
+              >
+                <div className="text-sm leading-relaxed text-foreground-500 sm:text-base">{faq.answer}</div>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-4 text-center">
+            <h3 className="font-sans text-xl font-bold">Still Have Questions?</h3>
+            <p className="text-foreground-500">
+              If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
+              <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
+                support@kreatli.com
+              </a>{' '}
+              to learn how Kreatli's creative workspace can help your specific workflow.
+            </p>
           </div>
         </div>
       </section>

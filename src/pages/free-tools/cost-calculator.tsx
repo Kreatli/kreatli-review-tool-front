@@ -15,47 +15,23 @@ export default function CostCalculatorPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Cost Calculator – Creative Production Software Savings</title>
+        <title>Software Cost Calculator – Calculate Your Creative Tool Savings | Kreatli</title>
         <meta
           name="description"
-          content="Discover how much you're overpaying for separate tools for creative production, media review and approval, and project management. Use our free cost calculator to compare your current stack with Kreatli's all-in-one platform."
+          content="Use our free software cost calculator to estimate your monthly and annual software spend. Compare your current tool stack costs with Kreatli's all-in-one creative production platform and see potential savings."
         />
-        <meta property="og:title" content="Kreatli | Cost Calculator – Creative Production Software Savings" />
+        <meta property="og:title" content="Software Cost Calculator – Calculate Your Creative Tool Savings | Kreatli" />
         <meta
           property="og:description"
-          content="Compare your current creative production and media review tool costs with Kreatli. See how much you can save by consolidating multiple tools into one platform."
+          content="Calculate your software costs with our interactive calculator. Estimate monthly and annual spend based on team size and tools. Compare with Kreatli to see potential savings."
         />
         <meta property="og:type" content="website" />
       </Head>
       <Header />
       <Decorations />
-      {/* Hero Section */}
-      <section className="relative overflow-hidden px-6 py-16">
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto mb-4 max-w-2xl font-sans text-2xl font-bold sm:text-4xl">
-            How Much Are You Really Spending on Software?
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Creative teams often use 5+ different tools for file sharing, production management, and media review and
-            approval workflows. See how much you could save by consolidating with Kreatli's all-in-one creative
-            production platform.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-6">
-            <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-4xl">60%+</div>
-              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Average Savings</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-4xl">$10K+</div>
-              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Annual Savings Potential</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-4xl">1 Tool</div>
-              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Instead of 5+</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      {/* Hero Section - Software Cost Calculator */}
+      <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" useH1={true} />
 
       {/* Benefits Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -292,10 +268,153 @@ export default function CostCalculatorPage() {
         </div>
       </section>
 
-      {/* Calculator Section with Instructions */}
-      <section className="relative overflow-hidden">
-        <div className="relative z-10">
-          <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" />
+      {/* More Free Tools Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">More Free Tools for Video Teams</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+              Explore our collection of free tools designed to help creative professionals work more efficiently.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <NextLink
+              href="/free-tools/data-transfer-calculator"
+              className="group h-full rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="Calculate data transfer time"
+            >
+              <Card className="h-full border-2 border-transparent transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20">
+                <CardBody className="flex flex-col gap-5 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110">
+                      <Icon icon="upload" size={24} className="text-primary" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                        Data Transfer Calculator
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Calculate how long it takes to upload or download large files. Perfect for video editors and
+                        post-production teams.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Try Now
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+
+            <NextLink
+              href="/social-media-safe-zone-checker"
+              className="group h-full rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="Try Social Media Safe Zone Checker"
+            >
+              <Card className="h-full border-2 border-transparent transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20">
+                <CardBody className="flex flex-col gap-5 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110">
+                      <Icon icon="shield" size={24} className="text-primary" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                        Social Media Safe Zone Checker
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Preview where UI overlays appear on Instagram Reels, TikTok videos, and YouTube Shorts to ensure
+                        your content stays visible.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Try Now
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+
+            <NextLink
+              href="/free-tools/youtube-banner-resizer"
+              className="group h-full rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="Resize YouTube banner"
+            >
+              <Card className="h-full border-2 border-transparent transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20">
+                <CardBody className="flex flex-col gap-5 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-110">
+                      <Icon icon="file" size={24} className="text-primary" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                        YouTube Banner Resizer
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Resize your YouTube channel art to the perfect dimensions. Preview safe areas for mobile,
+                        desktop, tablet, and TV devices.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Try Now
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+          </div>
+
+          <div className="mt-10 text-center">
+            <Button
+              as={NextLink}
+              href="/free-tools"
+              variant="bordered"
+              size="lg"
+              className="group border-foreground-200 px-8 transition-all duration-200 hover:border-primary hover:bg-primary/5 hover:shadow-md"
+              endContent={
+                <Icon
+                  icon="arrowRight"
+                  size={18}
+                  className="transition-transform duration-200 group-hover:translate-x-1"
+                />
+              }
+            >
+              View All Free Tools
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -638,6 +757,125 @@ export default function CostCalculatorPage() {
               </a>{' '}
               for personalized cost analysis and recommendations for your team.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Resources Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Related Resources</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+              Learn more about project management, asset storage, and team collaboration.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <NextLink href="/platform/project-orchestration" className="group h-full">
+              <Card className="h-full border-foreground-200 transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 hover:shadow-lg">
+                <CardBody className="flex flex-col gap-4 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 transition-all duration-300 group-hover:from-primary/20 group-hover:to-primary/10">
+                      <Icon icon="slides" size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                        Project Orchestration
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Centralized project management for creative teams. Assign files, track deliverables, and
+                        coordinate your entire workflow.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Learn More
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+
+            <NextLink href="/platform/secure-asset-storage" className="group h-full">
+              <Card className="h-full border-foreground-200 transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 hover:shadow-lg">
+                <CardBody className="flex flex-col gap-4 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 transition-all duration-300 group-hover:from-primary/20 group-hover:to-primary/10">
+                      <Icon icon="shield" size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                        Secure Asset Storage
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Enterprise-grade storage for creative assets. Organize files, track versions, and protect your
+                        media with reliable infrastructure.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Learn More
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+
+            <NextLink href="/blog" className="group h-full">
+              <Card className="h-full border-foreground-200 transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 hover:shadow-lg">
+                <CardBody className="flex flex-col gap-4 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 transition-all duration-300 group-hover:from-primary/20 group-hover:to-primary/10">
+                      <Icon icon="file" size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                        Kreatli Blog
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Insights, tips, and best practices for creative teams. Discover strategies to streamline your
+                        workflow and reduce costs.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Read Articles
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
           </div>
         </div>
       </section>

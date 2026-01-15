@@ -9,6 +9,7 @@ import InfoSection from '../../components/data-transfer-calculator/InfoSection';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
 export default function DataTransferCalculatorPage() {
@@ -23,7 +24,7 @@ export default function DataTransferCalculatorPage() {
         name: 'How long does it take to upload 100GB?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Upload time for 100GB depends on your internet connection speed. On a typical 100 Mbps connection, uploading 100GB takes approximately 2 hours and 50 minutes, accounting for network overhead. On a faster 1 Gbps connection, the same file would take about 17 minutes.',
+          text: 'Upload time for 100GB depends on your internet connection speed. On a typical 100 Mbps connection, uploading 100GB takes approximately 2 hours and 50 minutes, accounting for network overhead. On a faster 1 Gbps connection, the same file would take about 17 minutes. Most home and office connections have slower upload speeds than download speeds. If your upload speed is 50 Mbps (common for many broadband plans), uploading 100GB would take approximately 5 hours and 40 minutes.',
         },
       },
       {
@@ -31,7 +32,7 @@ export default function DataTransferCalculatorPage() {
         name: 'What internet speed do I need for video work?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "For professional video work, especially with remote collaboration, you'll want at least 100 Mbps upload speed for efficient workflows. This allows you to upload a 10GB file in about 17 minutes, which is reasonable for most production timelines.",
+          text: "For professional video work, especially with remote collaboration, you'll want at least 100 Mbps upload speed for efficient workflows. This allows you to upload a 10GB file in about 17 minutes, which is reasonable for most production timelines. For teams working with larger files (50GB+ projects) or requiring faster turnarounds, 500 Mbps to 1 Gbps upload speeds are recommended.",
         },
       },
       {
@@ -39,7 +40,7 @@ export default function DataTransferCalculatorPage() {
         name: 'Why is my upload slower than my download?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Most internet service providers offer asymmetric connections, where download speeds are significantly faster than upload speeds. This is because typical internet usage (browsing, streaming, downloading) requires more download bandwidth than upload bandwidth.',
+          text: 'Most internet service providers offer asymmetric connections, where download speeds are significantly faster than upload speeds. This is because typical internet usage (browsing, streaming, downloading) requires more download bandwidth than upload bandwidth. For example, a common broadband plan might offer 500 Mbps download but only 50 Mbps upload - a 10:1 ratio. This asymmetry works fine for most users but creates challenges for creative professionals who regularly upload large video files.',
         },
       },
       {
@@ -47,31 +48,69 @@ export default function DataTransferCalculatorPage() {
         name: 'Is this data transfer calculator free?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: "Yes, this data transfer calculator is completely free to use. There's no sign-up required, no account needed, and no hidden fees. The calculator runs entirely in your browser - no data is sent to our servers, and all calculations happen locally on your device.",
+          text: "Yes, this data transfer calculator is completely free to use. There's no sign-up required, no account needed, and no hidden fees. The calculator runs entirely in your browser - no data is sent to our servers, and all calculations happen locally on your device. You can use it as often as you need to calculate transfer times for any file size and internet speed combination.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I calculate file transfer time?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'To calculate file transfer time, you need to know the file size and your internet connection speed. The formula accounts for the difference between bits (used for internet speeds) and bytes (used for file sizes): 1 byte = 8 bits. So 1 MB/s = 8 Mbps. Real-world transfer speeds are slower than theoretical maximums due to network overhead (protocol headers, TCP/IP overhead, network congestion). Our calculator accounts for approximately 85% efficiency, which is a realistic estimate for most internet connections.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the difference between Mbps and MB/s?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Internet speeds are typically measured in Mbps (megabits per second), while file sizes are measured in MB (megabytes) or GB (gigabytes). There is an important distinction: 1 byte = 8 bits, so 1 MB/s = 8 Mbps. This means a 100 Mbps connection can transfer approximately 12.5 MB per second (100 ÷ 8 = 12.5). Understanding this difference is crucial for accurately calculating file transfer times.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How long does it take to upload a 10GB video file?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Upload time for a 10GB video file depends on your upload speed. On a 100 Mbps connection, uploading 10GB takes approximately 17 minutes, accounting for network overhead. On a 50 Mbps connection (common for many broadband plans), it would take about 34 minutes. On a faster 1 Gbps connection, the same file would take about 1.7 minutes. This is why understanding your actual upload speed is crucial for planning file transfers in video production workflows.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Can I use this calculator for multiple files?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, our data transfer calculator supports multiple files. You can add multiple files of different sizes and calculate the total transfer time for all files combined. This is useful for video production teams who need to transfer entire project folders, multiple video exports, or batches of media assets. The calculator will show you the total file size and estimated transfer time for all files together.',
         },
       },
     ],
   };
 
+
   return (
     <>
       <Head>
-        <title>Data Transfer Calculator (Upload & Download Time) | Kreatli</title>
+        <title>Data Transfer Calculator – Calculate Upload & Download Time for Large Files | Kreatli</title>
         <meta
           name="description"
-          content="Calculate how long it takes to upload or download large files. Free data transfer calculator for video, media, and creative teams."
+          content="Free data transfer calculator to estimate upload and download times for large files. Calculate transfer times for video files, media assets, and creative projects. Perfect for video editors, post-production teams, and creative professionals working with heavy media files. Supports MB, GB, TB file sizes and Mbps/Gbps speeds."
         />
-        <meta property="og:title" content="Data Transfer Calculator (Upload & Download Time) | Kreatli" />
+        <meta
+          name="keywords"
+          content="data transfer calculator, upload time calculator, download time calculator, file transfer time, video file upload time, large file transfer, Mbps calculator, internet speed calculator, file size calculator, media transfer calculator, creative workflow tools"
+        />
+        <meta property="og:title" content="Data Transfer Calculator – Calculate Upload & Download Time for Large Files | Kreatli" />
         <meta
           property="og:description"
-          content="Calculate how long it takes to upload or download large files. Free data transfer calculator for video, media, and creative teams."
+          content="Free data transfer calculator to estimate upload and download times for large files. Calculate transfer times for video files, media assets, and creative projects. Perfect for video editors and creative professionals."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kreatli.com/free-tools/data-transfer-calculator" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Data Transfer Calculator (Upload & Download Time) | Kreatli" />
+        <meta name="twitter:title" content="Data Transfer Calculator – Calculate Upload & Download Time for Large Files | Kreatli" />
         <meta
           name="twitter:description"
-          content="Calculate how long it takes to upload or download large files. Free data transfer calculator for video, media, and creative teams."
+          content="Free data transfer calculator to estimate upload and download times for large files. Perfect for video editors and creative professionals."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/data-transfer-calculator" />
         <script
@@ -122,23 +161,14 @@ export default function DataTransferCalculatorPage() {
 
       <main id="main-content">
         {/* Hero Section */}
-        <section className="relative overflow-hidden px-6 py-8">
-          <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-4 text-center">
-            <div className="mb-2 text-sm text-foreground-500">
-              <NextLink href="/free-tools" className="hover:text-primary">
-                Free Tools
-              </NextLink>
-              {' / '}
-              <span className="text-foreground-700">Data Transfer Calculator</span>
-            </div>
-            <h1 className="mx-auto max-w-2xl font-sans text-2xl font-bold sm:text-3xl">Data Transfer Calculator</h1>
-            <p className="mx-auto max-w-2xl text-base text-foreground-500 sm:text-lg">
+        <section className="relative overflow-hidden px-6 py-16">
+          <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
+            <h1 className="mx-auto max-w-3xl font-sans text-2xl font-bold sm:text-4xl">
+              Data Transfer Calculator
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500 sm:text-xl">
               Calculate how long it takes to upload or download large files. Perfect for video editors, post-production
-              teams, and creative professionals working with heavy media files. Part of{' '}
-              <NextLink href="/free-tools" className="text-primary underline underline-offset-2">
-                Kreatli's free tools for creative teams
-              </NextLink>
-              .
+              teams, and creative professionals working with heavy media files.
             </p>
           </div>
         </section>
@@ -150,174 +180,283 @@ export default function DataTransferCalculatorPage() {
           </div>
         </section>
 
-        {/* CTA Section - Below Calculator */}
-        <section className="relative overflow-hidden px-6 py-12">
-          <div className="relative z-10 mx-auto max-w-4xl">
-            <Card className="border-foreground-300 bg-foreground-50 dark:border">
-              <CardBody className="flex flex-col gap-4 p-6 sm:p-8">
-                <p className="text-center text-base text-foreground-600 sm:text-lg">
-                  Large files shouldn't slow down approvals, reviews, or collaboration. Kreatli is a{' '}
-                  <NextLink href="/platform/secure-asset-storage" className="text-primary underline underline-offset-2">
-                    production management platform
-                  </NextLink>{' '}
-                  designed for creative teams working with heavy media. Learn more about{' '}
-                  <NextLink href="/platform/review-approval" className="text-primary underline underline-offset-2">
-                    our review and approval workflow
-                  </NextLink>{' '}
-                  and{' '}
-                  <NextLink href="/how-it-works" className="text-primary underline underline-offset-2">
-                    how Kreatli works
-                  </NextLink>
-                  .
-                </p>
-                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                  <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                    Manage Media Better with Kreatli
-                  </Button>
-                  <Button
-                    as="a"
-                    href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    size="lg"
-                    variant="bordered"
-                  >
-                    Book a Demo
-                  </Button>
-                </div>
-              </CardBody>
-            </Card>
-          </div>
-        </section>
-
         {/* Information sections */}
         <InfoSection />
 
-        {/* FAQ section */}
-        <FAQSection />
-
-        {/* Related Resources Section */}
+        {/* More Tools for Creative Teams Section */}
         <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-          <div className="relative z-10 mx-auto max-w-4xl">
-            <div className="mb-8 text-center">
-              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Related Resources</h2>
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">More Tools for Creative Teams</h2>
               <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-                Learn more about managing large files, optimizing workflows, and improving creative production
-                efficiency.
+                Explore our collection of free tools designed to help creative professionals work more efficiently.
               </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <Card isPressable as={NextLink} href="/blog" className="h-full transition-transform hover:scale-[1.02]">
-                <CardBody className="p-6">
-                  <h3 className="mb-2 font-sans text-lg font-semibold">Blog & Articles</h3>
-                  <p className="text-sm text-foreground-500">
-                    Read expert insights on creative production, file management, workflow optimization, and industry
-                    best practices.
-                  </p>
-                </CardBody>
-              </Card>
-
-              <Card isPressable as={NextLink} href="/guides" className="h-full transition-transform hover:scale-[1.02]">
-                <CardBody className="p-6">
-                  <h3 className="mb-2 font-sans text-lg font-semibold">Guides & Tutorials</h3>
-                  <p className="text-sm text-foreground-500">
-                    Step-by-step guides to help creative teams improve their workflows, manage projects, and collaborate
-                    more effectively.
-                  </p>
-                </CardBody>
-              </Card>
-
-              <Card
-                isPressable
-                as={NextLink}
-                href="/solutions/use-case/creative-production-management"
-                className="h-full transition-transform hover:scale-[1.02]"
+              <NextLink 
+                href="/social-media-safe-zone-checker" 
+                className="h-full group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg transition-all"
+                aria-label="Try Social Media Safe Zone Checker"
               >
-                <CardBody className="p-6">
-                  <h3 className="mb-2 font-sans text-lg font-semibold">Creative Production Solutions</h3>
-                  <p className="text-sm text-foreground-500">
-                    Discover how Kreatli helps creative teams manage production workflows, handle large files, and
-                    streamline collaboration.
-                  </p>
-                </CardBody>
-              </Card>
+                <Card className="h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20 border-2 border-transparent">
+                  <CardBody className="flex flex-col gap-5 p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        <Icon icon="shield" size={24} className="text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="mb-2 font-sans text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                          Social Media Safe Zone Checker
+                        </h3>
+                        <p className="text-sm text-foreground-500 leading-relaxed">
+                          Preview where UI overlays appear on Instagram Reels, TikTok videos, and YouTube Shorts to ensure
+                          your content stays visible.
+                        </p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="bordered"
+                      size="sm"
+                      className="w-full mt-auto border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group-hover:shadow-sm"
+                      endContent={<Icon icon="arrowRight" size={16} className="transition-transform duration-200 group-hover:translate-x-1" />}
+                    >
+                      Try Safe Zone Checker
+                    </Button>
+                  </CardBody>
+                </Card>
+              </NextLink>
 
-              <Card
-                isPressable
-                as={NextLink}
-                href="/platform/integrations"
-                className="h-full transition-transform hover:scale-[1.02]"
+              <NextLink 
+                href="/free-tools/cost-calculator" 
+                className="h-full group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg transition-all"
+                aria-label="Calculate software cost savings"
               >
-                <CardBody className="p-6">
-                  <h3 className="mb-2 font-sans text-lg font-semibold">Platform Integrations</h3>
-                  <p className="text-sm text-foreground-500">
-                    See how Kreatli integrates with your existing creative tools to streamline file transfers and
-                    workflows.
-                  </p>
-                </CardBody>
-              </Card>
+                <Card className="h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20 border-2 border-transparent">
+                  <CardBody className="flex flex-col gap-5 p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        <Icon icon="dollar" size={24} className="text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="mb-2 font-sans text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                          Software Cost Calculator
+                        </h3>
+                        <p className="text-sm text-foreground-500 leading-relaxed">
+                          Calculate how much you're spending on multiple creative tools and see how much you could save by
+                          consolidating with Kreatli.
+                        </p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="bordered"
+                      size="sm"
+                      className="w-full mt-auto border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group-hover:shadow-sm"
+                      endContent={<Icon icon="arrowRight" size={16} className="transition-transform duration-200 group-hover:translate-x-1" />}
+                    >
+                      Calculate Savings
+                    </Button>
+                  </CardBody>
+                </Card>
+              </NextLink>
 
-              <Card
-                isPressable
-                as={NextLink}
-                href="/solutions/industry/video-production-animation-studios"
-                className="h-full transition-transform hover:scale-[1.02]"
+              <NextLink 
+                href="/free-tools/youtube-banner-resizer" 
+                className="h-full group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg transition-all"
+                aria-label="Resize YouTube banner"
               >
-                <CardBody className="p-6">
-                  <h3 className="mb-2 font-sans text-lg font-semibold">For Video Production Teams</h3>
-                  <p className="text-sm text-foreground-500">
-                    Learn how video production and animation studios use Kreatli to manage large media files and
-                    streamline post-production.
-                  </p>
-                </CardBody>
-              </Card>
-
-              <Card
-                isPressable
-                as={NextLink}
-                href="/comparisons"
-                className="h-full transition-transform hover:scale-[1.02]"
-              >
-                <CardBody className="p-6">
-                  <h3 className="mb-2 font-sans text-lg font-semibold">Tool Comparisons</h3>
-                  <p className="text-sm text-foreground-500">
-                    Compare Kreatli with other creative production and file management tools to find the best solution
-                    for your team.
-                  </p>
-                </CardBody>
-              </Card>
+                <Card className="h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20 border-2 border-transparent">
+                  <CardBody className="flex flex-col gap-5 p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                        <Icon icon="file" size={24} className="text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="mb-2 font-sans text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                          YouTube Banner Resizer
+                        </h3>
+                        <p className="text-sm text-foreground-500 leading-relaxed">
+                          Resize your YouTube banner online for free. Preview safe areas for mobile, desktop, and TV. Export perfectly sized channel art in seconds.
+                        </p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="bordered"
+                      size="sm"
+                      className="w-full mt-auto border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group-hover:shadow-sm"
+                      endContent={<Icon icon="arrowRight" size={16} className="transition-transform duration-200 group-hover:translate-x-1" />}
+                    >
+                      Resize Banner
+                    </Button>
+                  </CardBody>
+                </Card>
+              </NextLink>
             </div>
-          </div>
-        </section>
 
-        {/* Final CTA Section */}
-        <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-          <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
-            <h2 className="mx-auto max-w-xl font-sans text-2xl font-bold sm:text-4xl">
-              Ready to Streamline Your Media Workflows?
-            </h2>
-            <p className="mx-auto max-w-xl text-lg text-foreground-500">
-              Kreatli helps creative teams manage large files, streamline approvals, and collaborate more efficiently.
-              Get started today.
-            </p>
-            <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Get Started for Free
-              </Button>
-              <Button
-                as="a"
-                href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                target="_blank"
-                rel="noopener noreferrer"
+            <div className="mt-10 text-center">
+              <Button 
+                as={NextLink} 
+                href="/free-tools" 
+                variant="bordered" 
                 size="lg"
-                variant="bordered"
+                className="border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 hover:shadow-md px-8 group"
+                endContent={<Icon icon="arrowRight" size={18} className="transition-transform duration-200 group-hover:translate-x-1" />}
               >
-                Book a Demo
+                View All Free Tools
               </Button>
             </div>
           </div>
         </section>
+
+        {/* FAQ section */}
+        <FAQSection />
+
+        {/* More Resources Section */}
+        <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">More Resources</h2>
+              <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+                Learn more about secure asset storage, creative workflows, and team collaboration.
+              </p>
+            </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <NextLink href="/platform/secure-asset-storage" className="h-full group">
+              <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border-foreground-200 hover:border-primary/20">
+                <CardBody className="flex flex-col gap-4 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
+                      <Icon icon="shield" size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold group-hover:text-primary transition-colors duration-200">
+                        Secure Asset Storage
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Enterprise-grade storage for large media files. Upload, organize, and share heavy assets with
+                        reliable infrastructure.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit group-hover:bg-primary/10 transition-all duration-200"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Learn More
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+
+            <NextLink href="/platform/creative-workspace" className="h-full group">
+              <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border-foreground-200 hover:border-primary/20">
+                <CardBody className="flex flex-col gap-4 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
+                      <Icon icon="folder" size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold group-hover:text-primary transition-colors duration-200">
+                        Creative Workspace
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Unified workspace for creative production. Organize assets, manage projects, and collaborate with
+                        your team.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit group-hover:bg-primary/10 transition-all duration-200"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Learn More
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+
+            <NextLink href="/blog" className="h-full group">
+              <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border-foreground-200 hover:border-primary/20">
+                <CardBody className="flex flex-col gap-4 p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
+                      <Icon icon="file" size={24} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2 font-sans text-lg font-semibold group-hover:text-primary transition-colors duration-200">
+                        Kreatli Blog
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">
+                        Insights, tips, and best practices for creative teams. Discover strategies to streamline your
+                        workflow and manage large files efficiently.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="mt-auto w-fit group-hover:bg-primary/10 transition-all duration-200"
+                    endContent={
+                      <Icon
+                        icon="arrowRight"
+                        size={16}
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    }
+                  >
+                    Read Articles
+                  </Button>
+                </CardBody>
+              </Card>
+            </NextLink>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
+          <h2 className="mx-auto max-w-xl font-sans text-2xl font-bold sm:text-4xl">
+            Ready to Streamline Your Media Workflows?
+          </h2>
+          <p className="mx-auto max-w-xl text-lg text-foreground-500">
+            Kreatli helps creative teams manage large files, streamline approvals, and collaborate more efficiently.
+            Get started today.
+          </p>
+          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              Get Started for Free
+            </Button>
+            <Button
+              as="a"
+              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              variant="bordered"
+            >
+              Book a Demo
+            </Button>
+          </div>
+        </div>
+      </section>
       </main>
 
       <FooterSection hideCta />

@@ -254,13 +254,13 @@ export const DataTransferCalculator = () => {
   }, [transferTimeSeconds, fileSize, fileSizeUnit, speed, speedUnit, transferType, fileCount, formattedTime]);
 
   return (
-    <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-[1fr_auto] lg:items-start">
+    <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
       {/* Left side: Calculator and Estimated Transfer Time */}
-      <div className="flex w-full flex-col gap-6">
+      <div className="flex w-full flex-col gap-4">
         <Card className="w-full border-foreground-300 dark:border">
-          <CardBody className="flex flex-col gap-6 p-4 sm:p-6">
+          <CardBody className="flex flex-col gap-4 p-4 sm:p-5">
             <div className="flex items-center justify-between">
-              <h3 className="font-sans text-xl font-bold sm:text-2xl">Calculate Transfer Time</h3>
+              <h3 className="font-sans text-lg font-bold sm:text-xl">Calculate Transfer Time</h3>
               <Tooltip content={shareUrlCopied ? 'Link copied!' : 'Share calculator state'}>
                 <Button
                   isIconOnly
@@ -269,12 +269,12 @@ export const DataTransferCalculator = () => {
                   onPress={handleShareUrl}
                   aria-label="Share calculator state via URL"
                 >
-                  <Icon icon={shareUrlCopied ? 'check' : 'share'} size={20} className="text-foreground-500" />
+                  <Icon icon={shareUrlCopied ? 'check' : 'share'} size={18} className="text-foreground-500" />
                 </Button>
               </Tooltip>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               {/* File Size Input */}
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
                 <NumberInput
@@ -287,10 +287,11 @@ export const DataTransferCalculator = () => {
                   errorMessage={fileSizeError || undefined}
                   isInvalid={!!fileSizeError}
                   classNames={{
-                    input: 'text-right',
+                    input: 'text-right text-lg font-semibold',
+                    inputWrapper: 'h-10',
                   }}
                   className="flex-1"
-                  size="md"
+                  size="sm"
                 />
                 <Select
                   selectedKeys={new Set([fileSizeUnit])}
@@ -300,8 +301,11 @@ export const DataTransferCalculator = () => {
                       setFileSizeUnit(selected);
                     }
                   }}
-                  className="w-full sm:w-32"
-                  size="md"
+                  className="w-full sm:w-28"
+                  size="sm"
+                  classNames={{
+                    trigger: 'h-10',
+                  }}
                 >
                   <SelectItem key="MB" value="MB">
                     MB
@@ -327,10 +331,11 @@ export const DataTransferCalculator = () => {
                   errorMessage={speedError || undefined}
                   isInvalid={!!speedError}
                   classNames={{
-                    input: 'text-right',
+                    input: 'text-right text-lg font-semibold',
+                    inputWrapper: 'h-10',
                   }}
                   className="flex-1"
-                  size="md"
+                  size="sm"
                 />
                 <Select
                   selectedKeys={new Set([speedUnit])}
@@ -340,8 +345,11 @@ export const DataTransferCalculator = () => {
                       setSpeedUnit(selected);
                     }
                   }}
-                  className="w-full sm:w-32"
-                  size="md"
+                  className="w-full sm:w-28"
+                  size="sm"
+                  classNames={{
+                    trigger: 'h-10',
+                  }}
                 >
                   <SelectItem key="Mbps" value="Mbps">
                     Mbps
@@ -375,9 +383,10 @@ export const DataTransferCalculator = () => {
                 errorMessage={fileCountError || undefined}
                 isInvalid={!!fileCountError}
                 classNames={{
-                  input: 'text-right',
+                  input: 'text-right text-lg font-semibold',
+                  inputWrapper: 'h-10',
                 }}
-                size="md"
+                size="sm"
               />
             </div>
           </CardBody>
@@ -386,9 +395,9 @@ export const DataTransferCalculator = () => {
         {/* Results Card */}
         {transferTimeSeconds > 0 && (
           <Card className="w-full border-foreground-300 dark:border bg-foreground-50">
-            <CardBody className="flex flex-col gap-4 p-4 sm:p-6">
+            <CardBody className="flex flex-col gap-3 p-4 sm:p-5">
               <div className="flex items-center justify-between">
-                <h3 className="font-sans text-xl font-bold sm:text-2xl">Estimated Transfer Time</h3>
+                <h3 className="font-sans text-lg font-bold sm:text-xl">Estimated Transfer Time</h3>
                 <Tooltip content={copied ? 'Copied!' : 'Copy result'}>
                   <Button
                     isIconOnly
@@ -397,13 +406,13 @@ export const DataTransferCalculator = () => {
                     onPress={handleCopyResult}
                     aria-label="Copy transfer time result to clipboard"
                   >
-                    <Icon icon={copied ? 'check' : 'copy'} size={20} className="text-foreground-500" />
+                    <Icon icon={copied ? 'check' : 'copy'} size={18} className="text-foreground-500" />
                   </Button>
                 </Tooltip>
               </div>
               <div className="flex flex-col gap-2">
-                <div className="font-sans text-3xl font-bold sm:text-4xl text-primary">{formattedTime}</div>
-                <p className="text-base text-foreground-600">{getPlainLanguageExplanation}</p>
+                <div className="font-sans text-2xl font-bold sm:text-3xl text-primary">{formattedTime}</div>
+                <p className="text-sm text-foreground-600">{getPlainLanguageExplanation}</p>
               </div>
             </CardBody>
           </Card>
