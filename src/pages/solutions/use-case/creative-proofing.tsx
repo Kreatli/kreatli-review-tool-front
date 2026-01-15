@@ -131,7 +131,7 @@ const data = {
     {
       question: 'How does feedback become trackable work?',
       answer:
-        'In Kreatli, feedback becomes actionable work with ownership. Comments can be assigned to specific team members, marked as resolved or unresolved, and tracked through the workflow. Unresolved feedback stays visible and tied to the right people, ensuring every comment gets addressed. You can see at a glance which feedback is pending, who\'s responsible for addressing it, and what\'s been resolved. This transforms scattered comments into organized, trackable work items that teams can manage systematically.',
+        "In Kreatli, feedback becomes actionable work with ownership. Comments can be assigned to specific team members, marked as resolved or unresolved, and tracked through the workflow. Unresolved feedback stays visible and tied to the right people, ensuring every comment gets addressed. You can see at a glance which feedback is pending, who's responsible for addressing it, and what's been resolved. This transforms scattered comments into organized, trackable work items that teams can manage systematically.",
     },
     {
       question: 'What happens when I upload a new version?',
@@ -161,32 +161,18 @@ const data = {
     {
       question: 'Can I see all unresolved feedback across multiple projects?',
       answer:
-        'Yes. Kreatli\'s centralized dashboard provides visibility into unresolved feedback across all your projects. You can see which files have pending comments, who\'s responsible for addressing them, and what needs attention. This is essential for creative teams managing multiple projects simultaneously. You can filter by project, assignee, or status to quickly find what needs attention. This eliminates the need to check multiple files or projects individually to understand what feedback is still pending.',
+        "Yes. Kreatli's centralized dashboard provides visibility into unresolved feedback across all your projects. You can see which files have pending comments, who's responsible for addressing them, and what needs attention. This is essential for creative teams managing multiple projects simultaneously. You can filter by project, assignee, or status to quickly find what needs attention. This eliminates the need to check multiple files or projects individually to understand what feedback is still pending.",
     },
     {
       question: 'How do I prevent feedback from getting lost between versions?',
       answer:
-        'Kreatli prevents lost feedback by tying every comment to a specific version and maintaining complete comment history. When you upload a new version, comments from previous versions remain visible and connected to those versions. Unresolved comments stay visible until they\'re marked as resolved, ensuring nothing gets forgotten. The version history shows all comments across all versions, making it easy to see what feedback was given and how it was addressed. This eliminates the common problem of feedback getting lost when new versions are uploaded.',
+        "Kreatli prevents lost feedback by tying every comment to a specific version and maintaining complete comment history. When you upload a new version, comments from previous versions remain visible and connected to those versions. Unresolved comments stay visible until they're marked as resolved, ensuring nothing gets forgotten. The version history shows all comments across all versions, making it easy to see what feedback was given and how it was addressed. This eliminates the common problem of feedback getting lost when new versions are uploaded.",
     },
   ],
 };
 
 export default function CreativeProofingPage() {
   useSession();
-
-  // Generate FAQ structured data for SEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
 
   return (
     <>
@@ -207,7 +193,6 @@ export default function CreativeProofingPage() {
         <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
         <meta name="twitter:description" content={data.metaDescription} />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       </Head>
       <Header />
       <Decorations />

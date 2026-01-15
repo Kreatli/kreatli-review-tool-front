@@ -22,12 +22,12 @@ const faqs = [
   {
     question: 'How do I assign files to team members in Kreatli?',
     answer:
-      'In Kreatli, you can assign files directly to team members within each project. When you assign a file, the assigned team member receives a notification and can see all files assigned to them in their dashboard. You can track who\'s working on what, see the status of all deliverables, and reassign files as needed. File assignments are visible to the entire team, so everyone knows who\'s responsible for each deliverable. This eliminates confusion about ownership and ensures nothing falls through the cracks.',
+      "In Kreatli, you can assign files directly to team members within each project. When you assign a file, the assigned team member receives a notification and can see all files assigned to them in their dashboard. You can track who's working on what, see the status of all deliverables, and reassign files as needed. File assignments are visible to the entire team, so everyone knows who's responsible for each deliverable. This eliminates confusion about ownership and ensures nothing falls through the cracks.",
   },
   {
     question: 'How does status tracking work for creative projects?',
     answer:
-      'Kreatli\'s status tracking lets you set custom statuses for files and projects (e.g., in production, pending review, approved, blocked). You can see the status of all deliverables at a glance in the project dashboard. Status changes are tracked with timestamps and user information, creating a clear audit trail. You can filter files by status to quickly see what needs attention, what\'s in review, and what\'s been approved. This gives you complete visibility into project progress without switching between multiple tools.',
+      "Kreatli's status tracking lets you set custom statuses for files and projects (e.g., in production, pending review, approved, blocked). You can see the status of all deliverables at a glance in the project dashboard. Status changes are tracked with timestamps and user information, creating a clear audit trail. You can filter files by status to quickly see what needs attention, what's in review, and what's been approved. This gives you complete visibility into project progress without switching between multiple tools.",
   },
   {
     question: 'Can I manage multiple projects simultaneously in Kreatli?',
@@ -37,12 +37,12 @@ const faqs = [
   {
     question: 'How does project orchestration differ from generic project management tools?',
     answer:
-      'Kreatli\'s project orchestration is built specifically for creative production workflows, not adapted from generic project management tools. It tracks status and ownership directly on creative files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands creative workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat creative files as attachments, Kreatli treats files as the primary focus, with project organization, conversations, and approvals built around them.',
+      "Kreatli's project orchestration is built specifically for creative production workflows, not adapted from generic project management tools. It tracks status and ownership directly on creative files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands creative workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat creative files as attachments, Kreatli treats files as the primary focus, with project organization, conversations, and approvals built around them.",
   },
   {
     question: 'How do I track deliverables across multiple projects?',
     answer:
-      'Kreatli\'s centralized dashboard provides visibility across all your projects. You can see which deliverables are pending, in review, or approved across all projects in one view. The dashboard shows project status, recent activity, pending approvals, and file updates. You can filter by project, status, assignee, or file type to quickly find what you need. This eliminates the need to check multiple platforms or spreadsheets to understand the status of deliverables across different projects.',
+      "Kreatli's centralized dashboard provides visibility across all your projects. You can see which deliverables are pending, in review, or approved across all projects in one view. The dashboard shows project status, recent activity, pending approvals, and file updates. You can filter by project, status, assignee, or file type to quickly find what you need. This eliminates the need to check multiple platforms or spreadsheets to understand the status of deliverables across different projects.",
   },
   {
     question: 'Can I organize projects by client or campaign?',
@@ -52,36 +52,22 @@ const faqs = [
   {
     question: 'How does team coordination work in project orchestration?',
     answer:
-      'Team coordination in Kreatli happens through project-tied conversations, asset-linked comments, file assignments, and real-time collaboration. All team communication stays within the project context, ensuring everyone has access to relevant discussions. File assignments make it clear who\'s responsible for what. Status tracking shows the progress of all deliverables. Real-time notifications keep team members updated on comments, approvals, and status changes. This eliminates the confusion of managing coordination across multiple tools and ensures everyone stays in sync.',
+      "Team coordination in Kreatli happens through project-tied conversations, asset-linked comments, file assignments, and real-time collaboration. All team communication stays within the project context, ensuring everyone has access to relevant discussions. File assignments make it clear who's responsible for what. Status tracking shows the progress of all deliverables. Real-time notifications keep team members updated on comments, approvals, and status changes. This eliminates the confusion of managing coordination across multiple tools and ensures everyone stays in sync.",
   },
   {
     question: 'Is project orchestration suitable for large-scale productions?',
     answer:
-      'Yes. Kreatli\'s project orchestration handles large-scale productions with hundreds of files, multiple team members, and complex approval workflows. The platform supports organizing files by folders, status, type, and custom tags within each project. You can track the status of every deliverable, assign files to specific team members, and maintain complete version history. The centralized dashboard provides visibility into large projects without overwhelming the interface. Many production studios use Kreatli to orchestrate series with 50+ episodes, campaigns with hundreds of assets, and multi-phase productions.',
+      "Yes. Kreatli's project orchestration handles large-scale productions with hundreds of files, multiple team members, and complex approval workflows. The platform supports organizing files by folders, status, type, and custom tags within each project. You can track the status of every deliverable, assign files to specific team members, and maintain complete version history. The centralized dashboard provides visibility into large projects without overwhelming the interface. Many production studios use Kreatli to orchestrate series with 50+ episodes, campaigns with hundreds of assets, and multi-phase productions.",
   },
   {
     question: 'How does project orchestration help with client deliverables?',
     answer:
-      'Project orchestration in Kreatli helps you track and deliver client work efficiently. You can organize all client deliverables within dedicated projects, track their status (in production, pending review, approved), and see what\'s ready for delivery. File assignments ensure team members know what they\'re responsible for. Status tracking shows which deliverables are complete and which need attention. The centralized dashboard gives you a clear view of all client work, making it easy to provide status updates and ensure nothing is missed. Client review links allow clients to review and approve deliverables directly in the platform.',
+      "Project orchestration in Kreatli helps you track and deliver client work efficiently. You can organize all client deliverables within dedicated projects, track their status (in production, pending review, approved), and see what's ready for delivery. File assignments ensure team members know what they're responsible for. Status tracking shows which deliverables are complete and which need attention. The centralized dashboard gives you a clear view of all client work, making it easy to provide status updates and ensure nothing is missed. Client review links allow clients to review and approve deliverables directly in the platform.",
   },
 ];
 
 export default function ProjectOrchestrationPage() {
   useSession();
-
-  // Generate FAQ structured data for SEO/AEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
 
   return (
     <>
@@ -104,17 +90,22 @@ export default function ProjectOrchestrationPage() {
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Project Orchestration – Centralized Creative Production Management" />
+        <meta
+          property="og:image:alt"
+          content="Kreatli | Project Orchestration – Centralized Creative Production Management"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Project Orchestration – Centralized Creative Production Management" />
+        <meta
+          name="twitter:title"
+          content="Kreatli | Project Orchestration – Centralized Creative Production Management"
+        />
         <meta
           name="twitter:description"
           content="Orchestrate your creative projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined creative production."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       </Head>
       <Header />
       <Decorations />

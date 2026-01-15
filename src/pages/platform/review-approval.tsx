@@ -1,8 +1,6 @@
-/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import React from 'react';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { CompareFeaturePreview } from '../../components/home/Features/CompareFeaturePreview';
@@ -71,20 +69,6 @@ const faqs = [
 export default function ReviewApprovalPage() {
   useSession();
 
-  // Generate FAQ structured data for SEO/AEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <Head>
@@ -113,7 +97,6 @@ export default function ReviewApprovalPage() {
           content="Streamline your media review and approval workflow with frame-accurate comments, version comparison, and secure file sharing. Built for creative production teams."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       </Head>
       <Header />
       <Decorations />

@@ -29,7 +29,14 @@ interface NavigationDropdownProps {
   headerLink?: { label: string; href: string };
 }
 
-export const NavigationDropdown = ({ triggerLabel, triggerHref, items, sections, onItemClick, headerLink }: NavigationDropdownProps) => {
+export const NavigationDropdown = ({
+  triggerLabel,
+  triggerHref,
+  items,
+  sections,
+  onItemClick,
+  headerLink,
+}: NavigationDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 

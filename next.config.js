@@ -622,6 +622,11 @@ const nextConfig = {
         destination: '/comparisons/kreatli-vs-frameio',
         permanent: true,
       },
+      {
+        source: '/cost-calculator',
+        destination: '/free-tools/cost-calculator',
+        permanent: true,
+      },
     ];
   },
   webpack(config) {

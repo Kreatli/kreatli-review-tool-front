@@ -148,12 +148,12 @@ const data = {
     {
       question: 'Can I see approval status across multiple projects?',
       answer:
-        'Yes. Kreatli\'s centralized dashboard provides visibility into approval status across all your projects. You can see which files are pending approval, which have been approved, and which are blocked across multiple client projects in one view. This is essential for agencies managing multiple client accounts simultaneously. You can filter by project, status, client, or assignee to quickly find what needs attention, making it easy to stay on top of approvals across your entire client portfolio.',
+        "Yes. Kreatli's centralized dashboard provides visibility into approval status across all your projects. You can see which files are pending approval, which have been approved, and which are blocked across multiple client projects in one view. This is essential for agencies managing multiple client accounts simultaneously. You can filter by project, status, client, or assignee to quickly find what needs attention, making it easy to stay on top of approvals across your entire client portfolio.",
     },
     {
       question: 'What if a client needs to change their approval?',
       answer:
-        'If a client needs to change their approval or request revisions after approving, they can do so in Kreatli. When a new version is uploaded, the approval status resets, and clients can review and approve the new version. The previous approval remains in the approval history, so you have a complete record of all approvals. This ensures clients only approve versions they\'ve actually reviewed, and you maintain a clear audit trail of the approval process.',
+        "If a client needs to change their approval or request revisions after approving, they can do so in Kreatli. When a new version is uploaded, the approval status resets, and clients can review and approve the new version. The previous approval remains in the approval history, so you have a complete record of all approvals. This ensures clients only approve versions they've actually reviewed, and you maintain a clear audit trail of the approval process.",
     },
     {
       question: 'How does Kreatli prevent approval confusion with multiple versions?',
@@ -168,7 +168,7 @@ const data = {
     {
       question: 'How do I know when a client has approved a file?',
       answer:
-        'Kreatli provides real-time notifications when clients approve files. You\'ll receive immediate alerts through the platform, and the approval appears in your project dashboard right away. The approved file is clearly marked with approval status, and you can see who approved it and when. This eliminates the need to check email or ask clients for status updates. Real-time notifications ensure you never miss an approval and can proceed with production immediately.',
+        "Kreatli provides real-time notifications when clients approve files. You'll receive immediate alerts through the platform, and the approval appears in your project dashboard right away. The approved file is clearly marked with approval status, and you can see who approved it and when. This eliminates the need to check email or ask clients for status updates. Real-time notifications ensure you never miss an approval and can proceed with production immediately.",
     },
     {
       question: 'Can I export approval history for record-keeping?',
@@ -180,20 +180,6 @@ const data = {
 
 export default function ClientApprovalsPage() {
   useSession();
-
-  // Generate FAQ structured data for SEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
 
   return (
     <>
@@ -214,7 +200,6 @@ export default function ClientApprovalsPage() {
         <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
         <meta name="twitter:description" content={data.metaDescription} />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       </Head>
       <Header />
       <Decorations />

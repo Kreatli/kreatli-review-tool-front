@@ -111,20 +111,6 @@ const faqs = [
 export default function FreeToolsPage() {
   useSession();
 
-  // Generate FAQ structured data for SEO/AEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <Head>
@@ -153,36 +139,6 @@ export default function FreeToolsPage() {
           content="Free professional tools for video teams and creative professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'ItemList',
-              name: 'Free Tools for Video Teams',
-              description:
-                'Professional-grade free tools designed to help video professionals and creative teams work more efficiently.',
-              itemListElement: tools.map((tool, index) => ({
-                '@type': 'ListItem',
-                position: index + 1,
-                item: {
-                  '@type': 'SoftwareApplication',
-                  name: tool.title,
-                  description: tool.description,
-                  url: `https://kreatli.com${tool.href}`,
-                  applicationCategory: 'WebApplication',
-                  operatingSystem: 'Web',
-                  offers: {
-                    '@type': 'Offer',
-                    price: '0',
-                    priceCurrency: 'USD',
-                  },
-                },
-              })),
-            }),
-          }}
-        />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       </Head>
       <Header />
       <Decorations />

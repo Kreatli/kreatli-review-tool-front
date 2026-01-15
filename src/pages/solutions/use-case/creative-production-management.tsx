@@ -173,20 +173,6 @@ const data = {
 export default function CreativeProductionManagementPage() {
   useSession();
 
-  // Generate FAQ structured data for SEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <Head>
@@ -206,7 +192,6 @@ export default function CreativeProductionManagementPage() {
         <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
         <meta name="twitter:description" content={data.metaDescription} />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       </Head>
       <Header />
       <Decorations />

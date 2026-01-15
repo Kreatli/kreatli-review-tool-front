@@ -42,32 +42,6 @@ export default function YouTubeBannerResizerPage() {
           content="Resize your YouTube banner to 2560×1440px with safe area previews. Free tool for creating perfect channel art."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/youtube-banner-resizer" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebApplication',
-              name: 'YouTube Banner Resizer',
-              description: 'Free online tool to resize YouTube channel banners to 2560×1440px with safe area previews',
-              url: 'https://kreatli.com/free-tools/youtube-banner-resizer',
-              applicationCategory: 'DesignApplication',
-              operatingSystem: 'Web Browser',
-              offers: {
-                '@type': 'Offer',
-                price: '0',
-                priceCurrency: 'USD',
-              },
-              featureList: [
-                'Resize images to 2560×1440px',
-                'Preview safe areas for all devices',
-                'Export in PNG or JPG format',
-                'No sign-up required',
-                'Privacy-first (all processing in browser)',
-              ],
-            }),
-          }}
-        />
       </Head>
       <Header />
       <Decorations />
