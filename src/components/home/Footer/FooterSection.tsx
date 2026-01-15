@@ -113,37 +113,28 @@ const RESOURCES_NAV = {
           href: '/comparisons',
         },
         {
-          label: 'Software Cost Calculator',
-          href: '/cost-calculator',
-        },
-        {
           label: 'Data Transfer Calculator',
           href: '/free-tools/data-transfer-calculator',
         },
         {
           label: 'Software Cost Calculator',
           href: '/free-tools/cost-calculator',
-          description: 'Calculate your tool stack savings',
         },
         {
           label: 'Instagram Safe Zone Checker',
           href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-          description: 'Preview Instagram Reels UI overlays',
         },
         {
           label: 'TikTok Safe Zone Checker',
           href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
-          description: 'Preview TikTok UI overlays',
         },
         {
           label: 'YouTube Safe Zone Checker',
           href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
-          description: 'Preview YouTube Shorts UI overlays',
         },
         {
           label: 'YouTube Banner Resizer',
           href: '/free-tools/youtube-banner-resizer',
-          description: 'Resize YouTube channel art with safe area preview',
         },
       ],
     },
