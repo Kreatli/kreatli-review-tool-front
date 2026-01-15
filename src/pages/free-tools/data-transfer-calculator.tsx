@@ -1,6 +1,4 @@
-import { Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
-import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { DataTransferCalculator } from '../../components/data-transfer-calculator/DataTransferCalculator';
@@ -9,7 +7,10 @@ import InfoSection from '../../components/data-transfer-calculator/InfoSection';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
-import { Icon } from '../../components/various/Icon';
+import { CTASection } from '../../components/shared/CTASection';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
 export default function DataTransferCalculatorPage() {
@@ -184,279 +185,26 @@ export default function DataTransferCalculatorPage() {
         <InfoSection />
 
         {/* More Tools for Creative Teams Section */}
-        <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-          <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="mb-12 text-center">
-              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">More Tools for Creative Teams</h2>
-              <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-                Explore our collection of free tools designed to help creative professionals work more efficiently.
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <NextLink 
-                href="/social-media-safe-zone-checker" 
-                className="h-full group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg transition-all"
-                aria-label="Try Social Media Safe Zone Checker"
-              >
-                <Card className="h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20 border-2 border-transparent">
-                  <CardBody className="flex flex-col gap-5 p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                        <Icon icon="shield" size={24} className="text-primary" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="mb-2 font-sans text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                          Social Media Safe Zone Checker
-                        </h3>
-                        <p className="text-sm text-foreground-500 leading-relaxed">
-                          Preview where UI overlays appear on Instagram Reels, TikTok videos, and YouTube Shorts to ensure
-                          your content stays visible.
-                        </p>
-                      </div>
-                    </div>
-                    <Button
-                      variant="bordered"
-                      size="sm"
-                      className="w-full mt-auto border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group-hover:shadow-sm"
-                      endContent={<Icon icon="arrowRight" size={16} className="transition-transform duration-200 group-hover:translate-x-1" />}
-                    >
-                      Try Safe Zone Checker
-                    </Button>
-                  </CardBody>
-                </Card>
-              </NextLink>
-
-              <NextLink 
-                href="/free-tools/cost-calculator" 
-                className="h-full group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg transition-all"
-                aria-label="Calculate software cost savings"
-              >
-                <Card className="h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20 border-2 border-transparent">
-                  <CardBody className="flex flex-col gap-5 p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                        <Icon icon="dollar" size={24} className="text-primary" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="mb-2 font-sans text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                          Software Cost Calculator
-                        </h3>
-                        <p className="text-sm text-foreground-500 leading-relaxed">
-                          Calculate how much you're spending on multiple creative tools and see how much you could save by
-                          consolidating with Kreatli.
-                        </p>
-                      </div>
-                    </div>
-                    <Button
-                      variant="bordered"
-                      size="sm"
-                      className="w-full mt-auto border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group-hover:shadow-sm"
-                      endContent={<Icon icon="arrowRight" size={16} className="transition-transform duration-200 group-hover:translate-x-1" />}
-                    >
-                      Calculate Savings
-                    </Button>
-                  </CardBody>
-                </Card>
-              </NextLink>
-
-              <NextLink 
-                href="/free-tools/youtube-banner-resizer" 
-                className="h-full group focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg transition-all"
-                aria-label="Resize YouTube banner"
-              >
-                <Card className="h-full transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group-hover:border-primary/20 border-2 border-transparent">
-                  <CardBody className="flex flex-col gap-5 p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3.5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                        <Icon icon="file" size={24} className="text-primary" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="mb-2 font-sans text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                          YouTube Banner Resizer
-                        </h3>
-                        <p className="text-sm text-foreground-500 leading-relaxed">
-                          Resize your YouTube banner online for free. Preview safe areas for mobile, desktop, and TV. Export perfectly sized channel art in seconds.
-                        </p>
-                      </div>
-                    </div>
-                    <Button
-                      variant="bordered"
-                      size="sm"
-                      className="w-full mt-auto border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 group-hover:shadow-sm"
-                      endContent={<Icon icon="arrowRight" size={16} className="transition-transform duration-200 group-hover:translate-x-1" />}
-                    >
-                      Resize Banner
-                    </Button>
-                  </CardBody>
-                </Card>
-              </NextLink>
-            </div>
-
-            <div className="mt-10 text-center">
-              <Button 
-                as={NextLink} 
-                href="/free-tools" 
-                variant="bordered" 
-                size="lg"
-                className="border-foreground-200 hover:border-primary hover:bg-primary/5 transition-all duration-200 hover:shadow-md px-8 group"
-                endContent={<Icon icon="arrowRight" size={18} className="transition-transform duration-200 group-hover:translate-x-1" />}
-              >
-                View All Free Tools
-              </Button>
-            </div>
-          </div>
-        </section>
+        <MoreFreeToolsSection
+          excludeHref="/free-tools/data-transfer-calculator"
+          title="More Tools for Creative Teams"
+        />
 
         {/* FAQ section */}
         <FAQSection />
 
         {/* More Resources Section */}
-        <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-          <div className="relative z-10 mx-auto max-w-6xl">
-            <div className="mb-12 text-center">
-              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">More Resources</h2>
-              <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-                Learn more about secure asset storage, creative workflows, and team collaboration.
-              </p>
-            </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <NextLink href="/platform/secure-asset-storage" className="h-full group">
-              <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border-foreground-200 hover:border-primary/20">
-                <CardBody className="flex flex-col gap-4 p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
-                      <Icon icon="shield" size={24} className="text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="mb-2 font-sans text-lg font-semibold group-hover:text-primary transition-colors duration-200">
-                        Secure Asset Storage
-                      </h3>
-                      <p className="text-sm leading-relaxed text-foreground-500">
-                        Enterprise-grade storage for large media files. Upload, organize, and share heavy assets with
-                        reliable infrastructure.
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    variant="light"
-                    size="sm"
-                    className="mt-auto w-fit group-hover:bg-primary/10 transition-all duration-200"
-                    endContent={
-                      <Icon
-                        icon="arrowRight"
-                        size={16}
-                        className="transition-transform duration-200 group-hover:translate-x-1"
-                      />
-                    }
-                  >
-                    Learn More
-                  </Button>
-                </CardBody>
-              </Card>
-            </NextLink>
-
-            <NextLink href="/platform/creative-workspace" className="h-full group">
-              <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border-foreground-200 hover:border-primary/20">
-                <CardBody className="flex flex-col gap-4 p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
-                      <Icon icon="folder" size={24} className="text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="mb-2 font-sans text-lg font-semibold group-hover:text-primary transition-colors duration-200">
-                        Creative Workspace
-                      </h3>
-                      <p className="text-sm leading-relaxed text-foreground-500">
-                        Unified workspace for creative production. Organize assets, manage projects, and collaborate with
-                        your team.
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    variant="light"
-                    size="sm"
-                    className="mt-auto w-fit group-hover:bg-primary/10 transition-all duration-200"
-                    endContent={
-                      <Icon
-                        icon="arrowRight"
-                        size={16}
-                        className="transition-transform duration-200 group-hover:translate-x-1"
-                      />
-                    }
-                  >
-                    Learn More
-                  </Button>
-                </CardBody>
-              </Card>
-            </NextLink>
-
-            <NextLink href="/blog" className="h-full group">
-              <Card className="h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border-foreground-200 hover:border-primary/20">
-                <CardBody className="flex flex-col gap-4 p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 p-3 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-300">
-                      <Icon icon="file" size={24} className="text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="mb-2 font-sans text-lg font-semibold group-hover:text-primary transition-colors duration-200">
-                        Kreatli Blog
-                      </h3>
-                      <p className="text-sm leading-relaxed text-foreground-500">
-                        Insights, tips, and best practices for creative teams. Discover strategies to streamline your
-                        workflow and manage large files efficiently.
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    variant="light"
-                    size="sm"
-                    className="mt-auto w-fit group-hover:bg-primary/10 transition-all duration-200"
-                    endContent={
-                      <Icon
-                        icon="arrowRight"
-                        size={16}
-                        className="transition-transform duration-200 group-hover:translate-x-1"
-                      />
-                    }
-                  >
-                    Read Articles
-                  </Button>
-                </CardBody>
-              </Card>
-            </NextLink>
-          </div>
-        </div>
-      </section>
+        <RelatedResourcesSection
+          resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'blog'])}
+          title="More Resources"
+          description="Learn more about secure asset storage, creative workflows, and team collaboration."
+        />
 
       {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
-          <h2 className="mx-auto max-w-xl font-sans text-2xl font-bold sm:text-4xl">
-            Ready to Streamline Your Media Workflows?
-          </h2>
-          <p className="mx-auto max-w-xl text-lg text-foreground-500">
-            Kreatli helps creative teams manage large files, streamline approvals, and collaborate more efficiently.
-            Get started today.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              rel="noopener noreferrer"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Streamline Your Media Workflows?"
+        description="Kreatli helps creative teams manage large files, streamline approvals, and collaborate more efficiently. Get started today."
+      />
       </main>
 
       <FooterSection hideCta />

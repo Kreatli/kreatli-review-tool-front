@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -10,6 +11,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { CTASection } from '../../components/shared/CTASection';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
@@ -22,7 +24,7 @@ const faqs = [
   {
     question: 'How does version comparison work in Kreatli?',
     answer:
-      'Kreatli\'s version comparison feature lets you view different versions of the same file side-by-side. You can compare video versions, image revisions, or document iterations to spot changes instantly. This is perfect for creative proofing where you need to see what changed between versions. The side-by-side view makes it easy to identify differences, provide precise feedback, and ensure nothing is missed. All versions are stored with their full history, so you can compare any previous version with the current one.',
+      "Kreatli's version comparison feature lets you view different versions of the same file side-by-side. You can compare video versions, image revisions, or document iterations to spot changes instantly. This is perfect for creative proofing where you need to see what changed between versions. The side-by-side view makes it easy to identify differences, provide precise feedback, and ensure nothing is missed. All versions are stored with their full history, so you can compare any previous version with the current one.",
   },
   {
     question: 'Can clients review files without creating an account?',
@@ -37,7 +39,7 @@ const faqs = [
   {
     question: 'How do approval workflows work in Kreatli?',
     answer:
-      'Kreatli\'s approval workflows track the approval status for each asset. You can see which files are pending approval, which have been approved, and which are blocked. Each approval is permanently recorded with the exact file version, timestamp, and user information. You can require multiple approvers and track which reviewers have approved and which are still pending. The system maintains complete approval history, so you always know who approved what version and when. This creates an audit trail that protects both agencies and clients.',
+      "Kreatli's approval workflows track the approval status for each asset. You can see which files are pending approval, which have been approved, and which are blocked. Each approval is permanently recorded with the exact file version, timestamp, and user information. You can require multiple approvers and track which reviewers have approved and which are still pending. The system maintains complete approval history, so you always know who approved what version and when. This creates an audit trail that protects both agencies and clients.",
   },
   {
     question: 'What file types can be reviewed in Kreatli?',
@@ -57,12 +59,12 @@ const faqs = [
   {
     question: 'How do I track which version a client approved?',
     answer:
-      'In Kreatli, every approval is permanently linked to the exact file version that was approved. When a client approves a version, the system records the specific version number, timestamp, and user information. You can see the complete approval history for any file, showing which version was approved by whom and when. This eliminates confusion about which version received approval and creates a clear audit trail. If a new version is uploaded, the approval status resets, ensuring clients only approve the versions they\'ve actually reviewed.',
+      "In Kreatli, every approval is permanently linked to the exact file version that was approved. When a client approves a version, the system records the specific version number, timestamp, and user information. You can see the complete approval history for any file, showing which version was approved by whom and when. This eliminates confusion about which version received approval and creates a clear audit trail. If a new version is uploaded, the approval status resets, ensuring clients only approve the versions they've actually reviewed.",
   },
   {
     question: 'Is Kreatli suitable for large video files?',
     answer:
-      'Yes. Kreatli supports large video file uploads and sharing without file size limitations. You can upload and share full-quality videos directly with clients and collaborators through secure review links—no compression, no quality loss. Whether you\'re working with 4K footage, 8K masters, or 15GB+ documentary files, Kreatli handles them seamlessly. Clients can review full-quality videos in their browser without downloading anything. This eliminates the need for WeTransfer, compressed previews, or external file sharing services.',
+      "Yes. Kreatli supports large video file uploads and sharing without file size limitations. You can upload and share full-quality videos directly with clients and collaborators through secure review links—no compression, no quality loss. Whether you're working with 4K footage, 8K masters, or 15GB+ documentary files, Kreatli handles them seamlessly. Clients can review full-quality videos in their browser without downloading anything. This eliminates the need for WeTransfer, compressed previews, or external file sharing services.",
   },
 ];
 
@@ -285,7 +287,8 @@ export default function ReviewApprovalPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about Kreatli's frame-accurate review and approval features for creative production teams.
+              Get detailed answers about Kreatli's frame-accurate review and approval features for creative production
+              teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -313,28 +316,10 @@ export default function ReviewApprovalPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Streamline Your Review Process?</h2>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Experience frame-accurate review and approval workflows designed for creative production teams.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Streamline Your Review Process?"
+        description="Experience frame-accurate review and approval workflows designed for creative production teams."
+      />
       <FooterSection hideCta={true} />
       <SignUpModal />
     </>

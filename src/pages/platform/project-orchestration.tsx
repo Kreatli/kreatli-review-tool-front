@@ -9,6 +9,7 @@ import { ProjectFeaturePreview } from '../../components/home/Features/ProjectFea
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { CTASection } from '../../components/shared/CTASection';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
@@ -307,28 +308,10 @@ export default function ProjectOrchestrationPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Orchestrate Your Projects?</h2>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Experience centralized project management designed for creative production teams. Streamline your workflow.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Orchestrate Your Projects?"
+        description="Experience centralized project management designed for creative production teams. Streamline your workflow."
+      />
       <FooterSection hideCta={true} />
       <SignUpModal />
     </>

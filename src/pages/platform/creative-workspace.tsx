@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -10,6 +11,7 @@ import { StorageFeaturePreview } from '../../components/home/Features/StorageFea
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { CTASection } from '../../components/shared/CTASection';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
@@ -17,7 +19,7 @@ const faqs = [
   {
     question: 'What is a creative workspace platform?',
     answer:
-      'A creative workspace platform is a unified system that consolidates all creative production management tools into one place. Kreatli\'s creative workspace combines project organization, file storage, team communication, asset-linked feedback, and approval workflows in a single platform. Instead of switching between Google Drive, Slack, email, and project management tools, everything happens in one centralized workspace designed specifically for creative teams.',
+      "A creative workspace platform is a unified system that consolidates all creative production management tools into one place. Kreatli's creative workspace combines project organization, file storage, team communication, asset-linked feedback, and approval workflows in a single platform. Instead of switching between Google Drive, Slack, email, and project management tools, everything happens in one centralized workspace designed specifically for creative teams.",
   },
   {
     question: 'How do project-tied conversations work in Kreatli?',
@@ -37,7 +39,7 @@ const faqs = [
   {
     question: 'Can I organize files by project in the creative workspace?',
     answer:
-      'Yes. Kreatli\'s creative workspace is built around project organization. You can create projects for different clients, campaigns, or productions, and organize all related files, conversations, and team members within each project. Files can be further organized by folders, status (in production, pending review, approved), file type, and custom tags. The centralized dashboard shows project overviews, making it easy to see what\'s in production, what needs review, and what\'s been approved across all your projects.',
+      "Yes. Kreatli's creative workspace is built around project organization. You can create projects for different clients, campaigns, or productions, and organize all related files, conversations, and team members within each project. Files can be further organized by folders, status (in production, pending review, approved), file type, and custom tags. The centralized dashboard shows project overviews, making it easy to see what's in production, what needs review, and what's been approved across all your projects.",
   },
   {
     question: 'How does the centralized dashboard help creative teams?',
@@ -47,22 +49,22 @@ const faqs = [
   {
     question: 'Is the creative workspace suitable for remote creative teams?',
     answer:
-      'Absolutely. Kreatli\'s creative workspace is designed for distributed creative teams. Project-tied conversations and asset-linked comments ensure remote team members stay in context without being in the same room. Real-time notifications keep everyone updated on comments, approvals, and project changes. The unified platform eliminates the confusion of managing work across multiple tools, which is especially important for remote teams who can\'t rely on in-person communication. All team members, clients, and external collaborators can access the same workspace from anywhere.',
+      "Absolutely. Kreatli's creative workspace is designed for distributed creative teams. Project-tied conversations and asset-linked comments ensure remote team members stay in context without being in the same room. Real-time notifications keep everyone updated on comments, approvals, and project changes. The unified platform eliminates the confusion of managing work across multiple tools, which is especially important for remote teams who can't rely on in-person communication. All team members, clients, and external collaborators can access the same workspace from anywhere.",
   },
   {
     question: 'How does the creative workspace handle file storage and organization?',
     answer:
-      'Kreatli\'s creative workspace includes secure file storage with drag-and-drop upload, progress tracking, and encrypted storage. Files are organized within projects and can be filtered by status, type, date, and custom tags. Unlike generic cloud storage, files in Kreatli are connected to conversations, approvals, and project context. You can see file versions, approval status, and all related feedback directly on each file. This organization system is built for creative workflows, not adapted from generic file storage solutions.',
+      "Kreatli's creative workspace includes secure file storage with drag-and-drop upload, progress tracking, and encrypted storage. Files are organized within projects and can be filtered by status, type, date, and custom tags. Unlike generic cloud storage, files in Kreatli are connected to conversations, approvals, and project context. You can see file versions, approval status, and all related feedback directly on each file. This organization system is built for creative workflows, not adapted from generic file storage solutions.",
   },
   {
     question: 'Can clients access the creative workspace?',
     answer:
-      'Yes. Clients and external collaborators can access Kreatli\'s creative workspace through secure, no-signup guest review links. They can review files, provide feedback through asset-linked comments, approve versions, and participate in project conversations without creating an account. This makes client collaboration seamless while maintaining security and organization. All client feedback stays linked to the specific files and projects, creating a clear audit trail of approvals and comments.',
+      "Yes. Clients and external collaborators can access Kreatli's creative workspace through secure, no-signup guest review links. They can review files, provide feedback through asset-linked comments, approve versions, and participate in project conversations without creating an account. This makes client collaboration seamless while maintaining security and organization. All client feedback stays linked to the specific files and projects, creating a clear audit trail of approvals and comments.",
   },
   {
-    question: 'What makes Kreatli\'s creative workspace different from project management tools?',
+    question: "What makes Kreatli's creative workspace different from project management tools?",
     answer:
-      'Kreatli\'s creative workspace is built specifically for creative production workflows, not adapted from generic project management tools. It tracks status and ownership directly on creative files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands creative workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat creative files as attachments, Kreatli treats files as the primary focus, with conversations, approvals, and organization built around them.',
+      "Kreatli's creative workspace is built specifically for creative production workflows, not adapted from generic project management tools. It tracks status and ownership directly on creative files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands creative workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat creative files as attachments, Kreatli treats files as the primary focus, with conversations, approvals, and organization built around them.",
   },
 ];
 
@@ -287,7 +289,8 @@ export default function CreativeWorkspacePage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about Kreatli's unified creative workspace and how it streamlines creative production workflows.
+              Get detailed answers about Kreatli's unified creative workspace and how it streamlines creative production
+              workflows.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -315,29 +318,10 @@ export default function CreativeWorkspacePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Unify Your Creative Workspace?</h2>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Experience a platform built specifically for creative teams. Streamline your entire creative production
-            workflow.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Unify Your Creative Workspace?"
+        description="Experience a platform built specifically for creative teams. Streamline your entire creative production workflow."
+      />
       <FooterSection hideCta={true} />
       <SignUpModal />
     </>

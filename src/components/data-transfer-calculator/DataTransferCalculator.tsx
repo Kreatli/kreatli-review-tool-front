@@ -307,13 +307,13 @@ export const DataTransferCalculator = () => {
                     trigger: 'h-10',
                   }}
                 >
-                  <SelectItem key="MB" value="MB">
+                  <SelectItem key="MB">
                     MB
                   </SelectItem>
-                  <SelectItem key="GB" value="GB">
+                  <SelectItem key="GB">
                     GB
                   </SelectItem>
-                  <SelectItem key="TB" value="TB">
+                  <SelectItem key="TB">
                     TB
                   </SelectItem>
                 </Select>
@@ -351,10 +351,10 @@ export const DataTransferCalculator = () => {
                     trigger: 'h-10',
                   }}
                 >
-                  <SelectItem key="Mbps" value="Mbps">
+                  <SelectItem key="Mbps">
                     Mbps
                   </SelectItem>
-                  <SelectItem key="Gbps" value="Gbps">
+                  <SelectItem key="Gbps">
                     Gbps
                   </SelectItem>
                 </Select>

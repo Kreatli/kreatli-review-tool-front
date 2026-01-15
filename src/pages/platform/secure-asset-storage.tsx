@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -9,12 +10,13 @@ import { StorageFeaturePreview } from '../../components/home/Features/StorageFea
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { CTASection } from '../../components/shared/CTASection';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'How secure is Kreatli\'s asset storage?',
+    question: "How secure is Kreatli's asset storage?",
     answer:
       'Kreatli provides enterprise-grade security for asset storage. All files are encrypted at rest and in transit using industry-standard encryption protocols. The platform includes secure file sharing with password protection, access controls, and expiration dates for shareable links. Enterprise-level security features ensure your creative assets are protected from unauthorized access. Kreatli is designed to meet compliance requirements for handling sensitive creative work, making it suitable for agencies and production studios working with confidential client materials.',
   },
@@ -41,12 +43,12 @@ const faqs = [
   {
     question: 'How does Kreatli compare to Google Drive or Dropbox for creative asset storage?',
     answer:
-      'Kreatli is built specifically for creative production workflows, while Google Drive and Dropbox are generic file storage solutions. Kreatli connects files to conversations, approvals, and project context—files aren\'t just stored, they\'re integrated into your creative workflow. The platform includes frame-accurate video review, version comparison, and approval workflows that generic storage can\'t provide. Kreatli also offers better organization for creative teams with project-based structure, status tracking, and asset-linked feedback. While you can integrate Google Drive and Dropbox with Kreatli, the platform provides a more specialized solution for creative production management.',
+      "Kreatli is built specifically for creative production workflows, while Google Drive and Dropbox are generic file storage solutions. Kreatli connects files to conversations, approvals, and project context—files aren't just stored, they're integrated into your creative workflow. The platform includes frame-accurate video review, version comparison, and approval workflows that generic storage can't provide. Kreatli also offers better organization for creative teams with project-based structure, status tracking, and asset-linked feedback. While you can integrate Google Drive and Dropbox with Kreatli, the platform provides a more specialized solution for creative production management.",
   },
   {
     question: 'Is my data backed up in Kreatli?',
     answer:
-      'Yes. Kreatli uses reliable storage infrastructure designed for creative production workflows. Files are stored with redundancy and backup systems to ensure your assets are safe. The platform is built on enterprise-grade infrastructure that provides high availability and data protection. Your creative assets are stored securely with multiple layers of protection against data loss. This reliability is essential for creative teams who can\'t afford to lose work or client deliverables.',
+      "Yes. Kreatli uses reliable storage infrastructure designed for creative production workflows. Files are stored with redundancy and backup systems to ensure your assets are safe. The platform is built on enterprise-grade infrastructure that provides high availability and data protection. Your creative assets are stored securely with multiple layers of protection against data loss. This reliability is essential for creative teams who can't afford to lose work or client deliverables.",
   },
   {
     question: 'Can I share large video files with clients through Kreatli?',
@@ -61,7 +63,7 @@ const faqs = [
   {
     question: 'Can I integrate Kreatli with my existing cloud storage?',
     answer:
-      'Yes. Kreatli integrates with Google Drive and Dropbox, allowing you to connect existing file storage and sync files between platforms. You can continue using your preferred cloud storage while leveraging Kreatli\'s specialized features for production management, media review, and collaboration. However, Kreatli also provides its own secure storage that\'s optimized for creative workflows, with features like version history, asset-linked conversations, and approval workflows that work seamlessly with the platform\'s other capabilities.',
+      "Yes. Kreatli integrates with Google Drive and Dropbox, allowing you to connect existing file storage and sync files between platforms. You can continue using your preferred cloud storage while leveraging Kreatli's specialized features for production management, media review, and collaboration. However, Kreatli also provides its own secure storage that's optimized for creative workflows, with features like version history, asset-linked conversations, and approval workflows that work seamlessly with the platform's other capabilities.",
   },
 ];
 
@@ -103,11 +105,17 @@ export default function SecureAssetStoragePage() {
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams" />
+        <meta
+          property="og:image:alt"
+          content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams" />
+        <meta
+          name="twitter:title"
+          content="Kreatli | Secure Asset Storage – Reliable Media Storage for Creative Teams"
+        />
         <meta
           name="twitter:description"
           content="Secure your creative assets with enterprise-grade storage, smart file organization, and version control. Built for creative production teams."
@@ -282,7 +290,8 @@ export default function SecureAssetStoragePage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about Kreatli's secure asset storage and enterprise-grade media storage for creative teams.
+              Get detailed answers about Kreatli's secure asset storage and enterprise-grade media storage for creative
+              teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -310,28 +319,10 @@ export default function SecureAssetStoragePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Secure Your Creative Assets?</h2>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Experience enterprise-grade secure asset storage designed for creative production teams.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Secure Your Creative Assets?"
+        description="Experience enterprise-grade secure asset storage designed for creative production teams."
+      />
       <FooterSection hideCta={true} />
       <SignUpModal />
     </>
