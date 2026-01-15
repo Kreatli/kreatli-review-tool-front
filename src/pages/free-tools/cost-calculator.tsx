@@ -1,13 +1,16 @@
-import { Accordion, AccordionItem, Alert, Button, Card, CardBody } from '@heroui/react';
+import { Accordion, AccordionItem, Alert, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
-import NextLink from 'next/link';
 
-import { CostCalculatorSection } from '../components/home/CostCalculator';
-import { FooterSection } from '../components/home/Footer/FooterSection';
-import { Header } from '../components/layout/Header';
-import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { Icon } from '../components/various/Icon';
-import { useSession } from '../hooks/useSession';
+import { CostCalculatorSection } from '../../components/home/CostCalculator';
+import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { Header } from '../../components/layout/Header';
+import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { CTASection } from '../../components/shared/CTASection';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { Icon } from '../../components/various/Icon';
+import { getRelatedResources } from '../../data/related-resources';
+import { useSession } from '../../hooks/useSession';
 
 export default function CostCalculatorPage() {
   useSession();
@@ -15,47 +18,23 @@ export default function CostCalculatorPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Cost Calculator – Creative Production Software Savings</title>
+        <title>Software Cost Calculator – Calculate Your Creative Tool Savings | Kreatli</title>
         <meta
           name="description"
-          content="Discover how much you're overpaying for separate tools for creative production, media review and approval, and project management. Use our free cost calculator to compare your current stack with Kreatli's all-in-one platform."
+          content="Use our free software cost calculator to estimate your monthly and annual software spend. Compare your current tool stack costs with Kreatli's all-in-one creative production platform and see potential savings."
         />
-        <meta property="og:title" content="Kreatli | Cost Calculator – Creative Production Software Savings" />
+        <meta property="og:title" content="Software Cost Calculator – Calculate Your Creative Tool Savings | Kreatli" />
         <meta
           property="og:description"
-          content="Compare your current creative production and media review tool costs with Kreatli. See how much you can save by consolidating multiple tools into one platform."
+          content="Calculate your software costs with our interactive calculator. Estimate monthly and annual spend based on team size and tools. Compare with Kreatli to see potential savings."
         />
         <meta property="og:type" content="website" />
       </Head>
       <Header />
       <Decorations />
-      {/* Hero Section */}
-      <section className="relative overflow-hidden px-6 py-16">
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto mb-4 max-w-2xl font-sans text-2xl font-bold sm:text-4xl">
-            How Much Are You Really Spending on Software?
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Creative teams often use 5+ different tools for file sharing, production management, and media review and
-            approval workflows. See how much you could save by consolidating with Kreatli's all-in-one creative
-            production platform.
-          </p>
-          <div className="mt-4 flex flex-wrap justify-center gap-6">
-            <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-4xl">60%+</div>
-              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Average Savings</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-4xl">$10K+</div>
-              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Annual Savings Potential</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-4xl">1 Tool</div>
-              <div className="sm:text-md mx-auto max-w-32 text-sm text-foreground-500">Instead of 5+</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      {/* Hero Section - Software Cost Calculator */}
+      <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" useH1={true} />
 
       {/* Benefits Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -292,12 +271,8 @@ export default function CostCalculatorPage() {
         </div>
       </section>
 
-      {/* Calculator Section with Instructions */}
-      <section className="relative overflow-hidden">
-        <div className="relative z-10">
-          <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" />
-        </div>
-      </section>
+      {/* More Free Tools Section */}
+      <MoreFreeToolsSection excludeHref="/free-tools/cost-calculator" />
 
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -642,32 +617,17 @@ export default function CostCalculatorPage() {
         </div>
       </section>
 
+      {/* Related Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['projectOrchestration', 'secureAssetStorage', 'blog'])}
+        description="Learn more about project management, asset storage, and team collaboration."
+      />
+
       {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
-          <h2 className="mx-auto max-w-xl font-sans text-2xl font-bold sm:text-4xl">
-            Ready to Start Saving on Software Costs?
-          </h2>
-          <p className="mx-auto max-w-xl text-lg text-foreground-500">
-            Join teams that have consolidated their tools and reduced costs by 60% or more. Get started with Kreatli
-            today.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start Free Trial
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Start Saving on Software Costs?"
+        description="Join teams that have consolidated their tools and reduced costs by 60% or more. Get started with Kreatli today."
+      />
       <FooterSection hideCta={true} />
     </>
   );

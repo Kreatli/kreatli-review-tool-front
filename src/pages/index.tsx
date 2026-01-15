@@ -14,6 +14,18 @@ export default function HomePage() {
     <>
       <Head>
         <title>{title}</title>
+        <link rel="canonical" href="https://kreatli.com" />
+        <meta property="og:url" content="https://kreatli.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       {isSignedIn ? <Projects /> : <Home />}

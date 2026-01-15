@@ -28,11 +28,26 @@ export default function GuidesPage({ stories }: Props) {
           name="description"
           content="Access step-by-step guides and tutorials to help you master Kreatli's creative production management platform."
         />
+        <link rel="canonical" href="https://kreatli.com/guides" />
+        <meta property="og:url" content="https://kreatli.com/guides" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Guides – Tutorials and How-To Guides" />
         <meta
           property="og:description"
           content="Learn how to use Kreatli with comprehensive guides and tutorials for creative production management."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Guides – Tutorials and How-To Guides" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Guides – Tutorials and How-To Guides" />
+        <meta
+          name="twitter:description"
+          content="Learn how to use Kreatli with comprehensive guides and tutorials for creative production management."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

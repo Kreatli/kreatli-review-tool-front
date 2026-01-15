@@ -111,7 +111,7 @@ export const Header = () => {
             </NavbarBrand>
           </NavbarItem>
           {!isSignedIn && (
-            <NavbarContent className="hidden xl:flex">
+            <NavbarContent className="hidden xl:flex" justify="center">
               <NavbarItem>
                 <NavigationDropdown
                   triggerLabel="Platform"
@@ -203,20 +203,71 @@ export const Header = () => {
               </NavbarItem>
               <NavbarItem>
                 <NavigationDropdown
+                  triggerLabel="Free Tools"
+                  triggerHref="/free-tools"
+                  headerLink={{ label: 'View All Tools', href: '/free-tools' }}
+                  sections={[
+                    {
+                      title: 'Utility Tools',
+                      items: [
+                        {
+                          label: 'Data Transfer Calculator',
+                          href: '/free-tools/data-transfer-calculator',
+                          description: 'Calculate data transfer times and costs',
+                        },
+                        {
+                          label: 'Software Cost Calculator',
+                          href: '/free-tools/cost-calculator',
+                          description: 'Calculate your tool stack savings',
+                        },
+                      ],
+                    },
+                    {
+                      title: 'Creative Tools',
+                      items: [
+                        {
+                          label: 'YouTube Banner Resizer',
+                          href: '/free-tools/youtube-banner-resizer',
+                          description: 'Resize and optimize YouTube channel banners',
+                        },
+                        {
+                          label: 'Safe Zone Checker',
+                          href: '/social-media-safe-zone-checker',
+                          description: 'Free tool for safe zone checking',
+                          children: [
+                            {
+                              label: 'Instagram Reels Checker',
+                              href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+                              description: 'Preview Instagram Reels safe zones',
+                            },
+                            {
+                              label: 'TikTok Checker',
+                              href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+                              description: 'Preview TikTok safe zones',
+                            },
+                            {
+                              label: 'YouTube Shorts Checker',
+                              href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+                              description: 'Preview YouTube Shorts safe zones',
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ]}
+                />
+              </NavbarItem>
+              <NavbarItem>
+                <NavigationDropdown
                   triggerLabel="Resources"
                   sections={[
                     {
-                      title: 'Support & Learning',
+                      title: 'Support & Updates',
                       items: [
                         {
                           label: 'Help Center',
                           href: '/help',
                           description: 'FAQs and support resources',
-                        },
-                        {
-                          label: 'Guides',
-                          href: '/guides',
-                          description: 'Learning guides and tutorials',
                         },
                         {
                           label: 'Blog',
@@ -226,22 +277,17 @@ export const Header = () => {
                       ],
                     },
                     {
-                      title: 'Tools & Comparisons',
+                      title: 'Learning & Comparisons',
                       items: [
+                        {
+                          label: 'Guides',
+                          href: '/guides',
+                          description: 'Learning guides and tutorials',
+                        },
                         {
                           label: 'Comparisons',
                           href: '/comparisons',
                           description: 'Compare Kreatli with alternatives',
-                        },
-                        {
-                          label: 'Safe Zone Checker',
-                          href: '/social-media-safe-zone-checker',
-                          description: 'Free tool for safe zone checking',
-                        },
-                        {
-                          label: 'Software Cost Calculator',
-                          href: '/cost-calculator',
-                          description: 'Calculate your tool stack savings',
                         },
                       ],
                     },
@@ -249,7 +295,7 @@ export const Header = () => {
                 />
               </NavbarItem>
               <NavbarItem>
-                <Link as={NextLink} href="/pricing" color="foreground">
+                <Link as={NextLink} href="/pricing" color="foreground" className="font-medium">
                   Pricing
                 </Link>
               </NavbarItem>
@@ -414,15 +460,21 @@ export const Header = () => {
                 Creative Proofing
               </Link>
             </NavbarMenuItem>
-            <div className="mb-1 mt-4 font-semibold">Resources</div>
+            <div className="mb-1 mt-4 font-semibold">Free Tools</div>
             <NavbarMenuItem>
-              <Link as={NextLink} href="/help" size="lg" color="foreground" onClick={closeNavbarMenu}>
-                Help Center
+              <Link as={NextLink} href="/free-tools" color="foreground" size="lg" onClick={closeNavbarMenu}>
+                All Free Tools
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link as={NextLink} href="/comparisons" size="lg" color="foreground" onClick={closeNavbarMenu}>
-                Comparisons
+              <Link
+                as={NextLink}
+                href="/free-tools/youtube-banner-resizer"
+                size="lg"
+                color="foreground"
+                onClick={closeNavbarMenu}
+              >
+                YouTube Banner Resizer
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
@@ -437,13 +489,41 @@ export const Header = () => {
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link as={NextLink} href="/cost-calculator" size="lg" color="foreground" onClick={closeNavbarMenu}>
+              <Link
+                as={NextLink}
+                href="/free-tools/data-transfer-calculator"
+                size="lg"
+                color="foreground"
+                onClick={closeNavbarMenu}
+              >
+                Data Transfer Calculator
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link
+                as={NextLink}
+                href="/free-tools/cost-calculator"
+                size="lg"
+                color="foreground"
+                onClick={closeNavbarMenu}
+              >
                 Cost Calculator
+              </Link>
+            </NavbarMenuItem>
+            <div className="mb-1 mt-4 font-semibold">Resources</div>
+            <NavbarMenuItem>
+              <Link as={NextLink} href="/help" size="lg" color="foreground" onClick={closeNavbarMenu}>
+                Help Center
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
               <Link as={NextLink} href="/guides" size="lg" color="foreground" onClick={closeNavbarMenu}>
                 Guides
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link as={NextLink} href="/comparisons" size="lg" color="foreground" onClick={closeNavbarMenu}>
+                Comparisons
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>

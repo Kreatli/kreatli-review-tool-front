@@ -118,27 +118,62 @@ const data = {
     {
       question: 'How do I track client approvals in Kreatli?',
       answer:
-        'Client approvals in Kreatli are tracked automatically. Every file version shows its approval status—approved, pending, or blocked. You can see which approvers have signed off and which are still pending. All approval activity is visible in the project view.',
+        'Client approvals in Kreatli are tracked automatically. Every file version shows its approval status—approved, pending, or blocked. You can see which approvers have signed off and which are still pending. All approval activity is visible in the project view, giving you complete visibility into approval status across all files and projects without needing to check email threads or ask clients for updates.',
     },
     {
       question: 'How can I prove a client approved a specific version?',
       answer:
-        'Every approval in Kreatli is permanently recorded with the exact file version, timestamp, and user information. The approval history shows who approved what, when, and which exact version was approved. This creates an audit trail that protects both agencies and clients.',
+        'Every approval in Kreatli is permanently recorded with the exact file version, timestamp, and user information. The approval history shows who approved what, when, and which exact version was approved. This creates an audit trail that protects both agencies and clients. If disputes arise, you have clear documentation showing which version was approved, when it was approved, and by whom. This eliminates "he said, she said" situations and provides legal protection for both parties.',
     },
     {
       question: 'What happens after a client approves a version?',
       answer:
-        'When a client approves a version in Kreatli, the approved version is clearly marked and locked to prevent accidental changes, the production status updates to show the file is approved, and the approval is permanently recorded in the approval history. Producers see the approval immediately.',
+        'When a client approves a version in Kreatli, the approved version is clearly marked and locked to prevent accidental changes, the production status updates to show the file is approved, and the approval is permanently recorded in the approval history. Producers see the approval immediately through real-time notifications, and the project dashboard reflects the updated status. This ensures everyone on the team knows the file has been approved and can proceed with next steps.',
     },
     {
       question: 'Can I require multiple approvers or set approval order?',
       answer:
-        'Yes. In Kreatli, you can set required approvers for files or projects. The system tracks which approvers have approved and which are still pending, giving you clear visibility into blockers. You can also enforce approval order if multiple people need to approve in sequence.',
+        'Yes. In Kreatli, you can set required approvers for files or projects. The system tracks which approvers have approved and which are still pending, giving you clear visibility into blockers. You can also enforce approval order if multiple people need to approve in sequence (e.g., creative director must approve before client). This is essential for complex approval workflows where multiple stakeholders need to sign off in a specific order.',
     },
     {
       question: 'How do client approvals differ from email or chat approvals?',
       answer:
-        'Client approvals in Kreatli are tied to exact file versions, not links or email threads. When a client approves in Kreatli, that approval is permanently connected to the specific version they reviewed. Every approval is version-specific, timestamped, and recorded with user information.',
+        'Client approvals in Kreatli are tied to exact file versions, not links or email threads. When a client approves in Kreatli, that approval is permanently connected to the specific version they reviewed. Every approval is version-specific, timestamped, and recorded with user information. Unlike email approvals where "Looks good!" doesn\'t specify which version, Kreatli ensures approvals are always linked to the exact file version. This eliminates confusion and provides clear accountability.',
+    },
+    {
+      question: 'Do clients need to create an account to approve files?',
+      answer:
+        'No. Clients can approve files in Kreatli without creating an account. You generate secure, no-signup guest review links and send them to clients. They can access the review interface, view files, add comments, and approve versions—all without signing up. This eliminates approval delays caused by account creation barriers and makes the approval process seamless for clients. The no-signup approach reduces friction and speeds up approval cycles from days to hours.',
+    },
+    {
+      question: 'Can I see approval status across multiple projects?',
+      answer:
+        "Yes. Kreatli's centralized dashboard provides visibility into approval status across all your projects. You can see which files are pending approval, which have been approved, and which are blocked across multiple client projects in one view. This is essential for agencies managing multiple client accounts simultaneously. You can filter by project, status, client, or assignee to quickly find what needs attention, making it easy to stay on top of approvals across your entire client portfolio.",
+    },
+    {
+      question: 'What if a client needs to change their approval?',
+      answer:
+        "If a client needs to change their approval or request revisions after approving, they can do so in Kreatli. When a new version is uploaded, the approval status resets, and clients can review and approve the new version. The previous approval remains in the approval history, so you have a complete record of all approvals. This ensures clients only approve versions they've actually reviewed, and you maintain a clear audit trail of the approval process.",
+    },
+    {
+      question: 'How does Kreatli prevent approval confusion with multiple versions?',
+      answer:
+        'Kreatli prevents approval confusion by tying every approval to the exact file version. Each version is tracked separately, so when a client approves "Version 3," that approval is permanently linked to Version 3 specifically. If Version 4 is uploaded later, the approval status resets, ensuring clients only approve versions they\'ve reviewed. The version history shows all versions and their approval status, making it clear which version is approved and which versions are pending or need review.',
+    },
+    {
+      question: 'Is there a limit to how many approvers I can require?',
+      answer:
+        'No. Kreatli supports multiple required approvers for files and projects. You can set as many approvers as needed for your workflow. The system tracks which approvers have approved and which are still pending, giving you clear visibility into blockers. This is perfect for complex approval workflows where multiple stakeholders (creative director, account manager, client, legal, etc.) all need to sign off. You can see at a glance who has approved and who still needs to provide approval.',
+    },
+    {
+      question: 'How do I know when a client has approved a file?',
+      answer:
+        "Kreatli provides real-time notifications when clients approve files. You'll receive immediate alerts through the platform, and the approval appears in your project dashboard right away. The approved file is clearly marked with approval status, and you can see who approved it and when. This eliminates the need to check email or ask clients for status updates. Real-time notifications ensure you never miss an approval and can proceed with production immediately.",
+    },
+    {
+      question: 'Can I export approval history for record-keeping?',
+      answer:
+        'Yes. Kreatli maintains complete approval history that you can reference at any time. The approval history shows all approvals for every version, including who approved what, when, and which exact version was approved. This creates a permanent audit trail that you can reference for record-keeping, legal protection, or client reporting. The approval history is stored permanently with the project, so you always have documentation of what was approved and when.',
     },
   ],
 };
@@ -146,29 +181,25 @@ const data = {
 export default function ClientApprovalsPage() {
   useSession();
 
-  // Generate FAQ structured data for SEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <Head>
         <title>Kreatli | {data.title} – Creative Production Solution</title>
         <meta name="description" content={data.metaDescription} />
+        <link rel="canonical" href="https://kreatli.com/solutions/use-case/client-approvals" />
+        <meta property="og:url" content="https://kreatli.com/solutions/use-case/client-approvals" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
         <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:type" content="website" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta name="twitter:description" content={data.metaDescription} />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

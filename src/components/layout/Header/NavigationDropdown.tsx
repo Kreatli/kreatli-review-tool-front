@@ -22,12 +22,21 @@ interface DropdownMenuItem {
 
 interface NavigationDropdownProps {
   triggerLabel: string;
+  triggerHref?: string;
   items?: DropdownMenuItem[];
   sections?: Array<{ title: string; items: DropdownMenuItem[] }>;
   onItemClick?: () => void;
+  headerLink?: { label: string; href: string };
 }
 
-export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick }: NavigationDropdownProps) => {
+export const NavigationDropdown = ({
+  triggerLabel,
+  triggerHref,
+  items,
+  sections,
+  onItemClick,
+  headerLink,
+}: NavigationDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -74,8 +83,25 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
               type="button"
               className="flex items-center gap-1 font-medium text-foreground transition-colors hover:text-foreground-600"
             >
-              {triggerLabel}
-              <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+              {triggerHref ? (
+                <>
+                  <NextLink
+                    href={triggerHref}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                    className="hover:text-foreground-600"
+                  >
+                    {triggerLabel}
+                  </NextLink>
+                  <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                </>
+              ) : (
+                <>
+                  {triggerLabel}
+                  <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                </>
+              )}
             </button>
           </PopoverTrigger>
           <PopoverContent className="w-full min-w-[280px] max-w-[calc(100vw-2rem)] p-6 sm:min-w-[320px] sm:max-w-[600px]">
@@ -117,6 +143,18 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
                 </div>
               ))}
             </div>
+            {headerLink && (
+              <div className="mt-6 pt-4">
+                <NextLink
+                  href={headerLink.href}
+                  onClick={handleItemClick}
+                  className="group flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-600"
+                >
+                  {headerLink.label}
+                  <Icon icon="arrowRight" size={14} />
+                </NextLink>
+              </div>
+            )}
           </PopoverContent>
         </Popover>
       </div>
@@ -136,8 +174,25 @@ export const NavigationDropdown = ({ triggerLabel, items, sections, onItemClick 
             type="button"
             className="flex items-center gap-1 font-medium text-foreground transition-colors hover:text-foreground-600"
           >
-            {triggerLabel}
-            <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+            {triggerHref ? (
+              <>
+                <NextLink
+                  href={triggerHref}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  className="hover:text-foreground-600"
+                >
+                  {triggerLabel}
+                </NextLink>
+                <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+              </>
+            ) : (
+              <>
+                {triggerLabel}
+                <Icon icon="chevronDown" size={14} className={`transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+              </>
+            )}
           </button>
         </DropdownTrigger>
         <DropdownMenu aria-label={triggerLabel} className="min-w-[320px]">

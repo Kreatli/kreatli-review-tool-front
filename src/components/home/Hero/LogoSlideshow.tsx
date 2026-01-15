@@ -61,10 +61,21 @@ export const LogoSlideshow = ({ logos, delay = 0, direction = 'bottom' }: Props)
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, []);
 
+  // Extract logo name from path for alt text
+  const getLogoName = (logoPath: string) => {
+    const match = logoPath.match(/\/([^/]+)\.(svg|png|jpg)$/i);
+    if (match) {
+      return match[1].replace(/[-_]/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+    }
+    return 'Partner logo';
+  };
+
+  const currentLogoName = getLogoName(logos[activeIndex]);
+
   return (
     <span className="relative inline">
       <span className="invisible">
-        <img className="inline" src={logos[activeIndex]} width="96" height="24" />
+        <img className="inline" src={logos[activeIndex]} width="96" height="24" alt={currentLogoName} />
       </span>
       <AnimatePresence initial={false} mode="popLayout">
         <motion.img
@@ -72,6 +83,7 @@ export const LogoSlideshow = ({ logos, delay = 0, direction = 'bottom' }: Props)
           src={logos[activeIndex]}
           width="96"
           height="24"
+          alt={currentLogoName}
           className="absolute inset-0 dark:brightness-50 dark:grayscale dark:invert"
           initial={{ y: direction === 'top' ? '100%' : '-100%', opacity: 0 }}
           animate={{ y: '0%', opacity: 1 }}

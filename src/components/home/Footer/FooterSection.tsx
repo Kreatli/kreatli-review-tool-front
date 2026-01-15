@@ -108,24 +108,33 @@ const RESOURCES_NAV = {
           href: '/comparisons',
         },
         {
-          label: 'Safe Zone Checker',
-          href: '/social-media-safe-zone-checker',
+          label: 'All Free Tools',
+          href: '/free-tools',
+          description: 'Browse all our free tools for creative teams',
         },
         {
-          label: 'Instagram Reels Checker',
-          href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-        },
-        {
-          label: 'TikTok Checker',
-          href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
-        },
-        {
-          label: 'YouTube Shorts Checker',
-          href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+          label: 'Data Transfer Calculator',
+          href: '/free-tools/data-transfer-calculator',
         },
         {
           label: 'Software Cost Calculator',
-          href: '/cost-calculator',
+          href: '/free-tools/cost-calculator',
+        },
+        {
+          label: 'Instagram Safe Zone Checker',
+          href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+        },
+        {
+          label: 'TikTok Safe Zone Checker',
+          href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+        },
+        {
+          label: 'YouTube Safe Zone Checker',
+          href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+        },
+        {
+          label: 'YouTube Banner Resizer',
+          href: '/free-tools/youtube-banner-resizer',
         },
       ],
     },
@@ -170,7 +179,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
               <LogoIcon viewBox="0 0 90 22" />
             </Link>
             <div className="max-w-64 text-sm text-foreground-500">
-              End-to-end creative production platform for creative teams.
+              End-to-end video production platform for creative teams.
             </div>
             <Socials />
           </div>

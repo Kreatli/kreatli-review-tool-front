@@ -6,6 +6,8 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { SafeZoneScreen } from '../../components/safe-zone-checker/SafeZoneScreen/SafeZoneScreen';
 import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
+import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
 export default function YouTubeSafeZoneCheckerPage() {
@@ -54,6 +56,12 @@ export default function YouTubeSafeZoneCheckerPage() {
         </div>
       </div>
       <SafeZoneScreenGuide platform="youtube" />
+
+      {/* Related Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['reviewApproval', 'creativeWorkspace', 'blog'])}
+        description="Learn more about creative production workflows, asset management, and team collaboration."
+      />
       <FooterSection hideCta />
       <SignUpModal />
     </>

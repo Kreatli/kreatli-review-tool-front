@@ -71,9 +71,10 @@ type Tool =
 
 interface CostCalculatorSectionProps {
   titleClassName?: string;
+  useH1?: boolean;
 }
 
-export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionProps) => {
+export const CostCalculatorSection = ({ titleClassName, useH1 = false }: CostCalculatorSectionProps) => {
   const [usersCount, setUsersCount] = useState(5);
   const [activeTools, setActiveTools] = useState<Tool[]>(['google-drive', 'asana', 'frame-io']);
 
@@ -118,12 +119,18 @@ export const CostCalculatorSection = ({ titleClassName }: CostCalculatorSectionP
   }, [usersCount]);
 
   return (
-    <section id="software-cost-calculator" className="px-6 py-16 backdrop-blur-lg lg:py-32">
+    <section id="software-cost-calculator" className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:py-24">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 sm:gap-12">
         <div className="flex w-full flex-col gap-4">
-          <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-5xl'}>
-            Software Cost Calculator
-          </h2>
+          {useH1 ? (
+            <h1 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-5xl'}>
+              Software Cost Calculator
+            </h1>
+          ) : (
+            <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-5xl'}>
+              Software Cost Calculator
+            </h2>
+          )}
           <p className="text-center text-lg text-foreground-500">
             Estimate monthly and annual software spend based on team size and tools
           </p>

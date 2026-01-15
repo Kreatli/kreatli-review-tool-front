@@ -7,6 +7,7 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { CTASection } from '../../components/shared/CTASection';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
@@ -21,11 +22,26 @@ export default function IntegrationsPage() {
           name="description"
           content="Kreatli integrates with Google Drive and Dropbox, allowing you to connect your existing cloud storage and import files directly. Seamless integration for creative production workflows."
         />
+        <link rel="canonical" href="https://kreatli.com/platform/integrations" />
+        <meta property="og:url" content="https://kreatli.com/platform/integrations" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
         <meta
           property="og:description"
           content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized creative production features."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
+        <meta
+          name="twitter:description"
+          content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized creative production features."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />
@@ -237,28 +253,10 @@ export default function IntegrationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Connect Your Cloud Storage?</h2>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Integrate Google Drive or Dropbox with Kreatli and experience seamless creative production management.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to Connect Your Cloud Storage?"
+        description="Integrate Google Drive or Dropbox with Kreatli and experience seamless creative production management."
+      />
       <FooterSection hideCta={true} />
       <SignUpModal />
     </>

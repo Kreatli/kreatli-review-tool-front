@@ -24,7 +24,30 @@ export default function Blog({ stories }: Props) {
     <>
       <Head>
         <title>Kreatli | Blog</title>
+        <meta
+          name="description"
+          content="Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow and improve collaboration."
+        />
+        <link rel="canonical" href="https://kreatli.com/blog" />
+        <meta property="og:url" content="https://kreatli.com/blog" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Blog" />
+        <meta
+          property="og:description"
+          content="Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow and improve collaboration."
+        />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Blog" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Blog" />
+        <meta
+          name="twitter:description"
+          content="Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow and improve collaboration."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

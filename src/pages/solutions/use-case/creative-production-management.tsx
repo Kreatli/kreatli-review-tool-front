@@ -173,29 +173,25 @@ const data = {
 export default function CreativeProductionManagementPage() {
   useSession();
 
-  // Generate FAQ structured data for SEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <Head>
         <title>Kreatli | {data.title} – Creative Production Solution</title>
         <meta name="description" content={data.metaDescription} />
+        <link rel="canonical" href="https://kreatli.com/solutions/use-case/creative-production-management" />
+        <meta property="og:url" content="https://kreatli.com/solutions/use-case/creative-production-management" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
         <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:type" content="website" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta name="twitter:description" content={data.metaDescription} />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

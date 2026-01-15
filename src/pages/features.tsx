@@ -116,11 +116,26 @@ export default function FeaturesPage() {
           name="description"
           content="Kreatli is a creative production management and media review platform for modern teams. Get frame-accurate revisions, asset-linked conversations, and production management workflows all in one place."
         />
+        <link rel="canonical" href="https://kreatli.com/features" />
+        <meta property="og:url" content="https://kreatli.com/features" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Creative Production & Media Review Platform" />
         <meta
           property="og:description"
           content="Built for creative production workflows with frame-accurate video review, asset-linked conversations, and end-to-end production management in a single platform."
         />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Creative Production & Media Review Platform" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Creative Production & Media Review Platform" />
+        <meta
+          name="twitter:description"
+          content="Built for creative production workflows with frame-accurate video review, asset-linked conversations, and end-to-end production management in a single platform."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />
@@ -236,7 +251,7 @@ export default function FeaturesPage() {
             <p className="mb-4 text-sm text-foreground-500">
               Why juggle multiple tools when you can have everything in one place?
             </p>
-            <Button as={NextLink} href="/cost-calculator" size="lg" variant="bordered">
+            <Button as={NextLink} href="/free-tools/cost-calculator" size="lg" variant="bordered">
               Calculate Your Savings
             </Button>
           </div>
@@ -527,7 +542,7 @@ export default function FeaturesPage() {
               key="collaboration"
               title={
                 <span className="text-base font-semibold">
-                  How does team collaboration work in Kreatli's creative production platform?
+                  How does team collaboration work in Kreatli's video production platform?
                 </span>
               }
             >
@@ -721,7 +736,7 @@ export default function FeaturesPage() {
                 <p>
                   Kreatli is also valuable for teams currently juggling multiple tools - if you're using separate
                   platforms for file storage, video review, project management, and team communication, Kreatli can
-                  consolidate these into one streamlined creative production platform with integrated media review and
+                  consolidate these into one streamlined video production platform with integrated media review and
                   approval workflows.
                 </p>
               </div>
@@ -731,7 +746,7 @@ export default function FeaturesPage() {
               key="notifications"
               title={
                 <span className="text-base font-semibold">
-                  How do real-time notifications work in Kreatli's creative production platform?
+                  How do real-time notifications work in Kreatli's video production platform?
                 </span>
               }
             >

@@ -111,32 +111,62 @@ const data = {
     {
       question: 'What is creative proofing?',
       answer:
-        'Creative proofing is reviewing creative work and collecting feedback that turns into trackable work. Every upload creates a new version instead of overwriting files, so teams can compare versions and ensure feedback becomes actionable.',
+        'Creative proofing is the process of reviewing creative work and collecting feedback that turns into trackable work. In Kreatli, creative proofing involves uploading files, collecting frame-accurate or area-specific comments, and managing feedback across multiple review rounds. Every upload creates a new version instead of overwriting files, so teams can compare versions, track changes, and ensure feedback becomes actionable work with clear ownership and resolution status.',
     },
     {
       question: 'How do I manage feedback across multiple versions?',
       answer:
-        'In Kreatli, every upload creates a new version, and comments are tied to specific versions. You can compare versions side-by-side to see what changed. Feedback becomes trackable work with ownership, so unresolved comments are visible and tied to the right people.',
+        'In Kreatli, every upload creates a new version, and comments are tied to specific versions. You can compare versions side-by-side to see what changed between iterations. Feedback becomes trackable work with ownership—comments can be assigned to team members, marked as resolved or unresolved, and tracked through the workflow. Unresolved comments remain visible and tied to the right people, ensuring every piece of feedback gets addressed. The version history shows all iterations, making it easy to see how feedback was incorporated across review rounds.',
     },
     {
       question: 'Can reviewers comment directly on videos and images?',
       answer:
-        'Yes! Reviewers can comment directly on files—videos, images, and documents. For videos, comments are tied to specific frames. For images, comments mark specific areas. All comments are tied to the version being reviewed, keeping feedback in context.',
+        'Yes! Reviewers can comment directly on files—videos, images, and documents. For videos, comments are tied to specific frames with frame-accurate precision, eliminating "which clip?" confusion. For images, comments mark specific areas, allowing precise feedback on design elements. All comments are tied to the version being reviewed, keeping feedback in context. Reviewers can add comments, request changes, or approve versions—all without creating an account through secure guest review links.',
     },
     {
       question: 'How does version comparison work?',
       answer:
-        'Kreatli allows you to compare any two versions side-by-side to see exactly what changed. This helps teams understand revisions and verify that requested changes were made. Previous versions remain accessible, so you can always reference earlier iterations or revert if needed.',
+        'Kreatli allows you to compare any two versions side-by-side to see exactly what changed. This helps teams understand revisions, verify that requested changes were made, and ensure nothing was missed. The side-by-side comparison highlights differences between versions, making it easy to spot changes. Previous versions remain accessible in the version history, so you can always reference earlier iterations, compare any two versions, or revert to a previous version if needed. This is essential for creative workflows where multiple iterations are common.',
     },
     {
       question: 'How does feedback become trackable work?',
       answer:
-        'In Kreatli, feedback becomes actionable work with ownership. Comments can be assigned to team members, marked as resolved or unresolved, and tracked through the workflow. Unresolved feedback stays visible and tied to the right people, ensuring every comment gets addressed.',
+        "In Kreatli, feedback becomes actionable work with ownership. Comments can be assigned to specific team members, marked as resolved or unresolved, and tracked through the workflow. Unresolved feedback stays visible and tied to the right people, ensuring every comment gets addressed. You can see at a glance which feedback is pending, who's responsible for addressing it, and what's been resolved. This transforms scattered comments into organized, trackable work items that teams can manage systematically.",
     },
     {
       question: 'What happens when I upload a new version?',
       answer:
-        "When you upload a new version in Kreatli, it doesn't overwrite the previous file—it creates a new version in the history. All previous versions remain accessible, so you can compare versions, reference earlier iterations, or revert if needed. Comments from previous versions stay connected.",
+        "When you upload a new version in Kreatli, it doesn't overwrite the previous file—it creates a new version in the version history. All previous versions remain accessible, so you can compare versions, reference earlier iterations, or revert if needed. Comments from previous versions stay connected to those versions, while new comments can be added to the new version. The version history shows all iterations with timestamps, making it easy to track the evolution of your creative work across multiple review rounds.",
+    },
+    {
+      question: 'Can multiple reviewers provide feedback simultaneously?',
+      answer:
+        'Yes. Multiple reviewers can provide feedback on the same file simultaneously in Kreatli. Each reviewer can add comments, mark specific frames or areas, and provide feedback in real-time. All comments are visible to everyone, and you can see who commented on what. This is perfect for multi-stakeholder review workflows where directors, producers, clients, and team members all need to provide feedback. Real-time notifications keep everyone updated as new comments come in, ensuring collaborative review without conflicts.',
+    },
+    {
+      question: 'How do I track which feedback has been addressed?',
+      answer:
+        'Kreatli tracks feedback resolution status for every comment. Comments can be marked as resolved or unresolved, and you can filter to see only unresolved feedback that needs attention. When you upload a new version addressing feedback, you can mark comments as resolved. The system shows which feedback has been addressed and which is still pending, making it easy to track progress across review rounds. This ensures nothing falls through the cracks and all feedback gets proper attention.',
+    },
+    {
+      question: 'What file types can be proofed in Kreatli?',
+      answer:
+        'Kreatli supports creative proofing for videos (MP4, MOV, AVI, and more), images (JPG, PNG, GIF, etc.), PDFs, and other document formats. The platform is optimized for video proofing with frame-accurate commenting, but also handles images and documents for comprehensive creative review. You can proof any creative asset in your production workflow, making Kreatli suitable for video production, animation, graphic design, and mixed-media projects. All file types support version history and side-by-side comparison.',
+    },
+    {
+      question: 'How does creative proofing differ from generic file review?',
+      answer:
+        'Creative proofing in Kreatli is built specifically for creative workflows, not adapted from generic file review tools. It includes frame-accurate video commenting, version comparison, feedback tracking with ownership, and integration with approval workflows. Unlike generic review tools, Kreatli treats creative files as the primary focus, with comments, versions, and feedback organized around them. The platform understands creative workflows like iterative design, multi-stakeholder review, and version control, making it more effective than generic file review solutions.',
+    },
+    {
+      question: 'Can I see all unresolved feedback across multiple projects?',
+      answer:
+        "Yes. Kreatli's centralized dashboard provides visibility into unresolved feedback across all your projects. You can see which files have pending comments, who's responsible for addressing them, and what needs attention. This is essential for creative teams managing multiple projects simultaneously. You can filter by project, assignee, or status to quickly find what needs attention. This eliminates the need to check multiple files or projects individually to understand what feedback is still pending.",
+    },
+    {
+      question: 'How do I prevent feedback from getting lost between versions?',
+      answer:
+        "Kreatli prevents lost feedback by tying every comment to a specific version and maintaining complete comment history. When you upload a new version, comments from previous versions remain visible and connected to those versions. Unresolved comments stay visible until they're marked as resolved, ensuring nothing gets forgotten. The version history shows all comments across all versions, making it easy to see what feedback was given and how it was addressed. This eliminates the common problem of feedback getting lost when new versions are uploaded.",
     },
   ],
 };
@@ -144,29 +174,25 @@ const data = {
 export default function CreativeProofingPage() {
   useSession();
 
-  // Generate FAQ structured data for SEO
-  const faqStructuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faqs.map((faq) => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer,
-      },
-    })),
-  };
-
   return (
     <>
       <Head>
         <title>Kreatli | {data.title} – Creative Production Solution</title>
         <meta name="description" content={data.metaDescription} />
+        <link rel="canonical" href="https://kreatli.com/solutions/use-case/creative-proofing" />
+        <meta property="og:url" content="https://kreatli.com/solutions/use-case/creative-proofing" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
         <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:type" content="website" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta name="twitter:description" content={data.metaDescription} />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />
@@ -317,10 +343,14 @@ export default function CreativeProofingPage() {
               Get detailed answers about creative proofing for creative teams.
             </p>
           </div>
-          <Accordion variant="splitted">
+          <Accordion variant="splitted" className="gap-2">
             {data.faqs.map((faq, index) => (
-              <AccordionItem key={index} title={<span className="text-lg font-semibold">{faq.question}</span>}>
-                <div className="space-y-3 text-base leading-relaxed text-foreground-500">{faq.answer}</div>
+              <AccordionItem
+                key={index}
+                title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
+                className="py-2"
+              >
+                <div className="text-sm leading-relaxed text-foreground-500 sm:text-base">{faq.answer}</div>
               </AccordionItem>
             ))}
           </Accordion>

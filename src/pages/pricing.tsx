@@ -20,12 +20,26 @@ export default function PricingPage() {
           name="description"
           content="Choose the perfect plan for your creative production and media review workflows. Flexible pricing for creative production management, media review and approval, and collaboration. No hidden fees, cancel anytime."
         />
+        <link rel="canonical" href="https://kreatli.com/pricing" />
+        <meta property="og:url" content="https://kreatli.com/pricing" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="Kreatli | Pricing – Creative Production & Media Review Platform" />
         <meta
           property="og:description"
           content="Flexible pricing for creative production teams of all sizes. Plans for production management, media review and approval, and collaboration. 7-day free trial on all plans. No credit card required to start."
         />
-        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="Kreatli | Pricing – Creative Production & Media Review Platform" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kreatli | Pricing – Creative Production & Media Review Platform" />
+        <meta
+          name="twitter:description"
+          content="Flexible pricing for creative production teams of all sizes. Plans for production management, media review and approval, and collaboration. Free plan available forever. No credit card required to start."
+        />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       {/* Hero Section */}
