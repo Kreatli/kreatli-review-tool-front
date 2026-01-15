@@ -175,32 +175,35 @@ export const BannerExport = ({
   };
 
   return (
-    <div className="rounded-lg border border-foreground-200 bg-content1 p-4">
-      <h3 className="mb-3 font-sans text-sm font-semibold">Export</h3>
+    <div className="rounded-lg border border-foreground-200 bg-content1 p-4 shadow-sm">
+      <div className="mb-3 flex items-center gap-2">
+        <Icon icon="download" size={16} className="text-foreground-400" />
+        <h3 className="font-sans text-sm font-semibold">Export</h3>
+      </div>
       <div className="flex flex-col gap-3">
         <RadioGroup
           value={exportFormat}
           onValueChange={(value) => onExportFormatChange(value as 'png' | 'jpg')}
           orientation="vertical"
+          className="gap-2"
         >
-          <Radio value="png">PNG (Recommended)</Radio>
-          <Radio value="jpg">JPG (Smaller file size)</Radio>
+          <Radio value="png" description="Best quality, larger file size">
+            PNG (Recommended)
+          </Radio>
+          <Radio value="jpg" description="Smaller file size, good quality">
+            JPG (Smaller file size)
+          </Radio>
         </RadioGroup>
         <Button
-          color="primary"
           onPress={handleExport}
           isDisabled={!imageUrl || isExporting}
           isLoading={isExporting}
           startContent={!isExporting ? <Icon icon="download" size={16} /> : undefined}
-          className="w-full"
+          className="w-full bg-foreground text-content1 font-semibold"
+          size="lg"
         >
           {isExporting ? 'Exporting...' : 'Export Banner'}
         </Button>
-        {imageUrl && (
-          <p className="text-xs text-foreground-500">
-            Exports at {CANVAS_WIDTH} × {CANVAS_HEIGHT}px
-          </p>
-        )}
       </div>
     </div>
   );

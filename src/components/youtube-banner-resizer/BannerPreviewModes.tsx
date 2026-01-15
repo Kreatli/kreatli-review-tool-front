@@ -1,5 +1,6 @@
-import { Button, ButtonGroup } from '@heroui/react';
+import { Button, ButtonGroup, Tooltip } from '@heroui/react';
 
+import { Icon } from '../various/Icon';
 import { PreviewMode } from './YouTubeBannerResizer';
 
 interface BannerPreviewModesProps {
@@ -7,40 +8,36 @@ interface BannerPreviewModesProps {
   onPreviewModeChange: (mode: PreviewMode) => void;
 }
 
+const PREVIEW_INFO = {
+  desktop: { label: 'Desktop', description: 'Full banner visible (2560×1440px)' },
+  mobile: { label: 'Mobile', description: 'Center crop (~1280×720px visible)' },
+  tablet: { label: 'Tablet', description: 'Medium crop (~2048×1152px visible)' },
+  tv: { label: 'TV', description: 'Full banner, may crop edges' },
+};
+
 export const BannerPreviewModes = ({ previewMode, onPreviewModeChange }: BannerPreviewModesProps) => {
   return (
-    <div className="rounded-lg border border-foreground-200 bg-content1 p-4">
-      <h3 className="mb-3 font-sans text-sm font-semibold">Device Preview</h3>
+    <div className="rounded-lg border border-foreground-200 bg-content1 p-4 shadow-sm">
+      <div className="mb-3 flex items-center gap-2">
+        <Icon icon="monitorPlay" size={16} className="text-foreground-400" />
+        <h3 className="font-sans text-sm font-semibold">Device Preview</h3>
+      </div>
       <ButtonGroup variant="bordered" className="w-full" isDisabled={false}>
-        <Button
-          size="sm"
-          variant={previewMode === 'desktop' ? 'solid' : 'bordered'}
-          onPress={() => onPreviewModeChange('desktop')}
-        >
-          Desktop
-        </Button>
-        <Button
-          size="sm"
-          variant={previewMode === 'mobile' ? 'solid' : 'bordered'}
-          onPress={() => onPreviewModeChange('mobile')}
-        >
-          Mobile
-        </Button>
-        <Button
-          size="sm"
-          variant={previewMode === 'tablet' ? 'solid' : 'bordered'}
-          onPress={() => onPreviewModeChange('tablet')}
-        >
-          Tablet
-        </Button>
-        <Button
-          size="sm"
-          variant={previewMode === 'tv' ? 'solid' : 'bordered'}
-          onPress={() => onPreviewModeChange('tv')}
-        >
-          TV
-        </Button>
+        {(Object.keys(PREVIEW_INFO) as PreviewMode[]).map((mode) => (
+          <Tooltip key={mode} content={PREVIEW_INFO[mode].description}>
+            <Button
+              size="sm"
+              variant={previewMode === mode ? 'solid' : 'bordered'}
+              color={previewMode === mode ? 'primary' : 'default'}
+              onPress={() => onPreviewModeChange(mode)}
+              className="flex-1"
+            >
+              {PREVIEW_INFO[mode].label}
+            </Button>
+          </Tooltip>
+        ))}
       </ButtonGroup>
+      <p className="mt-2 text-xs text-foreground-500">{PREVIEW_INFO[previewMode].description}</p>
     </div>
   );
 };

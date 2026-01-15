@@ -1,5 +1,5 @@
 import { addToast } from '@heroui/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import { BannerCanvas } from './BannerCanvas';
@@ -83,6 +83,85 @@ export const YouTubeBannerResizer = () => {
   const [previewMode, setPreviewMode] = useState<PreviewMode>('desktop');
   const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png');
   const [isLoadingImage, setIsLoadingImage] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.match(/^image\/(png|jpeg|jpg)$/)) {
+      addToast({ title: 'Please upload a PNG or JPG image', color: 'danger', variant: 'flat' });
+      return;
+    }
+
+    // Validate file size
+    if (file.size > 10 * 1024 * 1024) {
+      addToast({ title: 'File size must be less than 10MB', color: 'danger', variant: 'flat' });
+      return;
+    }
+
+    setIsLoadingImage(true);
+
+    // Clean up previous image URL if exists
+    if (imageState.imageUrl) {
+      URL.revokeObjectURL(imageState.imageUrl);
+    }
+
+    const imageUrl = URL.createObjectURL(file);
+    const img = new Image();
+
+    img.onload = () => {
+      // Validate actual image content
+      if (img.naturalWidth === 0 || img.naturalHeight === 0) {
+        addToast({
+          title: 'Invalid image file. Please upload a valid PNG or JPG image.',
+          color: 'danger',
+          variant: 'flat',
+        });
+        URL.revokeObjectURL(imageUrl);
+        setIsLoadingImage(false);
+        return;
+      }
+
+      // Validate maximum dimensions
+      if (img.naturalWidth > MAX_IMAGE_DIMENSION || img.naturalHeight > MAX_IMAGE_DIMENSION) {
+        addToast({
+          title: `Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`,
+          color: 'danger',
+          variant: 'flat',
+        });
+        URL.revokeObjectURL(imageUrl);
+        setIsLoadingImage(false);
+        return;
+      }
+
+      setImageState({
+        file,
+        imageUrl,
+        naturalWidth: img.naturalWidth,
+        naturalHeight: img.naturalHeight,
+      });
+      setPosition({ x: 0, y: 0 });
+      setIsLoadingImage(false);
+    };
+
+    img.onerror = () => {
+      addToast({
+        title: 'Failed to load image. The file may be corrupted or not a valid image. Please try a different file.',
+        color: 'danger',
+        variant: 'flat',
+      });
+      URL.revokeObjectURL(imageUrl);
+      setIsLoadingImage(false);
+    };
+
+    img.src = imageUrl;
+    // Reset input value to allow selecting the same file again
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
@@ -172,6 +251,10 @@ export const YouTubeBannerResizer = () => {
     setPosition({ x: 0, y: 0 });
   };
 
+  const handleReupload = () => {
+    fileInputRef.current?.click();
+  };
+
   // Keyboard shortcuts for position controls
   useEffect(() => {
     if (!imageState.imageUrl) return;
@@ -227,9 +310,9 @@ export const YouTubeBannerResizer = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
         {/* Canvas Section */}
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 lg:sticky lg:top-6">
           <BannerCanvas
             imageUrl={imageState.imageUrl}
             naturalWidth={imageState.naturalWidth}
@@ -251,15 +334,10 @@ export const YouTubeBannerResizer = () => {
           <BannerControls
             resizeMode={resizeMode}
             onResizeModeChange={setResizeMode}
-            position={position}
-            onPositionChange={setPosition}
-            onResetPosition={handleResetPosition}
             showSafeAreas={showSafeAreas}
             onShowSafeAreasChange={setShowSafeAreas}
             hasImage={!!imageState.imageUrl}
-            naturalWidth={imageState.naturalWidth}
-            naturalHeight={imageState.naturalHeight}
-            resizeModeValue={resizeMode}
+            onReupload={handleReupload}
           />
 
           <BannerPreviewModes previewMode={previewMode} onPreviewModeChange={setPreviewMode} />
@@ -275,6 +353,15 @@ export const YouTubeBannerResizer = () => {
           />
         </div>
       </div>
+      {/* Hidden file input for reupload */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/png,image/jpeg,image/jpg"
+        onChange={handleFileSelect}
+        className="hidden"
+        aria-label="Reupload image"
+      />
     </div>
   );
 };
