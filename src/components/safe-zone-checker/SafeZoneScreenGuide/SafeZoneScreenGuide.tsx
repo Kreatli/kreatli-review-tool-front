@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
+import { MoreFreeToolsSection } from '../../shared/MoreFreeToolsSection';
 import { Icon, IconType } from '../../various/Icon';
 
 interface SafeZoneScreenGuideProps {
@@ -696,6 +697,13 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
         </div>
       </section>
 
+      {/* More Tools for Creative Teams Section */}
+      <MoreFreeToolsSection
+        excludeHref="/social-media-safe-zone-checker"
+        title="More Tools for Creative Teams"
+        description="Explore our collection of free tools designed to help creative professionals work more efficiently."
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
@@ -708,33 +716,6 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Ready to Ensure Your Content Looks Perfect?
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Use our safe zone checker tool to preview your content with accurate platform overlays. Ensure your videos,
-            titles, logos, and CTAs stay visible across all devices and platforms.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
         </div>
       </section>
     </div>

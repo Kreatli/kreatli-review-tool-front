@@ -8,6 +8,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { BannerFAQ } from '../../components/youtube-banner-resizer/BannerFAQ';
 import { BannerGuide } from '../../components/youtube-banner-resizer/BannerGuide';
 import { YouTubeBannerResizer } from '../../components/youtube-banner-resizer/YouTubeBannerResizer';
 import { getRelatedResources } from '../../data/related-resources';
@@ -62,6 +63,9 @@ export default function YouTubeBannerResizerPage() {
 
       {/* Related Tools Section */}
       <MoreFreeToolsSection excludeHref="/free-tools/youtube-banner-resizer" />
+
+      {/* FAQ Section */}
+      <BannerFAQ />
 
       {/* Related Resources Section */}
       <RelatedResourcesSection
