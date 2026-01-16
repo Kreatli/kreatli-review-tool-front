@@ -18,7 +18,6 @@ export const HeroSection = () => {
       <div className="relative z-10 flex w-full flex-col gap-8 px-4 pb-12 pt-6 text-center sm:gap-12 sm:px-6 sm:pb-20 sm:pt-10 lg:gap-16">
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 sm:gap-6">
           <h1 className="font-sans text-2xl font-bold sm:text-4xl md:text-5xl lg:text-7xl">
-            End-to-End{' '}
             <span
               className={cn(
                 'inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent',
@@ -26,11 +25,19 @@ export const HeroSection = () => {
               )}
             >
               Video
+            </span>{' '}
+            Collaboration
+            <br />& Review{' '}
+            <span
+              className={cn(
+                'inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent',
+                styles.animateGradient,
+              )}
+            >
+              Platform
             </span>
             <br />
-            Production Platform for
-            <br />
-            <Typewriter words={typewriterWords} />
+            for <Typewriter words={typewriterWords} />
           </h1>
           <div className="mt-4 flex w-full flex-col items-center gap-3 sm:mt-6 sm:w-auto sm:gap-4 md:flex-row md:gap-6">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
