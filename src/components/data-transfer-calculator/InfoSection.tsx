@@ -1,10 +1,96 @@
-import { Card, CardBody } from '@heroui/react';
+import { Card, CardBody, Image } from '@heroui/react';
 
-import { Icon } from '../various/Icon';
+import { Icon, IconType } from '../various/Icon';
 
 export default function InfoSection() {
+  const workflowSteps = [
+    {
+      step: 1,
+      title: 'Enter Your File Size',
+      description:
+        'In the File Size field, input the total size of the assets you want to transfer. You can enter file size in GB (gigabytes), MB (megabytes), or TB (terabytes) depending on your needs. This might represent a single large video or a combined batch of production assets.',
+      icon: 'file',
+      image: '/data-transfer-guide/enter-file-size.png', // Place screenshot in public/data-transfer-guide/enter-file-size.png
+    },
+    {
+      step: 2,
+      title: 'Select the File Size Unit',
+      description:
+        'Choose the appropriate unit: MB, GB, or TB. Using the correct unit ensures accurate estimates for your file transfer calculations.',
+      icon: 'list',
+      image: '/data-transfer-guide/select-unit.png', // Place screenshot in public/data-transfer-guide/select-unit.png
+    },
+    {
+      step: 3,
+      title: 'Enter Your Transfer Speed',
+      description:
+        'Input your upload or download speed, typically measured in Mbps. This is especially important for uploads, which are often much slower than downloads.',
+      icon: 'upload',
+      image: '/data-transfer-guide/enter-speed.png', // Place screenshot in public/data-transfer-guide/enter-speed.png
+    },
+    {
+      step: 4,
+      title: 'Review the Result',
+      description:
+        'You instantly see the estimated transfer duration, expressed in hours, minutes, or seconds. This allows you to schedule uploads intelligently, set realistic delivery expectations, and avoid deadline surprises.',
+      icon: 'checkCircle',
+      image: null, // No screenshot needed for this step
+    },
+  ];
+
   return (
     <>
+      {/* How to Use Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
+              How to Use the Free Data Transfer Calculator
+            </h2>
+            <p className="mx-auto max-w-2xl text-base text-foreground-500">
+              Follow this step-by-step process to estimate upload and download times for large files accurately.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {workflowSteps.map((item) => (
+              <Card key={item.step} className="scroll-mt-36">
+                <CardBody className="p-6 lg:p-8">
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Icon icon={item.icon as IconType} size={24} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
+                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
+                        </div>
+                      </div>
+                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
+                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                      </div>
+                    </div>
+                    {item.image && (
+                      <div className="mt-6 flex justify-center lg:mt-8">
+                        <div className="relative max-w-full">
+                          <Image
+                            src={item.image}
+                            alt={`${item.title} screenshot`}
+                            removeWrapper
+                            className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* How Data Transfer Time Is Calculated Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
