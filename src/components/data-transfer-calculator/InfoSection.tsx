@@ -1,4 +1,5 @@
-import { Card, CardBody, Image } from '@heroui/react';
+import { Button, Card, CardBody, Image } from '@heroui/react';
+import NextLink from 'next/link';
 
 import { Icon, IconType } from '../various/Icon';
 
@@ -88,6 +89,23 @@ export default function InfoSection() {
                             className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
                           />
                         </div>
+                      </div>
+                    )}
+                    {item.step === 4 && (
+                      <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                          Start for Free
+                        </Button>
+                        <Button
+                          as="a"
+                          href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          size="lg"
+                          variant="bordered"
+                        >
+                          Book a Demo
+                        </Button>
                       </div>
                     )}
                   </div>
