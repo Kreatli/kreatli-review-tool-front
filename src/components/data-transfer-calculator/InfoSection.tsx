@@ -10,7 +10,9 @@ export default function InfoSection() {
       description:
         'In the File Size field, input the total size of the assets you want to transfer. You can enter file size in GB (gigabytes), MB (megabytes), or TB (terabytes) depending on your needs. This might represent a single large video or a combined batch of production assets.',
       icon: 'file',
-      image: '/data-transfer-guide/enter-file-size.png', // Place screenshot in public/data-transfer-guide/enter-file-size.png
+      image: '/data-transfer-guide/enter-file-size.png',
+      altText:
+        'Data transfer calculator showing file size input field for calculating upload and download times for large files',
     },
     {
       step: 2,
@@ -18,7 +20,9 @@ export default function InfoSection() {
       description:
         'Choose the appropriate unit: MB, GB, or TB. Using the correct unit ensures accurate estimates for your file transfer calculations.',
       icon: 'list',
-      image: '/data-transfer-guide/select-unit.png', // Place screenshot in public/data-transfer-guide/select-unit.png
+      image: '/data-transfer-guide/select-unit.png',
+      altText:
+        'Data transfer calculator file size unit selector showing MB, GB, and TB options for accurate transfer time calculations',
     },
     {
       step: 3,
@@ -26,7 +30,9 @@ export default function InfoSection() {
       description:
         'Input your upload or download speed, typically measured in Mbps. This is especially important for uploads, which are often much slower than downloads.',
       icon: 'upload',
-      image: '/data-transfer-guide/enter-speed.png', // Place screenshot in public/data-transfer-guide/enter-speed.png
+      image: '/data-transfer-guide/enter-speed.png',
+      altText:
+        'Data transfer calculator showing internet speed input field in Mbps for calculating file upload and download duration',
     },
     {
       step: 4,
@@ -76,7 +82,8 @@ export default function InfoSection() {
                         <div className="relative max-w-full">
                           <Image
                             src={item.image}
-                            alt={`${item.title} screenshot`}
+                            alt={item.altText || `${item.title} - Data transfer calculator tool screenshot`}
+                            loading="lazy"
                             removeWrapper
                             className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
                           />

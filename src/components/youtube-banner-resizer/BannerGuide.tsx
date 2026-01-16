@@ -19,7 +19,9 @@ export const BannerGuide = () => {
       description:
         "Once uploaded, the tool automatically applies YouTube's recommended banner dimensions (2560 × 1440px) and displays the exact center safe zone (1546 × 423px) that's visible on all devices. Anything outside the safe zone is clearly marked, so you can adjust with confidence.",
       icon: 'file',
-      image: '/youtube-banner-guide/apply-template.png', // Place screenshot in public/youtube-banner-guide/apply-template.png
+      image: '/youtube-banner-guide/apply-template.png',
+      altText:
+        'YouTube banner resizer showing 2560x1440px template with safe zone overlay for mobile, desktop, tablet, and TV devices',
     },
     {
       step: 3,
@@ -27,7 +29,9 @@ export const BannerGuide = () => {
       description:
         'Use the device previews to see how your banner will appear on desktop, mobile, tablet, and TV. Make sure all critical elements like logos, text, and taglines stay within the highlighted safe zone. Decorative visuals can extend beyond it. This step eliminates the trial-and-error usually required when uploading banners directly to YouTube.',
       icon: 'eye',
-      image: '/youtube-banner-guide/preview-devices.png', // Place screenshot in public/youtube-banner-guide/preview-devices.png
+      image: '/youtube-banner-guide/preview-devices.png',
+      altText:
+        'YouTube banner preview showing how channel art appears on desktop, mobile, tablet, and TV with safe zone indicators',
     },
     {
       step: 4,
@@ -35,7 +39,9 @@ export const BannerGuide = () => {
       description:
         "Export the final banner and upload it directly to your YouTube channel. The file will match YouTube's recommended dimensions (2560 × 1440px), preserve safe zone alignment, and display correctly across desktop, mobile, and TV. No further adjustments needed.",
       icon: 'checkCircle',
-      image: '/youtube-banner-guide/export-banner.png', // Place screenshot in public/youtube-banner-guide/export-banner.png
+      image: '/youtube-banner-guide/export-banner.png',
+      altText:
+        'Export YouTube banner button showing download option for 2560x1440px optimized channel art ready for upload',
     },
   ];
 
@@ -254,7 +260,8 @@ export const BannerGuide = () => {
                         <div className="relative max-w-full">
                           <Image
                             src={item.image}
-                            alt={`${item.title} screenshot`}
+                            alt={item.altText || `${item.title} - YouTube banner resizer tool screenshot`}
+                            loading="lazy"
                             removeWrapper
                             className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
                           />

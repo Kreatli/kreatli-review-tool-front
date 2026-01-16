@@ -25,14 +25,18 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
           'Drag and drop your file to see safe zone overlays showing where channel name, subscribe button, like button, comments, share button, and video controls appear.',
         icon: 'upload',
         image: '/safe-zone-guide/upload-asset.png',
+        altText:
+          'YouTube Shorts safe zone checker showing drag and drop upload interface for 1080x1920 vertical video content',
       },
       {
         step: 3,
         title: 'Preview YouTube Shorts UI Overlays',
         description:
-          'See where YouTube\'s interface elements appear: channel name at top, engagement buttons on right, video controls at bottom. Toggle to compare with other platforms.',
+          "See where YouTube's interface elements appear: channel name at top, engagement buttons on right, video controls at bottom. Toggle to compare with other platforms.",
         icon: 'addVideo',
         image: '/safe-zone-guide/toggle-platforms.png',
+        altText:
+          'YouTube Shorts safe zone preview showing UI overlays with channel name, subscribe button, like button, comments, and video controls',
       },
       {
         step: 4,
@@ -49,6 +53,8 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
           'Download with safe zone overlays as reference. Share with team and ensure all important elements stay visible when uploading to YouTube.',
         icon: 'checkCircle',
         image: '/safe-zone-guide/export-download.png',
+        altText:
+          'YouTube Shorts safe zone checker export button showing download option with safe zone overlay reference for team sharing',
       },
     ];
   }
@@ -70,14 +76,18 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
           'Drag and drop your file. See where profile picture, username, like button, comment button, share button, and music display will appear.',
         icon: 'upload',
         image: '/safe-zone-guide/upload-asset.png',
+        altText:
+          'Instagram Reels safe zone checker showing drag and drop upload interface for 1080x1920 vertical video content',
       },
       {
         step: 3,
         title: 'Preview Instagram Reels UI Overlays',
         description:
-          'See where Instagram\'s interface elements appear - profile picture and username at top, engagement buttons on right, music track display.',
+          "See where Instagram's interface elements appear - profile picture and username at top, engagement buttons on right, music track display.",
         icon: 'addVideo',
         image: '/safe-zone-guide/toggle-platforms.png',
+        altText:
+          'Instagram Reels safe zone preview showing UI overlays with profile picture, username, like button, comment button, share button, and music display',
       },
       {
         step: 4,
@@ -94,6 +104,8 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
           'Download with safe zone overlays as reference. Share with team, document layout decisions, and publish with confidence.',
         icon: 'checkCircle',
         image: '/safe-zone-guide/export-download.png',
+        altText:
+          'Instagram Reels safe zone checker export button showing download option with safe zone overlay reference for team collaboration',
       },
     ];
   }
@@ -115,14 +127,17 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
           'Drag and drop your file to see safe zone overlays showing where profile picture, username, music track, like button, comment button, share button, and follow button appear.',
         icon: 'upload',
         image: '/safe-zone-guide/upload-asset.png',
+        altText: 'TikTok safe zone checker showing drag and drop upload interface for 1080x1920 vertical video content',
       },
       {
         step: 3,
         title: 'Preview TikTok UI Overlays',
         description:
-          'See where TikTok\'s interface elements appear: profile picture and username at top, music track display, engagement buttons on right. Toggle to compare with other platforms.',
+          "See where TikTok's interface elements appear: profile picture and username at top, music track display, engagement buttons on right. Toggle to compare with other platforms.",
         icon: 'addVideo',
         image: '/safe-zone-guide/toggle-platforms.png',
+        altText:
+          'TikTok safe zone preview showing UI overlays with profile picture, username, music track, like button, comment button, share button, and follow button',
       },
       {
         step: 4,
@@ -139,6 +154,8 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
           'Download with safe zone overlays as reference. Share with team and ensure all important elements stay visible when posting to TikTok.',
         icon: 'checkCircle',
         image: '/safe-zone-guide/export-download.png',
+        altText:
+          'TikTok safe zone checker export button showing download option with safe zone overlay reference for team sharing',
       },
     ];
   }
@@ -160,6 +177,8 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
         'Drag and drop your file to see safe zone overlays showing where UI elements appear on your content.',
       icon: 'upload',
       image: '/safe-zone-guide/upload-asset.png',
+      altText:
+        'Social media safe zone checker showing drag and drop upload interface for TikTok, Instagram Reels, and YouTube Shorts content',
     },
     {
       step: 3,
@@ -168,12 +187,13 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
         'Switch between TikTok, Instagram Reels, and YouTube Shorts to see where UI elements appear on each platform.',
       icon: 'addVideo',
       image: '/safe-zone-guide/toggle-platforms.png',
+      altText:
+        'Social media safe zone checker platform toggle showing UI overlays comparison for TikTok, Instagram Reels, and YouTube Shorts',
     },
     {
       step: 4,
       title: 'Review and Share with Your Team',
-      description:
-        'Check placement of text, logos, CTAs, and key visuals. Share with team for feedback and alignment.',
+      description: 'Check placement of text, logos, CTAs, and key visuals. Share with team for feedback and alignment.',
       icon: 'paint',
       image: null,
     },
@@ -184,41 +204,69 @@ const getWorkflowSteps = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
         'Download with safe zone overlays as reference. Share with stakeholders and document layout decisions.',
       icon: 'checkCircle',
       image: '/safe-zone-guide/export-download.png',
+      altText:
+        'Social media safe zone checker export button showing download option with safe zone overlay reference for TikTok, Instagram Reels, and YouTube Shorts',
     },
   ];
 };
 
 const getFAQItems = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
-  const platformName = platform === 'youtube' ? 'YouTube Shorts' : platform === 'instagram' ? 'Instagram Reels' : platform === 'tiktok' ? 'TikTok' : 'social media platforms';
-  const platformNameLower = platform === 'youtube' ? 'YouTube Shorts' : platform === 'instagram' ? 'Instagram Reels' : platform === 'tiktok' ? 'TikTok' : 'platforms';
+  const platformName =
+    platform === 'youtube'
+      ? 'YouTube Shorts'
+      : platform === 'instagram'
+        ? 'Instagram Reels'
+        : platform === 'tiktok'
+          ? 'TikTok'
+          : 'social media platforms';
+  const platformNameLower =
+    platform === 'youtube'
+      ? 'YouTube Shorts'
+      : platform === 'instagram'
+        ? 'Instagram Reels'
+        : platform === 'tiktok'
+          ? 'TikTok'
+          : 'platforms';
 
   return [
     {
       key: 'what-is-safe-zone',
       title: `What is a "safe zone" for ${platformNameLower}?`,
-      content: `The area where important elements (text, logos, CTAs, faces) stay visible after ${platformName}'s UI elements (buttons, captions, profile bars) are applied. Content outside risks being obscured.`,
+      content:
+        `The area where important elements (text, logos, CTAs, faces) stay visible after ` +
+        `${platformName}'s UI elements (buttons, captions, profile bars) are applied. ` +
+        `Content outside risks being obscured.`,
     },
     {
       key: 'why-different-platforms',
-      title: platform === 'tiktok' 
-        ? 'Why does TikTok have specific safe zones?' 
-        : platform === 'youtube' 
-        ? 'Why do YouTube Shorts have specific safe zones?'
-        : platform === 'instagram'
-        ? 'Why does Instagram Reels have specific safe zones?'
-        : 'Why do different platforms have different safe zones?',
-      content: platform === 'tiktok' 
-        ? `TikTok's interface has unique UI elements (profile picture, username, music track, engagement buttons) positioned in specific areas. Safe zones ensure your content isn't hidden by these overlays.`
-        : platform === 'youtube'
-        ? `YouTube Shorts has unique UI elements (channel name, subscribe button, like button, comments, share button, video controls) positioned in specific areas. Safe zones ensure your content isn't hidden by these overlays.`
-        : platform === 'instagram'
-        ? `Instagram Reels has unique UI elements (profile picture, username, like button, comment button, share button, music display) positioned in specific areas. Safe zones ensure your content isn't hidden by these overlays.`
-        : `Each platform (TikTok, Instagram Reels, YouTube Shorts) has unique UI layouts, so safe zone overlays differ to match platform-specific interface elements.`,
+      title:
+        platform === 'tiktok'
+          ? 'Why does TikTok have specific safe zones?'
+          : platform === 'youtube'
+            ? 'Why do YouTube Shorts have specific safe zones?'
+            : platform === 'instagram'
+              ? 'Why does Instagram Reels have specific safe zones?'
+              : 'Why do different platforms have different safe zones?',
+      content:
+        platform === 'tiktok'
+          ? `TikTok's interface has unique UI elements (profile picture, username, music track, engagement buttons) ` +
+            `positioned in specific areas. Safe zones ensure your content isn't hidden by these overlays.`
+          : platform === 'youtube'
+            ? `YouTube Shorts has unique UI elements (channel name, subscribe button, like button, ` +
+              `comments, share button, video controls) positioned in specific areas. ` +
+              `Safe zones ensure your content isn't hidden by these overlays.`
+            : platform === 'instagram'
+              ? `Instagram Reels has unique UI elements (profile picture, username, like button, ` +
+                `comment button, share button, music display) positioned in specific areas. ` +
+                `Safe zones ensure your content isn't hidden by these overlays.`
+              : `Each platform (TikTok, Instagram Reels, YouTube Shorts) has unique UI layouts, ` +
+                `so safe zone overlays differ to match platform-specific interface elements.`,
     },
     {
       key: 'file-types-sizes',
       title: 'What file types and sizes can I upload?',
-      content: 'Videos, images, thumbnails, or design mockups. Recommended: 1080 × 1920 (9:16) for vertical formats, but any size works.',
+      content:
+        'Videos, images, thumbnails, or design mockups. Recommended: 1080 × 1920 (9:16) for vertical formats, but any size works.',
     },
     {
       key: 'sign-up-required',
@@ -228,78 +276,95 @@ const getFAQItems = (platform?: 'youtube' | 'instagram' | 'tiktok') => {
     {
       key: 'multiple-platforms',
       title: 'Can I use the same creative for multiple platforms?',
-      content: platform === 'tiktok'
-        ? 'Yes. Toggle between platform overlays to see how your TikTok video behaves on Instagram Reels and YouTube Shorts, then adjust accordingly.'
-        : platform === 'youtube'
-        ? 'Yes. Toggle between platform overlays to see how your YouTube Shorts video behaves on TikTok and Instagram Reels, then adjust accordingly.'
-        : platform === 'instagram'
-        ? 'Yes. Toggle between platform overlays to see how your Instagram Reels video behaves on TikTok and YouTube Shorts, then adjust accordingly.'
-        : 'Yes. Toggle between platform overlays to see how your creative behaves across TikTok, Instagram Reels, and YouTube Shorts.',
+      content:
+        platform === 'tiktok'
+          ? 'Yes. Toggle between platform overlays to see how your TikTok video behaves on Instagram Reels and YouTube Shorts, then adjust accordingly.'
+          : platform === 'youtube'
+            ? 'Yes. Toggle between platform overlays to see how your YouTube Shorts video behaves on TikTok and Instagram Reels, then adjust accordingly.'
+            : platform === 'instagram'
+              ? 'Yes. Toggle between platform overlays to see how your Instagram Reels video behaves on TikTok and YouTube Shorts, then adjust accordingly.'
+              : 'Yes. Toggle between platform overlays to see how your creative behaves across TikTok, Instagram Reels, and YouTube Shorts.',
     },
     {
       key: 'tiktok-specific-elements',
-      title: platform === 'tiktok' 
-        ? 'What TikTok UI elements should I avoid?' 
-        : platform === 'youtube'
-        ? 'What YouTube Shorts UI elements should I avoid?'
-        : platform === 'instagram'
-        ? 'What Instagram Reels UI elements should I avoid?'
-        : 'What platform UI elements should I avoid?',
-      content: platform === 'tiktok'
-        ? 'Keep content away from top ~130px (profile picture, username) and bottom ~250px (captions, like button, comment button, share button, follow button). Music track display appears on the right side.'
-        : platform === 'youtube'
-        ? 'Keep content in the central 4:5 area and avoid bottom 10-15% where captions, progress bar, and video controls appear. Channel name appears at top, engagement buttons (subscribe, like, share) on right side.'
-        : platform === 'instagram'
-        ? 'Keep content away from top 108px (profile picture, username, feed/profile crop) and bottom 320px (captions, comments overlay, like button, comment button, share button). Music display appears on the right side.'
-        : 'Each platform has different UI elements. Use the safe zone overlays to see exactly where buttons, captions, and profile information appear.',
+      title:
+        platform === 'tiktok'
+          ? 'What TikTok UI elements should I avoid?'
+          : platform === 'youtube'
+            ? 'What YouTube Shorts UI elements should I avoid?'
+            : platform === 'instagram'
+              ? 'What Instagram Reels UI elements should I avoid?'
+              : 'What platform UI elements should I avoid?',
+      content:
+        platform === 'tiktok'
+          ? 'Keep content away from top ~130px (profile picture, username) and bottom ~250px (captions, like button, comment button, share button, follow button). Music track display appears on the right side.'
+          : platform === 'youtube'
+            ? 'Keep content in the central 4:5 area and avoid bottom 10-15% where captions, progress bar, and video controls appear. Channel name appears at top, engagement buttons (subscribe, like, share) on right side.'
+            : platform === 'instagram'
+              ? 'Keep content away from top 108px (profile picture, username, feed/profile crop) and bottom 320px (captions, comments overlay, like button, comment button, share button). Music display appears on the right side.'
+              : 'Each platform has different UI elements. Use the safe zone overlays to see exactly where buttons, captions, and profile information appear.',
     },
     {
       key: 'exported-version',
       title: 'How should I use the exported version from the checker?',
-      content: 'Share with team for review, align on text and branding placement, and document layout decisions. Use as reference to ensure key visuals stay safe.',
+      content:
+        'Share with team for review, align on text and branding placement, and document layout decisions. Use as reference to ensure key visuals stay safe.',
     },
     {
       key: 'privacy',
       title: 'Will my content be uploaded to a server or shared publicly?',
-      content: 'No. Processing happens in your browser. Your file is used only to generate preview and overlays, not published publicly.',
+      content:
+        'No. Processing happens in your browser. Your file is used only to generate preview and overlays, not published publicly.',
     },
     {
       key: 'file-modification',
       title: 'Does the Safe Zone Checker change or edit my original file?',
-      content: 'No. Original file remains untouched. Safe zone overlays are added only to the downloaded reference version.',
+      content:
+        'No. Original file remains untouched. Safe zone overlays are added only to the downloaded reference version.',
     },
     {
       key: 'subtitles',
       title: 'Should subtitles always stay inside the safe zone?',
-      content: platform === 'tiktok'
-        ? 'Yes. TikTok captions appear at the bottom, so place subtitles and on-screen text well within safe zones to avoid overlap with captions and action buttons.'
-        : platform === 'youtube'
-        ? 'Yes. YouTube Shorts captions and video controls appear at the bottom, so place subtitles and on-screen text well within safe zones. Keep text in central 4:5 area to avoid overlap with controls and captions.'
-        : platform === 'instagram'
-        ? 'Yes. Instagram Reels captions and comments overlay appear at the bottom, so place subtitles and on-screen text well within safe zones to avoid overlap with captions and engagement buttons.'
-        : 'Yes. Subtitles, captions, and on-screen text should be placed well within safe zones, as they\'re commonly obscured by platform UI.',
+      content:
+        platform === 'tiktok'
+          ? 'Yes. TikTok captions appear at the bottom, so place subtitles and on-screen text well within safe zones to avoid overlap with captions and action buttons.'
+          : platform === 'youtube'
+            ? 'Yes. YouTube Shorts captions and video controls appear at the bottom, so place subtitles and on-screen text well within safe zones. Keep text in central 4:5 area to avoid overlap with controls and captions.'
+            : platform === 'instagram'
+              ? 'Yes. Instagram Reels captions and comments overlay appear at the bottom, so place subtitles and on-screen text well within safe zones to avoid overlap with captions and engagement buttons.'
+              : "Yes. Subtitles, captions, and on-screen text should be placed well within safe zones, as they're commonly obscured by platform UI.",
     },
     {
       key: 'early-production',
       title: 'Can I use this tool during early production, not just before publishing?',
-      content: 'Yes. Useful during concepting, storyboarding, and design review. Using it early prevents layout rework later.',
+      content:
+        'Yes. Useful during concepting, storyboarding, and design review. Using it early prevents layout rework later.',
     },
     {
       key: 'individual-or-teams',
       title: 'Is this tool meant for individual creators or teams?',
-      content: 'Both. Solo creators validate layouts before posting. Teams use exported safe-zone versions to review, approve, and align across stakeholders.',
+      content:
+        'Both. Solo creators validate layouts before posting. Teams use exported safe-zone versions to review, approve, and align across stakeholders.',
     },
     {
       key: 'other-tools',
       title: 'Does Kreatli offer other tools for managing social video production?',
-      content: 'Yes. Kreatli is a production management platform that helps teams plan, review, and coordinate content across the full production lifecycle.',
+      content:
+        'Yes. Kreatli is a production management platform that helps teams plan, review, and coordinate content across the full production lifecycle.',
     },
   ];
 };
 
 export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {}) => {
   const workflowSteps = getWorkflowSteps(platform);
-  const platformName = platform === 'youtube' ? 'YouTube Shorts' : platform === 'instagram' ? 'Instagram Reels' : platform === 'tiktok' ? 'TikTok' : 'every platform';
+  const platformName =
+    platform === 'youtube'
+      ? 'YouTube Shorts'
+      : platform === 'instagram'
+        ? 'Instagram Reels'
+        : platform === 'tiktok'
+          ? 'TikTok'
+          : 'every platform';
   const faqItems = getFAQItems(platform);
 
   return (
@@ -312,7 +377,15 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
               How to Use Safe-Zone Checker in Your Workflow
             </h2>
             <p className="mx-auto max-w-2xl text-base text-foreground-500">
-              Follow this step-by-step process to ensure your {platform === 'youtube' ? 'YouTube Shorts' : platform === 'tiktok' ? 'TikTok video' : platform === 'instagram' ? 'Instagram Reels' : 'content'} looks perfect on {platformName}.
+              Follow this step-by-step process to ensure your{' '}
+              {platform === 'youtube'
+                ? 'YouTube Shorts'
+                : platform === 'tiktok'
+                  ? 'TikTok video'
+                  : platform === 'instagram'
+                    ? 'Instagram Reels'
+                    : 'content'}{' '}
+              looks perfect on {platformName}.
             </p>
           </div>
 
@@ -362,7 +435,8 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
                             <div className="overflow-hidden rounded-[2rem] bg-black">
                               <Image
                                 src={item.image}
-                                alt={`${item.title} screenshot`}
+                                alt={item.altText || `${item.title} - Social media safe zone checker screenshot`}
+                                loading="lazy"
                                 removeWrapper
                                 className="h-auto w-full"
                               />
