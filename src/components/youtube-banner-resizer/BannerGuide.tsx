@@ -47,6 +47,76 @@ export const BannerGuide = () => {
 
   return (
     <div>
+      {/* How to Use Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
+              How to Use the YouTube Banner Resizer
+            </h2>
+            <p className="mx-auto max-w-2xl text-base text-foreground-500">
+              Follow this step-by-step process to resize your YouTube banner correctly and avoid cropping issues across
+              all devices.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {workflowSteps.map((item) => (
+              <Card key={item.step} className="scroll-mt-36">
+                <CardBody className="p-6 lg:p-8">
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Icon icon={item.icon as IconType} size={24} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
+                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
+                        </div>
+                      </div>
+                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
+                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                      </div>
+                    </div>
+                    {item.image && (
+                      <div className="mt-6 flex justify-center lg:mt-8">
+                        <div className="relative max-w-full">
+                          <Image
+                            src={item.image}
+                            alt={item.altText || `${item.title} - YouTube banner resizer tool screenshot`}
+                            loading="lazy"
+                            removeWrapper
+                            className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    {item.step === 1 && (
+                      <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                          Start for Free
+                        </Button>
+                        <Button
+                          as="a"
+                          href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          size="lg"
+                          variant="bordered"
+                        >
+                          Book a Demo
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* YouTube Banner Size & Safe Area Explained Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
@@ -145,76 +215,6 @@ export const BannerGuide = () => {
               </p>
             </CardBody>
           </Card>
-        </div>
-      </section>
-
-      {/* How to Use Section */}
-      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-10 text-center">
-            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
-              How to Use the YouTube Banner Resizer
-            </h2>
-            <p className="mx-auto max-w-2xl text-base text-foreground-500">
-              Follow this step-by-step process to resize your YouTube banner correctly and avoid cropping issues across
-              all devices.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-6">
-            {workflowSteps.map((item) => (
-              <Card key={item.step} className="scroll-mt-36">
-                <CardBody className="p-6 lg:p-8">
-                  <div className="flex flex-col gap-6">
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
-                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                          <Icon icon={item.icon as IconType} size={24} className="text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
-                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
-                        </div>
-                      </div>
-                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
-                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
-                      </div>
-                    </div>
-                    {item.image && (
-                      <div className="mt-6 flex justify-center lg:mt-8">
-                        <div className="relative max-w-full">
-                          <Image
-                            src={item.image}
-                            alt={item.altText || `${item.title} - YouTube banner resizer tool screenshot`}
-                            loading="lazy"
-                            removeWrapper
-                            className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
-                          />
-                        </div>
-                      </div>
-                    )}
-                    {item.step === 1 && (
-                      <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                          Start for Free
-                        </Button>
-                        <Button
-                          as="a"
-                          href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          size="lg"
-                          variant="bordered"
-                        >
-                          Book a Demo
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </CardBody>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
 
