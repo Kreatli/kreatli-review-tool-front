@@ -130,6 +130,7 @@ export default function ProjectOrchestrationPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer"
               size="lg"
               variant="bordered"
             >
@@ -280,7 +281,7 @@ export default function ProjectOrchestrationPage() {
           <Accordion variant="splitted" className="gap-2">
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={`faq-${index}-${faq.question.slice(0, 20)}`}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >
