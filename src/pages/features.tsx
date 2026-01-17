@@ -111,29 +111,29 @@ export default function FeaturesPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Creative Production & Media Review Platform</title>
+        <title>Kreatli | Video Collaboration & Review Platform</title>
         <meta
           name="description"
-          content="Kreatli is a creative production management and media review platform for modern teams. Get frame-accurate revisions, asset-linked conversations, and production management workflows all in one place."
+          content="Kreatli is a Video Collaboration & Review Platform for video teams. Get frame-accurate video review, asset-linked conversations, and video collaboration workflows all in one place."
         />
         <link rel="canonical" href="https://kreatli.com/features" />
         <meta property="og:url" content="https://kreatli.com/features" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Creative Production & Media Review Platform" />
+        <meta property="og:title" content="Kreatli | Video Collaboration & Review Platform" />
         <meta
           property="og:description"
-          content="Built for creative production workflows with frame-accurate video review, asset-linked conversations, and end-to-end production management in a single platform."
+          content="Built for video collaboration workflows with frame-accurate video review, asset-linked conversations, and end-to-end video collaboration in a single platform."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Creative Production & Media Review Platform" />
+        <meta property="og:image:alt" content="Kreatli | Video Collaboration & Review Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Creative Production & Media Review Platform" />
+        <meta name="twitter:title" content="Kreatli | Video Collaboration & Review Platform" />
         <meta
           name="twitter:description"
-          content="Built for creative production workflows with frame-accurate video review, asset-linked conversations, and end-to-end production management in a single platform."
+          content="Built for video collaboration workflows with frame-accurate video review, asset-linked conversations, and end-to-end video collaboration in a single platform."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -144,11 +144,11 @@ export default function FeaturesPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-6 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
-              Everything you need for creative production
+              Everything you need for video collaboration
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Powerful features designed specifically for creative production workflows, media review and approval, and
-              collaboration.
+              Powerful features designed specifically for video collaboration workflows, video review and approval, and
+              team collaboration.
             </p>
           </div>
 
@@ -198,7 +198,7 @@ export default function FeaturesPage() {
           <div className="mb-4 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Kreatli vs. The Alternatives</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              See how Kreatli compares to using multiple tools or platforms for your creative workflow.
+              See how Kreatli compares to using multiple tools or platforms for your video collaboration workflow.
             </p>
           </div>
 
@@ -263,11 +263,11 @@ export default function FeaturesPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-4 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
-              Perfect for any creative production workflow
+              Perfect for any video collaboration workflow
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Whether you're reviewing videos, managing design assets, or coordinating production, Kreatli adapts to
-              your process as an all-in-one creative production and media review platform.
+              Whether you're reviewing videos, managing video assets, or coordinating video production, Kreatli adapts to
+              your process as an all-in-one Video Collaboration & Review Platform.
             </p>
           </div>
 
@@ -419,7 +419,7 @@ export default function FeaturesPage() {
           <div className="text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about how Kreatli's features work and how they can improve your creative workflow.
+              Get detailed answers about how Kreatli's features work and how they can improve your video collaboration workflow.
             </p>
           </div>
           <Accordion variant="splitted">
@@ -445,9 +445,9 @@ export default function FeaturesPage() {
                   without ambiguity.
                 </p>
                 <p>
-                  All frame-accurate comments are integrated into your review and approval workflow, allowing editors to
+                  All frame-accurate comments are integrated into your video review and approval workflow, allowing editors to
                   see exactly where changes are needed and mark revisions as complete once addressed. This streamlines
-                  the creative production management process by reducing back-and-forth communication.
+                  the video collaboration process by reducing back-and-forth communication.
                 </p>
               </div>
             </AccordionItem>
@@ -456,14 +456,14 @@ export default function FeaturesPage() {
               key="review-workflow"
               title={
                 <span className="text-base font-semibold">
-                  What is a media review and approval workflow, and how does Kreatli handle it?
+                  What is a video review and approval workflow, and how does Kreatli handle it?
                 </span>
               }
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  A media review and approval workflow is the process creative teams use to review, provide feedback,
-                  and get final approval on creative assets like videos, images, and designs. Kreatli streamlines this
+                  A video review and approval workflow is the process video teams use to review, provide feedback,
+                  and get final approval on video assets and related media. Kreatli streamlines this
                   entire process in one platform.
                 </p>
                 <p>
@@ -476,7 +476,7 @@ export default function FeaturesPage() {
                   The platform supports both internal team reviews and client approval processes. You can set up guest
                   review links that don't require signups, making it easy for clients to participate in the approval
                   workflow. All comments and approvals are tracked, so you always know the status of each deliverable in
-                  your creative production management pipeline.
+                  your video collaboration pipeline.
                 </p>
               </div>
             </AccordionItem>
@@ -497,14 +497,14 @@ export default function FeaturesPage() {
                   versions of files to spot changes instantly.
                 </p>
                 <p>
-                  Unlike generic proofing tools, Kreatli's creative proofing is integrated with your entire creative
-                  production management workflow. All proofing feedback is linked to specific assets and projects,
+                  Unlike generic proofing tools, Kreatli's video proofing is integrated with your entire video
+                  collaboration workflow. All proofing feedback is linked to specific assets and projects,
                   making it easy to track what needs to be changed and ensuring nothing gets lost in translation.
                 </p>
                 <p>
                   The system supports both frame-accurate proofing for videos (where you can mark specific frames) and
-                  pixel-accurate proofing for images and designs. This level of precision is crucial for creative teams
-                  who need to communicate exact changes to designers, editors, or other team members.
+                  pixel-accurate proofing for images and designs. This level of precision is crucial for video teams
+                  who need to communicate exact changes to editors, designers, or other team members.
                 </p>
               </div>
             </AccordionItem>
@@ -519,7 +519,7 @@ export default function FeaturesPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli provides smart file organization that's specifically designed for creative production
+                  Kreatli provides smart file organization that's specifically designed for video collaboration
                   workflows. Files can be organized by project, status, file type, size, and custom tags. The platform
                   supports filtering and search functionality to help you quickly find any asset, even in large projects
                   with hundreds of files.
@@ -530,10 +530,10 @@ export default function FeaturesPage() {
                   and you can create custom folder structures that match your team's workflow.
                 </p>
                 <p>
-                  Unlike basic file storage solutions, Kreatli's file organization is integrated with review workflows,
+                  Unlike basic file storage solutions, Kreatli's file organization is integrated with video review workflows,
                   project management, and collaboration features. This means files are always connected to their
                   associated projects, conversations, and approval status, making it easy to see the full context of any
-                  asset in your creative production management system.
+                  asset in your video collaboration system.
                 </p>
               </div>
             </AccordionItem>
@@ -556,11 +556,11 @@ export default function FeaturesPage() {
                 <p>
                   The platform supports real-time collaboration where multiple team members can review and comment on
                   the same file simultaneously. Guest review links allow clients and external collaborators to
-                  participate in the review and approval process without requiring accounts, making it easy to include
-                  stakeholders in your creative workflow.
+                  participate in the video review and approval process without requiring accounts, making it easy to include
+                  stakeholders in your video collaboration workflow.
                 </p>
                 <p>
-                  All collaboration happens within the context of your creative production management system, so
+                  All collaboration happens within the context of your video collaboration system, so
                   conversations, feedback, and approvals are all tracked and visible to the team. This reduces
                   tool-switching and keeps everything in one place, from initial planning through final delivery.
                 </p>
@@ -584,14 +584,14 @@ export default function FeaturesPage() {
                 </p>
                 <p>
                   Guest review links can be password-protected for additional security, and you can set expiration dates
-                  and access controls. This makes it easy to include clients in your media review and approval process
-                  while maintaining control over who can access your creative assets.
+                  and access controls. This makes it easy to include clients in your video review and approval process
+                  while maintaining control over who can access your video assets.
                 </p>
                 <p>
                   External reviewers see a clean, branded interface focused on reviewing and providing feedback. They
                   can add comments, annotations, and approvals just like team members, but without the complexity of
                   project management features they don't need. This streamlined experience improves client participation
-                  in your creative production workflow.
+                  in your video collaboration workflow.
                 </p>
               </div>
             </AccordionItem>
@@ -619,8 +619,8 @@ export default function FeaturesPage() {
                 <p>
                   When comparing versions, you can add comments that reference specific differences, making it clear to
                   creators what needs to be adjusted. This feature is integrated with the approval workflow, so you can
-                  approve or request changes directly from the comparison view, streamlining your creative production
-                  management process.
+                  approve or request changes directly from the comparison view, streamlining your video collaboration
+                  process.
                 </p>
               </div>
             </AccordionItem>
@@ -629,14 +629,14 @@ export default function FeaturesPage() {
               key="security"
               title={
                 <span className="text-base font-semibold">
-                  What security features does Kreatli offer for creative production files?
+                  What security features does Kreatli offer for video files?
                 </span>
               }
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli provides enterprise-level security features designed for sensitive creative work. All files
-                  are encrypted both in transit and at rest, ensuring your creative assets are protected. The platform
+                  Kreatli provides enterprise-level security features designed for sensitive video work. All files
+                  are encrypted both in transit and at rest, ensuring your video assets are protected. The platform
                   supports secure file sharing with password-protected links and access controls.
                 </p>
                 <p>
@@ -646,8 +646,8 @@ export default function FeaturesPage() {
                 </p>
                 <p>
                   The platform is compliance-ready and designed to meet security standards required for handling
-                  confidential creative work, client materials, and proprietary content. This makes it suitable for
-                  agencies and production companies that need to protect sensitive creative assets throughout the media
+                  confidential video work, client materials, and proprietary content. This makes it suitable for
+                  agencies and production companies that need to protect sensitive video assets throughout the video
                   review and approval process.
                 </p>
               </div>
@@ -670,13 +670,13 @@ export default function FeaturesPage() {
                 <p>
                   This integration means you don't have to abandon your existing file storage solutions. You can
                   continue using Google Drive or Dropbox for general file storage while leveraging Kreatli's specialized
-                  features for creative production management, media review, and approval workflows.
+                  features for video collaboration, video review, and approval workflows.
                 </p>
                 <p>
                   The platform also supports direct file uploads, so you can work entirely within Kreatli if preferred.
                   Whether you're syncing from cloud storage or uploading directly, all files benefit from Kreatli's
-                  organization, review, and collaboration features that are specifically designed for creative
-                  workflows.
+                  organization, review, and collaboration features that are specifically designed for video
+                  collaboration workflows.
                 </p>
               </div>
             </AccordionItem>
@@ -705,8 +705,8 @@ export default function FeaturesPage() {
                 <p>
                   The key advantage is that Kreatli eliminates tool-switching. Instead of using Frame.io for review,
                   Slack for communication, and separate tools for project management, everything is integrated in one
-                  creative production management platform. This reduces context switching, improves workflow efficiency,
-                  and ensures nothing falls through the cracks in your media review and approval process.
+                  Video Collaboration & Review Platform. This reduces context switching, improves workflow efficiency,
+                  and ensures nothing falls through the cracks in your video review and approval process.
                 </p>
               </div>
             </AccordionItem>
@@ -721,22 +721,22 @@ export default function FeaturesPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli is designed for any creative workflow that involves media review, approval processes, and team
+                  Kreatli is designed for any video workflow that involves video review, approval processes, and team
                   collaboration. It's particularly well-suited for video production teams who need frame-accurate
-                  feedback, design agencies managing client approvals, and content creators coordinating with editors
+                  feedback, video agencies managing client approvals, and content creators coordinating with editors
                   and collaborators.
                 </p>
                 <p>
                   The platform excels in workflows that require structured review and approval processes, such as client
-                  video projects, brand asset creation, marketing campaign production, and any creative work where
-                  multiple stakeholders need to provide feedback and give approvals. The integrated creative production
-                  management features make it ideal for teams that need to track deliverables, manage project timelines,
+                  video projects, video asset creation, marketing campaign video production, and any video work where
+                  multiple stakeholders need to provide feedback and give approvals. The integrated video collaboration
+                  features make it ideal for teams that need to track deliverables, manage project timelines,
                   and coordinate between internal team members and external clients.
                 </p>
                 <p>
                   Kreatli is also valuable for teams currently juggling multiple tools - if you're using separate
                   platforms for file storage, video review, project management, and team communication, Kreatli can
-                  consolidate these into one streamlined video production platform with integrated media review and
+                  consolidate these into one streamlined Video Collaboration & Review Platform with integrated video review and
                   approval workflows.
                 </p>
               </div>
@@ -752,7 +752,7 @@ export default function FeaturesPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli provides real-time notifications for important events in your creative workflow, including new
+                  Kreatli provides real-time notifications for important events in your video collaboration workflow, including new
                   comments, approval requests, project updates, and file uploads. These notifications help team members
                   stay in sync without constantly checking the platform.
                 </p>
@@ -762,10 +762,10 @@ export default function FeaturesPage() {
                   for a design, or uploads a new version, you'll be notified immediately.
                 </p>
                 <p>
-                  The notification system is integrated with the review and approval workflow, ensuring that approvals
-                  and feedback requests don't get missed. This keeps your creative production management process moving
+                  The notification system is integrated with the video review and approval workflow, ensuring that approvals
+                  and feedback requests don't get missed. This keeps your video collaboration process moving
                   forward efficiently, as team members and clients are promptly notified when their input is needed in
-                  the media review and approval process.
+                  the video review and approval process.
                 </p>
               </div>
             </AccordionItem>
@@ -787,10 +787,10 @@ export default function FeaturesPage() {
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Ready to streamline your creative workflow?
+            Ready to streamline your video collaboration workflow?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Start using Kreatli today and experience the difference of a platform built specifically for creative teams.
+            Start using Kreatli today and experience the difference of a platform built specifically for video teams.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

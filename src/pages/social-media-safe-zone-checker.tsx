@@ -37,7 +37,7 @@ export default function ProjectsPage() {
       <RelatedResourcesSection
         resources={getRelatedResources(['reviewApproval', 'creativeWorkspace', 'blog'])}
         title="More Resources"
-        description="Learn more about creative production workflows, asset management, and team collaboration."
+        description="Learn more about video collaboration workflows, asset management, and team collaboration."
       />
 
       {/* CTA Section */}

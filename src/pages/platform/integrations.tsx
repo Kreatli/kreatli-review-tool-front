@@ -9,8 +9,8 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { getRelatedResources } from '../../data/related-resources';
 import { Icon } from '../../components/various/Icon';
+import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
 export default function IntegrationsPage() {
@@ -19,29 +19,29 @@ export default function IntegrationsPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Integrations – Google Drive & Dropbox for Creative Production</title>
+        <title>Kreatli | Integrations – Google Drive & Dropbox for Video Collaboration</title>
         <meta
           name="description"
-          content="Kreatli integrates with Google Drive and Dropbox, allowing you to connect your existing cloud storage and import files directly. Seamless integration for creative production workflows."
+          content="Kreatli integrates with Google Drive and Dropbox, allowing you to connect your existing cloud storage and import files directly. Seamless integration for video collaboration workflows."
         />
         <link rel="canonical" href="https://kreatli.com/platform/integrations" />
         <meta property="og:url" content="https://kreatli.com/platform/integrations" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
+        <meta property="og:title" content="Kreatli | Integrations – Google Drive & Dropbox for Video Collaboration" />
         <meta
           property="og:description"
-          content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized creative production features."
+          content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized video collaboration features."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
+        <meta property="og:image:alt" content="Kreatli | Integrations – Google Drive & Dropbox for Video Collaboration" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Integrations – Google Drive & Dropbox for Creative Production" />
+        <meta name="twitter:title" content="Kreatli | Integrations – Google Drive & Dropbox for Video Collaboration" />
         <meta
           name="twitter:description"
-          content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized creative production features."
+          content="Connect Google Drive and Dropbox to Kreatli. Import files directly from your cloud storage while using Kreatli's specialized video collaboration features."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -216,7 +216,7 @@ export default function IntegrationsPage() {
                 </div>
                 <p className="text-sm text-foreground-500">
                   Continue using your preferred cloud storage while leveraging Kreatli's specialized features for
-                  creative production.
+                  video collaboration.
                 </p>
               </CardBody>
             </Card>
@@ -258,13 +258,13 @@ export default function IntegrationsPage() {
       <RelatedResourcesSection
         resources={getRelatedResources(['projectOrchestration', 'creativeWorkspace', 'reviewApproval'])}
         title="More Resources"
-        description="Explore other Kreatli platform features to streamline your creative production workflow."
+        description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />
 
       {/* CTA Section */}
       <CTASection
         title="Ready to Connect Your Cloud Storage?"
-        description="Integrate Google Drive or Dropbox with Kreatli and experience seamless creative production management."
+        description="Integrate Google Drive or Dropbox with Kreatli and experience seamless video collaboration."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

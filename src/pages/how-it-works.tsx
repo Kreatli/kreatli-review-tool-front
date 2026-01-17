@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody, Chip } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -14,29 +15,29 @@ export default function HowItWorksPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | How It Works – Creative Production & Media Review in 4 Steps</title>
+        <title>Kreatli | How It Works – Video Collaboration & Review in 4 Steps</title>
         <meta
           name="description"
-          content="Learn how Kreatli simplifies creative production management. Get started in 4 simple steps: set up projects, invite collaborators, run media review and approval workflows, and deliver final assets."
+          content="Learn how Kreatli simplifies video collaboration. Get started in 4 simple steps: set up projects, invite collaborators, run video review and approval workflows, and deliver final assets."
         />
         <link rel="canonical" href="https://kreatli.com/how-it-works" />
         <meta property="og:url" content="https://kreatli.com/how-it-works" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | How It Works – Creative Production & Media Review in 4 Steps" />
+        <meta property="og:title" content="Kreatli | How It Works – Video Collaboration & Review in 4 Steps" />
         <meta
           property="og:description"
-          content="Discover how Kreatli streamlines creative production, media review and approval, and collaboration in a simple 4-step workflow for creative teams."
+          content="Discover how Kreatli streamlines video collaboration, video review and approval, and team collaboration in a simple 4-step workflow for video teams."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | How It Works – Creative Production & Media Review in 4 Steps" />
+        <meta property="og:image:alt" content="Kreatli | How It Works – Video Collaboration & Review in 4 Steps" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | How It Works – Creative Production & Media Review in 4 Steps" />
+        <meta name="twitter:title" content="Kreatli | How It Works – Video Collaboration & Review in 4 Steps" />
         <meta
           name="twitter:description"
-          content="Discover how Kreatli streamlines creative production, media review and approval, and collaboration in a simple 4-step workflow for creative teams."
+          content="Discover how Kreatli streamlines video collaboration, video review and approval, and team collaboration in a simple 4-step workflow for video teams."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -49,8 +50,8 @@ export default function HowItWorksPage() {
             Get Started with Kreatli in 4 Simple Steps
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Streamline your creative workflow from project creation to final delivery. Kreatli makes collaboration
-            simple, organized, and efficient for creative teams of all sizes.
+            Streamline your video collaboration workflow from project creation to final delivery. Kreatli makes collaboration
+            simple, organized, and efficient for video teams of all sizes.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
@@ -88,10 +89,10 @@ export default function HowItWorksPage() {
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
-              Your Complete Creative Production Workflow
+              Your Complete Video Collaboration Workflow
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              See how all the pieces fit together to create a seamless creative collaboration experience that saves time
+              See how all the pieces fit together to create a seamless video collaboration experience that saves time
               and eliminates confusion.
             </p>
           </div>
@@ -771,7 +772,7 @@ export default function HowItWorksPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about the 4-step workflow, setup process, and how Kreatli streamlines your creative
+              Get detailed answers about the 4-step workflow, setup process, and how Kreatli streamlines your video
               collaboration.
             </p>
           </div>
@@ -796,12 +797,12 @@ export default function HowItWorksPage() {
                   The 4-step workflow (Project Setup, Team Collaboration, Review & Feedback, Delivery & Completion) is
                   designed to be intuitive and sequential. You don't need to complete all steps at once - you can set up
                   a project, add files, and invite collaborators as needed. The platform guides you through each step,
-                  making it easy to get started even if you're new to creative production management tools.
+                  making it easy to get started even if you're new to video collaboration tools.
                 </p>
                 <p>
                   Most teams find they can complete their first project setup in 5 minutes and start collaborating
-                  immediately. The learning curve is minimal because Kreatli is built specifically for creative
-                  workflows, so the interface and processes feel natural to video creators, designers, and creative
+                  immediately. The learning curve is minimal because Kreatli is built specifically for video
+                  collaboration workflows, so the interface and processes feel natural to video creators, editors, and video
                   professionals. You can be productive from day one without extensive training or onboarding.
                 </p>
               </div>
@@ -832,7 +833,7 @@ export default function HowItWorksPage() {
                   This no-signup approach speeds up the review and approval process significantly. Instead of waiting
                   for clients to create accounts, learn new software, or navigate complex interfaces, they can provide
                   feedback immediately. All their comments and approvals are automatically tracked and organized in your
-                  project, keeping your creative production management workflow smooth and efficient.
+                  project, keeping your video collaboration workflow smooth and efficient.
                 </p>
               </div>
             </AccordionItem>
@@ -924,8 +925,7 @@ export default function HowItWorksPage() {
                   and clients. Internal team members can have full access to projects, files, and collaboration
                   features, while clients can have review-only access through guest links. This ensures everyone has the
                   right level of access without overwhelming clients with features they don't need, making the
-                  collaboration process smooth and efficient for all parties involved in your creative production
-                  management workflow.
+                  collaboration process smooth and efficient for all parties involved in your video collaboration workflow.
                 </p>
               </div>
             </AccordionItem>
@@ -975,21 +975,21 @@ export default function HowItWorksPage() {
                   Kreatli is designed to be intuitive with minimal learning curve. The 4-step process is straightforward
                   and sequential, making it easy to understand how the platform works. The interface is built
                   specifically for creative professionals, so it feels natural to video creators, designers, and
-                  creative teams who are already familiar with creative production workflows.
+                  video teams who are already familiar with video collaboration workflows.
                 </p>
                 <p>
                   Most teams are productive within minutes of starting. The platform doesn't require extensive training
-                  or onboarding because the workflow mirrors how creative teams naturally work: set up projects,
+                  or onboarding because the workflow mirrors how video teams naturally work: set up projects,
                   collaborate with team members and clients, collect feedback, and deliver final work. Unlike generic
                   project management tools that require learning complex systems, Kreatli's features are purpose-built
-                  for creative workflows.
+                  for video collaboration workflows.
                 </p>
                 <p>
                   For team members, the learning curve is minimal because they're working within familiar creative
                   production concepts. For clients using guest review links, there's virtually no learning curve - they
                   simply click a link and start reviewing. This ease of use means teams can adopt Kreatli quickly
                   without disrupting their existing workflows, and the platform becomes more valuable as teams use it
-                  more frequently in their creative production management process.
+                  more frequently in their video collaboration process.
                 </p>
               </div>
             </AccordionItem>
@@ -1005,7 +1005,7 @@ export default function HowItWorksPage() {
               <div className="space-y-3 text-foreground-500">
                 <p>
                   The 4-step workflow (Project Setup, Team Collaboration, Review & Feedback, Delivery & Completion)
-                  provides structure and efficiency to creative production management. By following this process, teams
+                  provides structure and efficiency to video collaboration. By following this process, teams
                   save time at every stage: 2+ hours per project in setup, 30+ minutes per stakeholder in collaboration,
                   50% fewer revision cycles in review, and hours of project wrap-up time in delivery.
                 </p>
@@ -1022,7 +1022,7 @@ export default function HowItWorksPage() {
                   deliverables, and maintain complete documentation. This organization benefits both internal teams and
                   clients, who can see clear project progress and provide feedback efficiently. The workflow creates a
                   seamless creative collaboration experience that saves time and eliminates confusion throughout the
-                  entire creative production process.
+                  entire video collaboration process.
                 </p>
               </div>
             </AccordionItem>
@@ -1041,12 +1041,12 @@ export default function HowItWorksPage() {
                   chosen plan. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and immediately
                   start your trial. The Creator plan includes unlimited projects, up to 3 members, and 500GB storage,
                   allowing you to test the complete 4-step workflow with real projects before committing. There's no
-                  credit card required, so you can evaluate how Kreatli fits into your creative production management
+                  credit card required, so you can evaluate how Kreatli fits into your video collaboration
                   process risk-free.
                 </p>
                 <p>
                   All plans include all core features during the trial: project setup, team collaboration,
-                  frame-accurate review, media review and approval workflows, guest review links, file organization, and
+                  frame-accurate review, video review and approval workflows, guest review links, file organization, and
                   delivery features. This means you can fully test the workflow with actual projects and see how it
                   compares to your current tool stack. Many teams use the trial period to onboard their team and run a
                   pilot project before committing to a paid plan.
@@ -1055,7 +1055,7 @@ export default function HowItWorksPage() {
                   After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. You can
                   also book a personalized demo to see how the 4-step workflow would work for your specific creative
                   process. We provide migration assistance to help move files and projects, and our team can help set up
-                  your workflows to ensure a smooth transition to Kreatli's creative production management platform.
+                  your workflows to ensure a smooth transition to Kreatli's Video Collaboration & Review Platform.
                 </p>
               </div>
             </AccordionItem>
@@ -1081,7 +1081,7 @@ export default function HowItWorksPage() {
             Ready to Streamline Your Workflow?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Join creative teams who have simplified their collaboration process. Get started in 4 simple steps and see
+            Join video teams who have simplified their collaboration process. Get started in 4 simple steps and see
             the difference immediately.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">

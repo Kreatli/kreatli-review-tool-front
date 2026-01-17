@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -11,15 +12,15 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { getRelatedResources } from '../../data/related-resources';
 import { Icon } from '../../components/various/Icon';
+import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What is project orchestration in creative production?',
+    question: 'What is project orchestration in video collaboration?',
     answer:
-      'Project orchestration is the centralized management and coordination of all aspects of creative production projects. In Kreatli, project orchestration combines project organization, file assignment, status tracking, team coordination, and media storage in one platform. Instead of managing projects across multiple tools (project management software, file storage, communication apps), everything is orchestrated from one centralized dashboard. This ensures all team members, files, conversations, and approvals stay organized within each project context.',
+      'Project orchestration is the centralized management and coordination of all aspects of video collaboration projects. In Kreatli, project orchestration combines project organization, file assignment, status tracking, team coordination, and video storage in one platform. Instead of managing projects across multiple tools (project management software, file storage, communication apps), everything is orchestrated from one centralized dashboard. This ensures all team members, files, conversations, and approvals stay organized within each project context.',
   },
   {
     question: 'How do I assign files to team members in Kreatli?',
@@ -27,19 +28,19 @@ const faqs = [
       "In Kreatli, you can assign files directly to team members within each project. When you assign a file, the assigned team member receives a notification and can see all files assigned to them in their dashboard. You can track who's working on what, see the status of all deliverables, and reassign files as needed. File assignments are visible to the entire team, so everyone knows who's responsible for each deliverable. This eliminates confusion about ownership and ensures nothing falls through the cracks.",
   },
   {
-    question: 'How does status tracking work for creative projects?',
+    question: 'How does status tracking work for video projects?',
     answer:
       "Kreatli's status tracking lets you set custom statuses for files and projects (e.g., in production, pending review, approved, blocked). You can see the status of all deliverables at a glance in the project dashboard. Status changes are tracked with timestamps and user information, creating a clear audit trail. You can filter files by status to quickly see what needs attention, what's in review, and what's been approved. This gives you complete visibility into project progress without switching between multiple tools.",
   },
   {
     question: 'Can I manage multiple projects simultaneously in Kreatli?',
     answer:
-      'Yes. Kreatli is designed to handle multiple projects simultaneously. Each project has its own workspace with files, conversations, team members, and activity tracking. The centralized dashboard shows an overview of all your projects, making it easy to see the status of each one. You can organize projects by client, campaign, production type, or any other structure that fits your workflow. This is essential for creative teams managing multiple client projects or campaigns at the same time.',
+      'Yes. Kreatli is designed to handle multiple projects simultaneously. Each project has its own workspace with files, conversations, team members, and activity tracking. The centralized dashboard shows an overview of all your projects, making it easy to see the status of each one. You can organize projects by client, campaign, production type, or any other structure that fits your workflow. This is essential for video teams managing multiple client projects or campaigns at the same time.',
   },
   {
     question: 'How does project orchestration differ from generic project management tools?',
     answer:
-      "Kreatli's project orchestration is built specifically for creative production workflows, not adapted from generic project management tools. It tracks status and ownership directly on creative files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands creative workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat creative files as attachments, Kreatli treats files as the primary focus, with project organization, conversations, and approvals built around them.",
+      "Kreatli's project orchestration is built specifically for video collaboration workflows, not adapted from generic project management tools. It tracks status and ownership directly on video files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands video collaboration workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat video files as attachments, Kreatli treats files as the primary focus, with project organization, conversations, and approvals built around them.",
   },
   {
     question: 'How do I track deliverables across multiple projects?',
@@ -74,38 +75,38 @@ export default function ProjectOrchestrationPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Project Orchestration – Centralized Creative Production Management</title>
+        <title>Kreatli | Project Orchestration – Centralized Video Collaboration</title>
         <meta
           name="description"
-          content="Kreatli's Project Orchestration provides centralized project management, status tracking, and team coordination for creative production workflows. Manage all your projects from one dashboard."
+          content="Kreatli's Project Orchestration provides centralized project management, status tracking, and team coordination for video collaboration workflows. Manage all your video projects from one dashboard."
         />
         <link rel="canonical" href="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:url" content="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content="Kreatli | Project Orchestration – Centralized Creative Production Management"
+          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
         />
         <meta
           property="og:description"
-          content="Orchestrate your creative projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined creative production."
+          content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
         <meta
           property="og:image:alt"
-          content="Kreatli | Project Orchestration – Centralized Creative Production Management"
+          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Kreatli | Project Orchestration – Centralized Creative Production Management"
+          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
         />
         <meta
           name="twitter:description"
-          content="Orchestrate your creative projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined creative production."
+          content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -115,11 +116,11 @@ export default function ProjectOrchestrationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
           <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Centralized Creative Production Management
+            Centralized Video Collaboration
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Assign files, track deliverables, and share heavy media securely. Everything you need to orchestrate your
-            creative projects in one place.
+            Assign files, track deliverables, and share heavy video files securely. Everything you need to orchestrate your
+            video projects in one place.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -172,7 +173,7 @@ export default function ProjectOrchestrationPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Project Orchestration Features</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Built specifically for creative production workflows with powerful project management capabilities.
+              Built specifically for video collaboration workflows with powerful project management capabilities.
             </p>
           </div>
 
@@ -273,7 +274,7 @@ export default function ProjectOrchestrationPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about Kreatli's project orchestration and centralized creative production management.
+              Get detailed answers about Kreatli's project orchestration and centralized video collaboration.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -304,13 +305,13 @@ export default function ProjectOrchestrationPage() {
       <RelatedResourcesSection
         resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'reviewApproval'])}
         title="More Resources"
-        description="Explore other Kreatli platform features to streamline your creative production workflow."
+        description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />
 
       {/* CTA Section */}
       <CTASection
         title="Ready to Orchestrate Your Projects?"
-        description="Experience centralized project management designed for creative production teams. Streamline your workflow."
+        description="Experience centralized project management designed for video teams. Streamline your workflow."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

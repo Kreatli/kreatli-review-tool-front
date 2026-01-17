@@ -22,9 +22,9 @@ const audiences: AudienceType[] = [
   {
     id: 'agencies',
     icon: 'building',
-    title: 'Creative agencies & production houses',
+    title: 'Video agencies & production houses',
     description:
-      'Our core fit for established creative teams running high-volume client work. Keep every stakeholder aligned, every version under control, and every delivery on time—without duct-taping together five different tools.',
+      'Our core fit for established video teams running high-volume client work. Keep every stakeholder aligned, every version under control, and every delivery on time—without duct-taping together five different tools.',
     painPoints: [
       'Coordinating feedback from multiple stakeholders',
       'Version control for large-scale projects',
@@ -47,7 +47,7 @@ const audiences: AudienceType[] = [
   {
     id: 'micro-teams',
     icon: 'user',
-    title: 'Micro creative teams working with external clients',
+    title: 'Micro video teams working with external clients',
     description:
       'Ideal for 2–10 person studios and pods juggling multiple client projects. Give clients a simple review experience while your team gets one organized home for files, feedback, and approvals.',
     painPoints: [
@@ -102,29 +102,29 @@ export default function WhoWeHelpPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Who We Help – Creative Production Teams & Agencies</title>
+        <title>Kreatli | Who We Help – Video Teams & Agencies</title>
         <meta
           name="description"
-          content="Whether you're a content creator, creative team or digital agency, Kreatli is the creative production and media review platform that covers your workflow. Join independent video creators, micro-teams, and creative agencies."
+          content="Whether you're a content creator, video team or digital agency, Kreatli is the Video Collaboration & Review Platform that covers your workflow. Join independent video creators, micro-teams, and video agencies."
         />
         <link rel="canonical" href="https://kreatli.com/who-we-help" />
         <meta property="og:url" content="https://kreatli.com/who-we-help" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Who We Help – Creative Production Teams & Agencies" />
+        <meta property="og:title" content="Kreatli | Who We Help – Video Teams & Agencies" />
         <meta
           property="og:description"
-          content="Perfect for video creators, micro-teams, and creative agencies that need creative production management and media review and approval workflows. Streamline your workflow and collaborate effectively."
+          content="Perfect for video creators, micro-teams, and video agencies that need video collaboration and video review and approval workflows. Streamline your workflow and collaborate effectively."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Who We Help – Creative Production Teams & Agencies" />
+        <meta property="og:image:alt" content="Kreatli | Who We Help – Video Teams & Agencies" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Who We Help – Creative Production Teams & Agencies" />
+        <meta name="twitter:title" content="Kreatli | Who We Help – Video Teams & Agencies" />
         <meta
           name="twitter:description"
-          content="Perfect for video creators, micro-teams, and creative agencies that need creative production management and media review and approval workflows. Streamline your workflow and collaborate effectively."
+          content="Perfect for video creators, micro-teams, and video agencies that need video collaboration and video review and approval workflows. Streamline your workflow and collaborate effectively."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -134,9 +134,9 @@ export default function WhoWeHelpPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-4 text-center">
-            <h2 className="mb-6 font-sans text-2xl font-bold sm:text-4xl">Why creative teams choose Kreatli</h2>
+            <h2 className="mb-6 font-sans text-2xl font-bold sm:text-4xl">Why video teams choose Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Built specifically for creative workflows, not adapted from project management or file storage tools.
+              Built specifically for video collaboration workflows, not adapted from project management or file storage tools.
             </p>
           </div>
 
@@ -229,8 +229,8 @@ export default function WhoWeHelpPage() {
             Who is Kreatli’s Video Production Platform For?
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500 sm:text-xl">
-            Whether you're a content creator, creative team or digital agency, Kreatli covers all your needs. Discover
-            how different creative professionals use Kreatli to streamline their workflows.
+            Whether you're a content creator, video team or digital agency, Kreatli covers all your needs. Discover
+            how different video professionals use Kreatli to streamline their workflows.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -352,14 +352,14 @@ export default function WhoWeHelpPage() {
                 <p>
                   For YouTubers managing multiple series or channels, Kreatli provides project organization that keeps
                   everything in one place. You can organize videos by series, client, or project type, making it easy to
-                  track what's in production, what needs review, and what's been approved. The platform's media review
+                  track what's in production, what needs review, and what's been approved. The platform's video review
                   and approval workflows streamline client feedback for sponsored content and brand partnerships.
                 </p>
                 <p>
                   Collaboration with freelance video editors becomes seamless with Kreatli's asset-linked conversations
                   and guest review links. Editors can access projects, add frame-accurate feedback, and share revisions
                   without needing accounts. This eliminates the back-and-forth email chains and file sharing headaches
-                  that slow down video production workflows, making your creative production management much more
+                  that slow down video production workflows, making your video collaboration much more
                   efficient.
                 </p>
               </div>
@@ -391,7 +391,7 @@ export default function WhoWeHelpPage() {
                   Kreatli's project organization features help micro-teams track status and deliverables across multiple
                   client projects. You can see at a glance which projects are in review, which need attention, and which
                   are complete. This visibility is crucial for small teams juggling multiple clients and ensures nothing
-                  falls through the cracks in your creative production management workflow.
+                  falls through the cracks in your video collaboration workflow.
                 </p>
               </div>
             </AccordionItem>
@@ -414,7 +414,7 @@ export default function WhoWeHelpPage() {
                 </p>
                 <p>
                   For agencies coordinating feedback from multiple stakeholders (clients, account managers, creative
-                  directors, producers), Kreatli's media review and approval workflows keep everyone aligned. All
+                  directors, producers), Kreatli's video review and approval workflows keep everyone aligned. All
                   feedback is organized by asset and project, making it easy to track what needs attention and ensuring
                   nothing gets missed. Enterprise-grade security and access controls protect high-value creative assets
                   while allowing appropriate access for different team members and clients.
@@ -424,7 +424,7 @@ export default function WhoWeHelpPage() {
                   project organization features. The platform handles large-scale projects with hundreds of files,
                   multiple versions, and complex approval chains. Comprehensive project analytics and reporting help
                   agencies track timelines, resource allocation, and project health across their entire portfolio,
-                  improving their creative production management at scale.
+                  improving their video collaboration at scale.
                 </p>
               </div>
             </AccordionItem>
@@ -441,8 +441,8 @@ export default function WhoWeHelpPage() {
                 <p>
                   Kreatli works well for teams of all sizes, from solo creators to large agencies. Solo video creators
                   and freelancers benefit from the platform's organization and client collaboration features. Small
-                  teams (2-10 people) find value in consolidating multiple tools into one platform for creative
-                  production management. Medium teams (10-50 people) appreciate the scalability and collaboration
+                  teams (2-10 people) find value in consolidating multiple tools into one platform for video
+                  collaboration. Medium teams (10-50 people) appreciate the scalability and collaboration
                   features.
                 </p>
                 <p>
@@ -486,7 +486,7 @@ export default function WhoWeHelpPage() {
                   approval chains, coordinating campaign assets across multiple stakeholders, managing multiple client
                   portfolios simultaneously, and handling complex multi-phase production projects. The platform's
                   enterprise features support these high-volume, high-stakes workflows while maintaining organization
-                  and security throughout the creative production management process.
+                  and security throughout the video collaboration process.
                 </p>
               </div>
             </AccordionItem>
@@ -514,7 +514,7 @@ export default function WhoWeHelpPage() {
                   they don't need.
                 </p>
                 <p>
-                  All client feedback is integrated into your creative production management workflow. Comments and
+                  All client feedback is integrated into your video collaboration workflow. Comments and
                   approvals are linked to specific assets and projects, making it easy to track what clients have
                   approved and what still needs attention. This eliminates the confusion of managing feedback across
                   email, messaging apps, and multiple platforms, keeping everything organized in one place for efficient
@@ -549,7 +549,7 @@ export default function WhoWeHelpPage() {
                 <p>
                   By consolidating tools, Kreatli also reduces costs (typically 40-70% savings compared to multiple
                   tools), simplifies onboarding (one platform to learn instead of five), and improves security (fewer
-                  vendor relationships to manage). The integrated approach means your creative production management
+                  vendor relationships to manage). The integrated approach means your video collaboration
                   workflow is more efficient, organized, and cost-effective than using multiple separate tools.
                 </p>
               </div>
@@ -578,7 +578,7 @@ export default function WhoWeHelpPage() {
                   workflow, then run a pilot project with one client or team before rolling out more broadly. We provide
                   migration assistance to help move files and projects, and our team can help set up your team structure
                   and workflows. Training resources and support ensure your team gets up to speed quickly, minimizing
-                  disruption to your creative production management process.
+                  disruption to your video collaboration process.
                 </p>
               </div>
             </AccordionItem>
@@ -593,25 +593,25 @@ export default function WhoWeHelpPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli is designed for creative workflows across industries, including video production, design
+                  Kreatli is designed for video collaboration workflows across industries, including video production, video
                   agencies, marketing agencies, post-production houses, and content creation. The platform's core
-                  features - frame-accurate review, media review and approval workflows, project organization, and team
-                  collaboration - are valuable across all creative industries.
+                  features - frame-accurate review, video review and approval workflows, project organization, and team
+                  collaboration - are valuable across all video industries.
                 </p>
                 <p>
                   For video production, the frame-accurate review capabilities are essential for precise feedback on
-                  edits. Design agencies benefit from creative proofing features for images and designs. Marketing
+                  edits. Video agencies benefit from video proofing features for images and designs. Marketing
                   agencies use the platform for coordinating campaign assets and managing client approvals.
                   Post-production houses leverage the version control and project organization for complex, multi-phase
                   projects.
                 </p>
                 <p>
                   While Kreatli may not replace every specialized tool in your industry (like video editing software or
-                  design tools), it consolidates the common functions most creative teams need: file management, project
-                  tracking, review and approval, and team collaboration. This makes it valuable across creative
+                  design tools), it consolidates the common functions most video teams need: file management, project
+                  tracking, review and approval, and team collaboration. This makes it valuable across video
                   industries while allowing you to keep specialized tools for specific workflows. The platform's
                   flexibility means it adapts to different industry needs while providing consistent value through
-                  improved creative production management.
+                  improved video collaboration.
                 </p>
               </div>
             </AccordionItem>
@@ -634,10 +634,10 @@ export default function WhoWeHelpPage() {
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
           <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Ready to streamline your creative workflow?
+            Ready to streamline your video collaboration workflow?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Join thousands of creative professionals who have simplified their collaboration process with Kreatli.
+            Join thousands of video professionals who have simplified their collaboration process with Kreatli.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

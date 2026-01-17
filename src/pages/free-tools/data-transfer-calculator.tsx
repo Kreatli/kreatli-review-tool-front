@@ -19,7 +19,7 @@ export default function DataTransferCalculatorPage() {
   return (
     <>
       <Head>
-        <title>Data Transfer Calculator – Calculate Upload & Download Time for Large Files | Kreatli</title>
+        <title>Data Transfer Calculator | Kreatli</title>
         <meta
           name="description"
           content="Free data transfer calculator to estimate upload and download times for large files. Calculate transfer times for video files, media assets, and creative projects. Perfect for video editors, post-production teams, and creative professionals working with heavy media files. Supports MB, GB, TB file sizes and Mbps/Gbps speeds."
@@ -85,7 +85,7 @@ export default function DataTransferCalculatorPage() {
         {/* More Tools for Creative Teams Section */}
         <MoreFreeToolsSection
           excludeHref="/free-tools/data-transfer-calculator"
-          title="More Tools for Creative Teams"
+          title="More Tools for Video Teams"
         />
 
         {/* FAQ section */}
@@ -95,13 +95,13 @@ export default function DataTransferCalculatorPage() {
         <RelatedResourcesSection
           resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'blog'])}
           title="More Resources"
-          description="Learn more about secure asset storage, creative workflows, and team collaboration."
+          description="Learn more about secure asset storage, video collaboration workflows, and team collaboration."
         />
 
         {/* CTA Section */}
         <CTASection
           title="Ready to Streamline Your Media Workflows?"
-          description="Kreatli helps creative teams manage large files, streamline approvals, and collaborate more efficiently. Get started today."
+          description="Kreatli helps video teams manage large files, streamline approvals, and collaborate more efficiently. Get started today."
         />
       </main>
 

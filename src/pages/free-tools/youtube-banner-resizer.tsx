@@ -19,7 +19,7 @@ export default function YouTubeBannerResizerPage() {
   return (
     <>
       <Head>
-        <title>Free YouTube Banner Resizer Tool | Resize Channel Art 2560×1440px | Kreatli</title>
+        <title>Free YouTube Banner Resizer | Kreatli</title>
         <meta
           name="description"
           content="Free YouTube banner resizer tool. Resize your channel art to 2560×1440px with safe area previews for mobile, desktop, tablet, and TV. Export optimized banners instantly—no sign-up required."
@@ -69,13 +69,13 @@ export default function YouTubeBannerResizerPage() {
       {/* Related Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['creativeWorkspace', 'reviewApproval', 'blog'])}
-        description="Learn more about creative production workflows, asset management, and team collaboration."
+        description="Learn more about video collaboration workflows, asset management, and team collaboration."
       />
 
       {/* CTA Section */}
       <CTASection
         title="Working with YouTube videos, assets, and feedback at scale?"
-        description="Kreatli is a production management platform for creative teams. Manage YouTube content, coordinate with team members, and streamline your workflow."
+        description="Kreatli is a Video Collaboration & Review Platform for video teams. Manage YouTube content, coordinate with team members, and streamline your workflow."
         primaryButtonText="Start for Free"
       />
       <FooterSection hideCta />

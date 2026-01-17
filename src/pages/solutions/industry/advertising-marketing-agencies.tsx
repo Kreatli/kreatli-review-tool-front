@@ -217,7 +217,7 @@ export default function AdvertisingMarketingAgenciesPage() {
         <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
-          content="advertising agency software, marketing agency tools, campaign management platform, creative production software, video review platform, client approval workflow, marketing campaign collaboration"
+          content="advertising agency software, marketing agency tools, campaign management platform, video collaboration software, video review platform, client approval workflow, marketing campaign collaboration"
         />
         <link rel="canonical" href="https://kreatli.com/solutions/industry/advertising-marketing-agencies" />
         <meta property="og:url" content="https://kreatli.com/solutions/industry/advertising-marketing-agencies" />
@@ -514,7 +514,7 @@ export default function AdvertisingMarketingAgenciesPage() {
       <RelatedResourcesSection
         resources={getRelatedResources(['inHouseCreativeContentTeams', 'videoProductionAnimationStudios', 'clientApprovals'])}
         title="More Resources"
-        description="Explore other Kreatli solutions to streamline your creative production workflow."
+        description="Explore other Kreatli solutions to streamline your video collaboration workflow."
       />
 
       {/* CTA Section */}

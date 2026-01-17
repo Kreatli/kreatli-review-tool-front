@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -15,29 +16,29 @@ export default function PricingPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Pricing – Production & Media Review Platform</title>
+        <title>Kreatli | Pricing – Video Collaboration & Review Platform</title>
         <meta
           name="description"
-          content="Choose the perfect plan for your creative production and media review workflows. Flexible pricing for creative production management, media review and approval, and collaboration. No hidden fees, cancel anytime."
+          content="Choose the perfect plan for your video collaboration and review workflows. Flexible pricing for video collaboration, video review and approval, and team collaboration. No hidden fees, cancel anytime."
         />
         <link rel="canonical" href="https://kreatli.com/pricing" />
         <meta property="og:url" content="https://kreatli.com/pricing" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Pricing – Creative Production & Media Review Platform" />
+        <meta property="og:title" content="Kreatli | Pricing – Video Collaboration & Review Platform" />
         <meta
           property="og:description"
-          content="Flexible pricing for creative production teams of all sizes. Plans for production management, media review and approval, and collaboration. 7-day free trial on all plans. No credit card required to start."
+          content="Flexible pricing for video teams of all sizes. Plans for video collaboration, video review and approval, and team collaboration. 7-day free trial on all plans. No credit card required to start."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Pricing – Creative Production & Media Review Platform" />
+        <meta property="og:image:alt" content="Kreatli | Pricing – Video Collaboration & Review Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Pricing – Creative Production & Media Review Platform" />
+        <meta name="twitter:title" content="Kreatli | Pricing – Video Collaboration & Review Platform" />
         <meta
           name="twitter:description"
-          content="Flexible pricing for creative production teams of all sizes. Plans for production management, media review and approval, and collaboration. Free plan available forever. No credit card required to start."
+          content="Flexible pricing for video teams of all sizes. Plans for video collaboration, video review and approval, and team collaboration. Free plan available forever. No credit card required to start."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -47,7 +48,7 @@ export default function PricingPage() {
         <Decorations />
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
           <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Simple, Transparent Pricing for Creative Production Teams
+            Simple, Transparent Pricing for Video Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Choose a plan and start your 7-day free trial. No credit card required. After the trial, select a paid plan
@@ -228,8 +229,8 @@ export default function PricingPage() {
                   When you upgrade, you'll be charged a prorated amount for the remainder of your current billing cycle,
                   and then the new plan price will apply going forward. When you downgrade, the changes will take effect
                   at the start of your next billing cycle, giving you time to adjust your usage. This flexibility
-                  ensures you're only paying for what you need while having the option to scale up when your creative
-                  production management requirements grow.
+                  ensures you're only paying for what you need while having the option to scale up when your video
+                  collaboration requirements grow.
                 </p>
                 <p>
                   All plan changes are handled through your account settings, and you'll receive email confirmation of
@@ -253,7 +254,7 @@ export default function PricingPage() {
                   Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user
                   per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10
                   members. Enterprise plans have custom pricing based on your organization's needs. All plans include
-                  all core features: unlimited projects, file storage, frame-accurate video review, media review and
+                  all core features: unlimited projects, file storage, frame-accurate video review, video review and
                   approval workflows, project management, team collaboration, guest review links, and cloud storage
                   integrations.
                 </p>
@@ -269,7 +270,7 @@ export default function PricingPage() {
                   members in your account. If you add a team member, you'll be charged for them in your next billing
                   cycle. If you remove a team member, you'll see the cost reduction in your next billing cycle. This
                   simplicity contrasts with complex pricing models that vary based on features, storage, or usage,
-                  making it difficult to predict total costs for your creative production management needs.
+                  making it difficult to predict total costs for your video collaboration needs.
                 </p>
               </div>
             </AccordionItem>
@@ -300,7 +301,7 @@ export default function PricingPage() {
                   You'll receive email receipts for all payments, and you can view your billing history and manage
                   payment methods through your account settings. If you prefer annual billing, we offer discounts that
                   can save you money compared to monthly billing, making it more cost-effective for teams committed to
-                  using Kreatli for their creative production management.
+                  using Kreatli for their video collaboration.
                 </p>
               </div>
             </AccordionItem>
@@ -314,10 +315,10 @@ export default function PricingPage() {
                   When you sign up for Kreatli, you'll choose a plan (Creator, Team, or Enterprise) and immediately
                   start a 7-day free trial of that plan. No credit card is required to start your trial. During the
                   trial, you'll have full access to all features and limits of your chosen plan, allowing you to test
-                  the platform with real projects and see how it improves your creative production management.
+                  the platform with real projects and see how it improves your video collaboration.
                 </p>
                 <p>
-                  All plans include all core features during the trial: frame-accurate video review, media review and
+                  All plans include all core features during the trial: frame-accurate video review, video review and
                   approval workflows, file organization, team collaboration, guest review links, cloud storage
                   integrations, and project management. This means you can fully evaluate how Kreatli compares to your
                   current tool stack before making any financial commitment. You get the complete experience, not a
@@ -328,7 +329,7 @@ export default function PricingPage() {
                   don't select a plan, you'll lose access to your projects and data. This ensures you can try Kreatli
                   risk-free while making it clear that continued use requires a paid subscription. Many teams use the
                   trial period to onboard their team, run a pilot project, and see the value in consolidating their
-                  creative production tools.
+                  video collaboration tools.
                 </p>
               </div>
             </AccordionItem>
@@ -359,7 +360,7 @@ export default function PricingPage() {
                   dedicated account manager, and custom integrations & features. This plan is tailored for enterprise
                   organizations that need advanced controls, custom workflows, and dedicated support. If you're unsure
                   which plan is right for your team, start with a 7-day trial and our support team can help you evaluate
-                  which plan best fits your creative production management requirements.
+                  which plan best fits your video collaboration requirements.
                 </p>
               </div>
             </AccordionItem>
@@ -409,8 +410,8 @@ export default function PricingPage() {
                 <p>
                   Enterprise plans typically include dedicated account management, priority support, custom integrations
                   with your existing tools, advanced security features, custom storage limits, and specialized training
-                  for your team. We work with enterprise clients to understand their specific creative production
-                  management needs and tailor the solution accordingly.
+                  for your team.                   We work with enterprise clients to understand their specific video collaboration
+                  needs and tailor the solution accordingly.
                 </p>
                 <p>
                   Enterprise plans also often include features like single sign-on (SSO), advanced analytics and
@@ -433,8 +434,8 @@ export default function PricingPage() {
                 <p>
                   Yes, Kreatli offers annual billing options with discounts compared to monthly billing. Annual plans
                   provide cost savings (typically 10-20% off monthly pricing) and simplify budgeting by requiring one
-                  payment per year instead of 12 monthly payments. This makes annual billing attractive for teams
-                  committed to using Kreatli for their creative production management.
+                  payment per year instead of 12 monthly payments.                   This makes annual billing attractive for teams
+                  committed to using Kreatli for their video collaboration.
                 </p>
                 <p>
                   When you choose annual billing, you're charged upfront for the entire year, and your subscription
@@ -493,8 +494,7 @@ export default function PricingPage() {
                 <p>
                   Kreatli offers a satisfaction guarantee for new paid subscriptions. If you're not satisfied with
                   Kreatli within the first 30 days of your paid plan, you can request a full refund. This gives you time
-                  to evaluate the platform with your full team and see how it improves your creative production
-                  management workflow.
+                  to evaluate the platform with your full team and see how it improves your video collaboration workflow.
                 </p>
                 <p>
                   After the initial 30-day period, refunds are handled on a case-by-case basis. Since Kreatli uses
@@ -530,7 +530,7 @@ export default function PricingPage() {
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Get Started?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Join creative teams who have simplified their collaboration process. Start your 7-day free trial or book a
+            Join video teams who have simplified their collaboration process. Start your 7-day free trial or book a
             demo to see how Kreatli works for your team.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">

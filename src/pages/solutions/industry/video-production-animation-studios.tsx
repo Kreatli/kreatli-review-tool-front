@@ -559,7 +559,7 @@ export default function VideoProductionAnimationStudiosPage() {
       <RelatedResourcesSection
         resources={getRelatedResources(['advertisingMarketingAgencies', 'inHouseCreativeContentTeams', 'creativeProofing'])}
         title="More Resources"
-        description="Explore other Kreatli solutions to streamline your creative production workflow."
+        description="Explore other Kreatli solutions to streamline your video collaboration workflow."
       />
 
       {/* CTA Section */}
