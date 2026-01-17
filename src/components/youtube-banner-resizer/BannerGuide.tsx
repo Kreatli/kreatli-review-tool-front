@@ -217,6 +217,25 @@ export const BannerGuide = () => {
           </div>
         </div>
       </section>
+
+      {/* Read Complete Guide Section */}
+      <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
+          <p className="mb-6 mx-auto max-w-2xl text-lg text-foreground-500">
+            Learn everything about YouTube banner dimensions, safe zones, best practices, and how to create perfect
+            channel art that works across all devices.
+          </p>
+          <Button
+            as={NextLink}
+            href="https://kreatli.com/guides/youtube-banner-resizer"
+            size="lg"
+            className="bg-foreground text-content1"
+          >
+            Read Complete Guide
+          </Button>
+        </div>
+      </section>
     </div>
   );
 };

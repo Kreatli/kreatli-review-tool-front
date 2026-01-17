@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -76,23 +75,7 @@ export default function YouTubeBannerResizerPage() {
       {/* CTA Section */}
       <CTASection
         title="Working with YouTube videos, assets, and feedback at scale?"
-        description={
-          <>
-            <NextLink href="/" className="text-primary hover:underline">
-              Kreatli
-            </NextLink>{' '}
-            is a production management platform built for creative teams. Manage your YouTube content, coordinate with
-            team members, and streamline your creative workflow. Learn more about{' '}
-            <NextLink href="/platform/creative-workspace" className="text-primary hover:underline">
-              our creative workspace
-            </NextLink>{' '}
-            and{' '}
-            <NextLink href="/platform/review-approval" className="text-primary hover:underline">
-              review & approval features
-            </NextLink>
-            .
-          </>
-        }
+        description="Kreatli is a production management platform for creative teams. Manage YouTube content, coordinate with team members, and streamline your workflow."
         primaryButtonText="Start for Free"
       />
       <FooterSection hideCta />

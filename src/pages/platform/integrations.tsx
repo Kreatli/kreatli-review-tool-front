@@ -8,6 +8,8 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
+import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../data/related-resources';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 
@@ -251,6 +253,13 @@ export default function IntegrationsPage() {
           </div>
         </div>
       </section>
+
+      {/* More Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['projectOrchestration', 'creativeWorkspace', 'reviewApproval'])}
+        title="More Resources"
+        description="Explore other Kreatli platform features to streamline your creative production workflow."
+      />
 
       {/* CTA Section */}
       <CTASection

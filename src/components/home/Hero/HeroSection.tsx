@@ -35,9 +35,10 @@ export const HeroSection = () => {
               )}
             >
               Platform
-            </span>
+            </span>{' '}
+            for
             <br />
-            for <Typewriter words={typewriterWords} />
+            <Typewriter words={typewriterWords} />
           </h1>
           <div className="mt-4 flex w-full flex-col items-center gap-3 sm:mt-6 sm:w-auto sm:gap-4 md:flex-row md:gap-6">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

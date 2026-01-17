@@ -116,6 +116,25 @@ export default function InfoSection() {
         </div>
       </section>
 
+      {/* Read Complete Guide Section */}
+      <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
+          <p className="mb-6 mx-auto max-w-2xl text-lg text-foreground-500">
+            Learn everything about data transfer calculations, common mistakes teams make, and how to plan file
+            transfers effectively for your creative workflows.
+          </p>
+          <Button
+            as={NextLink}
+            href="https://kreatli.com/guides/data-transfer-calculator"
+            size="lg"
+            className="bg-foreground text-content1"
+          >
+            Read Complete Guide
+          </Button>
+        </div>
+      </section>
+
       {/* How Data Transfer Time Is Calculated Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">

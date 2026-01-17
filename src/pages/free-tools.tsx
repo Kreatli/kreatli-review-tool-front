@@ -154,17 +154,17 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
-      {/* Utility Tools Section */}
-      <section className="relative overflow-hidden px-6 py-16">
+      {/* Creative Tools Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Utility Tools</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Creative Tools</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Calculate, plan, and optimize your video workflows.
+              Design, resize, and optimize your creative assets.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {utilityTools.map((tool) => (
+            {creativeTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
                 <Card className="h-full">
                   <CardBody className="flex flex-col gap-4 p-6">
@@ -201,17 +201,17 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
-      {/* Creative Tools Section */}
-      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+      {/* Utility Tools Section */}
+      <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Creative Tools</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Utility Tools</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Design, resize, and optimize your creative assets.
+              Calculate, plan, and optimize your video workflows.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {creativeTools.map((tool) => (
+            {utilityTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
                 <Card className="h-full">
                   <CardBody className="flex flex-col gap-4 p-6">

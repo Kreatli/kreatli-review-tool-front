@@ -9,6 +9,8 @@ import { ReviewToolPreview } from '../../../components/home/Features/ReviewToolP
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../../data/related-resources';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { useSession } from '../../../hooks/useSession';
 
@@ -552,6 +554,13 @@ export default function VideoProductionAnimationStudiosPage() {
           </div>
         </div>
       </section>
+
+      {/* More Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['advertisingMarketingAgencies', 'inHouseCreativeContentTeams', 'creativeProofing'])}
+        title="More Resources"
+        description="Explore other Kreatli solutions to streamline your creative production workflow."
+      />
 
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
