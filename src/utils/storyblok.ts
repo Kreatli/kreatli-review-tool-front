@@ -3,7 +3,7 @@ import { RichtextStoryblok, SectionStoryblok, WysiwygStoryblok } from '../typing
 const SPECIAL_CHARACTERS = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/g;
 
 export const getHeadingId = (label: string) => {
-  return `heading-${label.slice(0, 20).toLowerCase().replaceAll(SPECIAL_CHARACTERS, '').replaceAll(/ +/g, '-')}`;
+  return `heading-${label.slice(0, 150).toLowerCase().replaceAll(SPECIAL_CHARACTERS, '').replaceAll(/ +/g, '-')}`;
 };
 
 export const getTableOfContentLinks = (body: (SectionStoryblok | WysiwygStoryblok)[] | undefined) => {
