@@ -35,8 +35,11 @@ export const UserWidget = () => {
         <DropdownItem as={NextLink} href="/account/subscription" key="subscription">
           Subscription
         </DropdownItem>
-        <DropdownItem as={NextLink} showDivider href="/account/billing-history" key="billing-history">
+        <DropdownItem as={NextLink} href="/account/billing-history" key="billing-history">
           Billing history
+        </DropdownItem>
+        <DropdownItem as={NextLink} showDivider href="/free-tools" key="free-tools">
+          Free tools
         </DropdownItem>
         {/* <DropdownItem as={NextLink} href="https://marketplace.kreatli.com" key="marketplace" target="_blank">
           Kreatli marketplace
