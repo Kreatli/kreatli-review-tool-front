@@ -7,16 +7,6 @@ export default function InfoSection() {
   const workflowSteps = [
     {
       step: 1,
-      title: 'Enter Your File Size',
-      description:
-        'In the File Size field, input the total size of the assets you want to transfer. You can enter file size in GB (gigabytes), MB (megabytes), or TB (terabytes) depending on your needs. This might represent a single large video or a combined batch of production assets.',
-      icon: 'file',
-      image: '/data-transfer-guide/enter-file-size.png',
-      altText:
-        'Data transfer calculator showing file size input field for calculating upload and download times for large files',
-    },
-    {
-      step: 2,
       title: 'Select the File Size Unit',
       description:
         'Choose the appropriate unit: MB, GB, or TB. Using the correct unit ensures accurate estimates for your file transfer calculations.',
@@ -26,14 +16,24 @@ export default function InfoSection() {
         'Data transfer calculator file size unit selector showing MB, GB, and TB options for accurate transfer time calculations',
     },
     {
-      step: 3,
+      step: 2,
       title: 'Enter Your Transfer Speed',
       description:
         'Input your upload or download speed, typically measured in Mbps. This is especially important for uploads, which are often much slower than downloads.',
-      icon: 'upload',
+      icon: 'time',
       image: '/data-transfer-guide/enter-speed.png',
       altText:
         'Data transfer calculator showing internet speed input field in Mbps for calculating file upload and download duration',
+    },
+    {
+      step: 3,
+      title: 'Choose Transfer Type',
+      description:
+        'Select whether you want to calculate upload or download time. This helps you get accurate estimates based on your specific transfer direction.',
+      icon: 'compare',
+      image: '/data-transfer-guide/choose-transfer-type.png',
+      altText:
+        'Data transfer calculator showing transfer type selection for upload or download time calculations',
     },
     {
       step: 4,
