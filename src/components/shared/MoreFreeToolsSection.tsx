@@ -30,7 +30,9 @@ export function MoreFreeToolsSection({
     ? tools
     : FREE_TOOLS.filter((tool) => !excludeHref || tool.href !== excludeHref);
 
-  if (displayTools.length === 0) {
+  const limitedTools = displayTools.slice(0, 3);
+
+  if (limitedTools.length === 0) {
     return null;
   }
 
@@ -43,7 +45,7 @@ export function MoreFreeToolsSection({
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {displayTools.map((tool) => (
+          {limitedTools.map((tool) => (
             <NextLink
               key={tool.href}
               href={tool.href}

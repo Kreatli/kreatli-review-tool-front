@@ -17,22 +17,23 @@ export default function InstagramSafeZoneCheckerPage() {
   return (
     <>
       <Head>
-        <title>Instagram Safe Zone Checker - Preview Reels UI Overlays Free | Kreatli</title>
+        <title>Instagram Reels Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview where Instagram's UI overlays appear - profile picture, username, like button, comment button, share button, and music display. Ensure your text, logos, and key visuals stay visible and never get covered by Instagram's interface elements."
+          content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool—no sign-up required."
         />
-        <meta property="og:title" content="Instagram Safe Zone Checker - Preview Reels UI Overlays Free | Kreatli" />
+        <meta property="og:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview where Instagram's UI overlays appear - profile picture, username, like button, comment button, share button, and music display. Ensure your text, logos, and key visuals stay visible and never get covered by Instagram's interface elements."
+          content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kreatli.com/social-media-safe-zone-checker/instagram-safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Instagram Safe Zone Checker - Preview Reels UI Overlays Free | Kreatli" />
+        <meta name="twitter:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview where Instagram's UI overlays appear - profile picture, username, like button, comment button, share button, and music display. Ensure your text, logos, and key visuals stay visible and never get covered by Instagram's interface elements."
+          content="Preview Instagram Reels UI overlays before posting. Free tool to ensure your content stays visible."
         />
         <link rel="canonical" href="https://kreatli.com/social-media-safe-zone-checker/instagram-safe-zone-checker" />
       </Head>

@@ -19,27 +19,27 @@ export default function YouTubeBannerResizerPage() {
   return (
     <>
       <Head>
-        <title>Free YouTube Banner Resizer | Kreatli</title>
+        <title>YouTube Banner Resizer - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free YouTube banner resizer tool. Resize your channel art to 2560×1440px with safe area previews for mobile, desktop, tablet, and TV. Export optimized banners instantly—no sign-up required."
+          content="Resize YouTube banners to 2560×1440px with safe area previews. Free tool with mobile, desktop, tablet, and TV previews. Export instantly—no sign-up required."
         />
         <meta
           name="keywords"
           content="youtube banner resizer, youtube channel art, youtube banner size, 2560x1440, youtube banner maker, free banner tool, channel art resizer, youtube safe area, youtube banner dimensions"
         />
-        <meta property="og:title" content="Free YouTube Banner Resizer Tool | Kreatli" />
+        <meta property="og:title" content="YouTube Banner Resizer - Free Channel Art Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Resize your YouTube banner to 2560×1440px with safe area previews. Free tool for creating perfect channel art that looks great on all devices."
+          content="Resize YouTube banners to 2560×1440px with safe area previews. Free tool with device previews. Export instantly—no sign-up required."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/youtube-banner-resizer" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Free YouTube Banner Resizer Tool | Kreatli" />
+        <meta name="twitter:title" content="YouTube Banner Resizer - Free Channel Art Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Resize your YouTube banner to 2560×1440px with safe area previews. Free tool for creating perfect channel art."
+          content="Resize YouTube banners to 2560×1440px with safe area previews. Free tool with device previews."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/youtube-banner-resizer" />
       </Head>
@@ -50,7 +50,7 @@ export default function YouTubeBannerResizerPage() {
           <div className="flex flex-col gap-4 pb-6 pt-8">
             <h1 className="text-center font-sans text-2xl font-bold sm:text-4xl">Free YouTube Banner Resizer</h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
-              Resize your YouTube channel art to the perfect dimensions (2560x1440px). Preview safe areas for mobile,
+              Resize your YouTube channel banner in the perfect dimensions (2560x1440px). Preview safe areas for mobile,
               desktop, tablet, and TV devices. Export your optimized banner instantly—completely free, no sign-up
               required.
             </p>

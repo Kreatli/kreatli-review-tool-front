@@ -17,22 +17,23 @@ export default function TikTokSafeZoneCheckerPage() {
   return (
     <>
       <Head>
-        <title>TikTok Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli</title>
+        <title>TikTok Safe Zone Checker - Free Preview Tool | Kreatli</title>
         <meta
           name="description"
-          content="Check your TikTok video safe zones before posting. Our free TikTok safe zone checker shows exactly where profile pictures, usernames, music tracks, and engagement buttons appear on your vertical videos. Perfect for TikTok creators who want to keep captions, text overlays, and important visuals visible. Upload your 9:16 video and see where TikTok's UI elements will cover your content."
+          content="Preview TikTok UI overlays before posting. See where profile pictures, usernames, music tracks, and engagement buttons appear. Free tool—no sign-up required."
         />
-        <meta property="og:title" content="TikTok Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli" />
+        <meta property="og:title" content="TikTok Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Check your TikTok video safe zones before posting. Our free TikTok safe zone checker shows exactly where profile pictures, usernames, music tracks, and engagement buttons appear on your vertical videos. Perfect for TikTok creators who want to keep captions, text overlays, and important visuals visible."
+          content="Preview TikTok UI overlays before posting. See where profile pictures, usernames, music tracks, and engagement buttons appear. Free tool."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kreatli.com/social-media-safe-zone-checker/tiktok-safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TikTok Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli" />
+        <meta name="twitter:title" content="TikTok Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your TikTok video safe zones before posting. Our free TikTok safe zone checker shows exactly where profile pictures, usernames, music tracks, and engagement buttons appear on your vertical videos. Perfect for TikTok creators who want to keep captions, text overlays, and important visuals visible."
+          content="Preview TikTok UI overlays before posting. Free tool to ensure your content stays visible."
         />
         <link rel="canonical" href="https://kreatli.com/social-media-safe-zone-checker/tiktok-safe-zone-checker" />
       </Head>

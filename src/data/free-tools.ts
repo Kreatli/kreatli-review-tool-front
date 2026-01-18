@@ -38,11 +38,38 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try Social Media Safe Zone Checker',
   },
   {
+    title: 'Instagram Reels Safe Zone Checker',
+    description:
+      'Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear.',
+    href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+    icon: 'instagram',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Instagram Reels Safe Zone Checker',
+  },
+  {
+    title: 'TikTok Safe Zone Checker',
+    description:
+      'Check your TikTok video safe zones before posting. Preview where profile picture, username, music track, and engagement buttons appear.',
+    href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+    icon: 'tiktok',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try TikTok Safe Zone Checker',
+  },
+  {
+    title: 'YouTube Shorts Safe Zone Checker',
+    description:
+      'Test your YouTube Shorts video layout before publishing. Preview where channel name, subscribe button, like button, comments, and video controls appear.',
+    href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+    icon: 'youtube',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try YouTube Shorts Safe Zone Checker',
+  },
+  {
     title: 'YouTube Banner Resizer',
     description:
       'Resize your YouTube channel art to the perfect dimensions. Preview safe areas for mobile, desktop, tablet, and TV devices.',
     href: '/free-tools/youtube-banner-resizer',
-    icon: 'file',
+    icon: 'youtube',
     buttonText: 'Try Now',
     ariaLabel: 'Resize YouTube banner',
   },

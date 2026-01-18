@@ -4,7 +4,15 @@ import NextLink from 'next/link';
 import { Icon, IconType } from '../various/Icon';
 
 export const BannerGuide = () => {
-  const workflowSteps = [
+  const workflowSteps: Array<{
+    step: number;
+    title: string;
+    description: string;
+    icon: string;
+    image: string | null;
+    altText?: string;
+    imageVariant?: 'default' | 'contain';
+  }> = [
     {
       step: 1,
       title: 'Upload Your Banner Image',
@@ -19,7 +27,7 @@ export const BannerGuide = () => {
       description:
         "Once uploaded, the tool automatically applies YouTube's recommended banner dimensions (2560 × 1440px) and displays the exact center safe zone (1546 × 423px) that's visible on all devices. Anything outside the safe zone is clearly marked, so you can adjust with confidence.",
       icon: 'file',
-      image: '/youtube-banner-guide/apply-template.png',
+      image: '/youtube-banner-guide/apply-template.webp',
       altText:
         'YouTube banner resizer showing 2560x1440px template with safe zone overlay for mobile, desktop, tablet, and TV devices',
     },
@@ -29,19 +37,30 @@ export const BannerGuide = () => {
       description:
         'Use the device previews to see how your banner will appear on desktop, mobile, tablet, and TV. Make sure all critical elements like logos, text, and taglines stay within the highlighted safe zone. Decorative visuals can extend beyond it. This step eliminates the trial-and-error usually required when uploading banners directly to YouTube.',
       icon: 'eye',
-      image: '/youtube-banner-guide/preview-devices.png',
+      image: '/youtube-banner-guide/preview-devices.webp',
       altText:
         'YouTube banner preview showing how channel art appears on desktop, mobile, tablet, and TV with safe zone indicators',
     },
     {
       step: 4,
-      title: 'Export and Upload to YouTube',
+      title: 'Export and Download Your Banner',
       description:
-        "Export the final banner and upload it directly to your YouTube channel. The file will match YouTube's recommended dimensions (2560 × 1440px), preserve safe zone alignment, and display correctly across desktop, mobile, and TV. No further adjustments needed.",
+        "Download the final banner in YouTube's recommended dimensions (2560 × 1440px). Your export preserves safe area alignment so key elements stay visible across desktop, mobile, tablet, and TV.",
       icon: 'checkCircle',
-      image: '/youtube-banner-guide/export-banner.png',
+      image: '/youtube-banner-guide/export-banner.webp',
       altText:
         'Export YouTube banner button showing download option for 2560x1440px optimized channel art ready for upload',
+    },
+    {
+      step: 5,
+      title: 'Upload to Kreatli for Team Review',
+      description:
+        'Upload your exported banner to Kreatli to share with your team for collaborative review. Collect feedback, align on safe area placement, and document final approvals—so your channel art stays consistent across updates and stakeholders.',
+      icon: 'paint',
+      image: '/youtube-banner-guide/upload-kreatli.webp.webp',
+      imageVariant: 'contain',
+      altText:
+        'Kreatli platform interface showing banner upload and team collaboration features for reviewing YouTube channel art',
     },
   ];
 
@@ -77,36 +96,39 @@ export const BannerGuide = () => {
                       </div>
                       <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                        {item.step === 5 && (
+                          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+                            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                              Start for Free
+                            </Button>
+                            <Button
+                              as="a"
+                              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              size="lg"
+                              variant="bordered"
+                            >
+                              Book a Demo
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
                     {item.image && (
                       <div className="mt-6 flex justify-center lg:mt-8">
-                        <div className="relative max-w-full">
+                        <div className={item.imageVariant === 'contain' ? 'relative w-full max-w-4xl' : 'relative max-w-full'}>
                           <Image
                             src={item.image}
                             alt={item.altText || `${item.title} - YouTube banner resizer tool screenshot`}
                             loading="lazy"
                             removeWrapper
-                            className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
+                            className={[
+                              'h-auto w-full rounded-lg border border-foreground-200 shadow-lg',
+                              item.imageVariant === 'contain' ? 'object-contain' : '',
+                            ].join(' ')}
                           />
                         </div>
-                      </div>
-                    )}
-                    {item.step === 1 && (
-                      <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                          Start for Free
-                        </Button>
-                        <Button
-                          as="a"
-                          href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          size="lg"
-                          variant="bordered"
-                        >
-                          Book a Demo
-                        </Button>
                       </div>
                     )}
                   </div>

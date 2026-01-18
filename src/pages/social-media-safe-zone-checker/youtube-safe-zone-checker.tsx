@@ -17,28 +17,29 @@ export default function YouTubeSafeZoneCheckerPage() {
   return (
     <>
       <Head>
-        <title>YouTube Shorts Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli</title>
+        <title>YouTube Shorts Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Test your YouTube Shorts video layout before publishing. Our free safe zone checker shows exactly where YouTube's UI overlays appear - channel name, subscribe button, like button, comments, share button, and video controls. Perfect your Shorts content and ensure text, logos, and key visuals stay visible. No more hidden content or blocked elements in your YouTube Shorts videos."
+          content="Preview YouTube Shorts UI overlays before publishing. See where channel name, subscribe button, like button, comments, and video controls appear. Free tool—no sign-up required."
         />
         <meta
           property="og:title"
-          content="YouTube Shorts Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli"
+          content="YouTube Shorts Safe Zone Checker - Free Preview Tool | Kreatli"
         />
         <meta
           property="og:description"
-          content="Test your YouTube Shorts video layout before publishing. Our free safe zone checker shows exactly where YouTube's UI overlays appear - channel name, subscribe button, like button, comments, share button, and video controls. Perfect your Shorts content and ensure text, logos, and key visuals stay visible. No more hidden content or blocked elements in your YouTube Shorts videos."
+          content="Preview YouTube Shorts UI overlays before publishing. See where channel name, subscribe button, like button, comments, and video controls appear. Free tool."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kreatli.com/social-media-safe-zone-checker/youtube-safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="YouTube Shorts Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli"
+          content="YouTube Shorts Safe Zone Checker - Free Preview Tool | Kreatli"
         />
         <meta
           name="twitter:description"
-          content="Test your YouTube Shorts video layout before publishing. Our free safe zone checker shows exactly where YouTube's UI overlays appear - channel name, subscribe button, like button, comments, share button, and video controls. Perfect your Shorts content and ensure text, logos, and key visuals stay visible. No more hidden content or blocked elements in your YouTube Shorts videos."
+          content="Preview YouTube Shorts UI overlays before publishing. Free tool to ensure your content stays visible."
         />
         <link rel="canonical" href="https://kreatli.com/social-media-safe-zone-checker/youtube-safe-zone-checker" />
       </Head>
