@@ -6,18 +6,20 @@ import React from 'react';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../../data/related-resources';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { useSession } from '../../../hooks/useSession';
 
 const data = {
-  title: 'Creative Production Management',
+  title: 'Video Collaboration & Review',
   intro:
-    'Manage creative work around the files themselves. Every file, version, comment, and approval connects directly to production status.',
+    'Manage video work around the files themselves. Every file, version, comment, and approval connects directly to collaboration status.',
   metaDescription:
-    'Production management for creative teams that manages work around files, not abstract tasks. Track status, ownership, and approvals directly on creative assets.',
+    'Video collaboration for video teams that manages work around files, not abstract tasks. Track status, ownership, and approvals directly on video assets.',
   howItWorks: {
     title: 'How It Works',
-    description: 'Production management follows the natural flow of creative work, from upload through delivery.',
+    description: 'Video collaboration follows the natural flow of video work, from upload through delivery.',
     steps: [
       {
         number: 1,
@@ -81,7 +83,7 @@ const data = {
   },
   whoThisIsFor: {
     title: 'Who This Is For',
-    description: 'Built for teams that manage creative work around files and deliverables.',
+    description: 'Built for teams that manage video work around files and deliverables.',
     audiences: [
       {
         icon: 'group',
@@ -108,64 +110,64 @@ const data = {
   },
   faqs: [
     {
-      question: 'What is production management for creatives?',
+      question: 'What is video collaboration for video teams?',
       answer:
-        "Production management for creatives means managing work around the actual creative files—videos, images, designs, and other assets. Unlike generic project management that focuses on abstract tasks, creative production management tracks status, ownership, and approvals directly on files and versions. Producers see what's in progress, blocked, or approved at any time.",
+        "Video collaboration means managing work around the actual video files—videos, images, and related assets. Unlike generic project management that focuses on abstract tasks, video collaboration tracks status, ownership, and approvals directly on files and versions. Producers see what's in progress, blocked, or approved at any time.",
     },
     {
       question: 'How does production management differ from project management?',
       answer:
-        'Production management in Kreatli is file-centric, not task-centric. Instead of managing abstract tasks, you manage work around the actual creative files. Every file, version, comment, and approval connects to production status. Tasks link directly to files and versions, and approvals automatically move work forward.',
+        'Video collaboration in Kreatli is file-centric, not task-centric. Instead of managing abstract tasks, you manage work around the actual video files. Every file, version, comment, and approval connects to collaboration status. Tasks link directly to files and versions, and approvals automatically move work forward.',
     },
     {
-      question: 'What is creative production management software?',
+      question: 'What is video collaboration software?',
       answer:
-        'Creative production management software is a platform designed specifically for managing creative work around files and assets. Kreatli combines file organization, version control, review workflows, approval tracking, and team collaboration in one system. Unlike generic project management tools, it tracks status and ownership directly on creative files.',
+        'Video collaboration software is a platform designed specifically for managing video work around files and assets. Kreatli combines file organization, version control, review workflows, approval tracking, and team collaboration in one system. Unlike generic project management tools, it tracks status and ownership directly on video files.',
     },
     {
-      question: 'How do approvals work in Kreatli production management?',
+      question: 'How do approvals work in Kreatli video collaboration?',
       answer:
-        'When a file or version is approved, the production status updates automatically. Producers see approvals in real time, and approved work moves forward in the workflow. All approvals are connected to specific files and versions, providing complete history of what was approved, when, and by whom.',
+        'When a file or version is approved, the collaboration status updates automatically. Producers see approvals in real time, and approved work moves forward in the workflow. All approvals are connected to specific files and versions, providing complete history of what was approved, when, and by whom.',
     },
     {
       question: 'Can I track tasks and ownership in Kreatli?',
       answer:
-        "Yes. Tasks in Kreatli link directly to files and versions, so you always know what work relates to which asset. Assign ownership to team members and see who's responsible for each file. Production status shows what's in progress, blocked, or approved.",
+        "Yes. Tasks in Kreatli link directly to files and versions, so you always know what work relates to which asset. Assign ownership to team members and see who's responsible for each file. Collaboration status shows what's in progress, blocked, or approved.",
     },
     {
       question: 'How does Kreatli prevent tool sprawl for production teams?',
       answer:
-        'Kreatli combines media review and production management in one system. Instead of using Frame.io for review and Asana for project management, everything is in Kreatli. Files, versions, comments, approvals, and status are all connected in one place, eliminating tool-switching and context loss.',
+        'Kreatli combines video review and video collaboration in one system. Instead of using Frame.io for review and Asana for project management, everything is in Kreatli. Files, versions, comments, approvals, and status are all connected in one place, eliminating tool-switching and context loss.',
     },
     {
       question: 'What types of files can I manage with production management?',
       answer:
-        'Kreatli supports all creative file types including videos, images, designs, documents, and more. You can upload, organize, review, and track approval status for any creative asset. Version control works across all file types, keeping your production workflow organized regardless of the media format.',
+        'Kreatli supports all video file types including videos, images, designs, documents, and more. You can upload, organize, review, and track approval status for any video asset. Version control works across all file types, keeping your video collaboration workflow organized regardless of the media format.',
     },
     {
-      question: 'How does version control work in creative production management?',
+      question: 'How does version control work in video collaboration?',
       answer:
-        'Version control in Kreatli tracks all versions of your creative files with their status, comments, and approvals in one place. When changes are needed, create new versions that automatically link to tasks and maintain complete history. You can see which version is current, approved, or in review at any time.',
+        'Version control in Kreatli tracks all versions of your video files with their status, comments, and approvals in one place. When changes are needed, create new versions that automatically link to tasks and maintain complete history. You can see which version is current, approved, or in review at any time.',
     },
     {
-      question: 'Can clients access the production management system?',
+      question: 'Can clients access the video collaboration system?',
       answer:
         'Yes. Kreatli allows you to generate secure guest review links that clients can access without creating accounts. Clients can review files, leave comments, and approve work directly in the system. All client feedback stays connected to specific files and versions.',
     },
     {
-      question: 'How do I see production status at a glance?',
+      question: 'How do I see collaboration status at a glance?',
       answer:
-        'Kreatli provides a centralized dashboard where you can see all production status in one place. Every file shows its current state, owner, and approval status. Filter by project, status, or file type to quickly find what you need. No more asking "where are we on this?"—the answer is always visible.',
+        'Kreatli provides a centralized dashboard where you can see all collaboration status in one place. Every file shows its current state, owner, and approval status. Filter by project, status, or file type to quickly find what you need. No more asking "where are we on this?"—the answer is always visible.',
     },
     {
       question: 'Does Kreatli integrate with other tools?',
       answer:
-        "Yes. Kreatli integrates with Google Drive and Dropbox, allowing you to connect existing file storage and sync files between platforms. You can continue using your preferred cloud storage while leveraging Kreatli's specialized features for production management, media review, and collaboration.",
+        "Yes. Kreatli integrates with Google Drive and Dropbox, allowing you to connect existing file storage and sync files between platforms. You can continue using your preferred cloud storage while leveraging Kreatli's specialized features for video collaboration, video review, and collaboration.",
     },
     {
-      question: 'How is production management different from creative project management?',
+      question: 'How is video collaboration different from project management?',
       answer:
-        "Production management focuses on managing work around actual creative files and assets, while creative project management typically focuses on abstract tasks and timelines. Kreatli's production management tracks status, ownership, and approvals directly on files and versions, ensuring every task and approval is connected to the actual creative work.",
+        "Video collaboration focuses on managing work around actual video files and assets, while project management typically focuses on abstract tasks and timelines. Kreatli's video collaboration tracks status, ownership, and approvals directly on files and versions, ensuring every task and approval is connected to the actual video work.",
     },
   ],
 };
@@ -176,20 +178,20 @@ export default function CreativeProductionManagementPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | {data.title} – Creative Production Solution</title>
+        <title>Kreatli | {data.title} – Video Collaboration Solution</title>
         <meta name="description" content={data.metaDescription} />
         <link rel="canonical" href="https://kreatli.com/solutions/use-case/creative-production-management" />
         <meta property="og:url" content="https://kreatli.com/solutions/use-case/creative-production-management" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta property="og:description" content={data.metaDescription} />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta name="twitter:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta name="twitter:description" content={data.metaDescription} />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -274,7 +276,7 @@ export default function CreativeProductionManagementPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.problemsSolved.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Production management solves the common challenges creative teams face when managing work across multiple
+              Video collaboration solves the common challenges video teams face when managing work across multiple
               tools.
             </p>
           </div>
@@ -339,7 +341,7 @@ export default function CreativeProductionManagementPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about production management for creative teams.
+              Get detailed answers about video collaboration for video teams.
             </p>
           </div>
           <Accordion variant="splitted">
@@ -362,12 +364,19 @@ export default function CreativeProductionManagementPage() {
         </div>
       </section>
 
+      {/* More Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['clientApprovals', 'creativeProofing', 'inHouseCreativeContentTeams'])}
+        title="More Resources"
+        description="Explore other Kreatli solutions to streamline your video collaboration workflow."
+      />
+
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Manage Production Around Your Files?</h2>
+          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Manage Video Collaboration Around Your Files?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Experience how Kreatli combines media review and production management in one system. Start using Kreatli
+            Experience how Kreatli combines video review and video collaboration in one system. Start using Kreatli
             today.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">

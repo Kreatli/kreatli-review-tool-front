@@ -48,7 +48,7 @@ export default function Page({ story, slug }: Props) {
 
   const title = storyState?.content.metaFields?.title
     ? `Kreatli | ${storyState?.content.metaFields?.title}`
-    : 'End-to-End Production Management Platform';
+    : 'Kreatli | Video Collaboration & Review Platform';
   const description =
     storyState?.content.metaFields?.description ||
     'Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place.';

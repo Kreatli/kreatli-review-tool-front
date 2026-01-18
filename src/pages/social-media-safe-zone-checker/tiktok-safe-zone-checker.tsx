@@ -6,6 +6,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { SafeZoneScreen } from '../../components/safe-zone-checker/SafeZoneScreen/SafeZoneScreen';
 import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
+import { CTASection } from '../../components/shared/CTASection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
@@ -16,22 +17,23 @@ export default function TikTokSafeZoneCheckerPage() {
   return (
     <>
       <Head>
-        <title>TikTok Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli</title>
+        <title>TikTok Safe Zone Checker - Free Preview Tool | Kreatli</title>
         <meta
           name="description"
-          content="Check your TikTok video safe zones before posting. Our free TikTok safe zone checker shows exactly where profile pictures, usernames, music tracks, and engagement buttons appear on your vertical videos. Perfect for TikTok creators who want to keep captions, text overlays, and important visuals visible. Upload your 9:16 video and see where TikTok's UI elements will cover your content."
+          content="Preview TikTok UI overlays before posting. See where profile pictures, usernames, music tracks, and engagement buttons appear. Free tool—no sign-up required."
         />
-        <meta property="og:title" content="TikTok Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli" />
+        <meta property="og:title" content="TikTok Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Check your TikTok video safe zones before posting. Our free TikTok safe zone checker shows exactly where profile pictures, usernames, music tracks, and engagement buttons appear on your vertical videos. Perfect for TikTok creators who want to keep captions, text overlays, and important visuals visible."
+          content="Preview TikTok UI overlays before posting. See where profile pictures, usernames, music tracks, and engagement buttons appear. Free tool."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kreatli.com/social-media-safe-zone-checker/tiktok-safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TikTok Safe Zone Checker - Free Tool to Preview UI Overlays | Kreatli" />
+        <meta name="twitter:title" content="TikTok Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your TikTok video safe zones before posting. Our free TikTok safe zone checker shows exactly where profile pictures, usernames, music tracks, and engagement buttons appear on your vertical videos. Perfect for TikTok creators who want to keep captions, text overlays, and important visuals visible."
+          content="Preview TikTok UI overlays before posting. Free tool to ensure your content stays visible."
         />
         <link rel="canonical" href="https://kreatli.com/social-media-safe-zone-checker/tiktok-safe-zone-checker" />
       </Head>
@@ -51,10 +53,18 @@ export default function TikTokSafeZoneCheckerPage() {
       </div>
       <SafeZoneScreenGuide platform="tiktok" />
 
-      {/* Related Resources Section */}
+      {/* More Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['reviewApproval', 'creativeWorkspace', 'blog'])}
-        description="Learn more about creative production workflows, asset management, and team collaboration."
+        title="More Resources"
+        description="Learn more about video collaboration workflows, asset management, and team collaboration."
+      />
+
+      {/* CTA Section */}
+      <CTASection
+        title="Ready to Ensure Your Content Looks Perfect?"
+        description="Use our safe zone checker tool to preview your content with accurate platform overlays. Ensure your videos, titles, logos, and CTAs stay visible across all devices and platforms."
+        primaryButtonText="Start for Free"
       />
       <FooterSection hideCta />
       <SignUpModal />

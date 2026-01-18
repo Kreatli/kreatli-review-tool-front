@@ -9,6 +9,8 @@ import { ShareFeaturePreview } from '../../../components/home/Features/ShareFeat
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../../data/related-resources';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { useSession } from '../../../hooks/useSession';
 
@@ -34,7 +36,7 @@ const data = {
   ],
   useCases: [
     'Brand marketing teams managing campaign assets',
-    'In-house creative teams coordinating with agencies',
+    'In-house video teams coordinating with agencies',
     'Marketing operations managing multiple campaigns',
     'Content teams producing brand content at scale',
     'Brand asset management and distribution',
@@ -158,7 +160,7 @@ const data = {
     },
   ],
   metaDescription:
-    'Video production platform for in-house creative and content teams. Manage brand assets, campaign production, and creative workflows. Collaborate with agencies, streamline approvals, and maintain brand consistency. Replace Google Drive, Frame.io, and Slack with one unified platform.',
+    'Video Collaboration & Review Platform for in-house video and content teams. Manage brand assets, campaign production, and video collaboration workflows. Collaborate with agencies, streamline approvals, and maintain brand consistency. Replace Google Drive, Frame.io, and Slack with one unified platform.',
   faqs: [
     {
       question: 'How does Kreatli help in-house teams maintain brand consistency?',
@@ -228,7 +230,7 @@ export default function InHouseCreativeContentTeamsPage() {
         <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
-          content="in-house creative teams, content production platform, brand asset management, creative workflow software, internal creative teams, brand management platform, creative collaboration tools"
+          content="in-house video teams, content production platform, brand asset management, video collaboration software, internal video teams, brand management platform, video collaboration tools"
         />
         <link rel="canonical" href="https://kreatli.com/solutions/industry/in-house-creative-content-teams" />
         <meta property="og:url" content="https://kreatli.com/solutions/industry/in-house-creative-content-teams" />
@@ -524,6 +526,13 @@ export default function InHouseCreativeContentTeamsPage() {
           </div>
         </div>
       </section>
+
+      {/* More Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['advertisingMarketingAgencies', 'videoProductionAnimationStudios', 'creativeProductionManagement'])}
+        title="More Resources"
+        description="Explore other Kreatli solutions to streamline your video collaboration workflow."
+      />
 
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">

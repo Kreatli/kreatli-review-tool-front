@@ -18,17 +18,25 @@ export default function CostCalculatorPage() {
   return (
     <>
       <Head>
-        <title>Software Cost Calculator – Calculate Your Creative Tool Savings | Kreatli</title>
+        <title>Software Cost Calculator - Calculate Tool Savings | Kreatli</title>
         <meta
           name="description"
-          content="Use our free software cost calculator to estimate your monthly and annual software spend. Compare your current tool stack costs with Kreatli's all-in-one creative production platform and see potential savings."
+          content="Calculate your monthly and annual software costs. Compare your current tool stack with Kreatli and see potential savings. Free calculator for creative teams."
         />
-        <meta property="og:title" content="Software Cost Calculator – Calculate Your Creative Tool Savings | Kreatli" />
+        <meta property="og:title" content="Software Cost Calculator - Calculate Creative Tool Savings | Kreatli" />
         <meta
           property="og:description"
-          content="Calculate your software costs with our interactive calculator. Estimate monthly and annual spend based on team size and tools. Compare with Kreatli to see potential savings."
+          content="Calculate your software costs and see potential savings. Free calculator for creative teams. Compare your tool stack with Kreatli's all-in-one platform."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kreatli.com/free-tools/cost-calculator" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Software Cost Calculator - Calculate Creative Tool Savings | Kreatli" />
+        <meta
+          name="twitter:description"
+          content="Calculate your software costs and see potential savings. Free calculator for creative teams."
+        />
+        <link rel="canonical" href="https://kreatli.com/free-tools/cost-calculator" />
       </Head>
       <Header />
       <Decorations />

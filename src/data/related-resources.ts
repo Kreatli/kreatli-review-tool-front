@@ -41,6 +41,55 @@ export const RELATED_RESOURCES = {
     icon: 'paint' as IconType,
     buttonText: 'Learn More',
   },
+  // Solution pages
+  advertisingMarketingAgencies: {
+    title: 'Advertising & Marketing Agencies',
+    description:
+      'Streamline campaign production with frame-accurate video review, asset-linked feedback, and no-signup client links.',
+    href: '/solutions/industry/advertising-marketing-agencies',
+    icon: 'group' as IconType,
+    buttonText: 'Learn More',
+  },
+  inHouseCreativeContentTeams: {
+    title: 'In-House Creative & Content Teams',
+    description:
+      'Streamline brand asset management, campaign production, and stakeholder approvals. Collaborate with external agencies while maintaining brand consistency.',
+    href: '/solutions/industry/in-house-creative-content-teams',
+    icon: 'suitcase' as IconType,
+    buttonText: 'Learn More',
+  },
+  videoProductionAnimationStudios: {
+    title: 'Video Production & Animation Studios',
+    description:
+      'Frame-accurate feedback, version control, and collaboration for video production teams. Ship more content with less chaos.',
+    href: '/solutions/industry/video-production-animation-studios',
+    icon: 'monitorPlay' as IconType,
+    buttonText: 'Learn More',
+  },
+  clientApprovals: {
+    title: 'Client Approvals',
+    description:
+      'Client approvals tied to exact file versions, not links or emails. See status at a glance and maintain a complete audit trail that protects both parties.',
+    href: '/solutions/use-case/client-approvals',
+    icon: 'checkCircle' as IconType,
+    buttonText: 'Learn More',
+  },
+  creativeProductionManagement: {
+    title: 'Creative Production Management',
+    description:
+      'Manage creative work around the files themselves. Every file, version, comment, and approval connects directly to production status.',
+    href: '/solutions/use-case/creative-production-management',
+    icon: 'folder' as IconType,
+    buttonText: 'Learn More',
+  },
+  creativeProofing: {
+    title: 'Creative Proofing',
+    description:
+      'Review creative work and turn feedback into trackable work. Every upload creates a new version for easy comparison.',
+    href: '/solutions/use-case/creative-proofing',
+    icon: 'paint' as IconType,
+    buttonText: 'Learn More',
+  },
   // Blog
   blog: {
     title: 'Kreatli Blog',

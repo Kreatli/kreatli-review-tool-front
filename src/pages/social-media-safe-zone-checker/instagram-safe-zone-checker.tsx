@@ -6,6 +6,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { SafeZoneScreen } from '../../components/safe-zone-checker/SafeZoneScreen/SafeZoneScreen';
 import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
+import { CTASection } from '../../components/shared/CTASection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
@@ -16,22 +17,23 @@ export default function InstagramSafeZoneCheckerPage() {
   return (
     <>
       <Head>
-        <title>Instagram Safe Zone Checker - Preview Reels UI Overlays Free | Kreatli</title>
+        <title>Instagram Reels Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview where Instagram's UI overlays appear - profile picture, username, like button, comment button, share button, and music display. Ensure your text, logos, and key visuals stay visible and never get covered by Instagram's interface elements."
+          content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool—no sign-up required."
         />
-        <meta property="og:title" content="Instagram Safe Zone Checker - Preview Reels UI Overlays Free | Kreatli" />
+        <meta property="og:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview where Instagram's UI overlays appear - profile picture, username, like button, comment button, share button, and music display. Ensure your text, logos, and key visuals stay visible and never get covered by Instagram's interface elements."
+          content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool."
         />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://kreatli.com/social-media-safe-zone-checker/instagram-safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Instagram Safe Zone Checker - Preview Reels UI Overlays Free | Kreatli" />
+        <meta name="twitter:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview where Instagram's UI overlays appear - profile picture, username, like button, comment button, share button, and music display. Ensure your text, logos, and key visuals stay visible and never get covered by Instagram's interface elements."
+          content="Preview Instagram Reels UI overlays before posting. Free tool to ensure your content stays visible."
         />
         <link rel="canonical" href="https://kreatli.com/social-media-safe-zone-checker/instagram-safe-zone-checker" />
       </Head>
@@ -51,10 +53,18 @@ export default function InstagramSafeZoneCheckerPage() {
       </div>
       <SafeZoneScreenGuide platform="instagram" />
 
-      {/* Related Resources Section */}
+      {/* More Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['reviewApproval', 'creativeWorkspace', 'blog'])}
-        description="Learn more about creative production workflows, asset management, and team collaboration."
+        title="More Resources"
+        description="Learn more about video collaboration workflows, asset management, and team collaboration."
+      />
+
+      {/* CTA Section */}
+      <CTASection
+        title="Ready to Ensure Your Content Looks Perfect?"
+        description="Use our safe zone checker tool to preview your content with accurate platform overlays. Ensure your videos, titles, logos, and CTAs stay visible across all devices and platforms."
+        primaryButtonText="Start for Free"
       />
       <FooterSection hideCta />
       <SignUpModal />

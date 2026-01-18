@@ -43,11 +43,35 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Instagram Reels Safe Zone Checker',
+    description:
+      'Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear.',
+    href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+    icon: 'instagram',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'TikTok Safe Zone Checker',
+    description:
+      'Check your TikTok video safe zones before posting. Preview where profile picture, username, music track, and engagement buttons appear.',
+    href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+    icon: 'tiktok',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'YouTube Shorts Safe Zone Checker',
+    description:
+      'Test your YouTube Shorts video layout before publishing. Preview where channel name, subscribe button, like button, comments, and video controls appear.',
+    href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+    icon: 'youtube',
+    category: 'Creative Tools',
+  },
+  {
     title: 'YouTube Banner Resizer',
     description:
       'Resize your YouTube banner online for free. Preview safe areas for mobile, desktop, and TV. Export perfectly sized channel art in seconds.',
     href: '/free-tools/youtube-banner-resizer',
-    icon: 'file',
+    icon: 'youtube',
     category: 'Creative Tools',
   },
 ];
@@ -59,12 +83,12 @@ const faqs = [
   {
     question: 'Are these tools really free to use?',
     answer:
-      'Yes, all tools on this page are completely free to use with no hidden costs, no sign-up required, and no credit card needed. These are professional-grade tools designed to help video professionals and creative teams work more efficiently. We believe in providing value to the creative community, which is why we offer these tools at no cost.',
+      'Yes, all tools on this page are completely free to use with no hidden costs, no sign-up required, and no credit card needed. These are professional-grade tools designed to help video professionals and video teams work more efficiently. We believe in providing value to the video community, which is why we offer these tools at no cost.',
   },
   {
     question: 'Do I need to create an account to use these tools?',
     answer:
-      "No account is required to use any of our free tools. You can access the Data Transfer Calculator, Software Cost Calculator, Social Media Safe Zone Checker, and YouTube Banner Resizer immediately without signing up. Simply visit the tool page and start using it right away. If you decide to use Kreatli's production management platform later, you can create a free account then.",
+      "No account is required to use any of our free tools. You can access the Data Transfer Calculator, Software Cost Calculator, Social Media Safe Zone Checker, and YouTube Banner Resizer immediately without signing up. Simply visit the tool page and start using it right away. If you decide to use Kreatli's Video Collaboration & Review Platform later, you can create a free account then.",
   },
   {
     question: 'What is the Data Transfer Calculator used for?',
@@ -94,12 +118,12 @@ const faqs = [
   {
     question: 'Will you add more free tools in the future?',
     answer:
-      'Yes, we plan to add more free tools based on feedback from the creative community. Our goal is to provide valuable resources that help video professionals and creative teams work more efficiently. If you have suggestions for tools that would be helpful, feel free to reach out to us at support@kreatli.com.',
+      'Yes, we plan to add more free tools based on feedback from the video community. Our goal is to provide valuable resources that help video professionals and video teams work more efficiently. If you have suggestions for tools that would be helpful, feel free to reach out to us at support@kreatli.com.',
   },
   {
     question: "How do these free tools relate to Kreatli's main platform?",
     answer:
-      "These free tools are standalone utilities that anyone can use, regardless of whether they use Kreatli's production management platform. However, if you find these tools useful, you might be interested in Kreatli's full platform, which includes frame-accurate video review, project management, team collaboration, and secure file storage—all in one unified workspace. The free tools demonstrate our commitment to helping creative professionals, while the main platform provides comprehensive production management for teams.",
+      "These free tools are standalone utilities that anyone can use, regardless of whether they use Kreatli's Video Collaboration & Review Platform. However, if you find these tools useful, you might be interested in Kreatli's full platform, which includes frame-accurate video review, project management, team collaboration, and secure file storage—all in one unified workspace. The free tools demonstrate our commitment to helping video professionals, while the main platform provides comprehensive video collaboration for teams.",
   },
   {
     question: 'Can I share these tools with my team or clients?',
@@ -117,7 +141,7 @@ export default function FreeToolsPage() {
         <title>Kreatli | Free Tools for Video Teams – Professional Creative Tools</title>
         <meta
           name="description"
-          content="Free professional tools for video teams and creative professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
+          content="Free professional tools for video teams and video professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools" />
         <meta property="og:url" content="https://kreatli.com/free-tools" />
@@ -125,7 +149,7 @@ export default function FreeToolsPage() {
         <meta property="og:title" content="Kreatli | Free Tools for Video Teams – Professional Creative Tools" />
         <meta
           property="og:description"
-          content="Free professional tools for video teams and creative professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
+          content="Free professional tools for video teams and video professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
@@ -154,17 +178,17 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
-      {/* Utility Tools Section */}
-      <section className="relative overflow-hidden px-6 py-16">
+      {/* Creative Tools Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Utility Tools</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Creative Tools</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Calculate, plan, and optimize your video workflows.
+              Design, resize, and optimize your creative assets.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {utilityTools.map((tool) => (
+            {creativeTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
                 <Card className="h-full">
                   <CardBody className="flex flex-col gap-4 p-6">
@@ -201,17 +225,17 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
-      {/* Creative Tools Section */}
-      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+      {/* Utility Tools Section */}
+      <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Creative Tools</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Utility Tools</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Design, resize, and optimize your creative assets.
+              Calculate, plan, and optimize your video workflows.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {creativeTools.map((tool) => (
+            {utilityTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
                 <Card className="h-full">
                   <CardBody className="flex flex-col gap-4 p-6">
@@ -291,7 +315,7 @@ export default function FreeToolsPage() {
           <div className="flex flex-col gap-6 text-center">
             <h2 className="font-sans text-2xl font-bold sm:text-4xl">Need More Than Free Tools?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Kreatli is a production management platform designed for creative teams working with large media files.
+              Kreatli is a Video Collaboration & Review Platform designed for video teams working with large video files.
               Streamline approvals, manage projects, and collaborate more efficiently.
             </p>
             <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">

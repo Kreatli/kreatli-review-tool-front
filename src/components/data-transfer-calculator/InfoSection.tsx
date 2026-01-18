@@ -1,10 +1,139 @@
-import { Card, CardBody } from '@heroui/react';
+import { Button, Card, CardBody, Image } from '@heroui/react';
+import NextLink from 'next/link';
 
-import { Icon } from '../various/Icon';
+import { Icon, IconType } from '../various/Icon';
 
 export default function InfoSection() {
+  const workflowSteps = [
+    {
+      step: 1,
+      title: 'Select the File Size Unit',
+      description:
+        'Choose the appropriate unit: MB, GB, or TB. Using the correct unit ensures accurate estimates for your file transfer calculations.',
+      icon: 'list',
+      image: '/data-transfer-guide/select-unit.png',
+      altText:
+        'Data transfer calculator file size unit selector showing MB, GB, and TB options for accurate transfer time calculations',
+    },
+    {
+      step: 2,
+      title: 'Enter Your Transfer Speed',
+      description:
+        'Input your upload or download speed, typically measured in Mbps. This is especially important for uploads, which are often much slower than downloads.',
+      icon: 'time',
+      image: '/data-transfer-guide/enter-speed.png',
+      altText:
+        'Data transfer calculator showing internet speed input field in Mbps for calculating file upload and download duration',
+    },
+    {
+      step: 3,
+      title: 'Choose Transfer Type',
+      description:
+        'Select whether you want to calculate upload or download time. This helps you get accurate estimates based on your specific transfer direction.',
+      icon: 'compare',
+      image: '/data-transfer-guide/choose-transfer-type.png',
+      altText: 'Data transfer calculator showing transfer type selection for upload or download time calculations',
+    },
+    {
+      step: 4,
+      title: 'Review the Result',
+      description:
+        'You instantly see the estimated transfer duration, expressed in hours, minutes, or seconds. This allows you to schedule uploads intelligently, set realistic delivery expectations, and avoid deadline surprises.',
+      icon: 'checkCircle',
+      image: null, // No screenshot needed for this step
+    },
+  ];
+
   return (
     <>
+      {/* How to Use Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
+              How to Use the Free Data Transfer Calculator
+            </h2>
+            <p className="mx-auto max-w-2xl text-base text-foreground-500">
+              Follow this step-by-step process to estimate upload and download times for large files accurately.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {workflowSteps.map((item) => (
+              <Card key={item.step} className="scroll-mt-36">
+                <CardBody className="p-6 lg:p-8">
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Icon icon={item.icon as IconType} size={24} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
+                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
+                        </div>
+                      </div>
+                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
+                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                      </div>
+                    </div>
+                    {item.image && (
+                      <div className="mt-6 flex justify-center lg:mt-8">
+                        <div className="relative max-w-full">
+                          <Image
+                            src={item.image}
+                            alt={item.altText || `${item.title} - Data transfer calculator tool screenshot`}
+                            loading="lazy"
+                            removeWrapper
+                            className="mx-auto h-auto w-full max-w-xl rounded-lg border border-foreground-200 shadow-lg"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    {item.step === 4 && (
+                      <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                        <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                          Start for Free
+                        </Button>
+                        <Button
+                          as="a"
+                          href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          size="lg"
+                          variant="bordered"
+                        >
+                          Book a Demo
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Read Complete Guide Section */}
+      <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
+          <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground-500">
+            Learn everything about data transfer calculations, common mistakes teams make, and how to plan file
+            transfers effectively for your creative workflows.
+          </p>
+          <Button
+            as={NextLink}
+            href="https://kreatli.com/guides/data-transfer-calculator"
+            size="lg"
+            className="bg-foreground text-content1"
+          >
+            Read Complete Guide
+          </Button>
+        </div>
+      </section>
+
       {/* How Data Transfer Time Is Calculated Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">

@@ -6,19 +6,21 @@ import React from 'react';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../../data/related-resources';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { useSession } from '../../../hooks/useSession';
 
 const data = {
-  title: 'Creative Proofing',
+  title: 'Video Proofing',
   intro:
-    'Review creative work and turn feedback into trackable work. Every upload creates a new version for easy comparison.',
+    'Review video work and turn feedback into trackable work. Every upload creates a new version for easy comparison.',
   metaDescription:
-    'Creative proofing platform for design, video, and marketing teams. Comment directly on files, compare versions, and turn feedback into trackable work. Every upload creates a new version with complete history.',
+    'Video proofing platform for video, design, and marketing teams. Comment directly on files, compare versions, and turn feedback into trackable work. Every upload creates a new version with complete history.',
   howItWorks: {
     title: 'How Proofing Works',
     description:
-      'Creative proofing follows the natural flow of review cycles, from upload through feedback to the next version.',
+      'Video proofing follows the natural flow of review cycles, from upload through feedback to the next version.',
     steps: [
       {
         number: 1,
@@ -109,9 +111,9 @@ const data = {
   },
   faqs: [
     {
-      question: 'What is creative proofing?',
+      question: 'What is video proofing?',
       answer:
-        'Creative proofing is the process of reviewing creative work and collecting feedback that turns into trackable work. In Kreatli, creative proofing involves uploading files, collecting frame-accurate or area-specific comments, and managing feedback across multiple review rounds. Every upload creates a new version instead of overwriting files, so teams can compare versions, track changes, and ensure feedback becomes actionable work with clear ownership and resolution status.',
+        'Video proofing is the process of reviewing video work and collecting feedback that turns into trackable work. In Kreatli, video proofing involves uploading files, collecting frame-accurate or area-specific comments, and managing feedback across multiple review rounds. Every upload creates a new version instead of overwriting files, so teams can compare versions, track changes, and ensure feedback becomes actionable work with clear ownership and resolution status.',
     },
     {
       question: 'How do I manage feedback across multiple versions?',
@@ -126,7 +128,7 @@ const data = {
     {
       question: 'How does version comparison work?',
       answer:
-        'Kreatli allows you to compare any two versions side-by-side to see exactly what changed. This helps teams understand revisions, verify that requested changes were made, and ensure nothing was missed. The side-by-side comparison highlights differences between versions, making it easy to spot changes. Previous versions remain accessible in the version history, so you can always reference earlier iterations, compare any two versions, or revert to a previous version if needed. This is essential for creative workflows where multiple iterations are common.',
+        'Kreatli allows you to compare any two versions side-by-side to see exactly what changed. This helps teams understand revisions, verify that requested changes were made, and ensure nothing was missed. The side-by-side comparison highlights differences between versions, making it easy to spot changes. Previous versions remain accessible in the version history, so you can always reference earlier iterations, compare any two versions, or revert to a previous version if needed. This is essential for video collaboration workflows where multiple iterations are common.',
     },
     {
       question: 'How does feedback become trackable work?',
@@ -151,17 +153,17 @@ const data = {
     {
       question: 'What file types can be proofed in Kreatli?',
       answer:
-        'Kreatli supports creative proofing for videos (MP4, MOV, AVI, and more), images (JPG, PNG, GIF, etc.), PDFs, and other document formats. The platform is optimized for video proofing with frame-accurate commenting, but also handles images and documents for comprehensive creative review. You can proof any creative asset in your production workflow, making Kreatli suitable for video production, animation, graphic design, and mixed-media projects. All file types support version history and side-by-side comparison.',
+        'Kreatli supports video proofing for videos (MP4, MOV, AVI, and more), images (JPG, PNG, GIF, etc.), PDFs, and other document formats. The platform is optimized for video proofing with frame-accurate commenting, but also handles images and documents for comprehensive video review. You can proof any video asset in your video collaboration workflow, making Kreatli suitable for video production, animation, graphic design, and mixed-media projects. All file types support version history and side-by-side comparison.',
     },
     {
-      question: 'How does creative proofing differ from generic file review?',
+      question: 'How does video proofing differ from generic file review?',
       answer:
-        'Creative proofing in Kreatli is built specifically for creative workflows, not adapted from generic file review tools. It includes frame-accurate video commenting, version comparison, feedback tracking with ownership, and integration with approval workflows. Unlike generic review tools, Kreatli treats creative files as the primary focus, with comments, versions, and feedback organized around them. The platform understands creative workflows like iterative design, multi-stakeholder review, and version control, making it more effective than generic file review solutions.',
+        'Video proofing in Kreatli is built specifically for video collaboration workflows, not adapted from generic file review tools. It includes frame-accurate video commenting, version comparison, feedback tracking with ownership, and integration with approval workflows. Unlike generic review tools, Kreatli treats video files as the primary focus, with comments, versions, and feedback organized around them. The platform understands video collaboration workflows like iterative design, multi-stakeholder review, and version control, making it more effective than generic file review solutions.',
     },
     {
       question: 'Can I see all unresolved feedback across multiple projects?',
       answer:
-        "Yes. Kreatli's centralized dashboard provides visibility into unresolved feedback across all your projects. You can see which files have pending comments, who's responsible for addressing them, and what needs attention. This is essential for creative teams managing multiple projects simultaneously. You can filter by project, assignee, or status to quickly find what needs attention. This eliminates the need to check multiple files or projects individually to understand what feedback is still pending.",
+        "Yes. Kreatli's centralized dashboard provides visibility into unresolved feedback across all your projects. You can see which files have pending comments, who's responsible for addressing them, and what needs attention. This is essential for video teams managing multiple projects simultaneously. You can filter by project, assignee, or status to quickly find what needs attention. This eliminates the need to check multiple files or projects individually to understand what feedback is still pending.",
     },
     {
       question: 'How do I prevent feedback from getting lost between versions?',
@@ -177,20 +179,20 @@ export default function CreativeProofingPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | {data.title} – Creative Production Solution</title>
+        <title>Kreatli | {data.title} – Video Collaboration Solution</title>
         <meta name="description" content={data.metaDescription} />
         <link rel="canonical" href="https://kreatli.com/solutions/use-case/creative-proofing" />
         <meta property="og:url" content="https://kreatli.com/solutions/use-case/creative-proofing" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta property="og:description" content={data.metaDescription} />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta name="twitter:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta name="twitter:description" content={data.metaDescription} />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -275,7 +277,7 @@ export default function CreativeProofingPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.problemsSolved.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Creative proofing solves the common challenges teams face when managing feedback across multiple review
+              Video proofing solves the common challenges teams face when managing feedback across multiple review
               rounds.
             </p>
           </div>
@@ -340,7 +342,7 @@ export default function CreativeProofingPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about creative proofing for creative teams.
+              Get detailed answers about video proofing for video teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -367,12 +369,19 @@ export default function CreativeProofingPage() {
         </div>
       </section>
 
+      {/* More Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['clientApprovals', 'creativeProductionManagement', 'videoProductionAnimationStudios'])}
+        title="More Resources"
+        description="Explore other Kreatli solutions to streamline your video collaboration workflow."
+      />
+
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Turn Feedback Into Trackable Work?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Experience how Kreatli enables creative proofing across versions and formats. Start using Kreatli today.
+            Experience how Kreatli enables video proofing across versions and formats. Start using Kreatli today.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

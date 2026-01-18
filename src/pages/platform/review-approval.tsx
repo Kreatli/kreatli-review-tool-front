@@ -10,14 +10,16 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
+import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
+import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What is frame-accurate media review?',
+    question: 'What is frame-accurate video review?',
     answer:
-      'Frame-accurate media review allows you to pin comments and feedback to exact frames and timestamps in videos. In Kreatli, when you comment on a video, your feedback is attached to the specific frame (e.g., "at 00:15:23"), eliminating confusion about which clip or moment you\'re referring to. This is essential for video production workflows where precise timing matters. Unlike email or chat feedback where you might say "the part around 15 minutes," frame-accurate review ensures everyone knows exactly which frame needs attention.',
+      'Frame-accurate video review allows you to pin comments and feedback to exact frames and timestamps in videos. In Kreatli, when you comment on a video, your feedback is attached to the specific frame (e.g., "at 00:15:23"), eliminating confusion about which clip or moment you\'re referring to. This is essential for video production workflows where precise timing matters. Unlike email or chat feedback where you might say "the part around 15 minutes," frame-accurate review ensures everyone knows exactly which frame needs attention.',
   },
   {
     question: 'How does version comparison work in Kreatli?',
@@ -72,29 +74,29 @@ export default function ReviewApprovalPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Review & Approval – Frame-Accurate Media Review Platform</title>
+        <title>Kreatli | Review & Approval – Frame-Accurate Video Review Platform</title>
         <meta
           name="description"
-          content="Kreatli's Review & Approval features provide frame-accurate revisions, side-by-side version comparison, and secure file sharing for media review and approval workflows. Perfect for creative production teams."
+          content="Kreatli's Review & Approval features provide frame-accurate video revisions, side-by-side version comparison, and secure file sharing for video review and approval workflows. Perfect for video teams."
         />
         <link rel="canonical" href="https://kreatli.com/platform/review-approval" />
         <meta property="og:url" content="https://kreatli.com/platform/review-approval" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Review & Approval – Frame-Accurate Media Review Platform" />
+        <meta property="og:title" content="Kreatli | Review & Approval – Frame-Accurate Video Review Platform" />
         <meta
           property="og:description"
-          content="Streamline your media review and approval workflow with frame-accurate comments, version comparison, and secure file sharing. Built for creative production teams."
+          content="Streamline your video review and approval workflow with frame-accurate comments, version comparison, and secure file sharing. Built for video teams."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Review & Approval – Frame-Accurate Media Review Platform" />
+        <meta property="og:image:alt" content="Kreatli | Review & Approval – Frame-Accurate Video Review Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Review & Approval – Frame-Accurate Media Review Platform" />
+        <meta name="twitter:title" content="Kreatli | Review & Approval – Frame-Accurate Video Review Platform" />
         <meta
           name="twitter:description"
-          content="Streamline your media review and approval workflow with frame-accurate comments, version comparison, and secure file sharing. Built for creative production teams."
+          content="Streamline your video review and approval workflow with frame-accurate comments, version comparison, and secure file sharing. Built for video teams."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -103,7 +105,7 @@ export default function ReviewApprovalPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Frame-Accurate Media Review</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Frame-Accurate Video Review</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Pin comments to exact frames and timestamps. Compare versions side-by-side and share files securely.
           </p>
@@ -115,6 +117,7 @@ export default function ReviewApprovalPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer"
               size="lg"
               variant="bordered"
             >
@@ -169,7 +172,7 @@ export default function ReviewApprovalPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Complete Review & Approval Workflow</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Everything you need for professional media review and approval workflows in one platform.
+              Everything you need for professional video review and approval workflows in one platform.
             </p>
           </div>
 
@@ -270,14 +273,13 @@ export default function ReviewApprovalPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about Kreatli's frame-accurate review and approval features for creative production
-              teams.
+              Get detailed answers about Kreatli's frame-accurate review and approval features for video teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={`faq-${index}-${faq.question.slice(0, 20)}`}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >
@@ -298,10 +300,17 @@ export default function ReviewApprovalPage() {
         </div>
       </section>
 
+      {/* More Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['projectOrchestration', 'creativeWorkspace', 'secureAssetStorage'])}
+        title="More Resources"
+        description="Explore other Kreatli platform features to streamline your video collaboration workflow."
+      />
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Streamline Your Review Process?"
-        description="Experience frame-accurate review and approval workflows designed for creative production teams."
+        description="Experience frame-accurate review and approval workflows designed for video teams."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

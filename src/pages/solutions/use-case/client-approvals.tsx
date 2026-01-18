@@ -6,6 +6,8 @@ import React from 'react';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { getRelatedResources } from '../../../data/related-resources';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { useSession } from '../../../hooks/useSession';
 
@@ -184,20 +186,20 @@ export default function ClientApprovalsPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | {data.title} – Creative Production Solution</title>
+        <title>Kreatli | {data.title} – Video Collaboration Solution</title>
         <meta name="description" content={data.metaDescription} />
         <link rel="canonical" href="https://kreatli.com/solutions/use-case/client-approvals" />
         <meta property="og:url" content="https://kreatli.com/solutions/use-case/client-approvals" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta property="og:description" content={data.metaDescription} />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli | ${data.title} – Creative Production Solution`} />
+        <meta name="twitter:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
         <meta name="twitter:description" content={data.metaDescription} />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -373,6 +375,13 @@ export default function ClientApprovalsPage() {
           </div>
         </div>
       </section>
+
+      {/* More Resources Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['creativeProductionManagement', 'creativeProofing', 'advertisingMarketingAgencies'])}
+        title="More Resources"
+        description="Explore other Kreatli solutions to streamline your video collaboration workflow."
+      />
 
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">

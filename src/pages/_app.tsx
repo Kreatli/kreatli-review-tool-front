@@ -21,29 +21,29 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <StoryblokProvider>
       <Head>
-        <title>Kreatli | End-to-End Production Management Platform</title>
+        <title>Kreatli | Video Collaboration & Review Platform</title>
         <meta
           name="description"
-          content="Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place."
+          content="Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
         <meta property="og:url" content="https://kreatli.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli - End-to-End Production Management Platform" />
+        <meta property="og:title" content="Kreatli | Video Collaboration & Review Platform" />
         <meta
           property="og:description"
-          content="Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place."
+          content="Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli - End-to-End Production Management Platform" />
+        <meta property="og:image:alt" content="Kreatli | Video Collaboration & Review Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli - End-to-End Production Management Platform" />
+        <meta name="twitter:title" content="Kreatli | Video Collaboration & Review Platform" />
         <meta
           name="twitter:description"
-          content="Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place."
+          content="Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
