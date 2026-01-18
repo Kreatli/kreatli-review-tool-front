@@ -117,14 +117,18 @@ export const BannerGuide = () => {
                     </div>
                     {item.image && (
                       <div className="mt-6 flex justify-center lg:mt-8">
-                        <div className={item.imageVariant === 'contain' ? 'relative w-full max-w-4xl' : 'relative max-w-full'}>
+                        <div
+                          className={
+                            item.imageVariant === 'contain' ? 'relative w-full max-w-4xl' : 'relative max-w-full'
+                          }
+                        >
                           <Image
                             src={item.image}
                             alt={item.altText || `${item.title} - YouTube banner resizer tool screenshot`}
                             loading="lazy"
                             removeWrapper
                             className={[
-                              'h-auto w-full rounded-lg border border-foreground-200 shadow-lg',
+                              'mx-auto h-auto w-full max-w-xl rounded-lg border border-foreground-200 shadow-lg',
                               item.imageVariant === 'contain' ? 'object-contain' : '',
                             ].join(' ')}
                           />
@@ -244,7 +248,7 @@ export const BannerGuide = () => {
       <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
-          <p className="mb-6 mx-auto max-w-2xl text-lg text-foreground-500">
+          <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground-500">
             Learn everything about YouTube banner dimensions, safe zones, best practices, and how to create perfect
             channel art that works across all devices.
           </p>

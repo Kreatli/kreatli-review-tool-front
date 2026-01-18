@@ -36,7 +36,7 @@ const WORKFLOW_STEPS: Record<Platform | 'default', WorkflowStep[]> = {
       step: 2,
       title: 'Click Safe Zone',
       description:
-        'Activate the safe zone overlay to visualize where YouTube\'s UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like buttons, captions, and controls.',
+        "Activate the safe zone overlay to visualize where YouTube's UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like buttons, captions, and controls.",
       icon: 'shield',
       image: '/safe-zone-guide/click-safe-zone.webp',
       altText:
@@ -89,7 +89,7 @@ const WORKFLOW_STEPS: Record<Platform | 'default', WorkflowStep[]> = {
       step: 2,
       title: 'Click Safe Zone',
       description:
-        'Activate the safe zone overlay to visualize where Instagram\'s UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like profile bars, engagement buttons, and captions.',
+        "Activate the safe zone overlay to visualize where Instagram's UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like profile bars, engagement buttons, and captions.",
       icon: 'shield',
       image: '/safe-zone-guide/click-safe-zone.webp',
       altText:
@@ -142,7 +142,7 @@ const WORKFLOW_STEPS: Record<Platform | 'default', WorkflowStep[]> = {
       step: 2,
       title: 'Click Safe Zone',
       description:
-        'Activate the safe zone overlay to visualize where TikTok\'s UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like profile information, engagement buttons, and captions.',
+        "Activate the safe zone overlay to visualize where TikTok's UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like profile information, engagement buttons, and captions.",
       icon: 'shield',
       image: '/safe-zone-guide/click-safe-zone.webp',
       altText:
@@ -483,8 +483,6 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
                                 src={item.image}
                                 alt={item.altText || `${item.title} - Social media safe zone checker screenshot`}
                                 loading="lazy"
-                                width={1024}
-                                height={640}
                                 removeWrapper
                                 className="h-auto w-full object-contain"
                               />

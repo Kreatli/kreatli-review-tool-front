@@ -32,8 +32,7 @@ export default function InfoSection() {
         'Select whether you want to calculate upload or download time. This helps you get accurate estimates based on your specific transfer direction.',
       icon: 'compare',
       image: '/data-transfer-guide/choose-transfer-type.png',
-      altText:
-        'Data transfer calculator showing transfer type selection for upload or download time calculations',
+      altText: 'Data transfer calculator showing transfer type selection for upload or download time calculations',
     },
     {
       step: 4,
@@ -86,7 +85,7 @@ export default function InfoSection() {
                             alt={item.altText || `${item.title} - Data transfer calculator tool screenshot`}
                             loading="lazy"
                             removeWrapper
-                            className="h-auto w-full rounded-lg border border-foreground-200 shadow-lg"
+                            className="mx-auto h-auto w-full max-w-xl rounded-lg border border-foreground-200 shadow-lg"
                           />
                         </div>
                       </div>
@@ -120,7 +119,7 @@ export default function InfoSection() {
       <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
-          <p className="mb-6 mx-auto max-w-2xl text-lg text-foreground-500">
+          <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground-500">
             Learn everything about data transfer calculations, common mistakes teams make, and how to plan file
             transfers effectively for your creative workflows.
           </p>
