@@ -11,6 +11,15 @@ export interface FreeTool {
 
 export const FREE_TOOLS: FreeTool[] = [
   {
+    title: 'Video Frame Extractor',
+    description:
+      'Scrub through a video and capture multiple still frames. Compare two frames side-by-side and download PNG/JPG images instantly—100% in your browser.',
+    href: '/free-tools/video-frame-extractor',
+    icon: 'panorama',
+    buttonText: 'Try Now',
+    ariaLabel: 'Extract and download video frames',
+  },
+  {
     title: 'Data Transfer Calculator',
     description:
       'Calculate how long it takes to upload or download large files. Perfect for video editors and post-production teams.',
