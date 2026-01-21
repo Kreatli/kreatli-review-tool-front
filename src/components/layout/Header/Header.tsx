@@ -208,23 +208,13 @@ export const Header = () => {
                   headerLink={{ label: 'View All Tools', href: '/free-tools' }}
                   sections={[
                     {
-                      title: 'Utility Tools',
-                      items: [
-                        {
-                          label: 'Data Transfer Calculator',
-                          href: '/free-tools/data-transfer-calculator',
-                          description: 'Calculate data transfer times and costs',
-                        },
-                        {
-                          label: 'Software Cost Calculator',
-                          href: '/free-tools/cost-calculator',
-                          description: 'Calculate your tool stack savings',
-                        },
-                      ],
-                    },
-                    {
                       title: 'Creative Tools',
                       items: [
+                        {
+                          label: 'Video Frame Extractor',
+                          href: '/free-tools/video-frame-extractor',
+                          description: 'Capture and download frames from any video',
+                        },
                         {
                           label: 'YouTube Banner Resizer',
                           href: '/free-tools/youtube-banner-resizer',
@@ -251,6 +241,21 @@ export const Header = () => {
                               description: 'Preview YouTube Shorts safe zones',
                             },
                           ],
+                        },
+                      ],
+                    },
+                    {
+                      title: 'Utility Tools',
+                      items: [
+                        {
+                          label: 'Data Transfer Calculator',
+                          href: '/free-tools/data-transfer-calculator',
+                          description: 'Calculate data transfer times and costs',
+                        },
+                        {
+                          label: 'Software Cost Calculator',
+                          href: '/free-tools/cost-calculator',
+                          description: 'Calculate your tool stack savings',
                         },
                       ],
                     },
@@ -464,6 +469,17 @@ export const Header = () => {
             <NavbarMenuItem>
               <Link as={NextLink} href="/free-tools" color="foreground" size="lg" onClick={closeNavbarMenu}>
                 All Free Tools
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Link
+                as={NextLink}
+                href="/free-tools/video-frame-extractor"
+                size="lg"
+                color="foreground"
+                onClick={closeNavbarMenu}
+              >
+                Video Frame Extractor
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>

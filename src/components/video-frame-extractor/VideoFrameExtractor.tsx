@@ -760,6 +760,7 @@ export function VideoFrameExtractor() {
                   value={exportFormat}
                   onValueChange={(v) => setExportFormat(v as ExportFormat)}
                   orientation="vertical"
+                  aria-label="Export format"
                   className="gap-2"
                 >
                   <Radio value="png" description="Best quality (recommended)">
@@ -905,7 +906,7 @@ export function VideoFrameExtractor() {
       )}
 
       {/* Zoom modal */}
-      <Modal isOpen={!!zoomFrameId} onOpenChange={() => setZoomFrameId(null)} size="5xl">
+      <Modal isOpen={!!zoomFrameId} onOpenChange={() => setZoomFrameId(null)} size="5xl" aria-label="Frame preview">
         <ModalContent>
           <ModalHeader className="pb-0">Frame preview</ModalHeader>
           <ModalBody className="py-6">

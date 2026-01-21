@@ -104,7 +104,10 @@ export const NavigationDropdown = ({
               )}
             </button>
           </PopoverTrigger>
-          <PopoverContent className="w-full min-w-[280px] max-w-[calc(100vw-2rem)] p-6 sm:min-w-[320px] sm:max-w-[600px]">
+          <PopoverContent
+            aria-label={`${triggerLabel} menu`}
+            className="w-full min-w-[280px] max-w-[calc(100vw-2rem)] p-6 sm:min-w-[320px] sm:max-w-[600px]"
+          >
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {sections.map((section, sectionIndex) => (
                 <div

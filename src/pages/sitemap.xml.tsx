@@ -29,7 +29,12 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/how-it-works', priority: '0.8', changefreq: 'monthly' },
   { path: '/who-we-help', priority: '0.8', changefreq: 'monthly' },
   { path: '/help', priority: '0.7', changefreq: 'monthly' },
-  { path: '/cost-calculator', priority: '0.7', changefreq: 'monthly' },
+  // Free tools hub + tool pages
+  { path: '/free-tools', priority: '0.8', changefreq: 'weekly' },
+  { path: '/free-tools/video-frame-extractor', priority: '0.8', changefreq: 'weekly' },
+  { path: '/free-tools/data-transfer-calculator', priority: '0.7', changefreq: 'monthly' },
+  { path: '/free-tools/cost-calculator', priority: '0.7', changefreq: 'monthly' },
+  { path: '/free-tools/youtube-banner-resizer', priority: '0.7', changefreq: 'monthly' },
   { path: '/platform/creative-workspace', priority: '0.8', changefreq: 'monthly' },
   { path: '/platform/integrations', priority: '0.8', changefreq: 'monthly' },
   { path: '/platform/project-orchestration', priority: '0.8', changefreq: 'monthly' },

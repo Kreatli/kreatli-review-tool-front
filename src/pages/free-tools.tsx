@@ -289,7 +289,7 @@ export default function FreeToolsPage() {
               Get answers to common questions about our free tools for video teams and creative professionals.
             </p>
           </div>
-          <Accordion variant="splitted" className="gap-2">
+          <Accordion variant="splitted" aria-label="Free tools FAQs" className="gap-2">
             {faqs.map((faq) => (
               <AccordionItem
                 key={faq.question}

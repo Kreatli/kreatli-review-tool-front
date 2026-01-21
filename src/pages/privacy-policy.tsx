@@ -779,7 +779,7 @@ export default function PrivacyPolicy() {
                   What information do we collect?
                 </a>
                 .
-                <Table className="my-4">
+                <Table aria-label="Categories of personal information table" className="my-4">
                   <TableHeader>
                     <TableColumn>Category</TableColumn>
                     <TableColumn>Examples</TableColumn>

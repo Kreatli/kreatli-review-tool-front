@@ -130,7 +130,7 @@ export const VideoFrameExtractorFAQ = () => {
           </p>
         </div>
 
-        <Accordion variant="splitted">
+        <Accordion variant="splitted" aria-label="Video frame extractor FAQs">
           {faqItems.map((item) => (
             <AccordionItem key={item.key} title={<span className="font-semibold">{item.title}</span>}>
               {item.content}

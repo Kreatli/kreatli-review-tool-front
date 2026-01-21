@@ -253,7 +253,7 @@ export const VideoFrameExtractorGuide = () => {
           </p>
           <Button
             as="a"
-            href="https://kreatli.com/guides/video-frame-extractor"
+            href="https://kreatli.com/guides"
             size="lg"
             className="bg-foreground text-content1"
           >

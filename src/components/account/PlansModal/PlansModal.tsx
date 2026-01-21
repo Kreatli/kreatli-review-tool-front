@@ -18,7 +18,7 @@ export const PlansModal = ({ user, isOpen, onClose }: Props) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="5xl" scrollBehavior="inside">
+    <Modal isOpen={isOpen} onClose={onClose} size="5xl" scrollBehavior="inside" aria-label="Plans and pricing">
       <ModalContent>
         <ModalBody className="py-6">
           <h2 className="mb-3 font-sans text-2xl font-bold">
