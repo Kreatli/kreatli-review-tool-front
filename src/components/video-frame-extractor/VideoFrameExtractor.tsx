@@ -22,6 +22,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useDropzone } from 'react-dropzone';
 
 import { useSession } from '../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
 import { Icon } from '../various/Icon';
 
 type ExportFormat = 'png' | 'jpg';
@@ -208,7 +209,7 @@ function FrameCard({
 
             {/* Multi-select checkbox */}
             <div
-              className="absolute left-2 top-2 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur"
+              className="absolute left-2 top-2 inline-flex items-center justify-center rounded-full bg-black/60 p-1.5 text-white backdrop-blur"
               onClick={(e) => e.stopPropagation()}
             >
               <Checkbox
@@ -266,6 +267,7 @@ function FrameCard({
 
 export function VideoFrameExtractor() {
   const { isSignedIn } = useSession();
+  const { openSignUpModal } = useSignUpModalVisibility();
 
   const [file, setFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -282,6 +284,9 @@ export function VideoFrameExtractor() {
   const [isZipping, setIsZipping] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const hasShownSignUpPromptRef = useRef(false);
+  const successfulCaptureCountRef = useRef(0);
 
   const wasPlayingBeforeSeekRef = useRef(false);
 
@@ -450,6 +455,13 @@ export function VideoFrameExtractor() {
       };
 
       setFrames((prev) => [item, ...prev]);
+      successfulCaptureCountRef.current += 1;
+
+      // Nudge sign-up once on the 2nd successful capture (without blocking the tool).
+      if (!isSignedIn && !hasShownSignUpPromptRef.current && successfulCaptureCountRef.current === 2) {
+        hasShownSignUpPromptRef.current = true;
+        openSignUpModal();
+      }
       addToast({ title: 'Captured!', color: 'success', variant: 'flat' });
     } catch (_e) {
       addToast({ title: 'Capture failed. Please try again.', color: 'danger', variant: 'flat' });
@@ -531,12 +543,16 @@ export function VideoFrameExtractor() {
   };
 
   const zoomFrame = useMemo(() => frames.find((f) => f.id === zoomFrameId) ?? null, [frames, zoomFrameId]);
+  const timelineProgressPct = useMemo(() => {
+    if (!Number.isFinite(duration) || duration <= 0) return 0;
+    return clamp((currentTime / duration) * 100, 0, 100);
+  }, [currentTime, duration]);
 
   return (
     <div className="flex flex-col gap-6">
       {/* Upload / Empty state */}
       {!videoUrl && (
-        <Card>
+        <Card shadow="sm" className="border border-foreground-200">
           <CardBody className="p-6">
             <div
               {...getRootProps({
@@ -577,7 +593,7 @@ export function VideoFrameExtractor() {
       {/* Player */}
       {videoUrl && (
         <div className="grid gap-6 lg:grid-cols-[1.35fr_0.65fr]">
-          <Card className="overflow-hidden">
+          <Card shadow="sm" className="border border-foreground-200">
             <CardBody className="p-4 sm:p-5">
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between gap-3">
@@ -606,7 +622,7 @@ export function VideoFrameExtractor() {
                   <video
                     ref={videoRef}
                     src={videoUrl}
-                    className="aspect-video w-full"
+                    className="aspect-video w-full cursor-pointer"
                     playsInline
                     preload="metadata"
                     onLoadedMetadata={handleLoadedMetadata}
@@ -614,15 +630,96 @@ export function VideoFrameExtractor() {
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                     onEnded={() => setIsPlaying(false)}
+                    onClick={() => {
+                      if (!duration) return;
+                      void handleTogglePlay();
+                    }}
+                    tabIndex={0}
+                    role="button"
+                    aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                    onKeyDown={(e) => {
+                      if (!duration) return;
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        void handleTogglePlay();
+                      }
+                    }}
                   />
                 </div>
 
                 {/* Timeline */}
-                <div className="relative">
+                <div className="relative -mt-2">
                   <div
                     className="relative rounded-xl border border-foreground-200 bg-content1 p-4"
                   >
-                    <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="mb-2 flex items-center justify-between text-xs text-foreground-500">
+                      <span className="font-medium text-foreground-600">Timeline</span>
+                    </div>
+
+                    <div className="group relative">
+                      {/* Custom track */}
+                      <div className="relative h-2 w-full overflow-hidden rounded-full bg-foreground-200/70 shadow-inner">
+                        <div
+                          className="h-full bg-black"
+                          style={{ width: `${timelineProgressPct}%` }}
+                        />
+                        <div className="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:56px_100%]" />
+                      </div>
+
+                      {/* Range input sits on top (thumb only) */}
+                      <input
+                        type="range"
+                        min={0}
+                        max={Math.max(duration, 0)}
+                        step={0.01}
+                        value={Math.min(currentTime, Math.max(duration, 0))}
+                        onChange={(e) => handleSeekTo(Number(e.target.value))}
+                        onPointerDown={handleTimelinePointerDown}
+                        onPointerUp={handleTimelinePointerUp}
+                        onPointerCancel={handleTimelinePointerUp}
+                        className={cn(
+                          'absolute inset-0 h-2 w-full cursor-pointer appearance-none bg-transparent',
+                          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:ring-offset-content1',
+                          'disabled:cursor-not-allowed disabled:opacity-50',
+                          // WebKit (Chrome/Safari)
+                          '[&::-webkit-slider-runnable-track]:h-2 [&::-webkit-slider-runnable-track]:bg-transparent',
+                          '[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full',
+                          // Playhead: black fill + contrasting border so it stays visible on the progress bar
+                          '[&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-content1',
+                          '[&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:duration-150',
+                          '[&::-webkit-slider-thumb]:-mt-1',
+                          // Firefox
+                          '[&::-moz-range-track]:h-2 [&::-moz-range-track]:bg-transparent',
+                          '[&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full',
+                          '[&::-moz-range-thumb]:bg-black [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-content1',
+                          '[&::-moz-range-thumb]:box-border [&::-moz-range-thumb]:shadow-lg',
+                          // Make the thumb feel more “grabby”
+                          'active:[&::-webkit-slider-thumb]:scale-110 active:[&::-moz-range-thumb]:scale-110'
+                        )}
+                        aria-label="Timeline"
+                        disabled={!duration}
+                      />
+
+                      {/* Time bubble (shows while scrubbing, and on hover) */}
+                      {duration > 0 && (
+                        <div
+                          className={cn(
+                            'pointer-events-none absolute -top-9 left-0 -translate-x-1/2 rounded-full bg-foreground px-2 py-1 text-[11px] font-semibold text-content1 shadow-sm transition-opacity',
+                            isSeeking ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                          )}
+                          style={{ left: `${timelineProgressPct}%` }}
+                        >
+                          {formatTimestamp(currentTime)}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-2 flex items-center justify-between text-[11px] text-foreground-500">
+                      <span className="tabular-nums">0:00</span>
+                      <span className="tabular-nums">{formatTimestamp(duration)}</span>
+                    </div>
+
+                    <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <div className="flex items-center gap-2">
                         <Button
                           variant="flat"
@@ -643,27 +740,7 @@ export function VideoFrameExtractor() {
                           Capture this frame
                         </Button>
                       </div>
-                      <div className="text-xs text-foreground-500">
-                        {duration ? `${formatTimestamp(currentTime)} / ${formatTimestamp(duration)}` : 'Loading…'}
-                      </div>
                     </div>
-                    <div className="mb-2 flex items-center justify-between text-xs text-foreground-500">
-                      <span>Scrub</span>
-                      <span>{formatTimestamp(currentTime)}</span>
-                    </div>
-
-                    <input
-                      type="range"
-                      min={0}
-                      max={Math.max(duration, 0)}
-                      step={0.01}
-                      value={Math.min(currentTime, Math.max(duration, 0))}
-                      onChange={(e) => handleSeekTo(Number(e.target.value))}
-                      onPointerDown={handleTimelinePointerDown}
-                      onPointerUp={handleTimelinePointerUp}
-                      className="h-2 w-full cursor-pointer accent-primary"
-                      aria-label="Timeline"
-                    />
                   </div>
                 </div>
               </div>
@@ -672,7 +749,7 @@ export function VideoFrameExtractor() {
 
           {/* Right panel */}
           <div className="flex flex-col gap-4">
-            <Card>
+            <Card shadow="sm" className="border border-foreground-200">
               <CardBody className="p-5">
                 <div className="mb-3 flex items-center gap-2">
                   <Icon icon="download" size={16} className="text-foreground-400" />
@@ -711,7 +788,7 @@ export function VideoFrameExtractor() {
                     <div className="min-w-0">
                       <div className="text-sm font-semibold">Turn frames into approvals</div>
                       <div className="text-sm text-foreground-600">
-                        Review the video in Kreatli, collect feedback, and keep every comment tied to the exact moment.
+                        Review videos in Kreatli, collect feedback, and keep every comment tied to the exact moment.
                       </div>
                     </div>
                   </div>
@@ -727,7 +804,7 @@ export function VideoFrameExtractor() {
                     </div>
                     <div className="flex items-start gap-2">
                       <Icon icon="arrowRight" size={16} className="mt-0.5 text-primary" />
-                      <span>Share a link with clients (no messy email chains)</span>
+                      <span>Share a no-signup link with clients</span>
                     </div>
                   </div>
 
@@ -749,7 +826,7 @@ export function VideoFrameExtractor() {
 
       {/* Gallery */}
       {videoUrl && (
-        <Card>
+        <Card shadow="sm" className="border border-foreground-200">
           <CardBody className="p-5">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">

@@ -13,7 +13,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Frame Extractor',
     description:
-      'Scrub through a video and capture multiple still frames. Compare two frames side-by-side and download PNG/JPG images instantly—100% in your browser.',
+      'Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed',
     href: '/free-tools/video-frame-extractor',
     icon: 'panorama',
     buttonText: 'Try Now',
