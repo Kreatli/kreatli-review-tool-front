@@ -10,8 +10,8 @@ import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
-import { getRelatedResources } from '../../../data/related-resources';
 import { Icon, IconType } from '../../../components/various/Icon';
+import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
 
 const data = {
