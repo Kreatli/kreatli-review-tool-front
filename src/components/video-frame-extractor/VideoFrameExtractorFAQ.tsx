@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
