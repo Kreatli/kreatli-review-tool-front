@@ -12,6 +12,7 @@ export const BannerGuide = () => {
     image: string | null;
     altText?: string;
     imageVariant?: 'default' | 'contain';
+    imageClassName?: string;
   }> = [
     {
       step: 1,
@@ -28,6 +29,7 @@ export const BannerGuide = () => {
         "Once uploaded, the tool automatically applies YouTube's recommended banner dimensions (2560 × 1440px) and displays the exact center safe zone (1546 × 423px) that's visible on all devices. Anything outside the safe zone is clearly marked, so you can adjust with confidence.",
       icon: 'file',
       image: '/youtube-banner-guide/apply-template.webp',
+      imageClassName: 'max-w-4xl',
       altText:
         'YouTube banner resizer showing 2560x1440px template with safe zone overlay for mobile, desktop, tablet, and TV devices',
     },
@@ -38,6 +40,7 @@ export const BannerGuide = () => {
         'Use the device previews to see how your banner will appear on desktop, mobile, tablet, and TV. Make sure all critical elements like logos, text, and taglines stay within the highlighted safe zone. Decorative visuals can extend beyond it. This step eliminates the trial-and-error usually required when uploading banners directly to YouTube.',
       icon: 'eye',
       image: '/youtube-banner-guide/preview-devices.webp',
+      imageClassName: 'max-w-4xl',
       altText:
         'YouTube banner preview showing how channel art appears on desktop, mobile, tablet, and TV with safe zone indicators',
     },
@@ -48,6 +51,7 @@ export const BannerGuide = () => {
         "Download the final banner in YouTube's recommended dimensions (2560 × 1440px). Your export preserves safe area alignment so key elements stay visible across desktop, mobile, tablet, and TV.",
       icon: 'checkCircle',
       image: '/youtube-banner-guide/export-banner.webp',
+      imageClassName: 'max-w-4xl',
       altText:
         'Export YouTube banner button showing download option for 2560x1440px optimized channel art ready for upload',
     },
@@ -59,6 +63,7 @@ export const BannerGuide = () => {
       icon: 'paint',
       image: '/youtube-banner-guide/upload-kreatli.webp.webp',
       imageVariant: 'contain',
+      imageClassName: 'max-w-4xl',
       altText:
         'Kreatli platform interface showing banner upload and team collaboration features for reviewing YouTube channel art',
     },
@@ -128,7 +133,7 @@ export const BannerGuide = () => {
                             loading="lazy"
                             removeWrapper
                             className={[
-                              'mx-auto h-auto w-full max-w-xl rounded-lg border border-foreground-200 shadow-lg',
+                              `mx-auto h-auto w-full ${item.imageClassName || 'max-w-xl'} rounded-lg border border-foreground-200 shadow-lg`,
                               item.imageVariant === 'contain' ? 'object-contain' : '',
                             ].join(' ')}
                           />

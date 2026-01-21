@@ -35,6 +35,14 @@ const tools: Tool[] = [
     category: 'Utility Tools',
   },
   {
+    title: 'Video Frame Extractor',
+    description:
+      'Scrub a video, capture multiple moments, compare two frames side-by-side, and download PNG/JPG stills instantly—right in your browser.',
+    href: '/free-tools/video-frame-extractor',
+    icon: 'panorama',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Social Media Safe Zone Checker',
     description:
       'Preview where UI overlays appear on your Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',
@@ -281,7 +289,7 @@ export default function FreeToolsPage() {
               Get answers to common questions about our free tools for video teams and creative professionals.
             </p>
           </div>
-          <Accordion variant="splitted" className="gap-2">
+          <Accordion variant="splitted" aria-label="Free tools FAQs" className="gap-2">
             {faqs.map((faq) => (
               <AccordionItem
                 key={faq.question}
@@ -315,7 +323,8 @@ export default function FreeToolsPage() {
           <div className="flex flex-col gap-6 text-center">
             <h2 className="font-sans text-2xl font-bold sm:text-4xl">Need More Than Free Tools?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Kreatli is a Video Collaboration & Review Platform designed for video teams working with large video files.
+              Kreatli is a Video Collaboration & Review Platform designed for video teams working with large video
+              files.
               Streamline approvals, manage projects, and collaborate more efficiently.
             </p>
             <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">

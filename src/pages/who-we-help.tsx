@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody, Chip } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';

@@ -140,7 +140,7 @@ export const FaqSection = () => {
     <section id="faq" className="flex flex-col gap-16 px-6 py-16 backdrop-blur-lg lg:py-32">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <h2 className="text-center font-sans text-3xl font-bold sm:text-5xl">Frequently Asked Questions</h2>
-        <Accordion variant="splitted">
+        <Accordion variant="splitted" aria-label="Frequently asked questions">
           {faq.map((item) => (
             <AccordionItem key={item.question} title={<span className="text-base font-semibold">{item.question}</span>}>
               <div className="space-y-3 whitespace-pre-wrap text-foreground-500">{item.answer}</div>

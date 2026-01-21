@@ -83,7 +83,7 @@ export default function Cookies() {
             Website is being used or how effective our marketing campaigns are, or to help us customize our Website for
             you.
           </div>
-          <Table>
+          <Table aria-label="Analytics and customization cookies table">
             <TableHeader>
               <TableColumn>Name</TableColumn>
               <TableColumn>Purpose</TableColumn>

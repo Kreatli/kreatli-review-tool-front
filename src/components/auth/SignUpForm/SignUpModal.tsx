@@ -7,7 +7,7 @@ export const SignUpModal = () => {
   const { isSignUpModalOpen, setIsSignUpModalOpen } = useSignUpModalVisibility();
 
   return (
-    <Modal isOpen={isSignUpModalOpen} onOpenChange={setIsSignUpModalOpen}>
+    <Modal isOpen={isSignUpModalOpen} onOpenChange={setIsSignUpModalOpen} aria-label="Create an account">
       <ModalContent>
         <ModalHeader className="text-xl">Create an account to get started!</ModalHeader>
         <ModalBody>
