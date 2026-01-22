@@ -19,6 +19,7 @@ import { FeaturesSection } from '../components/home/Features';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { PLATFORM_PAGES } from '../data/platform-pages';
 import { Icon, IconType } from '../components/various/Icon';
 import { useSession } from '../hooks/useSession';
 
@@ -181,6 +182,34 @@ export default function FeaturesPage() {
             >
               Book a Demo
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Features Section */}
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-8 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Platform Features</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+              Explore our core platform features designed for video collaboration and creative production workflows.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {PLATFORM_PAGES.map((page) => (
+              <Card key={page.href} as={NextLink} href={page.href} isPressable className="group h-full">
+                <CardBody className="flex h-full flex-col gap-4 p-6">
+                  <h3 className="font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                    {page.label}
+                  </h3>
+                  <p className="flex-1 text-sm leading-relaxed text-foreground-500">{page.description}</p>
+                  <div className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span>Learn more</span>
+                    <Icon icon="arrowRight" size={16} />
+                  </div>
+                </CardBody>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

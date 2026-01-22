@@ -14,6 +14,7 @@ import NextLink from 'next/link';
 import React, { useRef, useState } from 'react';
 
 import LogoIcon from '../../../assets/images/logo.svg';
+import { getPlatformPagesBySection } from '../../../data/platform-pages';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
@@ -74,6 +75,23 @@ export const Header = () => {
 
   const freeTrialEndsInDays = freeTrialEndsIn ? Math.ceil(freeTrialEndsIn / DAY_IN_MILLISECONDS) : null;
 
+  // Get platform pages grouped by section for navigation
+  const platformPagesBySection = React.useMemo(() => getPlatformPagesBySection(), []);
+
+  // Transform platform pages into navigation dropdown format
+  const platformSections = React.useMemo(
+    () =>
+      Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => ({
+        title: sectionTitle,
+        items: pages.map((page) => ({
+          label: page.label,
+          href: page.href,
+          description: page.description,
+        })),
+      })),
+    [platformPagesBySection],
+  );
+
   return (
     <>
       {(user?.subscription.isTrial || (!user?.subscription.isActive && user?.subscription.hasUsedTrial)) &&
@@ -113,46 +131,7 @@ export const Header = () => {
           {!isSignedIn && (
             <NavbarContent className="hidden xl:flex" justify="center">
               <NavbarItem>
-                <NavigationDropdown
-                  triggerLabel="Platform"
-                  sections={[
-                    {
-                      title: 'Core Platform',
-                      items: [
-                        {
-                          label: 'The Creative Workspace',
-                          href: '/platform/creative-workspace',
-                          description: 'Unified workspace for creative production',
-                        },
-                        {
-                          label: 'Review & Approval',
-                          href: '/platform/review-approval',
-                          description: 'Frame-accurate revisions and approvals',
-                        },
-                        {
-                          label: 'Project Orchestration',
-                          href: '/platform/project-orchestration',
-                          description: 'Centralized project management',
-                        },
-                      ],
-                    },
-                    {
-                      title: 'Storage & Integrations',
-                      items: [
-                        {
-                          label: 'Secure Asset Storage',
-                          href: '/platform/secure-asset-storage',
-                          description: 'Reliable media storage and organization',
-                        },
-                        {
-                          label: 'Integrations',
-                          href: '/platform/integrations',
-                          description: 'Google Drive and Dropbox integrations',
-                        },
-                      ],
-                    },
-                  ]}
-                />
+                <NavigationDropdown triggerLabel="Platform" sections={platformSections} />
               </NavbarItem>
               <NavbarItem>
                 <NavigationDropdown
@@ -347,55 +326,17 @@ export const Header = () => {
         {!isSignedIn && (
           <NavbarMenu className="sm:pl-16">
             <div className="mb-2 font-semibold">Platform</div>
-            <NavbarMenuItem>
-              <Link
-                as={NextLink}
-                href="/platform/creative-workspace"
-                size="lg"
-                color="foreground"
-                onClick={closeNavbarMenu}
-              >
-                The Creative Workspace
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                as={NextLink}
-                href="/platform/review-approval"
-                size="lg"
-                color="foreground"
-                onClick={closeNavbarMenu}
-              >
-                Review & Approval
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                as={NextLink}
-                href="/platform/project-orchestration"
-                size="lg"
-                color="foreground"
-                onClick={closeNavbarMenu}
-              >
-                Project Orchestration
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                as={NextLink}
-                href="/platform/secure-asset-storage"
-                size="lg"
-                color="foreground"
-                onClick={closeNavbarMenu}
-              >
-                Secure Asset Storage
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link as={NextLink} href="/platform/integrations" size="lg" color="foreground" onClick={closeNavbarMenu}>
-                Integrations
-              </Link>
-            </NavbarMenuItem>
+            {Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => (
+              <React.Fragment key={sectionTitle}>
+                {pages.map((page) => (
+                  <NavbarMenuItem key={page.href}>
+                    <Link as={NextLink} href={page.href} size="lg" color="foreground" onClick={closeNavbarMenu}>
+                      {page.label}
+                    </Link>
+                  </NavbarMenuItem>
+                ))}
+              </React.Fragment>
+            ))}
             <div className="mb-1 mt-4 font-semibold">Solutions</div>
             <div className="mb-1 text-sm text-foreground-500">By Industry</div>
             <NavbarMenuItem>

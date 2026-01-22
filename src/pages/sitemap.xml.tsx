@@ -1,6 +1,7 @@
 import { ISbStoryData } from '@storyblok/react';
 import { GetServerSideProps } from 'next';
 
+import { getPlatformPagesForSitemap } from '../data/platform-pages';
 import { getStoryblokApi } from '../lib/storyblok';
 import { PageStoryblok } from '../typings/storyblok';
 
@@ -35,11 +36,7 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/free-tools/data-transfer-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/cost-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/youtube-banner-resizer', priority: '0.7', changefreq: 'monthly' },
-  { path: '/platform/creative-workspace', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/integrations', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/project-orchestration', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/review-approval', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/secure-asset-storage', priority: '0.8', changefreq: 'monthly' },
+  // Platform pages are now added dynamically from platform-pages registry
   { path: '/solutions/industry/advertising-marketing-agencies', priority: '0.8', changefreq: 'monthly' },
   { path: '/solutions/industry/in-house-creative-content-teams', priority: '0.8', changefreq: 'monthly' },
   { path: '/solutions/industry/video-production-animation-studios', priority: '0.8', changefreq: 'monthly' },
@@ -200,6 +197,16 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       });
     });
 
+    // Add platform pages from registry
+    const platformPages = getPlatformPagesForSitemap();
+    platformPages.forEach((page) => {
+      urls.push({
+        loc: `${BASE_URL}${page.path}`,
+        changefreq: page.changefreq,
+        priority: page.priority,
+      });
+    });
+
     // Fetch all Storyblok content
     const [guides, blogs, comparisons] = await Promise.allSettled([
       fetchAllStories('guides/', version),
@@ -250,14 +257,20 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     };
   } catch (error) {
     console.error('Error generating sitemap:', error);
-    // Return a minimal sitemap with just static pages if Storyblok fails
-    const minimalSitemap = generateSitemapXml(
-      STATIC_PAGES.map((page) => ({
+    // Return a minimal sitemap with just static pages and platform pages if Storyblok fails
+    const minimalPages = [
+      ...STATIC_PAGES.map((page) => ({
         loc: `${BASE_URL}${page.path}`,
         changefreq: page.changefreq,
         priority: page.priority,
       })),
-    );
+      ...getPlatformPagesForSitemap().map((page) => ({
+        loc: `${BASE_URL}${page.path}`,
+        changefreq: page.changefreq,
+        priority: page.priority,
+      })),
+    ];
+    const minimalSitemap = generateSitemapXml(minimalPages);
 
     res.setHeader('Content-Type', 'application/xml');
     res.write(minimalSitemap);
