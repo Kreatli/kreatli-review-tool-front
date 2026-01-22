@@ -82,6 +82,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'secureAssetStorage'],
   },
+  {
+    label: 'Video Annotation',
+    href: '/platform/video-annotation',
+    description: 'Frame-accurate video annotation and markup',
+    section: 'Core Platform',
+    order: 4,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
