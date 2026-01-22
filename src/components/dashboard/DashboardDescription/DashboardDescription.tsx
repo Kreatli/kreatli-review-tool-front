@@ -2,7 +2,6 @@ import { addToast, Button, Card, CardBody, cn, ScrollShadow } from '@heroui/reac
 import { JSONContent } from '@tiptap/react';
 import { useRef, useState } from 'react';
 
-import { DEFAULT_PROJECT_CONTENT } from '../../../constants/tiptap';
 import { queryClient } from '../../../lib/queryClient';
 import { usePutProjectId } from '../../../services/hooks';
 import { getProjectId } from '../../../services/services';
@@ -43,7 +42,7 @@ export const DashboardDescription = ({ project }: Props) => {
     mutate(
       {
         id: project.id,
-        requestBody: { content: isContentEmpty ? DEFAULT_PROJECT_CONTENT : sanitizedContent },
+        requestBody: { content: isContentEmpty ? {} : sanitizedContent },
       },
       {
         onSuccess: ({ content }) => {

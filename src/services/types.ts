@@ -913,6 +913,14 @@ export interface ResetPasswordBodyDto {
   email: string;
 }
 
+export interface SettingsBodyDto {
+  defaultProjectContent?: { [x in string | number]: any };
+}
+
+export interface SettingsDto {
+  defaultProjectContent: { [x in string | number]: any };
+}
+
 export interface ShareableAssetDto {
   commentsCount: number;
   createdAt: string;

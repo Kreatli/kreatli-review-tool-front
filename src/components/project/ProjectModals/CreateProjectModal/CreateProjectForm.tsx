@@ -72,6 +72,7 @@ export const CreateProjectForm = () => {
         label="Name"
         placeholder="My project"
         variant="faded"
+        autoFocus
         isInvalid={!!errors.name}
         errorMessage={errors.name?.message}
         {...register('name', VALIDATION_RULES.SHORT_TEXT)}

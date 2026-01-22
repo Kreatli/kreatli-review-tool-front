@@ -72,6 +72,8 @@ import type {
   ProjectStatusBodyDto,
   ProjectsResponseDto,
   ResetPasswordBodyDto,
+  SettingsBodyDto,
+  SettingsDto,
   ShareableLinkBody,
   ShareableLinkDto,
   ShareableLinkSendEmailBodyDto,
@@ -116,6 +118,7 @@ import {
   getUser,
   getUserBillingHistory,
   getUserId,
+  getUserSettings,
   patchAssetFileIdCommentCommentId,
   postAssetFileIdComment,
   postAssetsMultipartComplete,
@@ -154,6 +157,7 @@ import {
   putProjectIdStatus,
   putUser,
   putUserAddonId,
+  putUserSettings,
 } from './services';
 
 export type SwaggerTypescriptMutationDefaultParams<TExtra> = {
@@ -1001,6 +1005,39 @@ useGetUserId.prefetch = (
         ...options,
       });
 };
+export const useGetUserSettings = (
+  options?: SwaggerTypescriptUseQueryOptions<SettingsDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserSettings.info(configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetUserSettings.info = (configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getUserSettings.key] as QueryKey,
+    fun: () => getUserSettings(configOverride),
+  };
+};
+useGetUserSettings.prefetch = (
+  client: QueryClient,
+  options?: SwaggerTypescriptUseQueryOptions<SettingsDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetUserSettings.info(configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
 export const usePatchAssetFileIdCommentCommentId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     AssetCommentDto,
@@ -1467,6 +1504,17 @@ export const usePutUserAddonId = <TExtra,>(
     mutationFn: (_o) => {
       const { id, requestBody, configOverride } = _o || {};
       return putUserAddonId(id, requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePutUserSettings = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<SettingsDto, { requestBody: SettingsBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { requestBody, configOverride } = _o || {};
+      return putUserSettings(requestBody, configOverride);
     },
     ...options,
   });

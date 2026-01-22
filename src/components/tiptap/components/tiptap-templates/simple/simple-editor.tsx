@@ -105,7 +105,7 @@ interface Props {
   editorRef: Ref<EditorRef>;
   children?: React.ReactNode;
   onUpdate: (json: Record<string, unknown>) => void;
-  onSave: () => void;
+  onSave?: () => void;
 }
 
 export const SimpleEditor = ({ content, isEditable = false, editorRef, children, onUpdate, onSave }: Props) => {
@@ -115,12 +115,12 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
   const editorJsonRef = useRef(content);
 
   const autoSave = useDebounceCallback(() => {
-    onSave();
+    onSave?.();
   }, 500);
 
   const editor = useEditor({
     immediatelyRender: false,
-    editable: false,
+    editable: isEditable,
     editorProps: {
       attributes: {
         autocomplete: 'off',

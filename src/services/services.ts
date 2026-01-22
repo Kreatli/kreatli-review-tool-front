@@ -25,6 +25,8 @@ import type {
   SubscriptionBodyDto,
   SubscriptionResponseDto,
   AddonBodyDto,
+  SettingsDto,
+  SettingsBodyDto,
   SignUpBodyDto,
   SignUpResultDto,
   SignUpWithTokenBodyDto,
@@ -540,6 +542,19 @@ export const getUserId = (id: string, configOverride?: AxiosRequestConfig): Prom
 
 /** Key is end point string without base url */
 getUserId.key = '/user/{id}';
+
+export const getUserSettings = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<SettingsDto>> => {
+  return Http.getRequest(
+    getUserSettings.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getUserSettings.key = '/user/settings';
 
 export const patchAssetFileIdCommentCommentId = (
   id: string,
@@ -1176,6 +1191,22 @@ export const putUserAddonId = (
 
 /** Key is end point string without base url */
 putUserAddonId.key = '/user/addon/{id}';
+
+export const putUserSettings = (
+  requestBody: SettingsBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SettingsDto>> => {
+  return Http.putRequest(
+    putUserSettings.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putUserSettings.key = '/user/settings';
 export const _CONSTANT0 = {
   headers: {
     'Content-Type': 'application/json',

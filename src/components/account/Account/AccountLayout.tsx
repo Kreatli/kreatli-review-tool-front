@@ -45,6 +45,7 @@ export const AccountLayout = ({ children }: Props) => {
               }}
             >
               <Tab as={NextLink} href="/account" key="general" title="General information" />
+              <Tab as={NextLink} href="/account/settings" key="settings" title="Settings" />
               <Tab as={NextLink} href="/account/subscription" key="subscription" title="Subscription" />
               <Tab as={NextLink} href="/account/billing-history" key="billing-history" title="Billing history" />
             </Tabs>
