@@ -1,2 +1,0 @@
-export const DRAFT_REVALIDATE_TIME = 60;
-export const PUBLISHED_REVALIDATE_TIME = 3600;

@@ -203,10 +203,7 @@ export const DataTransferCalculator = () => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       } catch (fallbackErr) {
-        // Log error in development for debugging
-        if (process.env.NODE_ENV === 'development') {
-          console.error('Failed to copy:', fallbackErr);
-        }
+        console.error('Failed to copy:', fallbackErr);
       }
       document.body.removeChild(textArea);
     }
@@ -240,10 +237,7 @@ export const DataTransferCalculator = () => {
         setShareUrlCopied(true);
         setTimeout(() => setShareUrlCopied(false), 2000);
       } catch (fallbackErr) {
-        // Log error in development for debugging
-        if (process.env.NODE_ENV === 'development') {
-          console.error('Failed to copy URL:', fallbackErr);
-        }
+        console.error('Failed to copy URL:', fallbackErr);
       }
       document.body.removeChild(textArea);
     }
