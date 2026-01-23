@@ -565,7 +565,7 @@ export default function InHouseCreativeContentTeamsPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-3xl">Ready to Streamline Your Workflow?</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Streamline Your Workflow?</h2>
           <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
             Join {data.title.toLowerCase()} using Kreatli.
           </p>

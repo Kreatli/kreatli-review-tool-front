@@ -19,7 +19,7 @@ const NotFound = () => {
         <Chip variant="flat" color="default" classNames={{ content: 'font-semibold' }}>
           404
         </Chip>
-        <h2 className="my-2 text-4xl font-semibold">Page not found</h2>
+        <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Page not found</h2>
         <p className="mb-8 text-large text-foreground-500">
           Sorry, but the page you were looking for could not be found 😢
         </p>

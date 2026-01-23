@@ -393,7 +393,7 @@ export default function CreativeProductionManagementPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-3xl">Ready to Manage Video Collaboration Around Your Files?</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Manage Video Collaboration Around Your Files?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience how Kreatli combines video review and video collaboration in one system. Start using Kreatli
             today.

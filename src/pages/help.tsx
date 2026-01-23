@@ -440,7 +440,7 @@ export default function HelpPage() {
           {/* Category Tabs */}
           <div className="mb-8">
             <div className="mb-6 flex items-center justify-between">
-              <h2 id="browse-by-category" className="scroll-mt-24 font-sans text-2xl font-bold sm:text-3xl">
+              <h2 id="browse-by-category" className="mb-4 scroll-mt-24 font-sans text-2xl font-bold sm:text-3xl">
                 Browse by Category
               </h2>
               {selectedCategory !== 'all' && (
@@ -597,7 +597,7 @@ export default function HelpPage() {
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="flex flex-col gap-6 text-center">
-            <h2 className="font-sans text-2xl font-bold sm:text-3xl">Still Have Questions?</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Still Have Questions?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               If you didn't find the answer you were looking for, our support team is here to help. Reach out to us and
               we'll get back to you as soon as possible.

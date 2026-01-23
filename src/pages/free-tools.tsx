@@ -6,6 +6,8 @@ import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { Icon, IconType } from '../components/various/Icon';
 import { useSession } from '../hooks/useSession';
 
@@ -149,7 +151,7 @@ export default function FreeToolsPage() {
         <title>Kreatli | Free Tools for Video Teams – Professional Creative Tools</title>
         <meta
           name="description"
-          content="Free professional tools for video teams and video professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
+          content="Free tools for video teams: data transfer calculator, software cost calculator, social media safe zone checker, YouTube banner resizer. Professional tools, no sign-up required."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools" />
         <meta property="og:url" content="https://kreatli.com/free-tools" />
@@ -172,6 +174,13 @@ export default function FreeToolsPage() {
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Free Tools', url: '/free-tools' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
 
