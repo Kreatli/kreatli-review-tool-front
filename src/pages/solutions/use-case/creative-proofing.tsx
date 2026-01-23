@@ -1,4 +1,6 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
+import { ISbStoryData } from '@storyblok/react';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
@@ -6,10 +8,15 @@ import React from 'react';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { ArticlesSection } from '../../../components/shared/ArticlesSection';
+import { MoreFreeToolsSection } from '../../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { Icon, IconType } from '../../../components/various/Icon';
+import { FREE_TOOLS } from '../../../data/free-tools';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
+import { getStoryblokApi } from '../../../lib/storyblok';
+import { PageStoryblok } from '../../../typings/storyblok';
 
 const data = {
   title: 'Video Proofing',
@@ -173,7 +180,14 @@ const data = {
   ],
 };
 
-export default function CreativeProofingPage() {
+const DRAFT_REVALIDATE_TIME = 60;
+const PUBLISHED_REVALIDATE_TIME = 3600;
+
+interface Props {
+  articles?: ISbStoryData<PageStoryblok>[];
+}
+
+export default function CreativeProofingPage({ articles = [] }: Props) {
   useSession();
 
   return (
@@ -201,7 +215,7 @@ export default function CreativeProofingPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">{data.title}</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">{data.title}</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.intro}</p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -224,7 +238,7 @@ export default function CreativeProofingPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.howItWorks.title}</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{data.howItWorks.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.howItWorks.description}</p>
           </div>
 
@@ -233,10 +247,10 @@ export default function CreativeProofingPage() {
             <div className="flex flex-col items-center gap-6">
               {data.howItWorks.steps.map((step, index) => (
                 <React.Fragment key={index}>
-                  <Card className="group w-full">
+                  <Card className="group w-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20">
                     <CardBody className="flex flex-col items-center gap-6 p-6 sm:flex-row sm:items-start sm:p-8">
                       <div className="relative flex-shrink-0">
-                        <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/10">
+                        <div className="flex size-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
                           <Icon
                             icon={step.icon as IconType}
                             size={28}
@@ -248,7 +262,9 @@ export default function CreativeProofingPage() {
                         </div>
                       </div>
                       <div className="flex flex-1 flex-col items-center gap-3 text-center sm:items-start sm:text-left">
-                        <h3 className="font-sans text-lg font-semibold">{step.title}</h3>
+                        <h3 className="font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                          {step.title}
+                        </h3>
                         <p className="text-base leading-relaxed text-foreground-500">{step.description}</p>
                       </div>
                     </CardBody>
@@ -275,7 +291,7 @@ export default function CreativeProofingPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.problemsSolved.title}</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{data.problemsSolved.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Video proofing solves the common challenges teams face when managing feedback across multiple review
               rounds.
@@ -284,14 +300,19 @@ export default function CreativeProofingPage() {
 
           <div className="grid gap-6 md:grid-cols-2">
             {data.problemsSolved.items.map((problem, index) => (
-              <Card key={index}>
+              <Card
+                key={index}
+                className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+              >
                 <CardBody className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 rounded-full bg-warning-50 p-2">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-warning/20 to-warning/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-warning/30 group-hover:to-warning/20">
                       <Icon icon={problem.icon as IconType} size={20} className="text-warning" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="mb-2 font-sans text-lg font-semibold">{problem.title}</h3>
+                      <h3 className="mb-2 font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                        {problem.title}
+                      </h3>
                       <p className="text-sm leading-relaxed text-foreground-500">{problem.description}</p>
                     </div>
                   </div>
@@ -306,26 +327,39 @@ export default function CreativeProofingPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.whoThisIsFor.title}</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{data.whoThisIsFor.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.whoThisIsFor.description}</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             {data.whoThisIsFor.audiences.map((audience, index) => (
-              <Card key={index} as={NextLink} href={audience.href} isPressable className="group h-full">
+              <Card
+                key={index}
+                as={NextLink}
+                href={audience.href}
+                isPressable
+                className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+              >
                 <CardBody className="flex h-full flex-col gap-4 p-6">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-full bg-foreground-100 p-2.5 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary-50">
+                  <div className="mb-2 flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
                       <Icon
                         icon={audience.icon as IconType}
                         size={20}
                         className="text-primary transition-colors duration-300"
                       />
                     </div>
-                    <h3 className="font-sans text-lg font-semibold">{audience.title}</h3>
+                    <div className="flex-1">
+                      <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
+                        {audience.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">{audience.description}</p>
+                    </div>
+                    <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                      <Icon icon="arrowRight" size={20} className="text-primary" />
+                    </div>
                   </div>
-                  <p className="flex-1 text-sm leading-relaxed text-foreground-500">{audience.description}</p>
-                  <div className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span>Learn more</span>
                     <Icon icon="arrowRight" size={16} />
                   </div>
@@ -340,7 +374,7 @@ export default function CreativeProofingPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about video proofing for video teams.
             </p>
@@ -369,6 +403,36 @@ export default function CreativeProofingPage() {
         </div>
       </section>
 
+      {/* Related Platform Pages Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'projectOrchestration'])}
+        title="Platform Features for Creative Proofing"
+        description="Explore the Kreatli platform features that help teams review creative work and turn feedback into trackable work."
+      />
+
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        tools={FREE_TOOLS.filter(
+          (tool) =>
+            tool.title === 'Social Media Safe Zone Checker' ||
+            tool.title === 'Video Frame Extractor' ||
+            tool.title === 'YouTube Banner Resizer' ||
+            tool.title === 'Instagram Reels Safe Zone Checker'
+        )}
+        title="Free Tools for Proofing Workflows"
+        description="Use our free tools to support your creative proofing workflows."
+        showViewAllButton={false}
+      />
+
+      {/* Guides Section */}
+      <ArticlesSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate creative proofing workflows in action."
+        viewAllHref="/guides"
+        viewAllButtonText="View All Guides"
+      />
+
       {/* More Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['clientApprovals', 'creativeProductionManagement', 'videoProductionAnimationStudios'])}
@@ -379,7 +443,7 @@ export default function CreativeProofingPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Turn Feedback Into Trackable Work?</h2>
+          <h2 className="font-sans text-2xl font-bold sm:text-3xl">Ready to Turn Feedback Into Trackable Work?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience how Kreatli enables video proofing across versions and formats. Start using Kreatli today.
           </p>
@@ -403,3 +467,60 @@ export default function CreativeProofingPage() {
     </>
   );
 }
+
+export const getStaticProps = (async () => {
+  try {
+    // Fetch articles from guides, comparisons, and blog
+    const [guidesData, comparisonsData, blogData] = await Promise.all([
+      getStoryblokApi().getStories({
+        starts_with: 'guides/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+      getStoryblokApi().getStories({
+        starts_with: 'comparisons/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+      getStoryblokApi().getStories({
+        starts_with: 'blog/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+    ]);
+
+    // Combine all articles and sort by publish date
+    const allArticles = [
+      ...(guidesData?.data?.stories || []),
+      ...(comparisonsData?.data?.stories || []),
+      ...(blogData?.data?.stories || []),
+    ].sort((a, b) => {
+      const dateA = a.content.publishDate ? new Date(a.content.publishDate).getTime() : 0;
+      const dateB = b.content.publishDate ? new Date(b.content.publishDate).getTime() : 0;
+      return dateB - dateA;
+    });
+
+    // Take the 3 most recent articles
+    const articles = allArticles.slice(0, 3) as ISbStoryData<PageStoryblok>[];
+
+    return {
+      props: {
+        articles: articles || [],
+      },
+      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
+    };
+  } catch {
+    return {
+      props: {
+        articles: [],
+      },
+      revalidate: PUBLISHED_REVALIDATE_TIME,
+    };
+  }
+}) satisfies GetStaticProps<Props>;
