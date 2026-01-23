@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -17,7 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { getPlatformPageProps, PlatformPageProps } from '../../lib/storyblok/getPlatformPageProps';
+import { getPlatformPageProps, PlatformPageProps } from 'lib/storyblok/getPlatformPageProps';
 
 type Props = PlatformPageProps;
 
@@ -119,7 +120,9 @@ export default function ProjectOrchestrationPage({ articles = [] }: Props) {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Project Orchestration – Centralized Video Collaboration</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
+            Project Orchestration – Centralized Video Collaboration
+          </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Assign files, track deliverables, and share heavy video files securely. Everything you need to orchestrate
             your video projects in one place.

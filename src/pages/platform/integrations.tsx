@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -16,7 +17,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { getPlatformPageProps, PlatformPageProps } from '../../lib/storyblok/getPlatformPageProps';
+import { getPlatformPageProps, PlatformPageProps } from 'lib/storyblok/getPlatformPageProps';
 
 type Props = PlatformPageProps;
 
@@ -34,22 +35,22 @@ const faqs = [
   {
     question: 'Do I need to migrate my files from Google Drive or Dropbox?',
     answer:
-      'No, you don\'t need to migrate your files. Kreatli integrates with Google Drive and Dropbox, allowing you to import files directly from your existing cloud storage. You can continue using your preferred cloud storage while leveraging Kreatli\'s features for video collaboration, review, and approval. Files can remain in your cloud storage and be accessed through Kreatli when needed.',
+      "No, you don't need to migrate your files. Kreatli integrates with Google Drive and Dropbox, allowing you to import files directly from your existing cloud storage. You can continue using your preferred cloud storage while leveraging Kreatli's features for video collaboration, review, and approval. Files can remain in your cloud storage and be accessed through Kreatli when needed.",
   },
   {
     question: 'What happens to files imported from cloud storage?',
     answer:
-      'When you import files from Google Drive or Dropbox into Kreatli, the files remain in your original cloud storage. Kreatli creates references to these files, allowing you to use Kreatli\'s video collaboration features (frame-accurate review, approvals, conversations) while the files stay in your cloud storage. You can access and manage these files through Kreatli\'s interface, and they\'ll also remain accessible in your Google Drive or Dropbox.',
+      "When you import files from Google Drive or Dropbox into Kreatli, the files remain in your original cloud storage. Kreatli creates references to these files, allowing you to use Kreatli's video collaboration features (frame-accurate review, approvals, conversations) while the files stay in your cloud storage. You can access and manage these files through Kreatli's interface, and they'll also remain accessible in your Google Drive or Dropbox.",
   },
   {
     question: 'Can I use Kreatli without connecting cloud storage?',
     answer:
-      'Yes. Kreatli provides its own secure storage that\'s optimized for video collaboration workflows. You can upload files directly to Kreatli without connecting any cloud storage services. Kreatli\'s native storage includes features like version history, asset-linked conversations, and approval workflows that work seamlessly with the platform\'s other capabilities. You can choose to use Kreatli\'s storage, integrate with cloud storage, or use both.',
+      "Yes. Kreatli provides its own secure storage that's optimized for video collaboration workflows. You can upload files directly to Kreatli without connecting any cloud storage services. Kreatli's native storage includes features like version history, asset-linked conversations, and approval workflows that work seamlessly with the platform's other capabilities. You can choose to use Kreatli's storage, integrate with cloud storage, or use both.",
   },
   {
     question: 'Are there any file size limitations when importing from cloud storage?',
     answer:
-      'Kreatli supports large file imports from Google Drive and Dropbox, just like direct uploads. You can import large video files (4K, 8K, 15GB+ files) from your cloud storage without size limitations. The platform handles heavy video files seamlessly, making it easy to work with large video assets regardless of whether they\'re uploaded directly or imported from cloud storage.',
+      "Kreatli supports large file imports from Google Drive and Dropbox, just like direct uploads. You can import large video files (4K, 8K, 15GB+ files) from your cloud storage without size limitations. The platform handles heavy video files seamlessly, making it easy to work with large video assets regardless of whether they're uploaded directly or imported from cloud storage.",
   },
   {
     question: 'Can I disconnect cloud storage integrations?',
@@ -94,7 +95,10 @@ export default function IntegrationsPage({ articles = [] }: Props) {
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Integrations – Google Drive & Dropbox for Video Collaboration" />
+        <meta
+          property="og:image:alt"
+          content="Kreatli | Integrations – Google Drive & Dropbox for Video Collaboration"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -293,8 +297,8 @@ export default function IntegrationsPage({ articles = [] }: Props) {
                   <h3 className="font-sans text-lg font-semibold">Seamless Workflow</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Continue using your preferred cloud storage while leveraging Kreatli's specialized features for
-                  video collaboration.
+                  Continue using your preferred cloud storage while leveraging Kreatli's specialized features for video
+                  collaboration.
                 </p>
               </CardBody>
             </Card>

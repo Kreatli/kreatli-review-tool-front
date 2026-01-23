@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -17,7 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { getPlatformPageProps, PlatformPageProps } from '../../lib/storyblok/getPlatformPageProps';
+import { getPlatformPageProps, PlatformPageProps } from 'lib/storyblok/getPlatformPageProps';
 
 type Props = PlatformPageProps;
 
