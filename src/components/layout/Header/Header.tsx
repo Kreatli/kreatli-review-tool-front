@@ -79,16 +79,33 @@ export const Header = () => {
   const platformPagesBySection = React.useMemo(() => getPlatformPagesBySection(), []);
 
   // Transform platform pages into navigation dropdown format
+  // Limit to 3 items in Core Platform section (exclude Video Annotation from navbar)
   const platformSections = React.useMemo(
     () =>
-      Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => ({
-        title: sectionTitle,
-        items: pages.map((page) => ({
-          label: page.label,
-          href: page.href,
-          description: page.description,
-        })),
-      })),
+      Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => {
+        // For Core Platform section, limit to first 3 items (exclude Video Annotation)
+        if (sectionTitle === 'Core Platform') {
+          return {
+            title: sectionTitle,
+            items: pages
+              .filter((page) => page.href !== '/platform/video-annotation')
+              .slice(0, 3)
+              .map((page) => ({
+                label: page.label,
+                href: page.href,
+                description: page.description,
+              })),
+          };
+        }
+        return {
+          title: sectionTitle,
+          items: pages.map((page) => ({
+            label: page.label,
+            href: page.href,
+            description: page.description,
+          })),
+        };
+      }),
     [platformPagesBySection],
   );
 
@@ -131,7 +148,12 @@ export const Header = () => {
           {!isSignedIn && (
             <NavbarContent className="hidden xl:flex" justify="center">
               <NavbarItem>
-                <NavigationDropdown triggerLabel="Platform" sections={platformSections} />
+                <NavigationDropdown
+                  triggerLabel="Platform"
+                  triggerHref="/platform"
+                  sections={platformSections}
+                  headerLink={{ label: 'See All Features', href: '/platform' }}
+                />
               </NavbarItem>
               <NavbarItem>
                 <NavigationDropdown
@@ -326,17 +348,29 @@ export const Header = () => {
         {!isSignedIn && (
           <NavbarMenu className="sm:pl-16">
             <div className="mb-2 font-semibold">Platform</div>
-            {Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => (
-              <React.Fragment key={sectionTitle}>
-                {pages.map((page) => (
-                  <NavbarMenuItem key={page.href}>
-                    <Link as={NextLink} href={page.href} size="lg" color="foreground" onClick={closeNavbarMenu}>
-                      {page.label}
-                    </Link>
-                  </NavbarMenuItem>
-                ))}
-              </React.Fragment>
-            ))}
+            {Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => {
+              // For Core Platform section, limit to first 3 items (exclude Video Annotation)
+              const filteredPages =
+                sectionTitle === 'Core Platform'
+                  ? pages.filter((page) => page.href !== '/platform/video-annotation').slice(0, 3)
+                  : pages;
+              return (
+                <React.Fragment key={sectionTitle}>
+                  {filteredPages.map((page) => (
+                    <NavbarMenuItem key={page.href}>
+                      <Link as={NextLink} href={page.href} size="lg" color="foreground" onClick={closeNavbarMenu}>
+                        {page.label}
+                      </Link>
+                    </NavbarMenuItem>
+                  ))}
+                </React.Fragment>
+              );
+            })}
+            <NavbarMenuItem>
+              <Link as={NextLink} href="/platform" size="lg" color="primary" className="font-semibold" onClick={closeNavbarMenu}>
+                See All Features
+              </Link>
+            </NavbarMenuItem>
             <div className="mb-1 mt-4 font-semibold">Solutions</div>
             <div className="mb-1 text-sm text-foreground-500">By Industry</div>
             <NavbarMenuItem>

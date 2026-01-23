@@ -118,7 +118,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
     <footer className="bg-foreground-50">
       {!hideCta && (
         <div className="flex flex-col items-center gap-8 px-6 pb-12 pt-16 lg:pb-20 lg:pt-32">
-          <h2 className="mx-auto max-w-xl text-center font-sans text-3xl font-bold sm:text-5xl">
+          <h2 className="mx-auto max-w-xl text-center font-sans text-3xl font-bold sm:text-4xl">
             Take Control of Your Creative Projects Today!
           </h2>
           <p className="text-center text-lg font-medium text-foreground-500 sm:text-2xl">
