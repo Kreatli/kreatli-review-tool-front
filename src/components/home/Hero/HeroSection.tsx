@@ -17,7 +17,7 @@ export const HeroSection = () => {
     <section className="relative flex w-full items-center justify-center overflow-hidden">
       <div className="relative z-10 flex w-full flex-col gap-8 px-4 pb-12 pt-6 text-center sm:gap-12 sm:px-6 sm:pb-20 sm:pt-10 lg:gap-16">
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 sm:gap-6">
-          <h1 className="font-sans text-2xl font-bold sm:text-4xl md:text-5xl lg:text-7xl">
+          <h1 className="font-sans text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
             <span
               className={cn(
                 'inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent',

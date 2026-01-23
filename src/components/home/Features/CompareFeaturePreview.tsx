@@ -236,7 +236,7 @@ export const CompareFeaturePreview = () => {
             >
               <img
                 src="https://picsum.photos/600/400?random=1"
-                alt="Version 2"
+                alt="Video file version 2 preview - walkthrough_v2.mp4"
                 className="absolute h-full w-full object-cover"
               />
             </div>
@@ -276,7 +276,7 @@ export const CompareFeaturePreview = () => {
             >
               <img
                 src="https://picsum.photos/600/400?random=2"
-                alt="Version 3"
+                alt="Video file version 3 preview - walkthrough_v3.mp4"
                 className="absolute h-full w-full object-cover"
               />
             </div>

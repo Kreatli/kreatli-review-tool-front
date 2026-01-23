@@ -50,7 +50,7 @@ export default function InfoSection() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
-            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               How to Use the Free Data Transfer Calculator
             </h2>
             <p className="mx-auto max-w-2xl text-base text-foreground-500">
@@ -138,7 +138,7 @@ export default function InfoSection() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">How Data Transfer Time Is Calculated</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How Data Transfer Time Is Calculated</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Understanding the math behind file transfer calculations helps you plan better for your creative
               workflows.
@@ -197,7 +197,7 @@ export default function InfoSection() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               Why Large Media Files Slow Down Creative Workflows
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">

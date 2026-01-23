@@ -69,7 +69,7 @@ export const VideoFrameExtractorGuide = () => {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
-            <h2 className="mx-auto mb-3 max-w-2xl text-center font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               How to Use the Video Frame Extractor
             </h2>
             <p className="mx-auto max-w-3xl text-base text-foreground-500">
@@ -144,7 +144,7 @@ export const VideoFrameExtractorGuide = () => {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mx-auto mb-4 max-w-2xl font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               Video Frame Extraction Explained
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">

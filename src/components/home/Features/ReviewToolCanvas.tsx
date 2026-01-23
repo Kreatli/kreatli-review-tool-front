@@ -301,7 +301,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange, customVideoUrl, fileT
         isImage ? (
           <img
             src={customVideoUrl}
-            alt="Uploaded image"
+            alt="Uploaded image for video review and annotation"
             className="absolute inset-0 h-full w-full object-contain"
             style={{ display: 'block' }}
           />

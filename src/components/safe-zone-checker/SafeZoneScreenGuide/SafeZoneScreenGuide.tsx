@@ -430,7 +430,7 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
-            <h2 className="mx-auto mb-3 max-w-xl text-center font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               How to Use Safe-Zone Checker in Your Workflow
             </h2>
             <p className="mx-auto max-w-2xl text-base text-foreground-500">
@@ -522,7 +522,7 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <h2 className="mx-auto mb-4 max-w-2xl text-center font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               Platform-Specific Safe Zone Recommendations
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
@@ -658,7 +658,7 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mx-auto mb-4 max-w-md text-center font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               What are Safe Zones and Why They Matter
             </h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
@@ -706,7 +706,7 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Why This Matters More Than Ever</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why This Matters More Than Ever</h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               With vertical video reaching everywhere - stories, shorts, social feeds, ads - inconsistent visibility can
               silently erode audience engagement.
@@ -772,7 +772,7 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
-          <h2 className="mb-8 text-center font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
 
           <Accordion variant="splitted">
             {faqItems.map((item) => (

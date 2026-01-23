@@ -34,7 +34,7 @@ export function CTASection({
   return (
     <section className={`overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24 ${className}`}>
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
-        <h2 className="mx-auto max-w-xl font-sans text-2xl font-bold sm:text-4xl">{title}</h2>
+        <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{title}</h2>
         <p className="mx-auto max-w-xl text-lg text-foreground-500">{description}</p>
         <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button as={NextLink} href={primaryButtonHref} size="lg" className="bg-foreground text-content1">
