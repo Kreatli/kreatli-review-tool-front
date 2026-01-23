@@ -26,7 +26,7 @@ interface StaticPage {
 const STATIC_PAGES: StaticPage[] = [
   { path: '/', priority: '1.0', changefreq: 'daily' },
   { path: '/pricing', priority: '0.9', changefreq: 'monthly' },
-  { path: '/features', priority: '0.9', changefreq: 'monthly' },
+  { path: '/platform', priority: '0.9', changefreq: 'monthly' },
   { path: '/how-it-works', priority: '0.8', changefreq: 'monthly' },
   { path: '/who-we-help', priority: '0.8', changefreq: 'monthly' },
   { path: '/help', priority: '0.7', changefreq: 'monthly' },
