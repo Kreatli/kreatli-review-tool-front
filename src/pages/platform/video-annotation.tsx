@@ -9,6 +9,8 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
@@ -33,7 +35,7 @@ const faqs = [
   {
     question: 'Can multiple team members annotate the same video simultaneously?',
     answer:
-      'Yes. Multiple reviewers can annotate the same video simultaneously in Kreatli. Each person\'s annotations are visible to everyone in real-time, with color coding or user indicators to show who added which annotation. This is perfect for collaborative review sessions where directors, producers, editors, and clients all need to provide feedback. You can see all annotations on the timeline, filter by reviewer, and track which annotations have been addressed. Real-time notifications keep everyone updated as new annotations are added.',
+      "Yes. Multiple reviewers can annotate the same video simultaneously in Kreatli. Each person's annotations are visible to everyone in real-time, with color coding or user indicators to show who added which annotation. This is perfect for collaborative review sessions where directors, producers, editors, and clients all need to provide feedback. You can see all annotations on the timeline, filter by reviewer, and track which annotations have been addressed. Real-time notifications keep everyone updated as new annotations are added.",
   },
   {
     question: 'How do I track which annotations have been addressed?',
@@ -53,7 +55,7 @@ const faqs = [
   {
     question: 'What video formats support annotation in Kreatli?',
     answer:
-      'Kreatli supports annotation for all common video formats including MP4, MOV, AVI, MKV, and more. The platform handles videos of any resolution (from 720p to 8K) and frame rate. Whether you\'re working with short clips, long-form content, or high-resolution footage, you can annotate any video file. The annotation system works with the video player to ensure annotations appear at the correct frames regardless of video format or encoding.',
+      "Kreatli supports annotation for all common video formats including MP4, MOV, AVI, MKV, and more. The platform handles videos of any resolution (from 720p to 8K) and frame rate. Whether you're working with short clips, long-form content, or high-resolution footage, you can annotate any video file. The annotation system works with the video player to ensure annotations appear at the correct frames regardless of video format or encoding.",
   },
   {
     question: 'Can I export annotations or generate reports from video annotations?',
@@ -112,68 +114,30 @@ export default function VideoAnnotationPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Video Annotation</h1>
-          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Add frame-accurate annotations, drawings, and markup directly to video frames. Pin comments to exact
-            timestamps and collaborate with precise visual feedback.
-          </p>
-          <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              rel="noopener noreferrer"
-              size="lg"
-              variant="bordered"
-            >
-              Book a Demo
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* What is Video Annotation Section */}
-      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">What is Video Annotation?</h2>
-            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Video annotation is the process of adding visual feedback, comments, drawings, and markup directly onto
-              video frames. In Kreatli, video annotation allows you to pin precise feedback to exact frames and
-              timestamps, making it clear which part of the video needs attention. This is essential for video
-              production workflows where precise timing and visual feedback matter.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Frame-Accurate Annotation Section */}
-      <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frame-Accurate Annotation</h2>
+            <h1 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frame-Accurate Video Annotation</h1>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Pin annotations to exact frames and timestamps—no more "which part?" or lost feedback.
+              Add frame-accurate annotations, drawings, and markup directly to video frames. Pin comments to exact
+              timestamps and collaborate with precise visual feedback.
             </p>
-          </div>
-          <div className="rounded-lg bg-foreground-50 p-8 text-center">
-            <div className="mx-auto max-w-2xl">
-              <div className="mb-4 flex justify-center">
-                <div className="rounded-full bg-primary/10 p-6">
-                  <Icon icon="paint" size={48} className="text-primary" />
-                </div>
-              </div>
-              <h3 className="mb-4 font-sans text-xl font-semibold">Visual Feedback on Every Frame</h3>
-              <p className="text-foreground-500">
-                Click on any frame to add annotations, drawings, shapes, and comments. Your feedback is permanently
-                linked to that exact moment, ensuring editors know exactly what to change.
-              </p>
+            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                Get Started for Free
+              </Button>
+              <Button
+                as="a"
+                href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+                variant="bordered"
+              >
+                Book a Demo
+              </Button>
             </div>
           </div>
+          <InteractiveReviewToolPreview />
         </div>
       </section>
 
@@ -181,7 +145,7 @@ export default function VideoAnnotationPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Multiple Annotation Types</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Multiple Annotation Types</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Use different annotation tools to provide comprehensive, visual feedback on your videos.
             </p>
@@ -285,7 +249,7 @@ export default function VideoAnnotationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Why Video Annotation Matters</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Why Video Annotation Matters</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Video annotation transforms vague feedback into precise, actionable instructions that speed up your
               production workflow.
@@ -297,8 +261,8 @@ export default function VideoAnnotationPage() {
               <CardBody className="p-6">
                 <h3 className="mb-3 font-sans text-lg font-semibold">Eliminate Ambiguity</h3>
                 <p className="text-sm text-foreground-500">
-                  Instead of "change the color around 2 minutes," annotations show exactly which frame and what to change.
-                  No more guessing or back-and-forth clarification.
+                  Instead of "change the color around 2 minutes," annotations show exactly which frame and what to
+                  change. No more guessing or back-and-forth clarification.
                 </p>
               </CardBody>
             </Card>
@@ -336,19 +300,25 @@ export default function VideoAnnotationPage() {
         </div>
       </section>
 
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        title="Free Tools for Video Teams"
+        description="Explore our collection of free tools designed to help video professionals work more efficiently."
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's video annotation features for video teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem
-                key={`faq-${index}-${faq.question.slice(0, 20)}`}
+                key={faq.question}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >
@@ -369,9 +339,10 @@ export default function VideoAnnotationPage() {
         </div>
       </section>
 
+     
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['reviewApproval', 'creativeProofing'])}
+        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'projectOrchestration'])}
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />

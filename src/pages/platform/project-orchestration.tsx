@@ -1,5 +1,6 @@
-/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
+import { ISbStoryData } from '@storyblok/react';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
@@ -10,11 +11,22 @@ import { ProjectFeaturePreview } from '../../components/home/Features/ProjectFea
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { ArticlesSection } from '../../components/shared/ArticlesSection';
 import { CTASection } from '../../components/shared/CTASection';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { getStoryblokApi } from '../../lib/storyblok';
+import { PageStoryblok } from '../../typings/storyblok';
+
+const DRAFT_REVALIDATE_TIME = 60;
+const PUBLISHED_REVALIDATE_TIME = 3600;
+
+interface Props {
+  articles?: ISbStoryData<PageStoryblok>[];
+}
 
 const faqs = [
   {
@@ -69,7 +81,7 @@ const faqs = [
   },
 ];
 
-export default function ProjectOrchestrationPage() {
+export default function ProjectOrchestrationPage({ articles = [] }: Props) {
   useSession();
 
   return (
@@ -83,27 +95,18 @@ export default function ProjectOrchestrationPage() {
         <link rel="canonical" href="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:url" content="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
-        />
+        <meta property="og:title" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
         <meta
           property="og:description"
           content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta
-          property="og:image:alt"
-          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
-        />
+        <meta property="og:image:alt" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
-        />
+        <meta name="twitter:title" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
         <meta
           name="twitter:description"
           content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
@@ -115,12 +118,10 @@ export default function ProjectOrchestrationPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Centralized Video Collaboration
-          </h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Centralized Video Collaboration</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Assign files, track deliverables, and share heavy video files securely. Everything you need to orchestrate your
-            video projects in one place.
+            Assign files, track deliverables, and share heavy video files securely. Everything you need to orchestrate
+            your video projects in one place.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -144,7 +145,7 @@ export default function ProjectOrchestrationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">
               Project Management Meets Reliable Media Storage
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
@@ -159,7 +160,7 @@ export default function ProjectOrchestrationPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Centralized Project Dashboard</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Centralized Project Dashboard</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
@@ -172,7 +173,7 @@ export default function ProjectOrchestrationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Project Orchestration Features</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Project Orchestration Features</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for video collaboration workflows with powerful project management capabilities.
             </p>
@@ -269,11 +270,26 @@ export default function ProjectOrchestrationPage() {
         </div>
       </section>
 
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        title="Free Tools & Resources"
+        description="Access our free calculators and tools to optimize your creative workflow."
+      />
+
+      {/* See How It Works Section */}
+      <ArticlesSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate these features in action."
+        viewAllHref="/guides"
+        viewAllButtonText="View All Guides"
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's project orchestration and centralized video collaboration.
             </p>
@@ -319,3 +335,60 @@ export default function ProjectOrchestrationPage() {
     </>
   );
 }
+
+export const getStaticProps = (async () => {
+  try {
+    // Fetch articles from guides, comparisons, and blog
+    const [guidesData, comparisonsData, blogData] = await Promise.all([
+      getStoryblokApi().getStories({
+        starts_with: 'guides/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+      getStoryblokApi().getStories({
+        starts_with: 'comparisons/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+      getStoryblokApi().getStories({
+        starts_with: 'blog/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+    ]);
+
+    // Combine all articles and sort by publish date
+    const allArticles = [
+      ...(guidesData?.data?.stories || []),
+      ...(comparisonsData?.data?.stories || []),
+      ...(blogData?.data?.stories || []),
+    ].sort((a, b) => {
+      const dateA = a.content.publishDate ? new Date(a.content.publishDate).getTime() : 0;
+      const dateB = b.content.publishDate ? new Date(b.content.publishDate).getTime() : 0;
+      return dateB - dateA;
+    });
+
+    // Take the 3 most recent articles
+    const articles = allArticles.slice(0, 3) as ISbStoryData<PageStoryblok>[];
+
+    return {
+      props: {
+        articles: articles || [],
+      },
+      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
+    };
+  } catch {
+    return {
+      props: {
+        articles: [],
+      },
+      revalidate: PUBLISHED_REVALIDATE_TIME,
+    };
+  }
+}) satisfies GetStaticProps<Props>;

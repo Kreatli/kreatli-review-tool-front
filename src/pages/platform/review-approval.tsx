@@ -1,19 +1,32 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
+import { ISbStoryData } from '@storyblok/react';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { CompareFeaturePreview } from '../../components/home/Features/CompareFeaturePreview';
-import { ReviewToolPreview } from '../../components/home/Features/ReviewToolPreview';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { ArticlesSection } from '../../components/shared/ArticlesSection';
 import { CTASection } from '../../components/shared/CTASection';
+import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { getStoryblokApi } from '../../lib/storyblok';
+import { PageStoryblok } from '../../typings/storyblok';
+
+const DRAFT_REVALIDATE_TIME = 60;
+const PUBLISHED_REVALIDATE_TIME = 3600;
+
+interface Props {
+  articles?: ISbStoryData<PageStoryblok>[];
+}
 
 const faqs = [
   {
@@ -68,7 +81,7 @@ const faqs = [
   },
 ];
 
-export default function ReviewApprovalPage() {
+export default function ReviewApprovalPage({ articles = [] }: Props) {
   useSession();
 
   return (
@@ -105,7 +118,7 @@ export default function ReviewApprovalPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Frame-Accurate Video Review</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Frame-Accurate Video Review</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Pin comments to exact frames and timestamps. Compare versions side-by-side and share files securely.
           </p>
@@ -131,12 +144,12 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frame-Accurate Revisions</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frame-Accurate Revisions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Pin comments to exact frames and timestamps—no more "which clip?" or lost feedback.
             </p>
           </div>
-          <ReviewToolPreview />
+          <InteractiveReviewToolPreview />
         </div>
       </section>
 
@@ -144,7 +157,7 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Compare Versions Side-by-Side</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Compare Versions Side-by-Side</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Compare different versions side-by-side for creative proofing—spot changes instantly.
             </p>
@@ -157,7 +170,7 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Share Files with Anyone</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Share Files with Anyone</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Generate secure shareable links or send files via email—no account required for reviewers.
             </p>
@@ -170,7 +183,7 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Complete Review & Approval Workflow</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Complete Review & Approval Workflow</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need for professional video review and approval workflows in one platform.
             </p>
@@ -267,11 +280,26 @@ export default function ReviewApprovalPage() {
         </div>
       </section>
 
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        title="Free Tools & Resources"
+        description="Access our free calculators and tools to optimize your creative workflow."
+      />
+
+      {/* See How It Works Section */}
+      <ArticlesSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate these features in action."
+        viewAllHref="/guides"
+        viewAllButtonText="View All Guides"
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's frame-accurate review and approval features for video teams.
             </p>
@@ -317,3 +345,60 @@ export default function ReviewApprovalPage() {
     </>
   );
 }
+
+export const getStaticProps = (async () => {
+  try {
+    // Fetch articles from guides, comparisons, and blog
+    const [guidesData, comparisonsData, blogData] = await Promise.all([
+      getStoryblokApi().getStories({
+        starts_with: 'guides/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+      getStoryblokApi().getStories({
+        starts_with: 'comparisons/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+      getStoryblokApi().getStories({
+        starts_with: 'blog/',
+        excluding_fields: 'body',
+        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+        sort_by: 'content.publishDate:desc',
+        per_page: 10,
+      }),
+    ]);
+
+    // Combine all articles and sort by publish date
+    const allArticles = [
+      ...(guidesData?.data?.stories || []),
+      ...(comparisonsData?.data?.stories || []),
+      ...(blogData?.data?.stories || []),
+    ].sort((a, b) => {
+      const dateA = a.content.publishDate ? new Date(a.content.publishDate).getTime() : 0;
+      const dateB = b.content.publishDate ? new Date(b.content.publishDate).getTime() : 0;
+      return dateB - dateA;
+    });
+
+    // Take the 3 most recent articles
+    const articles = allArticles.slice(0, 3) as ISbStoryData<PageStoryblok>[];
+
+    return {
+      props: {
+        articles: articles || [],
+      },
+      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
+    };
+  } catch {
+    return {
+      props: {
+        articles: [],
+      },
+      revalidate: PUBLISHED_REVALIDATE_TIME,
+    };
+  }
+}) satisfies GetStaticProps<Props>;
