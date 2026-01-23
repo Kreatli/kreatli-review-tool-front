@@ -48,7 +48,7 @@ export default function YouTubeBannerResizerPage() {
       <div className="p-6 pb-12">
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-col gap-4 pb-6 pt-8">
-            <h1 className="text-center font-sans text-2xl font-bold sm:text-4xl">YouTube Banner Resizer</h1>
+            <h1 className="text-center font-sans text-3xl font-bold sm:text-4xl">YouTube Banner Resizer</h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
               Resize your YouTube channel banner in the perfect dimensions (2560x1440px). Preview safe areas for mobile,
               desktop, tablet, and TV devices. Export your optimized banner instantly—completely free, no sign-up

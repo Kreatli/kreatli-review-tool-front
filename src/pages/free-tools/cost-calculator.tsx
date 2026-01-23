@@ -48,7 +48,7 @@ export default function CostCalculatorPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-4 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Why Calculate Your Software Costs?</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Calculate Your Software Costs?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Hidden costs add up quickly. Understanding your true software spend helps you make smarter decisions.
             </p>
@@ -152,7 +152,7 @@ export default function CostCalculatorPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-6 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Real-World Cost Examples</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Real-World Cost Examples</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               See how typical tool combinations compare to Kreatli across different team sizes.
             </p>
@@ -286,7 +286,7 @@ export default function CostCalculatorPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about calculating software costs, tool consolidation, and how Kreatli can reduce your
               expenses.

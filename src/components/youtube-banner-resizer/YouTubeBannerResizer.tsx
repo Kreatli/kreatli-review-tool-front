@@ -1,6 +1,9 @@
 import { addToast } from '@heroui/react';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+
+import { useSession } from '../../hooks/useSession';
 
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
@@ -84,6 +87,10 @@ export const YouTubeBannerResizer = () => {
   const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png');
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const redirectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const router = useRouter();
+  const { isSignedIn } = useSession();
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -307,6 +314,31 @@ export const YouTubeBannerResizer = () => {
       }
     };
   }, [imageState.imageUrl]);
+
+  // Gating: When a file is uploaded and user is not signed in, show preview then redirect to sign up
+  useEffect(() => {
+    // Clear any existing timeout
+    if (redirectTimeoutRef.current) {
+      clearTimeout(redirectTimeoutRef.current);
+      redirectTimeoutRef.current = null;
+    }
+
+    // If file is uploaded and user is not signed in, redirect to sign up after showing preview
+    if (imageState.file && !isSignedIn) {
+      // Show preview for 2 seconds, then redirect to sign up
+      redirectTimeoutRef.current = setTimeout(() => {
+        router.push('/sign-up');
+      }, 2000);
+    }
+
+    // Cleanup timeout on unmount or when file/signed in status changes
+    return () => {
+      if (redirectTimeoutRef.current) {
+        clearTimeout(redirectTimeoutRef.current);
+        redirectTimeoutRef.current = null;
+      }
+    };
+  }, [imageState.file, isSignedIn, router]);
 
   return (
     <div className="flex flex-col gap-6">

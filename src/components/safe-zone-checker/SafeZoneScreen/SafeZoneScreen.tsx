@@ -1,6 +1,7 @@
 import { cn, Radio, RadioGroup, Tooltip } from '@heroui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import html2canvas from 'html2canvas';
+import { useRouter } from 'next/router';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
@@ -37,11 +38,13 @@ export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreen
   const captureRef = useRef(null);
   const previousOverlayRef = useRef<keyof typeof OVERLAYS>(defaultPlatform);
   const platformSwitchCountRef = useRef(0);
+  const redirectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const [file, setFile] = useState<File | null>(null);
   const [activeOverlay, setActiveOverlay] = useState<keyof typeof OVERLAYS>(defaultPlatform);
   const [shouldShowSafeZone, setShouldShowSafeZone] = useState(false);
 
+  const router = useRouter();
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
 
@@ -61,6 +64,31 @@ export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreen
       previousOverlayRef.current = activeOverlay;
     }
   }, [activeOverlay, openSignUpModal, isSignedIn]);
+
+  // Gating: When a file is uploaded and user is not signed in, show preview then redirect to sign up
+  useEffect(() => {
+    // Clear any existing timeout
+    if (redirectTimeoutRef.current) {
+      clearTimeout(redirectTimeoutRef.current);
+      redirectTimeoutRef.current = null;
+    }
+
+    // If file is uploaded and user is not signed in, redirect to sign up after showing preview
+    if (file && !isSignedIn) {
+      // Show preview for 2 seconds, then redirect to sign up
+      redirectTimeoutRef.current = setTimeout(() => {
+        router.push('/sign-up');
+      }, 2000);
+    }
+
+    // Cleanup timeout on unmount or when file/signed in status changes
+    return () => {
+      if (redirectTimeoutRef.current) {
+        clearTimeout(redirectTimeoutRef.current);
+        redirectTimeoutRef.current = null;
+      }
+    };
+  }, [file, isSignedIn, router]);
 
   const isImageFile = file?.type.startsWith('image/');
   const isVideoFile = file?.type.startsWith('video/');

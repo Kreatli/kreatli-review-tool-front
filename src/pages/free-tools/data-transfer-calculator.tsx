@@ -64,7 +64,7 @@ export default function DataTransferCalculatorPage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden px-6 pb-4 pt-16">
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-            <h1 className="mx-auto max-w-3xl font-sans text-2xl font-bold sm:text-4xl">Data Transfer Calculator</h1>
+            <h1 className="mx-auto max-w-3xl font-sans text-3xl font-bold sm:text-4xl">Data Transfer Calculator</h1>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500 sm:text-xl">
               Calculate how long it takes to upload or download large files. Perfect for video editors, post-production
               teams, and creative professionals working with heavy media files.
