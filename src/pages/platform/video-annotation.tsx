@@ -116,12 +116,14 @@ export default function VideoAnnotationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h1 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frame-Accurate Video Annotation</h1>
-            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+            <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
+              Frame-Accurate Video Annotation
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
               Add frame-accurate annotations, drawings, and markup directly to video frames. Pin comments to exact
               timestamps and collaborate with precise visual feedback.
             </p>
-            <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
                 Get Started for Free
               </Button>
@@ -145,7 +147,7 @@ export default function VideoAnnotationPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Multiple Annotation Types</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Multiple Annotation Types</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Use different annotation tools to provide comprehensive, visual feedback on your videos.
             </p>
@@ -249,7 +251,7 @@ export default function VideoAnnotationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Why Video Annotation Matters</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Video Annotation Matters</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Video annotation transforms vague feedback into precise, actionable instructions that speed up your
               production workflow.
@@ -259,7 +261,12 @@ export default function VideoAnnotationPage() {
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <CardBody className="p-6">
-                <h3 className="mb-3 font-sans text-lg font-semibold">Eliminate Ambiguity</h3>
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="eye" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Eliminate Ambiguity</h3>
+                </div>
                 <p className="text-sm text-foreground-500">
                   Instead of "change the color around 2 minutes," annotations show exactly which frame and what to
                   change. No more guessing or back-and-forth clarification.
@@ -269,7 +276,12 @@ export default function VideoAnnotationPage() {
 
             <Card>
               <CardBody className="p-6">
-                <h3 className="mb-3 font-sans text-lg font-semibold">Faster Revisions</h3>
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="arrowRight" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Faster Revisions</h3>
+                </div>
                 <p className="text-sm text-foreground-500">
                   Editors can jump directly to annotated frames, see visual markup, and make changes immediately.
                   Annotation tracking ensures nothing gets missed.
@@ -279,7 +291,12 @@ export default function VideoAnnotationPage() {
 
             <Card>
               <CardBody className="p-6">
-                <h3 className="mb-3 font-sans text-lg font-semibold">Better Collaboration</h3>
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="group" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Better Collaboration</h3>
+                </div>
                 <p className="text-sm text-foreground-500">
                   Multiple reviewers can annotate simultaneously with visual feedback that everyone can see. Color
                   coding helps organize feedback by reviewer or type.
@@ -289,7 +306,12 @@ export default function VideoAnnotationPage() {
 
             <Card>
               <CardBody className="p-6">
-                <h3 className="mb-3 font-sans text-lg font-semibold">Client-Friendly</h3>
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="smile" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Client-Friendly</h3>
+                </div>
                 <p className="text-sm text-foreground-500">
                   Clients can annotate videos through no-signup guest links. They can draw, comment, and provide
                   feedback without technical barriers or account creation.
@@ -310,7 +332,7 @@ export default function VideoAnnotationPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's video annotation features for video teams.
             </p>
@@ -339,7 +361,6 @@ export default function VideoAnnotationPage() {
         </div>
       </section>
 
-     
       {/* More Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'projectOrchestration'])}

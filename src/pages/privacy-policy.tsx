@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
       <Header />
       <div className="border-t border-foreground-200 p-6">
         <div className="mx-auto max-w-5xl">
-          <h1 className="font-sans text-3xl font-bold">Privacy Policy</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Privacy Policy</h1>
           <p className="mb-6 text-foreground-500">Last updated July 20, 2025</p>
           <div>
             This Privacy Notice for Kreatli ("<span className="font-semibold">we</span>," "
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
               .
             </div>
             <div>
-              <h2 className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">Summary of key points</h2>
+              <h2 className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">Summary of key points</h2>
             </div>
             <div>
               This summary provides key points from our Privacy Notice, but you can find out more details about any of
@@ -137,7 +137,7 @@ export default function PrivacyPolicy() {
               .
             </div>
             <div>
-              <h2 id="toc" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+              <h2 id="toc" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                 Table of contents
               </h2>
             </div>
@@ -218,7 +218,7 @@ export default function PrivacyPolicy() {
                 </a>
               </li>
             </ul>
-            <h2 id="infocollect" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="infocollect" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               1. What information do we collect?
             </h2>
             <h3 className="mb-1 mt-4 text-xl font-semibold">Personal information you disclose to us</h3>
@@ -338,7 +338,7 @@ export default function PrivacyPolicy() {
               .<br />
             </div>
             <div>
-              <h2 id="infouse" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+              <h2 id="infouse" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                 2. How do we process your information?
               </h2>
               In Short: We process your information to provide, improve, and administer our Services, communicate with
@@ -365,7 +365,7 @@ export default function PrivacyPolicy() {
               </li>
             </ul>
             <div>
-              <h2 id="legalbases" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+              <h2 id="legalbases" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                 3. What legal bases do we rely on to process your information?
               </h2>
               In Short: We only process your personal information when we believe it is necessary and we have a valid
@@ -469,7 +469,7 @@ export default function PrivacyPolicy() {
                 </li>
               </ul>
               <div>
-                <h2 id="whoshare" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                <h2 id="whoshare" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                   4. When and with whom do we share your personal information?
                 </h2>
                 In Short: We may share information in specific situations described in this section and/or with the
@@ -485,7 +485,7 @@ export default function PrivacyPolicy() {
               </ul>
               <div>
                 <div>
-                  <h2 id="cookies" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="cookies" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     5. Do we use cookies and other tracking technologies?
                   </h2>
                   In Short: We may use cookies and other tracking technologies to collect and store your information.
@@ -568,7 +568,7 @@ export default function PrivacyPolicy() {
                 </a>
                 .
                 <div>
-                  <h2 id="sociallogins" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="sociallogins" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     6. How do we handle your social logins?
                   </h2>
                   In Short: If you choose to register or log in to our Services using a social media account, we may
@@ -590,7 +590,7 @@ export default function PrivacyPolicy() {
                   share your personal information, and how you can set your privacy preferences on their sites and apps.
                 </div>
                 <div>
-                  <h2 id="inforetain" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="inforetain" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     7. How long do we keep your information?
                   </h2>
                   In Short: We keep your information for as long as necessary to fulfill the purposes outlined in this
@@ -609,7 +609,7 @@ export default function PrivacyPolicy() {
                   and isolate it from any further processing until deletion is possible.
                 </div>
                 <div>
-                  <h2 id="infosafe" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="infosafe" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     8. How do we keep your information safe?
                   </h2>
                   In Short: We aim to protect your personal information through a system of organizational and technical
@@ -626,7 +626,7 @@ export default function PrivacyPolicy() {
                   your own risk. You should only access the Services within a secure environment.
                 </div>
                 <div>
-                  <h2 id="infominors" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="infominors" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     9. Do we collect information from minors?
                   </h2>
                   In Short: We do not knowingly collect data from or market to children under 18 years of age or the
@@ -645,7 +645,7 @@ export default function PrivacyPolicy() {
                   support@kreatli.com.
                 </div>
                 <div>
-                  <h2 id="privacyrights" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="privacyrights" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     10. What are your privacy rights?
                   </h2>
                   In Short: Depending on your state of residence in the US or in some regions, such as the European
@@ -742,7 +742,7 @@ export default function PrivacyPolicy() {
                   If you have questions or comments about your privacy rights, you may email us at support@kreatli.com.
                 </div>
                 <div className="mt-2">
-                  <h2 id="DNT" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="DNT" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     11. Controls for do-not-track features
                   </h2>
                   Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track
@@ -759,7 +759,7 @@ export default function PrivacyPolicy() {
                   respond to them at this time.
                 </div>
                 <div>
-                  <h2 id="uslaws" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="uslaws" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     12. Do United States residents have specific privacy rights?
                   </h2>
                   In Short: If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana,
@@ -1035,7 +1035,7 @@ export default function PrivacyPolicy() {
                 </a>{' '}
                 .
                 <div>
-                  <h2 id="policyupdates" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="policyupdates" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     13. Do we make updates to this notice?
                   </h2>
                   In Short: Yes, we will update this notice as necessary to stay compliant with relevant laws.
@@ -1047,7 +1047,7 @@ export default function PrivacyPolicy() {
                   sending you a notification. We encourage you to review this Privacy Notice frequently to be informed
                   of how we are protecting your information.
                 </div>
-                <h2 id="contact" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                <h2 id="contact" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                   14. How can you contact us about this notice?
                 </h2>
                 If you have questions or comments about this notice, you may email us at{' '}
@@ -1056,7 +1056,7 @@ export default function PrivacyPolicy() {
                 </a>
                 .
                 <div>
-                  <h2 id="request" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+                  <h2 id="request" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     15. How can you review, update, or delete the data we collect from you?
                   </h2>
                   Based on the applicable laws of your country or state of residence in the US, you may have the right

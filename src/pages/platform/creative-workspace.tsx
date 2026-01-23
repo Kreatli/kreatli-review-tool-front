@@ -1,9 +1,6 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import { ISbStoryData } from '@storyblok/react';
-import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import React from 'react';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ChatFeaturePreview } from '../../components/home/Features/ChatFeaturePreview';
@@ -13,21 +10,17 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { ArticlesSection } from '../../components/shared/ArticlesSection';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { getStoryblokApi } from '../../lib/storyblok';
-import { PageStoryblok } from '../../typings/storyblok';
+import { getPlatformPageProps, PlatformPageProps } from '../../lib/storyblok/getPlatformPageProps';
 
-const DRAFT_REVALIDATE_TIME = 60;
-const PUBLISHED_REVALIDATE_TIME = 3600;
-
-interface Props {
-  articles?: ISbStoryData<PageStoryblok>[];
-}
+type Props = PlatformPageProps;
 
 const faqs = [
   {
@@ -91,7 +84,7 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
         <title>Kreatli | Video Collaboration Workspace</title>
         <meta
           name="description"
-          content="The Video Collaboration Workspace in Kreatli provides a unified platform for video collaboration. Project-tied conversations, asset-linked comments, and centralized dashboards streamline your entire video collaboration workflow in one place."
+          content="Video Collaboration Workspace for video teams. Unified platform with project-tied conversations, asset-linked comments, and centralized dashboards. Streamline video collaboration workflows in one place."
         />
         <link rel="canonical" href="https://kreatli.com/platform/creative-workspace" />
         <meta property="og:url" content="https://kreatli.com/platform/creative-workspace" />
@@ -114,12 +107,20 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Platform', url: '/platform' },
+          { name: 'The Creative Workspace', url: '/platform/creative-workspace' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">One Place to Rule Them All</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Collaboration Workspace</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             A unified workspace for video teams. Project-tied conversations and asset-linked comments keep your video
             collaboration workflow organized.
@@ -146,7 +147,7 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Centralized Project Dashboard</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Centralized Project Dashboard</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
@@ -159,7 +160,7 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Project-Tied Conversations</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Project-Tied Conversations</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Project-tied chats and asset-linked comments streamline your approval workflow—keep feedback with the
               asset.
@@ -173,7 +174,7 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Secure File Storage & Upload</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Secure File Storage & Upload</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Upload and manage creative assets with drag & drop support, progress tracking, and encrypted storage.
             </p>
@@ -186,7 +187,7 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Key Workspace Features</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Key Workspace Features</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for video collaboration workflows, not adapted from generic project management tools.
             </p>
@@ -302,16 +303,16 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's unified video collaboration workspace and how it streamlines video
               collaboration workflows.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem
-                key={`faq-${index}-${faq.question.slice(0, 20)}`}
+                key={faq.question}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >
@@ -350,59 +351,4 @@ export default function CreativeWorkspacePage({ articles = [] }: Props) {
   );
 }
 
-export const getStaticProps = (async () => {
-  try {
-    // Fetch articles from guides, comparisons, and blog
-    const [guidesData, comparisonsData, blogData] = await Promise.all([
-      getStoryblokApi().getStories({
-        starts_with: 'guides/',
-        excluding_fields: 'body',
-        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-        sort_by: 'content.publishDate:desc',
-        per_page: 10,
-      }),
-      getStoryblokApi().getStories({
-        starts_with: 'comparisons/',
-        excluding_fields: 'body',
-        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-        sort_by: 'content.publishDate:desc',
-        per_page: 10,
-      }),
-      getStoryblokApi().getStories({
-        starts_with: 'blog/',
-        excluding_fields: 'body',
-        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-        sort_by: 'content.publishDate:desc',
-        per_page: 10,
-      }),
-    ]);
-
-    // Combine all articles and sort by publish date
-    const allArticles = [
-      ...(guidesData?.data?.stories || []),
-      ...(comparisonsData?.data?.stories || []),
-      ...(blogData?.data?.stories || []),
-    ].sort((a, b) => {
-      const dateA = a.content.publishDate ? new Date(a.content.publishDate).getTime() : 0;
-      const dateB = b.content.publishDate ? new Date(b.content.publishDate).getTime() : 0;
-      return dateB - dateA;
-    });
-
-    // Take the 3 most recent articles
-    const articles = allArticles.slice(0, 3) as ISbStoryData<PageStoryblok>[];
-
-    return {
-      props: {
-        articles: articles || [],
-      },
-      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
-    };
-  } catch {
-    return {
-      props: {
-        articles: [],
-      },
-      revalidate: PUBLISHED_REVALIDATE_TIME,
-    };
-  }
-}) satisfies GetStaticProps<Props>;
+export { getPlatformPageProps as getStaticProps };
