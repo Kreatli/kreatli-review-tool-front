@@ -1,11 +1,22 @@
+import { ISbStoryData } from '@storyblok/react';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Home } from '../components/home/Home';
 import { Header } from '../components/layout/Header';
 import { Projects } from '../components/project/Projects';
 import { useSession } from '../hooks/useSession';
+import { getStoryblokApi } from '../lib/storyblok';
+import { PageStoryblok } from '../typings/storyblok';
 
-export default function HomePage() {
+const DRAFT_REVALIDATE_TIME = 60;
+const PUBLISHED_REVALIDATE_TIME = 3600;
+
+interface Props {
+  comparisons: ISbStoryData<PageStoryblok>[];
+}
+
+export default function HomePage({ comparisons }: Props) {
   const { isSignedIn } = useSession();
 
   const title = `Kreatli | ${isSignedIn ? 'Projects' : 'Video Collaboration & Review Platform'}`;
@@ -40,7 +51,33 @@ export default function HomePage() {
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
-      {isSignedIn ? <Projects /> : <Home />}
+      {isSignedIn ? <Projects /> : <Home comparisons={comparisons} />}
     </>
   );
 }
+
+export const getStaticProps = (async () => {
+  try {
+    const storiesData = await getStoryblokApi().getStories({
+      starts_with: 'comparisons/',
+      excluding_fields: 'body',
+      version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
+      sort_by: 'content.publishDate:desc',
+      per_page: 3, // Only fetch the 3 most recent
+    });
+
+    return {
+      props: {
+        comparisons: storiesData?.data?.stories || [],
+      },
+      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
+    };
+  } catch {
+    return {
+      props: {
+        comparisons: [],
+      },
+      revalidate: PUBLISHED_REVALIDATE_TIME,
+    };
+  }
+}) satisfies GetStaticProps<Props>;

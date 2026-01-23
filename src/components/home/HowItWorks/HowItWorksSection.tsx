@@ -33,10 +33,10 @@ const steps = [
 
 export const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="px-6 py-16 backdrop-blur-lg lg:py-32">
+    <section id="how-it-works" className="px-6 py-16 backdrop-blur-lg lg:py-24 lg:mt-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-16">
         <div className="flex w-full flex-col gap-4">
-          <h2 className="text-center font-sans text-3xl font-bold sm:text-5xl">How Does Kreatli Work?</h2>
+          <h2 className="text-center font-sans text-3xl font-bold sm:text-4xl">How Does Kreatli Work?</h2>
           <p className="mx-auto max-w-2xl text-center text-lg text-foreground-500">
             Get started in 4 simple steps. From project setup to final delivery, streamline your entire creative
             workflow.
@@ -44,14 +44,17 @@ export const HowItWorksSection = () => {
         </div>
         <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <Card key={index} className="group h-full">
+            <Card
+              key={index}
+              className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+            >
               <CardBody className="flex h-full flex-col items-center gap-6 p-6">
                 <div className="relative">
-                  <div className="flex size-16 items-center justify-center rounded-full bg-foreground-100 transition-all duration-300 group-hover:scale-105 group-hover:bg-foreground-200">
+                  <div className="flex size-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
                     <Icon
                       icon={step.icon as IconType}
                       size={28}
-                      className="text-foreground-500 transition-colors duration-300 group-hover:text-primary"
+                      className="text-primary transition-colors duration-300"
                     />
                   </div>
                   <div className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full bg-foreground font-sans text-sm font-bold text-content1 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-md">
@@ -59,7 +62,9 @@ export const HowItWorksSection = () => {
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col items-center gap-2 text-center">
-                  <h3 className="font-sans text-lg font-semibold">{step.title}</h3>
+                  <h3 className="font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                    {step.title}
+                  </h3>
                   <p className="text-sm leading-relaxed text-foreground-500">{step.description}</p>
                 </div>
               </CardBody>
