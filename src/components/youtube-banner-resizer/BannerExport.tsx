@@ -156,7 +156,6 @@ export const BannerExport = ({
         0.95
       );
     } catch (error) {
-      console.error('Export failed:', error);
       let errorMessage = 'Failed to export banner. Please try again.';
       
       if (error instanceof Error) {
@@ -171,6 +170,11 @@ export const BannerExport = ({
       
       addToast({ title: errorMessage, color: 'danger', variant: 'flat' });
       setIsExporting(false);
+      
+      // Log error in development for debugging
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Export failed:', error);
+      }
     }
   };
 
