@@ -11,7 +11,7 @@ import {
   useSensors,
 } from '@dnd-kit/core';
 import { SortableContext } from '@dnd-kit/sortable';
-import { Button, Checkbox, cn, Skeleton } from '@heroui/react';
+import { addToast, Button, Checkbox, cn, Skeleton } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -23,6 +23,7 @@ import { useGetProjectIdAssets } from '../../../../services/custom-hooks';
 import { usePutProjectIdFileFileId, usePutProjectIdFolderFolderId } from '../../../../services/hooks';
 import { getAssetFolderId, getProjectIdAssets, putProjectIdFolderFolderId } from '../../../../services/services';
 import { FolderDto, ProjectDto } from '../../../../services/types';
+import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { EmptyState } from '../../../various/EmptyState';
 import { Icon } from '../../../various/Icon';
 import { ArchiveAssetsModal } from '../ProjectAssetsBulkEdit/ArchiveAssetsModal';
@@ -179,8 +180,8 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
           if (!queryClient.isMutating({ mutationKey: [putProjectIdFolderFolderId.key, project.id] })) {
             queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
           }
-        } catch {
-          console.error('Failed to move folder');
+        } catch (error) {
+          addToast({ title: 'Failed to move folder', description: getErrorMessage(error), color: 'danger', variant: 'flat' });
         }
 
         return;
@@ -198,8 +199,8 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
         if (!queryClient.isMutating({ mutationKey: [putProjectIdFolderFolderId.key, project.id] })) {
           queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
         }
-      } catch {
-        console.error('Failed to move folder');
+      } catch (error) {
+        addToast({ title: 'Failed to move folder', description: getErrorMessage(error), color: 'danger', variant: 'flat' });
       }
     }
 
@@ -216,7 +217,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
         queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
       }
     } catch (error) {
-      console.error('Failed to update assets order: ', error);
+      addToast({ title: 'Failed to update assets order', description: getErrorMessage(error), color: 'danger', variant: 'flat' });
     }
   };
 

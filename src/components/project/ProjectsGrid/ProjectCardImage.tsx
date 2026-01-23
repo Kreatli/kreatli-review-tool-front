@@ -5,9 +5,10 @@ import { Icon } from '../../various/Icon';
 
 interface Props {
   image?: InterfaceImageDto;
+  alt?: string;
 }
 
-export const ProjectCardImage = ({ image }: Props) => {
+export const ProjectCardImage = ({ image, alt }: Props) => {
   if (!image) {
     return (
       <div className="flex aspect-video items-center justify-center rounded-2xl bg-foreground-100">
@@ -18,5 +19,12 @@ export const ProjectCardImage = ({ image }: Props) => {
 
   const { url } = image;
 
-  return <Image src={url} alt="" removeWrapper className="pointer-events-none aspect-video w-full object-cover" />;
+  return (
+    <Image
+      src={url}
+      alt={alt || 'Project cover image'}
+      removeWrapper
+      className="pointer-events-none aspect-video w-full object-cover"
+    />
+  );
 };

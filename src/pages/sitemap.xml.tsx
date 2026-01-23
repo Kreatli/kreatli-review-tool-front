@@ -27,8 +27,6 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/', priority: '1.0', changefreq: 'daily' },
   { path: '/pricing', priority: '0.9', changefreq: 'monthly' },
   { path: '/platform', priority: '0.9', changefreq: 'monthly' },
-  { path: '/how-it-works', priority: '0.8', changefreq: 'monthly' },
-  { path: '/who-we-help', priority: '0.8', changefreq: 'monthly' },
   { path: '/help', priority: '0.7', changefreq: 'monthly' },
   // Free tools hub + tool pages
   { path: '/free-tools', priority: '0.8', changefreq: 'weekly' },
@@ -91,7 +89,11 @@ async function fetchAllStories(
         hasMore = false;
       }
     } catch (error) {
-      console.error(`Error fetching ${startsWith} stories:`, error);
+      // Log error in development, fail silently in production to prevent sitemap generation failure
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Error fetching ${startsWith} stories:`, error);
+      }
+      // TODO: Add Sentry error reporting when available
       hasMore = false;
     }
   }
@@ -220,7 +222,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
       });
     } else {
-      console.error('Error fetching guides:', guides.reason);
+      // Log error in development, continue with partial sitemap in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error fetching guides:', guides.reason);
+      }
+      // TODO: Add Sentry error reporting when available
     }
 
     // Add blogs
@@ -229,7 +235,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
       });
     } else {
-      console.error('Error fetching blogs:', blogs.reason);
+      // Log error in development, continue with partial sitemap in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error fetching blogs:', blogs.reason);
+      }
+      // TODO: Add Sentry error reporting when available
     }
 
     // Add comparisons
@@ -238,7 +248,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         urls.push(storyToSitemapUrl(story, 'monthly', '0.8'));
       });
     } else {
-      console.error('Error fetching comparisons:', comparisons.reason);
+      // Log error in development, continue with partial sitemap in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error fetching comparisons:', comparisons.reason);
+      }
+      // TODO: Add Sentry error reporting when available
     }
 
     // Generate XML
@@ -256,7 +270,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       props: {},
     };
   } catch (error) {
-    console.error('Error generating sitemap:', error);
+    // Log error in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error generating sitemap:', error);
+    }
+    // TODO: Add Sentry error reporting when available
     // Return a minimal sitemap with just static pages and platform pages if Storyblok fails
     const minimalPages = [
       ...STATIC_PAGES.map((page) => ({

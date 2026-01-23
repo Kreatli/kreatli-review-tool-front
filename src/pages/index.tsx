@@ -68,7 +68,7 @@ export const getStaticProps = (async () => {
 
     return {
       props: {
-        comparisons: storiesData?.data?.stories || [],
+        comparisons: (storiesData?.data?.stories || []) as ISbStoryData<PageStoryblok>[],
       },
       revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
     };
