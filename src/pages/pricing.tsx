@@ -47,7 +47,7 @@ export default function PricingPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <Decorations />
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
             Simple, Transparent Pricing for Video Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
@@ -95,7 +95,7 @@ export default function PricingPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-4 text-center">
-            <h2 className="mb-6 font-sans text-2xl font-bold sm:text-4xl">Why Kreatli's Pricing Works for You</h2>
+            <h2 className="mb-6 font-sans text-2xl font-bold sm:text-3xl">Why Kreatli's Pricing Works for You</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Transparent pricing designed to grow with your team. No surprises, no hidden fees, just straightforward
               plans that make sense.
@@ -202,7 +202,7 @@ export default function PricingPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's pricing plans, billing, plan changes, and how to choose the right
               plan for your team.
@@ -528,7 +528,7 @@ export default function PricingPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Get Started?</h2>
+          <h2 className="font-sans text-2xl font-bold sm:text-3xl">Ready to Get Started?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Join video teams who have simplified their collaboration process. Start your 7-day free trial or book a
             demo to see how Kreatli works for your team.

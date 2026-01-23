@@ -42,7 +42,7 @@ export default function TikTokSafeZoneCheckerPage() {
       <div className="p-6 pb-12">
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-col gap-4 pb-4 pt-8">
-            <h1 className="text-center font-sans text-2xl font-bold sm:text-4xl">TikTok Safe Zone Checker</h1>
+            <h1 className="text-center font-sans text-3xl font-bold sm:text-4xl">TikTok Safe Zone Checker</h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
               Upload your TikTok video to preview where profile info, music tracks, and engagement buttons appear. Keep
               captions, text, and visuals in the safe zone to avoid UI overlays.

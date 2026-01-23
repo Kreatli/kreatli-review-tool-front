@@ -135,7 +135,7 @@ export default function WhoWeHelpPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-4 text-center">
-            <h2 className="mb-6 font-sans text-2xl font-bold sm:text-4xl">Why video teams choose Kreatli</h2>
+            <h2 className="mb-6 font-sans text-2xl font-bold sm:text-3xl">Why video teams choose Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for video collaboration workflows, not adapted from project management or file storage tools.
             </p>
@@ -226,7 +226,7 @@ export default function WhoWeHelpPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h1 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
+          <h1 className="mb-4 font-sans text-3xl font-bold sm:text-4xl">
             Who is Kreatli’s Video Production Platform For?
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500 sm:text-xl">
@@ -327,7 +327,7 @@ export default function WhoWeHelpPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Learn how different types of creative professionals use Kreatli to improve their workflows and
               collaboration.
@@ -634,7 +634,7 @@ export default function WhoWeHelpPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-3 text-center">
-          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
+          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-3xl">
             Ready to streamline your video collaboration workflow?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">

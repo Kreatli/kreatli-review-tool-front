@@ -46,7 +46,7 @@ export default function HowItWorksPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
             Get Started with Kreatli in 4 Simple Steps
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
@@ -88,7 +88,7 @@ export default function HowItWorksPage() {
       <section className="relative px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               Your Complete Video Collaboration Workflow
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
@@ -665,7 +665,7 @@ export default function HowItWorksPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-4 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Why This Process Works</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why This Process Works</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Our simple 4-step workflow eliminates complexity and saves you time at every stage of your creative
               process.
@@ -770,7 +770,7 @@ export default function HowItWorksPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about the 4-step workflow, setup process, and how Kreatli streamlines your video
               collaboration.
@@ -1077,7 +1077,7 @@ export default function HowItWorksPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
+          <h2 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-3xl">
             Ready to Streamline Your Workflow?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
