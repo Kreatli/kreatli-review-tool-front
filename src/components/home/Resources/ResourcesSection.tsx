@@ -1,9 +1,8 @@
 import { Button, Card, CardBody } from '@heroui/react';
-import { ISbStoryData } from '@storyblok/react';
 import NextLink from 'next/link';
 
 import { FREE_TOOLS } from '../../../data/free-tools';
-import { PageStoryblok } from '../../../typings/storyblok';
+import { ArticleCard } from '../../../types/articles';
 import { BlogArticle } from '../../blog/BlogArticle/BlogArticle';
 import { Icon } from '../../various/Icon';
 
@@ -17,7 +16,7 @@ const freeTools = FREE_TOOLS.filter(
 );
 
 interface Props {
-  comparisons?: ISbStoryData<PageStoryblok>[];
+  comparisons?: ArticleCard[];
 }
 
 export const ResourcesSection = ({ comparisons = [] }: Props) => {

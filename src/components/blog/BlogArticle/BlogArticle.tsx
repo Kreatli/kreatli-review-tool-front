@@ -1,20 +1,22 @@
 import { Card, CardBody, Chip, Image } from '@heroui/react';
-import { ISbStoryData } from '@storyblok/react';
 import Link from 'next/link';
 
-import { PageStoryblok } from '../../../typings/storyblok';
+import { ArticleCard } from '../../../types/articles';
 import { formatDate } from '../../../utils/dates';
 import { Icon } from '../../various/Icon';
 
 interface Props {
-  article: ISbStoryData<PageStoryblok>;
+  article: ArticleCard;
 }
 
 export const BlogArticle = ({ article }: Props) => {
+  const href = article.full_slug.startsWith('/') ? article.full_slug : `/${article.full_slug}`;
+  const title = article.content.metaFields?.title ?? article.name;
+
   return (
     <Card isPressable className="relative">
       <CardBody className="flex flex-col gap-3 p-4">
-        {'tags' in article.content && 'value' in article.content.tags && (
+        {article.content.tags?.value?.length ? (
           <div className="flex gap-2">
             {article.content.tags.value.map((tag: string) => (
               <Chip key={tag} size="sm" variant="flat">
@@ -22,13 +24,13 @@ export const BlogArticle = ({ article }: Props) => {
               </Chip>
             ))}
           </div>
-        )}
+        ) : null}
         <div className="flex flex-col gap-2">
           <Link
-            href={article.full_slug}
+            href={href}
             className="line-clamp-2 font-sans text-large font-bold after:absolute after:inset-0"
           >
-            {article.content.metaFields?.title}
+            {title}
           </Link>
           {article.content.image && (
             <div className="pointer-events-none -mx-4">

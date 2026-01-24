@@ -1,6 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import { ISbStoryData } from '@storyblok/react';
-import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
@@ -14,9 +12,8 @@ import { RelatedResourcesSection } from '../../../components/shared/RelatedResou
 import { Icon, IconType } from '../../../components/various/Icon';
 import { FREE_TOOLS } from '../../../data/free-tools';
 import { getRelatedResources } from '../../../data/related-resources';
+import { getUseCaseArticles } from '../../../data/use-case-articles';
 import { useSession } from '../../../hooks/useSession';
-import { getStoryblokApi } from '../../../lib/storyblok';
-import { PageStoryblok } from '../../../typings/storyblok';
 
 const data = {
   title: 'Video Proofing',
@@ -180,15 +177,9 @@ const data = {
   ],
 };
 
-const DRAFT_REVALIDATE_TIME = 60;
-const PUBLISHED_REVALIDATE_TIME = 3600;
-
-interface Props {
-  articles?: ISbStoryData<PageStoryblok>[];
-}
-
-export default function CreativeProofingPage({ articles = [] }: Props) {
+export default function CreativeProofingPage() {
   useSession();
+  const articles = getUseCaseArticles('/solutions/use-case/creative-proofing');
 
   return (
     <>
@@ -467,60 +458,3 @@ export default function CreativeProofingPage({ articles = [] }: Props) {
     </>
   );
 }
-
-export const getStaticProps = (async () => {
-  try {
-    // Fetch articles from guides, comparisons, and blog
-    const [guidesData, comparisonsData, blogData] = await Promise.all([
-      getStoryblokApi().getStories({
-        starts_with: 'guides/',
-        excluding_fields: 'body',
-        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-        sort_by: 'content.publishDate:desc',
-        per_page: 10,
-      }),
-      getStoryblokApi().getStories({
-        starts_with: 'comparisons/',
-        excluding_fields: 'body',
-        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-        sort_by: 'content.publishDate:desc',
-        per_page: 10,
-      }),
-      getStoryblokApi().getStories({
-        starts_with: 'blog/',
-        excluding_fields: 'body',
-        version: (process.env.STORYBLOK_STATUS ?? 'published') as 'draft' | 'published',
-        sort_by: 'content.publishDate:desc',
-        per_page: 10,
-      }),
-    ]);
-
-    // Combine all articles and sort by publish date
-    const allArticles = [
-      ...(guidesData?.data?.stories || []),
-      ...(comparisonsData?.data?.stories || []),
-      ...(blogData?.data?.stories || []),
-    ].sort((a, b) => {
-      const dateA = a.content.publishDate ? new Date(a.content.publishDate).getTime() : 0;
-      const dateB = b.content.publishDate ? new Date(b.content.publishDate).getTime() : 0;
-      return dateB - dateA;
-    });
-
-    // Take the 3 most recent articles
-    const articles = allArticles.slice(0, 3) as ISbStoryData<PageStoryblok>[];
-
-    return {
-      props: {
-        articles: articles || [],
-      },
-      revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
-    };
-  } catch {
-    return {
-      props: {
-        articles: [],
-      },
-      revalidate: PUBLISHED_REVALIDATE_TIME,
-    };
-  }
-}) satisfies GetStaticProps<Props>;

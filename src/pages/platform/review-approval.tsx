@@ -9,19 +9,17 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
-import { ArticlesSection } from '../../components/shared/ArticlesSection';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { getPlatformPageProps, PlatformPageProps } from 'lib/storyblok/getPlatformPageProps';
-
-type Props = PlatformPageProps;
 
 const faqs = [
   {
@@ -76,8 +74,9 @@ const faqs = [
   },
 ];
 
-export default function ReviewApprovalPage({ articles = [] }: Props) {
+export default function ReviewApprovalPage() {
   useSession();
+  const articles = getPlatformArticles('/platform/review-approval');
 
   return (
     <>
@@ -292,7 +291,7 @@ export default function ReviewApprovalPage({ articles = [] }: Props) {
       />
 
       {/* See How It Works Section */}
-      <ArticlesSection
+      <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
         description="Explore real-world workflows and guides that demonstrate these features in action."
@@ -350,5 +349,3 @@ export default function ReviewApprovalPage({ articles = [] }: Props) {
     </>
   );
 }
-
-export { getPlatformPageProps as getStaticProps };
