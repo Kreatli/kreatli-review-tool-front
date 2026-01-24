@@ -41,6 +41,14 @@ export const RELATED_RESOURCES = {
     icon: 'paint' as IconType,
     buttonText: 'Learn More',
   },
+  videoAnnotation: {
+    title: 'Video Annotation',
+    description:
+      'Add frame-accurate annotations, drawings, and markup directly to video frames. Pin comments to exact timestamps and collaborate with precise visual feedback.',
+    href: '/platform/video-annotation',
+    icon: 'paint' as IconType,
+    buttonText: 'Learn More',
+  },
   // Solution pages
   advertisingMarketingAgencies: {
     title: 'Advertising & Marketing Agencies',
@@ -98,6 +106,23 @@ export const RELATED_RESOURCES = {
     href: '/blog',
     icon: 'file' as IconType,
     buttonText: 'Read Articles',
+  },
+  // Free Tools
+  safeZoneChecker: {
+    title: 'Social Media Safe Zone Checker',
+    description:
+      'Preview where UI overlays appear on Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',
+    href: '/social-media-safe-zone-checker',
+    icon: 'shield' as IconType,
+    buttonText: 'Try Now',
+  },
+  dataTransferCalculator: {
+    title: 'Data Transfer Calculator',
+    description:
+      'Calculate how long it takes to upload or download large files. Perfect for video editors and post-production teams.',
+    href: '/free-tools/data-transfer-calculator',
+    icon: 'upload' as IconType,
+    buttonText: 'Try Now',
   },
 } as const;
 

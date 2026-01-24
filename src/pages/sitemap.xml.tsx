@@ -1,6 +1,7 @@
 import { ISbStoryData } from '@storyblok/react';
 import { GetServerSideProps } from 'next';
 
+import { getPlatformPagesForSitemap } from '../data/platform-pages';
 import { getStoryblokApi } from '../lib/storyblok';
 import { PageStoryblok } from '../typings/storyblok';
 
@@ -25,9 +26,7 @@ interface StaticPage {
 const STATIC_PAGES: StaticPage[] = [
   { path: '/', priority: '1.0', changefreq: 'daily' },
   { path: '/pricing', priority: '0.9', changefreq: 'monthly' },
-  { path: '/features', priority: '0.9', changefreq: 'monthly' },
-  { path: '/how-it-works', priority: '0.8', changefreq: 'monthly' },
-  { path: '/who-we-help', priority: '0.8', changefreq: 'monthly' },
+  { path: '/platform', priority: '0.9', changefreq: 'monthly' },
   { path: '/help', priority: '0.7', changefreq: 'monthly' },
   // Free tools hub + tool pages
   { path: '/free-tools', priority: '0.8', changefreq: 'weekly' },
@@ -35,11 +34,7 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/free-tools/data-transfer-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/cost-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/youtube-banner-resizer', priority: '0.7', changefreq: 'monthly' },
-  { path: '/platform/creative-workspace', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/integrations', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/project-orchestration', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/review-approval', priority: '0.8', changefreq: 'monthly' },
-  { path: '/platform/secure-asset-storage', priority: '0.8', changefreq: 'monthly' },
+  // Platform pages are now added dynamically from platform-pages registry
   { path: '/solutions/industry/advertising-marketing-agencies', priority: '0.8', changefreq: 'monthly' },
   { path: '/solutions/industry/in-house-creative-content-teams', priority: '0.8', changefreq: 'monthly' },
   { path: '/solutions/industry/video-production-animation-studios', priority: '0.8', changefreq: 'monthly' },
@@ -94,7 +89,11 @@ async function fetchAllStories(
         hasMore = false;
       }
     } catch (error) {
-      console.error(`Error fetching ${startsWith} stories:`, error);
+      // Log error in development, fail silently in production to prevent sitemap generation failure
+      if (process.env.NODE_ENV === 'development') {
+        console.error(`Error fetching ${startsWith} stories:`, error);
+      }
+      // TODO: Add Sentry error reporting when available
       hasMore = false;
     }
   }
@@ -200,6 +199,16 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       });
     });
 
+    // Add platform pages from registry
+    const platformPages = getPlatformPagesForSitemap();
+    platformPages.forEach((page) => {
+      urls.push({
+        loc: `${BASE_URL}${page.path}`,
+        changefreq: page.changefreq,
+        priority: page.priority,
+      });
+    });
+
     // Fetch all Storyblok content
     const [guides, blogs, comparisons] = await Promise.allSettled([
       fetchAllStories('guides/', version),
@@ -213,7 +222,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
       });
     } else {
-      console.error('Error fetching guides:', guides.reason);
+      // Log error in development, continue with partial sitemap in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error fetching guides:', guides.reason);
+      }
+      // TODO: Add Sentry error reporting when available
     }
 
     // Add blogs
@@ -222,7 +235,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
       });
     } else {
-      console.error('Error fetching blogs:', blogs.reason);
+      // Log error in development, continue with partial sitemap in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error fetching blogs:', blogs.reason);
+      }
+      // TODO: Add Sentry error reporting when available
     }
 
     // Add comparisons
@@ -231,7 +248,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         urls.push(storyToSitemapUrl(story, 'monthly', '0.8'));
       });
     } else {
-      console.error('Error fetching comparisons:', comparisons.reason);
+      // Log error in development, continue with partial sitemap in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error fetching comparisons:', comparisons.reason);
+      }
+      // TODO: Add Sentry error reporting when available
     }
 
     // Generate XML
@@ -249,15 +270,25 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       props: {},
     };
   } catch (error) {
-    console.error('Error generating sitemap:', error);
-    // Return a minimal sitemap with just static pages if Storyblok fails
-    const minimalSitemap = generateSitemapXml(
-      STATIC_PAGES.map((page) => ({
+    // Log error in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error generating sitemap:', error);
+    }
+    // TODO: Add Sentry error reporting when available
+    // Return a minimal sitemap with just static pages and platform pages if Storyblok fails
+    const minimalPages = [
+      ...STATIC_PAGES.map((page) => ({
         loc: `${BASE_URL}${page.path}`,
         changefreq: page.changefreq,
         priority: page.priority,
       })),
-    );
+      ...getPlatformPagesForSitemap().map((page) => ({
+        loc: `${BASE_URL}${page.path}`,
+        changefreq: page.changefreq,
+        priority: page.priority,
+      })),
+    ];
+    const minimalSitemap = generateSitemapXml(minimalPages);
 
     res.setHeader('Content-Type', 'application/xml');
     res.write(minimalSitemap);

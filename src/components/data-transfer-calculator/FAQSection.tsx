@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 
@@ -6,7 +7,7 @@ export default function FAQSection() {
     <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
       <div className="relative z-10 mx-auto max-w-4xl">
         <div className="mb-8 text-center">
-          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Common questions about data transfer times, internet speeds, and file management for creative teams.
           </p>

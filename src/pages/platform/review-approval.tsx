@@ -1,17 +1,23 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { CompareFeaturePreview } from '../../components/home/Features/CompareFeaturePreview';
-import { ReviewToolPreview } from '../../components/home/Features/ReviewToolPreview';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -70,6 +76,7 @@ const faqs = [
 
 export default function ReviewApprovalPage() {
   useSession();
+  const articles = getPlatformArticles('/platform/review-approval');
 
   return (
     <>
@@ -100,12 +107,22 @@ export default function ReviewApprovalPage() {
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Platform', url: '/platform' },
+          { name: 'Review & Approval', url: '/platform/review-approval' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Frame-Accurate Video Review</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
+            Review & Approval – Frame-Accurate Video Review
+          </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Pin comments to exact frames and timestamps. Compare versions side-by-side and share files securely.
           </p>
@@ -131,12 +148,12 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frame-Accurate Revisions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frame-Accurate Revisions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Pin comments to exact frames and timestamps—no more "which clip?" or lost feedback.
             </p>
           </div>
-          <ReviewToolPreview />
+          <InteractiveReviewToolPreview />
         </div>
       </section>
 
@@ -144,7 +161,7 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Compare Versions Side-by-Side</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Compare Versions Side-by-Side</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Compare different versions side-by-side for creative proofing—spot changes instantly.
             </p>
@@ -157,7 +174,7 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Share Files with Anyone</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Share Files with Anyone</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Generate secure shareable links or send files via email—no account required for reviewers.
             </p>
@@ -170,7 +187,7 @@ export default function ReviewApprovalPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Complete Review & Approval Workflow</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Complete Review & Approval Workflow</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need for professional video review and approval workflows in one platform.
             </p>
@@ -267,19 +284,32 @@ export default function ReviewApprovalPage() {
         </div>
       </section>
 
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        title="Free Tools & Resources"
+        description="Access our free calculators and tools to optimize your creative workflow."
+      />
+
+      {/* See How It Works Section */}
+      <ResourcesArticlesPreviewSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate these features in action."
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's frame-accurate review and approval features for video teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem
-                key={`faq-${index}-${faq.question.slice(0, 20)}`}
+                key={faq.question}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >

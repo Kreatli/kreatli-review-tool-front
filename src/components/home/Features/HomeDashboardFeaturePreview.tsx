@@ -283,7 +283,7 @@ export const HomeDashboardFeaturePreview = () => {
                 >
                   <img
                     src={`https://picsum.photos/600/300?${item.image}`}
-                    alt={`Media ${idx + 1}`}
+                    alt={`${item.status} media file ${idx + 1} preview`}
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute bottom-2 left-2 right-2 z-20">

@@ -5,7 +5,7 @@ import React from 'react';
 
 import { CompareFeaturePreview } from '../../../components/home/Features/CompareFeaturePreview';
 import { ProjectFeaturePreview } from '../../../components/home/Features/ProjectFeaturePreview';
-import { ReviewToolPreview } from '../../../components/home/Features/ReviewToolPreview';
+import { InteractiveReviewToolPreview } from '../../../components/shared/InteractiveReviewToolPreview';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
@@ -280,7 +280,7 @@ export default function VideoProductionAnimationStudiosPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Solutions for {data.title}</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Solutions for {data.title}</h1>
           <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">{data.description}</p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -304,7 +304,7 @@ export default function VideoProductionAnimationStudiosPage() {
         <section className="relative px-6 py-16 backdrop-blur-lg">
           <div className="relative z-10 mx-auto max-w-7xl">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Video Production Workflow</h2>
+              <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Video Production Workflow</h2>
               <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
                 From project setup to final delivery—see how Kreatli streamlines your video production workflow.
                 Organize projects, collaborate with teams, collect frame-accurate feedback, and deliver faster.
@@ -485,7 +485,7 @@ export default function VideoProductionAnimationStudiosPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Key Features for {data.title}</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Key Features for {data.title}</h2>
           </div>
 
           {/* Frame-Accurate Video Review */}
@@ -496,8 +496,15 @@ export default function VideoProductionAnimationStudiosPage() {
                 Pin comments to exact frames and timestamps. Example: "Change at 00:12:30"—editor knows precisely where.
                 Reduces revision cycles by 50%.
               </p>
+              <NextLink
+                href="/platform/review-approval"
+                className="group mx-auto mt-4 flex w-fit items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary-600"
+              >
+                <span>Explore Review & Approval</span>
+                <Icon icon="arrowRight" size={16} className="transition-transform group-hover:translate-x-1" />
+              </NextLink>
             </div>
-            <ReviewToolPreview />
+            <InteractiveReviewToolPreview />
           </div>
 
           {/* Version History & Comparison */}
@@ -508,6 +515,13 @@ export default function VideoProductionAnimationStudiosPage() {
                 Compare different video versions side-by-side to spot changes instantly. Complete version history with
                 one-click revert.
               </p>
+              <NextLink
+                href="/platform/review-approval"
+                className="group mx-auto mt-4 flex w-fit items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary-600"
+              >
+                <span>See Review Features</span>
+                <Icon icon="arrowRight" size={16} className="transition-transform group-hover:translate-x-1" />
+              </NextLink>
             </div>
             <CompareFeaturePreview />
           </div>
@@ -520,6 +534,13 @@ export default function VideoProductionAnimationStudiosPage() {
                 Upload and share large video files securely without file size limitations. No more WeTransfer or
                 compressed previews—share full-quality videos directly.
               </p>
+              <NextLink
+                href="/platform/secure-asset-storage"
+                className="group mx-auto mt-4 flex w-fit items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary-600"
+              >
+                <span>Learn about Secure Storage</span>
+                <Icon icon="arrowRight" size={16} className="transition-transform group-hover:translate-x-1" />
+              </NextLink>
             </div>
             <ProjectFeaturePreview />
           </div>
@@ -530,7 +551,7 @@ export default function VideoProductionAnimationStudiosPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
               Common questions about Kreatli for {data.title.toLowerCase()}.
             </p>
@@ -555,6 +576,13 @@ export default function VideoProductionAnimationStudiosPage() {
         </div>
       </section>
 
+      {/* Related Platform Pages Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['videoAnnotation', 'reviewApproval', 'projectOrchestration'])}
+        title="Platform Features for Video Production"
+        description="Explore the Kreatli platform features that help video production teams with frame-accurate review and collaboration."
+      />
+
       {/* More Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['advertisingMarketingAgencies', 'inHouseCreativeContentTeams', 'creativeProofing'])}
@@ -565,7 +593,7 @@ export default function VideoProductionAnimationStudiosPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Streamline Your Workflow?</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Streamline Your Workflow?</h2>
           <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">
             Join {data.title.toLowerCase()} using Kreatli.
           </p>

@@ -37,7 +37,7 @@ export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
         className="absolute-cursor rounded-2xl border border-foreground-300 p-px outline-offset-2 outline-focus transition-all group-hover/card:border-foreground-500 group-hover/card:opacity-70"
         onClick={handleClick}
       >
-        <ProjectCardImage image={project.cover} />
+        <ProjectCardImage image={project.cover} alt={`${project.name} project cover`} />
       </button>
       <div className="pointer-events-none absolute left-2 right-2 top-1 flex items-center justify-between gap-2">
         <ProjectStatus status={project.status} />

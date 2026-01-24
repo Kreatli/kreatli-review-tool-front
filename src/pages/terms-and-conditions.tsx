@@ -15,9 +15,9 @@ export default function TermsAndConditions() {
       <Header />
       <div className="border-t border-foreground-200 p-6">
         <div className="mx-auto max-w-5xl">
-          <h1 className="font-sans text-3xl font-bold">Terms of Service</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Terms of Service</h1>
           <p className="mb-6 text-foreground-500">Last updated July 21, 2025</p>
-          <h2 className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">Agreement to our Legal Terms</h2>
+          <h2 className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">Agreement to our Legal Terms</h2>
           <div className="mt-2">
             We are Kreatli ("<span className="font-semibold">Company</span>," "<span className="font-semibold">we</span>
             ," "<span className="font-semibold">us</span>," "<span className="font-semibold">our</span>"), a company
@@ -66,7 +66,7 @@ export default function TermsAndConditions() {
           </div>
           <div className="mt-2">We recommend that you print a copy of these Legal Terms for your records.</div>
           <div data-custom-class="heading_1">
-            <h2 className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">Table of Contents</h2>
+            <h2 className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">Table of Contents</h2>
           </div>
           <ul className="mt-2 list-inside list-decimal pl-2">
             <li>
@@ -191,7 +191,7 @@ export default function TermsAndConditions() {
             </li>
           </ul>
           <div data-custom-class="heading_1">
-            <h2 id="services" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="services" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               1. Our Services
             </h2>
           </div>
@@ -208,7 +208,7 @@ export default function TermsAndConditions() {
             interactions would be subjected to such laws, you may not use the Services. You may not use the Services in
             a way that would violate the Gramm-Leach-Bliley Act (GLBA).
           </div>
-          <h2 id="ip" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="ip" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             2. Intellectual Property Rights
           </h2>
           <div data-custom-class="heading_2">
@@ -357,7 +357,7 @@ export default function TermsAndConditions() {
             Terms. If we remove or edit any such Contributions, we may also suspend or disable your account and report
             you to the authorities.
           </div>
-          <h2 id="userreps" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="userreps" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             3. User Representations
           </h2>
           <div className="mt-2">
@@ -375,7 +375,7 @@ export default function TermsAndConditions() {
             portion thereof).
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="userreg" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="userreg" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               4. User Registration
             </h2>
           </div>
@@ -385,7 +385,7 @@ export default function TermsAndConditions() {
             a username you select if we determine, in our sole discretion, that such username is inappropriate, obscene,
             or otherwise objectionable.
           </div>
-          <h2 id="purchases" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="purchases" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             5. Purchases and Payment
           </h2>
           <div className="mt-2">We accept the following forms of payment:</div>
@@ -415,7 +415,7 @@ export default function TermsAndConditions() {
             same billing or shipping address. We reserve the right to limit or prohibit orders that, in our sole
             judgment, appear to be placed by dealers, resellers, or distributors.
           </div>
-          <h2 id="subscriptions" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="subscriptions" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             6. Subscriptions
           </h2>
           <h3 className="mb-1 mt-4 text-xl font-semibold">Billing and Renewal</h3>
@@ -437,7 +437,7 @@ export default function TermsAndConditions() {
           <h3 className="mb-1 mt-4 text-xl font-semibold">Fee Changes</h3>
           We may, from time to time, make changes to the subscription fee and will communicate any price changes to you
           in accordance with applicable law.
-          <h2 id="prohibited" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="prohibited" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             7. Prohibited Activities
           </h2>
           <div className="mt-2">
@@ -520,7 +520,7 @@ export default function TermsAndConditions() {
               for any revenue-generating endeavor or commercial enterprise.
             </li>
           </ul>
-          <h2 id="ugc" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="ugc" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             8. User Generated Contributions
           </h2>
           <div className="mt-2">
@@ -583,7 +583,7 @@ export default function TermsAndConditions() {
             Any use of the Services in violation of the foregoing violates these Legal Terms and may result in, among
             other things, termination or suspension of your rights to use the Services.
           </div>
-          <h2 id="license" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="license" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             9. Contribution License
           </h2>
           <div className="mt-2">
@@ -617,7 +617,7 @@ export default function TermsAndConditions() {
             Services; and (3) to pre-screen or delete any Contributions at any time and for any reason, without notice.
             We have no obligation to monitor your Contributions.
           </div>
-          <h2 id="sitemanage" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="sitemanage" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             10. Services Management
           </h2>
           <div className="mt-2">
@@ -631,7 +631,7 @@ export default function TermsAndConditions() {
             (5) otherwise manage the Services in a manner designed to protect our rights and property and to facilitate
             the proper functioning of the Services.
           </div>
-          <h2 id="ppyes" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="ppyes" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             11. Privacy Policy
           </h2>
           <div className="mt-2">
@@ -645,7 +645,7 @@ export default function TermsAndConditions() {
             differ from applicable laws in Poland, then through your continued use of the Services, you are transferring
             your data to Poland, and you expressly consent to have your data transferred to and processed in Poland.
           </div>
-          <h2 id="terms" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="terms" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             12. Term and Termination
           </h2>
           <div className="mt-2">
@@ -664,7 +664,7 @@ export default function TermsAndConditions() {
             right to take appropriate legal action, including without limitation pursuing civil, criminal, and
             injunctive redress.
           </div>
-          <h2 id="modifications" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="modifications" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             13. Modifications and Interruptions
           </h2>
           <div className="mt-2">
@@ -683,7 +683,7 @@ export default function TermsAndConditions() {
             maintain and support the Services or to supply any corrections, updates, or releases in connection
             therewith.
           </div>
-          <h2 id="law" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="law" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             14. Governing Law
           </h2>
           <div className="mt-2">
@@ -695,7 +695,7 @@ export default function TermsAndConditions() {
             consumer protection rights in regards to these Legal Terms in Poland, or in the EU country in which you
             reside.
           </div>
-          <h2 id="disputes" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+          <h2 id="disputes" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             15. Dispute Resolution
           </h2>
           <div className="mt-2">
@@ -712,7 +712,7 @@ export default function TermsAndConditions() {
             , which you can access. If you would like to bring this subject to our attention, please contact us.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="corrections" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="corrections" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               16. Corrections
             </h2>
           </div>
@@ -723,7 +723,7 @@ export default function TermsAndConditions() {
             any time, without prior notice.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="disclaimer" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="disclaimer" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               17. Disclaimer
             </h2>
           </div>
@@ -749,7 +749,7 @@ export default function TermsAndConditions() {
             use your best judgment and exercise caution where appropriate.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="liability" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="liability" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               18. Limitations of Liability
             </h2>
           </div>
@@ -765,7 +765,7 @@ export default function TermsAndConditions() {
             disclaimers or limitations may not apply to you, and you may have additional rights.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="indemnification" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="indemnification" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               19. Indemnification
             </h2>
           </div>
@@ -783,7 +783,7 @@ export default function TermsAndConditions() {
             subject to this indemnification upon becoming aware of it.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="userdata" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="userdata" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               20. User Data
             </h2>
           </div>
@@ -796,7 +796,7 @@ export default function TermsAndConditions() {
             or corruption of such data.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="electronic" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="electronic" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               21. Electronic Communications, Transactions, and Signatures
             </h2>
           </div>
@@ -812,7 +812,7 @@ export default function TermsAndConditions() {
             credits by any means other than electronic means.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="california" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="california" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               22. California Users and Residents
             </h2>
           </div>
@@ -822,7 +822,7 @@ export default function TermsAndConditions() {
             Market Blvd., Suite N 112, Sacramento, California 95834 or by telephone at (800) 952-5210 or (916) 445-1254.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="misc" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="misc" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               23. Miscellaneous
             </h2>
           </div>
@@ -842,7 +842,7 @@ export default function TermsAndConditions() {
             by the parties hereto to execute these Legal Terms.
           </div>
           <div data-custom-class="heading_1">
-            <h2 id="contact" className="mb-1 mt-6 scroll-m-24 text-2xl font-semibold">
+            <h2 id="contact" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
               24. Contact Us
             </h2>
           </div>

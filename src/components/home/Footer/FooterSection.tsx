@@ -2,43 +2,8 @@ import { Button } from '@heroui/react';
 import Link from 'next/link';
 
 import LogoIcon from '../../../assets/images/logo.svg';
+import { getPlatformPagesBySection } from '../../../data/platform-pages';
 import { Socials } from '../Socials/Socials';
-
-const PLATFORM_NAV = {
-  title: 'Platform',
-  sections: [
-    {
-      title: 'Core Platform',
-      items: [
-        {
-          label: 'The Creative Workspace',
-          href: '/platform/creative-workspace',
-        },
-        {
-          label: 'Review & Approval',
-          href: '/platform/review-approval',
-        },
-        {
-          label: 'Project Orchestration',
-          href: '/platform/project-orchestration',
-        },
-      ],
-    },
-    {
-      title: 'Storage & Integrations',
-      items: [
-        {
-          label: 'Secure Asset Storage',
-          href: '/platform/secure-asset-storage',
-        },
-        {
-          label: 'Integrations',
-          href: '/platform/integrations',
-        },
-      ],
-    },
-  ],
-};
 
 const SOLUTIONS_NAV = {
   title: 'Solutions',
@@ -146,11 +111,14 @@ interface Props {
 }
 
 export const FooterSection = ({ hideCta = false }: Props) => {
+  // Get platform pages grouped by section for footer navigation
+  const platformPagesBySection = getPlatformPagesBySection();
+
   return (
     <footer className="bg-foreground-50">
       {!hideCta && (
         <div className="flex flex-col items-center gap-8 px-6 pb-12 pt-16 lg:pb-20 lg:pt-32">
-          <h2 className="mx-auto max-w-xl text-center font-sans text-3xl font-bold sm:text-5xl">
+          <h2 className="mx-auto max-w-xl text-center font-sans text-3xl font-bold sm:text-4xl">
             Take Control of Your Creative Projects Today!
           </h2>
           <p className="text-center text-lg font-medium text-foreground-500 sm:text-2xl">
@@ -186,20 +154,18 @@ export const FooterSection = ({ hideCta = false }: Props) => {
           <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {/* Platform Navigation */}
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">
-                {PLATFORM_NAV.title}
-              </h3>
-              {PLATFORM_NAV.sections.map((section) => (
-                <div key={section.title} className="mb-6 last:mb-0">
-                  <h4 className="mb-3 text-xs font-semibold text-foreground-600">{section.title}</h4>
+              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">Platform</h3>
+              {Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => (
+                <div key={sectionTitle} className="mb-6 last:mb-0">
+                  <h4 className="mb-3 text-xs font-semibold text-foreground-600">{sectionTitle}</h4>
                   <ul className="flex flex-col gap-2">
-                    {section.items.map((item) => (
-                      <li key={item.href}>
+                    {pages.map((page) => (
+                      <li key={page.href}>
                         <Link
-                          href={item.href}
+                          href={page.href}
                           className="text-sm text-foreground-500 underline-offset-2 hover:text-foreground hover:underline"
                         >
-                          {item.label}
+                          {page.label}
                         </Link>
                       </li>
                     ))}

@@ -16,10 +16,17 @@ import styles from './ReviewToolPreview.module.scss';
 interface Props {
   shapes: ReviewTool.Shape[];
   onShapesChange: (shapes: ReviewTool.Shape[]) => void;
+  /** Custom video or image URL to display (for uploaded files) */
+  customVideoUrl?: string | null;
+  /** File type hint ('video' or 'image') for blob URLs */
+  fileType?: 'video' | 'image' | null;
+  /** Enable hover-to-draw mode (old behavior) instead of click-to-draw */
+  enableHoverDraw?: boolean;
 }
 
-export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
+export const ReviewToolCanvas = ({ shapes, onShapesChange, customVideoUrl, fileType, enableHoverDraw = false }: Props) => {
   const fileRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const isDrawing = useRef(false);
   const lastPointRef = React.useRef<Vector2d | null>(null);
   const isHovering = useRef(false);
@@ -29,6 +36,8 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
   const [canvasWidth, setCanvasWidth] = useState(0);
   const [shouldShowStartDrawing, setShouldShowStartDrawing] = useState(true);
   const [hasStartedDrawing, setHasStartedDrawing] = useState(false);
+  const [isImage, setIsImage] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useScreenResize(() => {
     setCanvasWidth(fileRef.current?.clientWidth ?? 0);
@@ -38,6 +47,49 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCanvasWidth(fileRef.current?.clientWidth ?? 0);
   }, []);
+
+  useEffect(() => {
+    // Check if customVideoUrl is an image
+    if (customVideoUrl) {
+      // Use fileType prop if provided (for blob URLs), otherwise check URL extension
+      if (fileType) {
+        setIsImage(fileType === 'image');
+      } else {
+        const isImg =
+          customVideoUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i) || customVideoUrl.startsWith('data:image');
+        setIsImage(!!isImg);
+      }
+    } else {
+      setIsImage(false);
+    }
+  }, [customVideoUrl, fileType]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || isImage) return;
+
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    video.addEventListener('play', handlePlay);
+    video.addEventListener('pause', handlePause);
+
+    return () => {
+      video.removeEventListener('play', handlePlay);
+      video.removeEventListener('pause', handlePause);
+    };
+  }, [isImage]);
+
+  const togglePlayPause = () => {
+    const video = videoRef.current;
+    if (!video || isImage) return;
+
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  };
 
   const finishDrawing = () => {
     if (isDrawing.current) {
@@ -71,8 +123,9 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
     finishDrawing();
   };
 
-  const handleMouseMove = (event: Konva.KonvaEventObject<MouseEvent>) => {
-    if (!isHovering.current) {
+  const handleMouseDown = (event: Konva.KonvaEventObject<MouseEvent>) => {
+    // Only start drawing on click if hover-draw is disabled
+    if (enableHoverDraw) {
       return;
     }
 
@@ -83,31 +136,85 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
       return;
     }
 
-    // Start drawing on first mouse move when hovering
-    if (!isDrawing.current) {
-      isDrawing.current = true;
-      lastPointRef.current = point;
-      // Create new shape with initial point
-      onShapesChange([...shapes, { type: 'line', points: [point.x, point.y], color: 'red' }]);
-      return;
-    }
+    isDrawing.current = true;
+    lastPointRef.current = point;
+    // Create new shape with initial point
+    onShapesChange([...shapes, { type: 'line', points: [point.x, point.y], color: 'red' }]);
+  };
 
-    if (lastPointRef.current) {
-      const dx = Math.abs(point.x - lastPointRef.current.x);
-      const dy = Math.abs(point.y - lastPointRef.current.y);
-
-      if (dx < 5 && dy < 5) {
+  const handleMouseMove = (event: Konva.KonvaEventObject<MouseEvent>) => {
+    if (enableHoverDraw) {
+      // Hover-to-draw mode: start drawing on first mouse move when hovering
+      if (!isHovering.current) {
         return;
       }
-    }
 
-    const newShapes = [...shapes];
-    if (newShapes.length > 0) {
-      newShapes[newShapes.length - 1].points = newShapes[newShapes.length - 1].points.concat([point.x, point.y]);
-      onShapesChange(newShapes);
-    }
+      const stage = event.target.getStage();
+      const point = stage?.getPointerPosition();
 
-    lastPointRef.current = point;
+      if (!point) {
+        return;
+      }
+
+      // Start drawing on first mouse move when hovering
+      if (!isDrawing.current) {
+        isDrawing.current = true;
+        lastPointRef.current = point;
+        // Create new shape with initial point
+        onShapesChange([...shapes, { type: 'line', points: [point.x, point.y], color: 'red' }]);
+        return;
+      }
+
+      if (lastPointRef.current) {
+        const dx = Math.abs(point.x - lastPointRef.current.x);
+        const dy = Math.abs(point.y - lastPointRef.current.y);
+
+        if (dx < 5 && dy < 5) {
+          return;
+        }
+      }
+
+      const newShapes = [...shapes];
+      if (newShapes.length > 0) {
+        newShapes[newShapes.length - 1].points = newShapes[newShapes.length - 1].points.concat([point.x, point.y]);
+        onShapesChange(newShapes);
+      }
+
+      lastPointRef.current = point;
+    } else {
+      // Click-to-draw mode: only continue drawing if we're already drawing (started on click)
+      if (!isDrawing.current) {
+        return;
+      }
+
+      const stage = event.target.getStage();
+      const point = stage?.getPointerPosition();
+
+      if (!point) {
+        return;
+      }
+
+      if (lastPointRef.current) {
+        const dx = Math.abs(point.x - lastPointRef.current.x);
+        const dy = Math.abs(point.y - lastPointRef.current.y);
+
+        if (dx < 5 && dy < 5) {
+          return;
+        }
+      }
+
+      const newShapes = [...shapes];
+      if (newShapes.length > 0) {
+        newShapes[newShapes.length - 1].points = newShapes[newShapes.length - 1].points.concat([point.x, point.y]);
+        onShapesChange(newShapes);
+      }
+
+      lastPointRef.current = point;
+    }
+  };
+
+  const handleMouseUp = () => {
+    finishDrawing();
   };
 
   // Touch event handlers for mobile
@@ -190,14 +297,53 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
           </span>
         )}
       </div>
-      <video
-        src="https://videos.pexels.com/video-files/4436060/4436060-uhd_2560_1440_25fps.mp4"
-        controls={false}
-        loop
-        playsInline
-        autoPlay
-        muted
-      />
+      {customVideoUrl ? (
+        isImage ? (
+          <img
+            src={customVideoUrl}
+            alt="Uploaded image for video review and annotation"
+            className="absolute inset-0 h-full w-full object-contain"
+            style={{ display: 'block' }}
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={customVideoUrl}
+            controls={false}
+            loop
+            playsInline
+            autoPlay
+            muted
+            className="absolute inset-0 h-full w-full object-contain"
+          />
+        )
+      ) : (
+        <video
+          ref={videoRef}
+          src="https://videos.pexels.com/video-files/4436060/4436060-uhd_2560_1440_25fps.mp4"
+          controls={false}
+          loop
+          playsInline
+          autoPlay
+          muted
+          className="absolute inset-0 h-full w-full object-contain"
+        />
+      )}
+      {/* Custom Play/Pause Button - only show for videos */}
+      {!isImage && (
+        <button
+          type="button"
+          onClick={togglePlayPause}
+          className="absolute bottom-4 left-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/70 backdrop-blur-sm transition-all hover:bg-black/90 dark:bg-black/80 dark:hover:bg-black/90"
+          aria-label={isPlaying ? 'Pause video' : 'Play video'}
+        >
+          <Icon
+            icon={isPlaying ? 'pause' : 'play'}
+            size={24}
+            className="text-white dark:text-foreground-100"
+          />
+        </button>
+      )}
       <Stage
         width={960}
         height={540}
@@ -209,7 +355,9 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange }: Props) => {
           } as React.CSSProperties
         }
         onMouseEnter={handleMouseEnter}
+        onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}

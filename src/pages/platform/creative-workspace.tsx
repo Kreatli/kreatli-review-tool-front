@@ -1,8 +1,7 @@
-/* eslint-disable max-len */
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import React from 'react';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ChatFeaturePreview } from '../../components/home/Features/ChatFeaturePreview';
@@ -11,9 +10,14 @@ import { StorageFeaturePreview } from '../../components/home/Features/StorageFea
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -72,6 +76,7 @@ const faqs = [
 
 export default function CreativeWorkspacePage() {
   useSession();
+  const articles = getPlatformArticles('/platform/creative-workspace');
 
   return (
     <>
@@ -79,7 +84,7 @@ export default function CreativeWorkspacePage() {
         <title>Kreatli | Video Collaboration Workspace</title>
         <meta
           name="description"
-          content="The Video Collaboration Workspace in Kreatli provides a unified platform for video collaboration. Project-tied conversations, asset-linked comments, and centralized dashboards streamline your entire video collaboration workflow in one place."
+          content="Video Collaboration Workspace for video teams. Unified platform with project-tied conversations, asset-linked comments, and centralized dashboards. Streamline video collaboration workflows in one place."
         />
         <link rel="canonical" href="https://kreatli.com/platform/creative-workspace" />
         <meta property="og:url" content="https://kreatli.com/platform/creative-workspace" />
@@ -102,15 +107,23 @@ export default function CreativeWorkspacePage() {
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Platform', url: '/platform' },
+          { name: 'The Creative Workspace', url: '/platform/creative-workspace' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">One Place to Rule Them All</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Collaboration Workspace</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            A unified workspace for video teams. Project-tied conversations and asset-linked comments keep
-            your video collaboration workflow organized.
+            A unified workspace for video teams. Project-tied conversations and asset-linked comments keep your video
+            collaboration workflow organized.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -134,7 +147,7 @@ export default function CreativeWorkspacePage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Centralized Project Dashboard</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Centralized Project Dashboard</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
@@ -147,7 +160,7 @@ export default function CreativeWorkspacePage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Project-Tied Conversations</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Project-Tied Conversations</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Project-tied chats and asset-linked comments streamline your approval workflow—keep feedback with the
               asset.
@@ -161,7 +174,7 @@ export default function CreativeWorkspacePage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Secure File Storage & Upload</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Secure File Storage & Upload</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Upload and manage creative assets with drag & drop support, progress tracking, and encrypted storage.
             </p>
@@ -174,7 +187,7 @@ export default function CreativeWorkspacePage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Key Workspace Features</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Key Workspace Features</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for video collaboration workflows, not adapted from generic project management tools.
             </p>
@@ -271,20 +284,33 @@ export default function CreativeWorkspacePage() {
         </div>
       </section>
 
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        title="Free Tools & Resources"
+        description="Access our free calculators and tools to optimize your creative workflow."
+      />
+
+      {/* See How It Works Section */}
+      <ResourcesArticlesPreviewSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate these features in action."
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about Kreatli's unified video collaboration workspace and how it streamlines video collaboration
-              workflows.
+              Get detailed answers about Kreatli's unified video collaboration workspace and how it streamlines video
+              collaboration workflows.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem
-                key={`faq-${index}-${faq.question.slice(0, 20)}`}
+                key={faq.question}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >

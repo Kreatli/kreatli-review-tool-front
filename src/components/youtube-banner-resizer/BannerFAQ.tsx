@@ -80,7 +80,7 @@ export const BannerFAQ = () => {
     <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
       <div className="relative z-10 mx-auto max-w-4xl">
         <div className="mb-8 text-center">
-          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
           <p className="mx-auto max-w-2xl text-foreground-500">
             Common questions about YouTube banner dimensions, safe areas, and using our free banner resizer tool.
           </p>

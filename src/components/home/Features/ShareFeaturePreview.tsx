@@ -208,7 +208,7 @@ export const ShareFeaturePreview = () => {
             <div className="relative aspect-video max-h-64 overflow-hidden rounded-lg border border-foreground-200">
               <img
                 src="https://picsum.photos/1000/400?random=3"
-                alt="File preview"
+                alt="Video file preview ready for sharing"
                 className="absolute h-full w-full object-cover"
               />
             </div>

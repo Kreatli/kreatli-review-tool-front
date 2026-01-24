@@ -49,7 +49,7 @@ export const ReviewToolPreview = () => {
         </div>
         <div className="grid grid-cols-1 gap-2 md:grid-cols-[1fr_200px]">
           <div className="flex flex-col gap-2">
-            <ReviewToolCanvas shapes={shapes} onShapesChange={setShapes} />
+            <ReviewToolCanvas shapes={shapes} onShapesChange={setShapes} enableHoverDraw={true} />
             <div className="relative">
               <Textarea
                 value={comment}

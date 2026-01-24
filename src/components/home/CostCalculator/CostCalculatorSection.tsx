@@ -119,7 +119,7 @@ export const CostCalculatorSection = ({ titleClassName, useH1 = false }: CostCal
   }, [usersCount]);
 
   return (
-    <section id="software-cost-calculator" className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:py-24">
+    <section id="software-cost-calculator" className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:py-24 lg:mt-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 sm:gap-12">
         <div className="flex w-full flex-col gap-4">
           {useH1 ? (
@@ -127,7 +127,7 @@ export const CostCalculatorSection = ({ titleClassName, useH1 = false }: CostCal
               Software Cost Calculator
             </h1>
           ) : (
-            <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-5xl'}>
+            <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-4xl'}>
               Software Cost Calculator
             </h2>
           )}

@@ -6,9 +6,11 @@ import React from 'react';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { ArticlesSection } from '../../../components/shared/ArticlesSection';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
+import { getUseCaseArticles } from '../../../data/use-case-articles';
 import { useSession } from '../../../hooks/useSession';
 
 const data = {
@@ -182,6 +184,7 @@ const data = {
 
 export default function ClientApprovalsPage() {
   useSession();
+  const articles = getUseCaseArticles('/solutions/use-case/client-approvals');
 
   return (
     <>
@@ -208,7 +211,7 @@ export default function ClientApprovalsPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">{data.title}</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">{data.title}</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.intro}</p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -231,7 +234,7 @@ export default function ClientApprovalsPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.howItWorks.title}</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{data.howItWorks.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.howItWorks.description}</p>
           </div>
 
@@ -282,7 +285,7 @@ export default function ClientApprovalsPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.problemsSolved.title}</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{data.problemsSolved.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Client approvals solve the common challenges agencies and production teams face when managing approvals
               through email and chat.
@@ -313,28 +316,40 @@ export default function ClientApprovalsPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">{data.whoThisIsFor.title}</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{data.whoThisIsFor.title}</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.whoThisIsFor.description}</p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             {data.whoThisIsFor.audiences.map((audience, index) => (
-              <Card key={index} as={NextLink} href={audience.href} isPressable className="group h-full">
+              <Card
+                key={index}
+                as={NextLink}
+                href={audience.href}
+                isPressable
+                className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+              >
                 <CardBody className="flex h-full flex-col gap-4 p-6">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-full bg-foreground-100 p-2.5 transition-all duration-300 group-hover:scale-105 group-hover:bg-primary-50">
+                  <div className="mb-2 flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
                       <Icon
                         icon={audience.icon as IconType}
                         size={20}
                         className="text-primary transition-colors duration-300"
                       />
                     </div>
-                    <h3 className="font-sans text-lg font-semibold">{audience.title}</h3>
+                    <div className="flex-1">
+                      <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
+                        {audience.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">{audience.description}</p>
+                    </div>
+                    <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                      <Icon icon="arrowRight" size={20} className="text-primary" />
+                    </div>
                   </div>
-                  <p className="flex-1 text-sm leading-relaxed text-foreground-500">{audience.description}</p>
-                  <div className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span>Learn more</span>
-                    <Icon icon="arrowRight" size={16} />
                   </div>
                 </CardBody>
               </Card>
@@ -347,7 +362,7 @@ export default function ClientApprovalsPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about client approvals for agencies and production teams.
             </p>
@@ -376,6 +391,20 @@ export default function ClientApprovalsPage() {
         </div>
       </section>
 
+      {/* Related Platform Pages Section */}
+      <RelatedResourcesSection
+        resources={getRelatedResources(['reviewApproval', 'secureAssetStorage', 'projectOrchestration'])}
+        title="Platform Features for Client Approvals"
+        description="Explore the Kreatli platform features that help teams manage client approvals with version-specific tracking."
+      />
+
+      {/* Guides Section */}
+      <ArticlesSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate client approval workflows in action."
+      />
+
       {/* More Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['creativeProductionManagement', 'creativeProofing', 'advertisingMarketingAgencies'])}
@@ -386,7 +415,7 @@ export default function ClientApprovalsPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="font-sans text-2xl font-bold sm:text-4xl">Ready to Streamline Client Approvals?</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Streamline Client Approvals?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience how Kreatli handles client approvals with version-specific tracking and clear accountability.
             Start using Kreatli today.

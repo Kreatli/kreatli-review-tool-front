@@ -48,7 +48,7 @@ export const Notifications = () => {
     });
 
     newSocket.on('connect', () => {
-      console.log('connected');
+      // Socket connected
     });
 
     newSocket.on('notification', (notification) => {

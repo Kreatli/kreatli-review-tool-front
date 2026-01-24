@@ -1,8 +1,7 @@
-/* eslint-disable max-len */
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import React from 'react';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { HomeDashboardFeaturePreview } from '../../components/home/Features/HomeDashboardFeaturePreview';
@@ -10,9 +9,14 @@ import { ProjectFeaturePreview } from '../../components/home/Features/ProjectFea
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -71,6 +75,7 @@ const faqs = [
 
 export default function ProjectOrchestrationPage() {
   useSession();
+  const articles = getPlatformArticles('/platform/project-orchestration');
 
   return (
     <>
@@ -83,44 +88,43 @@ export default function ProjectOrchestrationPage() {
         <link rel="canonical" href="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:url" content="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
-        />
+        <meta property="og:title" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
         <meta
           property="og:description"
           content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta
-          property="og:image:alt"
-          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
-        />
+        <meta property="og:image:alt" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Kreatli | Project Orchestration – Centralized Video Collaboration"
-        />
+        <meta name="twitter:title" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
         <meta
           name="twitter:description"
           content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Platform', url: '/platform' },
+          { name: 'Project Orchestration', url: '/platform/project-orchestration' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Centralized Video Collaboration
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
+            Project Orchestration – Centralized Video Collaboration
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Assign files, track deliverables, and share heavy video files securely. Everything you need to orchestrate your
-            video projects in one place.
+            Assign files, track deliverables, and share heavy video files securely. Everything you need to orchestrate
+            your video projects in one place.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -144,7 +148,7 @@ export default function ProjectOrchestrationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               Project Management Meets Reliable Media Storage
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
@@ -159,7 +163,7 @@ export default function ProjectOrchestrationPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Centralized Project Dashboard</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Centralized Project Dashboard</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Everything you need in one place—project overview, media files, team chat, and activity tracking.
             </p>
@@ -172,7 +176,7 @@ export default function ProjectOrchestrationPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Project Orchestration Features</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Project Orchestration Features</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Built specifically for video collaboration workflows with powerful project management capabilities.
             </p>
@@ -269,19 +273,32 @@ export default function ProjectOrchestrationPage() {
         </div>
       </section>
 
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        title="Free Tools & Resources"
+        description="Access our free calculators and tools to optimize your creative workflow."
+      />
+
+      {/* See How It Works Section */}
+      <ResourcesArticlesPreviewSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate these features in action."
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's project orchestration and centralized video collaboration.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem
-                key={`faq-${index}-${faq.question.slice(0, 20)}`}
+                key={faq.question}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >

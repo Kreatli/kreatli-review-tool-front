@@ -157,7 +157,7 @@ export const DEFAULT_PROJECT_CONTENT = {
       content: [
         {
           type: 'text',
-          text: 'You can always ',
+          text: 'You can find our Free Tools by clicking ',
         },
         {
           type: 'text',
@@ -165,18 +165,18 @@ export const DEFAULT_PROJECT_CONTENT = {
             {
               type: 'link',
               attrs: {
-                href: 'https://calendar.app.google/M6xermcJKeEcWPD96',
+                href: 'https://kreatli.com/free-tools',
                 target: '_blank',
                 rel: 'noopener noreferrer nofollow',
                 class: null,
               },
             },
           ],
-          text: 'book a free call',
+          text: 'THIS',
         },
         {
           type: 'text',
-          text: ' and get human help to set up your workflows on Kreatli.',
+          text: ' link.',
         },
       ],
     },

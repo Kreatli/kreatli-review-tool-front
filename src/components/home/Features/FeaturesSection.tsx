@@ -9,10 +9,10 @@ import { StorageFeaturePreview } from './StorageFeaturePreview';
 
 export const FeaturesSection = () => {
   return (
-    <section id="product" className="relative scroll-mt-12 px-4 py-12 backdrop-blur-lg sm:px-6 sm:py-16 lg:pb-32">
+    <section id="product" className="relative scroll-mt-12 px-4 py-16 backdrop-blur-lg sm:px-6 lg:py-24">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 sm:gap-16 lg:gap-20">
         <div className="mx-auto flex max-w-5xl flex-col gap-4 px-2 text-center sm:gap-6 sm:px-0">
-          <h2 className="font-sans text-2xl font-bold leading-tight sm:text-3xl sm:leading-tight md:text-4xl lg:text-[48px]">
+          <h2 className="font-sans text-3xl font-bold sm:text-4xl">
             Built for how video production{' '}
             <span className="relative inline-block">
               <span className="relative z-10">actually</span>
@@ -27,6 +27,8 @@ export const FeaturesSection = () => {
             title="Frame-accurate Revisions"
             description='Pin comments to exact frames and timestamps. No more "which clip?" confusion. Every piece of feedback is precisely where it needs to be.'
             isReversed={false}
+            linkTo="/platform/review-approval"
+            linkText="Explore Review & Approval"
           >
             <ReviewToolPreview />
           </Feature>
@@ -35,6 +37,8 @@ export const FeaturesSection = () => {
             title="Secure File Storage & Upload"
             description="Upload files up to 10GB with drag & drop. Track progress in real-time. Encrypted storage keeps your assets safe and accessible when needed."
             isReversed={true}
+            linkTo="/platform/secure-asset-storage"
+            linkText="Learn about Secure Storage"
           >
             <StorageFeaturePreview />
           </Feature>
@@ -43,6 +47,8 @@ export const FeaturesSection = () => {
             title="Project Management Meets Reliable Media Storage"
             description="Organize projects, assign files, and track deliverables in one workspace. Manage heavy media files without leaving your creative workflow."
             isReversed={false}
+            linkTo="/platform/project-orchestration"
+            linkText="Discover Project Orchestration"
           >
             <ProjectFeaturePreview />
           </Feature>
@@ -51,6 +57,8 @@ export const FeaturesSection = () => {
             title="Compare Versions Side-by-Side"
             description="Compare different versions side-by-side for creative proofing. Spot changes instantly and provide precise feedback in your review workflow."
             isReversed={true}
+            linkTo="/platform/review-approval"
+            linkText="See Review Features"
           >
             <CompareFeaturePreview />
           </Feature>
@@ -59,6 +67,8 @@ export const FeaturesSection = () => {
             title="Conversations, Not Noise"
             description="Project-tied chats and asset-linked comments keep feedback organized. Guest review links streamline approvals with no account required."
             isReversed={false}
+            linkTo="/platform/creative-workspace"
+            linkText="Explore Creative Workspace"
           >
             <ChatFeaturePreview />
           </Feature>
@@ -67,6 +77,8 @@ export const FeaturesSection = () => {
             title="Share Files with Anyone"
             description="Generate secure shareable links or send files via email. No account required for reviewers to streamline your approval workflow."
             isReversed={true}
+            linkTo="/platform/review-approval"
+            linkText="Learn about Sharing"
           >
             <ShareFeaturePreview />
           </Feature>
@@ -75,6 +87,8 @@ export const FeaturesSection = () => {
             title="Centralized Project Dashboard"
             description="Everything in one place. Project overview, media files, team chat, and activity tracking all accessible from a single dashboard."
             isReversed={false}
+            linkTo="/platform/creative-workspace"
+            linkText="See the Workspace"
           >
             <HomeDashboardFeaturePreview />
           </Feature>

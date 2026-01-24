@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -8,9 +9,14 @@ import { StorageFeaturePreview } from '../../components/home/Features/StorageFea
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -69,6 +75,7 @@ const faqs = [
 
 export default function SecureAssetStoragePage() {
   useSession();
+  const articles = getPlatformArticles('/platform/secure-asset-storage');
 
   return (
     <>
@@ -81,10 +88,7 @@ export default function SecureAssetStoragePage() {
         <link rel="canonical" href="https://kreatli.com/platform/secure-asset-storage" />
         <meta property="og:url" content="https://kreatli.com/platform/secure-asset-storage" />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:title"
-          content="Kreatli | Secure Asset Storage – Reliable Video Storage for Video Teams"
-        />
+        <meta property="og:title" content="Kreatli | Secure Asset Storage – Reliable Video Storage for Video Teams" />
         <meta
           property="og:description"
           content="Secure your video assets with enterprise-grade storage, smart file organization, and version control. Built for video teams."
@@ -98,23 +102,28 @@ export default function SecureAssetStoragePage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Kreatli | Secure Asset Storage – Reliable Video Storage for Video Teams"
-        />
+        <meta name="twitter:title" content="Kreatli | Secure Asset Storage – Reliable Video Storage for Video Teams" />
         <meta
           name="twitter:description"
           content="Secure your video assets with enterprise-grade storage, smart file organization, and version control. Built for video teams."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Platform', url: '/platform' },
+          { name: 'Secure Asset Storage', url: '/platform/secure-asset-storage' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">
-            Reliable Video Storage for Video Teams
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
+            Secure Asset Storage for Video Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Assign files, track deliverables, and share heavy video files securely with enterprise-grade security.
@@ -141,7 +150,7 @@ export default function SecureAssetStoragePage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Secure File Upload and Encrypted Storage</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Secure File Upload and Encrypted Storage</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Upload large media files with real-time progress tracking. All files encrypted at rest with
               enterprise-grade security.
@@ -155,7 +164,7 @@ export default function SecureAssetStoragePage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
               Project Management Meets Reliable Video Storage
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
@@ -170,7 +179,7 @@ export default function SecureAssetStoragePage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Secure Asset Storage Features</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Secure Asset Storage Features</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Enterprise-grade security and smart organization for your video assets.
             </p>
@@ -270,20 +279,33 @@ export default function SecureAssetStoragePage() {
         </div>
       </section>
 
+      {/* Free Tools Section */}
+      <MoreFreeToolsSection
+        title="Free Tools & Resources"
+        description="Access our free calculators and tools to optimize your creative workflow."
+      />
+
+      {/* See How It Works Section */}
+      <ResourcesArticlesPreviewSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate these features in action."
+      />
+
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get detailed answers about Kreatli's secure asset storage and enterprise-grade video storage for video
               teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq) => (
               <AccordionItem
-                key={`faq-${index}-${faq.question.slice(0, 20)}`}
+                key={faq.question}
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >

@@ -137,9 +137,9 @@ const faq = [
 
 export const FaqSection = () => {
   return (
-    <section id="faq" className="flex flex-col gap-16 px-6 py-16 backdrop-blur-lg lg:py-32">
+    <section id="faq" className="flex flex-col gap-16 px-6 py-16 backdrop-blur-lg lg:py-24 lg:mt-8">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
-        <h2 className="text-center font-sans text-3xl font-bold sm:text-5xl">Frequently Asked Questions</h2>
+        <h2 className="text-center font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
         <Accordion variant="splitted" aria-label="Frequently asked questions">
           {faq.map((item) => (
             <AccordionItem key={item.question} title={<span className="text-base font-semibold">{item.question}</span>}>

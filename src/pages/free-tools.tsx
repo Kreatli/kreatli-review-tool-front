@@ -6,6 +6,8 @@ import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { Icon, IconType } from '../components/various/Icon';
 import { useSession } from '../hooks/useSession';
 
@@ -149,7 +151,7 @@ export default function FreeToolsPage() {
         <title>Kreatli | Free Tools for Video Teams – Professional Creative Tools</title>
         <meta
           name="description"
-          content="Free professional tools for video teams and video professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
+          content="Free tools for video teams: data transfer calculator, software cost calculator, social media safe zone checker, YouTube banner resizer. Professional tools, no sign-up required."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools" />
         <meta property="og:url" content="https://kreatli.com/free-tools" />
@@ -172,13 +174,20 @@ export default function FreeToolsPage() {
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Free Tools', url: '/free-tools' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-2xl font-bold sm:text-4xl">Free Tools for Video Teams</h1>
+          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Free Tools for Video Teams</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Professional-grade tools designed to help video professionals work more efficiently. All tools are
             completely free to use—no sign-up required.
@@ -190,7 +199,7 @@ export default function FreeToolsPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Creative Tools</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Creative Tools</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Design, resize, and optimize your creative assets.
             </p>
@@ -198,33 +207,25 @@ export default function FreeToolsPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {creativeTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
-                <Card className="h-full">
+                <Card className="h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20">
                   <CardBody className="flex flex-col gap-4 p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-lg bg-foreground-100 p-3">
+                    <div className="mb-2 flex items-start gap-4">
+                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
                         <Icon icon={tool.icon} size={24} className="text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="mb-2 font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                        <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
                           {tool.title}
                         </h3>
-                        <p className="text-sm text-foreground-500">{tool.description}</p>
+                        <p className="text-sm leading-relaxed text-foreground-500">{tool.description}</p>
+                      </div>
+                      <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                        <Icon icon="arrowRight" size={20} className="text-primary" />
                       </div>
                     </div>
-                    <Button
-                      variant="light"
-                      size="sm"
-                      className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
-                      endContent={
-                        <Icon
-                          icon="arrowRight"
-                          size={16}
-                          className="transition-transform duration-200 group-hover:translate-x-1"
-                        />
-                      }
-                    >
-                      Learn More
-                    </Button>
+                    <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <span>Learn more</span>
+                    </div>
                   </CardBody>
                 </Card>
               </NextLink>
@@ -237,7 +238,7 @@ export default function FreeToolsPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Utility Tools</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Utility Tools</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Calculate, plan, and optimize your video workflows.
             </p>
@@ -245,33 +246,25 @@ export default function FreeToolsPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {utilityTools.map((tool) => (
               <NextLink key={tool.href} href={tool.href} className="group h-full">
-                <Card className="h-full">
+                <Card className="h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20">
                   <CardBody className="flex flex-col gap-4 p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-lg bg-foreground-100 p-3">
+                    <div className="mb-2 flex items-start gap-4">
+                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
                         <Icon icon={tool.icon} size={24} className="text-primary" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="mb-2 font-sans text-lg font-semibold transition-colors duration-200 group-hover:text-primary">
+                        <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
                           {tool.title}
                         </h3>
-                        <p className="text-sm text-foreground-500">{tool.description}</p>
+                        <p className="text-sm leading-relaxed text-foreground-500">{tool.description}</p>
+                      </div>
+                      <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                        <Icon icon="arrowRight" size={20} className="text-primary" />
                       </div>
                     </div>
-                    <Button
-                      variant="light"
-                      size="sm"
-                      className="mt-auto w-fit transition-all duration-200 group-hover:bg-primary/10"
-                      endContent={
-                        <Icon
-                          icon="arrowRight"
-                          size={16}
-                          className="transition-transform duration-200 group-hover:translate-x-1"
-                        />
-                      }
-                    >
-                      Learn More
-                    </Button>
+                    <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <span>Learn more</span>
+                    </div>
                   </CardBody>
                 </Card>
               </NextLink>
@@ -284,7 +277,7 @@ export default function FreeToolsPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Get answers to common questions about our free tools for video teams and creative professionals.
             </p>
@@ -321,7 +314,7 @@ export default function FreeToolsPage() {
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="flex flex-col gap-6 text-center">
-            <h2 className="font-sans text-2xl font-bold sm:text-4xl">Need More Than Free Tools?</h2>
+            <h2 className="font-sans text-2xl font-bold sm:text-3xl">Need More Than Free Tools?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Kreatli is a Video Collaboration & Review Platform designed for video teams working with large video
               files.

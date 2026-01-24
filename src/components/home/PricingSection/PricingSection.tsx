@@ -56,10 +56,10 @@ const PLANS_DATA = [
 
 export const PricingSection = ({ titleClassName }: PricingSectionProps) => {
   return (
-    <section id="pricing" className="bg-foreground-50 px-6 py-16 lg:py-32">
+    <section id="pricing" className="bg-foreground-50 px-6 py-16 lg:py-24 lg:mt-8">
       <div className="flex flex-col items-center gap-12">
         <div className="mx-auto flex w-full max-w-2xl flex-col gap-4">
-          <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-5xl'}>
+          <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-4xl'}>
             Choose the Perfect Plan for Your Creative Journey
           </h2>
           <p className="text-center text-lg text-foreground-500">

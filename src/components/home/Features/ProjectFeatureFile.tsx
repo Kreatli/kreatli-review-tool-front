@@ -50,7 +50,7 @@ export const ProjectFeatureFile = ({ title, size, comments, status: initialStatu
       <div className="relative aspect-video overflow-hidden rounded-2xl border border-foreground-300 bg-foreground-50">
         <img
           src={`https://picsum.photos/600/400?title=${title}`}
-          alt="File"
+          alt={`${title} file preview`}
           className="absolute h-full w-full object-cover"
         />
         <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-2">

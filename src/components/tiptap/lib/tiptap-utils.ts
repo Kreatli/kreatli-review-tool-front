@@ -494,7 +494,6 @@ export const getSanitizedContent = (content: JSONContent | undefined) => {
   const contentWithoutStartSpaces = content.content
     .map((item) => {
       if (item.content) {
-        console.log(item);
         startCompleted = true;
       }
 
@@ -512,14 +511,6 @@ export const getSanitizedContent = (content: JSONContent | undefined) => {
       return !item?.content && !endCompleted ? undefined : item;
     })
     .filter((item) => item);
-
-  console.log(
-    {
-      ...content,
-      content: [...contentWithoutEndSpace].reverse(),
-    },
-    content,
-  );
 
   return {
     ...content,
