@@ -637,6 +637,11 @@ const nextConfig = {
         destination: '/platform',
         permanent: true,
       },
+      {
+        source: '/features',
+        destination: '/platform',
+        permanent: true,
+      },
     ];
   },
   webpack(config) {
