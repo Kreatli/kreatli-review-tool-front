@@ -403,8 +403,6 @@ export default function ClientApprovalsPage() {
         articles={articles}
         title="See How This Works in Practice"
         description="Explore real-world workflows and guides that demonstrate client approval workflows in action."
-        viewAllHref="/guides"
-        viewAllButtonText="View All Guides"
       />
 
       {/* More Resources Section */}

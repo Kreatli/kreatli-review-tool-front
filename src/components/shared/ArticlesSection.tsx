@@ -1,5 +1,3 @@
-import { Button } from '@heroui/react';
-import NextLink from 'next/link';
 import React from 'react';
 
 import { ArticleCard } from '../../types/articles';
@@ -12,10 +10,6 @@ interface ArticlesSectionProps {
   title?: string;
   /** Custom description/intro text */
   description?: string;
-  /** Link to view all articles */
-  viewAllHref?: string;
-  /** Text for the view all button */
-  viewAllButtonText?: string;
   /** Maximum number of articles to display */
   maxArticles?: number;
 }
@@ -28,8 +22,6 @@ export function ArticlesSection({
   articles,
   title = 'See How This Works in Practice',
   description = 'Explore real-world workflows and guides that demonstrate these features in action.',
-  viewAllHref,
-  viewAllButtonText = 'View All Articles',
   maxArticles = 3,
 }: ArticlesSectionProps) {
   if (!articles || articles.length === 0) {
@@ -51,14 +43,6 @@ export function ArticlesSection({
             <BlogArticle key={article.id} article={article} />
           ))}
         </div>
-
-        {viewAllHref && (
-          <div className="mt-10 flex justify-center">
-            <Button as={NextLink} href={viewAllHref} size="lg" variant="bordered">
-              {viewAllButtonText}
-            </Button>
-          </div>
-        )}
       </div>
     </section>
   );

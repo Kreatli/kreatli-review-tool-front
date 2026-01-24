@@ -346,8 +346,6 @@ export default function IntegrationsPage() {
         articles={articles}
         title="See How This Works in Practice"
         description="Explore real-world workflows and guides that demonstrate these features in action."
-        viewAllHref="/guides"
-        viewAllButtonText="View All Guides"
       />
 
       {/* FAQ Section */}

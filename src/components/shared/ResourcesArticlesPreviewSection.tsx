@@ -1,6 +1,3 @@
-import { Button } from '@heroui/react';
-import NextLink from 'next/link';
-
 import { ArticleCard } from '../../types/articles';
 import { BlogArticle } from '../blog/BlogArticle/BlogArticle';
 
@@ -8,8 +5,6 @@ interface Props {
   articles?: ArticleCard[];
   title?: string;
   description?: string;
-  viewAllHref?: string;
-  viewAllButtonText?: string;
   maxArticles?: number;
 }
 
@@ -20,8 +15,6 @@ export function ResourcesArticlesPreviewSection({
   articles = [],
   title = 'Helpful Guides & Tutorials',
   description = 'Compare Kreatli with other platforms and discover the best solution for your team.',
-  viewAllHref = '/comparisons',
-  viewAllButtonText = 'View All Comparisons',
   maxArticles = 3,
 }: Props) {
   const recentArticles = articles.slice(0, maxArticles);
@@ -43,14 +36,6 @@ export function ResourcesArticlesPreviewSection({
             <BlogArticle key={article.id} article={article} />
           ))}
         </div>
-
-        {viewAllHref ? (
-          <div className="mt-10 flex justify-center">
-            <Button as={NextLink} href={viewAllHref} size="lg" variant="bordered">
-              {viewAllButtonText}
-            </Button>
-          </div>
-        ) : null}
       </div>
     </section>
   );

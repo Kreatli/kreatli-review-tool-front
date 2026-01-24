@@ -420,8 +420,6 @@ export default function CreativeProofingPage() {
         articles={articles}
         title="See How This Works in Practice"
         description="Explore real-world workflows and guides that demonstrate creative proofing workflows in action."
-        viewAllHref="/guides"
-        viewAllButtonText="View All Guides"
       />
 
       {/* More Resources Section */}
