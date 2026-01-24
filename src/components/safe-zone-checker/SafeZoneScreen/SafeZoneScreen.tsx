@@ -1,7 +1,7 @@
 import { cn, Radio, RadioGroup, Tooltip } from '@heroui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import html2canvas from 'html2canvas';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import InstagramOverlay from '../../../assets/images/safe-zone-overlays/instagram-reels-overlay.png';
@@ -10,8 +10,7 @@ import TiktokOverlay from '../../../assets/images/safe-zone-overlays/tiktok-over
 import TiktokSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/tiktok-safe-zone-overlay.png';
 import YoutubeOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-overlay.png';
 import YoutubeSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-safe-zone-overlay.png';
-import { useSession } from '../../../hooks/useSession';
-import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
+import { useSoftGate } from '../../../hooks/useSoftGate';
 import { Icon } from '../../various/Icon';
 import { SafeZoneScreenEmptyState } from './SafeZoneScreenEmptyState';
 import { SafeZoneScreenImage } from './SafeZoneScreenImage';
@@ -35,39 +34,44 @@ interface SafeZoneScreenProps {
 
 export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreenProps = {}) => {
   const captureRef = useRef(null);
-  const previousOverlayRef = useRef<keyof typeof OVERLAYS>(defaultPlatform);
-  const platformSwitchCountRef = useRef(0);
 
   const [file, setFile] = useState<File | null>(null);
   const [activeOverlay, setActiveOverlay] = useState<keyof typeof OVERLAYS>(defaultPlatform);
   const [shouldShowSafeZone, setShouldShowSafeZone] = useState(false);
 
-  const { openSignUpModal } = useSignUpModalVisibility();
-  const { isSignedIn } = useSession();
-
   const activeOverlayData = (shouldShowSafeZone ? SAFE_ZONE_OVERLAYS : OVERLAYS)[activeOverlay];
-
-  useEffect(() => {
-    // Only count switches if the overlay actually changed and it's one of the three platforms
-    // Don't show modal if user is already signed in
-    if (activeOverlay !== previousOverlayRef.current && !isSignedIn) {
-      platformSwitchCountRef.current += 1;
-
-      // Show sign up modal every 3 switches (at 3, 6, 9, 12, etc.)
-      if (platformSwitchCountRef.current % 3 === 0 && platformSwitchCountRef.current > 0) {
-        openSignUpModal();
-      }
-
-      previousOverlayRef.current = activeOverlay;
-    }
-  }, [activeOverlay, openSignUpModal, isSignedIn]);
-
-  const isImageFile = file?.type.startsWith('image/');
-  const isVideoFile = file?.type.startsWith('video/');
 
   const filePreviewUrl = useMemo(() => {
     return file ? URL.createObjectURL(file) : null;
   }, [file]);
+
+  useEffect(() => {
+    return () => {
+      if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
+    };
+  }, [filePreviewUrl]);
+
+  const resetUploadedMedia = useCallback(() => {
+    setFile(null);
+    setShouldShowSafeZone(false);
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    onReset: resetUploadedMedia,
+  });
+
+  const isImageFile = file?.type.startsWith('image/');
+  const isVideoFile = file?.type.startsWith('video/');
+
+  const handleUploadedFile = useCallback(
+    (next: File | null | undefined) => {
+      if (!next) return;
+      setFile(next);
+      // Soft gate: once user uploads media, prompt sign up.
+      triggerSoftGate();
+    },
+    [triggerSoftGate]
+  );
 
   const handleDownload = async () => {
     const element = captureRef.current;
@@ -92,7 +96,7 @@ export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreen
       'video/*': [],
     },
     onDrop: (files) => {
-      setFile(files[0]);
+      handleUploadedFile(files[0]);
     },
     multiple: false,
   });
@@ -125,14 +129,6 @@ export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreen
                 <Icon icon="addImage" size={16} />
                 Select
               </button>
-              <button
-                type="button"
-                className="flex items-center gap-1 text-xs text-foreground"
-                onClick={openSignUpModal}
-              >
-                <Icon icon="share" size={16} />
-                Share
-              </button>
               <Tooltip content="Download" isDisabled={!filePreviewUrl}>
                 <button
                   type="button"
@@ -153,7 +149,7 @@ export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreen
               {filePreviewUrl && isVideoFile && (
                 <SafeZoneScreenVideo src={filePreviewUrl} activeOverlay={activeOverlay} />
               )}
-              {!filePreviewUrl && <SafeZoneScreenEmptyState onUploadFile={setFile} />}
+              {!filePreviewUrl && <SafeZoneScreenEmptyState onUploadFile={handleUploadedFile} />}
             </div>
             <AnimatePresence>
               <motion.img

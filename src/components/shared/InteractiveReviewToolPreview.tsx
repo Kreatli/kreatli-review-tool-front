@@ -1,7 +1,8 @@
-import { Avatar, Button, Card, CardBody, Textarea } from '@heroui/react';
-import { cn } from '@heroui/react';
-import { useRef, useState } from 'react';
+import { Avatar, Button, Card, CardBody, cn, Textarea } from '@heroui/react';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useSoftGate } from '../../hooks/useSoftGate';
 import { ReviewTool } from '../../typings/reviewTool';
 import { ReviewToolCanvas } from '../home/Features/ReviewToolCanvas';
 import { ReviewToolComment } from '../home/Features/ReviewToolComment';
@@ -12,6 +13,7 @@ import { Icon } from '../various/Icon';
  * Allows users to upload their own video/image files, draw on them, and leave comments
  */
 export const InteractiveReviewToolPreview = () => {
+  const router = useRouter();
   const [comment, setComment] = useState('');
   const [newComment, setNewComment] = useState('');
   const [shapes, setShapes] = useState<ReviewTool.Shape[]>([]);
@@ -21,6 +23,36 @@ export const InteractiveReviewToolPreview = () => {
   const [fileType, setFileType] = useState<'video' | 'image' | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const resetTool = useCallback(() => {
+    setShapes([]);
+    setHasNewCommentShapes(false);
+    setComment('');
+    setNewComment('');
+    setIsDragging(false);
+    setFileName('interview_v2.mp4');
+    setFileType(null);
+    setFileUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return null;
+    });
+    // Allow selecting the same file again after reset
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    enabled: router.pathname !== '/',
+    onReset: resetTool,
+  });
+
+  // Cleanup object URL on unmount
+  useEffect(() => {
+    return () => {
+      if (fileUrl) URL.revokeObjectURL(fileUrl);
+    };
+  }, [fileUrl]);
 
   const processFile = (file: File) => {
     // Check if it's a video or image (gating applies to both types)
@@ -39,6 +71,9 @@ export const InteractiveReviewToolPreview = () => {
       setShapes([]);
       setComment('');
       setNewComment('');
+
+      // Soft gate: once user uploads media, prompt sign up (everywhere except homepage).
+      triggerSoftGate();
     }
   };
 
@@ -87,6 +122,12 @@ export const InteractiveReviewToolPreview = () => {
   const handleSendComment = () => {
     // Don't send empty comments
     if (comment.trim() === '') {
+      return;
+    }
+
+    // Soft gate: prevent using the tool until sign up (everywhere except homepage).
+    // If gating triggers, do not post the comment locally.
+    if (triggerSoftGate()) {
       return;
     }
 

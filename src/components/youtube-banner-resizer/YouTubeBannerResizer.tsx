@@ -1,7 +1,8 @@
 import { addToast } from '@heroui/react';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
@@ -85,6 +86,90 @@ export const YouTubeBannerResizer = () => {
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  const resetTool = useCallback(() => {
+    setImageState((prev) => {
+      if (prev.imageUrl) {
+        URL.revokeObjectURL(prev.imageUrl);
+      }
+      return {
+        file: null,
+        imageUrl: null,
+        naturalWidth: 0,
+        naturalHeight: 0,
+      };
+    });
+    setPosition({ x: 0, y: 0 });
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    onReset: resetTool,
+  });
+
+  const loadImageFile = useCallback(
+    (file: File) => {
+      setIsLoadingImage(true);
+
+      // Clean up previous image URL if exists
+      if (imageState.imageUrl) {
+        URL.revokeObjectURL(imageState.imageUrl);
+      }
+
+      const imageUrl = URL.createObjectURL(file);
+      const img = new Image();
+
+      img.onload = () => {
+        // Validate actual image content
+        if (img.naturalWidth === 0 || img.naturalHeight === 0) {
+          addToast({
+            title: 'Invalid image file. Please upload a valid PNG or JPG image.',
+            color: 'danger',
+            variant: 'flat',
+          });
+          URL.revokeObjectURL(imageUrl);
+          setIsLoadingImage(false);
+          return;
+        }
+
+        // Validate maximum dimensions
+        if (img.naturalWidth > MAX_IMAGE_DIMENSION || img.naturalHeight > MAX_IMAGE_DIMENSION) {
+          addToast({
+            title: `Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`,
+            color: 'danger',
+            variant: 'flat',
+          });
+          URL.revokeObjectURL(imageUrl);
+          setIsLoadingImage(false);
+          return;
+        }
+
+        setImageState({
+          file,
+          imageUrl,
+          naturalWidth: img.naturalWidth,
+          naturalHeight: img.naturalHeight,
+        });
+        setPosition({ x: 0, y: 0 });
+        setIsLoadingImage(false);
+
+        // Soft gate: once user uploads media, prompt sign up.
+        triggerSoftGate();
+      };
+
+      img.onerror = () => {
+        addToast({
+          title: 'Failed to load image. The file may be corrupted or not a valid image. Please try a different file.',
+          color: 'danger',
+          variant: 'flat',
+        });
+        URL.revokeObjectURL(imageUrl);
+        setIsLoadingImage(false);
+      };
+
+      img.src = imageUrl;
+    },
+    [imageState.imageUrl, triggerSoftGate],
+  );
+
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -101,62 +186,7 @@ export const YouTubeBannerResizer = () => {
       return;
     }
 
-    setIsLoadingImage(true);
-
-    // Clean up previous image URL if exists
-    if (imageState.imageUrl) {
-      URL.revokeObjectURL(imageState.imageUrl);
-    }
-
-    const imageUrl = URL.createObjectURL(file);
-    const img = new Image();
-
-    img.onload = () => {
-      // Validate actual image content
-      if (img.naturalWidth === 0 || img.naturalHeight === 0) {
-        addToast({
-          title: 'Invalid image file. Please upload a valid PNG or JPG image.',
-          color: 'danger',
-          variant: 'flat',
-        });
-        URL.revokeObjectURL(imageUrl);
-        setIsLoadingImage(false);
-        return;
-      }
-
-      // Validate maximum dimensions
-      if (img.naturalWidth > MAX_IMAGE_DIMENSION || img.naturalHeight > MAX_IMAGE_DIMENSION) {
-        addToast({
-          title: `Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`,
-          color: 'danger',
-          variant: 'flat',
-        });
-        URL.revokeObjectURL(imageUrl);
-        setIsLoadingImage(false);
-        return;
-      }
-
-      setImageState({
-        file,
-        imageUrl,
-        naturalWidth: img.naturalWidth,
-        naturalHeight: img.naturalHeight,
-      });
-      setPosition({ x: 0, y: 0 });
-      setIsLoadingImage(false);
-    };
-
-    img.onerror = () => {
-      addToast({
-        title: 'Failed to load image. The file may be corrupted or not a valid image. Please try a different file.',
-        color: 'danger',
-        variant: 'flat',
-      });
-      URL.revokeObjectURL(imageUrl);
-      setIsLoadingImage(false);
-    };
-
-    img.src = imageUrl;
+    loadImageFile(file);
     // Reset input value to allow selecting the same file again
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
@@ -185,63 +215,7 @@ export const YouTubeBannerResizer = () => {
 
       const file = acceptedFiles[0];
       if (file) {
-        setIsLoadingImage(true);
-
-        // Clean up previous image URL if exists
-        if (imageState.imageUrl) {
-          URL.revokeObjectURL(imageState.imageUrl);
-        }
-
-        const imageUrl = URL.createObjectURL(file);
-        const img = new Image();
-
-        img.onload = () => {
-          // Validate actual image content - check if dimensions are valid
-          if (img.naturalWidth === 0 || img.naturalHeight === 0) {
-            addToast({
-              title: 'Invalid image file. Please upload a valid PNG or JPG image.',
-              color: 'danger',
-              variant: 'flat',
-            });
-            URL.revokeObjectURL(imageUrl);
-            setIsLoadingImage(false);
-            return;
-          }
-
-          // Validate maximum dimensions to prevent memory exhaustion
-          if (img.naturalWidth > MAX_IMAGE_DIMENSION || img.naturalHeight > MAX_IMAGE_DIMENSION) {
-            addToast({
-              title: `Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`,
-              color: 'danger',
-              variant: 'flat',
-            });
-            URL.revokeObjectURL(imageUrl);
-            setIsLoadingImage(false);
-            return;
-          }
-
-          setImageState({
-            file,
-            imageUrl,
-            naturalWidth: img.naturalWidth,
-            naturalHeight: img.naturalHeight,
-          });
-          // Reset position when new image is loaded
-          setPosition({ x: 0, y: 0 });
-          setIsLoadingImage(false);
-        };
-
-        img.onerror = () => {
-          addToast({
-            title: 'Failed to load image. The file may be corrupted or not a valid image. Please try a different file.',
-            color: 'danger',
-            variant: 'flat',
-          });
-          URL.revokeObjectURL(imageUrl);
-          setIsLoadingImage(false);
-        };
-
-        img.src = imageUrl;
+        loadImageFile(file);
       }
     },
     multiple: false,
