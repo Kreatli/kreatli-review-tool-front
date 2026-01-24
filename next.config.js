@@ -632,6 +632,11 @@ const nextConfig = {
         destination: '/help',
         permanent: true,
       },
+      {
+        source: '/how-it-works',
+        destination: '/platform',
+        permanent: true,
+      },
     ];
   },
   webpack(config) {
