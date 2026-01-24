@@ -627,6 +627,11 @@ const nextConfig = {
         destination: '/free-tools/cost-calculator',
         permanent: true,
       },
+      {
+        source: '/who-we-help',
+        destination: '/help',
+        permanent: true,
+      },
     ];
   },
   webpack(config) {
