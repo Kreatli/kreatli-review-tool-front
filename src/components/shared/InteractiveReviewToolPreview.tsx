@@ -1,9 +1,7 @@
 import { Avatar, Button, Card, CardBody, Textarea } from '@heroui/react';
 import { cn } from '@heroui/react';
-import { useRouter } from 'next/router';
 import { useRef, useState } from 'react';
 
-import { useSession } from '../../hooks/useSession';
 import { ReviewTool } from '../../typings/reviewTool';
 import { ReviewToolCanvas } from '../home/Features/ReviewToolCanvas';
 import { ReviewToolComment } from '../home/Features/ReviewToolComment';
@@ -22,24 +20,11 @@ export const InteractiveReviewToolPreview = () => {
   const [fileName, setFileName] = useState('interview_v2.mp4');
   const [fileType, setFileType] = useState<'video' | 'image' | null>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [hasUploadedFile, setHasUploadedFile] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const router = useRouter();
-  const { isSignedIn } = useSession();
 
   const processFile = (file: File) => {
     // Check if it's a video or image (gating applies to both types)
     if (file.type.startsWith('video/') || file.type.startsWith('image/')) {
-      // Check if this is a second upload attempt (applies to both video and image types)
-      // First upload is ungated, but second upload requires sign-up (except on main page)
-      const isMainPage = router.pathname === '/';
-      if (hasUploadedFile && !isMainPage && !isSignedIn) {
-        // Redirect to sign up page
-        router.push('/sign-up');
-        return;
-      }
-
       // Clean up previous URL if exists
       if (fileUrl) {
         URL.revokeObjectURL(fileUrl);
@@ -54,8 +39,6 @@ export const InteractiveReviewToolPreview = () => {
       setShapes([]);
       setComment('');
       setNewComment('');
-      // Mark that a file has been uploaded
-      setHasUploadedFile(true);
     }
   };
 
@@ -104,13 +87,6 @@ export const InteractiveReviewToolPreview = () => {
   const handleSendComment = () => {
     // Don't send empty comments
     if (comment.trim() === '') {
-      return;
-    }
-
-    // If user is not signed in and tries to send a comment, redirect to sign-up (except on main page)
-    const isMainPage = router.pathname === '/';
-    if (!isSignedIn && !isMainPage) {
-      router.push('/sign-up');
       return;
     }
 
