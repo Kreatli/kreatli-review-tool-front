@@ -309,6 +309,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/send-video': [
+    makeArticleCard({
+      id: 'platform-send-video-guide',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Teams Send Video for Fast Client Approvals',
+      description:
+        'See how video teams send video to clients via secure links instead of heavy attachments. Keep feedback and versions in one place when you send video for review.',
+      tags: ['Send Video', 'Client Approvals'],
+      publishDate: '2025-12-20 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+    makeArticleCard({
+      id: 'platform-send-video-comparisons',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Sending Video for Review',
+      description:
+        'Compare how Kreatli and Frame.io handle sending video via secure links, guest access, and frame-accurate feedback for modern video review workflows.',
+      tags: ['Tools Comparison', 'Video Review'],
+      publishDate: '2025-12-18 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-send-video-blog',
+      full_slug: '/blog/video-post-production',
+      title: 'Why Sending Video via Link Speeds Up Post-Production',
+      description:
+        'Learn how sending video through secure links instead of attachments reduces delays, clarifies feedback, and shortens post-production cycles.',
+      tags: ['Post-Production', 'Client Collaboration'],
+      publishDate: '2025-11-18 00:00',
+      readTime: '7',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+  ],
+
   '/platform/video-annotation': [
     makeArticleCard({
       id: 'platform-video-annotation-guide',

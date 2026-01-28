@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
+import React from 'react';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
@@ -21,62 +22,67 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'How do I share a video with a client using Kreatli?',
+    question: 'How do I send a video to a client using Kreatli?',
     answer:
-      'To share a video with a client in Kreatli, you upload the file once, generate a secure share link, and send that link to your client. They can open the video in their browser, watch it in full quality, and leave frame-accurate comments without downloading anything. Every shared video stays connected to the right project, file version, and feedback history so your team never loses context.',
+      'To send a video to a client in Kreatli, you upload the file once, generate a secure link, and send that link to your client. They open the video in their browser, watch it in full quality, and leave frame-accurate comments without downloading anything. Every video you send stays connected to the right project, file version, and feedback history.',
   },
   {
-    question: 'Can people I share a video with comment without an account?',
+    question: 'Is it free to send video with Kreatli?',
     answer:
-      'Yes. Kreatli is designed for frictionless client review. When you share your video via a secure link, clients and external stakeholders can watch, comment, and respond directly in their browser without creating an account. This guest review experience removes sign-up friction while still keeping all comments, approvals, and versions organized for your team.',
+      'Yes. You can send your video for free with Kreatli and experience the full review workflow before upgrading. Sending video via secure links is included as part of the review and approval platform, which also offers higher limits, advanced permissions, and support for growing teams on paid plans.',
   },
   {
-    question: 'Is it free to share videos in Kreatli?',
+    question: 'What happens when I send a video link to someone?',
     answer:
-      'You can start sharing videos in Kreatli for free and experience the full review workflow before upgrading. Sharing video links is included as part of the broader review and approval platform, which also offers higher limits, advanced permissions, and support for growing teams on paid plans. This lets small teams move their review process online without upfront cost.',
+      'When you send a video link, the recipient opens it in their browser and sees a simple player. They can watch the video, add frame-accurate comments, and approve or request changes—all without creating an account. You see all feedback and approvals in Kreatli, tied to that specific version.',
   },
   {
-    question: 'Can I revoke or update access to a shared video?',
+    question: 'Can recipients comment on a video I send without an account?',
     answer:
-      'Yes. Because your shared video lives inside Kreatli rather than in an attachment, you stay in control of access. You can update who is allowed to view or comment, share new versions to the same stakeholders, and keep an audit trail of approvals tied to specific cuts. This is much safer and clearer than sending static files or unmanaged links.',
+      'Yes. Kreatli is designed for frictionless review. When you send your video via a secure link, clients and collaborators can watch, comment, and respond directly in their browser without signing up. All comments and approvals stay organized for your team.',
   },
   {
-    question: 'What video formats can I share with Kreatli?',
+    question: 'What video formats can I send with Kreatli?',
     answer:
-      'Kreatli supports all common production formats, including MP4, MOV, and other standard containers used in video workflows. You upload the master once, then share it with clients and collaborators via secure links. They see a smooth playback experience in the browser, while your original file stays safely stored with version history.',
+      'Kreatli supports all common production formats, including MP4, MOV, and other standard containers. You upload the file once, then send a link to clients and collaborators. They get smooth playback in the browser while your original stays safely stored with version history.',
+  },
+  {
+    question: 'Can I revoke or update access after I send a video?',
+    answer:
+      'Yes. Because the video lives in Kreatli rather than as an attachment, you stay in control. You can update who can view or comment, send new versions to the same people, and keep an audit trail of approvals tied to specific cuts.',
   },
 ];
 
-export default function ShareVideoPage() {
+export default function SendVideoPage() {
   useSession();
-  const articles = getPlatformArticles('/platform/share-video');
+  const articles = getPlatformArticles('/platform/send-video');
 
   return (
-    <>
+    <React.Fragment>
       <Head>
-        <title>Share Your Video for Free | Kreatli</title>
+        <title>Send Your Video for Free | Kreatli</title>
         <meta
           name="description"
-          content="Share video links with clients and stakeholders for review in seconds. Let them watch, comment, and approve online—without downloads, attachments, or complex tools."
+          content="Send your video for free: get a secure link and send it to clients for review. No large attachments, no sign-ups—they watch and comment in the browser."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/share-video" />
-        <meta property="og:url" content="https://kreatli.com/platform/share-video" />
+        <link rel="canonical" href="https://kreatli.com/platform/send-video" />
+        <meta property="og:url" content="https://kreatli.com/platform/send-video" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Share Your Video for Review | Kreatli" />
+        <meta property="og:title" content="Send Your Video for Free | Kreatli" />
         <meta
           property="og:description"
-          content="Share video links with clients for fast, frame-accurate review. Collect comments, track versions, and manage approvals in one place with Kreatli."
+          content="Send your video to clients for free review. Secure links, frame-accurate feedback, no downloads—all in the browser with Kreatli."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Share Your Video for Review | Kreatli" />
+        <meta property="og:image:alt" content="Send Your Video for Free | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Share Your Video for Review | Kreatli" />
+        <meta name="twitter:title" content="Send Your Video for Free | Kreatli" />
         <meta
           name="twitter:description"
-          content="Share your video with clients and collaborators via secure links. Let them review, comment, and approve online with Kreatli."
+          content="Send your video for free with Kreatli. Clients get a link, watch in the browser, and leave frame-accurate comments—no account required."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -84,7 +90,7 @@ export default function ShareVideoPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Share Video', url: '/platform/share-video' },
+          { name: 'Send Video', url: '/platform/send-video' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -96,11 +102,12 @@ export default function ShareVideoPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Share Your Video for Review in Seconds
+              Send Your Video for Free in Seconds
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Share video links with clients and stakeholders for frame-accurate feedback—without downloads, heavy
-              attachments, or account creation. Every shared video stays connected to comments, versions, and approvals.
+              Send your video to clients with a secure link—no large attachments, no sign-ups. They watch and leave
+              frame-accurate feedback in the browser. Every video you send stays connected to comments, versions, and
+              approvals.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -122,15 +129,13 @@ export default function ShareVideoPage() {
         </div>
       </section>
 
-      {/* How to Share Video Section */}
+      {/* How to Send Video Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              How to Share Video for Client Review with Kreatli
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How to Send Video to Clients with Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              To share a video in Kreatli, you upload it once and use secure links for every review round. Clients see a
+              To send a video in Kreatli, you upload it once and use secure links for every review round. Clients see a
               simple player; your team gets frame-accurate comments and approvals.
             </p>
           </div>
@@ -157,11 +162,11 @@ export default function ShareVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="link" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">2. Generate a Share Video Link</h3>
+                  <h3 className="font-sans text-lg font-semibold">2. Get a Link to Send Video</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Turn any file into a clean, secure share video link. Skip WeTransfer folders and bulky email
-                  attachments.
+                  Turn any file into a clean, secure link. Skip WeTransfer folders and bulky email attachments when you
+                  send video.
                 </p>
               </CardBody>
             </Card>
@@ -172,11 +177,11 @@ export default function ShareVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">3. Share Your Video with Stakeholders</h3>
+                  <h3 className="font-sans text-lg font-semibold">3. Send Your Video to Stakeholders</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Send the share link to clients, producers, and internal teams. They open it in their browser and can
-                  start reviewing instantly.
+                  Send the link to clients, producers, and internal teams. They open it in their browser and can start
+                  reviewing instantly.
                 </p>
               </CardBody>
             </Card>
@@ -190,39 +195,12 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">4. Collect Feedback & Approvals</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Reviewers leave frame-accurate comments and approvals tied to the exact version you shared, giving you
-                  a single source of truth for every cut.
+                  Reviewers leave frame-accurate comments and approvals tied to the exact version you sent, giving you a
+                  single source of truth for every cut.
                 </p>
               </CardBody>
             </Card>
           </div>
-
-          <Card className="mx-auto mt-10 max-w-2xl border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 shadow-sm">
-            <CardBody className="flex flex-col items-center justify-center gap-4 p-6 text-center sm:gap-6 sm:py-8">
-              <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-3">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-primary/20">
-                  <Icon icon="link" size={22} className="text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-sans text-base font-semibold text-foreground sm:text-lg">
-                    Want to focus on generating links?
-                  </h3>
-                  <p className="mt-0.5 text-sm text-foreground-500">
-                    See how our free video link generator fits into your workflow.
-                  </p>
-                </div>
-              </div>
-              <Button
-                as={NextLink}
-                href="/platform/free-video-link-generator"
-                size="lg"
-                className="w-full shrink-0 bg-foreground text-content1 sm:w-auto"
-                endContent={<Icon icon="arrowRight" size={18} />}
-              >
-                Free Video Link Generator
-              </Button>
-            </CardBody>
-          </Card>
         </div>
       </section>
 
@@ -231,11 +209,11 @@ export default function ShareVideoPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Why Share Video Links Instead of Sending Files
+              Why Send Video via Link Instead of Email Attachments
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Sharing video through links keeps your review process fast, organized, and connected to the work
-              itself—instead of scattered across email threads and downloads.
+              When you send video through a link, your review process stays fast, organized, and connected to the
+              work—instead of scattered across email threads and downloads.
             </p>
           </div>
 
@@ -249,8 +227,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">No Heavy Attachments</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Upload your video once and share a lightweight link instead of sending 10GB files back and forth.
-                  Clients review in the browser—not in their downloads folder.
+                  Upload your video once and send a lightweight link instead of 10GB files. Clients review in the
+                  browser—not in their downloads folder.
                 </p>
               </CardBody>
             </Card>
@@ -264,8 +242,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Clear, Centralized Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Keep comments, drawings, and approvals attached to the video itself instead of buried across tools.
-                  Everyone sees the same shared video and the same feedback.
+                  Keep comments, drawings, and approvals attached to the video instead of buried across tools. Everyone
+                  sees the same video and the same feedback.
                 </p>
               </CardBody>
             </Card>
@@ -279,8 +257,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Faster Approvals</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  When you share video links for review, stakeholders respond on their schedule in a tool that feels
-                  simple. That means approvals move from days to hours.
+                  When you send video links for review, stakeholders respond on their schedule in a simple tool. That
+                  means approvals move from days to hours.
                 </p>
               </CardBody>
             </Card>
@@ -294,8 +272,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Single Source of Truth</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Every shared video, comment, and approval is tied to a specific cut in Kreatli. You always know which
-                  version was approved and what changed since.
+                  Every video you send, plus every comment and approval, is tied to a specific cut in Kreatli. You
+                  always know which version was approved and what changed since.
                 </p>
               </CardBody>
             </Card>
@@ -303,13 +281,13 @@ export default function ShareVideoPage() {
         </div>
       </section>
 
-      {/* Sharing Controls & Security Section */}
+      {/* Controls & Security Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Control How You Share Video With Clients</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Control How You Send Video to Clients</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Sharing your video should never mean losing control. Kreatli combines easy guest access with permissions,
+              Sending your video should never mean losing control. Kreatli combines easy guest access with permissions,
               versioning, and secure storage.
             </p>
           </div>
@@ -324,8 +302,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Secure, Private Links</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Share private video links backed by encrypted storage and enterprise-grade infrastructure. Only the
-                  people you invite can access your shared videos.
+                  Send private video links backed by encrypted storage and enterprise-grade infrastructure. Only the
+                  people you invite can access the videos you send.
                 </p>
               </CardBody>
             </Card>
@@ -339,8 +317,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Viewer & Commenter Controls</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Decide who can simply watch a shared video and who can leave comments or approvals. Fit every share
-                  video link to the stage of your review cycle.
+                  Decide who can simply watch a video you send and who can leave comments or approvals. Fit every send
+                  link to the stage of your review cycle.
                 </p>
               </CardBody>
             </Card>
@@ -351,10 +329,10 @@ export default function ShareVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="slides" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Version-Aware Sharing</h3>
+                  <h3 className="font-sans text-lg font-semibold">Version-Aware Sending</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Share new versions of the same video while keeping approvals tied to specific cuts. Never guess which
+                  Send new versions of the same video while keeping approvals tied to specific cuts. Never guess which
                   export a client signed off on.
                 </p>
               </CardBody>
@@ -369,28 +347,28 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Part of a Complete Review Platform</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Sharing video is just one part of Kreatli. You can also{' '}
-                  <NextLink
-                    href="/platform/send-video"
-                    className="font-medium text-primary underline underline-offset-2"
-                  >
-                    send video
-                  </NextLink>
-                  {' with the same secure workflow. Combine it with frame-accurate '}
+                  Sending video is just one part of Kreatli. Combine it with frame-accurate{' '}
                   <NextLink
                     href="/platform/video-annotation"
                     className="font-medium text-primary underline underline-offset-2"
                   >
                     video annotation
-                  </NextLink>
-                  {' and '}
+                  </NextLink>{' '}
+                  and{' '}
                   <NextLink
                     href="/platform/add-drawing-to-video"
                     className="font-medium text-primary underline underline-offset-2"
                   >
                     drawing tools
-                  </NextLink>
-                  {' to give reviewers a fully visual way to explain changes.'}
+                  </NextLink>{' '}
+                  to give reviewers a fully visual way to explain changes. You can also{' '}
+                  <NextLink
+                    href="/platform/share-video"
+                    className="font-medium text-primary underline underline-offset-2"
+                  >
+                    share video
+                  </NextLink>{' '}
+                  with the same secure workflow.
                 </p>
               </CardBody>
             </Card>
@@ -401,14 +379,14 @@ export default function ShareVideoPage() {
       {/* Free Tools Section */}
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
-        description="Explore our collection of free tools designed to help video professionals share work, collect feedback, and approve faster."
+        description="Explore our collection of free tools designed to help video professionals send work, collect feedback, and approve faster."
       />
 
       {/* See How This Works Section */}
       <ResourcesArticlesPreviewSection
         articles={articles}
-        title="See How Sharing Video Links Works in Practice"
-        description="Explore real-world workflows and guides that show how teams share video for review, collect feedback, and keep approvals organized in Kreatli."
+        title="See How Sending Video Works in Practice"
+        description="Explore real-world workflows and guides that show how teams send video for review, collect feedback, and keep approvals organized in Kreatli."
       />
 
       <PricingSection />
@@ -419,8 +397,8 @@ export default function ShareVideoPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about how to share video with clients in Kreatli and how shared links fit into your
-              review and approval workflow.
+              Get detailed answers about how to send video to clients in Kreatli and how send links fit into your review
+              and approval workflow.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -441,7 +419,7 @@ export default function ShareVideoPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how sharing video and managing approvals in Kreatli can support your specific workflow.
+              to learn how sending video and managing approvals in Kreatli can support your specific workflow.
             </p>
           </div>
         </div>
@@ -461,16 +439,16 @@ export default function ShareVideoPage() {
           },
         )}
         title="More Resources"
-        description="Explore more Kreatli features that support sharing video, collecting frame-accurate feedback, and managing approvals across your team."
+        description="Explore more Kreatli features that support sending video, collecting frame-accurate feedback, and managing approvals across your team."
       />
 
       {/* CTA Section */}
       <CTASection
-        title="Ready to Share Your Next Video for Review?"
-        description="Use Kreatli to share video links with clients, collect clear feedback, and move every project to approval faster."
+        title="Ready to Send Your Next Video for Review?"
+        description="Use Kreatli to send video links to clients, collect clear feedback, and move every project to approval faster."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />
-    </>
+    </React.Fragment>
   );
 }

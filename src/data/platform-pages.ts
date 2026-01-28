@@ -131,11 +131,23 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
   {
+    label: 'Send Video',
+    href: '/platform/send-video',
+    description: 'Send your video to clients for free review and feedback',
+    section: 'Core Platform',
+    order: 8,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
+  {
     label: 'Embed Video',
     href: '/platform/embed-video',
     description: 'Embed your videos with built-in review and approvals',
     section: 'Core Platform',
-    order: 8,
+    order: 9,
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
