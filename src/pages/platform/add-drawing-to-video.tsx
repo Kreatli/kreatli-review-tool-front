@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
@@ -315,6 +316,8 @@ export default function AddDrawingToVideoPage() {
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals work more efficiently."
       />
+
+      <PricingSection />
 
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

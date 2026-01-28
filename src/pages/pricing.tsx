@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'What payment methods do you accept, and how secure is the payment process?',
     answer:
-      'We accept all major credit cards including Visa, Mastercard, American Express, and Discover. All payments are processed securely through Stripe, a leading payment processor that handles billions of dollars in transactions annually. Stripe is PCI DSS Level 1 certified, which is the highest level of security certification for payment processors. Your payment information is never stored on Kreatli\'s servers. All payment data is handled directly by Stripe, which uses industry-standard encryption and security measures to protect your financial information. This means your credit card details are secure and you don\'t need to worry about payment data breaches or unauthorized access to your financial information. Billing is handled automatically on a monthly or annual basis, depending on your plan preference. You\'ll receive email receipts for all payments, and you can view your billing history and manage payment methods through your account settings. If you prefer annual billing, we offer discounts that can save you money compared to monthly billing, making it more cost-effective for teams committed to using Kreatli for their video collaboration.',
+      "We accept all major credit cards including Visa, Mastercard, American Express, and Discover. All payments are processed securely through Stripe, a leading payment processor that handles billions of dollars in transactions annually. Stripe is PCI DSS Level 1 certified, which is the highest level of security certification for payment processors. Your payment information is never stored on Kreatli's servers. All payment data is handled directly by Stripe, which uses industry-standard encryption and security measures to protect your financial information. This means your credit card details are secure and you don't need to worry about payment data breaches or unauthorized access to your financial information. Billing is handled automatically on a monthly or annual basis, depending on your plan preference. You'll receive email receipts for all payments, and you can view your billing history and manage payment methods through your account settings. If you prefer annual billing, we offer discounts that can save you money compared to monthly billing, making it more cost-effective for teams committed to using Kreatli for their video collaboration.",
   },
   {
     question: 'How does the 7-day free trial work?',
@@ -151,6 +151,7 @@ export default function PricingPage() {
       <PricingSection
         titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center"
         showDetailedFeatures={true}
+        hideViewPricingButton
       />
 
       {/* Benefits/Why Section */}
@@ -472,8 +473,8 @@ export default function PricingPage() {
                 <p>
                   Enterprise plans typically include dedicated account management, priority support, custom integrations
                   with your existing tools, advanced security features, custom storage limits, and specialized training
-                  for your team.                   We work with enterprise clients to understand their specific video collaboration
-                  needs and tailor the solution accordingly.
+                  for your team. We work with enterprise clients to understand their specific video collaboration needs
+                  and tailor the solution accordingly.
                 </p>
                 <p>
                   Enterprise plans also often include features like single sign-on (SSO), advanced analytics and
@@ -496,7 +497,7 @@ export default function PricingPage() {
                 <p>
                   Yes, Kreatli offers annual billing options with discounts compared to monthly billing. Annual plans
                   provide cost savings (typically 10-20% off monthly pricing) and simplify budgeting by requiring one
-                  payment per year instead of 12 monthly payments.                   This makes annual billing attractive for teams
+                  payment per year instead of 12 monthly payments. This makes annual billing attractive for teams
                   committed to using Kreatli for their video collaboration.
                 </p>
                 <p>
@@ -556,7 +557,8 @@ export default function PricingPage() {
                 <p>
                   Kreatli offers a satisfaction guarantee for new paid subscriptions. If you're not satisfied with
                   Kreatli within the first 30 days of your paid plan, you can request a full refund. This gives you time
-                  to evaluate the platform with your full team and see how it improves your video collaboration workflow.
+                  to evaluate the platform with your full team and see how it improves your video collaboration
+                  workflow.
                 </p>
                 <p>
                   After the initial 30-day period, refunds are handled on a case-by-case basis. Since Kreatli uses
@@ -592,8 +594,8 @@ export default function PricingPage() {
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Get Started?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Join video teams who have simplified their collaboration process. Start your 7-day free trial or book a
-            demo to see how Kreatli works for your team.
+            Join video teams who have simplified their collaboration process. Start your 7-day free trial or book a demo
+            to see how Kreatli works for your team.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

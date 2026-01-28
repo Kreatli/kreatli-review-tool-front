@@ -11,6 +11,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
@@ -327,6 +328,8 @@ export default function VideoAnnotationPage() {
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals work more efficiently."
       />
+
+      <PricingSection />
 
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

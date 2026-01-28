@@ -6,6 +6,7 @@ import { Icon } from '../../various/Icon';
 interface PricingSectionProps {
   titleClassName?: string;
   showDetailedFeatures?: boolean;
+  hideViewPricingButton?: boolean;
 }
 
 const PLANS_DATA = [
@@ -54,9 +55,9 @@ const PLANS_DATA = [
   },
 ];
 
-export const PricingSection = ({ titleClassName }: PricingSectionProps) => {
+export const PricingSection = ({ titleClassName, hideViewPricingButton }: PricingSectionProps) => {
   return (
-    <section id="pricing" className="bg-foreground-50 px-6 py-16 lg:py-24 lg:mt-8">
+    <section id="pricing" className="bg-foreground-50 px-6 py-16 lg:mt-8 lg:py-24">
       <div className="flex flex-col items-center gap-12">
         <div className="mx-auto flex w-full max-w-2xl flex-col gap-4">
           <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-4xl'}>
@@ -154,6 +155,13 @@ export const PricingSection = ({ titleClassName }: PricingSectionProps) => {
             );
           })}
         </div>
+        {!hideViewPricingButton && (
+          <div className="flex w-full justify-center">
+            <Button as={Link} href="/pricing" size="lg" variant="bordered" className="mt-2 bg-content1">
+              View full pricing details
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );
