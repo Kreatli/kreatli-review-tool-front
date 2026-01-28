@@ -201,6 +201,8 @@ export default function PlatformPage() {
                 'Video Annotation': 'monitorPlay',
                 'Add Drawing To Video': 'paint',
                 'Free Video Link Generator': 'link',
+                'Share Video': 'share',
+                'Embed Video': 'monitorPlay',
                 'Secure Asset Storage': 'shield',
                 Integrations: 'link',
               };

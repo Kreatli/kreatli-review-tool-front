@@ -118,6 +118,30 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
+  {
+    label: 'Share Video',
+    href: '/platform/share-video',
+    description: 'Share video links with clients for review and approval in seconds',
+    section: 'Core Platform',
+    order: 7,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
+  {
+    label: 'Embed Video',
+    href: '/platform/embed-video',
+    description: 'Embed your videos with built-in review and approvals',
+    section: 'Core Platform',
+    order: 8,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
@@ -146,25 +170,34 @@ export const PLATFORM_PAGES: PlatformPage[] = [
 ];
 
 /**
- * Get platform pages grouped by section
- * @returns Object with section titles as keys and arrays of pages as values
+ * Get platform pages grouped by section.
+ * Built dynamically from PLATFORM_PAGES so any new page or section is included
+ * (e.g. footer and header nav stay in sync automatically).
+ * @returns Object with section titles as keys and arrays of pages (sorted by order)
  */
-export function getPlatformPagesBySection(): Record<PlatformSection, PlatformPage[]> {
-  const grouped: Record<PlatformSection, PlatformPage[]> = {
-    'Core Platform': [],
-    'Storage & Integrations': [],
-  };
+export function getPlatformPagesBySection(): Record<string, PlatformPage[]> {
+  const grouped: Record<string, PlatformPage[]> = {};
 
   PLATFORM_PAGES.forEach((page) => {
+    if (!grouped[page.section]) grouped[page.section] = [];
     grouped[page.section].push(page);
   });
 
   // Sort each section by order
   Object.keys(grouped).forEach((section) => {
-    grouped[section as PlatformSection].sort((a, b) => a.order - b.order);
+    grouped[section].sort((a, b) => a.order - b.order);
   });
 
-  return grouped;
+  // Sort section keys by min order in section so display order is stable
+  const sectionOrder = Object.fromEntries(
+    Object.entries(grouped).map(([title, pages]) => [title, Math.min(...pages.map((p) => p.order))]),
+  );
+  const sortedKeys = Object.keys(grouped).sort((a, b) => sectionOrder[a] - sectionOrder[b]);
+  const result: Record<string, PlatformPage[]> = {};
+  sortedKeys.forEach((k) => {
+    result[k] = grouped[k];
+  });
+  return result;
 }
 
 /**
