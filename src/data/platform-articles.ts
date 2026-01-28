@@ -231,9 +231,46 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
         'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
     }),
   ],
+  '/platform/add-drawing-to-video': [
+    makeArticleCard({
+      id: 'platform-add-drawing-to-video-guide',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Teams Use Drawing Tools for Frame-Accurate Feedback',
+      description:
+        'See how video teams use drawing tools in Kreatli to add arrows, boxes, and markup directly on video frames for clear, frame-accurate feedback.',
+      tags: ['Video Annotation', 'Creative Proofing'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-add-drawing-to-video-comparisons',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Drawing & Annotation for Video Teams',
+      description:
+        'Compare drawing and annotation workflows in Kreatli and Frame.io so video teams can choose the right platform for visual feedback on video frames.',
+      tags: ['Creative Teams', 'Tools Comparison'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-add-drawing-to-video-blog',
+      full_slug: '/blog/video-post-production',
+      title: 'Why Drawing Directly on Video Frames Improves Post-Production',
+      description:
+        'Learn how drawing directly on video frames speeds up cuts, reduces revision cycles, and makes feedback clearer for editors and producers.',
+      tags: ['Post-Production', 'Video Annotation'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+  ],
 };
 
 export function getPlatformArticles(path: string): ArticleCard[] {
   return PLATFORM_ARTICLES_BY_PATH[path] ?? [];
 }
-

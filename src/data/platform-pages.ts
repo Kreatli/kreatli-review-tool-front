@@ -94,6 +94,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing'],
   },
+  {
+    label: 'Add Drawing To Video',
+    href: '/platform/add-drawing-to-video',
+    description: 'Draw directly on video frames with markup and annotations',
+    section: 'Core Platform',
+    order: 5,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'projectOrchestration'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
