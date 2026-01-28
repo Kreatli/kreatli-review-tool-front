@@ -9,6 +9,7 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
@@ -347,6 +348,8 @@ export default function IntegrationsPage() {
         title="See How This Works in Practice"
         description="Explore real-world workflows and guides that demonstrate these features in action."
       />
+
+      <PricingSection />
 
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

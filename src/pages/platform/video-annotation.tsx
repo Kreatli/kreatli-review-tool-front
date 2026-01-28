@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
@@ -12,7 +13,9 @@ import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -71,11 +74,12 @@ const faqs = [
 
 export default function VideoAnnotationPage() {
   useSession();
+  const articles = getPlatformArticles('/platform/video-annotation');
 
   return (
     <>
       <Head>
-        <title>Kreatli | Video Annotation – Frame-Accurate Video Markup & Feedback</title>
+        <title>Frame-Accurate Video Annotation | Kreatli</title>
         <meta
           name="description"
           content="Add frame-accurate annotations, drawings, and markup directly to video frames. Pin comments to exact timestamps and collaborate with precise visual feedback. Perfect for video teams."
@@ -327,6 +331,15 @@ export default function VideoAnnotationPage() {
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals work more efficiently."
       />
+
+      {/* See How This Works Section */}
+      <ResourcesArticlesPreviewSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate frame-accurate video annotation in action."
+      />
+
+      <PricingSection />
 
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

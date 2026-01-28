@@ -60,7 +60,7 @@ const faqs = [
   {
     question: 'What is a video review and approval workflow, and how does Kreatli handle it?',
     answer:
-      'A video review and approval workflow is the process video teams use to review, provide feedback, and get final approval on video assets and related media. Kreatli streamlines this entire process in one platform. In Kreatli, the review workflow works like this: First, you upload your media files to a project. Then, you can invite team members, clients, or stakeholders to review the files. Reviewers can add comments, annotations, and feedback directly on the media. The system tracks all feedback and allows project managers to see the approval status of each asset. The platform supports both internal team reviews and client approval processes. You can set up guest review links that don\'t require signups, making it easy for clients to participate in the approval workflow. All comments and approvals are tracked, so you always know the status of each deliverable in your video collaboration pipeline.',
+      "A video review and approval workflow is the process video teams use to review, provide feedback, and get final approval on video assets and related media. Kreatli streamlines this entire process in one platform. In Kreatli, the review workflow works like this: First, you upload your media files to a project. Then, you can invite team members, clients, or stakeholders to review the files. Reviewers can add comments, annotations, and feedback directly on the media. The system tracks all feedback and allows project managers to see the approval status of each asset. The platform supports both internal team reviews and client approval processes. You can set up guest review links that don't require signups, making it easy for clients to participate in the approval workflow. All comments and approvals are tracked, so you always know the status of each deliverable in your video collaboration pipeline.",
   },
   {
     question: 'How does creative proofing work in Kreatli compared to other tools?',
@@ -80,7 +80,7 @@ const faqs = [
   {
     question: 'Can clients and external reviewers use Kreatli without creating an account?',
     answer:
-      'Yes, Kreatli supports no-signup guest reviews through secure shareable links. You can generate a review link for any file or project and share it with clients, stakeholders, or external collaborators. They can access the review interface, add comments, and participate in the approval workflow without needing to create an account. Guest review links can be password-protected for additional security, and you can set expiration dates and access controls. This makes it easy to include clients in your video review and approval process while maintaining control over who can access your video assets. External reviewers see a clean, branded interface focused on reviewing and providing feedback. They can add comments, annotations, and approvals just like team members, but without the complexity of project management features they don\'t need. This streamlined experience improves client participation in your video collaboration workflow.',
+      "Yes, Kreatli supports no-signup guest reviews through secure shareable links. You can generate a review link for any file or project and share it with clients, stakeholders, or external collaborators. They can access the review interface, add comments, and participate in the approval workflow without needing to create an account. Guest review links can be password-protected for additional security, and you can set expiration dates and access controls. This makes it easy to include clients in your video review and approval process while maintaining control over who can access your video assets. External reviewers see a clean, branded interface focused on reviewing and providing feedback. They can add comments, annotations, and approvals just like team members, but without the complexity of project management features they don't need. This streamlined experience improves client participation in your video collaboration workflow.",
   },
   {
     question: 'How does the side-by-side version comparison feature work?',
@@ -110,7 +110,7 @@ const faqs = [
   {
     question: "How do real-time notifications work in Kreatli's video production platform?",
     answer:
-      'Kreatli provides real-time notifications for important events in your video collaboration workflow, including new comments, approval requests, project updates, and file uploads. These notifications help team members stay in sync without constantly checking the platform. Notifications are contextual and linked to specific assets and projects, so you can quickly understand what needs your attention. When someone adds a comment on a video you\'re working on, requests approval for a design, or uploads a new version, you\'ll be notified immediately. The notification system is integrated with the video review and approval workflow, ensuring that approvals and feedback requests don\'t get missed. This keeps your video collaboration process moving forward efficiently, as team members and clients are promptly notified when their input is needed in the video review and approval process.',
+      "Kreatli provides real-time notifications for important events in your video collaboration workflow, including new comments, approval requests, project updates, and file uploads. These notifications help team members stay in sync without constantly checking the platform. Notifications are contextual and linked to specific assets and projects, so you can quickly understand what needs your attention. When someone adds a comment on a video you're working on, requests approval for a design, or uploads a new version, you'll be notified immediately. The notification system is integrated with the video review and approval workflow, ensuring that approvals and feedback requests don't get missed. This keeps your video collaboration process moving forward efficiently, as team members and clients are promptly notified when their input is needed in the video review and approval process.",
   },
 ];
 
@@ -196,9 +196,11 @@ export default function PlatformPage() {
               // Map each page to an appropriate icon
               const iconMap: Record<string, IconType> = {
                 'The Creative Workspace': 'slides',
-                'Review & Approval': 'paint',
+                'Review & Approval': 'compare',
                 'Project Orchestration': 'folder',
                 'Video Annotation': 'monitorPlay',
+                'Add Drawing To Video': 'paint',
+                'Free Video Link Generator': 'link',
                 'Secure Asset Storage': 'shield',
                 Integrations: 'link',
               };
