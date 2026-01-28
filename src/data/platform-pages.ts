@@ -106,6 +106,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'projectOrchestration'],
   },
+  {
+    label: 'Free Video Link Generator',
+    href: '/platform/free-video-link-generator',
+    description: 'Generate secure video review links for clients and collaborators',
+    section: 'Core Platform',
+    order: 6,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',

@@ -200,6 +200,7 @@ export default function PlatformPage() {
                 'Project Orchestration': 'folder',
                 'Video Annotation': 'monitorPlay',
                 'Add Drawing To Video': 'paint',
+                'Free Video Link Generator': 'link',
                 'Secure Asset Storage': 'shield',
                 Integrations: 'link',
               };

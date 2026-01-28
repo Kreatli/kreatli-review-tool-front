@@ -13,7 +13,9 @@ import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -57,11 +59,12 @@ const faqs = [
 
 export default function AddDrawingToVideoPage() {
   useSession();
+  const articles = getPlatformArticles('/platform/add-drawing-to-video');
 
   return (
     <>
       <Head>
-        <title>Kreatli | Add Drawing To Video – Draw Directly on Video Frames</title>
+        <title>Add Drawing To Video | Kreatli</title>
         <meta
           name="description"
           content="Add drawings, arrows, and markup directly to video frames for frame-accurate feedback. Draw on video, highlight details, and collaborate visually with your team and clients."
@@ -69,18 +72,18 @@ export default function AddDrawingToVideoPage() {
         <link rel="canonical" href="https://kreatli.com/platform/add-drawing-to-video" />
         <meta property="og:url" content="https://kreatli.com/platform/add-drawing-to-video" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Add Drawing To Video – Draw Directly on Video Frames" />
+        <meta property="og:title" content="Add Drawing To Video | Kreatli" />
         <meta
           property="og:description"
           content="Use Kreatli as your video drawing tool. Add arrows, boxes, and freehand markup directly on video frames so editors and clients see exactly what needs to change."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Add Drawing To Video – Draw Directly on Video Frames" />
+        <meta property="og:image:alt" content="Add Drawing To Video | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Add Drawing To Video – Draw Directly on Video Frames" />
+        <meta name="twitter:title" content="Add Drawing To Video | Kreatli" />
         <meta
           name="twitter:description"
           content="Draw on video frames with arrows, boxes, and freehand markup. Give frame-accurate, visual feedback your editors and clients can act on instantly."
@@ -315,6 +318,13 @@ export default function AddDrawingToVideoPage() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals work more efficiently."
+      />
+
+      {/* See How This Works Section */}
+      <ResourcesArticlesPreviewSection
+        articles={articles}
+        title="See How This Works in Practice"
+        description="Explore real-world workflows and guides that demonstrate drawing and annotation on video frames in action."
       />
 
       <PricingSection />
