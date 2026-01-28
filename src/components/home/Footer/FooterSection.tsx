@@ -152,7 +152,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
             <Socials />
           </div>
           <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {/* Platform Navigation */}
+            {/* Platform: all links from PLATFORM_PAGES (platform-pages.ts) — new pages appear here automatically */}
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">Platform</h3>
               {Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => (
