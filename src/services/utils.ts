@@ -10,7 +10,7 @@ export const updateProjectFile = (projectId: string, file: ProjectFileDto) => {
 
     return {
       ...data,
-      assets: data.assets.map((asset) => {
+      files: data.files.map((asset) => {
         if (asset.id === file.id) {
           return file;
         }

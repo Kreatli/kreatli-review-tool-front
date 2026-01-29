@@ -18,15 +18,16 @@ import type {
   GetAssetFileIdCommentsQueryParams,
   GetNotificationsQueryParams,
   GetAssetsQueryParams,
+  GetAssetsFilesQueryParams,
   GetAssetsFoldersQueryParams,
   UserDto,
   InvoiceDto,
+  SettingsDto,
+  SettingsBodyDto,
   UpdateUserDto,
   SubscriptionBodyDto,
   SubscriptionResponseDto,
   AddonBodyDto,
-  SettingsDto,
-  SettingsBodyDto,
   SignUpBodyDto,
   SignUpResultDto,
   SignUpWithTokenBodyDto,
@@ -46,6 +47,8 @@ import type {
   UpdateProjectMemberDto,
   ProjectFileBodyDto,
   FolderDto,
+  FileDto,
+  StackDto,
   ProjectAssetEditDto,
   FileEditBodyDto,
   FolderBodyDto,
@@ -57,10 +60,11 @@ import type {
   ChatDto,
   ProjectLogsDto,
   AssetMoveBodyDto,
+  MoveAssetsResponseDto,
+  StackEditBodyDto,
   ProjectsResponseDto,
   ChatMessagesDto,
   ChatEditBodyDto,
-  FileDto,
   AssetCommentBodyDto,
   AssetCommentDto,
   AssetCommentsResponse,
@@ -318,6 +322,22 @@ export const getAssetFolderId = (
 /** Key is end point string without base url */
 getAssetFolderId.key = '/asset/folder/{id}';
 
+export const getAssetStackId = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<StackDto>> => {
+  return Http.getRequest(
+    template(getAssetStackId.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAssetStackId.key = '/asset/stack/{id}';
+
 export const getAssets = (
   queryParams: GetAssetsQueryParams,
   configOverride?: AxiosRequestConfig,
@@ -327,6 +347,22 @@ export const getAssets = (
 
 /** Key is end point string without base url */
 getAssets.key = '/assets';
+
+export const getAssetsFiles = (
+  queryParams: GetAssetsFilesQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AssetsDto>> => {
+  return Http.getRequest(
+    getAssetsFiles.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAssetsFiles.key = '/assets/files';
 
 export const getAssetsFolders = (
   queryParams: GetAssetsFoldersQueryParams,
@@ -804,7 +840,7 @@ export const postProjectIdAssetsMove = (
   id: string,
   requestBody: AssetMoveBodyDto,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<ProjectDto>> => {
+): Promise<SwaggerResponse<MoveAssetsResponseDto>> => {
   return Http.postRequest(
     template(postProjectIdAssetsMove.key, { id }),
     undefined,
@@ -1141,6 +1177,24 @@ export const putProjectIdMember = (
 
 /** Key is end point string without base url */
 putProjectIdMember.key = '/project/{id}/member';
+
+export const putProjectIdStackStackId = (
+  id: string,
+  stackId: string,
+  requestBody: StackEditBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<ProjectAssetEditDto>> => {
+  return Http.putRequest(
+    template(putProjectIdStackStackId.key, { id, stackId }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+putProjectIdStackStackId.key = '/project/{id}/stack/{stackId}';
 
 export const putProjectIdStatus = (
   id: string,

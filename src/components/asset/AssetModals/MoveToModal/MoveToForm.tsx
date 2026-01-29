@@ -6,18 +6,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
-import {
-  useGetProjectIdPaths,
-  usePutProjectIdFileFileId,
-  usePutProjectIdFolderFolderId,
-} from '../../../../services/hooks';
+import { useGetProjectIdPaths, usePostProjectIdAssetsMove } from '../../../../services/hooks';
 import { getAssetFolderId, getProjectId, getProjectIdAssets } from '../../../../services/services';
-import { FileDto, ProjectAssetEditDto, ProjectDto, ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
+import { FileDto, ProjectDto, ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { Icon } from '../../../various/Icon';
 
 interface Props {
-  asset: ProjectFolderDto | ProjectFileDto | FileDto;
+  asset: ProjectFolderDto | ProjectFileDto | ProjectStackDto | FileDto;
   project: ProjectDto;
   onCancel: () => void;
   onSuccess: () => void;
@@ -26,13 +22,11 @@ interface Props {
 export const MoveToForm = ({ asset, project, onCancel, onSuccess }: Props) => {
   const queryClient = useQueryClient();
   const { data: projectPaths = [], isPending: isLoadingProjectPaths } = useGetProjectIdPaths(project.id);
-  const { mutate: updateFile, isPending: isSavingFile } = usePutProjectIdFileFileId();
-  const { mutate: updateFolder, isPending: isSavingFolder } = usePutProjectIdFolderFolderId();
+  const { mutate: moveAssets, isPending } = usePostProjectIdAssetsMove();
 
   const formRef = React.useRef<HTMLFormElement>(null);
 
   const parentId = 'parentId' in asset ? asset.parentId : (asset as FileDto)?.parent?.id;
-  const isPending = isSavingFile || isSavingFolder;
 
   const { handleSubmit, register } = useForm({
     defaultValues: {
@@ -40,41 +34,28 @@ export const MoveToForm = ({ asset, project, onCancel, onSuccess }: Props) => {
     },
   });
 
-  const handleSuccess = ({ project: data, parent: parentData }: ProjectAssetEditDto) => {
-    if (parentData) {
-      queryClient.setQueryData([getAssetFolderId.key, parentData.id], parentData);
-    }
-
-    queryClient.setQueryData([getProjectId.key, project.id], data);
-    queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
-    addToast({ title: `The ${asset?.type} was successfully moved`, color: 'success', variant: 'flat' });
-    onSuccess?.();
-  };
-
-  const handleError = (error: unknown) => {
-    addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-  };
-
   const onSubmit = (body: { parentId: string }) => {
     const newParentId = (body.parentId === 'home' ? null : body.parentId) as string | undefined;
 
-    if (asset.type === 'file') {
-      updateFile(
-        { id: project.id, fileId: asset.id, requestBody: { parentId: newParentId } },
-        {
-          onSuccess: handleSuccess,
-          onError: handleError,
-        },
-      );
-
-      return;
-    }
-
-    updateFolder(
-      { id: project.id, folderId: asset.id, requestBody: { parentId: newParentId } },
+    moveAssets(
       {
-        onSuccess: handleSuccess,
-        onError: handleError,
+        id: project.id,
+        requestBody: { assetIds: [asset.id], fromId: parentId, toId: newParentId },
+      },
+      {
+        onSuccess: ({ project: data, from: parentData }) => {
+          if (parentData) {
+            queryClient.setQueryData([getAssetFolderId.key, parentData.id], parentData);
+          }
+
+          queryClient.setQueryData([getProjectId.key, project.id], data);
+          queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
+          addToast({ title: `The ${asset?.type} was successfully moved`, color: 'success', variant: 'flat' });
+          onSuccess?.();
+        },
+        onError: (error: unknown) => {
+          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+        },
       },
     );
   };
@@ -98,7 +79,7 @@ export const MoveToForm = ({ asset, project, onCancel, onSuccess }: Props) => {
       {!isLoadingProjectPaths && filteredPaths.length === 0 && !parentId && (
         <div className="flex flex-col items-center justify-center gap-2 p-4 text-center">
           <Icon icon="folder" size={24} className="text-default-400" />
-          <p className="text-default-500">There are no available destinations to move this {asset.type} to.</p>
+          <p className="text-default-500">There are no available destinations to move this asset to.</p>
         </div>
       )}
       {!isLoadingProjectPaths && (filteredPaths.length > 0 || parentId) && (

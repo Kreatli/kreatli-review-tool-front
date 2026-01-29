@@ -4,12 +4,12 @@ import React from 'react';
 
 import { usePostProjectIdAssetsRestore } from '../../../../services/hooks';
 import { getProjectId, getProjectIdAssetsArchived } from '../../../../services/services';
-import { ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
+import { ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
 interface Props {
   projectId: string;
-  asset?: ProjectFolderDto | ProjectFileDto;
+  asset?: ProjectFolderDto | ProjectFileDto | ProjectStackDto;
   isOpen: boolean;
   onClose: () => void;
 }

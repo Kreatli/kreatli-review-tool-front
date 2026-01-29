@@ -23,12 +23,21 @@ interface Props {
 
 const AssetUploadedLog = ({ log }: { log: AssetUploadedLogDto }) => {
   const { project } = useProjectContext();
-  const { id, name } = log.details.asset;
+  const { id, name, stackId } = log.details.asset;
 
   return (
     <div>
       Uploaded{' '}
-      <Link as={NextLink} href={`/project/${project.id}/assets/${id}`} size="sm" underline="hover">
+      <Link
+        as={NextLink}
+        href={
+          stackId
+            ? `/project/${project.id}/assets/stack/${stackId}?selectedFileId=${id}`
+            : `/project/${project.id}/assets/${id}`
+        }
+        size="sm"
+        underline="hover"
+      >
         {name}
       </Link>
     </div>

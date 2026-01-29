@@ -49,7 +49,11 @@ export const DashboardAsset = ({ project, file, members }: Props) => {
         className="absolute bottom-1.5 right-1.5 z-20"
       />
       <Link
-        href={`/project/${project.id}/assets/${file.id}`}
+        href={
+          file.stackId
+            ? `/project/${project.id}/assets/stack/${file.stackId}?selectedFileId=${file.id}`
+            : `/project/${project.id}/assets/${file.id}`
+        }
         aria-label={file.name}
         className="absolute inset-0 z-10"
       />

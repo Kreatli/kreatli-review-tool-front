@@ -4,11 +4,11 @@ import React from 'react';
 
 import { useDeleteProjectIdAssets } from '../../../../services/hooks';
 import { getProjectIdAssetsArchived } from '../../../../services/services';
-import { ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
+import { ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
 interface Props {
-  asset?: ProjectFolderDto | ProjectFileDto;
+  asset?: ProjectFolderDto | ProjectFileDto | ProjectStackDto;
   projectId: string;
   isOpen: boolean;
   onClose: () => void;
@@ -41,12 +41,11 @@ export const DeleteAssetModal = ({ asset, projectId, isOpen, onClose }: Props) =
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
-        <ModalHeader>{asset?.type === 'folder' ? 'Delete folder' : 'Delete file'}</ModalHeader>
+        <ModalHeader>{asset?.type === 'folder' ? 'Delete folder' : 'Delete asset'}</ModalHeader>
         <ModalBody className="pb-6">
           <div className="flex flex-col gap-4">
             <div className="text-medium">
-              Are you sure you want to delete <span className="font-semibold">&quot;{asset?.name}&quot;</span>? This
-              action can not be undone.
+              Are you sure you want to delete this asset? This action can not be undone.
             </div>
             <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isPending} onClick={onClose}>

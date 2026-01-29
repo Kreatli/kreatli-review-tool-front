@@ -2,19 +2,19 @@ import Head from 'next/head';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 
-import { Asset } from '../../../../components/asset/Asset/Asset';
-import { useProtectedPage } from '../../../../hooks/useProtectedPage';
+import { Stack } from '../../../../../components/asset/Stack/Stack';
+import { useProtectedPage } from '../../../../../hooks/useProtectedPage';
 
-export default function ProjectAssetsFilePage() {
+export default function ProjectAssetsStackPage() {
   const { isSignedIn } = useProtectedPage();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  if (!isSignedIn || !router.query.fileId || !router.query.id) {
+  if (!isSignedIn || !router.query.stackId || !router.query.id) {
     return null;
   }
 
-  const fileId = router.query.fileId.toString();
+  const stackId = router.query.stackId.toString();
   const projectId = router.query.id.toString();
   const compareFileId = searchParams.get('compareFileId');
 
@@ -23,9 +23,9 @@ export default function ProjectAssetsFilePage() {
       <Head>
         <title>Kreatli | Media</title>
       </Head>
-      <Asset fileId={fileId} projectId={projectId} compareFileId={compareFileId} />
+      <Stack stackId={stackId} projectId={projectId} compareFileId={compareFileId} />
     </>
   );
 }
 
-ProjectAssetsFilePage.appLayout = false;
+ProjectAssetsStackPage.appLayout = false;

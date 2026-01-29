@@ -3,17 +3,18 @@ import React from 'react';
 
 import { AssetContextProvider } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
-import { ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
+import { ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../../../services/types';
 import { EmptyState } from '../../../various/EmptyState';
 import { Icon } from '../../../various/Icon';
 import { DeleteAssetsModal } from '../ProjectAssetsBulkEdit/DeleteAssetsModal';
 import { RestoreAssetsModal } from '../ProjectAssetsBulkEdit/RestoreAssetsModal';
 import { ProjectFile } from '../ProjectFile';
 import { ProjectFolder } from '../ProjectFolder';
+import { ProjectStack } from '../ProjectStack';
 
 interface Props {
   folders: ProjectFolderDto[];
-  files: ProjectFileDto[];
+  files: (ProjectFileDto | ProjectStackDto)[];
   isError: boolean;
   isPending: boolean;
 }
@@ -124,15 +125,25 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
           ))}
         </div>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
-          {files.map((asset) => (
-            <ProjectFile
-              key={asset.id}
-              isSelected={selectedAssetIds.has(asset.id)}
-              isDisabled
-              file={asset}
-              onSelectionChange={() => handleSelectionChange(asset.id)}
-            />
-          ))}
+          {files.map((asset) =>
+            asset.type === 'stack' ? (
+              <ProjectStack
+                key={asset.id}
+                isSelected={selectedAssetIds.has(asset.id)}
+                isDisabled
+                stack={asset}
+                onSelectionChange={() => handleSelectionChange(asset.id)}
+              />
+            ) : (
+              <ProjectFile
+                key={asset.id}
+                isSelected={selectedAssetIds.has(asset.id)}
+                isDisabled
+                file={asset}
+                onSelectionChange={() => handleSelectionChange(asset.id)}
+              />
+            ),
+          )}
         </div>
       </AssetContextProvider>
       <RestoreAssetsModal

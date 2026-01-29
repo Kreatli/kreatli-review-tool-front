@@ -1,39 +1,47 @@
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Button, Checkbox, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import { Button, Checkbox, Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
-import React from 'react';
 
 import { useAssetContext } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
-import { ProjectFileDto } from '../../../../services/types';
+import { ProjectStackDto } from '../../../../services/types';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
 import { Icon } from '../../../various/Icon';
-import { ProjectFileAssignee } from './ProjectFileAssignee';
-import { ProjectFileCover } from './ProjectFileCover';
-import { ProjectFileStatus } from './ProjectFileStatus';
+import { ProjectFileAssignee } from '../ProjectFile/ProjectFileAssignee';
+import { ProjectFileCover } from '../ProjectFile/ProjectFileCover';
+import { ProjectFileStatus } from '../ProjectFile/ProjectFileStatus';
 
 interface Props {
   isSelected?: boolean;
   isDisabled?: boolean;
   isReadonly?: boolean;
-  file: ProjectFileDto;
+  stack: ProjectStackDto;
   onSelectionChange?: () => void;
 }
 
-export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelectionChange }: Props) => {
-  const { name, commentsCount } = file;
+export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSelectionChange }: Props) => {
+  const { name, commentsCount } = stack.active!;
 
   const router = useRouter();
   const { project } = useProjectContext();
   const { getAssetActions } = useAssetContext();
+
+  const version = stack.files.findIndex((file) => file.id === stack.active?.id) + 1;
 
   const handleClick = () => {
     if (isDisabled) {
       return;
     }
 
-    router.push(`/project/${router.query.id}/assets/${file.id}`);
+    router.push(`/project/${router.query.id}/assets/stack/${stack.id}`);
+  };
+
+  const handleManageVersionsClick = () => {
+    const actions = getAssetActions(stack);
+    const manageVersionAction = actions.find((action) => action.key === 'manageVersions');
+
+    manageVersionAction?.onClick();
   };
 
   const {
@@ -47,7 +55,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
     setDraggableNodeRef,
     setDroppableNodeRef,
   } = useSortable({
-    id: file.id,
+    id: stack.id,
     disabled: isDisabled || isSelected || isReadonly,
     animateLayoutChanges: () => true,
   });
@@ -82,13 +90,13 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
         onKeyDown={handleSpaceAndEnter(handleClick)}
         onDoubleClick={handleClick}
       >
-        <ProjectFileCover file={file} />
+        <ProjectFileCover file={stack.active!} />
         <div className="relative">
           <ProjectFileStatus
             className="absolute bottom-2 left-2 z-10 border-1"
             projectId={project.id}
             statuses={project.assetStatuses}
-            file={file}
+            file={stack.active!}
             isDisabled={isReadonly}
           />
         </div>
@@ -102,33 +110,38 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
           onChange={onSelectionChange}
         />
       )}
-      <Dropdown placement="bottom-end">
-        <DropdownTrigger>
-          <Button
-            size="sm"
-            radius="full"
-            isDisabled={isSelected || isReadonly}
-            className="absolute right-2 top-2 z-10"
-            variant="faded"
-            isIconOnly
-          >
-            <Icon icon="dots" size={20} />
-          </Button>
-        </DropdownTrigger>
-        <DropdownMenu variant="flat">
-          {getAssetActions(file).map((action) => (
-            <DropdownItem
-              key={action.label}
-              color={action.color}
-              showDivider={action.showDivider}
-              startContent={<Icon icon={action.icon} size={16} />}
-              onPress={action.onClick}
-            >
-              {action.label}
-            </DropdownItem>
-          ))}
-        </DropdownMenu>
-      </Dropdown>
+      <div className="absolute right-2 top-2 z-10 flex items-center gap-2">
+        <Chip
+          as="button"
+          type="button"
+          size="sm"
+          className="bg-foreground text-content1"
+          classNames={{ content: 'font-semibold' }}
+          onClick={handleManageVersionsClick}
+        >
+          v{version}
+        </Chip>
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            <Button size="sm" radius="full" isDisabled={isSelected || isReadonly} variant="faded" isIconOnly>
+              <Icon icon="dots" size={20} />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu variant="flat">
+            {getAssetActions(stack).map((action) => (
+              <DropdownItem
+                key={action.key}
+                color={action.color}
+                showDivider={action.showDivider}
+                startContent={<Icon icon={action.icon} size={16} />}
+                onPress={action.onClick}
+              >
+                {action.label}
+              </DropdownItem>
+            ))}
+          </DropdownMenu>
+        </Dropdown>
+      </div>
       <div className="flex flex-col gap-2">
         <div className="flex justify-between gap-2">
           <div className="truncate text-lg font-semibold">{name}</div>
@@ -136,7 +149,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
         <div className="flex items-start justify-between gap-2">
           <ProjectFileAssignee
             projectId={project.id}
-            file={file}
+            file={stack.active!}
             members={project.members}
             isDisabled={isDisabled || isReadonly}
           />
