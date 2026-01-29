@@ -9,18 +9,17 @@ export const ProjectArchivedAssets = () => {
   const { project } = useProjectContext();
   const { data, isPending, isError } = useGetProjectIdAssetsArchived(project.id);
 
-  const fileCount = React.useMemo(() => {
-    return data?.assets.length ?? 0;
+  const assets = React.useMemo(() => {
+    return [...(data?.files ?? []), ...(data?.folders ?? [])];
   }, [data]);
+
+  const fileCount = assets.length ?? 0;
 
   const totalFileSize = React.useMemo(() => {
     return (
-      data?.assets.reduce(
-        (acc, asset) => (asset.type === 'folder' ? acc + asset.totalFileSize : acc + asset.fileSize),
-        0,
-      ) ?? 0
+      assets.reduce((acc, asset) => (asset.type === 'file' ? acc + asset.fileSize : acc + asset.totalFileSize), 0) ?? 0
     );
-  }, [data?.assets]);
+  }, [assets]);
 
   const files = React.useMemo(() => {
     return data?.files ?? [];

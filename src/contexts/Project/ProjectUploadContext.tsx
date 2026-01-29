@@ -10,7 +10,14 @@ import { useMultipartUpload } from '../../hooks/useMultipartUpload';
 import { useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
 import { usePostProjectIdFile } from '../../services/hooks';
-import { getAssetFolderId, getAssets, getProjectId, getProjectIdAssets } from '../../services/services';
+import {
+  getAssetFileId,
+  getAssetFolderId,
+  getAssets,
+  getAssetStackId,
+  getProjectId,
+  getProjectIdAssets,
+} from '../../services/services';
 import { ProjectDto } from '../../services/types';
 import { getErrorMessage } from '../../utils/getErrorMessage';
 import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
@@ -25,8 +32,11 @@ export interface ProjectAssetsFilters {
 interface Context {
   isDragActive: boolean;
   inputRef: React.RefObject<HTMLInputElement | null>;
+  openFileDialog: () => void;
   getInputProps: () => DropzoneInputProps;
   getRootProps: () => DropzoneRootProps;
+  setStackId: (id: string) => void;
+  setStackWithFileId: (id: string) => void;
 }
 
 export const ProjectUploadContext = React.createContext<Context | null>(null);
@@ -49,6 +59,9 @@ interface Props {
 export const ProjectUploadContextProvider = ({ children, project, folderId }: React.PropsWithChildren<Props>) => {
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
   const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
+
+  const [stackId, setStackId] = React.useState<string | undefined>(undefined);
+  const [stackWithFileId, setStackWithFileId] = React.useState<string | undefined>(undefined);
 
   const queryClient = useQueryClient();
   const { user } = useSession();
@@ -89,6 +102,9 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       return;
     }
 
+    setStackId(undefined);
+    setStackWithFileId(undefined);
+
     for (const file of files) {
       const id = nanoid();
 
@@ -105,6 +121,8 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
                 key: data.key,
                 fileId: data.fileId,
                 fileSize: file.size,
+                stackId,
+                stackWithFileId,
               },
             });
 
@@ -113,6 +131,13 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
                 queryClient.setQueryData([getProjectId.key, project.id], data);
                 queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
                 queryClient.invalidateQueries({ queryKey: [getAssets.key] });
+                if (stackId) {
+                  queryClient.invalidateQueries({ queryKey: [getAssetStackId.key, stackId] });
+                }
+
+                if (stackWithFileId) {
+                  queryClient.invalidateQueries({ queryKey: [getAssetFileId.key, stackWithFileId] });
+                }
 
                 if (folderId) {
                   queryClient.setQueryData([getAssetFolderId.key, folderId], folderData);
@@ -163,10 +188,20 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     }
   };
 
-  const { isDragActive, inputRef, getRootProps, getInputProps } = useDropzone({
+  const {
+    isDragActive,
+    inputRef,
+    open: openFileDialog,
+    getRootProps,
+    getInputProps,
+  } = useDropzone({
     multiple: true,
     noClick: true,
     onDrop,
+    onFileDialogCancel: () => {
+      setStackId(undefined);
+      setStackWithFileId(undefined);
+    },
   });
 
   return (
@@ -176,6 +211,9 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
         getRootProps,
         isDragActive,
         inputRef,
+        openFileDialog,
+        setStackId,
+        setStackWithFileId,
       }}
     >
       {children}

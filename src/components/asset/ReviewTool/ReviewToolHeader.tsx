@@ -1,29 +1,41 @@
 import { Button, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { useAssetContext } from '../../../contexts/Asset';
-import { AssetDto, FileDto, ProjectDto } from '../../../services/types';
+import { AssetDto, FileDto, ProjectDto, StackDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
 import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
 import { Icon } from '../../various/Icon';
 import { AssetPicker } from '../AssetPicker';
+import { ReviewToolHeaderVersions } from './ReviewToolHeaderVersions';
 import { ReviewToolSafeZonesModal } from './ReviewToolSafeZonesModal';
 
 interface Props {
   file: FileDto;
   project: ProjectDto;
+  stack?: StackDto;
   isActive?: boolean;
   isCompareMode?: boolean;
   onClick?: () => void;
   onClose?: () => void;
+  onSwitchFile?: (file: FileDto) => void;
 }
 
-export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onClick, onClose }: Props) => {
+export const ReviewToolHeader = ({
+  file,
+  project,
+  stack,
+  isActive,
+  isCompareMode,
+  onClick,
+  onClose,
+  onSwitchFile,
+}: Props) => {
   const { getAssetActions } = useAssetContext();
   const router = useRouter();
-  const actions = useMemo(() => getAssetActions(file), [file, getAssetActions]);
+  const actions = useMemo(() => getAssetActions(stack ?? file), [file, stack, getAssetActions]);
 
   const [isSafeZonesModalOpen, setIsSafeZonesModalOpen] = useState(false);
 
@@ -46,7 +58,11 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
   }, [file.path, project.name]);
 
   const handleCompareSelect = (asset: AssetDto) => {
-    router.replace(`${location.pathname}?compareFileId=${asset.id}`);
+    const params = new URLSearchParams(location.search);
+
+    params.set('compareFileId', asset.id);
+
+    router.replace(`${location.pathname}?${params.toString()}`);
   };
 
   return (
@@ -95,6 +111,7 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
             ))}
           </div>
         </div>
+        {stack && <ReviewToolHeaderVersions file={file} stack={stack} onSwitchFile={onSwitchFile} />}
       </div>
       {!isCompareMode && (
         <Button size="sm" variant="flat" onClick={openSafeZoneCheckerModal}>
@@ -138,9 +155,10 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
               />
             </DropdownTrigger>
             <DropdownMenu aria-label="File actions" variant="flat">
-              {actions.map((action, index) => (
+              {actions.map((action) => (
                 <DropdownItem
-                  key={index}
+                  key={action.key}
+                  showDivider={action.showDivider}
                   startContent={<Icon icon={action.icon} size={16} />}
                   color={action.color}
                   onPress={action.onClick}

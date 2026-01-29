@@ -4,12 +4,12 @@ import React from 'react';
 
 import { usePostProjectIdAssetsArchive } from '../../../../services/hooks';
 import { getAssetFolderId, getProjectId, getProjectIdAssets } from '../../../../services/services';
-import { ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
+import { ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
 interface Props {
   projectId: string;
-  asset?: ProjectFolderDto | ProjectFileDto;
+  asset?: ProjectFolderDto | ProjectFileDto | ProjectStackDto;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -51,12 +51,10 @@ export const ArchiveAssetModal = ({ projectId, asset, isOpen, onClose }: Props) 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalContent>
-        <ModalHeader>{asset?.type === 'folder' ? 'Delete folder' : 'Delete file'}</ModalHeader>
+        <ModalHeader>{asset?.type === 'folder' ? 'Delete folder' : 'Delete asset'}</ModalHeader>
         <ModalBody className="pb-6">
           <div className="flex flex-col gap-4">
-            <div className="text-medium">
-              Are you sure you want to delete <span className="font-semibold">&quot;{asset?.name}&quot;</span>?
-            </div>
+            <div className="text-medium">Are you sure you want to delete this asset?</div>
             <div className="flex justify-end gap-2">
               <Button variant="light" isDisabled={isLoading} onClick={onClose}>
                 Cancel

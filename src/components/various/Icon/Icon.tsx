@@ -107,6 +107,7 @@ import UpdateIcon from '../../../assets/icons/update.svg';
 import UploadIcon from '../../../assets/icons/upload.svg';
 import UserIcon from '../../../assets/icons/user.svg';
 import UserPlusIcon from '../../../assets/icons/user-plus.svg';
+import VersionsIcon from '../../../assets/icons/versions.svg';
 import WarningIcon from '../../../assets/icons/warning.svg';
 import XIcon from '../../../assets/icons/x.svg';
 import YoutubeIcon from '../../../assets/icons/youtube.svg';
@@ -219,6 +220,7 @@ const ICONS = {
   upload: UploadIcon,
   user: UserIcon,
   userPlus: UserPlusIcon,
+  versions: VersionsIcon,
   warning: WarningIcon,
   x: XIcon,
   youtube: YoutubeIcon,
