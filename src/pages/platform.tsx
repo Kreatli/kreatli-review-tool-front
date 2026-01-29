@@ -204,6 +204,7 @@ export default function PlatformPage() {
                 'Share Video': 'share',
                 'Send Video': 'upload',
                 'Embed Video': 'monitorPlay',
+                'Share MP4': 'share',
                 'Secure Asset Storage': 'shield',
                 Integrations: 'link',
               };

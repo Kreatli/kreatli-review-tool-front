@@ -154,6 +154,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
+  {
+    label: 'Share MP4',
+    href: '/platform/share-mp4',
+    description: 'Share MP4 files with clients via secure links for review',
+    section: 'Core Platform',
+    order: 10,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',

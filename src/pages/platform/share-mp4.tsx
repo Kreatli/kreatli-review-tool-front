@@ -21,74 +21,62 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'How do I share a video with a client using Kreatli?',
+    question: 'How do I share MP4 files with a client using Kreatli?',
     answer:
-      'To share a video with a client in Kreatli, you upload the file once, generate a secure share link, and send that link to your client. They can open the video in their browser, watch it in full quality, and leave frame-accurate comments without downloading anything. Every shared video stays connected to the right project, file version, and feedback history so your team never loses context.',
+      'To share MP4 files with a client in Kreatli, you upload your MP4 once, generate a secure share link, and send that link to your client. They can open the MP4 in their browser, watch it in full quality, and leave frame-accurate comments without downloading anything. Every shared MP4 stays connected to the right project, file version, and feedback history so your team never loses context.',
   },
   {
-    question: 'Can people I share a video with comment without an account?',
+    question: 'Can people I share an MP4 with comment without an account?',
     answer:
-      'Yes. Kreatli is designed for frictionless client review. When you share your video via a secure link, clients and external stakeholders can watch, comment, and respond directly in their browser without creating an account. This guest review experience removes sign-up friction while still keeping all comments, approvals, and versions organized for your team.',
+      'Yes. Kreatli is designed for frictionless client review. When you share your MP4 via a secure link, clients and external stakeholders can watch, comment, and respond directly in their browser without creating an account. This guest review experience removes sign-up friction while still keeping all comments, approvals, and versions organized for your team.',
   },
   {
-    question: 'Is it free to share videos in Kreatli?',
+    question: 'Is it free to share MP4 files in Kreatli?',
     answer:
-      'You can start sharing videos in Kreatli for free and experience the full review workflow before upgrading. Sharing video links is included as part of the broader review and approval platform, which also offers higher limits, advanced permissions, and support for growing teams on paid plans. This lets small teams move their review process online without upfront cost.',
+      'You can start sharing MP4 files in Kreatli for free and experience the full review workflow before upgrading. Share MP4 links are included as part of the broader review and approval platform, which also offers higher limits, advanced permissions, and support for growing teams on paid plans. This lets small teams move their review process online without upfront cost.',
   },
   {
-    question: 'Can I revoke or update access to a shared video?',
+    question: 'Can I revoke or update access to a shared MP4?',
     answer:
-      'Yes. Because your shared video lives inside Kreatli rather than in an attachment, you stay in control of access. You can update who is allowed to view or comment, share new versions to the same stakeholders, and keep an audit trail of approvals tied to specific cuts. This is much safer and clearer than sending static files or unmanaged links.',
+      'Yes. Because your shared MP4 lives inside Kreatli rather than in an attachment, you stay in control of access. You can update who is allowed to view or comment, share new versions to the same stakeholders, and keep an audit trail of approvals tied to specific cuts. This is much safer and clearer than sending static files or unmanaged links.',
   },
   {
-    question: 'What video formats can I share with Kreatli?',
+    question: 'What video formats can I share besides MP4?',
     answer:
-      'Kreatli supports all common production formats, including MP4, MOV, and other standard containers used in video workflows. You upload the master once, then share it with clients and collaborators via secure links. They see a smooth playback experience in the browser, while your original file stays safely stored with version history. To share MP4 specifically, see how to share MP4 files in Kreatli.',
-    answerDisplay: (
-      <>
-        Kreatli supports all common production formats, including MP4, MOV, and other standard containers used in video
-        workflows. You upload the master once, then share it with clients and collaborators via secure links. They see a
-        smooth playback experience in the browser, while your original file stays safely stored with version history. To
-        share MP4 specifically, see how to{' '}
-        <NextLink href="/platform/share-mp4" className="font-medium text-primary underline underline-offset-2">
-          share MP4 files
-        </NextLink>{' '}
-        in Kreatli.
-      </>
-    ),
+      'Kreatli supports all common production formats, including MP4, MOV, and other standard containers used in video workflows. You upload the master once, then share it with clients and collaborators via secure links. They see a smooth playback experience in the browser, while your original file stays safely stored with version history.',
   },
 ];
 
-export default function ShareVideoPage() {
+export default function ShareMp4Page() {
   useSession();
-  const articles = getPlatformArticles('/platform/share-video');
+  const articles = getPlatformArticles('/platform/share-mp4');
 
   return (
     <>
       <Head>
-        <title>Share Your Video for Free | Kreatli</title>
+        <title>Share MP4 Files | Kreatli</title>
         <meta
           name="description"
-          content="Share video links with clients and stakeholders for review in seconds. Let them watch, comment, and approve online—without downloads, attachments, or complex tools."
+          content="Share MP4 files with clients and stakeholders for review in seconds. Secure links, no heavy attachments—let them watch, comment, and approve online with frame-accurate feedback."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/share-video" />
-        <meta property="og:url" content="https://kreatli.com/platform/share-video" />
+        <link rel="canonical" href="https://kreatli.com/platform/share-mp4" />
+        <meta property="og:url" content="https://kreatli.com/platform/share-mp4" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Share Your Video for Review | Kreatli" />
+        <meta property="og:title" content="Share MP4 Files | Kreatli" />
         <meta
           property="og:description"
-          content="Share video links with clients for fast, frame-accurate review. Collect comments, track versions, and manage approvals in one place with Kreatli."
+          content="Share MP4 files with clients via secure links for fast, frame-accurate review. Collect comments, track versions, and manage approvals in one place with Kreatli."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Share Your Video for Review | Kreatli" />
+        <meta property="og:image:alt" content="Share MP4 Files | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Share Your Video for Review | Kreatli" />
+        <meta name="twitter:title" content="Share MP4 Files | Kreatli" />
         <meta
           name="twitter:description"
-          content="Share your video with clients and collaborators via secure links. Let them review, comment, and approve online with Kreatli."
+          content="Share MP4 files with clients and collaborators via secure links. Let them review, comment, and approve online with Kreatli."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -96,7 +84,7 @@ export default function ShareVideoPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Share Video', url: '/platform/share-video' },
+          { name: 'Share MP4', url: '/platform/share-mp4' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -108,11 +96,11 @@ export default function ShareVideoPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Share Your Video for Review in Seconds
+              Share your MP4 Files Online
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Share video links with clients and stakeholders for frame-accurate feedback—without downloads, heavy
-              attachments, or account creation. Every shared video stays connected to comments, versions, and approvals.
+              Share MP4 files with clients and stakeholders via secure links—without downloads, heavy attachments, or
+              account creation. Every shared MP4 stays connected to comments, versions, and approvals.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -134,15 +122,15 @@ export default function ShareVideoPage() {
         </div>
       </section>
 
-      {/* How to Share Video Section */}
+      {/* How to Share MP4 Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              How to Share Video for Client Review with Kreatli
+              How to Share MP4 for Client Review with Kreatli
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              To share a video in Kreatli, you upload it once and use secure links for every review round. Clients see a
+              To share MP4 in Kreatli, you upload it once and use secure links for every review round. Clients see a
               simple player; your team gets frame-accurate comments and approvals.
             </p>
           </div>
@@ -154,10 +142,10 @@ export default function ShareVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="upload" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">1. Upload Your Video</h3>
+                  <h3 className="font-sans text-lg font-semibold">1. Upload Your MP4</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Add your video file to Kreatli once. Your original stays safely stored with version history and access
+                  Add your MP4 file to Kreatli once. Your original stays safely stored with version history and access
                   controls.
                 </p>
               </CardBody>
@@ -169,11 +157,10 @@ export default function ShareVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="link" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">2. Generate a Share Video Link</h3>
+                  <h3 className="font-sans text-lg font-semibold">2. Generate a Share Link</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Turn any file into a clean, secure share video link. Skip WeTransfer folders and bulky email
-                  attachments.
+                  Turn any MP4 into a clean, secure share link. Skip WeTransfer folders and bulky email attachments.
                 </p>
               </CardBody>
             </Card>
@@ -184,7 +171,7 @@ export default function ShareVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">3. Share Your Video with Stakeholders</h3>
+                  <h3 className="font-sans text-lg font-semibold">3. Share Your MP4 with Stakeholders</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
                   Send the share link to clients, producers, and internal teams. They open it in their browser and can
@@ -243,10 +230,10 @@ export default function ShareVideoPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Why Share Video Links Instead of Sending Files
+              Why Share MP4 via Link Instead of Sending Files
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Sharing video through links keeps your review process fast, organized, and connected to the work
+              Sharing MP4 through links keeps your review process fast, organized, and connected to the work
               itself—instead of scattered across email threads and downloads.
             </p>
           </div>
@@ -261,7 +248,7 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">No Heavy Attachments</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Upload your video once and share a lightweight link instead of sending 10GB files back and forth.
+                  Upload your MP4 once and share a lightweight link instead of sending large files back and forth.
                   Clients review in the browser—not in their downloads folder.
                 </p>
               </CardBody>
@@ -276,8 +263,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Clear, Centralized Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Keep comments, drawings, and approvals attached to the video itself instead of buried across tools.
-                  Everyone sees the same shared video and the same feedback.
+                  Keep comments, drawings, and approvals attached to the MP4 itself instead of buried across tools.
+                  Everyone sees the same shared file and the same feedback.
                 </p>
               </CardBody>
             </Card>
@@ -291,7 +278,7 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Faster Approvals</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  When you share video links for review, stakeholders respond on their schedule in a tool that feels
+                  When you share MP4 links for review, stakeholders respond on their schedule in a tool that feels
                   simple. That means approvals move from days to hours.
                 </p>
               </CardBody>
@@ -306,7 +293,7 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Single Source of Truth</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Every shared video, comment, and approval is tied to a specific cut in Kreatli. You always know which
+                  Every shared MP4, comment, and approval is tied to a specific cut in Kreatli. You always know which
                   version was approved and what changed since.
                 </p>
               </CardBody>
@@ -319,9 +306,9 @@ export default function ShareVideoPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Control How You Share Video With Clients</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Control How You Share MP4 With Clients</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Sharing your video should never mean losing control. Kreatli combines easy guest access with permissions,
+              Sharing your MP4 should never mean losing control. Kreatli combines easy guest access with permissions,
               versioning, and secure storage.
             </p>
           </div>
@@ -336,8 +323,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Secure, Private Links</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Share private video links backed by encrypted storage and enterprise-grade infrastructure. Only the
-                  people you invite can access your shared videos.
+                  Share private MP4 links backed by encrypted storage and enterprise-grade infrastructure. Only the
+                  people you invite can access your shared files.
                 </p>
               </CardBody>
             </Card>
@@ -351,8 +338,8 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Viewer & Commenter Controls</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Decide who can simply watch a shared video and who can leave comments or approvals. Fit every share
-                  video link to the stage of your review cycle.
+                  Decide who can simply watch a shared MP4 and who can leave comments or approvals. Fit every share link
+                  to the stage of your review cycle.
                 </p>
               </CardBody>
             </Card>
@@ -366,7 +353,7 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Version-Aware Sharing</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Share new versions of the same video while keeping approvals tied to specific cuts. Never guess which
+                  Share new versions of the same MP4 while keeping approvals tied to specific cuts. Never guess which
                   export a client signed off on.
                 </p>
               </CardBody>
@@ -381,28 +368,21 @@ export default function ShareVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Part of a Complete Review Platform</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Sharing video is just one part of Kreatli. You can also{' '}
+                  Share MP4 is just one part of Kreatli. You can also{' '}
+                  <NextLink
+                    href="/platform/share-video"
+                    className="font-medium text-primary underline underline-offset-2"
+                  >
+                    share video
+                  </NextLink>
+                  {' in any format, or '}
                   <NextLink
                     href="/platform/send-video"
                     className="font-medium text-primary underline underline-offset-2"
                   >
                     send video
                   </NextLink>
-                  {' with the same secure workflow. Combine it with frame-accurate '}
-                  <NextLink
-                    href="/platform/video-annotation"
-                    className="font-medium text-primary underline underline-offset-2"
-                  >
-                    video annotation
-                  </NextLink>
-                  {' and '}
-                  <NextLink
-                    href="/platform/add-drawing-to-video"
-                    className="font-medium text-primary underline underline-offset-2"
-                  >
-                    drawing tools
-                  </NextLink>
-                  {' to give reviewers a fully visual way to explain changes.'}
+                  {' with the same secure workflow.'}
                 </p>
               </CardBody>
             </Card>
@@ -419,8 +399,8 @@ export default function ShareVideoPage() {
       {/* See How This Works Section */}
       <ResourcesArticlesPreviewSection
         articles={articles}
-        title="See How Sharing Video Links Works in Practice"
-        description="Explore real-world workflows and guides that show how teams share video for review, collect feedback, and keep approvals organized in Kreatli."
+        title="See How Sharing MP4 Links Works in Practice"
+        description="Explore real-world workflows and guides that show how teams share MP4 for review, collect feedback, and keep approvals organized in Kreatli."
       />
 
       <PricingSection />
@@ -431,7 +411,7 @@ export default function ShareVideoPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about how to share video with clients in Kreatli and how shared links fit into your
+              Get detailed answers about how to share MP4 with clients in Kreatli and how shared links fit into your
               review and approval workflow.
             </p>
           </div>
@@ -442,9 +422,7 @@ export default function ShareVideoPage() {
                 title={<span className="text-base font-semibold sm:text-lg">{faq.question}</span>}
                 className="py-2"
               >
-                <div className="text-sm leading-relaxed text-foreground-500 sm:text-base">
-                  {'answerDisplay' in faq && faq.answerDisplay != null ? faq.answerDisplay : faq.answer}
-                </div>
+                <div className="text-sm leading-relaxed text-foreground-500 sm:text-base">{faq.answer}</div>
               </AccordionItem>
             ))}
           </Accordion>
@@ -455,7 +433,7 @@ export default function ShareVideoPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how sharing video and managing approvals in Kreatli can support your specific workflow.
+              to learn how sharing MP4 and managing approvals in Kreatli can support your specific workflow.
             </p>
           </div>
         </div>
@@ -475,13 +453,13 @@ export default function ShareVideoPage() {
           },
         )}
         title="More Resources"
-        description="Explore more Kreatli features that support sharing video, collecting frame-accurate feedback, and managing approvals across your team."
+        description="Explore more Kreatli features that support sharing MP4, collecting frame-accurate feedback, and managing approvals across your team."
       />
 
       {/* CTA Section */}
       <CTASection
-        title="Ready to Share Your Next Video for Review?"
-        description="Use Kreatli to share video links with clients, collect clear feedback, and move every project to approval faster."
+        title="Ready to Share Your Next MP4 for Review?"
+        description="Use Kreatli to share MP4 files with clients, collect clear feedback, and move every project to approval faster."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />
