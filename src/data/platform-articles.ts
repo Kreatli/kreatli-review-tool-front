@@ -387,6 +387,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/annotate-pdf': [
+    makeArticleCard({
+      id: 'platform-annotate-pdf-guide',
+      full_slug: '/guides/marketing-production-management',
+      title: 'How Marketing Teams Use Kreatli to Manage Content Production',
+      description:
+        'Discover how marketing teams use Kreatli to plan, produce, review, and launch campaigns in one production management platform, without juggling multiple tools.',
+      tags: ['Production Management', 'Marketing Teams'],
+      publishDate: '2025-12-14 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7fb2ff9485/how-marketing-teams-use-kreatli-to-manage-production-from-brief-to-launch.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-pdf-comparisons',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Most Practical Comparison Guide',
+      description:
+        'A practical 2026 guide comparing Kreatli and Frame.io for creative teams who need better production workflows.',
+      tags: ['Tools Comparison', 'Cloud MAM'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-pdf-blog',
+      full_slug: '/blog/production-platform-for-creative-teams',
+      title: 'Why Creative Teams Are Moving Toward Unified Production Platforms',
+      description:
+        'Creative production is changing. Learn why teams are moving away from tool sprawl and legacy systems toward unified platforms like Kreatli.',
+      tags: ['Production Management', 'Creative Teams'],
+      publishDate: '2025-12-10 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
+    }),
+  ],
+
   '/platform/share-mp4': [
     makeArticleCard({
       id: 'platform-share-mp4-guide',
