@@ -154,6 +154,30 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
+  {
+    label: 'Share MP4',
+    href: '/platform/share-mp4',
+    description: 'Share MP4 files with clients via secure links for review',
+    section: 'Core Platform',
+    order: 10,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
+  {
+    label: 'Annotate PDF',
+    href: '/platform/annotate-pdf',
+    description: 'Annotate and review PDFs with comments and markup',
+    section: 'Core Platform',
+    order: 11,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
