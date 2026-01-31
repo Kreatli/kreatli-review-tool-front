@@ -6,6 +6,26 @@ import { RELATED_RESOURCES } from './related-resources';
 export type PlatformSection = 'Core Platform' | 'Storage & Integrations';
 
 /**
+ * Filter tags for the /platform page feature grid.
+ * Features with no tags only appear when "All" is selected.
+ */
+export type PlatformFilterTag =
+  | 'Video'
+  | 'PDF & documents'
+  | 'Share & send'
+  | 'Review & compare'
+  | 'Safe zones & resize';
+
+/** Filter options for the platform page (id and label for UI) */
+export const PLATFORM_FILTER_OPTIONS: { id: PlatformFilterTag; label: string }[] = [
+  { id: 'Video', label: 'Video' },
+  { id: 'PDF & documents', label: 'PDF & documents' },
+  { id: 'Share & send', label: 'Share & send' },
+  { id: 'Review & compare', label: 'Review & compare' },
+  { id: 'Safe zones & resize', label: 'Safe zones & resize' },
+];
+
+/**
  * Platform page configuration interface
  * Defines metadata for platform feature pages used in navigation, sitemap, and related resources
  */
@@ -22,6 +42,8 @@ export interface PlatformPage {
   section: PlatformSection;
   /** Sort order within section (lower numbers appear first) */
   order: number;
+  /** Filter tags for /platform page; features with no tags only show when "All" is selected */
+  tags?: PlatformFilterTag[];
   /** Sitemap configuration */
   sitemap?: {
     /** Priority (0.0 to 1.0) */
@@ -65,9 +87,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Review & Approval',
     href: '/platform/review-approval',
     description: 'Frame-accurate revisions and approvals',
-    icon: 'compare',
+    icon: 'checkCircle',
     section: 'Core Platform',
     order: 2,
+    tags: ['Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -94,6 +117,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'monitorPlay',
     section: 'Core Platform',
     order: 4,
+    tags: ['Video', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -107,6 +131,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'paint',
     section: 'Core Platform',
     order: 5,
+    tags: ['Video', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -120,6 +145,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'link',
     section: 'Core Platform',
     order: 6,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -133,6 +159,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'share',
     section: 'Core Platform',
     order: 7,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -146,6 +173,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'upload',
     section: 'Core Platform',
     order: 8,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -159,6 +187,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'fullscreen',
     section: 'Core Platform',
     order: 9,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -172,6 +201,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'send',
     section: 'Core Platform',
     order: 10,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -185,6 +215,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'filePdf',
     section: 'Core Platform',
     order: 11,
+    tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -198,6 +229,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'compare',
     section: 'Core Platform',
     order: 12,
+    tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -208,9 +240,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Compare Videos',
     href: '/platform/compare-videos',
     description: 'Compare two video versions side by side with frame-accurate comments',
-    icon: 'compare',
+    icon: 'play',
     section: 'Core Platform',
     order: 13,
+    tags: ['Video', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -221,9 +254,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Compare Documents Online',
     href: '/platform/compare-documents-online',
     description: 'Compare documents online side by side with comments and annotations',
-    icon: 'compare',
+    icon: 'fileDoc',
     section: 'Core Platform',
     order: 14,
+    tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -237,6 +271,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'panorama',
     section: 'Core Platform',
     order: 15,
+    tags: ['Video'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -250,6 +285,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'instagram',
     section: 'Core Platform',
     order: 16,
+    tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -263,6 +299,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'tiktok',
     section: 'Core Platform',
     order: 17,
+    tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -276,6 +313,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'youtube',
     section: 'Core Platform',
     order: 18,
+    tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -289,6 +327,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'grid',
     section: 'Core Platform',
     order: 19,
+    tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -299,9 +338,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Send Large Video Files',
     href: '/platform/send-large-video-files',
     description: 'Send large video files to clients without email limits',
-    icon: 'send',
+    icon: 'addVideo',
     section: 'Core Platform',
     order: 20,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',

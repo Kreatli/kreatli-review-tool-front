@@ -2,6 +2,7 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
+import { useMemo, useState } from 'react';
 
 import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
@@ -10,7 +11,11 @@ import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { Icon, IconType } from '../components/various/Icon';
-import { PLATFORM_PAGES } from '../data/platform-pages';
+import {
+  PLATFORM_FILTER_OPTIONS,
+  PLATFORM_PAGES,
+  type PlatformFilterTag,
+} from '../data/platform-pages';
 import { useSession } from '../hooks/useSession';
 
 const additionalFeatures = [
@@ -116,6 +121,12 @@ const faqs = [
 
 export default function PlatformPage() {
   useSession();
+  const [selectedFilter, setSelectedFilter] = useState<'All' | PlatformFilterTag>('All');
+
+  const filteredPages = useMemo(() => {
+    if (selectedFilter === 'All') return PLATFORM_PAGES;
+    return PLATFORM_PAGES.filter((page) => page.tags?.includes(selectedFilter));
+  }, [selectedFilter]);
 
   return (
     <>
@@ -191,8 +202,47 @@ export default function PlatformPage() {
               Explore our core platform features designed for video collaboration and creative production workflows.
             </p>
           </div>
+          <div className="mb-10 flex justify-center">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setSelectedFilter('All')}
+                aria-pressed={selectedFilter === 'All'}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                  selectedFilter === 'All'
+                    ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
+                    : 'border border-transparent text-foreground-600 hover:border-primary/40 hover:bg-primary/5 hover:text-primary'
+                }`}
+              >
+                All
+              </button>
+              {PLATFORM_FILTER_OPTIONS.map((option) => {
+                const isSelected = selectedFilter === option.id;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setSelectedFilter(option.id)}
+                    aria-pressed={isSelected}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                      isSelected
+                        ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
+                        : 'border border-transparent text-foreground-600 hover:border-primary/40 hover:bg-primary/5 hover:text-primary'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PLATFORM_PAGES.map((page) => (
+            {filteredPages.length === 0 ? (
+              <p className="col-span-full text-center text-foreground-500">
+                No features match this filter.
+              </p>
+            ) : (
+              filteredPages.map((page) => (
               <Card
                 key={page.href}
                 as={NextLink}
@@ -220,7 +270,8 @@ export default function PlatformPage() {
                   </div>
                 </CardBody>
               </Card>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>
