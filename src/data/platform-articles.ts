@@ -504,6 +504,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/send-large-video-files': [
+    makeArticleCard({
+      id: 'platform-send-large-video-files-guide-1',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
+      description:
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
+    }),
+    makeArticleCard({
+      id: 'platform-send-large-video-files-guide-2',
+      full_slug: '/guides/how-to-send-video-via-email',
+      title: "How to Send a Video via Email (And When You Shouldn't)",
+      description:
+        'Learn how to send a video through email, understand file size limits, and discover better ways to share videos for review and approval.',
+      tags: ['Send Video', 'Video Review'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/30cdcaf2d6/how-to-send-a-video-via-email-and-when-you-shouldn-t.png',
+    }),
+    makeArticleCard({
+      id: 'platform-send-large-video-files-guide-3',
+      full_slug: '/guides/large-file-tools',
+      title: 'Send Large Files to Clients: 7 Tools That Let You Send 20GB+ Free',
+      description:
+        'We compare 7 practical options (cloud and peer-to-peer), show exactly how to use each one, list security caveats, and explain how to record delivery receipts.',
+      tags: ['Large Files', 'Free Tools'],
+      publishDate: '2025-11-18 00:00',
+      readTime: '7',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/6b3b121e09/send-large-files-to-clients-7-tools-that-let-you-send-20gb-free.png',
+    }),
+  ],
+
   '/platform/send-video': [
     makeArticleCard({
       id: 'platform-send-video-guide-1',

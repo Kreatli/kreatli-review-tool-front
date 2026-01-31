@@ -232,5 +232,12 @@ interface Props extends React.SVGProps<SVGElement> {
 export const Icon = ({ icon, size = 24, fill = 'currentcolor', className }: Props) => {
   const IconToRender = ICONS[icon];
 
+  if (!IconToRender) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(`[Icon] Unknown icon: "${icon}". Add it to Icon.tsx or check the icon name.`);
+    }
+    return null;
+  }
+
   return <IconToRender className={className} width={size} height={size} viewBox="0 0 24 24" fill={fill} />;
 };

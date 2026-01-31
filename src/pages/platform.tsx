@@ -192,54 +192,35 @@ export default function PlatformPage() {
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PLATFORM_PAGES.map((page) => {
-              // Map each page to an appropriate icon
-              const iconMap: Record<string, IconType> = {
-                'The Creative Workspace': 'slides',
-                'Review & Approval': 'compare',
-                'Project Orchestration': 'folder',
-                'Video Annotation': 'monitorPlay',
-                'Add Drawing To Video': 'paint',
-                'Free Video Link Generator': 'link',
-                'Share Video': 'share',
-                'Send Video': 'upload',
-                'Embed Video': 'monitorPlay',
-                'Share MP4': 'share',
-                'Secure Asset Storage': 'shield',
-                Integrations: 'link',
-              };
-              const pageIcon = iconMap[page.label] || 'infoCircle';
-
-              return (
-                <Card
-                  key={page.href}
-                  as={NextLink}
-                  href={page.href}
-                  isPressable
-                  className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
-                >
-                  <CardBody className="flex h-full flex-col gap-4 p-6">
-                    <div className="mb-2 flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
-                        <Icon icon={pageIcon} size={24} className="text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
-                          {page.label}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-foreground-500">{page.description}</p>
-                      </div>
-                      <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                        <Icon icon="arrowRight" size={20} className="text-primary" />
-                      </div>
+            {PLATFORM_PAGES.map((page) => (
+              <Card
+                key={page.href}
+                as={NextLink}
+                href={page.href}
+                isPressable
+                className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+              >
+                <CardBody className="flex h-full flex-col gap-4 p-6">
+                  <div className="mb-2 flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
+                      <Icon icon={page.icon as IconType} size={24} className="text-primary" />
                     </div>
-                    <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <span>Learn more</span>
+                    <div className="flex-1">
+                      <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
+                        {page.label}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">{page.description}</p>
                     </div>
-                  </CardBody>
-                </Card>
-              );
-            })}
+                    <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                      <Icon icon="arrowRight" size={20} className="text-primary" />
+                    </div>
+                  </div>
+                  <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span>Learn more</span>
+                  </div>
+                </CardBody>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
