@@ -1,5 +1,5 @@
-import { Avatar, Button, Card, CardBody, cn,Textarea } from '@heroui/react';
-import { useEffect, useRef,useState } from 'react';
+import { Avatar, Button, Card, CardBody, cn, Textarea } from '@heroui/react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 import { useSession } from '../../../hooks/useSession';
@@ -7,7 +7,15 @@ import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibilit
 import { Icon } from '../../various/Icon';
 import { ReviewToolComment } from './ReviewToolComment';
 
-export const CompareFeaturePreview = () => {
+export type CompareFeaturePreviewVariant = 'video' | 'pdf';
+
+interface CompareFeaturePreviewProps {
+  /** When "pdf", shows PDF comparison (filenames, sizes, document-style preview, PDF-focused comments). Default "video". */
+  variant?: CompareFeaturePreviewVariant;
+}
+
+export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePreviewProps) => {
+  const isPdf = variant === 'pdf';
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
   const isTouchScreen = useIsTouchScreen();
@@ -104,6 +112,11 @@ export const CompareFeaturePreview = () => {
     };
 
     const runAnimationSequence = () => {
+      const rightComment1 = isPdf ? 'Great improvements on the revised copy!' : 'Great improvements on the transitions!';
+      const leftComment1 = isPdf ? 'The layout on page 2 looks good.' : 'The color grading is perfect here.';
+      const rightComment2 = isPdf ? 'Can we tweak the wording on page 4?' : 'Can we adjust the timing slightly?';
+      const leftComment2 = 'This version is ready for approval.';
+
       // Start with initial state
       resetToInitialState();
 
@@ -113,7 +126,6 @@ export const CompareFeaturePreview = () => {
       }, 1500);
 
       // Step 2: Type a comment for right file (after 3s)
-      const rightComment1 = 'Great improvements on the transitions!';
       typeText(rightComment1, setComment, 3000, 40);
 
       // Step 3: Send the comment (after 6.5s)
@@ -130,7 +142,6 @@ export const CompareFeaturePreview = () => {
       }, 8000);
 
       // Step 5: Type a comment for left file (after 9.5s)
-      const leftComment1 = 'The color grading is perfect here.';
       typeText(leftComment1, setComment, 9500, 40);
 
       // Step 6: Send the comment (after 13s)
@@ -147,7 +158,7 @@ export const CompareFeaturePreview = () => {
       }, 14500);
 
       // Step 8: Type another comment for right file (after 16s)
-      typeText('Can we adjust the timing slightly?', setComment, 16000, 40);
+      typeText(rightComment2, setComment, 16000, 40);
 
       // Step 9: Clear comment without sending (after 19.5s)
       scheduleAction(() => {
@@ -160,7 +171,6 @@ export const CompareFeaturePreview = () => {
       }, 21000);
 
       // Step 11: Type a final comment (after 22.5s)
-      const leftComment2 = 'This version is ready for approval.';
       typeText(leftComment2, setComment, 22500, 40);
 
       // Step 12: Send the comment (after 26s)
@@ -191,7 +201,7 @@ export const CompareFeaturePreview = () => {
       clearAllTimeouts();
       clearTimeout(initialTimeout);
     };
-  }, [isAnimating, isTouchScreen]);
+  }, [isAnimating, isTouchScreen, isPdf]);
 
   return (
     <Card>
@@ -218,15 +228,16 @@ export const CompareFeaturePreview = () => {
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" size="sm" />
               <div className="flex-1 overflow-hidden">
                 <div className={cn('truncate font-semibold', { 'text-primary': activeFile === 'left' })}>
-                  walkthrough_v2.mp4
+                  {isPdf ? 'proposal_draft.pdf' : 'walkthrough_v2.mp4'}
                 </div>
-                <div className="text-sm text-foreground-500">278 MB</div>
+                <div className="text-sm text-foreground-500">{isPdf ? '2.1 MB' : '278 MB'}</div>
               </div>
             </div>
             {/* Preview */}
             <div
               className={cn(
-                'relative aspect-video max-h-64 cursor-pointer overflow-hidden rounded-lg border-2 transition-colors',
+                'relative max-h-64 cursor-pointer overflow-hidden rounded-lg border-2 bg-foreground-100 transition-colors',
+                isPdf ? 'aspect-[3/4]' : 'aspect-video',
                 activeFile === 'left' ? 'border-primary' : 'border-transparent',
               )}
               onClick={(e) => {
@@ -235,9 +246,9 @@ export const CompareFeaturePreview = () => {
               }}
             >
               <img
-                src="https://picsum.photos/600/400?random=1"
-                alt="Video file version 2 preview - walkthrough_v2.mp4"
-                className="absolute h-full w-full object-cover"
+                src={isPdf ? 'https://picsum.photos/400/533?random=doc1' : 'https://picsum.photos/600/400?random=1'}
+                alt={isPdf ? 'PDF draft preview - proposal_draft.pdf' : 'Video file version 2 preview - walkthrough_v2.mp4'}
+                className="absolute inset-0 h-full w-full object-contain"
               />
             </div>
           </div>
@@ -258,15 +269,16 @@ export const CompareFeaturePreview = () => {
               <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" size="sm" />
               <div className="flex-1 overflow-hidden">
                 <div className={cn('truncate font-semibold', { 'text-primary': activeFile === 'right' })}>
-                  walkthrough_v3.mp4
+                  {isPdf ? 'proposal_revised.pdf' : 'walkthrough_v3.mp4'}
                 </div>
-                <div className="text-sm text-foreground-500">285 MB</div>
+                <div className="text-sm text-foreground-500">{isPdf ? '2.3 MB' : '285 MB'}</div>
               </div>
             </div>
             {/* Preview */}
             <div
               className={cn(
-                'relative aspect-video max-h-64 cursor-pointer overflow-hidden rounded-lg border-2 transition-colors',
+                'relative max-h-64 cursor-pointer overflow-hidden rounded-lg border-2 bg-foreground-100 transition-colors',
+                isPdf ? 'aspect-[3/4]' : 'aspect-video',
                 activeFile === 'right' ? 'border-primary' : 'border-transparent',
               )}
               onClick={(e) => {
@@ -275,9 +287,9 @@ export const CompareFeaturePreview = () => {
               }}
             >
               <img
-                src="https://picsum.photos/600/400?random=2"
-                alt="Video file version 3 preview - walkthrough_v3.mp4"
-                className="absolute h-full w-full object-cover"
+                src={isPdf ? 'https://picsum.photos/400/533?random=doc2' : 'https://picsum.photos/600/400?random=2'}
+                alt={isPdf ? 'PDF revised preview - proposal_revised.pdf' : 'Video file version 3 preview - walkthrough_v3.mp4'}
+                className="absolute inset-0 h-full w-full object-contain"
               />
             </div>
           </div>
@@ -292,11 +304,20 @@ export const CompareFeaturePreview = () => {
                     user="a042581f4e29026024t"
                     userName="Kate L."
                     date="Jul 24"
-                    comment="The color grading looks better in this version."
-                    timestamp="00:05"
+                    comment={
+                      isPdf
+                        ? 'The wording on page 3 is clearer in this version.'
+                        : 'The color grading looks better in this version.'
+                    }
+                    timestamp={isPdf ? 'p. 3' : '00:05'}
                   />
                   {leftNewComment.trim() && (
-                    <ReviewToolComment userName="Guest" comment={leftNewComment.trim()} date="now" timestamp="00:10" />
+                    <ReviewToolComment
+                      userName="Guest"
+                      comment={leftNewComment.trim()}
+                      date="now"
+                      timestamp={isPdf ? 'p. 2' : '00:10'}
+                    />
                   )}
                 </>
               ) : (
@@ -305,11 +326,20 @@ export const CompareFeaturePreview = () => {
                     user="a042581f4e29026024d"
                     userName="Peter R."
                     date="Jul 25"
-                    comment="This version has better transitions."
-                    timestamp="00:08"
+                    comment={
+                      isPdf
+                        ? 'The revised layout on page 2 works well.'
+                        : 'This version has better transitions.'
+                    }
+                    timestamp={isPdf ? 'p. 2' : '00:08'}
                   />
                   {rightNewComment.trim() && (
-                    <ReviewToolComment userName="Guest" comment={rightNewComment.trim()} date="now" timestamp="00:12" />
+                    <ReviewToolComment
+                      userName="Guest"
+                      comment={rightNewComment.trim()}
+                      date="now"
+                      timestamp={isPdf ? 'p. 4' : '00:12'}
+                    />
                   )}
                 </>
               )}

@@ -192,12 +192,25 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
   {
+    label: 'Compare PDF Files',
+    href: '/platform/compare-pdf-files',
+    description: 'Compare two PDF versions side by side with comments and annotations',
+    icon: 'compare',
+    section: 'Core Platform',
+    order: 12,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
     label: 'Extract Frames from Video',
     href: '/platform/extract-frames-from-video',
     description: 'Extract, get, and export still frames from video',
     icon: 'panorama',
     section: 'Core Platform',
-    order: 12,
+    order: 13,
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -210,7 +223,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check Instagram Reels safe zone before posting',
     icon: 'instagram',
     section: 'Core Platform',
-    order: 13,
+    order: 14,
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -223,7 +236,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check TikTok safe zone before posting',
     icon: 'tiktok',
     section: 'Core Platform',
-    order: 14,
+    order: 15,
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -236,7 +249,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check YouTube Shorts safe zone before posting',
     icon: 'youtube',
     section: 'Core Platform',
-    order: 15,
+    order: 16,
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -249,7 +262,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Resize YouTube channel banner to correct dimensions',
     icon: 'grid',
     section: 'Core Platform',
-    order: 16,
+    order: 17,
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -262,7 +275,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Send large video files to clients without email limits',
     icon: 'send',
     section: 'Core Platform',
-    order: 17,
+    order: 18,
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
