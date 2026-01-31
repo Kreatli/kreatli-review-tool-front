@@ -202,6 +202,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
   },
+  {
+    label: 'TikTok Safe Zone',
+    href: '/platform/tiktok-safe-zone',
+    description: 'Check TikTok safe zone before posting',
+    section: 'Core Platform',
+    order: 14,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
