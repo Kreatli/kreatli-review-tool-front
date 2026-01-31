@@ -6,6 +6,26 @@ import { RELATED_RESOURCES } from './related-resources';
 export type PlatformSection = 'Core Platform' | 'Storage & Integrations';
 
 /**
+ * Filter tags for the /platform page feature grid.
+ * Features with no tags only appear when "All" is selected.
+ */
+export type PlatformFilterTag =
+  | 'Video'
+  | 'PDF & documents'
+  | 'Share & send'
+  | 'Review & compare'
+  | 'Safe zones & resize';
+
+/** Filter options for the platform page (id and label for UI) */
+export const PLATFORM_FILTER_OPTIONS: { id: PlatformFilterTag; label: string }[] = [
+  { id: 'Video', label: 'Video' },
+  { id: 'PDF & documents', label: 'PDF & documents' },
+  { id: 'Share & send', label: 'Share & send' },
+  { id: 'Review & compare', label: 'Review & compare' },
+  { id: 'Safe zones & resize', label: 'Safe zones & resize' },
+];
+
+/**
  * Platform page configuration interface
  * Defines metadata for platform feature pages used in navigation, sitemap, and related resources
  */
@@ -16,10 +36,14 @@ export interface PlatformPage {
   href: string;
   /** Short description for navigation dropdowns */
   description: string;
+  /** Icon key for platform feature card (must match Icon component IconType) */
+  icon: string;
   /** Section grouping for navigation organization */
   section: PlatformSection;
   /** Sort order within section (lower numbers appear first) */
   order: number;
+  /** Filter tags for /platform page; features with no tags only show when "All" is selected */
+  tags?: PlatformFilterTag[];
   /** Sitemap configuration */
   sitemap?: {
     /** Priority (0.0 to 1.0) */
@@ -50,6 +74,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'The Creative Workspace',
     href: '/platform/creative-workspace',
     description: 'Unified workspace for creative production',
+    icon: 'slides',
     section: 'Core Platform',
     order: 1,
     sitemap: {
@@ -62,8 +87,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Review & Approval',
     href: '/platform/review-approval',
     description: 'Frame-accurate revisions and approvals',
+    icon: 'checkCircle',
     section: 'Core Platform',
     order: 2,
+    tags: ['Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -74,6 +101,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Project Orchestration',
     href: '/platform/project-orchestration',
     description: 'Centralized project management',
+    icon: 'folder',
     section: 'Core Platform',
     order: 3,
     sitemap: {
@@ -86,8 +114,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Video Annotation',
     href: '/platform/video-annotation',
     description: 'Frame-accurate video annotation and markup',
+    icon: 'monitorPlay',
     section: 'Core Platform',
     order: 4,
+    tags: ['Video', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -98,8 +128,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Add Drawing To Video',
     href: '/platform/add-drawing-to-video',
     description: 'Draw directly on video frames with markup and annotations',
+    icon: 'paint',
     section: 'Core Platform',
     order: 5,
+    tags: ['Video', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -110,8 +142,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Free Video Link Generator',
     href: '/platform/free-video-link-generator',
     description: 'Generate secure video review links for clients and collaborators',
+    icon: 'link',
     section: 'Core Platform',
     order: 6,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -122,8 +156,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Share Video',
     href: '/platform/share-video',
     description: 'Share video links with clients for review and approval in seconds',
+    icon: 'share',
     section: 'Core Platform',
     order: 7,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -134,8 +170,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Send Video',
     href: '/platform/send-video',
     description: 'Send your video to clients for free review and feedback',
+    icon: 'upload',
     section: 'Core Platform',
     order: 8,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -146,8 +184,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Embed Video',
     href: '/platform/embed-video',
     description: 'Embed your videos with built-in review and approvals',
+    icon: 'fullscreen',
     section: 'Core Platform',
     order: 9,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -158,8 +198,10 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Share MP4',
     href: '/platform/share-mp4',
     description: 'Share MP4 files with clients via secure links for review',
+    icon: 'send',
     section: 'Core Platform',
     order: 10,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
@@ -170,19 +212,148 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Annotate PDF',
     href: '/platform/annotate-pdf',
     description: 'Annotate and review PDFs with comments and markup',
+    icon: 'filePdf',
     section: 'Core Platform',
     order: 11,
+    tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
+  {
+    label: 'Compare PDF Files',
+    href: '/platform/compare-pdf-files',
+    description: 'Compare two PDF versions side by side with comments and annotations',
+    icon: 'compare',
+    section: 'Core Platform',
+    order: 12,
+    tags: ['PDF & documents', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
+    label: 'Compare Videos',
+    href: '/platform/compare-videos',
+    description: 'Compare two video versions side by side with frame-accurate comments',
+    icon: 'play',
+    section: 'Core Platform',
+    order: 13,
+    tags: ['Video', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
+    label: 'Compare Documents Online',
+    href: '/platform/compare-documents-online',
+    description: 'Compare documents online side by side with comments and annotations',
+    icon: 'fileDoc',
+    section: 'Core Platform',
+    order: 14,
+    tags: ['PDF & documents', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
+    label: 'Extract Frames from Video',
+    href: '/platform/extract-frames-from-video',
+    description: 'Extract, get, and export still frames from video',
+    icon: 'panorama',
+    section: 'Core Platform',
+    order: 15,
+    tags: ['Video'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['videoAnnotation', 'creativeProofing', 'reviewApproval'],
+  },
+  {
+    label: 'Instagram Reels Safe Zone',
+    href: '/platform/instagram-reels-safe-zone',
+    description: 'Check Instagram Reels safe zone before posting',
+    icon: 'instagram',
+    section: 'Core Platform',
+    order: 16,
+    tags: ['Safe zones & resize'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
+  {
+    label: 'TikTok Safe Zone',
+    href: '/platform/tiktok-safe-zone',
+    description: 'Check TikTok safe zone before posting',
+    icon: 'tiktok',
+    section: 'Core Platform',
+    order: 17,
+    tags: ['Safe zones & resize'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
+  {
+    label: 'YouTube Shorts Safe Zone',
+    href: '/platform/youtube-shorts-safe-zone',
+    description: 'Check YouTube Shorts safe zone before posting',
+    icon: 'youtube',
+    section: 'Core Platform',
+    order: 18,
+    tags: ['Safe zones & resize'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
+  {
+    label: 'Resize YouTube Banner',
+    href: '/platform/resize-youtube-banner',
+    description: 'Resize YouTube channel banner to correct dimensions',
+    icon: 'grid',
+    section: 'Core Platform',
+    order: 19,
+    tags: ['Safe zones & resize'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
+  {
+    label: 'Send Large Video Files',
+    href: '/platform/send-large-video-files',
+    description: 'Send large video files to clients without email limits',
+    icon: 'addVideo',
+    section: 'Core Platform',
+    order: 20,
+    tags: ['Video', 'Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
     href: '/platform/secure-asset-storage',
     description: 'Reliable media storage and organization',
+    icon: 'shield',
     section: 'Storage & Integrations',
     order: 1,
     sitemap: {
@@ -195,6 +366,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Integrations',
     href: '/platform/integrations',
     description: 'Google Drive and Dropbox integrations',
+    icon: 'gear',
     section: 'Storage & Integrations',
     order: 2,
     sitemap: {

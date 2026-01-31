@@ -233,235 +233,625 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   ],
   '/platform/add-drawing-to-video': [
     makeArticleCard({
-      id: 'platform-add-drawing-to-video-guide',
+      id: 'platform-add-drawing-to-video-guide-1',
       full_slug: '/guides/how-to-draw-on-a-video',
-      title: 'How to Add Drawing to Video: A Complete Guide for Creative Teams',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
       description:
-        'Learn how to add drawing to video for clearer feedback, faster reviews, and fewer revisions. Frame-accurate annotation, arrows, highlights, and collaboration in one place.',
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
       tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-29 00:00',
       readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-add-drawing-to-video-comparisons',
-      full_slug: '/comparisons/kreatli-vs-frameio-2026',
-      title: 'Kreatli vs Frame.io (2026): Drawing & Annotation for Video Teams',
+      id: 'platform-add-drawing-to-video-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Compare drawing and annotation workflows in Kreatli and Frame.io so video teams can choose the right platform for visual feedback on video frames.',
-      tags: ['Creative Teams', 'Tools Comparison'],
-      publishDate: '2025-12-12 00:00',
-      readTime: '10',
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-add-drawing-to-video-blog',
-      full_slug: '/blog/video-post-production',
-      title: 'Why Drawing Directly on Video Frames Improves Post-Production',
+      id: 'platform-add-drawing-to-video-guide-3',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
       description:
-        'Learn how drawing directly on video frames speeds up cuts, reduces revision cycles, and makes feedback clearer for editors and producers.',
-      tags: ['Post-Production', 'Video Annotation'],
-      publishDate: '2025-11-12 00:00',
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+  ],
+
+  '/platform/resize-youtube-banner': [
+    makeArticleCard({
+      id: 'platform-resize-youtube-banner-guide-1',
+      full_slug: '/guides/youtube-banner-resizer',
+      title: 'YouTube Banner Resizer Guide: Best Practices (2026)',
+      description:
+        'Learn how to resize your YouTube channel banner to the correct dimensions (2560×1440px) and use the safe zone so channel art looks great on mobile, desktop, tablet, and TV.',
+      tags: ['YouTube', 'Channel Art', 'Free Tools'],
+      publishDate: '2026-01-15 00:00',
       readTime: '8',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/f7d6f8ad99/youtube-banner-resizer-guide-dimensions-safe-zones-best-practices-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-resize-youtube-banner-guide-2',
+      full_slug: '/guides/youtube-shorts-safe-zone',
+      title: 'YouTube Shorts Safe Zone Guide (2026)',
+      description:
+        'Learn YouTube Shorts safe zones, UI overlays, and text placement best practices to protect visibility and scale short-form video workflows.',
+      tags: ['YouTube Shorts', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-13 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/1410b38e54/youtube-shorts-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-resize-youtube-banner-guide-3',
+      full_slug: '/guides/instagram-reels-safe-zone',
+      title: 'Instagram Reels Safe Zone Guide (2026)',
+      description:
+        'Learn Instagram Reels safe zones, text overlay rules, and best practices to avoid UI overlap and produce scalable, high-performing short-form video.',
+      tags: ['Instagram Reels', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/762b429275/instagram-reels-safe-zone-guide-2026.png',
+    }),
+  ],
+
+  '/platform/youtube-shorts-safe-zone': [
+    makeArticleCard({
+      id: 'platform-youtube-shorts-safe-zone-guide-1',
+      full_slug: '/guides/youtube-shorts-safe-zone',
+      title: 'YouTube Shorts Safe Zone Guide (2026)',
+      description:
+        'Learn YouTube Shorts safe zones, UI overlays, and text placement best practices to protect visibility and scale short-form video workflows.',
+      tags: ['YouTube Shorts', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-13 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/1410b38e54/youtube-shorts-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-youtube-shorts-safe-zone-guide-2',
+      full_slug: '/guides/tiktok-safe-zone',
+      title: 'TikTok Safe Zone Guide (2026)',
+      description:
+        'Learn TikTok safe zones, text placement rules, and best practices to avoid UI overlap and scale high-performing short-form video production.',
+      tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-youtube-shorts-safe-zone-guide-3',
+      full_slug: '/guides/instagram-reels-safe-zone',
+      title: 'Instagram Reels Safe Zone Guide (2026)',
+      description:
+        'Learn Instagram Reels safe zones, text overlay rules, and best practices to avoid UI overlap and produce scalable, high-performing short-form video.',
+      tags: ['Instagram Reels', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/762b429275/instagram-reels-safe-zone-guide-2026.png',
+    }),
+  ],
+
+  '/platform/tiktok-safe-zone': [
+    makeArticleCard({
+      id: 'platform-tiktok-safe-zone-guide-1',
+      full_slug: '/guides/tiktok-safe-zone',
+      title: 'TikTok Safe Zone Guide (2026)',
+      description:
+        'Learn TikTok safe zones, text placement rules, and best practices to avoid UI overlap and scale high-performing short-form video production.',
+      tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-tiktok-safe-zone-guide-2',
+      full_slug: '/guides/instagram-reels-safe-zone',
+      title: 'Instagram Reels Safe Zone Guide (2026)',
+      description:
+        'Learn Instagram Reels safe zones, text overlay rules, and best practices to avoid UI overlap and produce scalable, high-performing short-form video.',
+      tags: ['Instagram Reels', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/762b429275/instagram-reels-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-tiktok-safe-zone-guide-3',
+      full_slug: '/guides/youtube-shorts-safe-zone',
+      title: 'YouTube Shorts Safe Zone Guide (2026)',
+      description:
+        'Learn YouTube Shorts safe zones, UI overlays, and text placement best practices to protect visibility and scale short-form video workflows.',
+      tags: ['YouTube Shorts', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-13 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/1410b38e54/youtube-shorts-safe-zone-guide-2026.png',
+    }),
+  ],
+
+  '/platform/instagram-reels-safe-zone': [
+    makeArticleCard({
+      id: 'platform-instagram-reels-safe-zone-guide-1',
+      full_slug: '/guides/instagram-reels-safe-zone',
+      title: 'Instagram Reels Safe Zone Guide (2026)',
+      description:
+        'Learn Instagram Reels safe zones, text overlay rules, and best practices to avoid UI overlap and produce scalable, high-performing short-form video.',
+      tags: ['Instagram Reels', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/762b429275/instagram-reels-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-instagram-reels-safe-zone-guide-2',
+      full_slug: '/guides/tiktok-safe-zone',
+      title: 'TikTok Safe Zone Guide (2026)',
+      description:
+        'Learn TikTok safe zones, text placement rules, and best practices to avoid UI overlap and scale high-performing short-form video production.',
+      tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-instagram-reels-safe-zone-guide-3',
+      full_slug: '/guides/youtube-shorts-safe-zone',
+      title: 'YouTube Shorts Safe Zone Guide (2026)',
+      description:
+        'Learn YouTube Shorts safe zones, UI overlays, and text placement best practices to protect visibility and scale short-form video workflows.',
+      tags: ['YouTube Shorts', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-13 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/1410b38e54/youtube-shorts-safe-zone-guide-2026.png',
+    }),
+  ],
+
+  '/platform/extract-frames-from-video': [
+    makeArticleCard({
+      id: 'platform-extract-frames-from-video-guide-1',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+    makeArticleCard({
+      id: 'platform-extract-frames-from-video-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-extract-frames-from-video-guide-3',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
   '/platform/free-video-link-generator': [
     makeArticleCard({
-      id: 'platform-free-video-link-generator-guide',
-      full_slug: '/guides/kreatli-for-video-production-companies',
-      title: 'How Video Teams Use Shareable Links for Fast Approvals',
+      id: 'platform-free-video-link-generator-guide-1',
+      full_slug: '/guides/how-to-send-video-via-email',
+      title: "How to Send a Video via Email (And When You Shouldn't)",
       description:
-        'See how video teams replace heavy attachments and scattered WeTransfer links with secure, shareable review links that keep feedback and versions in one place.',
-      tags: ['Video Review', 'Client Approvals'],
-      publishDate: '2025-12-20 00:00',
-      readTime: '8',
+        'Learn how to send a video through email, understand file size limits, and discover better ways to share videos for review and approval.',
+      tags: ['Send Video', 'Video Review'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/30cdcaf2d6/how-to-send-a-video-via-email-and-when-you-shouldn-t.png',
     }),
     makeArticleCard({
-      id: 'platform-free-video-link-generator-comparisons',
-      full_slug: '/comparisons/kreatli-vs-frameio-2026',
-      title: 'Kreatli vs Frame.io (2026): Sharing Links for Video Review',
+      id: 'platform-free-video-link-generator-guide-2',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
       description:
-        'Compare how Kreatli and Frame.io handle secure shareable links, guest access, and frame-accurate feedback for modern video review workflows.',
-      tags: ['Tools Comparison', 'Video Review'],
-      publishDate: '2025-12-18 00:00',
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
       readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
     }),
     makeArticleCard({
-      id: 'platform-free-video-link-generator-blog',
-      full_slug: '/blog/video-post-production',
-      title: 'Why Shareable Review Links Speed Up Post-Production',
+      id: 'platform-free-video-link-generator-guide-3',
+      full_slug: '/guides/large-file-tools',
+      title: 'Send Large Files to Clients: 7 Tools That Let You Send 20GB+ Free',
       description:
-        'Learn how moving approvals into a shared review space with secure links reduces delays, clarifies feedback, and shortens post-production cycles.',
-      tags: ['Post-Production', 'Client Collaboration'],
+        'We compare 7 practical options (cloud and peer-to-peer), show exactly how to use each one, list security caveats, and explain how to record delivery receipts.',
+      tags: ['Large Files', 'Free Tools'],
       publishDate: '2025-11-18 00:00',
       readTime: '7',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6b3b121e09/send-large-files-to-clients-7-tools-that-let-you-send-20gb-free.png',
+    }),
+  ],
+
+  '/platform/send-large-video-files': [
+    makeArticleCard({
+      id: 'platform-send-large-video-files-guide-1',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
+      description:
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
+    }),
+    makeArticleCard({
+      id: 'platform-send-large-video-files-guide-2',
+      full_slug: '/guides/how-to-send-video-via-email',
+      title: "How to Send a Video via Email (And When You Shouldn't)",
+      description:
+        'Learn how to send a video through email, understand file size limits, and discover better ways to share videos for review and approval.',
+      tags: ['Send Video', 'Video Review'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/30cdcaf2d6/how-to-send-a-video-via-email-and-when-you-shouldn-t.png',
+    }),
+    makeArticleCard({
+      id: 'platform-send-large-video-files-guide-3',
+      full_slug: '/guides/large-file-tools',
+      title: 'Send Large Files to Clients: 7 Tools That Let You Send 20GB+ Free',
+      description:
+        'We compare 7 practical options (cloud and peer-to-peer), show exactly how to use each one, list security caveats, and explain how to record delivery receipts.',
+      tags: ['Large Files', 'Free Tools'],
+      publishDate: '2025-11-18 00:00',
+      readTime: '7',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/6b3b121e09/send-large-files-to-clients-7-tools-that-let-you-send-20gb-free.png',
     }),
   ],
 
   '/platform/send-video': [
     makeArticleCard({
-      id: 'platform-send-video-guide',
-      full_slug: '/guides/kreatli-for-video-production-companies',
-      title: 'How Video Teams Send Video for Fast Client Approvals',
+      id: 'platform-send-video-guide-1',
+      full_slug: '/guides/how-to-send-video-via-email',
+      title: "How to Send a Video via Email (And When You Shouldn't)",
       description:
-        'See how video teams send video to clients via secure links instead of heavy attachments. Keep feedback and versions in one place when you send video for review.',
-      tags: ['Send Video', 'Client Approvals'],
-      publishDate: '2025-12-20 00:00',
-      readTime: '8',
+        'Learn how to send a video through email, understand file size limits, and discover better ways to share videos for review and approval.',
+      tags: ['Send Video', 'Video Review'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/30cdcaf2d6/how-to-send-a-video-via-email-and-when-you-shouldn-t.png',
     }),
     makeArticleCard({
-      id: 'platform-send-video-comparisons',
-      full_slug: '/comparisons/kreatli-vs-frameio-2026',
-      title: 'Kreatli vs Frame.io (2026): Sending Video for Review',
+      id: 'platform-send-video-guide-2',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
       description:
-        'Compare how Kreatli and Frame.io handle sending video via secure links, guest access, and frame-accurate feedback for modern video review workflows.',
-      tags: ['Tools Comparison', 'Video Review'],
-      publishDate: '2025-12-18 00:00',
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
       readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
     }),
     makeArticleCard({
-      id: 'platform-send-video-blog',
-      full_slug: '/blog/video-post-production',
-      title: 'Why Sending Video via Link Speeds Up Post-Production',
+      id: 'platform-send-video-guide-3',
+      full_slug: '/guides/large-file-tools',
+      title: 'Send Large Files to Clients: 7 Tools That Let You Send 20GB+ Free',
       description:
-        'Learn how sending video through secure links instead of attachments reduces delays, clarifies feedback, and shortens post-production cycles.',
-      tags: ['Post-Production', 'Client Collaboration'],
+        'We compare 7 practical options (cloud and peer-to-peer), show exactly how to use each one, list security caveats, and explain how to record delivery receipts.',
+      tags: ['Large Files', 'Free Tools'],
       publishDate: '2025-11-18 00:00',
       readTime: '7',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6b3b121e09/send-large-files-to-clients-7-tools-that-let-you-send-20gb-free.png',
     }),
   ],
 
   '/platform/video-annotation': [
     makeArticleCard({
-      id: 'platform-video-annotation-guide',
-      full_slug: '/guides/kreatli-for-video-production-companies',
-      title: 'How Video Teams Use Frame-Accurate Annotation in Production',
+      id: 'platform-video-annotation-guide-1',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
       description:
-        'See how video teams use frame-accurate annotations in Kreatli to capture precise feedback on cuts, motion, and graphics throughout post-production.',
-      tags: ['Video Annotation', 'Post-Production'],
-      publishDate: '2025-12-22 00:00',
-      readTime: '9',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
-    }),
-    makeArticleCard({
-      id: 'platform-video-annotation-comparisons',
-      full_slug: '/comparisons/kreatli-vs-frameio-2026',
-      title: 'Kreatli vs Frame.io (2026): Annotation & Review for Video Teams',
-      description:
-        'Compare how Kreatli and Frame.io approach frame-accurate annotation, multi-reviewer feedback, and version-aware review workflows.',
-      tags: ['Tools Comparison', 'Video Review'],
-      publishDate: '2025-12-19 00:00',
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
       readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-video-annotation-blog',
-      full_slug: '/blog/video-post-production',
-      title: 'Why Frame-Accurate Annotation Speeds Up Post-Production',
+      id: 'platform-video-annotation-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Learn how tying feedback to exact frames with drawings and comments reduces miscommunication and shortens revision cycles for editors and producers.',
-      tags: ['Post-Production', 'Client Collaboration'],
-      publishDate: '2025-11-20 00:00',
-      readTime: '8',
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-annotation-guide-3',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
     }),
   ],
 
   '/platform/annotate-pdf': [
     makeArticleCard({
-      id: 'platform-annotate-pdf-guide',
-      full_slug: '/guides/marketing-production-management',
-      title: 'How Marketing Teams Use Kreatli to Manage Content Production',
+      id: 'platform-annotate-pdf-guide-1',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
       description:
-        'Discover how marketing teams use Kreatli to plan, produce, review, and launch campaigns in one production management platform, without juggling multiple tools.',
-      tags: ['Production Management', 'Marketing Teams'],
-      publishDate: '2025-12-14 00:00',
-      readTime: '9',
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7fb2ff9485/how-marketing-teams-use-kreatli-to-manage-production-from-brief-to-launch.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-annotate-pdf-comparisons',
-      full_slug: '/comparisons/kreatli-vs-frameio-2026',
-      title: 'Kreatli vs Frame.io (2026): Most Practical Comparison Guide',
+      id: 'platform-annotate-pdf-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'A practical 2026 guide comparing Kreatli and Frame.io for creative teams who need better production workflows.',
-      tags: ['Tools Comparison', 'Cloud MAM'],
-      publishDate: '2025-12-12 00:00',
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-pdf-guide-3',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+  ],
+
+  '/platform/compare-pdf-files': [
+    makeArticleCard({
+      id: 'platform-compare-pdf-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
       readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-pdf-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-pdf-guide-3',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+  ],
+
+  '/platform/compare-videos': [
+    makeArticleCard({
+      id: 'platform-compare-videos-guide-1',
+      full_slug: '/comparisons/best-video-review-platforms-2026',
+      title: 'Best Video Review Platforms for Creative Teams in 2026',
+      description:
+        'Compare the best video review platforms in 2026. See features, limitations, and why Kreatli offers a fundamentally different approach to video collaboration.',
+      tags: ['Video Review', 'Creative Teams'],
+      publishDate: '2026-01-17 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8d83a78aaf/best-video-review-platforms-for-creative-teams-in-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-videos-guide-2',
+      full_slug: '/comparisons/frameio-alternatives-2026',
+      title: 'The Best Frame.io Alternatives for Video Review & Approval (2026)',
+      description:
+        'Compare the best Frame.io alternatives in 2026. See which tools handle video review, approvals, and full production workflows at scale.',
+      tags: ['Frame.io', 'Video Review'],
+      publishDate: '2026-01-05 00:00',
+      readTime: '14',
       imageFilename:
         'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-annotate-pdf-blog',
-      full_slug: '/blog/production-platform-for-creative-teams',
-      title: 'Why Creative Teams Are Moving Toward Unified Production Platforms',
+      id: 'platform-compare-videos-guide-3',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
       description:
-        'Creative production is changing. Learn why teams are moving away from tool sprawl and legacy systems toward unified platforms like Kreatli.',
-      tags: ['Production Management', 'Creative Teams'],
-      publishDate: '2025-12-10 00:00',
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
       readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+  ],
+
+  '/platform/compare-documents-online': [
+    makeArticleCard({
+      id: 'platform-compare-docs-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-docs-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-docs-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
   '/platform/share-mp4': [
     makeArticleCard({
-      id: 'platform-share-mp4-guide',
-      full_slug: '/guides/kreatli-for-video-production-companies',
-      title: 'How Video Production Companies Manage Projects With Kreatli',
+      id: 'platform-share-mp4-guide-1',
+      full_slug: '/guides/how-to-send-video-via-email',
+      title: "How to Send a Video via Email (And When You Shouldn't)",
       description:
-        'Learn how video production companies use Kreatli to manage projects, collaborate with clients, and streamline approvals from pre-production to delivery.',
-      tags: ['Share MP4', 'Video Review', 'Client Approvals'],
-      publishDate: '2025-12-25 00:00',
-      readTime: '11',
+        'Learn how to send a video through email, understand file size limits, and discover better ways to share videos for review and approval.',
+      tags: ['Send Video', 'Video Review'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/30cdcaf2d6/how-to-send-a-video-via-email-and-when-you-shouldn-t.png',
     }),
     makeArticleCard({
-      id: 'platform-share-mp4-comparisons',
-      full_slug: '/comparisons/kreatli-vs-frameio-2026',
-      title: 'Kreatli vs Frame.io (2026): Most Practical Comparison Guide',
+      id: 'platform-share-mp4-guide-2',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
       description:
-        'A practical 2026 guide comparing Kreatli and Frame.io for creative teams who need better production workflows.',
-      tags: ['Tools Comparison', 'Share MP4', 'Video Review'],
-      publishDate: '2025-12-12 00:00',
-      readTime: '12',
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
+      readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
     }),
     makeArticleCard({
-      id: 'platform-share-mp4-blog',
-      full_slug: '/blog/video-post-production',
-      title: 'Post-Production Video Editing: How Collaboration Tools Improve Cuts',
+      id: 'platform-share-mp4-guide-3',
+      full_slug: '/guides/large-file-tools',
+      title: 'Send Large Files to Clients: 7 Tools That Let You Send 20GB+ Free',
       description:
-        'Collaboration tools change how editors work - fewer context switches, frame-accurate feedback, faster turnarounds, and better reuse.',
-      tags: ['Post-Production', 'Share MP4', 'Client Collaboration'],
-      publishDate: '2025-11-12 00:00',
-      readTime: '8',
+        'We compare 7 practical options (cloud and peer-to-peer), show exactly how to use each one, list security caveats, and explain how to record delivery receipts.',
+      tags: ['Large Files', 'Free Tools'],
+      publishDate: '2025-11-18 00:00',
+      readTime: '7',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6b3b121e09/send-large-files-to-clients-7-tools-that-let-you-send-20gb-free.png',
+    }),
+  ],
+
+  '/platform/share-video': [
+    makeArticleCard({
+      id: 'platform-share-video-guide-1',
+      full_slug: '/guides/how-to-send-video-via-email',
+      title: "How to Send a Video via Email (And When You Shouldn't)",
+      description:
+        'Learn how to send a video through email, understand file size limits, and discover better ways to share videos for review and approval.',
+      tags: ['Send Video', 'Video Review'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/30cdcaf2d6/how-to-send-a-video-via-email-and-when-you-shouldn-t.png',
+    }),
+    makeArticleCard({
+      id: 'platform-share-video-guide-2',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
+      description:
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
+    }),
+    makeArticleCard({
+      id: 'platform-share-video-guide-3',
+      full_slug: '/guides/large-file-tools',
+      title: 'Send Large Files to Clients: 7 Tools That Let You Send 20GB+ Free',
+      description:
+        'We compare 7 practical options (cloud and peer-to-peer), show exactly how to use each one, list security caveats, and explain how to record delivery receipts.',
+      tags: ['Large Files', 'Free Tools'],
+      publishDate: '2025-11-18 00:00',
+      readTime: '7',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/6b3b121e09/send-large-files-to-clients-7-tools-that-let-you-send-20gb-free.png',
     }),
   ],
 };

@@ -16,6 +16,8 @@ interface MoreFreeToolsSectionProps {
   tools?: FreeTool[];
   /** Show "View All Free Tools" button */
   showViewAllButton?: boolean;
+  /** When true, show YouTube Banner Resizer instead of Software Cost Calculator in the first 4 tools (used on platform pages) */
+  useBannerResizerInsteadOfCostCalculator?: boolean;
 }
 
 export function MoreFreeToolsSection({
@@ -24,11 +26,21 @@ export function MoreFreeToolsSection({
   description = 'Explore our collection of free tools designed to help creative professionals work more efficiently.',
   tools,
   showViewAllButton = true,
+  useBannerResizerInsteadOfCostCalculator = false,
 }: MoreFreeToolsSectionProps) {
   // Filter out the current page tool if excludeHref is provided
-  const displayTools = tools
+  let displayTools = tools
     ? tools
     : FREE_TOOLS.filter((tool) => !excludeHref || tool.href !== excludeHref);
+
+  // On platform pages: show YouTube Banner Resizer instead of Software Cost Calculator
+  if (useBannerResizerInsteadOfCostCalculator && !tools) {
+    const bannerResizer = FREE_TOOLS.find((t) => t.href === '/free-tools/youtube-banner-resizer');
+    displayTools = displayTools.map((t) =>
+      t.href === '/free-tools/cost-calculator' && bannerResizer ? bannerResizer : t
+    );
+    displayTools = displayTools.filter((t, i, arr) => arr.findIndex((x) => x.href === t.href) === i);
+  }
 
   const limitedTools = displayTools.slice(0, 4);
 

@@ -20,7 +20,7 @@ export default function InstagramSafeZoneCheckerPage() {
         <title>Instagram Reels Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool—no sign-up required."
+          content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool."
         />
         <meta property="og:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta

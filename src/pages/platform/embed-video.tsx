@@ -317,6 +317,7 @@ export default function EmbedVideoPage() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore free tools like our video embedder, link generator, and frame-accurate review features to help your team ship better work faster."
+        useBannerResizerInsteadOfCostCalculator
       />
 
       {/* Resources Section */}

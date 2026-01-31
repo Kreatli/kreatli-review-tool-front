@@ -20,7 +20,7 @@ export default function TikTokSafeZoneCheckerPage() {
         <title>TikTok Safe Zone Checker - Free Preview Tool | Kreatli</title>
         <meta
           name="description"
-          content="Preview TikTok UI overlays before posting. See where profile pictures, usernames, music tracks, and engagement buttons appear. Free tool—no sign-up required."
+          content="Preview TikTok UI overlays before posting. See where profile pictures, usernames, music tracks, and engagement buttons appear. Free tool."
         />
         <meta property="og:title" content="TikTok Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta

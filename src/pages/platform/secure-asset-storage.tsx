@@ -284,6 +284,7 @@ export default function SecureAssetStoragePage() {
       <MoreFreeToolsSection
         title="Free Tools & Resources"
         description="Access our free calculators and tools to optimize your creative workflow."
+        useBannerResizerInsteadOfCostCalculator
       />
 
       {/* See How It Works Section */}

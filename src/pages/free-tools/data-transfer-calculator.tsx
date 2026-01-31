@@ -34,7 +34,7 @@ export default function DataTransferCalculatorPage() {
         />
         <meta
           property="og:description"
-          content="Calculate upload and download times for large files instantly. Free tool for video editors and creative professionals. No sign-up required."
+          content="Calculate upload and download times for large files instantly. Free tool for video editors and creative professionals."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/data-transfer-calculator" />

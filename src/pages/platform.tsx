@@ -2,6 +2,7 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
+import { useMemo, useState } from 'react';
 
 import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
@@ -10,7 +11,11 @@ import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { Icon, IconType } from '../components/various/Icon';
-import { PLATFORM_PAGES } from '../data/platform-pages';
+import {
+  PLATFORM_FILTER_OPTIONS,
+  PLATFORM_PAGES,
+  type PlatformFilterTag,
+} from '../data/platform-pages';
 import { useSession } from '../hooks/useSession';
 
 const additionalFeatures = [
@@ -116,6 +121,12 @@ const faqs = [
 
 export default function PlatformPage() {
   useSession();
+  const [selectedFilter, setSelectedFilter] = useState<'All' | PlatformFilterTag>('All');
+
+  const filteredPages = useMemo(() => {
+    if (selectedFilter === 'All') return PLATFORM_PAGES;
+    return PLATFORM_PAGES.filter((page) => page.tags?.includes(selectedFilter));
+  }, [selectedFilter]);
 
   return (
     <>
@@ -191,55 +202,76 @@ export default function PlatformPage() {
               Explore our core platform features designed for video collaboration and creative production workflows.
             </p>
           </div>
+          <div className="mb-10 flex justify-center">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setSelectedFilter('All')}
+                aria-pressed={selectedFilter === 'All'}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                  selectedFilter === 'All'
+                    ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
+                    : 'border border-transparent text-foreground-600 hover:border-primary/40 hover:bg-primary/5 hover:text-primary'
+                }`}
+              >
+                All
+              </button>
+              {PLATFORM_FILTER_OPTIONS.map((option) => {
+                const isSelected = selectedFilter === option.id;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setSelectedFilter(option.id)}
+                    aria-pressed={isSelected}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                      isSelected
+                        ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
+                        : 'border border-transparent text-foreground-600 hover:border-primary/40 hover:bg-primary/5 hover:text-primary'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PLATFORM_PAGES.map((page) => {
-              // Map each page to an appropriate icon
-              const iconMap: Record<string, IconType> = {
-                'The Creative Workspace': 'slides',
-                'Review & Approval': 'compare',
-                'Project Orchestration': 'folder',
-                'Video Annotation': 'monitorPlay',
-                'Add Drawing To Video': 'paint',
-                'Free Video Link Generator': 'link',
-                'Share Video': 'share',
-                'Send Video': 'upload',
-                'Embed Video': 'monitorPlay',
-                'Share MP4': 'share',
-                'Secure Asset Storage': 'shield',
-                Integrations: 'link',
-              };
-              const pageIcon = iconMap[page.label] || 'infoCircle';
-
-              return (
-                <Card
-                  key={page.href}
-                  as={NextLink}
-                  href={page.href}
-                  isPressable
-                  className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
-                >
-                  <CardBody className="flex h-full flex-col gap-4 p-6">
-                    <div className="mb-2 flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
-                        <Icon icon={pageIcon} size={24} className="text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
-                          {page.label}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-foreground-500">{page.description}</p>
-                      </div>
-                      <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                        <Icon icon="arrowRight" size={20} className="text-primary" />
-                      </div>
+            {filteredPages.length === 0 ? (
+              <p className="col-span-full text-center text-foreground-500">
+                No features match this filter.
+              </p>
+            ) : (
+              filteredPages.map((page) => (
+              <Card
+                key={page.href}
+                as={NextLink}
+                href={page.href}
+                isPressable
+                className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+              >
+                <CardBody className="flex h-full flex-col gap-4 p-6">
+                  <div className="mb-2 flex items-start gap-4">
+                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
+                      <Icon icon={page.icon as IconType} size={24} className="text-primary" />
                     </div>
-                    <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <span>Learn more</span>
+                    <div className="flex-1">
+                      <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
+                        {page.label}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-foreground-500">{page.description}</p>
                     </div>
-                  </CardBody>
-                </Card>
-              );
-            })}
+                    <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                      <Icon icon="arrowRight" size={20} className="text-primary" />
+                    </div>
+                  </div>
+                  <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span>Learn more</span>
+                  </div>
+                </CardBody>
+              </Card>
+              ))
+            )}
           </div>
         </div>
       </section>

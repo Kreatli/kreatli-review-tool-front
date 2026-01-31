@@ -10,7 +10,6 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -21,72 +20,67 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What does “add drawing to video” mean in Kreatli?',
+    question: 'How do I send large video files to clients?',
     answer:
-      'In Kreatli, “add drawing to video” means you can draw directly on video frames using arrows, boxes, highlights, and freehand markup that stay attached to the exact frame and timestamp. Instead of describing changes in plain text like "adjust this part around 0:25," you visually circle, point, or highlight the exact area that needs attention. Those drawings live on top of the video as precise visual instructions, so editors and collaborators always know exactly what to change.',
+      'Email has strict size limits, so large video files need other methods. You can use cloud storage links (Google Drive, Dropbox), file-transfer tools (WeTransfer, etc.), or a review platform like Kreatli that lets you upload once and send a link—recipients watch in the browser without downloading. Kreatli is built for video: you send a secure link, clients watch and leave frame-accurate comments, and you avoid attachment limits and download friction.',
   },
   {
-    question: 'What kinds of drawing tools can I use on video frames?',
+    question: 'What is the best way to send a large video file?',
     answer:
-      'Kreatli lets you use multiple drawing tools on video frames: freehand drawing to sketch ideas, rectangles and circles to highlight regions, arrows and pointers to call out specific elements, and color-coded markup to distinguish different types of feedback. You can combine drawings with frame-accurate comments so every arrow, box, or highlight has clear written context. These tools are designed for fast, visual feedback that feels natural for video production workflows.',
+      'For review and approval, sending a link is usually better than sending the file itself. Upload your video to Kreatli, generate a secure link, and share it with clients. They open the link, watch in full quality, and comment—no download, no account required. For one-off delivery of the raw file, cloud or peer-to-peer transfer tools work; for ongoing review workflows, a dedicated video review platform keeps everything in one place.',
   },
   {
-    question: 'How are drawings linked to timestamps and frames?',
+    question: 'Why can’t I email a large video file?',
     answer:
-      'Every drawing you add in Kreatli is pinned to an exact frame and timestamp in the video player. When you scrub or play the video, drawings appear at the moment they were created and disappear when you move away from that frame range, so the timeline never feels cluttered. Editors can jump directly from a drawing to the exact frame where feedback was given, eliminating guesswork and speeding up revisions across cuts and versions.',
+      'Most email providers limit attachments to 25 MB or less. Video files often exceed that, so emails bounce or fail. Even when they go through, large attachments slow down inboxes and may be stripped or blocked. Sending a link instead (e.g. from Kreatli, Google Drive, or a file-transfer service) avoids these limits and lets recipients stream or download on their own.',
   },
   {
-    question: 'Can clients draw on videos without creating an account?',
+    question: 'Is it free to send large video files with Kreatli?',
     answer:
-      'Yes. With Kreatli’s secure guest review links, clients and external stakeholders can draw on videos and leave visual feedback without creating an account. You share a protected link, and they can watch the video, add drawings, and leave comments in a simple interface. This removes friction from the approval process while still keeping all drawings, comments, and approvals tied to the right file and version in your projects.',
+      'Yes. You can send video for free with Kreatli: upload once, get a secure link, and share it with clients for review. Recipients watch and comment in the browser without signing up. Paid plans offer higher limits, more projects, and advanced permissions if you need to scale.',
   },
   {
-    question: 'How does drawing on video improve feedback compared to plain comments?',
+    question: 'Do recipients need to download the video to watch it?',
     answer:
-      'Drawing directly on video frames turns vague feedback into precise visual direction. Instead of long email threads or generic comments like “make this part brighter,” reviewers can circle the exact object, point to a specific movement, or mark the part of the frame that needs changing. This drastically reduces miscommunication, cuts down revision rounds, and helps editors deliver what stakeholders actually envisioned on the first pass.',
+      'Not when you use Kreatli. You send a link; they open it in their browser and watch the video there. No download required unless they choose to. That keeps the experience simple and avoids asking clients to handle large files. Feedback and approvals stay tied to the same link and version.',
   },
   {
-    question: 'Can I edit or remove drawings after they are created?',
+    question: 'What’s the difference between sending a file and sending a link?',
     answer:
-      'Yes. Drawings in Kreatli are fully editable within the review workflow. You can adjust, move, or delete drawings if feedback changes, and you can mark drawing-linked comments as resolved when edits are complete. This keeps your video review space clean over time while still preserving a clear history of what was requested and what has already been addressed.',
-  },
-  {
-    question: 'Do drawings stay in sync across new versions of a video?',
-    answer:
-      'Kreatli keeps drawings, comments, and approvals organized by version so you always know which feedback belongs to which cut. When you upload a new version of a video, you can compare changes, see what feedback has been addressed, and decide which drawings still apply. This version-aware drawing workflow helps teams move through iterations quickly without losing context from earlier review rounds.',
+      'Sending the file means you transfer the actual video (e.g. via WeTransfer or cloud storage)—the recipient gets a copy. Sending a link means they access the video where it’s hosted (e.g. in Kreatli); they watch and comment without taking a copy. For review and approval, links are usually better: one source of truth, frame-accurate comments, and no duplicate files floating around.',
   },
 ];
 
-export default function AddDrawingToVideoPage() {
+export default function SendLargeVideoFilesPage() {
   useSession();
-  const articles = getPlatformArticles('/platform/add-drawing-to-video');
+  const articles = getPlatformArticles('/platform/send-large-video-files');
 
   return (
     <>
       <Head>
-        <title>Add Drawing To Video | Kreatli</title>
+        <title>Send Large Video Files | Kreatli</title>
         <meta
           name="description"
-          content="Add drawings, arrows, and markup directly to video frames for frame-accurate feedback. Draw on video, highlight details, and collaborate visually with your team and clients."
+          content="Send large video files to clients without email limits. Use secure links so they watch and comment in the browser—no download required. Free to get started."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/add-drawing-to-video" />
-        <meta property="og:url" content="https://kreatli.com/platform/add-drawing-to-video" />
+        <link rel="canonical" href="https://kreatli.com/platform/send-large-video-files" />
+        <meta property="og:url" content="https://kreatli.com/platform/send-large-video-files" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Add Drawing To Video | Kreatli" />
+        <meta property="og:title" content="Send Large Video Files | Kreatli" />
         <meta
           property="og:description"
-          content="Use Kreatli as your video drawing tool. Add arrows, boxes, and freehand markup directly on video frames so editors and clients see exactly what needs to change."
+          content="Send large video files to clients with secure links. They watch and comment in the browser—no download, no email limits."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Add Drawing To Video | Kreatli" />
+        <meta property="og:image:alt" content="Send Large Video Files | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Add Drawing To Video | Kreatli" />
+        <meta name="twitter:title" content="Send Large Video Files | Kreatli" />
         <meta
           name="twitter:description"
-          content="Draw on video frames with arrows, boxes, and freehand markup. Give frame-accurate, visual feedback your editors and clients can act on instantly."
+          content="Send large video files to clients with secure links. Watch and comment in the browser—no download required."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -94,7 +88,7 @@ export default function AddDrawingToVideoPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Add Drawing To Video', url: '/platform/add-drawing-to-video' },
+          { name: 'Send Large Video Files', url: '/platform/send-large-video-files' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -106,42 +100,39 @@ export default function AddDrawingToVideoPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Add Drawing To Video
+              Send Large Video Files
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Use Kreatli as your video drawing tool. Draw directly on video frames, highlight details with arrows and
-              boxes, and turn vague comments into clear, frame-accurate visual feedback.
+              Send large video files to clients without email limits. Upload once, share a secure link—they watch and
+              comment in the browser. No download required. Free to get started.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
                 Get Started for Free
               </Button>
               <Button
-                as="a"
-                href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                target="_blank"
-                rel="noopener noreferrer"
+                as={NextLink}
+                href="/platform/free-video-link-generator"
                 size="lg"
                 variant="bordered"
               >
-                Book a Demo
+                Use Free Video Link Generator
               </Button>
             </div>
           </div>
-          <InteractiveReviewToolPreview />
         </div>
       </section>
 
-      {/* Drawing Tools Section */}
+      {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Video Drawing Tools Built for Creative Teams
+              Send Large Video Files - Built for Creative Teams
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Combine freehand drawings, arrows, shapes, and color-coding to give editors and stakeholders precise,
-              visual instructions directly on video frames.
+              Avoid email attachment limits and download friction. Send a link instead—recipients watch in the browser
+              and leave frame-accurate feedback.
             </p>
           </div>
 
@@ -150,13 +141,13 @@ export default function AddDrawingToVideoPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="paint" size={20} className="text-primary" />
+                    <Icon icon="upload" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Freehand Drawing on Video</h3>
+                  <h3 className="font-sans text-lg font-semibold">Upload Once, Send a Link</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Sketch ideas, trace motion paths, or circle problem areas by drawing directly on the video frame. Make
-                  your intent obvious without long written explanations.
+                  Upload your large video to Kreatli and generate a secure link. Send the link to clients—they open it
+                  and watch in the browser. No file size limits, no attachment failures, no asking them to download.
                 </p>
               </CardBody>
             </Card>
@@ -165,13 +156,13 @@ export default function AddDrawingToVideoPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="arrowRight" size={20} className="text-primary" />
+                    <Icon icon="monitorPlay" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Arrows, Boxes & Highlights</h3>
+                  <h3 className="font-sans text-lg font-semibold">Watch in the Browser, No Download</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Use arrows, rectangles, and highlight blocks to point at specific objects, text, or areas of the frame
-                  that need attention or adjustment.
+                  Recipients don’t need to download the video or create an account. They click the link, watch in full
+                  quality, and leave frame-accurate comments. Feedback stays tied to the right version in your project.
                 </p>
               </CardBody>
             </Card>
@@ -180,13 +171,13 @@ export default function AddDrawingToVideoPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="star" size={20} className="text-primary" />
+                    <Icon icon="shield" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Color-Coded Drawing Layers</h3>
+                  <h3 className="font-sans text-lg font-semibold">Secure Links, You Stay in Control</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Assign colors to different types of feedback or reviewers—creative notes, client comments, technical
-                  fixes—so teams can scan drawings and know what matters most.
+                  You control who can view and comment. Update or revoke access anytime. No raw files floating in email
+                  or chat—one source of truth, with version history and approvals in one place.
                 </p>
               </CardBody>
             </Card>
@@ -197,11 +188,11 @@ export default function AddDrawingToVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="chat" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Drawings + Frame-Accurate Comments</h3>
+                  <h3 className="font-sans text-lg font-semibold">Frame-Accurate Comments & Approvals</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Pair every drawing with a frame-accurate comment so feedback is both visual and fully described.
-                  Editors can jump to the exact frame and see context instantly.
+                  When you send large video files via Kreatli, feedback isn’t scattered in email. Comments are pinned to
+                  exact timestamps, and approvals are tracked per version. Editors see everything in one workflow.
                 </p>
               </CardBody>
             </Card>
@@ -212,11 +203,11 @@ export default function AddDrawingToVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Multi-Reviewer Drawing Collaboration</h3>
+                  <h3 className="font-sans text-lg font-semibold">Built for Client Review</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Directors, producers, editors, and clients can all draw on the same video. See who added which drawing
-                  and keep multi-stakeholder feedback in one place.
+                  Sending large videos for approval is the core use case. Clients get a simple link, watch, and respond.
+                  You get a clear record of who approved what and when—without juggling attachments or separate tools.
                 </p>
               </CardBody>
             </Card>
@@ -227,11 +218,12 @@ export default function AddDrawingToVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="checkCircle" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Resolution & Version Tracking</h3>
+                  <h3 className="font-sans text-lg font-semibold">No Email Limits, No Workarounds</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Track which drawing-linked comments are resolved, and keep feedback organized by version so you always
-                  know what still needs work in the current cut.
+                  Stop compressing videos to fit email or splitting files. Upload the full-quality version, send the
+                  link, and let clients watch as intended. Large video files are handled by the platform—not your
+                  inbox.
                 </p>
               </CardBody>
             </Card>
@@ -243,10 +235,10 @@ export default function AddDrawingToVideoPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Adding Drawings To Video Matters</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Send Large Video Files via Link?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Drawing directly on video frames turns abstract feedback into clear direction. Video teams move faster,
-              clients feel heard, and every revision round is more productive.
+              Links avoid attachment limits, reduce friction for recipients, and keep feedback and approvals in one
+              place.
             </p>
           </div>
 
@@ -257,11 +249,11 @@ export default function AddDrawingToVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="eye" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Remove Ambiguity from Feedback</h3>
+                  <h3 className="font-sans text-lg font-semibold">No Size Limits</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Stop guessing which shot or object a comment refers to. Drawings pinpoint the exact frame and area to
-                  adjust, so editors can act immediately without follow-up questions.
+                  Email and many messaging apps cap attachment size. When you send a link, the video lives on the
+                  platform—recipients stream it. You can send full-resolution cuts without compressing or splitting.
                 </p>
               </CardBody>
             </Card>
@@ -272,11 +264,11 @@ export default function AddDrawingToVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="arrowRight" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Speed Up Revision Cycles</h3>
+                  <h3 className="font-sans text-lg font-semibold">Faster for Recipients</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  With clear, visual instructions, editors spend less time interpreting feedback and more time editing.
-                  Fewer misunderstandings mean fewer rounds of back-and-forth revisions.
+                  One click opens the video. No download wait, no “file too large” errors. Busy clients can watch and
+                  comment in minutes instead of dealing with attachments or transfer links that expire.
                 </p>
               </CardBody>
             </Card>
@@ -287,11 +279,12 @@ export default function AddDrawingToVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="smile" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Make Client Feedback Visual</h3>
+                  <h3 className="font-sans text-lg font-semibold">One Place for All Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Clients don’t have to learn editing jargon. They can simply draw on the video to show what they want,
-                  making the review process more intuitive and less intimidating.
+                  When you send large video files through Kreatli, every comment and approval lives with that file and
+                  version. No digging through email or chat to find who said what. Editors see the full picture in one
+                  workflow.
                 </p>
               </CardBody>
             </Card>
@@ -302,11 +295,11 @@ export default function AddDrawingToVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="slides" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Fit into Real Video Workflows</h3>
+                  <h3 className="font-sans text-lg font-semibold">Fit Into Your Production Workflow</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Use drawings across storyboards, rough cuts, motion graphics, explainers, ads, and product videos.
-                  Kreatli keeps drawings tied to the right assets and projects, not scattered across tools.
+                  Send large videos for review, track approvals, and upload new versions—all in the same project.
+                  Kreatli keeps delivery and feedback part of production, not a one-off transfer.
                 </p>
               </CardBody>
             </Card>
@@ -317,7 +310,7 @@ export default function AddDrawingToVideoPage() {
       {/* Free Tools Section */}
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
-        description="Explore our collection of free tools designed to help video professionals work more efficiently."
+        description="Explore our collection of free tools designed to help video and creative teams work more efficiently."
         useBannerResizerInsteadOfCostCalculator
       />
 
@@ -325,7 +318,7 @@ export default function AddDrawingToVideoPage() {
       <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
-        description="Explore real-world workflows and guides that demonstrate drawing and annotation on video frames in action."
+        description="Explore guides on sending large video files, sharing with clients, and choosing the right tools for review and approval."
       />
 
       <PricingSection />
@@ -336,7 +329,7 @@ export default function AddDrawingToVideoPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about how to add drawings to video in Kreatli and how it fits into your review
+              Get detailed answers about sending large video files, email limits, and how Kreatli fits into your
               workflow.
             </p>
           </div>
@@ -358,7 +351,7 @@ export default function AddDrawingToVideoPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how drawing directly on video frames in Kreatli can support your specific workflow.
+              to learn how sending large video files with Kreatli can support your workflow.
             </p>
           </div>
         </div>
@@ -366,25 +359,25 @@ export default function AddDrawingToVideoPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'videoAnnotation']).map(
+        resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'secureAssetStorage']).map(
           (resource, index) => {
             if (index === 0) {
-              return { ...resource, icon: 'slides' };
+              return { ...resource, icon: 'paint' };
             }
             if (index === 1) {
-              return { ...resource, icon: 'folder' };
+              return { ...resource, icon: 'link' };
             }
             return resource;
           },
         )}
         title="More Resources"
-        description="Explore more Kreatli features that support video review, drawing, and creative proofing workflows."
+        description="Explore more Kreatli features for video review, approval, and secure asset storage—so sending large videos fits into your full workflow."
       />
 
       {/* CTA Section */}
       <CTASection
-        title="Ready to Draw Directly On Your Videos?"
-        description="Use Kreatli to add drawings, arrows, and markup directly on video frames so every revision round is fast, clear, and collaborative."
+        title="Ready to Send Large Video Files Without the Friction?"
+        description="Use Kreatli to upload once, send a secure link, and let clients watch and comment in the browser—no download, no email limits."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />
