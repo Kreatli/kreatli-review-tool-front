@@ -70,6 +70,7 @@ import LogoIcon from '../../../assets/icons/logo.svg';
 import MailIcon from '../../../assets/icons/mail.svg';
 import MedalIcon from '../../../assets/icons/medal.svg';
 import MinusIcon from '../../../assets/icons/minus.svg';
+import MobileIcon from '../../../assets/icons/mobile.svg';
 import MonitorPlayIcon from '../../../assets/icons/monitor-play.svg';
 import MoonIcon from '../../../assets/icons/moon.svg';
 import MusicIcon from '../../../assets/icons/music.svg';
@@ -182,6 +183,7 @@ const ICONS = {
   mail: MailIcon,
   medal: MedalIcon,
   minus: MinusIcon,
+  mobile: MobileIcon,
   music: MusicIcon,
   monitorPlay: MonitorPlayIcon,
   moon: MoonIcon,

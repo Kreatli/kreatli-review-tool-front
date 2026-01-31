@@ -1,6 +1,6 @@
 import { Button, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { useAssetContext } from '../../../contexts/Asset';
 import { AssetDto, FileDto, ProjectDto } from '../../../services/types';
@@ -9,6 +9,7 @@ import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/Pro
 import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
 import { Icon } from '../../various/Icon';
 import { AssetPicker } from '../AssetPicker';
+import { ReviewToolSafeZonesModal } from './ReviewToolSafeZonesModal';
 
 interface Props {
   file: FileDto;
@@ -24,6 +25,8 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
   const router = useRouter();
   const actions = useMemo(() => getAssetActions(file), [file, getAssetActions]);
 
+  const [isSafeZonesModalOpen, setIsSafeZonesModalOpen] = useState(false);
+
   const handleBack = () => {
     if (window.history.length <= 1) {
       router.push(`/project/${project.id}/assets`);
@@ -34,6 +37,10 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
     router.back();
   };
 
+  const openSafeZoneCheckerModal = () => {
+    setIsSafeZonesModalOpen(true);
+  };
+
   const path = useMemo(() => {
     return [project.name, ...file.path.map((folder) => folder.name)];
   }, [file.path, project.name]);
@@ -41,10 +48,6 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
   const handleCompareSelect = (asset: AssetDto) => {
     router.replace(`${location.pathname}?compareFileId=${asset.id}`);
   };
-
-  const shareAction = useMemo(() => {
-    return actions.find((action) => action.icon === 'share');
-  }, [actions]);
 
   return (
     <div
@@ -94,9 +97,9 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
         </div>
       </div>
       {!isCompareMode && (
-        <Button size="sm" variant="flat" onClick={shareAction?.onClick}>
-          <Icon icon="share" size={18} />
-          {shareAction?.label}
+        <Button size="sm" variant="flat" onClick={openSafeZoneCheckerModal}>
+          <Icon icon="mobile" size={18} />
+          Safe Zones
         </Button>
       )}
       {!isCompareMode && (
@@ -149,6 +152,11 @@ export const ReviewToolHeader = ({ file, project, isActive, isCompareMode, onCli
           </Dropdown>
         </div>
       )}
+      <ReviewToolSafeZonesModal
+        isOpen={isSafeZonesModalOpen}
+        onClose={() => setIsSafeZonesModalOpen(false)}
+        file={file}
+      />
     </div>
   );
 };
