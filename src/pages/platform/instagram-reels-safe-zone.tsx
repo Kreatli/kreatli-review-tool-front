@@ -10,7 +10,6 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -21,67 +20,67 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What is a video frame extractor?',
+    question: 'What is the Instagram Reels safe zone?',
     answer:
-      'A video frame extractor lets you capture a still image (a single frame) from a video at a specific moment. You scrub to the exact timestamp you want, capture the frame, and export it as an image file (e.g. JPG or PNG). Use extracted frames for thumbnails, client proofs, storyboards, or frame-accurate feedback in your review workflow. Kreatli offers a free video frame extractor that runs in your browser—no uploads, no sign-up required.',
+      'The Instagram Reels safe zone is the area of your video where important content (text, logos, faces, CTAs) won’t be covered by Instagram’s UI. When viewers watch Reels, the app shows overlays such as the profile picture, username, like button, comment button, and music/audio label. If your key visuals sit where those elements appear, they can be hidden or hard to read. Checking the safe zone before you post helps you keep titles, captions, and branding visible.',
   },
   {
-    question: 'How do I export a frame from a video?',
+    question: 'How do I check my Instagram Reels safe zone?',
     answer:
-      'With Kreatli’s free Video Frame Extractor, you upload or drag your video into the tool, scrub the timeline to the exact moment you want, and click to capture the frame. You can export single frames as JPG or PNG, or download multiple captured frames as a ZIP. Everything runs in your browser so your video never leaves your device unless you choose to upload it. No software to install and no account required.',
+      'Use Kreatli’s free Instagram Reels Safe Zone Checker. Upload or drag your Reels video into the tool, then turn on the safe zone overlay to see exactly where Instagram’s UI elements (profile picture, username, like, comment, music) will appear. Adjust your design so text and important visuals stay in the safe area, then export or download the preview if needed. No sign-up required—everything runs in your browser.',
   },
   {
-    question: 'Is the Video Frame Extractor free?',
+    question: 'Where do Instagram Reels UI overlays appear?',
     answer:
-      'Yes. Kreatli’s Video Frame Extractor is free to use. You can capture and export frames from video in your browser without signing up, and there’s no watermark on exported images. Use it for thumbnails, proofs, or to grab stills for review and feedback. If you want to bring those frames into a full review workflow with comments and approvals, you can upload them to Kreatli and use the platform’s frame-accurate review and annotation tools.',
+      'On Instagram Reels, overlays typically appear on the right side (profile picture, username, like button, comment button, share) and often a music or audio label. The exact layout can vary by device and app version. Our safe zone checker uses representative positions so you can preview where to avoid placing critical text or logos. Keep your main message and branding in the center and left so they stay visible.',
   },
   {
-    question: 'Can I use extracted frames in Kreatli for review?',
+    question: 'Is the Instagram Reels Safe Zone Checker free?',
     answer:
-      'Yes. After you extract frames from a video using the free tool, you can upload those images to Kreatli and use them in your review workflow. Add frame-accurate comments, drawings, and markup so clients and collaborators can give precise feedback on the exact frame. This is useful when you need approval on specific moments, thumbnails, or keyframes without sharing the full video file.',
+      'Yes. Kreatli’s Instagram Reels Safe Zone Checker is free to use. You can upload your Reels video, preview the safe zone overlay, and see where UI elements will appear—no account and no sign-up. Use it before every post to keep your content visible. If you want to bring Reels into a full review workflow with comments and approvals, you can use Kreatli’s platform for frame-accurate feedback and client sign-off.',
   },
   {
-    question: 'What video formats work with the frame extractor?',
+    question: 'Why does the safe zone matter for Reels?',
     answer:
-      'Kreatli’s Video Frame Extractor supports common video formats that modern browsers can play, including MP4, WebM, and MOV. Upload your file or drag it into the tool, scrub to the moment you need, and capture as many frames as you like. Exported images are delivered as JPG or PNG, and you can download multiple frames in a single ZIP for easy sharing or import into your review workflow.',
+      'Reels are full-screen and immersive, but Instagram’s UI sits on top of your video. If you put a headline, CTA, or logo where the like button or profile picture appears, viewers may not see it. Checking the safe zone before publishing helps you avoid covered text and keeps your message clear. It’s especially important for ads, product demos, and any Reel where a specific call-to-action or brand moment needs to be visible.',
   },
   {
-    question: 'Why extract frames from video instead of sharing the whole file?',
+    question: 'Can I use the safe zone checker for other platforms?',
     answer:
-      'Extracting frames lets you share or approve specific moments without sending large video files. Use still frames for thumbnail approval, keyframe sign-off, storyboard updates, or frame-accurate feedback when a single moment matters. Clients can comment on the exact frame in Kreatli, and your team keeps one source of truth for what was approved—without juggling full-length videos in email or chat.',
+      'Kreatli offers safe zone checkers for Instagram Reels, TikTok, and YouTube Shorts. Each tool shows where that platform’s UI overlays appear so you can adapt your content. If you create for multiple platforms, use each checker before posting to ensure your visuals stay in the safe zone on every channel. All tools are free and run in your browser.',
   },
 ];
 
-export default function ExtractFramesFromVideoPage() {
+export default function InstagramReelsSafeZonePage() {
   useSession();
-  const articles = getPlatformArticles('/platform/extract-frames-from-video');
+  const articles = getPlatformArticles('/platform/instagram-reels-safe-zone');
 
   return (
     <>
       <Head>
-        <title>Extract Frames from Video | Kreatli</title>
+        <title>Instagram Reels Safe Zone | Kreatli</title>
         <meta
           name="description"
-          content="Extract, get, and export frames from video with Kreatli’s free tool. Capture still frames for thumbnails, proofs, and review—no sign-up. Use extracted frames in Kreatli for frame-accurate feedback."
+          content="Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear. Free tool—no sign-up."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/extract-frames-from-video" />
-        <meta property="og:url" content="https://kreatli.com/platform/extract-frames-from-video" />
+        <link rel="canonical" href="https://kreatli.com/platform/instagram-reels-safe-zone" />
+        <meta property="og:url" content="https://kreatli.com/platform/instagram-reels-safe-zone" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Extract Frames from Video | Kreatli" />
+        <meta property="og:title" content="Instagram Reels Safe Zone | Kreatli" />
         <meta
           property="og:description"
-          content="Extract and export frames from video for free. Capture still frames for thumbnails, proofs, and review. Use Kreatli’s free Video Frame Extractor—no sign-up required."
+          content="Check your Instagram Reels safe zone with our free tool. Preview UI overlays so your text, logos, and visuals stay visible. No sign-up required."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Extract Frames from Video | Kreatli" />
+        <meta property="og:image:alt" content="Instagram Reels Safe Zone | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Extract Frames from Video | Kreatli" />
+        <meta name="twitter:title" content="Instagram Reels Safe Zone | Kreatli" />
         <meta
           name="twitter:description"
-          content="Extract and export frames from video for free. Capture still frames for thumbnails, proofs, and review with Kreatli’s free tool."
+          content="Check your Instagram Reels safe zone before posting. Free tool to preview UI overlays—no sign-up required."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -89,7 +88,7 @@ export default function ExtractFramesFromVideoPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Extract Frames from Video', url: '/platform/extract-frames-from-video' },
+          { name: 'Instagram Reels Safe Zone', url: '/platform/instagram-reels-safe-zone' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -101,28 +100,27 @@ export default function ExtractFramesFromVideoPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Extract Frames from Video
+              Instagram Reels Safe Zone
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Get and export still frames from any video for thumbnails, proofs, or review. Use Kreatli’s free Video
-              Frame Extractor in your browser—no sign-up—or bring extracted frames into Kreatli for frame-accurate
-              feedback.
+              Check your Instagram Reels safe zone before you post. Preview where profile picture, username, like
+              button, comment button, and music display appear—and keep your text, logos, and visuals visible. Free
+              tool.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
                 as={NextLink}
-                href="/free-tools/video-frame-extractor"
+                href="/social-media-safe-zone-checker/instagram-safe-zone-checker"
                 size="lg"
                 className="bg-foreground text-content1"
               >
-                Use Free Video Frame Extractor
+                Use Free Instagram Reels Safe Zone Checker
               </Button>
               <Button as={NextLink} href="/sign-up" size="lg" variant="bordered">
                 Get Started for Free
               </Button>
             </div>
           </div>
-          <InteractiveReviewToolPreview />
         </div>
       </section>
 
@@ -131,11 +129,11 @@ export default function ExtractFramesFromVideoPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Extract, Get & Export Frames - Built for Video Teams
+              Instagram Reels Safe Zone - Built for Video Teams
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Scrub to the exact moment, capture the frame, and export as JPG or PNG. Use stills for thumbnails, client
-              proofs, or upload to Kreatli for frame-accurate review and annotation.
+              See where Instagram’s UI overlays sit on your Reels so you can keep headlines, CTAs, and branding in the
+              safe zone. Upload, preview, and export—no account required.
             </p>
           </div>
 
@@ -144,13 +142,14 @@ export default function ExtractFramesFromVideoPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="panorama" size={20} className="text-primary" />
+                    <Icon icon="shield" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Scrub to Any Moment</h3>
+                  <h3 className="font-sans text-lg font-semibold">Preview Safe Zone Overlays</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Move the timeline to the exact second you need. Capture one frame or many—each export is a
-                  high-quality still image you can use for thumbnails, proofs, or feedback.
+                  Turn on the safe zone overlay to see where profile picture, username, like button, comment button, and
+                  music label appear on your Reels. Keep important text and visuals outside those areas so they stay
+                  visible.
                 </p>
               </CardBody>
             </Card>
@@ -161,11 +160,11 @@ export default function ExtractFramesFromVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="upload" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Export as JPG, PNG, or ZIP</h3>
+                  <h3 className="font-sans text-lg font-semibold">Upload & Check Before You Post</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Download single frames as JPG or PNG, or export multiple captured frames in one ZIP. No watermark, no
-                  sign-up—everything runs in your browser so your video stays on your device.
+                  Drag and drop your Reels video into the free tool. No sign-up, no watermark. Preview the safe zone,
+                  adjust your design if needed, and export a reference so your team keeps content in the right place.
                 </p>
               </CardBody>
             </Card>
@@ -174,43 +173,13 @@ export default function ExtractFramesFromVideoPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="monitorPlay" size={20} className="text-primary" />
+                    <Icon icon="instagram" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Free Tool, No Account Required</h3>
+                  <h3 className="font-sans text-lg font-semibold">Instagram-Specific Overlays</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Use the Video Frame Extractor without creating an account. Upload or drag your video, capture frames,
-                  and download—ideal for quick thumbnails, proofs, or keyframe approval.
-                </p>
-              </CardBody>
-            </Card>
-
-            <Card>
-              <CardBody className="p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="chat" size={20} className="text-primary" />
-                  </div>
-                  <h3 className="font-sans text-lg font-semibold">Use Frames in Kreatli for Review</h3>
-                </div>
-                <p className="text-sm text-foreground-500">
-                  Upload extracted frames to Kreatli and get frame-accurate comments, drawings, and approvals. Clients
-                  can mark up the exact frame so editors know precisely what to change.
-                </p>
-              </CardBody>
-            </Card>
-
-            <Card>
-              <CardBody className="p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="group" size={20} className="text-primary" />
-                  </div>
-                  <h3 className="font-sans text-lg font-semibold">Thumbnails & Client Proofs</h3>
-                </div>
-                <p className="text-sm text-foreground-500">
-                  Grab the perfect frame for thumbnails, social previews, or client sign-off. Export once and share the
-                  still—or bring it into Kreatli so stakeholders can approve with comments and markup in one place.
+                  Our checker uses Instagram Reels UI positions so you see where overlays sit in the app. Keep titles,
+                  captions, and CTAs in the safe area so viewers never miss your message.
                 </p>
               </CardBody>
             </Card>
@@ -221,11 +190,41 @@ export default function ExtractFramesFromVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="checkCircle" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">One Workflow for Frames & Video</h3>
+                  <h3 className="font-sans text-lg font-semibold">Export & Share With Your Team</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Extract frames with the free tool, then move to Kreatli for review and approval. Keep thumbnails,
-                  keyframes, and full videos organized in projects with version history and frame-accurate feedback.
+                  Download your preview with the safe zone overlay as a reference. Share with editors and clients so
+                  everyone keeps key elements in the safe zone before Reels go live.
+                </p>
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody className="p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="group" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Use With Kreatli Review Workflow</h3>
+                </div>
+                <p className="text-sm text-foreground-500">
+                  After you check the safe zone, upload your Reels to Kreatli for frame-accurate review and client
+                  approval. Get feedback on placement, captions, and branding before you publish.
+                </p>
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody className="p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="addVideo" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">TikTok & YouTube Shorts Too</h3>
+                </div>
+                <p className="text-sm text-foreground-500">
+                  We also offer safe zone checkers for TikTok and YouTube Shorts. Use each tool before posting so your
+                  content stays visible on every platform. All free, all in your browser.
                 </p>
               </CardBody>
             </Card>
@@ -237,10 +236,10 @@ export default function ExtractFramesFromVideoPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Extract Frames from Video?</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Check the Instagram Reels Safe Zone?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Still frames make it easy to get approval on specific moments, create thumbnails, and give frame-accurate
-              feedback without sending full video files.
+              Keeping your message in the safe zone means more viewers see your headline, CTA, and brand—and fewer
+              surprises after you post.
             </p>
           </div>
 
@@ -251,11 +250,12 @@ export default function ExtractFramesFromVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="eye" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Approve the Exact Frame</h3>
+                  <h3 className="font-sans text-lg font-semibold">Keep Key Content Visible</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Clients and stakeholders can sign off on the precise moment that matters—thumbnails, keyframes, or
-                  storyboard frames—without watching the whole video. Fewer misunderstandings and faster approvals.
+                  Instagram’s UI can cover the edges of your Reels. When you check the safe zone first, you avoid
+                  placing headlines, CTAs, or logos where the like button or profile picture will sit. Viewers see what
+                  you want them to see.
                 </p>
               </CardBody>
             </Card>
@@ -266,11 +266,11 @@ export default function ExtractFramesFromVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="arrowRight" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Lightweight Sharing</h3>
+                  <h3 className="font-sans text-lg font-semibold">Fewer Redos After Publishing</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Share a single frame instead of a large video file when you only need feedback on one moment. Export
-                  from the free tool or upload to Kreatli and keep all feedback tied to the right asset and version.
+                  Catch safe zone issues before you post. Adjust text placement or graphics in the editor, run the
+                  checker again, and publish with confidence. No more discovering covered text once the Reel is live.
                 </p>
               </CardBody>
             </Card>
@@ -281,11 +281,11 @@ export default function ExtractFramesFromVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="smile" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">No Friction for Reviewers</h3>
+                  <h3 className="font-sans text-lg font-semibold">Professional Look on Every Reel</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Recipients see one clear image to comment on—no scrubbing or timestamps. Use Kreatli’s drawing and
-                  annotation tools on the frame so feedback is visual and precise.
+                  Brands and creators who check the safe zone deliver cleaner, more readable Reels. Use the free tool as
+                  part of your pre-publish checklist so every post looks intentional and on-brand.
                 </p>
               </CardBody>
             </Card>
@@ -296,11 +296,11 @@ export default function ExtractFramesFromVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="slides" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Fit into Your Production Workflow</h3>
+                  <h3 className="font-sans text-lg font-semibold">Fit Into Your Creative Workflow</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Extract frames for storyboards, thumbnails, or client proofs, then bring everything into Kreatli for
-                  review, approval, and version control. One platform for stills and video.
+                  Check the safe zone in seconds, then move to Kreatli for review and approval if you work with clients
+                  or teams. Keep safe zone validation and frame-accurate feedback in one workflow.
                 </p>
               </CardBody>
             </Card>
@@ -311,7 +311,7 @@ export default function ExtractFramesFromVideoPage() {
       {/* Free Tools Section */}
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
-        description="Explore our collection of free tools designed to help video professionals work more efficiently."
+        description="Explore our collection of free tools designed to help video and social creators work more efficiently."
         useBannerResizerInsteadOfCostCalculator
       />
 
@@ -319,7 +319,7 @@ export default function ExtractFramesFromVideoPage() {
       <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
-        description="Explore guides and the free Video Frame Extractor tool to capture, export, and use still frames from video for thumbnails, proofs, and review."
+        description="Explore guides and workflows for Reels, video review, and creative proofing—so your content stays visible and on-brand."
       />
 
       <PricingSection />
@@ -330,8 +330,8 @@ export default function ExtractFramesFromVideoPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about how to extract, get, and export frames from video and how the free tool fits
-              into your workflow.
+              Get detailed answers about the Instagram Reels safe zone, how to check it, and how the free tool fits into
+              your workflow.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -352,7 +352,8 @@ export default function ExtractFramesFromVideoPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how extracting frames from video and Kreatli’s review workflow can support your specific needs.
+              to learn how the Instagram Reels safe zone checker and Kreatli’s review workflow can support your
+              workflow.
             </p>
           </div>
         </div>
@@ -360,25 +361,25 @@ export default function ExtractFramesFromVideoPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['videoAnnotation', 'creativeProofing', 'reviewApproval']).map(
+        resources={getRelatedResources(['creativeProofing', 'reviewApproval', 'videoAnnotation']).map(
           (resource, index) => {
             if (index === 0) {
               return { ...resource, icon: 'paint' };
             }
             if (index === 1) {
-              return { ...resource, icon: 'slides' };
+              return { ...resource, icon: 'shield' };
             }
             return resource;
           },
         )}
         title="More Resources"
-        description="Explore more Kreatli features that support video review, annotation, and creative proofing—including drawing on video and frame-accurate feedback."
+        description="Explore more Kreatli features that support creative proofing, video review, and frame-accurate feedback—including safe zone validation."
       />
 
       {/* CTA Section */}
       <CTASection
-        title="Ready to Extract Frames from Your Videos?"
-        description="Use Kreatli’s free Video Frame Extractor to capture and export still frames, or bring frames into Kreatli for frame-accurate review and approval."
+        title="Ready to Check Your Instagram Reels Safe Zone?"
+        description="Use Kreatli’s free Instagram Reels Safe Zone Checker before you post—and bring Reels into Kreatli for review and approval when you need client sign-off."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

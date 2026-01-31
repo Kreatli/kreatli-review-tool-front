@@ -190,6 +190,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['videoAnnotation', 'creativeProofing', 'reviewApproval'],
   },
+  {
+    label: 'Instagram Reels Safe Zone',
+    href: '/platform/instagram-reels-safe-zone',
+    description: 'Check Instagram Reels safe zone before posting',
+    section: 'Core Platform',
+    order: 13,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
