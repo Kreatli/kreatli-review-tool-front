@@ -178,6 +178,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
+  {
+    label: 'Extract Frames from Video',
+    href: '/platform/extract-frames-from-video',
+    description: 'Extract, get, and export still frames from video',
+    section: 'Core Platform',
+    order: 12,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['videoAnnotation', 'creativeProofing', 'reviewApproval'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
