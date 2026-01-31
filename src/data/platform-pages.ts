@@ -214,6 +214,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
   },
+  {
+    label: 'YouTube Shorts Safe Zone',
+    href: '/platform/youtube-shorts-safe-zone',
+    description: 'Check YouTube Shorts safe zone before posting',
+    section: 'Core Platform',
+    order: 15,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
