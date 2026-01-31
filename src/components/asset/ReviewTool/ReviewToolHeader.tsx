@@ -1,4 +1,4 @@
-import { Button, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import { Button, Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
 
@@ -68,7 +68,7 @@ export const ReviewToolHeader = ({
   return (
     <div
       className={cn('flex flex-1 items-center gap-4 overflow-hidden bg-foreground-50 p-3 transition-colors', {
-        'bg-primary-100': isActive,
+        'bg-primary-50': isActive,
         'cursor-pointer': isCompareMode,
       })}
       onClick={onClick}
@@ -111,7 +111,15 @@ export const ReviewToolHeader = ({
             ))}
           </div>
         </div>
-        {stack && <ReviewToolHeaderVersions file={file} stack={stack} onSwitchFile={onSwitchFile} />}
+        {stack && (
+          <ReviewToolHeaderVersions
+            file={file}
+            isCompareMode={isCompareMode}
+            stack={stack}
+            onSwitchFile={onSwitchFile}
+          />
+        )}
+        {!stack && file.stackVersion && file.stackVersion >= 0 && <Chip variant="flat">v{file.stackVersion}</Chip>}
       </div>
       {!isCompareMode && (
         <Button size="sm" variant="flat" onClick={openSafeZoneCheckerModal}>

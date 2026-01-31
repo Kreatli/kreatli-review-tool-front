@@ -11,7 +11,7 @@ import { restrictToParentElement } from '@dnd-kit/modifiers';
 import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { addToast, Button } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useImperativeHandle, useState } from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 
 import { usePutProjectIdStackStackId } from '../../../../services/hooks';
@@ -20,13 +20,19 @@ import { ProjectFileDto, ProjectStackDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { ManageVersionsItem } from './ManageVersionsItem';
 
+export interface ManageVersionsFormRef {
+  getIsDirty: () => boolean;
+}
+
 interface Props {
   projectId: string;
   stack: ProjectStackDto;
+  formRef: React.RefObject<ManageVersionsFormRef | null>;
+  onCancel?: () => void;
   onSuccess?: () => void;
 }
 
-export const ManageVersionsForm = ({ projectId, stack, onSuccess }: Props) => {
+export const ManageVersionsForm = ({ projectId, stack, formRef, onCancel, onSuccess }: Props) => {
   const [activeFileId, setActiveFileId] = useState<string | undefined>(
     stack.files.find((file) => file.id === stack.active?.id)?.id,
   );
@@ -40,6 +46,14 @@ export const ManageVersionsForm = ({ projectId, stack, onSuccess }: Props) => {
     },
     mode: 'all',
   });
+
+  useImperativeHandle(
+    formRef,
+    () => ({
+      getIsDirty: () => methods.formState.isDirty,
+    }),
+    [methods.formState.isDirty],
+  );
 
   const { control, getValues, handleSubmit } = methods;
 
@@ -138,7 +152,7 @@ export const ManageVersionsForm = ({ projectId, stack, onSuccess }: Props) => {
           </DndContext>
         </div>
         <div className="flex justify-end gap-2">
-          <Button variant="light" isDisabled={isPending}>
+          <Button variant="light" isDisabled={isPending} onClick={onCancel}>
             Cancel
           </Button>
           <Button type="submit" isLoading={isPending} className="bg-foreground text-content1">
