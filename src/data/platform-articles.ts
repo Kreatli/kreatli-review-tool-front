@@ -699,6 +699,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/compare-videos': [
+    makeArticleCard({
+      id: 'platform-compare-videos-guide-1',
+      full_slug: '/comparisons/best-video-review-platforms-2026',
+      title: 'Best Video Review Platforms for Creative Teams in 2026',
+      description:
+        'Compare the best video review platforms in 2026. See features, limitations, and why Kreatli offers a fundamentally different approach to video collaboration.',
+      tags: ['Video Review', 'Creative Teams'],
+      publishDate: '2026-01-17 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8d83a78aaf/best-video-review-platforms-for-creative-teams-in-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-videos-guide-2',
+      full_slug: '/comparisons/frameio-alternatives-2026',
+      title: 'The Best Frame.io Alternatives for Video Review & Approval (2026)',
+      description:
+        'Compare the best Frame.io alternatives in 2026. See which tools handle video review, approvals, and full production workflows at scale.',
+      tags: ['Frame.io', 'Video Review'],
+      publishDate: '2026-01-05 00:00',
+      readTime: '14',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-videos-guide-3',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+  ],
+
   '/platform/share-mp4': [
     makeArticleCard({
       id: 'platform-share-mp4-guide-1',
