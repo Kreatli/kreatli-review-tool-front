@@ -12,12 +12,13 @@ import { ReviewToolLoading } from './ReviewToolLoading';
 
 interface Props {
   stack?: StackDto;
+  stackSelectedFile?: FileDto;
   project: ProjectDto | undefined;
   isLoading: boolean;
   onSwitchFile?: (file: FileDto) => void;
 }
 
-export const ReviewTool = ({ stack, project, isLoading, onSwitchFile }: Props) => {
+export const ReviewTool = ({ stack, stackSelectedFile, project, isLoading, onSwitchFile }: Props) => {
   const router = useRouter();
 
   const { activeFile, file, compareFile, setActiveFileId, setActiveComment } = useFileStateContext();
@@ -30,8 +31,8 @@ export const ReviewTool = ({ stack, project, isLoading, onSwitchFile }: Props) =
     setActiveComment(null);
     setActiveFileId(compareFile?.id ?? '');
 
-    if (stack) {
-      router.replace(`/project/${project.id}/assets/stack/${stack.id}?selectedFileId=${compareFile?.id}`);
+    if (compareFile?.stackId) {
+      router.replace(`/project/${project.id}/assets/stack/${compareFile.stackId}?selectedFileId=${compareFile?.id}`);
     } else {
       router.replace(`/project/${project.id}/assets/${compareFile?.id}`);
     }
@@ -52,7 +53,12 @@ export const ReviewTool = ({ stack, project, isLoading, onSwitchFile }: Props) =
     <div key={file.id} className="flex flex-col overflow-hidden">
       <ReviewToolContextProvider>
         <ReviewToolCanvasShapesContextProvider>
-          <AssetContextProvider projectId={project.id} selectedAsset={stack ?? file} project={project}>
+          <AssetContextProvider
+            projectId={project.id}
+            selectedAsset={stack ?? file}
+            stackSelectedFile={stackSelectedFile}
+            project={project}
+          >
             <div className="flex overflow-hidden">
               <ReviewToolHeader
                 file={file}

@@ -96,8 +96,12 @@ export const Notification = ({ notification }: Props) => {
       return 'New project member';
     }
 
+    if (notification.type === 'file_new_version_uploaded') {
+      return 'New version uploaded';
+    }
+
     return 'Notification';
-  }, [notification.type, notification.data]);
+  }, [notification.type]);
 
   const notificationDescription = useMemo(() => {
     const { fileId, fileName, projectId, projectName, userName, commentMessage, chatId, chatName, commentId } =
@@ -287,6 +291,24 @@ export const Notification = ({ notification }: Props) => {
       );
     }
 
+    if (notification.type === 'file_new_version_uploaded') {
+      return (
+        <>
+          {userName} uploaded new file version{' '}
+          <Link
+            as={NextLink}
+            href={`/project/${projectId}/assets/${fileId}`}
+            size="sm"
+            className="z-10 inline break-all"
+            underline="hover"
+            onClick={handleLinkClick}
+          >
+            {fileName}
+          </Link>
+        </>
+      );
+    }
+
     return '';
   }, [notification.data, notification.type, handleLinkClick]);
 
@@ -329,6 +351,10 @@ export const Notification = ({ notification }: Props) => {
 
     if (notification.type === 'chat_message_unread') {
       return 'chat';
+    }
+
+    if (notification.type === 'file_new_version_uploaded') {
+      return 'versions';
     }
 
     return 'bell';

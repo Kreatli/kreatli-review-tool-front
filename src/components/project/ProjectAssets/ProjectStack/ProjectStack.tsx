@@ -27,8 +27,6 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSele
   const { project } = useProjectContext();
   const { getAssetActions } = useAssetContext();
 
-  const version = stack.files.findIndex((file) => file.id === stack.active?.id) + 1;
-
   const handleClick = () => {
     if (isDisabled) {
       return;
@@ -119,7 +117,7 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSele
           classNames={{ content: 'font-semibold' }}
           onClick={handleManageVersionsClick}
         >
-          v{version}
+          v{stack.active?.stackVersion}
         </Chip>
         <Dropdown placement="bottom-end">
           <DropdownTrigger>

@@ -1,3 +1,5 @@
+import { Chip } from '@heroui/react';
+
 import { AssetDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { AssetPreview } from './AssetPreview';
@@ -15,13 +17,20 @@ export const AssetPickerItem = ({ asset, onClick }: Props) => {
           <AssetPreview asset={asset} width={44} height={44} />
         </div>
         <div className="flex flex-col gap-0.5 overflow-hidden">
-          <button
-            type="button"
-            className="size-xs overflow-hidden text-ellipsis whitespace-nowrap text-start font-semibold after:absolute after:inset-0 after:z-20"
-            onClick={onClick}
-          >
-            {asset.name}
-          </button>
+          <div className="flex items-center gap-1">
+            <button
+              type="button"
+              className="size-xs overflow-hidden text-ellipsis whitespace-nowrap text-start font-semibold after:absolute after:inset-0 after:z-20"
+              onClick={onClick}
+            >
+              {asset.name}
+            </button>
+            {asset.stackVersion && (
+              <Chip size="sm" variant="flat" className="h-auto p-0.5">
+                v{asset.stackVersion}
+              </Chip>
+            )}
+          </div>
           <div className="text-xs text-foreground-500">
             {formatBytes(asset.fileSize)}
             {asset.statusLabel && <>, {asset.statusLabel}</>}

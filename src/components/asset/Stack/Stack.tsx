@@ -97,7 +97,13 @@ export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
       <ProjectUploadContextProvider project={project} folderId={router.query.folderId?.toString()}>
         <FileStateContextProvider fileId={selectedFile.id} file={selectedFile} compareFile={compareFile}>
           <div className="grid-cols-[1fr,350px] md:grid md:h-screen">
-            <ReviewTool project={project} stack={stack} isLoading={isLoading} onSwitchFile={handleSwitchFile} />
+            <ReviewTool
+              project={project}
+              stack={stack}
+              stackSelectedFile={selectedFile}
+              isLoading={isLoading}
+              onSwitchFile={handleSwitchFile}
+            />
             <AssetPanel project={project} isLoading={isLoading} />
           </div>
         </FileStateContextProvider>

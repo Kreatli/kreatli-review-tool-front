@@ -8,11 +8,10 @@ interface Props {
   file: FileDto;
   isActive: boolean;
   isSelected: boolean;
-  version: number;
   onClick: () => void;
 }
 
-export const ReviewToolHeaderVersion = ({ file, isActive, isSelected, version, onClick }: Props) => {
+export const ReviewToolHeaderVersion = ({ file, isActive, isSelected, onClick }: Props) => {
   return (
     <div
       className={cn('relative flex items-center gap-2 rounded-medium p-1 px-2 hover:bg-foreground-50', {
@@ -21,7 +20,7 @@ export const ReviewToolHeaderVersion = ({ file, isActive, isSelected, version, o
     >
       <div>
         <Chip size="sm" className="bg-foreground text-content1">
-          v{version}
+          v{file.stackVersion}
         </Chip>
       </div>
       <div>

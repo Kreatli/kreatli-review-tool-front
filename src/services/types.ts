@@ -112,7 +112,7 @@ export interface AssetCommentsResponse {
 export interface AssetDetails {
   id: string;
   name: string;
-  type: 'file' | 'folder';
+  type: 'file' | 'folder' | 'stack';
 }
 
 export interface AssetDownloadedDetails {
@@ -130,6 +130,7 @@ export interface AssetDto {
   url: string;
   assignee?: UserDto;
   stackId?: string;
+  stackVersion?: number;
   status?: string;
   statusColor?: string;
   statusLabel?: string;
@@ -339,6 +340,7 @@ export interface FileDto {
   createdBy?: UserDto;
   parent?: FolderDto;
   stackId?: string;
+  stackVersion?: number;
   status?: string;
   statusColor?: string;
   statusLabel?: string;
@@ -595,6 +597,7 @@ export interface NotificationDto {
     | 'file_comment_reply'
     | 'file_comment_resolve'
     | 'file_comment_mention'
+    | 'file_new_version_uploaded'
     | 'chat_message_unread';
   /**
    *
@@ -739,6 +742,7 @@ export interface ProjectFileDto {
   createdBy?: UserDto;
   parentId?: string;
   stackId?: string;
+  stackVersion?: number;
   status?: string;
   statusColor?: string;
   statusLabel?: string;

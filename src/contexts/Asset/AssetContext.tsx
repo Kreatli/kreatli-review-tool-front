@@ -41,6 +41,7 @@ interface Props {
   isArchived?: boolean;
   projectId: string;
   selectedAsset: ProjectFileDto | ProjectFolderDto | ProjectStackDto | undefined;
+  stackSelectedFile?: ProjectFileDto;
   setSelectedAssetId?: (id: string) => void;
   project: ProjectDto;
 }
@@ -50,6 +51,7 @@ export const AssetContextProvider = ({
   isArchived = false,
   projectId,
   selectedAsset,
+  stackSelectedFile,
   setSelectedAssetId,
   project,
 }: React.PropsWithChildren<Props>) => {
@@ -100,7 +102,7 @@ export const AssetContextProvider = ({
       icon: 'download' as const,
       onClick: async () => {
         try {
-          const assetUrl = await getAssetFileIdDownload(asset.id, { shareableLinkId: '' });
+          const assetUrl = await getAssetFileIdDownload(stackSelectedFile?.id ?? asset.id, { shareableLinkId: '' });
 
           downloadFromUrl(assetUrl, asset.name);
         } catch {
@@ -165,8 +167,7 @@ export const AssetContextProvider = ({
 
     return [
       renameAction,
-      ...(asset.type !== 'folder' ? [shareAction, uploadNewVersionAction] : []),
-      ...(asset.type === 'file' ? [downloadAction] : []),
+      ...(asset.type !== 'folder' ? [shareAction, downloadAction, uploadNewVersionAction] : []),
       ...(asset.type === 'stack' ? [manageVersionAction] : []),
       moveToAction,
       {
@@ -187,10 +188,15 @@ export const AssetContextProvider = ({
       {children}
       <RenameAssetModal
         projectId={projectId}
-        asset={selectedAsset?.type === 'stack' ? selectedAsset.active : selectedAsset}
+        asset={selectedAsset?.type === 'stack' ? stackSelectedFile : selectedAsset}
         stackId={selectedAsset?.type === 'stack' ? selectedAsset.id : undefined}
         isOpen={isRenameModalOpen}
         onClose={() => setIsRenameModalOpen(false)}
+      />
+      <ShareAssetModal
+        asset={selectedAsset?.type === 'stack' ? stackSelectedFile : selectedAsset}
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
       />
       <ArchiveAssetModal
         projectId={projectId}
@@ -221,11 +227,6 @@ export const AssetContextProvider = ({
         stack={selectedAsset?.type === 'stack' ? selectedAsset : undefined}
         isOpen={isManageVersionsModalOpen}
         onClose={() => setIsManageVersionsModalOpen(false)}
-      />
-      <ShareAssetModal
-        asset={selectedAsset?.type === 'stack' ? selectedAsset.active : selectedAsset}
-        isOpen={isShareModalOpen}
-        onClose={() => setIsShareModalOpen(false)}
       />
     </AssetContext.Provider>
   );
