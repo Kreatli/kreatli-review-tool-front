@@ -27,7 +27,7 @@ const faqs = [
   {
     question: 'How do I check my Instagram Reels safe zone?',
     answer:
-      'Use Kreatli’s free Instagram Reels Safe Zone Checker. Upload or drag your Reels video into the tool, then turn on the safe zone overlay to see exactly where Instagram’s UI elements (profile picture, username, like, comment, music) will appear. Adjust your design so text and important visuals stay in the safe area, then export or download the preview if needed. No sign-up required—everything runs in your browser.',
+      'Use Kreatli’s free Instagram Reels Safe Zone Checker. Upload or drag your Reels video into the tool, then turn on the safe zone overlay to see exactly where Instagram’s UI elements (profile picture, username, like, comment, music) will appear. Adjust your design so text and important visuals stay in the safe area, then export or download the preview if needed. Everything runs in your browser.',
   },
   {
     question: 'Where do Instagram Reels UI overlays appear?',
@@ -37,7 +37,7 @@ const faqs = [
   {
     question: 'Is the Instagram Reels Safe Zone Checker free?',
     answer:
-      'Yes. Kreatli’s Instagram Reels Safe Zone Checker is free to use. You can upload your Reels video, preview the safe zone overlay, and see where UI elements will appear—no account and no sign-up. Use it before every post to keep your content visible. If you want to bring Reels into a full review workflow with comments and approvals, you can use Kreatli’s platform for frame-accurate feedback and client sign-off.',
+      'Yes. Kreatli’s Instagram Reels Safe Zone Checker is free to use. You can upload your Reels video, preview the safe zone overlay, and see where UI elements will appear. Use it before every post to keep your content visible. If you want to bring Reels into a full review workflow with comments and approvals, you can use Kreatli’s platform for frame-accurate feedback and client sign-off.',
   },
   {
     question: 'Why does the safe zone matter for Reels?',
@@ -61,7 +61,7 @@ export default function InstagramReelsSafeZonePage() {
         <title>Instagram Reels Safe Zone | Kreatli</title>
         <meta
           name="description"
-          content="Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear. Free tool—no sign-up."
+          content="Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear. Free tool."
         />
         <link rel="canonical" href="https://kreatli.com/platform/instagram-reels-safe-zone" />
         <meta property="og:url" content="https://kreatli.com/platform/instagram-reels-safe-zone" />
@@ -69,7 +69,7 @@ export default function InstagramReelsSafeZonePage() {
         <meta property="og:title" content="Instagram Reels Safe Zone | Kreatli" />
         <meta
           property="og:description"
-          content="Check your Instagram Reels safe zone with our free tool. Preview UI overlays so your text, logos, and visuals stay visible. No sign-up required."
+          content="Check your Instagram Reels safe zone with our free tool. Preview UI overlays so your text, logos, and visuals stay visible."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
@@ -80,7 +80,7 @@ export default function InstagramReelsSafeZonePage() {
         <meta name="twitter:title" content="Instagram Reels Safe Zone | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview UI overlays—no sign-up required."
+          content="Check your Instagram Reels safe zone before posting. Free tool to preview UI overlays."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -133,7 +133,7 @@ export default function InstagramReelsSafeZonePage() {
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               See where Instagram’s UI overlays sit on your Reels so you can keep headlines, CTAs, and branding in the
-              safe zone. Upload, preview, and export—no account required.
+              safe zone. Upload, preview, and export.
             </p>
           </div>
 
@@ -163,7 +163,7 @@ export default function InstagramReelsSafeZonePage() {
                   <h3 className="font-sans text-lg font-semibold">Upload & Check Before You Post</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Drag and drop your Reels video into the free tool. No sign-up, no watermark. Preview the safe zone,
+                  Drag and drop your Reels video into the free tool. No watermark. Preview the safe zone,
                   adjust your design if needed, and export a reference so your team keeps content in the right place.
                 </p>
               </CardBody>

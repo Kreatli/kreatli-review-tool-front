@@ -20,7 +20,7 @@ export default function YouTubeSafeZoneCheckerPage() {
         <title>YouTube Shorts Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Preview YouTube Shorts UI overlays before publishing. See where channel name, subscribe button, like button, comments, and video controls appear. Free tool—no sign-up required."
+          content="Preview YouTube Shorts UI overlays before publishing. See where channel name, subscribe button, like button, comments, and video controls appear. Free tool."
         />
         <meta
           property="og:title"

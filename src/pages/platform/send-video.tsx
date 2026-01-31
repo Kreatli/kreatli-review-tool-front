@@ -63,7 +63,7 @@ export default function SendVideoPage() {
         <title>Send Your Video for Free | Kreatli</title>
         <meta
           name="description"
-          content="Send your video for free: get a secure link and send it to clients for review. No large attachments, no sign-ups—they watch and comment in the browser."
+          content="Send your video for free: get a secure link and send it to clients for review. No large attachments—they watch and comment in the browser."
         />
         <link rel="canonical" href="https://kreatli.com/platform/send-video" />
         <meta property="og:url" content="https://kreatli.com/platform/send-video" />
@@ -105,7 +105,7 @@ export default function SendVideoPage() {
               Send Your Video for Free in Seconds
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Send your video to clients with a secure link—no large attachments, no sign-ups. They watch and leave
+              Send your video to clients with a secure link—no large attachments. They watch and leave
               frame-accurate feedback in the browser. Every video you send stays connected to comments, versions, and
               approvals.
             </p>
