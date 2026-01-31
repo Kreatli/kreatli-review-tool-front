@@ -394,6 +394,7 @@ export default function ShareMp4Page() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals share work, collect feedback, and approve faster."
+        useBannerResizerInsteadOfCostCalculator
       />
 
       {/* See How This Works Section */}

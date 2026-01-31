@@ -330,6 +330,7 @@ export default function VideoAnnotationPage() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals work more efficiently."
+        useBannerResizerInsteadOfCostCalculator
       />
 
       {/* See How This Works Section */}

@@ -320,6 +320,7 @@ export default function AnnotatePdfPage() {
       <MoreFreeToolsSection
         title="Free Tools for Creative Teams"
         description="Explore our collection of free tools designed to help creative and video professionals work more efficiently."
+        useBannerResizerInsteadOfCostCalculator
       />
 
       {/* See How This Works Section */}

@@ -380,6 +380,7 @@ export default function SendVideoPage() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals send work, collect feedback, and approve faster."
+        useBannerResizerInsteadOfCostCalculator
       />
 
       {/* See How This Works Section */}
