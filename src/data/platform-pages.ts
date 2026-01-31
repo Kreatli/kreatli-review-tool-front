@@ -226,6 +226,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
   },
+  {
+    label: 'Resize YouTube Banner',
+    href: '/platform/resize-youtube-banner',
+    description: 'Resize YouTube channel banner to correct dimensions',
+    section: 'Core Platform',
+    order: 16,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',

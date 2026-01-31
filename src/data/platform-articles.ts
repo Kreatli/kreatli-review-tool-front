@@ -270,6 +270,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/resize-youtube-banner': [
+    makeArticleCard({
+      id: 'platform-resize-youtube-banner-guide-1',
+      full_slug: '/guides/youtube-banner-resizer',
+      title: 'YouTube Banner Resizer Guide: Best Practices (2026)',
+      description:
+        'Learn how to resize your YouTube channel banner to the correct dimensions (2560×1440px) and use the safe zone so channel art looks great on mobile, desktop, tablet, and TV.',
+      tags: ['YouTube', 'Channel Art', 'Free Tools'],
+      publishDate: '2026-01-15 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/f7d6f8ad99/youtube-banner-resizer-guide-dimensions-safe-zones-best-practices-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-resize-youtube-banner-guide-2',
+      full_slug: '/guides/youtube-shorts-safe-zone',
+      title: 'YouTube Shorts Safe Zone Guide (2026)',
+      description:
+        'Learn YouTube Shorts safe zones, UI overlays, and text placement best practices to protect visibility and scale short-form video workflows.',
+      tags: ['YouTube Shorts', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-13 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/1410b38e54/youtube-shorts-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-resize-youtube-banner-guide-3',
+      full_slug: '/guides/instagram-reels-safe-zone',
+      title: 'Instagram Reels Safe Zone Guide (2026)',
+      description:
+        'Learn Instagram Reels safe zones, text overlay rules, and best practices to avoid UI overlap and produce scalable, high-performing short-form video.',
+      tags: ['Instagram Reels', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-12 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/762b429275/instagram-reels-safe-zone-guide-2026.png',
+    }),
+  ],
+
   '/platform/youtube-shorts-safe-zone': [
     makeArticleCard({
       id: 'platform-youtube-shorts-safe-zone-guide-1',
