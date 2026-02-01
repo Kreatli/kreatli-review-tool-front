@@ -6,6 +6,10 @@ import { Icon, IconType } from '../../various/Icon';
 
 interface SafeZoneScreenGuideProps {
   platform?: 'youtube' | 'instagram' | 'tiktok';
+  /** When true, only render the "How to Use Safe-Zone Checker" step-by-step section (e.g. on platform landing pages). */
+  stepsOnly?: boolean;
+  /** Optional section title override (e.g. "How to Use the Safe-Zone Checker for YouTube Shorts" on platform pages). */
+  stepsSectionTitle?: string;
 }
 
 type Platform = 'youtube' | 'instagram' | 'tiktok';
@@ -16,221 +20,216 @@ interface WorkflowStep {
   description: string;
   icon: string;
   image: string | null;
-  imageVariant?: 'phone' | 'desktop';
   altText?: string;
+  /** Optional max-width class so the image container fits proportionately (e.g. steps 3 & 4). */
+  imageContainerClass?: string;
 }
 
 const WORKFLOW_STEPS: Record<Platform | 'default', WorkflowStep[]> = {
   youtube: [
     {
       step: 1,
-      title: 'Upload Your Shorts Video',
+      title: 'Upload Your Video in Kreatli',
       description:
-        'Drag and drop your file to see safe zone overlays showing where channel name, subscribe button, like button, comments, share button, and video controls appear.',
+        'Sign in to Kreatli, open your project, and upload your Shorts video or asset. The safe zone checker lives inside the platform—no need to leave your review workflow or use a separate tool.',
       icon: 'upload',
       image: '/safe-zone-guide/upload-asset.webp',
       altText:
-        'YouTube Shorts safe zone checker tool showing drag and drop file upload interface for 1080x1920 vertical video content with safe zone overlay preview',
+        'Kreatli platform showing project with video upload, ready to use the in-platform safe zone checker for YouTube Shorts',
     },
     {
       step: 2,
-      title: 'Click Safe Zone',
+      title: 'Open It and Turn On the Safe Zone Overlay',
       description:
-        "Activate the safe zone overlay to visualize where YouTube's UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like buttons, captions, and controls.",
+        "Open the video in the player, then activate the safe zone overlay. You'll see exactly where YouTube's UI will sit—channel name, subscribe button, like, comment, share, and video controls—so you can keep headlines, CTAs, and logos in the visible area.",
       icon: 'shield',
       image: '/safe-zone-guide/click-safe-zone.webp',
       altText:
-        'YouTube Shorts safe zone checker showing safe zone overlay activation button and visual guide for identifying UI element placement',
+        'Kreatli in-platform safe zone checker with overlay turned on, showing YouTube Shorts UI element placement',
     },
     {
       step: 3,
-      title: 'Preview YouTube Shorts UI Overlays',
+      title: 'Preview YouTube Shorts (or Toggle Platforms)',
       description:
-        "See where YouTube's interface elements appear: channel name at top, engagement buttons on right, video controls at bottom. Toggle to compare with other platforms.",
+        'View the YouTube Shorts overlay by default: channel name at top, engagement buttons on the right, controls at the bottom. Switch to TikTok or Instagram Reels overlays in the same view to compare and ensure your content stays visible on every platform.',
       icon: 'addVideo',
       image: '/safe-zone-guide/toggle-platforms.webp',
-      altText:
-        'YouTube Shorts safe zone checker preview interface showing platform UI overlays including channel name, subscribe button, like button, comments section, and video playback controls',
+      altText: 'Kreatli safe zone checker with platform selector and YouTube Shorts overlay preview',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 4,
-      title: 'Export and Download Your Shorts',
+      title: 'Turn the Platform Overlay On or Off as Needed',
       description:
-        'Download with safe zone overlays as reference. Share with team and ensure all important elements stay visible when uploading to YouTube.',
-      icon: 'checkCircle',
+        "Turn the platform overlay on to see where YouTube's UI elements will sit on your content, or off to view your video without the guide. Toggle on and off at key frames to verify that headlines, logos, and CTAs stay in the safe zone before you move to review and share.",
+      icon: 'shield',
       image: '/safe-zone-guide/export-download.webp',
-      altText:
-        'YouTube Shorts safe zone checker tool export and download button interface for saving video preview with safe zone overlay reference guide for team collaboration',
+      altText: 'Kreatli safe zone checker with platform overlay toggled on or off for YouTube Shorts',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 5,
-      title: 'Upload to Kreatli for Team Review',
+      title: 'Review, Get Feedback, Share for Approval, or Download',
       description:
-        'Upload your exported file to Kreatli to share with your team for collaborative review. Get feedback on safe zone placement, ensure alignment across stakeholders, and document layout decisions. This step is essential for maintaining consistency and catching potential issues before publishing.',
-      icon: 'paint',
+        'Review key frames, get team feedback, share for approval, or download a reference with the safe zone overlay. Everything stays in your Kreatli project before you publish to YouTube.',
+      icon: 'checkCircle',
       image: '/safe-zone-guide/upload-kreatli.webp',
-      imageVariant: 'desktop',
       altText:
-        'Kreatli platform interface showing file upload and team collaboration features for reviewing YouTube Shorts content with safe zone overlays',
+        'Kreatli platform showing share, export, and download options for YouTube Shorts content with safe zone validation complete',
     },
   ],
   instagram: [
     {
       step: 1,
-      title: 'Upload Your Reels Video',
+      title: 'Upload Your Video in Kreatli',
       description:
-        'Drag and drop your file. See where profile picture, username, like button, comment button, share button, and music display will appear.',
+        'Sign in to Kreatli, open your project, and upload your Reels video or asset. The safe zone checker is built into the platform—use it right where you review and approve content.',
       icon: 'upload',
       image: '/safe-zone-guide/upload-asset.webp',
       altText:
-        'Instagram Reels safe zone checker tool showing drag and drop file upload interface for 1080x1920 vertical video content with safe zone overlay preview',
+        'Kreatli platform showing project with video upload, ready to use the in-platform safe zone checker for Instagram Reels',
     },
     {
       step: 2,
-      title: 'Click Safe Zone',
+      title: 'Open It and Turn On the Safe Zone Overlay',
       description:
-        "Activate the safe zone overlay to visualize where Instagram's UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like profile bars, engagement buttons, and captions.",
+        "Open the video in the player, then turn on the safe zone overlay to see where Instagram's UI will appear: profile picture, username, like, comment, share, and music display. Keep important text and visuals outside those areas so they stay visible in the app.",
       icon: 'shield',
       image: '/safe-zone-guide/click-safe-zone.webp',
       altText:
-        'Instagram Reels safe zone checker showing safe zone overlay activation button and visual guide for identifying UI element placement',
+        'Kreatli in-platform safe zone checker with overlay turned on, showing Instagram Reels UI element placement',
     },
     {
       step: 3,
-      title: 'Preview Instagram Reels UI Overlays',
+      title: 'Preview Instagram Reels (or Toggle Platforms)',
       description:
-        "See where Instagram's interface elements appear - profile picture and username at top, engagement buttons on right, music track display.",
+        'View the Instagram Reels overlay: profile and username at top, engagement buttons on the right, music display. Toggle to YouTube Shorts or TikTok in the same view to compare and make sure your content is safe on every platform you post to.',
       icon: 'addVideo',
       image: '/safe-zone-guide/toggle-platforms.webp',
-      altText:
-        'Instagram Reels safe zone checker preview interface showing platform UI overlays including profile picture, username, like button, comment button, share button, and music track display',
+      altText: 'Kreatli safe zone checker with platform selector and Instagram Reels overlay preview',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 4,
-      title: 'Export and Download Your Reels',
+      title: 'Turn the Platform Overlay On or Off as Needed',
       description:
-        'Download with safe zone overlays as reference. Share with team, document layout decisions, and publish with confidence.',
-      icon: 'checkCircle',
+        "Turn the platform overlay on to see where Instagram's UI elements will sit on your content, or off to view your video without the guide. Toggle on and off at key frames to verify that text and visuals stay in the safe zone before you move to review and share.",
+      icon: 'shield',
       image: '/safe-zone-guide/export-download.webp',
-      altText:
-        'Instagram Reels safe zone checker tool export and download button interface for saving video preview with safe zone overlay reference guide for team collaboration',
+      altText: 'Kreatli safe zone checker with platform overlay toggled on or off for Instagram Reels',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 5,
-      title: 'Upload to Kreatli for Team Review',
+      title: 'Review, Get Feedback, Share for Approval, or Download',
       description:
-        'Upload your exported file to Kreatli to share with your team for collaborative review. Get feedback on safe zone placement, ensure alignment across stakeholders, and document layout decisions. This step is essential for maintaining consistency and catching potential issues before publishing.',
-      icon: 'paint',
+        'Review key frames, get team feedback, share for approval, or download a reference with the safe zone overlay. Everything stays in your Kreatli project before you publish to Instagram.',
+      icon: 'checkCircle',
       image: '/safe-zone-guide/upload-kreatli.webp',
-      imageVariant: 'desktop',
       altText:
-        'Kreatli platform interface showing file upload and team collaboration features for reviewing Instagram Reels content with safe zone overlays',
+        'Kreatli platform showing share, export, and download options for Instagram Reels content with safe zone validation complete',
     },
   ],
   tiktok: [
     {
       step: 1,
-      title: 'Upload Your TikTok Video',
+      title: 'Upload Your Video in Kreatli',
       description:
-        'Drag and drop your file to see safe zone overlays showing where profile picture, username, music track, like button, comment button, share button, and follow button appear.',
+        'Sign in to Kreatli, open your project, and upload your TikTok video or asset. The safe zone checker is built into the platform—check safe zones right where you review and get approvals.',
       icon: 'upload',
       image: '/safe-zone-guide/upload-asset.webp',
       altText:
-        'TikTok safe zone checker tool showing drag and drop file upload interface for 1080x1920 vertical video content with safe zone overlay preview',
+        'Kreatli platform showing project with video upload, ready to use the in-platform safe zone checker for TikTok',
     },
     {
       step: 2,
-      title: 'Click Safe Zone',
+      title: 'Open It and Turn On the Safe Zone Overlay',
       description:
-        "Activate the safe zone overlay to visualize where TikTok's UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like profile information, engagement buttons, and captions.",
+        "Open the video in the player, then activate the safe zone overlay to see where TikTok's UI will sit: profile picture, username, music track, like, comment, share, and follow button. Identify where important visuals might be covered so you can adjust before posting.",
       icon: 'shield',
       image: '/safe-zone-guide/click-safe-zone.webp',
-      altText:
-        'TikTok safe zone checker showing safe zone overlay activation button and visual guide for identifying UI element placement',
+      altText: 'Kreatli in-platform safe zone checker with overlay turned on, showing TikTok UI element placement',
     },
     {
       step: 3,
-      title: 'Preview TikTok UI Overlays',
+      title: 'Preview TikTok (or Toggle Platforms)',
       description:
-        "See where TikTok's interface elements appear: profile picture and username at top, music track display, engagement buttons on right. Toggle to compare with other platforms.",
+        'View the TikTok overlay: profile and username at top, music and engagement buttons on the right. Switch to Instagram Reels or YouTube Shorts in the same view to compare and ensure your content stays visible on every platform.',
       icon: 'addVideo',
       image: '/safe-zone-guide/toggle-platforms.webp',
-      altText:
-        'TikTok safe zone checker preview interface showing platform UI overlays including profile picture, username, music track display, like button, comment button, share button, and follow button',
+      altText: 'Kreatli safe zone checker with platform selector and TikTok overlay preview',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 4,
-      title: 'Export and Download Your TikTok Video',
+      title: 'Turn the Platform Overlay On or Off as Needed',
       description:
-        'Download with safe zone overlays as reference. Share with team and ensure all important elements stay visible when posting to TikTok.',
-      icon: 'checkCircle',
+        "Turn the platform overlay on to see where TikTok's UI elements will sit on your content, or off to view your video without the guide. Toggle on and off at key frames to verify that text and visuals stay in the safe zone before you move to review and share.",
+      icon: 'shield',
       image: '/safe-zone-guide/export-download.webp',
-      altText:
-        'TikTok safe zone checker tool export and download button interface for saving video preview with safe zone overlay reference guide for team collaboration',
+      altText: 'Kreatli safe zone checker with platform overlay toggled on or off for TikTok',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 5,
-      title: 'Upload to Kreatli for Team Review',
+      title: 'Review, Get Feedback, Share for Approval, or Download',
       description:
-        'Upload your exported file to Kreatli to share with your team for collaborative review. Get feedback on safe zone placement, ensure alignment across stakeholders, and document layout decisions. This step is essential for maintaining consistency and catching potential issues before publishing.',
-      icon: 'paint',
+        'Review key frames, get team feedback, share for approval, or download a reference with the safe zone overlay. Everything stays in your Kreatli project before you publish to TikTok.',
+      icon: 'checkCircle',
       image: '/safe-zone-guide/upload-kreatli.webp',
-      imageVariant: 'desktop',
       altText:
-        'Kreatli platform interface showing file upload and team collaboration features for reviewing TikTok content with safe zone overlays',
+        'Kreatli platform showing share, export, and download options for TikTok content with safe zone validation complete',
     },
   ],
   default: [
     {
       step: 1,
-      title: 'Upload Your Asset',
+      title: 'Upload Your Video in Kreatli',
       description:
-        'Drag and drop your file to see safe zone overlays showing where UI elements appear on your content.',
+        'Sign in to Kreatli, open your project, and upload your video or asset. The safe zone checker is built into the platform—use it right in your review workflow without a separate tool.',
       icon: 'upload',
       image: '/safe-zone-guide/upload-asset.webp',
-      altText:
-        'Social media safe zone checker tool showing drag and drop file upload interface for TikTok, Instagram Reels, and YouTube Shorts vertical video content with safe zone overlay preview',
+      altText: 'Kreatli platform showing project with video upload, ready to use the in-platform safe zone checker',
     },
     {
       step: 2,
-      title: 'Click Safe Zone',
+      title: 'Open It and Turn On the Safe Zone Overlay',
       description:
-        'Activate the safe zone overlay to visualize where platform UI elements will appear on your content. This helps you identify areas where important visuals might be obscured by interface elements like buttons, captions, and profile information.',
+        "Open the video in the player, then activate the safe zone overlay to see where each platform's UI elements (buttons, captions, profile bars) will appear on your content. This helps you keep important text, logos, and CTAs in the visible area.",
       icon: 'shield',
       image: '/safe-zone-guide/click-safe-zone.webp',
-      altText:
-        'Social media safe zone checker showing safe zone overlay activation button and visual guide for identifying UI element placement across platforms',
+      altText: 'Kreatli in-platform safe zone checker with overlay turned on, showing platform UI element placement',
     },
     {
       step: 3,
-      title: 'Toggle Between Platform Overlays',
+      title: 'Choose Your Platform and Toggle Overlays',
       description:
-        'Switch between TikTok, Instagram Reels, and YouTube Shorts to see where UI elements appear on each platform.',
+        'Select YouTube Shorts, TikTok, or Instagram Reels to view that platform’s overlay. Toggle between them in the same view to compare and ensure your content stays visible on every channel you post to.',
       icon: 'addVideo',
       image: '/safe-zone-guide/toggle-platforms.webp',
       altText:
-        'Social media safe zone checker tool platform toggle interface showing UI overlays comparison for TikTok, Instagram Reels, and YouTube Shorts with safe zone indicators',
+        'Kreatli safe zone checker with platform selector and overlay comparison for TikTok, Instagram Reels, and YouTube Shorts',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 4,
-      title: 'Export and Download with Safe Zones',
+      title: 'Turn the Platform Overlay On or Off as Needed',
       description:
-        'Download with safe zone overlays as reference. Share with stakeholders and document layout decisions.',
-      icon: 'checkCircle',
+        "Turn the platform overlay on to see where each platform's UI elements will sit on your content, or off to view your video without the guide. Toggle on and off at key frames to verify that text, logos, and CTAs stay in the safe zone before you move to review and share.",
+      icon: 'shield',
       image: '/safe-zone-guide/export-download.webp',
-      altText:
-        'Social media safe zone checker tool export and download button interface for saving video preview with safe zone overlay reference guide for TikTok, Instagram Reels, and YouTube Shorts team collaboration',
+      altText: 'Kreatli safe zone checker with platform overlay toggled on or off',
+      imageContainerClass: 'max-w-sm max-h-[65vh]',
     },
     {
       step: 5,
-      title: 'Upload to Kreatli for Team Review',
+      title: 'Review, Get Feedback, Share for Approval, or Download',
       description:
-        'Upload your exported file to Kreatli to share with your team for collaborative review. Get feedback on safe zone placement, ensure alignment across stakeholders, and document layout decisions. This step is essential for maintaining consistency and catching potential issues before publishing.',
-      icon: 'paint',
+        'Review key frames, get team feedback, share for approval, or download a reference with the safe zone overlay. Everything stays in your Kreatli project before you publish.',
+      icon: 'checkCircle',
       image: '/safe-zone-guide/upload-kreatli.webp',
-      imageVariant: 'desktop',
       altText:
-        'Kreatli platform interface showing file upload and team collaboration features for reviewing social media content with safe zone overlays',
+        'Kreatli platform showing share, export, and download options for content with safe zone validation complete',
     },
   ],
 };
@@ -418,23 +417,26 @@ const CONTENT_LABELS: Record<Platform | 'default', { content: string; platformNa
   default: { content: 'content', platformName: 'every platform' },
 };
 
-export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {}) => {
+export const SafeZoneScreenGuide = ({
+  platform,
+  stepsOnly = false,
+  stepsSectionTitle,
+}: SafeZoneScreenGuideProps = {}) => {
   const platformKey = platform || 'default';
   const workflowSteps = getWorkflowSteps(platform);
   const contentLabels = CONTENT_LABELS[platformKey];
   const faqItems = getFAQItems(platform);
 
-  return (
-    <div>
-      {/* How to Use Section */}
-      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+  const stepsSection = (
+    <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              How to Use Safe-Zone Checker in Your Workflow
+              {stepsSectionTitle ?? 'How to Use Safe-Zone Checker in Your Workflow'}
             </h2>
             <p className="mx-auto max-w-2xl text-base text-foreground-500">
-              Follow this step-by-step process to ensure your {contentLabels.content} looks perfect on{' '}
+              Use the safe zone checker inside Kreatli so you can preview platform overlays, get feedback, and get
+              approvals in one place. Follow these steps to ensure your {contentLabels.content} looks perfect on{' '}
               {contentLabels.platformName}.
             </p>
           </div>
@@ -476,39 +478,19 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
                     </div>
                     {item.image && (
                       <div className="mt-6 flex justify-center lg:mt-8">
-                        {item.imageVariant === 'desktop' ? (
-                          <div className="w-full max-w-4xl">
-                            <div className="overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg">
-                              <Image
-                                src={item.image}
-                                alt={item.altText || `${item.title} - Social media safe zone checker screenshot`}
-                                loading="lazy"
-                                removeWrapper
-                                className="h-auto w-full object-contain"
-                              />
-                            </div>
+                        <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
+                          <div
+                            className={`overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg ${item.imageContainerClass ? 'max-h-[65vh]' : ''}`}
+                          >
+                            <Image
+                              src={item.image}
+                              alt={item.altText || `${item.title} - Social media safe zone checker screenshot`}
+                              loading="lazy"
+                              removeWrapper
+                              className={item.imageContainerClass ? 'h-auto w-full max-h-[65vh] object-contain' : 'h-auto w-full object-contain'}
+                            />
                           </div>
-                        ) : (
-                          <div className="relative max-w-[280px]">
-                            {/* Phone Frame */}
-                            <div className="relative mx-auto rounded-[2.5rem] bg-white p-2 shadow-2xl">
-                              {/* Notch */}
-                              <div className="absolute left-1/2 top-0 z-10 h-6 w-32 -translate-x-1/2 rounded-b-2xl bg-white"></div>
-                              {/* Screen */}
-                              <div className="overflow-hidden rounded-[2rem] bg-black">
-                                <Image
-                                  src={item.image}
-                                  alt={item.altText || `${item.title} - Social media safe zone checker screenshot`}
-                                  loading="lazy"
-                                  width={280}
-                                  height={500}
-                                  removeWrapper
-                                  className="h-auto w-full"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        )}
+                        </div>
                       </div>
                     )}
                   </div>
@@ -518,6 +500,15 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
           </div>
         </div>
       </section>
+  );
+
+  if (stepsOnly) {
+    return <div>{stepsSection}</div>;
+  }
+
+  return (
+    <div>
+      {stepsSection}
 
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-7xl">
@@ -658,9 +649,7 @@ export const SafeZoneScreenGuide = ({ platform }: SafeZoneScreenGuideProps = {})
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              What are Safe Zones and Why They Matter
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">What are Safe Zones and Why They Matter</h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Safe zones are buffer areas inside your video canvas where important visual elements are guaranteed to
               remain visible, regardless of device differences or UI overlays.

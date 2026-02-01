@@ -3,6 +3,7 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
+import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
@@ -306,6 +307,13 @@ export default function YouTubeShortsSafeZonePage() {
           </div>
         </div>
       </section>
+
+      {/* How to Use Safe-Zone Checker (step-by-step) */}
+      <SafeZoneScreenGuide
+        platform="youtube"
+        stepsOnly
+        stepsSectionTitle="How to Use the Safe-Zone Checker for YouTube Shorts"
+      />
 
       {/* Free Tools Section */}
       <MoreFreeToolsSection
