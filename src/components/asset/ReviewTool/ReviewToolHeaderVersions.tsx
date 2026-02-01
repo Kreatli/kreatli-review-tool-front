@@ -1,4 +1,4 @@
-import { Button, Chip, cn, Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
+import { Button, Chip, Popover, PopoverContent, PopoverTrigger, Tooltip } from '@heroui/react';
 import { useMemo, useState } from 'react';
 
 import { useAssetContext } from '../../../contexts/Asset';
@@ -27,18 +27,18 @@ export const ReviewToolHeaderVersions = ({ file, stack, isCompareMode = false, o
     setIsPopoverOpen(false);
   };
 
+  if (isCompareMode) {
+    return (
+      <Tooltip content="You can't switch versions while comparing files" delay={0} closeDelay={0}>
+        <Chip variant="flat">v{file.stackVersion}</Chip>
+      </Tooltip>
+    );
+  }
+
   return (
     <Popover isOpen={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
       <PopoverTrigger>
-        <Chip
-          variant={isCompareMode ? 'flat' : 'solid'}
-          className={cn('cursor-pointer', {
-            'bg-foreground text-content1': !isCompareMode,
-            'pointer-events-none': isCompareMode,
-          })}
-        >
-          v{file.stackVersion}
-        </Chip>
+        <Chip className="cursor-pointer bg-foreground text-content1">v{file.stackVersion}</Chip>
       </PopoverTrigger>
       <PopoverContent className="w-full max-w-[90vw] pb-3 sm:min-w-96 sm:max-w-md">
         <div className="w-full">

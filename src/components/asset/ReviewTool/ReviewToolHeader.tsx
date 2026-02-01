@@ -1,4 +1,4 @@
-import { Button, Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import { Button, Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Tooltip } from '@heroui/react';
 import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
 
@@ -119,7 +119,11 @@ export const ReviewToolHeader = ({
             onSwitchFile={onSwitchFile}
           />
         )}
-        {!stack && file.stackVersion && file.stackVersion >= 0 && <Chip variant="flat">v{file.stackVersion}</Chip>}
+        {!stack && file.stackVersion && file.stackVersion >= 0 && (
+          <Tooltip content="You can't switch versions while comparing files" delay={0} closeDelay={0}>
+            <Chip variant="flat">v{file.stackVersion}</Chip>
+          </Tooltip>
+        )}
       </div>
       {!isCompareMode && (
         <Button size="sm" variant="flat" onClick={openSafeZoneCheckerModal}>

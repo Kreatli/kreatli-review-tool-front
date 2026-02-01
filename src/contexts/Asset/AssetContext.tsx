@@ -188,13 +188,13 @@ export const AssetContextProvider = ({
       {children}
       <RenameAssetModal
         projectId={projectId}
-        asset={selectedAsset?.type === 'stack' ? stackSelectedFile : selectedAsset}
+        asset={selectedAsset?.type === 'stack' ? (stackSelectedFile ?? selectedAsset.active) : selectedAsset}
         stackId={selectedAsset?.type === 'stack' ? selectedAsset.id : undefined}
         isOpen={isRenameModalOpen}
         onClose={() => setIsRenameModalOpen(false)}
       />
       <ShareAssetModal
-        asset={selectedAsset?.type === 'stack' ? stackSelectedFile : selectedAsset}
+        asset={selectedAsset?.type === 'stack' ? (stackSelectedFile ?? selectedAsset.active) : selectedAsset}
         isOpen={isShareModalOpen}
         onClose={() => setIsShareModalOpen(false)}
       />

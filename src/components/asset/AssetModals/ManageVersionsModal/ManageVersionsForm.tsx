@@ -93,7 +93,7 @@ export const ManageVersionsForm = ({ projectId, stack, formRef, onCancel, onSucc
   };
 
   const onSubmit = (data: { files: ProjectFileDto[] }) => {
-    const prevActiveFileIndex = stack.files.findIndex((file) => file.id === stack.active?.id);
+    const prevActiveFileIndex = [...stack.files].reverse().findIndex((file) => file.id === stack.active?.id);
     const activeFileIndex = data.files.findIndex((file) => file.id === activeFileId);
     const shouldUpdateActive = stack.active?.id !== activeFileId || prevActiveFileIndex !== activeFileIndex;
 

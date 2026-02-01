@@ -117,9 +117,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   const shouldShowCompareButton = React.useMemo(() => {
     return (
       selectedAssetIds.size === 2 &&
-      Array.from(selectedAssetIds.values()).every((id: string) =>
-        files.find((asset) => asset.id === id && asset.type === 'file'),
-      )
+      Array.from(selectedAssetIds.values()).every((id: string) => files.find((asset) => asset.id === id))
     );
   }, [selectedAssetIds, files]);
 
@@ -247,8 +245,26 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   const handleCompareSelectedAssets = () => {
     const [assetId, assetToCompareId] = Array.from(selectedAssetIds);
 
-    // TODO: handle stack comparison
-    router.push(`/project/${project.id}/assets/${assetId}?compareFileId=${assetToCompareId}`);
+    const [asset, assetToCompare] = [
+      files.find((asset) => asset.id === assetId),
+      files.find((asset) => asset.id === assetToCompareId),
+    ];
+
+    if (!asset || !assetToCompare) {
+      return;
+    }
+
+    if (asset.type === 'stack') {
+      const fileToCompareId = assetToCompare.type === 'stack' ? assetToCompare.active?.id : assetToCompare.id;
+
+      router.push(`/project/${project.id}/assets/stack/${asset.id}?compareFileId=${fileToCompareId}`);
+
+      return;
+    }
+
+    const fileToCompareId = assetToCompare.type === 'stack' ? assetToCompare.active?.id : assetToCompare.id;
+
+    router.push(`/project/${project.id}/assets/${assetId}?compareFileId=${fileToCompareId}`);
   };
 
   return (
