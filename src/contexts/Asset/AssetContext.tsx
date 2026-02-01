@@ -102,7 +102,10 @@ export const AssetContextProvider = ({
       icon: 'download' as const,
       onClick: async () => {
         try {
-          const assetUrl = await getAssetFileIdDownload(stackSelectedFile?.id ?? asset.id, { shareableLinkId: '' });
+          const assetUrl = await getAssetFileIdDownload(
+            asset.type === 'stack' ? (stackSelectedFile?.id ?? asset.active?.id ?? asset.id) : asset.id,
+            { shareableLinkId: '' },
+          );
 
           downloadFromUrl(assetUrl, asset.name);
         } catch {
