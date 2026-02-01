@@ -148,6 +148,7 @@ export const SafeZoneScreenVideo = ({ src, activeOverlay }: Props) => {
         autoPlay
         playsInline
         loop
+        crossOrigin="anonymous"
         className="h-auto max-h-full w-full cursor-pointer"
         ref={videoRef}
         onPlay={() => setIsPaused(false)}
