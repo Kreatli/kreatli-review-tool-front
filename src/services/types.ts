@@ -112,7 +112,7 @@ export interface AssetCommentsResponse {
 export interface AssetDetails {
   id: string;
   name: string;
-  type: 'file' | 'folder';
+  type: 'file' | 'folder' | 'stack';
 }
 
 export interface AssetDownloadedDetails {
@@ -129,6 +129,8 @@ export interface AssetDto {
   name: string;
   url: string;
   assignee?: UserDto;
+  stackId?: string;
+  stackVersion?: number;
   status?: string;
   statusColor?: string;
   statusLabel?: string;
@@ -318,6 +320,7 @@ export interface FileCommentResolvedDetails {
 export interface FileDetails {
   id: string;
   name: string;
+  stackId?: string;
 }
 
 export interface FileDto {
@@ -336,6 +339,8 @@ export interface FileDto {
   assignee?: UserDto;
   createdBy?: UserDto;
   parent?: FolderDto;
+  stackId?: string;
+  stackVersion?: number;
   status?: string;
   statusColor?: string;
   statusLabel?: string;
@@ -345,7 +350,6 @@ export interface FileEditBodyDto {
   assigneeId?: string;
   description?: string;
   name?: string;
-  parentId?: string;
   status?: string;
 }
 
@@ -388,7 +392,7 @@ export interface FolderDto {
    *
    * An array of assets which can be folders or files.
    */
-  children: (ProjectFolderDto | ProjectFileDto)[];
+  children: (ProjectFolderDto | ProjectFileDto | ProjectStackDto)[];
   createdAt: string;
   description: string;
   fileCount: number;
@@ -404,7 +408,6 @@ export interface FolderEditBodyDto {
   children?: string[];
   description?: string;
   name?: string;
-  parentId?: string;
 }
 
 export interface FoldersDto {
@@ -418,6 +421,14 @@ export interface GetAssetFileIdCommentsQueryParams {
 
 export interface GetAssetFileIdDownloadQueryParams {
   shareableLinkId: string;
+}
+
+export interface GetAssetsFilesQueryParams {
+  limit: number;
+  offset: number;
+  projectId: string;
+  query: string;
+  skipIds: string[];
 }
 
 export interface GetAssetsFoldersQueryParams {
@@ -511,6 +522,12 @@ export interface MemberDetails {
   email: string;
 }
 
+export interface MoveAssetsResponseDto {
+  project: ProjectDto;
+  from?: FolderDto;
+  to?: FolderDto;
+}
+
 export interface MultipartPresignedUrlBodyDto {
   key: string;
   partNumber: number;
@@ -580,6 +597,7 @@ export interface NotificationDto {
     | 'file_comment_reply'
     | 'file_comment_resolve'
     | 'file_comment_mention'
+    | 'file_new_version_uploaded'
     | 'chat_message_unread';
   /**
    *
@@ -618,14 +636,9 @@ export interface PresignedUrlDto {
 export interface ProjectArchivedAssetsDto {
   /**
    *
-   * An array of assets which can be folders or files.
+   * An array of files or file stacks.
    */
-  assets: (ProjectFolderDto | ProjectFileDto)[];
-  /**
-   *
-   * An array of files.
-   */
-  files: ProjectFileDto[];
+  files: (ProjectFileDto | ProjectStackDto)[];
   /**
    *
    * An array of folders.
@@ -638,19 +651,15 @@ export interface ProjectAssetEditDto {
   file?: ProjectFileDto;
   folder?: FolderDto;
   parent?: FolderDto;
+  stack?: StackDto;
 }
 
 export interface ProjectAssetsResponseDto {
   /**
    *
-   * An array of assets which can be folders or files.
+   * An array of files or file stacks.
    */
-  assets: (ProjectFolderDto | ProjectFileDto)[];
-  /**
-   *
-   * An array of files.
-   */
-  files: ProjectFileDto[];
+  files: (ProjectFileDto | ProjectStackDto)[];
   /**
    *
    * An array of folders.
@@ -661,6 +670,7 @@ export interface ProjectAssetsResponseDto {
 export interface ProjectBodyDto {
   description: string;
   name: string;
+  content?: { [x in string | number]: any };
   members?: string[];
 }
 
@@ -682,11 +692,6 @@ export interface ProjectCreatedLogDto {
 
 export interface ProjectDto {
   assetStatuses: AssetStatusDto[];
-  /**
-   *
-   * An array of assets which can be folders or files.
-   */
-  assets: (ProjectFolderDto | ProjectFileDto)[];
   content: { [x in string | number]: any };
   createdAt: string;
   description: string;
@@ -717,6 +722,8 @@ export interface ProjectFileBodyDto {
   fileSize: number;
   key: string;
   parentId?: string;
+  stackId?: string;
+  stackWithFileId?: string;
 }
 
 export interface ProjectFileDto {
@@ -734,6 +741,8 @@ export interface ProjectFileDto {
   assignee?: UserDto;
   createdBy?: UserDto;
   parentId?: string;
+  stackId?: string;
+  stackVersion?: number;
   status?: string;
   statusColor?: string;
   statusLabel?: string;
@@ -875,6 +884,20 @@ export interface ProjectRemovedLogDto {
   user: UserDto;
 }
 
+export interface ProjectStackDto {
+  createdAt: string;
+  description: string;
+  fileCount: number;
+  files: ProjectFileDto[];
+  id: string;
+  name: string;
+  totalFileSize: number;
+  type: 'stack';
+  active?: ProjectFileDto;
+  createdBy?: UserDto;
+  parentId?: string;
+}
+
 export interface ProjectStatusBodyDto {
   status: 'active' | 'completed' | 'archived';
 }
@@ -975,6 +998,26 @@ export interface SignUpWithTokenBodyDto {
   name: string;
   password: string;
   token: string;
+}
+
+export interface StackDto {
+  createdAt: string;
+  description: string;
+  fileCount: number;
+  files: FileDto[];
+  id: string;
+  name: string;
+  path: FolderDto[];
+  totalFileSize: number;
+  type: 'stack';
+  active?: FileDto;
+  createdBy?: UserDto;
+  parent?: FolderDto;
+}
+
+export interface StackEditBodyDto {
+  files: string[];
+  activeFileId?: string;
 }
 
 export interface SubscriptionBodyDto {

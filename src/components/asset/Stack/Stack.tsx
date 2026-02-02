@@ -1,32 +1,53 @@
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { FileStateContextProvider } from '../../../contexts/File';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { useSession } from '../../../hooks/useSession';
-import { useGetAssetFileId } from '../../../services/hooks';
+import { useGetAssetFileId, useGetAssetStackId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
+import { FileDto } from '../../../services/types';
 import { ProjectPaywall } from '../../project/Project/ProjectPaywall';
 import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
 import { AssetPanel } from '../AssetPanel';
 import { ReviewTool } from '../ReviewTool';
 
 interface Props {
-  fileId: string;
+  stackId: string;
   projectId: string;
   compareFileId?: string | null;
 }
 
-export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
+export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { user } = useSession();
 
-  const { data: file, isPending: isAssetLoading, error } = useGetAssetFileId(fileId);
+  const { data: stack, isPending: isAssetLoading, error } = useGetAssetStackId(stackId);
   const { data: compareFile, isLoading: isCompareAssetLoading } = useGetAssetFileId(compareFileId ?? '', {
     enabled: !!compareFileId,
   });
   const { data: project, isPending: isProjectLoading } = useGetProjectId(projectId);
+
+  const selectedFileId = searchParams.get('selectedFileId') ?? stack?.active?.id;
+
+  const selectedFile = useMemo(
+    () => stack?.files.find((file) => file.id === selectedFileId),
+    [stack?.files, selectedFileId],
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+
+    if (stack?.active?.id && !params.get('selectedFileId')) {
+      params.set('selectedFileId', stack?.active?.id ?? '');
+    }
+
+    router.replace(`${location.pathname}?${params.toString()}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stack?.active]);
 
   const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
   const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
@@ -35,16 +56,14 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
 
   useEffect(() => {
     if (error && 'status' in error && error.status === 404) {
-      router.replace('/404');
-    }
-  }, [error, router]);
+      const params = new URLSearchParams(location.search);
+      const selectedFileId = params.get('selectedFileId');
 
-  useEffect(() => {
-    if (file?.stackId) {
-      router.replace(`/project/${projectId}/assets/stack/${file.stackId}?selectedFileId=${file.id}`);
+      if (selectedFileId) {
+        router.replace(`/project/${projectId}/assets/${selectedFileId}`);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [file]);
+  }, [error, router, projectId]);
 
   if (error && 'status' in error && error.status === 404) {
     return null;
@@ -54,7 +73,7 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
     return <ProjectPaywall project={project} user={user} />;
   }
 
-  if (isLoading || !project) {
+  if (isLoading || !project || !selectedFile) {
     return (
       <FileStateContextProvider fileId="" file={undefined}>
         <div className="grid-cols-[1fr,350px] md:grid md:h-screen">
@@ -65,12 +84,26 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
     );
   }
 
+  const handleSwitchFile = (file: FileDto) => {
+    const params = new URLSearchParams(location.search);
+
+    params.set('selectedFileId', file.id);
+
+    router.replace(`${location.pathname}?${params.toString()}`);
+  };
+
   return (
     <>
       <ProjectUploadContextProvider project={project} folderId={router.query.folderId?.toString()}>
-        <FileStateContextProvider fileId={fileId} file={file} compareFile={compareFile}>
+        <FileStateContextProvider fileId={selectedFile.id} file={selectedFile} compareFile={compareFile}>
           <div className="grid-cols-[1fr,350px] md:grid md:h-screen">
-            <ReviewTool project={project} isLoading={isLoading} />
+            <ReviewTool
+              project={project}
+              stack={stack}
+              stackSelectedFile={selectedFile}
+              isLoading={isLoading}
+              onSwitchFile={handleSwitchFile}
+            />
             <AssetPanel project={project} isLoading={isLoading} />
           </div>
         </FileStateContextProvider>

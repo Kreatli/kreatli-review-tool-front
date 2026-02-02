@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 
+import { ProjectFileBodyDto } from '../services/types';
+
 export interface FileUpload {
   id: string;
   name: string;
@@ -16,6 +18,13 @@ export interface FileUpload {
 
 interface State {
   uploads: FileUpload[];
+  uploadsQueue: [
+    string,
+    {
+      id: string;
+      requestBody: ProjectFileBodyDto;
+    },
+  ][];
   setFileUploadError: (fileId: string) => void;
   setFileUpload: (file: FileUpload) => void;
   setFileUploads: (files: FileUpload[]) => void;
@@ -23,16 +32,20 @@ interface State {
   setIsUploadedToS3: (fileId: string) => void;
   removeFileUpload: (fileId: string) => void;
   removeUploadedFiles: () => void;
+  addItemToUploadQueue: (id: string, payload: { id: string; requestBody: ProjectFileBodyDto }) => void;
+  removeItemFromUploadQueue: (id: string) => void;
 }
 
 export const useProjectUploads = create<State>((set) => ({
   uploads: [],
+  uploadsQueue: [],
   setFileUploads: (fileUploads: FileUpload[]) => set(() => ({ uploads: fileUploads })),
   setFileUpload: (fileUpload: FileUpload) =>
     set((state) => {
       localStorage.setItem('uploads', JSON.stringify([fileUpload, ...state.uploads]));
 
       return {
+        ...state,
         uploads: [fileUpload, ...state.uploads],
       };
     }),
@@ -44,7 +57,7 @@ export const useProjectUploads = create<State>((set) => ({
 
       localStorage.setItem('uploads', JSON.stringify(newUploads));
 
-      return { uploads: newUploads };
+      return { ...state, uploads: newUploads };
     }),
   updateFileUploadProgress: (fileId: string, progress: number) =>
     set((state) => {
@@ -59,7 +72,7 @@ export const useProjectUploads = create<State>((set) => ({
         );
       }
 
-      return { uploads: newUploads };
+      return { ...state, uploads: newUploads };
     }),
   setIsUploadedToS3: (fileId: string) =>
     set((state) => ({
@@ -73,7 +86,7 @@ export const useProjectUploads = create<State>((set) => ({
 
       localStorage.setItem('uploads', JSON.stringify(newUploads));
 
-      return { uploads: newUploads };
+      return { ...state, uploads: newUploads };
     }),
   removeUploadedFiles: () =>
     set((state) => {
@@ -81,6 +94,21 @@ export const useProjectUploads = create<State>((set) => ({
 
       localStorage.setItem('uploads', JSON.stringify(newUploads));
 
-      return { uploads: newUploads };
+      return { ...state, uploads: newUploads };
+    }),
+  addItemToUploadQueue: (id: string, payload: { id: string; requestBody: ProjectFileBodyDto }) =>
+    set((state) => {
+      const newUploadsQueue = [
+        ...state.uploadsQueue,
+        [id, payload] as [string, { id: string; requestBody: ProjectFileBodyDto }],
+      ];
+
+      return { ...state, uploadsQueue: newUploadsQueue };
+    }),
+  removeItemFromUploadQueue: (id: string) =>
+    set((state) => {
+      const newUploadsQueue = state.uploadsQueue.filter(([uploadId]) => uploadId !== id);
+
+      return { ...state, uploadsQueue: newUploadsQueue };
     }),
 }));

@@ -35,14 +35,21 @@ export const ChatMessagesItemAssetPreview = ({ asset }: Props) => {
       <Chip size="sm" variant="faded" className="pointer-events-none absolute bottom-2 right-2 border-1">
         <span className="font-medium text-foreground-700">{formatBytes(asset.fileSize)}</span>
       </Chip>
-      <Chip
-        size="sm"
-        variant="faded"
-        className="pointer-events-none absolute left-2 right-2 top-2 min-w-[auto] border-1"
-        classNames={{ content: 'max-w-full overflow-hidden text-ellipsis' }}
-      >
-        {asset.name}
-      </Chip>
+      <div className="pointer-events-none absolute left-2 right-2 top-2 flex items-center gap-1 overflow-hidden">
+        <Chip
+          size="sm"
+          variant="faded"
+          className="min-w-[auto] overflow-hidden border-1"
+          classNames={{ content: 'max-w-full overflow-hidden text-ellipsis' }}
+        >
+          {asset.name}
+        </Chip>
+        {asset.stackVersion && (
+          <Chip size="sm" className="border-1" variant="faded">
+            v{asset.stackVersion}
+          </Chip>
+        )}
+      </div>
     </div>
   );
 };

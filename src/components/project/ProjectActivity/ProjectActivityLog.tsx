@@ -23,12 +23,21 @@ interface Props {
 
 const AssetUploadedLog = ({ log }: { log: AssetUploadedLogDto }) => {
   const { project } = useProjectContext();
-  const { id, name } = log.details.asset;
+  const { id, name, stackId } = log.details.asset;
 
   return (
     <div>
       Uploaded{' '}
-      <Link as={NextLink} href={`/project/${project.id}/assets/${id}`} size="sm" underline="hover">
+      <Link
+        as={NextLink}
+        href={
+          stackId
+            ? `/project/${project.id}/assets/stack/${stackId}?selectedFileId=${id}`
+            : `/project/${project.id}/assets/${id}`
+        }
+        size="sm"
+        underline="hover"
+      >
         {name}
       </Link>
     </div>
@@ -131,18 +140,22 @@ const AssetsArchivedLog = ({ log }: { log: AssetsArchivedLogDto }) => {
   const { assets } = log.details;
 
   if (assets.length === 1) {
+    const assetType = assets[0].type;
+    const assetId = assets[0].id;
+
+    const href =
+      assetType === 'stack'
+        ? `/project/${project.id}/assets/stack/${assetId}`
+        : assetType === 'folder'
+          ? `/project/${project.id}/assets/folder/${assetId}`
+          : `/project/${project.id}/assets/${assetId}`;
+
     return (
       <>
-        Deleted{' '}
-        <Link
-          as={NextLink}
-          href={`/project/${project.id}/assets${assets[0].type === 'file' ? '' : '/folder'}/${assets[0].id}`}
-          size="sm"
-          underline="hover"
-        >
+        Deleted {assetType === 'stack' ? 'version stack' : assetType}{' '}
+        <Link as={NextLink} href={href} size="sm" underline="hover">
           {assets[0].name}
         </Link>{' '}
-        {assets[0].type}
       </>
     );
   }
@@ -158,19 +171,19 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
 
   if (assets.length === 1) {
     const [asset] = assets;
+    const href =
+      asset.type === 'file'
+        ? `/project/${project.id}/assets/${asset.id}`
+        : asset.type === 'folder'
+          ? `/project/${project.id}/assets/folder/${asset.id}`
+          : `/project/${project.id}/assets/stack/${asset.id}`;
 
     return (
       <>
-        Restored{' '}
-        <Link
-          as={NextLink}
-          href={`/project/${project.id}/assets${asset.type === 'file' ? '' : '/folder'}/${asset.id}`}
-          size="sm"
-          underline="hover"
-        >
+        Restored {asset.type === 'stack' ? 'version stack' : asset.type}{' '}
+        <Link as={NextLink} href={href} size="sm" underline="hover">
           {asset.name}
-        </Link>{' '}
-        {asset.type}
+        </Link>
       </>
     );
   }
@@ -178,7 +191,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
   return (
     <div className="flex flex-col gap-2">
       <div>
-        Restored {assets.length} assets. {}
+        Restored {assets.length} assets.{' '}
         <Link
           as="button"
           type="button"
@@ -191,23 +204,22 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
       </div>
       {isExpanded && (
         <ul className="flex list-disc flex-col gap-2 pl-4">
-          {assets.map((asset) => (
-            <li key={asset.id}>
-              <Link
-                key={asset.id}
-                as={NextLink}
-                href={
-                  asset.type === 'file'
-                    ? `/project/${project.id}/assets/${asset.id}`
-                    : `/project/${project.id}/assets/folder/${asset.id}`
-                }
-                size="sm"
-                underline="hover"
-              >
-                {asset.name}
-              </Link>
-            </li>
-          ))}
+          {assets.map((asset) => {
+            const assetHref =
+              asset.type === 'file'
+                ? `/project/${project.id}/assets/${asset.id}`
+                : asset.type === 'folder'
+                  ? `/project/${project.id}/assets/folder/${asset.id}`
+                  : `/project/${project.id}/assets/stack/${asset.id}`;
+
+            return (
+              <li key={asset.id}>
+                <Link key={asset.id} as={NextLink} href={assetHref} size="sm" underline="hover">
+                  {asset.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>
@@ -224,7 +236,7 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
 
     return (
       <>
-        Deleted forever &quot;{asset.name}&quot; {asset.type}
+        Deleted forever {asset.type === 'stack' ? 'version stack' : asset.type} &quot;{asset.name}&quot;
       </>
     );
   }

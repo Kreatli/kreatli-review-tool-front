@@ -20,8 +20,13 @@ import { AssetContextProvider } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
 import { useSession } from '../../../../hooks/useSession';
 import { useGetProjectIdAssets } from '../../../../services/custom-hooks';
-import { usePutProjectIdFileFileId, usePutProjectIdFolderFolderId } from '../../../../services/hooks';
-import { getAssetFolderId, getProjectIdAssets, putProjectIdFolderFolderId } from '../../../../services/services';
+import { usePostProjectIdAssetsMove, usePutProjectIdFolderFolderId } from '../../../../services/hooks';
+import {
+  getAssetFolderId,
+  getProjectIdAssets,
+  postProjectIdAssetsMove,
+  putProjectIdFolderFolderId,
+} from '../../../../services/services';
 import { FolderDto, ProjectDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { EmptyState } from '../../../various/EmptyState';
@@ -32,7 +37,7 @@ import { ProjectAssetsFilters } from '../ProjectAssetsSearch';
 import { ProjectFile } from '../ProjectFile';
 import { ProjectFileCover } from '../ProjectFile/ProjectFileCover';
 import { ProjectFolder } from '../ProjectFolder';
-import { ProjectFolderCover } from '../ProjectFolder/ProjectFolderCover';
+import { ProjectStack } from '../ProjectStack';
 
 interface Props {
   project: ProjectDto;
@@ -53,10 +58,6 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   const { user } = useSession();
   const isProjectOwner = user && project?.createdBy?.id === user?.id;
 
-  const assets = React.useMemo(() => {
-    return assetsData?.assets ?? [];
-  }, [assetsData]);
-
   const files = React.useMemo(() => {
     return assetsData?.files ?? [];
   }, [assetsData]);
@@ -64,6 +65,10 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   const folders = React.useMemo(() => {
     return assetsData?.folders ?? [];
   }, [assetsData]);
+
+  const assets = React.useMemo(() => {
+    return [...files, ...folders];
+  }, [files, folders]);
 
   const [draggedId, setDraggedId] = React.useState<string | null>(null);
   const [overId, setOverId] = React.useState<string | null>(null);
@@ -75,24 +80,24 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   const [selectedAssetIds, setSelectedAssetIds] = React.useState<Set<string>>(new Set([]));
 
   React.useEffect(() => {
-    setFilesOrder(assets.map((asset) => asset.id));
-  }, [assets]);
+    setFilesOrder(files.map((asset) => asset.id));
+  }, [files]);
 
   const queryClient = useQueryClient();
   const { mutateAsync: updateFolder } = usePutProjectIdFolderFolderId({
-    mutationKey: [putProjectIdFolderFolderId.key, project.id],
+    mutationKey: [postProjectIdAssetsMove.key, project.id],
   });
-  const { mutateAsync: updateFile } = usePutProjectIdFileFileId({
-    mutationKey: [putProjectIdFolderFolderId.key, project.id],
+  const { mutateAsync: moveAssets } = usePostProjectIdAssetsMove({
+    mutationKey: [postProjectIdAssetsMove.key, project.id],
   });
 
   const selectedAsset = React.useMemo(() => {
-    return assets.find((asset) => asset.id === selectedAssetId);
-  }, [assets, selectedAssetId]);
+    return [...files, ...folders].find((asset) => asset.id === selectedAssetId);
+  }, [files, folders, selectedAssetId]);
 
   const draggedAsset = React.useMemo(() => {
-    return assets.find((asset) => asset.id === draggedId);
-  }, [draggedId, assets]);
+    return files.find((asset) => asset.id === draggedId);
+  }, [draggedId, files]);
 
   const sortedAssets = React.useMemo(() => {
     return filesOrder
@@ -112,11 +117,9 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   const shouldShowCompareButton = React.useMemo(() => {
     return (
       selectedAssetIds.size === 2 &&
-      Array.from(selectedAssetIds.values()).every((id: string) =>
-        assets.find((asset) => asset.id === id && asset.type === 'file'),
-      )
+      Array.from(selectedAssetIds.values()).every((id: string) => files.find((asset) => asset.id === id))
     );
-  }, [selectedAssetIds, assets]);
+  }, [selectedAssetIds, files]);
 
   if (isLoadingAssets) {
     return (
@@ -149,7 +152,6 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
       return;
     }
 
-    const isFolder = project.assets.find((asset) => asset.id === active.id)?.type === 'folder';
     const isOverFolder = (over.id as string).includes('folder');
     const overFolderId = (over.id as string).replace('folder-', '');
 
@@ -167,41 +169,31 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
     setFilesOrder(newFilesOrder);
 
     if (isOverFolder) {
-      if (isFolder) {
-        try {
-          const { parent: updatedFolder } = await updateFolder({
-            id: project.id,
-            folderId: active.id as string,
-            requestBody: { parentId: overFolderId as string },
-          });
-
-          queryClient.setQueryData([getAssetFolderId.key, folder.id], updatedFolder);
-
-          if (!queryClient.isMutating({ mutationKey: [putProjectIdFolderFolderId.key, project.id] })) {
-            queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
-          }
-        } catch (error) {
-          addToast({ title: 'Failed to move folder', description: getErrorMessage(error), color: 'danger', variant: 'flat' });
-        }
-
-        return;
-      }
-
       try {
-        const { parent: updatedFolder } = await updateFile({
+        const { from: updatedFolder } = await moveAssets({
           id: project.id,
-          fileId: active.id as string,
-          requestBody: { parentId: overFolderId as string },
+          requestBody: {
+            assetIds: [active.id as string],
+            fromId: folder.id,
+            toId: overFolderId,
+          },
         });
 
         queryClient.setQueryData([getAssetFolderId.key, folder.id], updatedFolder);
 
-        if (!queryClient.isMutating({ mutationKey: [putProjectIdFolderFolderId.key, project.id] })) {
+        if (!queryClient.isMutating({ mutationKey: [postProjectIdAssetsMove.key, project.id] })) {
           queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
         }
       } catch (error) {
-        addToast({ title: 'Failed to move folder', description: getErrorMessage(error), color: 'danger', variant: 'flat' });
+        addToast({
+          title: 'Failed to move folder',
+          description: getErrorMessage(error),
+          color: 'danger',
+          variant: 'flat',
+        });
       }
+
+      return;
     }
 
     try {
@@ -217,7 +209,12 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
         queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
       }
     } catch (error) {
-      addToast({ title: 'Failed to update assets order', description: getErrorMessage(error), color: 'danger', variant: 'flat' });
+      addToast({
+        title: 'Failed to update assets order',
+        description: getErrorMessage(error),
+        color: 'danger',
+        variant: 'flat',
+      });
     }
   };
 
@@ -248,7 +245,26 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   const handleCompareSelectedAssets = () => {
     const [assetId, assetToCompareId] = Array.from(selectedAssetIds);
 
-    router.push(`/project/${project.id}/assets/${assetId}?compareFileId=${assetToCompareId}`);
+    const [asset, assetToCompare] = [
+      files.find((asset) => asset.id === assetId),
+      files.find((asset) => asset.id === assetToCompareId),
+    ];
+
+    if (!asset || !assetToCompare) {
+      return;
+    }
+
+    if (asset.type === 'stack') {
+      const fileToCompareId = assetToCompare.type === 'stack' ? assetToCompare.active?.id : assetToCompare.id;
+
+      router.push(`/project/${project.id}/assets/stack/${asset.id}?compareFileId=${fileToCompareId}`);
+
+      return;
+    }
+
+    const fileToCompareId = assetToCompare.type === 'stack' ? assetToCompare.active?.id : assetToCompare.id;
+
+    router.push(`/project/${project.id}/assets/${assetId}?compareFileId=${fileToCompareId}`);
   };
 
   return (
@@ -339,17 +355,27 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             <div className="-m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-6">
               {sortedAssets.map((asset, index) => (
                 <div key={asset.id} className={cn('relative', { 'opacity-50': draggedId === asset.id })}>
-                  <ProjectFile
-                    file={asset}
-                    isReadonly={project.status !== 'active'}
-                    isSelected={selectedAssetIds.has(asset.id)}
-                    onSelectionChange={() => handleSelectionChange(asset.id)}
-                  />
+                  {asset.type === 'file' && (
+                    <ProjectFile
+                      file={asset}
+                      isReadonly={project.status !== 'active'}
+                      isSelected={selectedAssetIds.has(asset.id)}
+                      onSelectionChange={() => handleSelectionChange(asset.id)}
+                    />
+                  )}
+                  {asset.type === 'stack' && (
+                    <ProjectStack
+                      stack={asset}
+                      isReadonly={project.status !== 'active'}
+                      isSelected={selectedAssetIds.has(asset.id)}
+                      onSelectionChange={() => handleSelectionChange(asset.id)}
+                    />
+                  )}
                   {overId === asset.id && draggedAsset && (
                     <div
                       className={cn('absolute bottom-0 top-0 w-0.5 -translate-x-1/2 rounded-xl bg-foreground-400', {
-                        '-right-2': assets.indexOf(draggedAsset) < index,
-                        '-left-2': assets.indexOf(draggedAsset) > index,
+                        '-right-2': files.indexOf(draggedAsset) < index,
+                        '-left-2': files.indexOf(draggedAsset) > index,
                       })}
                     />
                   )}
@@ -364,8 +390,8 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
                   'scale-80': overId?.includes('folder') && !overId.endsWith(draggedAsset.id),
                 })}
               >
-                {draggedAsset.type === 'folder' ? (
-                  <ProjectFolderCover key={draggedAsset.id} />
+                {draggedAsset.type === 'stack' ? (
+                  <ProjectFileCover key={draggedAsset.id} file={draggedAsset.active!} />
                 ) : (
                   <ProjectFileCover key={draggedAsset.id} file={draggedAsset} />
                 )}

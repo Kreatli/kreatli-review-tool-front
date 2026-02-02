@@ -1,4 +1,4 @@
-import { Image } from '@heroui/react';
+import { Chip, Image } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -31,7 +31,7 @@ export const DashboardAsset = ({ project, file, members }: Props) => {
       ) : (
         <Image src={previewUrl} radius="none" onError={handleError} />
       )}
-      <div className="absolute -top-8 left-0 right-0 z-10 bg-foreground-50/75 p-1.5 transition-all group-hover/asset:top-0">
+      <div className="absolute -top-8 left-0 right-0 z-10 flex items-center gap-1 bg-foreground-50/75 p-1.5 transition-all group-hover/asset:top-0">
         <div className="relative overflow-hidden text-ellipsis whitespace-nowrap text-xs">{file.name}</div>
       </div>
       <ProjectFileStatus
@@ -48,8 +48,17 @@ export const DashboardAsset = ({ project, file, members }: Props) => {
         projectId={project.id}
         className="absolute bottom-1.5 right-1.5 z-20"
       />
+      {file.stackVersion && (
+        <Chip size="sm" className="absolute bottom-2.5 right-10 z-20 h-auto p-0.5">
+          v{file.stackVersion}
+        </Chip>
+      )}
       <Link
-        href={`/project/${project.id}/assets/${file.id}`}
+        href={
+          file.stackId
+            ? `/project/${project.id}/assets/stack/${file.stackId}?selectedFileId=${file.id}`
+            : `/project/${project.id}/assets/${file.id}`
+        }
         aria-label={file.name}
         className="absolute inset-0 z-10"
       />

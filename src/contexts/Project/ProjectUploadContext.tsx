@@ -1,7 +1,7 @@
 import { addToast } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { nanoid } from 'nanoid';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzone';
 
 import { UpgradeModal } from '../../components/account/UpgradeModal';
@@ -10,7 +10,14 @@ import { useMultipartUpload } from '../../hooks/useMultipartUpload';
 import { useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
 import { usePostProjectIdFile } from '../../services/hooks';
-import { getAssetFolderId, getAssets, getProjectId, getProjectIdAssets } from '../../services/services';
+import {
+  getAssetFileId,
+  getAssetFolderId,
+  getAssets,
+  getAssetStackId,
+  getProjectId,
+  getProjectIdAssets,
+} from '../../services/services';
 import { ProjectDto } from '../../services/types';
 import { getErrorMessage } from '../../utils/getErrorMessage';
 import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
@@ -25,8 +32,11 @@ export interface ProjectAssetsFilters {
 interface Context {
   isDragActive: boolean;
   inputRef: React.RefObject<HTMLInputElement | null>;
+  openFileDialog: () => void;
   getInputProps: () => DropzoneInputProps;
   getRootProps: () => DropzoneRootProps;
+  setStackId: (id: string) => void;
+  setStackWithFileId: (id: string) => void;
 }
 
 export const ProjectUploadContext = React.createContext<Context | null>(null);
@@ -50,17 +60,69 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
   const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
 
+  const [stackId, setStackId] = React.useState<string | undefined>(undefined);
+  const [stackWithFileId, setStackWithFileId] = React.useState<string | undefined>(undefined);
+
   const queryClient = useQueryClient();
   const { user } = useSession();
   const isProjectOwner = project.createdBy?.id === user?.id;
 
-  const { mutateAsync } = usePostProjectIdFile();
+  const { mutateAsync } = usePostProjectIdFile({ mutationKey: ['files-upload'] });
 
   const setFileUpload = useProjectUploads((state) => state.setFileUpload);
   const setFileUploadError = useProjectUploads((state) => state.setFileUploadError);
   const updateFileUploadProgress = useProjectUploads((state) => state.updateFileUploadProgress);
   const setIsUploadedToS3 = useProjectUploads((state) => state.setIsUploadedToS3);
   const uploadFile = useMultipartUpload({ projectId: project.id });
+
+  const uploadsQueue = useProjectUploads((state) => state.uploadsQueue);
+  const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
+  const removeItemFromUploadQueue = useProjectUploads((state) => state.removeItemFromUploadQueue);
+
+  useEffect(() => {
+    const isMutating = queryClient.isMutating({ mutationKey: ['files-upload'] }) > 0;
+
+    if (isMutating) {
+      return;
+    }
+
+    const [id, firstUpload] = uploadsQueue[0] ?? [];
+
+    if (!id || !firstUpload) {
+      return;
+    }
+
+    const promise = mutateAsync(firstUpload);
+
+    promise
+      .then(({ project: data, parent: folderData }) => {
+        queryClient.setQueryData([getProjectId.key, data.id], data);
+        queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, data.id] });
+        queryClient.invalidateQueries({ queryKey: [getAssets.key] });
+
+        if (firstUpload.requestBody.stackId) {
+          queryClient.invalidateQueries({ queryKey: [getAssetStackId.key, firstUpload.requestBody.stackId] });
+        }
+
+        if (firstUpload.requestBody.stackWithFileId) {
+          queryClient.invalidateQueries({ queryKey: [getAssetFileId.key, firstUpload.requestBody.stackWithFileId] });
+        }
+
+        if (firstUpload.requestBody.parentId) {
+          queryClient.setQueryData([getAssetFolderId.key, firstUpload.requestBody.parentId], folderData);
+        }
+
+        updateFileUploadProgress(id, 100);
+      })
+      .catch((error) => {
+        addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+        setFileUploadError(id);
+      })
+      .finally(() => {
+        removeItemFromUploadQueue(id);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queryClient, uploadsQueue]);
 
   const onDrop = (files: File[]) => {
     if (!inputRef.current) {
@@ -89,14 +151,17 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       return;
     }
 
+    setStackId(undefined);
+    setStackWithFileId(undefined);
+
     for (const file of files) {
       const id = nanoid();
 
       const cancelUpload = uploadFile(
         { file, clientId: id },
         {
-          onSuccess: (data) => {
-            const promise = mutateAsync({
+          onSuccess: async (data) => {
+            addItemToUploadQueue(id, {
               id: project.id,
               requestBody: {
                 parentId: folderId,
@@ -105,25 +170,10 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
                 key: data.key,
                 fileId: data.fileId,
                 fileSize: file.size,
+                stackId,
+                stackWithFileId,
               },
             });
-
-            promise
-              .then(({ project: data, parent: folderData }) => {
-                queryClient.setQueryData([getProjectId.key, project.id], data);
-                queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, project.id] });
-                queryClient.invalidateQueries({ queryKey: [getAssets.key] });
-
-                if (folderId) {
-                  queryClient.setQueryData([getAssetFolderId.key, folderId], folderData);
-                }
-
-                updateFileUploadProgress(id, 100);
-              })
-              .catch((error) => {
-                addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-                setFileUploadError(id);
-              });
           },
           onError: (type) => {
             if (type !== 'user') {
@@ -163,10 +213,20 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     }
   };
 
-  const { isDragActive, inputRef, getRootProps, getInputProps } = useDropzone({
+  const {
+    isDragActive,
+    inputRef,
+    open: openFileDialog,
+    getRootProps,
+    getInputProps,
+  } = useDropzone({
     multiple: true,
     noClick: true,
     onDrop,
+    onFileDialogCancel: () => {
+      setStackId(undefined);
+      setStackWithFileId(undefined);
+    },
   });
 
   return (
@@ -176,6 +236,9 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
         getRootProps,
         isDragActive,
         inputRef,
+        openFileDialog,
+        setStackId,
+        setStackWithFileId,
       }}
     >
       {children}

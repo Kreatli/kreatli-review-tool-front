@@ -5,17 +5,24 @@ import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
 import { usePutProjectIdFileFileId, usePutProjectIdFolderFolderId } from '../../../../services/hooks';
-import { getAssetFolderId, getProjectId, getProjectIdAssets } from '../../../../services/services';
+import {
+  getAssetFileId,
+  getAssetFolderId,
+  getAssetStackId,
+  getProjectId,
+  getProjectIdAssets,
+} from '../../../../services/services';
 import { ProjectAssetEditDto, ProjectFileDto, ProjectFolderDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 
 interface Props {
   projectId: string;
+  stackId?: string;
   asset?: ProjectFolderDto | ProjectFileDto;
   onSuccess: () => void;
 }
 
-export const RenameAssetForm = ({ projectId, asset, onSuccess }: Props) => {
+export const RenameAssetForm = ({ projectId, stackId, asset, onSuccess }: Props) => {
   const fileName = React.useMemo(() => {
     if (asset?.type !== 'file') {
       return asset?.name ?? '';
@@ -59,6 +66,12 @@ export const RenameAssetForm = ({ projectId, asset, onSuccess }: Props) => {
 
     queryClient.setQueryData([getProjectId.key, projectId], data);
     queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, projectId] });
+    queryClient.invalidateQueries({ queryKey: [getAssetFileId.key, asset?.id] });
+
+    if (stackId) {
+      queryClient.invalidateQueries({ queryKey: [getAssetStackId.key, stackId] });
+    }
+
     addToast({ title: `The ${asset?.type} was successfully renamed`, color: 'success', variant: 'flat' });
     onSuccess?.();
   };
@@ -93,6 +106,7 @@ export const RenameAssetForm = ({ projectId, asset, onSuccess }: Props) => {
         label={asset?.type === 'folder' ? 'Folder name' : 'File name'}
         placeholder="Enter a name"
         variant="faded"
+        autoFocus
         isInvalid={!!errors.name}
         endContent={<span className="text-small lowercase text-foreground-500">.{fileExtension}</span>}
         errorMessage={errors.name?.message}
