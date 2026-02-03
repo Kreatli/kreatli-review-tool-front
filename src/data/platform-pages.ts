@@ -153,12 +153,26 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
   {
+    label: 'Comment on Video',
+    href: '/platform/comment-on-video',
+    description: 'Comment on video with frame-accurate, timestamp-pinned feedback',
+    icon: 'chat',
+    section: 'Core Platform',
+    order: 7,
+    tags: ['Video', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
     label: 'Free Video Link Generator',
     href: '/platform/free-video-link-generator',
     description: 'Generate secure video review links for clients and collaborators',
     icon: 'link',
     section: 'Core Platform',
-    order: 7,
+    order: 8,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
@@ -172,7 +186,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Share video links with clients for review and approval in seconds',
     icon: 'share',
     section: 'Core Platform',
-    order: 8,
+    order: 9,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
@@ -186,7 +200,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Send your video to clients for free review and feedback',
     icon: 'upload',
     section: 'Core Platform',
-    order: 9,
+    order: 10,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
@@ -200,7 +214,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Embed your videos with built-in review and approvals',
     icon: 'fullscreen',
     section: 'Core Platform',
-    order: 10,
+    order: 11,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
@@ -214,7 +228,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Share MP4 files with clients via secure links for review',
     icon: 'send',
     section: 'Core Platform',
-    order: 11,
+    order: 12,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
@@ -228,7 +242,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Annotate and review PDFs with comments and markup',
     icon: 'filePdf',
     section: 'Core Platform',
-    order: 12,
+    order: 13,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -242,7 +256,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Add comments to PDF with location-pinned, threaded feedback',
     icon: 'chat',
     section: 'Core Platform',
-    order: 13,
+    order: 14,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -256,7 +270,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Compare two PDF versions side by side with comments and annotations',
     icon: 'compare',
     section: 'Core Platform',
-    order: 14,
+    order: 15,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -270,7 +284,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Compare two video versions side by side with frame-accurate comments',
     icon: 'play',
     section: 'Core Platform',
-    order: 15,
+    order: 16,
     tags: ['Video', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -284,7 +298,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Compare documents online side by side with comments and annotations',
     icon: 'fileDoc',
     section: 'Core Platform',
-    order: 16,
+    order: 17,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -298,7 +312,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Draw and markup directly on PDFs for precise feedback',
     icon: 'edit',
     section: 'Core Platform',
-    order: 17,
+    order: 18,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -312,7 +326,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Extract, get, and export still frames from video',
     icon: 'panorama',
     section: 'Core Platform',
-    order: 18,
+    order: 19,
     tags: ['Video'],
     sitemap: {
       priority: '0.8',
@@ -326,7 +340,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check Instagram Reels safe zone before posting',
     icon: 'instagram',
     section: 'Core Platform',
-    order: 19,
+    order: 20,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -340,7 +354,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check TikTok safe zone before posting',
     icon: 'tiktok',
     section: 'Core Platform',
-    order: 20,
+    order: 21,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -354,7 +368,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check YouTube Shorts safe zone before posting',
     icon: 'youtube',
     section: 'Core Platform',
-    order: 21,
+    order: 22,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -368,7 +382,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Resize YouTube channel banner to correct dimensions',
     icon: 'grid',
     section: 'Core Platform',
-    order: 22,
+    order: 23,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -382,7 +396,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Send large video files to clients without email limits',
     icon: 'addVideo',
     section: 'Core Platform',
-    order: 23,
+    order: 24,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
@@ -418,6 +432,18 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['creativeWorkspace', 'secureAssetStorage'],
   },
 ];
+
+/** Max number of platform page links to show in the footer before "All Features" */
+export const FOOTER_PLATFORM_PAGES_LIMIT = 15;
+
+/**
+ * Get platform pages for footer: first N by order (across all sections).
+ * Use with "All Features" link to /platform for the full list.
+ */
+export function getPlatformPagesForFooter(): PlatformPage[] {
+  const sorted = [...PLATFORM_PAGES].sort((a, b) => a.order - b.order);
+  return sorted.slice(0, FOOTER_PLATFORM_PAGES_LIMIT);
+}
 
 /**
  * Get platform pages grouped by section.
