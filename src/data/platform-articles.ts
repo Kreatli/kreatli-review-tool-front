@@ -270,6 +270,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/draw-on-a-video': [
+    makeArticleCard({
+      id: 'platform-draw-on-a-video-guide-1',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-a-video-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-a-video-guide-3',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+  ],
+
   '/platform/resize-youtube-banner': [
     makeArticleCard({
       id: 'platform-resize-youtube-banner-guide-1',
