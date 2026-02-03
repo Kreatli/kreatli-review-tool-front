@@ -279,12 +279,26 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
   {
+    label: 'Annotate Document',
+    href: '/platform/annotate-document',
+    description: 'Annotate documents with comments, drawings, and markup for precise feedback',
+    icon: 'fileDoc',
+    section: 'Core Platform',
+    order: 16,
+    tags: ['PDF & documents', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
     label: 'Compare PDF Files',
     href: '/platform/compare-pdf-files',
     description: 'Compare two PDF versions side by side with comments and annotations',
     icon: 'compare',
     section: 'Core Platform',
-    order: 16,
+    order: 17,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -298,7 +312,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Compare two video versions side by side with frame-accurate comments',
     icon: 'play',
     section: 'Core Platform',
-    order: 17,
+    order: 18,
     tags: ['Video', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -312,7 +326,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Compare documents online side by side with comments and annotations',
     icon: 'fileDoc',
     section: 'Core Platform',
-    order: 18,
+    order: 19,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -326,7 +340,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Draw and markup directly on PDFs for precise feedback',
     icon: 'edit',
     section: 'Core Platform',
-    order: 19,
+    order: 20,
     tags: ['PDF & documents', 'Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -340,7 +354,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Extract, get, and export still frames from video',
     icon: 'panorama',
     section: 'Core Platform',
-    order: 20,
+    order: 21,
     tags: ['Video'],
     sitemap: {
       priority: '0.8',
@@ -354,7 +368,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check Instagram Reels safe zone before posting',
     icon: 'instagram',
     section: 'Core Platform',
-    order: 21,
+    order: 22,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -368,7 +382,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check TikTok safe zone before posting',
     icon: 'tiktok',
     section: 'Core Platform',
-    order: 22,
+    order: 23,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -382,7 +396,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check YouTube Shorts safe zone before posting',
     icon: 'youtube',
     section: 'Core Platform',
-    order: 23,
+    order: 24,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -396,7 +410,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Resize YouTube channel banner to correct dimensions',
     icon: 'grid',
     section: 'Core Platform',
-    order: 24,
+    order: 25,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -410,7 +424,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Send large video files to clients without email limits',
     icon: 'addVideo',
     section: 'Core Platform',
-    order: 25,
+    order: 26,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
