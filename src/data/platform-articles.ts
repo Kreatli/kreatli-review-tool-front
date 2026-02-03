@@ -331,8 +331,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
       publishDate: '2026-01-12 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
     }),
     makeArticleCard({
       id: 'platform-youtube-shorts-safe-zone-guide-3',
@@ -358,8 +357,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
       publishDate: '2026-01-12 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
     }),
     makeArticleCard({
       id: 'platform-tiktok-safe-zone-guide-2',
@@ -409,8 +407,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
       publishDate: '2026-01-12 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
     }),
     makeArticleCard({
       id: 'platform-instagram-reels-safe-zone-guide-3',
@@ -660,6 +657,44 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/draw-on-pdf-document': [
+    makeArticleCard({
+      id: 'platform-draw-on-pdf-document-guide-1',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-pdf-document-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-pdf-document-guide-3',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+  ],
+
   '/platform/compare-pdf-files': [
     makeArticleCard({
       id: 'platform-compare-pdf-guide-1',
@@ -670,8 +705,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['Proofing', 'Creative Teams'],
       publishDate: '2026-01-19 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
     makeArticleCard({
       id: 'platform-compare-pdf-guide-2',
@@ -748,8 +782,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['Proofing', 'Creative Teams'],
       publishDate: '2026-01-19 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
     makeArticleCard({
       id: 'platform-compare-docs-guide-2',

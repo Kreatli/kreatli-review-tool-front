@@ -265,12 +265,26 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
   {
+    label: 'Draw on PDF Document',
+    href: '/platform/draw-on-pdf-document',
+    description: 'Draw and markup directly on PDFs for precise feedback',
+    icon: 'paint',
+    section: 'Core Platform',
+    order: 15,
+    tags: ['PDF & documents', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
     label: 'Extract Frames from Video',
     href: '/platform/extract-frames-from-video',
     description: 'Extract, get, and export still frames from video',
     icon: 'panorama',
     section: 'Core Platform',
-    order: 15,
+    order: 16,
     tags: ['Video'],
     sitemap: {
       priority: '0.8',
@@ -284,7 +298,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check Instagram Reels safe zone before posting',
     icon: 'instagram',
     section: 'Core Platform',
-    order: 16,
+    order: 17,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -298,7 +312,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check TikTok safe zone before posting',
     icon: 'tiktok',
     section: 'Core Platform',
-    order: 17,
+    order: 18,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -312,7 +326,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Check YouTube Shorts safe zone before posting',
     icon: 'youtube',
     section: 'Core Platform',
-    order: 18,
+    order: 19,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -326,7 +340,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Resize YouTube channel banner to correct dimensions',
     icon: 'grid',
     section: 'Core Platform',
-    order: 19,
+    order: 20,
     tags: ['Safe zones & resize'],
     sitemap: {
       priority: '0.8',
@@ -340,7 +354,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     description: 'Send large video files to clients without email limits',
     icon: 'addVideo',
     section: 'Core Platform',
-    order: 20,
+    order: 21,
     tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',

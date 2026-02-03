@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem, Button, Card, CardBody, Chip, Input, Tab, Tabs } from '@heroui/react';
+import { Accordion, AccordionItem, Button, Card, CardBody, Chip, Input } from '@heroui/react';
 import Head from 'next/head';
 import { useMemo, useState } from 'react';
 
@@ -437,7 +437,7 @@ export default function HelpPage() {
       {/* Category Navigation & FAQ Sections */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
-          {/* Category Tabs */}
+          {/* Category Filter Bar */}
           <div className="mb-8">
             <div className="mb-6 flex items-center justify-between">
               <h2 id="browse-by-category" className="mb-4 scroll-mt-24 font-sans text-2xl font-bold sm:text-3xl">
@@ -454,34 +454,30 @@ export default function HelpPage() {
                 </Button>
               )}
             </div>
-            <Tabs
-              selectedKey={selectedCategory}
-              onSelectionChange={(key) => setSelectedCategory(key as string)}
-              classNames={{
-                tabList: 'gap-2 overflow-x-auto',
-                tab: 'min-w-fit',
-              }}
-            >
-              {faqsByCategory.map(({ category, config, faqs: categoryFaqs }) => {
-                if (category === 'all' && searchQuery) return null; // Hide "All" when searching
-                return (
-                  <Tab
-                    key={category}
-                    title={
-                      <div className="flex items-center gap-2">
-                        <Icon icon={config.icon as IconType} size={18} />
-                        <span>{config.name}</span>
-                        {category !== 'all' && (
-                          <Chip size="sm" variant="flat" className="ml-1">
-                            {categoryFaqs.length}
-                          </Chip>
-                        )}
-                      </div>
-                    }
-                  />
-                );
-              })}
-            </Tabs>
+            <div className="flex justify-center">
+              <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
+                {faqsByCategory.map(({ category, config, faqs: categoryFaqs }) => {
+                  if (category === 'all' && searchQuery) return null;
+                  const isSelected = selectedCategory === category;
+                  return (
+                    <button
+                      key={category}
+                      type="button"
+                      onClick={() => setSelectedCategory(category)}
+                      aria-pressed={isSelected}
+                      className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                        isSelected
+                          ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
+                          : 'border border-transparent text-foreground-600 hover:border-primary/40 hover:bg-primary/5 hover:text-primary'
+                      }`}
+                    >
+                      {config.name}
+                      {category !== 'all' && <span className="ml-1.5 opacity-80">({categoryFaqs.length})</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* FAQ Content */}
