@@ -11,11 +11,7 @@ import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { Icon, IconType } from '../components/various/Icon';
-import {
-  PLATFORM_FILTER_OPTIONS,
-  PLATFORM_PAGES,
-  type PlatformFilterTag,
-} from '../data/platform-pages';
+import { PLATFORM_FILTER_OPTIONS, PLATFORM_PAGES, type PlatformFilterTag } from '../data/platform-pages';
 import { useSession } from '../hooks/useSession';
 
 const additionalFeatures = [
@@ -124,8 +120,9 @@ export default function PlatformPage() {
   const [selectedFilter, setSelectedFilter] = useState<'All' | PlatformFilterTag>('All');
 
   const filteredPages = useMemo(() => {
-    if (selectedFilter === 'All') return PLATFORM_PAGES;
-    return PLATFORM_PAGES.filter((page) => page.tags?.includes(selectedFilter));
+    const list =
+      selectedFilter === 'All' ? PLATFORM_PAGES : PLATFORM_PAGES.filter((page) => page.tags?.includes(selectedFilter));
+    return [...list].sort((a, b) => a.order - b.order);
   }, [selectedFilter]);
 
   return (
@@ -208,6 +205,7 @@ export default function PlatformPage() {
                 type="button"
                 onClick={() => setSelectedFilter('All')}
                 aria-pressed={selectedFilter === 'All'}
+                aria-label="Show all features"
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   selectedFilter === 'All'
                     ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
@@ -224,6 +222,7 @@ export default function PlatformPage() {
                     type="button"
                     onClick={() => setSelectedFilter(option.id)}
                     aria-pressed={isSelected}
+                    aria-label={`Filter features by ${option.label}`}
                     className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                       isSelected
                         ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
@@ -238,38 +237,36 @@ export default function PlatformPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredPages.length === 0 ? (
-              <p className="col-span-full text-center text-foreground-500">
-                No features match this filter.
-              </p>
+              <p className="col-span-full text-center text-foreground-500">No features match this filter.</p>
             ) : (
               filteredPages.map((page) => (
-              <Card
-                key={page.href}
-                as={NextLink}
-                href={page.href}
-                isPressable
-                className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
-              >
-                <CardBody className="flex h-full flex-col gap-4 p-6">
-                  <div className="mb-2 flex items-start gap-4">
-                    <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
-                      <Icon icon={page.icon as IconType} size={24} className="text-primary" />
+                <Card
+                  key={page.href}
+                  as={NextLink}
+                  href={page.href}
+                  isPressable
+                  className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+                >
+                  <CardBody className="flex h-full flex-col gap-4 p-6">
+                    <div className="mb-2 flex items-start gap-4">
+                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
+                        <Icon icon={page.icon} size={24} className="text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
+                          {page.label}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-foreground-500">{page.description}</p>
+                      </div>
+                      <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+                        <Icon icon="arrowRight" size={20} className="text-primary" />
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
-                        {page.label}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-foreground-500">{page.description}</p>
+                    <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <span>Learn more</span>
                     </div>
-                    <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                      <Icon icon="arrowRight" size={20} className="text-primary" />
-                    </div>
-                  </div>
-                  <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span>Learn more</span>
-                  </div>
-                </CardBody>
-              </Card>
+                  </CardBody>
+                </Card>
               ))
             )}
           </div>

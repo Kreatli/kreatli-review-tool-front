@@ -270,6 +270,84 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/comment-on-video': [
+    makeArticleCard({
+      id: 'platform-comment-on-video-guide-1',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-comment-on-video-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-comment-on-video-guide-3',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+  ],
+
+  '/platform/draw-on-a-video': [
+    makeArticleCard({
+      id: 'platform-draw-on-a-video-guide-1',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-a-video-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-a-video-guide-3',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+  ],
+
   '/platform/resize-youtube-banner': [
     makeArticleCard({
       id: 'platform-resize-youtube-banner-guide-1',
@@ -331,8 +409,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
       publishDate: '2026-01-12 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
     }),
     makeArticleCard({
       id: 'platform-youtube-shorts-safe-zone-guide-3',
@@ -358,8 +435,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
       publishDate: '2026-01-12 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
     }),
     makeArticleCard({
       id: 'platform-tiktok-safe-zone-guide-2',
@@ -409,8 +485,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['TikTok', 'Safe Zone', 'Short-Form Video'],
       publishDate: '2026-01-12 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/625aaca538/tiktok-safe-zone-guide-2026.png',
     }),
     makeArticleCard({
       id: 'platform-instagram-reels-safe-zone-guide-3',
@@ -624,18 +699,29 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   '/platform/annotate-pdf': [
     makeArticleCard({
       id: 'platform-annotate-pdf-guide-1',
-      full_slug: '/guides/how-to-draw-on-a-video',
-      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
       description:
-        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
-      tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-29 00:00',
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
     makeArticleCard({
       id: 'platform-annotate-pdf-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-pdf-guide-3',
       full_slug: '/guides/how-to-annotate-video',
       title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
@@ -646,17 +732,233 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       imageFilename:
         'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
+  ],
+
+  '/platform/draw-on-documents': [
     makeArticleCard({
-      id: 'platform-annotate-pdf-guide-3',
-      full_slug: '/guides/video-frame-extractor-guide',
-      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      id: 'platform-draw-on-documents-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
       description:
-        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
-      tags: ['Free Tools', 'Video'],
-      publishDate: '2026-01-22 00:00',
-      readTime: '12',
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-documents-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-documents-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
+  '/platform/draw-on-image': [
+    makeArticleCard({
+      id: 'platform-draw-on-image-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-image-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-image-guide-3',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
+  '/platform/annotate-document': [
+    makeArticleCard({
+      id: 'platform-annotate-document-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-document-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-document-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
+  '/platform/annotate-image': [
+    makeArticleCard({
+      id: 'platform-annotate-image-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-image-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-annotate-image-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
+  '/platform/add-comments-to-pdf': [
+    makeArticleCard({
+      id: 'platform-add-comments-to-pdf-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-add-comments-to-pdf-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-add-comments-to-pdf-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
+  '/platform/draw-on-pdf-document': [
+    makeArticleCard({
+      id: 'platform-draw-on-pdf-document-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-pdf-document-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-pdf-document-guide-3',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -670,11 +972,22 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['Proofing', 'Creative Teams'],
       publishDate: '2026-01-19 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
     makeArticleCard({
       id: 'platform-compare-pdf-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compare-pdf-guide-3',
       full_slug: '/guides/how-to-annotate-video',
       title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
@@ -684,18 +997,6 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       readTime: '11',
       imageFilename:
         'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
-    }),
-    makeArticleCard({
-      id: 'platform-compare-pdf-guide-3',
-      full_slug: '/guides/video-frame-extractor-guide',
-      title: 'Video Frame Extractor: How to Capture Frames (2026)',
-      description:
-        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
-      tags: ['Free Tools', 'Video'],
-      publishDate: '2026-01-22 00:00',
-      readTime: '12',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
     }),
   ],
 
@@ -748,8 +1049,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       tags: ['Proofing', 'Creative Teams'],
       publishDate: '2026-01-19 00:00',
       readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
     makeArticleCard({
       id: 'platform-compare-docs-guide-2',

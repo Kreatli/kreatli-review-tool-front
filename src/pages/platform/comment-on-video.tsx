@@ -21,77 +21,77 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What is PDF annotation?',
+    question: 'What does “comment on video” mean in Kreatli?',
     answer:
-      'PDF annotation is the process of adding comments, highlights, drawings, and markup directly onto a PDF so reviewers can point to specific text, images, or areas that need changes. In Kreatli, you can annotate PDFs with comments pinned to exact locations, shapes and highlights, and arrows—all in one place alongside video and other creative assets. This keeps feedback precise and tied to the right page and spot, so nothing gets lost in email or separate tools.',
+      'In Kreatli, “comment on video” means you can attach text comments directly to specific frames and timestamps in a video. Each comment is pinned to an exact moment—so reviewers and editors always know which part of the video needs attention. You can add as many comments as you need, reply to comments to create threads, and mark them as resolved when done. Comments stay tied to the right frame and timestamp, so nothing gets lost in email or separate tools.',
   },
   {
-    question: 'How do I annotate a PDF in Kreatli?',
+    question: 'How do I comment on a video in Kreatli?',
     answer:
-      "Upload your PDF to a Kreatli project and open it in the review interface. Click or select the area you want to comment on, then add a comment, highlight, or drawing. Your annotations are attached to that exact location on the page. You can annotate PDFs page by page, and all feedback is visible to the team. When you're done, share a review link so clients or collaborators can view and add their own annotations without creating an account.",
+      "Upload your video to a Kreatli project and open it in the review interface. Click on the frame where you want to leave feedback, or scrub to the right moment, then type your comment. Your comment is attached to that exact frame and timestamp. You can comment at any point in the video, reply to existing comments, and @mention collaborators. When you're done, share a review link so clients or teammates can watch the video and add their own comments without creating an account.",
   },
   {
-    question: 'Can clients annotate PDFs without creating an account?',
+    question: 'Can clients comment on videos without creating an account?',
     answer:
-      'Yes. Kreatli offers no-signup guest review links for PDFs (and video). Send your client a secure link to the PDF; they can open it, add comments and markup, and submit feedback without signing up. This removes friction from the approval process and keeps all PDF annotations in one thread with the rest of your project.',
+      'Yes. Kreatli offers no-signup guest review links for video. Send your client a secure link to the video; they can watch it, add comments at specific timestamps, and submit feedback without signing up. This removes friction from the approval process and keeps all video comments in one place with the rest of your project.',
   },
   {
-    question: 'What types of annotations can I add to a PDF?',
+    question: 'Are comments pinned to a specific frame or timestamp?',
     answer:
-      'In Kreatli you can add text comments pinned to specific spots on a page, highlights and shapes to mark regions, arrows and markers to point to elements, and freehand drawing where needed. Annotations can be color-coded by reviewer or type. All feedback is tied to the exact page and position, so designers and writers know precisely what to change.',
+      'Yes. Every comment you add in Kreatli is pinned to an exact frame and timestamp in the video. When you play or scrub the video, comments appear at the moment they were created. Editors can jump directly from a comment to the exact frame where feedback was given, eliminating guesswork and speeding up revisions across cuts and versions.',
   },
   {
-    question: 'How do I track resolved comments on a PDF?',
+    question: 'How do I track which comments have been resolved?',
     answer:
-      'Kreatli tracks resolution status for every comment and annotation on a PDF. You can mark items as resolved or unresolved and filter to show only what still needs attention. When you upload a new version of the PDF, you can resolve annotations that have been addressed. The system keeps a clear record of what’s done and what’s pending across review rounds.',
+      'Kreatli tracks resolution status for every comment on a video. You can mark comments as resolved or unresolved and filter to show only what still needs attention. When you upload a new version of the video, you can resolve comments that have been addressed. The system keeps a clear record of what’s done and what’s pending across review rounds.',
   },
   {
-    question: 'Can multiple people annotate the same PDF at once?',
+    question: 'Can multiple people comment on the same video at once?',
     answer:
-      'Yes. Multiple reviewers can annotate the same PDF. Each person’s comments and markup are visible to everyone, with indicators for who added what. You can see all annotations in one view, filter by reviewer, and track resolution. This works for internal teams and for clients using guest links.',
+      'Yes. Multiple reviewers can comment on the same video. Each person’s comments are visible to everyone, with indicators for who wrote what. You can see all comments in one view, filter by reviewer, and track resolution. This works for internal teams and for clients using guest links.',
   },
   {
-    question: 'Why annotate PDFs in Kreatli instead of a standalone PDF tool?',
+    question: 'Why comment on video in Kreatli instead of email or a standalone tool?',
     answer:
-      'Annotating PDFs in Kreatli keeps review in one place with your video, images, and other deliverables. You get a single project timeline, one set of review links for clients, and one approval workflow instead of juggling PDF tools, email, and separate review apps. That reduces delays and ensures nothing gets missed when moving from draft to final.',
+      'Commenting on video in Kreatli keeps review in one place with your PDFs, images, and other deliverables. You get a single project timeline, one set of review links for clients, and one approval workflow instead of juggling video tools, email, and separate review apps. That reduces delays and ensures nothing gets missed when moving from draft to final.',
   },
   {
-    question: 'How does PDF annotation help creative and marketing workflows?',
+    question: 'How does commenting on video help video production workflows?',
     answer:
-      'PDF annotation streamlines creative review by making feedback visual and location-specific. Instead of “change the headline on page 3,” reviewers point directly to the spot and add a comment or highlight. Writers and designers see exactly what to change, resolution tracking keeps rounds organized, and clients can annotate PDFs via a link without accounts. That speeds up approvals and reduces revision cycles for layouts, decks, and documents.',
+      'Commenting on video streamlines production by making feedback frame-accurate and trackable. Instead of “change something around 2 minutes,” reviewers point directly to the frame and add a comment. Editors see exactly what to change, resolution tracking keeps rounds organized, and clients can comment on video via a link without accounts. That speeds up approvals and reduces revision cycles for edits, spots, and long-form content.',
   },
 ];
 
-export default function AnnotatePdfPage() {
+export default function CommentOnVideoPage() {
   useSession();
-  const articles = getPlatformArticles('/platform/annotate-pdf');
+  const articles = getPlatformArticles('/platform/comment-on-video');
 
   return (
     <>
       <Head>
-        <title>Annotate PDF | Kreatli</title>
+        <title>Comment on Video | Kreatli</title>
         <meta
           name="description"
-          content="Annotate PDFs with comments, drawings, and markup. Review and collaborate on PDFs with precise feedback in one place with your video and creative assets."
+          content="Comment on video with frame-accurate, timestamp-pinned feedback. Review and collaborate on video with threaded comments in one place with your team and creative assets."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/annotate-pdf" />
-        <meta property="og:url" content="https://kreatli.com/platform/annotate-pdf" />
+        <link rel="canonical" href="https://kreatli.com/platform/comment-on-video" />
+        <meta property="og:url" content="https://kreatli.com/platform/comment-on-video" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Annotate PDF | Kreatli" />
+        <meta property="og:title" content="Comment on Video | Kreatli" />
         <meta
           property="og:description"
-          content="Annotate PDFs with comments, drawings, and markup. Review and collaborate on PDFs with precise feedback in one place."
+          content="Comment on video with frame-accurate, timestamp-pinned feedback. Review and collaborate with threaded comments in one place."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Annotate PDF | Kreatli" />
+        <meta property="og:image:alt" content="Comment on Video | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Annotate PDF | Kreatli" />
+        <meta name="twitter:title" content="Comment on Video | Kreatli" />
         <meta
           name="twitter:description"
-          content="Annotate PDFs with comments, drawings, and markup. Review and collaborate on PDFs with precise feedback in one place."
+          content="Comment on video with frame-accurate, timestamp-pinned feedback. Give precise feedback your team and clients can act on."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -99,7 +99,7 @@ export default function AnnotatePdfPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Annotate PDF', url: '/platform/annotate-pdf' },
+          { name: 'Comment on Video', url: '/platform/comment-on-video' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -111,11 +111,11 @@ export default function AnnotatePdfPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Annotate PDF
+              Comment on Video
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Annotate PDFs with comments, drawings, and markup. Review and collaborate on PDFs with precise feedback in
-              one place with your video and creative assets.
+              Comment on video with frame-accurate, timestamp-pinned feedback. Review and collaborate on video with
+              threaded comments in one place with your team and creative assets.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -133,47 +133,17 @@ export default function AnnotatePdfPage() {
               </Button>
             </div>
           </div>
-          <InteractiveReviewToolPreview variant="pdf" />
-
-          {/* Related PDF & document features */}
-          <div className="mx-auto mt-16 w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
-            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
-              Related PDF & document features
-            </h2>
-            <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
-              Need comments only or want to draw directly on PDFs? Explore these options:
-            </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <Button
-                as={NextLink}
-                href="/platform/add-comments-to-pdf"
-                size="md"
-                className="bg-foreground font-medium text-content1 hover:opacity-90"
-                endContent={<Icon icon="arrowRight" size={16} />}
-              >
-                Add Comments to PDF
-              </Button>
-              <Button
-                as={NextLink}
-                href="/platform/draw-on-pdf-document"
-                size="md"
-                className="bg-foreground font-medium text-content1 hover:opacity-90"
-                endContent={<Icon icon="arrowRight" size={16} />}
-              >
-                Draw on PDF Document
-              </Button>
-            </div>
-          </div>
+          <InteractiveReviewToolPreview />
         </div>
       </section>
 
-      {/* Annotation Types Section */}
+      {/* Ways to Comment on Video Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ways to Annotate PDFs</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ways to Comment on Video</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Use comments, highlights, and markup to give precise feedback on every page of your PDF.
+              Use frame-accurate comments, replies, and mentions to give precise feedback at any moment in your video.
             </p>
           </div>
 
@@ -184,10 +154,10 @@ export default function AnnotatePdfPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="chat" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Comments on Pages</h3>
+                  <h3 className="font-sans text-lg font-semibold">Frame-Accurate Comments</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Pin text comments to exact spots on any page. Every comment is linked to a specific location so
+                  Pin text comments to exact frames and timestamps. Every comment is linked to a specific moment so
                   there’s no guesswork about what to change.
                 </p>
               </CardBody>
@@ -197,13 +167,13 @@ export default function AnnotatePdfPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="paint" size={20} className="text-primary" />
+                    <Icon icon="reply" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Highlights & Shapes</h3>
+                  <h3 className="font-sans text-lg font-semibold">Threaded Replies</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Highlight text or use shapes to mark regions that need attention. Draw attention to specific
-                  paragraphs, images, or layout areas.
+                  Reply to comments to create discussion threads. Keep feedback organized and context clear for editors
+                  and stakeholders.
                 </p>
               </CardBody>
             </Card>
@@ -212,28 +182,13 @@ export default function AnnotatePdfPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="arrowRight" size={20} className="text-primary" />
+                    <Icon icon="userPlus" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Arrows & Markers</h3>
+                  <h3 className="font-sans text-lg font-semibold">@Mentions</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Use arrows and markers to point to specific elements on a page. Perfect for design feedback and copy
-                  edits.
-                </p>
-              </CardBody>
-            </Card>
-
-            <Card>
-              <CardBody className="p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="paint" size={20} className="text-primary" />
-                  </div>
-                  <h3 className="font-sans text-lg font-semibold">Color-Coded Feedback</h3>
-                </div>
-                <p className="text-sm text-foreground-500">
-                  Use different colors to categorize annotations by type, priority, or reviewer for easy organization
-                  and tracking.
+                  @mention collaborators so the right people are notified and can respond. Keep the conversation focused
+                  and actionable.
                 </p>
               </CardBody>
             </Card>
@@ -247,8 +202,8 @@ export default function AnnotatePdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Multi-Reviewer Support</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Multiple team members and clients can annotate the same PDF. See who added what with clear indicators
-                  and keep feedback in one thread.
+                  Multiple team members and clients can comment on the same video. See who wrote what with clear
+                  indicators and keep feedback in one thread.
                 </p>
               </CardBody>
             </Card>
@@ -262,8 +217,23 @@ export default function AnnotatePdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Resolution Tracking</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Mark annotations as resolved or unresolved. Track which feedback has been addressed and which still
-                  needs attention across review rounds.
+                  Mark comments as resolved or unresolved. Track which feedback has been addressed and which still needs
+                  attention across review rounds.
+                </p>
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody className="p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="play" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Jump to Frame</h3>
+                </div>
+                <p className="text-sm text-foreground-500">
+                  Click any comment to jump to the exact frame in the video. See all feedback in context and work
+                  through revisions efficiently.
                 </p>
               </CardBody>
             </Card>
@@ -275,9 +245,9 @@ export default function AnnotatePdfPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Annotate PDFs in Kreatli</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Comment on Video in Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Annotate PDFs with precise, location-based feedback so your team and clients stay aligned and revisions
+              Comment on video with precise, frame-accurate feedback so your team and clients stay aligned and revisions
               move faster.
             </p>
           </div>
@@ -292,8 +262,8 @@ export default function AnnotatePdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Clearer Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Instead of “fix the headline on page 3,” annotations point to the exact spot. No more back-and-forth
-                  to clarify what to change.
+                  Instead of “fix something around 0:25,” comments point to the exact frame. No more back-and-forth to
+                  clarify what to change.
                 </p>
               </CardBody>
             </Card>
@@ -307,8 +277,8 @@ export default function AnnotatePdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Fewer Revision Rounds</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  When feedback is pinned to the right place, designers and writers can act on it immediately.
-                  Resolution tracking ensures nothing gets missed.
+                  When feedback is pinned to the right frame, editors can act on it immediately. Resolution tracking
+                  ensures nothing gets missed.
                 </p>
               </CardBody>
             </Card>
@@ -319,10 +289,10 @@ export default function AnnotatePdfPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">One Place for PDF and Video</h3>
+                  <h3 className="font-sans text-lg font-semibold">One Place for Video and More</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Annotate PDFs alongside video and other assets in the same project. One review link, one approval
+                  Comment on video alongside PDFs and other assets in the same project. One review link, one approval
                   workflow, less tool-switching.
                 </p>
               </CardBody>
@@ -334,11 +304,11 @@ export default function AnnotatePdfPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="smile" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Client-Friendly PDF Review</h3>
+                  <h3 className="font-sans text-lg font-semibold">Client-Friendly Video Review</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Clients can annotate PDFs through no-signup guest links. They add comments and markup without creating
-                  an account, so approvals move faster.
+                  Clients can comment on video through no-signup guest links. They leave feedback without creating an
+                  account, so approvals move faster.
                 </p>
               </CardBody>
             </Card>
@@ -348,8 +318,8 @@ export default function AnnotatePdfPage() {
 
       {/* Free Tools Section */}
       <MoreFreeToolsSection
-        title="Free Tools for Creative Teams"
-        description="Explore our collection of free tools designed to help creative and video professionals work more efficiently."
+        title="Free Tools for Video Teams"
+        description="Explore our collection of free tools designed to help video professionals work more efficiently."
         useBannerResizerInsteadOfCostCalculator
       />
 
@@ -357,7 +327,7 @@ export default function AnnotatePdfPage() {
       <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
-        description="Explore guides and comparisons that show how teams annotate PDFs and manage review in Kreatli."
+        description="Explore guides and comparisons that show how teams comment on video and manage review in Kreatli."
       />
 
       <PricingSection />
@@ -368,7 +338,7 @@ export default function AnnotatePdfPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about annotating PDFs and review workflows in Kreatli.
+              Get detailed answers about commenting on video and review workflows in Kreatli.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -389,7 +359,7 @@ export default function AnnotatePdfPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how Kreatli can help you annotate PDFs and streamline your review workflow.
+              to learn how Kreatli can help you comment on video and streamline your review workflow.
             </p>
           </div>
         </div>
@@ -404,8 +374,8 @@ export default function AnnotatePdfPage() {
 
       {/* CTA Section */}
       <CTASection
-        title="Ready to Annotate PDFs with Clarity?"
-        description="Annotate PDFs with comments, highlights, and markup in one place with your team and clients. Start using Kreatli today."
+        title="Ready to Comment on Video with Clarity?"
+        description="Comment on video with frame-accurate, threaded feedback in one place with your team and clients. Start using Kreatli today."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

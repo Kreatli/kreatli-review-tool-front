@@ -2,7 +2,8 @@ import { Button } from '@heroui/react';
 import Link from 'next/link';
 
 import LogoIcon from '../../../assets/images/logo.svg';
-import { getPlatformPagesBySection } from '../../../data/platform-pages';
+import { getPlatformPagesForFooter } from '../../../data/platform-pages';
+import { Icon } from '../../various/Icon';
 import { Socials } from '../Socials/Socials';
 
 const SOLUTIONS_NAV = {
@@ -111,8 +112,8 @@ interface Props {
 }
 
 export const FooterSection = ({ hideCta = false }: Props) => {
-  // Get platform pages grouped by section for footer navigation
-  const platformPagesBySection = getPlatformPagesBySection();
+  // Get limited platform pages for footer (full list at /platform)
+  const platformPagesForFooter = getPlatformPagesForFooter();
 
   return (
     <footer className="bg-foreground-50">
@@ -152,26 +153,30 @@ export const FooterSection = ({ hideCta = false }: Props) => {
             <Socials />
           </div>
           <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {/* Platform: all links from PLATFORM_PAGES (platform-pages.ts) — new pages appear here automatically */}
+            {/* Platform: limited list + "All Features" (full list at /platform) */}
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">Platform</h3>
-              {Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => (
-                <div key={sectionTitle} className="mb-6 last:mb-0">
-                  <h4 className="mb-3 text-xs font-semibold text-foreground-600">{sectionTitle}</h4>
-                  <ul className="flex flex-col gap-2">
-                    {pages.map((page) => (
-                      <li key={page.href}>
-                        <Link
-                          href={page.href}
-                          className="text-sm text-foreground-500 underline-offset-2 hover:text-foreground hover:underline"
-                        >
-                          {page.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+              <ul className="flex flex-col gap-2">
+                {platformPagesForFooter.map((page) => (
+                  <li key={page.href}>
+                    <Link
+                      href={page.href}
+                      className="text-sm text-foreground-500 underline-offset-2 hover:text-foreground hover:underline"
+                    >
+                      {page.label}
+                    </Link>
+                  </li>
+                ))}
+                <li className="pt-2">
+                  <Link
+                    href="/platform"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-foreground underline-offset-2 hover:text-primary hover:underline"
+                  >
+                    All Features
+                    <Icon icon="arrowRight" size={14} className="shrink-0" />
+                  </Link>
+                </li>
+              </ul>
             </div>
 
             {/* Solutions Navigation */}
