@@ -1,3 +1,4 @@
+import { IconType } from '../components/various/Icon/Icon';
 import { RELATED_RESOURCES } from './related-resources';
 
 /**
@@ -37,7 +38,7 @@ export interface PlatformPage {
   /** Short description for navigation dropdowns */
   description: string;
   /** Icon key for platform feature card (must match Icon component IconType) */
-  icon: string;
+  icon: IconType;
   /** Section grouping for navigation organization */
   section: PlatformSection;
   /** Sort order within section (lower numbers appear first) */
@@ -122,13 +123,13 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
   {
     label: 'Add Drawing To Video',
     href: '/platform/add-drawing-to-video',
     description: 'Draw directly on video frames with markup and annotations',
-    icon: 'monitorPlay',
+    icon: 'addVideo',
     section: 'Core Platform',
     order: 5,
     tags: ['Video', 'Review & compare'],
@@ -136,7 +137,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'projectOrchestration'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
   {
     label: 'Draw on a Video',
@@ -156,7 +157,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     label: 'Comment on Video',
     href: '/platform/comment-on-video',
     description: 'Comment on video with frame-accurate, timestamp-pinned feedback',
-    icon: 'chat',
+    icon: 'reply',
     section: 'Core Platform',
     order: 7,
     tags: ['Video', 'Review & compare'],
@@ -164,7 +165,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'commentOnVideo', 'videoAnnotation'],
   },
   {
     label: 'Free Video Link Generator',
@@ -248,7 +249,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'addCommentsToPdf', 'drawOnPdfDocument'],
   },
   {
     label: 'Add Comments to PDF',
@@ -262,7 +263,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'drawOnPdfDocument'],
   },
   {
     label: 'Annotate Image',
@@ -276,13 +277,13 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf'],
   },
   {
     label: 'Draw on Image',
     href: '/platform/draw-on-image',
     description: 'Draw on images with freehand, shapes, and markup for precise feedback',
-    icon: 'paint',
+    icon: 'panorama',
     section: 'Core Platform',
     order: 16,
     tags: ['Review & compare'],
@@ -290,7 +291,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'drawOnPdfDocument', 'addCommentsToPdf'],
   },
   {
     label: 'Draw on Documents',
@@ -304,7 +305,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'drawOnPdfDocument'],
   },
   {
     label: 'Annotate Document',
@@ -318,7 +319,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'annotatePdf', 'drawOnPdfDocument'],
   },
   {
     label: 'Compare PDF Files',
@@ -332,7 +333,7 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation', 'commentOnVideo'],
   },
   {
     label: 'Compare Videos',
@@ -346,13 +347,13 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'drawOnPdfDocument'],
   },
   {
     label: 'Compare Documents Online',
     href: '/platform/compare-documents-online',
     description: 'Compare documents online side by side with comments and annotations',
-    icon: 'fileDoc',
+    icon: 'compare',
     section: 'Core Platform',
     order: 21,
     tags: ['PDF & documents', 'Review & compare'],
@@ -360,13 +361,13 @@ export const PLATFORM_PAGES: PlatformPage[] = [
       priority: '0.8',
       changefreq: 'monthly',
     },
-    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'addCommentsToPdf'],
   },
   {
     label: 'Draw on PDF Document',
     href: '/platform/draw-on-pdf-document',
     description: 'Draw and markup directly on PDFs for precise feedback',
-    icon: 'edit',
+    icon: 'filePdf',
     section: 'Core Platform',
     order: 22,
     tags: ['PDF & documents', 'Review & compare'],

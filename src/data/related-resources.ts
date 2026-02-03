@@ -49,6 +49,37 @@ export const RELATED_RESOURCES = {
     icon: 'paint' as IconType,
     buttonText: 'Learn More',
   },
+  annotatePdf: {
+    title: 'Annotate PDF',
+    description:
+      'Annotate and review PDFs with comments and markup. Add feedback directly on PDFs for precise, location-pinned review.',
+    href: '/platform/annotate-pdf',
+    icon: 'filePdf' as IconType,
+    buttonText: 'Learn More',
+  },
+  drawOnPdfDocument: {
+    title: 'Draw on PDF Document',
+    description: 'Draw and markup directly on PDFs for precise feedback. Freehand, shapes, and annotations on PDFs.',
+    href: '/platform/draw-on-pdf-document',
+    icon: 'filePdf' as IconType,
+    buttonText: 'Learn More',
+  },
+  addCommentsToPdf: {
+    title: 'Add Comments to PDF',
+    description:
+      'Add comments to PDF with location-pinned, threaded feedback. Collaborate on PDFs without drawing tools.',
+    href: '/platform/add-comments-to-pdf',
+    icon: 'chat' as IconType,
+    buttonText: 'Learn More',
+  },
+  commentOnVideo: {
+    title: 'Comment on Video',
+    description:
+      'Comment on video with frame-accurate, timestamp-pinned feedback. Threaded discussions tied to exact frames.',
+    href: '/platform/comment-on-video',
+    icon: 'reply' as IconType,
+    buttonText: 'Learn More',
+  },
   // Solution pages
   advertisingMarketingAgencies: {
     title: 'Advertising & Marketing Agencies',

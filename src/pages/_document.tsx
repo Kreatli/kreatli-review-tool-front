@@ -18,7 +18,7 @@ const MyDocument = () => {
         <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff" />
-        <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+        <meta name="apple-mobile-web-app-title" content="Kreatli" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <body>
