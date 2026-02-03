@@ -10,10 +10,11 @@ import { Icon } from '../various/Icon';
 
 const DEFAULT_VIDEO_FILENAME = 'interview_v2.mp4';
 const DEFAULT_PDF_FILENAME = 'project-brief.pdf';
+const DEFAULT_IMAGE_FILENAME = 'brand-asset.png';
 
 interface InteractiveReviewToolPreviewProps {
-  /** When 'pdf', labels and empty state showcase PDF upload; when omitted, video/image. */
-  variant?: 'video' | 'pdf';
+  /** When 'pdf', labels and empty state showcase PDF upload; when 'image', image annotation; when omitted, video. */
+  variant?: 'video' | 'pdf' | 'image';
 }
 
 /**
@@ -23,12 +24,15 @@ interface InteractiveReviewToolPreviewProps {
 export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveReviewToolPreviewProps) => {
   const router = useRouter();
   const isPdf = variant === 'pdf';
+  const isImage = variant === 'image';
   const [comment, setComment] = useState('');
   const [newComment, setNewComment] = useState('');
   const [shapes, setShapes] = useState<ReviewTool.Shape[]>([]);
   const [hasNewCommentShapes, setHasNewCommentShapes] = useState(false);
   const [fileUrl, setFileUrl] = useState<string | null>(null);
-  const [fileName, setFileName] = useState(isPdf ? DEFAULT_PDF_FILENAME : DEFAULT_VIDEO_FILENAME);
+  const [fileName, setFileName] = useState(
+    isPdf ? DEFAULT_PDF_FILENAME : isImage ? DEFAULT_IMAGE_FILENAME : DEFAULT_VIDEO_FILENAME,
+  );
   const [fileType, setFileType] = useState<'video' | 'image' | 'pdf' | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -39,7 +43,7 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
     setComment('');
     setNewComment('');
     setIsDragging(false);
-    setFileName(isPdf ? DEFAULT_PDF_FILENAME : DEFAULT_VIDEO_FILENAME);
+    setFileName(isPdf ? DEFAULT_PDF_FILENAME : isImage ? DEFAULT_IMAGE_FILENAME : DEFAULT_VIDEO_FILENAME);
     setFileType(null);
     setFileUrl((prev) => {
       if (prev) URL.revokeObjectURL(prev);
@@ -49,7 +53,7 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
-  }, [isPdf]);
+  }, [isPdf, isImage]);
 
   const { triggerSoftGate } = useSoftGate({
     enabled: router.pathname !== '/',
@@ -164,7 +168,9 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
             </div>
             <div>
               <div className="text-lg font-semibold">{fileName}</div>
-              <div className="text-sm text-foreground-500">{isPdf ? 'PDF review' : 'Vision review - Interviews'}</div>
+              <div className="text-sm text-foreground-500">
+                {isPdf ? 'PDF review' : isImage ? 'Image review' : 'Vision review - Interviews'}
+              </div>
             </div>
           </div>
           <Button
@@ -178,7 +184,7 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
           <input
             ref={fileInputRef}
             type="file"
-            accept={isPdf ? 'application/pdf' : 'video/*,image/*'}
+            accept={isPdf ? 'application/pdf' : isImage ? 'image/*' : 'video/*,image/*'}
             onChange={handleFileUpload}
             className="hidden"
           />
@@ -204,14 +210,18 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
                         ? 'Drop your file here'
                         : isPdf
                           ? 'Upload a PDF to get started'
-                          : 'Upload a video or image to get started'}
+                          : isImage
+                            ? 'Upload an image to get started'
+                            : 'Upload a video or image to get started'}
                     </p>
                     <p className="mb-4 text-sm text-foreground-500">
                       {isDragging
                         ? 'Release to upload'
                         : isPdf
                           ? 'Drag and drop a PDF here, or click the button below'
-                          : 'Drag and drop a file here, or click the button below'}
+                          : isImage
+                            ? 'Drag and drop an image here, or click the button below'
+                            : 'Drag and drop a file here, or click the button below'}
                     </p>
                     {!isDragging && (
                       <Button
@@ -249,7 +259,7 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
               <Textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                placeholder="Leave your comment here..."
+                placeholder={isImage ? 'Add a comment on this image...' : 'Leave your comment here...'}
                 minRows={2}
                 rows={2}
                 maxLength={100}
@@ -281,16 +291,20 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
                 userName="Kate L."
                 date="Jul 24"
                 hasDrawings
-                comment="Let's make sure we display QR code in the marked place."
-                timestamp={isPdf ? 'p. 1' : '00:07'}
+                comment={
+                  isImage
+                    ? "Let's move the logo to the marked area."
+                    : "Let's make sure we display QR code in the marked place."
+                }
+                timestamp={isPdf ? 'p. 1' : isImage ? 'Image' : '00:07'}
               />
               <ReviewToolComment
                 user="a042581f4e29026024t"
                 userName="Kate L."
                 date="Jul 25"
                 hasDrawings
-                comment="We should probably blur this part."
-                timestamp={isPdf ? 'p. 2' : '00:14'}
+                comment={isImage ? 'Can we blur this section?' : 'We should probably blur this part.'}
+                timestamp={isPdf ? 'p. 2' : isImage ? 'Image' : '00:14'}
               />
               {(comment.trim() || newComment.trim() || shapes.length > 0 || hasNewCommentShapes) && (
                 <ReviewToolComment
@@ -298,7 +312,7 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
                   hasDrawings={shapes.length > 0 || hasNewCommentShapes}
                   comment={newComment.trim() || comment.trim()}
                   date="now"
-                  timestamp={isPdf ? 'p. 2' : '00:14'}
+                  timestamp={isPdf ? 'p. 2' : isImage ? 'Image' : '00:14'}
                 />
               )}
             </div>
