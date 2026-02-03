@@ -133,7 +133,7 @@ export default function AnnotatePdfPage() {
               </Button>
             </div>
           </div>
-          <InteractiveReviewToolPreview />
+          <InteractiveReviewToolPreview variant="pdf" />
         </div>
       </section>
 

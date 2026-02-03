@@ -8,19 +8,28 @@ import { ReviewToolCanvas } from '../home/Features/ReviewToolCanvas';
 import { ReviewToolComment } from '../home/Features/ReviewToolComment';
 import { Icon } from '../various/Icon';
 
+const DEFAULT_VIDEO_FILENAME = 'interview_v2.mp4';
+const DEFAULT_PDF_FILENAME = 'project-brief.pdf';
+
+interface InteractiveReviewToolPreviewProps {
+  /** When 'pdf', labels and empty state showcase PDF upload; when omitted, video/image. */
+  variant?: 'video' | 'pdf';
+}
+
 /**
  * Enhanced ReviewToolPreview with file upload functionality
  * Allows users to upload their own video/image files, draw on them, and leave comments
  */
-export const InteractiveReviewToolPreview = () => {
+export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveReviewToolPreviewProps) => {
   const router = useRouter();
+  const isPdf = variant === 'pdf';
   const [comment, setComment] = useState('');
   const [newComment, setNewComment] = useState('');
   const [shapes, setShapes] = useState<ReviewTool.Shape[]>([]);
   const [hasNewCommentShapes, setHasNewCommentShapes] = useState(false);
   const [fileUrl, setFileUrl] = useState<string | null>(null);
-  const [fileName, setFileName] = useState('interview_v2.mp4');
-  const [fileType, setFileType] = useState<'video' | 'image' | null>(null);
+  const [fileName, setFileName] = useState(isPdf ? DEFAULT_PDF_FILENAME : DEFAULT_VIDEO_FILENAME);
+  const [fileType, setFileType] = useState<'video' | 'image' | 'pdf' | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -30,7 +39,7 @@ export const InteractiveReviewToolPreview = () => {
     setComment('');
     setNewComment('');
     setIsDragging(false);
-    setFileName('interview_v2.mp4');
+    setFileName(isPdf ? DEFAULT_PDF_FILENAME : DEFAULT_VIDEO_FILENAME);
     setFileType(null);
     setFileUrl((prev) => {
       if (prev) URL.revokeObjectURL(prev);
@@ -40,7 +49,7 @@ export const InteractiveReviewToolPreview = () => {
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
-  }, []);
+  }, [isPdf]);
 
   const { triggerSoftGate } = useSoftGate({
     enabled: router.pathname !== '/',
@@ -55,8 +64,10 @@ export const InteractiveReviewToolPreview = () => {
   }, [fileUrl]);
 
   const processFile = (file: File) => {
-    // Check if it's a video or image (gating applies to both types)
-    if (file.type.startsWith('video/') || file.type.startsWith('image/')) {
+    const isPdfFile = file.type === 'application/pdf';
+    const isVideoOrImage = file.type.startsWith('video/') || file.type.startsWith('image/');
+
+    if (isPdfFile || isVideoOrImage) {
       // Clean up previous URL if exists
       if (fileUrl) {
         URL.revokeObjectURL(fileUrl);
@@ -65,14 +76,11 @@ export const InteractiveReviewToolPreview = () => {
       setFileName(file.name);
       const url = URL.createObjectURL(file);
       setFileUrl(url);
-      // Store file type for proper rendering
-      setFileType(file.type.startsWith('image/') ? 'image' : 'video');
-      // Clear previous annotations when new file is uploaded
+      setFileType(isPdfFile ? 'pdf' : file.type.startsWith('image/') ? 'image' : 'video');
       setShapes([]);
       setComment('');
       setNewComment('');
 
-      // Soft gate: once user uploads media, prompt sign up (everywhere except homepage).
       triggerSoftGate();
     }
   };
@@ -156,7 +164,7 @@ export const InteractiveReviewToolPreview = () => {
             </div>
             <div>
               <div className="text-lg font-semibold">{fileName}</div>
-              <div className="text-sm text-foreground-500">Vision review - Interviews</div>
+              <div className="text-sm text-foreground-500">{isPdf ? 'PDF review' : 'Vision review - Interviews'}</div>
             </div>
           </div>
           <Button
@@ -170,7 +178,7 @@ export const InteractiveReviewToolPreview = () => {
           <input
             ref={fileInputRef}
             type="file"
-            accept="video/*,image/*"
+            accept={isPdf ? 'application/pdf' : 'video/*,image/*'}
             onChange={handleFileUpload}
             className="hidden"
           />
@@ -192,10 +200,18 @@ export const InteractiveReviewToolPreview = () => {
                   />
                   <div className="text-center">
                     <p className={cn('mb-2 text-base font-semibold transition-colors', isDragging && 'text-primary')}>
-                      {isDragging ? 'Drop your file here' : 'Upload a video or image to get started'}
+                      {isDragging
+                        ? 'Drop your file here'
+                        : isPdf
+                          ? 'Upload a PDF to get started'
+                          : 'Upload a video or image to get started'}
                     </p>
                     <p className="mb-4 text-sm text-foreground-500">
-                      {isDragging ? 'Release to upload' : 'Drag and drop a file here, or click the button below'}
+                      {isDragging
+                        ? 'Release to upload'
+                        : isPdf
+                          ? 'Drag and drop a PDF here, or click the button below'
+                          : 'Drag and drop a file here, or click the button below'}
                     </p>
                     {!isDragging && (
                       <Button
@@ -209,6 +225,17 @@ export const InteractiveReviewToolPreview = () => {
                     )}
                   </div>
                 </div>
+              </div>
+            ) : fileType === 'pdf' ? (
+              <div
+                className={cn(
+                  'relative flex aspect-video flex-col items-center justify-center gap-4 overflow-hidden rounded-lg border-2 border-foreground-200 bg-foreground-50 p-8',
+                )}
+              >
+                <Icon icon="filePdf" size={48} className="text-foreground-400" />
+                <p className="text-center text-base font-semibold text-foreground-700">
+                  PDF loaded — sign up to draw and comment on this document in Kreatli
+                </p>
               </div>
             ) : (
               <ReviewToolCanvas
@@ -255,7 +282,7 @@ export const InteractiveReviewToolPreview = () => {
                 date="Jul 24"
                 hasDrawings
                 comment="Let's make sure we display QR code in the marked place."
-                timestamp="00:07"
+                timestamp={isPdf ? 'p. 1' : '00:07'}
               />
               <ReviewToolComment
                 user="a042581f4e29026024t"
@@ -263,7 +290,7 @@ export const InteractiveReviewToolPreview = () => {
                 date="Jul 25"
                 hasDrawings
                 comment="We should probably blur this part."
-                timestamp="00:14"
+                timestamp={isPdf ? 'p. 2' : '00:14'}
               />
               {(comment.trim() || newComment.trim() || shapes.length > 0 || hasNewCommentShapes) && (
                 <ReviewToolComment
@@ -271,7 +298,7 @@ export const InteractiveReviewToolPreview = () => {
                   hasDrawings={shapes.length > 0 || hasNewCommentShapes}
                   comment={newComment.trim() || comment.trim()}
                   date="now"
-                  timestamp="00:14"
+                  timestamp={isPdf ? 'p. 2' : '00:14'}
                 />
               )}
             </div>

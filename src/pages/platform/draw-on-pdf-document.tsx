@@ -133,7 +133,7 @@ export default function DrawOnPdfDocumentPage() {
               </Button>
             </div>
           </div>
-          <InteractiveReviewToolPreview />
+          <InteractiveReviewToolPreview variant="pdf" />
         </div>
       </section>
 
