@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Joyride, { CallBackProps, STATUS } from 'react-joyride';
 
+import { useIsMobile } from '../../hooks/useIsMobile';
 import { useOnboardingStore } from '../../hooks/useOnboarding';
 import { OnboardingTooltip } from './OnboardingTooltip';
 
@@ -137,7 +138,8 @@ const STEP_11 = {
 const STEP_12 = {
   target: ONBOARDING_SELECTORS.projectTabs,
   title: 'Switch between tabs',
-  content: 'Use Home, Media, Chat, and Activity to move between your project dashboard, files, conversations, and activity.',
+  content:
+    'Use Home, Media, Chat, and Activity to move between your project dashboard, files, conversations, and activity.',
   disableBeacon: true,
   spotlightClicks: true,
   placement: 'bottom' as const,
@@ -187,57 +189,54 @@ interface Props {
 
 export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
   const close = useOnboardingStore((s) => s.close);
-  const markProjectCreated = useOnboardingStore((s) => s.markProjectCreated);
-  const advanceStep = useOnboardingStore((s) => s.advanceStep);
+  const isMobile = useIsMobile();
 
-  const steps =
-    stepIndex === 0
-      ? [STEP_1]
-      : stepIndex === 1
-        ? [STEP_2]
-        : stepIndex === 2
-          ? [STEP_3]
-          : stepIndex === 3
-            ? [STEP_4]
-            : stepIndex === 4
-              ? [STEP_5]
-              : stepIndex === 5
-                ? [STEP_6]
-                : stepIndex === 6
-                  ? [STEP_7]
-                  : stepIndex === 7
-                    ? [STEP_8]
-                    : stepIndex === 8
-                      ? [STEP_9]
-                      : stepIndex === 9
-                        ? [STEP_10]
-                        : stepIndex === 10
-                          ? [STEP_11]
-                          : stepIndex === 11
-                            ? [STEP_12]
-                            : stepIndex === 12
-                              ? [STEP_13_HOME]
-                              : stepIndex === 13
-                                ? [STEP_14_CHAT]
-                                : [STEP_15_ACTIVITY];
+  const steps = useMemo(() => {
+    const rawSteps =
+      stepIndex === 0
+        ? [STEP_1]
+        : stepIndex === 1
+          ? [STEP_2]
+          : stepIndex === 2
+            ? [STEP_3]
+            : stepIndex === 3
+              ? [STEP_4]
+              : stepIndex === 4
+                ? [STEP_5]
+                : stepIndex === 5
+                  ? [STEP_6]
+                  : stepIndex === 6
+                    ? [STEP_7]
+                    : stepIndex === 7
+                      ? [STEP_8]
+                      : stepIndex === 8
+                        ? [STEP_9]
+                        : stepIndex === 9
+                          ? [STEP_10]
+                          : stepIndex === 10
+                            ? [STEP_11]
+                            : stepIndex === 11
+                              ? [STEP_12]
+                              : stepIndex === 12
+                                ? [STEP_13_HOME]
+                                : stepIndex === 13
+                                  ? [STEP_14_CHAT]
+                                  : [STEP_15_ACTIVITY];
+    if (!isMobile) return rawSteps;
+    return rawSteps.map((step) => ({
+      ...step,
+      placement: 'bottom' as const,
+      spotlightPadding: 'spotlightPadding' in step ? step.spotlightPadding : 10,
+    }));
+  }, [stepIndex, isMobile]);
+
   const index = 0;
 
   const handleCallback = (data: CallBackProps) => {
     const { status } = data;
+    // Only handle SKIPPED here. All "Done" advancement is handled in OnboardingTooltip to avoid double-advance.
     if (status === STATUS.SKIPPED) {
       close();
-      return;
-    }
-    if (status === STATUS.FINISHED) {
-      if (stepIndex === 0) {
-        markProjectCreated();
-      } else if (stepIndex >= 3 && stepIndex <= 11) {
-        advanceStep();
-      } else if (stepIndex >= 12 && stepIndex <= 14) {
-        // Tab steps: OnboardingTooltip calls markTabStepDone; do not close or advance here
-      } else {
-        close();
-      }
     }
   };
 
@@ -252,8 +251,8 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
       continuous
       showProgress={false}
       spotlightClicks
-      disableScrolling
-      disableOverlayClose={false}
+      disableScrolling={isMobile ? false : true}
+      disableOverlayClose={true}
       disableOverlay
       tooltipComponent={OnboardingTooltip}
       styles={{

@@ -34,9 +34,17 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
   const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
   const onboardingStep = useOnboardingStore((s) => s.step);
   const onboardingRun = useOnboardingStore((s) => s.run);
+  const advanceToFileOpened = useOnboardingStore((s) => s.advanceToFileOpened);
   const [assetOnboardingReady, setAssetOnboardingReady] = useState(false);
 
   const isLoading = isAssetLoading || isProjectLoading || isCompareAssetLoading;
+
+  // When user opens file from Home tab (or any path that doesn't go through Media), advance to step 3 so "Draw on file" and later steps show.
+  useEffect(() => {
+    if (onboardingRun && onboardingStep === 2 && file && project && !isLoading) {
+      advanceToFileOpened();
+    }
+  }, [onboardingRun, onboardingStep, file, project, isLoading, advanceToFileOpened]);
 
   const showAssetOnboarding = onboardingRun && typeof onboardingStep === 'number' && onboardingStep >= 3 && onboardingStep <= 9;
   useEffect(() => {
