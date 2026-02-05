@@ -1,3 +1,4 @@
+import { plugin as engagementPlugin } from '@amplitude/engagement-browser';
 import React, { useEffect } from 'react';
 
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
@@ -17,6 +18,7 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
 
     if (window && 'amplitude' in window) {
       window.amplitude.setUserId(user.id);
+      window.amplitude.add(engagementPlugin());
 
       const identifyEvent = new window.amplitude.Identify();
       identifyEvent.set('name', user.name).set('email', user.email);
