@@ -4,7 +4,7 @@ import type { TooltipRenderProps } from 'react-joyride';
 
 import { useOnboardingStore } from '../../hooks/useOnboarding';
 
-type StepWithJourney = TooltipRenderProps['step'] & { journeyStep?: 0 | 1 };
+type StepWithJourney = TooltipRenderProps['step'] & { journeyStep?: 0 | 1 | 2 | 3 | 4 | 5 | 6 };
 
 export function OnboardingTooltip({
   backProps,
@@ -50,12 +50,19 @@ export function OnboardingTooltip({
 
   const handleDone = (event: React.MouseEvent<HTMLElement>) => {
     primaryProps.onClick?.(event);
-    // In controlled mode Joyride never sets FINISHED, so close and advance here
-    const { close: closeTour, markProjectCreated } = useOnboardingStore.getState();
+    // In controlled mode Joyride never sets FINISHED, so close and advance here.
+    // "Done" advances to next step (or completes on last); use closeTour() only when a step should end the tour.
+    const { close: closeTour, markProjectCreated, advanceStep, advanceToFileOpened } =
+      useOnboardingStore.getState();
     if (journeyStep === 0) {
       markProjectCreated();
+    } else if (journeyStep === 1 || journeyStep === 2) {
+      // Step 1: skip "open file", go to "draw on file". Step 2: same (next step is draw on file).
+      advanceToFileOpened();
+    } else if (journeyStep !== undefined && journeyStep >= 3 && journeyStep <= 6) {
+      advanceStep(); // Step 6: advanceStep() completes the tour
     } else {
-      closeTour();
+      closeTour(); // Only when explicitly intended to end (e.g. future steps)
     }
   };
 

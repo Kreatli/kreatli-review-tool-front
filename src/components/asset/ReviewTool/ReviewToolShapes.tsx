@@ -40,7 +40,7 @@ export const ReviewToolShapes = ({ isDisabled = false }) => {
   };
 
   return (
-    <div className="flex items-center gap-0.5">
+    <div id="onboarding-target-draw-on-file" className="flex items-center gap-0.5" data-onboarding="draw-on-file">
       {SHAPES.map(({ value, icon, iconSize }) => (
         <Button
           key={value}

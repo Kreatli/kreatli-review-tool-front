@@ -1,5 +1,6 @@
 import { addToast } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
 import { nanoid } from 'nanoid';
 import React, { useEffect } from 'react';
 import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzone';
@@ -64,6 +65,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const [stackId, setStackId] = React.useState<string | undefined>(undefined);
   const [stackWithFileId, setStackWithFileId] = React.useState<string | undefined>(undefined);
 
+  const router = useRouter();
   const queryClient = useQueryClient();
   const { user } = useSession();
   const isProjectOwner = project.createdBy?.id === user?.id;
@@ -116,6 +118,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
         updateFileUploadProgress(id, 100);
         if (useOnboardingStore.getState().step === 1) {
           useOnboardingStore.getState().completeUpload();
+          router.replace(`/project/${project.id}/assets`);
         }
       })
       .catch((error) => {

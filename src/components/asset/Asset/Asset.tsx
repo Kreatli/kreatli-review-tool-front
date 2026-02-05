@@ -1,13 +1,15 @@
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { FileStateContextProvider } from '../../../contexts/File';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
+import { useOnboardingStore } from '../../../hooks/useOnboarding';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { useSession } from '../../../hooks/useSession';
 import { useGetAssetFileId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
 import { ProjectPaywall } from '../../project/Project/ProjectPaywall';
+import { OnboardingJoyride } from '../../onboarding/OnboardingJoyride';
 import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
 import { AssetPanel } from '../AssetPanel';
 import { ReviewTool } from '../ReviewTool';
@@ -30,8 +32,23 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
 
   const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
   const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
+  const onboardingStep = useOnboardingStore((s) => s.step);
+  const onboardingRun = useOnboardingStore((s) => s.run);
+  const [assetOnboardingReady, setAssetOnboardingReady] = useState(false);
 
   const isLoading = isAssetLoading || isProjectLoading || isCompareAssetLoading;
+
+  const showAssetOnboarding = onboardingRun && typeof onboardingStep === 'number' && onboardingStep >= 3 && onboardingStep <= 6;
+  useEffect(() => {
+    if (!showAssetOnboarding) {
+      setAssetOnboardingReady(false);
+      return;
+    }
+    const id = requestAnimationFrame(() => {
+      setAssetOnboardingReady(true);
+    });
+    return () => cancelAnimationFrame(id);
+  }, [showAssetOnboarding]);
 
   useEffect(() => {
     if (error && 'status' in error && error.status === 404) {
@@ -81,6 +98,9 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
         isOpen={isEditProjectStatusesModalOpen}
         onClose={() => setIsEditProjectStatusesModalOpen(false)}
       />
+      {showAssetOnboarding && assetOnboardingReady && typeof onboardingStep === 'number' && (
+        <OnboardingJoyride key={onboardingStep} stepIndex={onboardingStep} run />
+      )}
     </>
   );
 };

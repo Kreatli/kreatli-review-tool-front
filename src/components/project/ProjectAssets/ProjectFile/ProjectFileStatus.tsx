@@ -60,17 +60,19 @@ export const ProjectFileStatus = ({ file, projectId, statuses, className, isDisa
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Chip
-          size="sm"
-          variant="dot"
-          style={{ color: activeStatus?.color ?? '#A1A1AA' }}
-          isDisabled={isDisabled}
-          color="default"
-          classNames={{ dot: 'bg-current', content: 'text-foreground max-w-32 truncate' }}
-          className={cn('cursor-pointer bg-default-100', className)}
-        >
-          {activeStatus?.label ?? 'No status'}
-        </Chip>
+        <span className="inline-flex" data-onboarding="set-status">
+          <Chip
+            size="sm"
+            variant="dot"
+            style={{ color: activeStatus?.color ?? '#A1A1AA' }}
+            isDisabled={isDisabled}
+            color="default"
+            classNames={{ dot: 'bg-current', content: 'text-foreground max-w-32 truncate' }}
+            className={cn('cursor-pointer bg-default-100', className)}
+          >
+            {activeStatus?.label ?? 'No status'}
+          </Chip>
+        </span>
       </DropdownTrigger>
       <DropdownMenu
         variant="flat"

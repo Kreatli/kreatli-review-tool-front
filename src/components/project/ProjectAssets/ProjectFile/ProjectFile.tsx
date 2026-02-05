@@ -6,6 +6,7 @@ import React from 'react';
 
 import { useAssetContext } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
+import { useOnboardingStore } from '../../../../hooks/useOnboarding';
 import { ProjectFileDto } from '../../../../services/types';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
 import { Icon } from '../../../various/Icon';
@@ -19,9 +20,17 @@ interface Props {
   isReadonly?: boolean;
   file: ProjectFileDto;
   onSelectionChange?: () => void;
+  dataOnboardingOpenFile?: boolean;
 }
 
-export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelectionChange }: Props) => {
+export const ProjectFile = ({
+  isSelected,
+  isDisabled,
+  isReadonly,
+  file,
+  onSelectionChange,
+  dataOnboardingOpenFile,
+}: Props) => {
   const { name, commentsCount } = file;
 
   const router = useRouter();
@@ -32,7 +41,9 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
     if (isDisabled) {
       return;
     }
-
+    if (useOnboardingStore.getState().step === 2) {
+      useOnboardingStore.getState().advanceToFileOpened();
+    }
     router.push(`/project/${router.query.id}/assets/${file.id}`);
   };
 
@@ -81,6 +92,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
         className="absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2"
         onKeyDown={handleSpaceAndEnter(handleClick)}
         onDoubleClick={handleClick}
+        {...(dataOnboardingOpenFile && { 'data-onboarding': 'open-file' })}
       >
         <ProjectFileCover file={file} />
         <div className="relative">

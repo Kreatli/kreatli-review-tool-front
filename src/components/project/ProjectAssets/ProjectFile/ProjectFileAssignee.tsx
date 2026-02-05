@@ -59,23 +59,25 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled, clas
   return (
     <Dropdown placement="bottom-start" offset={10}>
       <DropdownTrigger>
-        <Avatar
-          as="button"
-          src={selectedMember?.user?.avatar?.url ?? ''}
-          size="sm"
-          isBordered={size !== 'xs'}
-          isDisabled={isDisabled}
-          className={cn('shrink-0', { 'size-7 border border-foreground-300': size === 'xs' }, className)}
-          fallback={
-            selectedMember ? (
-              <div className={cn('select-none text-lg text-foreground-500', { 'text-md': size === 'xs' })}>
-                {getProjectMemberLetter(selectedMember)}
-              </div>
-            ) : (
-              <Icon icon="user" size={size === 'xs' ? 14 : 16} />
-            )
-          }
-        />
+        <span className="inline-flex shrink-0" data-onboarding="assign-members">
+          <Avatar
+            as="button"
+            src={selectedMember?.user?.avatar?.url ?? ''}
+            size="sm"
+            isBordered={size !== 'xs'}
+            isDisabled={isDisabled}
+            className={cn('shrink-0', { 'size-7 border border-foreground-300': size === 'xs' }, className)}
+            fallback={
+              selectedMember ? (
+                <div className={cn('select-none text-lg text-foreground-500', { 'text-md': size === 'xs' })}>
+                  {getProjectMemberLetter(selectedMember)}
+                </div>
+              ) : (
+                <Icon icon="user" size={size === 'xs' ? 14 : 16} />
+              )
+            }
+          />
+        </span>
       </DropdownTrigger>
       <DropdownMenu
         variant="flat"

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import { useAssetContext } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
+import { useOnboardingStore } from '../../../../hooks/useOnboarding';
 import { ProjectStackDto } from '../../../../services/types';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
 import { Icon } from '../../../various/Icon';
@@ -18,9 +19,17 @@ interface Props {
   isReadonly?: boolean;
   stack: ProjectStackDto;
   onSelectionChange?: () => void;
+  dataOnboardingOpenFile?: boolean;
 }
 
-export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSelectionChange }: Props) => {
+export const ProjectStack = ({
+  isSelected,
+  isDisabled,
+  isReadonly,
+  stack,
+  onSelectionChange,
+  dataOnboardingOpenFile,
+}: Props) => {
   const { name, commentsCount } = stack.active!;
 
   const router = useRouter();
@@ -31,7 +40,9 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSele
     if (isDisabled) {
       return;
     }
-
+    if (useOnboardingStore.getState().step === 2) {
+      useOnboardingStore.getState().advanceToFileOpened();
+    }
     router.push(`/project/${router.query.id}/assets/stack/${stack.id}`);
   };
 
@@ -87,6 +98,7 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSele
         className="absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2"
         onKeyDown={handleSpaceAndEnter(handleClick)}
         onDoubleClick={handleClick}
+        {...(dataOnboardingOpenFile && { 'data-onboarding': 'open-file' })}
       >
         <ProjectFileCover file={stack.active!} />
         <div className="relative">

@@ -256,33 +256,35 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
           </div>
         )}
       </div>
-      <EditorContent
-        editor={editor}
-        className={cn('h-10 flex-1 overflow-auto [&>div]:h-full', {})}
-        onKeyDown={handleKeyDown}
-      />
-      <div className="self-end">
-        <Popover
-          isOpen={isAnonymousFormVisible}
-          placement="top-end"
-          onOpenChange={(open) => (open ? null : setIsAnonymousFormVisible(open))}
-        >
-          <PopoverTrigger>
-            <Button
-              size="sm"
-              isIconOnly
-              isDisabled={isDisabled}
-              variant="light"
-              radius="full"
-              onClick={() => handleSubmit(editor)}
-            >
-              <Icon icon="send" size={20} />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-64 p-3">
-            <ReviewToolTextareaAnonymousForm onSubmit={handleAnonymousFormSubmit} />
-          </PopoverContent>
-        </Popover>
+      <div id="onboarding-target-leave-comment" className="flex flex-1 items-center gap-1" data-onboarding="leave-comment">
+        <EditorContent
+          editor={editor}
+          className={cn('h-10 flex-1 overflow-auto [&>div]:h-full', {})}
+          onKeyDown={handleKeyDown}
+        />
+        <div className="self-end">
+          <Popover
+            isOpen={isAnonymousFormVisible}
+            placement="top-end"
+            onOpenChange={(open) => (open ? null : setIsAnonymousFormVisible(open))}
+          >
+            <PopoverTrigger>
+              <Button
+                size="sm"
+                isIconOnly
+                isDisabled={isDisabled}
+                variant="light"
+                radius="full"
+                onClick={() => handleSubmit(editor)}
+              >
+                <Icon icon="send" size={20} />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-64 p-3">
+              <ReviewToolTextareaAnonymousForm onSubmit={handleAnonymousFormSubmit} />
+            </PopoverContent>
+          </Popover>
+        </div>
       </div>
       {replyingComment && (
         <div className="absolute bottom-full left-2 right-2 flex items-center gap-1 pb-0.5 text-primary">

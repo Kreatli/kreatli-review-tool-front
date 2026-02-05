@@ -1,15 +1,17 @@
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { FileStateContextProvider } from '../../../contexts/File';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
+import { useOnboardingStore } from '../../../hooks/useOnboarding';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { useSession } from '../../../hooks/useSession';
 import { useGetAssetFileId, useGetAssetStackId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
 import { FileDto } from '../../../services/types';
 import { ProjectPaywall } from '../../project/Project/ProjectPaywall';
+import { OnboardingJoyride } from '../../onboarding/OnboardingJoyride';
 import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
 import { AssetPanel } from '../AssetPanel';
 import { ReviewTool } from '../ReviewTool';
@@ -51,8 +53,24 @@ export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
 
   const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
   const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
+  const onboardingStep = useOnboardingStore((s) => s.step);
+  const onboardingRun = useOnboardingStore((s) => s.run);
+  const [stackOnboardingReady, setStackOnboardingReady] = useState(false);
 
   const isLoading = isAssetLoading || isProjectLoading || isCompareAssetLoading;
+
+  const showStackOnboarding =
+    onboardingRun && typeof onboardingStep === 'number' && onboardingStep >= 3 && onboardingStep <= 6;
+  useEffect(() => {
+    if (!showStackOnboarding) {
+      setStackOnboardingReady(false);
+      return;
+    }
+    const id = requestAnimationFrame(() => {
+      setStackOnboardingReady(true);
+    });
+    return () => cancelAnimationFrame(id);
+  }, [showStackOnboarding]);
 
   useEffect(() => {
     if (error && 'status' in error && error.status === 404) {
@@ -114,6 +132,9 @@ export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
         isOpen={isEditProjectStatusesModalOpen}
         onClose={() => setIsEditProjectStatusesModalOpen(false)}
       />
+      {showStackOnboarding && stackOnboardingReady && typeof onboardingStep === 'number' && (
+        <OnboardingJoyride key={onboardingStep} stepIndex={onboardingStep} run />
+      )}
     </>
   );
 };

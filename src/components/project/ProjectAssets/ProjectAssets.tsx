@@ -19,7 +19,9 @@ import React from 'react';
 import { AssetContextProvider } from '../../../contexts/Asset';
 import { useProjectContext } from '../../../contexts/Project';
 import { useProjectUploadContext } from '../../../contexts/Project/ProjectUploadContext';
+import { useOnboardingStore } from '../../../hooks/useOnboarding';
 import { useSession } from '../../../hooks/useSession';
+import { OnboardingJoyride } from '../../onboarding/OnboardingJoyride';
 import { useGetProjectIdAssets } from '../../../services/custom-hooks';
 import { usePostProjectIdAssetsMove, usePutProjectId } from '../../../services/hooks';
 import { getProjectIdAssets, postProjectIdAssetsMove, putProjectId } from '../../../services/services';
@@ -37,6 +39,9 @@ import { ProjectStack } from './ProjectStack';
 export const ProjectAssets = () => {
   const { project, search, filters } = useProjectContext();
   const { inputRef, isDragActive, getRootProps } = useProjectUploadContext();
+  const onboardingStep = useOnboardingStore((s) => s.step);
+  const onboardingRun = useOnboardingStore((s) => s.run);
+  const [step2TargetReady, setStep2TargetReady] = React.useState(false);
 
   const { data: assetsData, isPending: isLoadingAssets } = useGetProjectIdAssets(project.id, undefined, {
     params: filters,
@@ -95,6 +100,18 @@ export const ProjectAssets = () => {
       .map((id) => files.find((file) => file.id === id)!)
       .filter((file) => file && file.name.toLowerCase().includes(search.toLowerCase()));
   }, [filesOrder, files, search]);
+
+  const showStep2 = onboardingRun && onboardingStep === 2 && sortedAssets.length > 0;
+  React.useEffect(() => {
+    if (!showStep2) {
+      setStep2TargetReady(false);
+      return;
+    }
+    const id = requestAnimationFrame(() => {
+      setStep2TargetReady(true);
+    });
+    return () => cancelAnimationFrame(id);
+  }, [showStep2]);
 
   const hasSelectedAssets = React.useMemo(() => {
     return selectedAssetIds.size > 0;
@@ -354,6 +371,7 @@ export const ProjectAssets = () => {
                       isReadonly={project.status !== 'active'}
                       isSelected={selectedAssetIds.has(asset.id)}
                       onSelectionChange={() => handleSelectionChange(asset.id)}
+                      dataOnboardingOpenFile={onboardingStep === 2 && index === 0}
                     />
                   )}
                   {asset.type === 'stack' && (
@@ -362,6 +380,7 @@ export const ProjectAssets = () => {
                       isReadonly={project.status !== 'active'}
                       isSelected={selectedAssetIds.has(asset.id)}
                       onSelectionChange={() => handleSelectionChange(asset.id)}
+                      dataOnboardingOpenFile={onboardingStep === 2 && index === 0}
                     />
                   )}
                   {overId === asset.id && draggedAsset && (
@@ -412,6 +431,9 @@ export const ProjectAssets = () => {
           setSelectedAssetIds(new Set());
         }}
       />
+      {showStep2 && step2TargetReady && (
+        <OnboardingJoyride stepIndex={2} run />
+      )}
     </div>
   );
 };
