@@ -11,6 +11,7 @@ import Head from 'next/head';
 
 import { Layout } from '../components/layout/Layout';
 import { StoryblokProvider } from '../components/layout/Storyblok/StoryblokProvider';
+import { OnboardingCompleteModal } from '../components/onboarding';
 import { queryClient } from '../lib/queryClient';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -50,6 +51,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <QueryClientProvider client={queryClient}>
         <HeroUIProvider id="heroUiProvider">
           <ToastProvider />
+          <OnboardingCompleteModal />
           <GoogleOAuthProvider clientId={process.env.GOOGLE_OAUTH_CLIENT_ID as string}>
             <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
           </GoogleOAuthProvider>

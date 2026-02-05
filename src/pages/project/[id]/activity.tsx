@@ -30,16 +30,18 @@ export default function ProjectActivityPage() {
       <Head>
         <title>Kreatli | Activity</title>
       </Head>
-      {isPending ? (
-        <ProjectActivitySkeleton />
-      ) : (
-        <ProjectActivity
-          logs={data.logs}
-          logsCount={data.logsCount}
-          page={currentPage}
-          onPageChange={handlePageChange}
-        />
-      )}
+      <div data-onboarding="activity-feed">
+        {isPending ? (
+          <ProjectActivitySkeleton />
+        ) : (
+          <ProjectActivity
+            logs={data.logs}
+            logsCount={data.logsCount}
+            page={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </div>
     </>
   );
 }

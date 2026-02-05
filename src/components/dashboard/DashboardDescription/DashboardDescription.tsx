@@ -127,6 +127,7 @@ export const DashboardDescription = ({ project }: Props) => {
               color="primary"
               radius="full"
               onClick={handleEdit}
+              data-onboarding="home-edit"
             >
               <Icon icon="edit" size={16} />
             </Button>

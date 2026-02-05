@@ -89,7 +89,7 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
   };
 
   return (
-    <div className="flex items-end gap-2 p-2">
+    <div className="flex items-end gap-2 p-2" data-onboarding="chat-compose">
       <div className="flex flex-col">
         {assets.length > 0 && (
           <div className="grid grid-cols-2 gap-px gap-y-1">

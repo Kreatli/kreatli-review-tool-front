@@ -48,6 +48,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
   const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
   const onboardingRun = useOnboardingStore((s) => s.run);
   const onboardingStep = useOnboardingStore((s) => s.step);
+  const completedTabSteps = useOnboardingStore((s) => s.completedTabSteps);
 
   if (!isSignedIn) {
     return;
@@ -117,6 +118,15 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
           <OnboardingJoyride stepIndex={1} run={onboardingRun && onboardingStep === 1} />
           <OnboardingJoyride stepIndex={10} run={onboardingRun && onboardingStep === 10} />
           <OnboardingJoyride stepIndex={11} run={onboardingRun && onboardingStep === 11} />
+          {onboardingStep === 12 && !completedTabSteps.home && router.pathname.includes('/dashboard') && (
+            <OnboardingJoyride stepIndex={12} run={onboardingRun} key="home" />
+          )}
+          {onboardingStep === 12 && !completedTabSteps.chat && router.pathname.includes('/chat') && (
+            <OnboardingJoyride stepIndex={13} run={onboardingRun} key="chat" />
+          )}
+          {onboardingStep === 12 && !completedTabSteps.activity && router.pathname.includes('/activity') && (
+            <OnboardingJoyride stepIndex={14} run={onboardingRun} key="activity" />
+          )}
         </>
       )}
     </>

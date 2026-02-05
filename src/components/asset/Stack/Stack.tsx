@@ -73,12 +73,6 @@ export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
   }, [showStackOnboarding]);
 
   useEffect(() => {
-    if (onboardingRun && onboardingStep === 10) {
-      router.push(`/project/${projectId}/assets`);
-    }
-  }, [onboardingRun, onboardingStep, projectId, router]);
-
-  useEffect(() => {
     if (error && 'status' in error && error.status === 404) {
       const params = new URLSearchParams(location.search);
       const selectedFileId = params.get('selectedFileId');

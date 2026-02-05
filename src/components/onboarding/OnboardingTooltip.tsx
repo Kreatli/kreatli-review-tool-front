@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { TooltipRenderProps } from 'react-joyride';
 
-import { useOnboardingStore } from '../../hooks/useOnboarding';
+import { type OnboardingTabStep, useOnboardingStore } from '../../hooks/useOnboarding';
 
 type StepWithJourney = TooltipRenderProps['step'] & {
-  journeyStep?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+  journeyStep?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+  tabStep?: OnboardingTabStep;
 };
 
 export function OnboardingTooltip({
@@ -22,6 +23,7 @@ export function OnboardingTooltip({
   const stepCountLabel = `Step ${index + 1}/${size}`;
   const showBack = continuous && index > 0;
   const journeyStep = (step as StepWithJourney).journeyStep;
+  const tabStep = (step as StepWithJourney).tabStep;
 
   const [showConfirm, setShowConfirm] = useState(false);
 
@@ -50,17 +52,19 @@ export function OnboardingTooltip({
   const handleDone = (event: React.MouseEvent<HTMLElement>) => {
     primaryProps.onClick?.(event);
     // In controlled mode Joyride never sets FINISHED, so close and advance here.
-    // "Done" advances to next step (or completes on last); use closeTour() only when a step should end the tour.
-    const { close: closeTour, markProjectCreated, advanceStep, advanceToFileOpened } = useOnboardingStore.getState();
+    const { close: closeTour, markProjectCreated, advanceStep, advanceToFileOpened, markTabStepDone } =
+      useOnboardingStore.getState();
     if (journeyStep === 0) {
       markProjectCreated();
     } else if (journeyStep === 1 || journeyStep === 2) {
-      // Step 1: skip "open file", go to "draw on file". Step 2: same (next step is draw on file).
       advanceToFileOpened();
+    } else if (tabStep !== undefined) {
+      // Tab steps (Home, Chat, Activity): mark this tab done; onboarding completes only when all three are done.
+      markTabStepDone(tabStep);
     } else if (journeyStep !== undefined && journeyStep >= 3 && journeyStep <= 11) {
-      advanceStep(); // Steps 3–11: "Done" advances (step 11 completes the tour)
+      advanceStep();
     } else {
-      closeTour(); // Only when explicitly intended to end (e.g. future steps)
+      closeTour();
     }
   };
 

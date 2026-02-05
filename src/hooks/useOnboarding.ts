@@ -11,22 +11,38 @@ export function isOnboardingCompleted(): boolean {
   return getStoredCompleted();
 }
 
+export type OnboardingTabStep = 'home' | 'chat' | 'activity';
+
+interface TabStepsCompleted {
+  home: boolean;
+  chat: boolean;
+  activity: boolean;
+}
+
 interface OnboardingStore {
   run: boolean;
-  step: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 'completed';
+  step: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 'completed';
+  showCompletionModal: boolean;
+  completedTabSteps: TabStepsCompleted;
   start: () => void;
   markProjectCreated: () => void;
   completeUpload: () => void;
   advanceToFileOpened: () => void;
   advanceStep: () => void;
+  markTabStepDone: (tab: OnboardingTabStep) => void;
   close: () => void;
+  dismissCompletionModal: () => void;
   initFromProjectsCount: (count: number) => void;
   startForTesting: () => void;
 }
 
+const INITIAL_TAB_STEPS: TabStepsCompleted = { home: false, chat: false, activity: false };
+
 export const useOnboardingStore = create<OnboardingStore>((set) => ({
   run: false,
   step: 0,
+  showCompletionModal: false,
+  completedTabSteps: INITIAL_TAB_STEPS,
   start: () => set({ run: true, step: 0 }),
   markProjectCreated: () => set({ run: true, step: 1 }),
   completeUpload: () => {
@@ -39,10 +55,7 @@ export const useOnboardingStore = create<OnboardingStore>((set) => ({
     set((state) => {
       const step = state.step;
       if (step === 11) {
-        if (typeof window !== 'undefined') {
-          localStorage.setItem(ONBOARDING_COMPLETED_KEY, 'true');
-        }
-        return { run: false, step: 'completed' };
+        return { step: 12, completedTabSteps: INITIAL_TAB_STEPS };
       }
       if (step === 10) {
         return { step: 11 };
@@ -56,12 +69,27 @@ export const useOnboardingStore = create<OnboardingStore>((set) => ({
       return state;
     });
   },
+  markTabStepDone: (tab: OnboardingTabStep) => {
+    set((state) => {
+      if (state.step !== 12) return state;
+      const next = { ...state.completedTabSteps, [tab]: true };
+      const allDone = next.home && next.chat && next.activity;
+      if (allDone && typeof window !== 'undefined') {
+        localStorage.setItem(ONBOARDING_COMPLETED_KEY, 'true');
+      }
+      return {
+        completedTabSteps: next,
+        ...(allDone ? { run: false, step: 'completed' as const, showCompletionModal: true } : {}),
+      };
+    });
+  },
   close: () => {
     if (typeof window !== 'undefined') {
       localStorage.setItem(ONBOARDING_COMPLETED_KEY, 'true');
     }
-    set({ run: false, step: 'completed' });
+    set({ run: false, step: 'completed', showCompletionModal: true });
   },
+  dismissCompletionModal: () => set({ showCompletionModal: false }),
   initFromProjectsCount: (count: number) => {
     if (getStoredCompleted()) return;
     if (count === 0) {
@@ -72,6 +100,6 @@ export const useOnboardingStore = create<OnboardingStore>((set) => ({
     if (typeof window !== 'undefined') {
       localStorage.removeItem(ONBOARDING_COMPLETED_KEY);
     }
-    set({ run: true, step: 0 });
+    set({ run: true, step: 0, completedTabSteps: INITIAL_TAB_STEPS });
   },
 }));

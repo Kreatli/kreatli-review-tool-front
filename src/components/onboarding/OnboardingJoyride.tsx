@@ -17,6 +17,9 @@ export const ONBOARDING_SELECTORS = {
   safeZones: '[data-onboarding="safe-zones"]',
   createFolders: '[data-onboarding="create-folders"]',
   projectTabs: '[data-onboarding="project-tabs"]',
+  homeEdit: '[data-onboarding="home-edit"]',
+  chatCompose: '[data-onboarding="chat-compose"]',
+  activityFeed: '[data-onboarding="activity-feed"]',
 } as const;
 
 const STEP_1 = {
@@ -141,8 +144,44 @@ const STEP_12 = {
   journeyStep: 11 as const,
 };
 
+const STEP_13_HOME = {
+  target: ONBOARDING_SELECTORS.homeEdit,
+  title: 'Home',
+  content:
+    'Edit your project description here. Click Edit to add a brief, links, or formatting so your team knows what this project is about.',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'bottom' as const,
+  journeyStep: 12 as const,
+  tabStep: 'home' as const,
+};
+
+const STEP_14_CHAT = {
+  target: ONBOARDING_SELECTORS.chatCompose,
+  title: 'Chat',
+  content:
+    'Use the group chat to discuss with your team. Type a message, attach files with the paperclip, and send. Everyone in the conversation gets updates in real time.',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'top' as const,
+  journeyStep: 12 as const,
+  tabStep: 'chat' as const,
+};
+
+const STEP_15_ACTIVITY = {
+  target: ONBOARDING_SELECTORS.activityFeed,
+  title: 'Activity',
+  content:
+    'See what’s happening in the project. This feed shows uploads, comments, status changes, and other updates so you can stay in sync.',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'top' as const,
+  journeyStep: 12 as const,
+  tabStep: 'activity' as const,
+};
+
 interface Props {
-  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14;
   run: boolean;
 }
 
@@ -174,7 +213,13 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
                         ? [STEP_10]
                         : stepIndex === 10
                           ? [STEP_11]
-                          : [STEP_12];
+                          : stepIndex === 11
+                            ? [STEP_12]
+                            : stepIndex === 12
+                              ? [STEP_13_HOME]
+                              : stepIndex === 13
+                                ? [STEP_14_CHAT]
+                                : [STEP_15_ACTIVITY];
   const index = 0;
 
   const handleCallback = (data: CallBackProps) => {
@@ -188,6 +233,8 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
         markProjectCreated();
       } else if (stepIndex >= 3 && stepIndex <= 11) {
         advanceStep();
+      } else if (stepIndex >= 12 && stepIndex <= 14) {
+        // Tab steps: OnboardingTooltip calls markTabStepDone; do not close or advance here
       } else {
         close();
       }
