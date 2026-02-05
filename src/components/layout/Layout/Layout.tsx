@@ -16,7 +16,7 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
     }
 
     if (window && 'amplitude' in window) {
-      window.amplitude.setUserId();
+      window.amplitude.setUserId(user.id);
 
       const identifyEvent = new window.amplitude.Identify();
       identifyEvent.set('name', user.name).set('email', user.email);
