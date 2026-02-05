@@ -4,6 +4,7 @@ import { Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Select
 import React from 'react';
 
 import { useProjectStatusesModal } from '../../../../hooks/useProjectStatusesModal';
+import { trackEvent } from '../../../../lib/amplitude';
 import { queryClient } from '../../../../lib/queryClient';
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
 import { getProjectIdLogs } from '../../../../services/services';
@@ -44,11 +45,17 @@ export const ProjectFileStatus = ({ file, projectId, statuses, className, isDisa
 
     setSelectedKeys(keys as Set<string>);
 
+    trackEvent('set_file_status_click', { status: newStatus });
+
     mutate(
       { id: projectId, fileId: file.id, requestBody: { status: newStatus === 'none' ? null : newStatus } },
       {
         onSuccess: () => {
+          trackEvent('set_file_status_success');
           queryClient.invalidateQueries({ queryKey: [getProjectIdLogs.key, projectId] });
+        },
+        onError: () => {
+          trackEvent('set_file_status_failure');
         },
       },
     );

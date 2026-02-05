@@ -2,6 +2,7 @@ import { addToast, Button, Card, CardBody, cn, ScrollShadow } from '@heroui/reac
 import { JSONContent } from '@tiptap/react';
 import { useRef, useState } from 'react';
 
+import { trackEvent } from '../../../lib/amplitude';
 import { queryClient } from '../../../lib/queryClient';
 import { usePutProjectId } from '../../../services/hooks';
 import { getProjectId } from '../../../services/services';
@@ -26,6 +27,8 @@ export const DashboardDescription = ({ project }: Props) => {
   const handleEdit = () => {
     setIsEditable(true);
 
+    trackEvent('edit_project_overview_click');
+
     if (scrollRef.current) {
       scrollRef.current.scrollTop = 0;
     }
@@ -39,6 +42,8 @@ export const DashboardDescription = ({ project }: Props) => {
     const isContentEmpty = getIsContentEmpty(editorJsonRef.current);
     const sanitizedContent = getSanitizedContent(editorJsonRef.current);
 
+    trackEvent('edit_project_overview_save');
+
     mutate(
       {
         id: project.id,
@@ -50,12 +55,15 @@ export const DashboardDescription = ({ project }: Props) => {
           editorRef.current?.setContent(content);
           setIsEditable(false);
 
+          trackEvent('edit_project_overview_success');
+
           if (scrollRef.current) {
             scrollRef.current.scrollTop = 0;
           }
         },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+          trackEvent('edit_project_overview_failure');
         },
       },
     );

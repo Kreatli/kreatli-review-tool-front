@@ -21,7 +21,7 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
       window.amplitude.add(engagementPlugin());
 
       const identifyEvent = new window.amplitude.Identify();
-      identifyEvent.set('name', user.name).set('email', user.email);
+      identifyEvent.set('name', user.name).set('email', user.email).set('sourceType', user.sourceType);
       window.amplitude.identify(identifyEvent);
     }
   }, [user]);

@@ -1,6 +1,7 @@
 import { addToast, Avatar, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Selection } from '@heroui/react';
 import React from 'react';
 
+import { trackEvent } from '../../../../lib/amplitude';
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
 import { AssetDto, ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
 import { updateProjectFile } from '../../../../services/utils';
@@ -33,6 +34,8 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled, clas
     if (keys !== 'all') {
       const newAssigneeId = keys.values().next().value ?? null;
 
+      trackEvent('assign_member_click');
+
       setAssigneeId(newAssigneeId as string | null);
       mutate(
         {
@@ -45,9 +48,12 @@ export const ProjectFileAssignee = ({ projectId, file, members, isDisabled, clas
             if (updatedFile) {
               updateProjectFile(projectId, updatedFile);
             }
+
+            trackEvent('assign_member_success');
           },
           onError: (error) => {
             addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+            trackEvent('assign_member_failure');
           },
         },
       );

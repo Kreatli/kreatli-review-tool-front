@@ -16,6 +16,7 @@ import { useFileStateContext } from '../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../contexts/ReviewTool';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useSession } from '../../../hooks/useSession';
+import { trackEvent } from '../../../lib/amplitude';
 import { usePostAssetFileIdComment } from '../../../services/hooks';
 import { getAssetFileIdComments } from '../../../services/services';
 import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
@@ -210,6 +211,8 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
       });
     }
 
+    trackEvent('leave_comment_click');
+
     mutate(
       {
         id: activeFile.id,
@@ -227,7 +230,11 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
       },
       {
         onSuccess: () => {
+          trackEvent('leave_comment_success');
           queryClient.invalidateQueries({ queryKey: [getAssetFileIdComments.key, activeFile.id] });
+        },
+        onError: () => {
+          trackEvent('leave_comment_failure');
         },
       },
     );

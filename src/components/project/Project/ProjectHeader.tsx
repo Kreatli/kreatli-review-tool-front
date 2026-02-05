@@ -149,7 +149,9 @@ export const ProjectHeader = ({ project }: Props) => {
                 <DropdownItem
                   key="create-folder"
                   startContent={<Icon icon="plus" size={18} />}
-                  onPress={() => setIsFolderModalOpen(true)}
+                  onPress={() => {
+                    setIsFolderModalOpen(true);
+                  }}
                 >
                   Create folder
                 </DropdownItem>

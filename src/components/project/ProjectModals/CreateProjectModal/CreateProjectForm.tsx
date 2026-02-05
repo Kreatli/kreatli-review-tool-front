@@ -6,6 +6,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
 import { useSession } from '../../../../hooks/useSession';
+import { trackEvent } from '../../../../lib/amplitude';
 import { usePostProject } from '../../../../services/hooks';
 import { getUser } from '../../../../services/services';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
@@ -33,14 +34,18 @@ export const CreateProjectForm = () => {
   const { user } = useSession();
 
   const onSubmit = ({ members, ...data }: typeof DEFAULT_VALUES) => {
+    trackEvent('create_project_click');
+
     mutate(
       { requestBody: { ...data, members: members.map(({ email }) => email) } },
       {
         onSuccess: (response) => {
+          trackEvent('create_project_success');
           router.push(`/project/${response.id}`);
           queryClient.invalidateQueries({ queryKey: [getUser.key] });
         },
         onError: (error) => {
+          trackEvent('create_project_failure');
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         },
       },

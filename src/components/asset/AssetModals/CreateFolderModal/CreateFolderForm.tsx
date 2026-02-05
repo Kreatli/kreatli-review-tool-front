@@ -4,6 +4,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
+import { trackEvent } from '../../../../lib/amplitude';
 import { usePostProjectIdFolder } from '../../../../services/hooks';
 import { getAssetFolderId, getAssetsFolders, getProjectId, getProjectIdAssets } from '../../../../services/services';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
@@ -29,10 +30,14 @@ export const CreateFolderForm = ({ projectId, parentId, onSuccess }: Props) => {
   const { mutate, isPending } = usePostProjectIdFolder();
 
   const onSubmit = ({ name }: { name: string }) => {
+    trackEvent('create_folder_click');
+
     mutate(
       { id: projectId, requestBody: { name, parentId } },
       {
         onSuccess: ({ project, parent }) => {
+          trackEvent('create_folder_success');
+
           if (parent) {
             queryClient.setQueryData([getAssetFolderId.key, parent.id], parent);
           }
@@ -43,6 +48,7 @@ export const CreateFolderForm = ({ projectId, parentId, onSuccess }: Props) => {
           onSuccess?.();
         },
         onError: (error) => {
+          trackEvent('create_folder_failure');
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         },
       },

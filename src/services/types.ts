@@ -619,6 +619,7 @@ export interface PartialTypeClass {
   email?: string;
   id?: string;
   name?: string;
+  sourceType?: 'safe-zone-checker';
   subscription?: SubscriptionDto;
 }
 
@@ -1072,4 +1073,5 @@ export interface UserDto {
   name: string;
   subscription: SubscriptionDto;
   avatar?: InterfaceImageDto;
+  sourceType?: 'safe-zone-checker';
 }

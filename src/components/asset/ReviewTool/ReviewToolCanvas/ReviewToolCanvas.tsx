@@ -7,6 +7,7 @@ import { Layer, Stage } from 'react-konva';
 import { useFileStateContext } from '../../../../contexts/File';
 import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../../../contexts/ReviewTool';
 import { useScreenResize } from '../../../../hooks/useScreenResize';
+import { trackEvent } from '../../../../lib/amplitude';
 import { FileDto } from '../../../../services/types';
 import { ReviewTool } from '../../../../typings/reviewTool';
 import { simplifyLine } from '../../../../utils/canvas';
@@ -143,6 +144,8 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
 
       setShapes(newShapes);
       pushHistory(newShapes);
+
+      trackEvent('use_comment_drawings');
 
       return;
     }

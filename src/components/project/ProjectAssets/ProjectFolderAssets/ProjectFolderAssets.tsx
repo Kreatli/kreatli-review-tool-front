@@ -139,7 +139,9 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
           isOpen={isFolderModalOpen}
           projectId={project.id}
           folderId={folderId}
-          onClose={() => setIsFolderModalOpen(false)}
+          onClose={() => {
+            setIsFolderModalOpen(false);
+          }}
         />
       </div>
     </div>

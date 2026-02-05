@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useFileStateContext } from '../../../contexts/File';
 import { ReviewToolContextProvider } from '../../../contexts/ReviewTool';
 import { ReviewToolCanvasShapesContextProvider } from '../../../contexts/ReviewTool/ReviewToolCanvasShapes';
+import { trackEvent } from '../../../lib/amplitude';
 import { getAssetFileIdDownload } from '../../../services/services';
 import { FileDto } from '../../../services/types';
 import { downloadFromUrl } from '../../../utils/download';
@@ -39,6 +40,7 @@ export const ShareableAsset = ({ file, shareableLinkId }: Props) => {
   };
 
   const openSafeZoneCheckerModal = () => {
+    trackEvent('check_safe_zones_click');
     setIsSafeZonesModalOpen(true);
   };
 

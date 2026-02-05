@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
 
 import { useAssetContext } from '../../../contexts/Asset';
+import { trackEvent } from '../../../lib/amplitude';
 import { AssetDto, FileDto, ProjectDto, StackDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
@@ -50,6 +51,7 @@ export const ReviewToolHeader = ({
   };
 
   const openSafeZoneCheckerModal = () => {
+    trackEvent('check_safe_zones_click');
     setIsSafeZonesModalOpen(true);
   };
 
@@ -58,6 +60,8 @@ export const ReviewToolHeader = ({
   }, [file.path, project.name]);
 
   const handleCompareSelect = (asset: AssetDto) => {
+    trackEvent('compare_files_click');
+
     const params = new URLSearchParams(location.search);
 
     params.set('compareFileId', asset.id);

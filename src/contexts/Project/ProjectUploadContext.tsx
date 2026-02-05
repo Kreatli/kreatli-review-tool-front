@@ -9,6 +9,7 @@ import { ContactOwnerModal } from '../../components/account/UpgradeModal/Contact
 import { useMultipartUpload } from '../../hooks/useMultipartUpload';
 import { useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
+import { trackEvent } from '../../lib/amplitude';
 import { usePostProjectIdFile } from '../../services/hooks';
 import {
   getAssetFileId,
@@ -113,10 +114,12 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
         }
 
         updateFileUploadProgress(id, 100);
+        trackEvent('upload_file_success');
       })
       .catch((error) => {
         addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         setFileUploadError(id);
+        trackEvent('upload_file_failure');
       })
       .finally(() => {
         removeItemFromUploadQueue(id);
@@ -155,8 +158,9 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     setStackWithFileId(undefined);
 
     for (const file of files) {
-      const id = nanoid();
+      trackEvent('upload_file_click');
 
+      const id = nanoid();
       const cancelUpload = uploadFile(
         { file, clientId: id },
         {
@@ -183,6 +187,8 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
                 variant: 'flat',
               });
             }
+
+            trackEvent('upload_file_failure');
 
             setFileUploadError(id);
           },
