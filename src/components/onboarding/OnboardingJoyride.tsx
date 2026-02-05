@@ -12,6 +12,9 @@ export const ONBOARDING_SELECTORS = {
   leaveComment: '#onboarding-target-leave-comment',
   assignMembers: '[data-onboarding="assign-members"]',
   setStatus: '[data-onboarding="set-status"]',
+  fileActionsMenu: '[data-onboarding="file-actions-menu"]',
+  compareFiles: '[data-onboarding="compare-files"]',
+  safeZones: '[data-onboarding="safe-zones"]',
 } as const;
 
 const STEP_1 = {
@@ -58,7 +61,8 @@ const STEP_4 = {
 const STEP_5 = {
   target: ONBOARDING_SELECTORS.leaveComment,
   title: 'Leave comments',
-  content: 'Type here to add comments and feedback. You can mention teammates and pin comments to the file.',
+  content:
+    'Type here to add comments and feedback. Use @ to tag teammates so they get notified—e.g. @name. You can also pin comments to the timestamp.',
   disableBeacon: true,
   spotlightClicks: true,
   placement: 'left' as const,
@@ -85,8 +89,38 @@ const STEP_7 = {
   journeyStep: 6 as const,
 };
 
+const STEP_8 = {
+  target: ONBOARDING_SELECTORS.fileActionsMenu,
+  title: 'Upload new version or share file',
+  content: 'Open this menu to upload a new version, share the file, or access other file actions.',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'bottom' as const,
+  journeyStep: 7 as const,
+};
+
+const STEP_9 = {
+  target: ONBOARDING_SELECTORS.compareFiles,
+  title: 'Compare files',
+  content: 'Select another file to compare two versions side by side.',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'bottom' as const,
+  journeyStep: 8 as const,
+};
+
+const STEP_10 = {
+  target: ONBOARDING_SELECTORS.safeZones,
+  title: 'Preview Platform Overlays',
+  content: 'See how your content will look with platform UI overlays (e.g. Instagram, TikTok safe zones).',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'bottom' as const,
+  journeyStep: 9 as const,
+};
+
 interface Props {
-  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   run: boolean;
 }
 
@@ -108,7 +142,13 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
               ? [STEP_5]
               : stepIndex === 5
                 ? [STEP_6]
-                : [STEP_7];
+                : stepIndex === 6
+                  ? [STEP_7]
+                  : stepIndex === 7
+                    ? [STEP_8]
+                    : stepIndex === 8
+                      ? [STEP_9]
+                      : [STEP_10];
   const index = 0;
 
   const handleCallback = (data: CallBackProps) => {
@@ -120,7 +160,7 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
     if (status === STATUS.FINISHED) {
       if (stepIndex === 0) {
         markProjectCreated();
-      } else if (stepIndex >= 3 && stepIndex <= 6) {
+      } else if (stepIndex >= 3 && stepIndex <= 9) {
         advanceStep();
       } else {
         close();

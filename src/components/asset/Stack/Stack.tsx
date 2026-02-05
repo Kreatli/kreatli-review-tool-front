@@ -60,7 +60,7 @@ export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
   const isLoading = isAssetLoading || isProjectLoading || isCompareAssetLoading;
 
   const showStackOnboarding =
-    onboardingRun && typeof onboardingStep === 'number' && onboardingStep >= 3 && onboardingStep <= 6;
+    onboardingRun && typeof onboardingStep === 'number' && onboardingStep >= 3 && onboardingStep <= 9;
   useEffect(() => {
     if (!showStackOnboarding) {
       setStackOnboardingReady(false);

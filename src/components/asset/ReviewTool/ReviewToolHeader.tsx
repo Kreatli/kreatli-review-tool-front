@@ -126,18 +126,26 @@ export const ReviewToolHeader = ({
         )}
       </div>
       {!isCompareMode && (
-        <Button size="sm" variant="flat" onClick={openSafeZoneCheckerModal}>
-          <Icon icon="mobile" size={18} />
-          Safe Zones
-        </Button>
+        <span data-onboarding="safe-zones">
+          <Button size="sm" variant="flat" onClick={openSafeZoneCheckerModal}>
+            <Icon icon="mobile" size={18} />
+            Safe Zones
+          </Button>
+        </span>
       )}
       {!isCompareMode && (
-        <AssetPicker projectId={project.id} skipIds={[file.id]} onSelect={handleCompareSelect}>
-          <Button size="sm" variant="flat" color="primary">
-            <Icon icon="compare" size={18} />
-            Compare
-          </Button>
-        </AssetPicker>
+        <div
+          data-onboarding="compare-files"
+          onClick={(e) => e.stopPropagation()}
+          onKeyDown={(e) => e.stopPropagation()}
+        >
+          <AssetPicker projectId={project.id} skipIds={[file.id]} onSelect={handleCompareSelect}>
+            <Button size="sm" variant="flat" color="primary">
+              <Icon icon="compare" size={18} />
+              Compare
+            </Button>
+          </AssetPicker>
+        </div>
       )}
       <ProjectFileStatus
         isDisabled={project.status !== 'active'}
@@ -155,7 +163,7 @@ export const ReviewToolHeader = ({
           onClick={onClose}
         />
       ) : (
-        <div>
+        <div data-onboarding="file-actions-menu">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Button

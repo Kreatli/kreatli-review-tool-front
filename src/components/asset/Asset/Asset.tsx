@@ -38,7 +38,7 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
 
   const isLoading = isAssetLoading || isProjectLoading || isCompareAssetLoading;
 
-  const showAssetOnboarding = onboardingRun && typeof onboardingStep === 'number' && onboardingStep >= 3 && onboardingStep <= 6;
+  const showAssetOnboarding = onboardingRun && typeof onboardingStep === 'number' && onboardingStep >= 3 && onboardingStep <= 9;
   useEffect(() => {
     if (!showAssetOnboarding) {
       setAssetOnboardingReady(false);

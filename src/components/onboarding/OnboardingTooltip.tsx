@@ -4,7 +4,7 @@ import type { TooltipRenderProps } from 'react-joyride';
 
 import { useOnboardingStore } from '../../hooks/useOnboarding';
 
-type StepWithJourney = TooltipRenderProps['step'] & { journeyStep?: 0 | 1 | 2 | 3 | 4 | 5 | 6 };
+type StepWithJourney = TooltipRenderProps['step'] & { journeyStep?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 };
 
 export function OnboardingTooltip({
   backProps,
@@ -32,10 +32,7 @@ export function OnboardingTooltip({
     // Call Joyride's original skip handler so it can
     // update its internal state and fire callbacks.
     if (skipOnClick) {
-      const syntheticEvent: Pick<
-        React.MouseEvent<HTMLElement>,
-        'preventDefault' | 'stopPropagation'
-      > = {
+      const syntheticEvent: Pick<React.MouseEvent<HTMLElement>, 'preventDefault' | 'stopPropagation'> = {
         preventDefault() {},
         stopPropagation() {},
       };
@@ -52,15 +49,14 @@ export function OnboardingTooltip({
     primaryProps.onClick?.(event);
     // In controlled mode Joyride never sets FINISHED, so close and advance here.
     // "Done" advances to next step (or completes on last); use closeTour() only when a step should end the tour.
-    const { close: closeTour, markProjectCreated, advanceStep, advanceToFileOpened } =
-      useOnboardingStore.getState();
+    const { close: closeTour, markProjectCreated, advanceStep, advanceToFileOpened } = useOnboardingStore.getState();
     if (journeyStep === 0) {
       markProjectCreated();
     } else if (journeyStep === 1 || journeyStep === 2) {
       // Step 1: skip "open file", go to "draw on file". Step 2: same (next step is draw on file).
       advanceToFileOpened();
-    } else if (journeyStep !== undefined && journeyStep >= 3 && journeyStep <= 6) {
-      advanceStep(); // Step 6: advanceStep() completes the tour
+    } else if (journeyStep !== undefined && journeyStep >= 3 && journeyStep <= 9) {
+      advanceStep(); // Steps 3–9: advance (step 9 completes the tour)
     } else {
       closeTour(); // Only when explicitly intended to end (e.g. future steps)
     }
@@ -76,9 +72,7 @@ export function OnboardingTooltip({
       className="relative flex w-[320px] flex-col rounded-medium border border-foreground-200 bg-content1 p-4 shadow-lg outline-none"
     >
       <div className="relative mb-3 flex items-start justify-between gap-2">
-        {step.title && (
-          <h3 className="pr-8 text-lg font-semibold text-foreground">{step.title}</h3>
-        )}
+        {step.title && <h3 className="pr-8 text-lg font-semibold text-foreground">{step.title}</h3>}
         <button
           type="button"
           className="absolute right-0 top-0 rounded-full p-1 text-foreground-500 transition-colors hover:bg-foreground-100 hover:text-foreground"
@@ -139,9 +133,7 @@ export function OnboardingTooltip({
         createPortal(
           <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/40">
             <div className="mx-4 w-full max-w-xs rounded-medium bg-content1 p-4 shadow-lg">
-              <p className="mb-4 text-sm text-foreground">
-                Are you sure you want to skip the tour?
-              </p>
+              <p className="mb-4 text-sm text-foreground">Are you sure you want to skip the tour?</p>
               <div className="flex justify-end gap-2">
                 <button
                   type="button"
@@ -160,7 +152,7 @@ export function OnboardingTooltip({
               </div>
             </div>
           </div>,
-          document.body
+          document.body,
         )}
     </div>
   );
