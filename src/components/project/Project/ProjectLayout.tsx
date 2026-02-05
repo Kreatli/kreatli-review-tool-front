@@ -90,12 +90,14 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
                     </div>
                   )}
                   <div className="flex flex-col gap-6 gap-y-2 sm:flex-row">
-                    <Tabs selectedKey={router.pathname.split('/')[3]}>
-                      <Tab as={NextLink} href={`/project/${project.id}/dashboard`} title="Home" key="dashboard" />
-                      <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />
-                      <Tab as={NextLink} href={`/project/${project.id}/chat`} title="Chat" key="chat" />
-                      <Tab as={NextLink} href={`/project/${project.id}/activity`} title="Activity" key="activity" />
-                    </Tabs>
+                    <div data-onboarding="project-tabs">
+                      <Tabs selectedKey={router.pathname.split('/')[3]}>
+                        <Tab as={NextLink} href={`/project/${project.id}/dashboard`} title="Home" key="dashboard" />
+                        <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />
+                        <Tab as={NextLink} href={`/project/${project.id}/chat`} title="Chat" key="chat" />
+                        <Tab as={NextLink} href={`/project/${project.id}/activity`} title="Activity" key="activity" />
+                      </Tabs>
+                    </div>
                     {actions}
                   </div>
                   <div className="flex flex-1 flex-col">{children}</div>
@@ -114,6 +116,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
         <>
           <OnboardingJoyride stepIndex={1} run={onboardingRun && onboardingStep === 1} />
           <OnboardingJoyride stepIndex={10} run={onboardingRun && onboardingStep === 10} />
+          <OnboardingJoyride stepIndex={11} run={onboardingRun && onboardingStep === 11} />
         </>
       )}
     </>

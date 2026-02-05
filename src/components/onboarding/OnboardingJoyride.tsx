@@ -16,6 +16,7 @@ export const ONBOARDING_SELECTORS = {
   compareFiles: '[data-onboarding="compare-files"]',
   safeZones: '[data-onboarding="safe-zones"]',
   createFolders: '[data-onboarding="create-folders"]',
+  projectTabs: '[data-onboarding="project-tabs"]',
 } as const;
 
 const STEP_1 = {
@@ -130,8 +131,18 @@ const STEP_11 = {
   journeyStep: 10 as const,
 };
 
+const STEP_12 = {
+  target: ONBOARDING_SELECTORS.projectTabs,
+  title: 'Switch between tabs',
+  content: 'Use Home, Media, Chat, and Activity to move between your project dashboard, files, conversations, and activity.',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'bottom' as const,
+  journeyStep: 11 as const,
+};
+
 interface Props {
-  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
   run: boolean;
 }
 
@@ -161,7 +172,9 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
                       ? [STEP_9]
                       : stepIndex === 9
                         ? [STEP_10]
-                        : [STEP_11];
+                        : stepIndex === 10
+                          ? [STEP_11]
+                          : [STEP_12];
   const index = 0;
 
   const handleCallback = (data: CallBackProps) => {
@@ -173,7 +186,7 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
     if (status === STATUS.FINISHED) {
       if (stepIndex === 0) {
         markProjectCreated();
-      } else if (stepIndex >= 3 && stepIndex <= 10) {
+      } else if (stepIndex >= 3 && stepIndex <= 11) {
         advanceStep();
       } else {
         close();
@@ -206,7 +219,7 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
         back: 'Back',
         close: 'Close',
         last: 'Done',
-        next: 'Next',
+        next: 'Done',
         skip: 'Skip Tour',
       }}
     />

@@ -13,7 +13,7 @@ export function isOnboardingCompleted(): boolean {
 
 interface OnboardingStore {
   run: boolean;
-  step: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 'completed';
+  step: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 'completed';
   start: () => void;
   markProjectCreated: () => void;
   completeUpload: () => void;
@@ -38,11 +38,14 @@ export const useOnboardingStore = create<OnboardingStore>((set) => ({
   advanceStep: () => {
     set((state) => {
       const step = state.step;
-      if (step === 10) {
+      if (step === 11) {
         if (typeof window !== 'undefined') {
           localStorage.setItem(ONBOARDING_COMPLETED_KEY, 'true');
         }
         return { run: false, step: 'completed' };
+      }
+      if (step === 10) {
+        return { step: 11 };
       }
       if (step === 9) {
         return { step: 10 };

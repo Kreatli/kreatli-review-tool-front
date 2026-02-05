@@ -4,7 +4,9 @@ import type { TooltipRenderProps } from 'react-joyride';
 
 import { useOnboardingStore } from '../../hooks/useOnboarding';
 
-type StepWithJourney = TooltipRenderProps['step'] & { journeyStep?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 };
+type StepWithJourney = TooltipRenderProps['step'] & {
+  journeyStep?: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+};
 
 export function OnboardingTooltip({
   backProps,
@@ -55,8 +57,8 @@ export function OnboardingTooltip({
     } else if (journeyStep === 1 || journeyStep === 2) {
       // Step 1: skip "open file", go to "draw on file". Step 2: same (next step is draw on file).
       advanceToFileOpened();
-    } else if (journeyStep !== undefined && journeyStep >= 3 && journeyStep <= 9) {
-      advanceStep(); // Steps 3–10: advance (step 10 completes the tour)
+    } else if (journeyStep !== undefined && journeyStep >= 3 && journeyStep <= 11) {
+      advanceStep(); // Steps 3–11: "Done" advances (step 11 completes the tour)
     } else {
       closeTour(); // Only when explicitly intended to end (e.g. future steps)
     }
