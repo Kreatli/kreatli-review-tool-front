@@ -7,6 +7,7 @@ import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzo
 import { UpgradeModal } from '../../components/account/UpgradeModal';
 import { ContactOwnerModal } from '../../components/account/UpgradeModal/ContactOwnerModal';
 import { useMultipartUpload } from '../../hooks/useMultipartUpload';
+import { useOnboardingStore } from '../../hooks/useOnboarding';
 import { useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
 import { usePostProjectIdFile } from '../../services/hooks';
@@ -113,6 +114,9 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
         }
 
         updateFileUploadProgress(id, 100);
+        if (useOnboardingStore.getState().step === 1) {
+          useOnboardingStore.getState().completeUpload();
+        }
       })
       .catch((error) => {
         addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });

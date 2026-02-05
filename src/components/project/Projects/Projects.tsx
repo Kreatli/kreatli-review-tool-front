@@ -5,11 +5,13 @@ import React from 'react';
 
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import { useOnboardingStore } from '../../../hooks/useOnboarding';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
 import { useGetProjects } from '../../../services/hooks';
 import { GetProjectsQueryParams } from '../../../services/types';
 import { Icon } from '../../various/Icon';
+import { OnboardingJoyride } from '../../onboarding/OnboardingJoyride';
 import { CreateProjectModal } from '../ProjectModals/CreateProjectModal';
 import { ProjectsGrid } from '../ProjectsGrid';
 import { ProjectsList } from '../ProjectsList/ProjectsList';
@@ -41,6 +43,16 @@ export const Projects = () => {
 
   const { data, isLoading, isError } = useGetProjects({ status, search: searchDebounced });
 
+  const onboardingRun = useOnboardingStore((s) => s.run);
+  const onboardingStep = useOnboardingStore((s) => s.step);
+  const initFromProjectsCount = useOnboardingStore((s) => s.initFromProjectsCount);
+  const startOnboardingForTesting = useOnboardingStore((s) => s.startForTesting);
+
+  React.useEffect(() => {
+    if (isLoading || isError || data === undefined) return;
+    initFromProjectsCount(data.totals?.all ?? 0);
+  }, [isLoading, isError, data?.totals?.all, initFromProjectsCount]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
@@ -64,10 +76,24 @@ export const Projects = () => {
     <div className="border-t border-foreground-200 p-6">
       <div className="mb-2 flex justify-between gap-4">
         <h2 className="text-3xl font-semibold">Projects</h2>
-        <Button className="bg-foreground text-content1" onClick={handleCreateProjectClick}>
-          <Icon icon="plus" size={16} />
-          Create project
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            size="sm"
+            variant="flat"
+            className="text-foreground-500"
+            onPress={startOnboardingForTesting}
+          >
+            Initiate onboarding
+          </Button>
+          <Button
+            className="bg-foreground text-content1"
+            data-onboarding="create-project"
+            onClick={handleCreateProjectClick}
+          >
+            <Icon icon="plus" size={16} />
+            Create project
+          </Button>
+        </div>
       </div>
       <div className="mb-4">
         <div className="flex justify-between gap-6">
@@ -120,6 +146,7 @@ export const Projects = () => {
         />
       )}
       <CreateProjectModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
+      <OnboardingJoyride stepIndex={0} run={onboardingRun && onboardingStep === 0} />
     </div>
   );
 };

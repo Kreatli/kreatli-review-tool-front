@@ -97,7 +97,7 @@ export const ProjectHeader = ({ project }: Props) => {
               <ProjectMembersThumbnails members={project.members} />
             </button>
           </div>
-          <div className="hidden sm:block">
+          <div className="hidden sm:block" data-onboarding="upload-file">
             <ButtonGroup>
               <Button
                 className="bg-foreground pr-1 text-content1"
@@ -129,11 +129,12 @@ export const ProjectHeader = ({ project }: Props) => {
             </ButtonGroup>
             <input {...getInputProps()} />
           </div>
-          <div className="sm:hidden">
+            <div className="sm:hidden">
             <Dropdown>
               <DropdownTrigger>
                 <Button
                   isIconOnly
+                  data-onboarding="upload-file"
                   isDisabled={project.status !== 'active'}
                   size="sm"
                   radius="full"

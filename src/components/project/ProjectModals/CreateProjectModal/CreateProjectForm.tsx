@@ -5,6 +5,7 @@ import React from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../../constants/validationRules';
+import { useOnboardingStore } from '../../../../hooks/useOnboarding';
 import { useSession } from '../../../../hooks/useSession';
 import { usePostProject } from '../../../../services/hooks';
 import { getUser } from '../../../../services/services';
@@ -31,12 +32,14 @@ export const CreateProjectForm = () => {
   const { mutate, isPending } = usePostProject();
   const queryClient = useQueryClient();
   const { user } = useSession();
+  const markProjectCreated = useOnboardingStore((s) => s.markProjectCreated);
 
   const onSubmit = ({ members, ...data }: typeof DEFAULT_VALUES) => {
     mutate(
       { requestBody: { ...data, members: members.map(({ email }) => email) } },
       {
         onSuccess: (response) => {
+          markProjectCreated();
           router.push(`/project/${response.id}`);
           queryClient.invalidateQueries({ queryKey: [getUser.key] });
         },

@@ -5,6 +5,7 @@ import React from 'react';
 
 import { ProjectContextProvider } from '../../../contexts/Project';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
+import { useOnboardingStore } from '../../../hooks/useOnboarding';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { useProtectedPage } from '../../../hooks/useProtectedPage';
 import { useSession } from '../../../hooks/useSession';
@@ -14,6 +15,7 @@ import { Header } from '../../layout/Header';
 import { EmptyState } from '../../various/EmptyState';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
 import { NotActiveProjectAlert } from './NotActiveProjectAlert';
+import { OnboardingJoyride } from '../../onboarding/OnboardingJoyride';
 import { ProjectHeader } from './ProjectHeader';
 import { ProjectLoader } from './ProjectLoader';
 import { ProjectPaywall } from './ProjectPaywall';
@@ -44,6 +46,8 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
 
   const isEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.isVisible);
   const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
+  const onboardingRun = useOnboardingStore((s) => s.run);
+  const onboardingStep = useOnboardingStore((s) => s.step);
 
   if (!isSignedIn) {
     return;
@@ -106,6 +110,9 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
           onClose={() => setIsEditProjectStatusesModalOpen(false)}
         />
       </div>
+      {!isPending && !isError && project && (
+        <OnboardingJoyride stepIndex={1} run={onboardingRun && onboardingStep === 1} />
+      )}
     </>
   );
 };
