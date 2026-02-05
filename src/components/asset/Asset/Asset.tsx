@@ -51,6 +51,12 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
   }, [showAssetOnboarding]);
 
   useEffect(() => {
+    if (onboardingRun && onboardingStep === 10) {
+      router.push(`/project/${projectId}/assets`);
+    }
+  }, [onboardingRun, onboardingStep, projectId, router]);
+
+  useEffect(() => {
     if (error && 'status' in error && error.status === 404) {
       router.replace('/404');
     }

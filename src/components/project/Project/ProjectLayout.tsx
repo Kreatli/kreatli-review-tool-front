@@ -111,7 +111,10 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
         />
       </div>
       {!isPending && !isError && project && (
-        <OnboardingJoyride stepIndex={1} run={onboardingRun && onboardingStep === 1} />
+        <>
+          <OnboardingJoyride stepIndex={1} run={onboardingRun && onboardingStep === 1} />
+          <OnboardingJoyride stepIndex={10} run={onboardingRun && onboardingStep === 10} />
+        </>
       )}
     </>
   );

@@ -56,7 +56,7 @@ export function OnboardingTooltip({
       // Step 1: skip "open file", go to "draw on file". Step 2: same (next step is draw on file).
       advanceToFileOpened();
     } else if (journeyStep !== undefined && journeyStep >= 3 && journeyStep <= 9) {
-      advanceStep(); // Steps 3–9: advance (step 9 completes the tour)
+      advanceStep(); // Steps 3–10: advance (step 10 completes the tour)
     } else {
       closeTour(); // Only when explicitly intended to end (e.g. future steps)
     }

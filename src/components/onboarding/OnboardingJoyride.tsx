@@ -15,6 +15,7 @@ export const ONBOARDING_SELECTORS = {
   fileActionsMenu: '[data-onboarding="file-actions-menu"]',
   compareFiles: '[data-onboarding="compare-files"]',
   safeZones: '[data-onboarding="safe-zones"]',
+  createFolders: '[data-onboarding="create-folders"]',
 } as const;
 
 const STEP_1 = {
@@ -119,8 +120,18 @@ const STEP_10 = {
   journeyStep: 9 as const,
 };
 
+const STEP_11 = {
+  target: ONBOARDING_SELECTORS.createFolders,
+  title: 'Create folders',
+  content: 'Click the arrow next to Upload to create folders and organize your project files.',
+  disableBeacon: true,
+  spotlightClicks: true,
+  placement: 'bottom' as const,
+  journeyStep: 10 as const,
+};
+
 interface Props {
-  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  stepIndex: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   run: boolean;
 }
 
@@ -148,7 +159,9 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
                     ? [STEP_8]
                     : stepIndex === 8
                       ? [STEP_9]
-                      : [STEP_10];
+                      : stepIndex === 9
+                        ? [STEP_10]
+                        : [STEP_11];
   const index = 0;
 
   const handleCallback = (data: CallBackProps) => {
@@ -160,7 +173,7 @@ export const OnboardingJoyride = ({ stepIndex, run }: Props) => {
     if (status === STATUS.FINISHED) {
       if (stepIndex === 0) {
         markProjectCreated();
-      } else if (stepIndex >= 3 && stepIndex <= 9) {
+      } else if (stepIndex >= 3 && stepIndex <= 10) {
         advanceStep();
       } else {
         close();

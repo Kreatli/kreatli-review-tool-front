@@ -109,7 +109,12 @@ export const ProjectHeader = ({ project }: Props) => {
               </Button>
               <Dropdown>
                 <DropdownTrigger>
-                  <Button isIconOnly isDisabled={project.status !== 'active'} className="bg-foreground text-content1">
+                  <Button
+                    isIconOnly
+                    isDisabled={project.status !== 'active'}
+                    className="bg-foreground text-content1"
+                    data-onboarding="create-folders"
+                  >
                     <Icon icon="chevronDown" size={20} />
                   </Button>
                 </DropdownTrigger>
@@ -132,16 +137,18 @@ export const ProjectHeader = ({ project }: Props) => {
             <div className="sm:hidden">
             <Dropdown>
               <DropdownTrigger>
-                <Button
-                  isIconOnly
-                  data-onboarding="upload-file"
-                  isDisabled={project.status !== 'active'}
-                  size="sm"
-                  radius="full"
-                  className="bg-foreground text-content1"
-                >
-                  <Icon icon="upload" size={16} />
-                </Button>
+                <span data-onboarding="create-folders">
+                  <Button
+                    isIconOnly
+                    data-onboarding="upload-file"
+                    isDisabled={project.status !== 'active'}
+                    size="sm"
+                    radius="full"
+                    className="bg-foreground text-content1"
+                  >
+                    <Icon icon="upload" size={16} />
+                  </Button>
+                </span>
               </DropdownTrigger>
               <DropdownMenu variant="flat">
                 <DropdownItem key="upload" startContent={<Icon icon="upload" size={18} />} onPress={uploadAssets}>
