@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -12,7 +14,18 @@ import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
 export default function InstagramSafeZoneCheckerPage() {
-  useSession();
+  const { isSignedIn } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      router.replace('/');
+    }
+  }, [isSignedIn, router]);
+
+  if (isSignedIn) {
+    return null;
+  }
 
   return (
     <>
@@ -28,7 +41,10 @@ export default function InstagramSafeZoneCheckerPage() {
           content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kreatli.com/social-media-safe-zone-checker/instagram-safe-zone-checker" />
+        <meta
+          property="og:url"
+          content="https://kreatli.com/social-media-safe-zone-checker/instagram-safe-zone-checker"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
@@ -67,7 +83,7 @@ export default function InstagramSafeZoneCheckerPage() {
         primaryButtonText="Start for Free"
       />
       <FooterSection hideCta />
-      <SignUpModal />
+      <SignUpModal sourceType="safe-zone-checker" />
     </>
   );
 }

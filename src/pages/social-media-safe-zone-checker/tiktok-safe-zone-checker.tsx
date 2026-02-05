@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -12,7 +14,18 @@ import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
 export default function TikTokSafeZoneCheckerPage() {
-  useSession();
+  const { isSignedIn } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      router.replace('/');
+    }
+  }, [isSignedIn, router]);
+
+  if (isSignedIn) {
+    return null;
+  }
 
   return (
     <>
@@ -67,7 +80,7 @@ export default function TikTokSafeZoneCheckerPage() {
         primaryButtonText="Start for Free"
       />
       <FooterSection hideCta />
-      <SignUpModal />
+      <SignUpModal sourceType="safe-zone-checker" />
     </>
   );
 }

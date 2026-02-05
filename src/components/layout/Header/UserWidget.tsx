@@ -41,9 +41,6 @@ export const UserWidget = () => {
         <DropdownItem as={NextLink} showDivider href="/account/billing-history" key="billing-history">
           Billing history
         </DropdownItem>
-        <DropdownItem as={NextLink} href="/free-tools" key="free-tools">
-          Free tools
-        </DropdownItem>
         <DropdownItem key="log-out" onClick={handleLogoutClick}>
           Log out
         </DropdownItem>

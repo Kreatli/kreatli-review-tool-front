@@ -23,9 +23,13 @@ export default function Activate() {
       mutate(
         { requestBody: { token: token as string } },
         {
-          onSuccess: () => {
+          onSuccess: ({ redirectToProjectId }) => {
             addToast({ title: 'Your account was activated', color: 'success', variant: 'flat' });
-            router.replace('/sign-in');
+            if (redirectToProjectId) {
+              router.replace(`/sign-in?redirectToProjectId=${redirectToProjectId}`);
+            } else {
+              router.replace('/sign-in');
+            }
           },
           onError: (error) => {
             addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });

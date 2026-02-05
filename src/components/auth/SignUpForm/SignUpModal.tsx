@@ -3,7 +3,11 @@ import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@herou
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { SignUpForm } from './SignUpForm';
 
-export const SignUpModal = () => {
+interface Props {
+  sourceType?: 'safe-zone-checker';
+}
+
+export const SignUpModal = ({ sourceType }: Props) => {
   const { isSignUpModalOpen, setIsSignUpModalOpen } = useSignUpModalVisibility();
 
   return (
@@ -11,7 +15,7 @@ export const SignUpModal = () => {
       <ModalContent>
         <ModalHeader className="text-xl">Create an account to get started!</ModalHeader>
         <ModalBody>
-          <SignUpForm onSuccess={() => setIsSignUpModalOpen(false)} />
+          <SignUpForm sourceType={sourceType} onSuccess={() => setIsSignUpModalOpen(false)} />
         </ModalBody>
         <ModalFooter />
       </ModalContent>

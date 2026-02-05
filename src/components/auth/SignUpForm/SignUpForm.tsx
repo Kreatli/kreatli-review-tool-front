@@ -20,10 +20,11 @@ const DEFAULT_VALUES = {
 };
 
 interface Props {
+  sourceType?: 'safe-zone-checker';
   onSuccess?: () => void;
 }
 
-export const SignUpForm = ({ onSuccess }: Props) => {
+export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
   const {
     formState: { errors },
     register,
@@ -40,7 +41,7 @@ export const SignUpForm = ({ onSuccess }: Props) => {
 
   const onSubmit = (data: typeof DEFAULT_VALUES) => {
     mutate(
-      { requestBody: data },
+      { requestBody: { ...data, sourceType } },
       {
         onSuccess: () => {
           sendGTMEvent({ event: 'sign_up' });
@@ -55,14 +56,18 @@ export const SignUpForm = ({ onSuccess }: Props) => {
   const googleLogin = useGoogleLogin({
     onSuccess: (response) => {
       ssoSignUp(
-        { requestBody: { token: response.access_token } },
+        { requestBody: { token: response.access_token, sourceType } },
         {
-          onSuccess: ({ token }) => {
+          onSuccess: ({ token, redirectToProjectId }) => {
             localStorage.setItem('token', token);
             getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
             onSuccess?.();
 
-            router.push('/');
+            if (redirectToProjectId) {
+              router.push(`/project/${redirectToProjectId}/assets`);
+            } else {
+              router.push('/');
+            }
             sendGTMEvent({ event: 'sign_up' });
           },
           onError: (error) => {

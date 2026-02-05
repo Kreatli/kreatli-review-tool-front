@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -8,6 +9,7 @@ import { useSession } from '../hooks/useSession';
 
 export default function SignIn() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { isSignedIn } = useSession();
 
   React.useEffect(() => {
@@ -17,7 +19,13 @@ export default function SignIn() {
   }, [isSignedIn, router]);
 
   const handleSuccess = () => {
-    router.push('/');
+    const redirectToProjectId = searchParams.get('redirectToProjectId');
+
+    if (redirectToProjectId) {
+      router.push(`/project/${redirectToProjectId}/assets`);
+    } else {
+      router.push('/');
+    }
   };
 
   if (isSignedIn) {

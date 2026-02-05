@@ -563,6 +563,7 @@ export interface MultipartUploadStartDto {
 export interface NewPasswordBodyDto {
   password: string;
   token: string;
+  sourceType?: 'safe-zone-checker';
 }
 
 export interface NotificationData {
@@ -982,12 +983,14 @@ export interface SignInBodyDto {
 export interface SignInResultDto {
   token: string;
   user: UserDto;
+  redirectToProjectId?: string;
 }
 
 export interface SignUpBodyDto {
   email: string;
   name: string;
   password: string;
+  sourceType?: 'safe-zone-checker';
 }
 
 export interface SignUpResultDto {
@@ -1042,6 +1045,7 @@ export interface SubscriptionResponseDto {
 
 export interface TokenBodyDto {
   token: string;
+  sourceType?: 'safe-zone-checker';
 }
 
 export interface UpdateProjectMemberDto {
