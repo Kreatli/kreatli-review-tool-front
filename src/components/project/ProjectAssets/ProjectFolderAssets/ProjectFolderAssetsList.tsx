@@ -18,7 +18,6 @@ import React from 'react';
 
 import { AssetContextProvider } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
-import { useSession } from '../../../../hooks/useSession';
 import { useGetProjectIdAssets } from '../../../../services/custom-hooks';
 import { usePostProjectIdAssetsMove, usePutProjectIdFolderFolderId } from '../../../../services/hooks';
 import {
@@ -55,8 +54,6 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
   });
 
   const router = useRouter();
-  const { user } = useSession();
-  const isProjectOwner = user && project?.createdBy?.id === user?.id;
 
   const files = React.useMemo(() => {
     return assetsData?.files ?? [];
@@ -301,18 +298,16 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             <Icon icon="arrowRight" size={14} />
             Move to
           </Button>
-          {isProjectOwner && (
-            <Button
-              variant="light"
-              size="sm"
-              color="danger"
-              isDisabled={!hasSelectedAssets}
-              onClick={() => setIsArchiveModalOpen(true)}
-            >
-              <Icon icon="trash" size={14} />
-              Delete
-            </Button>
-          )}
+          <Button
+            variant="light"
+            size="sm"
+            color="danger"
+            isDisabled={!hasSelectedAssets}
+            onClick={() => setIsArchiveModalOpen(true)}
+          >
+            <Icon icon="trash" size={14} />
+            Delete
+          </Button>
           {shouldShowCompareButton && (
             <Button size="sm" variant="flat" color="primary" onClick={handleCompareSelectedAssets}>
               <Icon icon="compare" size={16} />
