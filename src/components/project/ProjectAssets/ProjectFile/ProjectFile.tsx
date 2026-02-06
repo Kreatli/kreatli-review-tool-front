@@ -6,6 +6,7 @@ import React from 'react';
 
 import { useAssetContext } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
+import { useIsTouchScreen } from '../../../../hooks/useIsTouchScreen';
 import { ProjectFileDto } from '../../../../services/types';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
 import { Icon } from '../../../various/Icon';
@@ -28,6 +29,8 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
   const { project } = useProjectContext();
   const { getAssetActions } = useAssetContext();
 
+  const isTouchScreen = useIsTouchScreen();
+
   const handleClick = () => {
     if (isDisabled) {
       return;
@@ -48,7 +51,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
     setDroppableNodeRef,
   } = useSortable({
     id: file.id,
-    disabled: isDisabled || isSelected || isReadonly,
+    disabled: isDisabled || isSelected || isReadonly || isTouchScreen,
     animateLayoutChanges: () => true,
   });
 
@@ -80,6 +83,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, file, onSelect
         tabIndex={isDisabled ? -1 : 0}
         className="absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2"
         onKeyDown={handleSpaceAndEnter(handleClick)}
+        onClick={isTouchScreen ? handleClick : undefined}
         onDoubleClick={handleClick}
       >
         <ProjectFileCover file={file} />

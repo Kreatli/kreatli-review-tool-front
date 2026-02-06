@@ -33,7 +33,7 @@ export const ChatConversationHeader = ({ isDisabled = false, chat, search, onSea
         )}
       </div>
       <div className="flex items-center gap-2">
-        <label>
+        <label className="hidden md:block">
           <Input
             value={search}
             placeholder="Search"

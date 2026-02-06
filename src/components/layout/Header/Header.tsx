@@ -113,17 +113,24 @@ export const Header = () => {
     <>
       {(user?.subscription.isTrial || (!user?.subscription.isActive && user?.subscription.hasUsedTrial)) &&
         !isBannerDismissed && (
-          <div className="sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-6">
+          <div className="xs:px-6 sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-3">
             <div />
-            <div className="flex items-center justify-center gap-3 px-6 py-1.5 text-primary">
+            <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
               <div className="flex items-center gap-1.5">
                 <Icon icon="time" size={18} />
-                {user?.subscription.isTrial
-                  ? `Free trial ends in ${freeTrialEndsInDays} day${freeTrialEndsInDays === 1 ? '' : 's'}`
-                  : 'Your trial access has ended. Select a plan to continue using Kreatli.'}
+                {user?.subscription.isTrial ? (
+                  `Free trial ends in ${freeTrialEndsInDays} day${freeTrialEndsInDays === 1 ? '' : 's'}`
+                ) : (
+                  <>
+                    Your trial has ended.{' '}
+                    <span className="hidden sm:inline">Select a plan to continue using Kreatli.</span>
+                  </>
+                )}
               </div>
               <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true)}>
-                Upgrade now
+                <span>
+                  Upgrade <span className="xs:inline hidden">now</span>
+                </span>
               </Button>
             </div>
             <div>
@@ -133,7 +140,13 @@ export const Header = () => {
             </div>
           </div>
         )}
-      <Navbar ref={headerRef} isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="full">
+      <Navbar
+        ref={headerRef}
+        isMenuOpen={isMenuOpen}
+        onMenuOpenChange={setIsMenuOpen}
+        maxWidth="full"
+        classNames={{ wrapper: 'px-3 xs:px-6' }}
+      >
         <NavbarContent className="xl:gap-12">
           {!isSignedIn && (
             <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="xl:hidden" />
@@ -367,7 +380,14 @@ export const Header = () => {
               );
             })}
             <NavbarMenuItem>
-              <Link as={NextLink} href="/platform" size="lg" color="primary" className="font-semibold" onClick={closeNavbarMenu}>
+              <Link
+                as={NextLink}
+                href="/platform"
+                size="lg"
+                color="primary"
+                className="font-semibold"
+                onClick={closeNavbarMenu}
+              >
                 See All Features
               </Link>
             </NavbarMenuItem>

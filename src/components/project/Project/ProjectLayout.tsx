@@ -69,7 +69,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
   return (
     <>
       <Header />
-      <div className="flex flex-1 flex-col border-t border-foreground-200 p-6 pt-2">
+      <div className="xs:p-6 xs:pt-2 flex flex-1 flex-col border-t border-foreground-200 p-3">
         {isPending || isError ? (
           <ProjectLoader />
         ) : (

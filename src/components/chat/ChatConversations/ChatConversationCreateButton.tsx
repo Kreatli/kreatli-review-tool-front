@@ -56,7 +56,7 @@ export const ChatConversationCreateButton = ({ isDisabled = false }: Props) => {
     <Dropdown placement="right-end">
       <DropdownTrigger>
         <Button
-          className="absolute bottom-2 right-2 bg-foreground text-content1"
+          className="absolute bottom-2 right-1 bg-foreground text-content1 md:right-2"
           isIconOnly
           isDisabled={isDisabled || projectMembers.length === 0}
           radius="full"

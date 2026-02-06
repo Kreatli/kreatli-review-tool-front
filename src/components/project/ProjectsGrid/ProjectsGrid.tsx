@@ -40,7 +40,7 @@ export const ProjectsGrid = ({
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-8">
+      <div className="xs:grid-cols-[repeat(auto-fill,minmax(320px,1fr))] grid gap-8">
         {Array.from({ length: 12 }).map((_, index) => (
           <div key={index}>
             <Skeleton className="mb-4 aspect-video rounded-2xl" />
@@ -79,7 +79,7 @@ export const ProjectsGrid = ({
   return (
     <>
       <ProjectContextProvider selectedProject={selectedProject} setSelectedProjectId={setSelectedProjectId}>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-8">
+        <div className="xs:grid-cols-[repeat(auto-fill,minmax(320px,1fr))] grid gap-8">
           {projects?.map((project) => (
             <ProjectCard key={project.id} project={project} onSelectProjectId={setSelectedProjectId} />
           ))}

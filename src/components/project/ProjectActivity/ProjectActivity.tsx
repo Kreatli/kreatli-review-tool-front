@@ -1,8 +1,9 @@
 import { Avatar, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
-import React from 'react';
 
 import { ProjectLogsDto } from '../../../services/types';
 import { formatFullDate } from '../../../utils/dates';
+import { useIsBreakpoint } from '../../tiptap/hooks/use-is-breakpoint';
+import { ProjectActivityCard } from './ProjectActivityCard';
 import { ProjectActivityLog } from './ProjectActivityLog';
 
 interface Props {
@@ -15,6 +16,8 @@ interface Props {
 export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) => {
   const total = Math.ceil(logsCount / 20);
 
+  const isMobile = useIsBreakpoint('max', 768);
+
   const bottomContent = logsCount > 20 && (
     <Pagination
       total={total}
@@ -26,6 +29,20 @@ export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) 
       onChange={onPageChange}
     />
   );
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-2">
+        <div className="text-lg font-semibold">Activity ({logsCount})</div>
+        <div className="flex flex-col gap-4">
+          {logs.map((log) => (
+            <ProjectActivityCard key={log.id} log={log} />
+          ))}
+        </div>
+        {bottomContent}
+      </div>
+    );
+  }
 
   return (
     <Table bottomContent={bottomContent} bottomContentPlacement="inside">

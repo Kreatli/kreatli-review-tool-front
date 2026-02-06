@@ -43,7 +43,7 @@ export const ChatConversations = ({ chats, isPending, isError, isDisabled = fals
           base: 'w-full',
           tabWrapper: 'h-full',
           tabList: 'w-full h-full',
-          tab: 'justify-start h-auto',
+          tab: 'justify-start h-auto px-1 md:px-3',
           tabContent: 'max-w-full',
         }}
         onSelectionChange={handleSelectionChange}

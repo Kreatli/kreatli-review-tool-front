@@ -2,13 +2,27 @@ import { Avatar, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow
 
 import { ProjectLogsDto } from '../../../services/types';
 import { formatFullDate } from '../../../utils/dates';
+import { ProjectActivityCard } from '../../project/ProjectActivity/ProjectActivityCard';
 import { ProjectActivityLog } from '../../project/ProjectActivity/ProjectActivityLog';
+import { useIsBreakpoint } from '../../tiptap/hooks/use-is-breakpoint';
 
 interface Props {
   logs: ProjectLogsDto['logs'];
 }
 
 export const DashboardActivityTable = ({ logs }: Props) => {
+  const isMobile = useIsBreakpoint('max', 768);
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-2">
+        {logs.map((log) => (
+          <ProjectActivityCard key={log.id} log={log} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <Table isCompact removeWrapper>
       <TableHeader>

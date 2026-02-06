@@ -15,7 +15,7 @@ const NotFound = () => {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
-      <div className="container mx-auto max-w-screen-lg px-6 text-center">
+      <div className="xs:px-6 container mx-auto max-w-screen-lg px-3 text-center">
         <Chip variant="flat" color="default" classNames={{ content: 'font-semibold' }}>
           404
         </Chip>

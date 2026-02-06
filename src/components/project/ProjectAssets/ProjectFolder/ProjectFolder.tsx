@@ -3,6 +3,7 @@ import { Button, Checkbox, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTri
 import { useRouter } from 'next/router';
 
 import { useAssetContext } from '../../../../contexts/Asset';
+import { useIsTouchScreen } from '../../../../hooks/useIsTouchScreen';
 import { ProjectFolderDto } from '../../../../services/types';
 import { formatBytes } from '../../../../utils/formatBytes';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
@@ -22,6 +23,8 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
 
   const { getAssetActions } = useAssetContext();
   const router = useRouter();
+
+  const isTouchScreen = useIsTouchScreen();
 
   const handleClick = () => {
     router.push(`/project/${router.query.id}/assets/folder/${folder.id}`);
@@ -44,6 +47,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
             'outline-3 outline': isOver,
           },
         )}
+        onClick={isTouchScreen ? handleClick : undefined}
         onKeyDown={handleSpaceAndEnter(handleClick)}
         onDoubleClick={handleClick}
       >

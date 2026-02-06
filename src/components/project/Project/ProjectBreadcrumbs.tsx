@@ -39,12 +39,12 @@ export const ProjectBreadcrumbs = ({
             {path.map((item, index) => (
               <React.Fragment key={item.url}>
                 {index !== 0 && <Icon icon="chevronDown" className="shrink-0 -rotate-90 text-foreground-400" />}
-                {index === path.length - 1 ? (
-                  <h2 className="truncate text-2xl font-semibold">{item.name}</h2>
+                {item.url === '#' ? (
+                  <h2 className="truncate text-xl font-semibold md:text-2xl">{item.name}</h2>
                 ) : (
                   <Link
                     href={item.url}
-                    className="flex-1 truncate text-2xl font-semibold text-foreground-400 hover:text-foreground"
+                    className="truncate text-xl font-semibold text-foreground-400 hover:text-foreground md:text-2xl"
                   >
                     {item.name}
                   </Link>

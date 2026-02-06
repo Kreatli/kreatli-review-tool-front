@@ -9,6 +9,7 @@ import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility'
 import { useSession } from '../../../hooks/useSession';
 import { useGetProjects } from '../../../services/hooks';
 import { GetProjectsQueryParams } from '../../../services/types';
+import { useIsBreakpoint } from '../../tiptap/hooks/use-is-breakpoint';
 import { Icon } from '../../various/Icon';
 import { CreateProjectModal } from '../ProjectModals/CreateProjectModal';
 import { ProjectsGrid } from '../ProjectsGrid';
@@ -25,6 +26,7 @@ export const Projects = () => {
   );
   const [isCreateModalOpen, setIsCreateModalOpen] = React.useState(false);
 
+  const isMobile = useIsBreakpoint('max', 768);
   const [view, setView] = useLocalStorage({ key: 'projectsView', defaultValue: 'list' });
 
   const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
@@ -61,7 +63,7 @@ export const Projects = () => {
   };
 
   return (
-    <div className="border-t border-foreground-200 p-6">
+    <div className="xs:p-6 border-t border-foreground-200 p-3">
       <div className="mb-2 flex justify-between gap-4">
         <h2 className="text-3xl font-semibold">Projects</h2>
         <Button className="bg-foreground text-content1" onClick={handleCreateProjectClick}>
@@ -70,8 +72,8 @@ export const Projects = () => {
         </Button>
       </div>
       <div className="mb-4">
-        <div className="flex justify-between gap-6">
-          <div className="flex gap-6">
+        <div className="flex w-full justify-between gap-6">
+          <div className="flex w-full flex-col gap-6 gap-y-2 md:flex-row">
             <Tabs selectedKey={status} onSelectionChange={handleTabChange}>
               <Tab title={`All (${data?.totals.all ?? 0})`} key="all" />
               <Tab title={`Active (${data?.totals.active ?? 0})`} key="active" />
@@ -81,7 +83,7 @@ export const Projects = () => {
             <Input
               value={search}
               placeholder="Search"
-              className="w-fit"
+              className="w-full md:w-fit"
               variant="underlined"
               isClearable
               startContent={<Icon icon="search" />}
@@ -91,6 +93,7 @@ export const Projects = () => {
           </div>
           <Tabs
             selectedKey={view}
+            className="hidden md:block"
             classNames={{ tabList: 'gap-1' }}
             onSelectionChange={(key) => setView(key as string)}
           >
@@ -99,7 +102,7 @@ export const Projects = () => {
           </Tabs>
         </div>
       </div>
-      {view === 'list' && (
+      {view === 'list' && !isMobile && (
         <ProjectsList
           projects={data?.projects ?? []}
           search={searchDebounced}
@@ -109,7 +112,7 @@ export const Projects = () => {
           onCreateProject={handleCreateProjectClick}
         />
       )}
-      {view === 'grid' && (
+      {(view === 'grid' || isMobile) && (
         <ProjectsGrid
           projects={data?.projects}
           status={status}

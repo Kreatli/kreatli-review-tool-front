@@ -38,7 +38,6 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
     return [
       projectPath,
       ...folder.path.map(({ id, name }) => ({ name, url: `/project/${project.id}/assets/folder/${id}` })),
-      { name: folder.name, url: '#' },
     ];
   }, [folder, project]);
 

@@ -9,6 +9,13 @@ module.exports = {
   },
   darkMode: 'class',
   plugins: [heroui()],
+  theme: {
+    extend: {
+      screens: {
+        xs: '480px',
+      },
+    },
+  },
   safelist: [
     'bg-primary-50',
     'bg-secondary-50',
