@@ -5,6 +5,7 @@ export type AmplitudeEvent =
   | 'upload_file_click'
   | 'upload_file_success'
   | 'upload_file_failure'
+  | 'open_asset_view'
   | 'create_folder_click'
   | 'create_folder_success'
   | 'create_folder_failure'
