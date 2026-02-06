@@ -3,9 +3,11 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
+import { trackEvent } from '../../../lib/amplitude';
 import { usePostProjectIdMember } from '../../../services/hooks';
 import { getProjectId, getProjects } from '../../../services/services';
 import { ProjectDto } from '../../../services/types';
+import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface Props {
   project: ProjectDto;
@@ -27,15 +29,22 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
   const { mutate, isPending } = usePostProjectIdMember();
 
   const onSubmit = ({ email }: { email: string }) => {
+    trackEvent('invite_member_click');
+
     mutate(
       { id: project.id, requestBody: { email, role: 'contributor' } },
       {
         onSuccess: () => {
+          trackEvent('invite_member_success');
           queryClient.invalidateQueries({ queryKey: [getProjects.key] });
           queryClient.invalidateQueries({ queryKey: [getProjectId.key, project.id] });
           addToast({ title: 'The invitation was sent', color: 'success', variant: 'flat' });
           reset();
           onSuccess?.();
+        },
+        onError: (error) => {
+          trackEvent('invite_member_failure');
+          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         },
       },
     );

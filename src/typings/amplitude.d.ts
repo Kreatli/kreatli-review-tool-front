@@ -24,7 +24,10 @@ export type AmplitudeEvent =
   | 'edit_project_overview_click'
   | 'edit_project_overview_save'
   | 'edit_project_overview_success'
-  | 'edit_project_overview_failure';
+  | 'edit_project_overview_failure'
+  | 'invite_member_click'
+  | 'invite_member_success'
+  | 'invite_member_failure';
 
 export interface AmplitudeEventProperties {
   set_file_status_click: {
