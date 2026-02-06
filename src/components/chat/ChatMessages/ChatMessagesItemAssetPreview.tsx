@@ -2,11 +2,11 @@ import { Chip, cn } from '@heroui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { AssetDto } from '../../../services/types';
+import { AssetFileDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 
 interface Props {
-  asset: AssetDto;
+  asset: AssetFileDto;
 }
 
 export const ChatMessagesItemAssetPreview = ({ asset }: Props) => {

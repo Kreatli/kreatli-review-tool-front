@@ -1,11 +1,11 @@
 import { Chip } from '@heroui/react';
 
-import { AssetDto } from '../../../services/types';
+import { AssetFileDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { AssetPreview } from './AssetPreview';
 
 interface Props {
-  asset: AssetDto;
+  asset: AssetFileDto;
   onClick: () => void;
 }
 

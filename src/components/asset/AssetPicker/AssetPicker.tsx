@@ -2,21 +2,21 @@ import { Input, Popover, PopoverContent, PopoverTrigger, Spinner } from '@heroui
 import React, { PropsWithChildren, useCallback, useRef } from 'react';
 
 import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
-import { getAssets } from '../../../services/services';
-import { AssetDto } from '../../../services/types';
+import { getAssetsFiles } from '../../../services/services';
+import { AssetFileDto } from '../../../services/types';
 import { AssetPickerItem } from './AssetPickerItem';
 
 interface Props {
   projectId: string;
   skipIds?: string[];
-  onSelect: (asset: AssetDto) => void;
+  onSelect: (asset: AssetFileDto) => void;
 }
 
 export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: PropsWithChildren<Props>) => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [search, setSearch] = React.useState('');
   const [offset, setOffset] = React.useState(0);
-  const [assets, setAssets] = React.useState<AssetDto[]>([]);
+  const [assets, setAssets] = React.useState<AssetFileDto[]>([]);
   const [assetsCount, setAssetsCount] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -30,7 +30,7 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
       setIsLoading(true);
       isFetching.current = true;
 
-      const data = await getAssets({ projectId, limit: 50, offset: 0, query: '', skipIds });
+      const data = await getAssetsFiles({ projectId, limit: 50, offset: 0, query: '', skipIds });
       setAssetsCount(data.fileCount);
       setAssets(data.files);
       setIsLoading(false);
@@ -47,7 +47,7 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
       setIsLoading(true);
     }
 
-    const data = await getAssets({ projectId, limit: 50, offset, query: search, skipIds });
+    const data = await getAssetsFiles({ projectId, limit: 50, offset, query: search, skipIds });
 
     setAssetsCount(data.fileCount);
 
@@ -80,7 +80,7 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
     }
   };
 
-  const handleAssetSelect = (asset: AssetDto) => {
+  const handleAssetSelect = (asset: AssetFileDto) => {
     onSelect(asset);
     setIsVisible(false);
   };

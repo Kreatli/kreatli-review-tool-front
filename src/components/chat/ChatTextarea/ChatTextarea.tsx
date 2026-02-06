@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from 'react';
 
 import { useChatContext } from '../../../contexts/Chat';
 import { useSession } from '../../../hooks/useSession';
-import { AssetDto } from '../../../services/types';
+import { AssetFileDto } from '../../../services/types';
 import { AssetPicker } from '../../asset/AssetPicker';
 import { Icon } from '../../various/Icon';
 import { ChatTextareaAssetPreview } from './ChatTextareaAssetPreview';
@@ -23,7 +23,7 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
 
   const [rows, setRows] = React.useState(1);
   const [message, setMessage] = React.useState('');
-  const [assets, setAssets] = React.useState<AssetDto[]>([]);
+  const [assets, setAssets] = React.useState<AssetFileDto[]>([]);
   const [cursorPosition, setCursorPosition] = React.useState(0);
 
   useLayoutEffect(() => {
@@ -76,7 +76,7 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
     }, 0);
   };
 
-  const handleSelectAsset = (asset: AssetDto) => {
+  const handleSelectAsset = (asset: AssetFileDto) => {
     if (assets.find((a) => a.id === asset.id)) {
       return;
     }
@@ -84,7 +84,7 @@ export const ChatTextarea = ({ conversationId, isDisabled = false }: Props) => {
     setAssets([...assets, asset]);
   };
 
-  const handleRemoveAsset = (asset: AssetDto) => {
+  const handleRemoveAsset = (asset: AssetFileDto) => {
     setAssets(assets.filter((a) => a.id !== asset.id));
   };
 

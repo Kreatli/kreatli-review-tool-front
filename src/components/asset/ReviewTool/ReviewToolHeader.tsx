@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 
 import { useAssetContext } from '../../../contexts/Asset';
 import { trackEvent } from '../../../lib/amplitude';
-import { AssetDto, FileDto, ProjectDto, StackDto } from '../../../services/types';
+import { AssetFileDto, FileDto, ProjectDto, StackDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
 import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
@@ -59,7 +59,7 @@ export const ReviewToolHeader = ({
     return [project.name, ...file.path.map((folder) => folder.name)];
   }, [file.path, project.name]);
 
-  const handleCompareSelect = (asset: AssetDto) => {
+  const handleCompareSelect = (asset: AssetFileDto) => {
     trackEvent('compare_files_click');
 
     const params = new URLSearchParams(location.search);

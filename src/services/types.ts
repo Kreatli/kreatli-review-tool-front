@@ -119,7 +119,7 @@ export interface AssetDownloadedDetails {
   asset: AssetDetails;
 }
 
-export interface AssetDto {
+export interface AssetFileDto {
   description: string;
   fileSize: number;
   fileType: string;
@@ -207,7 +207,7 @@ export interface AssetsDownloadedLogDto {
 
 export interface AssetsDto {
   fileCount: number;
-  files: AssetDto[];
+  files: AssetFileDto[];
 }
 
 export interface AssetsMovedDetails {
@@ -284,7 +284,7 @@ export interface ChatEditBodyDto {
 }
 
 export interface ChatMessageDto {
-  assets: AssetDto[];
+  assets: AssetFileDto[];
   content: string;
   createdAt: string;
   id: string;
@@ -443,8 +443,6 @@ export interface GetAssetsQueryParams {
   limit: number;
   offset: number;
   projectId: string;
-  query: string;
-  skipIds: string[];
 }
 
 export interface GetConversationIdMessagesQueryParams {

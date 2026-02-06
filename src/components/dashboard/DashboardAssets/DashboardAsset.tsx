@@ -2,14 +2,14 @@ import { Chip, Image } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 
-import { AssetDto, ProjectDto, ProjectMemberDto } from '../../../services/types';
+import { AssetFileDto, ProjectDto, ProjectMemberDto } from '../../../services/types';
 import { AssetIcon } from '../../asset/AssetIcon';
 import { ProjectFileAssignee } from '../../project/ProjectAssets/ProjectFile/ProjectFileAssignee';
 import { ProjectFileStatus } from '../../project/ProjectAssets/ProjectFile/ProjectFileStatus';
 
 interface Props {
   project: ProjectDto;
-  file: AssetDto;
+  file: AssetFileDto;
   members: ProjectMemberDto[];
 }
 

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { trackEvent } from '../../../../lib/amplitude';
 import { usePutProjectIdFileFileId } from '../../../../services/hooks';
-import { AssetDto, ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
+import { AssetFileDto, ProjectFileDto, ProjectMemberDto } from '../../../../services/types';
 import { updateProjectFile } from '../../../../services/utils';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { getProjectMemberLetter } from '../../../../utils/shortNames';
@@ -12,7 +12,7 @@ import { ProjectMemberItem } from '../../ProjectMemberItem';
 
 interface Props {
   projectId: string;
-  file: ProjectFileDto | AssetDto;
+  file: ProjectFileDto | AssetFileDto;
   members: ProjectMemberDto[];
   isDisabled?: boolean;
   className?: string;

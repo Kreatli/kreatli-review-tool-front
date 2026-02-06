@@ -1,10 +1,10 @@
-import { AssetDto, FolderDto, ProjectDto, ProjectMemberDto } from '../../../services/types';
+import { AssetFileDto, FolderDto, ProjectDto, ProjectMemberDto } from '../../../services/types';
 import { DashboardAsset } from './DashboardAsset';
 import { DashboardFolder } from './DashboardFolder';
 
 interface Props {
   project: ProjectDto;
-  files: AssetDto[];
+  files: AssetFileDto[];
   folders: FolderDto[];
   members: ProjectMemberDto[];
 }

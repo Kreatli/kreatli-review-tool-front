@@ -1,10 +1,10 @@
 import { Image } from '@heroui/react';
 
-import { AssetDto } from '../../../services/types';
+import { AssetFileDto } from '../../../services/types';
 import { AssetIcon } from '../../asset/AssetIcon';
 
 interface Props {
-  asset: AssetDto;
+  asset: AssetFileDto;
   width: number;
   height: number;
 }

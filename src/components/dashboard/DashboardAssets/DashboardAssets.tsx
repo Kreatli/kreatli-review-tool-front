@@ -1,7 +1,7 @@
 import { Button, Card, CardBody } from '@heroui/react';
 import Link from 'next/link';
 
-import { useGetAssetsFiles, useGetAssetsFolders } from '../../../services/hooks';
+import { useGetAssets, useGetAssetsFolders } from '../../../services/hooks';
 import { ProjectDto } from '../../../services/types';
 import { Icon } from '../../various/Icon';
 import { DashboardError } from '../DashboardError';
@@ -32,12 +32,10 @@ export const DashboardAssets = ({ project }: Props) => {
     isPending: isPendingAssets,
     isError: isErrorAssets,
     refetch: refetchAssets,
-  } = useGetAssetsFiles({
+  } = useGetAssets({
     limit: 12,
     offset: 0,
     projectId: project.id,
-    query: '',
-    skipIds: [],
   });
 
   const isPending = isPendingFolders || isPendingAssets;
