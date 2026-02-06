@@ -14,7 +14,7 @@ import { usePostProjectIdFile } from '../../services/hooks';
 import {
   getAssetFileId,
   getAssetFolderId,
-  getAssetsFiles,
+  getAssets,
   getAssetStackId,
   getProjectId,
   getProjectIdAssets,
@@ -99,7 +99,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       .then(({ project: data, parent: folderData }) => {
         queryClient.setQueryData([getProjectId.key, data.id], data);
         queryClient.invalidateQueries({ queryKey: [getProjectIdAssets.key, data.id] });
-        queryClient.invalidateQueries({ queryKey: [getAssetsFiles.key] });
+        queryClient.invalidateQueries({ queryKey: [getAssets.key] });
 
         if (firstUpload.requestBody.stackId) {
           queryClient.invalidateQueries({ queryKey: [getAssetStackId.key, firstUpload.requestBody.stackId] });
