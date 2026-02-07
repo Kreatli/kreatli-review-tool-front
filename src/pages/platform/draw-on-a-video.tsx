@@ -144,6 +144,11 @@ export default function DrawOnAVideoPage() {
         stepsSectionTitle="How to Draw on a Video in Kreatli"
         stepsIntro="Follow these steps to draw on your videos in Kreatli—from upload to share and approval."
         steps={DRAW_ON_VIDEO_STEPS}
+        completeGuide={{
+          href: '/guides/how-to-draw-on-a-video',
+          description:
+            'Learn how to draw on a video with freehand, shapes, and arrows for precise visual feedback and faster review cycles.',
+        }}
       />
 
       {/* Ways to Draw on a Video Section */}

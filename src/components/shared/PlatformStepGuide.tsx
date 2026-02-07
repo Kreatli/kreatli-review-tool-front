@@ -17,6 +17,11 @@ interface PlatformStepGuideProps {
   stepsSectionTitle: string;
   stepsIntro?: string;
   steps: WorkflowStep[];
+  /** When set, shows a "Read Our Complete Guide" section linking to the relevant guide. */
+  completeGuide?: {
+    href: string;
+    description: string;
+  };
 }
 
 const IMG = '/video-annotation-guide/step';
@@ -25,8 +30,10 @@ export const PlatformStepGuide = ({
   stepsSectionTitle,
   stepsIntro = 'Follow these steps in Kreatli—from upload to share and approval.',
   steps,
+  completeGuide,
 }: PlatformStepGuideProps) => {
   return (
+    <>
     <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="mb-10 text-center">
@@ -98,6 +105,24 @@ export const PlatformStepGuide = ({
         </div>
       </div>
     </section>
+
+    {completeGuide && (
+      <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
+          <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground-500">{completeGuide.description}</p>
+          <Button
+            as={NextLink}
+            href={completeGuide.href}
+            size="lg"
+            className="bg-foreground text-content1"
+          >
+            Read Complete Guide
+          </Button>
+        </div>
+      </section>
+    )}
+    </>
   );
 };
 

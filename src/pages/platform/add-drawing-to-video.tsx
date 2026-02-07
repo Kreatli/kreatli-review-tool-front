@@ -138,6 +138,11 @@ export default function AddDrawingToVideoPage() {
         stepsSectionTitle="How to Add Drawing to Video in Kreatli"
         stepsIntro="Follow these steps to add drawings, arrows, and markup to your videos in Kreatli—from upload to share and approval."
         steps={ADD_DRAWING_TO_VIDEO_STEPS}
+        completeGuide={{
+          href: '/guides/how-to-draw-on-a-video',
+          description:
+            'Learn how to draw on a video with arrows, shapes, and freehand markup for clearer feedback and faster approvals.',
+        }}
       />
 
       {/* Drawing Tools Section */}

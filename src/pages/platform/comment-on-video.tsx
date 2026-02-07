@@ -143,6 +143,11 @@ export default function CommentOnVideoPage() {
         stepsSectionTitle="How to Comment on Video in Kreatli"
         stepsIntro="Follow these steps to add frame-accurate comments to your videos in Kreatli—from upload to share and approval."
         steps={COMMENT_ON_VIDEO_STEPS}
+        completeGuide={{
+          href: '/guides/how-to-annotate-video',
+          description:
+            'Learn how to annotate video with frame-accurate comments and threaded feedback for faster review cycles and client approvals.',
+        }}
       />
 
       {/* Ways to Comment on Video Section */}
