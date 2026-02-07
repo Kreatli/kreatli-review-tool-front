@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
