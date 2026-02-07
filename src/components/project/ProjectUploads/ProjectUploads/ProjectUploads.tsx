@@ -35,7 +35,7 @@ export const ProjectUploads = ({ onClose }: Props) => {
   };
 
   return (
-    <div className="w-96 max-w-full">
+    <div className="w-96 max-w-[90vw]">
       <div className="flex items-center justify-between gap-2 border-b border-foreground-200 py-1 pl-2">
         <div className="font-semibold">
           {uploads.length === 0

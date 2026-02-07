@@ -7,19 +7,28 @@ import { Icon } from '../../../various/Icon';
 interface Props {
   onRemove: () => void;
   onResendInvite: () => void;
+  layout?: 'table' | 'card';
   isDisabled?: boolean;
   member: ProjectMemberDto;
 }
 
-export const ProjectMemberRowActions = ({ onRemove, onResendInvite, isDisabled, member }: Props) => {
+export const ProjectMemberActions = ({ onRemove, onResendInvite, layout = 'table', isDisabled, member }: Props) => {
   const [isRemovePopoverOpen, setIsRemovePopoverOpen] = React.useState(false);
 
   return (
     <div className="flex justify-end gap-2">
       {member.status !== 'joined' && (
-        <Tooltip content="Resend invitation">
-          <Button isIconOnly size="sm" variant="light" radius="full" isDisabled={isDisabled} onClick={onResendInvite}>
+        <Tooltip content="Resend invitation" isDisabled={layout === 'card'}>
+          <Button
+            isIconOnly={layout === 'table'}
+            size="sm"
+            variant={layout === 'table' ? 'light' : 'flat'}
+            radius={layout === 'table' ? 'full' : 'sm'}
+            isDisabled={isDisabled}
+            onClick={onResendInvite}
+          >
             <Icon icon="update" size={18} />
+            {layout === 'card' && 'Resend invitation'}
           </Button>
         </Tooltip>
       )}
@@ -32,15 +41,16 @@ export const ProjectMemberRowActions = ({ onRemove, onResendInvite, isDisabled, 
         >
           <PopoverTrigger>
             <Button
-              isIconOnly
+              isIconOnly={layout === 'table'}
               size="sm"
-              variant="light"
-              radius="full"
-              className="text-foreground hover:text-danger"
+              variant={layout === 'table' ? 'light' : 'flat'}
+              radius={layout === 'table' ? 'full' : 'sm'}
+              className={layout === 'table' ? 'text-foreground hover:text-danger' : ''}
               color="danger"
               isDisabled={isDisabled}
             >
               <Icon icon="trash" size={18} />
+              {layout === 'card' && 'Remove'}
             </Button>
           </PopoverTrigger>
           <PopoverContent>

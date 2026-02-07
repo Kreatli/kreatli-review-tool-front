@@ -9,11 +9,12 @@ import { ReviewToolHeaderVersion } from './ReviewToolHeaderVersion';
 interface Props {
   file: FileDto;
   stack: StackDto;
+  size?: 'sm' | 'md';
   isCompareMode?: boolean;
   onSwitchFile?: (file: FileDto) => void;
 }
 
-export const ReviewToolHeaderVersions = ({ file, stack, isCompareMode = false, onSwitchFile }: Props) => {
+export const ReviewToolHeaderVersions = ({ file, stack, size = 'md', isCompareMode = false, onSwitchFile }: Props) => {
   const { getAssetActions } = useAssetContext();
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -30,7 +31,9 @@ export const ReviewToolHeaderVersions = ({ file, stack, isCompareMode = false, o
   if (isCompareMode) {
     return (
       <Tooltip content="You can't switch versions while comparing files" delay={0} closeDelay={0}>
-        <Chip variant="flat">v{file.stackVersion}</Chip>
+        <Chip size={size} variant="flat">
+          v{file.stackVersion}
+        </Chip>
       </Tooltip>
     );
   }
@@ -38,7 +41,9 @@ export const ReviewToolHeaderVersions = ({ file, stack, isCompareMode = false, o
   return (
     <Popover isOpen={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
       <PopoverTrigger>
-        <Chip className="cursor-pointer bg-foreground text-content1">v{file.stackVersion}</Chip>
+        <Chip size={size} className="cursor-pointer bg-foreground text-content1">
+          v{file.stackVersion}
+        </Chip>
       </PopoverTrigger>
       <PopoverContent className="w-full max-w-[90vw] pb-3 sm:min-w-96 sm:max-w-md">
         <div className="w-full">

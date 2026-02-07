@@ -1,10 +1,11 @@
 import { Avatar, Chip, Spinner, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
-import React from 'react';
 
 import { ProjectMemberDto } from '../../../../services/types';
 import { formatFullDate } from '../../../../utils/dates';
 import { getProjectMemberLetter } from '../../../../utils/shortNames';
-import { ProjectMemberRowActions } from './ProjectMemberRowActions';
+import { useIsBreakpoint } from '../../../tiptap/hooks/use-is-breakpoint';
+import { ProjectMemberActions } from './ProjectMemberActions';
+import { ProjectMemberCard } from './ProjectMemberCard';
 
 interface Props {
   members: ProjectMemberDto[];
@@ -22,6 +23,25 @@ const STATUS_COLORS = {
 } as const;
 
 export const ProjectMembersTable = ({ members, isLoading, isEditable = false, onRemove, onResendInvite }: Props) => {
+  const isMobile = useIsBreakpoint('max', 768);
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-2">
+        {members.map((member) => (
+          <ProjectMemberCard
+            key={member.id}
+            member={member}
+            isEditable={isEditable}
+            isDisabled={isLoading}
+            onRemove={onRemove}
+            onResendInvite={onResendInvite}
+          />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <Table removeWrapper>
       <TableHeader>
@@ -58,7 +78,7 @@ export const ProjectMembersTable = ({ members, isLoading, isEditable = false, on
             </TableCell>
             <TableCell>
               {isEditable && (
-                <ProjectMemberRowActions
+                <ProjectMemberActions
                   member={member}
                   isDisabled={isLoading}
                   onResendInvite={() => onResendInvite(member)}

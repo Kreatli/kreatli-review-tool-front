@@ -83,13 +83,13 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
     }
   }, [replyingComment]);
 
-  const updateSliderPosition = (e: MouseEvent) => {
+  const updateSliderPosition = (clientX: number) => {
     if (!sliderRef.current) {
       return;
     }
 
     const rect = sliderRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+    const x = Math.max(0, Math.min(rect.width, clientX - rect.left));
     const percentage = x / rect.width;
     const newTime = percentage * duration;
 
@@ -108,7 +108,14 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging && sliderRef.current) {
-        updateSliderPosition(e);
+        updateSliderPosition(e.clientX);
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isDragging && sliderRef.current && e.touches.length > 0) {
+        e.preventDefault();
+        updateSliderPosition(e.touches[0].clientX);
       }
     };
 
@@ -133,11 +140,15 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleMouseUp);
     }
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleMouseUp);
     };
   }, [isDragging, fileRef, wasPlaying]);
 
@@ -202,7 +213,23 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
     }
     setActiveComment(null);
     setIsDragging(true);
-    updateSliderPosition(e.nativeEvent);
+    updateSliderPosition(e.nativeEvent.clientX);
+  };
+
+  const handleSliderTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (getIsMediaHtmlElement(fileRef.current)) {
+      setWasPlaying(!fileRef.current.paused);
+      fileRef.current.pause();
+      setIsPlaying(false);
+    }
+    if (getIsMediaHtmlElement(compareFileRef.current)) {
+      setWasPlaying(!compareFileRef.current.paused);
+      compareFileRef.current.pause();
+      setIsPlaying(false);
+    }
+    setActiveComment(null);
+    setIsDragging(true);
+    updateSliderPosition(e.touches[0].clientX);
   };
 
   const handleCommentAnchorClick = (comment: AssetCommentDto) => {
@@ -337,6 +364,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
             <div
               ref={sliderRef}
               className="relative z-20 flex items-center gap-2 after:absolute after:-inset-1 after:cursor-pointer"
+              onTouchStart={handleSliderTouchStart}
               onMouseDown={handleSliderMouseDown}
             >
               <div className="relative h-1 flex-1 cursor-pointer overflow-hidden bg-white/20">

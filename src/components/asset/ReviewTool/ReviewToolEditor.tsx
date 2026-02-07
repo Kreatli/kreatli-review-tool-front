@@ -135,7 +135,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
       editor?.commands.setContent(`${replyingComment.createdBy.name}, `);
       editor?.commands.focus();
     }
-  }, [editor]);
+  }, [editor, replyingComment]);
 
   const addComment = (name?: string, editor?: Editor | null) => {
     const message = editor?.getText();

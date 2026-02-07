@@ -7,8 +7,8 @@ interface Props {
 
 export const GeneralInformation = ({ user }: Props) => {
   return (
-    <div className="rounded-medium border-foreground-300 p-4 px-5 shadow-small dark:border">
-      <div className="text-xl font-semibold">General information</div>
+    <div className="md:rounded-medium md:border-foreground-300 md:p-4 md:px-5 md:shadow-small md:dark:border">
+      <div className="text-xl font-semibold">Account</div>
       <div className="text-foreground-500">Update your general information here.</div>
       <GeneralInformationForm user={user} />
     </div>

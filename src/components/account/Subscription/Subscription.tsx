@@ -26,14 +26,14 @@ export const Subscription = ({ user }: Props) => {
   const { usersCount, storage } = user.subscription.limits;
 
   return (
-    <div className="rounded-medium border-foreground-300 p-4 px-5 shadow-small dark:border">
+    <div className="md:rounded-medium md:border-foreground-300 md:p-4 md:px-5 md:shadow-small md:dark:border">
       <div className="mb-4">
         <div className="text-xl font-semibold">Subscription</div>
         <div className="text-foreground-500">Manage your subscription here.</div>
       </div>
       {user.subscription.plan ? (
         <div className="mb-4 flex flex-col gap-2">
-          <div className="flex justify-between gap-2">
+          <div className="flex flex-col justify-between gap-2 md:flex-row">
             <div className="flex flex-col">
               <div className="text-lg">
                 Current plan:{' '}
@@ -47,9 +47,9 @@ export const Subscription = ({ user }: Props) => {
                 <div className="text-sm text-foreground-500">${user.subscription.price} per user monthly</div>
               )}
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
               {user.subscription.isActive && !user.subscription.isTrial && (
-                <Button variant="light" color="danger" onClick={() => setIsCancelSubscriptionModalOpen(true)}>
+                <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionModalOpen(true)}>
                   Cancel subscription
                 </Button>
               )}

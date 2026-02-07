@@ -30,7 +30,7 @@ export const UserWidget = () => {
       </DropdownTrigger>
       <DropdownMenu variant="flat" className="w-52">
         <DropdownItem as={NextLink} href="/account" key="account">
-          General information
+          Account
         </DropdownItem>
         <DropdownItem as={NextLink} href="/account/settings" key="settings">
           Settings

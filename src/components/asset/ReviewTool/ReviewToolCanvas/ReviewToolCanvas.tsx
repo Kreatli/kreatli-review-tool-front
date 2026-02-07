@@ -153,6 +153,100 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
     pushHistory(shapes);
   };
 
+  const handleTouchStart = (event: Konva.KonvaEventObject<TouchEvent>) => {
+    if (isDragging.current || !activeTool || activeTool === 'eraser') {
+      return;
+    }
+
+    event.evt.preventDefault();
+
+    isDrawing.current = true;
+
+    const position = event.target.getStage()?.getPointerPosition();
+
+    if (!position) {
+      return;
+    }
+
+    lastPointRef.current = position;
+
+    setShapes([...shapes, { type: activeTool, points: [], color: activeColor }]);
+  };
+
+  const handleTouchMove = (event: Konva.KonvaEventObject<TouchEvent>) => {
+    if (!isDrawing.current || isDragging.current || activeTool === 'eraser') {
+      return;
+    }
+
+    event.evt.preventDefault();
+
+    const stage = event.target.getStage();
+    const point = stage?.getPointerPosition();
+
+    if (!point) {
+      return;
+    }
+
+    if (lastPointRef.current) {
+      const dx = Math.abs(point.x - lastPointRef.current.x);
+      const dy = Math.abs(point.y - lastPointRef.current.y);
+
+      if (dx < 5 && dy < 5) {
+        return;
+      }
+    }
+
+    if (activeTool === 'line') {
+      const newShapes = [...shapes];
+      newShapes[newShapes.length - 1].points = newShapes[newShapes.length - 1].points.concat([point.x, point.y]);
+      setShapes(newShapes);
+    }
+
+    if (activeTool === 'arrow') {
+      const newShapes = [...shapes];
+      newShapes[newShapes.length - 1].points = [
+        ...newShapes[newShapes.length - 1].points.slice(0, 2),
+        point.x,
+        point.y,
+      ];
+      setShapes(newShapes);
+    }
+
+    lastPointRef.current = point;
+  };
+
+  const handleTouchEnd = () => {
+    if (isDragging.current || activeTool === 'eraser') {
+      return;
+    }
+
+    isDrawing.current = false;
+
+    if (shapes[shapes.length - 1].points.length <= 2) {
+      setShapes(shapes.slice(0, -1));
+
+      return;
+    }
+
+    if (activeTool === 'line') {
+      const newShapes = [...shapes];
+      const lastLine = newShapes[newShapes.length - 1];
+
+      if (lastLine) {
+        lastLine.points = simplifyLine(lastLine.points);
+      }
+
+      setShapes(newShapes);
+      pushHistory(newShapes);
+
+      trackEvent('use_comment_drawings');
+
+      return;
+    }
+
+    pushHistory(shapes);
+  };
+
   const handleDragStart = (_: ReviewTool.Shape, event: Konva.KonvaEventObject<MouseEvent>) => {
     if (activeTool === 'eraser') {
       return;
@@ -239,6 +333,9 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <Layer>
             <ReviewToolCanvasShapes
