@@ -6,6 +6,7 @@ import { useReviewToolCanvasShapesContext, useReviewToolContext } from '../../..
 import { useGetAssetFileIdComments } from '../../../../services/hooks';
 import { AssetCommentDto, FileDto } from '../../../../services/types';
 import { getIsMediaHtmlElement } from '../../../../utils/getIsMediaHtmlElement';
+import { useIsBreakpoint } from '../../../tiptap/hooks/use-is-breakpoint';
 import { Icon } from '../../../various/Icon';
 
 interface Props {
@@ -34,6 +35,8 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
   const [showControls, setShowControls] = React.useState(false);
   const sliderRef = React.useRef<HTMLDivElement>(null);
   const hideTimeoutRef = React.useRef<NodeJS.Timeout>(undefined);
+
+  const isMdScreen = useIsBreakpoint('max', 768);
 
   const commentsWithTimestamps = React.useMemo(() => {
     if (!commentsData?.comments) return [];
@@ -356,13 +359,15 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
                   {formatTime(displayTime)} <span className="text-white/80">/ {formatTime(duration)}</span>
                 </span>
               </div>
-              <button
-                type="button"
-                className="relative z-10 transition-transform hover:scale-125"
-                onClick={toggleFullscreen}
-              >
-                <Icon icon="fullscreen" size={20} />
-              </button>
+              {!isMdScreen && (
+                <button
+                  type="button"
+                  className="relative z-10 transition-transform hover:scale-125"
+                  onClick={toggleFullscreen}
+                >
+                  <Icon icon="fullscreen" size={20} />
+                </button>
+              )}
             </div>
             <div
               ref={sliderRef}

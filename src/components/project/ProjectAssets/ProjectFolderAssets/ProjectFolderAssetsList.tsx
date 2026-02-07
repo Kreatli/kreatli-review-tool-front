@@ -309,7 +309,13 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             Delete
           </Button>
           {shouldShowCompareButton && (
-            <Button size="sm" variant="flat" color="primary" onClick={handleCompareSelectedAssets}>
+            <Button
+              size="sm"
+              variant="flat"
+              color="primary"
+              className="hidden md:flex"
+              onClick={handleCompareSelectedAssets}
+            >
               <Icon icon="compare" size={16} />
               Compare
             </Button>
