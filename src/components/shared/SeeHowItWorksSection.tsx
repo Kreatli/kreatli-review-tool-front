@@ -2,13 +2,13 @@ import { Card, CardBody } from '@heroui/react';
 import NextLink from 'next/link';
 import React from 'react';
 
-import { Icon } from '../various/Icon';
+import { Icon, type IconType } from '../various/Icon';
 
 export interface GuideLink {
   title: string;
   description: string;
   href: string;
-  icon?: string;
+  icon?: IconType;
 }
 
 interface SeeHowItWorksSectionProps {
@@ -51,7 +51,7 @@ export function SeeHowItWorksSection({
                   <div className="mb-2 flex items-start gap-4">
                     {guide.icon && (
                       <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
-                        <Icon icon={guide.icon as any} size={24} className="text-primary" />
+                        <Icon icon={guide.icon} size={24} className="text-primary" />
                       </div>
                     )}
                     <div className="flex-1">

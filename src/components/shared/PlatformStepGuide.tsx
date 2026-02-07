@@ -517,3 +517,297 @@ export const SHARE_MP4_STEPS: WorkflowStep[] = [
     altText: 'Track approvals and upload new version for shared MP4 in Kreatli',
   },
 ];
+
+/** Steps for the Annotate PDF platform page. */
+export const ANNOTATE_PDF_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored with version history so you can annotate and share for review in one place.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF upload, ready to annotate',
+  },
+  {
+    step: 2,
+    title: 'Open the PDF in the review interface',
+    description:
+      'Open the asset to enter the review view. Navigate page by page and click or select any area where you want to add comments, highlights, or drawings.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with PDF in project, open in review',
+  },
+  {
+    step: 3,
+    title: 'Add annotations on the PDF',
+    description:
+      'Add comments pinned to exact spots, use highlights and shapes to mark regions, and draw or use arrows to point to elements. All feedback stays tied to the right page and position.',
+    icon: 'paint',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Adding annotations on PDF in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and jump to spots',
+    description:
+      'View all annotations in one place, filter by reviewer, and jump to any comment or markup. Track what’s resolved and what still needs attention.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Feedback and annotations on PDF in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      'Share a review link so clients can annotate without signing up. Mark comments resolved as you address them and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track PDF annotations in Kreatli',
+  },
+];
+
+/** Steps for the Add Comments to PDF platform page. */
+export const ADD_COMMENTS_TO_PDF_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored with version history so you can add comments and share for review.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF upload, ready for comments',
+  },
+  {
+    step: 2,
+    title: 'Open the PDF in the review interface',
+    description:
+      'Open the asset to enter the review view. Navigate to the page and click the spot where you want to leave feedback.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with PDF in project, open in review',
+  },
+  {
+    step: 3,
+    title: 'Add a comment at the spot',
+    description:
+      'Click or select the location, then type your comment. It’s pinned to that exact position. Add replies and @mentions to keep the conversation in one place.',
+    icon: 'chat',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Adding comments on PDF in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all comments and jump to spots',
+    description:
+      'View all comments in one place, filter by reviewer, and jump to any comment. Track what’s resolved and what still needs attention.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Comments on PDF in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      'Share a review link so clients can add comments without signing up. Mark comments resolved as you address them and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track PDF comments in Kreatli',
+  },
+];
+
+/** Steps for the Annotate Image platform page. */
+export const ANNOTATE_IMAGE_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your image in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your image (JPG, PNG, GIF, WebP, etc.). Your file is stored with version history so you can annotate and share for review.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with image upload, ready to annotate',
+  },
+  {
+    step: 2,
+    title: 'Open the image in the review interface',
+    description:
+      'Open the asset to enter the review view. Click or select any area on the image where you want to add comments, highlights, or drawings.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with image in project, open in review',
+  },
+  {
+    step: 3,
+    title: 'Add annotations on the image',
+    description:
+      'Add comments pinned to exact spots, use highlights and shapes to mark regions, and draw or use arrows to point to elements. All feedback stays tied to the right position.',
+    icon: 'paint',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Adding annotations on image in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and jump to spots',
+    description:
+      'View all annotations in one place, filter by reviewer, and jump to any comment or markup. Track what’s resolved and what still needs attention.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Feedback and annotations on image in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      'Share a review link so clients can annotate without signing up. Mark comments resolved as you address them and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track image annotations in Kreatli',
+  },
+];
+
+/** Steps for the Draw on Image platform page. */
+export const DRAW_ON_IMAGE_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your image in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your image. Your file is stored with version history so you can draw on it and share for review.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with image upload, ready to draw on',
+  },
+  {
+    step: 2,
+    title: 'Open the image in the review interface',
+    description:
+      'Open the asset to enter the review view. You’ll draw directly on the image so your markup is pinned to the right spot.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with image in project, open in review',
+  },
+  {
+    step: 3,
+    title: 'Draw on the image',
+    description:
+      'Use freehand, shapes, or arrows to circle, highlight, or point to areas that need attention. Every stroke is pinned to the image so designers see precisely what to change.',
+    icon: 'paint',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Drawing on image in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and jump to spots',
+    description:
+      'View all drawings and comments in one place, filter by reviewer, and jump to any markup. Track what’s resolved and what still needs attention.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Drawings on image in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      'Share a review link so clients can draw on the image without signing up. Mark feedback resolved as you address it and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track image drawings in Kreatli',
+  },
+];
+
+/** Steps for the Draw on Documents platform page. */
+export const DRAW_ON_DOCUMENTS_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your document in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your document (e.g. PDF). Your file is stored with version history so you can draw on it and share for review.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with document upload, ready to draw on',
+  },
+  {
+    step: 2,
+    title: 'Open the document in the review interface',
+    description:
+      'Open the asset to enter the review view. Navigate page by page and draw on the exact spot that needs attention.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with document in project, open in review',
+  },
+  {
+    step: 3,
+    title: 'Draw on the document',
+    description:
+      'Use freehand, shapes, or arrows to circle, highlight, or point to areas on the page. Every stroke is pinned to that location so designers and writers see precisely what to change.',
+    icon: 'paint',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Drawing on document in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and jump to spots',
+    description:
+      'View all drawings and comments in one place, filter by reviewer, and jump to any markup. Track what’s resolved and what still needs attention.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Drawings on document in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      'Share a review link so clients can draw on the document without signing up. Mark feedback resolved as you address it and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track document drawings in Kreatli',
+  },
+];
+
+/** Steps for the Annotate Document platform page. */
+export const ANNOTATE_DOCUMENT_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your document in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your document (e.g. a PDF). Your file is stored with version history so you can annotate and share for review.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with document upload, ready to annotate',
+  },
+  {
+    step: 2,
+    title: 'Open the document in the review interface',
+    description:
+      'Open the asset to enter the review view. Navigate page by page and click or select any area where you want to add comments, highlights, or drawings.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with document in project, open in review',
+  },
+  {
+    step: 3,
+    title: 'Add annotations on the document',
+    description:
+      'Add comments pinned to exact spots, use highlights and shapes to mark regions, and draw or use arrows to point to elements. All feedback stays tied to the right page and position.',
+    icon: 'paint',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Adding annotations on document in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and jump to spots',
+    description:
+      'View all annotations in one place, filter by reviewer, and jump to any comment or markup. Track what’s resolved and what still needs attention.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Feedback and annotations on document in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      'Share a review link so clients can annotate without signing up. Mark comments resolved as you address them and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track document annotations in Kreatli',
+  },
+];
