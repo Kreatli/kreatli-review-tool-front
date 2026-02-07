@@ -11,6 +11,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { COMMENT_ON_VIDEO_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -136,6 +137,13 @@ export default function CommentOnVideoPage() {
           <InteractiveReviewToolPreview />
         </div>
       </section>
+
+      {/* How to Comment on Video in Kreatli (step-by-step) */}
+      <PlatformStepGuide
+        stepsSectionTitle="How to Comment on Video in Kreatli"
+        stepsIntro="Follow these steps to add frame-accurate comments to your videos in Kreatli—from upload to share and approval."
+        steps={COMMENT_ON_VIDEO_STEPS}
+      />
 
       {/* Ways to Comment on Video Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

@@ -14,6 +14,7 @@ import { InteractiveReviewToolPreview } from '../../components/shared/Interactiv
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
+import { VideoAnnotationGuide } from '../../components/video-annotation-guide/VideoAnnotationGuide';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
@@ -146,6 +147,9 @@ export default function VideoAnnotationPage() {
           <InteractiveReviewToolPreview />
         </div>
       </section>
+
+      {/* How to Use Video Annotation in Kreatli (step-by-step) */}
+      <VideoAnnotationGuide stepsSectionTitle="How to Use Video Annotation in Kreatli" />
 
       {/* Annotation Types Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

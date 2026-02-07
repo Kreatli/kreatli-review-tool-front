@@ -11,6 +11,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { ADD_DRAWING_TO_VIDEO_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -131,6 +132,13 @@ export default function AddDrawingToVideoPage() {
           <InteractiveReviewToolPreview />
         </div>
       </section>
+
+      {/* How to Add Drawing to Video in Kreatli (step-by-step) */}
+      <PlatformStepGuide
+        stepsSectionTitle="How to Add Drawing to Video in Kreatli"
+        stepsIntro="Follow these steps to add drawings, arrows, and markup to your videos in Kreatli—from upload to share and approval."
+        steps={ADD_DRAWING_TO_VIDEO_STEPS}
+      />
 
       {/* Drawing Tools Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
