@@ -12,6 +12,7 @@ import { useDeleteAssetFileIdCommentCommentId, usePatchAssetFileIdCommentComment
 import { AssetCommentDto, ProjectDto } from '../../../services/types';
 import { formatRelativeTime } from '../../../utils/dates';
 import { formatDuration } from '../../../utils/formatDuration';
+import { useIsBreakpoint } from '../../tiptap/hooks/use-is-breakpoint';
 import { Icon } from '../../various/Icon';
 
 interface Props {
@@ -31,18 +32,24 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
   const { mutate: removeComment, isPending: isRemoving } = useDeleteAssetFileIdCommentCommentId();
   const { activeComment, replyingComment, setActiveComment, setReplyingComment } = useFileStateContext();
 
+  const isMdScreen = useIsBreakpoint('max', 768);
+
   const commentRef = React.useRef<HTMLDivElement>(null);
   const [isResolved, setIsResolved] = useState(comment.isResolved || (rest.isResolved ?? false));
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsResolved(comment.isResolved || (rest.isResolved ?? false));
   }, [comment.isResolved, rest.isResolved]);
 
   useEffect(() => {
+    if (isMdScreen) {
+      return;
+    }
+
     if (activeComment?.id === id) {
       commentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeComment, id]);
 
   const isProjectOwner = user && project?.createdBy?.id === user?.id;
