@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -11,6 +12,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { DRAW_ON_VIDEO_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -136,6 +138,18 @@ export default function DrawOnAVideoPage() {
           <InteractiveReviewToolPreview />
         </div>
       </section>
+
+      {/* How to Draw on a Video in Kreatli (step-by-step) */}
+      <PlatformStepGuide
+        stepsSectionTitle="How to Draw on a Video in Kreatli"
+        stepsIntro="Follow these steps to draw on your videos in Kreatli—from upload to share and approval."
+        steps={DRAW_ON_VIDEO_STEPS}
+        completeGuide={{
+          href: '/guides/how-to-draw-on-a-video',
+          description:
+            'Learn how to draw on a video with freehand, shapes, and arrows for precise visual feedback and faster review cycles.',
+        }}
+      />
 
       {/* Ways to Draw on a Video Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

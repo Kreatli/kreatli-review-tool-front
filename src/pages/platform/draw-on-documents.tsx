@@ -12,6 +12,10 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import {
+  DRAW_ON_DOCUMENTS_STEPS,
+  PlatformStepGuide,
+} from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -134,38 +138,19 @@ export default function DrawOnDocumentsPage() {
             </div>
           </div>
           <InteractiveReviewToolPreview variant="pdf" />
-
-          {/* Related PDF & document features */}
-          <div className="mx-auto mt-16 w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
-            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
-              Related PDF & document features
-            </h2>
-            <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
-              Need full annotation or want to draw on PDFs only? Explore these options:
-            </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <Button
-                as={NextLink}
-                href="/platform/annotate-document"
-                size="md"
-                className="bg-foreground font-medium text-content1 hover:opacity-90"
-                endContent={<Icon icon="arrowRight" size={16} />}
-              >
-                Annotate Document
-              </Button>
-              <Button
-                as={NextLink}
-                href="/platform/draw-on-pdf-document"
-                size="md"
-                className="bg-foreground font-medium text-content1 hover:opacity-90"
-                endContent={<Icon icon="arrowRight" size={16} />}
-              >
-                Draw on PDF Document
-              </Button>
-            </div>
-          </div>
         </div>
       </section>
+
+      <PlatformStepGuide
+        stepsSectionTitle="How to draw on documents in Kreatli"
+        stepsIntro="Follow these steps to upload your document, draw directly on it, and share for review—all in one place."
+        steps={DRAW_ON_DOCUMENTS_STEPS}
+        completeGuide={{
+          href: '/guides/what-is-proofing-software',
+          description:
+            'Learn how proofing and creative review work in one place with your video, documents, and other assets.',
+        }}
+      />
 
       {/* Ways to Draw on Documents Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -268,6 +253,39 @@ export default function DrawOnDocumentsPage() {
                 </p>
               </CardBody>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mx-auto w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
+            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
+              Related PDF & document features
+            </h2>
+            <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
+              Need full annotation or want to draw on PDFs only? Explore these options:
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                as={NextLink}
+                href="/platform/annotate-document"
+                size="md"
+                className="bg-foreground font-medium text-content1 hover:opacity-90"
+                endContent={<Icon icon="arrowRight" size={16} />}
+              >
+                Annotate Document
+              </Button>
+              <Button
+                as={NextLink}
+                href="/platform/draw-on-pdf-document"
+                size="md"
+                className="bg-foreground font-medium text-content1 hover:opacity-90"
+                endContent={<Icon icon="arrowRight" size={16} />}
+              >
+                Draw on PDF Document
+              </Button>
+            </div>
           </div>
         </div>
       </section>

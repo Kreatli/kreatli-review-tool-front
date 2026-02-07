@@ -12,6 +12,10 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import {
+  DRAW_ON_PDF_DOCUMENT_STEPS,
+  PlatformStepGuide,
+} from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -166,6 +170,17 @@ export default function DrawOnPdfDocumentPage() {
           </div>
         </div>
       </section>
+
+      <PlatformStepGuide
+        stepsSectionTitle="How to draw on a PDF in Kreatli"
+        stepsIntro="Follow these steps to upload your PDF, draw directly on it, and share for review—all in one place."
+        steps={DRAW_ON_PDF_DOCUMENT_STEPS}
+        completeGuide={{
+          href: '/guides/what-is-proofing-software',
+          description:
+            'Learn how proofing and creative review work in one place with your video, PDFs, and other assets.',
+        }}
+      />
 
       {/* Ways to Draw on PDFs Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

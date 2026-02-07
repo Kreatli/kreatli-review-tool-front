@@ -5,6 +5,7 @@ import NextLink from 'next/link';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { PlatformStepGuide, SHARE_VIDEO_STEPS } from '../../components/shared/PlatformStepGuide';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -133,6 +134,18 @@ export default function ShareVideoPage() {
           <ShareFeaturePreview />
         </div>
       </section>
+
+      {/* How to Share Video in Kreatli (step-by-step) */}
+      <PlatformStepGuide
+        stepsSectionTitle="How to Share Your Video in Kreatli"
+        stepsIntro="Follow these steps to share video with clients and stakeholders—from upload to feedback and approval."
+        steps={SHARE_VIDEO_STEPS}
+        completeGuide={{
+          href: '/guides/how-to-send-video-via-email',
+          description:
+            'Learn how to send a video through email, understand file size limits, and discover better ways to share videos for review and approval.',
+        }}
+      />
 
       {/* How to Share Video Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
