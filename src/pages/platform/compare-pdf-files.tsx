@@ -12,6 +12,10 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import {
+  COMPARE_PDF_FILES_STEPS,
+  PlatformStepGuide,
+} from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -126,6 +130,17 @@ export default function ComparePdfFilesPage() {
           <CompareFeaturePreview variant="pdf" />
         </div>
       </section>
+
+      <PlatformStepGuide
+        stepsSectionTitle="How to compare PDF files in Kreatli"
+        stepsIntro="Follow these steps to upload both PDF versions, open them in the review interface, use Compare, and share feedback—all in one place."
+        steps={COMPARE_PDF_FILES_STEPS}
+        completeGuide={{
+          href: '/guides/what-is-proofing-software',
+          description:
+            'Learn how proofing and creative review work in one place with your video, PDFs, and other assets.',
+        }}
+      />
 
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

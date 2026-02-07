@@ -34,94 +34,89 @@ export const PlatformStepGuide = ({
 }: PlatformStepGuideProps) => {
   return (
     <>
-    <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-      <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="mb-10 text-center">
-          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{stepsSectionTitle}</h2>
-          <p className="mx-auto max-w-2xl text-base text-foreground-500">{stepsIntro}</p>
-        </div>
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{stepsSectionTitle}</h2>
+            <p className="mx-auto max-w-2xl text-base text-foreground-500">{stepsIntro}</p>
+          </div>
 
-        <div className="flex flex-col gap-6">
-          {steps.map((item) => (
-            <Card key={item.step} className="scroll-mt-36">
-              <CardBody className="p-6 lg:p-8">
-                <div className="flex flex-col gap-6">
-                  <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-                    <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
-                      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                        <Icon icon={item.icon as IconType} size={24} className="text-primary" />
+          <div className="flex flex-col gap-6">
+            {steps.map((item) => (
+              <Card key={item.step} className="scroll-mt-36">
+                <CardBody className="p-6 lg:p-8">
+                  <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
+                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Icon icon={item.icon as IconType} size={24} className="text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
+                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
-                        <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
+                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
+                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                        {item.step === steps.length && (
+                          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+                            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+                              Start for Free
+                            </Button>
+                            <Button
+                              as="a"
+                              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              size="lg"
+                              variant="bordered"
+                            >
+                              Book a Demo
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
-                    <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
-                      <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
-                      {item.step === steps.length && (
-                        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                          <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                            Start for Free
-                          </Button>
-                          <Button
-                            as="a"
-                            href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            size="lg"
-                            variant="bordered"
+                    {item.image && (
+                      <div className="mt-6 flex justify-center lg:mt-8">
+                        <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
+                          <div
+                            className={`overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg ${item.imageContainerClass ? 'max-h-[65vh]' : ''}`}
                           >
-                            Book a Demo
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  {item.image && (
-                    <div className="mt-6 flex justify-center lg:mt-8">
-                      <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
-                        <div
-                          className={`overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg ${item.imageContainerClass ? 'max-h-[65vh]' : ''}`}
-                        >
-                          <Image
-                            src={item.image}
-                            alt={item.altText ?? item.title}
-                            loading="lazy"
-                            removeWrapper
-                            className={
-                              item.imageContainerClass
-                                ? 'h-auto w-full max-h-[65vh] object-contain'
-                                : 'h-auto w-full object-contain'
-                            }
-                          />
+                            <Image
+                              src={item.image}
+                              alt={item.altText ?? item.title}
+                              loading="lazy"
+                              removeWrapper
+                              className={
+                                item.imageContainerClass
+                                  ? 'h-auto max-h-[65vh] w-full object-contain'
+                                  : 'h-auto w-full object-contain'
+                              }
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              </CardBody>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {completeGuide && (
-      <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
-          <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground-500">{completeGuide.description}</p>
-          <Button
-            as={NextLink}
-            href={completeGuide.href}
-            size="lg"
-            className="bg-foreground text-content1"
-          >
-            Read Complete Guide
-          </Button>
+                    )}
+                  </div>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
-    )}
+
+      {completeGuide && (
+        <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
+          <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Read Our Complete Guide</h2>
+            <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground-500">{completeGuide.description}</p>
+            <Button as={NextLink} href={completeGuide.href} size="lg" className="bg-foreground text-content1">
+              Read Complete Guide
+            </Button>
+          </div>
+        </section>
+      )}
     </>
   );
 };
@@ -763,6 +758,55 @@ export const DRAW_ON_DOCUMENTS_STEPS: WorkflowStep[] = [
   },
 ];
 
+/** Steps for the Draw on PDF Document platform page. */
+export const DRAW_ON_PDF_DOCUMENT_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored with version history so you can draw on it and share for review.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF upload, ready to draw on',
+  },
+  {
+    step: 2,
+    title: 'Open the PDF in the review interface',
+    description:
+      'Open the asset to enter the review view. Navigate page by page and draw on the exact spot that needs attention.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with PDF in project, open in review',
+  },
+  {
+    step: 3,
+    title: 'Draw on the PDF',
+    description:
+      'Use freehand, shapes, or arrows to circle, highlight, or point to areas on the page. Every stroke is pinned to that location so designers and writers see precisely what to change.',
+    icon: 'paint',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Drawing on PDF in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and jump to spots',
+    description:
+      'View all drawings and comments in one place, filter by reviewer, and jump to any markup. Track what’s resolved and what still needs attention.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Drawings on PDF in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      'Share a review link so clients can draw on the PDF without signing up. Mark feedback resolved as you address it and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track PDF drawings in Kreatli',
+  },
+];
+
 /** Steps for the Annotate Document platform page. */
 export const ANNOTATE_DOCUMENT_STEPS: WorkflowStep[] = [
   {
@@ -809,5 +853,125 @@ export const ANNOTATE_DOCUMENT_STEPS: WorkflowStep[] = [
     icon: 'checkCircle',
     image: '/video-annotation-guide/step-5-doc.png',
     altText: 'Share and track document annotations in Kreatli',
+  },
+];
+
+/** Steps for the Compare PDF Files platform page. */
+export const COMPARE_PDF_FILES_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload both PDF versions in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload both PDF versions (draft and revised, or any two you need to compare). Both files live in the same project so you can review them together.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDFs uploaded for comparison',
+  },
+  {
+    step: 2,
+    title: 'Select both PDFs and click Compare',
+    description:
+      'In the Media view, select the two PDF versions you want to compare (use the checkboxes on each file). With both selected, click the Compare button to open them side by side in the review interface.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-compare.png',
+    altText: 'Select two PDFs in Media view and click Compare in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Compare all feedback side by side',
+    description:
+      'View both PDFs side by side with the comments panel. See feedback on either version, add comments and annotations pinned to the exact page and spot, and track what’s resolved across both files.',
+    icon: 'compare',
+    image: '/video-annotation-guide/step-3-compare.png',
+    altText: 'Compare PDFs side by side with feedback in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Upload new versions to keep the review going',
+    description:
+      'When you’re ready to share an updated PDF, open the file menu (⋯) and choose Upload new version. The new file appears in the same project so you can compare it with the previous version and track resolution.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-4-compare.png',
+    altText: 'Upload new version from the file menu in Kreatli',
+  },
+];
+
+/** Steps for the Compare Videos platform page. */
+export const COMPARE_VIDEOS_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload both video versions in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload both video versions (rough and revised cut, or any two you need to compare). Both files live in the same project so you can review them together.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with videos uploaded for comparison',
+  },
+  {
+    step: 2,
+    title: 'Select both videos and click Compare',
+    description:
+      'In the Media view, select the two video versions you want to compare (use the checkboxes on each file). With both selected, click the Compare button to open them side by side in the review interface.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-compare-videos.png',
+    altText: 'Select two videos in Media view and click Compare in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Compare all feedback side by side',
+    description:
+      'View both videos side by side with synced timelines—playback stays in sync so you can spot frame-level differences. Use the comments panel to see feedback on either version, add frame-accurate comments and annotations, and track what’s resolved across both files.',
+    icon: 'compare',
+    image: '/video-annotation-guide/step-3-compare-videos.png',
+    altText: 'Compare videos side by side with synced timelines and feedback in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Upload new versions to keep the review going',
+    description:
+      'When you’re ready to share an updated video, open the file menu (⋯) and choose Upload new version. The new file appears in the same project so you can compare it with the previous version and track resolution.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-4-compare-videos.png',
+    altText: 'Upload new version from the file menu in Kreatli',
+  },
+];
+
+/** Steps for the Compare Documents Online platform page. */
+export const COMPARE_DOCUMENTS_ONLINE_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload both document versions in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload both document versions (e.g. draft and revised PDFs). Both files live in the same project so you can review them together.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with documents uploaded for comparison',
+  },
+  {
+    step: 2,
+    title: 'Select both documents and click Compare',
+    description:
+      'In the Media view, select the two document versions you want to compare (use the checkboxes on each file). With both selected, click the Compare button to open them side by side in the review interface.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-compare.png',
+    altText: 'Select two documents in Media view and click Compare in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Compare all feedback side by side',
+    description:
+      'View both documents side by side with the comments panel. See feedback on either version, add comments and annotations pinned to the exact page and spot, and track what’s resolved across both files.',
+    icon: 'compare',
+    image: '/video-annotation-guide/step-3-compare.png',
+    altText: 'Compare documents side by side with feedback in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Upload new versions to keep the review going',
+    description:
+      'When you’re ready to share an updated document, open the file menu (⋯) and choose Upload new version. The new file appears in the same project so you can compare it with the previous version and track resolution.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-4-compare.png',
+    altText: 'Upload new version from the file menu in Kreatli',
   },
 ];
