@@ -27,7 +27,7 @@ export const ProjectFileCover = ({ file, isLoading = false }: Props) => {
         <Image
           src={previewUrl}
           radius="none"
-          classNames={{ wrapper: 'flex items-center select-none' }}
+          classNames={{ wrapper: 'flex items-center select-none', img: 'mx-auto' }}
           className="max-h-full"
           {...(file.format === 'svg' && {
             width: file.metadata.width,
