@@ -5,6 +5,7 @@ import NextLink from 'next/link';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { FREE_VIDEO_LINK_GENERATOR_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -126,6 +127,18 @@ export default function FreeVideoLinkGeneratorPage() {
           <ShareFeaturePreview />
         </div>
       </section>
+
+      {/* How to Generate Video Links in Kreatli (step-by-step) */}
+      <PlatformStepGuide
+        stepsSectionTitle="How to Generate Video Links in Kreatli"
+        stepsIntro="Follow these steps to create secure, shareable video review links—from upload to share and approval."
+        steps={FREE_VIDEO_LINK_GENERATOR_STEPS}
+        completeGuide={{
+          href: '/guides/share-large-video-files',
+          description:
+            'Learn different ways to share large video files with clients, compare methods, and get a step-by-step workflow for review and approval.',
+        }}
+      />
 
       {/* Generate Links Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

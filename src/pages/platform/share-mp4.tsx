@@ -5,6 +5,7 @@ import NextLink from 'next/link';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { PlatformStepGuide, SHARE_MP4_STEPS } from '../../components/shared/PlatformStepGuide';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -121,6 +122,18 @@ export default function ShareMp4Page() {
           <ShareFeaturePreview />
         </div>
       </section>
+
+      {/* How to Share MP4 Files in Kreatli (step-by-step) */}
+      <PlatformStepGuide
+        stepsSectionTitle="How to Share MP4 Files in Kreatli"
+        stepsIntro="Follow these steps to share MP4 files with clients and stakeholders—from upload to feedback and approval."
+        steps={SHARE_MP4_STEPS}
+        completeGuide={{
+          href: '/guides/share-large-video-files',
+          description:
+            'Learn seven ways to share large video files (including MP4) with clients for review and approval, with pros, cons, and a practical workflow.',
+        }}
+      />
 
       {/* How to Share MP4 Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

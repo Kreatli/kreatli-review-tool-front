@@ -321,3 +321,199 @@ export const COMMENT_ON_VIDEO_STEPS: WorkflowStep[] = [
     altText: 'Sharing and resolution tracking for video comments in Kreatli',
   },
 ];
+
+/** Steps for the Free Video Link Generator platform page. */
+export const FREE_VIDEO_LINK_GENERATOR_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your video. Your file is stored securely with version history so you can generate as many review links as you need.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with video upload, ready to generate a link',
+  },
+  {
+    step: 2,
+    title: 'Generate a shareable video link',
+    description:
+      'Open the asset and create a secure review link. You can generate links for different stakeholders or review rounds—each link opens the video in the browser with no download or account required.',
+    icon: 'link',
+    image: '/video-annotation-guide/step-2-share-link.png',
+    altText: 'Generate shareable video review link in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Share the link with clients or collaborators',
+    description:
+      'Send the link by email, Slack, or any channel. Recipients click once to watch the video and leave frame-accurate comments—no sign-up or app install.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy link or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See feedback on the timeline',
+    description:
+      'All comments and feedback appear on the timeline. Jump to any moment, track what’s resolved, and keep every review round in one place.',
+    icon: 'time',
+    image: `${IMG}-4.webp`,
+    altText: 'Timeline with feedback in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals and versions',
+    description:
+      'See who’s approved which version and revoke or update link access anytime. Every link stays tied to the right project and file version.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-share-approvals.png',
+    altText: 'Track approvals and upload new version in Kreatli',
+  },
+];
+
+/** Steps for the Share Your Video platform page. */
+export const SHARE_VIDEO_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your video once. Your original stays safely stored with version history and access controls.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with video upload, ready to share',
+  },
+  {
+    step: 2,
+    title: 'Generate a share video link',
+    description:
+      'Turn any file into a clean, secure share link. Skip WeTransfer folders and bulky email attachments—one link gives clients a simple player in their browser.',
+    icon: 'link',
+    image: '/video-annotation-guide/step-2-share-link.png',
+    altText: 'Generate share video link in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Share your video with stakeholders',
+    description:
+      'Send the link to clients, producers, or internal teams. They open it in their browser and can watch, comment, and approve without creating an account.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy link or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Collect frame-accurate feedback',
+    description:
+      'Reviewers leave comments pinned to exact frames. See all feedback on the timeline and jump to any moment that needs attention.',
+    icon: 'time',
+    image: `${IMG}-4.webp`,
+    altText: 'Timeline with feedback in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals and versions',
+    description:
+      'Mark comments resolved, see which version was approved, and share new cuts to the same people. You stay in control of who can view or comment.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-share-approvals.png',
+    altText: 'Track approvals and upload new version in Kreatli',
+  },
+];
+
+/** Steps for the Send Your Video platform page. */
+export const SEND_VIDEO_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your video once. Your file is stored securely so you can send a link instead of heavy attachments.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with video upload, ready to send',
+  },
+  {
+    step: 2,
+    title: 'Get a link to send your video',
+    description:
+      'Generate a secure link for the video. No WeTransfer or large email attachments—send the link and recipients open it in their browser.',
+    icon: 'link',
+    image: '/video-annotation-guide/step-2-share-link.png',
+    altText: 'Get send-video link in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Send the link to your client or team',
+    description:
+      'Email, Slack, or share the link any way you like. Recipients click to watch and leave frame-accurate comments—no account or download required.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy link or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See feedback on the timeline',
+    description:
+      'All comments appear on the timeline. Jump to the exact frame, track what’s resolved, and keep the conversation in one place.',
+    icon: 'time',
+    image: `${IMG}-4.webp`,
+    altText: 'Timeline with feedback in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals or update access',
+    description:
+      'See who’s approved, mark feedback resolved, and send new versions to the same people. Revoke or update access anytime.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-share-approvals.png',
+    altText: 'Track approvals and upload new version in Kreatli',
+  },
+];
+
+/** Steps for the Share MP4 Files platform page. */
+export const SHARE_MP4_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your MP4 in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your MP4 once. Your file stays safely stored with version history and access controls.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with MP4 upload, ready to share',
+  },
+  {
+    step: 2,
+    title: 'Generate a share link for your MP4',
+    description:
+      'Turn any MP4 into a clean, secure share link. Skip WeTransfer and large attachments—one link lets clients watch in their browser.',
+    icon: 'link',
+    image: '/video-annotation-guide/step-2-share-link.png',
+    altText: 'Generate MP4 share link in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Share your MP4 with stakeholders',
+    description:
+      'Send the link to clients, producers, or internal teams. They open it and can watch, comment, and approve without downloading or creating an account.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy link or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Collect frame-accurate feedback',
+    description:
+      'Reviewers leave comments pinned to exact frames. See all feedback on the timeline and jump to any moment that needs attention.',
+    icon: 'time',
+    image: `${IMG}-4.webp`,
+    altText: 'Timeline with feedback in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals and versions',
+    description:
+      'Mark comments resolved, see which version was approved, and share new MP4 cuts to the same people. You control who can view or comment.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-share-approvals.png',
+    altText: 'Track approvals and upload new version for shared MP4 in Kreatli',
+  },
+];
