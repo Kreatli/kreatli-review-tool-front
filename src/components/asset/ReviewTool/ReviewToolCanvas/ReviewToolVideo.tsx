@@ -323,6 +323,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
           // @ts-expect-error - Video element is not typed
           ref={compareFile?.id === videoFile.id ? compareFileRef : fileRef}
           controls={false}
+          playsInline
           muted={videoFile.id !== activeFile?.id}
           className="relative z-10 h-auto max-h-full max-w-full cursor-pointer"
           onPlay={handlePlay}
