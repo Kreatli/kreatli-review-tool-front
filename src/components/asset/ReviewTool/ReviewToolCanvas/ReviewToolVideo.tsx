@@ -120,6 +120,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
     };
 
     const handleMouseUp = () => {
+      console.log('handleMouseUp');
       if (isDragging) {
         setIsDragging(false);
         if (getIsMediaHtmlElement(fileRef.current)) {
@@ -147,10 +148,11 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchend', handleMouseUp);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleMouseUp);
     };
-  }, [isDragging, fileRef, wasPlaying]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDragging, wasPlaying, fileRef]);
 
   const handlePlay = () => {
     setIsPlaying(true);
