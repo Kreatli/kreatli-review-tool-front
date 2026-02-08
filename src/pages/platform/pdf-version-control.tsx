@@ -10,11 +10,14 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import {
+  PDF_VERSION_CONTROL_STEPS,
+  PlatformStepGuide,
+} from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { PlatformStepGuide, VIDEO_VERSIONING_STEPS } from '../../components/shared/PlatformStepGuide';
+import { VersioningFeaturePreview } from '../../components/shared/VersioningFeaturePreview';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
-import { VersioningFeaturePreview } from '../../components/shared/VersioningFeaturePreview';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getRelatedResources } from '../../data/related-resources';
@@ -22,77 +25,77 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What is video versioning?',
+    question: 'What is PDF version control?',
     answer:
-      'Video versioning is keeping a history of your video cuts and revisions so you can track changes, compare versions side by side, and always know which cut is current. In Kreatli, video versioning is built in: every upload can be stored as a new version of the same file, and you can compare any two versions side by side with synced timelines. Comments and feedback stay tied to the right version, so nothing gets lost as you move from rough cut to final.',
+      'PDF version control is keeping a history of your PDF drafts and revisions so you can track changes, compare versions side by side, and always know which version is current. In Kreatli, PDF version control is built in: every upload can be stored as a new version of the same file, and you can compare any two versions side by side. Comments and feedback stay tied to the right version, so nothing gets lost as you move from draft to final.',
   },
   {
-    question: 'How do I manage video versioning in Kreatli?',
+    question: 'How do I manage PDF version control in Kreatli?',
     answer:
-      'Upload your first video to a Kreatli project. When you have a new cut, open the file menu (⋯) on that asset and choose Upload new version. The new file appears in the same project with full version history. You can compare two versions side by side by selecting both in the Media view and clicking Compare. Video versioning in Kreatli keeps every cut in one place so you and your clients always see the latest or compare past versions.',
+      "Upload your first PDF to a Kreatli project. When you have a revised draft, open the file menu (⋯) on that asset and choose Upload new version. The new file appears in the same project with full version history. You can compare two PDF versions side by side by selecting both in the Media view and clicking Compare. PDF version control in Kreatli keeps every draft in one place so you and your clients always see the latest or compare past versions.",
   },
   {
-    question: 'Can I compare two video versions side by side?',
+    question: 'Can I compare two PDF versions side by side?',
     answer:
-      "Yes. In Kreatli you select two video versions in the Media view and click Compare to open them side by side. Playback stays in sync so you can spot frame-level differences. The comments panel shows feedback on either version, and you can add frame-accurate comments and annotations. Video versioning with side-by-side comparison makes it easy to see what changed between cuts and track what's resolved.",
+      "Yes. In Kreatli you select two PDF versions in the Media view and click Compare to open them side by side. The comments panel shows feedback on either version, and you can add comments and annotations pinned to the exact page and spot. PDF version control with side-by-side comparison makes it easy to see what changed between drafts and track what's resolved.",
   },
   {
-    question: 'Does video versioning work with client review links?',
+    question: 'Does PDF version control work with client review links?',
     answer:
-      'Yes. When you share a review link, clients see the version you shared. When you upload a new version, you can share the same or a new link so they see the updated cut. Video versioning keeps approval and feedback tied to the right version, and you stay in control of who can view or comment on each cut.',
+      'Yes. When you share a review link, clients see the version you shared. When you upload a new version, you can share the same or a new link so they see the updated PDF. PDF version control keeps approval and feedback tied to the right version, and you stay in control of who can view or comment on each draft.',
   },
   {
-    question: 'How long is video version history kept?',
+    question: 'How long is PDF version history kept?',
     answer:
-      'Kreatli keeps version history for your video files so you can compare and revert as needed. All versions stay in the same project and are available for side-by-side comparison and review. Check your plan for storage limits; versioning is designed so you never lose track of which cut is which.',
+      'Kreatli keeps version history for your PDF files so you can compare and revert as needed. All versions stay in the same project and are available for side-by-side comparison and review. Check your plan for storage limits; versioning is designed so you never lose track of which draft is which.',
   },
   {
-    question: 'Can multiple people review different video versions?',
+    question: 'Can multiple people review different PDF versions?',
     answer:
-      'Yes. You can share review links for specific versions, and reviewers can add comments and feedback on the version they see. When you upload a new version, you control who gets access. Video versioning in Kreatli lets you track who approved which cut and keep feedback organized across revision rounds.',
+      'Yes. You can share review links for specific versions, and reviewers can add comments and feedback on the version they see. When you upload a new version, you control who gets access. PDF version control in Kreatli lets you track who approved which draft and keep feedback organized across revision rounds.',
   },
   {
-    question: 'Why use video versioning in Kreatli instead of folder renames or spreadsheets?',
+    question: 'Why use PDF version control in Kreatli instead of folder renames or email?',
     answer:
-      'Video versioning in Kreatli keeps every cut in one place with the same asset, so you don\'t rely on "final_v2_revised_FINAL.mp4" or spreadsheets to track what changed. You compare versions side by side with synced playback, feedback is tied to the right version, and uploading a new version is one click. That reduces confusion and speeds up review and approval.',
+      "PDF version control in Kreatli keeps every draft in one place with the same asset, so you don't rely on \"proposal_v2_final_FINAL.pdf\" or email chains to track what changed. You compare versions side by side, feedback is tied to the right version, and uploading a new version is one click. That reduces confusion and speeds up review and approval.",
   },
   {
-    question: 'How does video versioning help video production workflows?',
+    question: 'How does PDF version control help creative and legal workflows?',
     answer:
-      "Video versioning streamlines production by giving you a clear history of cuts, side-by-side comparison, and feedback tied to each version. Editors and clients always know which cut they're looking at, and you can track approvals and resolution across rounds. That speeds up revisions and ensures nothing gets missed when moving from draft to final.",
+      "PDF version control streamlines workflows by giving you a clear history of drafts, side-by-side comparison, and feedback tied to each version. Writers, designers, and clients always know which draft they're looking at, and you can track approvals and resolution across rounds. That speeds up revisions for contracts, decks, and layouts and ensures nothing gets missed when moving from draft to final.",
   },
 ];
 
-export default function VideoVersioningPage() {
+export default function PdfVersionControlPage() {
   useSession();
-  const articles = getPlatformArticles('/platform/video-versioning');
+  const articles = getPlatformArticles('/platform/pdf-version-control');
 
   return (
     <>
       <Head>
-        <title>Video Versioning | Kreatli</title>
+        <title>PDF Version Control | Kreatli</title>
         <meta
           name="description"
-          content="Video versioning with version history and side-by-side comparison. Track and compare video versions in one place with your team."
+          content="PDF version control with version history and side-by-side comparison. Track and compare PDF versions in one place with your team."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/video-versioning" />
-        <meta property="og:url" content="https://kreatli.com/platform/video-versioning" />
+        <link rel="canonical" href="https://kreatli.com/platform/pdf-version-control" />
+        <meta property="og:url" content="https://kreatli.com/platform/pdf-version-control" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Video Versioning | Kreatli" />
+        <meta property="og:title" content="PDF Version Control | Kreatli" />
         <meta
           property="og:description"
-          content="Video versioning with version history and side-by-side comparison. Track and compare video versions in one place."
+          content="PDF version control with version history and side-by-side comparison. Track and compare PDF versions in one place."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Video Versioning | Kreatli" />
+        <meta property="og:image:alt" content="PDF Version Control | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Versioning | Kreatli" />
+        <meta name="twitter:title" content="PDF Version Control | Kreatli" />
         <meta
           name="twitter:description"
-          content="Video versioning with version history and side-by-side comparison. Track and compare video versions in one place."
+          content="PDF version control with version history and side-by-side comparison. Track and compare PDF versions in one place."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -100,7 +103,7 @@ export default function VideoVersioningPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Video Versioning', url: '/platform/video-versioning' },
+          { name: 'PDF Version Control', url: '/platform/pdf-version-control' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -112,11 +115,11 @@ export default function VideoVersioningPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Video Versioning
+              PDF Version Control
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Video versioning with version history and side-by-side comparison. Track and compare video versions in one
-              place with your team and creative assets.
+              PDF version control with version history and side-by-side comparison. Track and compare PDF versions in
+              one place with your team and creative assets.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -135,29 +138,29 @@ export default function VideoVersioningPage() {
             </div>
           </div>
           <div className="mx-auto w-full max-w-4xl">
-            <VersioningFeaturePreview />
+            <VersioningFeaturePreview variant="pdf" />
           </div>
         </div>
       </section>
 
       <PlatformStepGuide
-        stepsSectionTitle="How to use video versioning in Kreatli"
-        stepsIntro="Follow these steps to upload video versions, compare them side by side, and upload new versions as your cut evolves."
-        steps={VIDEO_VERSIONING_STEPS}
+        stepsSectionTitle="How to use PDF version control in Kreatli"
+        stepsIntro="Follow these steps to upload your first PDF, add new versions from the file menu, switch versions in the viewer, and compare two PDF versions side by side."
+        steps={PDF_VERSION_CONTROL_STEPS}
         completeGuide={{
-          href: '/guides/how-to-annotate-video',
+          href: '/guides/what-is-proofing-software',
           description:
-            'Learn how to annotate video and manage feedback across versions for faster review cycles and client approvals.',
+            'Learn how proofing and creative review work in one place with your video, PDFs, and other assets.',
         }}
       />
 
-      {/* Video versioning features Section */}
+      {/* How PDF version control works Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How Video Versioning Works</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How PDF Version Control Works</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Version history, side-by-side comparison, and one-click uploads keep your video versioning simple and
+              Version history, side-by-side comparison, and one-click uploads keep your PDF version control simple and
               traceable.
             </p>
           </div>
@@ -172,8 +175,8 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">Version History</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Every video you upload as a new version stays in the same project. Video versioning keeps a clear
-                  history so you always know which cut is current and can compare or revert as needed.
+                  Every PDF you upload as a new version stays in the same project. PDF version control keeps a clear
+                  history so you always know which draft is current and can compare or revert as needed.
                 </p>
               </CardBody>
             </Card>
@@ -187,8 +190,8 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">Side-by-Side Compare</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Select two video versions and compare them side by side with synced timelines. Spot frame-level
-                  differences and see feedback on either version in one view.
+                  Select two PDF versions and compare them side by side. Spot changes and see feedback on either version
+                  in one view.
                 </p>
               </CardBody>
             </Card>
@@ -202,7 +205,7 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">Upload New Version</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  One click from the file menu to upload a new version. The new cut appears in the same project so you
+                  One click from the file menu to upload a new version. The new draft appears in the same project so you
                   can compare with the previous version and keep review going without losing context.
                 </p>
               </CardBody>
@@ -217,8 +220,8 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">Feedback Tied to Versions</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Comments and annotations stay linked to the version they were added on. Video versioning in Kreatli
-                  keeps feedback organized so you know what was addressed in which cut.
+                  Comments and annotations stay linked to the version they were added on. PDF version control in Kreatli
+                  keeps feedback organized so you know what was addressed in which draft.
                 </p>
               </CardBody>
             </Card>
@@ -248,7 +251,7 @@ export default function VideoVersioningPage() {
                 </div>
                 <p className="text-sm text-foreground-500">
                   Share review links for the version you want clients to see. When you upload a new version, you control
-                  who gets access so everyone stays on the same cut.
+                  who gets access so everyone stays on the same draft.
                 </p>
               </CardBody>
             </Card>
@@ -260,9 +263,9 @@ export default function VideoVersioningPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Use Video Versioning in Kreatli</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Use PDF Version Control in Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Video versioning with version history and comparison keeps your cuts organized and your team aligned.
+              PDF version control with version history and comparison keeps your drafts organized and your team aligned.
             </p>
           </div>
 
@@ -276,8 +279,8 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">No More Naming Chaos</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Stop relying on "final_v3_revised_FINAL.mp4." Video versioning keeps every cut under one asset with
-                  clear history, so you always know which version is which.
+                  Stop relying on "proposal_v3_final_FINAL.pdf." PDF version control keeps every draft under one asset
+                  with clear history, so you always know which version is which.
                 </p>
               </CardBody>
             </Card>
@@ -291,8 +294,8 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">See What Changed</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Compare two video versions side by side with synced playback. Spot frame-level differences and keep
-                  feedback tied to the right version so revisions move faster.
+                  Compare two PDF versions side by side. Spot text and layout differences and keep feedback tied to the
+                  right version so revisions move faster.
                 </p>
               </CardBody>
             </Card>
@@ -306,8 +309,8 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">One Place for All Versions</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Video versioning in Kreatli keeps every cut in the same project with your PDFs and other assets. One
-                  review link workflow, one approval trail, less tool-switching.
+                  PDF version control in Kreatli keeps every draft in the same project with your video and other assets.
+                  One review link workflow, one approval trail, less tool-switching.
                 </p>
               </CardBody>
             </Card>
@@ -321,8 +324,8 @@ export default function VideoVersioningPage() {
                   <h3 className="font-sans text-lg font-semibold">Client-Friendly Version Review</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Share the version you want clients to review. When you upload a new cut, you decide who sees it. Video
-                  versioning keeps approvals clear and feedback organized for every round.
+                  Share the version you want clients to review. When you upload a new draft, you decide who sees it. PDF
+                  version control keeps approvals clear and feedback organized for every round.
                 </p>
               </CardBody>
             </Card>
@@ -332,8 +335,8 @@ export default function VideoVersioningPage() {
 
       {/* Free Tools Section */}
       <MoreFreeToolsSection
-        title="Free Tools for Video Teams"
-        description="Explore our collection of free tools designed to help video professionals work more efficiently."
+        title="Free Tools for Creative Teams"
+        description="Explore our collection of free tools designed to help creative and video professionals work more efficiently."
         useBannerResizerInsteadOfCostCalculator
       />
 
@@ -341,7 +344,7 @@ export default function VideoVersioningPage() {
       <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
-        description="Explore guides and comparisons that show how teams use video versioning and manage review in Kreatli."
+        description="Explore guides and comparisons that show how teams use PDF version control and manage review in Kreatli."
       />
 
       <PricingSection />
@@ -352,7 +355,7 @@ export default function VideoVersioningPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about video versioning and review workflows in Kreatli.
+              Get detailed answers about PDF version control and review workflows in Kreatli.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -373,7 +376,7 @@ export default function VideoVersioningPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how Kreatli can help you with video versioning and streamline your review workflow.
+              to learn how Kreatli can help you with PDF version control and streamline your review workflow.
             </p>
           </div>
         </div>
@@ -381,15 +384,15 @@ export default function VideoVersioningPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'videoAnnotation', 'secureAssetStorage'])}
+        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'annotatePdf', 'secureAssetStorage'])}
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your review and collaboration workflow."
       />
 
       {/* CTA Section */}
       <CTASection
-        title="Ready for Simple Video Versioning?"
-        description="Video versioning with version history and side-by-side comparison in one place with your team and clients. Start using Kreatli today."
+        title="Ready for Simple PDF Version Control?"
+        description="PDF version control with version history and side-by-side comparison in one place with your team and clients. Start using Kreatli today."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

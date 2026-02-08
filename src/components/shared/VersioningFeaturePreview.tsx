@@ -27,7 +27,7 @@ interface MockVersion {
   thumbnailUrl: string;
 }
 
-const INITIAL_VERSIONS: MockVersion[] = [
+const VIDEO_INITIAL_VERSIONS: MockVersion[] = [
   {
     id: 'v3',
     label: 'v3',
@@ -54,6 +54,33 @@ const INITIAL_VERSIONS: MockVersion[] = [
   },
 ];
 
+const PDF_INITIAL_VERSIONS: MockVersion[] = [
+  {
+    id: 'v3',
+    label: 'v3',
+    filename: 'Pitch_Deck_Final.pdf',
+    size: '2.8 MB',
+    isActive: true,
+    thumbnailUrl: 'https://picsum.photos/84/56?random=pdf3',
+  },
+  {
+    id: 'v2',
+    label: 'v2',
+    filename: 'Paid v3.pdf',
+    size: '2.34 MB',
+    isActive: false,
+    thumbnailUrl: 'https://picsum.photos/84/56?random=pdf2',
+  },
+  {
+    id: 'v1',
+    label: 'v1',
+    filename: 'Kreatli Pitch Deck.pdf',
+    size: '6.92 MB',
+    isActive: false,
+    thumbnailUrl: 'https://picsum.photos/84/56?random=pdf1',
+  },
+];
+
 function reorder<T>(list: T[], fromIndex: number, toIndex: number): T[] {
   const result = [...list];
   const [removed] = result.splice(fromIndex, 1);
@@ -65,12 +92,15 @@ function VersionRow({
   version,
   isMenuOpen,
   onMenuOpenChange,
+  variant = 'video',
 }: {
   version: MockVersion;
   isMenuOpen: boolean;
   onMenuOpenChange: (open: boolean) => void;
+  variant?: 'video' | 'pdf';
 }) {
   const [thumbnailError, setThumbnailError] = useState(false);
+  const isPdf = variant === 'pdf';
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
     id: version.id,
   });
@@ -100,9 +130,23 @@ function VersionRow({
         <Icon icon="dotsSix" size={16} />
       </div>
 
-      {/* Thumbnail - video (same logic as other feature previews: image with onError fallback) */}
+      {/* Thumbnail - PDF shows stock pic when thumbnailUrl set, else document icon; video shows image or play fallback */}
       <div className="relative flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground-200 bg-foreground-100">
-        {thumbnailError || !version.thumbnailUrl ? (
+        {isPdf && (thumbnailError || !version.thumbnailUrl) ? (
+          <div className="flex size-full items-center justify-center">
+            <Icon icon="filePdf" size={28} className="text-foreground-600" />
+          </div>
+        ) : isPdf && version.thumbnailUrl ? (
+          <Image
+            src={version.thumbnailUrl}
+            alt={version.filename}
+            className="h-full w-full object-cover"
+            removeWrapper
+            radius="none"
+            draggable={false}
+            onError={() => setThumbnailError(true)}
+          />
+        ) : !isPdf && (thumbnailError || !version.thumbnailUrl) ? (
           <>
             <div className="absolute inset-0 flex items-center justify-center bg-foreground-200/80">
               <Icon icon="play" size={20} className="text-foreground-600" />
@@ -175,12 +219,14 @@ function VersionRow({
 }
 
 /**
- * Preview of the "Manage versions" modal for the video versioning platform page.
- * Draggable version list with video production-style filenames.
+ * Preview of the "Manage versions" modal for the versioning platform pages.
+ * Draggable version list; use variant="video" for video filenames, variant="pdf" for PDF filenames and document icon.
  */
-export function VersioningFeaturePreview() {
-  const [versions, setVersions] = useState<MockVersion[]>(INITIAL_VERSIONS);
-  const [menuOpen, setMenuOpen] = useState(true);
+export function VersioningFeaturePreview({ variant = 'video' }: { variant?: 'video' | 'pdf' }) {
+  const [versions, setVersions] = useState<MockVersion[]>(
+    variant === 'pdf' ? PDF_INITIAL_VERSIONS : VIDEO_INITIAL_VERSIONS,
+  );
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
@@ -212,7 +258,13 @@ export function VersioningFeaturePreview() {
             <SortableContext items={versions.map((v) => v.id)} strategy={verticalListSortingStrategy}>
               <div className="flex flex-col gap-2">
                 {versions.map((version) => (
-                  <VersionRow key={version.id} version={version} isMenuOpen={menuOpen} onMenuOpenChange={setMenuOpen} />
+                  <VersionRow
+                    key={version.id}
+                    version={version}
+                    isMenuOpen={menuOpen}
+                    onMenuOpenChange={setMenuOpen}
+                    variant={variant}
+                  />
                 ))}
               </div>
             </SortableContext>

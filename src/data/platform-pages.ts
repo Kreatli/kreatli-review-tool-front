@@ -503,6 +503,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation', 'secureAssetStorage'],
   },
+  {
+    label: 'PDF Version Control',
+    href: '/platform/pdf-version-control',
+    description: 'PDF version control with version history and comparison',
+    icon: 'filePdf',
+    section: 'Core Platform',
+    order: 32,
+    tags: ['PDF & documents', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'secureAssetStorage'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',

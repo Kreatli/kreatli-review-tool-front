@@ -856,6 +856,48 @@ export const ANNOTATE_DOCUMENT_STEPS: WorkflowStep[] = [
   },
 ];
 
+const PDF_VER_IMG = '/pdf-version-control-guide';
+
+/** Steps for the PDF Version Control platform page (upload new version, versions dropdown, compare). */
+export const PDF_VERSION_CONTROL_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF to a Kreatli project',
+    description:
+      'Sign in to Kreatli, open your project, and upload your first PDF. The file appears in the Media view and becomes version 1 (v1). You can add new versions anytime from the same asset.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF uploaded',
+  },
+  {
+    step: 2,
+    title: 'Open the 3-dot menu and upload a new version',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the PDF and choose Upload new version. The new file is added to the same asset as the next version (v2, v3, etc.) so all drafts stay in one place with full history. You can also choose Manage versions from the same menu.',
+    icon: 'checkCircle',
+    image: `${PDF_VER_IMG}/step-2-pdf-versioning-versions.png`,
+    altText: 'Open file menu and choose Upload new version in Kreatli Media view',
+  },
+  {
+    step: 3,
+    title: 'Switch versions from the Versions dropdown',
+    description:
+      'Open the PDF in the review view and use the Versions dropdown in the header to see all versions with filenames and sizes. Click a version to switch, or use Manage to reorder, set the Active version, and manage the full version stack.',
+    icon: 'addVideo',
+    image: `${PDF_VER_IMG}/step-3-pdf-versioning-upload.png`,
+    altText: 'Versions dropdown with version list and Manage in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Compare two PDF versions side by side',
+    description:
+      'Select two PDF versions in the Media view and click Compare to open them side by side. Each version shows its filename, size, status, and a preview so you can spot changes and track feedback per version.',
+    icon: 'compare',
+    image: `${PDF_VER_IMG}/step-4-pdf-versioning-compare.png`,
+    altText: 'Compare two PDF versions side by side in Kreatli',
+  },
+];
+
 /** Steps for the Compare PDF Files platform page. */
 export const COMPARE_PDF_FILES_STEPS: WorkflowStep[] = [
   {
@@ -933,6 +975,48 @@ export const COMPARE_VIDEOS_STEPS: WorkflowStep[] = [
     icon: 'checkCircle',
     image: '/video-annotation-guide/step-4-compare-videos.png',
     altText: 'Upload new version from the file menu in Kreatli',
+  },
+];
+
+const VIDEO_VER_IMG = '/video-annotation-guide';
+
+/** Steps for the Video Versioning platform page (versions panel, upload new version, compare). */
+export const VIDEO_VERSIONING_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video to a Kreatli project',
+    description:
+      'Sign in to Kreatli, open your project, and upload your first video. The file appears in the Media view and becomes version 1 (v1). You can add new versions anytime from the same asset.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with video uploaded',
+  },
+  {
+    step: 2,
+    title: 'Open the 3-dot menu and upload a new version',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the video and choose Upload new version. The new file is added to the same asset as the next version (v2, v3, etc.) so all cuts stay in one place with full history.',
+    icon: 'checkCircle',
+    image: `${VIDEO_VER_IMG}/step-2-video-versioning-versions.png`,
+    altText: 'Open file menu and choose Upload new version in Kreatli Media view',
+  },
+  {
+    step: 3,
+    title: 'Manage the version stack',
+    description:
+      'Open the version stack from the header (click the version label, e.g. v1) or via Manage versions in the file menu. See all versions with thumbnails and file sizes, reorder by dragging, set which version is Active, and switch between versions from one place.',
+    icon: 'addVideo',
+    image: `${VIDEO_VER_IMG}/step-3-video-versioning-upload.png`,
+    altText: 'Versions panel with version list and Manage in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Compare two versions side by side',
+    description:
+      'Select two video versions in the Media view and click Compare to open them side by side. Each version shows its filename, size, status, and a preview with playback controls so you can spot frame-level differences and track feedback per version.',
+    icon: 'compare',
+    image: `${VIDEO_VER_IMG}/step-4-video-versioning-compare.png`,
+    altText: 'Compare two video versions side by side in Kreatli',
   },
 ];
 
