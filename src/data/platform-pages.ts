@@ -531,6 +531,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'secureAssetStorage'],
   },
+  {
+    label: 'PDF to Link',
+    href: '/platform/pdf-to-link',
+    description: 'Turn your PDF into a shareable link for secure review and feedback',
+    icon: 'link',
+    section: 'Core Platform',
+    order: 34,
+    tags: ['PDF & documents', 'Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'addCommentsToPdf'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
