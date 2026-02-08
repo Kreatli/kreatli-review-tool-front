@@ -517,6 +517,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'secureAssetStorage'],
   },
+  {
+    label: 'Document Version Control',
+    href: '/platform/document-version-control',
+    description: 'Document version control with version history and side-by-side comparison',
+    icon: 'fileDoc',
+    section: 'Core Platform',
+    order: 33,
+    tags: ['PDF & documents', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'secureAssetStorage'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',

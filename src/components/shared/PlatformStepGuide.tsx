@@ -898,6 +898,46 @@ export const PDF_VERSION_CONTROL_STEPS: WorkflowStep[] = [
   },
 ];
 
+/** Steps for the Document Version Control platform page (upload new version, versions dropdown, compare). */
+export const DOCUMENT_VERSION_CONTROL_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your document to a Kreatli project',
+    description:
+      'Sign in to Kreatli, open your project, and upload your first document (PDF, deck, or other file). The file appears in the Media view and becomes version 1 (v1). You can add new versions anytime from the same asset.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with document uploaded',
+  },
+  {
+    step: 2,
+    title: 'Open the 3-dot menu and upload a new version',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the document and choose Upload new version. The new file is added to the same asset as the next version (v2, v3, etc.) so all drafts stay in one place with full history. You can also choose Manage versions from the same menu.',
+    icon: 'checkCircle',
+    image: `${PDF_VER_IMG}/step-2-pdf-versioning-versions.png`,
+    altText: 'Open file menu and choose Upload new version in Kreatli Media view',
+  },
+  {
+    step: 3,
+    title: 'Switch versions from the Versions dropdown',
+    description:
+      'Open the document in the review view and use the Versions dropdown in the header to see all versions with filenames and sizes. Click a version to switch, or use Manage to reorder, set the Active version, and manage the full version stack.',
+    icon: 'addVideo',
+    image: `${PDF_VER_IMG}/step-3-pdf-versioning-upload.png`,
+    altText: 'Versions dropdown with version list and Manage in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Compare two document versions side by side',
+    description:
+      'Select two document versions in the Media view and click Compare to open them side by side. Each version shows its filename, size, status, and a preview so you can spot changes and track feedback per version.',
+    icon: 'compare',
+    image: `${PDF_VER_IMG}/step-4-pdf-versioning-compare.png`,
+    altText: 'Compare two document versions side by side in Kreatli',
+  },
+];
+
 /** Steps for the Compare PDF Files platform page. */
 export const COMPARE_PDF_FILES_STEPS: WorkflowStep[] = [
   {
