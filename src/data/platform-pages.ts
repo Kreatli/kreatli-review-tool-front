@@ -545,6 +545,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'addCommentsToPdf'],
   },
+  {
+    label: 'Image to Link',
+    href: '/platform/image-to-link',
+    description: 'Turn your image into a shareable link for secure review and feedback',
+    icon: 'link',
+    section: 'Core Platform',
+    order: 35,
+    tags: ['Review & compare', 'Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf', 'addCommentsToPdf'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',

@@ -613,6 +613,55 @@ export const PDF_TO_LINK_STEPS: WorkflowStep[] = [
   },
 ];
 
+/** Steps for the Image to Link platform page (turn image into a shareable link). */
+export const IMAGE_TO_LINK_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your image in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your image (JPG, PNG, GIF, WebP, etc.). Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with image upload, ready to generate a link',
+  },
+  {
+    step: 2,
+    title: 'Open the file menu and choose Share',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the image and choose Share. Create a secure review link—each link opens the image in the browser with no download or account required.',
+    icon: 'link',
+    image: `${PDF_TO_LINK_IMG}/step-2-share-menu.png`,
+    altText: 'Open file menu and choose Share to get image link in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Share the link with clients or collaborators',
+    description:
+      'Copy the link or send it via the share modal (email, Slack, etc.). Recipients click once to open the image and leave comments and annotations—no sign-up or app install.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy link or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See feedback on the image',
+    description:
+      "All comments and annotations appear in one place. Recipients can draw, highlight, and comment on the image; you jump to any spot, track what's resolved, and keep every review round in one thread.",
+    icon: 'time',
+    image: `${PDF_TO_LINK_IMG}/step-4-annotate-feedback.png`,
+    altText: 'Feedback and annotations on image in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals and versions',
+    description:
+      "In the image viewer, use Compare to see versions side by side, or open the menu for Upload new version and Manage versions. See who's approved which version and revoke or update link access anytime.",
+    icon: 'checkCircle',
+    image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
+    altText: 'Image viewer with Compare, Share, and version options in Kreatli',
+  },
+];
+
 /** Steps for the Add Comments to PDF platform page. */
 export const ADD_COMMENTS_TO_PDF_STEPS: WorkflowStep[] = [
   {

@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -12,7 +13,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import {
-  PDF_TO_LINK_STEPS,
+  IMAGE_TO_LINK_STEPS,
   PlatformStepGuide,
 } from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
@@ -25,72 +26,72 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What is PDF to link?',
+    question: 'What is image to link?',
     answer:
-      'PDF to link means turning your PDF into a shareable link so you can send it to clients or collaborators without email attachments or file downloads. In Kreatli, you upload your PDF, generate a secure review link, and share it—recipients open the PDF in their browser and can comment and approve without creating an account. Every link stays tied to your project and file version.',
+      'Image to link means turning your image into a shareable link so you can send it to clients or collaborators without email attachments or file downloads. In Kreatli, you upload your image, generate a secure review link, and share it—recipients open the image in their browser and can comment and approve without creating an account. Every link stays tied to your project and file version.',
   },
   {
-    question: 'How do I turn a PDF into a link in Kreatli?',
+    question: 'How do I turn an image into a link in Kreatli?',
     answer:
-      "Upload your PDF to a Kreatli project, open the asset, and create a secure review link. Copy the link or send it via the share modal (email, Slack, etc.). Recipients click the link to open the PDF in their browser. You can generate different links for different people or review rounds, and revoke or update access anytime.",
+      "Upload your image to a Kreatli project, open the file menu (⋯) on the asset, and choose Share to create a secure review link. Copy the link or send it via the share modal (email, Slack, etc.). Recipients click the link to open the image in their browser. You can generate different links for different people or review rounds, and revoke or update access anytime.",
   },
   {
-    question: 'Do recipients need to create an account to view the PDF link?',
+    question: 'Do recipients need to create an account to view the image link?',
     answer:
-      'No. Kreatli review links are no-signup—recipients click the link and open the PDF in their browser. They can view the PDF, add comments and annotations, and submit feedback without creating an account or installing anything. That keeps the approval process fast and friction-free.',
+      'No. Kreatli review links are no-signup—recipients click the link and open the image in their browser. They can view the image, add comments and annotations, and submit feedback without creating an account or installing anything. That keeps the approval process fast and friction-free.',
   },
   {
-    question: 'Can I have multiple links for the same PDF?',
+    question: 'Can I have multiple links for the same image?',
     answer:
-      'Yes. You can generate multiple links for the same PDF—for example, one per client or one per review round. Each link opens the same file (or the version you choose), and you can revoke or update access per link. Every link stays tied to the right project and version.',
+      'Yes. You can generate multiple links for the same image—for example, one per client or one per review round. Each link opens the same file (or the version you choose), and you can revoke or update access per link. Every link stays tied to the right project and version.',
   },
   {
-    question: 'What happens when I upload a new version of the PDF?',
+    question: 'What happens when I upload a new version of the image?',
     answer:
-      'When you upload a new version, you control who sees it. You can share the same or a new link so recipients see the updated PDF. Version history is kept in one place so you can compare versions and track which draft was approved.',
+      'When you upload a new version, you control who sees it. You can share the same or a new link so recipients see the updated image. Version history is kept in one place so you can compare versions and track which draft was approved.',
   },
   {
-    question: 'Why use PDF to link in Kreatli instead of WeTransfer or email?',
+    question: 'Why use image to link in Kreatli instead of WeTransfer or email?',
     answer:
-      'PDF to link in Kreatli gives you one secure link that opens in the browser—no bulky attachments, no expiring WeTransfer links. Recipients can review and comment in one place, and you get a clear record of feedback and approvals. Everything stays in your project with your video and other assets.',
+      'Image to link in Kreatli gives you one secure link that opens in the browser—no bulky attachments, no expiring WeTransfer links. Recipients can review and comment in one place, and you get a clear record of feedback and approvals. Everything stays in your project with your video, PDFs, and other assets.',
   },
   {
-    question: 'How does PDF to link help creative and marketing workflows?',
+    question: 'How does image to link help creative and marketing workflows?',
     answer:
-      'PDF to link streamlines how you send decks, proposals, and documents to clients. One link replaces email attachments and file-hosting hops. Recipients open, comment, and approve in the browser; you track resolution and versions in one place. That speeds up approvals and keeps handoffs clear.',
+      'Image to link streamlines how you send visuals, mockups, and assets to clients. One link replaces email attachments and file-hosting hops. Recipients open, comment, and approve in the browser; you track resolution and versions in one place. That speeds up approvals and keeps handoffs clear.',
   },
 ];
 
-export default function PdfToLinkPage() {
+export default function ImageToLinkPage() {
   useSession();
-  const articles = getPlatformArticles('/platform/pdf-to-link');
+  const articles = getPlatformArticles('/platform/image-to-link');
 
   return (
     <>
       <Head>
-        <title>PDF to Link | Kreatli</title>
+        <title>Image to Link | Kreatli</title>
         <meta
           name="description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your image into a shareable link. Image to link for secure review—send one link, collect feedback, no sign-up required."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/pdf-to-link" />
-        <meta property="og:url" content="https://kreatli.com/platform/pdf-to-link" />
+        <link rel="canonical" href="https://kreatli.com/platform/image-to-link" />
+        <meta property="og:url" content="https://kreatli.com/platform/image-to-link" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="PDF to Link | Kreatli" />
+        <meta property="og:title" content="Image to Link | Kreatli" />
         <meta
           property="og:description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your image into a shareable link. Image to link for secure review—send one link, collect feedback, no sign-up required."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="PDF to Link | Kreatli" />
+        <meta property="og:image:alt" content="Image to Link | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="PDF to Link | Kreatli" />
+        <meta name="twitter:title" content="Image to Link | Kreatli" />
         <meta
           name="twitter:description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your image into a shareable link. Image to link for secure review—send one link, collect feedback, no sign-up required."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -98,7 +99,7 @@ export default function PdfToLinkPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'PDF to Link', url: '/platform/pdf-to-link' },
+          { name: 'Image to Link', url: '/platform/image-to-link' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -110,11 +111,11 @@ export default function PdfToLinkPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              PDF to Link
+              Image to Link
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Turn your PDF into a shareable link. Upload once, generate a secure review link, and send it to
-              clients—they open the PDF in their browser and comment without signing up.
+              Turn your image into a shareable link. Upload once, generate a secure review link, and send it to
+              clients—they open the image in their browser and comment without signing up.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -132,28 +133,28 @@ export default function PdfToLinkPage() {
               </Button>
             </div>
           </div>
-          <ShareFeaturePreview variant="pdf" />
+          <ShareFeaturePreview variant="image" />
         </div>
       </section>
 
       <PlatformStepGuide
-        stepsSectionTitle="How to turn your PDF into a link in Kreatli"
-        stepsIntro="Follow these steps to upload your PDF, generate a shareable link, and collect feedback—no sign-up required for recipients."
-        steps={PDF_TO_LINK_STEPS}
+        stepsSectionTitle="How to turn your image into a link in Kreatli"
+        stepsIntro="Follow these steps to upload your image, generate a shareable link, and collect feedback—no sign-up required for recipients."
+        steps={IMAGE_TO_LINK_STEPS}
         completeGuide={{
           href: '/guides/what-is-proofing-software',
           description:
-            'Learn how proofing and creative review work in one place with your video, PDFs, and other assets.',
+            'Learn how proofing and creative review work in one place with your video, images, and other assets.',
         }}
       />
 
-      {/* How PDF to link works Section */}
+      {/* How image to link works Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How PDF to Link Works</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How Image to Link Works</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Upload your PDF, get a link, share it—recipients open and review in the browser with no account or
+              Upload your image, get a link, share it—recipients open and review in the browser with no account or
               download.
             </p>
           </div>
@@ -165,10 +166,10 @@ export default function PdfToLinkPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="upload" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Upload Your PDF</h3>
+                  <h3 className="font-sans text-lg font-semibold">Upload Your Image</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Add your PDF to a Kreatli project. The file is stored securely with version history so you can
+                  Add your image to a Kreatli project. The file is stored securely with version history so you can
                   generate as many review links as you need.
                 </p>
               </CardBody>
@@ -183,8 +184,8 @@ export default function PdfToLinkPage() {
                   <h3 className="font-sans text-lg font-semibold">Generate a Secure Link</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Create a review link for the PDF. You can generate links for different stakeholders or rounds—each
-                  opens the PDF in the browser with no download or account required.
+                  Open the file menu and choose Share to create a review link. You can generate links for different
+                  stakeholders or rounds—each opens the image in the browser with no download or account required.
                 </p>
               </CardBody>
             </Card>
@@ -198,7 +199,7 @@ export default function PdfToLinkPage() {
                   <h3 className="font-sans text-lg font-semibold">Share the Link</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Send the link by email, Slack, or any channel. Recipients click once to open the PDF and leave
+                  Send the link by email, Slack, or any channel. Recipients click once to open the image and leave
                   comments and annotations—no sign-up or app install.
                 </p>
               </CardBody>
@@ -213,8 +214,8 @@ export default function PdfToLinkPage() {
                   <h3 className="font-sans text-lg font-semibold">Collect Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  All comments and annotations appear in one place. Jump to any page or spot, track what’s resolved, and
-                  keep every review round in one thread.
+                  All comments and annotations appear in one place. Jump to any spot, track what's resolved, and keep
+                  every review round in one thread.
                 </p>
               </CardBody>
             </Card>
@@ -228,8 +229,8 @@ export default function PdfToLinkPage() {
                   <h3 className="font-sans text-lg font-semibold">Version History</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Upload new versions of your PDF and share the same or a new link. Version history keeps every draft in
-                  one place so you never lose track of which file is current.
+                  Upload new versions of your image and share the same or a new link. Version history keeps every draft
+                  in one place so you never lose track of which file is current.
                 </p>
               </CardBody>
             </Card>
@@ -243,7 +244,7 @@ export default function PdfToLinkPage() {
                   <h3 className="font-sans text-lg font-semibold">Track Approvals</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  See who’s approved which version and revoke or update link access anytime. Every link stays tied to
+                  See who's approved which version and revoke or update link access anytime. Every link stays tied to
                   the right project and file version.
                 </p>
               </CardBody>
@@ -256,7 +257,7 @@ export default function PdfToLinkPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Use PDF to Link in Kreatli</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Use Image to Link in Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Replace email attachments and file-hosting hops with one secure link that opens in the browser and
               collects feedback in one place.
@@ -273,7 +274,7 @@ export default function PdfToLinkPage() {
                   <h3 className="font-sans text-lg font-semibold">One Link, No Attachments</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Skip bulky email attachments and expiring WeTransfer links. Send one link—recipients open the PDF in
+                  Skip bulky email attachments and expiring WeTransfer links. Send one link—recipients open the image in
                   their browser and comment without downloading or signing up.
                 </p>
               </CardBody>
@@ -285,11 +286,11 @@ export default function PdfToLinkPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">One Place for PDF and Video</h3>
+                  <h3 className="font-sans text-lg font-semibold">One Place for Images and Video</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Turn PDFs into links alongside video and other assets in the same project. One review workflow, one
-                  approval trail, less tool-switching.
+                  Turn images into links alongside video and PDFs in the same project. One review workflow, one approval
+                  trail, less tool-switching.
                 </p>
               </CardBody>
             </Card>
@@ -318,7 +319,7 @@ export default function PdfToLinkPage() {
                   <h3 className="font-sans text-lg font-semibold">Control Access</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Generate multiple links per PDF, revoke or update access anytime, and keep every link tied to the
+                  Generate multiple links per image, revoke or update access anytime, and keep every link tied to the
                   right project and version.
                 </p>
               </CardBody>
@@ -338,7 +339,7 @@ export default function PdfToLinkPage() {
       <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
-        description="Explore guides and comparisons that show how teams use PDF to link and manage review in Kreatli."
+        description="Explore guides and comparisons that show how teams use image to link and manage review in Kreatli."
       />
 
       <PricingSection />
@@ -349,7 +350,7 @@ export default function PdfToLinkPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about PDF to link and review workflows in Kreatli.
+              Get detailed answers about image to link and review workflows in Kreatli.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -370,7 +371,7 @@ export default function PdfToLinkPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how Kreatli can help you turn PDFs into links and streamline your review workflow.
+              to learn how Kreatli can help you turn images into links and streamline your review workflow.
             </p>
           </div>
         </div>
@@ -382,8 +383,8 @@ export default function PdfToLinkPage() {
           'reviewApproval',
           'creativeProofing',
           'annotatePdf',
-          'addCommentsToPdf',
           'drawOnPdfDocument',
+          'addCommentsToPdf',
         ])}
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your review and collaboration workflow."
@@ -391,8 +392,8 @@ export default function PdfToLinkPage() {
 
       {/* CTA Section */}
       <CTASection
-        title="Ready to Turn Your PDF into a Link?"
-        description="PDF to link: upload once, get a secure review link, and collect feedback in one place. Start using Kreatli today."
+        title="Ready to Turn Your Image into a Link?"
+        description="Image to link: upload once, get a secure review link, and collect feedback in one place. Start using Kreatli today."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

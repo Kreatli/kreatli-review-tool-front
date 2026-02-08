@@ -6,13 +6,44 @@ import { useSession } from '../../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { Icon } from '../../various/Icon';
 
-export const ShareFeaturePreview = () => {
+type ShareVariant = 'video' | 'pdf' | 'image';
+
+const SHARE_PREVIEW_CONFIG: Record<
+  ShareVariant,
+  { filename: string; subtitle: string; previewAlt: string; previewSrc: string; aspectClass: string }
+> = {
+  video: {
+    filename: 'interview_v2.mp4',
+    subtitle: 'Vision review - Interviews',
+    previewAlt: 'Video file preview ready for sharing',
+    previewSrc: 'https://picsum.photos/1000/400?random=3',
+    aspectClass: 'aspect-video',
+  },
+  pdf: {
+    filename: 'Kreatli Pitch Deck.pdf',
+    subtitle: 'Deck review - Proposals',
+    previewAlt: 'PDF file preview ready for sharing',
+    previewSrc: 'https://picsum.photos/400/560?random=doc',
+    aspectClass: 'aspect-[3/4]',
+  },
+  image: {
+    filename: 'Hero_Banner.png',
+    subtitle: 'Campaign review - Branding',
+    previewAlt: 'Image file preview ready for sharing',
+    previewSrc: 'https://picsum.photos/1000/600?random=brand',
+    aspectClass: 'aspect-video',
+  },
+};
+
+export const ShareFeaturePreview = ({ variant = 'video' }: { variant?: ShareVariant }) => {
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
   const isTouchScreen = useIsTouchScreen();
   const [emails, setEmails] = useState<string[]>([]);
   const [input, setInput] = useState('');
   const [linkCopied, setLinkCopied] = useState(false);
+
+  const config = SHARE_PREVIEW_CONFIG[variant];
 
   // Animation state
   const [isAnimating, setIsAnimating] = useState(true);
@@ -199,16 +230,18 @@ export const ShareFeaturePreview = () => {
         <div className="flex items-center gap-3">
           <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024f" size="md" />
           <div className="min-w-0 flex-1">
-            <div className="truncate text-lg font-semibold">interview_v2.mp4</div>
-            <div className="text-sm text-foreground-500">Vision review - Interviews</div>
+            <div className="truncate text-lg font-semibold">{config.filename}</div>
+            <div className="text-sm text-foreground-500">{config.subtitle}</div>
           </div>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_280px]">
           <div className="flex flex-col gap-3">
-            <div className="relative aspect-video max-h-64 overflow-hidden rounded-lg border border-foreground-200">
+            <div
+              className={`relative max-h-64 overflow-hidden rounded-lg border border-foreground-200 ${config.aspectClass}`}
+            >
               <img
-                src="https://picsum.photos/1000/400?random=3"
-                alt="Video file preview ready for sharing"
+                src={config.previewSrc}
+                alt={config.previewAlt}
                 className="absolute h-full w-full object-cover"
               />
             </div>
