@@ -475,6 +475,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
+  {
+    label: 'Video Feedback',
+    href: '/platform/video-feedback',
+    description: 'Frame-accurate video feedback with comments and annotations',
+    icon: 'reply',
+    section: 'Core Platform',
+    order: 30,
+    tags: ['Video', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation', 'commentOnVideo'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
