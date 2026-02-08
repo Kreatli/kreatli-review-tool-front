@@ -562,6 +562,106 @@ export const ANNOTATE_PDF_STEPS: WorkflowStep[] = [
   },
 ];
 
+const PDF_TO_LINK_IMG = '/pdf-to-link-guide';
+
+/** Steps for the PDF to Link platform page (turn PDF into a shareable link). */
+export const PDF_TO_LINK_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF upload, ready to generate a link',
+  },
+  {
+    step: 2,
+    title: 'Open the file menu and choose Share',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the PDF and choose Share. Create a secure review link—each link opens the PDF in the browser with no download or account required.',
+    icon: 'link',
+    image: `${PDF_TO_LINK_IMG}/step-2-share-menu.png`,
+    altText: 'Open file menu and choose Share to get PDF link in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Share the link with clients or collaborators',
+    description:
+      'Send the link by email, Slack, or any channel. Recipients click once to open the PDF and leave comments and annotations—no sign-up or app install.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy link or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See feedback on the PDF',
+    description:
+      'All comments and annotations appear in one place. Jump to any page or spot, track what’s resolved, and keep every review round in one thread.',
+    icon: 'time',
+    image: `${PDF_TO_LINK_IMG}/step-4-annotate-feedback.png`,
+    altText: 'Feedback and annotations on PDF in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals and versions',
+    description:
+      'See who’s approved which version and revoke or update link access anytime. Every link stays tied to the right project and file version.',
+    icon: 'checkCircle',
+    image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
+    altText: 'PDF viewer with Compare, Share, and version options in Kreatli',
+  },
+];
+
+/** Steps for the Image to Link platform page (turn image into a shareable link). */
+export const IMAGE_TO_LINK_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your image in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your image (JPG, PNG, GIF, WebP, etc.). Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with image upload, ready to generate a link',
+  },
+  {
+    step: 2,
+    title: 'Open the file menu and choose Share',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the image and choose Share. Create a secure review link—each link opens the image in the browser with no download or account required.',
+    icon: 'link',
+    image: `${PDF_TO_LINK_IMG}/step-2-share-menu.png`,
+    altText: 'Open file menu and choose Share to get image link in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Share the link with clients or collaborators',
+    description:
+      'Copy the link or send it via the share modal (email, Slack, etc.). Recipients click once to open the image and leave comments and annotations—no sign-up or app install.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy link or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See feedback on the image',
+    description:
+      "All comments and annotations appear in one place. Recipients can draw, highlight, and comment on the image; you jump to any spot, track what's resolved, and keep every review round in one thread.",
+    icon: 'time',
+    image: `${PDF_TO_LINK_IMG}/step-4-annotate-feedback.png`,
+    altText: 'Feedback and annotations on image in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals and versions',
+    description:
+      "In the image viewer, use Compare to see versions side by side, or open the menu for Upload new version and Manage versions. See who's approved which version and revoke or update link access anytime.",
+    icon: 'checkCircle',
+    image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
+    altText: 'Image viewer with Compare, Share, and version options in Kreatli',
+  },
+];
+
 /** Steps for the Add Comments to PDF platform page. */
 export const ADD_COMMENTS_TO_PDF_STEPS: WorkflowStep[] = [
   {
@@ -856,6 +956,88 @@ export const ANNOTATE_DOCUMENT_STEPS: WorkflowStep[] = [
   },
 ];
 
+const PDF_VER_IMG = '/pdf-version-control-guide';
+
+/** Steps for the PDF Version Control platform page (upload new version, versions dropdown, compare). */
+export const PDF_VERSION_CONTROL_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF to a Kreatli project',
+    description:
+      'Sign in to Kreatli, open your project, and upload your first PDF. The file appears in the Media view and becomes version 1 (v1). You can add new versions anytime from the same asset.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF uploaded',
+  },
+  {
+    step: 2,
+    title: 'Open the 3-dot menu and upload a new version',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the PDF and choose Upload new version. The new file is added to the same asset as the next version (v2, v3, etc.) so all drafts stay in one place with full history. You can also choose Manage versions from the same menu.',
+    icon: 'checkCircle',
+    image: `${PDF_VER_IMG}/step-2-pdf-versioning-versions.png`,
+    altText: 'Open file menu and choose Upload new version in Kreatli Media view',
+  },
+  {
+    step: 3,
+    title: 'Switch versions from the Versions dropdown',
+    description:
+      'Open the PDF in the review view and use the Versions dropdown in the header to see all versions with filenames and sizes. Click a version to switch, or use Manage to reorder, set the Active version, and manage the full version stack.',
+    icon: 'addVideo',
+    image: `${PDF_VER_IMG}/step-3-pdf-versioning-upload.png`,
+    altText: 'Versions dropdown with version list and Manage in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Compare two PDF versions side by side',
+    description:
+      'Select two PDF versions in the Media view and click Compare to open them side by side. Each version shows its filename, size, status, and a preview so you can spot changes and track feedback per version.',
+    icon: 'compare',
+    image: `${PDF_VER_IMG}/step-4-pdf-versioning-compare.png`,
+    altText: 'Compare two PDF versions side by side in Kreatli',
+  },
+];
+
+/** Steps for the Document Version Control platform page (upload new version, versions dropdown, compare). */
+export const DOCUMENT_VERSION_CONTROL_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your document to a Kreatli project',
+    description:
+      'Sign in to Kreatli, open your project, and upload your first document (PDF, deck, or other file). The file appears in the Media view and becomes version 1 (v1). You can add new versions anytime from the same asset.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with document uploaded',
+  },
+  {
+    step: 2,
+    title: 'Open the 3-dot menu and upload a new version',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the document and choose Upload new version. The new file is added to the same asset as the next version (v2, v3, etc.) so all drafts stay in one place with full history. You can also choose Manage versions from the same menu.',
+    icon: 'checkCircle',
+    image: `${PDF_VER_IMG}/step-2-pdf-versioning-versions.png`,
+    altText: 'Open file menu and choose Upload new version in Kreatli Media view',
+  },
+  {
+    step: 3,
+    title: 'Switch versions from the Versions dropdown',
+    description:
+      'Open the document in the review view and use the Versions dropdown in the header to see all versions with filenames and sizes. Click a version to switch, or use Manage to reorder, set the Active version, and manage the full version stack.',
+    icon: 'addVideo',
+    image: `${PDF_VER_IMG}/step-3-pdf-versioning-upload.png`,
+    altText: 'Versions dropdown with version list and Manage in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Compare two document versions side by side',
+    description:
+      'Select two document versions in the Media view and click Compare to open them side by side. Each version shows its filename, size, status, and a preview so you can spot changes and track feedback per version.',
+    icon: 'compare',
+    image: `${PDF_VER_IMG}/step-4-pdf-versioning-compare.png`,
+    altText: 'Compare two document versions side by side in Kreatli',
+  },
+];
+
 /** Steps for the Compare PDF Files platform page. */
 export const COMPARE_PDF_FILES_STEPS: WorkflowStep[] = [
   {
@@ -933,6 +1115,48 @@ export const COMPARE_VIDEOS_STEPS: WorkflowStep[] = [
     icon: 'checkCircle',
     image: '/video-annotation-guide/step-4-compare-videos.png',
     altText: 'Upload new version from the file menu in Kreatli',
+  },
+];
+
+const VIDEO_VER_IMG = '/video-annotation-guide';
+
+/** Steps for the Video Versioning platform page (versions panel, upload new version, compare). */
+export const VIDEO_VERSIONING_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video to a Kreatli project',
+    description:
+      'Sign in to Kreatli, open your project, and upload your first video. The file appears in the Media view and becomes version 1 (v1). You can add new versions anytime from the same asset.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with video uploaded',
+  },
+  {
+    step: 2,
+    title: 'Open the 3-dot menu and upload a new version',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the video and choose Upload new version. The new file is added to the same asset as the next version (v2, v3, etc.) so all cuts stay in one place with full history.',
+    icon: 'checkCircle',
+    image: `${VIDEO_VER_IMG}/step-2-video-versioning-versions.png`,
+    altText: 'Open file menu and choose Upload new version in Kreatli Media view',
+  },
+  {
+    step: 3,
+    title: 'Manage the version stack',
+    description:
+      'Open the version stack from the header (click the version label, e.g. v1) or via Manage versions in the file menu. See all versions with thumbnails and file sizes, reorder by dragging, set which version is Active, and switch between versions from one place.',
+    icon: 'addVideo',
+    image: `${VIDEO_VER_IMG}/step-3-video-versioning-upload.png`,
+    altText: 'Versions panel with version list and Manage in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Compare two versions side by side',
+    description:
+      'Select two video versions in the Media view and click Compare to open them side by side. Each version shows its filename, size, status, and a preview with playback controls so you can spot frame-level differences and track feedback per version.',
+    icon: 'compare',
+    image: `${VIDEO_VER_IMG}/step-4-video-versioning-compare.png`,
+    altText: 'Compare two video versions side by side in Kreatli',
   },
 ];
 

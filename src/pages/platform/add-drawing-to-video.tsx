@@ -252,6 +252,48 @@ export default function AddDrawingToVideoPage() {
         </div>
       </section>
 
+      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mx-auto w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
+            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
+              Related video features
+            </h2>
+            <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
+              Give video feedback, comment on video, or annotate. Explore these options:
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                as={NextLink}
+                href="/platform/video-feedback"
+                size="md"
+                className="bg-foreground font-medium text-content1 hover:opacity-90"
+                endContent={<Icon icon="arrowRight" size={16} />}
+              >
+                Video Feedback
+              </Button>
+              <Button
+                as={NextLink}
+                href="/platform/comment-on-video"
+                size="md"
+                className="bg-foreground font-medium text-content1 hover:opacity-90"
+                endContent={<Icon icon="arrowRight" size={16} />}
+              >
+                Comment on Video
+              </Button>
+              <Button
+                as={NextLink}
+                href="/platform/video-annotation"
+                size="md"
+                className="bg-foreground font-medium text-content1 hover:opacity-90"
+                endContent={<Icon icon="arrowRight" size={16} />}
+              >
+                Video Annotation
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
