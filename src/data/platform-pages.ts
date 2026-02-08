@@ -489,6 +489,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     },
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation', 'commentOnVideo'],
   },
+  {
+    label: 'Video Versioning',
+    href: '/platform/video-versioning',
+    description: 'Track and compare video versions with version history',
+    icon: 'time',
+    section: 'Core Platform',
+    order: 31,
+    tags: ['Video', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation', 'secureAssetStorage'],
+  },
   // Storage & Integrations section
   {
     label: 'Secure Asset Storage',
