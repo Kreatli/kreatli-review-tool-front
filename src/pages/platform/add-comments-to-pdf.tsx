@@ -263,9 +263,18 @@ export default function AddCommentsToPdfPage() {
               Related PDF & document features
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
-              Need full annotation or want to draw on PDFs? Explore these options:
+              Need to highlight pdf, full annotation, or draw on PDFs? Explore these options:
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                as={NextLink}
+                href="/platform/highlight-pdf"
+                size="md"
+                className="bg-foreground font-medium text-content1 hover:opacity-90"
+                endContent={<Icon icon="arrowRight" size={16} />}
+              >
+                Highlight PDF
+              </Button>
               <Button
                 as={NextLink}
                 href="/platform/annotate-pdf"
