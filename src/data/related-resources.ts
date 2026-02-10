@@ -155,6 +155,14 @@ export const RELATED_RESOURCES = {
     icon: 'upload' as IconType,
     buttonText: 'Try Now',
   },
+  videoFeedbackTool: {
+    title: 'Video Feedback Tool',
+    description:
+      'Give frame-accurate feedback on videos with comments, annotations, and markup. No sign-up required for reviewers.',
+    href: '/free-tools/video-feedback-tool',
+    icon: 'play' as IconType,
+    buttonText: 'Try Now',
+  },
 } as const;
 
 // Helper function to get resources by keys

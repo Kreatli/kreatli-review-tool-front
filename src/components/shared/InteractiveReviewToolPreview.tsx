@@ -158,7 +158,10 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
       onDrop={handleDrop}
-      className={cn('transition-all', isDragging && 'ring-2 ring-primary ring-offset-2')}
+      className={cn(
+        'border border-foreground-200 transition-all',
+        isDragging && 'ring-2 ring-primary ring-offset-2',
+      )}
     >
       <CardBody className="flex flex-col gap-2">
         <div className="flex items-center justify-between gap-2">

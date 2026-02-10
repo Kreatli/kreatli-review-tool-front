@@ -37,6 +37,14 @@ const tools: Tool[] = [
     category: 'Utility Tools',
   },
   {
+    title: 'Video Feedback Tool',
+    description:
+      'Give frame-accurate feedback on videos with comments, annotations, and markup. Share review links with clients—no sign-up required for reviewers.',
+    href: '/free-tools/video-feedback-tool',
+    icon: 'play',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub a video, capture multiple moments, compare two frames side-by-side, and download PNG/JPG stills instantly—right in your browser.',
