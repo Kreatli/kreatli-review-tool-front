@@ -163,6 +163,14 @@ export const RELATED_RESOURCES = {
     icon: 'play' as IconType,
     buttonText: 'Try Now',
   },
+  videoReviewer: {
+    title: 'Video Reviewer',
+    description:
+      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. No sign-up required.',
+    href: '/free-tools/video-reviewer',
+    icon: 'monitorPlay' as IconType,
+    buttonText: 'Try Now',
+  },
 } as const;
 
 // Helper function to get resources by keys

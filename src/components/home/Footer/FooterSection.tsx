@@ -83,6 +83,10 @@ const RESOURCES_NAV = {
           href: '/free-tools/video-feedback-tool',
         },
         {
+          label: 'Video Reviewer',
+          href: '/free-tools/video-reviewer',
+        },
+        {
           label: 'Data Transfer Calculator',
           href: '/free-tools/data-transfer-calculator',
         },

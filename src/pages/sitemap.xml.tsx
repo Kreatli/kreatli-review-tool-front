@@ -31,6 +31,7 @@ const STATIC_PAGES: StaticPage[] = [
   // Free tools hub + tool pages
   { path: '/free-tools', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-feedback-tool', priority: '0.8', changefreq: 'weekly' },
+  { path: '/free-tools/video-reviewer', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-frame-extractor', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/data-transfer-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/cost-calculator', priority: '0.7', changefreq: 'monthly' },

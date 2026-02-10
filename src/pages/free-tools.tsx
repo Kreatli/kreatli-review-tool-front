@@ -45,6 +45,14 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Video Reviewer',
+    description:
+      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. Share with clients—no sign-up required.',
+    href: '/free-tools/video-reviewer',
+    icon: 'monitorPlay',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub a video, capture multiple moments, compare two frames side-by-side, and download PNG/JPG stills instantly—right in your browser.',
