@@ -1230,6 +1230,82 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/picture-into-url': [
+    makeArticleCard({
+      id: 'platform-picture-into-url-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-picture-into-url-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-picture-into-url-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
+  '/platform/review-pdf': [
+    makeArticleCard({
+      id: 'platform-review-pdf-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-review-pdf-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-review-pdf-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
   '/platform/compare-pdf-files': [
     makeArticleCard({
       id: 'platform-compare-pdf-guide-1',
@@ -1420,6 +1496,160 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       readTime: '7',
       imageFilename:
         'https://a.storyblok.com/f/287637539865613/2250x750/6b3b121e09/send-large-files-to-clients-7-tools-that-let-you-send-20gb-free.png',
+    }),
+  ],
+
+  '/platform/proof-pdf': [
+    makeArticleCard({
+      id: 'platform-proof-pdf-guide-1',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-proof-pdf-guide-2',
+      full_slug: '/comparisons/proofing-software',
+      title: 'Proofing Software vs Production Management: Key Differences and the Best Choice for Creative Teams',
+      description:
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases, success metrics, and how to combine both effectively.',
+      tags: ['Proofing', 'Production Management'],
+      publishDate: '2025-12-05 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/61be205673/proofing-software-vs-production-management-key-differences-and-the-best-choice-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-proof-pdf-guide-3',
+      full_slug: '/guides/pdf-annotation-tools',
+      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      description:
+        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
+      tags: ['PDF Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+  ],
+
+  '/platform/review-video': [
+    makeArticleCard({
+      id: 'platform-review-video-guide-1',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-review-video-guide-2',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Most Practical Comparison Guide',
+      description:
+        'A practical 2026 guide comparing Kreatli and Frame.io for creative teams who need better production workflows.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/2a38a6fcee/kreatli-vs-frame-io-2025-the-real-differences-and-when-to-pick-each.png',
+    }),
+    makeArticleCard({
+      id: 'platform-review-video-guide-3',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Manage Projects With Kreatli',
+      description:
+        'Learn how video production companies use Kreatli to manage projects, collaborate with clients, and streamline approvals from pre-production to delivery.',
+      tags: ['Project Management', 'Video Production'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+  ],
+
+  '/platform/video-proofing': [
+    makeArticleCard({
+      id: 'platform-video-proofing-guide-1',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-proofing-guide-2',
+      full_slug: '/guides/what-is-proofing-software',
+      title: 'What Is Proofing Software? A Modern Guide for Creative Teams',
+      description:
+        'Learn what proofing software is, how online proofing tools work, and why modern creative teams are moving beyond traditional proofing workflows.',
+      tags: ['Proofing', 'Creative Teams'],
+      publishDate: '2026-01-19 00:00',
+      readTime: '10',
+      imageFilename: 'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-proofing-guide-3',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Most Practical Comparison Guide',
+      description:
+        'A practical 2026 guide comparing Kreatli and Frame.io for creative teams who need better production workflows.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/2a38a6fcee/kreatli-vs-frame-io-2025-the-real-differences-and-when-to-pick-each.png',
+    }),
+  ],
+
+  '/platform/manage-videos': [
+    makeArticleCard({
+      id: 'platform-manage-videos-guide-1',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Manage Projects With Kreatli',
+      description:
+        'Learn how video production companies use Kreatli to manage projects, collaborate with clients, and streamline approvals from pre-production to delivery.',
+      tags: ['Project Management', 'Video Production'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-manage-videos-guide-2',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-manage-videos-guide-3',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Most Practical Comparison Guide',
+      description:
+        'A practical 2026 guide comparing Kreatli and Frame.io for creative teams who need better production workflows.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/2a38a6fcee/kreatli-vs-frame-io-2025-the-real-differences-and-when-to-pick-each.png',
     }),
   ],
 };

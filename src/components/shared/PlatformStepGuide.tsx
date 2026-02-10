@@ -11,6 +11,9 @@ export interface WorkflowStep {
   image: string | null;
   altText?: string;
   imageContainerClass?: string;
+  /** Optional secondary image shown above the main image */
+  secondaryImage?: string;
+  secondaryImageAlt?: string;
 }
 
 interface PlatformStepGuideProps {
@@ -77,25 +80,40 @@ export const PlatformStepGuide = ({
                         )}
                       </div>
                     </div>
-                    {item.image && (
-                      <div className="mt-6 flex justify-center lg:mt-8">
-                        <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
-                          <div
-                            className={`overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg ${item.imageContainerClass ? 'max-h-[65vh]' : ''}`}
-                          >
-                            <Image
-                              src={item.image}
-                              alt={item.altText ?? item.title}
-                              loading="lazy"
-                              removeWrapper
-                              className={
-                                item.imageContainerClass
-                                  ? 'h-auto max-h-[65vh] w-full object-contain'
-                                  : 'h-auto w-full object-contain'
-                              }
-                            />
+                    {(item.image || item.secondaryImage) && (
+                      <div className="mt-6 flex flex-col items-center gap-4 lg:mt-8">
+                        {item.secondaryImage && (
+                          <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
+                            <div className="overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg">
+                              <Image
+                                src={item.secondaryImage}
+                                alt={item.secondaryImageAlt ?? `${item.title} - overview`}
+                                loading="lazy"
+                                removeWrapper
+                                className="h-auto w-full object-contain"
+                              />
+                            </div>
                           </div>
-                        </div>
+                        )}
+                        {item.image && (
+                          <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
+                            <div
+                              className={`overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg ${item.imageContainerClass ? 'max-h-[65vh]' : ''}`}
+                            >
+                              <Image
+                                src={item.image}
+                                alt={item.altText ?? item.title}
+                                loading="lazy"
+                                removeWrapper
+                                className={
+                                  item.imageContainerClass
+                                    ? 'h-auto max-h-[65vh] w-full object-contain'
+                                    : 'h-auto w-full object-contain'
+                                }
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -562,6 +580,55 @@ export const ANNOTATE_PDF_STEPS: WorkflowStep[] = [
   },
 ];
 
+/** Steps for the Review PDF platform page. */
+export const REVIEW_PDF_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored with version history so you can review and share for approval in one place.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF upload, ready to review',
+  },
+  {
+    step: 2,
+    title: 'Open the PDF in the review interface',
+    description:
+      'Open the asset to enter the review view. Navigate page by page and click or select any area where you want to add comments, highlights, or feedback.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with PDF in project, open for review',
+  },
+  {
+    step: 3,
+    title: 'Add feedback on the PDF',
+    description:
+      'Add comments pinned to exact spots, use highlights and shapes to mark regions, and draw or use arrows to point to elements. All feedback stays tied to the right page and position.',
+    icon: 'chat',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Adding feedback on PDF in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and track resolution',
+    description:
+      "View all comments in one place, filter by reviewer, and jump to any feedback. Track what's resolved and what still needs attention across review rounds.",
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Feedback and comments on PDF in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for review and approval',
+    description:
+      'Share a review link so clients can add feedback without signing up. Mark comments resolved as you address them and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track PDF review in Kreatli',
+  },
+];
+
 const PDF_TO_LINK_IMG = '/pdf-to-link-guide';
 
 /** Steps for the PDF to Link platform page (turn PDF into a shareable link). */
@@ -659,6 +726,55 @@ export const IMAGE_TO_LINK_STEPS: WorkflowStep[] = [
     icon: 'checkCircle',
     image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
     altText: 'Image viewer with Compare, Share, and version options in Kreatli',
+  },
+];
+
+/** Steps for the Picture into URL platform page (turn picture into a shareable URL). */
+export const PICTURE_INTO_URL_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your picture in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your picture (JPG, PNG, GIF, WebP, etc.). Your file is stored securely with version history so you can generate a shareable URL and share for review in one place.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with picture upload, ready to generate a URL',
+  },
+  {
+    step: 2,
+    title: 'Open the file menu and choose Share',
+    description:
+      'In the Media view, open the 3-dot menu (⋯) on the picture and choose Share. Create a secure review URL—each link opens the picture in the browser with no download or account required.',
+    icon: 'link',
+    image: `${PDF_TO_LINK_IMG}/step-2-share-menu.png`,
+    altText: 'Open file menu and choose Share to get picture URL in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Share the URL with clients or collaborators',
+    description:
+      'Copy the URL or send it via the share modal (email, Slack, etc.). Recipients click once to open the picture and leave comments and annotations—no sign-up or app install.',
+    icon: 'group',
+    image: '/video-annotation-guide/step-3-share-modal.png',
+    altText: 'Share File modal: copy URL or send via email in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See feedback on the picture',
+    description:
+      "All comments and annotations appear in one place. Recipients can draw, highlight, and comment on the picture; you jump to any spot, track what's resolved, and keep every review round in one thread.",
+    icon: 'time',
+    image: `${PDF_TO_LINK_IMG}/step-4-annotate-feedback.png`,
+    altText: 'Feedback and annotations on picture in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Track approvals and versions',
+    description:
+      "In the picture viewer, use Compare to see versions side by side, or open the menu for Upload new version and Manage versions. See who's approved which version and revoke or update URL access anytime.",
+    icon: 'checkCircle',
+    image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
+    altText: 'Picture viewer with Compare, Share, and version options in Kreatli',
   },
 ];
 
@@ -1197,5 +1313,194 @@ export const COMPARE_DOCUMENTS_ONLINE_STEPS: WorkflowStep[] = [
     icon: 'checkCircle',
     image: '/video-annotation-guide/step-4-compare.png',
     altText: 'Upload new version from the file menu in Kreatli',
+  },
+];
+
+/** Steps for the Proof PDF platform page. */
+export const PROOF_PDF_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your PDF in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored with version history so you can proof and share for approval in one place.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with PDF upload, ready to proof',
+  },
+  {
+    step: 2,
+    title: 'Open the PDF in the proofing interface',
+    description:
+      'Open the asset to enter the proofing view. Navigate page by page and click or select any area where you want to add comments, highlights, or feedback.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-doc.png',
+    altText: 'Kreatli Media view with PDF in project, open for proofing',
+  },
+  {
+    step: 3,
+    title: 'Add feedback on the PDF',
+    description:
+      'Add comments pinned to exact spots, use highlights and shapes to mark regions, and draw or use arrows to point to elements. All feedback stays tied to the right page and position.',
+    icon: 'chat',
+    image: '/video-annotation-guide/step-3-doc.png',
+    altText: 'Adding feedback on PDF in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'See all feedback and track resolution',
+    description:
+      "View all comments in one place, filter by reviewer, and jump to any feedback. Track what's resolved and what still needs attention across proofing rounds.",
+    icon: 'time',
+    image: '/video-annotation-guide/step-4-doc.png',
+    altText: 'Feedback and comments on PDF in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for proofing and approval',
+    description:
+      'Share a proofing link so clients can add feedback without signing up. Mark comments resolved as you address them and upload new versions when needed.',
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-5-doc.png',
+    altText: 'Share and track PDF proofing in Kreatli',
+  },
+];
+
+/** Steps for the Review Video platform page. */
+export const REVIEW_VIDEO_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your video or add an existing asset. Your video is ready for frame-accurate review inside the same workflow.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with video upload, ready for review',
+  },
+  {
+    step: 2,
+    title: 'Open the video in the review player',
+    description:
+      'Open the asset to enter the frame-accurate review view. The player lets you scrub to any frame and add comments at precise moments.',
+    icon: 'addVideo',
+    image: `${IMG}-2.webp`,
+    altText: 'Kreatli review player with video open for review',
+  },
+  {
+    step: 3,
+    title: 'Add frame-accurate comments and annotations',
+    description:
+      'Add comments, drawings, and shapes pinned to specific frames. Use text comments for feedback, draw on the frame to highlight areas, and use arrows or markers to point to elements.',
+    icon: 'chat',
+    image: `${IMG}-3.webp`,
+    altText: 'Adding frame-accurate comments and drawings on video in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Use the timeline to review and jump to frames',
+    description:
+      'See all comments on the timeline and jump to any frame to address feedback. Editors can navigate directly to annotated moments without guessing timestamps.',
+    icon: 'time',
+    image: `${IMG}-4.webp`,
+    altText: 'Timeline view with comments in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      "Share a link with reviewers so they can comment without signing up. Mark comments as resolved as you address them, and keep everyone aligned on what's done and what's pending.",
+    icon: 'checkCircle',
+    image: `${IMG}-5.webp`,
+    altText: 'Sharing and resolution tracking for video review in Kreatli',
+  },
+];
+
+/** Steps for the Video Proofing platform page. */
+export const VIDEO_PROOFING_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload your video or add an existing asset. Your video is ready for frame-accurate proofing inside the same workflow.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with video upload, ready for proofing',
+  },
+  {
+    step: 2,
+    title: 'Open the video in the proofing player',
+    description:
+      'Open the asset to enter the frame-accurate proofing view. The player lets you scrub to any frame and add comments at precise moments.',
+    icon: 'addVideo',
+    image: `${IMG}-2.webp`,
+    altText: 'Kreatli proofing player with video open',
+  },
+  {
+    step: 3,
+    title: 'Add frame-accurate comments and annotations',
+    description:
+      'Add comments, drawings, and shapes pinned to specific frames. Use text comments for feedback, draw on the frame to highlight areas, and use arrows or markers to point to elements.',
+    icon: 'chat',
+    image: `${IMG}-3.webp`,
+    altText: 'Adding frame-accurate comments and drawings on video in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Use the timeline to proof and jump to frames',
+    description:
+      'See all comments on the timeline and jump to any frame to address feedback. Editors can navigate directly to annotated moments without guessing timestamps.',
+    icon: 'time',
+    image: `${IMG}-4.webp`,
+    altText: 'Timeline view with proofing comments in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Share for approval or track resolution',
+    description:
+      "Share a proofing link with reviewers so they can comment without signing up. Mark comments as resolved as you address them, and keep everyone aligned on what's done and what's pending.",
+    icon: 'checkCircle',
+    image: `${IMG}-5.webp`,
+    altText: 'Sharing and resolution tracking for video proofing in Kreatli',
+  },
+];
+
+/** Steps for the Manage Videos platform page. */
+export const MANAGE_VIDEOS_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Create a project and upload your videos',
+    description:
+      'Sign in to Kreatli and create a project for your video production. Upload videos directly to the project—files are stored securely with no size limits and accessible from anywhere.',
+    icon: 'upload',
+    secondaryImage: '/video-annotation-guide/step-1-manage-videos-projects.png',
+    secondaryImageAlt: 'Kreatli projects dashboard showing active projects',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with videos uploaded and stored',
+  },
+  {
+    step: 2,
+    title: 'Organize assets with folders and status',
+    description:
+      'Structure your video library with folders, subfolders, and status labels. Keep raw footage, edits, and exports organized so your team can find what they need without searching through email or drives.',
+    icon: 'folder',
+    image: '/video-annotation-guide/step-2-manage-videos-folders.png',
+    altText: 'Organized video folders and status labels in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Assign members and track new versions',
+    description:
+      'Assign members to the assets and track new versions. Each version is tracked with version history, so you can switch between cuts and compare side by side.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-3-manage-videos-versions.png',
+    altText: 'Upload new version menu in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Share securely with clients and stakeholders',
+    description:
+      'Generate secure share links for videos and entire projects. Clients can view, comment, and approve without signing up. Control access, set expirations, and revoke links anytime.',
+    icon: 'share',
+    image: `${IMG}-5.webp`,
+    altText: 'Sharing videos securely with clients in Kreatli',
   },
 ];
