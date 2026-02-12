@@ -40,7 +40,7 @@ export const CancelSubscriptionModal = ({ isOpen, onClose }: Props) => {
             Stay on current plan
           </Button>
           <Button color="danger" onClick={handleCancelSubscription} isLoading={isPending}>
-            Cancel subscription
+            <span>Cancel subscription</span>
           </Button>
         </ModalFooter>
       </ModalContent>

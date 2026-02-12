@@ -60,7 +60,7 @@ export const ArchiveAssetModal = ({ projectId, asset, isOpen, onClose }: Props) 
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isLoading} onClick={handleArchive}>
-                Delete
+                <span>Delete</span>
               </Button>
             </div>
           </div>

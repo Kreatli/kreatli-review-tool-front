@@ -138,7 +138,7 @@ export const CreateProjectForm = () => {
         </Link>
       )}
       <Button type="submit" isLoading={isPending} className="ml-auto w-fit bg-foreground text-content1">
-        Create
+        <span>Create</span>
       </Button>
     </form>
   );

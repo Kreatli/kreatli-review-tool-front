@@ -128,10 +128,10 @@ export const BannerExport = ({
         (blob) => {
           if (!blob) {
             setIsExporting(false);
-            addToast({ 
-              title: 'Failed to create image file. The image may be too large or corrupted.', 
-              color: 'danger', 
-              variant: 'flat' 
+            addToast({
+              title: 'Failed to create image file. The image may be too large or corrupted.',
+              color: 'danger',
+              variant: 'flat',
             });
             return;
           }
@@ -146,19 +146,19 @@ export const BannerExport = ({
           URL.revokeObjectURL(url);
 
           setIsExporting(false);
-          addToast({ 
-            title: 'Banner exported successfully!', 
-            color: 'success', 
-            variant: 'flat' 
+          addToast({
+            title: 'Banner exported successfully!',
+            color: 'success',
+            variant: 'flat',
           });
         },
         exportFormat === 'png' ? 'image/png' : 'image/jpeg',
-        0.95
+        0.95,
       );
     } catch (error) {
       console.error('Export failed:', error);
       let errorMessage = 'Failed to export banner. Please try again.';
-      
+
       if (error instanceof Error) {
         if (error.message.includes('canvas context')) {
           errorMessage = 'Failed to initialize canvas. Please refresh the page and try again.';
@@ -168,7 +168,7 @@ export const BannerExport = ({
           errorMessage = 'Failed to calculate image dimensions. Please try a different image.';
         }
       }
-      
+
       addToast({ title: errorMessage, color: 'danger', variant: 'flat' });
       setIsExporting(false);
     }
@@ -199,10 +199,10 @@ export const BannerExport = ({
           isDisabled={!imageUrl || isExporting}
           isLoading={isExporting}
           startContent={!isExporting ? <Icon icon="download" size={16} /> : undefined}
-          className="w-full bg-foreground text-content1 font-semibold"
+          className="w-full bg-foreground font-semibold text-content1"
           size="lg"
         >
-          {isExporting ? 'Exporting...' : 'Export Banner'}
+          <span>{isExporting ? 'Exporting...' : 'Export Banner'}</span>
         </Button>
       </div>
     </div>

@@ -55,7 +55,7 @@ export const ResetPasswordForm = () => {
       </div>
       <div className="flex flex-col items-center gap-4">
         <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
-          Reset password
+          <span>Reset password</span>
         </Button>
       </div>
       <div className="text-center">

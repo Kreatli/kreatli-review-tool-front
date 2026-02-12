@@ -53,7 +53,7 @@ export const RestoreAssetModal = ({ asset, projectId, isOpen, onClose }: Props) 
                 Cancel
               </Button>
               <Button className="bg-foreground text-content1" isLoading={isPending} onClick={handleRestore}>
-                Restore
+                <span>Restore</span>
               </Button>
             </div>
           </div>

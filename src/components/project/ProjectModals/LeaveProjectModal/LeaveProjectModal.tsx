@@ -50,7 +50,7 @@ export const LeaveProjectModal = ({ project, isOpen, onClose }: Props) => {
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isPending} onClick={handleLeave}>
-                Leave
+                <span>Leave</span>
               </Button>
             </div>
           </div>

@@ -68,7 +68,7 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
           Cancel
         </Button>
         <Button type="submit" isLoading={isPending} className="bg-foreground text-content1">
-          Invite
+          <span>Invite</span>
         </Button>
       </div>
     </form>

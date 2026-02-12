@@ -67,7 +67,7 @@ export const CreateFolderForm = ({ projectId, parentId, onSuccess }: Props) => {
         {...register('name', VALIDATION_RULES.SHORT_TEXT)}
       />
       <Button type="submit" isLoading={isPending} className="ml-auto w-fit bg-foreground text-content1">
-        Create
+        <span>Create</span>
       </Button>
     </form>
   );

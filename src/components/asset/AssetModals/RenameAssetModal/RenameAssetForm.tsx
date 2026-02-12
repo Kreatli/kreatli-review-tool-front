@@ -113,7 +113,7 @@ export const RenameAssetForm = ({ projectId, stackId, asset, onSuccess }: Props)
         {...register('name', VALIDATION_RULES.SHORT_TEXT)}
       />
       <Button type="submit" isLoading={isPending} className="ml-auto w-fit bg-foreground text-content1">
-        Save changes
+        <span>Save changes</span>
       </Button>
     </form>
   );

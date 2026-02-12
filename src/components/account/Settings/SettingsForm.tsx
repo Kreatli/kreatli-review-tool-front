@@ -88,7 +88,7 @@ export const SettingsForm = ({ settings }: Props) => {
           </Button>
         )}
         <Button className="bg-foreground text-content1" isLoading={isPending} onClick={handleSave}>
-          Save changes
+          <span>Save changes</span>
         </Button>
       </div>
     </div>

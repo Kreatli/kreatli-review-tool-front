@@ -127,10 +127,12 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
       </div>
       <div className="flex flex-col items-center gap-4">
         <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
-          Sign up
+          <span>Sign up</span>
         </Button>
         <Button variant="bordered" isLoading={isSsoPending} fullWidth onClick={() => googleLogin()}>
-          Sign up with <Icon icon="google" size={18} />
+          <span>
+            Sign up with <Icon icon="google" size={18} />
+          </span>
         </Button>
       </div>
       <div className="text-center">

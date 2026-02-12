@@ -101,7 +101,7 @@ export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
       </div>
       <div className="flex flex-col items-center gap-4">
         <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
-          Sign in
+          <span>Sign in</span>
         </Button>
         <Button type="button" variant="bordered" fullWidth onClick={() => googleLogin()}>
           Sign in with <Icon icon="google" size={18} />

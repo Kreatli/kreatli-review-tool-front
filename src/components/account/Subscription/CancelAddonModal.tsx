@@ -46,7 +46,7 @@ export const CancelAddonModal = ({ addon, isOpen, onClose }: Props) => {
             Cancel
           </Button>
           <Button color="danger" onClick={handleCancelAddon} isLoading={isPending}>
-            Confirm
+            <span>Confirm</span>
           </Button>
         </ModalFooter>
       </ModalContent>

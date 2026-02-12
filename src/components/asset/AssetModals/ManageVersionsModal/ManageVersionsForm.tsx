@@ -156,7 +156,7 @@ export const ManageVersionsForm = ({ projectId, stack, formRef, onCancel, onSucc
             Cancel
           </Button>
           <Button type="submit" isLoading={isPending} className="bg-foreground text-content1">
-            Save changes
+            <span>Save changes</span>
           </Button>
         </div>
       </form>

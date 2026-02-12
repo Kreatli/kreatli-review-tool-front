@@ -73,7 +73,7 @@ export const ProjectsListTable = ({
             {!search && (status === 'active' || status === 'all') && (
               <Button className="mt-4 bg-foreground text-content1" size="sm" onClick={onCreateProject}>
                 <Icon icon="plus" size={14} />
-                Create project
+                <span>Create project</span>
               </Button>
             )}
           </div>

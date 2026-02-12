@@ -89,7 +89,7 @@ export const ChatConversationRenameModal = ({ chat, isVisible, onClose }: Props)
             Cancel
           </Button>
           <Button type="submit" isLoading={isPending} form="rename-chat-form" className="bg-foreground text-content1">
-            Save changes
+            <span>Save changes</span>
           </Button>
         </ModalFooter>
       </ModalContent>

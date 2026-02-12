@@ -60,7 +60,7 @@ export const EditProjectStatusesModal = ({ project, isOpen, onClose }: Props) =>
             isLoading={isPending}
             className="bg-foreground text-content1"
           >
-            Save
+            <span>Save</span>
           </Button>
         </ModalFooter>
       </ModalContent>

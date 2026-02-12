@@ -81,7 +81,7 @@ export const AddAddonModal = ({ isOpen, onClose }: Props) => {
             Cancel
           </Button>
           <Button className="bg-foreground text-content1" onClick={handleAdd} isLoading={isPending}>
-            Add
+            <span>Add</span>
           </Button>
         </ModalFooter>
       </ModalContent>

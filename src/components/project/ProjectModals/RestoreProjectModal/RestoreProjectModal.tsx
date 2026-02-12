@@ -53,7 +53,7 @@ export const RestoreProjectModal = ({ project, isOpen, onClose }: Props) => {
                 Cancel
               </Button>
               <Button color="success" variant="flat" isLoading={isPending} onClick={handleRestore}>
-                Restore
+                <span>Restore</span>
               </Button>
             </div>
           </div>

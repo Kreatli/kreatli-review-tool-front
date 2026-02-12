@@ -45,7 +45,7 @@ export const ProjectUploadItem = ({
   };
 
   return (
-    <div className="relative flex items-start gap-2 rounded-medium px-1 py-2 transition-colors hover:bg-foreground-100">
+    <div className="notranslate relative flex items-start gap-2 rounded-medium px-1 py-2 transition-colors hover:bg-foreground-100">
       <div className="size-10 shrink-0">
         {previewUrl ? (
           <Image className="h-full w-full object-cover" removeWrapper src={previewUrl} alt={name} />

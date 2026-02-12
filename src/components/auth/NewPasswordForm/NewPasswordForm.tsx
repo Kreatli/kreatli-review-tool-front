@@ -74,7 +74,7 @@ export const NewPasswordForm = ({ token, onSuccess }: Props) => {
       </div>
       <div className="flex flex-col items-center gap-4">
         <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
-          Set new password
+          <span>Set new password</span>
         </Button>
       </div>
     </form>

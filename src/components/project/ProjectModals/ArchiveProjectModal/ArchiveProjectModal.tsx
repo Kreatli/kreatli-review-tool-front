@@ -53,7 +53,7 @@ export const ArchiveProjectModal = ({ project, isOpen, onClose }: Props) => {
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isPending} onClick={handleArchive}>
-                Archive
+                <span>Archive</span>
               </Button>
             </div>
           </div>

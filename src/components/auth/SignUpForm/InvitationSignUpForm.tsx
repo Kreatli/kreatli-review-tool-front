@@ -81,7 +81,7 @@ export const InvitationSignUpForm = ({ email, token, onSuccess }: Props) => {
         />
       </div>
       <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
-        Sign up and join
+        <span>Sign up and join</span>
       </Button>
     </form>
   );

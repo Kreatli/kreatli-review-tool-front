@@ -85,7 +85,7 @@ export const UpdateAddonModal = ({ addon, isOpen, onClose }: Props) => {
             Cancel
           </Button>
           <Button className="bg-foreground text-content1" onClick={handleUpdate} isLoading={isPending}>
-            Update
+            <span>Update</span>
           </Button>
         </ModalFooter>
       </ModalContent>

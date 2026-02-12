@@ -152,7 +152,7 @@ export const GeneralInformationForm = ({ user }: Props) => {
         <input type="file" {...getInputProps()} />
       </div>
       <Button type="submit" isLoading={isPending} className="ml-auto w-fit bg-foreground text-content1">
-        Save changes
+        <span>Save changes</span>
       </Button>
     </form>
   );

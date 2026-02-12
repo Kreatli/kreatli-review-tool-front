@@ -55,7 +55,7 @@ export const DeleteAssetsModal = ({ projectId, assetIds, isOpen, onClose, onSucc
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isPending} onClick={handleDelete}>
-                Delete forever
+                <span>Delete forever</span>
               </Button>
             </div>
           </div>

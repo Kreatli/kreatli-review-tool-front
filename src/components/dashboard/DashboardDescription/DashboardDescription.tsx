@@ -121,7 +121,7 @@ export const DashboardDescription = ({ project }: Props) => {
                   Cancel
                 </Button>
                 <Button size="sm" variant="flat" isLoading={isPending} color="primary" onClick={handleSave}>
-                  Save
+                  <span>Save</span>
                 </Button>
               </div>
             )}

@@ -53,7 +53,7 @@ export const DeleteProjectModal = ({ project, isOpen, onClose }: Props) => {
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isPending} onClick={handleDelete}>
-                Delete
+                <span>Delete</span>
               </Button>
             </div>
           </div>

@@ -58,11 +58,7 @@ function safeBaseName(fileName: string) {
   return withoutExt.replace(/[^a-zA-Z0-9_-]+/g, '_').replace(/^_+|_+$/g, '') || 'video';
 }
 
-async function blobFromCanvas(
-  canvas: HTMLCanvasElement,
-  mime: 'image/png' | 'image/jpeg',
-  quality = 0.95
-) {
+async function blobFromCanvas(canvas: HTMLCanvasElement, mime: 'image/png' | 'image/jpeg', quality = 0.95) {
   return await new Promise<Blob>((resolve, reject) => {
     canvas.toBlob(
       (b) => {
@@ -70,7 +66,7 @@ async function blobFromCanvas(
         else resolve(b);
       },
       mime,
-      quality
+      quality,
     );
   });
 }
@@ -183,7 +179,7 @@ function FrameCard({
       <Card
         className={cn(
           'h-full border-2 transition-colors',
-          isSelectedForDownload ? 'border-primary' : 'border-transparent'
+          isSelectedForDownload ? 'border-primary' : 'border-transparent',
         )}
       >
         <CardBody className="flex flex-col gap-3 p-3">
@@ -563,7 +559,7 @@ export function VideoFrameExtractor() {
               })}
               className={cn(
                 'flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed p-10 text-center transition-colors',
-                isDragActive ? 'border-primary bg-primary/5' : 'border-foreground-200 hover:bg-foreground-50'
+                isDragActive ? 'border-primary bg-primary/5' : 'border-foreground-200 hover:bg-foreground-50',
               )}
             >
               <input {...getInputProps()} />
@@ -649,9 +645,7 @@ export function VideoFrameExtractor() {
 
                 {/* Timeline */}
                 <div className="relative -mt-2">
-                  <div
-                    className="relative rounded-xl border border-foreground-200 bg-content1 p-4"
-                  >
+                  <div className="relative rounded-xl border border-foreground-200 bg-content1 p-4">
                     <div className="mb-2 flex items-center justify-between text-xs text-foreground-500">
                       <span className="font-medium text-foreground-600">Timeline</span>
                     </div>
@@ -659,10 +653,7 @@ export function VideoFrameExtractor() {
                     <div className="group relative">
                       {/* Custom track */}
                       <div className="relative h-2 w-full overflow-hidden rounded-full bg-foreground-200/70 shadow-inner">
-                        <div
-                          className="h-full bg-black"
-                          style={{ width: `${timelineProgressPct}%` }}
-                        />
+                        <div className="h-full bg-black" style={{ width: `${timelineProgressPct}%` }} />
                         <div className="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(to_right,rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:56px_100%]" />
                       </div>
 
@@ -683,18 +674,18 @@ export function VideoFrameExtractor() {
                           'disabled:cursor-not-allowed disabled:opacity-50',
                           // WebKit (Chrome/Safari)
                           '[&::-webkit-slider-runnable-track]:h-2 [&::-webkit-slider-runnable-track]:bg-transparent',
-                          '[&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full',
+                          '[&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full',
                           // Playhead: black fill + contrasting border so it stays visible on the progress bar
-                          '[&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-content1',
+                          '[&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-content1 [&::-webkit-slider-thumb]:bg-black',
                           '[&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:duration-150',
                           '[&::-webkit-slider-thumb]:-mt-1',
                           // Firefox
                           '[&::-moz-range-track]:h-2 [&::-moz-range-track]:bg-transparent',
                           '[&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full',
-                          '[&::-moz-range-thumb]:bg-black [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-content1',
+                          '[&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-content1 [&::-moz-range-thumb]:bg-black',
                           '[&::-moz-range-thumb]:box-border [&::-moz-range-thumb]:shadow-lg',
                           // Make the thumb feel more “grabby”
-                          'active:[&::-webkit-slider-thumb]:scale-110 active:[&::-moz-range-thumb]:scale-110'
+                          'active:[&::-moz-range-thumb]:scale-110 active:[&::-webkit-slider-thumb]:scale-110',
                         )}
                         aria-label="Timeline"
                         disabled={!duration}
@@ -705,7 +696,7 @@ export function VideoFrameExtractor() {
                         <div
                           className={cn(
                             'pointer-events-none absolute -top-9 left-0 -translate-x-1/2 rounded-full bg-foreground px-2 py-1 text-[11px] font-semibold text-content1 shadow-sm transition-opacity',
-                            isSeeking ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                            isSeeking ? 'opacity-100' : 'opacity-0 group-hover:opacity-100',
                           )}
                           style={{ left: `${timelineProgressPct}%` }}
                         >
@@ -852,7 +843,7 @@ export function VideoFrameExtractor() {
                     onPress={downloadSelectedAsZip}
                     startContent={!isZipping ? <Icon icon="download" size={16} /> : undefined}
                   >
-                    Download Selected
+                    <span>Download Selected</span>
                   </Button>
                 )}
                 <Button
@@ -863,7 +854,7 @@ export function VideoFrameExtractor() {
                   onPress={downloadAllAsZip}
                   startContent={!isZipping ? <Icon icon="download" size={16} /> : undefined}
                 >
-                  Download all (ZIP)
+                  <span>Download all (ZIP)</span>
                 </Button>
               </div>
             </div>
@@ -875,7 +866,8 @@ export function VideoFrameExtractor() {
                   <span className="text-sm font-semibold">Play or scrub</span>
                 </div>
                 <div className="text-sm text-foreground-500">
-                  When you see a moment you like, hit <span className="font-semibold text-foreground">Capture this frame</span>.
+                  When you see a moment you like, hit{' '}
+                  <span className="font-semibold text-foreground">Capture this frame</span>.
                 </div>
               </div>
             ) : (
@@ -900,7 +892,6 @@ export function VideoFrameExtractor() {
                 </AnimatePresence>
               </div>
             )}
-
           </CardBody>
         </Card>
       )}
@@ -920,7 +911,11 @@ export function VideoFrameExtractor() {
                     <Icon icon="time" size={16} />
                     <span>{formatTimestamp(zoomFrame.timestampSeconds)}</span>
                   </div>
-                  <Button size="sm" className="bg-foreground text-content1" onPress={() => downloadSingleFrame(zoomFrame)}>
+                  <Button
+                    size="sm"
+                    className="bg-foreground text-content1"
+                    onPress={() => downloadSingleFrame(zoomFrame)}
+                  >
                     Download
                   </Button>
                 </div>
@@ -932,4 +927,3 @@ export function VideoFrameExtractor() {
     </div>
   );
 }
-

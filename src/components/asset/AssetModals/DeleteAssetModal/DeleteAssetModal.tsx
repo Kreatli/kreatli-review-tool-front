@@ -52,7 +52,7 @@ export const DeleteAssetModal = ({ asset, projectId, isOpen, onClose }: Props) =
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isPending} onClick={handleDelete}>
-                Delete forever
+                <span>Delete forever</span>
               </Button>
             </div>
           </div>

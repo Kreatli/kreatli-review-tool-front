@@ -161,7 +161,7 @@ export const ShareAssetModal = ({ asset, isOpen, onClose }: Props) => {
                   className="bg-foreground text-content1"
                   onClick={handleSendLink}
                 >
-                  Send link via email
+                  <span>Send link via email</span>
                 </Button>
               </div>
             </div>

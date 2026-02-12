@@ -53,7 +53,7 @@ export const CompleteProjectModal = ({ project, isOpen, onClose }: Props) => {
                 Cancel
               </Button>
               <Button color="success" variant="flat" isLoading={isPending} onClick={handleComplete}>
-                Complete
+                <span>Complete</span>
               </Button>
             </div>
           </div>
