@@ -180,40 +180,30 @@ function VersionRow({
       </div>
 
       {/* More options dropdown */}
-      {version.isActive ? (
-        <Dropdown isOpen={isMenuOpen} onOpenChange={onMenuOpenChange} placement="bottom-end">
-          <DropdownTrigger>
-            <button
-              type="button"
-              className="flex size-8 shrink-0 items-center justify-center rounded-full text-foreground-500 transition-colors hover:bg-foreground-100 hover:text-foreground-700"
-              aria-label="Version options"
-            >
-              <Icon icon="dots" size={18} />
-            </button>
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Version actions" className="min-w-[180px]">
-            <DropdownItem key="active" startContent={<Icon icon="check" size={16} />}>
-              Mark as Active
-            </DropdownItem>
-            <DropdownItem
-              key="remove"
-              className="text-danger"
-              color="danger"
-              startContent={<Icon icon="trash" size={16} />}
-            >
-              Remove from stack
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      ) : (
-        <button
-          type="button"
-          className="flex size-8 shrink-0 items-center justify-center rounded-full text-foreground-500 transition-colors hover:bg-foreground-100 hover:text-foreground-700"
-          aria-label="Version options"
-        >
-          <Icon icon="dots" size={18} />
-        </button>
-      )}
+      <Dropdown isOpen={isMenuOpen} onOpenChange={onMenuOpenChange} placement="bottom-end">
+        <DropdownTrigger>
+          <button
+            type="button"
+            className="flex size-8 shrink-0 items-center justify-center rounded-full text-foreground-500 transition-colors hover:bg-foreground-100 hover:text-foreground-700"
+            aria-label="Version options"
+          >
+            <Icon icon="dots" size={18} />
+          </button>
+        </DropdownTrigger>
+        <DropdownMenu aria-label="Version actions" className="min-w-[180px]">
+          <DropdownItem key="active" startContent={<Icon icon="check" size={16} />}>
+            Mark as Active
+          </DropdownItem>
+          <DropdownItem
+            key="remove"
+            className="text-danger"
+            color="danger"
+            startContent={<Icon icon="trash" size={16} />}
+          >
+            Remove from stack
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
     </div>
   );
 }
