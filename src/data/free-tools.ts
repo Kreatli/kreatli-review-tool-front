@@ -11,6 +11,24 @@ export interface FreeTool {
 
 export const FREE_TOOLS: FreeTool[] = [
   {
+    title: 'Video Feedback Tool',
+    description:
+      'Give frame-accurate feedback on videos with comments, annotations, and markup. Share review links with clients—no sign-up required for reviewers.',
+    href: '/free-tools/video-feedback-tool',
+    icon: 'play',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Feedback Tool',
+  },
+  {
+    title: 'Video Reviewer',
+    description:
+      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. Share with clients—no sign-up required.',
+    href: '/free-tools/video-reviewer',
+    icon: 'monitorPlay',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Reviewer',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed',

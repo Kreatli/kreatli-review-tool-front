@@ -79,6 +79,14 @@ const RESOURCES_NAV = {
           description: 'Browse all our free tools for creative teams',
         },
         {
+          label: 'Video Feedback Tool',
+          href: '/free-tools/video-feedback-tool',
+        },
+        {
+          label: 'Video Reviewer',
+          href: '/free-tools/video-reviewer',
+        },
+        {
           label: 'Data Transfer Calculator',
           href: '/free-tools/data-transfer-calculator',
         },
