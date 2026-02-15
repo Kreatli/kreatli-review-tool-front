@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
@@ -11,22 +9,8 @@ import { SocialMediaSafeZoneChecker } from '../components/safe-zone-checker/Soci
 import { CTASection } from '../components/shared/CTASection';
 import { RelatedResourcesSection } from '../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../data/related-resources';
-import { useSession } from '../hooks/useSession';
 
 export default function ProjectsPage() {
-  const { isSignedIn } = useSession();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (isSignedIn) {
-      router.replace('/');
-    }
-  }, [isSignedIn, router]);
-
-  if (isSignedIn) {
-    return null;
-  }
-
   return (
     <>
       <Head>
