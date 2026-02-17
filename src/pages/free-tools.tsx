@@ -77,6 +77,14 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Video Manager',
+    description:
+      'Organize, store, and track video assets with version control and client share links. Manage feedback and approvals in one workspace.',
+    href: '/free-tools/video-manager',
+    icon: 'folder',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Social Media Safe Zone Checker',
     description:
       'Preview where UI overlays appear on your Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',

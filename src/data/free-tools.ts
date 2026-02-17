@@ -47,6 +47,15 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try Image Reviewer',
   },
   {
+    title: 'Video Manager',
+    description:
+      'Organize, store, and track video assets with version control and client share links. Manage feedback and approvals in one workspace.',
+    href: '/free-tools/video-manager',
+    icon: 'folder',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Manager',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed',
