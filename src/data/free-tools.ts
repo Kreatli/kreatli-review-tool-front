@@ -38,6 +38,15 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try PDF Reviewer',
   },
   {
+    title: 'Image Reviewer',
+    description:
+      'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',
+    href: '/free-tools/image-reviewer',
+    icon: 'panorama',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Image Reviewer',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed',

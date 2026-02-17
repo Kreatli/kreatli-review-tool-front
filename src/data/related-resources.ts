@@ -72,6 +72,21 @@ export const RELATED_RESOURCES = {
     icon: 'chat' as IconType,
     buttonText: 'Learn More',
   },
+  annotateImage: {
+    title: 'Annotate Image',
+    description:
+      'Annotate and review images with comments and markup. Add feedback directly on images for precise, location-pinned review.',
+    href: '/platform/annotate-image',
+    icon: 'panorama' as IconType,
+    buttonText: 'Learn More',
+  },
+  drawOnImage: {
+    title: 'Draw on Image',
+    description: 'Draw and markup directly on images for precise feedback. Freehand, shapes, and annotations on images.',
+    href: '/platform/draw-on-image',
+    icon: 'panorama' as IconType,
+    buttonText: 'Learn More',
+  },
   commentOnVideo: {
     title: 'Comment on Video',
     description:

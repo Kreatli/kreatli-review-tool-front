@@ -69,6 +69,14 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Image Reviewer',
+    description:
+      'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required for reviewers.',
+    href: '/free-tools/image-reviewer',
+    icon: 'panorama',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Social Media Safe Zone Checker',
     description:
       'Preview where UI overlays appear on your Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',
