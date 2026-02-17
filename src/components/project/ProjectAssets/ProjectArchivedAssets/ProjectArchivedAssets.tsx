@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useProjectContext } from '../../../../contexts/Project';
 import { useGetProjectIdAssetsArchived } from '../../../../services/hooks';
-import { ProjectBreadcrumbs } from '../../Project/ProjectBreadcrumbs';
+import { formatBytes } from '../../../../utils/formatBytes';
 import { ProjectArchivedAssetsList } from './ProjectArchivedAssetsList';
 
 export const ProjectArchivedAssets = () => {
@@ -12,8 +12,6 @@ export const ProjectArchivedAssets = () => {
   const assets = React.useMemo(() => {
     return [...(data?.files ?? []), ...(data?.folders ?? [])];
   }, [data]);
-
-  const fileCount = assets.length ?? 0;
 
   const totalFileSize = React.useMemo(() => {
     return (
@@ -29,25 +27,15 @@ export const ProjectArchivedAssets = () => {
     return data?.folders ?? [];
   }, [data]);
 
-  const path = [
-    {
-      name: project.name,
-      url: `/project/${project.id}/assets`,
-    },
-    {
-      name: 'Recently deleted',
-      url: '#',
-    },
-  ];
-
   return (
-    <div className="flex flex-col gap-4">
-      <ProjectBreadcrumbs
-        fileCount={fileCount}
-        totalFileSize={totalFileSize}
-        path={path}
-        coverUrl={project.cover?.url}
-      />
+    <div className="flex flex-col p-3 xs:px-4">
+      <div>
+        <h2 className="text-2xl font-semibold">Recently deleted</h2>
+        <p className="text-sm text-foreground-500">
+          {folders.length} folder{folders.length === 1 ? '' : 's'}, {files.length} file{files.length === 1 ? '' : 's'},{' '}
+          {formatBytes(totalFileSize)}
+        </p>
+      </div>
       <ProjectArchivedAssetsList folders={folders} files={files} isError={isError} isPending={isPending} />
     </div>
   );

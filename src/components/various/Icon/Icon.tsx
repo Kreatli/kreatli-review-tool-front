@@ -57,6 +57,8 @@ import GroupIcon from '../../../assets/icons/group.svg';
 import HeartIcon from '../../../assets/icons/heart.svg';
 import HelpCircleIcon from '../../../assets/icons/help-circle.svg';
 import HideIcon from '../../../assets/icons/hide.svg';
+import HomeIcon from '../../../assets/icons/home.svg';
+import ImagesIcon from '../../../assets/icons/images.svg';
 import InboxIcon from '../../../assets/icons/inbox.svg';
 import InfoIcon from '../../../assets/icons/info.svg';
 import InfoCircleIcon from '../../../assets/icons/info-circle.svg';
@@ -82,6 +84,7 @@ import PauseIcon from '../../../assets/icons/pause.svg';
 import PaypalIcon from '../../../assets/icons/paypal.svg';
 import PlayIcon from '../../../assets/icons/play.svg';
 import PlusIcon from '../../../assets/icons/plus.svg';
+import PulseIcon from '../../../assets/icons/pulse.svg';
 import RankingIcon from '../../../assets/icons/ranking.svg';
 import RedoIcon from '../../../assets/icons/redo.svg';
 import ReplyIcon from '../../../assets/icons/reply.svg';
@@ -171,6 +174,8 @@ const ICONS = {
   helpCircle: HelpCircleIcon,
   heart: HeartIcon,
   hide: HideIcon,
+  home: HomeIcon,
+  images: ImagesIcon,
   inbox: InboxIcon,
   info: InfoIcon,
   infoCircle: InfoCircleIcon,
@@ -197,6 +202,7 @@ const ICONS = {
   paypal: PaypalIcon,
   play: PlayIcon,
   plus: PlusIcon,
+  pulse: PulseIcon,
   ranking: RankingIcon,
   redo: RedoIcon,
   reply: ReplyIcon,

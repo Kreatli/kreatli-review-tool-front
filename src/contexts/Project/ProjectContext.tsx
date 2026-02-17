@@ -1,8 +1,6 @@
 import { MenuItemProps } from '@heroui/react';
-import { useRouter } from 'next/router';
 import React from 'react';
 
-import { ProjectMembersModal } from '../../components/project/ProjectMembers';
 import { ArchiveProjectModal } from '../../components/project/ProjectModals/ArchiveProjectModal';
 import { ChangeProjectCoverModal } from '../../components/project/ProjectModals/ChangeProjectCoverModal';
 import { CompleteProjectModal } from '../../components/project/ProjectModals/CompleteProjectModal';
@@ -27,7 +25,6 @@ interface Context {
     label: string;
     icon: IconType;
     showDivider?: boolean;
-    hideInCard?: boolean;
     color?: MenuItemProps['color'];
     onClick: () => void;
   }[];
@@ -38,7 +35,6 @@ interface Context {
   setFilters: (filters: ProjectAssetsFilters) => void;
   isProjectOwner: boolean;
   project: ProjectDto;
-  setIsMembersModalOpen: (isOpen: boolean) => void;
 }
 
 export const ProjectContext = React.createContext<Context | null>(null);
@@ -65,7 +61,6 @@ export const ProjectContextProvider = ({
 }: React.PropsWithChildren<Props>) => {
   const [isRenameModalOpen, setIsRenameModalOpen] = React.useState(false);
   const [isCoverModalOpen, setIsCoverModalOpen] = React.useState(false);
-  const [isMembersModalOpen, setIsMembersModalOpen] = React.useState(false);
   const [isCompleteModalOpen, setIsCompleteModalOpen] = React.useState(false);
   const [isArchiveModalOpen, setIsArchiveModalOpen] = React.useState(false);
   const [isRestoreModalOpen, setIsRestoreModalOpen] = React.useState(false);
@@ -75,7 +70,6 @@ export const ProjectContextProvider = ({
   const [search, setSearch] = React.useState('');
   const [filters, setFilters] = React.useState<ProjectAssetsFilters>({});
   const { user } = useSession();
-  const router = useRouter();
 
   const isProjectOwner = selectedProject?.createdBy?.id === user?.id;
 
@@ -90,13 +84,6 @@ export const ProjectContextProvider = ({
     if (project.createdBy?.id !== user?.id) {
       if (project.status === 'active') {
         return [
-          {
-            label: 'Recently deleted',
-            icon: 'time' as const,
-            onClick: () => {
-              router.push(`/project/${project.id}/assets/archived`);
-            },
-          },
           {
             label: 'Leave project',
             icon: 'door' as const,
@@ -132,26 +119,11 @@ export const ProjectContextProvider = ({
               },
             },
             {
-              label: 'Invite member',
-              icon: 'userPlus' as const,
-              onClick: () => {
-                setSelectedProjectId?.(project.id);
-                setIsMembersModalOpen(true);
-              },
-            },
-            {
               label: 'Edit statuses',
               icon: 'gear' as const,
-              onClick: () => {
-                setIsEditProjectStatusesModalOpen(true);
-              },
-            },
-            {
-              label: 'Recently deleted',
-              icon: 'time' as const,
               showDivider: true,
               onClick: () => {
-                router.push(`/project/${project.id}/assets/archived`);
+                setIsEditProjectStatusesModalOpen(true);
               },
             },
             {
@@ -228,7 +200,6 @@ export const ProjectContextProvider = ({
         setSearch,
         filters,
         setFilters,
-        setIsMembersModalOpen,
       }}
     >
       {children}
@@ -242,11 +213,7 @@ export const ProjectContextProvider = ({
         isOpen={isCoverModalOpen}
         onClose={() => setIsCoverModalOpen(false)}
       />
-      <ProjectMembersModal
-        project={selectedProject}
-        isOpen={isMembersModalOpen}
-        onClose={() => setIsMembersModalOpen(false)}
-      />
+
       <CompleteProjectModal
         project={selectedProject}
         isOpen={isCompleteModalOpen}

@@ -1,14 +1,12 @@
-import { Button, ButtonGroup, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Link } from '@heroui/react';
-import NextLink from 'next/link';
+import { BreadcrumbItem, Breadcrumbs } from '@heroui/react';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 import { useProjectContext } from '../../../../contexts/Project';
 import { useProjectUploadContext } from '../../../../contexts/Project/ProjectUploadContext';
 import { useGetAssetFolderId } from '../../../../services/hooks';
 import { CreateFolderModal } from '../../../asset/AssetModals/CreateFolderModal';
-import { Icon } from '../../../various/Icon';
-import { NotActiveProjectAlert } from '../../Project/NotActiveProjectAlert';
-import { ProjectBreadcrumbs } from '../../Project/ProjectBreadcrumbs';
+import { ProjectAssetsHeader } from '../ProjectAssetsHeader';
 import { ProjectDropFilesHint } from '../ProjectDropFilesHint';
 import { ProjectFolderAssetsList } from './ProjectFolderAssetsList';
 import { ProjectFolderAssetsLoading } from './ProjectFolderAssetsLoading';
@@ -18,121 +16,52 @@ interface Props {
 }
 
 export const ProjectFolderAssets = ({ folderId }: Props) => {
+  const router = useRouter();
+
   const { project } = useProjectContext();
-  const { inputRef, isDragActive, getInputProps, getRootProps } = useProjectUploadContext();
+  const { isDragActive, getRootProps } = useProjectUploadContext();
   const { data: folder, isLoading } = useGetAssetFolderId(folderId);
 
   const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
 
-  const uploadAssets = () => {
-    inputRef.current?.click();
-  };
-
   const path = React.useMemo(() => {
-    const projectPath = { name: project.name, url: `/project/${project.id}/assets` };
-
     if (!folder) {
-      return [projectPath];
+      return [{ name: 'Media', url: `/project/${project.id}/assets` }];
     }
 
     return [
-      projectPath,
+      { name: 'Media', url: `/project/${project.id}/assets` },
       ...folder.path.map(({ id, name }) => ({ name, url: `/project/${project.id}/assets/folder/${id}` })),
+      { name: folder.name, url: '#' },
     ];
   }, [folder, project]);
 
-  const backLink = React.useMemo(() => {
-    if (!folder?.parent) {
-      return { name: project.name, href: `/project/${project.id}/assets` };
+  const handleAction = (key: React.Key) => {
+    const url = path.find((item) => item.url === key)?.url;
+    if (url) {
+      router.push(url);
     }
-
-    return { name: folder.parent.name, href: `/project/${project.id}/assets/folder/${folder?.parent?.id}` };
-  }, [folder, project.id, project.name]);
+  };
 
   if (isLoading) {
     return <ProjectFolderAssetsLoading />;
   }
 
   return (
-    <div className="flex-1" {...getRootProps()}>
-      <Link as={NextLink} href={backLink.href} className="gap-0.5 text-foreground-500">
-        <Icon icon="arrowLeft" size={18} />
-        {backLink.name}
-      </Link>
+    <div className="flex-1 overflow-hidden p-3 xs:px-4" {...getRootProps()}>
+      <Breadcrumbs onAction={handleAction}>
+        {path.map((item) => (
+          <BreadcrumbItem key={item.url}>{item.name}</BreadcrumbItem>
+        ))}
+      </Breadcrumbs>
+      <ProjectAssetsHeader
+        title={folder?.name}
+        folderId={folderId}
+        fileCount={folder?.fileCount}
+        totalFileSize={folder?.totalFileSize}
+      />
       <div className="flex flex-col gap-4">
         <ProjectDropFilesHint isVisible={isDragActive} />
-        <div className="flex justify-between gap-4">
-          <ProjectBreadcrumbs
-            fileCount={folder?.fileCount ?? 0}
-            totalFileSize={folder?.totalFileSize ?? 0}
-            path={path}
-            coverUrl={project.cover?.url}
-          />
-          <div className="hidden sm:block">
-            <ButtonGroup>
-              <Button
-                className="bg-foreground pr-1 text-content1"
-                isDisabled={project.status !== 'active'}
-                onClick={uploadAssets}
-              >
-                <Icon icon="upload" size={16} />
-                Upload
-              </Button>
-              <Dropdown>
-                <DropdownTrigger>
-                  <Button isIconOnly isDisabled={project.status !== 'active'} className="bg-foreground text-content1">
-                    <Icon icon="chevronDown" size={20} />
-                  </Button>
-                </DropdownTrigger>
-                <DropdownMenu variant="flat">
-                  <DropdownItem key="upload" startContent={<Icon icon="upload" size={18} />} onPress={uploadAssets}>
-                    Upload files
-                  </DropdownItem>
-                  <DropdownItem
-                    key="create-folder"
-                    startContent={<Icon icon="plus" size={16} />}
-                    onPress={() => setIsFolderModalOpen(true)}
-                  >
-                    Create folder
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </ButtonGroup>
-            <input {...getInputProps()} />
-          </div>
-          <div className="sm:hidden">
-            <Dropdown>
-              <DropdownTrigger>
-                <Button
-                  isIconOnly
-                  isDisabled={project.status !== 'active'}
-                  size="sm"
-                  radius="full"
-                  className="bg-foreground text-content1"
-                >
-                  <Icon icon="upload" size={16} />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu variant="flat">
-                <DropdownItem key="upload" startContent={<Icon icon="upload" size={18} />} onPress={uploadAssets}>
-                  Upload files
-                </DropdownItem>
-                <DropdownItem
-                  key="create-folder"
-                  startContent={<Icon icon="plus" size={18} />}
-                  onPress={() => setIsFolderModalOpen(true)}
-                >
-                  Create folder
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </div>
-        </div>
-        {project.status !== 'active' && (
-          <div>
-            <NotActiveProjectAlert />
-          </div>
-        )}
         {folder && <ProjectFolderAssetsList project={project} folder={folder} />}
         <CreateFolderModal
           isOpen={isFolderModalOpen}

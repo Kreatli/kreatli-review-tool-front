@@ -33,7 +33,6 @@ export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) 
   if (isMobile) {
     return (
       <div className="flex flex-col gap-2">
-        <div className="text-lg font-semibold">Activity ({logsCount})</div>
         <div className="flex flex-col gap-4">
           {logs.map((log) => (
             <ProjectActivityCard key={log.id} log={log} />
@@ -45,7 +44,7 @@ export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) 
   }
 
   return (
-    <Table bottomContent={bottomContent} bottomContentPlacement="inside">
+    <Table bottomContent={bottomContent} bottomContentPlacement="inside" removeWrapper>
       <TableHeader>
         <TableColumn width={200}>Name</TableColumn>
         <TableColumn>Activity ({logsCount})</TableColumn>

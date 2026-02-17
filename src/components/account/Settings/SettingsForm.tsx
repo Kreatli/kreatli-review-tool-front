@@ -70,7 +70,7 @@ export const SettingsForm = ({ settings }: Props) => {
         <div className="text-lg font-semibold">Project default description</div>
         <div
           ref={scrollRef}
-          className="max-h-80 min-h-40 overflow-y-auto rounded-medium border border-foreground-300 p-3 dark:bg-foreground-50"
+          className="max-h-80 min-h-40 overflow-y-auto rounded-medium border border-foreground-300 p-3"
         >
           <SimpleEditor
             content={settings.defaultProjectContent}

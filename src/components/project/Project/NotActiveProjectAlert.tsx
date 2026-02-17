@@ -9,6 +9,8 @@ export const NotActiveProjectAlert = () => {
   return (
     <Alert
       color="primary"
+      radius="none"
+      className="py-2"
       title={
         project.status === 'archived'
           ? 'This project is archived, restore it to make changes.'

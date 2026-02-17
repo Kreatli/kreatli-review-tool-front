@@ -53,12 +53,11 @@ export const InviteProjectMemberForm = ({ project, onCancel, onSuccess }: Props)
   return (
     <form noValidate className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <Input
-        label="Invite a new member"
+        label="Email"
         placeholder="example@mail.com"
         variant="faded"
         autoFocus
         labelPlacement="outside"
-        classNames={{ label: 'text-medium font-semibold' }}
         isInvalid={!!errors.email}
         errorMessage={errors.email?.message}
         {...register('email', VALIDATION_RULES.EMAIL)}

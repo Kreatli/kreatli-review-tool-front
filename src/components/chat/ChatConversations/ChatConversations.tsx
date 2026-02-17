@@ -40,10 +40,10 @@ export const ChatConversations = ({ chats, isPending, isError, isDisabled = fals
         isVertical
         selectedKey={selectedConversationId}
         classNames={{
-          base: 'w-full',
+          base: 'w-full border-r border-foreground-200',
           tabWrapper: 'h-full',
-          tabList: 'w-full h-full',
-          tab: 'justify-start h-auto px-1 md:px-3',
+          tabList: 'w-full h-full bg-background p-2',
+          tab: 'justify-start h-auto px-1 lg:px-3',
           tabContent: 'max-w-full',
         }}
         onSelectionChange={handleSelectionChange}

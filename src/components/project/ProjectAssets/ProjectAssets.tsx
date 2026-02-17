@@ -27,6 +27,7 @@ import { EmptyState } from '../../various/EmptyState';
 import { Icon } from '../../various/Icon';
 import { ArchiveAssetsModal } from './ProjectAssetsBulkEdit/ArchiveAssetsModal/ArchiveAssetsModal';
 import { MoveToAssetsModal } from './ProjectAssetsBulkEdit/MoveToAssetsModal';
+import { ProjectAssetsHeader } from './ProjectAssetsHeader';
 import { ProjectDropFilesHint } from './ProjectDropFilesHint';
 import { ProjectFile } from './ProjectFile';
 import { ProjectFileCover } from './ProjectFile/ProjectFileCover';
@@ -103,52 +104,6 @@ export const ProjectAssets = () => {
       Array.from(selectedAssetIds.values()).every((id: string) => files.find((asset) => asset.id === id))
     );
   }, [selectedAssetIds, files]);
-
-  if (isLoadingAssets) {
-    return (
-      <div className="-m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-6">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <div key={index} className="flex flex-col gap-2">
-            <Skeleton className="aspect-video rounded-lg" />
-            <Skeleton className="h-6 w-1/2 rounded" />
-            <Skeleton className="size-10 rounded-full" />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  if ((search || Object.keys(filters).length > 0) && sortedAssets.length === 0) {
-    return (
-      <EmptyState
-        title="No results found"
-        text="Try adjusting your search or filters to find what you're looking for"
-      />
-    );
-  }
-
-  if (files.length === 0 && folders.length === 0) {
-    return (
-      <div className="flex-1" {...getRootProps()}>
-        <EmptyState
-          title="No files"
-          text="You don't have any files here yet. Go ahead and upload one or create a new folder"
-        >
-          <Button
-            className="mt-4 bg-foreground text-content1"
-            isDisabled={project.status !== 'active'}
-            onClick={() => {
-              inputRef.current?.click();
-            }}
-          >
-            <Icon icon="plus" size={16} />
-            Upload your first file
-          </Button>
-        </EmptyState>
-        <ProjectDropFilesHint isVisible={isDragActive} />
-      </div>
-    );
-  }
 
   const handleDragStart = (event: DragStartEvent) => {
     setDraggedId(event.active.id as string);
@@ -270,7 +225,8 @@ export const ProjectAssets = () => {
   };
 
   return (
-    <div className="-mt-4 flex-1" {...getRootProps()}>
+    <div className="flex-1 overflow-hidden p-3 xs:px-4" {...getRootProps()}>
+      <ProjectAssetsHeader />
       <ProjectDropFilesHint isVisible={isDragActive} />
       <div
         className={cn('sticky top-16 z-20 h-4 overflow-hidden bg-background opacity-0 transition-[height,opacity]', {
@@ -321,79 +277,112 @@ export const ProjectAssets = () => {
           )}
         </div>
       </div>
-      <AssetContextProvider
-        projectId={project.id}
-        selectedAsset={selectedAsset}
-        setSelectedAssetId={setSelectedAssetId}
-        project={project}
-      >
-        <DndContext
-          sensors={dndSensors}
-          collisionDetection={pointerWithin}
-          onDragStart={handleDragStart}
-          onDragOver={handleDragOver}
-          onDragEnd={handleDragEnd}
+      {isLoadingAssets ? (
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div key={index} className="flex flex-col gap-2">
+              <Skeleton className="aspect-video rounded-lg" />
+              <Skeleton className="h-6 w-1/2 rounded" />
+              <Skeleton className="size-10 rounded-full" />
+            </div>
+          ))}
+        </div>
+      ) : (search || Object.keys(filters).length > 0) && sortedAssets.length === 0 ? (
+        <EmptyState
+          title="No results found"
+          text="Try adjusting your search or filters to find what you're looking for"
+        />
+      ) : files.length === 0 && folders.length === 0 ? (
+        <EmptyState
+          title="No files"
+          text="You don't have any files here yet. Go ahead and upload one or create a new folder"
         >
-          <div className="mb-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 empty:mb-0">
-            {folders.map((folder) => (
-              <ProjectFolder
-                key={folder.id}
-                folder={folder}
-                isReadonly={project.status !== 'active'}
-                isSelected={hasSelectedAssets ? selectedAssetIds.has(folder.id) : undefined}
-                onSelectionChange={() => handleSelectionChange(folder.id)}
-              />
-            ))}
-          </div>
-          <SortableContext items={filesOrder}>
-            <div className="-m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-6">
-              {sortedAssets.map((asset, index) => (
-                <div key={asset.id} className={cn('relative', { 'opacity-50': draggedId === asset.id })}>
-                  {asset.type === 'file' && (
-                    <ProjectFile
-                      file={asset}
-                      isReadonly={project.status !== 'active'}
-                      isSelected={selectedAssetIds.has(asset.id)}
-                      onSelectionChange={() => handleSelectionChange(asset.id)}
-                    />
-                  )}
-                  {asset.type === 'stack' && (
-                    <ProjectStack
-                      stack={asset}
-                      isReadonly={project.status !== 'active'}
-                      isSelected={selectedAssetIds.has(asset.id)}
-                      onSelectionChange={() => handleSelectionChange(asset.id)}
-                    />
-                  )}
-                  {overId === asset.id && draggedAsset && (
-                    <div
-                      className={cn('absolute bottom-0 top-0 w-0.5 -translate-x-1/2 rounded-xl bg-foreground-400', {
-                        '-right-2': files.indexOf(draggedAsset) < index,
-                        '-left-2': files.indexOf(draggedAsset) > index,
-                      })}
-                    />
-                  )}
-                </div>
+          <Button
+            className="mt-4 bg-foreground text-content1"
+            isDisabled={project.status !== 'active'}
+            onClick={() => {
+              inputRef.current?.click();
+            }}
+          >
+            <Icon icon="plus" size={16} />
+            Upload your first file
+          </Button>
+        </EmptyState>
+      ) : (
+        <AssetContextProvider
+          projectId={project.id}
+          selectedAsset={selectedAsset}
+          setSelectedAssetId={setSelectedAssetId}
+          project={project}
+        >
+          <DndContext
+            sensors={dndSensors}
+            collisionDetection={pointerWithin}
+            onDragStart={handleDragStart}
+            onDragOver={handleDragOver}
+            onDragEnd={handleDragEnd}
+          >
+            <div className="mb-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 empty:mb-0">
+              {folders.map((folder) => (
+                <ProjectFolder
+                  key={folder.id}
+                  folder={folder}
+                  isReadonly={project.status !== 'active'}
+                  isSelected={hasSelectedAssets ? selectedAssetIds.has(folder.id) : undefined}
+                  onSelectionChange={() => handleSelectionChange(folder.id)}
+                />
               ))}
             </div>
-          </SortableContext>
-          <DragOverlay>
-            {draggedAsset && (
-              <div
-                className={cn('rounded-2xl bg-background transition-transform', {
-                  'scale-80': overId?.includes('folder') && !overId.endsWith(draggedAsset.id),
-                })}
-              >
-                {draggedAsset.type === 'stack' ? (
-                  <ProjectFileCover key={draggedAsset.id} file={draggedAsset.active!} />
-                ) : (
-                  <ProjectFileCover key={draggedAsset.id} file={draggedAsset} />
-                )}
+            <SortableContext items={filesOrder}>
+              <div className="-m-3 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-3">
+                {sortedAssets.map((asset, index) => (
+                  <div key={asset.id} className={cn('relative', { 'opacity-50': draggedId === asset.id })}>
+                    {asset.type === 'file' && (
+                      <ProjectFile
+                        file={asset}
+                        isReadonly={project.status !== 'active'}
+                        isSelected={selectedAssetIds.has(asset.id)}
+                        onSelectionChange={() => handleSelectionChange(asset.id)}
+                      />
+                    )}
+                    {asset.type === 'stack' && (
+                      <ProjectStack
+                        stack={asset}
+                        isReadonly={project.status !== 'active'}
+                        isSelected={selectedAssetIds.has(asset.id)}
+                        onSelectionChange={() => handleSelectionChange(asset.id)}
+                      />
+                    )}
+                    {overId === asset.id && draggedAsset && (
+                      <div
+                        className={cn('absolute bottom-0 top-0 w-0.5 -translate-x-1/2 rounded-xl bg-foreground-400', {
+                          '-right-2': files.indexOf(draggedAsset) < index,
+                          '-left-2': files.indexOf(draggedAsset) > index,
+                        })}
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
-            )}
-          </DragOverlay>
-        </DndContext>
-      </AssetContextProvider>
+            </SortableContext>
+            <DragOverlay>
+              {draggedAsset && (
+                <div
+                  className={cn('rounded-2xl bg-background transition-transform', {
+                    'scale-80': overId?.includes('folder') && !overId.endsWith(draggedAsset.id),
+                  })}
+                >
+                  {draggedAsset.type === 'stack' ? (
+                    <ProjectFileCover key={draggedAsset.id} file={draggedAsset.active!} />
+                  ) : (
+                    <ProjectFileCover key={draggedAsset.id} file={draggedAsset} />
+                  )}
+                </div>
+              )}
+            </DragOverlay>
+          </DndContext>
+        </AssetContextProvider>
+      )}
       <MoveToAssetsModal
         project={project}
         assetIds={Array.from(selectedAssetIds)}

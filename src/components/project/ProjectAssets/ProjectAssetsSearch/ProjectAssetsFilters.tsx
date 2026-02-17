@@ -37,7 +37,17 @@ export const ProjectAssetsFilters = () => {
   };
 
   return (
-    <div className="flex w-full flex-row-reverse justify-end gap-4 sm:flex-row">
+    <div className="flex flex-row-reverse justify-end gap-4 sm:flex-row">
+      <Input
+        value={search}
+        placeholder="Search"
+        className="w-full sm:w-fit"
+        variant="underlined"
+        isClearable
+        startContent={<Icon icon="search" />}
+        onChange={handleInputChange}
+        onClear={() => setSearch('')}
+      />
       <Badge isOneChar size="sm" color="primary" isInvisible={!hasFilters}>
         <Popover
           placement="bottom-end"
@@ -120,17 +130,6 @@ export const ProjectAssetsFilters = () => {
           </PopoverContent>
         </Popover>
       </Badge>
-
-      <Input
-        value={search}
-        placeholder="Search"
-        className="w-full sm:w-fit"
-        variant="underlined"
-        isClearable
-        startContent={<Icon icon="search" />}
-        onChange={handleInputChange}
-        onClear={() => setSearch('')}
-      />
     </div>
   );
 };

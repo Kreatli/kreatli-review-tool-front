@@ -1,4 +1,4 @@
-import { Button, Card, CardBody } from '@heroui/react';
+import { Button } from '@heroui/react';
 import Link from 'next/link';
 
 import { useGetProjectIdLogs } from '../../../services/hooks';
@@ -19,28 +19,26 @@ export const DashboardActivity = ({ project }: Props) => {
   });
 
   return (
-    <Card>
-      <CardBody className="p-3 px-4">
-        <div className="mb-2 flex items-center justify-between gap-4">
-          <Link href={`/project/${project.id}/assets`} className="flex items-center gap-1">
-            <span className="text-lg font-semibold">Activity</span>
-            {!isPending && !isError && (
-              <span className="text-medium font-normal text-foreground-500">({data.logsCount})</span>
-            )}
-          </Link>
-          <Button as={Link} href={`/project/${project.id}/activity`} size="sm" variant="flat" color="primary">
-            Go to Activity
-            <Icon icon="arrowRight" size={16} />
-          </Button>
-        </div>
-        {isError ? (
-          <DashboardError onReload={refetch} />
-        ) : isPending ? (
-          <DashboardActivitySkeleton />
-        ) : (
-          <DashboardActivityTable logs={data.logs} />
-        )}
-      </CardBody>
-    </Card>
+    <div className="border-t border-foreground-200 p-3 px-4 lg:border-l lg:border-t-0">
+      <div className="mb-2 flex items-center justify-between gap-4">
+        <Link href={`/project/${project.id}/activity`} className="flex items-center gap-1">
+          <span className="text-lg font-semibold">Activity</span>
+          {!isPending && !isError && (
+            <span className="text-medium font-normal text-foreground-500">({data.logsCount})</span>
+          )}
+        </Link>
+        <Button as={Link} href={`/project/${project.id}/activity`} size="sm" variant="flat" color="primary">
+          Go to Activity
+          <Icon icon="arrowRight" size={16} />
+        </Button>
+      </div>
+      {isError ? (
+        <DashboardError onReload={refetch} />
+      ) : isPending ? (
+        <DashboardActivitySkeleton />
+      ) : (
+        <DashboardActivityTable logs={data.logs} />
+      )}
+    </div>
   );
 };

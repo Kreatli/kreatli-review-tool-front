@@ -17,7 +17,7 @@ export const ChatConversation = ({ chat }: ChatConversationProps) => {
       <div className="shrink-0">
         <ChatAvatar chat={chat} />
       </div>
-      <div className="hidden overflow-hidden text-start md:block">
+      <div className="hidden overflow-hidden text-start lg:block">
         <div className="overflow-hidden text-ellipsis font-semibold">{chat.name || conversationMember?.name}</div>
         <div className="overflow-hidden text-ellipsis text-foreground-500">
           {chat.lastMessage ? chat.lastMessage.content || chat.lastMessage.assets[0]?.name : 'No messages'}

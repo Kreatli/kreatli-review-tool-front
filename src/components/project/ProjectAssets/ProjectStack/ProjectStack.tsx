@@ -76,13 +76,13 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSele
       {activeIndex > index && (
         <div
           ref={setDroppableNodeRef}
-          className="pointer-events-none absolute -left-16 bottom-0 top-0 w-[calc(100%+4rem)]"
+          className="pointer-events-none absolute -left-4 bottom-0 top-0 w-[calc(100%+1rem)]"
         />
       )}
       {activeIndex < index && (
         <div
           ref={setDroppableNodeRef}
-          className="pointer-events-none absolute -right-16 bottom-0 top-0 w-[calc(100%+4rem)]"
+          className="pointer-events-none absolute -right-4 bottom-0 top-0 w-[calc(100%+1rem)]"
         />
       )}
       <div

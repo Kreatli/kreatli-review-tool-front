@@ -24,10 +24,7 @@ export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
     router.push(`/project/${project.id}`);
   };
 
-  const projectActions = useMemo(
-    () => getProjectActions(project).filter((action) => !action.hideInCard),
-    [getProjectActions, project],
-  );
+  const projectActions = useMemo(() => getProjectActions(project), [getProjectActions, project]);
 
   return (
     <div className="group/card relative flex flex-col">
