@@ -38,6 +38,15 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try PDF Reviewer',
   },
   {
+    title: 'PDF Annotator',
+    description:
+      'Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-annotator',
+    icon: 'paint',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Annotator',
+  },
+  {
     title: 'Image Reviewer',
     description:
       'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',
@@ -45,6 +54,15 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'panorama',
     buttonText: 'Try Now',
     ariaLabel: 'Try Image Reviewer',
+  },
+  {
+    title: 'Image Annotator',
+    description:
+      'Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required.',
+    href: '/free-tools/image-annotator',
+    icon: 'paint',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Image Annotator',
   },
   {
     title: 'Video Manager',
