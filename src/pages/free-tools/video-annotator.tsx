@@ -2,60 +2,60 @@
 import Head from 'next/head';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
-import { ProjectFeaturePreview } from '../../components/home/Features/ProjectFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { VideoManagerFAQ, videoManagerFaqs } from '../../components/video-manager/VideoManagerFAQ';
-import { VideoManagerGuide } from '../../components/video-manager/VideoManagerGuide';
+import { VideoAnnotatorFAQ, videoAnnotatorFaqs } from '../../components/video-annotator/VideoAnnotatorFAQ';
+import { VideoAnnotatorGuide } from '../../components/video-annotator/VideoAnnotatorGuide';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
-export default function VideoManagerPage() {
+export default function VideoAnnotatorPage() {
   useSession();
 
   return (
     <>
       <Head>
-        <title>Video Manager - Free Online Tool | Kreatli</title>
+        <title>Video Annotator - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. No sign-up required for reviewers."
+          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients—no sign-up required for reviewers."
         />
         <meta
           name="keywords"
-          content="video manager, manage videos, video organization, video version control, video project management, video storage, video collaboration"
+          content="video annotator, annotate video online, video annotation tool, frame-accurate annotation, draw on video, video markup, video feedback, video collaboration"
         />
-        <meta property="og:title" content="Video Manager - Free Online Tool | Kreatli" />
+        <meta property="og:title" content="Video Annotator - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. No sign-up required for reviewers."
+          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients—no sign-up required for reviewers."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kreatli.com/free-tools/video-manager" />
+        <meta property="og:url" content="https://kreatli.com/free-tools/video-annotator" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Manager - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Video Annotator - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. No sign-up required for reviewers."
+          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients—no sign-up required for reviewers."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <link rel="canonical" href="https://kreatli.com/free-tools/video-manager" />
+        <link rel="canonical" href="https://kreatli.com/free-tools/video-annotator" />
       </Head>
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
           { name: 'Free Tools', url: '/free-tools' },
-          { name: 'Video Manager', url: '/free-tools/video-manager' },
+          { name: 'Video Annotator', url: '/free-tools/video-annotator' },
         ]}
       />
-      <FAQStructuredData faqs={videoManagerFaqs} />
+      <FAQStructuredData faqs={videoAnnotatorFaqs} />
       <Header />
       <Decorations />
 
@@ -71,44 +71,40 @@ export default function VideoManagerPage() {
         {/* Hero */}
         <section className="relative overflow-hidden px-6 pb-4 pt-16">
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-            <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Manager</h1>
+            <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Annotator</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Organize, store, and track all your video assets in one secure workspace. Manage versions, collect
-              feedback, and share with clients—no software installation required for reviewers.
+              Add frame-accurate comments, drawings, and markup directly to video frames. Pin feedback to exact
+              timestamps and collaborate with precise visual annotation—no software installation required for
+              reviewers.
             </p>
           </div>
         </section>
 
-        {/* Project / media storage feature preview */}
-        <section className="relative px-6 pb-16 pt-6">
+        {/* Interactive Tool Preview */}
+        <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
-            <ProjectFeaturePreview />
+            <InteractiveReviewToolPreview variant="video" />
           </div>
         </section>
 
-        <VideoManagerGuide />
+        <VideoAnnotatorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/video-manager" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection excludeHref="/free-tools/video-annotator" title="More Tools for Video Teams" />
 
-        <VideoManagerFAQ />
+        <VideoAnnotatorFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources([
-            'reviewApproval',
-            'creativeProofing',
-            'videoAnnotation',
-            'secureAssetStorage',
-          ])}
+          resources={getRelatedResources(['videoAnnotation', 'reviewApproval', 'commentOnVideo'])}
           title="More Resources"
-          description="Explore other Kreatli platform features to streamline your video management and collaboration workflow."
+          description="Explore other Kreatli platform features for video annotation, review, and collaboration."
         />
 
         {/* CTA Section */}
         <CTASection
-          title="Ready to manage videos with your team?"
-          description="Kreatli combines reliable media storage with project management. Organize, track, and deliver video projects in one secure workspace."
+          title="Ready to annotate videos with your team?"
+          description="Kreatli offers frame-accurate video annotation, drawing on video, and approval workflows. Add comments and markup pinned to exact frames—all in one place."
           primaryButtonText="Start for Free"
         />
       </main>

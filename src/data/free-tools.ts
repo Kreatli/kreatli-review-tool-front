@@ -56,6 +56,24 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try Video Manager',
   },
   {
+    title: 'Video Proofing Tool',
+    description:
+      'Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients—no sign-up required.',
+    href: '/free-tools/video-proofing-tool',
+    icon: 'checkCircle',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Proofing Tool',
+  },
+  {
+    title: 'Video Annotator',
+    description:
+      'Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps and share with clients—no sign-up required.',
+    href: '/free-tools/video-annotator',
+    icon: 'paint',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Annotator',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed',

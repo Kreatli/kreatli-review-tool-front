@@ -85,6 +85,22 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Video Proofing Tool',
+    description:
+      'Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients—no sign-up required for reviewers.',
+    href: '/free-tools/video-proofing-tool',
+    icon: 'checkCircle',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Video Annotator',
+    description:
+      'Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps and share with clients—no sign-up required for reviewers.',
+    href: '/free-tools/video-annotator',
+    icon: 'paint',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Social Media Safe Zone Checker',
     description:
       'Preview where UI overlays appear on your Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',

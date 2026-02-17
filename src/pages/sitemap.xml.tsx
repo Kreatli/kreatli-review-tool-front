@@ -36,6 +36,8 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/free-tools/pdf-reviewer', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/image-reviewer', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-manager', priority: '0.8', changefreq: 'weekly' },
+  { path: '/free-tools/video-proofing-tool', priority: '0.8', changefreq: 'weekly' },
+  { path: '/free-tools/video-annotator', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/data-transfer-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/cost-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/youtube-banner-resizer', priority: '0.7', changefreq: 'monthly' },
