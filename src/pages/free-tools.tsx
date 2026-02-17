@@ -61,6 +61,14 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'PDF Reviewer',
+    description:
+      'Review PDFs online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required for reviewers.',
+    href: '/free-tools/pdf-reviewer',
+    icon: 'filePdf',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Social Media Safe Zone Checker',
     description:
       'Preview where UI overlays appear on your Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',
