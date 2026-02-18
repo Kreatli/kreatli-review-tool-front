@@ -320,7 +320,6 @@ export function VideoFrameExtractor() {
       'video/quicktime': ['.mov'],
     },
     noKeyboard: true,
-    noClick: true,
   });
 
   // Create/revoke video object URL
@@ -551,12 +550,7 @@ export function VideoFrameExtractor() {
         <Card shadow="sm" className="border border-foreground-200">
           <CardBody className="p-6">
             <div
-              {...getRootProps({
-                onClick: (e) => {
-                  e.preventDefault();
-                  open();
-                },
-              })}
+              {...getRootProps()}
               className={cn(
                 'flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed p-10 text-center transition-colors',
                 isDragActive ? 'border-primary bg-primary/5' : 'border-foreground-200 hover:bg-foreground-50',
@@ -600,17 +594,14 @@ export function VideoFrameExtractor() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Tooltip content="Choose another video">
-                      <Button
-                        isIconOnly
-                        size="sm"
-                        variant="light"
-                        onPress={() => setFile(null)}
-                        aria-label="Choose another video"
-                      >
-                        <Icon icon="addVideo" size={18} />
-                      </Button>
-                    </Tooltip>
+                    <Button
+                      size="sm"
+                      variant="light"
+                      onPress={() => setFile(null)}
+                      aria-label="Choose another video"
+                    >
+                      Choose another video
+                    </Button>
                   </div>
                 </div>
 

@@ -84,9 +84,9 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/extract-frames-from-video': [
     '/free-tools/video-frame-extractor',
+    '/free-tools/resize-video',
     '/free-tools/video-annotator',
     '/free-tools/video-reviewer',
-    '/free-tools/video-feedback-tool',
   ],
 
   // Share / send / embed video
@@ -130,9 +130,9 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   // YouTube banner
   '/platform/resize-youtube-banner': [
     '/free-tools/youtube-banner-resizer',
+    '/free-tools/resize-video',
     '/social-media-safe-zone-checker/youtube-safe-zone-checker',
     '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-    '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
   ],
 
   // PDF cluster – vary which 4 across pages

@@ -4,11 +4,15 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { ResizeVideoFAQ, RESIZE_VIDEO_FAQS } from '../../components/resize-video/ResizeVideoFAQ';
+import { ResizeVideoGuide } from '../../components/resize-video/ResizeVideoGuide';
 import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -34,17 +38,28 @@ export default function ResizeVideoPage() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/resize-video" />
+        <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Resize Video - Free Tool | Kreatli" />
         <meta
           name="twitter:description"
           content="Resize video to custom or preset dimensions in your browser. No uploads, no sign-up."
         />
+        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/resize-video" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Free Tools', url: '/free-tools' },
+          { name: 'Resize Video', url: '/free-tools/resize-video' },
+        ]}
+      />
+      <FAQStructuredData faqs={RESIZE_VIDEO_FAQS} />
       <Header />
       <Decorations />
 
+      {/* Skip to main content link for accessibility */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
@@ -69,7 +84,11 @@ export default function ResizeVideoPage() {
           </div>
         </section>
 
+        <ResizeVideoGuide />
+
         <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/resize-video')} title="More Tools for Video Teams" />
+
+        <ResizeVideoFAQ />
 
         <RelatedResourcesSection
           resources={getRelatedResources(['reviewApproval', 'creativeWorkspace', 'secureAssetStorage'])}
