@@ -6,6 +6,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { BannerFAQ } from '../../components/youtube-banner-resizer/BannerFAQ';
 import { BannerGuide } from '../../components/youtube-banner-resizer/BannerGuide';
@@ -60,14 +61,14 @@ export default function YouTubeBannerResizerPage() {
       <BannerGuide />
 
       {/* Related Tools Section */}
-      <MoreFreeToolsSection excludeHref="/free-tools/youtube-banner-resizer" />
+      <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/youtube-banner-resizer')} />
 
       {/* FAQ Section */}
       <BannerFAQ />
 
       {/* Related Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['creativeWorkspace', 'reviewApproval', 'blog'])}
+        resources={getRelatedResources(['creativeWorkspace', 'reviewApproval', 'projectOrchestration'])}
         description="Learn more about video collaboration workflows, asset management, and team collaboration."
       />
 

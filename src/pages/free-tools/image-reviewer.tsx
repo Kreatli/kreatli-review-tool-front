@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ImageReviewerFAQ, imageReviewerFaqs } from '../../components/image-reviewer/ImageReviewerFAQ';
 import { ImageReviewerGuide } from '../../components/image-reviewer/ImageReviewerGuide';
@@ -89,13 +90,13 @@ export default function ImageReviewerPage() {
         <ImageReviewerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/image-reviewer" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/image-reviewer')} title="More Tools for Video Teams" />
 
         <ImageReviewerFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'reviewApproval', 'clientApprovals'])}
+          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'clientApprovals', 'creativeProofing'])}
           title="More Resources"
           description="Learn more about image review workflows, annotations, and team collaboration."
         />

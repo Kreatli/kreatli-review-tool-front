@@ -9,6 +9,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
@@ -84,7 +85,7 @@ export default function DataTransferCalculatorPage() {
 
         {/* More Tools for Creative Teams Section */}
         <MoreFreeToolsSection
-          excludeHref="/free-tools/data-transfer-calculator"
+          tools={getFreeToolsForFreeToolPage('/free-tools/data-transfer-calculator')}
           title="More Tools for Video Teams"
         />
 
@@ -93,7 +94,7 @@ export default function DataTransferCalculatorPage() {
 
         {/* More Resources Section */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'blog'])}
+          resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'projectOrchestration'])}
           title="More Resources"
           description="Learn more about secure asset storage, video collaboration workflows, and team collaboration."
         />

@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
 import { getRelatedResources } from '../../data/related-resources';
@@ -280,7 +281,7 @@ export default function CostCalculatorPage() {
       </section>
 
       {/* More Free Tools Section */}
-      <MoreFreeToolsSection excludeHref="/free-tools/cost-calculator" />
+      <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/cost-calculator')} />
 
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -627,7 +628,7 @@ export default function CostCalculatorPage() {
 
       {/* Related Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['projectOrchestration', 'secureAssetStorage', 'blog'])}
+        resources={getRelatedResources(['projectOrchestration', 'secureAssetStorage', 'creativeWorkspace'])}
         description="Learn more about project management, asset storage, and team collaboration."
       />
 

@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ImageAnnotatorFAQ, imageAnnotatorFaqs } from '../../components/image-annotator/ImageAnnotatorFAQ';
 import { ImageAnnotatorGuide } from '../../components/image-annotator/ImageAnnotatorGuide';
@@ -89,13 +90,13 @@ export default function ImageAnnotatorPage() {
         <ImageAnnotatorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/image-annotator" title="More Tools for Creative Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/image-annotator')} title="More Tools for Creative Teams" />
 
         <ImageAnnotatorFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'reviewApproval', 'clientApprovals'])}
+          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'reviewApproval', 'secureAssetStorage'])}
           title="More Resources"
           description="Explore other Kreatli platform features for image annotation, review, and collaboration."
         />

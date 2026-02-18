@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoProofingToolFAQ, videoProofingToolFaqs } from '../../components/video-proofing-tool/VideoProofingToolFAQ';
 import { VideoProofingToolGuide } from '../../components/video-proofing-tool/VideoProofingToolGuide';
@@ -89,7 +90,7 @@ export default function VideoProofingToolPage() {
         <VideoProofingToolGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/video-proofing-tool" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-proofing-tool')} title="More Tools for Video Teams" />
 
         <VideoProofingToolFAQ />
 

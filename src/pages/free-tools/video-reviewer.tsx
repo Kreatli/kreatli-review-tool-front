@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoReviewerFAQ, videoReviewerFaqs } from '../../components/video-reviewer/VideoReviewerFAQ';
 import { VideoReviewerGuide } from '../../components/video-reviewer/VideoReviewerGuide';
@@ -89,13 +90,13 @@ export default function VideoReviewerPage() {
         <VideoReviewerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/video-reviewer" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-reviewer')} title="More Tools for Video Teams" />
 
         <VideoReviewerFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'clientApprovals'])}
+          resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'clientApprovals', 'secureAssetStorage'])}
           title="More Resources"
           description="Learn more about video review workflows, approval processes, and team collaboration."
         />
