@@ -1316,6 +1316,46 @@ export const COMPARE_DOCUMENTS_ONLINE_STEPS: WorkflowStep[] = [
   },
 ];
 
+/** Steps for comparing images (e.g. free-tools image comparer page). */
+export const COMPARE_IMAGES_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload both image versions in Kreatli',
+    description:
+      'Sign in to Kreatli, open your project, and upload both image versions (e.g. draft and revised, or any two you need to compare). Both files live in the same project so you can review them together.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with images uploaded for comparison',
+  },
+  {
+    step: 2,
+    title: 'Select both images and click Compare',
+    description:
+      'In the Media view, select the two image versions you want to compare (use the checkboxes on each file). With both selected, click the Compare button to open them side by side in the review interface.',
+    icon: 'addVideo',
+    image: '/video-annotation-guide/step-2-compare.png',
+    altText: 'Select two images in Media view and click Compare in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Compare all feedback side by side',
+    description:
+      'View both images side by side with the comments panel. See feedback on either version, add comments and annotations pinned to the exact spot, and track what\'s resolved across both files.',
+    icon: 'compare',
+    image: '/video-annotation-guide/step-3-compare.png',
+    altText: 'Compare images side by side with feedback in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Upload new versions to keep the review going',
+    description:
+      "When you're ready to share an updated image, open the file menu (⋯) and choose Upload new version. The new file appears in the same project so you can compare it with the previous version and track resolution.",
+    icon: 'checkCircle',
+    image: '/video-annotation-guide/step-4-compare.png',
+    altText: 'Upload new version from the file menu in Kreatli',
+  },
+];
+
 /** Steps for the Proof PDF platform page. */
 export const PROOF_PDF_STEPS: WorkflowStep[] = [
   {

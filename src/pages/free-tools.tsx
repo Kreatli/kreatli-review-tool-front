@@ -101,11 +101,27 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'PDF Comparer',
+    description:
+      'Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-comparer',
+    icon: 'filePdf',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Document Annotator',
     description:
       'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
     href: '/free-tools/document-annotator',
     icon: 'paint',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Document Comparer',
+    description:
+      'Compare two document versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/document-comparer',
+    icon: 'filePdf',
     category: 'Creative Tools',
   },
   {
@@ -122,6 +138,14 @@ const tools: Tool[] = [
       'Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required for reviewers.',
     href: '/free-tools/image-annotator',
     icon: 'paint',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Image Comparer',
+    description:
+      'Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/image-comparer',
+    icon: 'panorama',
     category: 'Creative Tools',
   },
   {

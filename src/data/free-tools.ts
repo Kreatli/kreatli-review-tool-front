@@ -65,6 +65,15 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try PDF Highlighter',
   },
   {
+    title: 'PDF Comparer',
+    description:
+      'Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-comparer',
+    icon: 'filePdf',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Comparer',
+  },
+  {
     title: 'Document Annotator',
     description:
       'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
@@ -72,6 +81,15 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'paint',
     buttonText: 'Try Now',
     ariaLabel: 'Try Document Annotator',
+  },
+  {
+    title: 'Document Comparer',
+    description:
+      'Compare two document versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/document-comparer',
+    icon: 'filePdf',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Document Comparer',
   },
   {
     title: 'Image Reviewer',
@@ -90,6 +108,15 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'paint',
     buttonText: 'Try Now',
     ariaLabel: 'Try Image Annotator',
+  },
+  {
+    title: 'Image Comparer',
+    description:
+      'Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/image-comparer',
+    icon: 'panorama',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Image Comparer',
   },
   {
     title: 'Video Manager',
