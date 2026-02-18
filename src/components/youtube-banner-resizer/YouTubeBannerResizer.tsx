@@ -2,21 +2,17 @@ import { addToast } from '@heroui/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-import { useSoftGate } from '../../hooks/useSoftGate';
+import { useSession } from '../../hooks/useSession';
+import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
 import { BannerPreviewModes } from './BannerPreviewModes';
 
-export type ResizeMode = 'cover' | 'contain';
 export type PreviewMode = 'desktop' | 'mobile' | 'tablet' | 'tv';
 
 // Maximum image dimensions to prevent memory exhaustion
 const MAX_IMAGE_DIMENSION = 10000;
-
-// Canvas dimensions (YouTube recommended)
-const CANVAS_WIDTH = 2560;
-const CANVAS_HEIGHT = 1440;
 
 interface ImageState {
   file: File | null;
@@ -25,52 +21,6 @@ interface ImageState {
   naturalHeight: number;
 }
 
-// Calculate position bounds based on image dimensions and resize mode
-const calculatePositionBounds = (
-  naturalWidth: number,
-  naturalHeight: number,
-  resizeMode: ResizeMode,
-): { minX: number; maxX: number; minY: number; maxY: number } => {
-  if (!naturalWidth || !naturalHeight) {
-    return { minX: -500, maxX: 500, minY: -500, maxY: 500 };
-  }
-
-  let imgWidth: number;
-  let imgHeight: number;
-
-  if (resizeMode === 'cover') {
-    const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
-    const imageAspect = naturalWidth / naturalHeight;
-
-    if (imageAspect > canvasAspect) {
-      imgHeight = CANVAS_HEIGHT;
-      imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
-    } else {
-      imgWidth = CANVAS_WIDTH;
-      imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
-    }
-  } else {
-    const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
-    const imageAspect = naturalWidth / naturalHeight;
-
-    if (imageAspect > canvasAspect) {
-      imgWidth = CANVAS_WIDTH;
-      imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
-    } else {
-      imgHeight = CANVAS_HEIGHT;
-      imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
-    }
-  }
-
-  // Calculate bounds: image can move within canvas bounds
-  const minX = -(imgWidth - CANVAS_WIDTH) / 2;
-  const maxX = (imgWidth - CANVAS_WIDTH) / 2;
-  const minY = -(imgHeight - CANVAS_HEIGHT) / 2;
-  const maxY = (imgHeight - CANVAS_HEIGHT) / 2;
-
-  return { minX, maxX, minY, maxY };
-};
-
 export const YouTubeBannerResizer = () => {
   const [imageState, setImageState] = useState<ImageState>({
     file: null,
@@ -78,32 +28,14 @@ export const YouTubeBannerResizer = () => {
     naturalWidth: 0,
     naturalHeight: 0,
   });
-  const [resizeMode, setResizeMode] = useState<ResizeMode>('cover');
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [showSafeAreas, setShowSafeAreas] = useState(true);
   const [previewMode, setPreviewMode] = useState<PreviewMode>('desktop');
   const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png');
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const resetTool = useCallback(() => {
-    setImageState((prev) => {
-      if (prev.imageUrl) {
-        URL.revokeObjectURL(prev.imageUrl);
-      }
-      return {
-        file: null,
-        imageUrl: null,
-        naturalWidth: 0,
-        naturalHeight: 0,
-      };
-    });
-    setPosition({ x: 0, y: 0 });
-  }, []);
-
-  const { triggerSoftGate } = useSoftGate({
-    onReset: resetTool,
-  });
+  const { isSignedIn } = useSession();
+  const openSignUpModal = useSignUpModalVisibility((s) => s.openSignUpModal);
 
   const loadImageFile = useCallback(
     (file: File) => {
@@ -148,11 +80,10 @@ export const YouTubeBannerResizer = () => {
           naturalWidth: img.naturalWidth,
           naturalHeight: img.naturalHeight,
         });
-        setPosition({ x: 0, y: 0 });
         setIsLoadingImage(false);
 
-        // Soft gate: once user uploads media, prompt sign up.
-        triggerSoftGate();
+        // Soft gate: show sign-up popup for guests (no reset on dismiss).
+        if (!isSignedIn) openSignUpModal();
       };
 
       img.onerror = () => {
@@ -167,7 +98,7 @@ export const YouTubeBannerResizer = () => {
 
       img.src = imageUrl;
     },
-    [imageState.imageUrl, triggerSoftGate],
+    [imageState.imageUrl, isSignedIn, openSignUpModal],
   );
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -221,57 +152,9 @@ export const YouTubeBannerResizer = () => {
     multiple: false,
   });
 
-  const handleResetPosition = () => {
-    setPosition({ x: 0, y: 0 });
-  };
-
   const handleReupload = () => {
     fileInputRef.current?.click();
   };
-
-  // Keyboard shortcuts for position controls
-  useEffect(() => {
-    if (!imageState.imageUrl) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Only handle if not typing in an input/textarea
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
-        return;
-      }
-
-      const bounds = calculatePositionBounds(imageState.naturalWidth, imageState.naturalHeight, resizeMode);
-      const step = e.shiftKey ? 50 : 10; // Larger steps with Shift key
-
-      switch (e.key) {
-        case 'ArrowUp':
-          e.preventDefault();
-          setPosition((prev) => ({ ...prev, y: Math.max(bounds.minY, prev.y - step) }));
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          setPosition((prev) => ({ ...prev, y: Math.min(bounds.maxY, prev.y + step) }));
-          break;
-        case 'ArrowLeft':
-          e.preventDefault();
-          setPosition((prev) => ({ ...prev, x: Math.max(bounds.minX, prev.x - step) }));
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          setPosition((prev) => ({ ...prev, x: Math.min(bounds.maxX, prev.x + step) }));
-          break;
-        case 'r':
-        case 'R':
-          if (e.ctrlKey || e.metaKey) {
-            e.preventDefault();
-            handleResetPosition();
-          }
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [imageState.imageUrl, imageState.naturalWidth, imageState.naturalHeight, resizeMode]);
 
   // Cleanup image URL on unmount
   useEffect(() => {
@@ -291,9 +174,6 @@ export const YouTubeBannerResizer = () => {
             imageUrl={imageState.imageUrl}
             naturalWidth={imageState.naturalWidth}
             naturalHeight={imageState.naturalHeight}
-            resizeMode={resizeMode}
-            position={position}
-            onPositionChange={setPosition}
             showSafeAreas={showSafeAreas}
             previewMode={previewMode}
             getRootProps={getRootProps}
@@ -306,8 +186,6 @@ export const YouTubeBannerResizer = () => {
         {/* Controls Section */}
         <div className="flex flex-col gap-4 lg:w-80 lg:shrink-0">
           <BannerControls
-            resizeMode={resizeMode}
-            onResizeModeChange={setResizeMode}
             showSafeAreas={showSafeAreas}
             onShowSafeAreasChange={setShowSafeAreas}
             hasImage={!!imageState.imageUrl}
@@ -320,10 +198,11 @@ export const YouTubeBannerResizer = () => {
             imageUrl={imageState.imageUrl}
             naturalWidth={imageState.naturalWidth}
             naturalHeight={imageState.naturalHeight}
-            resizeMode={resizeMode}
-            position={position}
             exportFormat={exportFormat}
             onExportFormatChange={setExportFormat}
+            onExportStart={() => {
+              if (!isSignedIn) openSignUpModal();
+            }}
           />
         </div>
       </div>
