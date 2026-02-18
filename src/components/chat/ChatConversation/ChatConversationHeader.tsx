@@ -24,7 +24,7 @@ export const ChatConversationHeader = ({ isDisabled = false, chat, search, onSea
   const isSearchActive = isSearchFocused || search.length > 0;
 
   return (
-    <div className="flex items-center justify-between gap-2 p-3">
+    <div className="flex items-center justify-between gap-2 border-b border-foreground-200 p-3 xs:pr-6">
       <div className="flex items-center gap-2">
         <ChatAvatar chat={chat} />
         <ChatConversationName chat={chat} />

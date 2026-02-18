@@ -32,7 +32,6 @@ import { EmptyState } from '../../../various/EmptyState';
 import { Icon } from '../../../various/Icon';
 import { ArchiveAssetsModal } from '../ProjectAssetsBulkEdit/ArchiveAssetsModal';
 import { MoveToAssetsModal } from '../ProjectAssetsBulkEdit/MoveToAssetsModal';
-import { ProjectAssetsFilters } from '../ProjectAssetsSearch';
 import { ProjectFile } from '../ProjectFile';
 import { ProjectFileCover } from '../ProjectFile/ProjectFileCover';
 import { ProjectFolder } from '../ProjectFolder';
@@ -120,7 +119,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
 
   if (isLoadingAssets) {
     return (
-      <div className="-m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-6">
+      <div className="mt-4 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden">
         {Array.from({ length: 8 }).map((_, index) => (
           <div key={index} className="flex flex-col gap-2">
             <Skeleton className="aspect-video rounded-lg" />
@@ -266,13 +265,6 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col items-center justify-between gap-4 gap-y-2 sm:flex-row">
-        <div className="flex w-full items-center gap-2 text-lg font-semibold md:text-2xl">
-          <Icon icon="folder" size={20} />
-          {folder.name}
-        </div>
-        <ProjectAssetsFilters />
-      </div>
       <div
         className={cn('sticky top-16 z-20 h-4 overflow-hidden bg-background opacity-0 transition-[height,opacity]', {
           'h-12 opacity-100': hasSelectedAssets,
@@ -353,7 +345,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             ))}
           </div>
           <SortableContext items={filesOrder}>
-            <div className="-m-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-6">
+            <div className="-m-3 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-3">
               {sortedAssets.map((asset, index) => (
                 <div key={asset.id} className={cn('relative', { 'opacity-50': draggedId === asset.id })}>
                   {asset.type === 'file' && (

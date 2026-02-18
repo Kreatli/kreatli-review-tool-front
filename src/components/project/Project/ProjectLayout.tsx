@@ -1,4 +1,4 @@
-import { addToast, Button, Tab, Tabs } from '@heroui/react';
+import { addToast, Button } from '@heroui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -14,16 +14,11 @@ import { Header } from '../../layout/Header';
 import { EmptyState } from '../../various/EmptyState';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
 import { NotActiveProjectAlert } from './NotActiveProjectAlert';
-import { ProjectHeader } from './ProjectHeader';
 import { ProjectLoader } from './ProjectLoader';
 import { ProjectPaywall } from './ProjectPaywall';
+import { ProjectSidebar } from './ProjectSidebar';
 
-interface Props {
-  hideHeader?: boolean;
-  actions?: React.ReactNode;
-}
-
-export const ProjectLayout = ({ children, hideHeader = false, actions }: React.PropsWithChildren<Props>) => {
+export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
   const { isSignedIn } = useProtectedPage();
   const { user } = useSession();
   const router = useRouter();
@@ -53,6 +48,7 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
     return (
       <>
         <Header />
+        <div className="border-t border-foreground-200" />
         <EmptyState title="You do not have permission to view this project">
           <Button as={NextLink} href="/" className="mt-2 bg-foreground text-content1">
             Browse my projects
@@ -69,43 +65,26 @@ export const ProjectLayout = ({ children, hideHeader = false, actions }: React.P
   return (
     <>
       <Header />
-      <div className="xs:p-6 xs:pt-2 flex flex-1 flex-col border-t border-foreground-200 p-3">
+      <div className="grid flex-1 grid-cols-[auto_1fr] border-t border-foreground-200 md:grid-cols-[200px_1fr]">
+        <ProjectSidebar isLoading={isPending} project={project} />
         {isPending || isError ? (
           <ProjectLoader />
         ) : (
           <ProjectContextProvider selectedProject={project}>
             <ProjectUploadContextProvider project={project} folderId={router.query.folderId?.toString()}>
-              {hideHeader ? (
-                children
-              ) : (
-                <div className="flex flex-1 flex-col gap-4">
-                  <ProjectHeader project={project} />
-                  {project.status !== 'active' && (
-                    <div>
-                      <NotActiveProjectAlert />
-                    </div>
-                  )}
-                  <div className="flex flex-col gap-6 gap-y-2 sm:flex-row">
-                    <Tabs selectedKey={router.pathname.split('/')[3]}>
-                      <Tab as={NextLink} href={`/project/${project.id}/dashboard`} title="Home" key="dashboard" />
-                      <Tab as={NextLink} href={`/project/${project.id}/assets`} title="Media" key="assets" />
-                      <Tab as={NextLink} href={`/project/${project.id}/chat`} title="Chat" key="chat" />
-                      <Tab as={NextLink} href={`/project/${project.id}/activity`} title="Activity" key="activity" />
-                    </Tabs>
-                    {actions}
-                  </div>
-                  <div className="flex flex-1 flex-col">{children}</div>
-                </div>
-              )}
+              <div className="flex flex-col">
+                {project.status !== 'active' && <NotActiveProjectAlert />}
+                {children}
+              </div>
             </ProjectUploadContextProvider>
           </ProjectContextProvider>
         )}
-        <EditProjectStatusesModal
-          project={project}
-          isOpen={isEditProjectStatusesModalOpen}
-          onClose={() => setIsEditProjectStatusesModalOpen(false)}
-        />
       </div>
+      <EditProjectStatusesModal
+        project={project}
+        isOpen={isEditProjectStatusesModalOpen}
+        onClose={() => setIsEditProjectStatusesModalOpen(false)}
+      />
     </>
   );
 };

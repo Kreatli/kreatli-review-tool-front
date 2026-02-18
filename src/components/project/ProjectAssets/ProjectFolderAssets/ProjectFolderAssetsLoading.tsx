@@ -1,21 +1,18 @@
 import { Skeleton } from '@heroui/react';
-import React from 'react';
-
-import { Icon } from '../../../various/Icon';
 
 export const ProjectFolderAssetsLoading = () => {
   return (
-    <div>
-      <div className="mb-4 flex items-center gap-0.5 text-foreground-500">
-        <Icon icon="arrowLeft" size={18} />
-        <Skeleton className="h-4 w-24 rounded" />
+    <div className="p-3 px-4">
+      <div className="mb-2 flex items-center gap-4 text-foreground-500">
+        <Skeleton className="h-4 w-full rounded md:w-24" />
+        <Skeleton className="h-4 w-full rounded md:w-24" />
+        <Skeleton className="h-4 w-full rounded md:w-24" />
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Skeleton className="size-12 rounded-full" />
-            <div className="flex flex-col gap-2">
-              <Skeleton className="h-6 w-32 rounded" />
+          <div className="flex w-full items-center gap-2">
+            <div className="flex w-full flex-col gap-1">
+              <Skeleton className="h-6 w-full rounded md:w-80" />
               <Skeleton className="h-4 w-24 rounded" />
             </div>
           </div>
@@ -23,7 +20,7 @@ export const ProjectFolderAssetsLoading = () => {
             <Skeleton className="h-10 w-24 rounded" />
           </div>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
+        <div className="grid grid-cols-1 gap-4 gap-y-6 xs:grid-cols-[repeat(auto-fill,minmax(280px,1fr))]">
           {Array.from({ length: 8 }).map((_, index) => (
             <div key={index} className="flex flex-col gap-2">
               <Skeleton className="aspect-video rounded-lg" />

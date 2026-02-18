@@ -43,15 +43,12 @@ export const ProjectsListTable = ({
   onCreateProject,
 }: Props) => {
   const router = useRouter();
-  const { getProjectActions, setIsMembersModalOpen } = useProjectContext();
+  const { getProjectActions } = useProjectContext();
   const { title, text } = useProjectEmptyState({ search, status });
 
   const handleRowClick = (project: ProjectDto) => {
     router.push(`/project/${project.id}`);
   };
-
-  const getFilteredProjectActions = (project: ProjectDto) =>
-    getProjectActions(project).filter((action) => !action.hideInCard);
 
   return (
     <Table isStriped={projects.length > 3}>
@@ -117,19 +114,7 @@ export const ProjectsListTable = ({
               </div>
             </TableCell>
             <TableCell>
-              <button
-                type="button"
-                aria-label="Project members"
-                disabled={project.status !== 'active' || !project.createdBy?.subscription.isActive}
-                className="rounded-full outline-offset-4"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onSelectProjectId?.(project.id);
-                  setIsMembersModalOpen(true);
-                }}
-              >
-                <ProjectMembersThumbnails members={project.members} max={5} />
-              </button>
+              <ProjectMembersThumbnails members={project.members} max={5} />
             </TableCell>
             <TableCell>
               <ProjectStatus status={project.status} variant="light" size="md" />
@@ -139,7 +124,7 @@ export const ProjectsListTable = ({
             </TableCell>
             <TableCell className="whitespace-nowrap">{formatFullDate(project.createdAt)}</TableCell>
             <TableCell>
-              {getFilteredProjectActions(project).length > 0 && (
+              {getProjectActions(project).length > 0 && (
                 <Dropdown>
                   <DropdownTrigger>
                     <Button
@@ -156,7 +141,7 @@ export const ProjectsListTable = ({
                     </Button>
                   </DropdownTrigger>
                   <DropdownMenu variant="flat">
-                    {getFilteredProjectActions(project).map((action) => (
+                    {getProjectActions(project).map((action) => (
                       <DropdownItem
                         key={action.label}
                         color={action.color}

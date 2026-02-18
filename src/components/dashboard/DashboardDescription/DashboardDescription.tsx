@@ -1,4 +1,4 @@
-import { addToast, Button, Card, CardBody, cn, ScrollShadow } from '@heroui/react';
+import { addToast, Button, cn, ScrollShadow } from '@heroui/react';
 import { JSONContent } from '@tiptap/react';
 import { useRef, useState } from 'react';
 
@@ -101,46 +101,45 @@ export const DashboardDescription = ({ project }: Props) => {
   };
 
   return (
-    <Card>
-      <CardBody className="p-0">
-        <ScrollShadow
-          isEnabled={!isEditable}
-          ref={scrollRef}
-          className={cn('max-h-96 overflow-auto p-3 px-4', { 'max-h-[70vh]': isEditable })}
+    <div className="relative">
+      <ScrollShadow
+        isEnabled={!isEditable}
+        key={project.id}
+        ref={scrollRef}
+        className={cn('max-h-96 overflow-auto p-3 px-4', { 'max-h-[70vh]': isEditable })}
+      >
+        <SimpleEditor
+          editorRef={editorRef}
+          content={project.content}
+          isEditable={isEditable}
+          onUpdate={handleUpdate}
+          onSave={handleEditorAutoSave}
         >
-          <SimpleEditor
-            editorRef={editorRef}
-            content={project.content}
-            isEditable={isEditable}
-            onUpdate={handleUpdate}
-            onSave={handleEditorAutoSave}
-          >
-            {isEditable && (
-              <div className="flex justify-end gap-2">
-                <Button size="sm" variant="light" onClick={handleCancel}>
-                  Cancel
-                </Button>
-                <Button size="sm" variant="flat" isLoading={isPending} color="primary" onClick={handleSave}>
-                  <span>Save</span>
-                </Button>
-              </div>
-            )}
-          </SimpleEditor>
-          {!isEditable && (
-            <Button
-              isIconOnly
-              className="absolute right-2 top-2"
-              size="sm"
-              variant="flat"
-              color="primary"
-              radius="full"
-              onClick={handleEdit}
-            >
-              <Icon icon="edit" size={16} />
-            </Button>
+          {isEditable && (
+            <div className="flex justify-end gap-2">
+              <Button size="sm" variant="light" onClick={handleCancel}>
+                Cancel
+              </Button>
+              <Button size="sm" variant="flat" isLoading={isPending} color="primary" onClick={handleSave}>
+                <span>Save</span>
+              </Button>
+            </div>
           )}
-        </ScrollShadow>
-      </CardBody>
-    </Card>
+        </SimpleEditor>
+        {!isEditable && (
+          <Button
+            isIconOnly
+            className="absolute right-2 top-2"
+            size="sm"
+            variant="flat"
+            color="primary"
+            radius="full"
+            onClick={handleEdit}
+          >
+            <Icon icon="edit" size={16} />
+          </Button>
+        )}
+      </ScrollShadow>
+    </div>
   );
 };

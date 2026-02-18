@@ -15,4 +15,4 @@ export default function ProjectAssetsPage() {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-ProjectAssetsPage.getLayout = (page: any) => <ProjectLayout hideHeader>{page}</ProjectLayout>;
+ProjectAssetsPage.getLayout = (page: any) => <ProjectLayout>{page}</ProjectLayout>;

@@ -16,7 +16,7 @@ export const Chat = () => {
   }, [chats, selectedConversationId]);
 
   return (
-    <div className="grid max-h-[max(300px,calc(100vh-255px))] min-h-[max(300px,calc(100vh-255px))] flex-1 grid-cols-[auto_1fr] grid-rows-1 gap-4 overflow-hidden md:grid-cols-[300px_1fr]">
+    <div className="grid max-h-[max(300px,calc(100vh-66px))] min-h-[max(300px,calc(100vh-66px))] flex-1 grid-cols-[auto_1fr] grid-rows-1 overflow-hidden lg:grid-cols-[300px_1fr]">
       <ChatConversations
         chats={chats}
         isDisabled={project.status !== 'active'}
@@ -26,7 +26,7 @@ export const Chat = () => {
       {selectedConversation && (
         <ChatConversation chat={selectedConversation} isDisabled={project.status !== 'active'} />
       )}
-      {isPending && <Skeleton className="h-full w-full rounded-medium" />}
+      {true && <Skeleton className="h-full w-full" />}
     </div>
   );
 };

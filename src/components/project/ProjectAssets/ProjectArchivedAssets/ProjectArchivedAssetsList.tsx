@@ -73,7 +73,6 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
 
   return (
     <div>
-      <div className="text-2xl font-semibold">Recently deleted</div>
       <div
         className={cn('sticky top-16 z-20 h-4 overflow-hidden bg-background opacity-0 transition-[height,opacity]', {
           'h-12 opacity-100': hasSelectedAssets,

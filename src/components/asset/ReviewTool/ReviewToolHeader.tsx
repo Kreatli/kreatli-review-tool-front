@@ -81,7 +81,7 @@ export const ReviewToolHeader = ({
       })}
       onClick={onClick}
     >
-      <div className="-my-1 flex flex-1 items-center gap-2 overflow-hidden py-1">
+      <div className="-my-1 -ml-1 flex flex-1 items-center gap-2 overflow-hidden py-1 pl-1">
         {!isCompareMode && (
           <Button
             size="sm"
