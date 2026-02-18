@@ -124,6 +124,13 @@ export default function YouTubeShortsSafeZonePage() {
         </div>
       </section>
 
+      {/* How to Use Safe-Zone Checker (step-by-step) */}
+      <SafeZoneScreenGuide
+        platform="youtube"
+        stepsOnly
+        stepsSectionTitle="How to Use the Safe-Zone Checker for YouTube Shorts"
+      />
+
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
@@ -307,13 +314,6 @@ export default function YouTubeShortsSafeZonePage() {
           </div>
         </div>
       </section>
-
-      {/* How to Use Safe-Zone Checker (step-by-step) */}
-      <SafeZoneScreenGuide
-        platform="youtube"
-        stepsOnly
-        stepsSectionTitle="How to Use the Safe-Zone Checker for YouTube Shorts"
-      />
 
       {/* Free Tools Section */}
       <MoreFreeToolsSection

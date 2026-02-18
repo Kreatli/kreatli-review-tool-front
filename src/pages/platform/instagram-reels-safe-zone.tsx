@@ -125,6 +125,13 @@ export default function InstagramReelsSafeZonePage() {
         </div>
       </section>
 
+      {/* How to Use Safe-Zone Checker (step-by-step) */}
+      <SafeZoneScreenGuide
+        platform="instagram"
+        stepsOnly
+        stepsSectionTitle="How to Use the Safe-Zone Checker for Instagram Reels"
+      />
+
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
@@ -308,13 +315,6 @@ export default function InstagramReelsSafeZonePage() {
           </div>
         </div>
       </section>
-
-      {/* How to Use Safe-Zone Checker (step-by-step) */}
-      <SafeZoneScreenGuide
-        platform="instagram"
-        stepsOnly
-        stepsSectionTitle="How to Use the Safe-Zone Checker for Instagram Reels"
-      />
 
       {/* Free Tools Section */}
       <MoreFreeToolsSection
