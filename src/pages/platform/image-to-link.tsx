@@ -21,6 +21,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
+import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -332,7 +333,7 @@ export default function ImageToLinkPage() {
       <MoreFreeToolsSection
         title="Free Tools for Creative Teams"
         description="Explore our collection of free tools designed to help creative and video professionals work more efficiently."
-        useBannerResizerInsteadOfCostCalculator
+        tools={getFreeToolsForPlatform('/platform/image-to-link')}
       />
 
       {/* See How This Works Section */}

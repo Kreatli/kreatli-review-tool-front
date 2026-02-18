@@ -18,6 +18,7 @@ import { ResourcesArticlesPreviewSection } from '../../components/shared/Resourc
 import { VideoAnnotationGuide } from '../../components/video-annotation-guide/VideoAnnotationGuide';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
+import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -377,7 +378,7 @@ export default function VideoAnnotationPage() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals work more efficiently."
-        useBannerResizerInsteadOfCostCalculator
+        tools={getFreeToolsForPlatform('/platform/video-annotation')}
       />
 
       {/* See How This Works Section */}

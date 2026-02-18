@@ -17,6 +17,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
+import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -340,7 +341,7 @@ export default function IntegrationsPage() {
       <MoreFreeToolsSection
         title="Free Tools & Resources"
         description="Access our free calculators and tools to optimize your creative workflow."
-        useBannerResizerInsteadOfCostCalculator
+        tools={getFreeToolsForPlatform('/platform/integrations')}
       />
 
       {/* See How It Works Section */}
