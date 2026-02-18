@@ -47,6 +47,15 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try PDF Annotator',
   },
   {
+    title: 'Document Annotator',
+    description:
+      'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
+    href: '/free-tools/document-annotator',
+    icon: 'paint',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Document Annotator',
+  },
+  {
     title: 'Image Reviewer',
     description:
       'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',

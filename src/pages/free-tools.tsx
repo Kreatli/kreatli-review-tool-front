@@ -77,6 +77,14 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Document Annotator',
+    description:
+      'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
+    href: '/free-tools/document-annotator',
+    icon: 'paint',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Image Reviewer',
     description:
       'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required for reviewers.',

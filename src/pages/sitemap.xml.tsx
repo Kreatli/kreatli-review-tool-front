@@ -37,6 +37,7 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/free-tools/pdf-annotator', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/image-reviewer', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/image-annotator', priority: '0.8', changefreq: 'weekly' },
+  { path: '/free-tools/document-annotator', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-manager', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-proofing-tool', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-annotator', priority: '0.8', changefreq: 'weekly' },
