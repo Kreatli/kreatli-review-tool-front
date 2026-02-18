@@ -104,7 +104,9 @@ export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
           <span>Sign in</span>
         </Button>
         <Button type="button" variant="bordered" fullWidth onClick={() => googleLogin()}>
-          Sign in with <Icon icon="google" size={18} />
+          <span className="flex items-center gap-2">
+            Sign in with <Icon icon="google" size={18} />
+          </span>
         </Button>
       </div>
       {showLinks && (

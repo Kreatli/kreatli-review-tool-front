@@ -130,7 +130,7 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
           <span>Sign up</span>
         </Button>
         <Button variant="bordered" isLoading={isSsoPending} fullWidth onClick={() => googleLogin()}>
-          <span>
+          <span className="flex items-center gap-2">
             Sign up with <Icon icon="google" size={18} />
           </span>
         </Button>
