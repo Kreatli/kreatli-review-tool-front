@@ -29,6 +29,15 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try Video Reviewer',
   },
   {
+    title: 'Video Comparer',
+    description:
+      'Compare two video versions side by side with frame-accurate comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/video-comparer',
+    icon: 'monitorPlay',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Comparer',
+  },
+  {
     title: 'PDF Reviewer',
     description:
       'Review PDFs online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',
@@ -45,6 +54,15 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'paint',
     buttonText: 'Try Now',
     ariaLabel: 'Try PDF Annotator',
+  },
+  {
+    title: 'PDF Highlighter',
+    description:
+      'Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-highlighter',
+    icon: 'paint',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Highlighter',
   },
   {
     title: 'Document Annotator',
@@ -108,6 +126,15 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'panorama',
     buttonText: 'Try Now',
     ariaLabel: 'Extract and download video frames',
+  },
+  {
+    title: 'Resize Video',
+    description:
+      'Resize video to custom or preset dimensions in your browser. No uploads, no sign-up—everything runs locally.',
+    href: '/free-tools/resize-video',
+    icon: 'fullscreen',
+    buttonText: 'Try Now',
+    ariaLabel: 'Resize video',
   },
   {
     title: 'Data Transfer Calculator',

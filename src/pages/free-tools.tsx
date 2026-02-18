@@ -53,11 +53,27 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Video Comparer',
+    description:
+      'Compare two video versions side by side with frame-accurate comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/video-comparer',
+    icon: 'monitorPlay',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub a video, capture multiple moments, compare two frames side-by-side, and download PNG/JPG stills instantly—right in your browser.',
     href: '/free-tools/video-frame-extractor',
     icon: 'panorama',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Resize Video',
+    description:
+      'Resize video to custom or preset dimensions in your browser. No uploads, no sign-up.',
+    href: '/free-tools/resize-video',
+    icon: 'fullscreen',
     category: 'Creative Tools',
   },
   {
@@ -73,6 +89,14 @@ const tools: Tool[] = [
     description:
       'Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients—no sign-up required for reviewers.',
     href: '/free-tools/pdf-annotator',
+    icon: 'paint',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'PDF Highlighter',
+    description:
+      'Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-highlighter',
     icon: 'paint',
     category: 'Creative Tools',
   },
