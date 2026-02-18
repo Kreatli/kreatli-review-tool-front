@@ -1,10 +1,13 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 
 import { useProjectContext } from '../../../contexts/Project';
+import { useIsBreakpoint } from '../../tiptap/hooks/use-is-breakpoint';
 import { Icon } from '../../various/Icon';
 
 export const ProjectSidebarSettings = () => {
   const { project, getProjectActions } = useProjectContext();
+
+  const isMobile = useIsBreakpoint('max', 768);
 
   const projectActions = getProjectActions(project);
 
@@ -19,9 +22,10 @@ export const ProjectSidebarSettings = () => {
           <Button
             startContent={<Icon icon="gear" size={20} />}
             variant="light"
-            className="h-auto w-full justify-start px-2 py-2 text-left"
+            isIconOnly={isMobile}
+            className="h-auto w-full min-w-0 justify-start px-2 py-2 text-left"
           >
-            <span className="hidden md:inline">Settings</span>
+            {!isMobile && <span>Settings</span>}
           </Button>
         </DropdownTrigger>
         <DropdownMenu variant="flat">

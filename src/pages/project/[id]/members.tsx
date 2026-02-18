@@ -82,8 +82,7 @@ export default function Members() {
           {isProjectOwner && (
             <Button
               size="md"
-              variant="flat"
-              color="primary"
+              className="bg-foreground text-content1"
               startContent={<Icon icon="userPlus" size={16} />}
               onClick={openMembersModal}
             >

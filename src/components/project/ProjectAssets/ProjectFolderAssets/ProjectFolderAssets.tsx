@@ -48,7 +48,7 @@ export const ProjectFolderAssets = ({ folderId }: Props) => {
   }
 
   return (
-    <div className="flex-1 overflow-hidden p-3 xs:px-4" {...getRootProps()}>
+    <div className="flex-1 p-3 xs:px-4" {...getRootProps()}>
       <Breadcrumbs onAction={handleAction}>
         {path.map((item) => (
           <BreadcrumbItem key={item.url}>{item.name}</BreadcrumbItem>

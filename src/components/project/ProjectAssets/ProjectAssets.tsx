@@ -225,7 +225,7 @@ export const ProjectAssets = () => {
   };
 
   return (
-    <div className="flex-1 overflow-hidden p-3 xs:px-4" {...getRootProps()}>
+    <div className="flex-1 p-3 xs:px-4" {...getRootProps()}>
       <ProjectAssetsHeader />
       <ProjectDropFilesHint isVisible={isDragActive} />
       <div

@@ -100,8 +100,8 @@ export const MoveToAssetsForm = ({ project, assetIds, currentParentId, onCancel,
           {...register('parentId', VALIDATION_RULES.REQUIRED)}
         >
           {currentParentId && (
-            <SelectItem key="home" textValue={project.name} startContent={<Icon icon="slides" size={16} />}>
-              {project.name}
+            <SelectItem key="home" textValue="Media" startContent={<Icon icon="slides" size={16} />}>
+              Media
             </SelectItem>
           )}
           {filteredPaths.length > 0 && (

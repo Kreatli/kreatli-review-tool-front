@@ -72,7 +72,7 @@ export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
         ) : (
           <ProjectContextProvider selectedProject={project}>
             <ProjectUploadContextProvider project={project} folderId={router.query.folderId?.toString()}>
-              <div>
+              <div className="flex flex-col">
                 {project.status !== 'active' && <NotActiveProjectAlert />}
                 {children}
               </div>

@@ -113,7 +113,7 @@ export const Header = () => {
     <>
       {(user?.subscription.isTrial || (!user?.subscription.isActive && user?.subscription.hasUsedTrial)) &&
         !isBannerDismissed && (
-          <div className="xs:px-6 sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-3">
+          <div className="sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
             <div />
             <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
               <div className="flex items-center gap-1.5">
@@ -129,7 +129,7 @@ export const Header = () => {
               </div>
               <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true)}>
                 <span>
-                  Upgrade <span className="xs:inline hidden">now</span>
+                  Upgrade <span className="hidden xs:inline">now</span>
                 </span>
               </Button>
             </div>
