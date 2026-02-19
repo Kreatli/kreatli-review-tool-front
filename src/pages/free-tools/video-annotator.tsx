@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoAnnotatorFAQ, videoAnnotatorFaqs } from '../../components/video-annotator/VideoAnnotatorFAQ';
 import { VideoAnnotatorGuide } from '../../components/video-annotator/VideoAnnotatorGuide';
@@ -90,13 +91,13 @@ export default function VideoAnnotatorPage() {
         <VideoAnnotatorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/video-annotator" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-annotator')} title="More Tools for Video Teams" />
 
         <VideoAnnotatorFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['videoAnnotation', 'reviewApproval', 'commentOnVideo'])}
+          resources={getRelatedResources(['videoAnnotation', 'reviewApproval', 'commentOnVideo', 'creativeWorkspace'])}
           title="More Resources"
           description="Explore other Kreatli platform features for video annotation, review, and collaboration."
         />

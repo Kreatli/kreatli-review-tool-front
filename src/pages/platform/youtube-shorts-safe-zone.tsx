@@ -16,6 +16,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
+import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -123,6 +124,13 @@ export default function YouTubeShortsSafeZonePage() {
           </div>
         </div>
       </section>
+
+      {/* How to Use Safe-Zone Checker (step-by-step) */}
+      <SafeZoneScreenGuide
+        platform="youtube"
+        stepsOnly
+        stepsSectionTitle="How to Use the Safe-Zone Checker for YouTube Shorts"
+      />
 
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -308,18 +316,11 @@ export default function YouTubeShortsSafeZonePage() {
         </div>
       </section>
 
-      {/* How to Use Safe-Zone Checker (step-by-step) */}
-      <SafeZoneScreenGuide
-        platform="youtube"
-        stepsOnly
-        stepsSectionTitle="How to Use the Safe-Zone Checker for YouTube Shorts"
-      />
-
       {/* Free Tools Section */}
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video and social creators work more efficiently."
-        useBannerResizerInsteadOfCostCalculator
+        tools={getFreeToolsForPlatform('/platform/youtube-shorts-safe-zone')}
       />
 
       {/* See How This Works Section */}

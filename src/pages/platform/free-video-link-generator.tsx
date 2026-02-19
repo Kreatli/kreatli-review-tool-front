@@ -17,6 +17,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
+import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -326,7 +327,7 @@ export default function FreeVideoLinkGeneratorPage() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals share work, collect feedback, and approve faster."
-        useBannerResizerInsteadOfCostCalculator
+        tools={getFreeToolsForPlatform('/platform/free-video-link-generator')}
       />
 
       {/* See How It Works Section */}

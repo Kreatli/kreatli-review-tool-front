@@ -1,11 +1,8 @@
-import { Button, Radio, RadioGroup } from '@heroui/react';
+import { Button } from '@heroui/react';
 
 import { Icon } from '../various/Icon';
-import { ResizeMode } from './YouTubeBannerResizer';
 
 interface BannerControlsProps {
-  resizeMode: ResizeMode;
-  onResizeModeChange: (mode: ResizeMode) => void;
   showSafeAreas: boolean;
   onShowSafeAreasChange: (show: boolean) => void;
   hasImage: boolean;
@@ -13,8 +10,6 @@ interface BannerControlsProps {
 }
 
 export const BannerControls = ({
-  resizeMode,
-  onResizeModeChange,
   showSafeAreas,
   onShowSafeAreasChange,
   hasImage,
@@ -22,26 +17,6 @@ export const BannerControls = ({
 }: BannerControlsProps) => {
   return (
     <div className="flex flex-col gap-4">
-      <div className="rounded-lg border border-foreground-200 bg-content1 p-4 shadow-sm">
-        <div className="mb-3 flex items-center gap-2">
-          <Icon icon="fullscreen" size={16} className="text-foreground-400" />
-          <h3 className="font-sans text-sm font-semibold">Resize Mode</h3>
-        </div>
-        <RadioGroup
-          value={resizeMode}
-          onValueChange={(value) => onResizeModeChange(value as ResizeMode)}
-          orientation="vertical"
-          className="gap-2"
-        >
-          <Radio value="cover" description="Fill entire canvas, may crop edges">
-            Cover
-          </Radio>
-          <Radio value="contain" description="Fit within canvas, may show empty space">
-            Contain
-          </Radio>
-        </RadioGroup>
-      </div>
-
       {hasImage && onReupload && (
         <div className="rounded-lg border border-foreground-200 bg-content1 p-4 shadow-sm">
           <Button

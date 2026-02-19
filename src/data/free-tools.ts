@@ -29,6 +29,24 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try Video Reviewer',
   },
   {
+    title: 'Video Comparer',
+    description:
+      'Compare two video versions side by side with frame-accurate comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/video-comparer',
+    icon: 'compare',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Comparer',
+  },
+  {
+    title: 'Video Link Maker',
+    description:
+      'Create secure, shareable video review links in seconds. Let clients watch, comment, and approve online—no sign-up required.',
+    href: '/free-tools/video-link-maker',
+    icon: 'link',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Link Maker',
+  },
+  {
     title: 'PDF Reviewer',
     description:
       'Review PDFs online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',
@@ -47,6 +65,51 @@ export const FREE_TOOLS: FreeTool[] = [
     ariaLabel: 'Try PDF Annotator',
   },
   {
+    title: 'PDF Highlighter',
+    description:
+      'Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-highlighter',
+    icon: 'edit',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Highlighter',
+  },
+  {
+    title: 'PDF Comparer',
+    description:
+      'Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-comparer',
+    icon: 'versions',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Comparer',
+  },
+  {
+    title: 'PDF Link Generator',
+    description:
+      'Turn your PDF into a shareable link. Create secure review links in seconds—no sign-up required for recipients.',
+    href: '/free-tools/pdf-link-generator',
+    icon: 'share',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Link Generator',
+  },
+  {
+    title: 'Document Annotator',
+    description:
+      'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
+    href: '/free-tools/document-annotator',
+    icon: 'fileDoc',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Document Annotator',
+  },
+  {
+    title: 'Document Comparer',
+    description:
+      'Compare two document versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/document-comparer',
+    icon: 'grid',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Document Comparer',
+  },
+  {
     title: 'Image Reviewer',
     description:
       'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',
@@ -60,9 +123,36 @@ export const FREE_TOOLS: FreeTool[] = [
     description:
       'Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required.',
     href: '/free-tools/image-annotator',
-    icon: 'paint',
+    icon: 'addImage',
     buttonText: 'Try Now',
     ariaLabel: 'Try Image Annotator',
+  },
+  {
+    title: 'Image Comparer',
+    description:
+      'Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/image-comparer',
+    icon: 'eye',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Image Comparer',
+  },
+  {
+    title: 'Image URL Maker',
+    description:
+      'Turn your image into a shareable URL. Create secure review links in seconds—no sign-up required for recipients.',
+    href: '/free-tools/image-url-maker',
+    icon: 'send',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Image URL Maker',
+  },
+  {
+    title: 'Photo URL Generator',
+    description:
+      'Generate a shareable URL for your photo. Create secure review links in seconds—no sign-up required for recipients.',
+    href: '/free-tools/photo-url-generator',
+    icon: 'mail',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Photo URL Generator',
   },
   {
     title: 'Video Manager',
@@ -87,7 +177,7 @@ export const FREE_TOOLS: FreeTool[] = [
     description:
       'Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps and share with clients—no sign-up required.',
     href: '/free-tools/video-annotator',
-    icon: 'paint',
+    icon: 'chat',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Annotator',
   },
@@ -96,9 +186,18 @@ export const FREE_TOOLS: FreeTool[] = [
     description:
       'Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed',
     href: '/free-tools/video-frame-extractor',
-    icon: 'panorama',
+    icon: 'filePng',
     buttonText: 'Try Now',
     ariaLabel: 'Extract and download video frames',
+  },
+  {
+    title: 'Resize Video',
+    description:
+      'Resize video to custom or preset dimensions in your browser. No uploads, no sign-up—everything runs locally.',
+    href: '/free-tools/resize-video',
+    icon: 'fullscreen',
+    buttonText: 'Try Now',
+    ariaLabel: 'Resize video',
   },
   {
     title: 'Data Transfer Calculator',
@@ -159,7 +258,7 @@ export const FREE_TOOLS: FreeTool[] = [
     description:
       'Resize your YouTube channel art to the perfect dimensions. Preview safe areas for mobile, desktop, tablet, and TV devices.',
     href: '/free-tools/youtube-banner-resizer',
-    icon: 'youtube',
+    icon: 'mobile',
     buttonText: 'Try Now',
     ariaLabel: 'Resize YouTube banner',
   },

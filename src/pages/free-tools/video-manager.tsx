@@ -10,6 +10,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoManagerFAQ, videoManagerFaqs } from '../../components/video-manager/VideoManagerFAQ';
 import { VideoManagerGuide } from '../../components/video-manager/VideoManagerGuide';
@@ -89,7 +90,7 @@ export default function VideoManagerPage() {
         <VideoManagerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/video-manager" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-manager')} title="More Tools for Video Teams" />
 
         <VideoManagerFAQ />
 

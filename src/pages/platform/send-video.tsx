@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -18,6 +19,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
+import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -106,9 +108,8 @@ export default function SendVideoPage() {
               Send Your Video for Free in Seconds
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Send your video to clients with a secure link—no large attachments. They watch and leave
-              frame-accurate feedback in the browser. Every video you send stays connected to comments, versions, and
-              approvals.
+              Send your video to clients with a secure link—no large attachments. They watch and leave frame-accurate
+              feedback in the browser. Every video you send stays connected to comments, versions, and approvals.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -393,7 +394,7 @@ export default function SendVideoPage() {
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
         description="Explore our collection of free tools designed to help video professionals send work, collect feedback, and approve faster."
-        useBannerResizerInsteadOfCostCalculator
+        tools={getFreeToolsForPlatform('/platform/send-video')}
       />
 
       {/* See How This Works Section */}

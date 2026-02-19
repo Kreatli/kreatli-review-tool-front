@@ -1,9 +1,9 @@
 import { cn } from '@heroui/react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 import { Icon } from '../various/Icon';
-import { PreviewMode, ResizeMode } from './YouTubeBannerResizer';
+import { PreviewMode } from './YouTubeBannerResizer';
 
 // Canvas dimensions (YouTube recommended)
 const CANVAS_WIDTH = 2560;
@@ -28,9 +28,6 @@ interface BannerCanvasProps {
   imageUrl: string | null;
   naturalWidth: number;
   naturalHeight: number;
-  resizeMode: ResizeMode;
-  position: { x: number; y: number };
-  onPositionChange: (position: { x: number; y: number }) => void;
   showSafeAreas: boolean;
   previewMode: PreviewMode;
   getRootProps: () => DropzoneRootProps;
@@ -39,13 +36,29 @@ interface BannerCanvasProps {
   isLoading?: boolean;
 }
 
+/** Fit image within canvas (contain), centered. Display dimensions only. */
+function getContainDisplayDims(
+  naturalWidth: number,
+  naturalHeight: number,
+  displaySizeWidth: number,
+) {
+  if (!naturalWidth || !naturalHeight) return null;
+  const scaleCanvas = displaySizeWidth / CANVAS_WIDTH;
+  const scale = Math.min(CANVAS_WIDTH / naturalWidth, CANVAS_HEIGHT / naturalHeight);
+  const imgWidth = naturalWidth * scale;
+  const imgHeight = naturalHeight * scale;
+  return {
+    width: imgWidth * scaleCanvas,
+    height: imgHeight * scaleCanvas,
+    x: (displaySizeWidth - imgWidth * scaleCanvas) / 2,
+    y: (displaySizeWidth / CANVAS_ASPECT_RATIO - imgHeight * scaleCanvas) / 2,
+  };
+}
+
 export const BannerCanvas = ({
   imageUrl,
   naturalWidth,
   naturalHeight,
-  resizeMode,
-  position,
-  onPositionChange,
   showSafeAreas,
   previewMode,
   getRootProps,
@@ -56,9 +69,6 @@ export const BannerCanvas = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [displaySize, setDisplaySize] = useState({ width: 0, height: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [isTouch, setIsTouch] = useState(false);
 
   // Calculate display size maintaining aspect ratio
   useEffect(() => {
@@ -75,134 +85,7 @@ export const BannerCanvas = ({
     return () => window.removeEventListener('resize', updateDisplaySize);
   }, []);
 
-  // Calculate image dimensions and position
-  const imageDimensions = useCallback(() => {
-    if (!naturalWidth || !naturalHeight) return null;
-
-    const scale = displaySize.width / CANVAS_WIDTH;
-    let imgWidth: number;
-    let imgHeight: number;
-
-    if (resizeMode === 'cover') {
-      // Scale to fill canvas, maintaining aspect ratio
-      const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
-      const imageAspect = naturalWidth / naturalHeight;
-
-      if (imageAspect > canvasAspect) {
-        // Image is wider - fit to height
-        imgHeight = CANVAS_HEIGHT;
-        imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
-      } else {
-        // Image is taller - fit to width
-        imgWidth = CANVAS_WIDTH;
-        imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
-      }
-    } else {
-      // Contain mode - fit within canvas
-      const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
-      const imageAspect = naturalWidth / naturalHeight;
-
-      if (imageAspect > canvasAspect) {
-        // Image is wider - fit to width
-        imgWidth = CANVAS_WIDTH;
-        imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
-      } else {
-        // Image is taller - fit to height
-        imgHeight = CANVAS_HEIGHT;
-        imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
-      }
-    }
-
-    return {
-      width: imgWidth * scale,
-      height: imgHeight * scale,
-      x: (displaySize.width - imgWidth * scale) / 2 + position.x * scale,
-      y: (displaySize.height - imgHeight * scale) / 2 + position.y * scale,
-    };
-  }, [naturalWidth, naturalHeight, resizeMode, position, displaySize]);
-
-  // Handle mouse drag
-  const handleMouseDown = useCallback(
-    (e: React.MouseEvent) => {
-      if (!imageUrl) return;
-      e.preventDefault();
-      setIsDragging(true);
-      setIsTouch(false);
-      const scale = displaySize.width / CANVAS_WIDTH;
-      setDragStart({ x: e.clientX - position.x * scale, y: e.clientY - position.y * scale });
-    },
-    [imageUrl, position, displaySize],
-  );
-
-  // Handle touch drag
-  const handleTouchStart = useCallback(
-    (e: React.TouchEvent) => {
-      if (!imageUrl) return;
-      e.preventDefault();
-      setIsDragging(true);
-      setIsTouch(true);
-      const touch = e.touches[0];
-      const scale = displaySize.width / CANVAS_WIDTH;
-      setDragStart({ x: touch.clientX - position.x * scale, y: touch.clientY - position.y * scale });
-    },
-    [imageUrl, position, displaySize],
-  );
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent) => {
-      if (!isDragging || !imageUrl || isTouch) return;
-      const scale = displaySize.width / CANVAS_WIDTH;
-      const newX = (e.clientX - dragStart.x) / scale;
-      const newY = (e.clientY - dragStart.y) / scale;
-      onPositionChange({ x: newX, y: newY });
-    },
-    [isDragging, imageUrl, dragStart, displaySize, onPositionChange, isTouch],
-  );
-
-  const handleTouchMove = useCallback(
-    (e: TouchEvent) => {
-      if (!isDragging || !imageUrl || !isTouch) return;
-      e.preventDefault();
-      const touch = e.touches[0];
-      const scale = displaySize.width / CANVAS_WIDTH;
-      const newX = (touch.clientX - dragStart.x) / scale;
-      const newY = (touch.clientY - dragStart.y) / scale;
-      onPositionChange({ x: newX, y: newY });
-    },
-    [isDragging, imageUrl, dragStart, displaySize, onPositionChange, isTouch],
-  );
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  useEffect(() => {
-    if (isDragging) {
-      if (isTouch) {
-        const handleTouchMoveWindow = (e: TouchEvent) => handleTouchMove(e);
-        const handleTouchEnd = () => {
-          setIsDragging(false);
-          setIsTouch(false);
-        };
-        window.addEventListener('touchmove', handleTouchMoveWindow, { passive: false });
-        window.addEventListener('touchend', handleTouchEnd);
-        return () => {
-          window.removeEventListener('touchmove', handleTouchMoveWindow);
-          window.removeEventListener('touchend', handleTouchEnd);
-        };
-      } else {
-        const handleMouseMoveWindow = (e: MouseEvent) => handleMouseMove(e);
-        window.addEventListener('mousemove', handleMouseMoveWindow);
-        window.addEventListener('mouseup', handleMouseUp);
-        return () => {
-          window.removeEventListener('mousemove', handleMouseMoveWindow);
-          window.removeEventListener('mouseup', handleMouseUp);
-        };
-      }
-    }
-  }, [isDragging, isTouch, handleMouseMove, handleTouchMove, handleMouseUp]);
-
-  const dims = imageDimensions();
+  const dims = getContainDisplayDims(naturalWidth, naturalHeight, displaySize.width);
   const viewport = DEVICE_VIEWPORTS[previewMode];
   const scale = displaySize.width / CANVAS_WIDTH;
 
@@ -260,20 +143,14 @@ export const BannerCanvas = ({
               ref={imageRef}
               src={imageUrl}
               alt={`YouTube banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Canvas size: ${CANVAS_WIDTH} × ${CANVAS_HEIGHT} pixels.`}
-              className={cn('absolute select-none transition-transform duration-200', {
-                'cursor-move': true,
-                'cursor-grabbing': isDragging,
-              })}
+              className="absolute select-none"
               style={{
                 width: dims.width,
                 height: dims.height,
                 left: dims.x,
                 top: dims.y,
-                objectFit: 'cover',
-                filter: isDragging ? 'brightness(0.95)' : 'none',
+                objectFit: 'contain',
               }}
-              onMouseDown={handleMouseDown}
-              onTouchStart={handleTouchStart}
               draggable={false}
               role="img"
               aria-label={`Banner image, ${naturalWidth} by ${naturalHeight} pixels`}
@@ -354,14 +231,6 @@ export const BannerCanvas = ({
         </div>
       )}
 
-      {/* Drag hint */}
-      {imageUrl && !isLoading && (
-        <div className="absolute right-2 top-2 z-10 hidden sm:block">
-          <div className="rounded-lg bg-black/80 backdrop-blur-sm px-3 py-2 text-xs text-white shadow-lg">
-            <div className="font-medium">Click & drag to reposition</div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

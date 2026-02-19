@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { PdfReviewerFAQ, pdfReviewerFaqs } from '../../components/pdf-reviewer/PdfReviewerFAQ';
 import { PdfReviewerGuide } from '../../components/pdf-reviewer/PdfReviewerGuide';
@@ -89,13 +90,13 @@ export default function PdfReviewerPage() {
         <PdfReviewerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/pdf-reviewer" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/pdf-reviewer')} title="More Tools for Video Teams" />
 
         <PdfReviewerFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['annotatePdf', 'drawOnPdfDocument', 'addCommentsToPdf', 'clientApprovals'])}
+          resources={getRelatedResources(['annotatePdf', 'addCommentsToPdf', 'clientApprovals', 'creativeProofing'])}
           title="More Resources"
           description="Learn more about PDF review workflows, annotations, and team collaboration."
         />

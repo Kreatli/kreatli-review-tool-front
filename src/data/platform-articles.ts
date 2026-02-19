@@ -220,15 +220,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-integrations-blog',
-      full_slug: '/blog/production-platform-for-creative-teams',
-      title: 'Why Creative Teams Are Moving Toward Unified Production Platforms',
+      full_slug: '/blog/video-post-production',
+      title: 'Post-Production Video Editing: How Collaboration Tools Improve Cuts',
       description:
-        'Creative production is changing. Learn why teams are moving away from tool sprawl and legacy systems toward unified platforms like Kreatli.',
-      tags: ['Production Management', 'Creative Teams'],
-      publishDate: '2025-12-10 00:00',
-      readTime: '10',
+        'Collaboration tools change how editors work - fewer context switches, frame-accurate feedback, faster turnarounds, and better reuse.',
+      tags: ['Post-Production', 'Collaboration'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
     }),
   ],
   '/platform/add-drawing-to-video': [
@@ -273,18 +273,6 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   '/platform/comment-on-video': [
     makeArticleCard({
       id: 'platform-comment-on-video-guide-1',
-      full_slug: '/guides/how-to-draw-on-a-video',
-      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
-      description:
-        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
-      tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-29 00:00',
-      readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
-    }),
-    makeArticleCard({
-      id: 'platform-comment-on-video-guide-2',
       full_slug: '/guides/how-to-annotate-video',
       title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
@@ -296,7 +284,7 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
         'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-comment-on-video-guide-3',
+      id: 'platform-comment-on-video-guide-2',
       full_slug: '/guides/video-frame-extractor-guide',
       title: 'Video Frame Extractor: How to Capture Frames (2026)',
       description:
@@ -306,6 +294,18 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       readTime: '12',
       imageFilename:
         'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+    makeArticleCard({
+      id: 'platform-comment-on-video-guide-3',
+      full_slug: '/comparisons/best-video-review-platforms-2026',
+      title: 'Best Video Review Platforms for Creative Teams in 2026',
+      description:
+        'Compare the best video review platforms in 2026. See features, limitations, and why Kreatli offers a fundamentally different approach to video collaboration.',
+      tags: ['Video Review', 'Creative Teams'],
+      publishDate: '2026-01-17 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8d83a78aaf/best-video-review-platforms-for-creative-teams-in-2026.png',
     }),
   ],
 
@@ -324,18 +324,6 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-video-versioning-guide-2',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
-      description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
-      tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-25 00:00',
-      readTime: '11',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
-    }),
-    makeArticleCard({
-      id: 'platform-video-versioning-guide-3',
       full_slug: '/guides/video-frame-extractor-guide',
       title: 'Video Frame Extractor: How to Capture Frames (2026)',
       description:
@@ -345,24 +333,24 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       readTime: '12',
       imageFilename:
         'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-versioning-guide-3',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Manage Projects With Kreatli',
+      description:
+        'Learn how video production companies use Kreatli to manage projects, collaborate with clients, and streamline approvals from pre-production to delivery.',
+      tags: ['Project Management', 'Video Production'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
     }),
   ],
 
   '/platform/video-feedback': [
     makeArticleCard({
       id: 'platform-video-feedback-guide-1',
-      full_slug: '/guides/how-to-draw-on-a-video',
-      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
-      description:
-        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
-      tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-29 00:00',
-      readTime: '10',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
-    }),
-    makeArticleCard({
-      id: 'platform-video-feedback-guide-2',
       full_slug: '/guides/how-to-annotate-video',
       title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
@@ -374,22 +362,46 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
         'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-video-feedback-guide-3',
-      full_slug: '/guides/video-frame-extractor-guide',
-      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      id: 'platform-video-feedback-guide-2',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
       description:
-        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
-      tags: ['Free Tools', 'Video'],
-      publishDate: '2026-01-22 00:00',
-      readTime: '12',
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-feedback-guide-3',
+      full_slug: '/blog/video-post-production',
+      title: 'Post-Production Video Editing: How Collaboration Tools Improve Cuts',
+      description:
+        'Collaboration tools change how editors work - fewer context switches, frame-accurate feedback, faster turnarounds, and better reuse.',
+      tags: ['Post-Production', 'Collaboration'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
     }),
   ],
 
   '/platform/draw-on-a-video': [
     makeArticleCard({
       id: 'platform-draw-on-a-video-guide-1',
+      full_slug: '/guides/video-frame-extractor-guide',
+      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      description:
+        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
+      tags: ['Free Tools', 'Video'],
+      publishDate: '2026-01-22 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+    }),
+    makeArticleCard({
+      id: 'platform-draw-on-a-video-guide-2',
       full_slug: '/guides/how-to-draw-on-a-video',
       title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
       description:
@@ -401,28 +413,16 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
         'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
     makeArticleCard({
-      id: 'platform-draw-on-a-video-guide-2',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
-      description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
-      tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-25 00:00',
-      readTime: '11',
-      imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
-    }),
-    makeArticleCard({
       id: 'platform-draw-on-a-video-guide-3',
-      full_slug: '/guides/video-frame-extractor-guide',
-      title: 'Video Frame Extractor: How to Capture Frames (2026)',
+      full_slug: '/comparisons/frameio-alternatives-2026',
+      title: 'The Best Frame.io Alternatives for Video Review & Approval (2026)',
       description:
-        'Learn how to use the free Video Frame Extractor tool to capture specific frames from video files for thumbnails, proofs, or edits effortlessly. No signup required.',
-      tags: ['Free Tools', 'Video'],
-      publishDate: '2026-01-22 00:00',
-      readTime: '12',
+        'Compare the best Frame.io alternatives in 2026. See which tools handle video review, approvals, and full production workflows at scale.',
+      tags: ['Frame.io', 'Video Review'],
+      publishDate: '2026-01-05 00:00',
+      readTime: '14',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/7ce89e0197/video-frame-extractor-guide-capture-perfect-frames-from-video-free-tool.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
     }),
   ],
 
@@ -800,15 +800,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-annotate-pdf-guide-3',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/pdf-annotation-tools',
+      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
       description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
-      tags: ['Video Annotation', 'Creative Teams'],
+        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
+      tags: ['PDF Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '11',
+      readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
   ],
 
@@ -838,15 +838,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-highlight-pdf-guide-3',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
       description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
       tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-25 00:00',
-      readTime: '11',
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -876,15 +876,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-draw-on-documents-guide-3',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/pdf-annotation-tools',
+      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
       description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
-      tags: ['Video Annotation', 'Creative Teams'],
+        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
+      tags: ['PDF Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '11',
+      readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
   ],
 
@@ -1066,15 +1066,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-draw-on-pdf-document-guide-3',
-      full_slug: '/guides/how-to-draw-on-a-video',
-      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/pdf-annotation-tools',
+      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
       description:
-        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
-      tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-29 00:00',
-      readTime: '10',
+        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
+      tags: ['PDF Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
   ],
 
@@ -1104,15 +1104,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-pdf-version-control-guide-3',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/pdf-annotation-tools',
+      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
       description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
-      tags: ['Video Annotation', 'Creative Teams'],
+        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
+      tags: ['PDF Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '11',
+      readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
   ],
 
@@ -1294,15 +1294,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-review-pdf-guide-3',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/pdf-annotation-tools',
+      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
       description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
-      tags: ['Video Annotation', 'Creative Teams'],
+        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
+      tags: ['PDF Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '11',
+      readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
   ],
 
@@ -1332,15 +1332,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-compare-pdf-guide-3',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-draw-on-a-video',
+      title: 'How to Draw on a Video: A Complete Guide for Creative Teams',
       description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+        'Learn how to draw on a video for clearer feedback, faster reviews, and fewer revisions. A complete guide for creative teams and agencies.',
       tags: ['Video Annotation', 'Creative Teams'],
-      publishDate: '2026-01-25 00:00',
-      readTime: '11',
+      publishDate: '2026-01-29 00:00',
+      readTime: '10',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/a6c9b7bf88/how-to-draw-on-a-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -1409,15 +1409,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-compare-docs-guide-3',
-      full_slug: '/guides/how-to-annotate-video',
-      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      full_slug: '/guides/pdf-annotation-tools',
+      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
       description:
-        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
-      tags: ['Video Annotation', 'Creative Teams'],
+        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
+      tags: ['PDF Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '11',
+      readTime: '9',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
     }),
   ],
 

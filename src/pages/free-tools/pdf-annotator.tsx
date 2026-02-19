@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { PdfAnnotatorFAQ, pdfAnnotatorFaqs } from '../../components/pdf-annotator/PdfAnnotatorFAQ';
 import { PdfAnnotatorGuide } from '../../components/pdf-annotator/PdfAnnotatorGuide';
@@ -90,13 +91,13 @@ export default function PdfAnnotatorPage() {
         <PdfAnnotatorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/pdf-annotator" title="More Tools for Creative Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/pdf-annotator')} title="More Tools for Creative Teams" />
 
         <PdfAnnotatorFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['annotatePdf', 'drawOnPdfDocument', 'addCommentsToPdf', 'clientApprovals'])}
+          resources={getRelatedResources(['annotatePdf', 'drawOnPdfDocument', 'addCommentsToPdf', 'secureAssetStorage'])}
           title="More Resources"
           description="Explore other Kreatli platform features for PDF annotation, review, and collaboration."
         />

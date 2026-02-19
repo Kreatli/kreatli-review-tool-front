@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoFeedbackToolFAQ, videoFeedbackToolFaqs } from '../../components/video-feedback-tool/VideoFeedbackToolFAQ';
 import { VideoFeedbackToolGuide } from '../../components/video-feedback-tool/VideoFeedbackToolGuide';
@@ -89,13 +90,13 @@ export default function VideoFeedbackToolPage() {
         <VideoFeedbackToolGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/video-feedback-tool" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-feedback-tool')} title="More Tools for Video Teams" />
 
         <VideoFeedbackToolFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'commentOnVideo'])}
+          resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'commentOnVideo', 'secureAssetStorage'])}
           title="More Resources"
           description="Learn more about video feedback workflows, annotation tools, and team collaboration."
         />

@@ -53,11 +53,35 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'Video Comparer',
+    description:
+      'Compare two video versions side by side with frame-accurate comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/video-comparer',
+    icon: 'compare',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Video Link Maker',
+    description:
+      'Create secure, shareable video review links in seconds. Let clients watch, comment, and approve online—no sign-up required.',
+    href: '/free-tools/video-link-maker',
+    icon: 'link',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub a video, capture multiple moments, compare two frames side-by-side, and download PNG/JPG stills instantly—right in your browser.',
     href: '/free-tools/video-frame-extractor',
-    icon: 'panorama',
+    icon: 'filePng',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Resize Video',
+    description:
+      'Resize video to custom or preset dimensions in your browser. No uploads, no sign-up.',
+    href: '/free-tools/resize-video',
+    icon: 'fullscreen',
     category: 'Creative Tools',
   },
   {
@@ -77,6 +101,46 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
+    title: 'PDF Highlighter',
+    description:
+      'Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-highlighter',
+    icon: 'edit',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'PDF Comparer',
+    description:
+      'Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/pdf-comparer',
+    icon: 'versions',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'PDF Link Generator',
+    description:
+      'Turn your PDF into a shareable link. Create secure review links in seconds—no sign-up required for recipients.',
+    href: '/free-tools/pdf-link-generator',
+    icon: 'share',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Document Annotator',
+    description:
+      'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
+    href: '/free-tools/document-annotator',
+    icon: 'fileDoc',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Document Comparer',
+    description:
+      'Compare two document versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/document-comparer',
+    icon: 'grid',
+    category: 'Creative Tools',
+  },
+  {
     title: 'Image Reviewer',
     description:
       'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required for reviewers.',
@@ -89,7 +153,31 @@ const tools: Tool[] = [
     description:
       'Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required for reviewers.',
     href: '/free-tools/image-annotator',
-    icon: 'paint',
+    icon: 'addImage',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Image Comparer',
+    description:
+      'Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required.',
+    href: '/free-tools/image-comparer',
+    icon: 'eye',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Image URL Maker',
+    description:
+      'Turn your image into a shareable URL. Create secure review links in seconds—no sign-up required for recipients.',
+    href: '/free-tools/image-url-maker',
+    icon: 'send',
+    category: 'Creative Tools',
+  },
+  {
+    title: 'Photo URL Generator',
+    description:
+      'Generate a shareable URL for your photo. Create secure review links in seconds—no sign-up required for recipients.',
+    href: '/free-tools/photo-url-generator',
+    icon: 'mail',
     category: 'Creative Tools',
   },
   {
@@ -113,7 +201,7 @@ const tools: Tool[] = [
     description:
       'Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps and share with clients—no sign-up required for reviewers.',
     href: '/free-tools/video-annotator',
-    icon: 'paint',
+    icon: 'chat',
     category: 'Creative Tools',
   },
   {
@@ -153,7 +241,7 @@ const tools: Tool[] = [
     description:
       'Resize your YouTube banner online for free. Preview safe areas for mobile, desktop, and TV. Export perfectly sized channel art in seconds.',
     href: '/free-tools/youtube-banner-resizer',
-    icon: 'youtube',
+    icon: 'mobile',
     category: 'Creative Tools',
   },
 ];

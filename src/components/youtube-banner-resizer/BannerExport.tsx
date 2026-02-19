@@ -2,7 +2,6 @@ import { addToast, Button, Radio, RadioGroup } from '@heroui/react';
 import { useState } from 'react';
 
 import { Icon } from '../various/Icon';
-import { ResizeMode } from './YouTubeBannerResizer';
 
 // Canvas dimensions (YouTube recommended)
 const CANVAS_WIDTH = 2560;
@@ -12,70 +11,37 @@ interface BannerExportProps {
   imageUrl: string | null;
   naturalWidth: number;
   naturalHeight: number;
-  resizeMode: ResizeMode;
-  position: { x: number; y: number };
   exportFormat: 'png' | 'jpg';
   onExportFormatChange: (format: 'png' | 'jpg') => void;
+  /** Called when user clicks Export (e.g. to show sign-up modal for guests). */
+  onExportStart?: () => void;
+}
+
+/** Fit image within canvas (contain), centered. No squeeze, no crop. */
+function getContainDimensions(naturalWidth: number, naturalHeight: number) {
+  if (!naturalWidth || !naturalHeight) return null;
+  const scale = Math.min(CANVAS_WIDTH / naturalWidth, CANVAS_HEIGHT / naturalHeight);
+  const imgWidth = naturalWidth * scale;
+  const imgHeight = naturalHeight * scale;
+  const x = (CANVAS_WIDTH - imgWidth) / 2;
+  const y = (CANVAS_HEIGHT - imgHeight) / 2;
+  return { x, y, imgWidth, imgHeight };
 }
 
 export const BannerExport = ({
   imageUrl,
   naturalWidth,
   naturalHeight,
-  resizeMode,
-  position,
   exportFormat,
   onExportFormatChange,
+  onExportStart,
 }: BannerExportProps) => {
   const [isExporting, setIsExporting] = useState(false);
-
-  const calculateImageDimensions = () => {
-    if (!naturalWidth || !naturalHeight) return null;
-
-    let imgWidth: number;
-    let imgHeight: number;
-
-    if (resizeMode === 'cover') {
-      // Scale to fill canvas, maintaining aspect ratio
-      const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
-      const imageAspect = naturalWidth / naturalHeight;
-
-      if (imageAspect > canvasAspect) {
-        // Image is wider - fit to height
-        imgHeight = CANVAS_HEIGHT;
-        imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
-      } else {
-        // Image is taller - fit to width
-        imgWidth = CANVAS_WIDTH;
-        imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
-      }
-    } else {
-      // Contain mode - fit within canvas
-      const canvasAspect = CANVAS_WIDTH / CANVAS_HEIGHT;
-      const imageAspect = naturalWidth / naturalHeight;
-
-      if (imageAspect > canvasAspect) {
-        // Image is wider - fit to width
-        imgWidth = CANVAS_WIDTH;
-        imgHeight = (CANVAS_WIDTH * naturalHeight) / naturalWidth;
-      } else {
-        // Image is taller - fit to height
-        imgHeight = CANVAS_HEIGHT;
-        imgWidth = (CANVAS_HEIGHT * naturalWidth) / naturalHeight;
-      }
-    }
-
-    return {
-      width: imgWidth,
-      height: imgHeight,
-      x: (CANVAS_WIDTH - imgWidth) / 2 + position.x,
-      y: (CANVAS_HEIGHT - imgHeight) / 2 + position.y,
-    };
-  };
 
   const handleExport = async () => {
     if (!imageUrl) return;
 
+    onExportStart?.();
     setIsExporting(true);
 
     try {
@@ -100,20 +66,12 @@ export const BannerExport = ({
       await new Promise<void>((resolve, reject) => {
         img.onload = () => {
           try {
-            const dims = calculateImageDimensions();
+            const dims = getContainDimensions(naturalWidth, naturalHeight);
             if (!dims) {
               reject(new Error('Failed to calculate image dimensions'));
               return;
             }
-
-            // Ensure image stays within canvas bounds
-            const drawX = Math.max(0, Math.min(dims.x, CANVAS_WIDTH - dims.width));
-            const drawY = Math.max(0, Math.min(dims.y, CANVAS_HEIGHT - dims.height));
-            const drawWidth = Math.min(dims.width, CANVAS_WIDTH - drawX);
-            const drawHeight = Math.min(dims.height, CANVAS_HEIGHT - drawY);
-
-            // Draw image at calculated position and size
-            ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+            ctx.drawImage(img, dims.x, dims.y, dims.imgWidth, dims.imgHeight);
             resolve();
           } catch (error) {
             reject(error);

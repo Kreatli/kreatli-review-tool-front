@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoFrameExtractor } from '../../components/video-frame-extractor/VideoFrameExtractor';
 import { VideoFrameExtractorFAQ } from '../../components/video-frame-extractor/VideoFrameExtractorFAQ';
@@ -76,13 +77,13 @@ export default function VideoFrameExtractorPage() {
         <VideoFrameExtractorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/video-frame-extractor" title="More Tools for Video Teams" />
+        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-frame-extractor')} title="More Tools for Video Teams" />
 
         <VideoFrameExtractorFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['reviewApproval', 'creativeWorkspace', 'blog'])}
+          resources={getRelatedResources(['reviewApproval', 'creativeWorkspace', 'projectOrchestration'])}
           title="More Resources"
           description="Learn more about video collaboration workflows, asset review and approvals, and team collaboration."
         />
