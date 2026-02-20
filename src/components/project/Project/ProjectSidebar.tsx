@@ -92,7 +92,7 @@ export const ProjectSidebar = ({ project, isLoading = false }: Props) => {
     <div className="sticky top-[64px] max-h-[calc(100vh-64px)] overflow-y-auto border-r border-foreground-200">
       <div className="border-b border-foreground-200 px-2 py-3">
         {isLoading || !project ? (
-          <Skeleton className="h-8 w-full rounded-large" />
+          <Skeleton className="mx-auto h-8 w-8 rounded-large md:w-full" />
         ) : (
           <ProjectSelect selectedProject={project} />
         )}

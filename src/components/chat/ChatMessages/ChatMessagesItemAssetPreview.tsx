@@ -15,7 +15,7 @@ export const ChatMessagesItemAssetPreview = ({ asset }: Props) => {
   const imageUrl = asset.fileType.startsWith('image') ? asset.url : asset.metadata.thumbnailUrl;
 
   return (
-    <div className="relative flex h-60 w-fit min-w-56 items-center justify-center overflow-hidden rounded-medium border border-foreground-300">
+    <div className="relative flex h-60 w-fit items-center justify-center overflow-hidden rounded-medium border border-foreground-300 md:min-w-56">
       <Link
         href={`/project/${router.query.id}/assets/${asset.id}`}
         aria-label="Open in review tool"

@@ -18,17 +18,18 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
   const isSender = message.sender.id === user?.id;
 
   return (
-    <div className={cn('group flex w-full max-w-[80%] gap-2', { 'ml-auto flex-row-reverse': isSender })}>
-      {shouldShowSenderName ? (
-        <Avatar
-          size="sm"
-          src={message.sender.avatar?.url}
-          className="shrink-0"
-          fallback={<span className="select-none text-lg text-foreground-500">{message.sender.name.charAt(0)}</span>}
-        />
-      ) : (
-        <div className="size-8 shrink-0" />
-      )}
+    <div className={cn('group flex w-full max-w-full gap-2 md:max-w-[80%]', { 'ml-auto flex-row-reverse': isSender })}>
+      <div className="hidden shrink-0 md:block">
+        {shouldShowSenderName ? (
+          <Avatar
+            size="sm"
+            src={message.sender.avatar?.url}
+            fallback={<span className="select-none text-lg text-foreground-500">{message.sender.name.charAt(0)}</span>}
+          />
+        ) : (
+          <div className="size-8" />
+        )}
+      </div>
       <div className={cn('flex flex-col gap-1', { 'pt-0.5': shouldShowSenderName })}>
         {shouldShowSenderName && (
           <div className={cn('text-small', { 'text-end': isSender })}>{message.sender.name}</div>
@@ -37,8 +38,9 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
           {message.content && (
             <div
               key={message.id}
+              style={{ wordBreak: 'break-word' }}
               className={cn(
-                'relative w-fit max-w-[550px] items-end whitespace-pre-wrap rounded-medium bg-foreground-200 p-2 text-small',
+                'relative w-fit max-w-full items-end whitespace-pre-wrap rounded-medium bg-foreground-200 p-2 text-small md:max-w-[550px]',
                 {
                   'ml-auto bg-primary text-white': isSender,
                 },

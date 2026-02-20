@@ -122,7 +122,7 @@ export const AssetPicker = ({ projectId, skipIds = [], children, onSelect }: Pro
     <Popover placement="top-start" onOpenChange={handleOpenChange} isOpen={isVisible}>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent className="p-1">
-        <div className="h-96 w-[500px] max-w-full overflow-auto">
+        <div className="h-96 w-[500px] max-w-[90vw] overflow-auto">
           <div className="sticky top-0 z-30 p-2">
             <Input placeholder="Search..." value={search} onChange={handleSearchChange} size="sm" />
           </div>

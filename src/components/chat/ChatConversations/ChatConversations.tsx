@@ -1,5 +1,6 @@
 import { Tab, Tabs } from '@heroui/react';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { useChatContext } from '../../../contexts/Chat';
 import { ChatDto } from '../../../services/types';
@@ -18,6 +19,13 @@ export const ChatConversations = ({ chats, isPending, isError, isDisabled = fals
   const { selectedConversationId, setSelectedConversationId } = useChatContext();
   const router = useRouter();
 
+  useEffect(() => {
+    if (!selectedConversationId && chats.length > 0) {
+      setSelectedConversationId(chats[0].id);
+      router.replace(`${location.pathname}?conversationId=${chats[0].id}`);
+    }
+  }, [chats, router, selectedConversationId, setSelectedConversationId]);
+
   if (isPending) {
     return <ChatConversationsLoader />;
   }
@@ -33,6 +41,10 @@ export const ChatConversations = ({ chats, isPending, isError, isDisabled = fals
       router.push(`${location.pathname}?conversationId=${chat.id}`);
     }
   };
+
+  if (!selectedConversationId) {
+    return;
+  }
 
   return (
     <div className="relative h-full max-h-full">

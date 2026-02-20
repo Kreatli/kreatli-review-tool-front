@@ -28,7 +28,7 @@ export const ProjectPaywall = ({ user, project }: Props) => {
         <Skeleton className="h-full w-full flex-1" />
       </div>
       {isUserOwner ? (
-        <Modal isOpen size="5xl" hideCloseButton>
+        <Modal isOpen size="5xl" scrollBehavior="outside" hideCloseButton>
           <ModalContent>
             <ModalBody className="py-6">
               <h2 className="font-sans text-2xl font-bold">Your access to this project is currently paused.</h2>

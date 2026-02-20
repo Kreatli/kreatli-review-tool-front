@@ -34,9 +34,9 @@ export const ProjectSelect = ({ selectedProject }: Props) => {
         <button
           type="button"
           disabled={isLoading}
-          className="flex w-full items-center gap-1.5 overflow-hidden rounded-large transition-colors hover:bg-foreground-100"
+          className="flex w-full items-center gap-1.5 overflow-hidden rounded-large transition-colors md:hover:bg-foreground-100"
         >
-          <div className="shrink-0">
+          <div className="mx-auto shrink-0">
             {coverUrl ? (
               <Image
                 src={coverUrl}

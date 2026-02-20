@@ -1,6 +1,20 @@
 import { Skeleton } from '@heroui/react';
 
+import { useIsBreakpoint } from '../../tiptap/hooks/use-is-breakpoint';
+
 export const DashboardActivitySkeleton = () => {
+  const isMobile = useIsBreakpoint('max', 768);
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col gap-2">
+        <Skeleton className="h-28 w-full rounded-lg" />
+        <Skeleton className="h-28 w-full rounded-lg" />
+        <Skeleton className="h-28 w-full rounded-lg" />
+      </div>
+    );
+  }
+
   return (
     <div>
       <Skeleton className="mb-4 h-8 w-full rounded-lg" />

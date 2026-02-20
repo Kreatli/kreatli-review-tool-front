@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
 type BreakpointMode = 'min' | 'max';
 
@@ -11,7 +11,7 @@ type BreakpointMode = 'min' | 'max';
 export function useIsBreakpoint(mode: BreakpointMode = 'max', breakpoint = 640) {
   const [matches, setMatches] = useState<boolean | undefined>(undefined);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const query = mode === 'min' ? `(min-width: ${breakpoint}px)` : `(max-width: ${breakpoint - 1}px)`;
 
     const mql = window.matchMedia(query);
