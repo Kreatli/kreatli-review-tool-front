@@ -124,10 +124,11 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
           ))}
         </div>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6">
-          {files.map((asset) =>
+          {files.map((asset, index) =>
             asset.type === 'stack' ? (
               <ProjectStack
                 key={asset.id}
+                index={index}
                 isSelected={selectedAssetIds.has(asset.id)}
                 isDisabled
                 stack={asset}
@@ -138,6 +139,7 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
                 key={asset.id}
                 isSelected={selectedAssetIds.has(asset.id)}
                 isDisabled
+                index={index}
                 file={asset}
                 onSelectionChange={() => handleSelectionChange(asset.id)}
               />

@@ -1,18 +1,7 @@
 'use client';
 
-// eslint-disable-next-line simple-import-sort/imports
-import {
-  closestCenter,
-  DndContext,
-  DragEndEvent,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { DragDropProvider } from '@dnd-kit/react';
+import { useSortable } from '@dnd-kit/react/sortable';
 import { Button, Card, CardBody, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Image } from '@heroui/react';
 import { useState } from 'react';
 
@@ -90,30 +79,23 @@ function reorder<T>(list: T[], fromIndex: number, toIndex: number): T[] {
 
 function VersionRow({
   version,
-  isMenuOpen,
-  onMenuOpenChange,
+  index,
   variant = 'video',
 }: {
   version: MockVersion;
-  isMenuOpen: boolean;
-  onMenuOpenChange: (open: boolean) => void;
+  index: number;
   variant?: 'video' | 'pdf';
 }) {
   const [thumbnailError, setThumbnailError] = useState(false);
   const isPdf = variant === 'pdf';
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+  const { ref, handleRef } = useSortable({
     id: version.id,
+    index,
   });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
 
   return (
     <div
-      ref={setNodeRef}
-      style={style}
+      ref={ref}
       className="flex items-center gap-3 rounded-lg border border-foreground-200 bg-content1 p-3 transition-colors hover:bg-foreground-50"
     >
       {/* Version badge */}
@@ -123,9 +105,8 @@ function VersionRow({
 
       {/* Drag handle */}
       <div
+        ref={handleRef}
         className="flex shrink-0 cursor-grab items-center text-foreground-400 active:cursor-grabbing"
-        {...attributes}
-        {...listeners}
       >
         <Icon icon="dotsSix" size={16} />
       </div>
@@ -180,7 +161,7 @@ function VersionRow({
       </div>
 
       {/* More options dropdown */}
-      <Dropdown isOpen={isMenuOpen} onOpenChange={onMenuOpenChange} placement="bottom-end">
+      <Dropdown placement="bottom-end">
         <DropdownTrigger>
           <button
             type="button"
@@ -190,7 +171,7 @@ function VersionRow({
             <Icon icon="dots" size={18} />
           </button>
         </DropdownTrigger>
-        <DropdownMenu aria-label="Version actions" className="min-w-[180px]">
+        <DropdownMenu aria-label="Version actions" variant="flat" className="min-w-[180px]">
           <DropdownItem key="active" startContent={<Icon icon="check" size={16} />}>
             Mark as Active
           </DropdownItem>
@@ -216,23 +197,6 @@ export function VersioningFeaturePreview({ variant = 'video' }: { variant?: 'vid
   const [versions, setVersions] = useState<MockVersion[]>(
     variant === 'pdf' ? PDF_INITIAL_VERSIONS : VIDEO_INITIAL_VERSIONS,
   );
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
-    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
-  );
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-    if (over && active.id !== over.id) {
-      const oldIndex = versions.findIndex((v) => v.id === active.id);
-      const newIndex = versions.findIndex((v) => v.id === over.id);
-      if (oldIndex !== -1 && newIndex !== -1) {
-        setVersions(reorder(versions, oldIndex, newIndex));
-      }
-    }
-  };
 
   return (
     <Card className="overflow-hidden border border-foreground-200 shadow-lg">
@@ -244,21 +208,24 @@ export function VersioningFeaturePreview({ variant = 'video' }: { variant?: 'vid
 
         {/* Version list */}
         <div className="bg-content1 px-5 py-4">
-          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-            <SortableContext items={versions.map((v) => v.id)} strategy={verticalListSortingStrategy}>
-              <div className="flex flex-col gap-2">
-                {versions.map((version) => (
-                  <VersionRow
-                    key={version.id}
-                    version={version}
-                    isMenuOpen={menuOpen}
-                    onMenuOpenChange={setMenuOpen}
-                    variant={variant}
-                  />
-                ))}
-              </div>
-            </SortableContext>
-          </DndContext>
+          <DragDropProvider
+            onDragEnd={({ operation }) => {
+              const { source, target } = operation;
+              if (target && source && source.id !== target.id) {
+                const oldIndex = versions.findIndex((v) => v.id === source.id);
+                const newIndex = versions.findIndex((v) => v.id === target.id);
+                if (oldIndex !== -1 && newIndex !== -1) {
+                  setVersions(reorder(versions, oldIndex, newIndex));
+                }
+              }
+            }}
+          >
+            <div className="flex flex-col gap-2">
+              {versions.map((version, index) => (
+                <VersionRow key={version.id} index={index} version={version} variant={variant} />
+              ))}
+            </div>
+          </DragDropProvider>
         </div>
 
         {/* Footer actions */}

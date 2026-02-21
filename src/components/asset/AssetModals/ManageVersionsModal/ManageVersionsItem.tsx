@@ -1,6 +1,5 @@
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { Button, Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import { useSortable } from '@dnd-kit/react/sortable';
+import { Button, Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 
 import { ProjectFileDto } from '../../../../services/types';
 import { formatBytes } from '../../../../utils/formatBytes';
@@ -9,8 +8,8 @@ import { ManageVersionsItemPlaceholder } from './ManageVersionsItemPlaceholder';
 
 interface Props {
   file: ProjectFileDto;
-  version: number;
   isActive: boolean;
+  index: number;
   isDisabled?: boolean;
   shouldHideActions?: boolean;
   onMarkAsActive: () => void;
@@ -19,34 +18,22 @@ interface Props {
 
 export const ManageVersionsItem = ({
   file,
-  version,
   isActive,
   isDisabled = false,
   shouldHideActions = false,
+  index,
   onMarkAsActive,
   onRemove,
 }: Props) => {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+  const { ref } = useSortable({
     id: file.id,
     disabled: isDisabled,
+    index,
   });
 
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
-
   return (
-    <div ref={setNodeRef} className="flex items-center gap-2">
-      <Chip size="sm" className={cn({ 'bg-foreground text-content1': true })} variant={true ? 'solid' : 'flat'}>
-        v{version}
-      </Chip>
-      <div
-        style={style}
-        className="flex w-full items-center gap-2 overflow-hidden rounded-medium p-1"
-        {...attributes}
-        {...listeners}
-      >
+    <div ref={ref} className="flex items-center gap-2">
+      <div className="flex w-full items-center gap-2 overflow-hidden rounded-medium p-1">
         <div className="shrink-0">
           <Icon icon="dotsSix" size={20} className="text-foreground-500" />
         </div>
