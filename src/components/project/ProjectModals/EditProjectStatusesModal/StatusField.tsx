@@ -1,5 +1,4 @@
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+import { useSortable } from '@dnd-kit/react/sortable';
 import { Button, Input, Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
 import { useState } from 'react';
 import { useController, useFormContext } from 'react-hook-form';
@@ -16,7 +15,7 @@ interface Props {
 }
 
 export const StatusField = ({ value, index, onRemove }: Props) => {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: value });
+  const { ref, handleRef } = useSortable({ id: value, index });
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
@@ -27,11 +26,6 @@ export const StatusField = ({ value, index, onRemove }: Props) => {
 
   const { field: colorField } = useController({ name: `statuses.${index}.color` });
 
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
-
   const handleColorSelect = (color: string) => {
     colorField.onChange(color);
     setIsPopoverOpen(false);
@@ -40,8 +34,8 @@ export const StatusField = ({ value, index, onRemove }: Props) => {
   const isInvalid = !!errors?.statuses?.[index]?.label?.message;
 
   return (
-    <div ref={setNodeRef} style={style} className="flex w-full items-center gap-1">
-      <div {...attributes} {...listeners}>
+    <div ref={ref} className="flex w-full items-center gap-1">
+      <div ref={handleRef}>
         <Icon icon="dotsSix" size={20} className="text-foreground-500" />
       </div>
       <div className="relative flex-1">

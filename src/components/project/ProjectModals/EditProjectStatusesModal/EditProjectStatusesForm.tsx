@@ -1,17 +1,9 @@
-import {
-  closestCenter,
-  DndContext,
-  DragEndEvent,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import { restrictToParentElement } from '@dnd-kit/modifiers';
-import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { RestrictToElement } from '@dnd-kit/dom/modifiers';
+import { isSortable } from '@dnd-kit/dom/sortable';
+import { DragDropProvider } from '@dnd-kit/react';
 import { Link } from '@heroui/react';
 import { nanoid } from 'nanoid';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 
 import { ProjectDto } from '../../../../services/types';
@@ -25,6 +17,8 @@ interface Props {
 }
 
 export const EditProjectStatusesForm = ({ statuses, onSubmit }: Props) => {
+  const parentRef = useRef<HTMLDivElement>(null);
+
   const defaultStatuses = useMemo(() => {
     const notUsedColor =
       STATUS_COLORS.find((color) => !statuses.some((item) => item.color === color)) ??
@@ -44,32 +38,12 @@ export const EditProjectStatusesForm = ({ statuses, onSubmit }: Props) => {
     mode: 'all',
   });
 
-  const { control, getValues, handleSubmit } = methods;
+  const { control, handleSubmit } = methods;
 
   const { fields, append, remove, move } = useFieldArray({
     control,
     name: 'statuses',
   });
-
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
-  );
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-
-    if (over && active.id !== over.id) {
-      const items = getValues('statuses');
-
-      const oldIndex = items.findIndex((item) => item.value === active.id);
-      const newIndex = items.findIndex((item) => item.value === over.id);
-
-      move(oldIndex, newIndex);
-    }
-  };
 
   const handleRemove = (value: string) => {
     const index = fields.findIndex((item) => item.value === value);
@@ -83,19 +57,22 @@ export const EditProjectStatusesForm = ({ statuses, onSubmit }: Props) => {
   return (
     <FormProvider {...methods}>
       <form id="edit-project-statuses-form" noValidate onSubmit={handleSubmit((data) => onSubmit(data.statuses))}>
-        <div className="flex min-h-60 w-full flex-col gap-2">
-          <DndContext
-            sensors={sensors}
-            modifiers={[restrictToParentElement]}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
+        <div ref={parentRef} className="flex min-h-60 w-full flex-col gap-2">
+          <DragDropProvider
+            // eslint-disable-next-line react-hooks/refs
+            modifiers={[RestrictToElement.configure({ element: parentRef.current })]}
+            onDragEnd={({ operation }) => {
+              const { source } = operation;
+
+              if (isSortable(source)) {
+                move(source.initialIndex, source.index);
+              }
+            }}
           >
-            <SortableContext items={fields.map(({ value }) => value)} strategy={verticalListSortingStrategy}>
-              {fields.map(({ value }, index) => (
-                <StatusField key={value} value={value} index={index} onRemove={() => handleRemove(value)} />
-              ))}
-            </SortableContext>
-          </DndContext>
+            {fields.map(({ value }, index) => (
+              <StatusField key={value} value={value} index={index} onRemove={() => handleRemove(value)} />
+            ))}
+          </DragDropProvider>
           <div className="mt-2 pl-1 empty:hidden">
             {fields.length < 7 && (
               <Link

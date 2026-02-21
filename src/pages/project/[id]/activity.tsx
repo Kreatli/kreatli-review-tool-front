@@ -1,3 +1,4 @@
+import { Button } from '@heroui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -5,6 +6,8 @@ import React from 'react';
 import { ProjectLayout } from '../../../components/project/Project';
 import { ProjectActivity } from '../../../components/project/ProjectActivity/ProjectActivity';
 import { ProjectActivitySkeleton } from '../../../components/project/ProjectActivity/ProjectActivitySkeleton';
+import { EmptyState } from '../../../components/various/EmptyState';
+import { Icon } from '../../../components/various/Icon';
 import { useGetProjectIdLogs } from '../../../services/hooks';
 
 export default function ProjectActivityPage() {
@@ -12,7 +15,7 @@ export default function ProjectActivityPage() {
 
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const { data, isPending, isError } = useGetProjectIdLogs(router.query.id as string, {
+  const { data, isPending, isError, refetch } = useGetProjectIdLogs(router.query.id as string, {
     limit: 20,
     offset: (currentPage - 1) * 20,
   });
@@ -22,7 +25,21 @@ export default function ProjectActivityPage() {
   };
 
   if (isError) {
-    return <div>Error loading activity</div>;
+    return (
+      <EmptyState
+        title="Something went wrong"
+        icon="error"
+        text="An unexpected error occurred. Please try loading the data again."
+      >
+        <Button
+          className="mt-4 bg-foreground text-content1"
+          startContent={<Icon icon="update" size={16} />}
+          onClick={refetch}
+        >
+          Reload
+        </Button>
+      </EmptyState>
+    );
   }
 
   return (

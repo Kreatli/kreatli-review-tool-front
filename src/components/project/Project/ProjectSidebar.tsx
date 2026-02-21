@@ -22,6 +22,12 @@ const ITEMS = [
     icon: 'images',
   },
   {
+    key: 'tasks',
+    url: 'tasks',
+    label: 'Tasks',
+    icon: 'board' as IconType,
+  },
+  {
     key: 'chat',
     url: 'chat',
     label: 'Chat',
@@ -88,6 +94,13 @@ export const ProjectSidebar = ({ project, isLoading = false }: Props) => {
     }
   };
 
+  const items = ITEMS.filter((item) => {
+    if (item.key === 'tasks' && !localStorage.getItem('enableTasks')) {
+      return false;
+    }
+    return true;
+  });
+
   return (
     <div className="sticky top-[64px] max-h-[calc(100vh-64px)] overflow-y-auto border-r border-foreground-200">
       <div className="border-b border-foreground-200 px-2 py-3">
@@ -107,7 +120,7 @@ export const ProjectSidebar = ({ project, isLoading = false }: Props) => {
           className="pb-px"
           hideSelectedIcon
         >
-          {ITEMS.map((item) => (
+          {items.map((item) => (
             <ListboxItem
               key={item.key}
               startContent={<Icon icon={item.icon} size={20} />}

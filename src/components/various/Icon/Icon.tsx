@@ -9,6 +9,7 @@ import ArrowRightTopIcon from '../../../assets/icons/arrow-right-top.svg';
 import BankIcon from '../../../assets/icons/bank.svg';
 import BellIcon from '../../../assets/icons/bell.svg';
 import BitcoinIcon from '../../../assets/icons/bitcoin.svg';
+import BoardIcon from '../../../assets/icons/board.svg';
 import BoldIcon from '../../../assets/icons/bold.svg';
 import BuildingIcon from '../../../assets/icons/building.svg';
 import CalendarIcon from '../../../assets/icons/calendar.svg';
@@ -125,6 +126,7 @@ const ICONS = {
   bank: BankIcon,
   bell: BellIcon,
   bitcoin: BitcoinIcon,
+  board: BoardIcon,
   bold: BoldIcon,
   building: BuildingIcon,
   calendar: CalendarIcon,

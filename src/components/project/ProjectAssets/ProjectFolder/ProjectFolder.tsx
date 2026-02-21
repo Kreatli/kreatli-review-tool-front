@@ -1,9 +1,8 @@
-import { useDroppable } from '@dnd-kit/core';
+import { useDroppable } from '@dnd-kit/react';
 import { Button, Checkbox, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
 
 import { useAssetContext } from '../../../../contexts/Asset';
-import { useIsTouchScreen } from '../../../../hooks/useIsTouchScreen';
 import { ProjectFolderDto } from '../../../../services/types';
 import { formatBytes } from '../../../../utils/formatBytes';
 import { handleSpaceAndEnter } from '../../../../utils/keydown';
@@ -24,37 +23,35 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
   const { getAssetActions } = useAssetContext();
   const router = useRouter();
 
-  const isTouchScreen = useIsTouchScreen();
-
   const handleClick = () => {
     router.push(`/project/${router.query.id}/assets/folder/${folder.id}`);
   };
 
-  const { setNodeRef, isOver } = useDroppable({ id: `folder-${folder.id}` });
+  const { ref, isDropTarget } = useDroppable({ id: `folder-${folder.id}` });
 
   const actions = getAssetActions(folder);
 
   return (
     <div className="group/project-folder relative">
-      <div ref={setNodeRef} className="absolute bottom-0 left-8 right-8 top-0" />
+      <div ref={ref} className="absolute bottom-0 left-8 right-8 top-0" />
       <button
         type="button"
         aria-label={`Open ${name}`}
         disabled={isDisabled}
         className={cn(
-          'absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2',
+          'absolute-cursor w-full cursor-pointer rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2',
           {
-            'outline-3 outline': isOver,
+            'outline-3 outline': isDropTarget,
           },
         )}
-        onClick={isTouchScreen ? handleClick : undefined}
+        onClick={handleClick}
         onKeyDown={handleSpaceAndEnter(handleClick)}
         onDoubleClick={handleClick}
       >
         <ProjectFolderCover>
           <div className="flex items-center gap-1">
             {isSelected !== undefined && (
-              <Checkbox isSelected={isSelected} isDisabled={isReadonly} color="default" onChange={onSelectionChange} />
+              <Checkbox isSelected={isSelected} isDisabled={isReadonly} color="primary" onChange={onSelectionChange} />
             )}
             <div className="flex flex-1 flex-col items-start overflow-hidden first:ml-1">
               <div className="flex w-full items-center gap-2 overflow-hidden">
