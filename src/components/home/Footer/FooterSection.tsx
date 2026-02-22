@@ -96,15 +96,15 @@ const RESOURCES_NAV = {
         },
         {
           label: 'Instagram Safe Zone Checker',
-          href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+          href: '/safe-zone-checker/instagram-safe-zone-checker',
         },
         {
           label: 'TikTok Safe Zone Checker',
-          href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+          href: '/safe-zone-checker/tiktok-safe-zone-checker',
         },
         {
           label: 'YouTube Safe Zone Checker',
-          href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+          href: '/safe-zone-checker/youtube-safe-zone-checker',
         },
         {
           label: 'YouTube Banner Resizer',

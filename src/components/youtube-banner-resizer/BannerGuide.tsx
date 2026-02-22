@@ -239,8 +239,8 @@ export const BannerGuide = () => {
                 This is why the safe area is crucial—it ensures your important content (channel name, tagline, logo)
                 stays visible regardless of the device your viewers use. For similar considerations when creating video
                 content, check out our{' '}
-                <NextLink href="/social-media-safe-zone-checker" className="text-primary hover:underline">
-                  Social Media Safe Zone Checker
+                <NextLink href="/safe-zone-checker" className="text-primary hover:underline">
+                  Safe Zone Checker
                 </NextLink>{' '}
                 to ensure your YouTube Shorts, Instagram Reels, and TikTok videos display correctly.
               </p>

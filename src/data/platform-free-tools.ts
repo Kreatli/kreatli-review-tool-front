@@ -7,21 +7,21 @@ import { FREE_TOOLS, FreeTool } from './free-tools';
 const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   // Safe zone pages: emphasize safe zone checkers + YouTube Banner Resizer
   '/platform/youtube-shorts-safe-zone': [
-    '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+    '/safe-zone-checker/youtube-safe-zone-checker',
     '/free-tools/youtube-banner-resizer',
-    '/social-media-safe-zone-checker',
+    '/safe-zone-checker',
     '/free-tools/video-reviewer',
   ],
   '/platform/tiktok-safe-zone': [
-    '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
-    '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-    '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+    '/safe-zone-checker/tiktok-safe-zone-checker',
+    '/safe-zone-checker/instagram-safe-zone-checker',
+    '/safe-zone-checker/youtube-safe-zone-checker',
     '/free-tools/youtube-banner-resizer',
   ],
   '/platform/instagram-reels-safe-zone': [
-    '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-    '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
-    '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+    '/safe-zone-checker/instagram-safe-zone-checker',
+    '/safe-zone-checker/tiktok-safe-zone-checker',
+    '/safe-zone-checker/youtube-safe-zone-checker',
     '/free-tools/youtube-banner-resizer',
   ],
 
@@ -124,15 +124,15 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-reviewer',
     '/free-tools/video-feedback-tool',
     '/free-tools/video-manager',
-    '/social-media-safe-zone-checker',
+    '/safe-zone-checker',
   ],
 
   // YouTube banner
   '/platform/resize-youtube-banner': [
     '/free-tools/youtube-banner-resizer',
     '/free-tools/resize-video',
-    '/social-media-safe-zone-checker/youtube-safe-zone-checker',
-    '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+    '/safe-zone-checker/youtube-safe-zone-checker',
+    '/safe-zone-checker/instagram-safe-zone-checker',
   ],
 
   // PDF cluster – vary which 4 across pages

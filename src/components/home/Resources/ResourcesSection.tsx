@@ -10,7 +10,7 @@ import { Icon } from '../../various/Icon';
 const freeTools = FREE_TOOLS.filter(
   (tool) =>
     tool.title === 'Video Frame Extractor' ||
-    tool.title === 'Social Media Safe Zone Checker' ||
+    tool.title === 'Safe Zone Checker' ||
     tool.title === 'YouTube Banner Resizer' ||
     tool.title === 'Data Transfer Calculator',
 );

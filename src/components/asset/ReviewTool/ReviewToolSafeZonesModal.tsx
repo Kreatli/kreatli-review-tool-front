@@ -72,7 +72,7 @@ export const ReviewToolSafeZonesModal = ({ file, isOpen, onClose }: Props) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="outside">
       <ModalContent>
-        <ModalHeader>Social Media Safe Zone Checker</ModalHeader>
+        <ModalHeader>Safe Zone Checker</ModalHeader>
         <ModalBody>
           <div className="flex flex-col items-center gap-3">
             <RadioGroup

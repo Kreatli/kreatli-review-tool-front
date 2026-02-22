@@ -5,7 +5,7 @@ import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
-import { SocialMediaSafeZoneChecker } from '../components/safe-zone-checker/SocialMediaSafeZoneChecker';
+import { SafeZoneChecker } from '../components/safe-zone-checker/SafeZoneChecker';
 import { CTASection } from '../components/shared/CTASection';
 import { RelatedResourcesSection } from '../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../data/related-resources';
@@ -19,24 +19,24 @@ export default function ProjectsPage() {
           name="description"
           content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Free tool to ensure your videos look perfect on every platform. No sign-up required."
         />
-        <meta property="og:title" content="Social Media Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
+        <meta property="og:title" content="Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
         <meta
           property="og:description"
           content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Free tool to ensure your videos look perfect on every platform."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kreatli.com/social-media-safe-zone-checker" />
+        <meta property="og:url" content="https://kreatli.com/safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Social Media Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
+        <meta name="twitter:title" content="Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
         <meta
           name="twitter:description"
           content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Free tool for perfect videos."
         />
-        <link rel="canonical" href="https://kreatli.com/social-media-safe-zone-checker" />
+        <link rel="canonical" href="https://kreatli.com/safe-zone-checker" />
       </Head>
       <Header />
       <Decorations />
-      <SocialMediaSafeZoneChecker />
+      <SafeZoneChecker />
       <SafeZoneScreenGuide />
 
       {/* More Resources Section */}
