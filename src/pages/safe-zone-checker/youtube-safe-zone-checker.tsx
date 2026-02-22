@@ -27,7 +27,7 @@ export default function YouTubeSafeZoneCheckerPage() {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://kreatli.com/social-media-safe-zone-checker/youtube-safe-zone-checker"
+          content="https://kreatli.com/safe-zone-checker/youtube-safe-zone-checker"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="YouTube Shorts Safe Zone Checker - Free Preview Tool | Kreatli" />
@@ -35,7 +35,7 @@ export default function YouTubeSafeZoneCheckerPage() {
           name="twitter:description"
           content="Preview YouTube Shorts UI overlays before publishing. Free tool to ensure your content stays visible."
         />
-        <link rel="canonical" href="https://kreatli.com/social-media-safe-zone-checker/youtube-safe-zone-checker" />
+        <link rel="canonical" href="https://kreatli.com/safe-zone-checker/youtube-safe-zone-checker" />
       </Head>
       <Header />
       <Decorations />

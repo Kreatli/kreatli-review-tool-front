@@ -236,22 +236,22 @@ export const Header = () => {
                         },
                         {
                           label: 'Safe Zone Checker',
-                          href: '/social-media-safe-zone-checker',
+                          href: '/safe-zone-checker',
                           description: 'Free tool for safe zone checking',
                           children: [
                             {
                               label: 'Instagram Reels Checker',
-                              href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+                              href: '/safe-zone-checker/instagram-safe-zone-checker',
                               description: 'Preview Instagram Reels safe zones',
                             },
                             {
                               label: 'TikTok Checker',
-                              href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+                              href: '/safe-zone-checker/tiktok-safe-zone-checker',
                               description: 'Preview TikTok safe zones',
                             },
                             {
                               label: 'YouTube Shorts Checker',
-                              href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+                              href: '/safe-zone-checker/youtube-safe-zone-checker',
                               description: 'Preview YouTube Shorts safe zones',
                             },
                           ],
@@ -491,7 +491,7 @@ export const Header = () => {
             <NavbarMenuItem>
               <Link
                 as={NextLink}
-                href="/social-media-safe-zone-checker"
+                href="/safe-zone-checker"
                 size="lg"
                 color="foreground"
                 onClick={closeNavbarMenu}

@@ -155,10 +155,10 @@ export const RELATED_RESOURCES = {
   },
   // Free Tools
   safeZoneChecker: {
-    title: 'Social Media Safe Zone Checker',
+    title: 'Safe Zone Checker',
     description:
       'Preview where UI overlays appear on Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',
-    href: '/social-media-safe-zone-checker',
+    href: '/safe-zone-checker',
     icon: 'shield' as IconType,
     buttonText: 'Try Now',
   },

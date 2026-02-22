@@ -642,6 +642,16 @@ const nextConfig = {
         destination: '/platform',
         permanent: true,
       },
+      {
+        source: '/social-media-safe-zone-checker',
+        destination: '/safe-zone-checker',
+        permanent: true,
+      },
+      {
+        source: '/social-media-safe-zone-checker/:path*',
+        destination: '/safe-zone-checker/:path*',
+        permanent: true,
+      },
     ];
   },
   webpack(config) {

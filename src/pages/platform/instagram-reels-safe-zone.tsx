@@ -112,7 +112,7 @@ export default function InstagramReelsSafeZonePage() {
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
                 as={NextLink}
-                href="/social-media-safe-zone-checker/instagram-safe-zone-checker"
+                href="/safe-zone-checker/instagram-safe-zone-checker"
                 size="lg"
                 className="bg-foreground text-content1"
               >

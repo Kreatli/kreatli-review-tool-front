@@ -405,7 +405,7 @@ export default function CreativeProofingPage() {
       <MoreFreeToolsSection
         tools={FREE_TOOLS.filter(
           (tool) =>
-            tool.title === 'Social Media Safe Zone Checker' ||
+            tool.title === 'Safe Zone Checker' ||
             tool.title === 'Video Frame Extractor' ||
             tool.title === 'YouTube Banner Resizer' ||
             tool.title === 'Instagram Reels Safe Zone Checker'

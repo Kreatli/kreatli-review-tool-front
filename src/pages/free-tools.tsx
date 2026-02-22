@@ -205,10 +205,10 @@ const tools: Tool[] = [
     category: 'Creative Tools',
   },
   {
-    title: 'Social Media Safe Zone Checker',
+    title: 'Safe Zone Checker',
     description:
       'Preview where UI overlays appear on your Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',
-    href: '/social-media-safe-zone-checker',
+    href: '/safe-zone-checker',
     icon: 'shield',
     category: 'Creative Tools',
   },
@@ -216,7 +216,7 @@ const tools: Tool[] = [
     title: 'Instagram Reels Safe Zone Checker',
     description:
       'Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear.',
-    href: '/social-media-safe-zone-checker/instagram-safe-zone-checker',
+    href: '/safe-zone-checker/instagram-safe-zone-checker',
     icon: 'instagram',
     category: 'Creative Tools',
   },
@@ -224,7 +224,7 @@ const tools: Tool[] = [
     title: 'TikTok Safe Zone Checker',
     description:
       'Check your TikTok video safe zones before posting. Preview where profile picture, username, music track, and engagement buttons appear.',
-    href: '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+    href: '/safe-zone-checker/tiktok-safe-zone-checker',
     icon: 'tiktok',
     category: 'Creative Tools',
   },
@@ -232,7 +232,7 @@ const tools: Tool[] = [
     title: 'YouTube Shorts Safe Zone Checker',
     description:
       'Test your YouTube Shorts video layout before publishing. Preview where channel name, subscribe button, like button, comments, and video controls appear.',
-    href: '/social-media-safe-zone-checker/youtube-safe-zone-checker',
+    href: '/safe-zone-checker/youtube-safe-zone-checker',
     icon: 'youtube',
     category: 'Creative Tools',
   },
@@ -258,7 +258,7 @@ const faqs = [
   {
     question: 'Do I need to create an account to use these tools?',
     answer:
-      "No account is required to use any of our free tools. You can access the Data Transfer Calculator, Software Cost Calculator, Social Media Safe Zone Checker, and YouTube Banner Resizer immediately without signing up. Simply visit the tool page and start using it right away. If you decide to use Kreatli's Video Collaboration & Review Platform later, you can create a free account then.",
+      "No account is required to use any of our free tools. You can access the Data Transfer Calculator, Software Cost Calculator, Safe Zone Checker, and YouTube Banner Resizer immediately without signing up. Simply visit the tool page and start using it right away. If you decide to use Kreatli's Video Collaboration & Review Platform later, you can create a free account then.",
   },
   {
     question: 'What is the Data Transfer Calculator used for?',
@@ -271,9 +271,9 @@ const faqs = [
       "The Software Cost Calculator helps you understand how much you're spending on multiple creative tools and subscriptions. Add all the tools your team uses (video editing software, project management tools, file storage, review platforms, etc.) and see your total monthly and annual costs. The calculator also shows potential savings if you consolidate multiple tools into Kreatli's unified platform, which can reduce costs by 40-70% while replacing 4-5 separate tools.",
   },
   {
-    question: 'What is the Social Media Safe Zone Checker?',
+    question: 'What is the Safe Zone Checker?',
     answer:
-      "The Social Media Safe Zone Checker helps you preview where UI overlays (like profile pictures, like buttons, and text) appear on your Instagram Reels, TikTok videos, and YouTube Shorts. This ensures your important content stays visible and isn't covered by platform UI elements. Simply upload your video or image, select the platform, and see exactly where the safe zones are. This prevents common mistakes that can make your content look unprofessional.",
+      "The Safe Zone Checker helps you preview where UI overlays (like profile pictures, like buttons, and text) appear on your Instagram Reels, TikTok videos, and YouTube Shorts. This ensures your important content stays visible and isn't covered by platform UI elements. Simply upload your video or image, select the platform, and see exactly where the safe zones are. This prevents common mistakes that can make your content look unprofessional.",
   },
   {
     question: 'Can I use the YouTube Banner Resizer for other platforms?',
@@ -311,7 +311,7 @@ export default function FreeToolsPage() {
         <title>Kreatli | Free Tools for Video Teams – Professional Creative Tools</title>
         <meta
           name="description"
-          content="Free tools for video teams: data transfer calculator, software cost calculator, social media safe zone checker, YouTube banner resizer. Professional tools, no sign-up required."
+          content="Free tools for video teams: data transfer calculator, software cost calculator, safe zone checker, YouTube banner resizer. Professional tools, no sign-up required."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools" />
         <meta property="og:url" content="https://kreatli.com/free-tools" />
@@ -319,7 +319,7 @@ export default function FreeToolsPage() {
         <meta property="og:title" content="Kreatli | Free Tools for Video Teams – Professional Creative Tools" />
         <meta
           property="og:description"
-          content="Free professional tools for video teams and video professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
+          content="Free professional tools for video teams and video professionals. Calculate data transfer times, estimate software costs, check safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
@@ -330,7 +330,7 @@ export default function FreeToolsPage() {
         <meta name="twitter:title" content="Kreatli | Free Tools for Video Teams – Professional Creative Tools" />
         <meta
           name="twitter:description"
-          content="Free professional tools for video teams and creative professionals. Calculate data transfer times, estimate software costs, check social media safe zones, and resize YouTube banners."
+          content="Free professional tools for video teams and creative professionals. Calculate data transfer times, estimate software costs, check safe zones, and resize YouTube banners."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

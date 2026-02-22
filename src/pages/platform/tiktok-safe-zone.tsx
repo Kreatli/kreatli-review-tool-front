@@ -111,7 +111,7 @@ export default function TikTokSafeZonePage() {
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
                 as={NextLink}
-                href="/social-media-safe-zone-checker/tiktok-safe-zone-checker"
+                href="/safe-zone-checker/tiktok-safe-zone-checker"
                 size="lg"
                 className="bg-foreground text-content1"
               >

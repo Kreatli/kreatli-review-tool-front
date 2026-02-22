@@ -753,7 +753,7 @@ export const SafeZoneScreenGuide = ({
 
       {/* More Tools for Creative Teams Section */}
       <MoreFreeToolsSection
-        excludeHref="/social-media-safe-zone-checker"
+        excludeHref="/safe-zone-checker"
         title="More Tools for Creative Teams"
         description="Explore our collection of free tools designed to help creative professionals work more efficiently."
       />

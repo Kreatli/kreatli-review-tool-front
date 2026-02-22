@@ -142,20 +142,20 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
     '/free-tools/cost-calculator',
     '/free-tools/video-manager',
     '/free-tools/video-reviewer',
-    '/free-tools/social-media-safe-zone-checker',
+    '/free-tools/safe-zone-checker',
   ],
   '/free-tools/cost-calculator': [
     '/free-tools/data-transfer-calculator',
     '/free-tools/video-manager',
     '/free-tools/video-reviewer',
-    '/free-tools/social-media-safe-zone-checker',
+    '/free-tools/safe-zone-checker',
   ],
 
   // YouTube / safe zone (external safe zone checker pages not under /free-tools, so only youtube-banner-resizer here)
   '/free-tools/youtube-banner-resizer': [
-    '/social-media-safe-zone-checker/youtube-safe-zone-checker',
-    '/social-media-safe-zone-checker/instagram-safe-zone-checker',
-    '/social-media-safe-zone-checker/tiktok-safe-zone-checker',
+    '/safe-zone-checker/youtube-safe-zone-checker',
+    '/safe-zone-checker/instagram-safe-zone-checker',
+    '/safe-zone-checker/tiktok-safe-zone-checker',
     '/free-tools/resize-video',
   ],
 };
