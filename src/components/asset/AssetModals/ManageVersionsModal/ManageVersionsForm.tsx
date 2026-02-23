@@ -1,17 +1,9 @@
-import {
-  closestCenter,
-  DndContext,
-  DragEndEvent,
-  KeyboardSensor,
-  PointerSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import { restrictToParentElement } from '@dnd-kit/modifiers';
-import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { addToast, Button } from '@heroui/react';
+import { RestrictToElement } from '@dnd-kit/dom/modifiers';
+import { isSortable } from '@dnd-kit/dom/sortable';
+import { DragDropProvider } from '@dnd-kit/react';
+import { addToast, Button, Chip } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
-import { useImperativeHandle, useState } from 'react';
+import { useImperativeHandle, useRef, useState } from 'react';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 
 import { usePutProjectIdStackStackId } from '../../../../services/hooks';
@@ -37,6 +29,7 @@ export const ManageVersionsForm = ({ projectId, stack, formRef, onCancel, onSucc
     stack.files.find((file) => file.id === stack.active?.id)?.id,
   );
 
+  const parentRef = useRef<HTMLDivElement>(null);
   const queryClient = useQueryClient();
   const { mutate: updateStack, isPending } = usePutProjectIdStackStackId();
 
@@ -55,33 +48,13 @@ export const ManageVersionsForm = ({ projectId, stack, formRef, onCancel, onSucc
     [methods.formState.isDirty],
   );
 
-  const { control, getValues, handleSubmit } = methods;
+  const { control, handleSubmit } = methods;
 
   const { fields, move, remove } = useFieldArray({
     control,
     name: 'files',
     keyName: '_id',
   });
-
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor, {
-      coordinateGetter: sortableKeyboardCoordinates,
-    }),
-  );
-
-  const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
-
-    if (over && active.id !== over.id) {
-      const items = getValues('files');
-
-      const oldIndex = items.findIndex((item) => item.id === active.id);
-      const newIndex = items.findIndex((item) => item.id === over.id);
-
-      move(oldIndex, newIndex);
-    }
-  };
 
   const handleRemove = (fileId: string) => {
     if (fileId === activeFileId) {
@@ -128,19 +101,33 @@ export const ManageVersionsForm = ({ projectId, stack, formRef, onCancel, onSucc
   return (
     <FormProvider {...methods}>
       <form noValidate className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex w-full flex-col overflow-hidden">
-          <DndContext
-            sensors={sensors}
-            modifiers={[restrictToParentElement]}
-            collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-          >
-            <SortableContext items={fields.map(({ id }) => id)} strategy={verticalListSortingStrategy}>
+        <div className="flex gap-2">
+          <div className="flex flex-col">
+            {fields.map((_, index) => (
+              <div key={index} className="flex h-[53px] items-center justify-center">
+                <Chip size="sm" className="bg-foreground text-content1">
+                  v{fields.length - index}
+                </Chip>
+              </div>
+            ))}
+          </div>
+          <div ref={parentRef} className="flex w-full flex-col overflow-hidden">
+            <DragDropProvider
+              // eslint-disable-next-line react-hooks/refs
+              modifiers={[RestrictToElement.configure({ element: parentRef.current })]}
+              onDragEnd={({ operation }) => {
+                const { source } = operation;
+
+                if (isSortable(source)) {
+                  move(source.initialIndex, source.index);
+                }
+              }}
+            >
               {fields.map((file, index) => (
                 <ManageVersionsItem
                   key={file.id}
                   file={file}
-                  version={fields.length - index}
+                  index={index}
                   shouldHideActions={fields.length === 1}
                   isDisabled={isPending}
                   isActive={file.id === activeFileId}
@@ -148,8 +135,8 @@ export const ManageVersionsForm = ({ projectId, stack, formRef, onCancel, onSucc
                   onMarkAsActive={() => setActiveFileId(file.id)}
                 />
               ))}
-            </SortableContext>
-          </DndContext>
+            </DragDropProvider>
+          </div>
         </div>
         <div className="flex justify-end gap-2">
           <Button variant="light" isDisabled={isPending} onClick={onCancel}>

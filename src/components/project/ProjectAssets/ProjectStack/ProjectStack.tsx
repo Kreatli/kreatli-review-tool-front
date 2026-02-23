@@ -1,6 +1,6 @@
-import { useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { Button, Checkbox, Chip, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import { closestCenter } from '@dnd-kit/collision';
+import { useSortable } from '@dnd-kit/react/sortable';
+import { Button, Checkbox, Chip, cn, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useRouter } from 'next/router';
 
 import { useAssetContext } from '../../../../contexts/Asset';
@@ -14,6 +14,7 @@ import { ProjectFileCover } from '../ProjectFile/ProjectFileCover';
 import { ProjectFileStatus } from '../ProjectFile/ProjectFileStatus';
 
 interface Props {
+  index: number;
   isSelected?: boolean;
   isDisabled?: boolean;
   isReadonly?: boolean;
@@ -21,7 +22,7 @@ interface Props {
   onSelectionChange?: () => void;
 }
 
-export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSelectionChange }: Props) => {
+export const ProjectStack = ({ isSelected, isDisabled, isReadonly, index, stack, onSelectionChange }: Props) => {
   const { name, commentsCount } = stack.active!;
 
   const router = useRouter();
@@ -45,52 +46,29 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSele
     manageVersionAction?.onClick();
   };
 
-  const {
-    attributes,
-    listeners,
-    isSorting,
-    transition,
-    activeIndex,
-    index,
-    transform,
-    setDraggableNodeRef,
-    setDroppableNodeRef,
-  } = useSortable({
+  const { ref, isDragging } = useSortable({
     id: stack.id,
     disabled: isDisabled || isSelected || isReadonly || isTouchScreen,
-    animateLayoutChanges: () => true,
+    index,
+    collisionDetector: closestCenter,
   });
 
   return (
     <div
-      ref={setDraggableNodeRef}
-      style={{
-        transition,
-        transform: isSorting ? undefined : CSS.Translate.toString(transform),
-      }}
-      {...listeners}
-      {...attributes}
+      ref={ref}
       tabIndex={-1}
-      className="relative flex flex-col gap-3"
+      className={cn('relative flex flex-col gap-3 transition-opacity', { 'opacity-50': isDragging })}
     >
-      {activeIndex > index && (
-        <div
-          ref={setDroppableNodeRef}
-          className="pointer-events-none absolute -left-4 bottom-0 top-0 w-[calc(100%+1rem)]"
-        />
-      )}
-      {activeIndex < index && (
-        <div
-          ref={setDroppableNodeRef}
-          className="pointer-events-none absolute -right-4 bottom-0 top-0 w-[calc(100%+1rem)]"
-        />
-      )}
       <div
         tabIndex={isDisabled ? -1 : 0}
-        className="absolute-cursor w-full cursor-default rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2"
+        className={cn(
+          'absolute-cursor w-full cursor-pointer rounded-2xl outline-offset-2 outline-focus focus:outline focus:outline-2',
+          {
+            'outline outline-2': isSelected || isDragging,
+          },
+        )}
         onKeyDown={handleSpaceAndEnter(handleClick)}
-        onClick={isTouchScreen ? handleClick : undefined}
-        onDoubleClick={handleClick}
+        onClick={handleClick}
       >
         <ProjectFileCover file={stack.active!} />
         <div className="relative">
@@ -106,7 +84,7 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, stack, onSele
       {isSelected !== undefined && (
         <Checkbox
           isSelected={isSelected}
-          color="default"
+          color="primary"
           isDisabled={isReadonly}
           className="absolute left-2 right-2 top-2 z-10"
           onChange={onSelectionChange}

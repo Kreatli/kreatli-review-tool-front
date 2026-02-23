@@ -1,16 +1,5 @@
-import {
-  DndContext,
-  DragEndEvent,
-  DragOverEvent,
-  DragOverlay,
-  DragStartEvent,
-  MouseSensor,
-  pointerWithin,
-  TouchSensor,
-  useSensor,
-  useSensors,
-} from '@dnd-kit/core';
-import { SortableContext } from '@dnd-kit/sortable';
+import { isSortable } from '@dnd-kit/dom/sortable';
+import { DragDropProvider, DragOverlay } from '@dnd-kit/react';
 import { addToast, Button, Checkbox, cn, Skeleton } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
@@ -101,11 +90,6 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
       .filter((file) => file && file.name.toLowerCase().includes(search.toLowerCase()));
   }, [filesOrder, files, search]);
 
-  const dndSensors = useSensors(
-    useSensor(MouseSensor, { activationConstraint: { distance: 3 } }),
-    useSensor(TouchSensor, { activationConstraint: { distance: 3 } }),
-  );
-
   const hasSelectedAssets = React.useMemo(() => {
     return selectedAssetIds.size > 0;
   }, [selectedAssetIds]);
@@ -135,32 +119,23 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
     return <EmptyState title="No files" text="This folder is empty. Go ahead and upload files here" />;
   }
 
-  const handleDragStart = (event: DragStartEvent) => {
-    setDraggedId(event.active.id as string);
-  };
-
-  const handleDragEnd = async (event: DragEndEvent) => {
-    const { active, over } = event;
+  const handleDragEnd = async (targetIndex: number, targetId: string | undefined) => {
     setDraggedId(null);
     setOverId(null);
 
-    if (!over || active.id === over?.id) {
+    const oldIndex = filesOrder.indexOf(draggedId as string);
+    const newIndex = targetIndex;
+
+    const isOverFolder = (targetId as string).includes('folder');
+    const overFolderId = (targetId as string).replace('folder-', '');
+
+    if (oldIndex === newIndex && !overFolderId) {
       return;
     }
-
-    const isOverFolder = (over.id as string).includes('folder');
-    const overFolderId = (over.id as string).replace('folder-', '');
-
-    if (active.id === overFolderId) {
-      return;
-    }
-
-    const oldIndex = filesOrder.indexOf(active.id as string);
-    const newIndex = filesOrder.indexOf(overFolderId);
 
     const newFilesOrder = [...filesOrder];
     newFilesOrder.splice(oldIndex, 1);
-    newFilesOrder.splice(newIndex, 0, ...(isOverFolder ? [] : [active.id as string]));
+    newFilesOrder.splice(newIndex, 0, ...(isOverFolder ? [] : [draggedId as string]));
 
     setFilesOrder(newFilesOrder);
 
@@ -169,7 +144,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
         const { from: updatedFolder } = await moveAssets({
           id: project.id,
           requestBody: {
-            assetIds: [active.id as string],
+            assetIds: [draggedId as string],
             fromId: folder.id,
             toId: overFolderId,
           },
@@ -212,10 +187,6 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
         variant: 'flat',
       });
     }
-  };
-
-  const handleDragOver = (event: DragOverEvent) => {
-    setOverId((event.over?.id ?? null) as string | null);
   };
 
   const handleSelectionChange = (assetId: string) => {
@@ -275,7 +246,7 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
             isDisabled={!hasSelectedAssets}
             isSelected={selectedAssetIds.size === assets.length}
             isIndeterminate={selectedAssetIds.size > 0 && selectedAssetIds.size < assets.length}
-            color="default"
+            color="primary"
             onChange={handleSelectAllChange}
           />
           <div className="-ml-2 text-foreground-500">
@@ -326,12 +297,19 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
         setSelectedAssetId={setSelectedAssetId}
         project={project}
       >
-        <DndContext
-          sensors={dndSensors}
-          collisionDetection={pointerWithin}
-          onDragStart={handleDragStart}
-          onDragOver={handleDragOver}
-          onDragEnd={handleDragEnd}
+        <DragDropProvider
+          onDragStart={({ operation }) => {
+            setDraggedId(operation.source?.id as string);
+          }}
+          onDragOver={({ operation }) => {
+            setOverId((operation.target?.id ?? null) as string | null);
+          }}
+          onDragEnd={({ operation }) => {
+            handleDragEnd(
+              isSortable(operation.target) ? operation.target.index : 0,
+              operation.target?.id as string | undefined,
+            );
+          }}
         >
           <div className="mb-6 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-2 empty:mb-0">
             {folders.map((folder) => (
@@ -344,54 +322,47 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
               />
             ))}
           </div>
-          <SortableContext items={filesOrder}>
-            <div className="-m-3 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-3">
-              {sortedAssets.map((asset, index) => (
-                <div key={asset.id} className={cn('relative', { 'opacity-50': draggedId === asset.id })}>
-                  {asset.type === 'file' && (
-                    <ProjectFile
-                      file={asset}
-                      isReadonly={project.status !== 'active'}
-                      isSelected={selectedAssetIds.has(asset.id)}
-                      onSelectionChange={() => handleSelectionChange(asset.id)}
-                    />
-                  )}
-                  {asset.type === 'stack' && (
-                    <ProjectStack
-                      stack={asset}
-                      isReadonly={project.status !== 'active'}
-                      isSelected={selectedAssetIds.has(asset.id)}
-                      onSelectionChange={() => handleSelectionChange(asset.id)}
-                    />
-                  )}
-                  {overId === asset.id && draggedAsset && (
-                    <div
-                      className={cn('absolute bottom-0 top-0 w-0.5 -translate-x-1/2 rounded-xl bg-foreground-400', {
-                        '-right-2': files.indexOf(draggedAsset) < index,
-                        '-left-2': files.indexOf(draggedAsset) > index,
-                      })}
-                    />
+          <div className="-m-3 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-4 gap-y-6 overflow-hidden p-3">
+            {sortedAssets.map((asset, index) =>
+              asset.type === 'file' ? (
+                <ProjectFile
+                  key={asset.id}
+                  file={asset}
+                  isReadonly={project.status !== 'active'}
+                  index={index}
+                  isSelected={selectedAssetIds.has(asset.id)}
+                  onSelectionChange={() => handleSelectionChange(asset.id)}
+                />
+              ) : (
+                <ProjectStack
+                  key={asset.id}
+                  stack={asset}
+                  index={index}
+                  isReadonly={project.status !== 'active'}
+                  isSelected={selectedAssetIds.has(asset.id)}
+                  onSelectionChange={() => handleSelectionChange(asset.id)}
+                />
+              ),
+            )}
+          </div>
+          <DragOverlay>
+            {() =>
+              draggedAsset && (
+                <div
+                  className={cn('rounded-2xl bg-background transition-transform', {
+                    'scale-80': overId?.includes('folder') && !overId.endsWith(draggedAsset.id),
+                  })}
+                >
+                  {draggedAsset.type === 'stack' ? (
+                    <ProjectFileCover key={draggedAsset.id} file={draggedAsset.active!} />
+                  ) : (
+                    <ProjectFileCover key={draggedAsset.id} file={draggedAsset} />
                   )}
                 </div>
-              ))}
-            </div>
-          </SortableContext>
-          <DragOverlay>
-            {draggedAsset && (
-              <div
-                className={cn('rounded-2xl bg-background transition-transform', {
-                  'scale-80': overId?.includes('folder') && !overId.endsWith(draggedAsset.id),
-                })}
-              >
-                {draggedAsset.type === 'stack' ? (
-                  <ProjectFileCover key={draggedAsset.id} file={draggedAsset.active!} />
-                ) : (
-                  <ProjectFileCover key={draggedAsset.id} file={draggedAsset} />
-                )}
-              </div>
-            )}
+              )
+            }
           </DragOverlay>
-        </DndContext>
+        </DragDropProvider>
       </AssetContextProvider>
       <MoveToAssetsModal
         project={project}
