@@ -126,14 +126,10 @@ export const ProjectFolderAssetsList = ({ project, folder }: Props) => {
     const oldIndex = filesOrder.indexOf(draggedId as string);
     const newIndex = targetIndex;
 
-    if (oldIndex === newIndex) {
-      return;
-    }
-
     const isOverFolder = (targetId as string).includes('folder');
     const overFolderId = (targetId as string).replace('folder-', '');
 
-    if (!overFolderId) {
+    if (oldIndex === newIndex && !overFolderId) {
       return;
     }
 

@@ -96,14 +96,10 @@ export const ProjectAssets = () => {
     const oldIndex = filesOrder.indexOf(draggedId as string);
     const newIndex = targetIndex;
 
-    if (oldIndex === newIndex) {
-      return;
-    }
-
     const isOverFolder = targetId?.includes('folder');
     const overFolderId = targetId?.replace('folder-', '');
 
-    if (!overFolderId) {
+    if (oldIndex === newIndex && !overFolderId) {
       return;
     }
 
