@@ -66,7 +66,7 @@ export const ProjectSelect = ({ selectedProject }: Props) => {
         variant="flat"
         selectionMode="single"
         className="max-h-64 max-w-xs overflow-auto"
-        // classNames={{ list: 'max-h-64 overflow-y-auto' }}
+        disallowEmptySelection
         selectedKeys={[selectedProject.id]}
         onSelectionChange={handleSelectionChange}
       >
