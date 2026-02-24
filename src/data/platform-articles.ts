@@ -800,15 +800,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-annotate-pdf-guide-3',
-      full_slug: '/guides/pdf-annotation-tools',
-      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
-      tags: ['PDF Annotation', 'Creative Teams'],
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '9',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -876,15 +876,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-draw-on-documents-guide-3',
-      full_slug: '/guides/pdf-annotation-tools',
-      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
-      tags: ['PDF Annotation', 'Creative Teams'],
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '9',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -1066,15 +1066,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-draw-on-pdf-document-guide-3',
-      full_slug: '/guides/pdf-annotation-tools',
-      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
-      tags: ['PDF Annotation', 'Creative Teams'],
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '9',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -1104,15 +1104,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-pdf-version-control-guide-3',
-      full_slug: '/guides/pdf-annotation-tools',
-      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
-      tags: ['PDF Annotation', 'Creative Teams'],
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '9',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -1294,15 +1294,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-review-pdf-guide-3',
-      full_slug: '/guides/pdf-annotation-tools',
-      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
-      tags: ['PDF Annotation', 'Creative Teams'],
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '9',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -1409,15 +1409,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-compare-docs-guide-3',
-      full_slug: '/guides/pdf-annotation-tools',
-      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
-      tags: ['PDF Annotation', 'Creative Teams'],
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '9',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
@@ -1525,15 +1525,15 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
     makeArticleCard({
       id: 'platform-proof-pdf-guide-3',
-      full_slug: '/guides/pdf-annotation-tools',
-      title: 'PDF Annotation Tools: The Complete Guide for Creative Teams',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
       description:
-        'Discover the best PDF annotation tools for creative review workflows. Learn how to add comments, highlights, and drawings to PDFs for faster approvals.',
-      tags: ['PDF Annotation', 'Creative Teams'],
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
       publishDate: '2026-01-25 00:00',
-      readTime: '9',
+      readTime: '11',
       imageFilename:
-        'https://a.storyblok.com/f/287637539865613/2250x750/6fd6e95b81/what-is-proofing-software.png',
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
     }),
   ],
 
