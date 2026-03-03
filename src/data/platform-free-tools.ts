@@ -88,6 +88,24 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-feedback-tool',
     '/free-tools/data-transfer-calculator',
   ],
+  '/platform/video-cloud-storage': [
+    '/free-tools/video-manager',
+    '/free-tools/data-transfer-calculator',
+    '/free-tools/video-reviewer',
+    '/free-tools/video-feedback-tool',
+  ],
+  '/platform/file-cloud-storage': [
+    '/free-tools/video-manager',
+    '/free-tools/data-transfer-calculator',
+    '/free-tools/pdf-reviewer',
+    '/free-tools/image-reviewer',
+  ],
+  '/platform/cloud-sharing': [
+    '/free-tools/video-feedback-tool',
+    '/free-tools/video-reviewer',
+    '/free-tools/video-manager',
+    '/free-tools/data-transfer-calculator',
+  ],
   '/platform/extract-frames-from-video': [
     '/free-tools/video-frame-extractor',
     '/free-tools/resize-video',

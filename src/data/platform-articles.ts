@@ -1615,6 +1615,123 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/video-cloud-storage': [
+    makeArticleCard({
+      id: 'platform-video-cloud-storage-guide-1',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Use Video Cloud Storage in Kreatli',
+      description:
+        'Learn how production teams centralize their media library in Kreatli video cloud storage so files, versions, and approvals stay connected.',
+      tags: ['Video Production', 'Project Management'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-cloud-storage-guide-2',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Video Cloud Storage for Creative Teams',
+      description:
+        'Compare how Kreatli and Frame.io handle video cloud storage, versioning, and review workflows for modern creative teams.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-cloud-storage-blog',
+      full_slug: '/blog/video-post-production',
+      title: 'Post-Production Video Editing: How Collaboration Tools Improve Cuts',
+      description:
+        'See how collaboration tools and cloud-based video workflows reduce context switching, keep feedback attached to files, and help editors ship better cuts faster.',
+      tags: ['Post-Production', 'Collaboration'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+  ],
+
+  '/platform/file-cloud-storage': [
+    makeArticleCard({
+      id: 'platform-file-cloud-storage-guide-1',
+      full_slug: '/guides/marketing-production-management',
+      title: 'How Marketing and Creative Teams Use File Cloud Storage in Kreatli',
+      description:
+        'See how teams use Kreatli file cloud storage to keep video, images, and documents organized around projects and campaigns.',
+      tags: ['Production Management', 'Creative Teams'],
+      publishDate: '2025-12-14 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7fb2ff9485/how-marketing-teams-use-kreatli-to-manage-production-from-brief-to-launch.png',
+    }),
+    makeArticleCard({
+      id: 'platform-file-cloud-storage-guide-2',
+      full_slug: '/comparisons/kreatli-vs-asana',
+      title: 'Kreatli vs Asana: Why Production Teams Need More Than File Cloud Storage',
+      description:
+        'Learn how Kreatli combines file cloud storage with project management, review, and approvals, compared to generic PM tools.',
+      tags: ['Tools Comparison', 'Cloud MAM'],
+      publishDate: '2025-11-26 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/739cc0edfe/kreatli-vs-asana-why-production-teams-need-more-than-a-generic-pm-tool.png',
+    }),
+    makeArticleCard({
+      id: 'platform-file-cloud-storage-blog',
+      full_slug: '/blog/production-platform-for-creative-teams',
+      title: 'Why Creative Teams Are Moving Beyond Basic File Cloud Storage',
+      description:
+        'Learn why modern creative teams are moving from simple file cloud storage toward unified production platforms like Kreatli.',
+      tags: ['Production Management', 'Creative Teams'],
+      publishDate: '2025-12-10 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
+    }),
+  ],
+
+  '/platform/cloud-sharing': [
+    makeArticleCard({
+      id: 'platform-cloud-sharing-guide-1',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Share Work in the Cloud With Kreatli',
+      description:
+        'See how production teams use Kreatli cloud sharing links to replace attachments, WeTransfer folders, and unmanaged drives.',
+      tags: ['Video Production', 'Project Management'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-cloud-sharing-guide-2',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Cloud Sharing and Review for Creative Teams',
+      description:
+        'Compare how Kreatli and Frame.io handle cloud sharing, review links, and approvals for modern creative teams.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-cloud-sharing-blog',
+      full_slug: '/blog/video-post-production',
+      title: 'Post-Production Video Editing: Why Cloud Sharing Beats Attachments',
+      description:
+        'Learn how cloud sharing and review links cut down on context switching, keep feedback attached to files, and help editors ship better cuts faster.',
+      tags: ['Post-Production', 'Collaboration'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+  ],
+
   '/platform/video-proofing': [
     makeArticleCard({
       id: 'platform-video-proofing-guide-1',
