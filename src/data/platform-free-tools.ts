@@ -82,6 +82,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-feedback-tool',
     '/free-tools/video-proofing-tool',
   ],
+  '/platform/host-video': [
+    '/free-tools/video-manager',
+    '/free-tools/video-reviewer',
+    '/free-tools/video-feedback-tool',
+    '/free-tools/data-transfer-calculator',
+  ],
   '/platform/extract-frames-from-video': [
     '/free-tools/video-frame-extractor',
     '/free-tools/resize-video',

@@ -1576,6 +1576,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/host-video': [
+    makeArticleCard({
+      id: 'platform-host-video-guide-1',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Host and Review Projects in Kreatli',
+      description:
+        'See how production teams host video in Kreatli to keep files, versions, and approvals in one place instead of scattered drives and links.',
+      tags: ['Video Production', 'Project Management'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-host-video-guide-2',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Hosting and Reviewing Video in Practice',
+      description:
+        'Compare how Kreatli and Frame.io handle hosted video libraries, review workflows, and approvals for modern creative teams.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-host-video-blog',
+      full_slug: '/blog/video-post-production',
+      title: 'Post-Production Video Editing: How Collaboration Tools Improve Cuts',
+      description:
+        'See how collaboration tools and hosted video workflows reduce context switching, keep feedback attached to files, and help editors ship better cuts faster.',
+      tags: ['Post-Production', 'Collaboration'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+  ],
+
   '/platform/video-proofing': [
     makeArticleCard({
       id: 'platform-video-proofing-guide-1',

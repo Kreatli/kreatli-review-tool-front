@@ -1503,6 +1503,55 @@ export const VIDEO_PROOFING_STEPS: WorkflowStep[] = [
   },
 ];
 
+/** Steps for the Host Video platform page. */
+export const HOST_VIDEO_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video library to Kreatli',
+    description:
+      'Sign in to Kreatli, create a project for your production work, and upload your videos. Each file is stored securely with version history so you can host current cuts and archives in one place instead of scattered drives or links.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with hosted videos stored securely',
+  },
+  {
+    step: 2,
+    title: 'Organize hosted videos with folders and status',
+    description:
+      'Use folders, subfolders, and status labels to organize raw footage, edits, exports, and client-ready cuts. Keep your hosted video library structured so teammates and clients can always find the right version without searching through drives.',
+    icon: 'folder',
+    image: '/video-annotation-guide/step-2-manage-videos-folders.png',
+    altText: 'Organized hosted video folders and status labels in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Set access and share hosting links',
+    description:
+      'Decide who can view, comment, or approve each hosted video. Generate secure review links for clients and stakeholders so they can watch in the browser while you stay in control of access, permissions, and link visibility.',
+    icon: 'share',
+    image: '/video-annotation-guide/step-2-share-link.png',
+    altText: 'Generating secure hosting and review links for videos in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Collect feedback and keep versions in sync',
+    description:
+      'Invite reviewers to leave frame-accurate comments and annotations on hosted videos. Upload new versions while keeping all feedback, approvals, and history tied to the same hosted asset so your library stays clean and accurate.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-3-manage-videos-versions.png',
+    altText: 'Managing hosted video versions and feedback history in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Use Kreatli as your long-term video hub',
+    description:
+      'Keep finished campaigns and evergreen content hosted in Kreatli for future reuse. Search, filter, and reshare hosted videos with new stakeholders without re-uploading files or losing track of where assets live.',
+    icon: 'monitorPlay',
+    image: `${IMG}-5.webp`,
+    altText: 'Hosted video hub in Kreatli with searchable library',
+  },
+];
+
 /** Steps for the Manage Videos platform page. */
 export const MANAGE_VIDEOS_STEPS: WorkflowStep[] = [
   {

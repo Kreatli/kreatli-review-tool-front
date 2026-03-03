@@ -196,6 +196,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
   {
+    label: 'Host Video',
+    href: '/platform/host-video',
+    description: 'Host video securely with version history, permissions, and frame-accurate review',
+    icon: 'monitorPlay',
+    section: 'Core Platform',
+    order: 9.5,
+    tags: ['Video', 'Share & send', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['secureAssetStorage', 'creativeWorkspace', 'reviewApproval', 'videoAnnotation'],
+  },
+  {
     label: 'Send Video',
     href: '/platform/send-video',
     description: 'Send your video to clients for free review and feedback',
