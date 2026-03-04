@@ -1,5 +1,24 @@
 import { IconType } from '../components/various/Icon/Icon';
 
+/** Filter tags for the /free-tools page. Tools with no tags only appear when "All" is selected. */
+export type FreeToolFilterTag =
+  | 'Video'
+  | 'PDF & documents'
+  | 'Images'
+  | 'Safe zones & resize'
+  | 'Calculators & utilities'
+  | 'Share & links';
+
+/** Filter options for the free-tools page (id and label for UI) */
+export const FREE_TOOLS_FILTER_OPTIONS: { id: FreeToolFilterTag; label: string }[] = [
+  { id: 'Video', label: 'Video' },
+  { id: 'PDF & documents', label: 'PDF & documents' },
+  { id: 'Images', label: 'Images' },
+  { id: 'Safe zones & resize', label: 'Safe zones & resize' },
+  { id: 'Calculators & utilities', label: 'Calculators & utilities' },
+  { id: 'Share & links', label: 'Share & links' },
+];
+
 export interface FreeTool {
   title: string;
   description: string;
@@ -7,6 +26,8 @@ export interface FreeTool {
   icon: IconType;
   buttonText?: string;
   ariaLabel?: string;
+  /** Filter tags for /free-tools page; tools with no tags only show when "All" is selected */
+  tags?: FreeToolFilterTag[];
 }
 
 export const FREE_TOOLS: FreeTool[] = [
@@ -18,6 +39,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'play',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Feedback Tool',
+    tags: ['Video'],
   },
   {
     title: 'Video Reviewer',
@@ -27,6 +49,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'monitorPlay',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Reviewer',
+    tags: ['Video'],
   },
   {
     title: 'Video Comparer',
@@ -36,6 +59,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'compare',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Comparer',
+    tags: ['Video'],
   },
   {
     title: 'Video Link Maker',
@@ -45,6 +69,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'link',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Link Maker',
+    tags: ['Video', 'Share & links'],
   },
   {
     title: 'PDF Reviewer',
@@ -54,6 +79,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'filePdf',
     buttonText: 'Try Now',
     ariaLabel: 'Try PDF Reviewer',
+    tags: ['PDF & documents'],
   },
   {
     title: 'PDF Annotator',
@@ -63,6 +89,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'paint',
     buttonText: 'Try Now',
     ariaLabel: 'Try PDF Annotator',
+    tags: ['PDF & documents'],
   },
   {
     title: 'PDF Highlighter',
@@ -72,6 +99,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'edit',
     buttonText: 'Try Now',
     ariaLabel: 'Try PDF Highlighter',
+    tags: ['PDF & documents'],
   },
   {
     title: 'PDF Comparer',
@@ -81,6 +109,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'versions',
     buttonText: 'Try Now',
     ariaLabel: 'Try PDF Comparer',
+    tags: ['PDF & documents'],
   },
   {
     title: 'PDF Link Generator',
@@ -90,6 +119,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'share',
     buttonText: 'Try Now',
     ariaLabel: 'Try PDF Link Generator',
+    tags: ['PDF & documents', 'Share & links'],
   },
   {
     title: 'Document Annotator',
@@ -99,6 +129,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'fileDoc',
     buttonText: 'Try Now',
     ariaLabel: 'Try Document Annotator',
+    tags: ['PDF & documents'],
   },
   {
     title: 'Document Comparer',
@@ -108,6 +139,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'grid',
     buttonText: 'Try Now',
     ariaLabel: 'Try Document Comparer',
+    tags: ['PDF & documents'],
   },
   {
     title: 'Image Reviewer',
@@ -117,6 +149,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'panorama',
     buttonText: 'Try Now',
     ariaLabel: 'Try Image Reviewer',
+    tags: ['Images'],
   },
   {
     title: 'Image Annotator',
@@ -126,6 +159,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'addImage',
     buttonText: 'Try Now',
     ariaLabel: 'Try Image Annotator',
+    tags: ['Images'],
   },
   {
     title: 'Image Comparer',
@@ -135,6 +169,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'eye',
     buttonText: 'Try Now',
     ariaLabel: 'Try Image Comparer',
+    tags: ['Images'],
   },
   {
     title: 'Image URL Maker',
@@ -144,6 +179,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'send',
     buttonText: 'Try Now',
     ariaLabel: 'Try Image URL Maker',
+    tags: ['Images', 'Share & links'],
   },
   {
     title: 'Photo URL Generator',
@@ -153,6 +189,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'mail',
     buttonText: 'Try Now',
     ariaLabel: 'Try Photo URL Generator',
+    tags: ['Images', 'Share & links'],
   },
   {
     title: 'Video Manager',
@@ -162,6 +199,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'folder',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Manager',
+    tags: ['Video'],
   },
   {
     title: 'Video Proofing Tool',
@@ -171,6 +209,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'checkCircle',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Proofing Tool',
+    tags: ['Video'],
   },
   {
     title: 'Video Annotator',
@@ -180,6 +219,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'chat',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Annotator',
+    tags: ['Video'],
   },
   {
     title: 'Video Frame Extractor',
@@ -189,6 +229,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'filePng',
     buttonText: 'Try Now',
     ariaLabel: 'Extract and download video frames',
+    tags: ['Video'],
   },
   {
     title: 'Resize Video',
@@ -198,6 +239,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'fullscreen',
     buttonText: 'Try Now',
     ariaLabel: 'Resize video',
+    tags: ['Video'],
   },
   {
     title: 'Data Transfer Calculator',
@@ -207,6 +249,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'upload',
     buttonText: 'Try Now',
     ariaLabel: 'Calculate data transfer time',
+    tags: ['Calculators & utilities'],
   },
   {
     title: 'Software Cost Calculator',
@@ -216,6 +259,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'dollar',
     buttonText: 'Try Now',
     ariaLabel: 'Calculate software cost savings',
+    tags: ['Calculators & utilities'],
   },
   {
     title: 'Safe Zone Checker',
@@ -225,6 +269,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'shield',
     buttonText: 'Try Now',
     ariaLabel: 'Try Safe Zone Checker',
+    tags: ['Safe zones & resize'],
   },
   {
     title: 'Instagram Reels Safe Zone Checker',
@@ -234,6 +279,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'instagram',
     buttonText: 'Try Now',
     ariaLabel: 'Try Instagram Reels Safe Zone Checker',
+    tags: ['Safe zones & resize'],
   },
   {
     title: 'TikTok Safe Zone Checker',
@@ -243,6 +289,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'tiktok',
     buttonText: 'Try Now',
     ariaLabel: 'Try TikTok Safe Zone Checker',
+    tags: ['Safe zones & resize'],
   },
   {
     title: 'YouTube Shorts Safe Zone Checker',
@@ -252,6 +299,7 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'youtube',
     buttonText: 'Try Now',
     ariaLabel: 'Try YouTube Shorts Safe Zone Checker',
+    tags: ['Safe zones & resize'],
   },
   {
     title: 'YouTube Banner Resizer',
@@ -261,5 +309,16 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'mobile',
     buttonText: 'Try Now',
     ariaLabel: 'Resize YouTube banner',
+    tags: ['Safe zones & resize'],
+  },
+  {
+    title: 'File to Link Converter',
+    description:
+      'Turn files into shareable links in seconds. Create clean URLs you can send to clients and teammates for fast, frictionless review.',
+    href: '/free-tools/file-to-link-converter',
+    icon: 'link',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try File to Link Converter',
+    tags: ['Share & links'],
   },
 ];

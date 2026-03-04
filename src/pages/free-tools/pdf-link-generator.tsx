@@ -13,8 +13,12 @@ import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PDF_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { SkipToMainContent } from '../../components/shared/SkipToMainContent';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+
+const PAGE_PATH = '/free-tools/pdf-link-generator';
+const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
 
 const faqs = [
   {
@@ -70,8 +74,11 @@ export default function PdfLinkGeneratorPage() {
           content="Turn your PDF into a shareable link. Create secure PDF review links in seconds—send one link, collect feedback, no sign-up required for recipients."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://kreatli.com/free-tools/pdf-link-generator" />
+        <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="PDF Link Generator | Kreatli" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="PDF Link Generator | Kreatli" />
         <meta
@@ -79,26 +86,20 @@ export default function PdfLinkGeneratorPage() {
           content="Turn your PDF into a shareable link. Create secure review links. Recipients open and comment in their browser with no sign-up."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-        <link rel="canonical" href="https://kreatli.com/free-tools/pdf-link-generator" />
+        <link rel="canonical" href={CANONICAL_URL} />
       </Head>
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
           { name: 'Free Tools', url: '/free-tools' },
-          { name: 'PDF Link Generator', url: '/free-tools/pdf-link-generator' },
+          { name: 'PDF Link Generator', url: PAGE_PATH },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
 
-      {/* Skip to main content link for accessibility */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-      >
-        Skip to main content
-      </a>
+      <SkipToMainContent />
 
       <main id="main-content">
         {/* Hero with Share Feature Preview */}
@@ -130,7 +131,7 @@ export default function PdfLinkGeneratorPage() {
         />
 
         {/* Related tools */}
-        <MoreFreeToolsSection excludeHref="/free-tools/pdf-link-generator" title="More Tools for Creative Teams" />
+        <MoreFreeToolsSection excludeHref={PAGE_PATH} title="More Tools for Creative Teams" />
 
         {/* FAQ Section */}
         <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

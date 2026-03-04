@@ -54,6 +54,7 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/free-tools/cost-calculator', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/youtube-banner-resizer', priority: '0.7', changefreq: 'monthly' },
   { path: '/free-tools/resize-video', priority: '0.7', changefreq: 'monthly' },
+  { path: '/free-tools/file-to-link-converter', priority: '0.7', changefreq: 'monthly' },
   // Platform pages are now added dynamically from platform-pages registry
   { path: '/solutions/industry/advertising-marketing-agencies', priority: '0.8', changefreq: 'monthly' },
   { path: '/solutions/industry/in-house-creative-content-teams', priority: '0.8', changefreq: 'monthly' },

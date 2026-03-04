@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
+import { useMemo, useState } from 'react';
 
 import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
@@ -8,246 +9,13 @@ import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
-import { Icon, IconType } from '../components/various/Icon';
+import { Icon } from '../components/various/Icon';
+import {
+  FREE_TOOLS,
+  FREE_TOOLS_FILTER_OPTIONS,
+  type FreeToolFilterTag,
+} from '../data/free-tools';
 import { useSession } from '../hooks/useSession';
-
-interface Tool {
-  title: string;
-  description: string;
-  href: string;
-  icon: IconType;
-  category: 'Utility Tools' | 'Creative Tools';
-}
-
-const tools: Tool[] = [
-  {
-    title: 'Data Transfer Calculator',
-    description:
-      'Calculate how long it takes to upload or download large files. Perfect for video editors, post-production teams, and creative professionals working with heavy media files.',
-    href: '/free-tools/data-transfer-calculator',
-    icon: 'upload',
-    category: 'Utility Tools',
-  },
-  {
-    title: 'Software Cost Calculator',
-    description:
-      "Calculate how much you're spending on multiple creative tools and see how much you could save by consolidating with Kreatli.",
-    href: '/free-tools/cost-calculator',
-    icon: 'dollar',
-    category: 'Utility Tools',
-  },
-  {
-    title: 'Video Feedback Tool',
-    description:
-      'Give frame-accurate feedback on videos with comments, annotations, and markup. Share review links with clients—no sign-up required for reviewers.',
-    href: '/free-tools/video-feedback-tool',
-    icon: 'play',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Video Reviewer',
-    description:
-      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. Share with clients—no sign-up required.',
-    href: '/free-tools/video-reviewer',
-    icon: 'monitorPlay',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Video Comparer',
-    description:
-      'Compare two video versions side by side with frame-accurate comments and annotations. Share with clients—no sign-up required.',
-    href: '/free-tools/video-comparer',
-    icon: 'compare',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Video Link Maker',
-    description:
-      'Create secure, shareable video review links in seconds. Let clients watch, comment, and approve online—no sign-up required.',
-    href: '/free-tools/video-link-maker',
-    icon: 'link',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Video Frame Extractor',
-    description:
-      'Scrub a video, capture multiple moments, compare two frames side-by-side, and download PNG/JPG stills instantly—right in your browser.',
-    href: '/free-tools/video-frame-extractor',
-    icon: 'filePng',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Resize Video',
-    description:
-      'Resize video to custom or preset dimensions in your browser. No uploads, no sign-up.',
-    href: '/free-tools/resize-video',
-    icon: 'fullscreen',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'PDF Reviewer',
-    description:
-      'Review PDFs online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required for reviewers.',
-    href: '/free-tools/pdf-reviewer',
-    icon: 'filePdf',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'PDF Annotator',
-    description:
-      'Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients—no sign-up required for reviewers.',
-    href: '/free-tools/pdf-annotator',
-    icon: 'paint',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'PDF Highlighter',
-    description:
-      'Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required.',
-    href: '/free-tools/pdf-highlighter',
-    icon: 'edit',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'PDF Comparer',
-    description:
-      'Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required.',
-    href: '/free-tools/pdf-comparer',
-    icon: 'versions',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'PDF Link Generator',
-    description:
-      'Turn your PDF into a shareable link. Create secure review links in seconds—no sign-up required for recipients.',
-    href: '/free-tools/pdf-link-generator',
-    icon: 'share',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Document Annotator',
-    description:
-      'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
-    href: '/free-tools/document-annotator',
-    icon: 'fileDoc',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Document Comparer',
-    description:
-      'Compare two document versions side by side with comments and annotations. Share with clients—no sign-up required.',
-    href: '/free-tools/document-comparer',
-    icon: 'grid',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Image Reviewer',
-    description:
-      'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required for reviewers.',
-    href: '/free-tools/image-reviewer',
-    icon: 'panorama',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Image Annotator',
-    description:
-      'Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required for reviewers.',
-    href: '/free-tools/image-annotator',
-    icon: 'addImage',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Image Comparer',
-    description:
-      'Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required.',
-    href: '/free-tools/image-comparer',
-    icon: 'eye',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Image URL Maker',
-    description:
-      'Turn your image into a shareable URL. Create secure review links in seconds—no sign-up required for recipients.',
-    href: '/free-tools/image-url-maker',
-    icon: 'send',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Photo URL Generator',
-    description:
-      'Generate a shareable URL for your photo. Create secure review links in seconds—no sign-up required for recipients.',
-    href: '/free-tools/photo-url-generator',
-    icon: 'mail',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Video Manager',
-    description:
-      'Organize, store, and track video assets with version control and client share links. Manage feedback and approvals in one workspace.',
-    href: '/free-tools/video-manager',
-    icon: 'folder',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Video Proofing Tool',
-    description:
-      'Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients—no sign-up required for reviewers.',
-    href: '/free-tools/video-proofing-tool',
-    icon: 'checkCircle',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Video Annotator',
-    description:
-      'Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps and share with clients—no sign-up required for reviewers.',
-    href: '/free-tools/video-annotator',
-    icon: 'chat',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Safe Zone Checker',
-    description:
-      'Preview where UI overlays appear on your Instagram Reels, TikTok videos, and YouTube Shorts to ensure your content stays visible.',
-    href: '/safe-zone-checker',
-    icon: 'shield',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'Instagram Reels Safe Zone Checker',
-    description:
-      'Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear.',
-    href: '/safe-zone-checker/instagram-safe-zone-checker',
-    icon: 'instagram',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'TikTok Safe Zone Checker',
-    description:
-      'Check your TikTok video safe zones before posting. Preview where profile picture, username, music track, and engagement buttons appear.',
-    href: '/safe-zone-checker/tiktok-safe-zone-checker',
-    icon: 'tiktok',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'YouTube Shorts Safe Zone Checker',
-    description:
-      'Test your YouTube Shorts video layout before publishing. Preview where channel name, subscribe button, like button, comments, and video controls appear.',
-    href: '/safe-zone-checker/youtube-safe-zone-checker',
-    icon: 'youtube',
-    category: 'Creative Tools',
-  },
-  {
-    title: 'YouTube Banner Resizer',
-    description:
-      'Resize your YouTube banner online for free. Preview safe areas for mobile, desktop, and TV. Export perfectly sized channel art in seconds.',
-    href: '/free-tools/youtube-banner-resizer',
-    icon: 'mobile',
-    category: 'Creative Tools',
-  },
-];
-
-const utilityTools = tools.filter((tool) => tool.category === 'Utility Tools');
-const creativeTools = tools.filter((tool) => tool.category === 'Creative Tools');
 
 const faqs = [
   {
@@ -304,6 +72,15 @@ const faqs = [
 
 export default function FreeToolsPage() {
   useSession();
+  const [selectedFilter, setSelectedFilter] = useState<'All' | FreeToolFilterTag>('All');
+
+  const filteredTools = useMemo(() => {
+    const list =
+      selectedFilter === 'All'
+        ? FREE_TOOLS
+        : FREE_TOOLS.filter((tool) => tool.tags?.includes(selectedFilter));
+    return [...list].sort((a, b) => a.title.localeCompare(b.title));
+  }, [selectedFilter]);
 
   return (
     <>
@@ -355,20 +132,64 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
-      {/* Creative Tools Section */}
+      {/* Free Tools Section with filter */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Creative Tools</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Free Tools</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Design, resize, and optimize your creative assets.
+              Professional-grade tools for video teams. Filter by category to find what you need.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {creativeTools.map((tool) => (
-              <NextLink key={tool.href} href={tool.href} className="group h-full">
-                <Card className="h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20">
-                  <CardBody className="flex flex-col gap-4 p-6">
+          <div className="mb-10 flex justify-center">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setSelectedFilter('All')}
+                aria-pressed={selectedFilter === 'All'}
+                aria-label="Show all tools"
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                  selectedFilter === 'All'
+                    ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
+                    : 'border border-transparent text-foreground-600 hover:border-primary/40 hover:bg-primary/5 hover:text-primary'
+                }`}
+              >
+                All
+              </button>
+              {FREE_TOOLS_FILTER_OPTIONS.map((option) => {
+                const isSelected = selectedFilter === option.id;
+                return (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setSelectedFilter(option.id)}
+                    aria-pressed={isSelected}
+                    aria-label={`Filter tools by ${option.label}`}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                      isSelected
+                        ? 'border border-primary bg-gradient-to-br from-primary/20 to-primary/10 text-primary shadow-sm'
+                        : 'border border-transparent text-foreground-600 hover:border-primary/40 hover:bg-primary/5 hover:text-primary'
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredTools.length === 0 ? (
+              <p className="col-span-full text-center text-foreground-500">No tools match this filter.</p>
+            ) : (
+              filteredTools.map((tool) => (
+                <Card
+                  key={tool.href}
+                  as={NextLink}
+                  href={tool.href}
+                  isPressable
+                  className="group h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20"
+                >
+                  <CardBody className="flex h-full flex-col gap-4 p-6">
                     <div className="mb-2 flex items-start gap-4">
                       <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
                         <Icon icon={tool.icon} size={24} className="text-primary" />
@@ -388,47 +209,8 @@ export default function FreeToolsPage() {
                     </div>
                   </CardBody>
                 </Card>
-              </NextLink>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Utility Tools Section */}
-      <section className="relative overflow-hidden px-6 py-16">
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Utility Tools</h2>
-            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Calculate, plan, and optimize your video workflows.
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            {utilityTools.map((tool) => (
-              <NextLink key={tool.href} href={tool.href} className="group h-full">
-                <Card className="h-full border border-foreground-200 bg-content1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-xl hover:shadow-primary/20">
-                  <CardBody className="flex flex-col gap-4 p-6">
-                    <div className="mb-2 flex items-start gap-4">
-                      <div className="flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-3 transition-all duration-300 group-hover:scale-110 group-hover:from-primary/30 group-hover:to-primary/20">
-                        <Icon icon={tool.icon} size={24} className="text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="mb-1 font-sans text-lg font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">
-                          {tool.title}
-                        </h3>
-                        <p className="text-sm leading-relaxed text-foreground-500">{tool.description}</p>
-                      </div>
-                      <div className="flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-                        <Icon icon="arrowRight" size={20} className="text-primary" />
-                      </div>
-                    </div>
-                    <div className="mt-auto flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <span>Learn more</span>
-                    </div>
-                  </CardBody>
-                </Card>
-              </NextLink>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </section>

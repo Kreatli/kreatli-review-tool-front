@@ -1,7 +1,9 @@
+/* eslint-disable max-len */
 import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
 import { Icon, IconType } from '../various/Icon';
+import { HowToStructuredData } from './HowToStructuredData';
 
 export interface WorkflowStep {
   step: number;
@@ -37,6 +39,11 @@ export const PlatformStepGuide = ({
 }: PlatformStepGuideProps) => {
   return (
     <>
+      <HowToStructuredData
+        name={stepsSectionTitle}
+        description={stepsIntro}
+        steps={steps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
@@ -631,103 +638,98 @@ export const REVIEW_PDF_STEPS: WorkflowStep[] = [
 
 const PDF_TO_LINK_IMG = '/pdf-to-link-guide';
 
+const SHARE_MODAL_IMG = '/video-annotation-guide/step-3-share-modal.png';
+
+export interface AssetToLinkStepsOptions {
+  assetLabel: string;
+  step1Description: string;
+  step2Description?: string;
+  step3Description?: string;
+  step4Description?: string;
+  step5Description?: string;
+}
+
+/** Factory for "asset to link" step arrays (PDF, image, file). Shared structure and image paths. */
+export function createAssetToLinkSteps(options: AssetToLinkStepsOptions): WorkflowStep[] {
+  const {
+    assetLabel,
+    step1Description,
+    step2Description = `In the Media view, open the 3-dot menu (⋯) on the ${assetLabel} and choose Share. Create a secure review link—each link opens the ${assetLabel} in the browser with no download or account required.`,
+    step3Description = `Send the link by email, Slack, or any channel. Recipients click once to open the ${assetLabel} and leave comments and annotations—no sign-up or app install.`,
+    step4Description = "All comments and annotations appear in one place. Jump to any page or spot, track what's resolved, and keep every review round in one thread.",
+    step5Description = "See who's approved which version and revoke or update link access anytime. Every link stays tied to the right project and file version.",
+  } = options;
+
+  return [
+    {
+      step: 1,
+      title: `Upload your ${assetLabel} in Kreatli`,
+      description: step1Description,
+      icon: 'upload',
+      image: `${IMG}-1.webp`,
+      altText: `Kreatli project with ${assetLabel} upload, ready to generate a link`,
+    },
+    {
+      step: 2,
+      title: 'Open the file menu and choose Share',
+      description: step2Description,
+      icon: 'link',
+      image: `${PDF_TO_LINK_IMG}/step-2-share-menu.png`,
+      altText: `Open file menu and choose Share to get ${assetLabel} link in Kreatli`,
+    },
+    {
+      step: 3,
+      title: 'Share the link with clients or collaborators',
+      description: step3Description,
+      icon: 'group',
+      image: SHARE_MODAL_IMG,
+      altText: 'Share File modal: copy link or send via email in Kreatli',
+    },
+    {
+      step: 4,
+      title: `See feedback on the ${assetLabel}`,
+      description: step4Description,
+      icon: 'time',
+      image: `${PDF_TO_LINK_IMG}/step-4-annotate-feedback.png`,
+      altText: `Feedback and annotations on ${assetLabel} in Kreatli`,
+    },
+    {
+      step: 5,
+      title: 'Track approvals and versions',
+      description: step5Description,
+      icon: 'checkCircle',
+      image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
+      altText: `${assetLabel.charAt(0).toUpperCase() + assetLabel.slice(1)} viewer with Compare, Share, and version options in Kreatli`,
+    },
+  ];
+}
+
 /** Steps for the PDF to Link platform page (turn PDF into a shareable link). */
-export const PDF_TO_LINK_STEPS: WorkflowStep[] = [
-  {
-    step: 1,
-    title: 'Upload your PDF in Kreatli',
-    description:
-      'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
-    icon: 'upload',
-    image: `${IMG}-1.webp`,
-    altText: 'Kreatli project with PDF upload, ready to generate a link',
-  },
-  {
-    step: 2,
-    title: 'Open the file menu and choose Share',
-    description:
-      'In the Media view, open the 3-dot menu (⋯) on the PDF and choose Share. Create a secure review link—each link opens the PDF in the browser with no download or account required.',
-    icon: 'link',
-    image: `${PDF_TO_LINK_IMG}/step-2-share-menu.png`,
-    altText: 'Open file menu and choose Share to get PDF link in Kreatli',
-  },
-  {
-    step: 3,
-    title: 'Share the link with clients or collaborators',
-    description:
-      'Send the link by email, Slack, or any channel. Recipients click once to open the PDF and leave comments and annotations—no sign-up or app install.',
-    icon: 'group',
-    image: '/video-annotation-guide/step-3-share-modal.png',
-    altText: 'Share File modal: copy link or send via email in Kreatli',
-  },
-  {
-    step: 4,
-    title: 'See feedback on the PDF',
-    description:
-      'All comments and annotations appear in one place. Jump to any page or spot, track what’s resolved, and keep every review round in one thread.',
-    icon: 'time',
-    image: `${PDF_TO_LINK_IMG}/step-4-annotate-feedback.png`,
-    altText: 'Feedback and annotations on PDF in Kreatli',
-  },
-  {
-    step: 5,
-    title: 'Track approvals and versions',
-    description:
-      'See who’s approved which version and revoke or update link access anytime. Every link stays tied to the right project and file version.',
-    icon: 'checkCircle',
-    image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
-    altText: 'PDF viewer with Compare, Share, and version options in Kreatli',
-  },
-];
+export const PDF_TO_LINK_STEPS: WorkflowStep[] = createAssetToLinkSteps({
+  assetLabel: 'PDF',
+  step1Description:
+    'Sign in to Kreatli, open your project, and upload your PDF. Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
+});
 
 /** Steps for the Image to Link platform page (turn image into a shareable link). */
-export const IMAGE_TO_LINK_STEPS: WorkflowStep[] = [
-  {
-    step: 1,
-    title: 'Upload your image in Kreatli',
-    description:
-      'Sign in to Kreatli, open your project, and upload your image (JPG, PNG, GIF, WebP, etc.). Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
-    icon: 'upload',
-    image: `${IMG}-1.webp`,
-    altText: 'Kreatli project with image upload, ready to generate a link',
-  },
-  {
-    step: 2,
-    title: 'Open the file menu and choose Share',
-    description:
-      'In the Media view, open the 3-dot menu (⋯) on the image and choose Share. Create a secure review link—each link opens the image in the browser with no download or account required.',
-    icon: 'link',
-    image: `${PDF_TO_LINK_IMG}/step-2-share-menu.png`,
-    altText: 'Open file menu and choose Share to get image link in Kreatli',
-  },
-  {
-    step: 3,
-    title: 'Share the link with clients or collaborators',
-    description:
-      'Copy the link or send it via the share modal (email, Slack, etc.). Recipients click once to open the image and leave comments and annotations—no sign-up or app install.',
-    icon: 'group',
-    image: '/video-annotation-guide/step-3-share-modal.png',
-    altText: 'Share File modal: copy link or send via email in Kreatli',
-  },
-  {
-    step: 4,
-    title: 'See feedback on the image',
-    description:
-      "All comments and annotations appear in one place. Recipients can draw, highlight, and comment on the image; you jump to any spot, track what's resolved, and keep every review round in one thread.",
-    icon: 'time',
-    image: `${PDF_TO_LINK_IMG}/step-4-annotate-feedback.png`,
-    altText: 'Feedback and annotations on image in Kreatli',
-  },
-  {
-    step: 5,
-    title: 'Track approvals and versions',
-    description:
-      "In the image viewer, use Compare to see versions side by side, or open the menu for Upload new version and Manage versions. See who's approved which version and revoke or update link access anytime.",
-    icon: 'checkCircle',
-    image: `${PDF_TO_LINK_IMG}/step-5-viewer-options.png`,
-    altText: 'Image viewer with Compare, Share, and version options in Kreatli',
-  },
-];
+export const IMAGE_TO_LINK_STEPS: WorkflowStep[] = createAssetToLinkSteps({
+  assetLabel: 'image',
+  step1Description:
+    'Sign in to Kreatli, open your project, and upload your image (JPG, PNG, GIF, WebP, etc.). Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
+  step3Description:
+    'Copy the link or send it via the share modal (email, Slack, etc.). Recipients click once to open the image and leave comments and annotations—no sign-up or app install.',
+  step4Description:
+    "All comments and annotations appear in one place. Recipients can draw, highlight, and comment on the image; you jump to any spot, track what's resolved, and keep every review round in one thread.",
+  step5Description:
+    "In the image viewer, use Compare to see versions side by side, or open the menu for Upload new version and Manage versions. See who's approved which version and revoke or update link access anytime.",
+});
+
+/** Steps for the File to Link Converter free-tool page (turn any file into a shareable link). */
+export const FILE_TO_LINK_STEPS: WorkflowStep[] = createAssetToLinkSteps({
+  assetLabel: 'file',
+  step1Description:
+    'Sign in to Kreatli, open your project, and upload your file (PDF, image, video, or other supported type). Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
+});
 
 /** Steps for the Picture into URL platform page (turn picture into a shareable URL). */
 export const PICTURE_INTO_URL_STEPS: WorkflowStep[] = [
@@ -1340,7 +1342,7 @@ export const COMPARE_IMAGES_STEPS: WorkflowStep[] = [
     step: 3,
     title: 'Compare all feedback side by side',
     description:
-      'View both images side by side with the comments panel. See feedback on either version, add comments and annotations pinned to the exact spot, and track what\'s resolved across both files.',
+      "View both images side by side with the comments panel. See feedback on either version, add comments and annotations pinned to the exact spot, and track what's resolved across both files.",
     icon: 'compare',
     image: '/video-annotation-guide/step-3-compare.png',
     altText: 'Compare images side by side with feedback in Kreatli',
@@ -1500,6 +1502,55 @@ export const VIDEO_PROOFING_STEPS: WorkflowStep[] = [
     icon: 'checkCircle',
     image: `${IMG}-5.webp`,
     altText: 'Sharing and resolution tracking for video proofing in Kreatli',
+  },
+];
+
+/** Steps for the Host Video platform page. */
+export const HOST_VIDEO_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Upload your video library to Kreatli',
+    description:
+      'Sign in to Kreatli, create a project for your production work, and upload your videos. Each file is stored securely with version history so you can host current cuts and archives in one place instead of scattered drives or links.',
+    icon: 'upload',
+    image: `${IMG}-1.webp`,
+    altText: 'Kreatli project with hosted videos stored securely',
+  },
+  {
+    step: 2,
+    title: 'Organize hosted videos with folders and status',
+    description:
+      'Use folders, subfolders, and status labels to organize raw footage, edits, exports, and client-ready cuts. Keep your hosted video library structured so teammates and clients can always find the right version without searching through drives.',
+    icon: 'folder',
+    image: '/video-annotation-guide/step-2-manage-videos-folders.png',
+    altText: 'Organized hosted video folders and status labels in Kreatli',
+  },
+  {
+    step: 3,
+    title: 'Set access and share hosting links',
+    description:
+      'Decide who can view, comment, or approve each hosted video. Generate secure review links for clients and stakeholders so they can watch in the browser while you stay in control of access, permissions, and link visibility.',
+    icon: 'share',
+    image: '/video-annotation-guide/step-2-share-link.png',
+    altText: 'Generating secure hosting and review links for videos in Kreatli',
+  },
+  {
+    step: 4,
+    title: 'Collect feedback and keep versions in sync',
+    description:
+      'Invite reviewers to leave frame-accurate comments and annotations on hosted videos. Upload new versions while keeping all feedback, approvals, and history tied to the same hosted asset so your library stays clean and accurate.',
+    icon: 'time',
+    image: '/video-annotation-guide/step-3-manage-videos-versions.png',
+    altText: 'Managing hosted video versions and feedback history in Kreatli',
+  },
+  {
+    step: 5,
+    title: 'Use Kreatli as your long-term video hub',
+    description:
+      'Keep finished campaigns and evergreen content hosted in Kreatli for future reuse. Search, filter, and reshare hosted videos with new stakeholders without re-uploading files or losing track of where assets live.',
+    icon: 'monitorPlay',
+    image: `${IMG}-5.webp`,
+    altText: 'Hosted video hub in Kreatli with searchable library',
   },
 ];
 
