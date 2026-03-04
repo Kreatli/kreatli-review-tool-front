@@ -6,7 +6,7 @@ import { useSession } from '../../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
 import { Icon } from '../../various/Icon';
 
-type ShareVariant = 'video' | 'pdf' | 'image';
+type ShareVariant = 'video' | 'pdf' | 'image' | 'file';
 
 const SHARE_PREVIEW_CONFIG: Record<
   ShareVariant,
@@ -32,6 +32,13 @@ const SHARE_PREVIEW_CONFIG: Record<
     previewAlt: 'Image file preview ready for sharing',
     previewSrc: 'https://picsum.photos/1000/600?random=brand',
     aspectClass: 'aspect-video',
+  },
+  file: {
+    filename: 'Review_Asset.pdf',
+    subtitle: 'Asset review - Shared link',
+    previewAlt: 'File preview ready for sharing',
+    previewSrc: 'https://picsum.photos/400/560?random=file',
+    aspectClass: 'aspect-[3/4]',
   },
 };
 
