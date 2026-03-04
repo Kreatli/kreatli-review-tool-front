@@ -2,6 +2,7 @@ import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
 import { Icon, IconType } from '../various/Icon';
+import { HowToStructuredData } from './HowToStructuredData';
 
 export interface WorkflowStep {
   step: number;
@@ -37,6 +38,11 @@ export const PlatformStepGuide = ({
 }: PlatformStepGuideProps) => {
   return (
     <>
+      <HowToStructuredData
+        name={stepsSectionTitle}
+        description={stepsIntro}
+        steps={steps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">

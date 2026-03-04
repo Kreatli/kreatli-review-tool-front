@@ -77,6 +77,9 @@ export default function FileToLinkConverterPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
+        <meta property="og:image:alt" content="File to Link Converter | Kreatli" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="File to Link Converter | Kreatli" />
         <meta
