@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
@@ -655,10 +656,8 @@ export function createAssetToLinkSteps(options: AssetToLinkStepsOptions): Workfl
     step1Description,
     step2Description = `In the Media view, open the 3-dot menu (⋯) on the ${assetLabel} and choose Share. Create a secure review link—each link opens the ${assetLabel} in the browser with no download or account required.`,
     step3Description = `Send the link by email, Slack, or any channel. Recipients click once to open the ${assetLabel} and leave comments and annotations—no sign-up or app install.`,
-    step4Description =
-      'All comments and annotations appear in one place. Jump to any page or spot, track what's resolved, and keep every review round in one thread.',
-    step5Description =
-      "See who's approved which version and revoke or update link access anytime. Every link stays tied to the right project and file version.",
+    step4Description = "All comments and annotations appear in one place. Jump to any page or spot, track what's resolved, and keep every review round in one thread.",
+    step5Description = "See who's approved which version and revoke or update link access anytime. Every link stays tied to the right project and file version.",
   } = options;
 
   return [
@@ -1343,7 +1342,7 @@ export const COMPARE_IMAGES_STEPS: WorkflowStep[] = [
     step: 3,
     title: 'Compare all feedback side by side',
     description:
-      'View both images side by side with the comments panel. See feedback on either version, add comments and annotations pinned to the exact spot, and track what\'s resolved across both files.',
+      "View both images side by side with the comments panel. See feedback on either version, add comments and annotations pinned to the exact spot, and track what's resolved across both files.",
     icon: 'compare',
     image: '/video-annotation-guide/step-3-compare.png',
     altText: 'Compare images side by side with feedback in Kreatli',

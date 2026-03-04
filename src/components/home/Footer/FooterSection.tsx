@@ -74,11 +74,6 @@ const RESOURCES_NAV = {
           href: '/comparisons',
         },
         {
-          label: 'All Free Tools',
-          href: '/free-tools',
-          description: 'Browse all our free tools for creative teams',
-        },
-        {
           label: 'Video Feedback Tool',
           href: '/free-tools/video-feedback-tool',
         },
@@ -109,6 +104,11 @@ const RESOURCES_NAV = {
         {
           label: 'YouTube Banner Resizer',
           href: '/free-tools/youtube-banner-resizer',
+        },
+        {
+          label: 'All Free Tools',
+          href: '/free-tools',
+          description: 'Browse all our free tools for creative teams',
         },
       ],
     },
@@ -222,12 +222,22 @@ export const FooterSection = ({ hideCta = false }: Props) => {
                   <ul className="flex flex-col gap-2">
                     {section.items.map((item) => (
                       <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          className="text-sm text-foreground-500 underline-offset-2 hover:text-foreground hover:underline"
-                        >
-                          {item.label}
-                        </Link>
+                        {item.href === '/free-tools' ? (
+                          <Link
+                            href={item.href}
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-foreground underline-offset-2 hover:text-primary hover:underline"
+                          >
+                            {item.label}
+                            <Icon icon="arrowRight" size={14} className="shrink-0" />
+                          </Link>
+                        ) : (
+                          <Link
+                            href={item.href}
+                            className="text-sm text-foreground-500 underline-offset-2 hover:text-foreground hover:underline"
+                          >
+                            {item.label}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>
