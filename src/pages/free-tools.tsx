@@ -244,6 +244,14 @@ const tools: Tool[] = [
     icon: 'mobile',
     category: 'Creative Tools',
   },
+  {
+    title: 'File to Link Converter',
+    description:
+      'Turn files into shareable links in seconds. Create clean URLs you can send to clients and teammates for fast, frictionless review.',
+    href: '/free-tools/file-to-link-converter',
+    icon: 'link',
+    category: 'Creative Tools',
+  },
 ];
 
 const utilityTools = tools.filter((tool) => tool.category === 'Utility Tools');

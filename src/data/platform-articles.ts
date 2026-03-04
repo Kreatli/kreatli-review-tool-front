@@ -1693,6 +1693,84 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/resize-video-online': [
+    makeArticleCard({
+      id: 'platform-resize-video-online-guide-1',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Teams Resize Video Online for Every Channel',
+      description:
+        'Learn how production teams resize video online for Reels, TikTok, and YouTube, then keep versions and approvals organized in Kreatli.',
+      tags: ['Video Production', 'Creative Teams'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-resize-video-online-guide-2',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Multi-Channel Video Workflows',
+      description:
+        'Compare how Kreatli and Frame.io support multi-channel workflows—from resizing video online to review, approvals, and delivery.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-resize-video-online-blog',
+      full_slug: '/blog/production-platform-for-creative-teams',
+      title: 'Why Creative Teams Need a Home for Every Video Cut',
+      description:
+        'See why modern creative teams pair resize-video-online workflows with a platform that keeps every cut, channel, and approval organized.',
+      tags: ['Production Management', 'Creative Teams'],
+      publishDate: '2025-12-10 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
+    }),
+  ],
+
+  '/platform/add-timestamp-to-video': [
+    makeArticleCard({
+      id: 'platform-add-timestamp-to-video-guide-1',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Add Timestamped Feedback in Kreatli',
+      description:
+        'See how production teams use frame-accurate, timestamped comments in Kreatli to speed up review cycles and approvals.',
+      tags: ['Video Production', 'Creative Teams'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-add-timestamp-to-video-guide-2',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Timestamped Video Review in Practice',
+      description:
+        'Compare how Kreatli and Frame.io handle timestamped comments, versioning, and approvals for creative teams.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-add-timestamp-to-video-blog',
+      full_slug: '/blog/video-post-production',
+      title: 'Post-Production Video Editing: Why Timestamped Comments Matter',
+      description:
+        'Learn how timestamped video comments reduce ambiguity, keep feedback attached to frames, and help editors ship better cuts faster.',
+      tags: ['Post-Production', 'Collaboration'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+  ],
+
   '/platform/cloud-sharing': [
     makeArticleCard({
       id: 'platform-cloud-sharing-guide-1',
@@ -1724,6 +1802,45 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       title: 'Post-Production Video Editing: Why Cloud Sharing Beats Attachments',
       description:
         'Learn how cloud sharing and review links cut down on context switching, keep feedback attached to files, and help editors ship better cuts faster.',
+      tags: ['Post-Production', 'Collaboration'],
+      publishDate: '2025-11-12 00:00',
+      readTime: '8',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/73fd78df64/post-production-video-editing-how-collaboration-tools-improve-cuts.png',
+    }),
+  ],
+
+  '/platform/cloud-file-transfer': [
+    makeArticleCard({
+      id: 'platform-cloud-file-transfer-guide-1',
+      full_slug: '/guides/kreatli-for-video-production-companies',
+      title: 'How Video Production Companies Use Cloud File Transfer in Kreatli',
+      description:
+        'See how production teams use cloud file transfer links in Kreatli to replace one-off transfers and keep versions and feedback in one place.',
+      tags: ['Video Production', 'Project Management'],
+      publishDate: '2025-12-25 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/c12565cbe2/how-video-production-companies-manage-projects-with-kreatli.png',
+    }),
+    makeArticleCard({
+      id: 'platform-cloud-file-transfer-guide-2',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Cloud File Transfer and Review Links',
+      description:
+        'Compare how Kreatli and Frame.io handle cloud file transfer, review links, and approvals for modern creative teams.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-cloud-file-transfer-blog',
+      full_slug: '/blog/video-post-production',
+      title: 'Post-Production Video Editing: Make Cloud File Transfer Part of the Workflow',
+      description:
+        'Learn how cloud file transfer and review links help editors avoid re-uploads, reduce context switching, and keep feedback attached to every version.',
       tags: ['Post-Production', 'Collaboration'],
       publishDate: '2025-11-12 00:00',
       readTime: '8',

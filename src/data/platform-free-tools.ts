@@ -106,11 +106,23 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-manager',
     '/free-tools/data-transfer-calculator',
   ],
+  '/platform/cloud-file-transfer': [
+    '/free-tools/data-transfer-calculator',
+    '/free-tools/video-feedback-tool',
+    '/free-tools/video-reviewer',
+    '/free-tools/video-manager',
+  ],
   '/platform/extract-frames-from-video': [
     '/free-tools/video-frame-extractor',
     '/free-tools/resize-video',
     '/free-tools/video-annotator',
     '/free-tools/video-reviewer',
+  ],
+  '/platform/add-timestamp-to-video': [
+    '/free-tools/video-feedback-tool',
+    '/free-tools/video-reviewer',
+    '/free-tools/video-annotator',
+    '/free-tools/video-proofing-tool',
   ],
 
   // Share / send / embed video
@@ -157,6 +169,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/resize-video',
     '/safe-zone-checker/youtube-safe-zone-checker',
     '/safe-zone-checker/instagram-safe-zone-checker',
+  ],
+  '/platform/resize-video-online': [
+    '/free-tools/resize-video',
+    '/safe-zone-checker',
+    '/safe-zone-checker/youtube-safe-zone-checker',
+    '/free-tools/video-frame-extractor',
   ],
 
   // PDF cluster – vary which 4 across pages

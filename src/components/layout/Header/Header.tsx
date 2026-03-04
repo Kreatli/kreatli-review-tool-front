@@ -79,33 +79,20 @@ export const Header = () => {
   const platformPagesBySection = React.useMemo(() => getPlatformPagesBySection(), []);
 
   // Transform platform pages into navigation dropdown format
-  // Limit to 3 items in Core Platform section (exclude Video Annotation from navbar)
+  // Limit to max 3 items per column in the nav bar
+  const NAV_PLATFORM_ITEMS_PER_COLUMN = 3;
   const platformSections = React.useMemo(
     () =>
-      Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => {
-        // For Core Platform section, limit to first 3 items (exclude Video Annotation)
-        if (sectionTitle === 'Core Platform') {
-          return {
-            title: sectionTitle,
-            items: pages
-              .filter((page) => page.href !== '/platform/video-annotation')
-              .slice(0, 3)
-              .map((page) => ({
-                label: page.label,
-                href: page.href,
-                description: page.description,
-              })),
-          };
-        }
-        return {
-          title: sectionTitle,
-          items: pages.map((page) => ({
+      Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => ({
+        title: sectionTitle,
+        items: pages
+          .slice(0, NAV_PLATFORM_ITEMS_PER_COLUMN)
+          .map((page) => ({
             label: page.label,
             href: page.href,
             description: page.description,
           })),
-        };
-      }),
+      })),
     [platformPagesBySection],
   );
 

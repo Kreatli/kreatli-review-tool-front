@@ -262,4 +262,13 @@ export const FREE_TOOLS: FreeTool[] = [
     buttonText: 'Try Now',
     ariaLabel: 'Resize YouTube banner',
   },
+  {
+    title: 'File to Link Converter',
+    description:
+      'Turn files into shareable links in seconds. Create clean URLs you can send to clients and teammates for fast, frictionless review.',
+    href: '/free-tools/file-to-link-converter',
+    icon: 'link',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try File to Link Converter',
+  },
 ];

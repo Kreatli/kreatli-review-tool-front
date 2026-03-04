@@ -168,6 +168,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'commentOnVideo', 'videoAnnotation'],
   },
   {
+    label: 'Add Timestamp to Video',
+    href: '/platform/add-timestamp-to-video',
+    description: 'Add timestamped comments to video for precise feedback',
+    icon: 'time',
+    section: 'Core Platform',
+    order: 7.5,
+    tags: ['Video', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'commentOnVideo', 'videoAnnotation'],
+  },
+  {
     label: 'Free Video Link Generator',
     href: '/platform/free-video-link-generator',
     description: 'Generate secure video review links for clients and collaborators',
@@ -476,6 +490,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['creativeProofing', 'reviewApproval', 'videoAnnotation'],
   },
   {
+    label: 'Resize Video Online',
+    href: '/platform/resize-video-online',
+    description: 'Resize video online for social and web formats',
+    icon: 'fullscreen',
+    section: 'Core Platform',
+    order: 28.5,
+    tags: ['Video', 'Safe zones & resize'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'secureAssetStorage'],
+  },
+  {
     label: 'Send Large Video Files',
     href: '/platform/send-large-video-files',
     description: 'Send large video files to clients without email limits',
@@ -705,6 +733,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'share',
     section: 'Storage & Integrations',
     order: 1.85,
+    tags: ['Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['secureAssetStorage', 'creativeWorkspace', 'reviewApproval'],
+  },
+  {
+    label: 'Cloud File Transfer',
+    href: '/platform/cloud-file-transfer',
+    description: 'Cloud file transfer links for large creative files',
+    icon: 'send',
+    section: 'Storage & Integrations',
+    order: 1.9,
     tags: ['Share & send'],
     sitemap: {
       priority: '0.8',

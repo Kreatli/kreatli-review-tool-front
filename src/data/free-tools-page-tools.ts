@@ -158,6 +158,12 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
     '/safe-zone-checker/tiktok-safe-zone-checker',
     '/free-tools/resize-video',
   ],
+  '/free-tools/file-to-link-converter': [
+    '/free-tools/video-link-maker',
+    '/free-tools/pdf-link-generator',
+    '/free-tools/image-url-maker',
+    '/free-tools/video-manager',
+  ],
 };
 
 const hrefToTool = new Map<string, FreeTool>(FREE_TOOLS.map((t) => [t.href, t]));
