@@ -1,3 +1,4 @@
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { type Editor } from '@tiptap/react';
 import { useCallback, useState } from 'react';
 
@@ -10,14 +11,7 @@ import { ListButton, type ListType } from '../../tiptap-ui/list-button';
 import { useListDropdownMenu } from '../../tiptap-ui/list-dropdown-menu/use-list-dropdown-menu';
 // --- UI Primitives ---
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
-import { Button, ButtonGroup } from '../../tiptap-ui-primitive/button';
-import { Card, CardBody } from '../../tiptap-ui-primitive/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '../../tiptap-ui-primitive/dropdown-menu';
+import { Button } from '../../tiptap-ui-primitive/button';
 
 export interface ListDropdownMenuProps extends Omit<ButtonProps, 'type'> {
   /**
@@ -49,7 +43,6 @@ export function ListDropdownMenu({
   types = ['bulletList', 'orderedList', 'taskList'],
   hideWhenUnavailable = false,
   onOpenChange,
-  portal = false,
   ...props
 }: ListDropdownMenuProps) {
   const { editor } = useTiptapEditor(providedEditor);
@@ -74,8 +67,8 @@ export function ListDropdownMenu({
   }
 
   return (
-    <DropdownMenu open={isOpen} onOpenChange={handleOnOpenChange}>
-      <DropdownMenuTrigger asChild>
+    <Dropdown isOpen={isOpen} onOpenChange={handleOnOpenChange}>
+      <DropdownTrigger>
         <Button
           type="button"
           data-style="ghost"
@@ -91,22 +84,16 @@ export function ListDropdownMenu({
           <Icon className="tiptap-button-icon" />
           <ChevronDownIcon className="tiptap-button-dropdown-small" />
         </Button>
-      </DropdownMenuTrigger>
+      </DropdownTrigger>
 
-      <DropdownMenuContent align="start" portal={portal}>
-        <Card>
-          <CardBody>
-            <ButtonGroup>
-              {filteredLists.map((option) => (
-                <DropdownMenuItem key={option.type} asChild>
-                  <ListButton editor={editor} type={option.type} text={option.label} showTooltip={false} />
-                </DropdownMenuItem>
-              ))}
-            </ButtonGroup>
-          </CardBody>
-        </Card>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      <DropdownMenu variant="flat">
+        {filteredLists.map((option) => (
+          <DropdownItem key={option.type} className="p-0">
+            <ListButton editor={editor} type={option.type} text={option.label} showTooltip={false} />
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
   );
 }
 

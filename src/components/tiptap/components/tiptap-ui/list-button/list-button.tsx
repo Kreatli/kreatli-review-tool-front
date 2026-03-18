@@ -81,6 +81,7 @@ export const ListButton = forwardRef<HTMLButtonElement, ListButtonProps>(
         data-style="ghost"
         data-active-state={isActive ? 'on' : 'off'}
         role="button"
+        className="w-full"
         tabIndex={-1}
         disabled={!canToggle}
         data-disabled={!canToggle}

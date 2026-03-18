@@ -86,6 +86,17 @@ import type {
   CreateShareableLinkDto,
   ShareableLinkDto,
   ShareableLinkSendEmailBodyDto,
+  TaskBodyDto,
+  TaskDto,
+  TaskEditBodyDto,
+  TaskMoveBodyDto,
+  TaskCommentBodyDto,
+  TaskCommentDto,
+  TaskCommentsResponse,
+  TaskAssetBodyDto,
+  TaskAssetsResponse,
+  TasksDto,
+  AssetTasksDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -223,6 +234,53 @@ export const deleteProjectIdMemberMemberId = (
 /** Key is end point string without base url */
 deleteProjectIdMemberMemberId.key = '/project/{id}/member/{memberId}';
 
+export const deleteTaskId = (id: string, configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<TaskDto>> => {
+  return Http.deleteRequest(
+    template(deleteTaskId.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteTaskId.key = '/task/{id}';
+
+export const deleteTaskIdAssetAssetId = (
+  id: string,
+  assetId: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskAssetsResponse>> => {
+  return Http.deleteRequest(
+    template(deleteTaskIdAssetAssetId.key, { id, assetId }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteTaskIdAssetAssetId.key = '/task/{id}/asset/{assetId}';
+
+export const deleteTaskIdCommentCommentId = (
+  id: string,
+  commentId: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskCommentDto>> => {
+  return Http.deleteRequest(
+    template(deleteTaskIdCommentCommentId.key, { id, commentId }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteTaskIdCommentCommentId.key = '/task/{id}/comment/{commentId}';
+
 export const deleteUserAddonId = (
   id: string,
   configOverride?: AxiosRequestConfig,
@@ -321,6 +379,22 @@ export const getAssetFolderId = (
 
 /** Key is end point string without base url */
 getAssetFolderId.key = '/asset/folder/{id}';
+
+export const getAssetIdTasks = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AssetTasksDto>> => {
+  return Http.getRequest(
+    template(getAssetIdTasks.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getAssetIdTasks.key = '/asset/{id}/tasks';
 
 export const getAssetStackId = (
   id: string,
@@ -514,6 +588,22 @@ export const getProjectIdPaths = (
 /** Key is end point string without base url */
 getProjectIdPaths.key = '/project/{id}/paths';
 
+export const getProjectIdTasks = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TasksDto>> => {
+  return Http.getRequest(
+    template(getProjectIdTasks.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getProjectIdTasks.key = '/project/{id}/tasks';
+
 export const getProjects = (
   queryParams?: GetProjectsQueryParams,
   configOverride?: AxiosRequestConfig,
@@ -545,6 +635,51 @@ export const getShareableLinkAssetId = (
 
 /** Key is end point string without base url */
 getShareableLinkAssetId.key = '/shareable-link/asset/{id}';
+
+export const getTaskId = (id: string, configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<TaskDto>> => {
+  return Http.getRequest(
+    template(getTaskId.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getTaskId.key = '/task/{id}';
+
+export const getTaskIdAssets = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskAssetsResponse>> => {
+  return Http.getRequest(
+    template(getTaskIdAssets.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getTaskIdAssets.key = '/task/{id}/assets';
+
+export const getTaskIdComments = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskCommentsResponse>> => {
+  return Http.getRequest(
+    template(getTaskIdComments.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getTaskIdComments.key = '/task/{id}/comments';
 
 export const getUser = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<UserDto>> => {
   return Http.getRequest(getUser.key, undefined, undefined, undefined, overrideConfig(_CONSTANT0, configOverride));
@@ -609,6 +744,23 @@ export const patchAssetFileIdCommentCommentId = (
 
 /** Key is end point string without base url */
 patchAssetFileIdCommentCommentId.key = '/asset/file/{id}/comment/{commentId}';
+
+export const patchTaskId = (
+  id: string,
+  requestBody: TaskEditBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskDto>> => {
+  return Http.patchRequest(
+    template(patchTaskId.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+patchTaskId.key = '/task/{id}';
 
 export const postAssetFileIdComment = (
   id: string,
@@ -1010,6 +1162,83 @@ export const postStripeWebhook = (
 
 /** Key is end point string without base url */
 postStripeWebhook.key = '/stripe-webhook';
+
+export const postTask = (
+  requestBody: TaskBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskDto>> => {
+  return Http.postRequest(postTask.key, undefined, requestBody, undefined, overrideConfig(_CONSTANT0, configOverride));
+};
+
+/** Key is end point string without base url */
+postTask.key = '/task';
+
+export const postTaskIdAsset = (
+  id: string,
+  requestBody: TaskAssetBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskAssetsResponse>> => {
+  return Http.postRequest(
+    template(postTaskIdAsset.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postTaskIdAsset.key = '/task/{id}/asset';
+
+export const postTaskIdComment = (
+  id: string,
+  requestBody: TaskCommentBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskCommentDto>> => {
+  return Http.postRequest(
+    template(postTaskIdComment.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postTaskIdComment.key = '/task/{id}/comment';
+
+export const postTaskIdMove = (
+  id: string,
+  requestBody: TaskMoveBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskDto>> => {
+  return Http.postRequest(
+    template(postTaskIdMove.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postTaskIdMove.key = '/task/{id}/move';
+
+export const postTaskIdUnhide = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TaskDto>> => {
+  return Http.postRequest(
+    template(postTaskIdUnhide.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postTaskIdUnhide.key = '/task/{id}/unhide';
 
 export const postUserAddon = (
   requestBody: AddonBodyDto,

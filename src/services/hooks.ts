@@ -24,6 +24,7 @@ import type {
   AssetCommentsResponse,
   AssetMoveBodyDto,
   AssetRemoveBodyDto,
+  AssetTasksDto,
   AssetsDto,
   ChatBodyDto,
   ChatDto,
@@ -88,6 +89,16 @@ import type {
   StackEditBodyDto,
   SubscriptionBodyDto,
   SubscriptionResponseDto,
+  TaskAssetBodyDto,
+  TaskAssetsResponse,
+  TaskBodyDto,
+  TaskCommentBodyDto,
+  TaskCommentDto,
+  TaskCommentsResponse,
+  TaskDto,
+  TaskEditBodyDto,
+  TaskMoveBodyDto,
+  TasksDto,
   TokenBodyDto,
   UpdateProjectMemberDto,
   UpdateUserDto,
@@ -99,6 +110,9 @@ import {
   deleteProjectIdAssets,
   deleteProjectIdMember,
   deleteProjectIdMemberMemberId,
+  deleteTaskId,
+  deleteTaskIdAssetAssetId,
+  deleteTaskIdCommentCommentId,
   deleteUserAddonId,
   deleteUserSubscription,
   get,
@@ -106,6 +120,7 @@ import {
   getAssetFileIdComments,
   getAssetFileIdDownload,
   getAssetFolderId,
+  getAssetIdTasks,
   getAssetStackId,
   getAssets,
   getAssetsFiles,
@@ -119,13 +134,18 @@ import {
   getProjectIdChats,
   getProjectIdLogs,
   getProjectIdPaths,
+  getProjectIdTasks,
   getProjects,
   getShareableLinkAssetId,
+  getTaskId,
+  getTaskIdAssets,
+  getTaskIdComments,
   getUser,
   getUserBillingHistory,
   getUserId,
   getUserSettings,
   patchAssetFileIdCommentCommentId,
+  patchTaskId,
   postAssetFileIdComment,
   postAssetsMultipartComplete,
   postAssetsMultipartStart,
@@ -150,6 +170,11 @@ import {
   postShareableLink,
   postShareableLinkSendEmail,
   postStripeWebhook,
+  postTask,
+  postTaskIdAsset,
+  postTaskIdComment,
+  postTaskIdMove,
+  postTaskIdUnhide,
   postUserAddon,
   postUserStartTrial,
   postUserSubscription,
@@ -238,6 +263,39 @@ export const useDeleteProjectIdMemberMemberId = <TExtra,>(
     mutationFn: (_o) => {
       const { id, memberId, configOverride } = _o || {};
       return deleteProjectIdMemberMemberId(id, memberId, configOverride);
+    },
+    ...options,
+  });
+};
+export const useDeleteTaskId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<TaskDto, { id: string }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, configOverride } = _o || {};
+      return deleteTaskId(id, configOverride);
+    },
+    ...options,
+  });
+};
+export const useDeleteTaskIdAssetAssetId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<TaskAssetsResponse, { id: string; assetId: string }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, assetId, configOverride } = _o || {};
+      return deleteTaskIdAssetAssetId(id, assetId, configOverride);
+    },
+    ...options,
+  });
+};
+export const useDeleteTaskIdCommentCommentId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<TaskCommentDto, { id: string; commentId: string }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, commentId, configOverride } = _o || {};
+      return deleteTaskIdCommentCommentId(id, commentId, configOverride);
     },
     ...options,
   });
@@ -437,6 +495,41 @@ useGetAssetFolderId.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetAssetFolderId.info(id, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetAssetIdTasks = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<AssetTasksDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAssetIdTasks.info(id, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetAssetIdTasks.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getAssetIdTasks.key, id] as QueryKey,
+    fun: () => getAssetIdTasks(id, configOverride),
+  };
+};
+useGetAssetIdTasks.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<AssetTasksDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetAssetIdTasks.info(id, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -911,6 +1004,41 @@ useGetProjectIdPaths.prefetch = (
         ...options,
       });
 };
+export const useGetProjectIdTasks = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TasksDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetProjectIdTasks.info(id, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetProjectIdTasks.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getProjectIdTasks.key, id] as QueryKey,
+    fun: () => getProjectIdTasks(id, configOverride),
+  };
+};
+useGetProjectIdTasks.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TasksDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetProjectIdTasks.info(id, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
 export const useGetProjects = (
   queryParams?: GetProjectsQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<ProjectsResponseDto>,
@@ -972,6 +1100,111 @@ useGetShareableLinkAssetId.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetShareableLinkAssetId.info(id, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetTaskId = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TaskDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetTaskId.info(id, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetTaskId.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getTaskId.key, id] as QueryKey,
+    fun: () => getTaskId(id, configOverride),
+  };
+};
+useGetTaskId.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TaskDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetTaskId.info(id, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetTaskIdAssets = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TaskAssetsResponse>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetTaskIdAssets.info(id, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetTaskIdAssets.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getTaskIdAssets.key, id] as QueryKey,
+    fun: () => getTaskIdAssets(id, configOverride),
+  };
+};
+useGetTaskIdAssets.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TaskAssetsResponse>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetTaskIdAssets.info(id, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetTaskIdComments = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TaskCommentsResponse>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetTaskIdComments.info(id, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetTaskIdComments.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getTaskIdComments.key, id] as QueryKey,
+    fun: () => getTaskIdComments(id, configOverride),
+  };
+};
+useGetTaskIdComments.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<TaskCommentsResponse>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetTaskIdComments.info(id, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -1126,6 +1359,17 @@ export const usePatchAssetFileIdCommentCommentId = <TExtra,>(
     mutationFn: (_o) => {
       const { id, commentId, requestBody, configOverride } = _o || {};
       return patchAssetFileIdCommentCommentId(id, commentId, requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePatchTaskId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<TaskDto, { id: string; requestBody: TaskEditBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, requestBody, configOverride } = _o || {};
+      return patchTaskId(id, requestBody, configOverride);
     },
     ...options,
   });
@@ -1426,6 +1670,69 @@ export const usePostStripeWebhook = <TExtra,>(
     mutationFn: (_o) => {
       const { headerParams, configOverride } = _o || {};
       return postStripeWebhook(headerParams, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostTask = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<TaskDto, { requestBody: TaskBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { requestBody, configOverride } = _o || {};
+      return postTask(requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostTaskIdAsset = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    TaskAssetsResponse,
+    { id: string; requestBody: TaskAssetBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, requestBody, configOverride } = _o || {};
+      return postTaskIdAsset(id, requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostTaskIdComment = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    TaskCommentDto,
+    { id: string; requestBody: TaskCommentBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, requestBody, configOverride } = _o || {};
+      return postTaskIdComment(id, requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostTaskIdMove = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<TaskDto, { id: string; requestBody: TaskMoveBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, requestBody, configOverride } = _o || {};
+      return postTaskIdMove(id, requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostTaskIdUnhide = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<TaskDto, { id: string }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, configOverride } = _o || {};
+      return postTaskIdUnhide(id, configOverride);
     },
     ...options,
   });

@@ -1,3 +1,4 @@
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { forwardRef, useCallback, useState } from 'react';
 
 // --- Hooks ---
@@ -10,14 +11,7 @@ import type { UseHeadingDropdownMenuConfig } from '../../tiptap-ui/heading-dropd
 import { useHeadingDropdownMenu } from '../../tiptap-ui/heading-dropdown-menu';
 // --- UI Primitives ---
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
-import { Button, ButtonGroup } from '../../tiptap-ui-primitive/button';
-import { Card, CardBody } from '../../tiptap-ui-primitive/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '../../tiptap-ui-primitive/dropdown-menu';
+import { Button } from '../../tiptap-ui-primitive/button';
 
 export interface HeadingDropdownMenuProps extends Omit<ButtonProps, 'type'>, UseHeadingDropdownMenuConfig {
   /**
@@ -38,14 +32,7 @@ export interface HeadingDropdownMenuProps extends Omit<ButtonProps, 'type'>, Use
  */
 export const HeadingDropdownMenu = forwardRef<HTMLButtonElement, HeadingDropdownMenuProps>(
   (
-    {
-      editor: providedEditor,
-      levels = [1, 2, 3, 4, 5, 6],
-      hideWhenUnavailable = false,
-      portal = false,
-      onOpenChange,
-      ...buttonProps
-    },
+    { editor: providedEditor, levels = [1, 2, 3, 4, 5, 6], hideWhenUnavailable = false, onOpenChange, ...buttonProps },
     ref,
   ) => {
     const { editor } = useTiptapEditor(providedEditor);
@@ -70,8 +57,8 @@ export const HeadingDropdownMenu = forwardRef<HTMLButtonElement, HeadingDropdown
     }
 
     return (
-      <DropdownMenu modal open={isOpen} onOpenChange={handleOpenChange}>
-        <DropdownMenuTrigger asChild>
+      <Dropdown isOpen={isOpen} onOpenChange={handleOpenChange}>
+        <DropdownTrigger asChild>
           <Button
             type="button"
             data-style="ghost"
@@ -89,22 +76,16 @@ export const HeadingDropdownMenu = forwardRef<HTMLButtonElement, HeadingDropdown
             <Icon className="tiptap-button-icon" />
             <ChevronDownIcon className="tiptap-button-dropdown-small" />
           </Button>
-        </DropdownMenuTrigger>
+        </DropdownTrigger>
 
-        <DropdownMenuContent align="start" portal={portal}>
-          <Card>
-            <CardBody>
-              <ButtonGroup>
-                {levels.map((level) => (
-                  <DropdownMenuItem key={`heading-${level}`} asChild>
-                    <HeadingButton editor={editor} level={level} text={`Heading ${level}`} showTooltip={false} />
-                  </DropdownMenuItem>
-                ))}
-              </ButtonGroup>
-            </CardBody>
-          </Card>
-        </DropdownMenuContent>
-      </DropdownMenu>
+        <DropdownMenu variant="flat">
+          {levels.map((level) => (
+            <DropdownItem key={`heading-${level}`} className="p-0">
+              <HeadingButton editor={editor} level={level} text={`Heading ${level}`} showTooltip={false} />
+            </DropdownItem>
+          ))}
+        </DropdownMenu>
+      </Dropdown>
     );
   },
 );

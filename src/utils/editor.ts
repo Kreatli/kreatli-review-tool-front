@@ -2,7 +2,7 @@
 import { computePosition, flip, shift } from '@floating-ui/react';
 import { Editor, posToDOMRect, ReactRenderer } from '@tiptap/react';
 
-import { ReviewToolEditorMentionList } from './ReviewToolEditorMentionList';
+import { EditorMentionList } from '../components/editor/EditorMentionList';
 
 const updatePosition = (editor: Editor, element: HTMLElement) => {
   const virtualElement = {
@@ -21,13 +21,13 @@ const updatePosition = (editor: Editor, element: HTMLElement) => {
   });
 };
 
-export const reviewToolEditorSuggestion = {
+export const editorSuggestion = {
   render: () => {
     let component: ReactRenderer<any>;
 
     return {
       onStart: (props: any) => {
-        component = new ReactRenderer(ReviewToolEditorMentionList, {
+        component = new ReactRenderer(EditorMentionList, {
           props,
           editor: props.editor,
         });

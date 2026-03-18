@@ -9,7 +9,6 @@ import { LeaveProjectModal } from '../../components/project/ProjectModals/LeaveP
 import { RenameProjectModal } from '../../components/project/ProjectModals/RenameProjectModal';
 import { RestoreProjectModal } from '../../components/project/ProjectModals/RestoreProjectModal';
 import { IconType } from '../../components/various/Icon';
-import { useProjectStatusesModal } from '../../hooks/useProjectStatusesModal';
 import { useSession } from '../../hooks/useSession';
 import { ProjectDto } from '../../services/types';
 
@@ -73,8 +72,6 @@ export const ProjectContextProvider = ({
 
   const isProjectOwner = selectedProject?.createdBy?.id === user?.id;
 
-  const setIsEditProjectStatusesModalOpen = useProjectStatusesModal((state) => state.setIsVisible);
-
   const restoreProject = (project: ProjectDto) => {
     setSelectedProjectId?.(project.id);
     setIsRestoreModalOpen(true);
@@ -113,17 +110,10 @@ export const ProjectContextProvider = ({
             {
               label: 'Change cover image',
               icon: 'panorama' as const,
+              showDivider: true,
               onClick: () => {
                 setSelectedProjectId?.(project.id);
                 setIsCoverModalOpen(true);
-              },
-            },
-            {
-              label: 'Edit statuses',
-              icon: 'gear' as const,
-              showDivider: true,
-              onClick: () => {
-                setIsEditProjectStatusesModalOpen(true);
               },
             },
             {

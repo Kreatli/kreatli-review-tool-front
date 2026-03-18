@@ -1,10 +1,10 @@
 'use client';
 
+import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
 import type { Editor } from '@tiptap/react';
 import { forwardRef, useCallback, useEffect, useState } from 'react';
 
 // --- Hooks ---
-import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
 // --- Icons ---
 import { CornerDownLeftIcon } from '../../tiptap-icons/corner-down-left-icon';
@@ -17,9 +17,8 @@ import { useLinkPopover } from '../../tiptap-ui/link-popover';
 // --- UI Primitives ---
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
 import { Button, ButtonGroup } from '../../tiptap-ui-primitive/button';
-import { Card, CardBody, CardItemGroup } from '../../tiptap-ui-primitive/card';
+import { CardItemGroup } from '../../tiptap-ui-primitive/card';
 import { Input, InputGroup } from '../../tiptap-ui-primitive/input';
-import { Popover, PopoverContent, PopoverTrigger } from '../../tiptap-ui-primitive/popover';
 import { Separator } from '../../tiptap-ui-primitive/separator';
 
 export interface LinkMainProps {
@@ -112,8 +111,6 @@ LinkButton.displayName = 'LinkButton';
  * Main content component for the link popover
  */
 const LinkMain: React.FC<LinkMainProps> = ({ url, setUrl, setLink, removeLink, openLink, isActive }) => {
-  const isMobile = useIsBreakpoint();
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -122,63 +119,45 @@ const LinkMain: React.FC<LinkMainProps> = ({ url, setUrl, setLink, removeLink, o
   };
 
   return (
-    <Card
-      style={{
-        ...(isMobile ? { boxShadow: 'none', border: 0 } : {}),
-      }}
-    >
-      <CardBody
-        style={{
-          ...(isMobile ? { padding: 0 } : {}),
-        }}
-      >
-        <CardItemGroup orientation="horizontal">
-          <InputGroup>
-            <Input
-              type="url"
-              placeholder="Paste a link..."
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              onKeyDown={handleKeyDown}
-              autoFocus
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="off"
-            />
-          </InputGroup>
+    <CardItemGroup orientation="horizontal">
+      <InputGroup>
+        <Input
+          type="url"
+          placeholder="Paste a link..."
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          onKeyDown={handleKeyDown}
+          autoFocus
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+        />
+      </InputGroup>
 
-          <ButtonGroup orientation="horizontal">
-            <Button type="button" onClick={setLink} title="Apply link" disabled={!url && !isActive} data-style="ghost">
-              <CornerDownLeftIcon className="tiptap-button-icon" />
-            </Button>
-          </ButtonGroup>
+      <ButtonGroup orientation="horizontal">
+        <Button type="button" onClick={setLink} title="Apply link" disabled={!url && !isActive} data-style="ghost">
+          <CornerDownLeftIcon className="tiptap-button-icon" />
+        </Button>
+      </ButtonGroup>
 
-          <Separator />
+      <Separator />
 
-          <ButtonGroup orientation="horizontal">
-            <Button
-              type="button"
-              onClick={openLink}
-              title="Open in new window"
-              disabled={!url && !isActive}
-              data-style="ghost"
-            >
-              <ExternalLinkIcon className="tiptap-button-icon" />
-            </Button>
+      <ButtonGroup orientation="horizontal">
+        <Button
+          type="button"
+          onClick={openLink}
+          title="Open in new window"
+          disabled={!url && !isActive}
+          data-style="ghost"
+        >
+          <ExternalLinkIcon className="tiptap-button-icon" />
+        </Button>
 
-            <Button
-              type="button"
-              onClick={removeLink}
-              title="Remove link"
-              disabled={!url && !isActive}
-              data-style="ghost"
-            >
-              <TrashIcon className="tiptap-button-icon" />
-            </Button>
-          </ButtonGroup>
-        </CardItemGroup>
-      </CardBody>
-    </Card>
+        <Button type="button" onClick={removeLink} title="Remove link" disabled={!url && !isActive} data-style="ghost">
+          <TrashIcon className="tiptap-button-icon" />
+        </Button>
+      </ButtonGroup>
+    </CardItemGroup>
   );
 };
 
@@ -225,6 +204,7 @@ export const LinkPopover = forwardRef<HTMLButtonElement, LinkPopoverProps>(
 
     const handleOnOpenChange = useCallback(
       (nextIsOpen: boolean) => {
+        console.log('isOpen', nextIsOpen);
         setIsOpen(nextIsOpen);
         onOpenChange?.(nextIsOpen);
       },
@@ -240,6 +220,7 @@ export const LinkPopover = forwardRef<HTMLButtonElement, LinkPopoverProps>(
       (event: React.MouseEvent<HTMLButtonElement>) => {
         onClick?.(event);
         if (event.defaultPrevented) return;
+        console.log('isOpen', isOpen);
         setIsOpen(!isOpen);
       },
       [onClick, isOpen],
@@ -257,8 +238,8 @@ export const LinkPopover = forwardRef<HTMLButtonElement, LinkPopoverProps>(
     }
 
     return (
-      <Popover open={isOpen} onOpenChange={handleOnOpenChange}>
-        <PopoverTrigger asChild>
+      <Popover isOpen={isOpen} placement="bottom" onOpenChange={handleOnOpenChange}>
+        <PopoverTrigger>
           <LinkButton
             disabled={!canSet}
             data-active-state={isActive ? 'on' : 'off'}

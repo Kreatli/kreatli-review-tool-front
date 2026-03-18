@@ -11,6 +11,7 @@ import { useSession } from '../../../hooks/useSession';
 import { useGetProjectId } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Header } from '../../layout/Header';
+import { TaskModal } from '../../tasks/Task';
 import { EmptyState } from '../../various/EmptyState';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
 import { NotActiveProjectAlert } from './NotActiveProjectAlert';
@@ -65,7 +66,7 @@ export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <>
       <Header />
-      <div className="grid flex-1 grid-cols-[auto_1fr] border-t border-foreground-200 md:grid-cols-[200px_1fr]">
+      <div className="grid flex-1 grid-cols-[53px_calc(100%-53px)] border-t border-foreground-200 md:grid-cols-[200px_calc(100%-200px)]">
         <ProjectSidebar isLoading={isPending} project={project} />
         {isPending || isError ? (
           <ProjectLoader />
@@ -80,6 +81,7 @@ export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
           </ProjectContextProvider>
         )}
       </div>
+      <TaskModal projectId={project?.id ?? ''} />
       <EditProjectStatusesModal
         project={project}
         isOpen={isEditProjectStatusesModalOpen}

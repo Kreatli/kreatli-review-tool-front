@@ -2,7 +2,6 @@ import { Avatar, Card, CardBody, CardFooter, CardHeader, Chip } from '@heroui/re
 
 import { ProjectMemberDto } from '../../../../services/types';
 import { formatFullDate } from '../../../../utils/dates';
-import { getProjectMemberLetter } from '../../../../utils/shortNames';
 import { ProjectMemberActions } from './ProjectMemberActions';
 
 const STATUS_COLORS = {
@@ -29,7 +28,8 @@ export const ProjectMemberCard = ({ member, isDisabled, isEditable, onRemove, on
             src={member.user?.avatar?.url}
             size="sm"
             isBordered
-            fallback={<div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>}
+            getInitials={(name) => name.charAt(0).toUpperCase()}
+            name={member.user?.name ?? member.email}
           />
           <div>
             <div className="text-sm font-semibold">{member.user?.name}</div>

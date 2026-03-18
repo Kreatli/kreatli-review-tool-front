@@ -23,9 +23,8 @@ export const UserWidget = () => {
           size="sm"
           isBordered
           className="ml-2 cursor-pointer"
-          fallback={
-            <div className="select-none text-lg text-foreground-500">{user.name.slice(0, 1).toUpperCase()}</div>
-          }
+          name={user.name}
+          getInitials={(name) => name.charAt(0).toUpperCase()}
         />
       </DropdownTrigger>
       <DropdownMenu variant="flat" className="w-52">

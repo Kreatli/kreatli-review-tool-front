@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import React from 'react';
 
 import { useProjectContext } from '../../../contexts/Project';
+import { useTaskModalVisibility } from '../../../hooks/useTaskModalVisibility';
 import {
   AssetsArchivedLogDto,
   AssetsRemovedLogDto,
@@ -15,6 +16,13 @@ import {
   ProjectMemberLeftLogDto,
   ProjectMemberRemovedLogDto,
   ProjectUpdatedLogDto,
+  TaskAssetAddedLogDto,
+  TaskAssetRemovedLogDto,
+  TaskCommentAddedLogDto,
+  TaskCommentRemovedLogDto,
+  TaskCreatedLogDto,
+  TaskRemovedLogDto,
+  TaskUpdatedLogDto,
 } from '../../../services/types';
 
 interface Props {
@@ -269,8 +277,16 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
 };
 
 const ProjectUpdatedLog = ({ log }: { log: ProjectUpdatedLogDto }) => {
-  const { name, description, isCoverChanged, isAssetsOrderChanged, status, isAssetStatusesChanged, isContentChanged } =
-    log.details;
+  const {
+    name,
+    description,
+    isCoverChanged,
+    isAssetsOrderChanged,
+    status,
+    isAssetStatusesChanged,
+    isTaskStatusesChanged,
+    isContentChanged,
+  } = log.details;
 
   if (name) {
     return `Renamed project to "${name}"`;
@@ -289,7 +305,11 @@ const ProjectUpdatedLog = ({ log }: { log: ProjectUpdatedLogDto }) => {
   }
 
   if (isAssetStatusesChanged) {
-    return 'Updated project statuses';
+    return 'Updated project media statuses';
+  }
+
+  if (isTaskStatusesChanged) {
+    return 'Updated project task statuses';
   }
 
   if (isContentChanged) {
@@ -333,6 +353,153 @@ export const ProjectMemberRemovedLog = ({ log }: { log: ProjectMemberRemovedLogD
 
 export const ProjectMemberLeftLog = ({ log }: { log: ProjectMemberLeftLogDto }) => {
   return <>{log.user.name} left the project</>;
+};
+
+export const TaskCreatedLog = ({ log }: { log: TaskCreatedLogDto }) => {
+  const { openTaskModal } = useTaskModalVisibility();
+
+  const task = (
+    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+      {log.details.name}
+    </Link>
+  );
+
+  return <>Created task {task}</>;
+};
+
+export const TaskUpdatedLog = ({ log }: { log: TaskUpdatedLogDto }) => {
+  const { id, contributors, isContentChanged, name, owner, statusLabel } = log.details;
+  const { openTaskModal } = useTaskModalVisibility();
+
+  const task = (
+    <Link as="button" type="button" onClick={() => openTaskModal(id)} size="sm" underline="hover">
+      {name}
+    </Link>
+  );
+
+  if (isContentChanged) {
+    return <>Updated {task} task description</>;
+  }
+
+  if (owner) {
+    return (
+      <>
+        Updated {task} task owner to {owner.name}
+      </>
+    );
+  }
+
+  if ('statusLabel' in log.details) {
+    return (
+      <>
+        Updated {task} task stage to "{statusLabel ?? 'Unplaced'}"
+      </>
+    );
+  }
+
+  if (contributors) {
+    if (contributors.length === 0) {
+      return <>Removed all contributors from {task} task</>;
+    }
+
+    return (
+      <>
+        Updated {task} task contributors to {contributors.map((contributor) => contributor.name).join(', ')}
+      </>
+    );
+  }
+
+  return <>Renamed {task} task</>;
+};
+
+export const TaskRemovedLog = ({ log }: { log: TaskRemovedLogDto }) => {
+  return <>Removed task "{log.details.name}"</>;
+};
+
+export const TaskAssetAddedLog = ({ log }: { log: TaskAssetAddedLogDto }) => {
+  const { project } = useProjectContext();
+  const { openTaskModal } = useTaskModalVisibility();
+
+  const file = (
+    <Link as={NextLink} href={`/project/${project.id}/assets/${log.details.asset.id}`} size="sm" underline="hover">
+      {log.details.asset.name}
+    </Link>
+  );
+
+  const task = (
+    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+      {log.details.name}
+    </Link>
+  );
+
+  return (
+    <>
+      Attached file {file} to the task {task}
+    </>
+  );
+};
+
+export const TaskAssetRemovedLog = ({ log }: { log: TaskAssetRemovedLogDto }) => {
+  const { project } = useProjectContext();
+  const { openTaskModal } = useTaskModalVisibility();
+
+  const file = (
+    <Link as={NextLink} href={`/project/${project.id}/assets/${log.details.asset.id}`} size="sm" underline="hover">
+      {log.details.asset.name}
+    </Link>
+  );
+
+  const task = (
+    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+      {log.details.name}
+    </Link>
+  );
+
+  return (
+    <>
+      Removed file {file} from the task {task}
+    </>
+  );
+};
+
+export const TaskCommentAddedLog = ({ log }: { log: TaskCommentAddedLogDto }) => {
+  const { openTaskModal } = useTaskModalVisibility();
+
+  const task = (
+    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+      {log.details.name}
+    </Link>
+  );
+
+  const comment = (
+    <Link
+      as="button"
+      type="button"
+      onClick={() => openTaskModal(log.details.id, log.details.comment.id)}
+      size="sm"
+      underline="hover"
+    >
+      comment
+    </Link>
+  );
+
+  return (
+    <>
+      Added {comment} to the task {task}
+    </>
+  );
+};
+
+export const TaskCommentRemovedLog = ({ log }: { log: TaskCommentRemovedLogDto }) => {
+  const { openTaskModal } = useTaskModalVisibility();
+
+  const task = (
+    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+      {log.details.name}
+    </Link>
+  );
+
+  return <>Removed comment from the task {task}</>;
 };
 
 export const ProjectActivityLog = ({ log }: Props) => {
@@ -386,6 +553,34 @@ export const ProjectActivityLog = ({ log }: Props) => {
 
   if (log.type === 'PROJECT_MEMBER_LEFT') {
     return <ProjectMemberLeftLog log={log} />;
+  }
+
+  if (log.type === 'TASK_CREATED') {
+    return <TaskCreatedLog log={log} />;
+  }
+
+  if (log.type === 'TASK_UPDATED') {
+    return <TaskUpdatedLog log={log} />;
+  }
+
+  if (log.type === 'TASK_REMOVED') {
+    return <TaskRemovedLog log={log} />;
+  }
+
+  if (log.type === 'TASK_ASSET_ADDED') {
+    return <TaskAssetAddedLog log={log} />;
+  }
+
+  if (log.type === 'TASK_ASSET_REMOVED') {
+    return <TaskAssetRemovedLog log={log} />;
+  }
+
+  if (log.type === 'TASK_COMMENT_ADDED') {
+    return <TaskCommentAddedLog log={log} />;
+  }
+
+  if (log.type === 'TASK_COMMENT_REMOVED') {
+    return <TaskCommentRemovedLog log={log} />;
   }
 
   return <div>{log.type}</div>;

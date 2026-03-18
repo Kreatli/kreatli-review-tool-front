@@ -17,7 +17,8 @@ export const ProjectActivityCard = ({ log }: Props) => {
             src={log.user.avatar?.url ?? ''}
             size="sm"
             radius="full"
-            fallback={<div className="select-none text-lg text-foreground-500">{log.user.name[0].toUpperCase()}</div>}
+            name={log.user.name}
+            getInitials={(name) => name.charAt(0).toUpperCase()}
           />
           <div className="text-sm font-semibold">{log.user.name}</div>
         </div>
