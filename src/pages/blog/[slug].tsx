@@ -1,13 +1,13 @@
 import { BreadcrumbItem, Breadcrumbs, ScrollShadow } from '@heroui/react';
 import { ISbStoryData, StoryblokComponent, useStoryblokState } from '@storyblok/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { SeoHead } from '../../components/shared/SeoHead';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
@@ -46,21 +46,23 @@ export default function Page({ story, slug }: Props) {
     fetchStory();
   }, [slug]);
 
-  const title = storyState?.content.metaFields?.title
-    ? `Kreatli | ${storyState?.content.metaFields?.title}`
-    : 'Kreatli | Video Collaboration & Review Platform';
+  const articleTitle = storyState?.content.metaFields?.title || storyState?.name || 'Article';
+  const title = `Kreatli | ${articleTitle}`;
   const description =
     storyState?.content.metaFields?.description ||
     'Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place.';
+  const ogImage = storyState?.content.image?.filename || undefined;
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-      </Head>
+      <SeoHead
+        title={title}
+        description={description}
+        canonicalPath={slug}
+        ogType="article"
+        imageUrl={ogImage}
+        imageAlt={articleTitle}
+      />
       <Header />
       <Decorations />
       <div className="backdrop-blur-lg">
@@ -94,6 +96,7 @@ export default function Page({ story, slug }: Props) {
                 </div>
               )}
             </div>
+            <h1 className="font-sans text-3xl font-bold sm:text-4xl">{articleTitle}</h1>
             <div className="flex w-full flex-col gap-8">
               {storyState?.content.body?.map((blok) => (
                 <StoryblokComponent key={blok._uid} blok={blok} />

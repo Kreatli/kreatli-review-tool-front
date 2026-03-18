@@ -12,7 +12,8 @@ interface Props {
 export const Section = ({ blok }: Props) => {
   const { title, text, image, orientation, buttons, displaySocials, titleTag = 'h2' } = blok;
 
-  const TitleTag = titleTag || 'h2';
+  const TitleTag = titleTag === 'h1' ? 'h2' : titleTag || 'h2';
+  const imageAlt = image?.alt || image?.title || title || 'Kreatli section image';
 
   return (
     <div className="flex flex-col gap-6">
@@ -53,7 +54,7 @@ export const Section = ({ blok }: Props) => {
               shadow="none"
               height="600"
               className="h-auto max-h-[500px] w-full object-cover"
-              alt={image.alt || ''}
+              alt={imageAlt}
             />
           </div>
         )}

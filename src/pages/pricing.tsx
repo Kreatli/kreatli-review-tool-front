@@ -1,6 +1,5 @@
-/* eslint-disable max-len */
+ 
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { FooterSection } from '../components/home/Footer/FooterSection';
@@ -9,6 +8,7 @@ import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
+import { SeoHead } from '../components/shared/SeoHead';
 import { Icon } from '../components/various/Icon';
 import { useSession } from '../hooks/useSession';
 
@@ -67,36 +67,13 @@ const faqs = [
 
 export default function PricingPage() {
   useSession();
+  const title = 'Kreatli | Pricing for Video Teams';
+  const description =
+    'Pricing for video teams with plans for creators, growing teams, and enterprise workflows. Start a 7-day free trial with no credit card required.';
 
   return (
     <>
-      <Head>
-        <title>Kreatli | Pricing – Video Collaboration & Review Platform</title>
-        <meta
-          name="description"
-          content="Choose the perfect plan for your video collaboration and review workflows. Flexible pricing for video collaboration, video review and approval, and team collaboration. No hidden fees, cancel anytime."
-        />
-        <link rel="canonical" href="https://kreatli.com/pricing" />
-        <meta property="og:url" content="https://kreatli.com/pricing" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Pricing – Video Collaboration & Review Platform" />
-        <meta
-          property="og:description"
-          content="Flexible pricing for video teams of all sizes. Plans for video collaboration, video review and approval, and team collaboration. 7-day free trial on all plans. No credit card required to start."
-        />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Pricing – Video Collaboration & Review Platform" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Pricing – Video Collaboration & Review Platform" />
-        <meta
-          name="twitter:description"
-          content="Flexible pricing for video teams of all sizes. Plans for video collaboration, video review and approval, and team collaboration. Free plan available forever. No credit card required to start."
-        />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead title={title} description={description} canonicalPath="/pricing" />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },

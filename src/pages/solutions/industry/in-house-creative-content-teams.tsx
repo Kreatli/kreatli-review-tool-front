@@ -10,6 +10,7 @@ import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
@@ -160,7 +161,7 @@ const data = {
     },
   ],
   metaDescription:
-    'Video Collaboration & Review Platform for in-house video and content teams. Manage brand assets, campaign production, and video collaboration workflows. Collaborate with agencies, streamline approvals, and maintain brand consistency. Replace Google Drive, Frame.io, and Slack with one unified platform.',
+    'Video collaboration for in-house creative teams. Manage brand assets, approvals, and agency feedback in one place without losing version control.',
   faqs: [
     {
       question: 'How does Kreatli help in-house teams maintain brand consistency?',
@@ -222,30 +223,20 @@ const data = {
 
 export default function InHouseCreativeContentTeamsPage() {
   useSession();
+  const title = 'Kreatli for In-House Creative Teams';
 
   return (
     <>
+      <SeoHead
+        title={title}
+        description={data.metaDescription}
+        canonicalPath="/solutions/industry/in-house-creative-content-teams"
+      />
       <Head>
-        <title>Kreatli for {data.title} | Video Production Platform for In-House Teams</title>
-        <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
           content="in-house video teams, content production platform, brand asset management, video collaboration software, internal video teams, brand management platform, video collaboration tools"
         />
-        <link rel="canonical" href="https://kreatli.com/solutions/industry/in-house-creative-content-teams" />
-        <meta property="og:url" content="https://kreatli.com/solutions/industry/in-house-creative-content-teams" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta name="twitter:description" content={data.metaDescription} />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

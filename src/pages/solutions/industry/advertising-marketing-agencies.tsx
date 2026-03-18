@@ -10,6 +10,7 @@ import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
@@ -152,7 +153,7 @@ const data = {
     },
   ],
   metaDescription:
-    'Video production platform for advertising and marketing agencies. Streamline campaign workflows, client approvals, and multi-stakeholder collaboration. Asset-linked feedback and no-signup client links accelerate campaign launches. Replace Google Drive, Frame.io, and Slack with one unified platform.',
+    'Video collaboration for agencies with client approvals, asset-linked feedback, and no-signup review links. Keep campaigns, comments, and versions in one place.',
   faqs: [
     {
       question: 'How does Kreatli help advertising agencies manage multiple client campaigns?',
@@ -209,30 +210,20 @@ const data = {
 
 export default function AdvertisingMarketingAgenciesPage() {
   useSession();
+  const title = 'Kreatli for Advertising & Marketing Agencies';
 
   return (
     <>
+      <SeoHead
+        title={title}
+        description={data.metaDescription}
+        canonicalPath="/solutions/industry/advertising-marketing-agencies"
+      />
       <Head>
-        <title>Kreatli for {data.title} | Video Production Platform for Marketing Agencies</title>
-        <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
           content="advertising agency software, marketing agency tools, campaign management platform, video collaboration software, video review platform, client approval workflow, marketing campaign collaboration"
         />
-        <link rel="canonical" href="https://kreatli.com/solutions/industry/advertising-marketing-agencies" />
-        <meta property="og:url" content="https://kreatli.com/solutions/industry/advertising-marketing-agencies" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta name="twitter:description" content={data.metaDescription} />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

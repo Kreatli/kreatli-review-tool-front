@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -9,6 +8,7 @@ import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { ArticlesSection } from '../../../components/shared/ArticlesSection';
 import { MoreFreeToolsSection } from '../../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { FREE_TOOLS } from '../../../data/free-tools';
 import { getRelatedResources } from '../../../data/related-resources';
@@ -20,7 +20,7 @@ const data = {
   intro:
     'Review video work and turn feedback into trackable work. Every upload creates a new version for easy comparison.',
   metaDescription:
-    'Video proofing platform for video, design, and marketing teams. Comment directly on files, compare versions, and turn feedback into trackable work. Every upload creates a new version with complete history.',
+    'Video proofing for creative teams. Comment on files, compare versions, and turn feedback into trackable work with a complete review history.',
   howItWorks: {
     title: 'How Proofing Works',
     description:
@@ -180,27 +180,11 @@ const data = {
 export default function CreativeProofingPage() {
   useSession();
   const articles = getUseCaseArticles('/solutions/use-case/creative-proofing');
+  const title = 'Kreatli | Video Proofing for Creative Teams';
 
   return (
     <>
-      <Head>
-        <title>Kreatli | {data.title} – Video Collaboration Solution</title>
-        <meta name="description" content={data.metaDescription} />
-        <link rel="canonical" href="https://kreatli.com/solutions/use-case/creative-proofing" />
-        <meta property="og:url" content="https://kreatli.com/solutions/use-case/creative-proofing" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta name="twitter:description" content={data.metaDescription} />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead title={title} description={data.metaDescription} canonicalPath="/solutions/use-case/creative-proofing" />
       <Header />
       <Decorations />
       {/* Hero Section */}

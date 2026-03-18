@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -7,6 +6,7 @@ import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
@@ -16,7 +16,7 @@ const data = {
   intro:
     'Manage video work around the files themselves. Every file, version, comment, and approval connects directly to collaboration status.',
   metaDescription:
-    'Video collaboration for video teams that manages work around files, not abstract tasks. Track status, ownership, and approvals directly on video assets.',
+    'Manage creative work around files, versions, comments, and approvals. Track status and ownership directly on video assets in one shared workspace.',
   howItWorks: {
     title: 'How It Works',
     description: 'Video collaboration follows the natural flow of video work, from upload through delivery.',
@@ -174,27 +174,15 @@ const data = {
 
 export default function CreativeProductionManagementPage() {
   useSession();
+  const title = 'Kreatli | Creative Production Management';
 
   return (
     <>
-      <Head>
-        <title>Kreatli | {data.title} – Video Collaboration Solution</title>
-        <meta name="description" content={data.metaDescription} />
-        <link rel="canonical" href="https://kreatli.com/solutions/use-case/creative-production-management" />
-        <meta property="og:url" content="https://kreatli.com/solutions/use-case/creative-production-management" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta name="twitter:description" content={data.metaDescription} />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead
+        title={title}
+        description={data.metaDescription}
+        canonicalPath="/solutions/use-case/creative-production-management"
+      />
       <Header />
       <Decorations />
       {/* Hero Section */}
