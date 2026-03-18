@@ -11,7 +11,7 @@ interface Props {
 
 export const BlogArticle = ({ article }: Props) => {
   const href = article.full_slug.startsWith('/') ? article.full_slug : `/${article.full_slug}`;
-  const title = article.content.metaFields?.title ?? article.name;
+  const title = article.content.metaFields?.title ?? article.name ?? 'Article';
   const imageAlt = article.content.image?.alt || article.content.image?.title || title;
 
   return (
