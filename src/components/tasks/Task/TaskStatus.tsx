@@ -70,7 +70,14 @@ export const TaskStatus = ({ projectId, taskId, status, statusLabel }: Props) =>
             <Button size="sm" variant="light" isDisabled={isPending} onClick={handleCancel}>
               Cancel
             </Button>
-            <Button size="sm" form="task-owner-form" isLoading={isPending} type="submit" variant="flat" color="primary">
+            <Button
+              size="sm"
+              form="task-status-form"
+              isLoading={isPending}
+              type="submit"
+              variant="flat"
+              color="primary"
+            >
               <span>Save</span>
             </Button>
           </div>
@@ -82,7 +89,7 @@ export const TaskStatus = ({ projectId, taskId, status, statusLabel }: Props) =>
       </div>
       {isEditable ? (
         <FormProvider {...formMethods}>
-          <form id="task-owner-form" noValidate onSubmit={formMethods.handleSubmit(handleSave)}>
+          <form id="task-status-form" noValidate onSubmit={formMethods.handleSubmit(handleSave)}>
             <TaskStageSelect
               isOpen={isOpen}
               projectId={projectId}

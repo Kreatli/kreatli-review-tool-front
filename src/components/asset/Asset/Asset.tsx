@@ -9,7 +9,6 @@ import { useGetAssetFileId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
 import { ProjectPaywall } from '../../project/Project/ProjectPaywall';
 import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
-import { TaskModal } from '../../tasks/Task';
 import { AssetPanel } from '../AssetPanel';
 import { ReviewTool } from '../ReviewTool';
 
@@ -76,7 +75,6 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
           </div>
         </FileStateContextProvider>
       </ProjectUploadContextProvider>
-      <TaskModal projectId={project?.id ?? ''} />
       <EditProjectStatusesModal
         project={project}
         isOpen={isEditProjectStatusesModalOpen}

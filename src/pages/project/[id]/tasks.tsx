@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ProjectLayout } from '../../../components/project/Project';
 import { Board } from '../../../components/tasks/Board';
 import { BoardColumnsModal } from '../../../components/tasks/Board/BoardColumnsModal';
+import { BoardFilters, BoardFiltersType } from '../../../components/tasks/Board/BoardFilters';
 import { BoardSkeleton } from '../../../components/tasks/Board/BoardSkeleton';
 import { EmptyState } from '../../../components/various/EmptyState';
 import { Icon } from '../../../components/various/Icon';
@@ -15,7 +16,17 @@ export default function TasksPage() {
   const { id } = useParams<{ id: string }>();
   const [isColumnsModalVisible, setIsColumnsModalVisible] = useState(false);
 
-  const { data: tasksData, isPending, isError, refetch } = useGetProjectIdTasks(id);
+  const [filters, setFilters] = useState<BoardFiltersType>({});
+
+  const {
+    data: tasksData,
+    isPending,
+    isError,
+    refetch,
+  } = useGetProjectIdTasks(id, {
+    contributor: filters.contributor,
+    owner: filters.owner,
+  });
 
   if (isError) {
     return (
@@ -41,13 +52,16 @@ export default function TasksPage() {
       <div className="flex max-h-[calc(100vh-64px)] flex-1 flex-col gap-3 overflow-hidden">
         <div className="flex items-center justify-between gap-2 p-3 px-3 pb-0 sm:px-4">
           <h2 className="text-2xl font-semibold">Tasks</h2>
-          <Button
-            className="bg-foreground text-content1"
-            startContent={<Icon icon="gear" size={16} />}
-            onClick={() => setIsColumnsModalVisible(true)}
-          >
-            Manage columns
-          </Button>
+          <div className="flex items-center gap-2">
+            <BoardFilters projectId={id} defaultFilters={filters} onFiltersChange={setFilters} />
+            <Button
+              className="bg-foreground text-content1"
+              startContent={<Icon icon="gear" size={16} />}
+              onClick={() => setIsColumnsModalVisible(true)}
+            >
+              Manage columns
+            </Button>
+          </div>
         </div>
         {isPending ? <BoardSkeleton /> : <Board key={id} projectId={id} columns={tasksData?.columns ?? []} />}
       </div>

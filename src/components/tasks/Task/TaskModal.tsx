@@ -10,11 +10,7 @@ import { TaskContent } from './TaskContent';
 import { TaskSkeleton } from './TaskSkeleton';
 import { TaskTitle } from './TaskTitle';
 
-interface Props {
-  projectId: string;
-}
-
-export const TaskModal = ({ projectId }: Props) => {
+export const TaskModal = () => {
   const { closeTaskModal } = useTaskModalVisibility();
   const searchParams = useSearchParams();
 
@@ -26,6 +22,7 @@ export const TaskModal = ({ projectId }: Props) => {
     data: task,
     isPending: isTaskLoading,
     isError,
+    error,
     refetch,
   } = useGetTaskId(taskId ?? '', {
     enabled: !!taskId,
@@ -41,6 +38,8 @@ export const TaskModal = ({ projectId }: Props) => {
     setTimeout(() => closeTaskModal(), 150);
   };
 
+  const projectId = task?.projectId;
+
   return (
     <Modal size="5xl" placement="top" scrollBehavior="inside" isOpen={isVisible} onClose={handleClose}>
       <ModalContent>
@@ -55,7 +54,14 @@ export const TaskModal = ({ projectId }: Props) => {
         <ModalBody className="px-3 py-0 pb-6 sm:px-6">
           {isTaskLoading ? (
             <TaskSkeleton />
-          ) : isError ? (
+          ) : error && 'status' in error && error.status === 404 ? (
+            <EmptyState
+              title="Task not found"
+              icon="trash"
+              size="sm"
+              text="The task you are looking for has been deleted or never existed."
+            />
+          ) : isError || !projectId ? (
             <EmptyState
               title="Something went wrong"
               icon="error"

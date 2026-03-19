@@ -45,6 +45,7 @@ import type {
   GetConversationIdMessagesQueryParams,
   GetNotificationsQueryParams,
   GetProjectIdLogsQueryParams,
+  GetProjectIdTasksQueryParams,
   GetProjectsQueryParams,
   InvoiceDto,
   MarkAsReadBodyDto,
@@ -1006,10 +1007,11 @@ useGetProjectIdPaths.prefetch = (
 };
 export const useGetProjectIdTasks = (
   id: string,
+  queryParams?: GetProjectIdTasksQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<TasksDto>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetProjectIdTasks.info(id, configOverride);
+  const { key, fun } = useGetProjectIdTasks.info(id, queryParams, configOverride);
 
   return useQuery({
     queryKey: key,
@@ -1017,19 +1019,24 @@ export const useGetProjectIdTasks = (
     ...options,
   });
 };
-useGetProjectIdTasks.info = (id: string, configOverride?: AxiosRequestConfig) => {
+useGetProjectIdTasks.info = (
+  id: string,
+  queryParams?: GetProjectIdTasksQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
   return {
-    key: [getProjectIdTasks.key, id] as QueryKey,
-    fun: () => getProjectIdTasks(id, configOverride),
+    key: [getProjectIdTasks.key, id, queryParams] as QueryKey,
+    fun: () => getProjectIdTasks(id, queryParams, configOverride),
   };
 };
 useGetProjectIdTasks.prefetch = (
   client: QueryClient,
   id: string,
+  queryParams?: GetProjectIdTasksQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<TasksDto>,
   configOverride?: AxiosRequestConfig,
 ) => {
-  const { key, fun } = useGetProjectIdTasks.info(id, configOverride);
+  const { key, fun } = useGetProjectIdTasks.info(id, queryParams, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()

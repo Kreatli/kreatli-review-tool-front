@@ -11,7 +11,6 @@ import { useSession } from '../../../hooks/useSession';
 import { useGetProjectId } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Header } from '../../layout/Header';
-import { TaskModal } from '../../tasks/Task';
 import { EmptyState } from '../../various/EmptyState';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
 import { NotActiveProjectAlert } from './NotActiveProjectAlert';
@@ -81,7 +80,6 @@ export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
           </ProjectContextProvider>
         )}
       </div>
-      <TaskModal projectId={project?.id ?? ''} />
       <EditProjectStatusesModal
         project={project}
         isOpen={isEditProjectStatusesModalOpen}

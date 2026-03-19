@@ -76,9 +76,11 @@ export const ProjectAssetsFilters = () => {
                   startContent={<Icon icon="user" size={18} className="text-foreground-500" />}
                 >
                   <SelectItem key="null">Unassigned</SelectItem>
-                  {project.members.map((member) => (
-                    <SelectItem key={member.user?.id ?? member.id}>{member.user?.name}</SelectItem>
-                  ))}
+                  {project.members
+                    .filter((member) => member.status === 'joined')
+                    .map((member) => (
+                      <SelectItem key={member.user?.id ?? member.id}>{member.user?.name}</SelectItem>
+                    ))}
                 </Select>
                 <Select
                   size="sm"

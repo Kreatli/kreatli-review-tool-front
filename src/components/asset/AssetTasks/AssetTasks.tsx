@@ -1,6 +1,5 @@
 import { useGetAssetIdTasks } from '../../../services/hooks';
 import { EmptyState } from '../../various/EmptyState';
-import { AssetCommentsEmptyState } from '../AssetComments/AssetCommentsEmptyState';
 import { AssetTask } from './AssetTask';
 import { AssetTasksLoading } from './AssetTasksLoading';
 
@@ -35,7 +34,9 @@ export const AssetTasks = ({ assetId, projectId }: Props) => {
         {tasks.length} task{tasks.length === 1 ? '' : 's'}
       </div>
       <div className="flex flex-col gap-2">
-        {tasks.length === 0 && <AssetCommentsEmptyState />}
+        {tasks.length === 0 && (
+          <EmptyState title="No tasks yet" icon="board" text="This asset is not attached to any tasks" size="sm" />
+        )}
         {tasks.map((task) => (
           <AssetTask key={task.id} task={task} projectId={projectId} />
         ))}

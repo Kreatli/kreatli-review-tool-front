@@ -20,6 +20,7 @@ import type {
   GetAssetsQueryParams,
   GetAssetsFilesQueryParams,
   GetAssetsFoldersQueryParams,
+  GetProjectIdTasksQueryParams,
   UserDto,
   InvoiceDto,
   SettingsDto,
@@ -590,11 +591,12 @@ getProjectIdPaths.key = '/project/{id}/paths';
 
 export const getProjectIdTasks = (
   id: string,
+  queryParams?: GetProjectIdTasksQueryParams,
   configOverride?: AxiosRequestConfig,
 ): Promise<SwaggerResponse<TasksDto>> => {
   return Http.getRequest(
     template(getProjectIdTasks.key, { id }),
-    undefined,
+    queryParams,
     undefined,
     undefined,
     overrideConfig(_CONSTANT0, configOverride),

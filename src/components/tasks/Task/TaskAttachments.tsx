@@ -1,6 +1,5 @@
 import { addToast, Button, Chip } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
-import { forwardRef } from 'react';
 
 import { useGetTaskIdAssets, usePostTaskIdAsset } from '../../../services/hooks';
 import { getTaskIdAssets } from '../../../services/services';
@@ -15,8 +14,7 @@ interface Props {
   taskId: string;
 }
 
-// eslint-disable-next-line react/display-name
-export const TaskAttachments = forwardRef<HTMLButtonElement, Props>(({ projectId, taskId }, ref) => {
+export const TaskAttachments = ({ projectId, taskId }: Props) => {
   const queryClient = useQueryClient();
 
   const { mutate } = usePostTaskIdAsset();
@@ -36,6 +34,8 @@ export const TaskAttachments = forwardRef<HTMLButtonElement, Props>(({ projectId
     );
   };
 
+  const hasAssets = data?.assets && data.assets.length > 0;
+
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-1">
@@ -45,18 +45,19 @@ export const TaskAttachments = forwardRef<HTMLButtonElement, Props>(({ projectId
             {data?.assets.length ?? 0}
           </Chip>
         </div>
-        <AssetPicker
-          projectId={projectId}
-          skipIds={data?.assets.map((asset) => asset.id) ?? []}
-          onSelect={handleSelectAsset}
-        >
-          <Button ref={ref} size="sm" variant="light" radius="full" isIconOnly>
-            <Icon icon="plus" size={16} />
-          </Button>
-        </AssetPicker>
+        {hasAssets && (
+          <AssetPicker
+            projectId={projectId}
+            skipIds={data?.assets.map((asset) => asset.id) ?? []}
+            onSelect={handleSelectAsset}
+          >
+            <Button size="sm" variant="light" radius="full" isIconOnly>
+              <Icon icon="plus" size={16} />
+            </Button>
+          </AssetPicker>
+        )}
       </div>
-      {/* <div className="rounded-medium bg-foreground-100 p-3">todo</div> */}
-      {data?.assets && data.assets.length > 0 ? (
+      {hasAssets ? (
         <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-2">
           {data?.assets.map((asset) => (
             <TaskAttachment key={asset.id} projectId={projectId} asset={asset} taskId={taskId} />
@@ -71,4 +72,4 @@ export const TaskAttachments = forwardRef<HTMLButtonElement, Props>(({ projectId
       )}
     </div>
   );
-});
+};

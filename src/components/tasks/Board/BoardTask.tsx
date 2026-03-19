@@ -69,7 +69,7 @@ export const BoardTask = ({ id, index, column, task, onRename, onRemove, onClick
         </div>
       </div>
       <div className="absolute right-0.5 top-0.5">
-        <Dropdown placement="bottom-end">
+        <Dropdown placement="bottom-end" onClick={(e) => e.stopPropagation()}>
           <DropdownTrigger>
             <Button
               size="sm"

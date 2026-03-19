@@ -13,6 +13,7 @@ export const TaskVisibilitySelect = () => {
       label="Visibility"
       size="sm"
       maxListboxHeight={256}
+      disallowEmptySelection
       defaultSelectedKeys={['visible']}
       onChange={(e) => {
         if (e.target.value === 'visible') {

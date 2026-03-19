@@ -6,7 +6,7 @@ import { usePatchTaskId } from '../../../services/hooks';
 import { getProjectIdTasks, getTaskId } from '../../../services/services';
 
 interface Props {
-  projectId: string;
+  projectId?: string;
   taskId?: string | null;
   name: string | undefined;
   isLoading?: boolean;
@@ -69,7 +69,10 @@ export const TaskTitle = ({ projectId, taskId, name, isLoading }: Props) => {
       {
         onSuccess: (data) => {
           queryClient.setQueryData([getTaskId.key, taskId], data);
-          queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+
+          if (projectId) {
+            queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          }
         },
       },
     );
@@ -96,7 +99,7 @@ export const TaskTitle = ({ projectId, taskId, name, isLoading }: Props) => {
       <textarea
         ref={textareaRef}
         rows={1}
-        className="-mx-1 w-[calc(100%-2rem)] resize-none rounded-md px-1 outline-offset-4 focus-visible:outline-focus focus-visible:ring-offset-2"
+        className="-mx-1 w-[calc(100%-2rem)] resize-none rounded-md bg-transparent px-1 outline-offset-4 focus-visible:bg-foreground-100 focus-visible:outline-focus focus-visible:ring-offset-2"
         value={value}
         onKeyDown={handleKeyDown}
         onChange={handleChange}

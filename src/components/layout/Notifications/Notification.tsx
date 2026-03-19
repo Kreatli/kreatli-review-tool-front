@@ -153,7 +153,7 @@ export const Notification = ({ notification, onClose }: Props) => {
 
     const task = (
       <Link
-        as="button"
+        as="span"
         type="button"
         onClick={
           taskId
@@ -164,7 +164,7 @@ export const Notification = ({ notification, onClose }: Props) => {
             : undefined
         }
         size="sm"
-        className="z-10 inline break-all"
+        className="z-10 inline cursor-pointer text-left"
         underline="hover"
       >
         {taskName}

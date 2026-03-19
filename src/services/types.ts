@@ -462,6 +462,11 @@ export interface GetProjectIdLogsQueryParams {
   userIds?: string;
 }
 
+export interface GetProjectIdTasksQueryParams {
+  contributor?: string;
+  owner?: string;
+}
+
 export interface GetProjectsQueryParams {
   search?: string;
   status?: 'all' | 'active' | 'completed' | 'archived';
@@ -1186,6 +1191,7 @@ export interface TaskDto {
   name: string;
   order: number;
   owner: UserDto;
+  projectId: string;
   updatedAt: string;
   status?: string;
   statusColor?: string;

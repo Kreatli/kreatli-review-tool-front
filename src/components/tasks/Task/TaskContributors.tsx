@@ -60,31 +60,34 @@ export const TaskContributors = ({ projectId, taskId, contributors }: Props) => 
     );
   };
 
+  const hasContributors = contributors.length > 0;
+
   return (
     <div className="flex flex-col gap-1">
-      <div className={cn('flex items-center gap-1', { 'justify-between': isEditable })}>
+      <div className={cn('flex min-h-8 items-center gap-1', { 'justify-between': isEditable })}>
         <div className="pl-3 font-semibold">Contributors</div>
-        {isEditable ? (
-          <div className="flex items-center gap-2">
-            <Button size="sm" variant="light" isDisabled={isPending} onClick={handleCancel}>
-              Cancel
+        {(hasContributors || isEditable) &&
+          (isEditable ? (
+            <div className="flex items-center gap-2">
+              <Button size="sm" variant="light" isDisabled={isPending} onClick={handleCancel}>
+                Cancel
+              </Button>
+              <Button
+                size="sm"
+                variant="flat"
+                type="submit"
+                form="task-contributors-form"
+                isLoading={isPending}
+                color="primary"
+              >
+                <span>Save</span>
+              </Button>
+            </div>
+          ) : (
+            <Button size="sm" variant="light" radius="full" isIconOnly onClick={handleEdit}>
+              <Icon icon="edit" size={16} />
             </Button>
-            <Button
-              size="sm"
-              variant="flat"
-              type="submit"
-              form="task-contributors-form"
-              isLoading={isPending}
-              color="primary"
-            >
-              <span>Save</span>
-            </Button>
-          </div>
-        ) : (
-          <Button size="sm" variant="light" radius="full" isIconOnly onClick={handleEdit}>
-            <Icon icon="edit" size={16} />
-          </Button>
-        )}
+          ))}
       </div>
       {isEditable ? (
         <FormProvider {...formMethods}>
