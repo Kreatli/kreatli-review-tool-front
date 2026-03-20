@@ -5,11 +5,12 @@ import React from 'react';
 
 import { CompareFeaturePreview } from '../../../components/home/Features/CompareFeaturePreview';
 import { ProjectFeaturePreview } from '../../../components/home/Features/ProjectFeaturePreview';
-import { InteractiveReviewToolPreview } from '../../../components/shared/InteractiveReviewToolPreview';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { InteractiveReviewToolPreview } from '../../../components/shared/InteractiveReviewToolPreview';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
@@ -162,7 +163,7 @@ const data = {
     },
   ],
   metaDescription:
-    'Video project management platform for production and animation studios. Frame-accurate video review, version control, large file sharing, and collaboration tools for video production teams. Streamline post-production workflows, client approvals, and multi-stakeholder collaboration. Replace Frame.io, WeTransfer, and email threads with one unified platform.',
+    'Video review and project management for production and animation teams. Keep feedback, versions, approvals, and large-file sharing in one workflow.',
   faqs: [
     {
       question: 'How does frame-accurate video review work in Kreatli?',
@@ -250,30 +251,20 @@ const data = {
 
 export default function VideoProductionAnimationStudiosPage() {
   useSession();
+  const title = 'Kreatli for Video Production Teams';
 
   return (
     <>
+      <SeoHead
+        title={title}
+        description={data.metaDescription}
+        canonicalPath="/solutions/industry/video-production-animation-studios"
+      />
       <Head>
-        <title>Kreatli for {data.title} | Video Production Platform for Video Production & Animation</title>
-        <meta name="description" content={data.metaDescription} />
         <meta
           name="keywords"
           content="video production software, animation studio tools, video review platform, frame-accurate feedback, video collaboration platform, post-production workflow, video project management, animation production pipeline"
         />
-        <link rel="canonical" href="https://kreatli.com/solutions/industry/video-production-animation-studios" />
-        <meta property="og:url" content="https://kreatli.com/solutions/industry/video-production-animation-studios" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli for ${data.title} | Video Production Platform`} />
-        <meta name="twitter:description" content={data.metaDescription} />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
       <Decorations />

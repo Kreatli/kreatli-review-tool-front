@@ -45,7 +45,7 @@ export default function SharePage() {
     <div>
       <Head>
         <title>{title}</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       <FileStateContextProvider fileId={data.file.id ?? ''} file={data.file}>

@@ -13,6 +13,7 @@ export const Section = ({ blok }: Props) => {
   const { title, text, image, orientation, buttons, displaySocials, titleTag = 'h2' } = blok;
 
   const TitleTag = titleTag || 'h2';
+  const imageAlt = image?.alt || image?.title || title || 'Kreatli section image';
 
   return (
     <div className="flex flex-col gap-6">
@@ -24,7 +25,7 @@ export const Section = ({ blok }: Props) => {
         {...storyblokEditable(blok)}
       >
         <div>
-          <TitleTag className="mb-4 font-sans text-4xl font-bold">{title}</TitleTag>
+          {title && <TitleTag className="mb-4 font-sans text-4xl font-bold">{title}</TitleTag>}
           {text && <p className="text-lg text-foreground-500">{text}</p>}
           {buttons && buttons?.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-4">
@@ -53,7 +54,7 @@ export const Section = ({ blok }: Props) => {
               shadow="none"
               height="600"
               className="h-auto max-h-[500px] w-full object-cover"
-              alt={image.alt || ''}
+              alt={imageAlt}
             />
           </div>
         )}

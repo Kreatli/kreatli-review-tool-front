@@ -9,6 +9,8 @@ export type ArticleCard = {
     };
     image?: {
       filename: string;
+      alt?: string | null;
+      title?: string | null;
     } | null;
     publishDate?: string;
     readTime?: string;

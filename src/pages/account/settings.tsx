@@ -17,6 +17,7 @@ export default function SettingsPage() {
     <>
       <Head>
         <title>{title}</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Settings />
     </>

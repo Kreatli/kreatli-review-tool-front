@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import { useMemo, useState } from 'react';
 
@@ -9,6 +8,7 @@ import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
+import { SeoHead } from '../components/shared/SeoHead';
 import { Icon } from '../components/various/Icon';
 import {
   FREE_TOOLS,
@@ -73,6 +73,9 @@ const faqs = [
 export default function FreeToolsPage() {
   useSession();
   const [selectedFilter, setSelectedFilter] = useState<'All' | FreeToolFilterTag>('All');
+  const title = 'Kreatli | Free Tools for Video Teams';
+  const description =
+    'Free tools for video teams, including a data transfer calculator, software cost calculator, safe zone checker, and YouTube banner resizer. No sign-up required.';
 
   const filteredTools = useMemo(() => {
     const list =
@@ -84,33 +87,7 @@ export default function FreeToolsPage() {
 
   return (
     <>
-      <Head>
-        <title>Kreatli | Free Tools for Video Teams – Professional Creative Tools</title>
-        <meta
-          name="description"
-          content="Free tools for video teams: data transfer calculator, software cost calculator, safe zone checker, YouTube banner resizer. Professional tools, no sign-up required."
-        />
-        <link rel="canonical" href="https://kreatli.com/free-tools" />
-        <meta property="og:url" content="https://kreatli.com/free-tools" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Free Tools for Video Teams – Professional Creative Tools" />
-        <meta
-          property="og:description"
-          content="Free professional tools for video teams and video professionals. Calculate data transfer times, estimate software costs, check safe zones, and resize YouTube banners. All tools are free to use—no sign-up required."
-        />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Free Tools for Video Teams – Professional Creative Tools" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Free Tools for Video Teams – Professional Creative Tools" />
-        <meta
-          name="twitter:description"
-          content="Free professional tools for video teams and creative professionals. Calculate data transfer times, estimate software costs, check safe zones, and resize YouTube banners."
-        />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead title={title} description={description} canonicalPath="/free-tools" />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },

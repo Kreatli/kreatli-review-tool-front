@@ -15,6 +15,7 @@ export default function ProjectAssetsPage() {
     <>
       <Head>
         <title>Kreatli | Folder</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <ProjectFolderAssets folderId={router.query.folderId as string} />
     </>

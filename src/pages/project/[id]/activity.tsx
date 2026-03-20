@@ -46,6 +46,7 @@ export default function ProjectActivityPage() {
     <>
       <Head>
         <title>Kreatli | Activity</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div className="flex flex-col gap-3 p-3 px-3 sm:px-4">
         <h2 className="text-2xl font-semibold">Activity {data ? `(${data?.logsCount ?? 0})` : ''}</h2>

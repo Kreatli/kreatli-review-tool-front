@@ -17,6 +17,7 @@ export default function GeneralInformationPage() {
     <>
       <Head>
         <title>{title}</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <GeneralInformation user={user} />
     </>

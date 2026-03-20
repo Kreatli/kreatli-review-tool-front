@@ -6,9 +6,15 @@ import { Icon, IconType } from '../../various/Icon';
 
 interface SafeZoneScreenGuideProps {
   platform?: 'youtube' | 'instagram' | 'tiktok';
-  /** When true, only render the "How to Use Safe-Zone Checker" step-by-step section (e.g. on platform landing pages). */
+  /**
+   * When true, only render the "How to Use Safe-Zone Checker" step-by-step section
+   * (e.g. on platform landing pages).
+   */
   stepsOnly?: boolean;
-  /** Optional section title override (e.g. "How to Use the Safe-Zone Checker for YouTube Shorts" on platform pages). */
+  /**
+   * Optional section title override
+   * (e.g. "How to Use the Safe-Zone Checker for YouTube Shorts" on platform pages).
+   */
   stepsSectionTitle?: string;
 }
 
@@ -636,7 +642,7 @@ export const SafeZoneScreenGuide = ({
             <Button
               as="a"
               className="bg-foreground text-content1"
-              href="https://kreatli.com/blog/safe-zone-guide-instagram-reels-youtube-shorts-tiktok"
+              href="https://kreatli.com/guides/safe-zone-guide"
               target="_blank"
             >
               Read our complete guide

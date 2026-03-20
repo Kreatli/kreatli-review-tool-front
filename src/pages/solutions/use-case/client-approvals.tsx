@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -8,6 +7,7 @@ import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { ArticlesSection } from '../../../components/shared/ArticlesSection';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
+import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { getUseCaseArticles } from '../../../data/use-case-articles';
@@ -18,7 +18,7 @@ const data = {
   intro:
     'Client approvals tied to exact file versions, not links or emails. See status at a glance and maintain a complete audit trail that protects both parties.',
   metaDescription:
-    'Client approval system that ties approvals to exact file versions. Enforce required approvers, track approval history, and eliminate approval confusion. Built for agencies and production teams working with external clients.',
+    'Client approvals tied to exact file versions. Track approvers, approval history, and sign-off status without email confusion.',
   howItWorks: {
     title: 'How It Works',
     description:
@@ -185,27 +185,11 @@ const data = {
 export default function ClientApprovalsPage() {
   useSession();
   const articles = getUseCaseArticles('/solutions/use-case/client-approvals');
+  const title = 'Kreatli | Client Approvals for Creative Teams';
 
   return (
     <>
-      <Head>
-        <title>Kreatli | {data.title} – Video Collaboration Solution</title>
-        <meta name="description" content={data.metaDescription} />
-        <link rel="canonical" href="https://kreatli.com/solutions/use-case/client-approvals" />
-        <meta property="og:url" content="https://kreatli.com/solutions/use-case/client-approvals" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta property="og:description" content={data.metaDescription} />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`Kreatli | ${data.title} – Video Collaboration Solution`} />
-        <meta name="twitter:description" content={data.metaDescription} />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead title={title} description={data.metaDescription} canonicalPath="/solutions/use-case/client-approvals" />
       <Header />
       <Decorations />
       {/* Hero Section */}

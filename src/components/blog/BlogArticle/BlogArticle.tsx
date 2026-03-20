@@ -11,7 +11,8 @@ interface Props {
 
 export const BlogArticle = ({ article }: Props) => {
   const href = article.full_slug.startsWith('/') ? article.full_slug : `/${article.full_slug}`;
-  const title = article.content.metaFields?.title ?? article.name;
+  const title = article.content.metaFields?.title ?? article.name ?? 'Article';
+  const imageAlt = article.content.image?.alt || article.content.image?.title || title;
 
   return (
     <Card isPressable className="relative">
@@ -34,7 +35,14 @@ export const BlogArticle = ({ article }: Props) => {
           </Link>
           {article.content.image && (
             <div className="pointer-events-none -mx-4">
-              <Image removeWrapper src={article.content.image.filename} radius="none" width="800" height="300" />
+              <Image
+                removeWrapper
+                src={article.content.image.filename}
+                radius="none"
+                width="800"
+                height="300"
+                alt={imageAlt}
+              />
             </div>
           )}
           <div className="line-clamp-3">{article.content.metaFields?.description}</div>

@@ -8,6 +8,7 @@ export default function ProjectAssetsPage() {
     <>
       <Head>
         <title>Kreatli | Media</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <ProjectAssets />
     </>
