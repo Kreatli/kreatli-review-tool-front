@@ -12,7 +12,7 @@ interface Props {
 export const Section = ({ blok }: Props) => {
   const { title, text, image, orientation, buttons, displaySocials, titleTag = 'h2' } = blok;
 
-  const TitleTag = titleTag === 'h1' ? 'h2' : titleTag || 'h2';
+  const TitleTag = titleTag || 'h2';
   const imageAlt = image?.alt || image?.title || title || 'Kreatli section image';
 
   return (
@@ -25,7 +25,7 @@ export const Section = ({ blok }: Props) => {
         {...storyblokEditable(blok)}
       >
         <div>
-          <TitleTag className="mb-4 font-sans text-4xl font-bold">{title}</TitleTag>
+          {title && <TitleTag className="mb-4 font-sans text-4xl font-bold">{title}</TitleTag>}
           {text && <p className="text-lg text-foreground-500">{text}</p>}
           {buttons && buttons?.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-4">

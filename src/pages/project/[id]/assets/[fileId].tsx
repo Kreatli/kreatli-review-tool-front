@@ -28,6 +28,7 @@ export default function ProjectAssetsFilePage() {
     <>
       <Head>
         <title>Kreatli | Media</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Asset fileId={fileId} projectId={projectId} compareFileId={compareFileId} />
     </>

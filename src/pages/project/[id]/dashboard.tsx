@@ -8,6 +8,7 @@ export default function ProjectDashboard() {
     <>
       <Head>
         <title>Kreatli | Home</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Dashboard />
     </>

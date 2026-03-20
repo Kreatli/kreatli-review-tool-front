@@ -28,6 +28,7 @@ export default function NewPassword() {
     <>
       <Head>
         <title>Kreatli | New password</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <StartPageLayout title="Set new password." backgroundType="light">
         <NewPasswordForm token={router.query.token as string} onSuccess={handleSuccess} />

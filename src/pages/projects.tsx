@@ -15,6 +15,7 @@ export default function ProjectsPage() {
     <>
       <Head>
         <title>Kreatli | Projects</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       <Projects />

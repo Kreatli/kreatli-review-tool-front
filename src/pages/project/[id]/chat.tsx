@@ -14,6 +14,7 @@ export default function ProjectChat() {
     <>
       <Head>
         <title>Kreatli | Chat</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <ChatProvider key={projectId} projectId={projectId}>
         <Chat />
