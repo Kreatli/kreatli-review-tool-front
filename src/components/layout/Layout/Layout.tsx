@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
 import { PlansModal } from '../../account/PlansModal';
+import { TaskModal } from '../../tasks/Task';
 import { AppLoader } from '../AppLoader';
 
 export const Layout = ({ children }: React.PropsWithChildren) => {
@@ -30,6 +31,7 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
     <AppLoader>
       {children}
       {isSignedIn && user && <PlansModal user={user} isOpen={isVisible} onClose={() => setIsVisible(false)} />}
+      {isSignedIn && <TaskModal />}
     </AppLoader>
   );
 };

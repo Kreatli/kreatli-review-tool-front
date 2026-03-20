@@ -20,10 +20,10 @@ import { trackEvent } from '../../../lib/amplitude';
 import { usePostAssetFileIdComment } from '../../../services/hooks';
 import { getAssetFileIdComments } from '../../../services/services';
 import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
+import { editorSuggestion } from '../../../utils/editor';
 import { getIsMediaHtmlElement } from '../../../utils/getIsMediaHtmlElement';
+import { EditorSubmit } from '../../editor/EditorSubmit';
 import { Icon } from '../../various/Icon';
-import { ReviewToolEditorSubmit } from './ReviewToolEditorSubmit';
-import { reviewToolEditorSuggestion } from './reviewToolEditorSuggestion';
 import { ReviewToolTextareaAnonymousForm } from './ReviewToolTextareaAnonymousForm';
 
 interface Props {
@@ -96,13 +96,13 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
               )
               .slice(0, 5);
           },
-          ...reviewToolEditorSuggestion,
+          ...editorSuggestion,
         },
         renderText({ options, node }) {
           return `${options.suggestion.char ?? '@'}${node.attrs.label ?? node.attrs.id}`;
         },
       }),
-      ReviewToolEditorSubmit,
+      EditorSubmit,
     ],
     editable: !isDisabled,
     onFocus: () => {
@@ -253,13 +253,12 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
             src={user.avatar?.url ?? ''}
             size="sm"
             className="pointer-events-none !size-6"
-            fallback={
-              <div className="select-none text-xs text-foreground-500">{user.name.slice(0, 1).toUpperCase()}</div>
-            }
+            name={user.name}
+            getInitials={(name) => name.charAt(0).toUpperCase()}
           />
         ) : (
-          <div className="flex size-6 items-center justify-center rounded-full bg-foreground-300 text-xs text-foreground-500">
-            {anonymousName?.slice(0, 1).toUpperCase() || <Icon icon="user" size={16} />}
+          <div className="flex size-6 items-center justify-center rounded-full bg-foreground-300 text-xs text-foreground">
+            {anonymousName?.slice(0, 1).toUpperCase() || <Icon icon="user" size={12} />}
           </div>
         )}
       </div>

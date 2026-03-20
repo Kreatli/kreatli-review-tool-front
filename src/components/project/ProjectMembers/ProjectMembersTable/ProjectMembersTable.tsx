@@ -2,7 +2,6 @@ import { Avatar, Chip, Spinner, Table, TableBody, TableCell, TableColumn, TableH
 
 import { ProjectMemberDto } from '../../../../services/types';
 import { formatFullDate } from '../../../../utils/dates';
-import { getProjectMemberLetter } from '../../../../utils/shortNames';
 import { useIsBreakpoint } from '../../../tiptap/hooks/use-is-breakpoint';
 import { ProjectMemberActions } from './ProjectMemberActions';
 import { ProjectMemberCard } from './ProjectMemberCard';
@@ -61,9 +60,8 @@ export const ProjectMembersTable = ({ members, isLoading, isEditable = false, on
                 src={member.user?.avatar?.url}
                 size="sm"
                 isBordered
-                fallback={
-                  <div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>
-                }
+                getInitials={(name) => name.charAt(0).toUpperCase()}
+                name={member.user?.name ?? member.email}
               />
             </TableCell>
             <TableCell>

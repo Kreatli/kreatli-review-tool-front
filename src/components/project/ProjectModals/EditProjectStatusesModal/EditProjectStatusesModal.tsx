@@ -2,7 +2,7 @@ import { addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHea
 import { useQueryClient } from '@tanstack/react-query';
 
 import { usePutProjectId } from '../../../../services/hooks';
-import { getProjectId, getProjects } from '../../../../services/services';
+import { getProjectId } from '../../../../services/services';
 import { ProjectDto } from '../../../../services/types';
 import { getErrorMessage } from '../../../../utils/getErrorMessage';
 import { EditProjectStatusesForm } from './EditProjectStatusesForm';
@@ -32,8 +32,7 @@ export const EditProjectStatusesModal = ({ project, isOpen, onClose }: Props) =>
       {
         onSuccess: (data) => {
           queryClient.setQueryData([getProjectId.key, project.id], data);
-          queryClient.invalidateQueries({ queryKey: [getProjects.key] });
-          addToast({ title: 'Project statuses were updated', color: 'success', variant: 'flat' });
+          addToast({ title: 'Media statuses were updated', color: 'success', variant: 'flat' });
           onClose();
         },
         onError: (error) => {

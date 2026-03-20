@@ -116,9 +116,8 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
             src={createdBy.avatar?.url ?? ''}
             size="sm"
             className="!size-6 shrink-0 cursor-pointer"
-            fallback={
-              <div className="select-none text-xs text-foreground-500">{createdBy.name?.slice(0, 1).toUpperCase()}</div>
-            }
+            name={createdBy.name}
+            getInitials={(name) => name.charAt(0).toUpperCase()}
           />
           <div className="overflow-hidden text-ellipsis text-xs">{createdBy.name}</div>
           {!createdBy.id && (

@@ -65,7 +65,7 @@ export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <>
       <Header />
-      <div className="grid flex-1 grid-cols-[auto_1fr] border-t border-foreground-200 md:grid-cols-[200px_1fr]">
+      <div className="grid flex-1 grid-cols-[53px_calc(100%-53px)] border-t border-foreground-200 md:grid-cols-[200px_calc(100%-200px)]">
         <ProjectSidebar isLoading={isPending} project={project} />
         {isPending || isError ? (
           <ProjectLoader />

@@ -40,9 +40,8 @@ export const DashboardActivityTable = ({ logs }: Props) => {
                   size="sm"
                   radius="full"
                   className="shrink-0"
-                  fallback={
-                    <div className="select-none text-lg text-foreground-500">{log.user.name[0].toUpperCase()}</div>
-                  }
+                  name={log.user.name}
+                  getInitials={(name) => name.charAt(0).toUpperCase()}
                 />
                 <div className="line-clamp-2">{log.user.name}</div>
               </div>

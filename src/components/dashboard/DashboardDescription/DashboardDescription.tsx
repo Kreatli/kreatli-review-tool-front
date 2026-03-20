@@ -106,7 +106,7 @@ export const DashboardDescription = ({ project }: Props) => {
         isEnabled={!isEditable}
         key={project.id}
         ref={scrollRef}
-        className={cn('max-h-96 overflow-auto p-3 px-4', { 'max-h-[70vh]': isEditable })}
+        className={cn('h-full max-h-96 overflow-auto p-3 px-4', { 'max-h-[70vh]': isEditable })}
       >
         <SimpleEditor
           editorRef={editorRef}

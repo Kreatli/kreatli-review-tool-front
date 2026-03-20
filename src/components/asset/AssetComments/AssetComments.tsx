@@ -1,4 +1,4 @@
-import { Tab, Tabs } from '@heroui/react';
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
@@ -7,6 +7,7 @@ import { useFileStateContext } from '../../../contexts/File';
 import { useGetAssetFileIdComments } from '../../../services/hooks';
 import { getAssetFileIdComments } from '../../../services/services';
 import { AssetCommentsResponse, ProjectDto } from '../../../services/types';
+import { Icon } from '../../various/Icon';
 import { AssetComment } from './AssetComment';
 import { AssetCommentsEmptyState } from './AssetCommentsEmptyState';
 import { AssetCommentsLoading } from './AssetCommentsLoading';
@@ -77,22 +78,41 @@ export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
     queryClient.invalidateQueries({ queryKey: [getAssetFileIdComments.key, fileId] });
   };
 
-  const handleTabsChange = (newStatus: React.Key) => {
-    setCommentsStatus(newStatus as CommentsStatus);
-  };
-
   return (
     <div className="flex flex-col gap-2 p-3 pb-9 pt-0">
-      <div className="text-medium">
-        <span className="font-semibold">
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-medium font-semibold">
           {comments.length} comment{comments.length === 1 ? '' : 's'}
-        </span>
+        </div>
+        <Dropdown>
+          <DropdownTrigger>
+            <Button size="sm" className="w-fit" variant="light" endContent={<Icon icon="chevronDown" size={16} />}>
+              {commentsStatus === 'all' && <>{`All (${comments.length})`}</>}
+              {commentsStatus === 'unresolved' && <>{`Unresolved (${unresolvedCommentsCount})`}</>}
+              {commentsStatus === 'resolved' && <>{`Resolved (${comments.length - unresolvedCommentsCount})`}</>}
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            variant="flat"
+            selectionMode="single"
+            disallowEmptySelection
+            selectedKeys={[commentsStatus]}
+            onSelectionChange={(keys) => setCommentsStatus(keys.currentKey as CommentsStatus)}
+          >
+            <DropdownItem key="all" title="All" description={`${comments.length} comments`}></DropdownItem>
+            <DropdownItem
+              key="unresolved"
+              title="Unresolved"
+              description={`${unresolvedCommentsCount} comments`}
+            ></DropdownItem>
+            <DropdownItem
+              key="resolved"
+              title="Resolved"
+              description={`${comments.length - unresolvedCommentsCount} comments`}
+            ></DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </div>
-      <Tabs size="sm" selectedKey={commentsStatus} onSelectionChange={handleTabsChange}>
-        <Tab key="unresolved" title={`Unresolved (${unresolvedCommentsCount})`} />
-        <Tab key="resolved" title={`Resolved (${comments.length - unresolvedCommentsCount})`} />
-        <Tab key="all" title={`All (${comments.length})`} />
-      </Tabs>
       <div className="flex flex-col gap-2">
         {commentsToShow.length === 0 && <AssetCommentsEmptyState />}
         {commentsToShow.map((comment) => (

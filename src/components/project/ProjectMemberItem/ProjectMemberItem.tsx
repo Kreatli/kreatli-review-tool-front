@@ -1,7 +1,6 @@
 import { Avatar } from '@heroui/react';
 
 import { ProjectMemberDto } from '../../../services/types';
-import { getProjectMemberLetter } from '../../../utils/shortNames';
 
 interface Props {
   member: ProjectMemberDto;
@@ -12,8 +11,9 @@ export const ProjectMemberItem = ({ member }: Props) => {
     <div className="flex items-center gap-3">
       <Avatar
         size="sm"
+        name={member.user?.name ?? member.email}
+        getInitials={(name) => name.charAt(0).toUpperCase()}
         src={member.user?.avatar?.url ?? ''}
-        fallback={<div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>}
       />
       <div>
         <div className="text-small">{member.user?.name}</div>

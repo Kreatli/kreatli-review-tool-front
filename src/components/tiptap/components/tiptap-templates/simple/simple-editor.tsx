@@ -101,14 +101,23 @@ export interface EditorRef {
 
 interface Props {
   isEditable?: boolean;
-  content: JSONContent;
-  editorRef: Ref<EditorRef>;
+  placeholder?: string;
+  content?: JSONContent;
+  editorRef?: Ref<EditorRef>;
   children?: React.ReactNode;
   onUpdate: (json: Record<string, unknown>) => void;
   onSave?: () => void;
 }
 
-export const SimpleEditor = ({ content, isEditable = false, editorRef, children, onUpdate, onSave }: Props) => {
+export const SimpleEditor = ({
+  content,
+  placeholder = 'Write something...',
+  isEditable = false,
+  editorRef,
+  children,
+  onUpdate,
+  onSave,
+}: Props) => {
   const isMobile = useIsBreakpoint();
   const [mobileView, setMobileView] = useState<'main' | 'highlighter' | 'link'>('main');
   const toolbarRef = useRef<HTMLDivElement>(null);
@@ -140,7 +149,7 @@ export const SimpleEditor = ({ content, isEditable = false, editorRef, children,
       }),
       UniqueID.configure({ types: ['taskList', 'taskItem'] }),
       Placeholder.configure({
-        placeholder: 'Write something...',
+        placeholder,
         showOnlyWhenEditable: true,
       }),
       HorizontalRule,

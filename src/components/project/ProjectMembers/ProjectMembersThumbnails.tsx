@@ -1,8 +1,6 @@
 import { Avatar, AvatarGroup, Tooltip } from '@heroui/react';
-import React from 'react';
 
 import { ProjectMemberDto } from '../../../services/types';
-import { getProjectMemberLetter } from '../../../utils/shortNames';
 
 interface Props {
   members: ProjectMemberDto[];
@@ -30,8 +28,9 @@ export const ProjectMembersThumbnails = ({ members, max = 3 }: Props) => {
               src={member.user?.avatar?.url ?? ''}
               size="sm"
               isBordered
+              getInitials={(name) => name.charAt(0).toUpperCase()}
+              name={member.user?.name ?? member.email}
               className="data-[hover=true]:-translate-x-0"
-              fallback={<div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>}
             />
           </Tooltip>
         ))}

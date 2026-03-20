@@ -1,7 +1,7 @@
+import { Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
 import { type Editor } from '@tiptap/react';
 import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 
-import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
 // --- Hooks ---
 import { useMenuNavigation } from '../../../hooks/use-menu-navigation';
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
@@ -18,8 +18,7 @@ import {
 // --- UI Primitives ---
 import type { ButtonProps } from '../../tiptap-ui-primitive/button';
 import { Button, ButtonGroup } from '../../tiptap-ui-primitive/button';
-import { Card, CardBody, CardItemGroup } from '../../tiptap-ui-primitive/card';
-import { Popover, PopoverContent,PopoverTrigger } from '../../tiptap-ui-primitive/popover';
+import { CardItemGroup } from '../../tiptap-ui-primitive/card';
 import { Separator } from '../../tiptap-ui-primitive/separator';
 
 export interface ColorHighlightPopoverContentProps {
@@ -35,8 +34,7 @@ export interface ColorHighlightPopoverContentProps {
 }
 
 export interface ColorHighlightPopoverProps
-  extends Omit<ButtonProps, 'type'>,
-    Pick<UseColorHighlightConfig, 'editor' | 'hideWhenUnavailable' | 'onApplied'> {
+  extends Omit<ButtonProps, 'type'>, Pick<UseColorHighlightConfig, 'editor' | 'hideWhenUnavailable' | 'onApplied'> {
   /**
    * Optional colors to use in the highlight popover.
    * If not provided, defaults to a predefined set of colors.
@@ -101,7 +99,6 @@ export function ColorHighlightPopoverContent({
   ]),
 }: ColorHighlightPopoverContentProps) {
   const { handleRemoveHighlight } = useColorHighlight({ editor });
-  const isMobile = useIsBreakpoint();
   const containerRef = useRef<HTMLDivElement>(null);
 
   const menuItems = useMemo(() => [...colors, { label: 'Remove highlight', value: 'none' }], [colors]);
@@ -121,40 +118,36 @@ export function ColorHighlightPopoverContent({
   });
 
   return (
-    <Card ref={containerRef} tabIndex={0} style={isMobile ? { boxShadow: 'none', border: 0 } : {}}>
-      <CardBody style={isMobile ? { padding: 0 } : {}}>
-        <CardItemGroup orientation="horizontal">
-          <ButtonGroup orientation="horizontal">
-            {colors.map((color, index) => (
-              <ColorHighlightButton
-                key={color.value}
-                editor={editor}
-                highlightColor={color.value}
-                tooltip={color.label}
-                aria-label={`${color.label} highlight color`}
-                tabIndex={index === selectedIndex ? 0 : -1}
-                data-highlighted={selectedIndex === index}
-              />
-            ))}
-          </ButtonGroup>
-          <Separator />
-          <ButtonGroup orientation="horizontal">
-            <Button
-              onClick={handleRemoveHighlight}
-              aria-label="Remove highlight"
-              tooltip="Remove highlight"
-              tabIndex={selectedIndex === colors.length ? 0 : -1}
-              type="button"
-              role="menuitem"
-              data-style="ghost"
-              data-highlighted={selectedIndex === colors.length}
-            >
-              <BanIcon className="tiptap-button-icon" />
-            </Button>
-          </ButtonGroup>
-        </CardItemGroup>
-      </CardBody>
-    </Card>
+    <CardItemGroup orientation="horizontal">
+      <ButtonGroup orientation="horizontal">
+        {colors.map((color, index) => (
+          <ColorHighlightButton
+            key={color.value}
+            editor={editor}
+            highlightColor={color.value}
+            tooltip={color.label}
+            aria-label={`${color.label} highlight color`}
+            tabIndex={index === selectedIndex ? 0 : -1}
+            data-highlighted={selectedIndex === index}
+          />
+        ))}
+      </ButtonGroup>
+      <Separator />
+      <ButtonGroup orientation="horizontal">
+        <Button
+          onClick={handleRemoveHighlight}
+          aria-label="Remove highlight"
+          tooltip="Remove highlight"
+          tabIndex={selectedIndex === colors.length ? 0 : -1}
+          type="button"
+          role="menuitem"
+          data-style="ghost"
+          data-highlighted={selectedIndex === colors.length}
+        >
+          <BanIcon className="tiptap-button-icon" />
+        </Button>
+      </ButtonGroup>
+    </CardItemGroup>
   );
 }
 
@@ -182,8 +175,8 @@ export function ColorHighlightPopover({
   if (!isVisible) return null;
 
   return (
-    <Popover open={isOpen} onOpenChange={setIsOpen}>
-      <PopoverTrigger asChild>
+    <Popover isOpen={isOpen} placement="bottom" onOpenChange={setIsOpen}>
+      <PopoverTrigger>
         <ColorHighlightPopoverButton
           disabled={!canColorHighlight}
           data-active-state={isActive ? 'on' : 'off'}

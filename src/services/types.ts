@@ -154,10 +154,8 @@ export interface AssetRemoveBodyDto {
   assetIds: string[];
 }
 
-export interface AssetStatusDto {
-  color: string;
-  label: string;
-  value: string;
+export interface AssetTasksDto {
+  tasks: TaskInfoDto[];
 }
 
 export interface AssetUpdatedDetails {
@@ -464,6 +462,11 @@ export interface GetProjectIdLogsQueryParams {
   userIds?: string;
 }
 
+export interface GetProjectIdTasksQueryParams {
+  contributor?: string;
+  owner?: string;
+}
+
 export interface GetProjectsQueryParams {
   search?: string;
   status?: 'all' | 'active' | 'completed' | 'archived';
@@ -573,6 +576,9 @@ export interface NotificationData {
   fileName?: string;
   projectId?: string;
   projectName?: string;
+  taskId?: string;
+  taskName?: string;
+  taskStatus?: string;
   userId?: string;
   userName?: string;
 }
@@ -597,7 +603,14 @@ export interface NotificationDto {
     | 'file_comment_resolve'
     | 'file_comment_mention'
     | 'file_new_version_uploaded'
-    | 'chat_message_unread';
+    | 'chat_message_unread'
+    | 'task_owner_assigned'
+    | 'task_contributor_assigned'
+    | 'task_status_changed'
+    | 'task_removed'
+    | 'task_comment_added'
+    | 'task_comment_reply'
+    | 'task_comment_mention';
   /**
    *
    * - Format: date-time
@@ -691,7 +704,7 @@ export interface ProjectCreatedLogDto {
 }
 
 export interface ProjectDto {
-  assetStatuses: AssetStatusDto[];
+  assetStatuses: StatusDto[];
   content: { [x in string | number]: any };
   createdAt: string;
   description: string;
@@ -700,6 +713,7 @@ export interface ProjectDto {
   members: ProjectMemberDto[];
   name: string;
   status: 'active' | 'completed' | 'archived';
+  taskStatuses: StatusDto[];
   totalFileSize: number;
   cover?: InterfaceImageDto;
   createdBy?: UserDto;
@@ -708,11 +722,12 @@ export interface ProjectDto {
 }
 
 export interface ProjectEditBodyDto {
-  assetStatuses?: AssetStatusDto[];
+  assetStatuses?: StatusDto[];
   assets?: string[];
   content?: { [x in string | number]: any };
   description?: string;
   name?: string;
+  taskStatuses?: StatusDto[];
 }
 
 export interface ProjectFileBodyDto {
@@ -803,6 +818,13 @@ export interface ProjectLogsDto {
     | ProjectMemberRemovedLogDto
     | ProjectRemovedLogDto
     | ProjectUpdatedLogDto
+    | TaskCreatedLogDto
+    | TaskUpdatedLogDto
+    | TaskRemovedLogDto
+    | TaskAssetAddedLogDto
+    | TaskAssetRemovedLogDto
+    | TaskCommentAddedLogDto
+    | TaskCommentRemovedLogDto
   )[];
   logsCount: number;
 }
@@ -915,6 +937,7 @@ export interface ProjectUpdatedDetails {
   isAssetsOrderChanged?: boolean;
   isContentChanged?: boolean;
   isCoverChanged?: boolean;
+  isTaskStatusesChanged?: boolean;
   name?: string;
   status?: 'active' | 'completed' | 'archived';
 }
@@ -1022,6 +1045,12 @@ export interface StackEditBodyDto {
   activeFileId?: string;
 }
 
+export interface StatusDto {
+  color: string;
+  label: string;
+  value: string;
+}
+
 export interface SubscriptionBodyDto {
   plan: 'creator' | 'team' | 'enterprise';
 }
@@ -1040,6 +1069,200 @@ export interface SubscriptionDto {
 
 export interface SubscriptionResponseDto {
   url: string;
+}
+
+export interface TaskAssetAddedDetails {
+  asset: AssetDetails;
+  id: string;
+  name: string;
+}
+
+export interface TaskAssetAddedLogDto {
+  createdAt: string;
+  details: TaskAssetAddedDetails;
+  id: string;
+  type: 'TASK_ASSET_ADDED';
+  user: UserDto;
+}
+
+export interface TaskAssetBodyDto {
+  assetId: string;
+}
+
+export interface TaskAssetRemovedDetails {
+  asset: AssetDetails;
+  id: string;
+  name: string;
+}
+
+export interface TaskAssetRemovedLogDto {
+  createdAt: string;
+  details: TaskAssetRemovedDetails;
+  id: string;
+  type: 'TASK_ASSET_REMOVED';
+  user: UserDto;
+}
+
+export interface TaskAssetsResponse {
+  assets: AssetFileDto[];
+}
+
+export interface TaskBodyDto {
+  name: string;
+  owner: string;
+  projectId: string;
+  content?: { [x in string | number]: any };
+  contributors?: string[];
+  description?: string;
+  status?: string;
+  visibleTo?: string[];
+}
+
+export interface TaskCommentAddedDetails {
+  comment: CommentDetails;
+  id: string;
+  name: string;
+}
+
+export interface TaskCommentAddedLogDto {
+  createdAt: string;
+  details: TaskCommentAddedDetails;
+  id: string;
+  type: 'TASK_COMMENT_ADDED';
+  user: UserDto;
+}
+
+export interface TaskCommentBodyDto {
+  content?: { [x in string | number]: any };
+  parent?: string;
+}
+
+export interface TaskCommentDto {
+  content: { [x in string | number]: any };
+  /**
+   *
+   * - Format: date-time
+   */
+  createdAt: string;
+  id: string;
+  replies: TaskCommentDto[];
+  createdBy?: UserDto;
+  parent?: string;
+}
+
+export interface TaskCommentRemovedDetails {
+  id: string;
+  name: string;
+}
+
+export interface TaskCommentRemovedLogDto {
+  createdAt: string;
+  details: TaskCommentRemovedDetails;
+  id: string;
+  type: 'TASK_COMMENT_REMOVED';
+  user: UserDto;
+}
+
+export interface TaskCommentsResponse {
+  comments: TaskCommentDto[];
+}
+
+export interface TaskCreatedDetails {
+  id: string;
+  name: string;
+}
+
+export interface TaskCreatedLogDto {
+  createdAt: string;
+  details: TaskCreatedDetails;
+  id: string;
+  type: 'TASK_CREATED';
+  user: UserDto;
+}
+
+export interface TaskDto {
+  content: { [x in string | number]: any };
+  contributors: UserDto[];
+  createdAt: string;
+  createdBy: UserDto;
+  description: string;
+  id: string;
+  isHidden: boolean;
+  name: string;
+  order: number;
+  owner: UserDto;
+  projectId: string;
+  updatedAt: string;
+  status?: string;
+  statusColor?: string;
+  statusLabel?: string;
+}
+
+export interface TaskEditBodyDto {
+  content?: { [x in string | number]: any };
+  contributors?: string[];
+  description?: string;
+  name?: string;
+  owner?: string;
+  status?: string;
+}
+
+export interface TaskInfoDto {
+  commentCount: number;
+  createdBy: UserDto;
+  id: string;
+  isHidden: boolean;
+  name: string;
+  owner: UserDto;
+  status?: string;
+  statusColor?: string;
+  statusLabel?: string;
+}
+
+export interface TaskMoveBodyDto {
+  nextTaskId?: string;
+  prevTaskId?: string;
+  status?: string;
+}
+
+export interface TaskRemovedDetails {
+  name: string;
+}
+
+export interface TaskRemovedLogDto {
+  createdAt: string;
+  details: TaskRemovedDetails;
+  id: string;
+  type: 'TASK_REMOVED';
+  user: UserDto;
+}
+
+export interface TaskUpdatedDetails {
+  id: string;
+  name: string;
+  contributors?: UserDetails[];
+  isContentChanged?: boolean;
+  owner?: UserDetails;
+  statusLabel?: string;
+}
+
+export interface TaskUpdatedLogDto {
+  createdAt: string;
+  details: TaskUpdatedDetails;
+  id: string;
+  type: 'TASK_UPDATED';
+  user: UserDto;
+}
+
+export interface TasksColumn {
+  color: string;
+  name: string;
+  tasks: TaskInfoDto[];
+  value: string;
+}
+
+export interface TasksDto {
+  columns: TasksColumn[];
 }
 
 export interface TokenBodyDto {

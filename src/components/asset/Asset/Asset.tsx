@@ -75,7 +75,6 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
           </div>
         </FileStateContextProvider>
       </ProjectUploadContextProvider>
-
       <EditProjectStatusesModal
         project={project}
         isOpen={isEditProjectStatusesModalOpen}

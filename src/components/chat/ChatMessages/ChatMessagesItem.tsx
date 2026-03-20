@@ -24,7 +24,8 @@ export const ChatMessagesItem = ({ message, shouldShowSenderName = true }: Props
           <Avatar
             size="sm"
             src={message.sender.avatar?.url}
-            fallback={<span className="select-none text-lg text-foreground-500">{message.sender.name.charAt(0)}</span>}
+            name={message.sender.name}
+            getInitials={(name) => name.charAt(0).toUpperCase()}
           />
         ) : (
           <div className="size-8" />

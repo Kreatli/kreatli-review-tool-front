@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
+import { useTaskModalVisibility } from '../../../hooks/useTaskModalVisibility';
 import { usePutNotificationId } from '../../../services/hooks';
 import { getNotifications } from '../../../services/services';
 import { NotificationDto } from '../../../services/types';
@@ -12,10 +13,13 @@ import { Icon, IconType } from '../../various/Icon';
 
 interface Props {
   notification: NotificationDto;
+  onClose?: () => void;
 }
 
-export const Notification = ({ notification }: Props) => {
+export const Notification = ({ notification, onClose }: Props) => {
   const [isRead, setIsRead] = useState(notification.isRead);
+
+  const { openTaskModal } = useTaskModalVisibility();
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -69,19 +73,19 @@ export const Notification = ({ notification }: Props) => {
     }
 
     if (notification.type === 'file_comment_added') {
-      return 'Comment added';
+      return 'File comment added';
     }
 
     if (notification.type === 'file_comment_reply') {
-      return 'Comment reply';
+      return 'File comment reply';
     }
 
     if (notification.type === 'file_comment_resolve') {
-      return 'Comment resolved';
+      return 'File comment resolved';
     }
 
     if (notification.type === 'file_comment_mention') {
-      return 'Mention in comment';
+      return 'Mention in file comment';
     }
 
     if (notification.type === 'project_member_left') {
@@ -100,12 +104,72 @@ export const Notification = ({ notification }: Props) => {
       return 'New version uploaded';
     }
 
+    if (notification.type === 'task_owner_assigned') {
+      return 'You were assigned to the task';
+    }
+
+    if (notification.type === 'task_contributor_assigned') {
+      return 'You were assigned to the task';
+    }
+
+    if (notification.type === 'task_status_changed') {
+      return 'Task status changed';
+    }
+
+    if (notification.type === 'task_removed') {
+      return 'Task removed';
+    }
+
+    if (notification.type === 'task_comment_added') {
+      return 'Task comment added';
+    }
+
+    if (notification.type === 'task_comment_reply') {
+      return 'Task comment reply';
+    }
+
+    if (notification.type === 'task_comment_mention') {
+      return 'Mention in task comment';
+    }
+
     return 'Notification';
   }, [notification.type]);
 
   const notificationDescription = useMemo(() => {
-    const { fileId, fileName, projectId, projectName, userName, commentMessage, chatId, chatName, commentId } =
-      notification.data;
+    const {
+      fileId,
+      fileName,
+      projectId,
+      projectName,
+      userName,
+      commentMessage,
+      chatId,
+      chatName,
+      commentId,
+      taskId,
+      taskName,
+      taskStatus,
+    } = notification.data;
+
+    const task = (
+      <Link
+        as="span"
+        type="button"
+        onClick={
+          taskId
+            ? () => {
+                onClose?.();
+                openTaskModal(taskId);
+              }
+            : undefined
+        }
+        size="sm"
+        className="z-10 inline cursor-pointer text-left"
+        underline="hover"
+      >
+        {taskName}
+      </Link>
+    );
 
     if (notification.type === 'file_assigned') {
       return (
@@ -309,8 +373,64 @@ export const Notification = ({ notification }: Props) => {
       );
     }
 
+    if (notification.type === 'task_owner_assigned') {
+      return (
+        <>
+          {userName} assigned you as the owner of the task {task}.
+        </>
+      );
+    }
+
+    if (notification.type === 'task_contributor_assigned') {
+      return (
+        <>
+          {userName} assigned you as a contributor to the task {task}.
+        </>
+      );
+    }
+
+    if (notification.type === 'task_status_changed') {
+      return (
+        <>
+          {userName} has changed the stage of the task {task} to "{taskStatus ?? 'Unplaced'}".
+        </>
+      );
+    }
+
+    if (notification.type === 'task_removed') {
+      return (
+        <>
+          {userName} has removed the task "{taskName}".
+        </>
+      );
+    }
+
+    if (notification.type === 'task_comment_added') {
+      return (
+        <>
+          {userName} has added a comment to the task {task}.
+        </>
+      );
+    }
+
+    if (notification.type === 'task_comment_reply') {
+      return (
+        <>
+          {userName} has replied to your comment on the task {task}.
+        </>
+      );
+    }
+
+    if (notification.type === 'task_comment_mention') {
+      return (
+        <>
+          {userName} has mentioned you in a comment on the task {task}.
+        </>
+      );
+    }
+
     return '';
-  }, [notification.data, notification.type, handleLinkClick]);
+  }, [notification.data, notification.type, onClose, openTaskModal, handleLinkClick]);
 
   const notificationIcon = useMemo((): IconType => {
     if (notification.type === 'file_assigned') {
@@ -355,6 +475,10 @@ export const Notification = ({ notification }: Props) => {
 
     if (notification.type === 'file_new_version_uploaded') {
       return 'versions';
+    }
+
+    if (notification.type.startsWith('task_')) {
+      return 'board';
     }
 
     return 'bell';

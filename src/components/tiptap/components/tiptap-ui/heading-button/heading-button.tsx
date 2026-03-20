@@ -87,6 +87,7 @@ export const HeadingButton = forwardRef<HTMLButtonElement, HeadingButtonProps>(
         aria-pressed={isActive}
         tooltip={label}
         onClick={handleClick}
+        className="w-full"
         {...buttonProps}
         ref={ref}
       >

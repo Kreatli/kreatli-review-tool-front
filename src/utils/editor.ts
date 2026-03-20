@@ -2,7 +2,11 @@
 import { computePosition, flip, shift } from '@floating-ui/react';
 import { Editor, posToDOMRect, ReactRenderer } from '@tiptap/react';
 
-import { ReviewToolEditorMentionList } from './ReviewToolEditorMentionList';
+import { EditorMentionList } from '../components/editor/EditorMentionList';
+
+/** Prefer the open dialog so the list stays inside the modal overlay (avoids outside-click dismiss). */
+const getMentionPortalParent = (editor: Editor) =>
+  editor.view.dom.closest<HTMLElement>('[role="dialog"]') ?? document.body;
 
 const updatePosition = (editor: Editor, element: HTMLElement) => {
   const virtualElement = {
@@ -11,7 +15,8 @@ const updatePosition = (editor: Editor, element: HTMLElement) => {
 
   computePosition(virtualElement, element, {
     placement: 'bottom-start',
-    strategy: 'absolute',
+    // Fixed keeps viewport-relative coords when the portal is inside a modal (not only document.body).
+    strategy: 'fixed',
     middleware: [shift(), flip()],
   }).then(({ x, y, strategy }) => {
     element.style.width = 'max-content';
@@ -21,13 +26,13 @@ const updatePosition = (editor: Editor, element: HTMLElement) => {
   });
 };
 
-export const reviewToolEditorSuggestion = {
+export const editorSuggestion = {
   render: () => {
     let component: ReactRenderer<any>;
 
     return {
       onStart: (props: any) => {
-        component = new ReactRenderer(ReviewToolEditorMentionList, {
+        component = new ReactRenderer(EditorMentionList, {
           props,
           editor: props.editor,
         });
@@ -36,9 +41,11 @@ export const reviewToolEditorSuggestion = {
           return;
         }
 
-        component.element.style.position = 'absolute';
+        component.element.style.position = 'fixed';
+        component.element.dataset.tiptapMentionList = '';
 
-        document.body.appendChild(component.element);
+        const portalParent = getMentionPortalParent(props.editor);
+        portalParent.appendChild(component.element);
 
         updatePosition(props.editor, component.element);
       },

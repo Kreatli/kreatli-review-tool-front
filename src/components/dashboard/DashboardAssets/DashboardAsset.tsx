@@ -29,7 +29,13 @@ export const DashboardAsset = ({ project, file, members }: Props) => {
           <AssetIcon fileType={file.fileType} size={24} />
         </div>
       ) : (
-        <Image src={previewUrl} className="mx-auto max-h-full" radius="none" onError={handleError} />
+        <Image
+          src={previewUrl}
+          className="mx-auto max-h-full"
+          classNames={{ wrapper: 'flex items-center' }}
+          radius="none"
+          onError={handleError}
+        />
       )}
       <div className="absolute -top-8 left-0 right-0 z-10 flex items-center gap-1 bg-foreground-50/75 p-1.5 transition-all group-hover/asset:top-0">
         <div className="relative overflow-hidden text-ellipsis whitespace-nowrap text-xs">{file.name}</div>

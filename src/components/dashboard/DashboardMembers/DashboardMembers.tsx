@@ -2,7 +2,6 @@ import { Avatar, Button, Chip, cn } from '@heroui/react';
 import NextLink from 'next/link';
 
 import { ProjectDto } from '../../../services/types';
-import { getProjectMemberLetter } from '../../../utils/shortNames';
 import { Icon } from '../../various/Icon';
 
 const STATUS_COLORS = {
@@ -38,9 +37,8 @@ export const DashboardMembers = ({ project }: Props) => {
                   src={member.user?.avatar?.url}
                   size="md"
                   className="shrink-0 border border-foreground-200"
-                  fallback={
-                    <div className="select-none text-lg text-foreground-500">{getProjectMemberLetter(member)}</div>
-                  }
+                  name={member.user?.name ?? member.email}
+                  getInitials={(name) => name.charAt(0).toUpperCase()}
                 />
                 <div className="flex flex-col overflow-hidden">
                   {member.user?.name && <div className="text-md truncate font-medium">{member.user.name}</div>}
