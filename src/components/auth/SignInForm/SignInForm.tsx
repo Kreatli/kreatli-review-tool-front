@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { getAxiosInstance } from '../../../services/config';
 import { usePostAuthSignIn, usePostAuthSsoGoogle } from '../../../services/hooks';
+import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Icon } from '../../various/Icon';
 
@@ -18,7 +19,7 @@ const DEFAULT_VALUES = {
 interface Props {
   email?: string;
   showLinks?: boolean;
-  onSuccess: () => void;
+  onSuccess: (user: UserDto) => void;
 }
 
 export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
@@ -38,10 +39,10 @@ export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
     signIn(
       { requestBody: data },
       {
-        onSuccess: ({ token }) => {
+        onSuccess: ({ token, user }) => {
           localStorage.setItem('token', token);
           getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
-          onSuccess();
+          onSuccess(user);
         },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
@@ -55,10 +56,10 @@ export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
       ssoSignIn(
         { requestBody: { token: response.access_token } },
         {
-          onSuccess: ({ token }) => {
+          onSuccess: ({ token, user }) => {
             localStorage.setItem('token', token);
             getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
-            onSuccess();
+            onSuccess(user);
           },
           onError: (error) => {
             addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });

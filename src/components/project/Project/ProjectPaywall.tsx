@@ -15,10 +15,7 @@ export const ProjectPaywall = ({ user, project }: Props) => {
   const router = useRouter();
 
   const isUserOwner = project.createdBy?.id === user.id;
-
-  const handleTrialSuccess = () => {
-    router.reload();
-  };
+  const isSafeZoneCheckerProject = project.name === 'Safe Zone Checks';
 
   return (
     <>
@@ -28,15 +25,21 @@ export const ProjectPaywall = ({ user, project }: Props) => {
         <Skeleton className="h-full w-full flex-1" />
       </div>
       {isUserOwner ? (
-        <Modal isOpen size="5xl" scrollBehavior="outside" hideCloseButton>
+        <Modal isOpen size="5xl" scrollBehavior="inside" hideCloseButton>
           <ModalContent>
             <ModalBody className="py-6">
-              <h2 className="font-sans text-2xl font-bold">Your access to this project is currently paused.</h2>
-              <p className="mb-3 text-foreground-500">
-                Your access to this project is currently paused. Upgrade your plan to restore access and keep
-                collaborating.
-              </p>
-              <PlansForm user={user} onTrialSuccess={handleTrialSuccess} />
+              <h2 className="font-sans text-2xl font-bold">
+                {isSafeZoneCheckerProject
+                  ? 'Start your free trial to get started.'
+                  : 'Your access to this project is currently paused.'}
+              </h2>
+              {!isSafeZoneCheckerProject && (
+                <p className="mb-3 text-foreground-500">
+                  Your access to this project is currently paused. Upgrade your plan to restore access and keep
+                  collaborating.
+                </p>
+              )}
+              <PlansForm user={user} />
             </ModalBody>
           </ModalContent>
         </Modal>

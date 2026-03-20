@@ -1,4 +1,5 @@
 import { plugin as engagementPlugin } from '@amplitude/engagement-browser';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
@@ -8,9 +9,23 @@ import { TaskModal } from '../../tasks/Task';
 import { AppLoader } from '../AppLoader';
 
 export const Layout = ({ children }: React.PropsWithChildren) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
   const { isSignedIn, user } = useSession();
   const isVisible = usePlansModalVisibility((state) => state.isVisible);
   const setIsVisible = usePlansModalVisibility((state) => state.setIsVisible);
+
+  useEffect(() => {
+    if (!searchParams.get('showPlansModal')) {
+      return;
+    }
+
+    setIsVisible(true);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.delete('showPlansModal');
+    router.replace(newSearchParams.size > 0 ? `${pathname}?${newSearchParams.toString()}` : pathname);
+  }, [searchParams, setIsVisible, router, pathname]);
 
   useEffect(() => {
     if (!user) {

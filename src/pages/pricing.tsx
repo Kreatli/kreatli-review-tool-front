@@ -1,4 +1,3 @@
- 
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import NextLink from 'next/link';
 
@@ -69,7 +68,7 @@ export default function PricingPage() {
   useSession();
   const title = 'Kreatli | Pricing for Video Teams';
   const description =
-    'Pricing for video teams with plans for creators, growing teams, and enterprise workflows. Start a 7-day free trial with no credit card required.';
+    'Pricing for video teams with plans for creators, growing teams, and enterprise workflows. Start a 7-day free trial.';
 
   return (
     <>
@@ -90,8 +89,8 @@ export default function PricingPage() {
             Simple, Transparent Pricing for Video Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Choose a plan and start your 7-day free trial. No credit card required. After the trial, select a paid plan
-            to continue.
+            Choose a plan and start your 7-day free trial. Cancel anytime. After the trial, selected plan will be
+            purchased.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
@@ -104,7 +103,7 @@ export default function PricingPage() {
             </div>
             <div className="flex flex-col items-center">
               <div className="font-sans text-2xl font-bold sm:text-3xl">7-Day Free Trial</div>
-              <div className="sm:text-md text-sm text-foreground-500">No Credit Card Required</div>
+              <div className="sm:text-md text-sm text-foreground-500">No cancellation fee</div>
             </div>
           </div>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -211,8 +210,8 @@ export default function PricingPage() {
                   <h3 className="font-sans text-lg font-semibold">7-Day Free Trial</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  All plans include a 7-day free trial. No credit card required. After the trial, select a paid plan to
-                  continue using the platform.
+                  All plans include a 7-day free trial. Cancel anytime. After the trial, selected plan will be
+                  purchased.
                 </p>
               </CardBody>
             </Card>

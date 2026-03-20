@@ -1,9 +1,7 @@
 import { addToast } from '@heroui/react';
-import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
-import { usePostUserStartTrial, usePostUserSubscription } from '../../../services/hooks';
-import { getUserId } from '../../../services/services';
+import { usePostUserSubscription } from '../../../services/hooks';
 import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Plan } from './Plan';
@@ -55,38 +53,17 @@ const PLANS = [
 
 interface Props {
   user: UserDto;
-  onTrialSuccess?: () => void;
 }
 
-export const PlansForm = ({ user, onTrialSuccess }: Props) => {
-  const queryClient = useQueryClient();
-
+export const PlansForm = ({ user }: Props) => {
   const [selectedPlan, setSelectedPlan] = useState<'creator' | 'team' | 'enterprise' | null>(
     user?.subscription.plan ?? null,
   );
 
   const { mutate: upgradePlan, isPending: isUpgradingPlan } = usePostUserSubscription();
-  const { mutate: startTrial, isPending: isStartingTrial } = usePostUserStartTrial();
 
   const handleUpgradePlan = (plan: 'creator' | 'team' | 'enterprise') => {
     if (!plan) return;
-
-    if (!user.subscription.hasUsedTrial) {
-      startTrial(
-        { requestBody: { plan } },
-        {
-          onSuccess: (user: UserDto) => {
-            queryClient.setQueryData([getUserId.key], user);
-            onTrialSuccess?.();
-          },
-          onError: (error) => {
-            addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
-          },
-        },
-      );
-
-      return;
-    }
 
     upgradePlan(
       {
@@ -114,7 +91,7 @@ export const PlansForm = ({ user, onTrialSuccess }: Props) => {
         <Plan
           key={id}
           isSelected={selectedPlan === id}
-          isLoading={isUpgradingPlan || isStartingTrial}
+          isLoading={isUpgradingPlan}
           isCurrent={user.subscription.plan === id && user.subscription.isActive}
           isCurrentTrial={user.subscription.plan === id && user.subscription.isTrial}
           name={name}

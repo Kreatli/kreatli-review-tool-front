@@ -52,7 +52,7 @@ const faq = [
   {
     question: 'Can I try Kreatli for free?',
     answer:
-      "Yes! All Kreatli plans include a 7-day free trial with full access to all features. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and immediately start your 7-day trial with complete access to all features and limits of that plan. There's no credit card required to start your trial, making it completely risk-free.\n\n" +
+      "Yes! All Kreatli plans include a 7-day free trial with full access to all features. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and immediately start your 7-day trial with complete access to all features and limits of that plan.\n\n" +
       "During the 7-day free trial, you'll have access to all core features including frame-accurate video review, media review and approval workflows, unlimited projects, file organization, team collaboration, guest review links, cloud storage integrations, and project management tools. This means you can fully evaluate how Kreatli compares to your current tool stack before making any financial commitment.\n\n" +
       "After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. If you don't select a plan, you'll lose access to your projects and data. Many teams use the trial period to onboard their team, run a pilot project, and see the value in consolidating their creative production tools before committing to a paid plan.",
   },
@@ -94,7 +94,7 @@ const faq = [
   {
     question: 'Is the Kreatli free trial really free?',
     answer:
-      'Yes, the Kreatli free trial is completely free with no hidden costs, no credit card required, and no automatic charges. You can sign up, use the platform for 7 days with full access to all features, and evaluate whether Kreatli meets your creative production needs - all without spending any money.\n\n' +
+      'Yes, the Kreatli free trial is completely free with no hidden costs, and no automatic charges. You can sign up, use the platform for 7 days with full access to all features, and evaluate whether Kreatli meets your creative production needs - all without spending any money.\n\n' +
       "There are no setup fees, no trial fees, and no charges of any kind during the 7-day period. The trial gives you access to the same features and capabilities you'd get with a paid subscription, allowing you to make an informed decision about whether Kreatli is right for your team.\n\n" +
       "The only requirement to continue using Kreatli after the trial is to select a paid plan. If you choose not to continue, you simply let the trial expire - no charges, no commitments, and no obligations. This makes it a truly risk-free way to experience Kreatli's creative production management platform.",
   },
@@ -137,7 +137,7 @@ const faq = [
 
 export const FaqSection = () => {
   return (
-    <section id="faq" className="flex flex-col gap-16 px-6 py-16 backdrop-blur-lg lg:py-24 lg:mt-8">
+    <section id="faq" className="flex flex-col gap-16 px-6 py-16 backdrop-blur-lg lg:mt-8 lg:py-24">
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <h2 className="text-center font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
         <Accordion variant="splitted" aria-label="Frequently asked questions">

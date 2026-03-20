@@ -7,9 +7,9 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -497,8 +497,7 @@ export default function CostCalculatorPage() {
                   Absolutely! All Kreatli plans include a 7-day free trial, giving you full access to all features of
                   your chosen plan. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and
                   immediately start your trial. The Creator plan includes unlimited projects, up to 3 members, and 500GB
-                  storage. There's no credit card required, allowing you to test the platform with real projects and see
-                  how it improves your creative production management.
+                  storage.
                 </p>
                 <p>
                   After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. You can

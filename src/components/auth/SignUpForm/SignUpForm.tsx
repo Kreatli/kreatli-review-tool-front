@@ -58,17 +58,25 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
       ssoSignUp(
         { requestBody: { token: response.access_token, sourceType } },
         {
-          onSuccess: ({ token, redirectToProjectId }) => {
+          onSuccess: ({ token, redirectToProjectId, user }) => {
             localStorage.setItem('token', token);
             getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
             onSuccess?.();
+            sendGTMEvent({ event: 'sign_up' });
 
             if (redirectToProjectId) {
               router.push(`/project/${redirectToProjectId}/assets`);
-            } else {
-              router.push('/');
+
+              return;
             }
-            sendGTMEvent({ event: 'sign_up' });
+
+            if (!user.subscription.isActive) {
+              router.push('/?showPlansModal=true');
+
+              return;
+            }
+
+            router.push('/');
           },
           onError: (error) => {
             addToast({

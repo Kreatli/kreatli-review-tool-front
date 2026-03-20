@@ -80,7 +80,7 @@ export const Subscription = ({ user }: Props) => {
       ) : (
         <div className="mb-4">
           <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true)}>
-            {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start free trial'}
+            {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start a free trial'}
           </Button>
         </div>
       )}
