@@ -4,6 +4,10 @@ import { Editor, posToDOMRect, ReactRenderer } from '@tiptap/react';
 
 import { EditorMentionList } from '../components/editor/EditorMentionList';
 
+/** Prefer the open dialog so the list stays inside the modal overlay (avoids outside-click dismiss). */
+const getMentionPortalParent = (editor: Editor) =>
+  editor.view.dom.closest<HTMLElement>('[role="dialog"]') ?? document.body;
+
 const updatePosition = (editor: Editor, element: HTMLElement) => {
   const virtualElement = {
     getBoundingClientRect: () => posToDOMRect(editor.view, editor.state.selection.from, editor.state.selection.to),
@@ -11,7 +15,8 @@ const updatePosition = (editor: Editor, element: HTMLElement) => {
 
   computePosition(virtualElement, element, {
     placement: 'bottom-start',
-    strategy: 'absolute',
+    // Fixed keeps viewport-relative coords when the portal is inside a modal (not only document.body).
+    strategy: 'fixed',
     middleware: [shift(), flip()],
   }).then(({ x, y, strategy }) => {
     element.style.width = 'max-content';
@@ -36,9 +41,11 @@ export const editorSuggestion = {
           return;
         }
 
-        component.element.style.position = 'absolute';
+        component.element.style.position = 'fixed';
+        component.element.dataset.tiptapMentionList = '';
 
-        document.body.appendChild(component.element);
+        const portalParent = getMentionPortalParent(props.editor);
+        portalParent.appendChild(component.element);
 
         updatePosition(props.editor, component.element);
       },
