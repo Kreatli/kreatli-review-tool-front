@@ -96,7 +96,6 @@ export default function Page({ story, slug }: Props) {
                 </div>
               )}
             </div>
-            <h1 className="font-sans text-3xl font-bold sm:text-4xl">{articleTitle}</h1>
             <div className="flex w-full flex-col gap-8">
               {storyState?.content.body?.map((blok) => (
                 <StoryblokComponent key={blok._uid} blok={blok} />
