@@ -48,7 +48,7 @@ export const Subscription = ({ user }: Props) => {
               )}
             </div>
             <div className="flex items-center gap-2">
-              {user.subscription.isActive && !user.subscription.isTrial && (
+              {user.subscription.isActive && (
                 <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionModalOpen(true)}>
                   Cancel subscription
                 </Button>
