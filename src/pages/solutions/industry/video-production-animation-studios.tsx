@@ -18,7 +18,7 @@ import { useSession } from '../../../hooks/useSession';
 const data = {
   title: 'Video Production & Animation Studios',
   description:
-    'Frame-accurate feedback, version control, and collaboration for video production teams. Ship more content with less chaos.',
+    'Frame-accurate feedback, version control, board-driven tasks on production stages, and collaboration for video production teams. Ship more content with less chaos.',
   painPoints: [
     'Feedback scattered across email, messages, and comments',
     'Version confusion causing rework',

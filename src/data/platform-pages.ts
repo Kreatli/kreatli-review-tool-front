@@ -101,8 +101,8 @@ export const PLATFORM_PAGES: PlatformPage[] = [
   {
     label: 'Project Orchestration',
     href: '/platform/project-orchestration',
-    description: 'Centralized project management',
-    icon: 'folder',
+    description: 'Tasks & boards on customizable project stages',
+    icon: 'board',
     section: 'Core Platform',
     order: 3,
     sitemap: {

@@ -2,10 +2,10 @@ import { ChatFeaturePreview } from './ChatFeaturePreview';
 import { CompareFeaturePreview } from './CompareFeaturePreview';
 import { Feature } from './Feature';
 import { HomeDashboardFeaturePreview } from './HomeDashboardFeaturePreview';
-import { ProjectFeaturePreview } from './ProjectFeaturePreview';
 import { ReviewToolPreview } from './ReviewToolPreview';
 import { ShareFeaturePreview } from './ShareFeaturePreview';
 import { StorageFeaturePreview } from './StorageFeaturePreview';
+import { TasksBoardFeaturePreview } from './TasksBoardFeaturePreview';
 
 export const FeaturesSection = () => {
   return (
@@ -43,14 +43,14 @@ export const FeaturesSection = () => {
             <StorageFeaturePreview />
           </Feature>
           <Feature
-            icon="upload"
-            title="Project Management Meets Reliable Media Storage"
-            description="Organize projects, assign files, and track deliverables in one workspace. Manage heavy media files without leaving your creative workflow."
+            icon="board"
+            title="Tasks & Boards on Your Project Stages"
+            description="Run board-driven tasks where each column is a project stage. Link work to media, assign owners and contributors, and track progress."
             isReversed={false}
             linkTo="/platform/project-orchestration"
-            linkText="Discover Project Orchestration"
+            linkText="Explore Project Orchestration"
           >
-            <ProjectFeaturePreview />
+            <TasksBoardFeaturePreview />
           </Feature>
           <Feature
             icon="compare"

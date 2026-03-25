@@ -13,9 +13,9 @@ export const RELATED_RESOURCES = {
   projectOrchestration: {
     title: 'Project Orchestration',
     description:
-      'Centralized project management for creative teams. Assign files, track deliverables, and coordinate your entire workflow.',
+      'Board-driven tasks on customizable project stages. Link work to media, assign owners and contributors, and track progress by column.',
     href: '/platform/project-orchestration',
-    icon: 'slides' as IconType,
+    icon: 'board' as IconType,
     buttonText: 'Learn More',
   },
   secureAssetStorage: {

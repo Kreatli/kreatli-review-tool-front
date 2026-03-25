@@ -73,11 +73,18 @@ const faqs: FAQItem[] = [
       "Kreatli provides real-time notifications for important events in your video collaboration workflow, including new comments, approval requests, project updates, and file uploads. These notifications help team members stay in sync without constantly checking the platform.\n\nNotifications are contextual and linked to specific assets and projects, so you can quickly understand what needs your attention. When someone adds a comment on a video you're working on, requests approval for a design, or uploads a new version, you'll be notified immediately.\n\nThe notification system is integrated with the video review and approval workflow, ensuring that approvals and feedback requests don't get missed. This keeps your video collaboration process moving forward efficiently, as team members and clients are promptly notified when their input is needed in the video review and approval process.",
   },
   {
+    key: 'tasks-and-boards',
+    category: 'Features',
+    question: 'How do tasks and boards work in Kreatli?',
+    answer:
+      'Tasks are individual units of work inside a project, each with one responsible person and one or more contributors. The board is a visual layer over your project stages — each column is a stage you define and order. A task\'s progress is determined by which column it sits in; there is no separate "task status" field. Tasks can link to media assets and can be created from media view, bridging review feedback directly into tracked execution. Hidden tasks stay private to the creator until unhidden.',
+  },
+  {
     key: 'vs-basic-pm-tools',
     category: 'Features',
     question: 'What can Kreatli help my creative team accomplish that basic project management tools cannot?',
     answer:
-      'Kreatli is built specifically for video collaboration, not generic task tracking. It combines asset review, visual feedback, safe zone validation, approvals, and collaboration into a single Video Collaboration & Review Platform. Unlike traditional project management tools, Kreatli is designed around how video teams actually produce, review, and deliver content.',
+      'Kreatli combines board-driven tasks tied to your project stages, frame-accurate asset review, visual feedback, safe zone validation, approvals, and collaboration into one platform. Unlike generic PM tools, tasks link directly to the media people are reviewing, stages match how production actually flows, and execution stays connected to creative assets.',
   },
   {
     key: 'vs-competitors',
@@ -91,7 +98,7 @@ const faqs: FAQItem[] = [
     category: 'Features',
     question: 'Can Kreatli replace multiple tools in my creative workflow?',
     answer:
-      'Yes. Many teams use Kreatli to reduce reliance on separate tools for task management, file sharing, review, feedback, and approval. This simplifies workflows and reduces context switching.',
+      'Yes. Many teams use Kreatli to consolidate task boards, file sharing, review, feedback, and approval into one platform. Board-driven tasks on project stages replace standalone PM tools, while media-linked execution keeps work tied to the actual assets. This simplifies workflows and reduces context switching.',
   },
   {
     key: 'approval-workflow-recommended',
@@ -127,7 +134,7 @@ const faqs: FAQItem[] = [
     category: 'Pricing',
     question: "How does Kreatli's per-user pricing work, and are there any hidden fees?",
     answer:
-      "Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. Enterprise plans have custom pricing based on your organization's needs. All plans include all core features: unlimited projects, file storage, frame-accurate video review, video review and approval workflows, project management, team collaboration, guest review links, and cloud storage integrations.\n\nUnlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes everything in the base price. There are no per-project fees, no storage overage charges, no premium feature tiers, and no setup fees. You pay only for active users, making it easy to scale up or down based on your team size. This transparent pricing model means you can accurately calculate your costs without worrying about surprise fees.\n\nThe per-user pricing model is straightforward: you're charged based on the number of active team members in your account. If you add a team member, you'll be charged for them in your next billing cycle. If you remove a team member, you'll see the cost reduction in your next billing cycle. This simplicity contrasts with complex pricing models that vary based on features, storage, or usage, making it difficult to predict total costs for your video collaboration needs.",
+      "Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. Enterprise plans have custom pricing based on your organization's needs. All plans include all core features: unlimited projects, file storage, frame-accurate video review, video review and approval workflows, board-driven tasks on project stages, project management, team collaboration, guest review links, and cloud storage integrations.\n\nUnlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes everything in the base price. There are no per-project fees, no storage overage charges, no premium feature tiers, and no setup fees. You pay only for active users, making it easy to scale up or down based on your team size. This transparent pricing model means you can accurately calculate your costs without worrying about surprise fees.\n\nThe per-user pricing model is straightforward: you're charged based on the number of active team members in your account. If you add a team member, you'll be charged for them in your next billing cycle. If you remove a team member, you'll see the cost reduction in your next billing cycle. This simplicity contrasts with complex pricing models that vary based on features, storage, or usage, making it difficult to predict total costs for your video collaboration needs.",
   },
   {
     key: 'change-plans',
@@ -141,7 +148,7 @@ const faqs: FAQItem[] = [
     category: 'Pricing',
     question: 'How does the 7-day free trial work?',
     answer:
-      "When you choose a plan (Creator, Team, or Enterprise), you'll complete secure checkout to add a payment method and start your 7-day free trial. You are not charged subscription fees during the trial.\n\nAll plans include all core features during the trial: frame-accurate video review, video review and approval workflows, file organization, team collaboration, guest review links, cloud storage integrations, and project management. This means you can fully evaluate how Kreatli compares to your current tool stack with the complete experience, not a watered-down version.\n\nAfter your 7-day trial ends, your paid subscription begins automatically unless you cancel before then. If you don't continue, you'll lose access to your projects and data. Many teams use the trial period to onboard their team, run a pilot project, and see the value in consolidating their creative production tools before committing.",
+      "When you choose a plan (Creator, Team, or Enterprise), you'll complete secure checkout to add a payment method and start your 7-day free trial. You are not charged subscription fees during the trial.\n\nAll plans include all core features during the trial: frame-accurate video review, video review and approval workflows, board-driven tasks on project stages, file organization, team collaboration, guest review links, cloud storage integrations, and project management. This means you can fully evaluate how Kreatli compares to your current tool stack with the complete experience, not a watered-down version.\n\nAfter your 7-day trial ends, your paid subscription begins automatically unless you cancel before then. If you don't continue, you'll lose access to your projects and data. Many teams use the trial period to onboard their team, run a pilot project, and see the value in consolidating their creative production tools before committing.",
   },
   {
     key: 'plan-selection',

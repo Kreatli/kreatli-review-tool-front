@@ -112,12 +112,12 @@ const data = {
     {
       question: 'What is video collaboration for video teams?',
       answer:
-        "Video collaboration means managing work around the actual video files—videos, images, and related assets. Unlike generic project management that focuses on abstract tasks, video collaboration tracks status, ownership, and approvals directly on files and versions. Producers see what's in progress, blocked, or approved at any time.",
+        "Video collaboration means managing work around actual video files—videos, images, and related assets. In Kreatli, review and approval status lives on files and versions, while execution uses board-driven tasks on customizable project stages. Producers see both asset state (approved, changes requested) and pipeline progress (which stage each task is in) at a glance.",
     },
     {
       question: 'How does production management differ from project management?',
       answer:
-        'Video collaboration in Kreatli is file-centric, not task-centric. Instead of managing abstract tasks, you manage work around the actual video files. Every file, version, comment, and approval connects to collaboration status. Tasks link directly to files and versions, and approvals automatically move work forward.',
+        'Kreatli keeps review file-centric—comments, approvals, and versions stay on the asset. Execution uses board-driven tasks: each project has customizable ordered stages that become board columns, and a task\'s progress is the column it sits in. Tasks can link to media so feedback flows into tracked work. There is no separate "task status" — stages are the single source of truth.',
     },
     {
       question: 'What is video collaboration software?',
@@ -132,7 +132,7 @@ const data = {
     {
       question: 'Can I track tasks and ownership in Kreatli?',
       answer:
-        "Yes. Tasks in Kreatli link directly to files and versions, so you always know what work relates to which asset. Assign ownership to team members and see who's responsible for each file. Collaboration status shows what's in progress, blocked, or approved.",
+        "Yes. Each task has one responsible person (accountable owner) and one or more contributors. Tasks can link to media assets and sit on a board where columns represent your project stages. Move tasks between columns to represent progress. You can also create tasks from a media view, turning review feedback directly into tracked execution.",
     },
     {
       question: 'How does Kreatli prevent tool sprawl for production teams?',
@@ -167,7 +167,7 @@ const data = {
     {
       question: 'How is video collaboration different from project management?',
       answer:
-        "Video collaboration focuses on managing work around actual video files and assets, while project management typically focuses on abstract tasks and timelines. Kreatli's video collaboration tracks status, ownership, and approvals directly on files and versions, ensuring every task and approval is connected to the actual video work.",
+        "Video collaboration in Kreatli keeps assets at the center: review, approvals, and versions live on files. Execution uses board-driven tasks on project stages—columns you customize to match your real pipeline. Tasks can link to media, so feedback becomes tracked work without leaving the context of the files your team is reviewing.",
     },
   ],
 };

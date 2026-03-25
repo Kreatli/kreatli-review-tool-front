@@ -132,7 +132,7 @@ const data = {
     {
       question: 'What happens after a client approves a version?',
       answer:
-        'When a client approves a version in Kreatli, the approved version is clearly marked and locked to prevent accidental changes, the production status updates to show the file is approved, and the approval is permanently recorded in the approval history. Producers see the approval immediately through real-time notifications, and the project dashboard reflects the updated status. This ensures everyone on the team knows the file has been approved and can proceed with next steps.',
+        'When a client approves a version in Kreatli, the approved version is clearly marked and locked to prevent accidental changes, and the approval is permanently recorded in the approval history. Producers see the approval immediately through real-time notifications. If you have tasks on the board linked to this media, you can then move the task to the next stage column to reflect that work has progressed. Approval lives on the file version; execution progress lives on the board — giving you visibility into both.',
     },
     {
       question: 'Can I require multiple approvers or set approval order?',

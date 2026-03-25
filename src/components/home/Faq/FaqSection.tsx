@@ -4,8 +4,8 @@ const faq = [
   {
     question: 'What exactly is Kreatli?',
     answer:
-      'Kreatli is a Video Collaboration & Review Platform designed specifically for creative teams, content creators, and digital agencies. It combines video review and collaboration, project management, media approval workflows, file organization, and team communication into one unified platform.\n\n' +
-      'Unlike juggling multiple tools like Google Drive for storage, Frame.io for video review, Slack for communication, and separate project management software, Kreatli brings everything into one organized space. The platform helps you manage your entire video production workflow with features like frame-accurate video review and approval, intuitive file organization, live collaboration tools, and powerful storage solutions.\n\n' +
+      'Kreatli is a Video Collaboration & Review Platform designed specifically for creative teams, content creators, and digital agencies. It combines video review and collaboration, board-driven tasks on customizable project stages, media approval workflows, file organization, and team communication into one unified platform.\n\n' +
+      'Unlike juggling multiple tools like Google Drive for storage, Frame.io for video review, Slack for communication, and separate project management software, Kreatli brings everything into one organized space. The platform helps you manage your entire video production workflow with features like frame-accurate video review and approval, tasks and boards where stages define progress, intuitive file organization, live collaboration tools, and powerful storage solutions.\n\n' +
       "Kreatli is purpose-built for video collaboration and creative production workflows, meaning every feature is designed with the needs of video producers, designers, agencies, and content teams in mind. Whether you're managing video production, design projects, or marketing campaigns, Kreatli streamlines the process from initial planning through final delivery and client approval.",
   },
   {

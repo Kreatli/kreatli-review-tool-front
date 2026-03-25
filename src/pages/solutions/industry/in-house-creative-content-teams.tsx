@@ -18,7 +18,7 @@ import { useSession } from '../../../hooks/useSession';
 const data = {
   title: 'In-House Creative & Content Teams',
   description:
-    'Streamline brand asset management, campaign production, and stakeholder approvals. Collaborate with external agencies while maintaining brand consistency.',
+    'Streamline brand asset management, campaign production, and stakeholder approvals. Track execution on stage-based task boards and collaborate with external agencies while maintaining brand consistency.',
   painPoints: [
     'Brand assets scattered across platforms',
     'Feedback lost in email threads and Slack',

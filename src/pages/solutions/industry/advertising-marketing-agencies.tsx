@@ -18,7 +18,7 @@ import { useSession } from '../../../hooks/useSession';
 const data = {
   title: 'Advertising & Marketing Agencies',
   description:
-    'Streamline campaign production with frame-accurate video review, asset-linked feedback, and no-signup client links.',
+    'Streamline campaign production with frame-accurate video review, board-driven tasks on project stages, asset-linked feedback, and no-signup client links.',
   painPoints: [
     'Feedback scattered across email, Slack, Frame.io',
     'Version confusion causing rework',

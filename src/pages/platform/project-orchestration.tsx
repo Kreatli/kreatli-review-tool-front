@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { HomeDashboardFeaturePreview } from '../../components/home/Features/HomeDashboardFeaturePreview';
-import { ProjectFeaturePreview } from '../../components/home/Features/ProjectFeaturePreview';
+import { TasksBoardFeaturePreview } from '../../components/home/Features/TasksBoardFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -24,54 +24,54 @@ import { useSession } from '../../hooks/useSession';
 
 const faqs = [
   {
-    question: 'What is project orchestration in video collaboration?',
+    question: 'What are tasks and boards in Kreatli?',
     answer:
-      'Project orchestration is the centralized management and coordination of all aspects of video collaboration projects. In Kreatli, project orchestration combines project organization, file assignment, status tracking, team coordination, and video storage in one platform. Instead of managing projects across multiple tools (project management software, file storage, communication apps), everything is orchestrated from one centralized dashboard. This ensures all team members, files, conversations, and approvals stay organized within each project context.',
+      'Tasks are individual units of work inside a project. Each task has a name, one responsible person (accountable), and one or more contributors (executing). It can also carry a description and link to media assets. The board is not a separate product — it is a visual layer over your project stages. Each column on the board represents a stage you define and order. A task\'s progress is determined entirely by which stage column it sits in; there is no second "task status" field.',
   },
   {
-    question: 'How do I assign files to team members in Kreatli?',
+    question: 'How do project stages work as board columns?',
     answer:
-      "In Kreatli, you can assign files directly to team members within each project. When you assign a file, the assigned team member receives a notification and can see all files assigned to them in their dashboard. You can track who's working on what, see the status of all deliverables, and reassign files as needed. File assignments are visible to the entire team, so everyone knows who's responsible for each deliverable. This eliminates confusion about ownership and ensures nothing falls through the cracks.",
+      'Every project in Kreatli has ordered, fully customizable stages — for example Briefing, Production, Review, Delivered. These stages appear as columns on the board. Moving a task from one column to another updates its project stage and represents progress. Reordering tasks within the same column only changes their position, not their stage. Stages are the single source of truth for where any task stands.',
   },
   {
-    question: 'How does status tracking work for video projects?',
+    question: 'How do I create tasks?',
     answer:
-      "Kreatli's status tracking lets you set custom statuses for files and projects (e.g., in production, pending review, approved, blocked). You can see the status of all deliverables at a glance in the project dashboard. Status changes are tracked with timestamps and user information, creating a clear audit trail. You can filter files by status to quickly see what needs attention, what's in review, and what's been approved. This gives you complete visibility into project progress without switching between multiple tools.",
+      'Tasks can be created from three places: from the board (stage is pre-selected), from a media view (media is automatically linked to the task), or from the task modal (no stage yet — the task stays off the board as a draft). Tasks without a stage are not visible on the board until you place them in a column.',
   },
   {
-    question: 'Can I manage multiple projects simultaneously in Kreatli?',
+    question: 'How do tasks connect to media and review?',
     answer:
-      'Yes. Kreatli is designed to handle multiple projects simultaneously. Each project has its own workspace with files, conversations, team members, and activity tracking. The centralized dashboard shows an overview of all your projects, making it easy to see the status of each one. You can organize projects by client, campaign, production type, or any other structure that fits your workflow. This is essential for video teams managing multiple client projects or campaigns at the same time.',
+      'Tasks can link to one or multiple media assets. You can also create a task directly from the media view, which pre-links the asset. This bridges review and execution: feedback on a file becomes a task, the task appears on the board, and moving it between stages tracks progress — all while staying connected to the original media.',
   },
   {
-    question: 'How does project orchestration differ from generic project management tools?',
+    question: 'What are hidden tasks?',
     answer:
-      "Kreatli's project orchestration is built specifically for video collaboration workflows, not adapted from generic project management tools. It tracks status and ownership directly on video files, not just tasks. Asset-linked conversations ensure feedback stays with files. The platform understands video collaboration workflows like version control, frame-accurate video review, and multi-stakeholder approvals. Unlike project management tools that treat video files as attachments, Kreatli treats files as the primary focus, with project organization, conversations, and approvals built around them.",
+      'When you mark a task as hidden, it is visible only to you — the creator. Other project members cannot see it, search for it, or receive notifications about it. No activity logs are created while it is hidden. When you unhide a task, it becomes visible to all project members and is treated as newly introduced: notifications fire and an activity entry is created at that point.',
   },
   {
-    question: 'How do I track deliverables across multiple projects?',
+    question: 'When do notifications fire for tasks?',
     answer:
-      "Kreatli's centralized dashboard provides visibility across all your projects. You can see which deliverables are pending, in review, or approved across all projects in one view. The dashboard shows project status, recent activity, pending approvals, and file updates. You can filter by project, status, assignee, or file type to quickly find what you need. This eliminates the need to check multiple platforms or spreadsheets to understand the status of deliverables across different projects.",
+      'Notifications are triggered when a visible task is created, when a task moves between stages, when the responsible person or contributors change, and when a hidden task is unhidden. Notifications are NOT triggered when a task is hidden, or when a hidden task is edited — the team only learns about it when you choose to unhide it.',
   },
   {
-    question: 'Can I organize projects by client or campaign?',
+    question: 'What is the difference between task stages and file approval status?',
     answer:
-      'Yes. Kreatli\'s project organization is flexible and allows you to structure projects however fits your workflow. You can create projects for different clients, campaigns, productions, or any other organizational structure. Each project contains all related files, conversations, team members, and activity. You can organize projects by client (e.g., "Client A - Q4 Campaign"), by campaign type (e.g., "Social Media Campaign - Spring"), or by production (e.g., "Video Series - Episode 1"). This flexibility makes Kreatli suitable for agencies, in-house teams, and production studios with different organizational needs.',
+      'They serve different purposes. File approval status (e.g. approved, changes requested) tracks what happened on a specific asset version during review. Task stages track execution progress through your production pipeline. A task can link to a file that is under review while the task itself sits in a "Production" stage. Together they give you visibility into both the creative outcome and the work that produced it.',
   },
   {
-    question: 'How does team coordination work in project orchestration?',
+    question: 'Can I manage multiple projects with boards simultaneously?',
     answer:
-      "Team coordination in Kreatli happens through project-tied conversations, asset-linked comments, file assignments, and real-time collaboration. All team communication stays within the project context, ensuring everyone has access to relevant discussions. File assignments make it clear who's responsible for what. Status tracking shows the progress of all deliverables. Real-time notifications keep team members updated on comments, approvals, and status changes. This eliminates the confusion of managing coordination across multiple tools and ensures everyone stays in sync.",
+      'Yes. Every project has its own set of customizable stages and its own board. The centralized dashboard surfaces activity across all projects, so you can manage multiple campaigns, clients, or productions from one place without losing context.',
   },
   {
-    question: 'Is project orchestration suitable for large-scale productions?',
+    question: 'How does Kreatli differ from generic project management tools?',
     answer:
-      "Yes. Kreatli's project orchestration handles large-scale productions with hundreds of files, multiple team members, and complex approval workflows. The platform supports organizing files by folders, status, type, and custom tags within each project. You can track the status of every deliverable, assign files to specific team members, and maintain complete version history. The centralized dashboard provides visibility into large projects without overwhelming the interface. Many production studios use Kreatli to orchestrate series with 50+ episodes, campaigns with hundreds of assets, and multi-phase productions.",
+      'Kreatli is built for creative and video workflows: frame-accurate review, versioned media, guest approval links, and storage for heavy files. Tasks and boards sit on top of that creative context — stages match how production actually flows, and tasks link directly to the media people are reviewing. Generic PM tools rarely tie execution this tightly to creative assets.',
   },
   {
-    question: 'How does project orchestration help with client deliverables?',
+    question: 'Who are "responsible" and "contributors" on a task?',
     answer:
-      "Project orchestration in Kreatli helps you track and deliver client work efficiently. You can organize all client deliverables within dedicated projects, track their status (in production, pending review, approved), and see what's ready for delivery. File assignments ensure team members know what they're responsible for. Status tracking shows which deliverables are complete and which need attention. The centralized dashboard gives you a clear view of all client work, making it easy to provide status updates and ensure nothing is missed. Client review links allow clients to review and approve deliverables directly in the platform.",
+      'Every task has exactly one responsible person — the accountable owner. It also has one or more contributors — the people executing the work. This separation makes ownership clear: one person is on the hook for delivery, while multiple people can collaborate on getting it done.',
   },
 ];
 
@@ -82,29 +82,29 @@ export default function ProjectOrchestrationPage() {
   return (
     <>
       <Head>
-        <title>Kreatli | Project Orchestration – Centralized Video Collaboration</title>
+        <title>Kreatli | Project Orchestration — Tasks, Boards & Media Collaboration</title>
         <meta
           name="description"
-          content="Kreatli's Project Orchestration provides centralized project management, status tracking, and team coordination for video collaboration workflows. Manage all your video projects from one dashboard."
+          content="Orchestrate creative projects with board-driven tasks. Customizable project stages as columns, media-linked work items, responsible owners and contributors — all inside your video collaboration workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:url" content="https://kreatli.com/platform/project-orchestration" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
+        <meta property="og:title" content="Kreatli | Project Orchestration — Tasks, Boards & Media Collaboration" />
         <meta
           property="og:description"
-          content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
+          content="Board-driven tasks on customizable project stages. Link work to media, assign owners and contributors, and track progress by moving tasks between columns."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
+        <meta property="og:image:alt" content="Kreatli | Project Orchestration — Tasks, Boards & Media Collaboration" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Project Orchestration – Centralized Video Collaboration" />
+        <meta name="twitter:title" content="Kreatli | Project Orchestration — Tasks, Boards & Media Collaboration" />
         <meta
           name="twitter:description"
-          content="Orchestrate your video projects with centralized project management, status tracking, and team coordination. Everything in one place for streamlined video collaboration."
+          content="Board-driven tasks on customizable project stages. Link work to media, assign owners and contributors, and track progress by moving tasks between columns."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -118,15 +118,15 @@ export default function ProjectOrchestrationPage() {
       <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
-      {/* Hero Section */}
+
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
-            Project Orchestration – Centralized Video Collaboration
+          <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">
+            Project Orchestration — Tasks, Boards & Media in One Workspace
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Assign files, track deliverables, and share heavy video files securely. Everything you need to orchestrate
-            your video projects in one place.
+            Run board-driven tasks on customizable project stages. Link work to media assets, assign clear owners and
+            contributors, and track progress.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -146,41 +146,37 @@ export default function ProjectOrchestrationPage() {
         </div>
       </section>
 
-      {/* Project Management Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Project Management Meets Reliable Media Storage
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Tasks & Boards</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Assign files, track deliverables, and share heavy media securely in one workspace.
+              Each column is a project stage you customize. Drag tasks between columns to update progress.
             </p>
           </div>
-          <ProjectFeaturePreview />
+          <TasksBoardFeaturePreview />
         </div>
       </section>
 
-      {/* Centralized Dashboard Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Centralized Project Dashboard</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Everything you need in one place—project overview, media files, team chat, and activity tracking.
+              Project overview, media files, team chat, and activity — all in one place so nothing lives in a silo.
             </p>
           </div>
           <HomeDashboardFeaturePreview />
         </div>
       </section>
 
-      {/* Features Grid */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Project Orchestration Features</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Orchestration Capabilities</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Built specifically for video collaboration workflows with powerful project management capabilities.
+              Built for creative and video production workflows — stages as truth, media-linked execution, and clear
+              accountability.
             </p>
           </div>
 
@@ -189,13 +185,13 @@ export default function ProjectOrchestrationPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="folder" size={20} className="text-primary" />
+                    <Icon icon="board" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Project Organization</h3>
+                  <h3 className="font-sans text-lg font-semibold">Stages as Progress</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Organize files by project, status, type, and more. Find what you need instantly with powerful
-                  filtering.
+                  Define ordered project stages that become board columns. Moving a task between columns is how you
+                  represent progress — no secondary status system.
                 </p>
               </CardBody>
             </Card>
@@ -204,12 +200,13 @@ export default function ProjectOrchestrationPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="user" size={20} className="text-primary" />
+                    <Icon icon="images" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">File Assignment</h3>
+                  <h3 className="font-sans text-lg font-semibold">Media-Linked Tasks</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Assign files to team members, track who's working on what, and see the status of all deliverables.
+                  Link tasks to one or multiple assets. Create tasks from media view to bridge review feedback directly
+                  into tracked execution on the board.
                 </p>
               </CardBody>
             </Card>
@@ -218,13 +215,43 @@ export default function ProjectOrchestrationPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="checkCircle" size={20} className="text-primary" />
+                    <Icon icon="userPlus" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Status Tracking</h3>
+                  <h3 className="font-sans text-lg font-semibold">Responsible & Contributors</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Track project status and progress with custom statuses. See what's in review, approved, and needs
-                  attention.
+                  Every task has one accountable owner and one or more contributors. Roles are explicit so nothing falls
+                  through the cracks.
+                </p>
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody className="p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="hide" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Hidden Tasks</h3>
+                </div>
+                <p className="text-sm text-foreground-500">
+                  Keep draft work private. Hidden tasks are visible only to you — no notifications, no activity logs.
+                  Unhide when you are ready for the team to see it.
+                </p>
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody className="p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="bell" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Notifications When It Matters</h3>
+                </div>
+                <p className="text-sm text-foreground-500">
+                  Notifications fire for visible creates, stage moves, ownership changes, and unhides. Hidden edits stay
+                  silent — the team only learns when you choose.
                 </p>
               </CardBody>
             </Card>
@@ -238,36 +265,8 @@ export default function ProjectOrchestrationPage() {
                   <h3 className="font-sans text-lg font-semibold">Centralized Dashboard</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  View all your projects, files, conversations, and activity from one centralized dashboard.
-                </p>
-              </CardBody>
-            </Card>
-
-            <Card>
-              <CardBody className="p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="group" size={20} className="text-primary" />
-                  </div>
-                  <h3 className="font-sans text-lg font-semibold">Team Coordination</h3>
-                </div>
-                <p className="text-sm text-foreground-500">
-                  Coordinate with your team through project-tied chats, asset-linked comments, and real-time
-                  collaboration.
-                </p>
-              </CardBody>
-            </Card>
-
-            <Card>
-              <CardBody className="p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="bell" size={20} className="text-primary" />
-                  </div>
-                  <h3 className="font-sans text-lg font-semibold">Activity Tracking</h3>
-                </div>
-                <p className="text-sm text-foreground-500">
-                  See all project activity in one place—file uploads, comments, approvals, and status changes.
+                  See all projects, tasks, media, conversations, and activity from one dashboard. Manage multiple
+                  campaigns without losing context.
                 </p>
               </CardBody>
             </Card>
@@ -275,14 +274,12 @@ export default function ProjectOrchestrationPage() {
         </div>
       </section>
 
-      {/* Free Tools Section */}
       <MoreFreeToolsSection
         title="Free Tools & Resources"
         description="Access our free calculators and tools to optimize your creative workflow."
         tools={getFreeToolsForPlatform('/platform/project-orchestration')}
       />
 
-      {/* See How It Works Section */}
       <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
@@ -291,13 +288,12 @@ export default function ProjectOrchestrationPage() {
 
       <PricingSection />
 
-      {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about Kreatli's project orchestration and centralized video collaboration.
+              Everything you need to know about tasks, boards, stages, and project orchestration in Kreatli.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -314,27 +310,25 @@ export default function ProjectOrchestrationPage() {
           <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-4 text-center">
             <h3 className="font-sans text-xl font-bold">Still Have Questions?</h3>
             <p className="text-foreground-500">
-              If you didn't find the answer you were looking for, feel free to contact our support team at{' '}
+              Contact our support team at{' '}
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how Kreatli's project orchestration can help your specific workflow.
+              to learn how tasks, boards, and project orchestration can fit your workflow.
             </p>
           </div>
         </div>
       </section>
 
-      {/* More Resources Section */}
       <RelatedResourcesSection
         resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'reviewApproval'])}
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />
 
-      {/* CTA Section */}
       <CTASection
         title="Ready to Orchestrate Your Projects?"
-        description="Experience centralized project management designed for video teams. Streamline your workflow."
+        description="Board-driven tasks, media-linked execution, and creative review in one workspace. Start your 7-day trial."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />
