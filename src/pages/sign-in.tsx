@@ -6,7 +6,6 @@ import React from 'react';
 import { SignInForm } from '../components/auth/SignInForm';
 import { StartPageLayout } from '../components/layout/StartPageLayout';
 import { useSession } from '../hooks/useSession';
-import { UserDto } from '../services/types';
 
 export default function SignIn() {
   const router = useRouter();
@@ -19,17 +18,11 @@ export default function SignIn() {
     }
   }, [isSignedIn, router]);
 
-  const handleSuccess = (user: UserDto) => {
+  const handleSuccess = () => {
     const redirectToProjectId = searchParams.get('redirectToProjectId');
 
     if (redirectToProjectId) {
       router.push(`/project/${redirectToProjectId}/assets`);
-
-      return;
-    }
-
-    if (!user.subscription.isActive) {
-      router.push('/?showPlansModal=true');
 
       return;
     }
