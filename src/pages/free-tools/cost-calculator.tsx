@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Alert, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 
@@ -495,14 +496,14 @@ export default function CostCalculatorPage() {
               <div className="space-y-3 text-foreground-500">
                 <p>
                   Absolutely! All Kreatli plans include a 7-day free trial, giving you full access to all features of
-                  your chosen plan. When you sign up, you'll choose a plan (Creator, Team, or Enterprise) and
-                  immediately start your trial. The Creator plan includes unlimited projects, up to 3 members, and 500GB
-                  storage.
+                  your chosen plan. To start the trial, you'll choose a plan (Creator, Team, or Enterprise) and complete
+                  secure checkout to add a payment method. You are not charged subscription fees during the trial. The
+                  Creator plan includes unlimited projects, up to 3 members, and 500GB storage.
                 </p>
                 <p>
-                  After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. You can
-                  also book a personalized demo to see how Kreatli would work for your specific workflow, review your
-                  current tool usage, and get recommendations on consolidation strategies.
+                  After your 7-day trial ends, your paid subscription begins automatically unless you cancel before
+                  then. You can also book a personalized demo to see how Kreatli would work for your specific workflow,
+                  review your current tool usage, and get recommendations on consolidation strategies.
                 </p>
                 <p>
                   During the transition, our team provides migration assistance to help you move files and projects to

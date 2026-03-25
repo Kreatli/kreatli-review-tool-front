@@ -704,11 +704,12 @@ export default function PlatformPage() {
             Ready to streamline your video collaboration workflow?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Start using Kreatli today and experience the difference of a platform built specifically for video teams.
+            Start your 7-day trial and experience the difference of a platform built specifically for video teams. Add a
+            payment method at checkout; no charge during the trial period.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"

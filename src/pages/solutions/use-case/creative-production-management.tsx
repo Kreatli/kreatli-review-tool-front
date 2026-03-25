@@ -192,7 +192,7 @@ export default function CreativeProductionManagementPage() {
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.intro}</p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"
@@ -388,7 +388,7 @@ export default function CreativeProductionManagementPage() {
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"
