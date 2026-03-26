@@ -8,13 +8,15 @@ import { Board } from '../../../components/tasks/Board';
 import { BoardColumnsModal } from '../../../components/tasks/Board/BoardColumnsModal';
 import { BoardFilters, BoardFiltersType } from '../../../components/tasks/Board/BoardFilters';
 import { BoardSkeleton } from '../../../components/tasks/Board/BoardSkeleton';
+import { NewTaskModal } from '../../../components/tasks/Task/NewTaskModal';
 import { EmptyState } from '../../../components/various/EmptyState';
 import { Icon } from '../../../components/various/Icon';
-import { useGetProjectIdTasks } from '../../../services/hooks';
+import { useGetProjectIdTasksBoard } from '../../../services/hooks';
 
 export default function TasksPage() {
   const { id } = useParams<{ id: string }>();
   const [isColumnsModalVisible, setIsColumnsModalVisible] = useState(false);
+  const [isNewTaskModalVisible, setIsNewTaskModalVisible] = useState(false);
 
   const [filters, setFilters] = useState<BoardFiltersType>({});
 
@@ -23,7 +25,7 @@ export default function TasksPage() {
     isPending,
     isError,
     refetch,
-  } = useGetProjectIdTasks(id, {
+  } = useGetProjectIdTasksBoard(id, {
     contributor: filters.contributor,
     owner: filters.owner,
   });
@@ -51,7 +53,12 @@ export default function TasksPage() {
       </Head>
       <div className="flex max-h-[calc(100vh-64px)] flex-1 flex-col gap-3 overflow-hidden">
         <div className="flex items-center justify-between gap-2 p-3 px-3 pb-0 sm:px-4">
-          <h2 className="text-2xl font-semibold">Tasks</h2>
+          <div className="flex items-center gap-1">
+            <h2 className="text-2xl font-semibold">Tasks</h2>
+            <Button size="sm" variant="light" radius="full" isIconOnly onClick={() => setIsNewTaskModalVisible(true)}>
+              <Icon icon="plus" size={16} />
+            </Button>
+          </div>
           <div className="flex items-center gap-2">
             <BoardFilters projectId={id} defaultFilters={filters} onFiltersChange={setFilters} />
             <Button
@@ -69,6 +76,12 @@ export default function TasksPage() {
         projectId={id}
         isOpen={isColumnsModalVisible}
         onClose={() => setIsColumnsModalVisible(false)}
+      />
+      <NewTaskModal
+        projectId={id}
+        status={id}
+        isVisible={isNewTaskModalVisible}
+        onClose={() => setIsNewTaskModalVisible(false)}
       />
     </>
   );

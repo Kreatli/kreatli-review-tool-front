@@ -24,7 +24,13 @@ interface Props {
   enableHoverDraw?: boolean;
 }
 
-export const ReviewToolCanvas = ({ shapes, onShapesChange, customVideoUrl, fileType, enableHoverDraw = false }: Props) => {
+export const ReviewToolCanvas = ({
+  shapes,
+  onShapesChange,
+  customVideoUrl,
+  fileType,
+  enableHoverDraw = false,
+}: Props) => {
   const fileRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const isDrawing = useRef(false);
@@ -55,8 +61,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange, customVideoUrl, fileT
       if (fileType) {
         setIsImage(fileType === 'image');
       } else {
-        const isImg =
-          customVideoUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i) || customVideoUrl.startsWith('data:image');
+        const isImg = customVideoUrl.match(/\.(jpg|jpeg|png|gif|webp)$/i) || customVideoUrl.startsWith('data:image');
         setIsImage(!!isImg);
       }
     } else {
@@ -337,11 +342,7 @@ export const ReviewToolCanvas = ({ shapes, onShapesChange, customVideoUrl, fileT
           className="absolute bottom-4 left-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/70 backdrop-blur-sm transition-all hover:bg-black/90 dark:bg-black/80 dark:hover:bg-black/90"
           aria-label={isPlaying ? 'Pause video' : 'Play video'}
         >
-          <Icon
-            icon={isPlaying ? 'pause' : 'play'}
-            size={24}
-            className="text-white dark:text-foreground-100"
-          />
+          <Icon icon={isPlaying ? 'pause' : 'play'} size={24} className="text-white dark:text-foreground-100" />
         </button>
       )}
       <Stage

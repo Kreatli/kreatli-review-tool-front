@@ -28,6 +28,12 @@ const ITEMS = [
     icon: 'board' as IconType,
   },
   {
+    key: 'deliverables',
+    url: 'deliverables',
+    label: 'Deliverables',
+    icon: 'box' as IconType,
+  },
+  {
     key: 'chat',
     url: 'chat',
     label: 'Chat',
@@ -61,6 +67,10 @@ interface Props {
 
 export const ProjectSidebar = ({ project, isLoading = false }: Props) => {
   const router = useRouter();
+
+  const items = ITEMS.filter(
+    (item) => item.key !== 'deliverables' || localStorage.getItem('showDeliverables') === 'true',
+  );
 
   const [selectedKey, setSelectedKey] = useState<string>(() => {
     const firstSlug = router.pathname.split('/')[3];
@@ -113,7 +123,7 @@ export const ProjectSidebar = ({ project, isLoading = false }: Props) => {
           className="pb-px"
           hideSelectedIcon
         >
-          {ITEMS.map((item) => (
+          {items.map((item) => (
             <ListboxItem
               key={item.key}
               startContent={<Icon icon={item.icon} size={20} />}

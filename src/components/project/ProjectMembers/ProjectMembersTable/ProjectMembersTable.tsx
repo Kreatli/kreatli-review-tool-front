@@ -44,10 +44,9 @@ export const ProjectMembersTable = ({ members, isLoading, isEditable = false, on
   return (
     <Table removeWrapper>
       <TableHeader>
-        <TableColumn width="1"> </TableColumn>
-        <TableColumn>NAME</TableColumn>
-        <TableColumn>INVITATION DATE</TableColumn>
-        <TableColumn>STATUS</TableColumn>
+        <TableColumn>Name</TableColumn>
+        <TableColumn>Invitation date</TableColumn>
+        <TableColumn>Status</TableColumn>
         <TableColumn align="end" width="1">
           {isLoading && <Spinner size="sm" color="current" />}
         </TableColumn>
@@ -56,17 +55,17 @@ export const ProjectMembersTable = ({ members, isLoading, isEditable = false, on
         {members.map((member) => (
           <TableRow key={member.id}>
             <TableCell>
-              <Avatar
-                src={member.user?.avatar?.url}
-                size="sm"
-                isBordered
-                getInitials={(name) => name.charAt(0).toUpperCase()}
-                name={member.user?.name ?? member.email}
-              />
-            </TableCell>
-            <TableCell>
-              <div className="text-medium font-semibold">{member.user?.name}</div>
-              <div className="text-foreground-500">{member.email}</div>
+              <div className="flex items-center gap-3">
+                <Avatar
+                  src={member.user?.avatar?.url}
+                  getInitials={(name) => name.charAt(0).toUpperCase()}
+                  name={member.user?.name ?? member.email}
+                />
+                <div className="flex flex-col">
+                  <div className="text-medium font-semibold">{member.user?.name}</div>
+                  <div className="text-foreground-500">{member.email}</div>
+                </div>
+              </div>
             </TableCell>
             <TableCell>{formatFullDate(member.invitedAt)}</TableCell>
             <TableCell>

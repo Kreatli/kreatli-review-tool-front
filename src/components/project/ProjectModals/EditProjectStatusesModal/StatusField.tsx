@@ -5,8 +5,8 @@ import { useController, useFormContext } from 'react-hook-form';
 
 import { ProjectDto } from '../../../../services/types';
 import { Icon } from '../../../various/Icon';
-import { StatusColorDot } from './StatusColorDot';
-import { StatusColorPicker } from './StatusColorPicker';
+import { StatusColorDot } from '../../../various/StatusColorPicker/StatusColorDot';
+import { StatusColorPicker } from '../../../various/StatusColorPicker/StatusColorPicker';
 
 interface Props {
   value: string;

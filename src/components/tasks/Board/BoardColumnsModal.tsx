@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
 import { usePutProjectId } from '../../../services/hooks';
-import { getProjectId, getProjectIdTasks } from '../../../services/services';
+import { getProjectId, getProjectIdTasksBoard } from '../../../services/services';
 import { ProjectDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { BoardColumnsForm } from './BoardColumnsForm';
@@ -39,7 +39,7 @@ export const BoardColumnsModal = ({ projectId, isOpen, onClose }: Props) => {
       {
         onSuccess: async (data) => {
           queryClient.setQueryData([getProjectId.key, project.id], data);
-          await queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, project.id] });
+          await queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, project.id] });
           setIsLoading(false);
           addToast({ title: 'Columns were updated', color: 'success', variant: 'flat' });
           onClose();

@@ -8,7 +8,7 @@ import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 
 import { ProjectDto } from '../../../../services/types';
 import { Icon } from '../../../various/Icon';
-import { STATUS_COLORS } from './StatusColorPicker';
+import { STATUS_COLORS } from '../../../various/StatusColorPicker/StatusColorPicker';
 import { StatusField } from './StatusField';
 
 interface Props {

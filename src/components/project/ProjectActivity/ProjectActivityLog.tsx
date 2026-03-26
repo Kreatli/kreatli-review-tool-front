@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import React from 'react';
 
 import { useProjectContext } from '../../../contexts/Project';
+import { useDeliverableModalVisibility } from '../../../hooks/useDeliverableModalVisibility';
 import { useTaskModalVisibility } from '../../../hooks/useTaskModalVisibility';
 import {
   AssetsArchivedLogDto,
@@ -10,6 +11,11 @@ import {
   AssetsRestoredLogDto,
   AssetUpdatedLogDto,
   AssetUploadedLogDto,
+  DeliverableCreatedLogDto,
+  DeliverableRemovedLogDto,
+  DeliverableTaskAddedLogDto,
+  DeliverableTaskRemovedLogDto,
+  DeliverableUpdatedLogDto,
   FolderCreatedLogDto,
   ProjectLogsDto,
   ProjectMemberInvitedLogDto,
@@ -38,6 +44,7 @@ const AssetUploadedLog = ({ log }: { log: AssetUploadedLogDto }) => {
       Uploaded{' '}
       <Link
         as={NextLink}
+        className="inline cursor-pointer"
         href={
           stackId
             ? `/project/${project.id}/assets/stack/${stackId}?selectedFileId=${id}`
@@ -61,7 +68,7 @@ const AssetUpdatedLog = ({ log }: { log: AssetUpdatedLogDto }) => {
 
   const href = type === 'file' ? `/project/${project.id}/assets/${id}` : `/project/${project.id}/assets/folder/${id}`;
   const link = (
-    <Link as={NextLink} href={href} size="sm" underline="hover">
+    <Link as={NextLink} href={href} className="inline cursor-pointer" size="sm" underline="hover">
       {updatedFields?.name ?? name}
     </Link>
   );
@@ -135,7 +142,13 @@ const FolderCreatedLog = ({ log }: { log: FolderCreatedLogDto }) => {
   return (
     <div>
       Created{' '}
-      <Link as={NextLink} href={`/project/${project.id}/assets/folder/${id}`} size="sm" underline="hover">
+      <Link
+        as={NextLink}
+        className="inline cursor-pointer"
+        href={`/project/${project.id}/assets/folder/${id}`}
+        size="sm"
+        underline="hover"
+      >
         {name}
       </Link>{' '}
       folder
@@ -161,7 +174,7 @@ const AssetsArchivedLog = ({ log }: { log: AssetsArchivedLogDto }) => {
     return (
       <>
         Deleted {assetType === 'stack' ? 'version stack' : assetType}{' '}
-        <Link as={NextLink} href={href} size="sm" underline="hover">
+        <Link as={NextLink} className="inline cursor-pointer" href={href} size="sm" underline="hover">
           {assets[0].name}
         </Link>{' '}
       </>
@@ -189,7 +202,7 @@ const AssetsRestoredLog = ({ log }: { log: AssetsRestoredLogDto }) => {
     return (
       <>
         Restored {asset.type === 'stack' ? 'version stack' : asset.type}{' '}
-        <Link as={NextLink} href={href} size="sm" underline="hover">
+        <Link as={NextLink} className="inline cursor-pointer" href={href} size="sm" underline="hover">
           {asset.name}
         </Link>
       </>
@@ -254,8 +267,8 @@ const AssetsRemovedLog = ({ log }: { log: AssetsRemovedLogDto }) => {
       <div>
         Deleted forever {assets.length} items.
         <Link
-          as="button"
-          type="button"
+          as="span"
+          className="inline cursor-pointer"
           size="sm"
           underline="hover"
           onClick={() => setIsExpanded((expanded) => !expanded)}
@@ -335,7 +348,7 @@ export const ProjectMemberInvitedLog = ({ log }: { log: ProjectMemberInvitedLogD
   return (
     <>
       Invited{' '}
-      <Link href={`mailto:${log.details.user.email}`} size="sm" underline="hover">
+      <Link href={`mailto:${log.details.user.email}`} className="inline cursor-pointer" size="sm" underline="hover">
         {log.details.user.email}
       </Link>{' '}
       to join the project
@@ -359,7 +372,13 @@ export const TaskCreatedLog = ({ log }: { log: TaskCreatedLogDto }) => {
   const { openTaskModal } = useTaskModalVisibility();
 
   const task = (
-    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openTaskModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
       {log.details.name}
     </Link>
   );
@@ -372,7 +391,7 @@ export const TaskUpdatedLog = ({ log }: { log: TaskUpdatedLogDto }) => {
   const { openTaskModal } = useTaskModalVisibility();
 
   const task = (
-    <Link as="button" type="button" onClick={() => openTaskModal(id)} size="sm" underline="hover">
+    <Link as="span" className="inline cursor-pointer" onClick={() => openTaskModal(id)} size="sm" underline="hover">
       {name}
     </Link>
   );
@@ -421,13 +440,25 @@ export const TaskAssetAddedLog = ({ log }: { log: TaskAssetAddedLogDto }) => {
   const { openTaskModal } = useTaskModalVisibility();
 
   const file = (
-    <Link as={NextLink} href={`/project/${project.id}/assets/${log.details.asset.id}`} size="sm" underline="hover">
+    <Link
+      as={NextLink}
+      className="inline cursor-pointer"
+      href={`/project/${project.id}/assets/${log.details.asset.id}`}
+      size="sm"
+      underline="hover"
+    >
       {log.details.asset.name}
     </Link>
   );
 
   const task = (
-    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openTaskModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
       {log.details.name}
     </Link>
   );
@@ -444,13 +475,25 @@ export const TaskAssetRemovedLog = ({ log }: { log: TaskAssetRemovedLogDto }) =>
   const { openTaskModal } = useTaskModalVisibility();
 
   const file = (
-    <Link as={NextLink} href={`/project/${project.id}/assets/${log.details.asset.id}`} size="sm" underline="hover">
+    <Link
+      as={NextLink}
+      className="inline cursor-pointer"
+      href={`/project/${project.id}/assets/${log.details.asset.id}`}
+      size="sm"
+      underline="hover"
+    >
       {log.details.asset.name}
     </Link>
   );
 
   const task = (
-    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openTaskModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
       {log.details.name}
     </Link>
   );
@@ -466,15 +509,22 @@ export const TaskCommentAddedLog = ({ log }: { log: TaskCommentAddedLogDto }) =>
   const { openTaskModal } = useTaskModalVisibility();
 
   const task = (
-    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      type="button"
+      onClick={() => openTaskModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
       {log.details.name}
     </Link>
   );
 
   const comment = (
     <Link
-      as="button"
-      type="button"
+      as="span"
+      className="inline cursor-pointer"
       onClick={() => openTaskModal(log.details.id, log.details.comment.id)}
       size="sm"
       underline="hover"
@@ -494,12 +544,161 @@ export const TaskCommentRemovedLog = ({ log }: { log: TaskCommentRemovedLogDto }
   const { openTaskModal } = useTaskModalVisibility();
 
   const task = (
-    <Link as="button" type="button" onClick={() => openTaskModal(log.details.id)} size="sm" underline="hover">
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openTaskModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
       {log.details.name}
     </Link>
   );
 
   return <>Removed comment from the task {task}</>;
+};
+
+export const DeliverableCreatedLog = ({ log }: { log: DeliverableCreatedLogDto }) => {
+  const { openDeliverableModal } = useDeliverableModalVisibility();
+
+  const deliverable = (
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openDeliverableModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
+      {log.details.name}
+    </Link>
+  );
+
+  return <>Created deliverable {deliverable}</>;
+};
+
+export const DeliverableUpdatedLog = ({ log }: { log: DeliverableUpdatedLogDto }) => {
+  const { id, isContentChanged, name, owner, statusLabel, isDurationChanged } = log.details;
+  const { openDeliverableModal } = useDeliverableModalVisibility();
+
+  const deliverable = (
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openDeliverableModal(id)}
+      size="sm"
+      underline="hover"
+    >
+      {name}
+    </Link>
+  );
+
+  if (isContentChanged) {
+    return <>Updated {deliverable} deliverable description</>;
+  }
+
+  if (owner) {
+    return (
+      <>
+        Updated {deliverable} deliverable owner to {owner.name}
+      </>
+    );
+  }
+
+  if (isDurationChanged) {
+    return <>Updated {deliverable} deliverable duration</>;
+  }
+
+  if ('statusLabel' in log.details) {
+    return (
+      <>
+        Updated {deliverable} deliverable status to "{statusLabel ?? 'No status'}"
+      </>
+    );
+  }
+
+  if ('isCompleted' in log.details) {
+    return (
+      <>
+        Marked deliverable {deliverable} as {log.details.isCompleted ? 'completed' : 'not completed'}
+      </>
+    );
+  }
+
+  return <>Renamed {deliverable} deliverable</>;
+};
+
+export const DeliverableRemovedLog = ({ log }: { log: DeliverableRemovedLogDto }) => {
+  return <>Removed deliverable "{log.details.name}"</>;
+};
+
+export const DeliverableTaskAddedLog = ({ log }: { log: DeliverableTaskAddedLogDto }) => {
+  const { openTaskModal } = useTaskModalVisibility();
+  const { openDeliverableModal } = useDeliverableModalVisibility();
+
+  const task = (
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openTaskModal(log.details.task.id)}
+      size="sm"
+      underline="hover"
+    >
+      {log.details.task.name}
+    </Link>
+  );
+
+  const deliverable = (
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openDeliverableModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
+      {log.details.name}
+    </Link>
+  );
+
+  return (
+    <>
+      Linked task {task} to the deliverable {deliverable}
+    </>
+  );
+};
+
+export const DeliverableTaskRemovedLog = ({ log }: { log: DeliverableTaskRemovedLogDto }) => {
+  const { openTaskModal } = useTaskModalVisibility();
+  const { openDeliverableModal } = useDeliverableModalVisibility();
+
+  const task = (
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openTaskModal(log.details.task.id)}
+      size="sm"
+      underline="hover"
+    >
+      {log.details.task.name}
+    </Link>
+  );
+
+  const deliverable = (
+    <Link
+      as="span"
+      className="inline cursor-pointer"
+      onClick={() => openDeliverableModal(log.details.id)}
+      size="sm"
+      underline="hover"
+    >
+      {log.details.name}
+    </Link>
+  );
+
+  return (
+    <>
+      Unlinked task {task} from the deliverable {deliverable}
+    </>
+  );
 };
 
 export const ProjectActivityLog = ({ log }: Props) => {
@@ -581,6 +780,26 @@ export const ProjectActivityLog = ({ log }: Props) => {
 
   if (log.type === 'TASK_COMMENT_REMOVED') {
     return <TaskCommentRemovedLog log={log} />;
+  }
+
+  if (log.type === 'DELIVERABLE_CREATED') {
+    return <DeliverableCreatedLog log={log} />;
+  }
+
+  if (log.type === 'DELIVERABLE_UPDATED') {
+    return <DeliverableUpdatedLog log={log} />;
+  }
+
+  if (log.type === 'DELIVERABLE_REMOVED') {
+    return <DeliverableRemovedLog log={log} />;
+  }
+
+  if (log.type === 'DELIVERABLE_TASK_ADDED') {
+    return <DeliverableTaskAddedLog log={log} />;
+  }
+
+  if (log.type === 'DELIVERABLE_TASK_REMOVED') {
+    return <DeliverableTaskRemovedLog log={log} />;
   }
 
   return <div>{log.type}</div>;

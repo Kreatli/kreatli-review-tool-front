@@ -51,7 +51,7 @@ export const TaskModal = () => {
           )}
           <TaskTitle projectId={projectId} taskId={taskId} name={task?.name} isLoading={isTaskLoading} />
         </ModalHeader>
-        <ModalBody className="px-3 py-0 pb-6 sm:px-6">
+        <ModalBody className="px-3 py-0 sm:px-6">
           {isTaskLoading ? (
             <TaskSkeleton />
           ) : error && 'status' in error && error.status === 404 ? (

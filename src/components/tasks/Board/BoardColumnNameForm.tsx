@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { usePutProjectId } from '../../../services/hooks';
-import { getProjectId, getProjectIdTasks } from '../../../services/services';
+import { getProjectId, getProjectIdTasksBoard } from '../../../services/services';
 import { ProjectDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
@@ -47,7 +47,7 @@ export const BoardColumnNameForm = ({ projectId, columnId, name, onCancel, onSuc
       {
         onSuccess: (data) => {
           queryClient.setQueryData([getProjectId.key, project.id], data);
-          queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
           onSuccess();
         },
         onError: (error) => {

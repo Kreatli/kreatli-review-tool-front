@@ -16,7 +16,7 @@ interface Props {
 export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) => {
   const total = Math.ceil(logsCount / 20);
 
-  const isMobile = useIsBreakpoint('max', 768);
+  const isMobile = useIsBreakpoint('max', 1024);
 
   const bottomContent = logsCount > 20 && (
     <Pagination
@@ -33,7 +33,7 @@ export const ProjectActivity = ({ logs, logsCount, page, onPageChange }: Props) 
   if (isMobile) {
     return (
       <div className="flex flex-col gap-2">
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {logs.map((log) => (
             <ProjectActivityCard key={log.id} log={log} />
           ))}

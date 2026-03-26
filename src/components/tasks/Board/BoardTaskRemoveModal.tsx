@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
 import { useDeleteTaskId } from '../../../services/hooks';
-import { getProjectIdTasks } from '../../../services/services';
+import { getProjectIdTasksBoard } from '../../../services/services';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface Props {
@@ -29,7 +29,7 @@ export const BoardTaskRemoveModal = ({ projectId, taskId, isVisible, onClose }: 
       { id: taskId },
       {
         onSuccess: async () => {
-          await queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          await queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
           onClose();
           setIsLoading(false);
         },
@@ -44,16 +44,16 @@ export const BoardTaskRemoveModal = ({ projectId, taskId, isVisible, onClose }: 
   return (
     <Modal isOpen={isVisible} onClose={onClose}>
       <ModalContent>
-        <ModalHeader className="pb-0">Remove task</ModalHeader>
+        <ModalHeader className="pb-0">Delete task</ModalHeader>
         <ModalBody className="pb-6">
           <div className="flex flex-col gap-4">
-            <div className="text-medium">Are you sure you want to remove this task?</div>
+            <div className="text-medium">Are you sure you want to delete this task?</div>
             <div className="flex justify-end gap-2">
               <Button variant="light" onClick={onClose}>
                 Cancel
               </Button>
               <Button color="danger" variant="flat" isLoading={isLoading} onClick={handleRemove}>
-                <span>Remove task</span>
+                <span>Delete task</span>
               </Button>
             </div>
           </div>

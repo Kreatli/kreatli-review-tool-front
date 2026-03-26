@@ -2,7 +2,7 @@ import { addToast, Button, Modal, ModalBody, ModalContent, ModalHeader } from '@
 import { useQueryClient } from '@tanstack/react-query';
 
 import { usePostTaskIdUnhide } from '../../../services/hooks';
-import { getProjectIdTasks, getTaskId } from '../../../services/services';
+import { getProjectIdTasksBoard, getTaskId } from '../../../services/services';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface Props {
@@ -21,7 +21,7 @@ export const TaskUnhideModal = ({ projectId, taskId, isVisible, onClose }: Props
       { id: taskId },
       {
         onSuccess: (data) => {
-          queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
           queryClient.setQueryData([getTaskId.key, taskId], data);
           onClose();
         },

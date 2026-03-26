@@ -75,7 +75,7 @@ export const TaskDescription = ({ taskId, content }: Props) => {
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-1">
+      <div className="flex min-h-8 items-center gap-1">
         <div className="pl-3 font-semibold">Description</div>
         {!isEditable && !isContentEmpty && (
           <Button size="sm" variant="light" radius="full" isIconOnly onClick={handleEdit}>

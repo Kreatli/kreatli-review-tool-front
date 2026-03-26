@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
+import { useDeliverableModalVisibility } from '../../../hooks/useDeliverableModalVisibility';
 import { useTaskModalVisibility } from '../../../hooks/useTaskModalVisibility';
 import { usePutNotificationId } from '../../../services/hooks';
 import { getNotifications } from '../../../services/services';
@@ -20,6 +21,7 @@ export const Notification = ({ notification, onClose }: Props) => {
   const [isRead, setIsRead] = useState(notification.isRead);
 
   const { openTaskModal } = useTaskModalVisibility();
+  const { openDeliverableModal } = useDeliverableModalVisibility();
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -132,6 +134,22 @@ export const Notification = ({ notification, onClose }: Props) => {
       return 'Mention in task comment';
     }
 
+    if (notification.type === 'deliverable_owner_assigned') {
+      return 'You were assigned to the deliverable';
+    }
+
+    if (notification.type === 'deliverable_status_changed') {
+      return 'Deliverable status changed';
+    }
+
+    if (notification.type === 'deliverable_removed') {
+      return 'Deliverable removed';
+    }
+
+    if (notification.type === 'deliverable_completed') {
+      return 'Deliverable completed';
+    }
+
     return 'Notification';
   }, [notification.type]);
 
@@ -149,6 +167,9 @@ export const Notification = ({ notification, onClose }: Props) => {
       taskId,
       taskName,
       taskStatus,
+      deliverableId,
+      deliverableName,
+      deliverableStatus,
     } = notification.data;
 
     const task = (
@@ -168,6 +189,26 @@ export const Notification = ({ notification, onClose }: Props) => {
         underline="hover"
       >
         {taskName}
+      </Link>
+    );
+
+    const deliverable = (
+      <Link
+        as="span"
+        type="button"
+        onClick={
+          deliverableId
+            ? () => {
+                onClose?.();
+                openDeliverableModal(deliverableId);
+              }
+            : undefined
+        }
+        size="sm"
+        className="z-10 inline cursor-pointer text-left"
+        underline="hover"
+      >
+        {deliverableName}
       </Link>
     );
 
@@ -429,8 +470,40 @@ export const Notification = ({ notification, onClose }: Props) => {
       );
     }
 
+    if (notification.type === 'deliverable_removed') {
+      return (
+        <>
+          {userName} has removed the deliverable "{deliverableName}".
+        </>
+      );
+    }
+
+    if (notification.type === 'deliverable_owner_assigned') {
+      return (
+        <>
+          {userName} assigned you as the owner of the task {deliverable}.
+        </>
+      );
+    }
+
+    if (notification.type === 'deliverable_status_changed') {
+      return (
+        <>
+          {userName} has changed the stage of the deliverable {deliverable} to "{deliverableStatus ?? 'No status'}".
+        </>
+      );
+    }
+
+    if (notification.type === 'deliverable_completed') {
+      return (
+        <>
+          {userName} has completed the deliverable {deliverable}.
+        </>
+      );
+    }
+
     return '';
-  }, [notification.data, notification.type, onClose, openTaskModal, handleLinkClick]);
+  }, [notification.data, notification.type, onClose, openTaskModal, openDeliverableModal, handleLinkClick]);
 
   const notificationIcon = useMemo((): IconType => {
     if (notification.type === 'file_assigned') {
@@ -479,6 +552,10 @@ export const Notification = ({ notification, onClose }: Props) => {
 
     if (notification.type.startsWith('task_')) {
       return 'board';
+    }
+
+    if (notification.type.startsWith('deliverable_')) {
+      return 'box';
     }
 
     return 'bell';

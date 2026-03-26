@@ -21,6 +21,8 @@ import type {
   GetAssetsFilesQueryParams,
   GetAssetsFoldersQueryParams,
   GetProjectIdTasksQueryParams,
+  GetProjectIdTasksBoardQueryParams,
+  GetProjectIdDeliverablesQueryParams,
   UserDto,
   InvoiceDto,
   SettingsDto,
@@ -97,7 +99,14 @@ import type {
   TaskAssetBodyDto,
   TaskAssetsResponse,
   TasksDto,
+  TasksBoardDto,
   AssetTasksDto,
+  DeliverableBodyDto,
+  DeliverableDto,
+  DeliverableEditBodyDto,
+  DeliverableTasksBodyDto,
+  DeliverableTasksDto,
+  DeliverablesDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -168,6 +177,39 @@ export const deleteAssetFileIdCommentCommentId = (
 
 /** Key is end point string without base url */
 deleteAssetFileIdCommentCommentId.key = '/asset/file/{id}/comment/{commentId}';
+
+export const deleteDeliverableId = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverableDto>> => {
+  return Http.deleteRequest(
+    template(deleteDeliverableId.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteDeliverableId.key = '/deliverable/{id}';
+
+export const deleteDeliverableIdTaskTaskId = (
+  id: string,
+  taskId: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverableTasksDto>> => {
+  return Http.deleteRequest(
+    template(deleteDeliverableIdTaskTaskId.key, { id, taskId }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+deleteDeliverableIdTaskTaskId.key = '/deliverable/{id}/task/{taskId}';
 
 export const deleteProjectId = (
   id: string,
@@ -472,6 +514,38 @@ export const getConversationIdMessages = (
 /** Key is end point string without base url */
 getConversationIdMessages.key = '/conversation/{id}/messages';
 
+export const getDeliverableId = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverableDto>> => {
+  return Http.getRequest(
+    template(getDeliverableId.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getDeliverableId.key = '/deliverable/{id}';
+
+export const getDeliverableIdTasks = (
+  id: string,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverableTasksDto>> => {
+  return Http.getRequest(
+    template(getDeliverableIdTasks.key, { id }),
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getDeliverableIdTasks.key = '/deliverable/{id}/tasks';
+
 export const getNotifications = (
   queryParams: GetNotificationsQueryParams,
   configOverride?: AxiosRequestConfig,
@@ -556,6 +630,23 @@ export const getProjectIdChats = (
 /** Key is end point string without base url */
 getProjectIdChats.key = '/project/{id}/chats';
 
+export const getProjectIdDeliverables = (
+  id: string,
+  queryParams?: GetProjectIdDeliverablesQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverablesDto>> => {
+  return Http.getRequest(
+    template(getProjectIdDeliverables.key, { id }),
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getProjectIdDeliverables.key = '/project/{id}/deliverables';
+
 export const getProjectIdLogs = (
   id: string,
   queryParams?: GetProjectIdLogsQueryParams,
@@ -605,6 +696,23 @@ export const getProjectIdTasks = (
 
 /** Key is end point string without base url */
 getProjectIdTasks.key = '/project/{id}/tasks';
+
+export const getProjectIdTasksBoard = (
+  id: string,
+  queryParams?: GetProjectIdTasksBoardQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<TasksBoardDto>> => {
+  return Http.getRequest(
+    template(getProjectIdTasksBoard.key, { id }),
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+getProjectIdTasksBoard.key = '/project/{id}/tasks/board';
 
 export const getProjects = (
   queryParams?: GetProjectsQueryParams,
@@ -746,6 +854,23 @@ export const patchAssetFileIdCommentCommentId = (
 
 /** Key is end point string without base url */
 patchAssetFileIdCommentCommentId.key = '/asset/file/{id}/comment/{commentId}';
+
+export const patchDeliverableId = (
+  id: string,
+  requestBody: DeliverableEditBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverableDto>> => {
+  return Http.patchRequest(
+    template(patchDeliverableId.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+patchDeliverableId.key = '/deliverable/{id}';
 
 export const patchTaskId = (
   id: string,
@@ -956,6 +1081,39 @@ export const postAuthVerifyEmail = (
 
 /** Key is end point string without base url */
 postAuthVerifyEmail.key = '/auth/verify-email';
+
+export const postDeliverable = (
+  requestBody: DeliverableBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverableDto>> => {
+  return Http.postRequest(
+    postDeliverable.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postDeliverable.key = '/deliverable';
+
+export const postDeliverableIdTask = (
+  id: string,
+  requestBody: DeliverableTasksBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<DeliverableTasksDto>> => {
+  return Http.postRequest(
+    template(postDeliverableIdTask.key, { id }),
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postDeliverableIdTask.key = '/deliverable/{id}/task';
 
 export const postProject = (
   requestBody: ProjectBodyDto,
@@ -1257,22 +1415,6 @@ export const postUserAddon = (
 
 /** Key is end point string without base url */
 postUserAddon.key = '/user/addon';
-
-export const postUserStartTrial = (
-  requestBody: SubscriptionBodyDto,
-  configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<UserDto>> => {
-  return Http.postRequest(
-    postUserStartTrial.key,
-    undefined,
-    requestBody,
-    undefined,
-    overrideConfig(_CONSTANT0, configOverride),
-  );
-};
-
-/** Key is end point string without base url */
-postUserStartTrial.key = '/user/start-trial';
 
 export const postUserSubscription = (
   requestBody: SubscriptionBodyDto,

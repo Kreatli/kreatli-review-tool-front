@@ -305,6 +305,144 @@ export interface CreateShareableLinkDto {
   id: string;
 }
 
+export interface DeliverableBodyDto {
+  endDate: string;
+  name: string;
+  owner: string;
+  projectId: string;
+  startDate: string;
+  content?: { [x in string | number]: any };
+  description?: string;
+  status?: string;
+  tasks?: string[];
+}
+
+export interface DeliverableCreatedDetails {
+  id: string;
+  name: string;
+}
+
+export interface DeliverableCreatedLogDto {
+  createdAt: string;
+  details: DeliverableCreatedDetails;
+  id: string;
+  type: 'DELIVERABLE_CREATED';
+  user: UserDto;
+}
+
+export interface DeliverableDto {
+  content: { [x in string | number]: any };
+  createdAt: string;
+  createdBy: UserDto;
+  description: string;
+  endDate: string;
+  id: string;
+  isCompleted: boolean;
+  name: string;
+  owner: UserDto;
+  projectId: string;
+  startDate: string;
+  updatedAt: string;
+  status?: string;
+  statusColor?: string;
+  statusLabel?: string;
+}
+
+export interface DeliverableEditBodyDto {
+  content?: { [x in string | number]: any };
+  description?: string;
+  endDate?: string;
+  isCompleted?: boolean;
+  name?: string;
+  owner?: string;
+  startDate?: string;
+  status?: string;
+}
+
+export interface DeliverableInfoDto {
+  createdBy: UserDto;
+  endDate: string;
+  id: string;
+  isCompleted: boolean;
+  name: string;
+  owner: UserDto;
+  startDate: string;
+  tasksCount: number;
+  status?: string;
+  statusColor?: string;
+  statusLabel?: string;
+}
+
+export interface DeliverableRemovedDetails {
+  name: string;
+}
+
+export interface DeliverableRemovedLogDto {
+  createdAt: string;
+  details: DeliverableRemovedDetails;
+  id: string;
+  type: 'DELIVERABLE_REMOVED';
+  user: UserDto;
+}
+
+export interface DeliverableTaskAddedDetails {
+  id: string;
+  name: string;
+  task: TaskDetails;
+}
+
+export interface DeliverableTaskAddedLogDto {
+  createdAt: string;
+  details: DeliverableTaskAddedDetails;
+  id: string;
+  type: 'DELIVERABLE_TASK_ADDED';
+  user: UserDto;
+}
+
+export interface DeliverableTaskRemovedDetails {
+  id: string;
+  name: string;
+  task: TaskDetails;
+}
+
+export interface DeliverableTaskRemovedLogDto {
+  createdAt: string;
+  details: DeliverableTaskRemovedDetails;
+  id: string;
+  type: 'DELIVERABLE_TASK_REMOVED';
+  user: UserDto;
+}
+
+export interface DeliverableTasksBodyDto {
+  taskId: string;
+}
+
+export interface DeliverableTasksDto {
+  tasks: TaskInfoDto[];
+}
+
+export interface DeliverableUpdatedDetails {
+  id: string;
+  name: string;
+  isCompleted?: boolean;
+  isContentChanged?: boolean;
+  isDurationChanged?: boolean;
+  owner?: UserDetails;
+  statusLabel?: string;
+}
+
+export interface DeliverableUpdatedLogDto {
+  createdAt: string;
+  details: DeliverableUpdatedDetails;
+  id: string;
+  type: 'DELIVERABLE_UPDATED';
+  user: UserDto;
+}
+
+export interface DeliverablesDto {
+  deliverables: DeliverableInfoDto[];
+}
+
 export interface FileCommentAddedDetails {
   asset: FileDetails;
   comment: CommentDetails;
@@ -454,6 +592,10 @@ export interface GetNotificationsQueryParams {
   offset: number;
 }
 
+export interface GetProjectIdDeliverablesQueryParams {
+  owner?: string;
+}
+
 export interface GetProjectIdLogsQueryParams {
   createAtFrom?: string;
   createAtTo?: string;
@@ -462,9 +604,18 @@ export interface GetProjectIdLogsQueryParams {
   userIds?: string;
 }
 
+export interface GetProjectIdTasksBoardQueryParams {
+  contributor?: string;
+  owner?: string;
+  search?: string;
+  skipIds?: string;
+}
+
 export interface GetProjectIdTasksQueryParams {
   contributor?: string;
   owner?: string;
+  search?: string;
+  skipIds?: string;
 }
 
 export interface GetProjectsQueryParams {
@@ -572,6 +723,9 @@ export interface NotificationData {
   chatName?: string;
   commentId?: string;
   commentMessage?: string;
+  deliverableId?: string;
+  deliverableName?: string;
+  deliverableStatus?: string;
   fileId?: string;
   fileName?: string;
   projectId?: string;
@@ -610,7 +764,11 @@ export interface NotificationDto {
     | 'task_removed'
     | 'task_comment_added'
     | 'task_comment_reply'
-    | 'task_comment_mention';
+    | 'task_comment_mention'
+    | 'deliverable_owner_assigned'
+    | 'deliverable_status_changed'
+    | 'deliverable_removed'
+    | 'deliverable_completed';
   /**
    *
    * - Format: date-time
@@ -707,6 +865,7 @@ export interface ProjectDto {
   assetStatuses: StatusDto[];
   content: { [x in string | number]: any };
   createdAt: string;
+  deliverableStatuses: StatusDto[];
   description: string;
   fileCount: number;
   id: string;
@@ -725,6 +884,7 @@ export interface ProjectEditBodyDto {
   assetStatuses?: StatusDto[];
   assets?: string[];
   content?: { [x in string | number]: any };
+  deliverableStatuses?: StatusDto[];
   description?: string;
   name?: string;
   taskStatuses?: StatusDto[];
@@ -825,6 +985,11 @@ export interface ProjectLogsDto {
     | TaskAssetRemovedLogDto
     | TaskCommentAddedLogDto
     | TaskCommentRemovedLogDto
+    | DeliverableCreatedLogDto
+    | DeliverableUpdatedLogDto
+    | DeliverableRemovedLogDto
+    | DeliverableTaskAddedLogDto
+    | DeliverableTaskRemovedLogDto
   )[];
   logsCount: number;
 }
@@ -1180,6 +1345,11 @@ export interface TaskCreatedLogDto {
   user: UserDto;
 }
 
+export interface TaskDetails {
+  id: string;
+  name: string;
+}
+
 export interface TaskDto {
   content: { [x in string | number]: any };
   contributors: UserDto[];
@@ -1254,6 +1424,10 @@ export interface TaskUpdatedLogDto {
   user: UserDto;
 }
 
+export interface TasksBoardDto {
+  columns: TasksColumn[];
+}
+
 export interface TasksColumn {
   color: string;
   name: string;
@@ -1262,7 +1436,7 @@ export interface TasksColumn {
 }
 
 export interface TasksDto {
-  columns: TasksColumn[];
+  tasks: TaskInfoDto[];
 }
 
 export interface TokenBodyDto {

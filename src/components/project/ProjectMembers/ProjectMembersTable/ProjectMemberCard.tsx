@@ -23,11 +23,10 @@ export const ProjectMemberCard = ({ member, isDisabled, isEditable, onRemove, on
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Avatar
             src={member.user?.avatar?.url}
             size="sm"
-            isBordered
             getInitials={(name) => name.charAt(0).toUpperCase()}
             name={member.user?.name ?? member.email}
           />

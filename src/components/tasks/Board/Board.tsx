@@ -5,7 +5,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useMemo, useState } from 'react';
 
 import { usePostTaskIdMove, usePutProjectId } from '../../../services/hooks';
-import { getProjectId, getProjectIdTasks } from '../../../services/services';
+import { getProjectId, getProjectIdTasksBoard } from '../../../services/services';
 import { ProjectDto, TaskInfoDto, TasksColumn } from '../../../services/types';
 import { BoardColumn } from './BoardColumn';
 import { BoardTask } from './BoardTask';
@@ -108,7 +108,7 @@ export const Board = ({ projectId, columns }: Props) => {
       { id: taskId, requestBody: { status: status === 'unplaced' ? undefined : status, prevTaskId, nextTaskId } },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
         },
       },
     );

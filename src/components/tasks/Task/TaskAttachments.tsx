@@ -66,7 +66,7 @@ export const TaskAttachments = ({ projectId, taskId }: Props) => {
       ) : (
         <AssetPicker projectId={projectId} onSelect={handleSelectAsset}>
           <Button className="w-fit" size="sm" variant="flat">
-            Add attachments
+            Link media
           </Button>
         </AssetPicker>
       )}

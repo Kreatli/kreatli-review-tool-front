@@ -3,7 +3,6 @@ import { Skeleton } from '@heroui/react';
 export const TaskSkeleton = () => {
   return (
     <div className="flex flex-col gap-4">
-      <Skeleton className="h-8 w-32 rounded-medium" />
       <div className="grid grid-cols-[1fr_300px] gap-4">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">

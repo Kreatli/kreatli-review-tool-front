@@ -31,6 +31,12 @@ import type {
   ChatEditBodyDto,
   ChatMessagesDto,
   CreateShareableLinkDto,
+  DeliverableBodyDto,
+  DeliverableDto,
+  DeliverableEditBodyDto,
+  DeliverableTasksBodyDto,
+  DeliverableTasksDto,
+  DeliverablesDto,
   FileDto,
   FileEditBodyDto,
   FolderBodyDto,
@@ -44,7 +50,9 @@ import type {
   GetAssetsQueryParams,
   GetConversationIdMessagesQueryParams,
   GetNotificationsQueryParams,
+  GetProjectIdDeliverablesQueryParams,
   GetProjectIdLogsQueryParams,
+  GetProjectIdTasksBoardQueryParams,
   GetProjectIdTasksQueryParams,
   GetProjectsQueryParams,
   InvoiceDto,
@@ -99,6 +107,7 @@ import type {
   TaskDto,
   TaskEditBodyDto,
   TaskMoveBodyDto,
+  TasksBoardDto,
   TasksDto,
   TokenBodyDto,
   UpdateProjectMemberDto,
@@ -107,6 +116,8 @@ import type {
 } from './types';
 import {
   deleteAssetFileIdCommentCommentId,
+  deleteDeliverableId,
+  deleteDeliverableIdTaskTaskId,
   deleteProjectId,
   deleteProjectIdAssets,
   deleteProjectIdMember,
@@ -127,15 +138,19 @@ import {
   getAssetsFiles,
   getAssetsFolders,
   getConversationIdMessages,
+  getDeliverableId,
+  getDeliverableIdTasks,
   getNotifications,
   getProject,
   getProjectId,
   getProjectIdAssets,
   getProjectIdAssetsArchived,
   getProjectIdChats,
+  getProjectIdDeliverables,
   getProjectIdLogs,
   getProjectIdPaths,
   getProjectIdTasks,
+  getProjectIdTasksBoard,
   getProjects,
   getShareableLinkAssetId,
   getTaskId,
@@ -146,6 +161,7 @@ import {
   getUserId,
   getUserSettings,
   patchAssetFileIdCommentCommentId,
+  patchDeliverableId,
   patchTaskId,
   postAssetFileIdComment,
   postAssetsMultipartComplete,
@@ -159,6 +175,8 @@ import {
   postAuthSignUpInvitation,
   postAuthSsoGoogle,
   postAuthVerifyEmail,
+  postDeliverable,
+  postDeliverableIdTask,
   postProject,
   postProjectIdAssetsArchive,
   postProjectIdAssetsMove,
@@ -177,7 +195,6 @@ import {
   postTaskIdMove,
   postTaskIdUnhide,
   postUserAddon,
-  postUserStartTrial,
   postUserSubscription,
   putConversationId,
   putNotificationId,
@@ -220,6 +237,28 @@ export const useDeleteAssetFileIdCommentCommentId = <TExtra,>(
     mutationFn: (_o) => {
       const { id, commentId, configOverride } = _o || {};
       return deleteAssetFileIdCommentCommentId(id, commentId, configOverride);
+    },
+    ...options,
+  });
+};
+export const useDeleteDeliverableId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<DeliverableDto, { id: string }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, configOverride } = _o || {};
+      return deleteDeliverableId(id, configOverride);
+    },
+    ...options,
+  });
+};
+export const useDeleteDeliverableIdTaskTaskId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<DeliverableTasksDto, { id: string; taskId: string }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, taskId, configOverride } = _o || {};
+      return deleteDeliverableIdTaskTaskId(id, taskId, configOverride);
     },
     ...options,
   });
@@ -721,6 +760,76 @@ useGetConversationIdMessages.prefetch = (
         ...options,
       });
 };
+export const useGetDeliverableId = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<DeliverableDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetDeliverableId.info(id, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetDeliverableId.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getDeliverableId.key, id] as QueryKey,
+    fun: () => getDeliverableId(id, configOverride),
+  };
+};
+useGetDeliverableId.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<DeliverableDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetDeliverableId.info(id, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetDeliverableIdTasks = (
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<DeliverableTasksDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetDeliverableIdTasks.info(id, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetDeliverableIdTasks.info = (id: string, configOverride?: AxiosRequestConfig) => {
+  return {
+    key: [getDeliverableIdTasks.key, id] as QueryKey,
+    fun: () => getDeliverableIdTasks(id, configOverride),
+  };
+};
+useGetDeliverableIdTasks.prefetch = (
+  client: QueryClient,
+  id: string,
+  options?: SwaggerTypescriptUseQueryOptions<DeliverableTasksDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetDeliverableIdTasks.info(id, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
 export const useGetNotifications = (
   queryParams: GetNotificationsQueryParams,
   options?: SwaggerTypescriptUseQueryOptions<NotificationsDto>,
@@ -929,6 +1038,47 @@ useGetProjectIdChats.prefetch = (
         ...options,
       });
 };
+export const useGetProjectIdDeliverables = (
+  id: string,
+  queryParams?: GetProjectIdDeliverablesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<DeliverablesDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetProjectIdDeliverables.info(id, queryParams, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetProjectIdDeliverables.info = (
+  id: string,
+  queryParams?: GetProjectIdDeliverablesQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getProjectIdDeliverables.key, id, queryParams] as QueryKey,
+    fun: () => getProjectIdDeliverables(id, queryParams, configOverride),
+  };
+};
+useGetProjectIdDeliverables.prefetch = (
+  client: QueryClient,
+  id: string,
+  queryParams?: GetProjectIdDeliverablesQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<DeliverablesDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetProjectIdDeliverables.info(id, queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
 export const useGetProjectIdLogs = (
   id: string,
   queryParams?: GetProjectIdLogsQueryParams,
@@ -1037,6 +1187,47 @@ useGetProjectIdTasks.prefetch = (
   configOverride?: AxiosRequestConfig,
 ) => {
   const { key, fun } = useGetProjectIdTasks.info(id, queryParams, configOverride);
+
+  return client.getQueryData(key)
+    ? Promise.resolve()
+    : client.prefetchQuery({
+        queryKey: key,
+        queryFn: () => fun(),
+        ...options,
+      });
+};
+export const useGetProjectIdTasksBoard = (
+  id: string,
+  queryParams?: GetProjectIdTasksBoardQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TasksBoardDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetProjectIdTasksBoard.info(id, queryParams, configOverride);
+
+  return useQuery({
+    queryKey: key,
+    queryFn: fun,
+    ...options,
+  });
+};
+useGetProjectIdTasksBoard.info = (
+  id: string,
+  queryParams?: GetProjectIdTasksBoardQueryParams,
+  configOverride?: AxiosRequestConfig,
+) => {
+  return {
+    key: [getProjectIdTasksBoard.key, id, queryParams] as QueryKey,
+    fun: () => getProjectIdTasksBoard(id, queryParams, configOverride),
+  };
+};
+useGetProjectIdTasksBoard.prefetch = (
+  client: QueryClient,
+  id: string,
+  queryParams?: GetProjectIdTasksBoardQueryParams,
+  options?: SwaggerTypescriptUseQueryOptions<TasksBoardDto>,
+  configOverride?: AxiosRequestConfig,
+) => {
+  const { key, fun } = useGetProjectIdTasksBoard.info(id, queryParams, configOverride);
 
   return client.getQueryData(key)
     ? Promise.resolve()
@@ -1370,6 +1561,21 @@ export const usePatchAssetFileIdCommentCommentId = <TExtra,>(
     ...options,
   });
 };
+export const usePatchDeliverableId = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    DeliverableDto,
+    { id: string; requestBody: DeliverableEditBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, requestBody, configOverride } = _o || {};
+      return patchDeliverableId(id, requestBody, configOverride);
+    },
+    ...options,
+  });
+};
 export const usePatchTaskId = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<TaskDto, { id: string; requestBody: TaskEditBodyDto }, TExtra>,
 ) => {
@@ -1525,6 +1731,32 @@ export const usePostAuthVerifyEmail = <TExtra,>(
     mutationFn: (_o) => {
       const { requestBody, configOverride } = _o || {};
       return postAuthVerifyEmail(requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostDeliverable = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<DeliverableDto, { requestBody: DeliverableBodyDto }, TExtra>,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { requestBody, configOverride } = _o || {};
+      return postDeliverable(requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostDeliverableIdTask = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    DeliverableTasksDto,
+    { id: string; requestBody: DeliverableTasksBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { id, requestBody, configOverride } = _o || {};
+      return postDeliverableIdTask(id, requestBody, configOverride);
     },
     ...options,
   });
@@ -1751,17 +1983,6 @@ export const usePostUserAddon = <TExtra,>(
     mutationFn: (_o) => {
       const { requestBody, configOverride } = _o || {};
       return postUserAddon(requestBody, configOverride);
-    },
-    ...options,
-  });
-};
-export const usePostUserStartTrial = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<UserDto, { requestBody: SubscriptionBodyDto }, TExtra>,
-) => {
-  return useMutation({
-    mutationFn: (_o) => {
-      const { requestBody, configOverride } = _o || {};
-      return postUserStartTrial(requestBody, configOverride);
     },
     ...options,
   });

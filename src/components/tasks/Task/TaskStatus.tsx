@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { usePatchTaskId } from '../../../services/hooks';
-import { getProjectIdTasks, getTaskId } from '../../../services/services';
+import { getProjectIdTasksBoard, getTaskId } from '../../../services/services';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Icon } from '../../various/Icon';
 import { TaskStageSelect } from './TaskStageSelect';
@@ -50,7 +50,7 @@ export const TaskStatus = ({ projectId, taskId, status, statusLabel }: Props) =>
       { id: taskId, requestBody: { status: data.status } },
       {
         onSuccess: (data) => {
-          queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
           queryClient.setQueryData([getTaskId.key, taskId], data);
           setIsEditable(false);
         },

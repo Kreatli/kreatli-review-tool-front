@@ -1,0 +1,91 @@
+import { useSortable } from '@dnd-kit/react/sortable';
+import { Button, Input, Popover, PopoverContent, PopoverTrigger } from '@heroui/react';
+import { useState } from 'react';
+import { useController, useFormContext } from 'react-hook-form';
+
+import { ProjectDto } from '../../../services/types';
+import { Icon } from '../../various/Icon';
+import { StatusColorDot } from '../../various/StatusColorPicker/StatusColorDot';
+import { StatusColorPicker } from '../../various/StatusColorPicker/StatusColorPicker';
+
+interface Props {
+  value: string;
+  index: number;
+  onRemove: () => void;
+}
+
+export const DeliverablesStatusesField = ({ value, index, onRemove }: Props) => {
+  const { ref, handleRef } = useSortable({ id: value, index });
+
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
+  const {
+    formState: { errors },
+    register,
+  } = useFormContext<{ statuses: ProjectDto['deliverableStatuses'] }>();
+
+  const { field: colorField } = useController({ name: `statuses.${index}.color` });
+
+  const handleColorSelect = (color: string) => {
+    colorField.onChange(color);
+    setIsPopoverOpen(false);
+  };
+
+  const isInvalid = !!errors?.statuses?.[index]?.label?.message;
+
+  return (
+    <div ref={ref} className="flex w-full items-center gap-1">
+      <div ref={handleRef}>
+        <Icon icon="dotsSix" size={20} className="text-foreground-500" />
+      </div>
+      <div className="relative flex-1">
+        <Input
+          className="w-full"
+          size="sm"
+          autoFocus
+          isInvalid={isInvalid}
+          placeholder="Enter status label"
+          classNames={{ input: 'pr-5' }}
+          {...register(`statuses.${index}.label`, {
+            validate: (value, formValues) => {
+              if (!value && formValues.statuses.length - 1 === index) {
+                return true;
+              }
+
+              if (!value) {
+                return 'Status label is required';
+              }
+
+              const hasDuplicate = formValues.statuses.filter((item) => item.label === value).length > 1;
+
+              if (hasDuplicate) {
+                return 'Status label must be unique';
+              }
+
+              if (value.length > 100) {
+                return 'Status label must not exceed 100 characters';
+              }
+
+              return true;
+            },
+          })}
+        />
+        <Popover placement="bottom" isOpen={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+          <PopoverTrigger>
+            <div className="absolute right-2 top-1/2 -translate-y-1/2">
+              <StatusColorDot color={colorField.value} />
+            </div>
+          </PopoverTrigger>
+          <PopoverContent className="p-4">
+            <StatusColorPicker selectedColor={colorField.value} onColorSelect={handleColorSelect} />
+          </PopoverContent>
+        </Popover>
+      </div>
+      <div>
+        <Button isIconOnly size="sm" variant="light" className="text-foreground-500" radius="full" onClick={onRemove}>
+          <Icon icon="trash" size={16} />
+        </Button>
+      </div>
+    </div>
+  );
+};

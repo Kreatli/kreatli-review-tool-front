@@ -49,7 +49,6 @@ export const TaskContributors = ({ projectId, taskId, contributors }: Props) => 
       { id: taskId, requestBody: { contributors: data.contributors.map((contributor) => contributor.userId) } },
       {
         onSuccess: (data) => {
-          // queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
           queryClient.setQueryData([getTaskId.key, taskId], data);
           setIsEditable(false);
         },

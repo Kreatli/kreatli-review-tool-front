@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { usePatchTaskId } from '../../../services/hooks';
-import { getProjectIdTasks } from '../../../services/services';
+import { getProjectIdTasksBoard } from '../../../services/services';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface Props {
@@ -36,7 +36,7 @@ export const BoardTaskRenameForm = ({ projectId, taskId, name, onCancel, onSucce
       { id: taskId, requestBody: { name: data.name } },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
           onSuccess();
         },
         onError: (error) => {

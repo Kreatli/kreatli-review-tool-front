@@ -3,14 +3,15 @@ import { useRouter } from 'next/router';
 export function useTaskModalVisibility() {
   const router = useRouter();
 
-  const openTaskModal = (taskId: string, commentId?: string) => {
+  const openTaskModal = (taskId: string, commentId?: string, state?: 'push' | 'replace') => {
     const [pathname, query] = router.asPath.split('?');
     const params = new URLSearchParams(query || '');
+    params.delete('deliverableId');
     params.set('taskId', taskId);
     if (commentId) {
       params.set('commentId', commentId);
     }
-    router.replace(`${pathname}?${params.toString()}`, undefined, { scroll: false });
+    router[state ?? 'replace'](`${pathname}?${params.toString()}`, undefined, { scroll: false });
   };
 
   const closeTaskModal = () => {

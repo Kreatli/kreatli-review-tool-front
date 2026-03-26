@@ -2,8 +2,9 @@ import { Skeleton } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 
+import { useScreenResize } from '../../../hooks/useScreenResize';
 import { usePatchTaskId } from '../../../services/hooks';
-import { getProjectIdTasks, getTaskId } from '../../../services/services';
+import { getProjectIdTasksBoard, getTaskId } from '../../../services/services';
 
 interface Props {
   projectId?: string;
@@ -40,6 +41,8 @@ export const TaskTitle = ({ projectId, taskId, name, isLoading }: Props) => {
     el.style.height = `${el.scrollHeight}px`;
   };
 
+  useScreenResize(autoResize);
+
   useEffect(() => {
     autoResize();
   }, [value]);
@@ -71,7 +74,7 @@ export const TaskTitle = ({ projectId, taskId, name, isLoading }: Props) => {
           queryClient.setQueryData([getTaskId.key, taskId], data);
 
           if (projectId) {
-            queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+            queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
           }
         },
       },

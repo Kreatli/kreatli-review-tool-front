@@ -7,7 +7,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { useSession } from '../../../hooks/useSession';
 import { usePostTask } from '../../../services/hooks';
-import { getProjectIdTasks } from '../../../services/services';
+import { getProjectIdTasksBoard } from '../../../services/services';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { SimpleEditor } from '../../tiptap/components/tiptap-templates/simple/simple-editor';
 import { TaskAssigneeSelect } from './TaskAssigneeSelect';
@@ -70,7 +70,7 @@ export const NewTaskForm = ({ projectId, status, onCancel, onSuccess }: Props) =
       {
         onSuccess: () => {
           onSuccess();
-          queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
         },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });

@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
 import { usePutProjectId } from '../../../services/hooks';
-import { getProjectId, getProjectIdTasks } from '../../../services/services';
+import { getProjectId, getProjectIdTasksBoard } from '../../../services/services';
 import { ProjectDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
@@ -43,7 +43,7 @@ export const BoardColumnRemoveModal = ({ projectId, columnId, isVisible, onClose
       {
         onSuccess: async (data) => {
           queryClient.setQueryData([getProjectId.key, project.id], data);
-          await queryClient.invalidateQueries({ queryKey: [getProjectIdTasks.key, projectId] });
+          await queryClient.invalidateQueries({ queryKey: [getProjectIdTasksBoard.key, projectId] });
           onSuccess();
           setIsLoading(false);
         },
