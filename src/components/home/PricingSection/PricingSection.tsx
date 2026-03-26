@@ -63,7 +63,10 @@ export const PricingSection = ({ titleClassName, hideViewPricingButton }: Pricin
           <h2 className={titleClassName || 'text-center font-sans text-3xl font-bold sm:text-4xl'}>
             Choose the Perfect Plan for Your Creative Journey
           </h2>
-          <p className="text-center text-lg text-foreground-500">Choose a plan and start your 7-day free trial.</p>
+          <p className="text-center text-lg text-foreground-500">
+            Choose a plan and start your 7-day free trial. Add a payment method at checkout; no charge during
+            the trial.
+          </p>
         </div>
         <div className="mx-auto grid w-full max-w-6xl items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
           {PLANS_DATA.map((plan) => {
@@ -133,7 +136,7 @@ export const PricingSection = ({ titleClassName, hideViewPricingButton }: Pricin
                         className={plan.id === 'team' ? 'bg-foreground text-content1' : ''}
                         variant={plan.id === 'team' ? 'solid' : 'bordered'}
                       >
-                        Start free trial
+                        Start 7-day trial
                       </Button>
                     </div>
                   ) : (

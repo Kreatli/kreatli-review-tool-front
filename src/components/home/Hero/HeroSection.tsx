@@ -27,17 +27,13 @@ export const HeroSection = () => {
               Video
             </span>{' '}
             Collaboration
-            <br />& Review{' '}
-            <span className="inline-block">
-              Platform
-            </span>{' '}
-            for
+            <br />& Review <span className="inline-block">Platform</span> for
             <br />
             <Typewriter words={typewriterWords} />
           </h1>
           <div className="mt-4 flex w-full flex-col items-center gap-3 sm:mt-6 sm:w-auto sm:gap-4 md:flex-row md:gap-6">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start for Free
+              Start 7-day trial
               <Icon icon="arrowRight" size={20} />
             </Button>
             <Button

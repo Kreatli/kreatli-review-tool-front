@@ -137,7 +137,7 @@ const data = {
     {
       question: 'How does feedback become trackable work?',
       answer:
-        "In Kreatli, feedback becomes actionable work with ownership. Comments can be assigned to specific team members, marked as resolved or unresolved, and tracked through the workflow. Unresolved feedback stays visible and tied to the right people, ensuring every comment gets addressed. You can see at a glance which feedback is pending, who's responsible for addressing it, and what's been resolved. This transforms scattered comments into organized, trackable work items that teams can manage systematically.",
+        "In Kreatli, feedback becomes actionable work with ownership. Comments can be assigned to specific team members, marked as resolved or unresolved, and tracked through the workflow. You can also create tasks directly from media view — the asset is automatically linked to the task, which appears on the project board. Move the task between stage columns to track execution progress. This bridges review and production: feedback on a file becomes a concrete task on the board, with a responsible owner and contributors, while staying connected to the original media.",
     },
     {
       question: 'What happens when I upload a new version?',
@@ -194,7 +194,7 @@ export default function CreativeProofingPage() {
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.intro}</p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"
@@ -422,7 +422,7 @@ export default function CreativeProofingPage() {
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"

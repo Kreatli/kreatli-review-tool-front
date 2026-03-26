@@ -241,7 +241,7 @@ export default function FreeToolsPage() {
             </p>
             <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Get Started for Free
+                Start 7-day trial
               </Button>
               <Button
                 as="a"

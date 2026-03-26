@@ -16,6 +16,12 @@ import { useSession } from '../hooks/useSession';
 
 const additionalFeatures = [
   {
+    icon: 'board',
+    title: 'Tasks & Boards',
+    description:
+      'Board-driven tasks where each column is a project stage. Move tasks between columns to track progress — no separate status system needed.',
+  },
+  {
     icon: 'folder',
     title: 'Smart File Organization',
     description:
@@ -76,7 +82,7 @@ const faqs = [
   {
     question: "How does team collaboration work in Kreatli's video production platform?",
     answer:
-      'Kreatli enables collaboration through multiple integrated features. Project-tied chats keep all conversations organized by project, so team discussions stay with the relevant work. Asset-linked comments ensure feedback is always connected to the specific file being discussed, eliminating confusion about which asset a comment refers to. The platform supports real-time collaboration where multiple team members can review and comment on the same file simultaneously. Guest review links allow clients and external collaborators to participate in the video review and approval process without requiring accounts, making it easy to include stakeholders in your video collaboration workflow. All collaboration happens within the context of your video collaboration system, so conversations, feedback, and approvals are all tracked and visible to the team. This reduces tool-switching and keeps everything in one place, from initial planning through final delivery.',
+      'Kreatli enables collaboration through multiple integrated features. Board-driven tasks on customizable project stages let you track execution alongside creative assets — move tasks between columns to represent progress, link them to media, and assign clear owners and contributors. Project-tied chats keep all conversations organized by project, so team discussions stay with the relevant work. Asset-linked comments ensure feedback is always connected to the specific file being discussed. Guest review links allow clients and external collaborators to participate without requiring accounts. All collaboration happens within one system — tasks, feedback, approvals, and conversations — so your team stays in context from planning through final delivery.',
   },
   {
     question: 'Can clients and external reviewers use Kreatli without creating an account?',
@@ -704,11 +710,12 @@ export default function PlatformPage() {
             Ready to streamline your video collaboration workflow?
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Start using Kreatli today and experience the difference of a platform built specifically for video teams.
+            Start your 7-day trial and experience the difference of a platform built specifically for video teams. Add a
+            payment method at checkout; no charge during the trial period.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"

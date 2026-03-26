@@ -118,7 +118,7 @@ export default function TikTokSafeZonePage() {
                 Use Free TikTok Safe Zone Checker
               </Button>
               <Button as={NextLink} href="/sign-up" size="lg" variant="bordered">
-                Get Started for Free
+                Start 7-day trial
               </Button>
             </div>
           </div>

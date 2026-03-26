@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import NextLink from 'next/link';
 
@@ -20,7 +21,7 @@ const faqs = [
   {
     question: "How does Kreatli's per-user pricing work, and are there any hidden fees?",
     answer:
-      "Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. Enterprise plans have custom pricing based on your organization's needs. All plans include all core features: unlimited projects, file storage, frame-accurate video review, video review and approval workflows, project management, team collaboration, guest review links, and cloud storage integrations. Unlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes everything in the base price. There are no per-project fees, no storage overage charges, no premium feature tiers, and no setup fees. You pay only for active users, making it easy to scale up or down based on your team size. This transparent pricing model means you can accurately calculate your costs without worrying about surprise fees. The per-user pricing model is straightforward: you're charged based on the number of active team members in your account. If you add a team member, you'll be charged for them in your next billing cycle. If you remove a team member, you'll see the cost reduction in your next billing cycle. This simplicity contrasts with complex pricing models that vary based on features, storage, or usage, making it difficult to predict total costs for your video collaboration needs.",
+      "Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. Enterprise plans have custom pricing based on your organization's needs. All plans include all core features: unlimited projects, file storage, frame-accurate video review, video review and approval workflows, board-driven tasks on project stages, project management, team collaboration, guest review links, and cloud storage integrations. Unlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes everything in the base price. There are no per-project fees, no storage overage charges, no premium feature tiers, and no setup fees. You pay only for active users, making it easy to scale up or down based on your team size. This transparent pricing model means you can accurately calculate your costs without worrying about surprise fees. The per-user pricing model is straightforward: you're charged based on the number of active team members in your account. If you add a team member, you'll be charged for them in your next billing cycle. If you remove a team member, you'll see the cost reduction in your next billing cycle. This simplicity contrasts with complex pricing models that vary based on features, storage, or usage, making it difficult to predict total costs for your video collaboration needs.",
   },
   {
     question: 'What payment methods do you accept, and how secure is the payment process?',
@@ -30,12 +31,12 @@ const faqs = [
   {
     question: 'How does the 7-day free trial work?',
     answer:
-      "When you sign up for Kreatli, you'll choose a plan (Creator, Team, or Enterprise) and immediately start a 7-day free trial of that plan. No credit card is required to start your trial. During the trial, you'll have full access to all features and limits of your chosen plan, allowing you to test the platform with real projects and see how it improves your video collaboration. All plans include all core features during the trial: frame-accurate video review, video review and approval workflows, file organization, team collaboration, guest review links, cloud storage integrations, and project management. This means you can fully evaluate how Kreatli compares to your current tool stack before making any financial commitment. You get the complete experience, not a watered-down version. After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. If you don't select a plan, you'll lose access to your projects and data. This ensures you can try Kreatli risk-free while making it clear that continued use requires a paid subscription. Many teams use the trial period to onboard their team, run a pilot project, and see the value in consolidating their video collaboration tools.",
+      "When you choose a plan (Creator, Team, or Enterprise), you'll complete secure checkout to add a payment method and start your 7-day free trial. You are not charged subscription fees during the trial. During the trial, you'll have full access to all features and limits of your chosen plan, allowing you to test the platform with real projects and see how it improves your video collaboration.\n\nAll plans include all core features during the trial: frame-accurate video review, video review and approval workflows, board-driven tasks on project stages, file organization, team collaboration, guest review links, cloud storage integrations, and project management. This means you can fully evaluate how Kreatli compares to your current tool stack with the complete experience, not a watered-down version.\n\nAfter your 7-day trial ends, your paid subscription begins automatically unless you cancel before then. If you don't continue, you'll lose access to your projects and data. Many teams use the trial period to onboard their team, run a pilot project, and see the value in consolidating their video collaboration tools before committing.",
   },
   {
     question: 'How do I choose the right plan for my team size and needs?',
     answer:
-      "Choosing the right plan depends on your team size and storage needs. All plans include a 7-day free trial, so you can test any plan before committing. The Creator plan ($7/user/month, up to 3 members, 500GB storage) is perfect for solo creators and teams who want to organize projects, review work, and create faster. The Team plan ($19/user/month, up to 10 members, 2TB storage) is ideal for established teams running multiple projects with shared assets, structured reviews, and consistent workflows. This plan works well for micro-teams, freelance teams, and small agencies that need more capacity and collaboration features. The Enterprise plan (custom pricing) provides custom members, custom storage, Single Sign-On (SSO), a dedicated account manager, and custom integrations & features. This plan is tailored for enterprise organizations that need advanced controls, custom workflows, and dedicated support. If you're unsure which plan is right for your team, start with a 7-day trial and our support team can help you evaluate which plan best fits your video collaboration requirements.",
+      "Choosing the right plan depends on your team size and storage needs. All plans include a 7-day free trial. To start the trial, you'll add a payment method at secure checkout and you won't be charged subscription fees during the trial.\n\nThe Creator plan ($7/user/month, up to 3 members, 500GB storage) is perfect for solo creators and teams who want to organize projects, review work, and create faster. The Team plan ($19/user/month, up to 10 members, 2TB storage) is ideal for established teams running multiple projects with shared assets, structured reviews, and consistent workflows. This plan works well for micro-teams, freelance teams, and small agencies that need more capacity and collaboration features.\n\nThe Enterprise plan (custom pricing) provides custom members, custom storage, Single Sign-On (SSO), a dedicated account manager, and custom integrations & features. This plan is tailored for enterprise organizations that need advanced controls, custom workflows, and dedicated support. If you're unsure which plan is right for your team, start with a 7-day trial and our support team can help you evaluate which plan best fits your video collaboration requirements.",
   },
   {
     question: 'What happens to my data if I cancel my subscription?',
@@ -68,7 +69,7 @@ export default function PricingPage() {
   useSession();
   const title = 'Kreatli | Pricing for Video Teams';
   const description =
-    'Pricing for video teams with plans for creators, growing teams, and enterprise workflows. Start a 7-day free trial.';
+    'Pricing for video teams with plans for creators, growing teams, and enterprise workflows. Start a 7-day free trial; add a payment method at checkout. Not charged until the trial ends if you continue.';
 
   return (
     <>
@@ -89,8 +90,8 @@ export default function PricingPage() {
             Simple, Transparent Pricing for Video Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Choose a plan and start your 7-day free trial. Cancel anytime. After the trial, selected plan will be
-            purchased.
+            Choose a plan and start your 7-day free trial. Add a payment method at checkout; you won't be charged
+            during the trial. Cancel anytime during the trial to avoid billing.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
@@ -103,12 +104,14 @@ export default function PricingPage() {
             </div>
             <div className="flex flex-col items-center">
               <div className="font-sans text-2xl font-bold sm:text-3xl">7-Day Free Trial</div>
-              <div className="sm:text-md text-sm text-foreground-500">No cancellation fee</div>
+              <div className="sm:text-md text-sm text-foreground-500">
+                Card at checkout; no charge until trial ends
+              </div>
             </div>
           </div>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start Free Trial
+              Start 7-day trial
             </Button>
             <Button
               as="a"
@@ -210,8 +213,8 @@ export default function PricingPage() {
                   <h3 className="font-sans text-lg font-semibold">7-Day Free Trial</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  All plans include a 7-day free trial. Cancel anytime. After the trial, selected plan will be
-                  purchased.
+                  All plans include a 7-day free trial. Add a payment method at checkout; no charge during the trial.
+                  Cancel anytime during the trial to avoid billing.
                 </p>
               </CardBody>
             </Card>
@@ -294,8 +297,8 @@ export default function PricingPage() {
                   per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10
                   members. Enterprise plans have custom pricing based on your organization's needs. All plans include
                   all core features: unlimited projects, file storage, frame-accurate video review, video review and
-                  approval workflows, project management, team collaboration, guest review links, and cloud storage
-                  integrations.
+                  approval workflows, board-driven tasks on project stages, project management, team collaboration,
+                  guest review links, and cloud storage integrations.
                 </p>
                 <p>
                   Unlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes
@@ -351,24 +354,25 @@ export default function PricingPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  When you sign up for Kreatli, you'll choose a plan (Creator, Team, or Enterprise) and immediately
-                  start a 7-day free trial of that plan. No credit card is required to start your trial. During the
-                  trial, you'll have full access to all features and limits of your chosen plan, allowing you to test
-                  the platform with real projects and see how it improves your video collaboration.
+                  When you choose a plan (Creator, Team, or Enterprise), you'll complete secure checkout to add a
+                  payment method and start your 7-day free trial. You are not charged subscription fees during the
+                  trial. During the trial, you'll have full access to all features and limits of your chosen plan,
+                  allowing you to test the platform with real projects and see how it improves your video collaboration.
                 </p>
                 <p>
                   All plans include all core features during the trial: frame-accurate video review, video review and
-                  approval workflows, file organization, team collaboration, guest review links, cloud storage
-                  integrations, and project management. This means you can fully evaluate how Kreatli compares to your
+                  approval workflows, board-driven tasks on project stages, file organization, team collaboration,
+                  guest review links, cloud storage integrations, and project management. This means you can fully
+                  evaluate how Kreatli compares to your
                   current tool stack before making any financial commitment. You get the complete experience, not a
                   watered-down version.
                 </p>
                 <p>
-                  After your 7-day trial ends, you'll need to select a paid plan to continue using the platform. If you
-                  don't select a plan, you'll lose access to your projects and data. This ensures you can try Kreatli
-                  risk-free while making it clear that continued use requires a paid subscription. Many teams use the
-                  trial period to onboard their team, run a pilot project, and see the value in consolidating their
-                  video collaboration tools.
+                  After your 7-day trial ends, your paid subscription begins automatically unless you cancel before
+                  then. If you don't continue, you'll lose access to your projects and data. This ensures you can try
+                  Kreatli with full access during the trial while making it clear that billing begins when the trial ends
+                  if you continue. Many teams use the trial period to onboard their team, run a pilot project, and see the
+                  value in consolidating their video collaboration tools.
                 </p>
               </div>
             </AccordionItem>
@@ -384,9 +388,9 @@ export default function PricingPage() {
               <div className="space-y-3 text-foreground-500">
                 <p>
                   Choosing the right plan depends on your team size and storage needs. All plans include a 7-day free
-                  trial, so you can test any plan before committing. The Creator plan ($7/user/month, up to 3 members,
-                  500GB storage) is perfect for solo creators and teams who want to organize projects, review work, and
-                  create faster.
+                  trial. To start the trial, you'll add a payment method at secure checkout and you won't be charged
+                  subscription fees during the trial. The Creator plan ($7/user/month, up to 3 members, 500GB storage)
+                  is perfect for solo creators and teams who want to organize projects, review work, and create faster.
                 </p>
                 <p>
                   The Team plan ($19/user/month, up to 10 members, 2TB storage) is ideal for established teams running
@@ -570,12 +574,12 @@ export default function PricingPage() {
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Get Started?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Join video teams who have simplified their collaboration process. Start your 7-day free trial or book a demo
-            to see how Kreatli works for your team.
+            Join video teams who have simplified their collaboration process. Start your 7-day free trial—add a payment
+            method at checkout (no charge until the trial ends)—or book a demo to see how Kreatli works for your team.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start Free Trial
+              Start 7-day trial
             </Button>
             <Button
               as="a"

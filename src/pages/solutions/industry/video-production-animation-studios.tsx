@@ -18,7 +18,7 @@ import { useSession } from '../../../hooks/useSession';
 const data = {
   title: 'Video Production & Animation Studios',
   description:
-    'Frame-accurate feedback, version control, and collaboration for video production teams. Ship more content with less chaos.',
+    'Frame-accurate feedback, version control, board-driven tasks on production stages, and collaboration for video production teams. Ship more content with less chaos.',
   painPoints: [
     'Feedback scattered across email, messages, and comments',
     'Version confusion causing rework',
@@ -275,7 +275,7 @@ export default function VideoProductionAnimationStudiosPage() {
           <p className="mx-auto line-clamp-2 max-w-2xl text-lg text-foreground-500">{data.description}</p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"
@@ -590,7 +590,7 @@ export default function VideoProductionAnimationStudiosPage() {
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"

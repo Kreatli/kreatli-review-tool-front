@@ -132,7 +132,7 @@ const data = {
     {
       question: 'What happens after a client approves a version?',
       answer:
-        'When a client approves a version in Kreatli, the approved version is clearly marked and locked to prevent accidental changes, the production status updates to show the file is approved, and the approval is permanently recorded in the approval history. Producers see the approval immediately through real-time notifications, and the project dashboard reflects the updated status. This ensures everyone on the team knows the file has been approved and can proceed with next steps.',
+        'When a client approves a version in Kreatli, the approved version is clearly marked and locked to prevent accidental changes, and the approval is permanently recorded in the approval history. Producers see the approval immediately through real-time notifications. If you have tasks on the board linked to this media, you can then move the task to the next stage column to reflect that work has progressed. Approval lives on the file version; execution progress lives on the board — giving you visibility into both.',
     },
     {
       question: 'Can I require multiple approvers or set approval order?',
@@ -199,7 +199,7 @@ export default function ClientApprovalsPage() {
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">{data.intro}</p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"
@@ -406,7 +406,7 @@ export default function ClientApprovalsPage() {
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Get Started for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"

@@ -7,7 +7,7 @@ interface CTASectionProps {
   title: string;
   /** Description text (can be string or ReactNode for links) */
   description: string | ReactNode;
-  /** Custom primary button text (default: "Get Started for Free") */
+  /** Custom primary button text (default: "Start 7-day trial") */
   primaryButtonText?: string;
   /** Custom primary button href (default: "/sign-up") */
   primaryButtonHref?: string;
@@ -24,7 +24,7 @@ interface CTASectionProps {
 export function CTASection({
   title,
   description,
-  primaryButtonText = 'Get Started for Free',
+  primaryButtonText = 'Start 7-day trial',
   primaryButtonHref = '/sign-up',
   showDemoButton = true,
   secondaryButtonText = 'Book a Demo',
