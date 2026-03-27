@@ -9,6 +9,7 @@ import { BoardColumnsModal } from '../../../components/tasks/Board/BoardColumnsM
 import { BoardFilters, BoardFiltersType } from '../../../components/tasks/Board/BoardFilters';
 import { BoardSkeleton } from '../../../components/tasks/Board/BoardSkeleton';
 import { NewTaskModal } from '../../../components/tasks/Task/NewTaskModal';
+import { useIsBreakpoint } from '../../../components/tiptap/hooks/use-is-breakpoint';
 import { EmptyState } from '../../../components/various/EmptyState';
 import { Icon } from '../../../components/various/Icon';
 import { useGetProjectIdTasksBoard } from '../../../services/hooks';
@@ -19,6 +20,8 @@ export default function TasksPage() {
   const [isNewTaskModalVisible, setIsNewTaskModalVisible] = useState(false);
 
   const [filters, setFilters] = useState<BoardFiltersType>({});
+
+  const isMobile = useIsBreakpoint('max', 768);
 
   const {
     data: tasksData,
@@ -53,20 +56,28 @@ export default function TasksPage() {
       </Head>
       <div className="flex max-h-[calc(100vh-64px)] flex-1 flex-col gap-3 overflow-hidden">
         <div className="flex items-center justify-between gap-2 p-3 px-3 pb-0 sm:px-4">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <h2 className="text-2xl font-semibold">Tasks</h2>
-            <Button size="sm" variant="light" radius="full" isIconOnly onClick={() => setIsNewTaskModalVisible(true)}>
+            <Button
+              size="sm"
+              variant="flat"
+              radius="full"
+              isIconOnly={isMobile}
+              onClick={() => setIsNewTaskModalVisible(true)}
+            >
               <Icon icon="plus" size={16} />
+              {!isMobile && 'New'}
             </Button>
           </div>
           <div className="flex items-center gap-2">
             <BoardFilters projectId={id} defaultFilters={filters} onFiltersChange={setFilters} />
             <Button
               className="bg-foreground text-content1"
+              isIconOnly={isMobile}
               startContent={<Icon icon="gear" size={16} />}
               onClick={() => setIsColumnsModalVisible(true)}
             >
-              Manage columns
+              {!isMobile && 'Manage columns'}
             </Button>
           </div>
         </div>

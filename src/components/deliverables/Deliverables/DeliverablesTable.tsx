@@ -2,6 +2,7 @@ import {
   Avatar,
   Button,
   Chip,
+  cn,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -20,19 +21,19 @@ import { Icon } from '../../various/Icon';
 import { DeliverablesRowName } from './DeliverablesRowName';
 
 interface Props {
+  projectId: string;
   deliverables: DeliverableInfoDto[];
   onSelect: (deliverable: DeliverableInfoDto) => void;
   onRename: () => void;
   onDelete: () => void;
-  onCreate: () => void;
   onClick: (deliverable: DeliverableInfoDto) => void;
 }
 
-export const DeliverablesTable = ({ deliverables, onSelect, onRename, onDelete, onCreate, onClick }: Props) => {
+export const DeliverablesTable = ({ projectId, deliverables, onSelect, onRename, onDelete, onClick }: Props) => {
   return (
     <>
       <div className="overflow-x-auto">
-        <Table removeWrapper>
+        <Table selectionMode="single" selectedKeys={[]} removeWrapper>
           <TableHeader>
             <TableColumn>Title</TableColumn>
             <TableColumn>Owner</TableColumn>
@@ -45,12 +46,14 @@ export const DeliverablesTable = ({ deliverables, onSelect, onRename, onDelete, 
             {deliverables.map((deliverable) => (
               <TableRow
                 key={deliverable.id}
-                className="group/row hover:cursor-pointer hover:opacity-70"
+                className="group/row hover:cursor-pointer"
                 onClick={() => onClick(deliverable)}
               >
                 <TableCell>
                   <DeliverablesRowName
+                    projectId={projectId}
                     deliverableId={deliverable.id}
+                    tasksCount={deliverable.tasksCount}
                     name={deliverable.name}
                     isOverDue={!!deliverable?.endDate && new Date(deliverable.endDate) < new Date()}
                     isCompleted={deliverable.isCompleted}
@@ -80,7 +83,19 @@ export const DeliverablesTable = ({ deliverables, onSelect, onRename, onDelete, 
                   </Chip>
                 </TableCell>
                 <TableCell className="whitespace-nowrap">{formatDate(deliverable.startDate)}</TableCell>
-                <TableCell className="whitespace-nowrap">{formatDate(deliverable.endDate)}</TableCell>
+                <TableCell className="whitespace-nowrap">
+                  {(() => {
+                    const isOverDue = !!deliverable?.endDate && new Date(deliverable.endDate) < new Date();
+                    return (
+                      <span className={cn({ 'font-medium text-danger': isOverDue && !deliverable.isCompleted })}>
+                        {isOverDue && !deliverable.isCompleted && (
+                          <Icon className="-ml-5 mr-1 inline" icon="error" size={16} />
+                        )}
+                        {formatDate(deliverable.endDate)}
+                      </span>
+                    );
+                  })()}
+                </TableCell>
                 <TableCell>
                   <Dropdown>
                     <DropdownTrigger>
@@ -107,12 +122,6 @@ export const DeliverablesTable = ({ deliverables, onSelect, onRename, onDelete, 
             ))}
           </TableBody>
         </Table>
-      </div>
-      <div>
-        <Button variant="light" onClick={onCreate}>
-          <Icon icon="plus" size={16} />
-          Create deliverable
-        </Button>
       </div>
     </>
   );

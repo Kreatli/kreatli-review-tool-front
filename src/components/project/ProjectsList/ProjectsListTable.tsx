@@ -51,7 +51,7 @@ export const ProjectsListTable = ({
   };
 
   return (
-    <Table isStriped={projects.length > 3}>
+    <Table selectionMode="single" selectedKeys={[]}>
       <TableHeader>
         <TableColumn>Project Name</TableColumn>
         <TableColumn>Members</TableColumn>
@@ -77,11 +77,7 @@ export const ProjectsListTable = ({
         }
       >
         {projects.map((project) => (
-          <TableRow
-            key={project.id}
-            className="group/row hover:cursor-pointer hover:opacity-70"
-            onClick={() => handleRowClick(project)}
-          >
+          <TableRow key={project.id} className="group/row hover:cursor-pointer" onClick={() => handleRowClick(project)}>
             <TableCell>
               <div className="flex items-center gap-3">
                 <div className="size-12 shrink-0">

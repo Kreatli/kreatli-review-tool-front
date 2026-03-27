@@ -1,4 +1,4 @@
-import { Checkbox, Skeleton } from '@heroui/react';
+import { Checkbox, cn, Skeleton } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 
@@ -6,6 +6,7 @@ import { useDebounceCallback } from '../../../hooks/useDebounceCallback';
 import { useScreenResize } from '../../../hooks/useScreenResize';
 import { usePatchDeliverableId } from '../../../services/hooks';
 import { getDeliverableId, getProjectIdDeliverables } from '../../../services/services';
+import { DeliverableDto } from '../../../services/types';
 
 interface Props {
   projectId?: string;
@@ -16,7 +17,7 @@ interface Props {
   isCompleted?: boolean;
 }
 
-export const DeliverableTitle = ({ projectId, deliverableId, name, isOverDue, isLoading, isCompleted }: Props) => {
+export const DeliverableTitle = ({ projectId, deliverableId, name, isLoading, isCompleted }: Props) => {
   const queryClient = useQueryClient();
 
   const [valueBeforeEditing, setValueBeforeEditing] = useState(name);
@@ -116,6 +117,17 @@ export const DeliverableTitle = ({ projectId, deliverableId, name, isOverDue, is
   const handleCheckChange = (isChecked: boolean) => {
     setIsChecked(isChecked);
     toggleIsCompleted(isChecked);
+
+    queryClient.setQueriesData<DeliverableDto>({ queryKey: [getDeliverableId.key, deliverableId] }, (data) => {
+      if (!data) {
+        return undefined;
+      }
+
+      return {
+        ...data,
+        isCompleted: isChecked,
+      };
+    });
   };
 
   if (isLoading) {
@@ -134,19 +146,19 @@ export const DeliverableTitle = ({ projectId, deliverableId, name, isOverDue, is
   return (
     <div className="flex items-start gap-1">
       <div className="flex pt-1.5">
-        <Checkbox
-          radius="full"
-          isSelected={isChecked}
-          isInvalid={isOverDue && !isChecked}
-          onValueChange={handleCheckChange}
-        />
+        <Checkbox radius="full" color="default" isSelected={isChecked} onValueChange={handleCheckChange} />
       </div>
       <div className="flex w-full">
         <button ref={focusLeaveButtonRef} disabled={!isEditing} className="sr-only" />
         <textarea
           ref={textareaRef}
           rows={1}
-          className="-mx-1 w-[calc(100%-2rem)] resize-none rounded-md bg-transparent px-1 outline-offset-4 focus-visible:bg-foreground-100 focus-visible:outline-focus focus-visible:ring-offset-2"
+          className={cn(
+            '-mx-1 w-[calc(100%-2rem)] resize-none rounded-md bg-transparent px-1 outline-offset-4 focus-visible:bg-foreground-100 focus-visible:outline-focus focus-visible:ring-offset-2',
+            {
+              'text-foreground-500': isCompleted,
+            },
+          )}
           value={value}
           onKeyDown={handleKeyDown}
           onChange={handleChange}

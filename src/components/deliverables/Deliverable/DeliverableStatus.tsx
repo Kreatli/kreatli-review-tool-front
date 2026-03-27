@@ -14,9 +14,10 @@ interface Props {
   deliverableId: string;
   status?: string;
   statusLabel?: string;
+  statusColor?: string;
 }
 
-export const DeliverableStatus = ({ projectId, deliverableId, status, statusLabel }: Props) => {
+export const DeliverableStatus = ({ projectId, deliverableId, status, statusLabel, statusColor }: Props) => {
   const [isEditable, setIsEditable] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -101,7 +102,10 @@ export const DeliverableStatus = ({ projectId, deliverableId, status, statusLabe
           </form>
         </FormProvider>
       ) : (
-        <div className="rounded-medium bg-foreground-100 px-3 py-2.5 text-small">{statusLabel ?? 'No status'}</div>
+        <div className="flex items-center gap-1.5 rounded-medium bg-foreground-100 px-3 py-2.5">
+          <span className="h-2 w-2 rounded-full bg-current" style={{ color: statusColor ?? '#A1A1AA' }} />
+          <div className="text-small">{statusLabel ?? 'No status'}</div>
+        </div>
       )}
     </div>
   );

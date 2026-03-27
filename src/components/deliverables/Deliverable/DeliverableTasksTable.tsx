@@ -17,7 +17,7 @@ export const DeliverableTasksTable = ({ tasks, deliverableId }: Props) => {
   };
 
   return (
-    <Table isCompact removeWrapper>
+    <Table isCompact removeWrapper selectedKeys={[]} selectionMode="single">
       <TableHeader>
         <TableColumn>Name</TableColumn>
         <TableColumn>Owner</TableColumn>
@@ -26,11 +26,7 @@ export const DeliverableTasksTable = ({ tasks, deliverableId }: Props) => {
       </TableHeader>
       <TableBody>
         {tasks.map((task) => (
-          <TableRow
-            key={task.id}
-            className="group/row hover:cursor-pointer hover:opacity-70"
-            onClick={() => handleClick(task)}
-          >
+          <TableRow key={task.id} className="group/row hover:cursor-pointer" onClick={() => handleClick(task)}>
             <TableCell>
               <div className="line-clamp-2 font-semibold">{task.name}</div>
             </TableCell>

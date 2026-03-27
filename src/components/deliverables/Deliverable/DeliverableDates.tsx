@@ -62,6 +62,8 @@ export const DeliverableDates = ({ projectId, deliverable }: Props) => {
     );
   };
 
+  const isInvalid = !!deliverable?.endDate && new Date(deliverable.endDate) < new Date() && !deliverable.isCompleted;
+
   return (
     <div className="flex flex-col gap-1">
       <div className={cn('flex items-center gap-1', { 'justify-between': isEditable })}>
@@ -73,7 +75,7 @@ export const DeliverableDates = ({ projectId, deliverable }: Props) => {
             </Button>
             <Button
               size="sm"
-              form="deliverable-status-form"
+              form="deliverable-dates-form"
               isLoading={isPending}
               type="submit"
               variant="flat"
@@ -90,13 +92,17 @@ export const DeliverableDates = ({ projectId, deliverable }: Props) => {
       </div>
       {isEditable ? (
         <FormProvider {...formMethods}>
-          <form id="deliverable-status-form" noValidate onSubmit={formMethods.handleSubmit(handleSave)}>
+          <form id="deliverable-dates-form" noValidate onSubmit={formMethods.handleSubmit(handleSave)}>
             <DeliverableStartEndDate isOpen={isOpen} size="md" autoFocus label="" onOpenChange={setIsOpen} />
           </form>
         </FormProvider>
       ) : (
         <div className="rounded-medium bg-foreground-100 px-3 py-2.5 text-small">
-          {formatDate(deliverable.startDate)} - {formatDate(deliverable.endDate)}
+          {formatDate(deliverable.startDate)} -{' '}
+          <span className={cn({ 'font-medium text-danger': isInvalid })}>
+            {isInvalid && <Icon icon="error" size={16} className="mr-1 inline" />}
+            {formatDate(deliverable.endDate)}
+          </span>
         </div>
       )}
     </div>

@@ -68,10 +68,6 @@ interface Props {
 export const ProjectSidebar = ({ project, isLoading = false }: Props) => {
   const router = useRouter();
 
-  const items = ITEMS.filter(
-    (item) => item.key !== 'deliverables' || localStorage.getItem('showDeliverables') === 'true',
-  );
-
   const [selectedKey, setSelectedKey] = useState<string>(() => {
     const firstSlug = router.pathname.split('/')[3];
     const secondSlug = router.pathname.split('/')[4];
@@ -123,7 +119,7 @@ export const ProjectSidebar = ({ project, isLoading = false }: Props) => {
           className="pb-px"
           hideSelectedIcon
         >
-          {items.map((item) => (
+          {ITEMS.map((item) => (
             <ListboxItem
               key={item.key}
               startContent={<Icon icon={item.icon} size={20} />}

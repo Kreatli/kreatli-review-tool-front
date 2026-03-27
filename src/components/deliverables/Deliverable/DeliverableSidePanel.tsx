@@ -17,6 +17,7 @@ export const DeliverableSidePanel = ({ projectId, deliverable }: Props) => {
           deliverableId={deliverable.id}
           status={deliverable.status}
           statusLabel={deliverable.statusLabel}
+          statusColor={deliverable.statusColor}
         />
         <DeliverableOwner projectId={projectId} deliverableId={deliverable.id} owner={deliverable.owner} />
         <DeliverableDates projectId={projectId} deliverable={deliverable} />
