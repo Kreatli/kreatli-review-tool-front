@@ -60,10 +60,20 @@ export const BoardTask = ({ id, index, column, task, onRename, onRemove, onClick
               {task.owner.name}
             </div>
           )}
-          {task.commentCount > 0 && (
-            <div className="flex items-center gap-1 text-xs text-foreground-500">
-              <Icon icon="chat" size={16} />
-              {task.commentCount}
+          {(task.assetCount > 0 || task.commentCount > 0) && (
+            <div className="flex items-center gap-1">
+              {task.assetCount > 0 && (
+                <div className="flex items-center gap-0.5 text-xs text-foreground-500">
+                  <Icon icon="images" size={16} />
+                  {task.assetCount}
+                </div>
+              )}
+              {task.commentCount > 0 && (
+                <div className="flex items-center gap-0.5 text-xs text-foreground-500">
+                  <Icon icon="chat" size={14} />
+                  {task.commentCount}
+                </div>
+              )}
             </div>
           )}
         </div>

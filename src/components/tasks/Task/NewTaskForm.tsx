@@ -10,6 +10,7 @@ import { usePostTask } from '../../../services/hooks';
 import { getProjectIdTasksBoard } from '../../../services/services';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { SimpleEditor } from '../../tiptap/components/tiptap-templates/simple/simple-editor';
+import { TaskAssetsSelect } from './TaskAssetsSelect';
 import { TaskAssigneeSelect } from './TaskAssigneeSelect';
 import { TaskContributorsSelect } from './TaskContributorsSelect';
 import { TaskStageSelect } from './TaskStageSelect';
@@ -47,6 +48,7 @@ export const NewTaskForm = ({ projectId, status, onCancel, onSuccess }: Props) =
       owner: user?.id ?? '',
       contributors: [],
       visibleTo: [],
+      assets: [],
     },
     mode: 'onTouched',
   });
@@ -102,6 +104,7 @@ export const NewTaskForm = ({ projectId, status, onCancel, onSuccess }: Props) =
           <TaskContributorsSelect projectId={projectId} />
           <TaskStageSelect projectId={projectId} />
           <TaskVisibilitySelect />
+          <TaskAssetsSelect projectId={projectId} />
         </div>
         <div className="mt-4 flex justify-end gap-2">
           <Button variant="light" onClick={onCancel}>

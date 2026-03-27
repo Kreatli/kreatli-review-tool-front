@@ -53,7 +53,7 @@ export const DeliverableTasksSelect = ({ projectId }: Props) => {
           </div>
         ))}
       </div>
-      <TasksPicker projectId={projectId} onSelect={handleSelectTask}>
+      <TasksPicker projectId={projectId} skipIds={field.value} onSelect={handleSelectTask}>
         <Button variant="light" size="sm">
           <Icon icon="plus" size={16} />
           Link tasks

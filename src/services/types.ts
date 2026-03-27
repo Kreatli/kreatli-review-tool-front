@@ -1276,6 +1276,7 @@ export interface TaskBodyDto {
   name: string;
   owner: string;
   projectId: string;
+  assets?: string[];
   content?: { [x in string | number]: any };
   contributors?: string[];
   description?: string;
@@ -1378,6 +1379,7 @@ export interface TaskEditBodyDto {
 }
 
 export interface TaskInfoDto {
+  assetCount: number;
   commentCount: number;
   createdBy: UserDto;
   id: string;
