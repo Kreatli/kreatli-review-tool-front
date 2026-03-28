@@ -1,6 +1,7 @@
 import 'react-image-crop/dist/ReactCrop.css';
 import '../styles/globals.scss';
 import '../styles/tiptap.scss';
+import '@svar-ui/react-gantt/all.css';
 
 import { HeroUIProvider, ToastProvider } from '@heroui/react';
 import { GoogleTagManager } from '@next/third-parties/google';
