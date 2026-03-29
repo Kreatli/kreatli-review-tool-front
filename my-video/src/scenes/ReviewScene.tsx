@@ -38,8 +38,6 @@ export const ReviewScene: React.FC = () => {
 
   const topTextEntrance = spring({ frame, fps, config: SPRING_SMOOTH, delay: 3 });
 
-  const drawingEntrance = spring({ frame, fps, config: { damping: 200 }, delay: fps * 1.5 });
-
   return (
     <FeatureSceneLayout
       headlineOpacity={topTextEntrance}
@@ -124,68 +122,6 @@ export const ReviewScene: React.FC = () => {
                 <div style={{ position: "absolute", bottom: 16, left: 16, width: 42, height: 42, borderRadius: "50%", background: "rgba(0,0,0,0.7)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19" fill={COLORS.white} /></svg>
                 </div>
-
-                {/* "Start drawing" / drawing overlay hint */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 10,
-                    background: "rgba(0,0,0,0.5)",
-                    opacity: interpolate(frame, [0, fps * 0.6, fps * 1.0], [1, 1, 0], { extrapolateRight: "clamp" }),
-                    pointerEvents: "none",
-                  }}
-                >
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke={COLORS.white} strokeWidth="2" />
-                  </svg>
-                  <span style={{ fontFamily: FONT.family, fontWeight: FONT.semibold, fontSize: 22, color: COLORS.white }}>
-                    Start drawing
-                  </span>
-                </div>
-
-                {/* Animated red drawing line (squiggle) */}
-                <svg
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    width: "100%",
-                    height: "100%",
-                    pointerEvents: "none",
-                  }}
-                  viewBox="0 0 780 390"
-                >
-                  <defs>
-                    <linearGradient id="reviewStroke" x1="0%" y1="0%" x2="100%" y2="50%">
-                      <stop offset="0%" stopColor={COLORS.pink} />
-                      <stop offset="55%" stopColor={COLORS.pinkLight} />
-                      <stop offset="100%" stopColor={COLORS.warning} />
-                    </linearGradient>
-                    <filter id="reviewStrokeGlow" x="-50%" y="-50%" width="200%" height="200%">
-                      <feGaussianBlur stdDeviation="3.5" result="blur" />
-                      <feMerge>
-                        <feMergeNode in="blur" />
-                        <feMergeNode in="SourceGraphic" />
-                      </feMerge>
-                    </filter>
-                  </defs>
-                  <path
-                    d="M 280 160 C 300 140, 340 130, 380 150 C 420 170, 440 200, 480 180 C 520 160, 540 130, 560 150"
-                    fill="none"
-                    stroke="url(#reviewStroke)"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeDasharray="300"
-                    strokeDashoffset={interpolate(drawingEntrance, [0, 1], [300, 0])}
-                    filter="url(#reviewStrokeGlow)"
-                    opacity={0.92}
-                  />
-                </svg>
               </div>
 
               {/* Textarea mock */}

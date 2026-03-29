@@ -12,6 +12,7 @@ import { MediaScene } from "./scenes/MediaScene";
 import { ReviewScene } from "./scenes/ReviewScene";
 import { CompareScene } from "./scenes/CompareScene";
 import { WalkthroughTasksBoardScene } from "./scenes/WalkthroughTasksBoardScene";
+import { DeliverablesScene } from "./scenes/DeliverablesScene";
 import { CollaborateScene } from "./scenes/CollaborateScene";
 import { CtaScene } from "./scenes/CtaScene";
 
@@ -27,6 +28,7 @@ const SCENE_DURATIONS = {
   review: 5.5 * FPS,
   compare: 4 * FPS,
   tasksBoard: 4.5 * FPS,
+  deliverables: 4.5 * FPS,
   collaborate: 5 * FPS,
   cta: 310,
 } as const;
@@ -82,7 +84,7 @@ export const KreatliWalkthroughVideo: React.FC = () => {
       </TransitionSeries.Sequence>
 
       <TransitionSeries.Transition
-        presentation={slide({ direction: "from-bottom" })}
+        presentation={fade()}
         timing={linearTiming({ durationInFrames: T })}
       />
 
@@ -116,7 +118,17 @@ export const KreatliWalkthroughVideo: React.FC = () => {
         timing={linearTiming({ durationInFrames: T })}
       />
 
-      {/* Scene 9: Collaborate */}
+      {/* Scene 9: Deliverables — list & Gantt */}
+      <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.deliverables}>
+        <DeliverablesScene />
+      </TransitionSeries.Sequence>
+
+      <TransitionSeries.Transition
+        presentation={wipe({ direction: "from-left" })}
+        timing={linearTiming({ durationInFrames: T })}
+      />
+
+      {/* Scene 10: Collaborate */}
       <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.collaborate}>
         <CollaborateScene />
       </TransitionSeries.Sequence>
@@ -126,7 +138,7 @@ export const KreatliWalkthroughVideo: React.FC = () => {
         timing={linearTiming({ durationInFrames: T + 10 })}
       />
 
-      {/* Scene 10: CTA */}
+      {/* Scene 11: CTA */}
       <TransitionSeries.Sequence durationInFrames={SCENE_DURATIONS.cta}>
         <CtaScene />
       </TransitionSeries.Sequence>

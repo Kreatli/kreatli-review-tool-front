@@ -1,12 +1,24 @@
 import React from "react";
-import { useCurrentFrame } from "remotion";
+import {
+  AbsoluteFill,
+  Img,
+  Loop,
+  OffthreadVideo,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { COLORS } from "../lib/brand";
+import {
+  STOCK_CLIPS,
+  stockClipForSeed,
+  stockImageForSeed,
+} from "../lib/stockAssets";
 
 export type MediaPreviewPlaceholderVariant = "video" | "image" | "file";
 
 /**
- * Fills a media / video preview region so mocks read as intentional placeholders
- * instead of empty dark rectangles (feature showcase + walkthrough UIs).
+ * Fills a media / video preview region. Uses stock clips and stills from
+ * `public/stock/` by default; falls back to abstract placeholders when disabled.
  */
 export const MediaPreviewPlaceholder: React.FC<{
   variant?: MediaPreviewPlaceholderVariant;
@@ -15,9 +27,103 @@ export const MediaPreviewPlaceholder: React.FC<{
   /** Visual variety when many placeholders share one composition */
   seed?: number;
   style?: React.CSSProperties;
-}> = ({ variant = "video", uniqueId, seed = 0, style }) => {
+  /** When true (default), show `public/stock` video or image instead of abstract art */
+  useStockMedia?: boolean;
+  /** Override stock picker — must be a `staticFile()` path or absolute URL */
+  videoSrc?: string;
+  imageSrc?: string;
+}> = ({
+  variant = "video",
+  uniqueId,
+  seed = 0,
+  style,
+  useStockMedia = true,
+  videoSrc: videoSrcProp,
+  imageSrc: imageSrcProp,
+}) => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const gid = `${uniqueId}-bg`;
+
+  const clipFromSeed = stockClipForSeed(seed);
+  const resolvedVideoSrc = videoSrcProp ?? clipFromSeed.src;
+  const resolvedImageSrc = imageSrcProp ?? stockImageForSeed(seed);
+  const clipForLoop =
+    STOCK_CLIPS.find((c) => c.src === resolvedVideoSrc) ?? clipFromSeed;
+  const loopFrames = Math.max(1, Math.round(clipForLoop.durationSec * fps));
+
+  if (variant === "video" && useStockMedia) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          backgroundColor: COLORS.darkSurface,
+          ...style,
+        }}
+      >
+        <Loop durationInFrames={loopFrames} layout="none">
+          <AbsoluteFill>
+            <OffthreadVideo
+              src={resolvedVideoSrc}
+              muted
+              volume={0}
+              pauseWhenBuffering={false}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </AbsoluteFill>
+        </Loop>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 35%, rgba(0,0,0,0.35) 100%)",
+          }}
+        />
+      </div>
+    );
+  }
+
+  if (variant === "image" && useStockMedia) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          backgroundColor: COLORS.darkSurface,
+          ...style,
+        }}
+      >
+        <AbsoluteFill>
+          <Img
+            src={resolvedImageSrc}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </AbsoluteFill>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background:
+              "linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.25) 100%)",
+          }}
+        />
+      </div>
+    );
+  }
 
   const hue = 210 + (seed % 5) * 14;
   const c1 = `hsl(${hue}, 32%, 11%)`;
