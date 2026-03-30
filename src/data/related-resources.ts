@@ -18,6 +18,13 @@ export const RELATED_RESOURCES = {
     icon: 'board' as IconType,
     buttonText: 'Learn More',
   },
+  deliverables: {
+    title: 'Deliverables',
+    description: 'Track what needs to ship with due dates, ownership, and approval visibility—so delivery stays predictable.',
+    href: '/platform/deliverables',
+    icon: 'calendar' as IconType,
+    buttonText: 'Learn More',
+  },
   secureAssetStorage: {
     title: 'Secure Asset Storage',
     description:

@@ -9,16 +9,10 @@ export const Socials = () => {
       <a href="https://x.com/kreatli" target="_blank">
         <Icon icon="x" size={24} />
       </a>
-      <a href="https://www.tiktok.com/@kreatli" target="_blank">
-        <Icon icon="tiktok" size={24} />
-      </a>
       <a href="https://www.facebook.com/people/Kreatli/61581649865831" target="_blank">
         <Icon icon="facebook" size={24} />
       </a>
-      <a href="https://www.instagram.com/kreatli_" target="_blank">
-        <Icon icon="instagram" size={24} />
-      </a>
-      <a href="https://www.youtube.com/@kreatlie" target="_blank">
+      <a href="https://www.youtube.com/@kreatli" target="_blank">
         <Icon icon="youtube" size={24} />
       </a>
     </div>

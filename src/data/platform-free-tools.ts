@@ -296,6 +296,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/cost-calculator',
     '/free-tools/data-transfer-calculator',
   ],
+  '/platform/deliverables': [
+    '/free-tools/video-manager',
+    '/free-tools/video-reviewer',
+    '/free-tools/cost-calculator',
+    '/free-tools/data-transfer-calculator',
+  ],
   '/platform/secure-asset-storage': [
     '/free-tools/video-manager',
     '/free-tools/data-transfer-calculator',
