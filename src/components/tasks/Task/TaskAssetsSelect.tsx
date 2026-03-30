@@ -4,8 +4,8 @@ import { useController, useFormContext } from 'react-hook-form';
 
 import { AssetFileDto } from '../../../services/types';
 import { AssetPicker } from '../../asset/AssetPicker';
-import { AssetPreview } from '../../asset/AssetPicker/AssetPreview';
 import { Icon } from '../../various/Icon';
+import { TaskAsset } from './TaskAsset';
 
 interface Props {
   projectId: string;
@@ -29,16 +29,13 @@ export const TaskAssetsSelect = ({ projectId }: Props) => {
 
   return (
     <div className="flex flex-col items-start gap-2">
-      <div className="flex w-full flex-col gap-2">
+      <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-2">
         {selectedAssets.map((asset) => (
-          <div key={asset.id} className="flex items-center justify-between gap-2 rounded-md p-1 pl-3 shadow-medium">
-            <div className="flex items-center gap-2 overflow-hidden">
-              <AssetPreview asset={asset} width={24} height={24} />
-              <div className="truncate text-sm font-semibold">{asset.name}</div>
-            </div>
+          <TaskAsset key={asset.id} projectId={projectId} asset={asset} asLink={false}>
             <Button
               size="sm"
-              variant="light"
+              variant="faded"
+              className="z-10"
               color="danger"
               radius="full"
               isIconOnly
@@ -46,7 +43,7 @@ export const TaskAssetsSelect = ({ projectId }: Props) => {
             >
               <Icon icon="trash" size={16} />
             </Button>
-          </div>
+          </TaskAsset>
         ))}
       </div>
       <AssetPicker projectId={projectId} skipIds={field.value} onSelect={handleSelectAsset}>
