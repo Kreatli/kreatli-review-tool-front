@@ -607,6 +607,7 @@ export interface GetProjectIdLogsQueryParams {
 
 export interface GetProjectIdTasksBoardQueryParams {
   contributor?: string;
+  limit?: number;
   owner?: string;
   search?: string;
   skipIds?: string;
@@ -614,6 +615,7 @@ export interface GetProjectIdTasksBoardQueryParams {
 
 export interface GetProjectIdTasksQueryParams {
   contributor?: string;
+  limit?: number;
   owner?: string;
   search?: string;
   skipIds?: string;

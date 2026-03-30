@@ -16,7 +16,7 @@ export const DashboardChat = ({ project }: Props) => {
   const { data, isPending, isError, refetch } = useGetProjectIdChats(project.id);
 
   return (
-    <div className="border-t border-foreground-200 px-4 pb-4 lg:border-l lg:border-t-0">
+    <div className="px-4 pb-4">
       <div className="sticky top-0 z-10 mb-2 flex items-center justify-between gap-4 bg-background py-3">
         <Link href={`/project/${project.id}/chat`} className="flex items-center gap-1">
           <span className="text-lg font-semibold">Chat</span>

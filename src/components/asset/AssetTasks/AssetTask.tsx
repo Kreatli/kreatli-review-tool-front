@@ -35,7 +35,11 @@ export const AssetTask = ({ task }: Props) => {
             </Chip>
           ))}
       </div>
-      <Link href={href} replace className="z-10 text-small font-semibold after:absolute after:inset-0">
+      <Link
+        href={href}
+        replace
+        className="z-10 line-clamp-2 flex-1 text-small font-semibold after:absolute after:inset-0"
+      >
         {task.name}
       </Link>
       <div className="flex items-center justify-between gap-1 overflow-hidden text-foreground">
