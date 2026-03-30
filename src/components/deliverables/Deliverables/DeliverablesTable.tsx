@@ -14,8 +14,11 @@ import {
   TableHeader,
   TableRow,
 } from '@heroui/react';
+import { useQueryClient } from '@tanstack/react-query';
 
-import { DeliverableInfoDto } from '../../../services/types';
+import { usePatchDeliverableId } from '../../../services/hooks';
+import { getDeliverableId, getProjectIdDeliverables } from '../../../services/services';
+import { DeliverableInfoDto, DeliverablesDto } from '../../../services/types';
 import { formatDate } from '../../../utils/dates';
 import { Icon } from '../../various/Icon';
 import { DeliverablesRowName } from './DeliverablesRowName';
@@ -23,13 +26,54 @@ import { DeliverablesRowName } from './DeliverablesRowName';
 interface Props {
   projectId: string;
   deliverables: DeliverableInfoDto[];
+  selectedDeliverable: DeliverableInfoDto | undefined;
   onSelect: (deliverable: DeliverableInfoDto) => void;
   onRename: () => void;
   onDelete: () => void;
   onClick: (deliverable: DeliverableInfoDto) => void;
 }
 
-export const DeliverablesTable = ({ projectId, deliverables, onSelect, onRename, onDelete, onClick }: Props) => {
+export const DeliverablesTable = ({
+  projectId,
+  deliverables,
+  selectedDeliverable,
+  onSelect,
+  onRename,
+  onDelete,
+  onClick,
+}: Props) => {
+  const queryClient = useQueryClient();
+
+  const { mutate } = usePatchDeliverableId();
+
+  const onComplete = () => {
+    if (!selectedDeliverable) {
+      return;
+    }
+
+    queryClient.setQueriesData<DeliverablesDto>({ queryKey: [getProjectIdDeliverables.key, projectId] }, (data) => {
+      return {
+        ...data,
+        deliverables:
+          data?.deliverables.map((deliverable) => {
+            if (deliverable.id === selectedDeliverable.id) {
+              return { ...deliverable, isCompleted: !selectedDeliverable.isCompleted };
+            }
+            return deliverable;
+          }) ?? [],
+      };
+    });
+
+    mutate(
+      { id: selectedDeliverable.id, requestBody: { isCompleted: !selectedDeliverable.isCompleted } },
+      {
+        onSuccess: () => {
+          queryClient.resetQueries({ queryKey: [getDeliverableId.key, selectedDeliverable.id] });
+        },
+      },
+    );
+  };
+
   return (
     <>
       <div className="overflow-x-auto">
@@ -104,6 +148,13 @@ export const DeliverablesTable = ({ projectId, deliverables, onSelect, onRename,
                       </Button>
                     </DropdownTrigger>
                     <DropdownMenu variant="flat">
+                      <DropdownItem
+                        key="edit-status"
+                        startContent={<Icon icon="check" size={16} />}
+                        onClick={onComplete}
+                      >
+                        {deliverable.isCompleted ? 'Incomplete' : 'Complete'}
+                      </DropdownItem>
                       <DropdownItem key="edit-status" startContent={<Icon icon="edit" size={16} />} onClick={onRename}>
                         Rename
                       </DropdownItem>

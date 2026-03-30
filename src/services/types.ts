@@ -594,6 +594,7 @@ export interface GetNotificationsQueryParams {
 
 export interface GetProjectIdDeliverablesQueryParams {
   owner?: string;
+  status?: string;
 }
 
 export interface GetProjectIdLogsQueryParams {

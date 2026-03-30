@@ -5,6 +5,10 @@ import { useState } from 'react';
 
 import { NewDeliverableModal } from '../../../components/deliverables/Deliverable/NewDeliverableModal';
 import { Deliverables } from '../../../components/deliverables/Deliverables/Deliverables';
+import {
+  DeliverablesFilters,
+  DeliverablesFiltersType,
+} from '../../../components/deliverables/Deliverables/DeliverablesFilter';
 import { DeliverablesSkeleton } from '../../../components/deliverables/Deliverables/DeliverablesSkeleton';
 import { DeliverablesStatusesModal } from '../../../components/deliverables/Deliverables/DeliverablesStatusesModal';
 import { DeliverablesTimeline } from '../../../components/deliverables/DeliverablesTimeline/DeliverablesTimeline';
@@ -16,12 +20,23 @@ import { useGetProjectIdDeliverables } from '../../../services/hooks';
 
 export default function DeliverablesPage() {
   const { id } = useParams<{ id: string }>();
+  const [filters, setFilters] = useState<DeliverablesFiltersType>({});
   const [isColumnsModalVisible, setIsStatusesModalVisible] = useState(false);
   const [isNewDeliverableModalVisible, setIsNewDeliverableModalVisible] = useState(false);
 
   const isMobile = useIsBreakpoint('max', 768);
 
-  const { data: tasksData, isPending, isError, refetch } = useGetProjectIdDeliverables(id);
+  const {
+    data: deliverablesData,
+    isPending,
+    isError,
+    refetch,
+  } = useGetProjectIdDeliverables(id, {
+    status: filters.status,
+    owner: filters.owner,
+  });
+
+  const hasFilters = Object.keys(filters).length > 0;
 
   if (isError) {
     return (
@@ -37,6 +52,14 @@ export default function DeliverablesPage() {
       </EmptyState>
     );
   }
+
+  const noResultsFound = (
+    <EmptyState title="No deliverables found" text="Try changing or resetting your filters">
+      <Button className="mt-4 bg-foreground text-content1" onClick={() => setFilters({})}>
+        Reset filters
+      </Button>
+    </EmptyState>
+  );
 
   return (
     <>
@@ -60,6 +83,7 @@ export default function DeliverablesPage() {
             </Button>
           </div>
           <div className="flex items-center gap-2">
+            <DeliverablesFilters projectId={id} defaultFilters={filters} onFiltersChange={setFilters} />
             <Button
               className="bg-foreground text-content1"
               startContent={<Icon icon="gear" size={16} />}
@@ -83,8 +107,10 @@ export default function DeliverablesPage() {
               <div className="p-3 pt-0 sm:px-4">
                 {isPending ? (
                   <DeliverablesSkeleton />
+                ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
+                  noResultsFound
                 ) : (
-                  <Deliverables key={id} projectId={id} deliverables={tasksData?.deliverables ?? []} />
+                  <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
                 )}
               </div>
             </Tab>
@@ -99,8 +125,10 @@ export default function DeliverablesPage() {
             >
               {isPending ? (
                 <DeliverablesSkeleton />
+              ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
+                noResultsFound
               ) : (
-                <DeliverablesTimeline key={id} projectId={id} deliverables={tasksData?.deliverables ?? []} />
+                <DeliverablesTimeline key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
               )}
             </Tab>
           </Tabs>
@@ -109,7 +137,7 @@ export default function DeliverablesPage() {
             {isPending ? (
               <DeliverablesSkeleton />
             ) : (
-              <Deliverables key={id} projectId={id} deliverables={tasksData?.deliverables ?? []} />
+              <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
             )}
           </div>
         )}

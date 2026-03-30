@@ -55,6 +55,7 @@ export const Deliverables = ({ projectId, deliverables }: Props) => {
         <DeliverablesTable
           projectId={projectId}
           deliverables={deliverables}
+          selectedDeliverable={selectedDeliverable}
           onSelect={setSelectedDeliverable}
           onRename={() => setIsRenameModalVisible(true)}
           onDelete={() => setIsDeleteModalVisible(true)}
