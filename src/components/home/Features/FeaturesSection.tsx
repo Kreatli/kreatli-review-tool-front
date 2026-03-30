@@ -1,5 +1,6 @@
 import { ChatFeaturePreview } from './ChatFeaturePreview';
 import { CompareFeaturePreview } from './CompareFeaturePreview';
+import { DeliverablesFeaturePreview } from './DeliverablesFeaturePreview';
 import { Feature } from './Feature';
 import { HomeDashboardFeaturePreview } from './HomeDashboardFeaturePreview';
 import { ReviewToolPreview } from './ReviewToolPreview';
@@ -51,6 +52,16 @@ export const FeaturesSection = () => {
             linkText="Explore Project Orchestration"
           >
             <TasksBoardFeaturePreview />
+          </Feature>
+          <Feature
+            icon="calendar"
+            title="Deliverables, Deadlines & Approvals"
+            description="Track what needs to ship, when it is due, and where it stands. Keep deliverables organized with clear ownership, review status, and timeline visibility."
+            isReversed={true}
+            linkTo="/platform/deliverables"
+            linkText="Explore Deliverables"
+          >
+            <DeliverablesFeaturePreview />
           </Feature>
           <Feature
             icon="compare"

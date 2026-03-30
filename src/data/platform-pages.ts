@@ -112,6 +112,19 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'secureAssetStorage'],
   },
   {
+    label: 'Deliverables',
+    href: '/platform/deliverables',
+    description: 'Track deliverables with deadlines, ownership, and approvals',
+    icon: 'calendar',
+    section: 'Core Platform',
+    order: 3.5,
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['projectOrchestration', 'creativeWorkspace', 'reviewApproval'],
+  },
+  {
     label: 'Video Annotation',
     href: '/platform/video-annotation',
     description: 'Frame-accurate video annotation and markup',
