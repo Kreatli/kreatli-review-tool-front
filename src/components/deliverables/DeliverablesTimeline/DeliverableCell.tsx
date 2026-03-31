@@ -22,7 +22,7 @@ export const DeliverableCell = ({ deliverables, row }: Props) => {
         className="size-5 shrink-0"
         getInitials={(name) => name.charAt(0).toUpperCase()}
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col overflow-hidden">
         <div className="truncate">{deliverable?.name}</div>
         <div className="text-xs font-normal text-foreground-500">{deliverable.statusLabel || 'No status'}</div>
       </div>
