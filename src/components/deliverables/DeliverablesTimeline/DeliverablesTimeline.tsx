@@ -4,6 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useRef, useState } from 'react';
 
 import { useDeliverableModalVisibility } from '../../../hooks/useDeliverableModalVisibility';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { usePatchDeliverableId } from '../../../services/hooks';
 import { getProjectIdDeliverables } from '../../../services/services';
 import { DeliverableInfoDto, DeliverablesDto } from '../../../services/types';
@@ -36,7 +37,7 @@ interface Props {
 export const DeliverablesTimeline = ({ projectId, deliverables }: Props) => {
   const ganttRef = useRef<IApi>(null);
   const [isNewDeliverableModalVisible, setIsNewDeliverableModalVisible] = useState(false);
-  const [unit, setUnit] = useState<'month' | 'day'>('day');
+  const [unit, setUnit] = useLocalStorage<'month' | 'day'>({ key: 'timelineUnit', defaultValue: 'day' });
   const { openDeliverableModal } = useDeliverableModalVisibility();
 
   const queryClient = useQueryClient();

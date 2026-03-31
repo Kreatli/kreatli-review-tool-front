@@ -93,54 +93,44 @@ export default function DeliverablesPage() {
             </Button>
           </div>
         </div>
-        {localStorage.getItem('showGantt') ? (
-          <Tabs size="sm" classNames={{ tab: 'p-1.5', panel: 'p-0 max-w-full', tabList: 'mx-3 sm:mx-4 mb-2' }}>
-            <Tab
-              key="list"
-              title={
-                <div className="flex items-center gap-1">
-                  <Icon icon="list" size={16} />
-                  List
-                </div>
-              }
-            >
-              <div className="p-3 pt-0 sm:px-4">
-                {isPending ? (
-                  <DeliverablesSkeleton />
-                ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
-                  noResultsFound
-                ) : (
-                  <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
-                )}
+        <Tabs size="sm" classNames={{ tab: 'p-1.5', panel: 'p-0 max-w-full', tabList: 'mx-3 sm:mx-4 mb-2' }}>
+          <Tab
+            key="list"
+            title={
+              <div className="flex items-center gap-1">
+                <Icon icon="list" size={16} />
+                List
               </div>
-            </Tab>
-            <Tab
-              key="timeline"
-              title={
-                <div className="flex items-center gap-1">
-                  <Icon icon="calendar" size={16} />
-                  Timeline
-                </div>
-              }
-            >
+            }
+          >
+            <div className="p-3 pt-0 sm:px-4">
               {isPending ? (
                 <DeliverablesSkeleton />
               ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
                 noResultsFound
               ) : (
-                <DeliverablesTimeline key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
+                <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
               )}
-            </Tab>
-          </Tabs>
-        ) : (
-          <div className="p-3 pt-0 sm:px-4">
+            </div>
+          </Tab>
+          <Tab
+            key="timeline"
+            title={
+              <div className="flex items-center gap-1">
+                <Icon icon="calendar" size={16} />
+                Timeline
+              </div>
+            }
+          >
             {isPending ? (
               <DeliverablesSkeleton />
+            ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
+              noResultsFound
             ) : (
-              <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
+              <DeliverablesTimeline key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
             )}
-          </div>
-        )}
+          </Tab>
+        </Tabs>
       </div>
       <NewDeliverableModal
         projectId={id}
