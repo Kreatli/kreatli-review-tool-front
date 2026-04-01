@@ -79,7 +79,7 @@ export const WorkspacePreview = ({ features, activeKeys }: Props) => {
                       <Card
                         isPressable
                         onPress={handlePreviewClick}
-                        className="flex h-full border border-foreground-200 shadow-sm transition-shadow hover:shadow-md"
+                        className="flex h-full w-full border border-foreground-200 shadow-sm transition-shadow hover:shadow-md"
                         aria-label={`${feature.label} preview`}
                       >
                         <CardBody className="flex h-full min-h-0 flex-col p-3">

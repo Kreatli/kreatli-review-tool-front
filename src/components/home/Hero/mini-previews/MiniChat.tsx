@@ -19,7 +19,7 @@ const messages = [
 
 export const MiniChat = () => {
   return (
-    <div className="flex h-full min-h-0 flex-col gap-2">
+    <div className="flex h-full min-h-0 w-full flex-col gap-2">
       <div className="flex items-center gap-1.5">
         <Icon icon="chat" size={14} className="text-foreground-500" />
         <span className="text-xs font-semibold">Project Chat</span>

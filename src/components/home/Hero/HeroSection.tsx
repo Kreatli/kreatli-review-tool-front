@@ -81,7 +81,7 @@ export const HeroSection = () => {
                   as={NextLink}
                   href="/sign-up"
                   size="lg"
-                  className="h-12 min-w-[200px] bg-foreground px-6 text-base font-semibold text-content1"
+                  className="h-12 min-w-[200px] bg-foreground px-6 text-base text-content1"
                 >
                   Try free for 7 days
                   <Icon icon="arrowRight" size={20} />
@@ -93,7 +93,7 @@ export const HeroSection = () => {
                   rel="noreferrer"
                   size="lg"
                   variant="bordered"
-                  className="h-12 min-w-[200px] px-6 text-base font-semibold"
+                  className="h-12 min-w-[200px] px-6 text-base"
                 >
                   <Icon icon="calendar" size={18} />
                   See Kreatli in action
@@ -108,12 +108,12 @@ export const HeroSection = () => {
                   href="/sign-up"
                   size="sm"
                   className={cn(
-                    'h-9 w-fit rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 text-xs font-semibold text-content1 shadow-sm',
+                    'rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 text-content1',
                     'transition-transform hover:scale-[1.02] active:scale-[0.98]',
                   )}
                 >
                   Continue with your setup
-                  <Icon icon="arrowRight" size={18} />
+                  <Icon icon="arrowRight" size={14} />
                 </Button>
               </div>
             ) : null}

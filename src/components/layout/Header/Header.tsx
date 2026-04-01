@@ -33,7 +33,6 @@ export const Header = () => {
   const [theme, setTheme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });
 
   const headerRef = useRef<HTMLElement>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
 
@@ -51,24 +50,6 @@ export const Header = () => {
 
     document.documentElement.classList.remove('dark');
   }, [theme]);
-
-  React.useEffect(() => {
-    let raf = 0;
-
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 8);
-      });
-    };
-
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, []);
 
   const isBannerDismissed = React.useMemo(() => {
     // eslint-disable-next-line react-hooks/purity
@@ -149,16 +130,7 @@ export const Header = () => {
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         maxWidth="full"
-        isBlurred={false}
-        disableScrollHandler
-        className={cn(
-          'sticky top-0 z-50 border-b shadow-none transition-colors',
-          isScrolled ? 'border-default-200 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70' : 'border-transparent bg-transparent',
-        )}
-        classNames={{
-          base: '!bg-transparent',
-          wrapper: 'px-3 xs:px-6',
-        }}
+        classNames={{ wrapper: 'px-3 xs:px-6' }}
       >
         <NavbarContent className="xl:gap-12">
           {!isSignedIn && (
