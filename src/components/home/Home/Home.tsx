@@ -8,6 +8,7 @@ import { FaqSection } from '../Faq';
 import { FeaturesSection } from '../Features';
 import { FooterSection } from '../Footer/FooterSection';
 import { HeroSection } from '../Hero';
+import { HeroVideoSection } from '../Hero/HeroVideoSection';
 import { HowItWorksSection } from '../HowItWorks';
 import { KreatliForSection } from '../KreatliFor';
 import { PricingSection } from '../PricingSection';
@@ -21,6 +22,7 @@ export const Home = ({ comparisons }: Props) => {
   return (
     <main className="w-full">
       <HeroSection />
+      <HeroVideoSection />
       <FeaturesSection />
       <CostCalculatorSection />
       <KreatliForSection />

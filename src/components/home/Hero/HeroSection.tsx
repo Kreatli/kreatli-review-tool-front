@@ -1,143 +1,129 @@
 import { Button, cn } from '@heroui/react';
 import NextLink from 'next/link';
+import { useCallback, useState } from 'react';
 
 import { Icon } from '../../various/Icon';
+import { FeatureSelector } from './FeatureSelector';
 import styles from './HeroSection.module.css';
-import { Typewriter } from './Typewriter';
+import { WORKSPACE_FEATURES } from './workspaceFeatures';
+import { WorkspacePreview } from './WorkspacePreview';
+
+const VALUE_BULLETS: { lead: string; rest: string }[] = [
+  {
+    lead: 'One workspace, zero sprawl.',
+    rest: 'Tasks, files, reviews, and conversations in one project.',
+  },
+  {
+    lead: 'Feedback that actually sticks.',
+    rest: 'Comments pinned to the exact frame with clear ownership.',
+  },
+  {
+    lead: 'Built for production teams.',
+    rest: 'Versioning, approvals, and delivery. Full video production cycle.',
+  },
+];
 
 export const HeroSection = () => {
-  const typewriterWords = [
-    'Ad & Marketing Agencies',
-    'Animation Studios',
-    'In-House Teams',
-    'Creative & Content Teams',
-  ];
+  const [activeKeys, setActiveKeys] = useState<Set<string>>(
+    () => new Set(WORKSPACE_FEATURES.filter((f) => f.defaultActive).map((f) => f.key)),
+  );
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  const handleToggle = useCallback((key: string) => {
+    setHasInteracted(true);
+    setActiveKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  }, []);
 
   return (
-    <section className="relative flex w-full items-center justify-center overflow-hidden">
-      <div className="relative z-10 flex w-full flex-col gap-8 px-4 pb-12 pt-6 text-center sm:gap-12 sm:px-6 sm:pb-20 sm:pt-10 lg:gap-16">
-        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 sm:gap-6">
-          <h1 className="font-sans text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
-            <span
-              className={cn(
-                'inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent',
-                styles.animateGradient,
-              )}
-            >
-              Video
-            </span>{' '}
-            Collaboration
-            <br />& Review <span className="inline-block">Platform</span> for
-            <br />
-            <Typewriter words={typewriterWords} />
-          </h1>
-          <div className="mt-4 flex w-full flex-col items-center gap-3 sm:mt-6 sm:w-auto sm:gap-4 md:flex-row md:gap-6">
-            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start 7-day trial
-              <Icon icon="arrowRight" size={20} />
-            </Button>
-            <Button
-              as="a"
-              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-              target="_blank"
-              size="lg"
-              variant="light"
-            >
-              <Icon icon="calendar" />
-              Book a Demo
-            </Button>
+    <section className="relative -mt-16 flex min-h-dvh w-full flex-col overflow-hidden pt-16">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.16),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(236,72,153,0.14),_transparent_55%)]" />
+
+      <div className="relative z-10 mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col px-4 py-10 sm:px-6 sm:py-14 lg:py-16">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(340px,0.9fr)_minmax(0,1.1fr)] lg:gap-12 xl:grid-cols-[minmax(380px,0.85fr)_minmax(0,1.15fr)] xl:gap-16">
+          {/* Left: copy, CTA, feature pills */}
+          <div className="flex max-w-xl flex-col gap-6 lg:max-w-none lg:pt-2">
+            <h1 className="font-sans text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl sm:leading-tight lg:text-[2.75rem] lg:leading-[1.1]">
+              Brief to delivery. One platform.{' '}
+              <span
+                className={cn(
+                  'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent',
+                  styles.animateGradient,
+                )}
+              >
+                Zero Chaos.
+              </span>
+            </h1>
+
+            <ul className="flex flex-col gap-3.5">
+              {VALUE_BULLETS.map((item) => (
+                <li key={item.lead} className="flex gap-3 text-sm leading-relaxed text-foreground-600 sm:text-base">
+                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary">
+                    <Icon icon="check" size={12} />
+                  </span>
+                  <span suppressHydrationWarning>
+                    <strong className="font-semibold text-foreground">{item.lead}</strong> {item.rest}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6">
+                <Button
+                  as={NextLink}
+                  href="/sign-up"
+                  size="lg"
+                  className="h-12 min-w-[200px] bg-foreground px-6 text-base font-semibold text-content1"
+                >
+                  Try free for 7 days
+                  <Icon icon="arrowRight" size={20} />
+                </Button>
+                <Button
+                  as="a"
+                  href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                  target="_blank"
+                  rel="noreferrer"
+                  size="lg"
+                  variant="bordered"
+                  className="h-12 min-w-[200px] px-6 text-base font-semibold"
+                >
+                  <Icon icon="calendar" size={18} />
+                  See Kreatli in action
+                </Button>
+              </div>
+            </div>
+            <FeatureSelector features={WORKSPACE_FEATURES} activeKeys={activeKeys} onToggle={handleToggle} />
+            {hasInteracted ? (
+              <div className="pt-2">
+                <Button
+                  as={NextLink}
+                  href="/sign-up"
+                  size="sm"
+                  className={cn(
+                    'h-9 w-fit rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 text-xs font-semibold text-content1 shadow-sm',
+                    'transition-transform hover:scale-[1.02] active:scale-[0.98]',
+                  )}
+                >
+                  Continue with your setup
+                  <Icon icon="arrowRight" size={18} />
+                </Button>
+              </div>
+            ) : null}
+          </div>
+
+          {/* Right: workspace mockup */}
+          <div className="relative min-h-0 w-full lg:sticky lg:top-20 lg:self-start">
+            <WorkspacePreview features={WORKSPACE_FEATURES} activeKeys={activeKeys} />
           </div>
         </div>
-        <div id="arcade-demo" className="mx-auto w-full max-w-6xl scroll-mt-16 sm:scroll-mt-20">
-          <div className="relative h-0 w-full pb-[calc(51%)]">
-            <iframe
-              src="https://demo.arcade.software/PPu2mnyNxXzs5sVzGfOA?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
-              title="Review Video Feedback and Compare Creative Asset Versions"
-              frameBorder="0"
-              loading="lazy"
-              allowFullScreen
-              allow="clipboard-write"
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                colorScheme: 'light',
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="pointer-events-none fixed inset-x-0 inset-y-8 hidden sm:block">
-        <div
-          className={cn(
-            'absolute left-24 top-20 h-32 w-32 rounded-full bg-gradient-to-br from-blue-300/30 to-purple-300/30',
-            styles.animateFloatSlow,
-          )}
-        />
-        <div
-          className={cn(
-            'absolute right-20 top-40 h-24 w-24 rounded-full bg-gradient-to-br from-pink-300/30 to-orange-300/30',
-            styles.animateFloatMedium,
-          )}
-        />
-        <div
-          className={cn(
-            'absolute bottom-32 left-1/4 h-20 w-20 rounded-full bg-gradient-to-br from-green-300/30 to-blue-300/30',
-            styles.animateFloatFast,
-          )}
-        />
-        <div
-          className={cn(
-            'absolute bottom-20 right-1/4 h-28 w-28 rounded-full bg-gradient-to-br from-purple-300/30 to-pink-300/30',
-            styles.animateFloatSlow,
-          )}
-        />
-
-        <div
-          className={cn(
-            'absolute left-1/4 top-1/3 h-16 w-16 rounded-full bg-gradient-to-br from-yellow-300/25 to-orange-300/25',
-            styles.animateFloatMedium,
-          )}
-        />
-        <div
-          className={cn(
-            'absolute left-12 right-1 top-1/2 h-12 w-12 rounded-full bg-gradient-to-br from-cyan-300/25 to-blue-300/25',
-            styles.animateFloatFast,
-          )}
-        />
-        <div
-          className={cn(
-            'absolute bottom-1/3 left-1/2 h-14 w-14 rounded-full bg-gradient-to-br from-pink-300/25 to-purple-300/25',
-            styles.animateFloatSlow,
-          )}
-        />
-
-        <div className={cn('absolute left-1/3 top-16 h-3 w-3 rounded-full bg-blue-400/50', styles.animateFloatFast)} />
-        <div
-          className={cn('absolute right-1/4 top-24 h-2 w-2 rounded-full bg-purple-400/50', styles.animateFloatMedium)}
-        />
-        <div className={cn('absolute left-1/3 top-1/2 h-4 w-4 rounded-full bg-pink-400/50', styles.animateFloatSlow)} />
-        <div
-          className={cn('absolute right-16 top-2/3 h-3 w-3 rounded-full bg-green-400/50', styles.animateFloatFast)}
-        />
-        <div
-          className={cn('absolute bottom-24 left-1/4 h-2 w-2 rounded-full bg-orange-400/50', styles.animateFloatMedium)}
-        />
-        <div
-          className={cn('absolute bottom-32 right-24 h-3 w-3 rounded-full bg-cyan-400/50', styles.animateFloatSlow)}
-        />
-        <div
-          className={cn('absolute bottom-16 left-1/2 h-2 w-2 rounded-full bg-yellow-400/50', styles.animateFloatFast)}
-        />
-        <div
-          className={cn(
-            'absolute bottom-28 left-10 right-1 h-4 w-4 rounded-full bg-indigo-400/50',
-            styles.animateFloatMedium,
-          )}
-        />
       </div>
     </section>
   );
