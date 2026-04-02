@@ -27,10 +27,6 @@ export default function SignUp() {
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <StartPageLayout title="Create an account to get started!">
-        <p className="mb-4 text-sm text-foreground-500">
-          To start your 7-day trial, you will add a payment method during secure checkout. You won't be
-          charged until the trial ends if you continue.
-        </p>
         <SignUpForm />
       </StartPageLayout>
     </>

@@ -4,6 +4,7 @@ import Head from 'next/head';
 
 import { Home } from '../components/home/Home';
 import { Header } from '../components/layout/Header';
+import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { Projects } from '../components/project/Projects';
 import { useSession } from '../hooks/useSession';
 import { getStoryblokApi } from '../lib/storyblok';
@@ -51,6 +52,7 @@ export default function HomePage({ comparisons }: Props) {
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
       <Header />
+      {!isSignedIn && <Decorations />}
       {isSignedIn ? <Projects /> : <Home comparisons={comparisons} />}
     </>
   );

@@ -85,13 +85,11 @@ export const Header = () => {
     () =>
       Object.entries(platformPagesBySection).map(([sectionTitle, pages]) => ({
         title: sectionTitle,
-        items: pages
-          .slice(0, NAV_PLATFORM_ITEMS_PER_COLUMN)
-          .map((page) => ({
-            label: page.label,
-            href: page.href,
-            description: page.description,
-          })),
+        items: pages.slice(0, NAV_PLATFORM_ITEMS_PER_COLUMN).map((page) => ({
+          label: page.label,
+          href: page.href,
+          description: page.description,
+        })),
       })),
     [platformPagesBySection],
   );
@@ -476,13 +474,7 @@ export const Header = () => {
               </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link
-                as={NextLink}
-                href="/safe-zone-checker"
-                size="lg"
-                color="foreground"
-                onClick={closeNavbarMenu}
-              >
+              <Link as={NextLink} href="/safe-zone-checker" size="lg" color="foreground" onClick={closeNavbarMenu}>
                 Safe Zone Checker
               </Link>
             </NavbarMenuItem>
