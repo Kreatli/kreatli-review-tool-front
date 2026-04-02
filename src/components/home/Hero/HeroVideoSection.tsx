@@ -8,6 +8,19 @@ export const HeroVideoSection = () => {
     if (!video) return;
 
     const STORAGE_KEY = 'kreatli:heroVideo:muted';
+    // Avoid persisting mute state for programmatic mute/unmute attempts
+    // (e.g. when the browser blocks unmuted autoplay).
+    const skipPersistRef = { current: false };
+
+    const setMutedProgrammatically = (muted: boolean) => {
+      // Mark as programmatic before updating the element.
+      skipPersistRef.current = true;
+      video.muted = muted;
+      // `volumechange` can fire after the mute flag is applied.
+      window.setTimeout(() => {
+        skipPersistRef.current = false;
+      }, 100);
+    };
 
     const getSavedMuted = () => {
       try {
@@ -26,9 +39,10 @@ export const HeroVideoSection = () => {
     };
 
     // Initialize from saved preference (defaults to sound on).
-    video.muted = getSavedMuted();
+    setMutedProgrammatically(getSavedMuted());
 
     const handleVolumeChange = () => {
+      if (skipPersistRef.current) return;
       setSavedMuted(video.muted);
     };
     video.addEventListener('volumechange', handleVolumeChange);
@@ -38,14 +52,31 @@ export const HeroVideoSection = () => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             // Respect user's in-session preference; don't force sound back on if they muted it.
-            video.muted = getSavedMuted();
-            void video.play().catch(() => {
-              // Browsers often block unmuted autoplay without a user gesture; fall back so playback still starts.
-              video.muted = true;
+            const savedMuted = getSavedMuted();
+
+            const attemptPlay = () => {
+              setMutedProgrammatically(savedMuted);
               void video.play().catch(() => {
-                /* Still blocked in strict privacy modes */
+                // Browsers often block unmuted autoplay without a user gesture; fall back so playback still starts.
+                setMutedProgrammatically(true);
+                void video.play().catch(() => {
+                  /* Still blocked in strict privacy modes */
+                });
               });
-            });
+            };
+
+            // Avoid calling `play()` too early (some browsers reject it until metadata is ready).
+            if (video.readyState >= 2) {
+              attemptPlay();
+            } else {
+              video.addEventListener(
+                'loadedmetadata',
+                () => {
+                  attemptPlay();
+                },
+                { once: true },
+              );
+            }
           } else {
             video.pause();
           }
@@ -71,7 +102,7 @@ export const HeroVideoSection = () => {
           <video
             ref={videoRef}
             className="h-full w-full"
-            src="/videos/202603271746.mp4"
+            src="/videos/ad-compressed.mp4"
             controls
             playsInline
             preload="metadata"
