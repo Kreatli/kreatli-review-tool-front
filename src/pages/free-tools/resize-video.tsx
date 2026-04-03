@@ -7,6 +7,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResizeVideoFAQ, RESIZE_VIDEO_FAQS } from '../../components/resize-video/ResizeVideoFAQ';
@@ -80,7 +81,12 @@ export default function ResizeVideoPage() {
 
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
-            <ResizeVideoTool />
+            <FreeToolsEntitlementSection
+              lockedTitle="Resize Video is available inside Kreatli"
+              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to resize videos in Kreatli."
+            >
+              <ResizeVideoTool />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 

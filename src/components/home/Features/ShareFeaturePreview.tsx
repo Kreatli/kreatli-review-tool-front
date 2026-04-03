@@ -1,6 +1,7 @@
 import { Avatar, Button, Card, CardBody, Chip, Input, Tooltip } from '@heroui/react';
 import { ChangeEvent, FocusEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
 
+import { useFreeToolsInactiveGate } from '../../../contexts/FreeToolsInactiveGateContext';
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 import { useSession } from '../../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
@@ -45,6 +46,7 @@ const SHARE_PREVIEW_CONFIG: Record<
 export const ShareFeaturePreview = ({ variant = 'video' }: { variant?: ShareVariant }) => {
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
   const isTouchScreen = useIsTouchScreen();
   const [emails, setEmails] = useState<string[]>([]);
   const [input, setInput] = useState('');
@@ -106,6 +108,10 @@ export const ShareFeaturePreview = ({ variant = 'video' }: { variant?: ShareVari
 
     if (!isSignedIn) {
       openSignUpModal();
+      return;
+    }
+    if (isInactiveLocked) {
+      openInactivePlanModal();
     }
   };
 
@@ -263,6 +269,10 @@ export const ShareFeaturePreview = ({ variant = 'video' }: { variant?: ShareVari
                   setIsAnimating(false);
                   if (!isSignedIn) {
                     openSignUpModal();
+                    return;
+                  }
+                  if (isInactiveLocked) {
+                    openInactivePlanModal();
                   }
                 }}
               >

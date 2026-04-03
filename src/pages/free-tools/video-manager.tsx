@@ -9,6 +9,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -83,7 +84,12 @@ export default function VideoManagerPage() {
         {/* Project / media storage feature preview */}
         <section className="relative px-6 pb-16 pt-6">
           <div className="relative z-10 mx-auto max-w-6xl">
-            <ProjectFeaturePreview />
+            <FreeToolsEntitlementSection
+              lockedTitle="Video Manager is available inside Kreatli"
+              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to manage video assets in Kreatli."
+            >
+              <ProjectFeaturePreview />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 

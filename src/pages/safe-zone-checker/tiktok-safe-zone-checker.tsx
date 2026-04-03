@@ -7,6 +7,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { SafeZoneScreen } from '../../components/safe-zone-checker/SafeZoneScreen/SafeZoneScreen';
 import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { CTASection } from '../../components/shared/CTASection';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../../data/related-resources';
 
@@ -45,7 +46,12 @@ export default function TikTokSafeZoneCheckerPage() {
               captions, text, and visuals in the safe zone to avoid UI overlays.
             </p>
           </div>
-          <SafeZoneScreen defaultPlatform="tiktok" />
+          <FreeToolsEntitlementSection
+            lockedTitle="TikTok Safe Zone Checker is available inside Kreatli"
+            lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to upload and check safe zones in Kreatli."
+          >
+            <SafeZoneScreen defaultPlatform="tiktok" />
+          </FreeToolsEntitlementSection>
         </div>
       </div>
       <SafeZoneScreenGuide platform="tiktok" />

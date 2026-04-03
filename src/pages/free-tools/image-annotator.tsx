@@ -8,6 +8,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
@@ -83,7 +84,9 @@ export default function ImageAnnotatorPage() {
         {/* Interactive Tool Preview */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
-            <InteractiveReviewToolPreview variant="image" />
+            <FreeToolsEntitlementSection>
+              <InteractiveReviewToolPreview variant="image" />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 

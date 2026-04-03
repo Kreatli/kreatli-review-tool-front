@@ -2,6 +2,7 @@ import { Avatar, Button, Card, CardBody, cn, Textarea } from '@heroui/react';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSoftGate } from '../../hooks/useSoftGate';
 import { ReviewTool } from '../../typings/reviewTool';
 import { ReviewToolCanvas } from '../home/Features/ReviewToolCanvas';
@@ -23,6 +24,7 @@ interface InteractiveReviewToolPreviewProps {
  */
 export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveReviewToolPreviewProps) => {
   const router = useRouter();
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
   const isPdf = variant === 'pdf';
   const isImage = variant === 'image';
   const [comment, setComment] = useState('');
@@ -68,6 +70,11 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
   }, [fileUrl]);
 
   const processFile = (file: File) => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
+
     const isPdfFile = file.type === 'application/pdf';
     const isVideoOrImage = file.type.startsWith('video/') || file.type.startsWith('image/');
 
@@ -134,6 +141,11 @@ export const InteractiveReviewToolPreview = ({ variant = 'video' }: InteractiveR
   const handleSendComment = () => {
     // Don't send empty comments
     if (comment.trim() === '') {
+      return;
+    }
+
+    if (isInactiveLocked) {
+      openInactivePlanModal();
       return;
     }
 

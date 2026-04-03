@@ -10,6 +10,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PDF_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -114,7 +115,12 @@ export default function PdfLinkGeneratorPage() {
                 clients—they open the PDF in their browser and comment without signing up.
               </p>
             </div>
-            <ShareFeaturePreview variant="pdf" />
+            <FreeToolsEntitlementSection
+              lockedTitle="PDF Link Generator is available inside Kreatli"
+              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to generate secure PDF review links in Kreatli."
+            >
+              <ShareFeaturePreview variant="pdf" />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 

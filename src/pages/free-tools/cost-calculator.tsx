@@ -7,6 +7,7 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
@@ -44,7 +45,9 @@ export default function CostCalculatorPage() {
       <Decorations />
 
       {/* Hero Section - Software Cost Calculator */}
-      <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" useH1={true} />
+      <FreeToolsEntitlementSection>
+        <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" useH1={true} />
+      </FreeToolsEntitlementSection>
 
       {/* Benefits Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

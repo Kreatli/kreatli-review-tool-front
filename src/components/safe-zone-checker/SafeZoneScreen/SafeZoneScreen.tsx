@@ -10,6 +10,7 @@ import TiktokOverlay from '../../../assets/images/safe-zone-overlays/tiktok-over
 import TiktokSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/tiktok-safe-zone-overlay.png';
 import YoutubeOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-overlay.png';
 import YoutubeSafeZoneOverlay from '../../../assets/images/safe-zone-overlays/youtube-shorts-safe-zone-overlay.png';
+import { useFreeToolsInactiveGate } from '../../../contexts/FreeToolsInactiveGateContext';
 import { useSoftGate } from '../../../hooks/useSoftGate';
 import { Icon } from '../../various/Icon';
 import { SafeZoneScreenEmptyState } from './SafeZoneScreenEmptyState';
@@ -34,6 +35,7 @@ interface SafeZoneScreenProps {
 
 export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreenProps = {}) => {
   const captureRef = useRef(null);
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
 
   const [file, setFile] = useState<File | null>(null);
   const [activeOverlay, setActiveOverlay] = useState<keyof typeof OVERLAYS>(defaultPlatform);
@@ -66,14 +68,23 @@ export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreen
   const handleUploadedFile = useCallback(
     (next: File | null | undefined) => {
       if (!next) return;
+      if (isInactiveLocked) {
+        openInactivePlanModal();
+        return;
+      }
       setFile(next);
       // Soft gate: once user uploads media, prompt sign up.
       triggerSoftGate();
     },
-    [triggerSoftGate]
+    [isInactiveLocked, openInactivePlanModal, triggerSoftGate]
   );
 
   const handleDownload = async () => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
+
     const element = captureRef.current;
 
     if (!element) {

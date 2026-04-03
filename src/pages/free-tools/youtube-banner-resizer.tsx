@@ -5,6 +5,7 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -55,7 +56,12 @@ export default function YouTubeBannerResizerPage() {
               desktop, tablet, and TV devices. Export your optimized banner instantly—completely free.
             </p>
           </div>
-          <YouTubeBannerResizer />
+          <FreeToolsEntitlementSection
+            lockedTitle="YouTube Banner Resizer is available inside Kreatli"
+            lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to resize and export banners in Kreatli."
+          >
+            <YouTubeBannerResizer />
+          </FreeToolsEntitlementSection>
         </div>
       </div>
       <BannerGuide />

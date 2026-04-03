@@ -2,6 +2,7 @@ import { addToast } from '@heroui/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
 import { BannerCanvas } from './BannerCanvas';
@@ -36,9 +37,15 @@ export const YouTubeBannerResizer = () => {
 
   const { isSignedIn } = useSession();
   const openSignUpModal = useSignUpModalVisibility((s) => s.openSignUpModal);
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
 
   const loadImageFile = useCallback(
     (file: File) => {
+      if (isInactiveLocked) {
+        openInactivePlanModal();
+        return;
+      }
+
       setIsLoadingImage(true);
 
       // Clean up previous image URL if exists
@@ -98,7 +105,7 @@ export const YouTubeBannerResizer = () => {
 
       img.src = imageUrl;
     },
-    [imageState.imageUrl, isSignedIn, openSignUpModal],
+    [imageState.imageUrl, isSignedIn, openSignUpModal, isInactiveLocked, openInactivePlanModal],
   );
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -201,7 +208,14 @@ export const YouTubeBannerResizer = () => {
             exportFormat={exportFormat}
             onExportFormatChange={setExportFormat}
             onExportStart={() => {
-              if (!isSignedIn) openSignUpModal();
+              if (!isSignedIn) {
+                openSignUpModal();
+                return false;
+              }
+              if (isInactiveLocked) {
+                openInactivePlanModal();
+                return false;
+              }
             }}
           />
         </div>

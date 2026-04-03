@@ -7,6 +7,7 @@ import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
 import { SafeZoneChecker } from '../components/safe-zone-checker/SafeZoneChecker';
 import { CTASection } from '../components/shared/CTASection';
+import { FreeToolsEntitlementSection } from '../components/shared/FreeToolsEntitlementSection';
 import { RelatedResourcesSection } from '../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../data/related-resources';
 
@@ -36,7 +37,16 @@ export default function ProjectsPage() {
       </Head>
       <Header />
       <Decorations />
-      <SafeZoneChecker />
+      <div className="px-6 pb-12">
+        <div className="mx-auto max-w-6xl">
+          <FreeToolsEntitlementSection
+            lockedTitle="Safe Zone Checker is available inside Kreatli"
+            lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to upload and check safe zones in Kreatli."
+          >
+            <SafeZoneChecker />
+          </FreeToolsEntitlementSection>
+        </div>
+      </div>
       <SafeZoneScreenGuide />
 
       {/* More Resources Section */}
