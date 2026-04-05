@@ -1,6 +1,7 @@
 import { Avatar, Button, Card, CardBody, cn, Textarea } from '@heroui/react';
 import { useEffect, useRef, useState } from 'react';
 
+import { useFreeToolsInactiveGate } from '../../../contexts/FreeToolsInactiveGateContext';
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 import { useSession } from '../../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
@@ -18,6 +19,7 @@ export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePrevi
   const isPdf = variant === 'pdf';
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
   const isTouchScreen = useIsTouchScreen();
 
   const [activeFile, setActiveFile] = useState<'left' | 'right'>('left');
@@ -46,11 +48,20 @@ export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePrevi
       if (leftNewComment) {
         if (!isSignedIn) {
           openSignUpModal();
+          return;
+        }
+        if (isInactiveLocked) {
+          openInactivePlanModal();
         }
         return;
       }
 
       if (comment.trim() === '') {
+        return;
+      }
+
+      if (isInactiveLocked) {
+        openInactivePlanModal();
         return;
       }
 
@@ -60,11 +71,20 @@ export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePrevi
       if (rightNewComment) {
         if (!isSignedIn) {
           openSignUpModal();
+          return;
+        }
+        if (isInactiveLocked) {
+          openInactivePlanModal();
         }
         return;
       }
 
       if (comment.trim() === '') {
+        return;
+      }
+
+      if (isInactiveLocked) {
+        openInactivePlanModal();
         return;
       }
 

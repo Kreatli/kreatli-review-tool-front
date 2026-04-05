@@ -21,6 +21,7 @@ import NextLink from 'next/link';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
+import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
 import { Icon } from '../various/Icon';
@@ -264,6 +265,7 @@ function FrameCard({
 export function VideoFrameExtractor() {
   const { isSignedIn } = useSession();
   const { openSignUpModal } = useSignUpModalVisibility();
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
 
   const [file, setFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -290,6 +292,11 @@ export function VideoFrameExtractor() {
     const next = accepted[0];
     if (!next) return;
 
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
+
     if (
       !(
         next.type === 'video/mp4' ||
@@ -309,7 +316,7 @@ export function VideoFrameExtractor() {
     }
 
     setFile(next);
-  }, []);
+  }, [isInactiveLocked, openInactivePlanModal]);
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
@@ -417,6 +424,11 @@ export function VideoFrameExtractor() {
   };
 
   const handleCapture = async () => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
+
     const v = videoRef.current;
     if (!v) return;
     if (!v.videoWidth || !v.videoHeight) {
@@ -474,6 +486,10 @@ export function VideoFrameExtractor() {
   };
 
   const downloadSingleFrame = async (frame: CapturedFrame) => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
     try {
       const outBlob = await convertBlobToFormat(frame.blob, exportFormat);
       const outName = fileNameForFrame(baseName, frame.timestampSeconds, exportFormat);
@@ -484,6 +500,10 @@ export function VideoFrameExtractor() {
   };
 
   const downloadAllAsZip = async () => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
     if (!file || frames.length === 0) return;
     if (isZipping) return;
     setIsZipping(true);

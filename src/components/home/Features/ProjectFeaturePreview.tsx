@@ -1,6 +1,7 @@
 import { Avatar, AvatarGroup, Button, Card, CardBody, cn, Input, Tab, Tabs } from '@heroui/react';
 import { useState } from 'react';
 
+import { useFreeToolsInactiveGate } from '../../../contexts/FreeToolsInactiveGateContext';
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 import { useSession } from '../../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../../hooks/useSignUpModalVisibility';
@@ -87,6 +88,7 @@ const initialFiles: FileData[] = [
 export const ProjectFeaturePreview = () => {
   const { openSignUpModal } = useSignUpModalVisibility();
   const { isSignedIn } = useSession();
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
 
   const isTouchScreen = useIsTouchScreen();
 
@@ -95,6 +97,8 @@ export const ProjectFeaturePreview = () => {
   const handleClick = () => {
     if (!isSignedIn) {
       openSignUpModal();
+    } else if (isInactiveLocked) {
+      openInactivePlanModal();
     }
     setShouldHide(true);
   };

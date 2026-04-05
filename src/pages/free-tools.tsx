@@ -21,12 +21,12 @@ const faqs = [
   {
     question: 'Are these tools really free to use?',
     answer:
-      'Yes, all tools on this page are completely free to use with no hidden costs, no sign-up required, and no credit card needed. These are professional-grade tools designed to help video professionals and video teams work more efficiently. We believe in providing value to the video community, which is why we offer these tools at no cost.',
+      "Yes—our calculators are completely free to use with no hidden costs and no account required. For the rest of the tools, you can explore the workflows here, and use them fully inside Kreatli (an account and an active trial/plan may be required depending on the tool).",
   },
   {
     question: 'Do I need to create an account to use these tools?',
     answer:
-      "No account is required to use any of our free tools. You can access the Data Transfer Calculator, Software Cost Calculator, Safe Zone Checker, and YouTube Banner Resizer immediately without signing up. Simply visit the tool page and start using it right away. If you decide to use Kreatli's Video Collaboration & Review Platform later, you can create a free account then.",
+      "No account is required for our calculators. For the other tools, you can browse the pages without signing up, but some interactive workflows are available inside Kreatli, where you can start a trial or choose a plan.",
   },
   {
     question: 'What is the Data Transfer Calculator used for?',

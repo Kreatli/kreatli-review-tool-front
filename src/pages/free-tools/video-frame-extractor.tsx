@@ -6,6 +6,7 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -70,7 +71,12 @@ export default function VideoFrameExtractorPage() {
         {/* Tool */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
-            <VideoFrameExtractor />
+            <FreeToolsEntitlementSection
+              lockedTitle="Video Frame Extractor is available inside Kreatli"
+              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to extract frames in Kreatli."
+            >
+              <VideoFrameExtractor />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 

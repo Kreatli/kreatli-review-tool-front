@@ -13,8 +13,8 @@ interface BannerExportProps {
   naturalHeight: number;
   exportFormat: 'png' | 'jpg';
   onExportFormatChange: (format: 'png' | 'jpg') => void;
-  /** Called when user clicks Export (e.g. to show sign-up modal for guests). */
-  onExportStart?: () => void;
+  /** Called when user clicks Export. Return false to cancel export (e.g. after opening a gate modal). */
+  onExportStart?: () => boolean | void;
 }
 
 /** Fit image within canvas (contain), centered. No squeeze, no crop. */
@@ -41,7 +41,9 @@ export const BannerExport = ({
   const handleExport = async () => {
     if (!imageUrl) return;
 
-    onExportStart?.();
+    const proceed = onExportStart?.() !== false;
+    if (!proceed) return;
+
     setIsExporting(true);
 
     try {

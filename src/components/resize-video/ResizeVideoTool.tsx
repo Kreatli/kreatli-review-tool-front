@@ -5,6 +5,7 @@ import NextLink from 'next/link';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { type FileRejection, useDropzone } from 'react-dropzone';
 
+import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
 import { Icon, type IconType } from '../various/Icon';
@@ -55,6 +56,7 @@ const MAX_FILE_SIZE_BYTES = 500 * 1024 * 1024; // 500MB
 export function ResizeVideoTool() {
   const { isSignedIn } = useSession();
   const openSignUpModal = useSignUpModalVisibility((s) => s.openSignUpModal);
+  const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
   const [file, setFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const [sourceWidth, setSourceWidth] = useState<number>(0);
@@ -84,6 +86,10 @@ export function ResizeVideoTool() {
   const onDrop = useCallback((accepted: File[]) => {
     const next = accepted[0];
     if (!next) return;
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
     if (!(next.type.startsWith('video/') || next.name.toLowerCase().match(/\.(mp4|webm|mov|ogg|avi|mkv)$/))) {
       addToast({
         title: 'Unsupported file type. Please use a video file (e.g. MP4, WebM, MOV).',
@@ -97,7 +103,7 @@ export function ResizeVideoTool() {
     setStatus('idle');
     setOutputBlob(null);
     setProgress(0);
-  }, []);
+  }, [isInactiveLocked, openInactivePlanModal]);
 
   const onDropRejected = useCallback((fileRejections: FileRejection[]) => {
     const fileTooLarge = fileRejections.some((r) => r.errors.some((e) => e.code === 'file-too-large'));
@@ -213,6 +219,11 @@ export function ResizeVideoTool() {
   );
 
   const startResize = useCallback(async () => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
+
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (!file || !videoUrl) return;
@@ -356,7 +367,17 @@ export function ResizeVideoTool() {
         setStatus('idle');
         addToast({ title: 'Playback failed. Try another video.', color: 'danger', variant: 'flat' });
       });
-  }, [file, videoUrl, targetWidth, targetHeight, duration, exportFormat, runFFmpegMP4OrMOV]);
+  }, [
+    file,
+    videoUrl,
+    targetWidth,
+    targetHeight,
+    duration,
+    exportFormat,
+    runFFmpegMP4OrMOV,
+    isInactiveLocked,
+    openInactivePlanModal,
+  ]);
 
   useEffect(() => {
     return () => {
@@ -367,6 +388,10 @@ export function ResizeVideoTool() {
   }, []);
 
   const download = useCallback(() => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
     if (!outputBlob || !file) return;
     const base = safeBaseName(file.name);
     const url = URL.createObjectURL(outputBlob);
@@ -377,7 +402,7 @@ export function ResizeVideoTool() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  }, [outputBlob, file, targetWidth, targetHeight, outputExtension]);
+  }, [outputBlob, file, targetWidth, targetHeight, outputExtension, isInactiveLocked, openInactivePlanModal]);
 
   useEffect(() => {
     downloadRef.current = download;
@@ -390,12 +415,21 @@ export function ResizeVideoTool() {
       return;
     }
     if (!outputBlob || !file || hasTriggeredDownloadForDoneRef.current) return;
+
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      setStatus('idle');
+      setOutputBlob(null);
+      setProgress(0);
+      return;
+    }
+
     hasTriggeredDownloadForDoneRef.current = true;
     downloadRef.current?.();
     if (!isSignedIn) {
       openSignUpModal();
     }
-  }, [status, outputBlob, file, isSignedIn, openSignUpModal]);
+  }, [status, outputBlob, file, isSignedIn, openSignUpModal, isInactiveLocked, openInactivePlanModal]);
 
   const reset = useCallback(() => {
     setFile(null);

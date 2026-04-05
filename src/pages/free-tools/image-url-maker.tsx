@@ -10,6 +10,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { IMAGE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -113,7 +114,12 @@ export default function ImageUrlMakerPage() {
                 clients—they open the image in their browser and comment without signing up.
               </p>
             </div>
-            <ShareFeaturePreview variant="image" />
+            <FreeToolsEntitlementSection
+              lockedTitle="Image URL Maker is available inside Kreatli"
+              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to generate secure image review URLs in Kreatli."
+            >
+              <ShareFeaturePreview variant="image" />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 

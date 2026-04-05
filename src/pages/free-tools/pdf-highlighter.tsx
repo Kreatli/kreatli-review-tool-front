@@ -8,6 +8,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -82,7 +83,9 @@ export default function PdfHighlighterPage() {
         {/* Interactive Tool Preview */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
-            <InteractiveReviewToolPreview variant="pdf" />
+            <FreeToolsEntitlementSection>
+              <InteractiveReviewToolPreview variant="pdf" />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 

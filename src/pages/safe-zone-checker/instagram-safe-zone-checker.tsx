@@ -7,6 +7,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { SafeZoneScreen } from '../../components/safe-zone-checker/SafeZoneScreen/SafeZoneScreen';
 import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { CTASection } from '../../components/shared/CTASection';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../../data/related-resources';
 
@@ -48,7 +49,12 @@ export default function InstagramSafeZoneCheckerPage() {
               in the safe zone so they won't be covered by Instagram's UI.
             </p>
           </div>
-          <SafeZoneScreen defaultPlatform="instagram" />
+          <FreeToolsEntitlementSection
+            lockedTitle="Instagram Safe Zone Checker is available inside Kreatli"
+            lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to upload and check safe zones in Kreatli."
+          >
+            <SafeZoneScreen defaultPlatform="instagram" />
+          </FreeToolsEntitlementSection>
         </div>
       </div>
       <SafeZoneScreenGuide platform="instagram" />

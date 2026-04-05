@@ -10,6 +10,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { COMPARE_IMAGES_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -113,7 +114,12 @@ export default function ImageComparerPage() {
                 photo edits, and client approvals. No software installation required for reviewers.
               </p>
             </div>
-            <CompareFeaturePreview variant="pdf" />
+            <FreeToolsEntitlementSection
+              lockedTitle="Image Comparer is available inside Kreatli"
+              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to compare image versions in Kreatli."
+            >
+              <CompareFeaturePreview variant="pdf" />
+            </FreeToolsEntitlementSection>
           </div>
         </section>
 
