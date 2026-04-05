@@ -4,23 +4,18 @@ import { ReactNode } from 'react';
 
 import { FreeToolsInactiveGateProvider } from '../../contexts/FreeToolsInactiveGateContext';
 import { useFreeToolsEntitlementGate } from '../../hooks/useFreeToolsEntitlementGate';
-import { FreeToolsInactivePlanModal } from './FreeToolsInactivePlanModal';
 
-export function FreeToolsEntitlementSection({
-  children,
-  lockedTitle = 'This tool is available inside Kreatli',
-  lockedDescription = 'Your trial or plan isn’t active. Start a trial or choose a plan to use this tool in Kreatli.',
-}: {
+export function FreeToolsEntitlementSection(props: {
   children: ReactNode;
   lockedTitle?: string;
   lockedDescription?: string;
 }) {
+  const { children } = props;
   const gate = useFreeToolsEntitlementGate();
 
   if (gate.isLocked) {
     return (
       <FreeToolsInactiveGateProvider isInactiveLocked>
-        <FreeToolsInactivePlanModal title={lockedTitle} description={lockedDescription} />
         <div className="space-y-3">{children}</div>
       </FreeToolsInactiveGateProvider>
     );

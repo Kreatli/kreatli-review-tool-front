@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useContext, useMemo } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useMemo } from 'react';
 
-import { useFreeToolsInactivePlanModalVisibility } from '../hooks/useFreeToolsInactivePlanModalVisibility';
+import { usePlansModalVisibility } from '../hooks/usePlansModalVisibility';
 
 export type FreeToolsInactiveGateContextValue = {
   isInactiveLocked: boolean;
@@ -21,7 +21,11 @@ export function FreeToolsInactiveGateProvider({
   isInactiveLocked: boolean;
   children: ReactNode;
 }) {
-  const openInactivePlanModal = useFreeToolsInactivePlanModalVisibility((s) => s.openInactivePlanModal);
+  const setPlansModalVisible = usePlansModalVisibility((s) => s.setIsVisible);
+
+  const openInactivePlanModal = useCallback(() => {
+    setPlansModalVisible(true);
+  }, [setPlansModalVisible]);
 
   const value = useMemo(
     () =>
