@@ -26,7 +26,7 @@ export default function ResizeVideoPage() {
         <title>Resize Video - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Resize video to custom or preset dimensions in your browser. No uploads, no sign-up—everything runs locally. Output WebM for quick social or web use."
+          content="Resize video in your browser—no upload, runs locally. Try without signing in, or with an active Kreatli trial or plan if signed in. Output WebM for quick social or web use."
         />
         <meta
           name="keywords"
@@ -35,7 +35,7 @@ export default function ResizeVideoPage() {
         <meta property="og:title" content="Resize Video - Free Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Resize video to custom or preset dimensions in your browser. No uploads, no sign-up—everything runs locally."
+          content="Resize video in your browser—no upload, runs locally. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/resize-video" />
@@ -44,7 +44,7 @@ export default function ResizeVideoPage() {
         <meta name="twitter:title" content="Resize Video - Free Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Resize video to custom or preset dimensions in your browser. No uploads, no sign-up."
+          content="Resize video in your browser—no upload, runs locally. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/resize-video" />
@@ -73,8 +73,8 @@ export default function ResizeVideoPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Resize Video</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Resize video to custom or preset dimensions in your browser. No uploads, no sign-up—everything runs
-              locally.
+              Resize video to custom or preset dimensions in your browser—no upload, runs locally. Try without signing
+              in, or with an active Kreatli trial or plan if you are signed in.
             </p>
           </div>
         </section>
@@ -105,7 +105,7 @@ export default function ResizeVideoPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

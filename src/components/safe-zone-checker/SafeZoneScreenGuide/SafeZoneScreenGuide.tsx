@@ -360,7 +360,8 @@ const getFAQItems = (platform?: Platform) => {
     {
       key: 'sign-up-required',
       title: 'Do I need to sign up to use the Safe Zone Checker?',
-      content: 'No. Free to use without signup. Upload and preview immediately.',
+      content:
+        'You can use this page without signing in. If you are signed in to Kreatli without an active trial or plan, start a trial or choose a plan to continue.',
     },
     {
       key: 'multiple-platforms',
@@ -467,7 +468,7 @@ export const SafeZoneScreenGuide = ({
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
                             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                              Start for Free
+                              Start 7-day trial
                             </Button>
                             <Button
                               as="a"
@@ -758,11 +759,7 @@ export const SafeZoneScreenGuide = ({
       </section>
 
       {/* More Tools for Creative Teams Section */}
-      <MoreFreeToolsSection
-        excludeHref="/safe-zone-checker"
-        title="More Tools for Creative Teams"
-        description="Explore our collection of free tools designed to help creative professionals work more efficiently."
-      />
+      <MoreFreeToolsSection excludeHref="/safe-zone-checker" title="More Tools for Creative Teams" />
 
       {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

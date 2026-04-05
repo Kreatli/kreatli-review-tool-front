@@ -14,6 +14,7 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { COMPARE_PDF_FILES_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -23,6 +24,7 @@ const faqs = [
     answer:
       'Comparing PDF files means viewing two PDF versions side by side (or in a diff view) to spot changes in text, layout, or images—for example, a draft vs. a revised version or a before-and-after proof. In Kreatli, you can upload multiple PDFs to a project and review them together with comments and annotations, so your team can see exactly what changed and give precise feedback in one place.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I compare two PDFs in Kreatli?',
     answer:
@@ -59,7 +61,7 @@ export default function PdfComparerPage() {
         <title>PDF Comparer - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online PDF comparer for creative teams. Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online PDF comparer for creative teams. Compare two PDF versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta
           name="keywords"
@@ -68,7 +70,7 @@ export default function PdfComparerPage() {
         <meta property="og:title" content="PDF Comparer - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online PDF comparer for creative teams. Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online PDF comparer for creative teams. Compare two PDF versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/pdf-comparer" />
@@ -77,7 +79,7 @@ export default function PdfComparerPage() {
         <meta name="twitter:title" content="PDF Comparer - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online PDF comparer for creative teams. Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online PDF comparer for creative teams. Compare two PDF versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/pdf-comparer" />
@@ -172,7 +174,7 @@ export default function PdfComparerPage() {
         <CTASection
           title="Ready to compare PDFs with your team?"
           description="Kreatli lets you compare PDF versions side by side with comments and approval workflows. Keep all feedback in one place with your creative assets."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

@@ -90,8 +90,9 @@ export default function FAQSection() {
           >
             <div className="space-y-3 text-base text-foreground-500">
               <p>
-                Yes, this data transfer calculator is completely <strong>free to use</strong>. There's no sign-up
-                required, no account needed, and no hidden fees. You can use it as often as you need to calculate
+                Yes, this data transfer calculator is completely <strong>free to use</strong>. No account is required,
+                including if you are signed in to Kreatli without an active trial or plan. There are no hidden fees. You
+                can use it as often as you need to calculate
                 transfer times for any file size and internet speed combination.
               </p>
               <p>

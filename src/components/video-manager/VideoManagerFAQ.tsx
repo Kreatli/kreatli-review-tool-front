@@ -3,6 +3,8 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 // Export FAQ data for use with FAQStructuredData component
 export const videoManagerFaqs = [
   {
@@ -10,6 +12,7 @@ export const videoManagerFaqs = [
     answer:
       'Managing videos in Kreatli means organizing, storing, versioning, and tracking all your video assets in one place. You can upload videos, organize them into projects, track versions, collect feedback, and manage approvals—all without switching between multiple tools. This gives your team a single source of truth for every video in production.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I organize videos in Kreatli?',
     answer:
@@ -70,6 +73,15 @@ export const VideoManagerFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

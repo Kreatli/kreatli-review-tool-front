@@ -336,7 +336,7 @@ export const Header = () => {
               </NavbarItem>
               <NavbarItem>
                 <Button as={NextLink} href="/sign-up" className="bg-foreground text-content1">
-                  <span className="hidden sm:inline">Start for Free</span>
+                  <span className="hidden sm:inline">Start 7-day trial</span>
                   <span className="sm:hidden">Sign up</span>
                 </Button>
               </NavbarItem>

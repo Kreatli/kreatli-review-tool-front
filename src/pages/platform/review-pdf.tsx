@@ -22,6 +22,7 @@ import { ResourcesArticlesPreviewSection } from '../../components/shared/Resourc
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -31,6 +32,7 @@ const faqs = [
     answer:
       'PDF review is the process of reviewing PDF documents with feedback, comments, and annotations to get approval or request changes. In Kreatli, you can review PDFs with comments pinned to exact locations, highlights, shapes, and drawings—all in one place alongside video and other creative assets. This keeps feedback organized and tied to the right page and spot, so nothing gets lost in email or separate tools.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I review a PDF in Kreatli?',
     answer:
@@ -78,7 +80,10 @@ export default function ReviewPdfPage() {
         <title>Review PDF | Kreatli</title>
         <meta
           name="description"
-          content="Review PDF files with comments, annotations, and approvals. Collaborate on PDFs with precise feedback in one place—no sign-up required for reviewers."
+          content={
+            'Review PDF files with comments, annotations, and approvals. Recipients on shared links do not need a ' +
+            'Kreatli account. Try without signing in, or with an active trial or plan if signed in.'
+          }
         />
         <link rel="canonical" href="https://kreatli.com/platform/review-pdf" />
         <meta property="og:url" content="https://kreatli.com/platform/review-pdf" />
@@ -120,8 +125,9 @@ export default function ReviewPdfPage() {
               Review PDF
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Review PDF files with comments, annotations, and approvals. Collaborate on PDFs with precise feedback in
-              one place with your video and creative assets—no sign-up required for reviewers.
+              Review PDF files with comments, annotations, and approvals alongside your video and creative assets.
+              Recipients on shared links do not need a Kreatli account. Try without signing in, or with an active trial
+              or plan if you are signed in.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

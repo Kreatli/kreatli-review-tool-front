@@ -14,6 +14,7 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { IMAGE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -23,6 +24,7 @@ const faqs = [
     answer:
       'An image URL maker turns your image into a shareable link so you can send it to clients or collaborators without email attachments or file downloads. In Kreatli, you upload your image, generate a secure review link, and share it—recipients open the image in their browser and can comment and approve without creating an account. Every link stays tied to your project and file version.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I make an image URL in Kreatli?',
     answer:
@@ -59,7 +61,7 @@ export default function ImageUrlMakerPage() {
         <title>Image URL Maker | Kreatli</title>
         <meta
           name="description"
-          content="Turn your image into a shareable URL. Create secure image review links in seconds—send one link, collect feedback, no sign-up required for recipients."
+          content="Turn your image into a shareable URL. Create secure image review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta
           name="keywords"
@@ -68,7 +70,7 @@ export default function ImageUrlMakerPage() {
         <meta property="og:title" content="Image URL Maker | Kreatli" />
         <meta
           property="og:description"
-          content="Turn your image into a shareable URL. Create secure image review links in seconds—send one link, collect feedback, no sign-up required for recipients."
+          content="Turn your image into a shareable URL. Create secure image review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/image-url-maker" />
@@ -77,7 +79,7 @@ export default function ImageUrlMakerPage() {
         <meta name="twitter:title" content="Image URL Maker | Kreatli" />
         <meta
           name="twitter:description"
-          content="Turn your image into a shareable URL. Create secure review links. Recipients open and comment in their browser with no sign-up."
+          content="Turn your image into a shareable URL. Create secure review links. Recipients open and comment in their browser without a Kreatli account."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/image-url-maker" />
@@ -126,7 +128,7 @@ export default function ImageUrlMakerPage() {
         {/* How to turn your image into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your image into a link in Kreatli"
-          stepsIntro="Follow these steps to upload your image, generate a shareable link, and collect feedback—no sign-up required for recipients."
+          stepsIntro="Follow these steps to upload your image, generate a shareable link, and collect feedback—recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
           steps={IMAGE_TO_LINK_STEPS}
           completeGuide={{
             href: '/guides/what-is-proofing-software',
@@ -172,7 +174,7 @@ export default function ImageUrlMakerPage() {
         <CTASection
           title="Ready to share your next image with a URL?"
           description="Use Kreatli's image URL maker to send secure, review-ready links to clients and collaborators in seconds."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

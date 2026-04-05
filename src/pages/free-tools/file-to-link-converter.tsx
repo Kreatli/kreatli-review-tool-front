@@ -16,6 +16,7 @@ import { FILE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/P
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { SkipToMainContent } from '../../components/shared/SkipToMainContent';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -28,6 +29,7 @@ const faqs = [
     answer:
       'A file to link converter turns your file (PDF, image, video, or other supported type) into a shareable link so you can send it to clients or collaborators without email attachments or file downloads. In Kreatli, you upload your file, generate a secure review link, and share it—recipients open the file in their browser and can comment and approve without creating an account. Every link stays tied to your project and file version.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I convert a file to a link in Kreatli?',
     answer:
@@ -64,7 +66,7 @@ export default function FileToLinkConverterPage() {
         <title>File to Link Converter | Kreatli</title>
         <meta
           name="description"
-          content="Turn any file into a shareable link. Create secure file review links in seconds—send one link, collect feedback, no sign-up required for recipients."
+          content="Turn any file into a shareable link. Create secure file review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta
           name="keywords"
@@ -73,7 +75,7 @@ export default function FileToLinkConverterPage() {
         <meta property="og:title" content="File to Link Converter | Kreatli" />
         <meta
           property="og:description"
-          content="Turn any file into a shareable link. Create secure file review links in seconds—send one link, collect feedback, no sign-up required for recipients."
+          content="Turn any file into a shareable link. Create secure file review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={CANONICAL_URL} />
@@ -85,7 +87,7 @@ export default function FileToLinkConverterPage() {
         <meta name="twitter:title" content="File to Link Converter | Kreatli" />
         <meta
           name="twitter:description"
-          content="Turn any file into a shareable link. Create secure review links. Recipients open and comment in their browser with no sign-up."
+          content="Turn any file into a shareable link. Create secure review links. Recipients open and comment in their browser without a Kreatli account."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href={CANONICAL_URL} />
@@ -128,7 +130,7 @@ export default function FileToLinkConverterPage() {
         {/* How to turn your file into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your file into a link in Kreatli"
-          stepsIntro="Follow these steps to upload your file, generate a shareable link, and collect feedback—no sign-up required for recipients."
+          stepsIntro="Follow these steps to upload your file, generate a shareable link, and collect feedback—recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
           steps={FILE_TO_LINK_STEPS}
           completeGuide={{
             href: '/guides/what-is-proofing-software',
@@ -174,7 +176,7 @@ export default function FileToLinkConverterPage() {
         <CTASection
           title="Ready to share your next file with a link?"
           description="Use Kreatli's file to link converter to send secure, review-ready links to clients and collaborators in seconds."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

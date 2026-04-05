@@ -3,6 +3,8 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 // Export FAQ data for use with FAQStructuredData component
 export const videoReviewerFaqs = [
   {
@@ -10,6 +12,7 @@ export const videoReviewerFaqs = [
     answer:
       'A video reviewer is an online tool that lets you watch, comment on, and approve video content. It allows teams to leave frame-accurate feedback, add visual annotations, and manage approval workflows—all in one place. Video reviewers replace scattered email threads and disconnected tools with a centralized review process.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I review a video online?',
     answer:
@@ -71,6 +74,15 @@ export const VideoReviewerFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

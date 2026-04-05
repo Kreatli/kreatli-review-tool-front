@@ -3,6 +3,8 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 // Export FAQ data for use with FAQStructuredData component
 export const videoProofingToolFaqs = [
   {
@@ -10,6 +12,7 @@ export const videoProofingToolFaqs = [
     answer:
       'Video proofing is the process of reviewing video content for accuracy, quality, and alignment with project requirements before final approval. In Kreatli, video proofing is frame-accurate—feedback and annotations are pinned to exact moments so editors know precisely what to change. This replaces vague email notes with actionable, visual feedback that speeds up approval cycles.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I proof a video in Kreatli?',
     answer:
@@ -70,6 +73,15 @@ export const VideoProofingToolFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

@@ -3,6 +3,8 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 export const VideoFrameExtractorFAQ = () => {
   const faqItems: Array<{
     key: string;
@@ -23,12 +25,22 @@ export const VideoFrameExtractorFAQ = () => {
       ),
     },
     {
+      key: 'account-access',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
+        </div>
+      ),
+    },
+    {
       key: 'is-free',
-      title: 'Is this Video Frame Extractor free?',
+      title: 'Is this Video Frame Extractor free to try?',
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Yes. This tool is <strong>free to use</strong>—no sign-up required.
+            You can capture frames on this page without signing in. If you are signed in to Kreatli without an active
+            trial or plan, start a trial or choose a plan to continue.
           </p>
         </div>
       ),

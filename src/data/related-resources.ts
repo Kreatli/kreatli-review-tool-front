@@ -180,7 +180,7 @@ export const RELATED_RESOURCES = {
   videoFeedbackTool: {
     title: 'Video Feedback Tool',
     description:
-      'Give frame-accurate feedback on videos with comments, annotations, and markup. No sign-up required for reviewers.',
+      'Give frame-accurate feedback on videos with comments, annotations, and markup. Recipients do not need a Kreatli account on shared review links.',
     href: '/free-tools/video-feedback-tool',
     icon: 'play' as IconType,
     buttonText: 'Try Now',
@@ -188,7 +188,7 @@ export const RELATED_RESOURCES = {
   videoReviewer: {
     title: 'Video Reviewer',
     description:
-      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. No sign-up required.',
+      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. Recipients do not need a Kreatli account on shared review links.',
     href: '/free-tools/video-reviewer',
     icon: 'monitorPlay' as IconType,
     buttonText: 'Try Now',

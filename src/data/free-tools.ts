@@ -34,7 +34,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Feedback Tool',
     description:
-      'Give frame-accurate feedback on videos with comments, annotations, and markup. Share review links with clients—no sign-up required for reviewers.',
+      'Give frame-accurate feedback on videos with comments, annotations, and markup. Share review links with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/video-feedback-tool',
     icon: 'play',
     buttonText: 'Try Now',
@@ -44,7 +44,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Reviewer',
     description:
-      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. Share with clients—no sign-up required.',
+      'Review videos online with frame-accurate comments, visual annotations, and approval workflows. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/video-reviewer',
     icon: 'monitorPlay',
     buttonText: 'Try Now',
@@ -54,7 +54,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Comparer',
     description:
-      'Compare two video versions side by side with frame-accurate comments and annotations. Share with clients—no sign-up required.',
+      'Compare two video versions side by side with frame-accurate comments and annotations. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/video-comparer',
     icon: 'compare',
     buttonText: 'Try Now',
@@ -64,7 +64,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Link Maker',
     description:
-      'Create secure, shareable video review links in seconds. Let clients watch, comment, and approve online—no sign-up required.',
+      'Create secure, shareable video review links in seconds. Recipients watch, comment, and approve without a Kreatli account.',
     href: '/free-tools/video-link-maker',
     icon: 'link',
     buttonText: 'Try Now',
@@ -74,7 +74,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'PDF Reviewer',
     description:
-      'Review PDFs online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',
+      'Review PDFs online with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/pdf-reviewer',
     icon: 'filePdf',
     buttonText: 'Try Now',
@@ -84,7 +84,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'PDF Annotator',
     description:
-      'Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients—no sign-up required.',
+      'Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/pdf-annotator',
     icon: 'paint',
     buttonText: 'Try Now',
@@ -94,7 +94,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'PDF Highlighter',
     description:
-      'Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required.',
+      'Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/pdf-highlighter',
     icon: 'edit',
     buttonText: 'Try Now',
@@ -104,7 +104,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'PDF Comparer',
     description:
-      'Compare two PDF versions side by side with comments and annotations. Share with clients—no sign-up required.',
+      'Compare two PDF versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/pdf-comparer',
     icon: 'versions',
     buttonText: 'Try Now',
@@ -114,7 +114,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'PDF Link Generator',
     description:
-      'Turn your PDF into a shareable link. Create secure review links in seconds—no sign-up required for recipients.',
+      'Turn your PDF into a shareable link. Create secure review links in seconds—recipients do not need a Kreatli account.',
     href: '/free-tools/pdf-link-generator',
     icon: 'share',
     buttonText: 'Try Now',
@@ -124,7 +124,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Document Annotator',
     description:
-      'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients—no sign-up required.',
+      'Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/document-annotator',
     icon: 'fileDoc',
     buttonText: 'Try Now',
@@ -134,7 +134,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Document Comparer',
     description:
-      'Compare two document versions side by side with comments and annotations. Share with clients—no sign-up required.',
+      'Compare two document versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/document-comparer',
     icon: 'grid',
     buttonText: 'Try Now',
@@ -144,7 +144,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Image Reviewer',
     description:
-      'Review images online with location-pinned comments, annotations, and approvals. Share with clients—no sign-up required.',
+      'Review images online with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/image-reviewer',
     icon: 'panorama',
     buttonText: 'Try Now',
@@ -154,7 +154,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Image Annotator',
     description:
-      'Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required.',
+      'Add location-pinned comments, highlights, drawings, and markup to images. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/image-annotator',
     icon: 'addImage',
     buttonText: 'Try Now',
@@ -164,7 +164,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Image Comparer',
     description:
-      'Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required.',
+      'Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/image-comparer',
     icon: 'eye',
     buttonText: 'Try Now',
@@ -174,7 +174,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Image URL Maker',
     description:
-      'Turn your image into a shareable URL. Create secure review links in seconds—no sign-up required for recipients.',
+      'Turn your image into a shareable URL. Create secure review links in seconds—recipients do not need a Kreatli account.',
     href: '/free-tools/image-url-maker',
     icon: 'send',
     buttonText: 'Try Now',
@@ -184,7 +184,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Photo URL Generator',
     description:
-      'Generate a shareable URL for your photo. Create secure review links in seconds—no sign-up required for recipients.',
+      'Generate a shareable URL for your photo. Create secure review links in seconds—recipients do not need a Kreatli account.',
     href: '/free-tools/photo-url-generator',
     icon: 'mail',
     buttonText: 'Try Now',
@@ -204,7 +204,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Proofing Tool',
     description:
-      'Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients—no sign-up required.',
+      'Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links; recipients do not need a Kreatli account.',
     href: '/free-tools/video-proofing-tool',
     icon: 'checkCircle',
     buttonText: 'Try Now',
@@ -214,7 +214,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Annotator',
     description:
-      'Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps and share with clients—no sign-up required.',
+      'Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps and share with clients; recipients do not need a Kreatli account.',
     href: '/free-tools/video-annotator',
     icon: 'chat',
     buttonText: 'Try Now',
@@ -224,7 +224,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Frame Extractor',
     description:
-      'Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed',
+      'Scrub through a video, capture stills as PNG/JPG in your browser—no upload, no watermark. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
     href: '/free-tools/video-frame-extractor',
     icon: 'filePng',
     buttonText: 'Try Now',
@@ -234,7 +234,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Resize Video',
     description:
-      'Resize video to custom or preset dimensions in your browser. No uploads, no sign-up—everything runs locally.',
+      'Resize video to custom or preset dimensions in your browser—no upload, processing runs locally. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
     href: '/free-tools/resize-video',
     icon: 'fullscreen',
     buttonText: 'Try Now',

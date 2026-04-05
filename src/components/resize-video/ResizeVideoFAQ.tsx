@@ -3,16 +3,15 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 export const RESIZE_VIDEO_FAQS: Array<{ question: string; answer: string }> = [
   {
     question: 'What is a video resizer?',
     answer:
       'A video resizer changes the resolution (width and height) of a video. You can use preset dimensions for social and web formats—like 1920×1080 for landscape or 1080×1920 for Reels—or enter custom dimensions. The tool processes the video in your browser so your file stays on your device.',
   },
-  {
-    question: 'Is this Resize Video tool free?',
-    answer: 'Yes. This tool is free to use—no sign-up required.',
-  },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'Is my video uploaded to a server?',
     answer:
