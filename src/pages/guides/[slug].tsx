@@ -9,6 +9,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { SeoHead } from '../../components/shared/SeoHead';
 import { Icon } from '../../components/various/Icon';
+import { isLocalGuideSlug } from '../../data/local-guides';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
 import { PageStoryblok } from '../../typings/storyblok';
@@ -145,8 +146,12 @@ export const getStaticPaths = (async () => {
     per_page: 100,
   });
 
+  const paths = Object.values(data.links ?? {})
+    .map((link) => ({ params: { slug: link.slug?.replace('guides/', '') ?? '' } }))
+    .filter((p) => p.params.slug && !isLocalGuideSlug(p.params.slug));
+
   return {
-    paths: Object.values(data.links ?? {}).map((link) => ({ params: { slug: link.slug?.replace('guides/', '') } })),
+    paths,
     fallback: process.env.STORYBLOK_STATUS === 'draft',
   };
 }) satisfies GetStaticPaths;
