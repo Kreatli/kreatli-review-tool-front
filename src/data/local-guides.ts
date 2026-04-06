@@ -4,7 +4,7 @@ import { ArticleCard } from '../types/articles';
 import { PageStoryblok } from '../typings/storyblok';
 
 /** Slug segments for guides implemented as static Next.js pages (not Storyblok). */
-export const LOCAL_GUIDE_SLUGS = ['how-to-embed-video'] as const;
+export const LOCAL_GUIDE_SLUGS = ['how-to-embed-video', 'how-to-generate-a-video-link-for-free'] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
 
@@ -51,6 +51,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-05 00:00',
       readTime: '15',
       tags: { value: ['Video', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-generate-a-video-link-for-free',
+    name: 'How to Generate a Video Link for Free',
+    full_slug: '/guides/how-to-generate-a-video-link-for-free',
+    content: {
+      metaFields: {
+        title: 'How to Generate a Video Link for Free: Share, Watch, and Review-Ready Links',
+        description:
+          'Learn how to generate a video link for free with common hosts and cloud storage, what “video link” really means, and when a review-ready link fits client workflows.',
+      },
+      image: {
+        filename: '/images/guides/how-to-generate-a-video-link-for-free-cover.png',
+        alt: 'Kreatli Guide: How to generate a video link for free',
+        title: 'How to generate a video link for free — Kreatli guide',
+      },
+      publishDate: '2026-04-06 00:00',
+      readTime: '11',
+      tags: { value: ['Video', 'Share Video'] },
     },
   },
 ];

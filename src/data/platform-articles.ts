@@ -658,6 +658,17 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
 
   '/platform/free-video-link-generator': [
     makeArticleCard({
+      id: 'platform-free-video-link-generator-guide-how-to-link',
+      full_slug: '/guides/how-to-generate-a-video-link-for-free',
+      title: 'How to Generate a Video Link for Free: Share, Watch, and Review-Ready Links',
+      description:
+        'Learn how to generate a video link for free with common hosts and cloud storage, what “video link” really means, and when a review-ready link fits client workflows.',
+      tags: ['Share Video', 'Video Review'],
+      publishDate: '2026-04-06 00:00',
+      readTime: '11',
+      imageFilename: '/images/guides/how-to-generate-a-video-link-for-free-cover.png',
+    }),
+    makeArticleCard({
       id: 'platform-free-video-link-generator-guide-1',
       full_slug: '/guides/how-to-send-video-via-email',
       title: "How to Send a Video via Email (And When You Shouldn't)",
@@ -735,6 +746,17 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   ],
 
   '/platform/send-video': [
+    makeArticleCard({
+      id: 'platform-send-video-guide-video-link',
+      full_slug: '/guides/how-to-generate-a-video-link-for-free',
+      title: 'How to Generate a Video Link for Free: Share, Watch, and Review-Ready Links',
+      description:
+        'Learn how to generate a video link for free with common hosts and cloud storage, what “video link” really means, and when a review-ready link fits client workflows.',
+      tags: ['Share Video', 'Video Review'],
+      publishDate: '2026-04-06 00:00',
+      readTime: '11',
+      imageFilename: '/images/guides/how-to-generate-a-video-link-for-free-cover.png',
+    }),
     makeArticleCard({
       id: 'platform-send-video-guide-1',
       full_slug: '/guides/how-to-send-video-via-email',
@@ -1499,6 +1521,17 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   ],
 
   '/platform/share-video': [
+    makeArticleCard({
+      id: 'platform-share-video-guide-video-link',
+      full_slug: '/guides/how-to-generate-a-video-link-for-free',
+      title: 'How to Generate a Video Link for Free: Share, Watch, and Review-Ready Links',
+      description:
+        'Learn how to generate a video link for free with common hosts and cloud storage, what “video link” really means, and when a review-ready link fits client workflows.',
+      tags: ['Share Video', 'Video Review'],
+      publishDate: '2026-04-06 00:00',
+      readTime: '11',
+      imageFilename: '/images/guides/how-to-generate-a-video-link-for-free-cover.png',
+    }),
     makeArticleCard({
       id: 'platform-share-video-guide-1',
       full_slug: '/guides/how-to-send-video-via-email',
