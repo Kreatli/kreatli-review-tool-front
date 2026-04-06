@@ -1,9 +1,10 @@
-import { Accordion, AccordionItem, cn } from '@heroui/react';
+import { cn } from '@heroui/react';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { GuideArticleToolsResourcesSection } from '../../components/guides/GuideArticleToolsResourcesSection';
 import { GuidePageLayout } from '../../components/guides/GuidePageLayout';
+import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
@@ -65,7 +66,7 @@ const TOC_SECTIONS = [
   'Where to place embedded review video',
   'Why a video embedder helps with review and approvals',
   'Free tools, guides, and platform features',
-  'Frequently asked questions',
+  'FAQ: How to embed video',
 ] as const;
 
 const ALL_GUIDE_FAQS = [...EMBED_VIDEO_GUIDE_GENERAL_FAQS, ...EMBED_VIDEO_PLATFORM_FAQS];
@@ -97,6 +98,8 @@ export default function HowToEmbedVideoGuidePage() {
         tocLinks={tocLinks}
       >
         <Section blok={HOW_TO_EMBED_VIDEO_HERO_BLOK} />
+
+        <GuideSectionRule />
 
         <div className={wysiwygStyles.wysiwyg}>
           <p>
@@ -133,6 +136,7 @@ export default function HowToEmbedVideoGuidePage() {
             </li>
           </ul>
 
+          <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[1])}>{TOC_SECTIONS[1]}</h2>
           <p>Exact buttons vary by product, but the pattern is the same across most hosts:</p>
           <ol>
@@ -157,6 +161,7 @@ export default function HowToEmbedVideoGuidePage() {
             often handles responsive sizing better than raw iframe snippets.
           </p>
 
+          <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[2])}>{TOC_SECTIONS[2]}</h2>
           <ul>
             <li>
@@ -179,6 +184,7 @@ export default function HowToEmbedVideoGuidePage() {
             </li>
           </ul>
 
+          <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[3])}>{TOC_SECTIONS[3]}</h2>
           <p>
             Marketing sites embed video for reach. Creative teams also need embed-like experiences for review:
@@ -188,6 +194,7 @@ export default function HowToEmbedVideoGuidePage() {
             <NextLink href="/platform/embed-video">embed video platform page</NextLink>.
           </p>
 
+          <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[4])}>{TOC_SECTIONS[4]}</h2>
           <p>
             The interactive preview below uses the same review UI as our platform page: upload a clip, scrub the
@@ -204,18 +211,9 @@ export default function HowToEmbedVideoGuidePage() {
           <div className="my-4 w-full">
             <InteractiveReviewToolPreview />
           </div>
-
-          <p>
-            Pair embed-style review with our free tools—
-            <NextLink href="/free-tools/video-reviewer">video reviewer</NextLink>,{' '}
-            <NextLink href="/free-tools/video-feedback-tool">video feedback tool</NextLink>, and{' '}
-            <NextLink href="/free-tools/video-manager">video manager</NextLink>—and when files are too large for email,
-            use{' '}
-            <NextLink href="/guides/share-large-video-files">7 ways to share large video files with clients</NextLink>{' '}
-            plus <NextLink href="/guides/how-to-annotate-video">how to annotate video</NextLink> for clearer feedback
-            loops.
-          </p>
         </div>
+
+        <GuideSectionRule />
 
         <EmbedVideoFeatureCardSections
           variant="guide"
@@ -226,6 +224,8 @@ export default function HowToEmbedVideoGuidePage() {
           whyHeading="Why Use a Video Embedder for Reviews?"
           whyIntro="Embedding videos where stakeholders already work makes feedback faster, clearer, and easier to track—without adding extra tools or login friction to the process."
         />
+
+        <GuideSectionRule />
 
         <GuideArticleToolsResourcesSection
           tocHeadingId={getHeadingId(TOC_SECTIONS[7])}
@@ -253,40 +253,24 @@ export default function HowToEmbedVideoGuidePage() {
           )}
         />
 
-        <section className="relative border-t border-foreground-200 py-14 md:py-16">
+        <GuideSectionRule />
+
+        <section className="relative py-12 md:py-16">
           <div className="relative z-10 mx-auto max-w-3xl">
-            <div
-              className={cn(
-                wysiwygStyles.wysiwyg,
-                '[&>h2:first-child]:!mt-0',
-              )}
-            >
+            <div className={cn(wysiwygStyles.wysiwyg, '[&>h2:first-child]:!mt-0')}>
               <h2 id={getHeadingId(TOC_SECTIONS[8])}>{TOC_SECTIONS[8]}</h2>
-              <p>
-                Common questions about how to embed video on websites and how embedded review works in Kreatli—from
-                share links to frame-accurate comments and guest access.
-              </p>
             </div>
-            <Accordion
-              variant="splitted"
-              className="mt-8 gap-2"
-              itemClasses={{
-                base: 'rounded-medium border border-foreground-200 bg-content1 shadow-sm',
-                title: 'text-start',
-                trigger: 'px-4 py-3 data-[hover=true]:bg-foreground-50',
-                content: 'border-t border-foreground-100 px-4 pb-4 pt-3',
-              }}
-            >
+            <div className="mt-6 flex flex-col gap-5 sm:gap-6">
               {ALL_GUIDE_FAQS.map((faq) => (
-                <AccordionItem
-                  key={faq.question}
-                  aria-label={faq.question}
-                  title={<span className="text-base font-semibold text-foreground sm:text-lg">{faq.question}</span>}
-                >
-                  <p className="text-base leading-relaxed text-foreground-600">{faq.answer}</p>
-                </AccordionItem>
+                <div key={faq.question} className="space-y-1.5">
+                  <p className="mb-0 font-sans text-lg font-bold leading-snug text-foreground sm:text-xl">
+                    {faq.question}
+                  </p>
+                  <p className="mb-0 text-lg font-normal leading-relaxed text-foreground-500">{faq.answer}</p>
+                </div>
               ))}
-            </Accordion>
+            </div>
+            <hr className="mt-12 w-full border-0 border-t border-foreground-300" aria-hidden />
             <div className={cn(wysiwygStyles.wysiwyg, 'mt-10 [&>h3:first-child]:!mt-0')}>
               <h3>Still have questions?</h3>
               <p>
@@ -298,20 +282,15 @@ export default function HowToEmbedVideoGuidePage() {
           </div>
         </section>
 
-        {/* Optional: add splitPromoImageSrc="/images/guides/your-cta-art.png" splitPromoImageAlt="…" to replace the dark card */}
         <CTASection
           layout="split"
+          splitTone="guide"
           title="Ready to see how it works?"
-          description="Visit Kreatli to explore embed-style video review, frame-accurate feedback, and approvals—so your team can ship embedded experiences without juggling tools."
+          description="Visit Kreatli to explore project templates, playback reviews, and file exchange views that streamline creative production."
           primaryButtonText="Start for Free"
           primaryButtonHref="/sign-up"
-          splitPromoTitle="One workspace to rule them all"
-          splitPromoDescription={
-            <>
-              Stop juggling drives, chat threads, and file versions. Consolidate review, embed-ready links, and
-              approvals in Kreatli—<span className="text-white">only pay for the tool your team actually uses.</span>
-            </>
-          }
+          splitPromoImageSrc="/images/guides/embed-video-cta.png"
+          splitPromoImageAlt="Kreatli platform: tasks, video review with frame pins, media library, and version compare"
         />
       </GuidePageLayout>
       <SignUpModal />

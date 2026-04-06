@@ -54,7 +54,7 @@ export function EmbedVideoFeatureCardSections({
             <div
               className={cn(
                 wysiwygStyles.wysiwyg,
-                '[&>h2:first-child]:!mt-0',
+                '[&>h2:first-of-type]:!mt-0',
               )}
             >
               <h2 id={getHeadingId(destinationsTocLabel)}>{destinationsHeading}</h2>
@@ -107,9 +107,10 @@ export function EmbedVideoFeatureCardSections({
             <div
               className={cn(
                 wysiwygStyles.wysiwyg,
-                '[&>h2:first-child]:!mt-0',
+                '[&>h2:first-of-type]:!mt-0',
               )}
             >
+              <hr />
               <h2 id={getHeadingId(whyTocLabel)}>{whyHeading}</h2>
               <p>{whyIntro}</p>
               <ul>

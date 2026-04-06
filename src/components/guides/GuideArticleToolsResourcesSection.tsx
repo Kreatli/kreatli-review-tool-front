@@ -53,12 +53,7 @@ export function GuideArticleToolsResourcesSection({
   }
 
   return (
-    <div
-      className={cn(
-        wysiwygStyles.wysiwyg,
-        '[&>h2:first-child]:!mt-0',
-      )}
-    >
+    <div className={cn(wysiwygStyles.wysiwyg, '[&>h2:first-child]:!mt-0')}>
       <h2 id={tocHeadingId}>{tocHeadingLabel}</h2>
       <p>{sectionIntro}</p>
 
