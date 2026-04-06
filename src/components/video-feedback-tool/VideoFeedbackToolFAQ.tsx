@@ -3,6 +3,8 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 // Export FAQ data for use with FAQStructuredData component
 export const videoFeedbackToolFaqs = [
   {
@@ -10,6 +12,7 @@ export const videoFeedbackToolFaqs = [
     answer:
       'A video feedback tool lets you add comments, annotations, and markup directly to video content at specific moments. Instead of describing feedback in emails or documents, you pin comments to exact frames and timestamps so editors know precisely what to change. Video feedback tools streamline creative reviews, client approvals, and team collaboration on video projects.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I give feedback on a video?',
     answer:
@@ -71,6 +74,15 @@ export const VideoFeedbackToolFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

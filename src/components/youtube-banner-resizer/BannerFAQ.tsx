@@ -1,5 +1,7 @@
 import { Accordion, AccordionItem } from '@heroui/react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 export const BannerFAQ = () => {
   const faqItems = [
     {
@@ -7,6 +9,11 @@ export const BannerFAQ = () => {
       title: 'What is the YouTube banner size?',
       content:
         'YouTube recommends a banner size of 2560 × 1440 pixels (16:9 aspect ratio). This is the minimum size that ensures your banner looks good on all devices, including desktop, mobile, tablet, and TV screens.',
+    },
+    {
+      key: 'account-access',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: FREE_TOOL_PAGE_ACCOUNT_FAQ.answer,
     },
     {
       key: 'what-is-safe-area',
@@ -24,7 +31,7 @@ export const BannerFAQ = () => {
       key: 'free-to-use',
       title: 'Can I use this tool for free?',
       content:
-        'Yes! This YouTube Banner Resizer is completely free to use. No sign-up required, no watermarks, and no limits. Upload your image, resize it, preview safe areas, and export your banner ready for YouTube.',
+        'You can use this page without signing in—no watermarks on exports from this tool. If you are signed in to Kreatli without an active trial or plan, start a trial or choose a plan to continue. Upload your image, resize it, preview safe areas, and export your banner ready for YouTube.',
     },
     {
       key: 'file-formats',

@@ -70,7 +70,7 @@ export default function InstagramSafeZoneCheckerPage() {
       <CTASection
         title="Ready to Ensure Your Content Looks Perfect?"
         description="Use our safe zone checker tool to preview your content with accurate platform overlays. Ensure your videos, titles, logos, and CTAs stay visible across all devices and platforms."
-        primaryButtonText="Start for Free"
+        primaryButtonText="Start 7-day trial"
       />
       <FooterSection hideCta />
       <SignUpModal sourceType="safe-zone-checker" />

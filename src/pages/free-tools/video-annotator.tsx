@@ -27,7 +27,7 @@ export default function VideoAnnotatorPage() {
         <title>Video Annotator - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients—no sign-up required for reviewers."
+          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta
           name="keywords"
@@ -36,7 +36,7 @@ export default function VideoAnnotatorPage() {
         <meta property="og:title" content="Video Annotator - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients—no sign-up required for reviewers."
+          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-annotator" />
@@ -45,7 +45,7 @@ export default function VideoAnnotatorPage() {
         <meta name="twitter:title" content="Video Annotator - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients—no sign-up required for reviewers."
+          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-annotator" />
@@ -109,7 +109,7 @@ export default function VideoAnnotatorPage() {
         <CTASection
           title="Ready to annotate videos with your team?"
           description="Kreatli offers frame-accurate video annotation, drawing on video, and approval workflows. Add comments and markup pinned to exact frames—all in one place."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

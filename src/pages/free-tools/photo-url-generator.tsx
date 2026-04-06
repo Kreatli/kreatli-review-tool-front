@@ -14,6 +14,7 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { IMAGE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -23,6 +24,7 @@ const faqs = [
     answer:
       'A photo URL generator turns your photo into a shareable link so you can send it to clients or collaborators without email attachments or file downloads. In Kreatli, you upload your photo, generate a secure review link, and share it—recipients open the photo in their browser and can comment and approve without creating an account. Every link stays tied to your project and file version.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I generate a photo URL in Kreatli?',
     answer:
@@ -59,7 +61,7 @@ export default function PhotoUrlGeneratorPage() {
         <title>Photo URL Generator | Kreatli</title>
         <meta
           name="description"
-          content="Generate a shareable URL for your photo. Create secure photo review links in seconds—send one link, collect feedback, no sign-up required for recipients."
+          content="Generate a shareable URL for your photo. Create secure photo review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta
           name="keywords"
@@ -68,7 +70,7 @@ export default function PhotoUrlGeneratorPage() {
         <meta property="og:title" content="Photo URL Generator | Kreatli" />
         <meta
           property="og:description"
-          content="Generate a shareable URL for your photo. Create secure photo review links in seconds—send one link, collect feedback, no sign-up required for recipients."
+          content="Generate a shareable URL for your photo. Create secure photo review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/photo-url-generator" />
@@ -77,7 +79,7 @@ export default function PhotoUrlGeneratorPage() {
         <meta name="twitter:title" content="Photo URL Generator | Kreatli" />
         <meta
           name="twitter:description"
-          content="Generate a shareable URL for your photo. Create secure review links. Recipients open and comment in their browser with no sign-up."
+          content="Generate a shareable URL for your photo. Create secure review links. Recipients open and comment in their browser without a Kreatli account."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/photo-url-generator" />
@@ -126,7 +128,7 @@ export default function PhotoUrlGeneratorPage() {
         {/* How to turn your photo into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your photo into a link in Kreatli"
-          stepsIntro="Follow these steps to upload your photo, generate a shareable link, and collect feedback—no sign-up required for recipients."
+          stepsIntro="Follow these steps to upload your photo, generate a shareable link, and collect feedback—recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
           steps={IMAGE_TO_LINK_STEPS}
           completeGuide={{
             href: '/guides/what-is-proofing-software',
@@ -172,7 +174,7 @@ export default function PhotoUrlGeneratorPage() {
         <CTASection
           title="Ready to share your next photo with a URL?"
           description="Use Kreatli's photo URL generator to send secure, review-ready links to clients and collaborators in seconds."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

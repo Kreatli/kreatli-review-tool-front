@@ -14,6 +14,7 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { COMPARE_DOCUMENTS_ONLINE_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -23,6 +24,7 @@ const faqs = [
     answer:
       'Comparing documents means viewing two document versions side by side in your browser to spot changes in text, layout, or images—for example, a contract draft vs. a revised version, or a deck before and after edits. In Kreatli, you can upload PDFs and other documents to a project and review them together with comments and annotations, so your team can see exactly what changed and give precise feedback in one place.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I compare two documents in Kreatli?',
     answer:
@@ -59,7 +61,7 @@ export default function DocumentComparerPage() {
         <title>Document Comparer - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta
           name="keywords"
@@ -68,7 +70,7 @@ export default function DocumentComparerPage() {
         <meta property="og:title" content="Document Comparer - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/document-comparer" />
@@ -77,7 +79,7 @@ export default function DocumentComparerPage() {
         <meta name="twitter:title" content="Document Comparer - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/document-comparer" />
@@ -173,7 +175,7 @@ export default function DocumentComparerPage() {
         <CTASection
           title="Ready to compare documents with your team?"
           description="Kreatli lets you compare document versions side by side with comments and approval workflows. Keep all feedback in one place with your creative assets."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

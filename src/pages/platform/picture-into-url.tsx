@@ -20,6 +20,7 @@ import { ResourcesArticlesPreviewSection } from '../../components/shared/Resourc
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -29,6 +30,7 @@ const faqs = [
     answer:
       'Picture into URL means turning your picture into a shareable link so you can send it to clients or collaborators without email attachments or file downloads. In Kreatli, you upload your picture, generate a secure review link, and share it—recipients open the picture in their browser and can comment and approve without creating an account. Every link stays tied to your project and file version.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I turn a picture into a URL in Kreatli?',
     answer:
@@ -71,7 +73,7 @@ export default function PictureIntoUrlPage() {
         <title>Picture into URL | Kreatli</title>
         <meta
           name="description"
-          content="Turn your picture into a URL. Picture into URL for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your picture into a URL. Picture into URL for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <link rel="canonical" href="https://kreatli.com/platform/picture-into-url" />
         <meta property="og:url" content="https://kreatli.com/platform/picture-into-url" />
@@ -79,7 +81,7 @@ export default function PictureIntoUrlPage() {
         <meta property="og:title" content="Picture into URL | Kreatli" />
         <meta
           property="og:description"
-          content="Turn your picture into a URL. Picture into URL for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your picture into a URL. Picture into URL for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
@@ -90,7 +92,7 @@ export default function PictureIntoUrlPage() {
         <meta name="twitter:title" content="Picture into URL | Kreatli" />
         <meta
           name="twitter:description"
-          content="Turn your picture into a URL. Picture into URL for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your picture into a URL. Picture into URL for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -138,7 +140,7 @@ export default function PictureIntoUrlPage() {
 
       <PlatformStepGuide
         stepsSectionTitle="How to turn your picture into a URL in Kreatli"
-        stepsIntro="Follow these steps to upload your picture, generate a shareable URL, and collect feedback—no sign-up required for recipients."
+        stepsIntro="Follow these steps to upload your picture, generate a shareable URL, and collect feedback—recipients do not need a Kreatli account."
         steps={PICTURE_INTO_URL_STEPS}
         completeGuide={{
           href: '/guides/what-is-proofing-software',
@@ -199,7 +201,7 @@ export default function PictureIntoUrlPage() {
                 </div>
                 <p className="text-sm text-foreground-500">
                   Send the URL by email, Slack, or any channel. Recipients click once to open the picture and leave
-                  comments and annotations—no sign-up or app install.
+                  comments and annotations—recipients need no Kreatli account or app install.
                 </p>
               </CardBody>
             </Card>

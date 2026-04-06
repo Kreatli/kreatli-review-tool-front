@@ -27,7 +27,7 @@ export default function VideoManagerPage() {
         <title>Video Manager - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. No sign-up required for reviewers."
+          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. Recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta
           name="keywords"
@@ -36,7 +36,7 @@ export default function VideoManagerPage() {
         <meta property="og:title" content="Video Manager - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. No sign-up required for reviewers."
+          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. Recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-manager" />
@@ -45,7 +45,7 @@ export default function VideoManagerPage() {
         <meta name="twitter:title" content="Video Manager - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. No sign-up required for reviewers."
+          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. Recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-manager" />
@@ -116,7 +116,7 @@ export default function VideoManagerPage() {
         <CTASection
           title="Ready to manage videos with your team?"
           description="Kreatli combines reliable media storage with project management. Organize, track, and deliver video projects in one secure workspace."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

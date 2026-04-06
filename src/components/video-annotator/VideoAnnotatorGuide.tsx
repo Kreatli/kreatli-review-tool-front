@@ -100,7 +100,7 @@ export const VideoAnnotatorGuide = () => {
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
                             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                              Start for Free
+                              Start 7-day trial
                             </Button>
                             <Button
                               as="a"

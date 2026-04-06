@@ -3,6 +3,7 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
+import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
@@ -10,15 +11,15 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import {
   PDF_TO_LINK_STEPS,
   PlatformStepGuide,
 } from '../../components/shared/PlatformStepGuide';
-import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -30,6 +31,7 @@ const faqs = [
     answer:
       'PDF to link means turning your PDF into a shareable link so you can send it to clients or collaborators without email attachments or file downloads. In Kreatli, you upload your PDF, generate a secure review link, and share it—recipients open the PDF in their browser and can comment and approve without creating an account. Every link stays tied to your project and file version.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I turn a PDF into a link in Kreatli?',
     answer:
@@ -72,7 +74,7 @@ export default function PdfToLinkPage() {
         <title>PDF to Link | Kreatli</title>
         <meta
           name="description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <link rel="canonical" href="https://kreatli.com/platform/pdf-to-link" />
         <meta property="og:url" content="https://kreatli.com/platform/pdf-to-link" />
@@ -80,7 +82,7 @@ export default function PdfToLinkPage() {
         <meta property="og:title" content="PDF to Link | Kreatli" />
         <meta
           property="og:description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
@@ -91,7 +93,7 @@ export default function PdfToLinkPage() {
         <meta name="twitter:title" content="PDF to Link | Kreatli" />
         <meta
           name="twitter:description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, no sign-up required."
+          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -139,7 +141,7 @@ export default function PdfToLinkPage() {
 
       <PlatformStepGuide
         stepsSectionTitle="How to turn your PDF into a link in Kreatli"
-        stepsIntro="Follow these steps to upload your PDF, generate a shareable link, and collect feedback—no sign-up required for recipients."
+        stepsIntro="Follow these steps to upload your PDF, generate a shareable link, and collect feedback—recipients do not need a Kreatli account."
         steps={PDF_TO_LINK_STEPS}
         completeGuide={{
           href: '/guides/what-is-proofing-software',
@@ -200,7 +202,7 @@ export default function PdfToLinkPage() {
                 </div>
                 <p className="text-sm text-foreground-500">
                   Send the link by email, Slack, or any channel. Recipients click once to open the PDF and leave
-                  comments and annotations—no sign-up or app install.
+                  comments and annotations—recipients need no Kreatli account or app install.
                 </p>
               </CardBody>
             </Card>
@@ -299,7 +301,11 @@ export default function PdfToLinkPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="smile" size={20} className="text-primary" />
+                    <Icon
+                      icon="smile"
+                      size={20}
+                      className="text-primary"
+                    />
                   </div>
                   <h3 className="font-sans text-lg font-semibold">Client-Friendly Review</h3>
                 </div>

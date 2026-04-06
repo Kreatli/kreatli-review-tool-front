@@ -3,12 +3,15 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 export const videoAnnotatorFaqs = [
   {
     question: 'What is a video annotator?',
     answer:
       'A video annotator is an online tool that lets you add comments, drawings, and markup directly onto video frames. Annotations are pinned to exact frames and timestamps, so feedback is precise and actionable. Video annotators replace vague notes like "change this around 2 minutes" with frame-accurate comments and visual markup that editors can jump to and address.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I annotate a video online?',
     answer:
@@ -68,6 +71,15 @@ export const VideoAnnotatorFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

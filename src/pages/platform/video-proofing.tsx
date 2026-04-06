@@ -22,6 +22,7 @@ import { ResourcesArticlesPreviewSection } from '../../components/shared/Resourc
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -31,6 +32,7 @@ const faqs = [
     answer:
       'Video proofing is the process of reviewing video content for accuracy, quality, and alignment with project requirements before final approval. In Kreatli, video proofing is frame-accurate—feedback and annotations are pinned to exact moments so editors know precisely what to change. This replaces vague email notes with actionable, visual feedback that speeds up approval cycles.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I proof a video in Kreatli?',
     answer:
@@ -78,7 +80,10 @@ export default function VideoProofingPage() {
         <title>Video Proofing | Kreatli</title>
         <meta
           name="description"
-          content="Video proofing with frame-accurate comments, annotations, and approvals. Collaborate on video with precise feedback in one place—no sign-up required for reviewers."
+          content={
+            'Video proofing with frame-accurate comments, annotations, and approvals. Recipients on shared links do not ' +
+            'need a Kreatli account. Try without signing in, or with an active trial or plan if signed in.'
+          }
         />
         <link rel="canonical" href="https://kreatli.com/platform/video-proofing" />
         <meta property="og:url" content="https://kreatli.com/platform/video-proofing" />
@@ -120,8 +125,9 @@ export default function VideoProofingPage() {
               Video Proofing
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Video proofing with frame-accurate comments, annotations, and approvals. Collaborate on video with precise
-              feedback in one place—no sign-up required for reviewers.
+              Video proofing with frame-accurate comments, annotations, and approvals. Recipients on shared links do not
+              need a Kreatli account. Try without signing in, or with an active Kreatli trial or plan if you are signed
+              in.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
