@@ -5,11 +5,11 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { GuideArticleToolsResourcesSection } from '../../components/guides/GuideArticleToolsResourcesSection';
 import { GuidePageLayout } from '../../components/guides/GuidePageLayout';
 import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
+import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { SITE_URL } from '../../components/shared/SeoHead';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -56,7 +56,7 @@ const TOC_SECTIONS = [
   'How to create or copy a link (typical flow)',
   'Privacy, expiry, and who can open the link',
   'When a review-ready link fits better than a watch URL',
-  'Try frame-accurate video review',
+  'Try generating a shareable video link',
   'Free tools, guides, and platform features',
   'FAQ: How to generate a video link for free',
 ] as const;
@@ -237,8 +237,9 @@ export default function HowToGenerateAVideoLinkForFreeGuidePage() {
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[5])}>{TOC_SECTIONS[5]}</h2>
           <p>
-            The preview below mirrors the in-product review experience: scrub the timeline and leave time-pinned
-            comments. To go further, <NextLink href="/sign-up">start a 7-day trial</NextLink> or book a{' '}
+            The preview below mirrors a simple “generate and share a link” flow: add recipients, copy a share URL, and
+            think through who should have access. To go further, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
+            or book a{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
               demo
             </a>
@@ -246,7 +247,7 @@ export default function HowToGenerateAVideoLinkForFreeGuidePage() {
           </p>
 
           <div className="my-4 w-full">
-            <InteractiveReviewToolPreview />
+            <ShareFeaturePreview variant="video" />
           </div>
         </div>
 

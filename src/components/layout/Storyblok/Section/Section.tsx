@@ -57,9 +57,7 @@ export const Section = ({ blok }: Props) => {
               src={image.filename}
               removeWrapper
               radius="none"
-              width="800"
               shadow="none"
-              height="600"
               className={cn('h-auto max-h-[500px] w-full', imageObjectFit)}
               alt={imageAlt}
             />

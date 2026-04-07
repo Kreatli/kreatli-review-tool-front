@@ -4,7 +4,11 @@ import { ArticleCard } from '../types/articles';
 import { PageStoryblok } from '../typings/storyblok';
 
 /** Slug segments for guides implemented as static Next.js pages (not Storyblok). */
-export const LOCAL_GUIDE_SLUGS = ['how-to-embed-video', 'how-to-generate-a-video-link-for-free'] as const;
+export const LOCAL_GUIDE_SLUGS = [
+  'how-to-embed-video',
+  'how-to-generate-a-video-link-for-free',
+  'how-to-add-drawing-to-video',
+] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
 
@@ -71,6 +75,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-06 00:00',
       readTime: '11',
       tags: { value: ['Video', 'Share Video'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-add-drawing-to-video',
+    name: 'How to Add Drawing to Video',
+    full_slug: '/guides/how-to-add-drawing-to-video',
+    content: {
+      metaFields: {
+        title: 'How to Add Drawing to Video: Draw on Frames for Clear, Frame-Accurate Feedback',
+        description:
+          'Learn how to add drawing to video with arrows, boxes, highlights, and freehand markup on exact frames so editors and clients understand changes instantly.',
+      },
+      image: {
+        filename: '/images/guides/how-to-add-drawing-to-video.png',
+        alt: 'Kreatli Guide: How to add drawing to video',
+        title: 'How to add drawing to video — Kreatli guide',
+      },
+      publishDate: '2026-04-07 00:00',
+      readTime: '12',
+      tags: { value: ['Video', 'Video Annotation'] },
     },
   },
 ];
