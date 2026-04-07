@@ -219,8 +219,8 @@ export default function HowToGenerateAVideoLinkForFreeGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Downloads vs streaming:</strong> Some clients need a file; others only need to watch once.
-                Match the link type to what you are approving.
+                <strong>Downloads vs streaming:</strong> Some clients need a file; others only need to watch once. Match
+                the link type to what you are approving.
               </p>
             </li>
           </ul>
@@ -229,17 +229,17 @@ export default function HowToGenerateAVideoLinkForFreeGuidePage() {
           <h2 id={getHeadingId(TOC_SECTIONS[4])}>{TOC_SECTIONS[4]}</h2>
           <p>
             If you only need views, a watch or file link is enough. When you need structured feedback, version clarity,
-            and approvals, a review-focused workflow keeps comments on the right cut. Kreatli’s approach is outlined on our{' '}
-            <NextLink href="/platform/free-video-link-generator">free video link generator</NextLink> page: share a link,
-            collect frame-accurate notes, and keep approval history with the file.
+            and approvals, a review-focused workflow keeps comments on the right cut. Kreatli’s approach is outlined on
+            our <NextLink href="/platform/free-video-link-generator">free video link generator</NextLink> page: share a
+            link, collect frame-accurate notes, and keep approval history with the file.
           </p>
 
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[5])}>{TOC_SECTIONS[5]}</h2>
           <p>
             The preview below mirrors a simple “generate and share a link” flow: add recipients, copy a share URL, and
-            think through who should have access. To go further, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
-            or book a{' '}
+            think through who should have access. To go further,{' '}
+            <NextLink href="/sign-up">start a 7-day trial</NextLink> or book a{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
               demo
             </a>

@@ -8,6 +8,8 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-embed-video',
   'how-to-generate-a-video-link-for-free',
   'how-to-add-drawing-to-video',
+  'how-to-share-video',
+  'how-to-share-an-mp4-file',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -95,6 +97,46 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-07 00:00',
       readTime: '12',
       tags: { value: ['Video', 'Video Annotation'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-share-video',
+    name: 'How to Share Video',
+    full_slug: '/guides/how-to-share-video',
+    content: {
+      metaFields: {
+        title: 'How to Share Video: Links, Privacy Settings, and Review-Ready Sharing',
+        description:
+          'Learn how to share video the right way: choose between watch links and file links, set privacy and expiration, and use a review-ready link when feedback and approvals matter.',
+      },
+      image: {
+        filename: '/images/guides/how-to-share-video-cover.png',
+        alt: 'Kreatli Guide: How to share video',
+        title: 'How to share video — Kreatli guide',
+      },
+      publishDate: '2026-04-07 00:00',
+      readTime: '12',
+      tags: { value: ['Video', 'Share Video'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-share-an-mp4-file',
+    name: 'How to Share an MP4 File',
+    full_slug: '/guides/how-to-share-an-mp4-file',
+    content: {
+      metaFields: {
+        title: 'How to Share an MP4 File: Email Limits, Link Options, and Review-Ready Sharing',
+        description:
+          'Learn how to share an MP4 file without failed uploads or quality loss: when to attach, when to send a link, and how to share for clear feedback and approvals.',
+      },
+      image: {
+        filename: '/images/guides/how-to-share-an-mp4-file-cover.png',
+        alt: 'Kreatli Guide: How to share an MP4 file',
+        title: 'How to share an MP4 file — Kreatli guide',
+      },
+      publishDate: '2026-04-07 00:00',
+      readTime: '10',
+      tags: { value: ['Video', 'Share Video'] },
     },
   },
 ];
