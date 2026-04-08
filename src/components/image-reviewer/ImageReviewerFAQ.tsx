@@ -3,6 +3,8 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 // Export FAQ data for use with FAQStructuredData component
 export const imageReviewerFaqs = [
   {
@@ -10,6 +12,7 @@ export const imageReviewerFaqs = [
     answer:
       'Image review is the process of reviewing images with feedback, comments, and annotations to get approval or request changes. In Kreatli, you can review images with comments pinned to exact locations, highlights, shapes, and drawings—all in one place alongside video and PDFs. This keeps feedback precise and tied to the right spot on the image, so nothing gets lost in email or separate tools.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I review an image in Kreatli?',
     answer:
@@ -70,6 +73,15 @@ export const ImageReviewerFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

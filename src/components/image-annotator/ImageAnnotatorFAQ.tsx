@@ -3,12 +3,15 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 export const imageAnnotatorFaqs = [
   {
     question: 'What is an image annotator?',
     answer:
       'An image annotator is an online tool that lets you add comments, highlights, drawings, and markup directly onto an image so reviewers can point to specific areas, elements, or regions that need changes. Annotations are pinned to exact locations on the image, so feedback is precise and actionable. Image annotators replace vague descriptions like "the top-right area" with location-pinned comments and visual markup that designers can act on.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I annotate an image online?',
     answer:
@@ -69,6 +72,15 @@ export const ImageAnnotatorFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

@@ -3,11 +3,11 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
-import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';

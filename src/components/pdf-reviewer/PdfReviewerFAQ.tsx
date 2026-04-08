@@ -3,6 +3,8 @@ import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
 import { ReactNode } from 'react';
 
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+
 // Export FAQ data for use with FAQStructuredData component
 export const pdfReviewerFaqs = [
   {
@@ -10,6 +12,7 @@ export const pdfReviewerFaqs = [
     answer:
       'PDF review is the process of reviewing PDF documents with feedback, comments, and annotations to get approval or request changes. In Kreatli, you can review PDFs with comments pinned to exact locations, highlights, shapes, and drawings—all in one place alongside video and other creative assets. This keeps feedback organized and tied to the right page and spot, so nothing gets lost in email or separate tools.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I review a PDF in Kreatli?',
     answer:
@@ -70,6 +73,15 @@ export const PdfReviewerFAQ = () => {
             </NextLink>
             .
           </p>
+        </div>
+      ),
+    },
+    {
+      key: 'account-access-this-page',
+      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
         </div>
       ),
     },

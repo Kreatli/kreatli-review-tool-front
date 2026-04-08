@@ -4,8 +4,8 @@ import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
-import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
 import { SafeZoneChecker } from '../components/safe-zone-checker/SafeZoneChecker';
+import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
 import { CTASection } from '../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../components/shared/FreeToolsEntitlementSection';
 import { RelatedResourcesSection } from '../components/shared/RelatedResourcesSection';
@@ -18,12 +18,12 @@ export default function ProjectsPage() {
         <title>Free Safe Zone Checker - TikTok, Reels, Shorts | Kreatli</title>
         <meta
           name="description"
-          content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Free tool to ensure your videos look perfect on every platform. No sign-up required."
+          content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <meta property="og:title" content="Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
         <meta
           property="og:description"
-          content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Free tool to ensure your videos look perfect on every platform."
+          content="Preview safe zones for TikTok, Reels, and Shorts. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/safe-zone-checker" />
@@ -60,7 +60,7 @@ export default function ProjectsPage() {
       <CTASection
         title="Ready to Ensure Your Content Looks Perfect?"
         description="Use our safe zone checker tool to preview your content with accurate platform overlays. Ensure your videos, titles, logos, and CTAs stay visible across all devices and platforms."
-        primaryButtonText="Start for Free"
+        primaryButtonText="Start 7-day trial"
       />
       <FooterSection hideCta />
       <SignUpModal sourceType="safe-zone-checker" />

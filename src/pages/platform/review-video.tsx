@@ -22,6 +22,7 @@ import { ResourcesArticlesPreviewSection } from '../../components/shared/Resourc
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -31,6 +32,7 @@ const faqs = [
     answer:
       'Video review is the process of watching video content and providing feedback, comments, and approval decisions. In Kreatli, video review is frame-accurate—comments and annotations are pinned to exact moments so editors know precisely what to change. This replaces vague email threads with actionable, visual feedback that speeds up revision cycles.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I review a video in Kreatli?',
     answer:
@@ -78,7 +80,10 @@ export default function ReviewVideoPage() {
         <title>Review Video | Kreatli</title>
         <meta
           name="description"
-          content="Review video with frame-accurate comments, annotations, and approvals. Collaborate on video with precise feedback in one place—no sign-up required for reviewers."
+          content={
+            'Review video with frame-accurate comments, annotations, and approvals. Recipients on shared links do not ' +
+            'need a Kreatli account. Try without signing in, or with an active trial or plan if signed in.'
+          }
         />
         <link rel="canonical" href="https://kreatli.com/platform/review-video" />
         <meta property="og:url" content="https://kreatli.com/platform/review-video" />
@@ -120,8 +125,9 @@ export default function ReviewVideoPage() {
               Review Video
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Review video with frame-accurate comments, annotations, and approvals. Collaborate on video with precise
-              feedback in one place—no sign-up required for reviewers.
+              Review video with frame-accurate comments, annotations, and approvals. Recipients on shared links do not
+              need a Kreatli account. Try without signing in, or with an active Kreatli trial or plan if you are signed
+              in.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

@@ -181,7 +181,7 @@ export default function PlatformPage() {
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start for Free
+              Start 7-day trial
             </Button>
             <Button
               as="a"
@@ -317,7 +317,7 @@ export default function PlatformPage() {
 
           <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start for Free{' '}
+              Start 7-day trial{' '}
             </Button>
             <Button
               as="a"

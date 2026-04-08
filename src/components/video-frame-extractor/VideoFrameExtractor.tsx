@@ -831,7 +831,7 @@ export function VideoFrameExtractor() {
                       href={isSignedIn ? '/platform/creative-workspace' : '/sign-up'}
                       className="bg-foreground text-content1"
                     >
-                      Start for Free
+                      Start 7-day trial
                     </Button>
                   </div>
                 </div>

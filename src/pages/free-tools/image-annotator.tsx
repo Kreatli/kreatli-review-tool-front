@@ -28,7 +28,7 @@ export default function ImageAnnotatorPage() {
         <title>Image Annotator - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online image annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required for reviewers."
+          content="Free online image annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to images. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta
           name="keywords"
@@ -37,7 +37,7 @@ export default function ImageAnnotatorPage() {
         <meta property="og:title" content="Image Annotator - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online image annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required for reviewers."
+          content="Free online image annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to images. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/image-annotator" />
@@ -46,7 +46,7 @@ export default function ImageAnnotatorPage() {
         <meta name="twitter:title" content="Image Annotator - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online image annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to images. Share with clients—no sign-up required for reviewers."
+          content="Free online image annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to images. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/image-annotator" />
@@ -110,7 +110,7 @@ export default function ImageAnnotatorPage() {
         <CTASection
           title="Ready to annotate images with your team?"
           description="Kreatli offers location-pinned image annotation, drawing on images, and approval workflows. Add comments and markup in one place with your video and creative assets."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

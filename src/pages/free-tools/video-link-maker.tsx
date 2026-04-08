@@ -14,6 +14,7 @@ import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { FREE_VIDEO_LINK_GENERATOR_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -21,8 +22,9 @@ const faqs = [
   {
     question: 'What is a video link maker?',
     answer:
-      'A video link maker lets you create secure, shareable links to your video files so clients and collaborators can review them in their browser—no downloads or accounts required. Instead of sending heavy attachments or juggling WeTransfer links, you generate a single review link that opens an interactive player with frame-accurate comments and approvals. In Kreatli, every link stays connected to the right project, file version, and feedback history.',
+      'A video link maker lets you create secure, shareable links to your video files so clients and collaborators can review them in their browser—no downloads; recipients do not need a Kreatli account. Instead of sending heavy attachments or juggling WeTransfer links, you generate a single review link that opens an interactive player with frame-accurate comments and approvals. In Kreatli, every link stays connected to the right project, file version, and feedback history.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'Can clients open video review links without creating an account?',
     answer:
@@ -46,7 +48,7 @@ const faqs = [
   {
     question: 'Is the video link maker free?',
     answer:
-      'Kreatli offers a free way to start making video review links so you can experience the workflow before upgrading. On paid plans, the video link maker is included as part of the broader review and approval platform, with higher limits, advanced permissions, and support for larger teams and libraries. This lets small teams get started at no cost while giving growing organizations room to scale.',
+      'You can try making review links on this page without signing in. If you are signed in to Kreatli without an active trial or subscription, you will need to start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial. Paid plans include the full review and approval platform with team limits, permissions, and storage that scale with your organization.',
   },
 ];
 
@@ -59,7 +61,7 @@ export default function VideoLinkMakerPage() {
         <title>Video Link Maker | Kreatli</title>
         <meta
           name="description"
-          content="Free online video link maker for creative teams. Create secure, shareable video review links in seconds. Let clients watch, comment, and approve online—no downloads or accounts required."
+          content="Free online video link maker for creative teams. Create secure, shareable video review links in seconds. Recipients watch and comment without a Kreatli account. Try this page without signing in, or with an active trial or plan if signed in."
         />
         <meta
           name="keywords"
@@ -68,7 +70,7 @@ export default function VideoLinkMakerPage() {
         <meta property="og:title" content="Video Link Maker | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video link maker for creative teams. Create secure, shareable video review links in seconds. Let clients watch, comment, and approve online—no downloads or accounts required."
+          content="Free online video link maker for creative teams. Create secure, shareable video review links in seconds. Recipients watch and comment without a Kreatli account. Try this page without signing in, or with an active trial or plan if signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-link-maker" />
@@ -77,7 +79,7 @@ export default function VideoLinkMakerPage() {
         <meta name="twitter:title" content="Video Link Maker | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video link maker. Create secure, shareable video review links. Let clients review and comment in their browser with no sign-up."
+          content="Free online video link maker. Recipients review without a Kreatli account. Try this page without signing in, or with an active trial or plan if signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-link-maker" />
@@ -173,7 +175,7 @@ export default function VideoLinkMakerPage() {
         <CTASection
           title="Ready to share your next video with a link?"
           description="Use Kreatli's video link maker to send secure, review-ready links to clients and collaborators in seconds."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

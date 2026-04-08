@@ -25,7 +25,7 @@ export default function VideoFrameExtractorPage() {
         <title>Video Frame Extractor - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free video frame extractor to capture still frames from any video. Scrub to any moment and download JPG/PNG images (or a ZIP) in your browser—no uploads, no sign-up."
+          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <meta
           name="keywords"
@@ -34,7 +34,7 @@ export default function VideoFrameExtractorPage() {
         <meta property="og:title" content="Video Frame Extractor - Free Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free video frame extractor to capture still frames from any video. Scrub to any moment and download JPG/PNG images (or a ZIP) in your browser—no uploads, no sign-up."
+          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-frame-extractor" />
@@ -42,7 +42,7 @@ export default function VideoFrameExtractorPage() {
         <meta name="twitter:title" content="Video Frame Extractor - Free Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free video frame extractor to capture still frames from any video. Scrub to any moment and download JPG/PNG images (or a ZIP) in your browser—no uploads, no sign-up."
+          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-frame-extractor" />
       </Head>
@@ -63,8 +63,7 @@ export default function VideoFrameExtractorPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Frame Extractor</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs
-              in your browser - no uploads, no watermark, no sign-up needed.
+              Scrub through a video, capture stills as PNG/JPG in your browser—no upload, no watermark. Try without signing in, or with an active Kreatli trial or plan if you are signed in.
             </p>
           </div>
         </section>
@@ -102,7 +101,7 @@ export default function VideoFrameExtractorPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

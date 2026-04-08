@@ -71,7 +71,7 @@ export const PlatformStepGuide = ({
                         {item.step === steps.length && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
                             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                              Start for Free
+                              Start 7-day trial
                             </Button>
                             <Button
                               as="a"
@@ -366,7 +366,7 @@ export const FREE_VIDEO_LINK_GENERATOR_STEPS: WorkflowStep[] = [
     step: 3,
     title: 'Share the link with clients or collaborators',
     description:
-      'Send the link by email, Slack, or any channel. Recipients click once to watch the video and leave frame-accurate comments—no sign-up or app install.',
+      'Send the link by email, Slack, or any channel. Recipients click once to watch the video and leave frame-accurate comments—no Kreatli account or app install.',
     icon: 'group',
     image: '/video-annotation-guide/step-3-share-modal.png',
     altText: 'Share File modal: copy link or send via email in Kreatli',
@@ -655,7 +655,7 @@ export function createAssetToLinkSteps(options: AssetToLinkStepsOptions): Workfl
     assetLabel,
     step1Description,
     step2Description = `In the Media view, open the 3-dot menu (⋯) on the ${assetLabel} and choose Share. Create a secure review link—each link opens the ${assetLabel} in the browser with no download or account required.`,
-    step3Description = `Send the link by email, Slack, or any channel. Recipients click once to open the ${assetLabel} and leave comments and annotations—no sign-up or app install.`,
+    step3Description = `Send the link by email, Slack, or any channel. Recipients click once to open the ${assetLabel} and leave comments and annotations—no Kreatli account or app install.`,
     step4Description = "All comments and annotations appear in one place. Jump to any page or spot, track what's resolved, and keep every review round in one thread.",
     step5Description = "See who's approved which version and revoke or update link access anytime. Every link stays tied to the right project and file version.",
   } = options;
@@ -717,7 +717,7 @@ export const IMAGE_TO_LINK_STEPS: WorkflowStep[] = createAssetToLinkSteps({
   step1Description:
     'Sign in to Kreatli, open your project, and upload your image (JPG, PNG, GIF, WebP, etc.). Your file is stored securely with version history so you can generate a shareable link and share for review in one place.',
   step3Description:
-    'Copy the link or send it via the share modal (email, Slack, etc.). Recipients click once to open the image and leave comments and annotations—no sign-up or app install.',
+    'Copy the link or send it via the share modal (email, Slack, etc.). Recipients click once to open the image and leave comments and annotations—no Kreatli account or app install.',
   step4Description:
     "All comments and annotations appear in one place. Recipients can draw, highlight, and comment on the image; you jump to any spot, track what's resolved, and keep every review round in one thread.",
   step5Description:
@@ -755,7 +755,7 @@ export const PICTURE_INTO_URL_STEPS: WorkflowStep[] = [
     step: 3,
     title: 'Share the URL with clients or collaborators',
     description:
-      'Copy the URL or send it via the share modal (email, Slack, etc.). Recipients click once to open the picture and leave comments and annotations—no sign-up or app install.',
+      'Copy the URL or send it via the share modal (email, Slack, etc.). Recipients click once to open the picture and leave comments and annotations—no Kreatli account or app install.',
     icon: 'group',
     image: '/video-annotation-guide/step-3-share-modal.png',
     altText: 'Share File modal: copy URL or send via email in Kreatli',

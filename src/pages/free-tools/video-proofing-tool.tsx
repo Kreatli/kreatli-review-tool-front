@@ -28,7 +28,7 @@ export default function VideoProofingToolPage() {
         <title>Video Proofing Tool - Free Online | Kreatli</title>
         <meta
           name="description"
-          content="Free video proofing tool for creative teams. Proof videos with frame-accurate comments, annotations, and approvals. Share with clients—no sign-up required."
+          content="Free video proofing tool for creative teams. Proof videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta
           name="keywords"
@@ -37,7 +37,7 @@ export default function VideoProofingToolPage() {
         <meta property="og:title" content="Video Proofing Tool - Free Online | Kreatli" />
         <meta
           property="og:description"
-          content="Free video proofing tool for creative teams. Proof videos with frame-accurate comments, annotations, and approvals. Share with clients—no sign-up required."
+          content="Free video proofing tool for creative teams. Proof videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-proofing-tool" />
@@ -46,7 +46,7 @@ export default function VideoProofingToolPage() {
         <meta name="twitter:title" content="Video Proofing Tool - Free Online | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free video proofing tool for creative teams. Proof videos with frame-accurate comments, annotations, and approvals. Share with clients—no sign-up required."
+          content="Free video proofing tool for creative teams. Proof videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-proofing-tool" />
@@ -115,7 +115,7 @@ export default function VideoProofingToolPage() {
         <CTASection
           title="Ready to streamline video proofing?"
           description="Kreatli is a Video Collaboration & Review Platform for creative teams. Proof videos with frame-accurate feedback, manage approvals, and deliver projects faster."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

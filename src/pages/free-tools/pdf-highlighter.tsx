@@ -27,7 +27,7 @@ export default function PdfHighlighterPage() {
         <title>PDF Highlighter - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required for reviewers."
+          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta
           name="keywords"
@@ -36,7 +36,7 @@ export default function PdfHighlighterPage() {
         <meta property="og:title" content="PDF Highlighter - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required for reviewers."
+          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/pdf-highlighter" />
@@ -45,7 +45,7 @@ export default function PdfHighlighterPage() {
         <meta name="twitter:title" content="PDF Highlighter - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients—no sign-up required for reviewers."
+          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/pdf-highlighter" />
@@ -109,7 +109,7 @@ export default function PdfHighlighterPage() {
         <CTASection
           title="Ready to highlight PDFs with your team?"
           description="Kreatli offers location-pinned PDF highlighting, annotation, and approval workflows. Highlight text and regions in one place with your video and creative assets."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

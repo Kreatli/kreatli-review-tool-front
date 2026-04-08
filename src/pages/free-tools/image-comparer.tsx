@@ -15,6 +15,7 @@ import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { COMPARE_IMAGES_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -24,6 +25,7 @@ const faqs = [
     answer:
       'Comparing images means viewing two image versions side by side to spot changes in layout, color, or content—for example, a draft vs. a revised version or a before-and-after edit. In Kreatli, you can upload multiple images to a project and review them together with comments and annotations, so your team can see exactly what changed and give precise feedback in one place.',
   },
+  FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I compare two images in Kreatli?',
     answer:
@@ -60,7 +62,7 @@ export default function ImageComparerPage() {
         <title>Image Comparer - Free Online Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta
           name="keywords"
@@ -69,7 +71,7 @@ export default function ImageComparerPage() {
         <meta property="og:title" content="Image Comparer - Free Online Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/image-comparer" />
@@ -78,7 +80,7 @@ export default function ImageComparerPage() {
         <meta name="twitter:title" content="Image Comparer - Free Online Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients—no sign-up required."
+          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/image-comparer" />
@@ -174,7 +176,7 @@ export default function ImageComparerPage() {
         <CTASection
           title="Ready to compare images with your team?"
           description="Kreatli lets you compare image versions side by side with comments and approval workflows. Keep all feedback in one place with your creative assets."
-          primaryButtonText="Start for Free"
+          primaryButtonText="Start 7-day trial"
         />
       </main>
 

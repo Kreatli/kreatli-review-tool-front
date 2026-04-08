@@ -21,12 +21,12 @@ const faqs = [
   {
     question: 'Are these tools really free to use?',
     answer:
-      "Yes—our calculators are completely free to use with no hidden costs and no account required. For the rest of the tools, you can explore the workflows here, and use them fully inside Kreatli (an account and an active trial/plan may be required depending on the tool).",
+      "Yes—our calculators are completely free to use with no hidden costs and no account required, even if you are signed in to Kreatli without an active trial or plan. For the rest of the tools, you can use the on-page experience in your browser without signing in. If you are signed in without an active trial or subscription, you will need to start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial.",
   },
   {
     question: 'Do I need to create an account to use these tools?',
     answer:
-      "No account is required for our calculators. For the other tools, you can browse the pages without signing up, but some interactive workflows are available inside Kreatli, where you can start a trial or choose a plan.",
+      "No account is required for our calculators. For the other tools, you do not need to sign in to try them in your browser. If you are already signed in to Kreatli and your trial or subscription is not active, you will need to start a 7-day trial or choose a plan to use those tools (payment method at checkout; no subscription charges during the trial). People who open a review link you share still do not need a Kreatli account.",
   },
   {
     question: 'What is the Data Transfer Calculator used for?',
@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "How do these free tools relate to Kreatli's main platform?",
     answer:
-      "These free tools are standalone utilities that anyone can use, regardless of whether they use Kreatli's Video Collaboration & Review Platform. However, if you find these tools useful, you might be interested in Kreatli's full platform, which includes frame-accurate video review, project management, team collaboration, and secure file storage—all in one unified workspace. The free tools demonstrate our commitment to helping video professionals, while the main platform provides comprehensive video collaboration for teams.",
+      "Many tools on this hub mirror workflows you also get inside Kreatli's Video Collaboration & Review Platform. You can try them in the browser without signing in; signed-in users need an active trial or plan for most tools (calculators stay free with no account). The full platform adds frame-accurate video review, project management, team collaboration, and secure file storage in one workspace.",
   },
   {
     question: 'Can I share these tools with my team or clients?',
@@ -75,7 +75,7 @@ export default function FreeToolsPage() {
   const [selectedFilter, setSelectedFilter] = useState<'All' | FreeToolFilterTag>('All');
   const title = 'Kreatli | Free Tools for Video Teams';
   const description =
-    'Free tools for video teams, including a data transfer calculator, software cost calculator, safe zone checker, and YouTube banner resizer. No sign-up required.';
+    'Free tools for video teams: calculators, safe zone checker, YouTube banner resizer, and more. Calculators need no account; try other tools in your browser without signing in, or use them with an active Kreatli trial or plan when signed in.';
 
   const filteredTools = useMemo(() => {
     const list =
@@ -103,8 +103,9 @@ export default function FreeToolsPage() {
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
           <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Free Tools for Video Teams</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Professional-grade tools designed to help video professionals work more efficiently. All tools are
-            completely free to use—no sign-up required.
+            Professional-grade tools for video teams. Calculators are free with no account required. For the rest, you
+            can try them in your browser without signing in; if you are signed in to Kreatli without an active trial or
+            plan, start a trial or choose a plan to continue.
           </p>
         </div>
       </section>

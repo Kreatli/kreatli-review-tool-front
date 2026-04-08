@@ -24,7 +24,7 @@ export default function YouTubeBannerResizerPage() {
         <title>YouTube Banner Resizer - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Resize YouTube banners to 2560×1440px with safe area previews. Free tool with mobile, desktop, tablet, and TV previews. Export instantly."
+          content="Resize YouTube banners to 2560×1440px with safe area previews. Try without signing in, or with an active Kreatli trial or plan if signed in. Mobile, desktop, tablet, and TV previews."
         />
         <meta
           name="keywords"
@@ -33,7 +33,7 @@ export default function YouTubeBannerResizerPage() {
         <meta property="og:title" content="YouTube Banner Resizer - Free Channel Art Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Resize YouTube banners to 2560×1440px with safe area previews. Free tool with device previews. Export instantly."
+          content="Resize YouTube banners to 2560×1440px with safe area previews. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/youtube-banner-resizer" />
@@ -41,7 +41,7 @@ export default function YouTubeBannerResizerPage() {
         <meta name="twitter:title" content="YouTube Banner Resizer - Free Channel Art Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Resize YouTube banners to 2560×1440px with safe area previews. Free tool with device previews."
+          content="Resize YouTube banners to 2560×1440px with safe area previews. Try without signing in, or with an active Kreatli trial or plan if signed in."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/youtube-banner-resizer" />
       </Head>
@@ -53,7 +53,8 @@ export default function YouTubeBannerResizerPage() {
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">YouTube Banner Resizer</h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
               Resize your YouTube channel banner in the perfect dimensions (2560x1440px). Preview safe areas for mobile,
-              desktop, tablet, and TV devices. Export your optimized banner instantly—completely free.
+              desktop, tablet, and TV devices. Try without signing in, or with an active Kreatli trial or plan if you are
+              signed in.
             </p>
           </div>
           <FreeToolsEntitlementSection
@@ -82,7 +83,7 @@ export default function YouTubeBannerResizerPage() {
       <CTASection
         title="Working with YouTube videos, assets, and feedback at scale?"
         description="Kreatli is a Video Collaboration & Review Platform for video teams. Manage YouTube content, coordinate with team members, and streamline your workflow."
-        primaryButtonText="Start for Free"
+        primaryButtonText="Start 7-day trial"
       />
       <FooterSection hideCta />
       <SignUpModal />
