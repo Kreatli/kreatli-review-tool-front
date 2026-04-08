@@ -11,7 +11,6 @@ import { CTASection } from '../../components/shared/CTASection';
 import { EmbedVideoFeatureCardSections } from '../../components/shared/EmbedVideoFeatureCardSections';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
-import { SITE_URL } from '../../components/shared/SeoHead';
 import {
   EMBED_VIDEO_GUIDE_GENERAL_FAQS,
   EMBED_VIDEO_PLATFORM_FAQS,
@@ -31,7 +30,7 @@ const READ_TIME = '15';
 const CANONICAL_PATH = '/guides/how-to-embed-video';
 /** Horizontal cover for social / OG / hero. Use ~1800–2400px wide for a sharp hero on retina. */
 const GUIDE_COVER_SRC = '/images/guides/how-to-embed-video-cover.png';
-const GUIDE_OG_IMAGE_URL = `${SITE_URL}${GUIDE_COVER_SRC}`;
+const GUIDE_OG_IMAGE_URL = GUIDE_COVER_SRC;
 
 /** Same blok shape as Storyblok `section` (first item on CMS guide pages). */
 const HOW_TO_EMBED_VIDEO_HERO_BLOK: SectionStoryblok = {
@@ -255,7 +254,7 @@ export default function HowToEmbedVideoGuidePage() {
 
         <GuideSectionRule />
 
-        <section className="relative py-12 md:py-16">
+        <section className="relative pb-0 pt-12 md:pb-0 md:pt-16">
           <div className="relative z-10 mx-auto max-w-3xl">
             <div className={cn(wysiwygStyles.wysiwyg, '[&>h2:first-child]:!mt-0')}>
               <h2 id={getHeadingId(TOC_SECTIONS[8])}>{TOC_SECTIONS[8]}</h2>

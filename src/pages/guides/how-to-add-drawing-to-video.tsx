@@ -10,7 +10,6 @@ import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.mod
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
-import { SITE_URL } from '../../components/shared/SeoHead';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -26,7 +25,7 @@ const READ_TIME = '12';
 const CANONICAL_PATH = '/guides/how-to-add-drawing-to-video';
 /** Horizontal cover for social / OG / hero. Use ~1800–2400px wide for a sharp hero on retina. */
 const GUIDE_COVER_SRC = '/images/guides/how-to-add-drawing-to-video.png';
-const GUIDE_OG_IMAGE_URL = `${SITE_URL}${GUIDE_COVER_SRC}`;
+const GUIDE_OG_IMAGE_URL = GUIDE_COVER_SRC;
 
 /** Same blok shape as Storyblok `section` (first item on CMS guide pages). */
 const ADD_DRAWING_TO_VIDEO_HERO_BLOK: SectionStoryblok = {
@@ -290,7 +289,7 @@ export default function HowToAddDrawingToVideoGuidePage() {
 
         <GuideSectionRule />
 
-        <section className="relative py-12 md:py-16">
+        <section className="relative pb-0 pt-12 md:pb-0 md:pt-16">
           <div className="relative z-10 mx-auto max-w-3xl">
             <div className={cn(wysiwygStyles.wysiwyg, '[&>h2:first-child]:!mt-0')}>
               <h2 id={getHeadingId(TOC_SECTIONS[6])}>{TOC_SECTIONS[6]}</h2>

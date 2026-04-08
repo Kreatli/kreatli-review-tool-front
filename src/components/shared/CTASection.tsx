@@ -109,23 +109,12 @@ export function CTASection({
     return (
       <section
         className={cn(
-          'relative overflow-hidden bg-background',
-          isGuideTone && 'border-t border-foreground-300',
+          'relative overflow-hidden',
+          isGuideTone ? 'bg-transparent' : 'bg-background',
           className,
         )}
       >
-        {isGuideTone ? (
-          <>
-            <div
-              className="pointer-events-none absolute -left-20 top-1/2 h-[22rem] w-[22rem] -translate-y-1/2 rounded-full bg-cyan-200/30 blur-3xl dark:bg-cyan-500/[0.12]"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute right-0 top-1/2 h-[26rem] w-[26rem] translate-x-1/4 -translate-y-1/2 rounded-full bg-fuchsia-200/25 blur-3xl dark:bg-fuchsia-500/[0.1]"
-              aria-hidden
-            />
-          </>
-        ) : (
+        {isGuideTone ? null : (
           <>
             <div
               className="pointer-events-none absolute -left-24 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-violet-200/35 blur-3xl dark:bg-violet-500/10"
