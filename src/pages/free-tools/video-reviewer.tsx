@@ -9,6 +9,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
@@ -78,6 +79,7 @@ export default function VideoReviewerPage() {
               Review videos online with frame-accurate comments, visual annotations, and approval workflows. Collect
               feedback from your team and clients in one place—no software installation required.
             </p>
+            <HeroCtaButtons />
           </div>
         </section>
 

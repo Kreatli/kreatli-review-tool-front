@@ -6,15 +6,17 @@ import { BlogArticles } from '../../components/blog/Blog';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { mergeGuidesForIndex } from '../../data/local-guides';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
+import { ArticleCard } from '../../types/articles';
 import { PageStoryblok } from '../../typings/storyblok';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
 
 interface Props {
-  stories: ISbStoryData<PageStoryblok>[];
+  stories: ArticleCard[];
 }
 
 export default function GuidesPage({ stories }: Props) {
@@ -89,7 +91,7 @@ export const getStaticProps = (async () => {
 
     return {
       props: {
-        stories: storiesData.data.stories,
+        stories: mergeGuidesForIndex(storiesData.data.stories as ISbStoryData<PageStoryblok>[]),
       },
       revalidate: process.env.STORYBLOK_STATUS === 'draft' ? DRAFT_REVALIDATE_TIME : PUBLISHED_REVALIDATE_TIME,
     };

@@ -1,6 +1,7 @@
 import { ISbStoryData } from '@storyblok/react';
 import { GetServerSideProps } from 'next';
 
+import { getLocalGuideSitemapEntries, isLocalGuideSlug } from '../data/local-guides';
 import { getPlatformPagesForSitemap } from '../data/platform-pages';
 import { getStoryblokApi } from '../lib/storyblok';
 import { PageStoryblok } from '../typings/storyblok';
@@ -133,6 +134,11 @@ function formatDateForSitemap(date: string | null | undefined): string | undefin
 /**
  * Convert Storyblok story to sitemap URL
  */
+function guideStorySegment(story: ISbStoryData<PageStoryblok>): string {
+  const raw = story.full_slug || story.slug || '';
+  return raw.replace(/^\//, '').replace(/^guides\//, '');
+}
+
 function storyToSitemapUrl(
   story: ISbStoryData<PageStoryblok>,
   changefreq: string = 'weekly',
@@ -234,6 +240,9 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     // Add guides
     if (guides.status === 'fulfilled') {
       guides.value.forEach((story) => {
+        if (isLocalGuideSlug(guideStorySegment(story))) {
+          return;
+        }
         urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
       });
     } else {
@@ -243,6 +252,15 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       }
       // TODO: Add Sentry error reporting when available
     }
+
+    getLocalGuideSitemapEntries().forEach(({ path, lastmod }) => {
+      urls.push({
+        loc: `${BASE_URL}/${path}`,
+        lastmod,
+        changefreq: 'weekly',
+        priority: '0.8',
+      });
+    });
 
     // Add blogs
     if (blogs.status === 'fulfilled') {

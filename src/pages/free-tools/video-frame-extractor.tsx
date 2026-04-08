@@ -83,7 +83,10 @@ export default function VideoFrameExtractorPage() {
         <VideoFrameExtractorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-frame-extractor')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-frame-extractor')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoFrameExtractorFAQ />
 
@@ -107,4 +110,3 @@ export default function VideoFrameExtractorPage() {
     </>
   );
 }
-

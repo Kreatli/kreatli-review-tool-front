@@ -11,6 +11,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { COMPARE_PDF_FILES_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -115,6 +116,7 @@ export default function PdfComparerPage() {
                 Compare two PDF versions side by side with comments and annotations—perfect for drafts, revisions, and
                 client approvals. No software installation required for reviewers.
               </p>
+              <HeroCtaButtons />
             </div>
             <FreeToolsEntitlementSection
               lockedTitle="PDF Comparer is available inside Kreatli"

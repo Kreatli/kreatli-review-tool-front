@@ -77,6 +77,8 @@ export interface SectionStoryblok {
   orientation: "" | "vertical" | "horizontal";
   buttons?: ButtonStoryblok[];
   displaySocials: boolean;
+  /** Optional; static guides only. CMS entries default to object-cover. */
+  imageObjectFit?: 'cover' | 'contain';
   _uid: string;
   component: "section";
   [k: string]: any;

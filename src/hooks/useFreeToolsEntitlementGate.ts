@@ -68,4 +68,3 @@ export function useFreeToolsEntitlementGate() {
     };
   }, [isSignedIn, router.pathname, user?.subscription?.isActive]);
 }
-

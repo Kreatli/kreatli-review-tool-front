@@ -14,6 +14,8 @@ export const Section = ({ blok }: Props) => {
 
   const TitleTag = titleTag || 'h2';
   const imageAlt = image?.alt || image?.title || title || 'Kreatli section image';
+  /** Optional; not from Storyblok schema by default—used by static guides for wide cover art. */
+  const imageObjectFit = blok.imageObjectFit === 'contain' ? 'object-contain' : 'object-cover';
 
   return (
     <div className="flex flex-col gap-6">
@@ -45,15 +47,18 @@ export const Section = ({ blok }: Props) => {
           )}
         </div>
         {image?.filename && (
-          <div className="mt-4 max-h-[500px] overflow-hidden rounded-medium shadow-large outline outline-1 outline-offset-2 outline-foreground-300">
+          <div
+            className={cn(
+              'mt-4 max-h-[500px] overflow-hidden rounded-medium shadow-large outline outline-1 outline-offset-2 outline-foreground-300',
+              imageObjectFit === 'object-contain' && 'bg-black',
+            )}
+          >
             <Image
               src={image.filename}
               removeWrapper
               radius="none"
-              width="800"
               shadow="none"
-              height="600"
-              className="h-auto max-h-[500px] w-full object-cover"
+              className={cn('h-auto max-h-[500px] w-full', imageObjectFit)}
               alt={imageAlt}
             />
           </div>

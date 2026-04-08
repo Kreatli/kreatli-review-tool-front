@@ -579,6 +579,44 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/embed-video': [
+    makeArticleCard({
+      id: 'platform-embed-video-guide-1',
+      full_slug: '/guides/how-to-embed-video',
+      title: 'How to Embed Video on a Website, in Your CMS, and for Client Review',
+      description:
+        'Learn how to embed video with iframes and CMS blocks, keep playback responsive, and use Kreatli’s video embedder for review-ready links, frame-accurate comments, and approvals.',
+      tags: ['Video', 'Client Review'],
+      publishDate: '2026-04-05 00:00',
+      readTime: '15',
+      imageFilename: '/images/guides/how-to-embed-video-cover.png',
+    }),
+    makeArticleCard({
+      id: 'platform-embed-video-guide-2',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
+      description:
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
+    }),
+    makeArticleCard({
+      id: 'platform-embed-video-guide-3',
+      full_slug: '/guides/how-to-annotate-video',
+      title: 'How to Annotate Video: A Complete Guide for Creative Teams',
+      description:
+        'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration for modern creative teams.',
+      tags: ['Video Annotation', 'Creative Teams'],
+      publishDate: '2026-01-25 00:00',
+      readTime: '11',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/8e5704aa7c/how-to-annotate-video-a-complete-guide-for-creative-teams.png',
+    }),
+  ],
+
   '/platform/extract-frames-from-video': [
     makeArticleCard({
       id: 'platform-extract-frames-from-video-guide-1',
@@ -619,6 +657,17 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   ],
 
   '/platform/free-video-link-generator': [
+    makeArticleCard({
+      id: 'platform-free-video-link-generator-guide-how-to-link',
+      full_slug: '/guides/how-to-generate-a-video-link-for-free',
+      title: 'How to Generate a Video Link for Free: Share, Watch, and Review-Ready Links',
+      description:
+        'Learn how to generate a video link for free with common hosts and cloud storage, what “video link” really means, and when a review-ready link fits client workflows.',
+      tags: ['Share Video', 'Video Review'],
+      publishDate: '2026-04-06 00:00',
+      readTime: '11',
+      imageFilename: '/images/guides/how-to-generate-a-video-link-for-free-cover.png',
+    }),
     makeArticleCard({
       id: 'platform-free-video-link-generator-guide-1',
       full_slug: '/guides/how-to-send-video-via-email',
@@ -697,6 +746,17 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   ],
 
   '/platform/send-video': [
+    makeArticleCard({
+      id: 'platform-send-video-guide-video-link',
+      full_slug: '/guides/how-to-generate-a-video-link-for-free',
+      title: 'How to Generate a Video Link for Free: Share, Watch, and Review-Ready Links',
+      description:
+        'Learn how to generate a video link for free with common hosts and cloud storage, what “video link” really means, and when a review-ready link fits client workflows.',
+      tags: ['Share Video', 'Video Review'],
+      publishDate: '2026-04-06 00:00',
+      readTime: '11',
+      imageFilename: '/images/guides/how-to-generate-a-video-link-for-free-cover.png',
+    }),
     makeArticleCard({
       id: 'platform-send-video-guide-1',
       full_slug: '/guides/how-to-send-video-via-email',
@@ -1461,6 +1521,17 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
   ],
 
   '/platform/share-video': [
+    makeArticleCard({
+      id: 'platform-share-video-guide-video-link',
+      full_slug: '/guides/how-to-generate-a-video-link-for-free',
+      title: 'How to Generate a Video Link for Free: Share, Watch, and Review-Ready Links',
+      description:
+        'Learn how to generate a video link for free with common hosts and cloud storage, what “video link” really means, and when a review-ready link fits client workflows.',
+      tags: ['Share Video', 'Video Review'],
+      publishDate: '2026-04-06 00:00',
+      readTime: '11',
+      imageFilename: '/images/guides/how-to-generate-a-video-link-for-free-cover.png',
+    }),
     makeArticleCard({
       id: 'platform-share-video-guide-1',
       full_slug: '/guides/how-to-send-video-via-email',

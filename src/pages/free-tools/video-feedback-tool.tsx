@@ -9,6 +9,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
@@ -78,6 +79,7 @@ export default function VideoFeedbackToolPage() {
               Give frame-accurate feedback on videos with comments, annotations, and markup. Pin feedback to exact
               moments, share review links with clients, and keep all video feedback organized in one place.
             </p>
+            <HeroCtaButtons />
           </div>
         </section>
 

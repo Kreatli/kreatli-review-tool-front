@@ -135,9 +135,9 @@ export default function FreeVideoLinkGeneratorPage() {
         stepsIntro="Follow these steps to create secure, shareable video review links—from upload to share and approval."
         steps={FREE_VIDEO_LINK_GENERATOR_STEPS}
         completeGuide={{
-          href: '/guides/share-large-video-files',
+          href: '/guides/how-to-generate-a-video-link-for-free',
           description:
-            'Learn different ways to share large video files with clients, compare methods, and get a step-by-step workflow for review and approval.',
+            'Learn how to generate a video link for free—watch URLs, file links, and when review-ready links fit client approvals.',
         }}
       />
 
