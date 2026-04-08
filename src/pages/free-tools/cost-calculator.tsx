@@ -46,7 +46,11 @@ export default function CostCalculatorPage() {
 
       {/* Hero Section - Software Cost Calculator */}
       <FreeToolsEntitlementSection>
-        <CostCalculatorSection titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center" useH1={true} />
+        <CostCalculatorSection
+          titleClassName="text-2xl sm:text-4xl font-bold font-sans text-center"
+          useH1={true}
+          showHeroCta={true}
+        />
       </FreeToolsEntitlementSection>
 
       {/* Benefits Section */}

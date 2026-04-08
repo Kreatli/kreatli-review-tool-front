@@ -2,6 +2,7 @@ import { Card, CardBody, cn, Slider, Tooltip } from '@heroui/react';
 import { useMemo, useState } from 'react';
 
 import { formatPrice } from '../../../utils/formatNumber';
+import { HeroCtaButtons } from '../../shared/HeroCtaButtons';
 import { Icon } from '../../various/Icon';
 import { LogoCheckbox } from './LogoCheckbox';
 
@@ -72,9 +73,14 @@ type Tool =
 interface CostCalculatorSectionProps {
   titleClassName?: string;
   useH1?: boolean;
+  showHeroCta?: boolean;
 }
 
-export const CostCalculatorSection = ({ titleClassName, useH1 = false }: CostCalculatorSectionProps) => {
+export const CostCalculatorSection = ({
+  titleClassName,
+  useH1 = false,
+  showHeroCta = false,
+}: CostCalculatorSectionProps) => {
   const [usersCount, setUsersCount] = useState(5);
   const [activeTools, setActiveTools] = useState<Tool[]>(['google-drive', 'asana', 'frame-io']);
 
@@ -134,6 +140,7 @@ export const CostCalculatorSection = ({ titleClassName, useH1 = false }: CostCal
           <p className="text-center text-lg text-foreground-500">
             Estimate monthly and annual software spend based on team size and tools
           </p>
+          {showHeroCta ? <HeroCtaButtons /> : null}
         </div>
         <div className="grid w-full gap-4 md:grid-cols-2">
           <div className="flex flex-col gap-4">

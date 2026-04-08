@@ -11,6 +11,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { IMAGE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -113,6 +114,7 @@ export default function PhotoUrlGeneratorPage() {
                 Generate a shareable URL for your photo. Upload once, create a secure review link, and send it to
                 clients—they open the photo in their browser and comment without signing up.
               </p>
+              <HeroCtaButtons />
             </div>
             <FreeToolsEntitlementSection
               lockedTitle="Photo URL Generator is available inside Kreatli"

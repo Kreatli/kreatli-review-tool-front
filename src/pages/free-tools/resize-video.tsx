@@ -92,7 +92,10 @@ export default function ResizeVideoPage() {
 
         <ResizeVideoGuide />
 
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/resize-video')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/resize-video')}
+          title="More Tools for Video Teams"
+        />
 
         <ResizeVideoFAQ />
 

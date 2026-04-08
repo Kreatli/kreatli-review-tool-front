@@ -10,6 +10,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -78,6 +79,7 @@ export default function VideoManagerPage() {
               Organize, store, and track all your video assets in one secure workspace. Manage versions, collect
               feedback, and share with clients—no software installation required for reviewers.
             </p>
+            <HeroCtaButtons />
           </div>
         </section>
 

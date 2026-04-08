@@ -316,7 +316,10 @@ export function VideoFrameExtractor() {
     }
 
     setFile(next);
-  }, [isInactiveLocked, openInactivePlanModal]);
+
+    // Soft gate: show sign-up popup for guests when they start using the tool.
+    if (!isSignedIn) openSignUpModal();
+  }, [isInactiveLocked, openInactivePlanModal, isSignedIn, openSignUpModal]);
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
@@ -494,6 +497,7 @@ export function VideoFrameExtractor() {
       const outBlob = await convertBlobToFormat(frame.blob, exportFormat);
       const outName = fileNameForFrame(baseName, frame.timestampSeconds, exportFormat);
       downloadBlob(outBlob, outName);
+      if (!isSignedIn) openSignUpModal();
     } catch (_e) {
       addToast({ title: 'Download failed. Please try again.', color: 'danger', variant: 'flat' });
     }
@@ -521,6 +525,7 @@ export function VideoFrameExtractor() {
       const zipBlob = new Blob([uint8ArrayToArrayBuffer(zipped)], { type: 'application/zip' });
       downloadBlob(zipBlob, `${baseName}_frames.zip`);
       addToast({ title: 'ZIP downloaded!', color: 'success', variant: 'flat' });
+      if (!isSignedIn) openSignUpModal();
     } catch (_e) {
       addToast({ title: 'ZIP export failed. Please try again.', color: 'danger', variant: 'flat' });
     } finally {
@@ -529,6 +534,10 @@ export function VideoFrameExtractor() {
   };
 
   const downloadSelectedAsZip = async () => {
+    if (isInactiveLocked) {
+      openInactivePlanModal();
+      return;
+    }
     if (!file) return;
     if (selectedIds.length === 0) return;
     if (isZipping) return;
@@ -550,6 +559,7 @@ export function VideoFrameExtractor() {
       const zipBlob = new Blob([uint8ArrayToArrayBuffer(zipped)], { type: 'application/zip' });
       downloadBlob(zipBlob, `${baseName}_selected_frames.zip`);
       addToast({ title: 'ZIP downloaded!', color: 'success', variant: 'flat' });
+      if (!isSignedIn) openSignUpModal();
     } catch (_e) {
       addToast({ title: 'ZIP export failed. Please try again.', color: 'danger', variant: 'flat' });
     } finally {
@@ -589,6 +599,10 @@ export function VideoFrameExtractor() {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
+                  if (isInactiveLocked) {
+                    openInactivePlanModal();
+                    return;
+                  }
                   open();
                 }}
               >

@@ -9,6 +9,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -71,6 +72,7 @@ export default function DataTransferCalculatorPage() {
               Calculate how long it takes to upload or download large files. Perfect for video editors, post-production
               teams, and creative professionals working with heavy media files.
             </p>
+            <HeroCtaButtons />
           </div>
         </section>
 

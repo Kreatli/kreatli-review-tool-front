@@ -9,6 +9,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
@@ -79,6 +80,7 @@ export default function PdfAnnotatorPage() {
               spots on the page and collaborate with precise annotation—no software installation required for
               reviewers.
             </p>
+            <HeroCtaButtons />
           </div>
         </section>
 

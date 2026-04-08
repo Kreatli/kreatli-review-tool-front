@@ -63,7 +63,8 @@ export default function VideoFrameExtractorPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Frame Extractor</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs in your browser - no uploads, no watermark, no sign-up needed.
+              Scrub through a video, capture the moments you like, and download still images as PNG/JPG. Everything runs
+              in your browser - no uploads, no watermark, no sign-up needed.
             </p>
           </div>
         </section>
@@ -83,7 +84,10 @@ export default function VideoFrameExtractorPage() {
         <VideoFrameExtractorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-frame-extractor')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-frame-extractor')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoFrameExtractorFAQ />
 
@@ -107,4 +111,3 @@ export default function VideoFrameExtractorPage() {
     </>
   );
 }
-

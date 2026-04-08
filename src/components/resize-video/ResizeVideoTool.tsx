@@ -103,7 +103,10 @@ export function ResizeVideoTool() {
     setStatus('idle');
     setOutputBlob(null);
     setProgress(0);
-  }, [isInactiveLocked, openInactivePlanModal]);
+
+    // Soft gate: show sign-up popup for guests when they start using the tool.
+    if (!isSignedIn) openSignUpModal();
+  }, [isInactiveLocked, openInactivePlanModal, isSignedIn, openSignUpModal]);
 
   const onDropRejected = useCallback((fileRejections: FileRejection[]) => {
     const fileTooLarge = fileRejections.some((r) => r.errors.some((e) => e.code === 'file-too-large'));
@@ -223,6 +226,9 @@ export function ResizeVideoTool() {
       openInactivePlanModal();
       return;
     }
+
+    // Soft gate: encourage sign-up on first meaningful action (non-blocking).
+    if (!isSignedIn) openSignUpModal();
 
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -377,6 +383,8 @@ export function ResizeVideoTool() {
     runFFmpegMP4OrMOV,
     isInactiveLocked,
     openInactivePlanModal,
+    isSignedIn,
+    openSignUpModal,
   ]);
 
   useEffect(() => {
@@ -477,6 +485,10 @@ export function ResizeVideoTool() {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
+                  if (isInactiveLocked) {
+                    openInactivePlanModal();
+                    return;
+                  }
                   open();
                 }}
               >
@@ -505,7 +517,18 @@ export function ResizeVideoTool() {
                       )}
                     </div>
                   </div>
-                  <Button size="sm" variant="light" onPress={open} aria-label="Choose another video">
+                  <Button
+                    size="sm"
+                    variant="light"
+                    onPress={() => {
+                      if (isInactiveLocked) {
+                        openInactivePlanModal();
+                        return;
+                      }
+                      open();
+                    }}
+                    aria-label="Choose another video"
+                  >
                     Choose another video
                   </Button>
                 </div>

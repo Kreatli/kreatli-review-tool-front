@@ -11,6 +11,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { FILE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -115,6 +116,7 @@ export default function FileToLinkConverterPage() {
                 Turn any file into a shareable link. Upload once, generate a secure review link, and send it to
                 clients—they open the file in their browser and comment without signing up.
               </p>
+              <HeroCtaButtons />
             </div>
             <FreeToolsEntitlementSection
               lockedTitle="File to Link Converter is available inside Kreatli"

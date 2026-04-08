@@ -11,6 +11,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PDF_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -114,6 +115,7 @@ export default function PdfLinkGeneratorPage() {
                 Turn your PDF into a shareable link. Upload once, generate a secure review link, and send it to
                 clients—they open the PDF in their browser and comment without signing up.
               </p>
+              <HeroCtaButtons />
             </div>
             <FreeToolsEntitlementSection
               lockedTitle="PDF Link Generator is available inside Kreatli"
