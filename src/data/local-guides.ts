@@ -14,6 +14,10 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-comment-a-video',
   'how-to-comment-a-photo',
   'how-to-comment-a-picture',
+  'how-to-annotate-a-document',
+  'how-to-annotate-an-image',
+  'how-to-annotate-a-photo',
+  'how-to-annotate-a-picture',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -220,6 +224,86 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       },
       publishDate: '2026-04-09 00:30',
       readTime: '7',
+      tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-annotate-a-document',
+    name: 'How to Annotate a Document',
+    full_slug: '/guides/how-to-annotate-a-document',
+    content: {
+      metaFields: {
+        title: 'How to Annotate a Document: Comments, Markup, and Clear Approvals Without Email Threads',
+        description:
+          'Learn how to annotate a document with pinned comments and visual markup so reviewers know exactly what to change, versions stay clear, and approvals move faster.',
+      },
+      image: {
+        filename: '/images/guides/how-to-annotate-a-document-cover.png',
+        alt: 'Kreatli Guide: How to annotate a document',
+        title: 'How to annotate a document — Kreatli guide',
+      },
+      publishDate: '2026-04-08 01:00',
+      readTime: '10',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-annotate-an-image',
+    name: 'How to Annotate an Image',
+    full_slug: '/guides/how-to-annotate-an-image',
+    content: {
+      metaFields: {
+        title: 'How to Annotate an Image: Pinned Comments, Markup, and Clear Revisions',
+        description:
+          'Learn how to annotate an image with pinned comments and visual markup so feedback is unambiguous, revisions move faster, and approvals stay organized.',
+      },
+      image: {
+        filename: '/images/guides/how-to-annotate-an-image-cover.png',
+        alt: 'Kreatli Guide: How to annotate an image',
+        title: 'How to annotate an image — Kreatli guide',
+      },
+      publishDate: '2026-04-08 01:10',
+      readTime: '8',
+      tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-annotate-a-photo',
+    name: 'How to Annotate a Photo',
+    full_slug: '/guides/how-to-annotate-a-photo',
+    content: {
+      metaFields: {
+        title: 'How to Annotate a Photo: Location-Pinned Notes for Faster Retouching and Approval',
+        description:
+          'Learn how to annotate a photo with location-pinned comments and markup so retouching notes are unambiguous, revisions move faster, and approvals stay organized.',
+      },
+      image: {
+        filename: '/images/guides/ow-to-annotate-a-photo-cover.png',
+        alt: 'Kreatli Guide: How to annotate a photo',
+        title: 'How to annotate a photo — Kreatli guide',
+      },
+      publishDate: '2026-04-08 01:20',
+      readTime: '8',
+      tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-annotate-a-picture',
+    name: 'How to Annotate a Picture',
+    full_slug: '/guides/how-to-annotate-a-picture',
+    content: {
+      metaFields: {
+        title: 'How to Annotate a Picture: Mark Up What You Mean and Keep Feedback Organized',
+        description:
+          'Learn how to annotate a picture with location-pinned comments and markup so feedback is clear, revisions move faster, and approvals stay organized.',
+      },
+      image: {
+        filename: '/images/guides/how-to-annotate-a-picture-cover.png',
+        alt: 'Kreatli Guide: How to annotate a picture',
+        title: 'How to annotate a picture — Kreatli guide',
+      },
+      publishDate: '2026-04-08 01:30',
+      readTime: '8',
       tags: { value: ['Image', 'Client Review'] },
     },
   },
