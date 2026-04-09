@@ -10,23 +10,19 @@ import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructu
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { SeoHead } from '../components/shared/SeoHead';
 import { Icon } from '../components/various/Icon';
-import {
-  FREE_TOOLS,
-  FREE_TOOLS_FILTER_OPTIONS,
-  type FreeToolFilterTag,
-} from '../data/free-tools';
+import { FREE_TOOLS, FREE_TOOLS_FILTER_OPTIONS, type FreeToolFilterTag } from '../data/free-tools';
 import { useSession } from '../hooks/useSession';
 
 const faqs = [
   {
     question: 'Are these tools really free to use?',
     answer:
-      "Yes—our calculators are completely free to use with no hidden costs and no account required, even if you are signed in to Kreatli without an active trial or plan. For the rest of the tools, you can use the on-page experience in your browser without signing in. If you are signed in without an active trial or subscription, you will need to start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial.",
+      'Yes—our calculators are completely free to use with no hidden costs and no account required, even if you are signed in to Kreatli without an active trial or plan. For the rest of the tools, you can use the on-page experience in your browser without signing in. If you are signed in without an active trial or subscription, you will need to start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial.',
   },
   {
     question: 'Do I need to create an account to use these tools?',
     answer:
-      "No account is required for our calculators. For the other tools, you do not need to sign in to try them in your browser. If you are already signed in to Kreatli and your trial or subscription is not active, you will need to start a 7-day trial or choose a plan to use those tools (payment method at checkout; no subscription charges during the trial). People who open a review link you share still do not need a Kreatli account.",
+      'No account is required for our calculators. For the other tools, you do not need to sign in to try them in your browser. If you are already signed in to Kreatli and your trial or subscription is not active, you will need to start a 7-day trial or choose a plan to use those tools (payment method at checkout; no subscription charges during the trial). People who open a review link you share still do not need a Kreatli account.',
   },
   {
     question: 'What is the Data Transfer Calculator used for?',
@@ -79,9 +75,7 @@ export default function FreeToolsPage() {
 
   const filteredTools = useMemo(() => {
     const list =
-      selectedFilter === 'All'
-        ? FREE_TOOLS
-        : FREE_TOOLS.filter((tool) => tool.tags?.includes(selectedFilter));
+      selectedFilter === 'All' ? FREE_TOOLS : FREE_TOOLS.filter((tool) => tool.tags?.includes(selectedFilter));
     return [...list].sort((a, b) => a.title.localeCompare(b.title));
   }, [selectedFilter]);
 
@@ -103,22 +97,33 @@ export default function FreeToolsPage() {
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
           <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Free Tools for Video Teams</h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Professional-grade tools for video teams. Calculators are free with no account required. For the rest, you
-            can try them in your browser without signing in; if you are signed in to Kreatli without an active trial or
-            plan, start a trial or choose a plan to continue.
+            Professional-grade tools for video teams. Filter by category to find what you need.
           </p>
+          <div
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            role="region"
+            aria-label="Start a trial or book a demo"
+          >
+            <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              Start 7-day trial
+            </Button>
+            <Button
+              as="a"
+              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              variant="bordered"
+            >
+              Book a Demo
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Free Tools Section with filter */}
-      <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
+      <section className="relative overflow-hidden px-6 pb-16 pt-6 backdrop-blur-lg sm:pt-8">
         <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Free Tools</h2>
-            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Professional-grade tools for video teams. Filter by category to find what you need.
-            </p>
-          </div>
           <div className="mb-10 flex justify-center">
             <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
               <button
@@ -155,6 +160,7 @@ export default function FreeToolsPage() {
               })}
             </div>
           </div>
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredTools.length === 0 ? (
               <p className="col-span-full text-center text-foreground-500">No tools match this filter.</p>
@@ -237,8 +243,7 @@ export default function FreeToolsPage() {
             <h2 className="font-sans text-2xl font-bold sm:text-3xl">Need More Than Free Tools?</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Kreatli is a Video Collaboration & Review Platform designed for video teams working with large video
-              files.
-              Streamline approvals, manage projects, and collaborate more efficiently.
+              files. Streamline approvals, manage projects, and collaborate more efficiently.
             </p>
             <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
