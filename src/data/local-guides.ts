@@ -278,7 +278,7 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
           'Learn how to annotate a photo with location-pinned comments and markup so retouching notes are unambiguous, revisions move faster, and approvals stay organized.',
       },
       image: {
-        filename: '/images/guides/ow-to-annotate-a-photo-cover.png',
+        filename: '/images/guides/how-to-annotate-a-photo-cover.png',
         alt: 'Kreatli Guide: How to annotate a photo',
         title: 'How to annotate a photo — Kreatli guide',
       },
