@@ -20,7 +20,7 @@ import { getHeadingId } from '../../utils/storyblok';
 const DOCUMENT_TITLE = 'How to Annotate a Document: Comments, Markup, and Clear Approvals Without Email Threads';
 const META_DESCRIPTION =
   'Learn how to annotate a document with pinned comments and visual markup so reviewers know exactly what to change, versions stay clear, and approvals move faster.';
-const PUBLISH_DATE = '2026-04-08 01:00';
+const PUBLISH_DATE = '2026-04-11 01:00';
 const READ_TIME = '10';
 const CANONICAL_PATH = '/guides/how-to-annotate-a-document';
 /**
