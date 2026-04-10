@@ -27,6 +27,11 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-proofread-a-pdf',
   'how-to-review-a-video',
   'how-to-manage-videos',
+  'how-to-markup-a-pdf',
+  'how-to-add-notes-to-a-pdf',
+  'how-to-markup-an-image',
+  'how-to-share-documents-online',
+  'how-to-share-images',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -496,6 +501,106 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-10 11:40',
       readTime: '10',
       tags: { value: ['Video', 'Workflow'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-markup-a-pdf',
+    name: 'How to Markup a PDF',
+    full_slug: '/guides/how-to-markup-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Markup a PDF: Highlights, Shapes, and Clear Review-Ready Feedback',
+        description:
+          'Learn how to markup a PDF with highlights, shapes, and notes so reviewers show exact changes and approvals move faster without email threads.',
+      },
+      image: {
+        filename: '/images/guides/how-to-markup-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to markup a PDF',
+        title: 'How to markup a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:00',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-add-notes-to-a-pdf',
+    name: 'How to Add Notes to a PDF',
+    full_slug: '/guides/how-to-add-notes-to-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Add Notes to a PDF: Quick, Page-Anchored Context for Faster Fixes',
+        description:
+          'Learn how to add notes to a PDF with page-pinned context, short actionable language, and version-aware review so teams resolve feedback without losing the thread.',
+      },
+      image: {
+        filename: '/images/guides/how-to-add-notes-to-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to add notes to a PDF',
+        title: 'How to add notes to a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:10',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-markup-an-image',
+    name: 'How to Markup an Image',
+    full_slug: '/guides/how-to-markup-an-image',
+    content: {
+      metaFields: {
+        title: 'How to Markup an Image: Pin Feedback to Pixels and Cut Revision Rounds',
+        description:
+          'Learn how to markup an image with location-pinned notes and visual marks so retouchers and designers get unambiguous direction and ship faster.',
+      },
+      image: {
+        filename: '/images/guides/how-to-markup-an-image-cover.png',
+        alt: 'Kreatli Guide: How to markup an image',
+        title: 'How to markup an image — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:20',
+      readTime: '8',
+      tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-share-documents-online',
+    name: 'How to Share Documents Online',
+    full_slug: '/guides/how-to-share-documents-online',
+    content: {
+      metaFields: {
+        title: 'How to Share Documents Online: Secure Links, Controlled Access, and One Review Hub',
+        description:
+          'Learn how to share documents online with permissioned links, guest-friendly review, and centralized feedback so stakeholders always open the right file.',
+      },
+      image: {
+        filename: '/images/guides/how-to-share-documents-online-cover.png',
+        alt: 'Kreatli Guide: How to share documents online',
+        title: 'How to share documents online — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:30',
+      readTime: '9',
+      tags: { value: ['PDF', 'Share PDF'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-share-images',
+    name: 'How to Share Images',
+    full_slug: '/guides/how-to-share-images',
+    content: {
+      metaFields: {
+        title: 'How to Share Images: One Link, Clear Permissions, and Review-Ready Delivery',
+        description:
+          'Learn how to share images online with controlled access, lightweight delivery, and optional review workflows so feedback stays tied to the asset.',
+      },
+      image: {
+        filename: '/images/guides/how-to-share-images-cover.png',
+        alt: 'Kreatli Guide: How to share images',
+        title: 'How to share images — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:40',
+      readTime: '9',
+      tags: { value: ['Image', 'Share Image'] },
     },
   },
 ];
