@@ -18,6 +18,20 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-annotate-an-image',
   'how-to-annotate-a-photo',
   'how-to-annotate-a-picture',
+  'how-to-highlight-a-pdf',
+  'how-to-highlight-an-image',
+  'how-to-draw-on-documents',
+  'how-to-turn-a-pdf-into-a-link',
+  'how-to-convert-an-image-into-a-link',
+  'how-to-organize-your-files',
+  'how-to-proofread-a-pdf',
+  'how-to-review-a-video',
+  'how-to-manage-videos',
+  'how-to-markup-a-pdf',
+  'how-to-add-notes-to-a-pdf',
+  'how-to-markup-an-image',
+  'how-to-share-documents-online',
+  'how-to-share-images',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -305,6 +319,288 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-08 01:30',
       readTime: '8',
       tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-highlight-a-pdf',
+    name: 'How to Highlight a PDF',
+    full_slug: '/guides/how-to-highlight-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Highlight a PDF: Clear, Context-Pinned Feedback for Faster Reviews',
+        description:
+          'Learn how to highlight a PDF with purpose: call out exact text and visual areas, add comments with context, and keep revisions organized across versions.',
+      },
+      image: {
+        filename: '/images/guides/how-to-highlight-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to highlight a PDF',
+        title: 'How to highlight a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:00',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-highlight-an-image',
+    name: 'How to Highlight an Image',
+    full_slug: '/guides/how-to-highlight-an-image',
+    content: {
+      metaFields: {
+        title: 'How to Highlight an Image: Point to Exact Areas and Speed Up Revisions',
+        description:
+          'Learn how to highlight an image with precise location-based feedback, clear intent, and review-ready workflows that reduce ambiguity and rework.',
+      },
+      image: {
+        filename: '/images/guides/how-to-highlight-an-image-cover.png',
+        alt: 'Kreatli Guide: How to highlight an image',
+        title: 'How to highlight an image — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:10',
+      readTime: '8',
+      tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-draw-on-documents',
+    name: 'How to Draw on Documents',
+    full_slug: '/guides/how-to-draw-on-documents',
+    content: {
+      metaFields: {
+        title: 'How to Draw on Documents: Visual Markup That Removes Guesswork',
+        description:
+          'Learn how to draw on documents with arrows, shapes, and freehand notes so reviewers can communicate exact changes and move approvals faster.',
+      },
+      image: {
+        filename: '/images/guides/how-to-draw-on-documents-cover.png',
+        alt: 'Kreatli Guide: How to draw on documents',
+        title: 'How to draw on documents — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:20',
+      readTime: '10',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-turn-a-pdf-into-a-link',
+    name: 'How to Turn a PDF into a Link',
+    full_slug: '/guides/how-to-turn-a-pdf-into-a-link',
+    content: {
+      metaFields: {
+        title: 'How to Turn a PDF into a Link: Share, Review, and Approve Without Attachments',
+        description:
+          'Learn how to turn a PDF into a link, control access, and share one review-ready URL so feedback stays centralized and approvals move faster.',
+      },
+      image: {
+        filename: '/images/guides/how-to-turn-a-pdf-into-a-link-cover.png',
+        alt: 'Kreatli Guide: How to turn a PDF into a link',
+        title: 'How to turn a PDF into a link — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:30',
+      readTime: '9',
+      tags: { value: ['PDF', 'Share PDF'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-convert-an-image-into-a-link',
+    name: 'How to Convert an Image into a Link',
+    full_slug: '/guides/how-to-convert-an-image-into-a-link',
+    content: {
+      metaFields: {
+        title:
+          'How to Convert an Image into a Link: Share, Review, and Approve Without Heavy Attachments',
+        description:
+          'Learn how to convert an image into a link, control who can open it, and share one URL so feedback stays centralized and versions stay clear.',
+      },
+      image: {
+        filename: '/images/guides/how-to-convert-an-image-into-a-link-cover.png',
+        alt: 'Kreatli Guide: How to convert an image into a link',
+        title: 'How to convert an image into a link — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:00',
+      readTime: '9',
+      tags: { value: ['Image', 'Share Image'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-organize-your-files',
+    name: 'How to Organize Your Files',
+    full_slug: '/guides/how-to-organize-your-files',
+    content: {
+      metaFields: {
+        title:
+          'How to Organize Your Files: Projects, Versions, and One Place for Creative Assets',
+        description:
+          'Learn how to organize your files around projects and deliverables, name versions clearly, and keep video, images, and documents easy to find for your whole team.',
+      },
+      image: {
+        filename: '/images/guides/how-to-organize-your-files-cover.png',
+        alt: 'Kreatli Guide: How to organize your files',
+        title: 'How to organize your files — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:10',
+      readTime: '10',
+      tags: { value: ['Workspace', 'Workflow'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-proofread-a-pdf',
+    name: 'How to Proofread a PDF',
+    full_slug: '/guides/how-to-proofread-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Proofread a PDF: Catch Errors, Resolve Comments, and Ship Clean Finals',
+        description:
+          'Learn how to proofread a PDF with a repeatable pass order, page-pinned notes, and version-aware review so finals are accurate and approvals stay auditable.',
+      },
+      image: {
+        filename: '/images/guides/how-to-proofread-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to proofread a PDF',
+        title: 'How to proofread a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:20',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-review-a-video',
+    name: 'How to Review a Video',
+    full_slug: '/guides/how-to-review-a-video',
+    content: {
+      metaFields: {
+        title: 'How to Review a Video: Timestamped Notes, Clear Intent, and Faster Cuts',
+        description:
+          'Learn how to review a video with timestamped feedback, visual markup when needed, and version-aware workflows so editors can execute changes without decoding long email threads.',
+      },
+      image: {
+        filename: '/images/guides/how-to-review-a-video-cover.png',
+        alt: 'Kreatli Guide: How to review a video',
+        title: 'How to review a video — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:30',
+      readTime: '10',
+      tags: { value: ['Video', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-manage-videos',
+    name: 'How to Manage Videos',
+    full_slug: '/guides/how-to-manage-videos',
+    content: {
+      metaFields: {
+        title: 'How to Manage Videos: Versions, Links, and a Library Your Team Can Trust',
+        description:
+          'Learn how to manage videos with clear versioning, predictable share links, and organized storage so producers and clients always open the right cut.',
+      },
+      image: {
+        filename: '/images/guides/how-to-manage-videos-cover.png',
+        alt: 'Kreatli Guide: How to manage videos',
+        title: 'How to manage videos — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:40',
+      readTime: '10',
+      tags: { value: ['Video', 'Workflow'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-markup-a-pdf',
+    name: 'How to Markup a PDF',
+    full_slug: '/guides/how-to-markup-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Markup a PDF: Highlights, Shapes, and Clear Review-Ready Feedback',
+        description:
+          'Learn how to markup a PDF with highlights, shapes, and notes so reviewers show exact changes and approvals move faster without email threads.',
+      },
+      image: {
+        filename: '/images/guides/how-to-markup-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to markup a PDF',
+        title: 'How to markup a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:00',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-add-notes-to-a-pdf',
+    name: 'How to Add Notes to a PDF',
+    full_slug: '/guides/how-to-add-notes-to-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Add Notes to a PDF: Quick, Page-Anchored Context for Faster Fixes',
+        description:
+          'Learn how to add notes to a PDF with page-pinned context, short actionable language, and version-aware review so teams resolve feedback without losing the thread.',
+      },
+      image: {
+        filename: '/images/guides/how-to-add-notes-to-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to add notes to a PDF',
+        title: 'How to add notes to a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:10',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-markup-an-image',
+    name: 'How to Markup an Image',
+    full_slug: '/guides/how-to-markup-an-image',
+    content: {
+      metaFields: {
+        title: 'How to Markup an Image: Pin Feedback to Pixels and Cut Revision Rounds',
+        description:
+          'Learn how to markup an image with location-pinned notes and visual marks so retouchers and designers get unambiguous direction and ship faster.',
+      },
+      image: {
+        filename: '/images/guides/how-to-markup-an-image-cover.png',
+        alt: 'Kreatli Guide: How to markup an image',
+        title: 'How to markup an image — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:20',
+      readTime: '8',
+      tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-share-documents-online',
+    name: 'How to Share Documents Online',
+    full_slug: '/guides/how-to-share-documents-online',
+    content: {
+      metaFields: {
+        title: 'How to Share Documents Online: Secure Links, Controlled Access, and One Review Hub',
+        description:
+          'Learn how to share documents online with permissioned links, guest-friendly review, and centralized feedback so stakeholders always open the right file.',
+      },
+      image: {
+        filename: '/images/guides/how-to-share-documents-online-cover.png',
+        alt: 'Kreatli Guide: How to share documents online',
+        title: 'How to share documents online — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:30',
+      readTime: '9',
+      tags: { value: ['PDF', 'Share PDF'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-share-images',
+    name: 'How to Share Images',
+    full_slug: '/guides/how-to-share-images',
+    content: {
+      metaFields: {
+        title: 'How to Share Images: One Link, Clear Permissions, and Review-Ready Delivery',
+        description:
+          'Learn how to share images online with controlled access, lightweight delivery, and optional review workflows so feedback stays tied to the asset.',
+      },
+      image: {
+        filename: '/images/guides/how-to-share-images-cover.png',
+        alt: 'Kreatli Guide: How to share images',
+        title: 'How to share images — Kreatli guide',
+      },
+      publishDate: '2026-04-10 12:40',
+      readTime: '9',
+      tags: { value: ['Image', 'Share Image'] },
     },
   },
 ];
