@@ -22,6 +22,11 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-highlight-an-image',
   'how-to-draw-on-documents',
   'how-to-turn-a-pdf-into-a-link',
+  'how-to-convert-an-image-into-a-link',
+  'how-to-organize-your-files',
+  'how-to-proofread-a-pdf',
+  'how-to-review-a-video',
+  'how-to-manage-videos',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -389,6 +394,108 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-10 10:30',
       readTime: '9',
       tags: { value: ['PDF', 'Share PDF'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-convert-an-image-into-a-link',
+    name: 'How to Convert an Image into a Link',
+    full_slug: '/guides/how-to-convert-an-image-into-a-link',
+    content: {
+      metaFields: {
+        title:
+          'How to Convert an Image into a Link: Share, Review, and Approve Without Heavy Attachments',
+        description:
+          'Learn how to convert an image into a link, control who can open it, and share one URL so feedback stays centralized and versions stay clear.',
+      },
+      image: {
+        filename: '/images/guides/how-to-convert-an-image-into-a-link-cover.png',
+        alt: 'Kreatli Guide: How to convert an image into a link',
+        title: 'How to convert an image into a link — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:00',
+      readTime: '9',
+      tags: { value: ['Image', 'Share Image'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-organize-your-files',
+    name: 'How to Organize Your Files',
+    full_slug: '/guides/how-to-organize-your-files',
+    content: {
+      metaFields: {
+        title:
+          'How to Organize Your Files: Projects, Versions, and One Place for Creative Assets',
+        description:
+          'Learn how to organize your files around projects and deliverables, name versions clearly, and keep video, images, and documents easy to find for your whole team.',
+      },
+      image: {
+        filename: '/images/guides/how-to-organize-your-files-cover.png',
+        alt: 'Kreatli Guide: How to organize your files',
+        title: 'How to organize your files — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:10',
+      readTime: '10',
+      tags: { value: ['Workspace', 'Workflow'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-proofread-a-pdf',
+    name: 'How to Proofread a PDF',
+    full_slug: '/guides/how-to-proofread-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Proofread a PDF: Catch Errors, Resolve Comments, and Ship Clean Finals',
+        description:
+          'Learn how to proofread a PDF with a repeatable pass order, page-pinned notes, and version-aware review so finals are accurate and approvals stay auditable.',
+      },
+      image: {
+        filename: '/images/guides/how-to-proofread-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to proofread a PDF',
+        title: 'How to proofread a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:20',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-review-a-video',
+    name: 'How to Review a Video',
+    full_slug: '/guides/how-to-review-a-video',
+    content: {
+      metaFields: {
+        title: 'How to Review a Video: Timestamped Notes, Clear Intent, and Faster Cuts',
+        description:
+          'Learn how to review a video with timestamped feedback, visual markup when needed, and version-aware workflows so editors can execute changes without decoding long email threads.',
+      },
+      image: {
+        filename: '/images/guides/how-to-review-a-video-cover.png',
+        alt: 'Kreatli Guide: How to review a video',
+        title: 'How to review a video — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:30',
+      readTime: '10',
+      tags: { value: ['Video', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-manage-videos',
+    name: 'How to Manage Videos',
+    full_slug: '/guides/how-to-manage-videos',
+    content: {
+      metaFields: {
+        title: 'How to Manage Videos: Versions, Links, and a Library Your Team Can Trust',
+        description:
+          'Learn how to manage videos with clear versioning, predictable share links, and organized storage so producers and clients always open the right cut.',
+      },
+      image: {
+        filename: '/images/guides/how-to-manage-videos-cover.png',
+        alt: 'Kreatli Guide: How to manage videos',
+        title: 'How to manage videos — Kreatli guide',
+      },
+      publishDate: '2026-04-10 11:40',
+      readTime: '10',
+      tags: { value: ['Video', 'Workflow'] },
     },
   },
 ];
