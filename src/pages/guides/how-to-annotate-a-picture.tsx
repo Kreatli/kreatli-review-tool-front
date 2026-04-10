@@ -20,7 +20,7 @@ import { getHeadingId } from '../../utils/storyblok';
 const DOCUMENT_TITLE = 'How to Annotate a Picture: Mark Up What You Mean and Keep Feedback Organized';
 const META_DESCRIPTION =
   'Learn how to annotate a picture with location-pinned comments and markup so feedback is clear, revisions move faster, and approvals stay organized.';
-const PUBLISH_DATE = '2026-04-08 01:30';
+const PUBLISH_DATE = '2026-04-11 01:30';
 const READ_TIME = '8';
 const CANONICAL_PATH = '/guides/how-to-annotate-a-picture';
 /**

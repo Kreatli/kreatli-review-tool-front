@@ -20,13 +20,13 @@ import { getHeadingId } from '../../utils/storyblok';
 const DOCUMENT_TITLE = 'How to Annotate a Photo: Location-Pinned Notes for Faster Retouching and Approval';
 const META_DESCRIPTION =
   'Learn how to annotate a photo with location-pinned comments and markup so retouching notes are unambiguous, revisions move faster, and approvals stay organized.';
-const PUBLISH_DATE = '2026-04-08 01:20';
+const PUBLISH_DATE = '2026-04-11 01:20';
 const READ_TIME = '8';
 const CANONICAL_PATH = '/guides/how-to-annotate-a-photo';
 /**
  * Horizontal cover for social / OG / hero. Use ~1800–2400px wide for a sharp hero on retina.
  */
-const GUIDE_COVER_SRC = '/images/guides/ow-to-annotate-a-photo-cover.png';
+const GUIDE_COVER_SRC = '/images/guides/how-to-annotate-a-photo-cover.png';
 const GUIDE_OG_IMAGE_URL = GUIDE_COVER_SRC;
 
 const HOW_TO_ANNOTATE_A_PHOTO_HERO_BLOK: SectionStoryblok = {
