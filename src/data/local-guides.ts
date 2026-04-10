@@ -18,6 +18,10 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-annotate-an-image',
   'how-to-annotate-a-photo',
   'how-to-annotate-a-picture',
+  'how-to-highlight-a-pdf',
+  'how-to-highlight-an-image',
+  'how-to-draw-on-documents',
+  'how-to-turn-a-pdf-into-a-link',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -305,6 +309,86 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-08 01:30',
       readTime: '8',
       tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-highlight-a-pdf',
+    name: 'How to Highlight a PDF',
+    full_slug: '/guides/how-to-highlight-a-pdf',
+    content: {
+      metaFields: {
+        title: 'How to Highlight a PDF: Clear, Context-Pinned Feedback for Faster Reviews',
+        description:
+          'Learn how to highlight a PDF with purpose: call out exact text and visual areas, add comments with context, and keep revisions organized across versions.',
+      },
+      image: {
+        filename: '/images/guides/how-to-highlight-a-pdf-cover.png',
+        alt: 'Kreatli Guide: How to highlight a PDF',
+        title: 'How to highlight a PDF — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:00',
+      readTime: '9',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-highlight-an-image',
+    name: 'How to Highlight an Image',
+    full_slug: '/guides/how-to-highlight-an-image',
+    content: {
+      metaFields: {
+        title: 'How to Highlight an Image: Point to Exact Areas and Speed Up Revisions',
+        description:
+          'Learn how to highlight an image with precise location-based feedback, clear intent, and review-ready workflows that reduce ambiguity and rework.',
+      },
+      image: {
+        filename: '/images/guides/how-to-highlight-an-image-cover.png',
+        alt: 'Kreatli Guide: How to highlight an image',
+        title: 'How to highlight an image — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:10',
+      readTime: '8',
+      tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-draw-on-documents',
+    name: 'How to Draw on Documents',
+    full_slug: '/guides/how-to-draw-on-documents',
+    content: {
+      metaFields: {
+        title: 'How to Draw on Documents: Visual Markup That Removes Guesswork',
+        description:
+          'Learn how to draw on documents with arrows, shapes, and freehand notes so reviewers can communicate exact changes and move approvals faster.',
+      },
+      image: {
+        filename: '/images/guides/how-to-draw-on-documents-cover.png',
+        alt: 'Kreatli Guide: How to draw on documents',
+        title: 'How to draw on documents — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:20',
+      readTime: '10',
+      tags: { value: ['PDF', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-turn-a-pdf-into-a-link',
+    name: 'How to Turn a PDF into a Link',
+    full_slug: '/guides/how-to-turn-a-pdf-into-a-link',
+    content: {
+      metaFields: {
+        title: 'How to Turn a PDF into a Link: Share, Review, and Approve Without Attachments',
+        description:
+          'Learn how to turn a PDF into a link, control access, and share one review-ready URL so feedback stays centralized and approvals move faster.',
+      },
+      image: {
+        filename: '/images/guides/how-to-turn-a-pdf-into-a-link-cover.png',
+        alt: 'Kreatli Guide: How to turn a PDF into a link',
+        title: 'How to turn a PDF into a link — Kreatli guide',
+      },
+      publishDate: '2026-04-10 10:30',
+      readTime: '9',
+      tags: { value: ['PDF', 'Share PDF'] },
     },
   },
 ];
