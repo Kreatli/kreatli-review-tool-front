@@ -6,6 +6,9 @@ import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { ArticlesSection } from '../../../components/shared/ArticlesSection';
+import { BreadcrumbStructuredData } from '../../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../../components/shared/FAQStructuredData';
+import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { MoreFreeToolsSection } from '../../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
@@ -185,6 +188,18 @@ export default function CreativeProofingPage() {
   return (
     <>
       <SeoHead title={title} description={data.metaDescription} canonicalPath="/solutions/use-case/creative-proofing" />
+      <FAQStructuredData faqs={data.faqs} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Video Proofing', url: '/solutions/use-case/creative-proofing' },
+        ]}
+      />
+      <HowToStructuredData
+        name="How to run video proofing with Kreatli"
+        description={data.howItWorks.description}
+        steps={data.howItWorks.steps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <Header />
       <Decorations />
       {/* Hero Section */}

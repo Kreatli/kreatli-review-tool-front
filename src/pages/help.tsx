@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { Icon, IconType } from '../components/various/Icon';
 import { useSession } from '../hooks/useSession';
 
@@ -341,6 +343,13 @@ export default function HelpPage() {
 
   return (
     <>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Help Center', url: '/help' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs.map(({ question, answer }) => ({ question, answer }))} />
       <Head>
         <title>Kreatli | Help Center – FAQs and Support Resources</title>
         <meta

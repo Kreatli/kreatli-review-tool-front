@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import { useMemo, useState } from 'react';
 
@@ -10,6 +9,7 @@ import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
+import { SeoHead } from '../components/shared/SeoHead';
 import { Icon, IconType } from '../components/various/Icon';
 import { PLATFORM_FILTER_OPTIONS, PLATFORM_PAGES, type PlatformFilterTag } from '../data/platform-pages';
 import { useSession } from '../hooks/useSession';
@@ -133,33 +133,11 @@ export default function PlatformPage() {
 
   return (
     <>
-      <Head>
-        <title>Kreatli | Video Collaboration & Review Platform</title>
-        <meta
-          name="description"
-          content="Video Collaboration & Review Platform for video teams. Frame-accurate video review, asset-linked conversations, and video collaboration workflows. Built for video production teams."
-        />
-        <link rel="canonical" href="https://kreatli.com/platform" />
-        <meta property="og:url" content="https://kreatli.com/platform" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Video Collaboration & Review Platform" />
-        <meta
-          property="og:description"
-          content="Built for video collaboration workflows with frame-accurate video review, asset-linked conversations, and end-to-end video collaboration in a single platform."
-        />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Video Collaboration & Review Platform" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Video Collaboration & Review Platform" />
-        <meta
-          name="twitter:description"
-          content="Built for video collaboration workflows with frame-accurate video review, asset-linked conversations, and end-to-end video collaboration in a single platform."
-        />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead
+        title="Kreatli | Video Collaboration & Review Platform Features"
+        description="Explore Kreatli platform features: frame-accurate video review, asset-linked conversations, project orchestration, deliverables tracking, and secure storage. Built for video production teams."
+        canonicalPath="/platform"
+      />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
@@ -187,7 +165,7 @@ export default function PlatformPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -323,6 +301,7 @@ export default function PlatformPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -721,6 +700,7 @@ export default function PlatformPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

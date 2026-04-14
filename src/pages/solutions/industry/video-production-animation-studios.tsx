@@ -8,6 +8,9 @@ import { ProjectFeaturePreview } from '../../../components/home/Features/Project
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../../components/shared/FAQStructuredData';
+import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { InteractiveReviewToolPreview } from '../../../components/shared/InteractiveReviewToolPreview';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
@@ -266,6 +269,18 @@ export default function VideoProductionAnimationStudiosPage() {
           content="video production software, animation studio tools, video review platform, frame-accurate feedback, video collaboration platform, post-production workflow, video project management, animation production pipeline"
         />
       </Head>
+      <FAQStructuredData faqs={data.faqs} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Video Production & Animation Studios', url: '/solutions/industry/video-production-animation-studios' },
+        ]}
+      />
+      <HowToStructuredData
+        name="How to manage video production with Kreatli"
+        description="From project setup to final delivery—organize projects, collaborate with teams, collect frame-accurate feedback, and deliver faster."
+        steps={data.workflowSteps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <Header />
       <Decorations />
       {/* Hero Section */}

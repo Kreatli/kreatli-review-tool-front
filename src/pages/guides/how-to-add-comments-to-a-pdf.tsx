@@ -240,7 +240,7 @@ export default function HowToAddCommentsToAPdfGuidePage() {
             The interactive preview below is a lightweight example of the workflow: upload a PDF, think in page-pinned
             comments, and keep feedback in one place. When you’re ready, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
             or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

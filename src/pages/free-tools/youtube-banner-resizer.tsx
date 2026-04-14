@@ -4,6 +4,7 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
@@ -45,6 +46,13 @@ export default function YouTubeBannerResizerPage() {
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/youtube-banner-resizer" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Free Tools', url: '/free-tools' },
+          { name: 'YouTube Banner Resizer', url: '/free-tools/youtube-banner-resizer' },
+        ]}
+      />
       <Header />
       <Decorations />
       <div className="p-6 pb-12">

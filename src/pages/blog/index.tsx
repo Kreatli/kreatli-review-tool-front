@@ -1,11 +1,12 @@
 import { ISbStoryData } from '@storyblok/react';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 
 import { BlogArticles } from '../../components/blog/Blog';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { SeoHead } from '../../components/shared/SeoHead';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
 import { PageStoryblok } from '../../typings/storyblok';
@@ -22,33 +23,17 @@ export default function Blog({ stories }: Props) {
 
   return (
     <>
-      <Head>
-        <title>Kreatli | Blog</title>
-        <meta
-          name="description"
-          content="Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow and improve collaboration."
-        />
-        <link rel="canonical" href="https://kreatli.com/blog" />
-        <meta property="og:url" content="https://kreatli.com/blog" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Blog" />
-        <meta
-          property="og:description"
-          content="Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow and improve collaboration."
-        />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Blog" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Blog" />
-        <meta
-          name="twitter:description"
-          content="Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow and improve collaboration."
-        />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead
+        title="Kreatli | Blog – Insights for Creative Teams"
+        description="Insights, tips, best practices and news for creative teams. Discover strategies to streamline your video production workflow and improve collaboration."
+        canonicalPath="/blog"
+      />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Blog', url: '/blog' },
+        ]}
+      />
       <Header />
       <Decorations />
       <div className="w-full px-6 py-8">

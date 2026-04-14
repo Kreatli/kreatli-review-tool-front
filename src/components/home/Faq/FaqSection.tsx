@@ -1,6 +1,8 @@
 import { Accordion, AccordionItem } from '@heroui/react';
 
-const faq = [
+import { FAQItem } from '../../shared/FAQStructuredData';
+
+export const homeFaqs: FAQItem[] = [
   {
     question: 'What exactly is Kreatli?',
     answer:
@@ -140,7 +142,7 @@ export const FaqSection = () => {
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <h2 className="text-center font-sans text-3xl font-bold sm:text-4xl">Frequently Asked Questions</h2>
         <Accordion variant="splitted" aria-label="Frequently asked questions">
-          {faq.map((item) => (
+          {homeFaqs.map((item) => (
             <AccordionItem key={item.question} title={<span className="text-base font-semibold">{item.question}</span>}>
               <div className="space-y-3 whitespace-pre-wrap text-foreground-500">{item.answer}</div>
             </AccordionItem>

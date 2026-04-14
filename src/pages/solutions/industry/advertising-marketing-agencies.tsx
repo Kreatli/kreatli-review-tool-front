@@ -9,6 +9,9 @@ import { ShareFeaturePreview } from '../../../components/home/Features/ShareFeat
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../../components/shared/FAQStructuredData';
+import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
@@ -225,6 +228,18 @@ export default function AdvertisingMarketingAgenciesPage() {
           content="advertising agency software, marketing agency tools, campaign management platform, video collaboration software, video review platform, client approval workflow, marketing campaign collaboration"
         />
       </Head>
+      <FAQStructuredData faqs={data.faqs} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Advertising & Marketing Agencies', url: '/solutions/industry/advertising-marketing-agencies' },
+        ]}
+      />
+      <HowToStructuredData
+        name="How to run a campaign production workflow with Kreatli"
+        description="From campaign setup to client delivery—see how Kreatli streamlines your agency workflow."
+        steps={data.workflowSteps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <Header />
       <Decorations />
       {/* Hero Section */}

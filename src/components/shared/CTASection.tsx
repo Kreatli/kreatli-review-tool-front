@@ -179,7 +179,7 @@ export function CTASection({
                 <a
                   href={secondaryButtonHref}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="text-base font-semibold text-foreground underline-offset-4 hover:underline"
                 >
                   {secondaryButtonText}
@@ -219,7 +219,7 @@ export function CTASection({
               <>
                 {' '}
                 or{' '}
-                <a href={secondaryButtonHref} target="_blank" rel="noopener noreferrer">
+                <a href={secondaryButtonHref} target="_blank" rel="noopener noreferrer nofollow">
                   {secondaryButtonText.toLowerCase()}
                 </a>
                 .
@@ -245,7 +245,7 @@ export function CTASection({
               as="a"
               href={secondaryButtonHref}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

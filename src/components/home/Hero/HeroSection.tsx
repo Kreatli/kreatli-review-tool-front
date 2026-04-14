@@ -90,7 +90,7 @@ export const HeroSection = () => {
                   as="a"
                   href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer nofollow"
                   size="lg"
                   variant="bordered"
                   className="h-12 min-w-[200px] px-6 text-base"

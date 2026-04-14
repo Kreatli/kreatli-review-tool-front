@@ -5,6 +5,9 @@ import React from 'react';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../../components/shared/FAQStructuredData';
+import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
 import { Icon, IconType } from '../../../components/various/Icon';
@@ -12,7 +15,7 @@ import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
 
 const data = {
-  title: 'Video Collaboration & Review',
+  title: 'Creative Production Management',
   intro:
     'Manage video work around the files themselves. Every file, version, comment, and approval connects directly to collaboration status.',
   metaDescription:
@@ -182,6 +185,18 @@ export default function CreativeProductionManagementPage() {
         title={title}
         description={data.metaDescription}
         canonicalPath="/solutions/use-case/creative-production-management"
+      />
+      <FAQStructuredData faqs={data.faqs} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Creative Production Management', url: '/solutions/use-case/creative-production-management' },
+        ]}
+      />
+      <HowToStructuredData
+        name="How to manage creative production with Kreatli"
+        description={data.howItWorks.description}
+        steps={data.howItWorks.steps.map((step) => ({ name: step.title, text: step.description }))}
       />
       <Header />
       <Decorations />

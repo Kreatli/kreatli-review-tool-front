@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { ArticleStructuredData } from '../../components/shared/ArticleStructuredData';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { SeoHead } from '../../components/shared/SeoHead';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
@@ -62,6 +64,21 @@ export default function Page({ story, slug }: Props) {
         ogType="article"
         imageUrl={ogImage}
         imageAlt={articleTitle}
+      />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Comparisons', url: '/comparisons' },
+          { name: articleTitle, url: slug },
+        ]}
+      />
+      <ArticleStructuredData
+        title={articleTitle}
+        description={description}
+        url={slug}
+        publishedTime={storyState?.content.publishDate}
+        modifiedTime={storyState?.updated_at}
+        imageUrl={ogImage}
       />
       <Header />
       <Decorations />

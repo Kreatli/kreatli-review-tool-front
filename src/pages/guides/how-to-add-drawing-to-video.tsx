@@ -252,7 +252,7 @@ export default function HowToAddDrawingToVideoGuidePage() {
             The interactive preview below mirrors a real review flow: upload a clip, scrub to a frame, draw on it, and
             leave a comment. When you are ready to use this with clients, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
             or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

@@ -7,6 +7,7 @@ import InfoSection from '../../components/data-transfer-calculator/InfoSection';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -52,6 +53,13 @@ export default function DataTransferCalculatorPage() {
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/data-transfer-calculator" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Free Tools', url: '/free-tools' },
+          { name: 'Data Transfer Calculator', url: '/free-tools/data-transfer-calculator' },
+        ]}
+      />
       <Header />
       <Decorations />
 
