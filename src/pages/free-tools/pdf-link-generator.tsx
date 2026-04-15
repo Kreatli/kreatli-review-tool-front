@@ -19,6 +19,7 @@ import { SkipToMainContent } from '../../components/shared/SkipToMainContent';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const PAGE_PATH = '/free-tools/pdf-link-generator';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
@@ -68,11 +69,7 @@ export default function PdfLinkGeneratorPage() {
           name="description"
           content="Convert your PDF into a shareable review link in seconds. Collect feedback without email attachments. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF link generator, PDF to link, shareable PDF link, PDF review link, share PDF online, pdf url generator, PDF collaboration, client review"
-        />
-        <meta property="og:title" content="Turn a PDF into a Link – Free PDF Link Generator | Kreatli" />
+<meta property="og:title" content="Turn a PDF into a Link – Free PDF Link Generator | Kreatli" />
         <meta
           property="og:description"
           content="Convert your PDF into a shareable review link in seconds. Collect feedback without email attachments. Try free with a 7-day trial."
@@ -128,6 +125,10 @@ export default function PdfLinkGeneratorPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="PDF Link Generator">
+          A PDF link generator turns a document into a secure link recipients can open and comment on in the browser. It replaces heavy attachments with one URL, speeds up legal and marketing reviews, and keeps feedback on the PDF itself.
+        </DefinitionBlock>
         {/* How to turn your PDF into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your PDF into a link in Kreatli"

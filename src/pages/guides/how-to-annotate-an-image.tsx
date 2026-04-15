@@ -127,6 +127,18 @@ export default function HowToAnnotateAnImageGuidePage() {
             Instead of “make this better,” you want <strong>location-pinned comments</strong> plus optional markup so
             “this area” is never vague and revisions don’t bounce between screenshots and email threads.
           </p>
+          <p>
+            Treat this page as the <strong>general playbook</strong> for any still asset. When your work is mostly
+            designed graphics, follow the{' '}
+            <NextLink href="/guides/how-to-annotate-a-picture" className="font-medium text-primary underline-offset-2 hover:underline">
+              picture-focused guide
+            </NextLink>
+            ; when it is mostly photography or retouching, use the{' '}
+            <NextLink href="/guides/how-to-annotate-a-photo" className="font-medium text-primary underline-offset-2 hover:underline">
+              photo-focused guide
+            </NextLink>{' '}
+            so examples match your workflow.
+          </p>
 
           <KeyTakeaways
             items={[

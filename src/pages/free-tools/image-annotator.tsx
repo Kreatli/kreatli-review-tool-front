@@ -31,11 +31,7 @@ export default function ImageAnnotatorPage() {
           name="description"
           content="Add pinned comments, highlights, drawings, and markup to images. Share annotated files with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="image annotator, annotate image online, image annotation tool, comment on image, draw on image, image markup, image feedback, image collaboration"
-        />
-        <meta property="og:title" content="Annotate Images Online – Free Image Annotator | Kreatli" />
+<meta property="og:title" content="Annotate Images Online – Free Image Annotator | Kreatli" />
         <meta
           property="og:description"
           content="Add pinned comments, highlights, drawings, and markup to images. Share annotated files with clients. Try free with a 7-day trial."

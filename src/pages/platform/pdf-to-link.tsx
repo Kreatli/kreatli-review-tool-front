@@ -24,6 +24,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -139,6 +140,8 @@ export default function PdfToLinkPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/pdf-to-link" />
       <PlatformStepGuide
         stepsSectionTitle="How to turn your PDF into a link in Kreatli"
         stepsIntro="Follow these steps to upload your PDF, generate a shareable link, and collect feedback—recipients do not need a Kreatli account."

@@ -8,5 +8,7 @@ Disallow: /sign-up
 Disallow: /forgot-password
 Disallow: /reset-password
 Disallow: /api/
+# Reduce indexing of URL variants with query strings (filters, UTMs, etc.)
+Disallow: /*?*
 
 Sitemap: https://kreatli.com/sitemap.xml

@@ -32,11 +32,7 @@ export default function VideoReviewerPage() {
           name="description"
           content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video reviewer, online video review, video review tool, review video online, video approval software, video proofing, video collaboration, creative review"
-        />
-        <meta property="og:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
+<meta property="og:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
         <meta
           property="og:description"
           content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."

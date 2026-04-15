@@ -16,6 +16,7 @@ import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function DataTransferCalculatorPage() {
   useSession();
@@ -28,11 +29,7 @@ export default function DataTransferCalculatorPage() {
           name="description"
           content="Calculate how long large file uploads and downloads take. Enter file size and connection speed for instant results. Free calculator."
         />
-        <meta
-          name="keywords"
-          content="data transfer calculator, upload time calculator, download time calculator, file transfer time, video file upload time, large file transfer, Mbps calculator, internet speed calculator, file size calculator, media transfer calculator, creative workflow tools"
-        />
-        <meta
+<meta
           property="og:title"
           content="Data Transfer Calculator – Estimate Upload and Download Times | Kreatli"
         />
@@ -84,6 +81,10 @@ export default function DataTransferCalculatorPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Data Transfer Calculator">
+          A data transfer calculator estimates upload or download time from file size and connection speed. Post teams use it when planning large raw transfers, client deliveries, or remote collaboration over constrained bandwidth.
+        </DefinitionBlock>
         {/* Calculator Section */}
         <section className="relative overflow-hidden px-6 pb-8">
           <div className="relative z-10 mx-auto max-w-6xl">

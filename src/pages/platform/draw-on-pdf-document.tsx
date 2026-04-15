@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -181,6 +182,8 @@ export default function DrawOnPdfDocumentPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/draw-on-pdf-document" />
       <PlatformStepGuide
         stepsSectionTitle="How to draw on a PDF in Kreatli"
         stepsIntro="Follow these steps to upload your PDF, draw directly on it, and share for review—all in one place."

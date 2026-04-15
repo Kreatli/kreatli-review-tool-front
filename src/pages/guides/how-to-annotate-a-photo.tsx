@@ -127,6 +127,15 @@ export default function HowToAnnotateAPhotoGuidePage() {
             image you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so
             “this corner” is never vague and revisions don’t bounce between email threads and screenshots.
           </p>
+          <p>
+            This guide focuses on <strong>photography deliverables</strong>—portraits, product shots, real-estate
+            frames, and catalog stills—where exposure, texture, and retouching notes dominate. If you are marking up
+            designed graphics or ad layouts, start with the{' '}
+            <NextLink href="/guides/how-to-annotate-a-picture" className="font-medium text-primary underline-offset-2 hover:underline">
+              picture annotation guide
+            </NextLink>
+            .
+          </p>
 
           <KeyTakeaways
             items={[

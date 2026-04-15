@@ -16,6 +16,7 @@ import { VideoFrameExtractorFAQ } from '../../components/video-frame-extractor/V
 import { VideoFrameExtractorGuide } from '../../components/video-frame-extractor/VideoFrameExtractorGuide';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function VideoFrameExtractorPage() {
   useSession();
@@ -28,11 +29,7 @@ export default function VideoFrameExtractorPage() {
           name="description"
           content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
         />
-        <meta
-          name="keywords"
-          content="video frame extractor, extract frames from video, capture video frame, screenshot video, export video stills, download frames png jpg, download frames zip, browser frame extractor, free video tool"
-        />
-        <meta property="og:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
+<meta property="og:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
         <meta
           property="og:description"
           content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
@@ -76,6 +73,10 @@ export default function VideoFrameExtractorPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Video Frame Extractor">
+          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
+        </DefinitionBlock>
         {/* Tool */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">

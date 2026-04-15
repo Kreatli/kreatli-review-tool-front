@@ -19,6 +19,22 @@ export const FREE_TOOLS_FILTER_OPTIONS: { id: FreeToolFilterTag; label: string }
   { id: 'Share & links', label: 'Share & links' },
 ];
 
+/** Visible when a category chip is selected — adds crawlable context without separate URLs */
+export const FREE_TOOLS_FILTER_DESCRIPTIONS: Record<FreeToolFilterTag, string> = {
+  Video:
+    'Video tools here focus on frame-accurate review, proofing, trimming, and organization—everything you need before export or client handoff.',
+  'PDF & documents':
+    'PDF and document tools help teams comment, highlight, compare, and share files without version chaos in email.',
+  Images:
+    'Image tools cover review, annotation, comparison, and link sharing for still creative—design, photography, and campaign assets.',
+  'Safe zones & resize':
+    'Safe-zone and resize utilities match platform specs for social and YouTube so creative is not cropped unexpectedly after upload.',
+  'Calculators & utilities':
+    'Calculators estimate transfer time, software spend, and other planning numbers post and producers use when scoping jobs.',
+  'Share & links':
+    'Share and link generators turn files into review-ready URLs so collaborators can open assets without heavy downloads.',
+};
+
 export interface FreeTool {
   title: string;
   description: string;

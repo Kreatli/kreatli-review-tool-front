@@ -5,6 +5,7 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
@@ -26,10 +27,6 @@ export default function YouTubeBannerResizerPage() {
         <meta
           name="description"
           content="Resize YouTube banners to 2560×1440 with safe area previews for mobile, desktop, tablet, and TV. Free tool."
-        />
-        <meta
-          name="keywords"
-          content="youtube banner resizer, youtube channel art, youtube banner size, 2560x1440, youtube banner maker, free banner tool, channel art resizer, youtube safe area, youtube banner dimensions"
         />
         <meta property="og:title" content="Resize YouTube Banner – Free Channel Art Resizer | Kreatli" />
         <meta
@@ -73,6 +70,11 @@ export default function YouTubeBannerResizerPage() {
           </FreeToolsEntitlementSection>
         </div>
       </div>
+      <DefinitionBlock term="YouTube Banner Resizer">
+        A YouTube banner resizer crops or scales channel art to the correct dimensions and safe areas for desktop,
+        mobile, tablet, and TV. Brand and social teams use it to validate layouts before publish so critical logo and
+        copy are not clipped on smaller screens.
+      </DefinitionBlock>
       <BannerGuide />
 
       {/* Related Tools Section */}

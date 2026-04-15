@@ -18,6 +18,7 @@ import { VideoManagerFAQ, videoManagerFaqs } from '../../components/video-manage
 import { VideoManagerGuide } from '../../components/video-manager/VideoManagerGuide';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function VideoManagerPage() {
   useSession();
@@ -30,11 +31,7 @@ export default function VideoManagerPage() {
           name="description"
           content="Organize, store, and track video assets with version control and share links. Manage feedback and approvals in one place. Try free."
         />
-        <meta
-          name="keywords"
-          content="video manager, manage videos, video organization, video version control, video project management, video storage, video collaboration"
-        />
-        <meta property="og:title" content="Manage Video Assets Online – Free Video Manager | Kreatli" />
+<meta property="og:title" content="Manage Video Assets Online – Free Video Manager | Kreatli" />
         <meta
           property="og:description"
           content="Organize, store, and track video assets with version control and share links. Manage feedback and approvals in one place. Try free."
@@ -83,6 +80,10 @@ export default function VideoManagerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Video Manager">
+          A video manager organizes clips, versions, and review status in one workspace instead of scattered folders. It helps producers track what is current, what is approved, and what still needs client input.
+        </DefinitionBlock>
         {/* Project / media storage feature preview */}
         <section className="relative px-6 pb-16 pt-6">
           <div className="relative z-10 mx-auto max-w-6xl">

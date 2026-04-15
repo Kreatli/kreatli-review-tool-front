@@ -18,6 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -64,11 +65,7 @@ export default function ImageUrlMakerPage() {
           name="description"
           content="Convert your image into a shareable review URL in seconds. Collect feedback without email attachments. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="image URL maker, image to link, shareable image link, image review link, share image online, image url generator, image collaboration, client review"
-        />
-        <meta property="og:title" content="Turn an Image into a URL – Free Image Link Maker | Kreatli" />
+<meta property="og:title" content="Turn an Image into a URL – Free Image Link Maker | Kreatli" />
         <meta
           property="og:description"
           content="Convert your image into a shareable review URL in seconds. Collect feedback without email attachments. Try free with a 7-day trial."
@@ -127,6 +124,10 @@ export default function ImageUrlMakerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Image URL Maker">
+          An image URL maker creates a shareable link to an image file so collaborators can open it in the browser without email attachments. Teams use it to route assets into review, collect comments, and keep a single source of truth for the latest image.
+        </DefinitionBlock>
         {/* How to turn your image into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your image into a link in Kreatli"

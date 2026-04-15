@@ -20,6 +20,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -129,6 +130,8 @@ export default function ExtractFramesFromVideoPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/extract-frames-from-video" />
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">

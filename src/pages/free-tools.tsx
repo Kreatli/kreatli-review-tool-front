@@ -11,7 +11,12 @@ import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { HubPageIntro } from '../components/shared/HubPageIntro';
 import { SeoHead } from '../components/shared/SeoHead';
 import { Icon } from '../components/various/Icon';
-import { FREE_TOOLS, FREE_TOOLS_FILTER_OPTIONS, type FreeToolFilterTag } from '../data/free-tools';
+import {
+  FREE_TOOLS,
+  FREE_TOOLS_FILTER_DESCRIPTIONS,
+  FREE_TOOLS_FILTER_OPTIONS,
+  type FreeToolFilterTag,
+} from '../data/free-tools';
 import { useSession } from '../hooks/useSession';
 
 const faqs = [
@@ -215,6 +220,12 @@ export default function FreeToolsPage() {
               })}
             </div>
           </div>
+
+          {selectedFilter !== 'All' && (
+            <p className="mx-auto max-w-3xl px-2 text-center text-sm leading-relaxed text-foreground-600 sm:text-base">
+              {FREE_TOOLS_FILTER_DESCRIPTIONS[selectedFilter]}
+            </p>
+          )}
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredTools.length === 0 ? (

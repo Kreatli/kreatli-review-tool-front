@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody, Chip } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -14,6 +13,7 @@ import { FAQStructuredData } from '../../../components/shared/FAQStructuredData'
 import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
+import { SolutionBelowHero } from '../../../components/shared/SolutionBelowHero';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
@@ -222,12 +222,6 @@ export default function AdvertisingMarketingAgenciesPage() {
         description={data.metaDescription}
         canonicalPath="/solutions/industry/advertising-marketing-agencies"
       />
-      <Head>
-        <meta
-          name="keywords"
-          content="advertising agency software, marketing agency tools, campaign management platform, video collaboration software, video review platform, client approval workflow, marketing campaign collaboration"
-        />
-      </Head>
       <FAQStructuredData faqs={data.faqs} />
       <BreadcrumbStructuredData
         items={[
@@ -255,6 +249,7 @@ export default function AdvertisingMarketingAgenciesPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -263,6 +258,21 @@ export default function AdvertisingMarketingAgenciesPage() {
           </div>
         </div>
       </section>
+
+      <SolutionBelowHero>
+        <span>
+          Agencies juggle parallel campaigns—Kreatli keeps creative, feedback, and approvals on the assets themselves.
+          See{' '}
+          <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+            how we compare
+          </NextLink>{' '}
+          to other review stacks, or start with the{' '}
+          <NextLink href="/guides/how-to-review-a-video" className="font-medium text-primary underline-offset-2 hover:underline">
+            video review playbook
+          </NextLink>
+          .
+        </span>
+      </SolutionBelowHero>
 
       {/* Visual Workflow Section */}
       {data.workflowSteps && (
@@ -566,6 +576,7 @@ export default function AdvertisingMarketingAgenciesPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

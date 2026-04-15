@@ -20,6 +20,7 @@ import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const PAGE_PATH = '/free-tools/file-to-link-converter';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
@@ -69,11 +70,7 @@ export default function FileToLinkConverterPage() {
           name="description"
           content="Convert any file into a secure shareable link. Send one URL, collect feedback and approvals. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="file to link converter, file to link, shareable file link, file review link, share file online, file url generator, file collaboration, client review"
-        />
-        <meta property="og:title" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
+<meta property="og:title" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
         <meta
           property="og:description"
           content="Convert any file into a secure shareable link. Send one URL, collect feedback and approvals. Try free with a 7-day trial."
@@ -129,6 +126,10 @@ export default function FileToLinkConverterPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="File to Link Converter">
+          A file-to-link converter uploads a file and returns a URL you can share for review or delivery. Creative teams use it to move large media out of email and into a controlled, comment-ready workspace.
+        </DefinitionBlock>
         {/* How to turn your file into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your file into a link in Kreatli"

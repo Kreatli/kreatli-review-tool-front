@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -132,6 +133,8 @@ export default function CompareDocumentsOnlinePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/compare-documents-online" />
       <PlatformStepGuide
         stepsSectionTitle="How to compare documents online in Kreatli"
         stepsIntro="Follow these steps to upload both document versions, open them in the review interface, use Compare, and share feedback—all in one place."

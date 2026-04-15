@@ -12,6 +12,7 @@ import { HowToStructuredData } from '../../../components/shared/HowToStructuredD
 import { MoreFreeToolsSection } from '../../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
+import { SolutionBelowHero } from '../../../components/shared/SolutionBelowHero';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { FREE_TOOLS } from '../../../data/free-tools';
 import { getRelatedResources } from '../../../data/related-resources';
@@ -215,6 +216,7 @@ export default function CreativeProofingPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -223,6 +225,20 @@ export default function CreativeProofingPage() {
           </div>
         </div>
       </section>
+
+      <SolutionBelowHero>
+        <span>
+          Proofing works best when every round has a version, a reviewer, and a resolution state. See{' '}
+          <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+            platform comparisons
+          </NextLink>{' '}
+          or learn{' '}
+          <NextLink href="/guides/what-is-proofing-software" className="font-medium text-primary underline-offset-2 hover:underline">
+            what proofing software should cover
+          </NextLink>
+          .
+        </span>
+      </SolutionBelowHero>
 
       {/* How It Works Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -443,6 +459,7 @@ export default function CreativeProofingPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

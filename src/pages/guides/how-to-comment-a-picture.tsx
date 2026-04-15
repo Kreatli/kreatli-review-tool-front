@@ -125,6 +125,14 @@ export default function HowToCommentAPictureGuidePage() {
             off,” use <strong>location-pinned comments</strong> (and optional markup) so collaborators know exactly what
             you mean and can resolve changes quickly.
           </p>
+          <p>
+            Picture comments here assume <strong>creative-direction feedback</strong> on layouts, campaign art, and
+            branded statics. For photographer–client selection rounds or deep retouch notes, follow the{' '}
+            <NextLink href="/guides/how-to-comment-a-photo" className="font-medium text-primary underline-offset-2 hover:underline">
+              photo commenting guide
+            </NextLink>
+            .
+          </p>
 
           <KeyTakeaways
             items={[

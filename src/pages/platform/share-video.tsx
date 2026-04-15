@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -136,6 +137,8 @@ export default function ShareVideoPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/share-video" />
       {/* How to Share Video in Kreatli (step-by-step) */}
       <PlatformStepGuide
         stepsSectionTitle="How to Share Your Video in Kreatli"

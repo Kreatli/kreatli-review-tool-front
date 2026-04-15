@@ -21,6 +21,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -125,6 +126,8 @@ export default function ShareMp4Page() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/share-mp4" />
       {/* How to Share MP4 Files in Kreatli (step-by-step) */}
       <PlatformStepGuide
         stepsSectionTitle="How to Share MP4 Files in Kreatli"

@@ -25,6 +25,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -146,6 +147,8 @@ export default function ReviewVideoPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/review-video" />
       <PlatformStepGuide
         stepsSectionTitle="How to review a video in Kreatli"
         stepsIntro="Follow these steps to upload your video, collect frame-accurate feedback, and track approvals—all in one place."

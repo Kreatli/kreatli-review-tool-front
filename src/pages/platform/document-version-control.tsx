@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -144,6 +145,8 @@ export default function DocumentVersionControlPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/document-version-control" />
       <PlatformStepGuide
         stepsSectionTitle="How to use document version control in Kreatli"
         stepsIntro="Follow these steps to upload your first document, add new versions from the file menu, switch versions in the viewer, and compare two document versions side by side."

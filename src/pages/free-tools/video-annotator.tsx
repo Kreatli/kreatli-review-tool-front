@@ -32,11 +32,7 @@ export default function VideoAnnotatorPage() {
           name="description"
           content="Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video annotator, annotate video online, video annotation tool, frame-accurate annotation, draw on video, video markup, video feedback, video collaboration"
-        />
-        <meta property="og:title" content="Annotate Videos Online – Free Video Annotator | Kreatli" />
+<meta property="og:title" content="Annotate Videos Online – Free Video Annotator | Kreatli" />
         <meta
           property="og:description"
           content="Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps. Try free with a 7-day trial."

@@ -143,6 +143,14 @@ export default function HowToReviewAVideoGuidePage() {
             ]}
           />
 
+          <p className="text-sm text-foreground-600">
+            Choosing a review stack for your team?{' '}
+            <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+              Browse Kreatli comparisons with other platforms
+            </NextLink>{' '}
+            before you trial.
+          </p>
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Strong video review balances creative direction with execution detail. Everyone should agree on pacing,

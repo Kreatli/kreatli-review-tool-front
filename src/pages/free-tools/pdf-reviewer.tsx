@@ -31,11 +31,7 @@ export default function PdfReviewerPage() {
           name="description"
           content="Review PDFs with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF reviewer, online PDF review, PDF review tool, review PDF online, PDF approval software, PDF collaboration, comment on PDF, annotate PDF"
-        />
-        <meta property="og:title" content="Review PDFs Online – Free PDF Reviewer | Kreatli" />
+<meta property="og:title" content="Review PDFs Online – Free PDF Reviewer | Kreatli" />
         <meta
           property="og:description"
           content="Review PDFs with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."

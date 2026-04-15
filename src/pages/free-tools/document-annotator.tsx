@@ -30,11 +30,7 @@ export default function DocumentAnnotatorPage() {
           name="description"
           content="Add pinned comments, highlights, drawings, and markup to documents. Share with clients for review. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="document annotator, annotate documents online, document annotation tool, comment on documents, draw on documents, document markup, document feedback, document collaboration"
-        />
-        <meta property="og:title" content="Annotate Documents Online – Free Document Annotator | Kreatli" />
+<meta property="og:title" content="Annotate Documents Online – Free Document Annotator | Kreatli" />
         <meta
           property="og:description"
           content="Add pinned comments, highlights, drawings, and markup to documents. Share with clients for review. Try free with a 7-day trial."

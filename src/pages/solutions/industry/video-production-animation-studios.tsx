@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody, Chip } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -14,6 +13,7 @@ import { HowToStructuredData } from '../../../components/shared/HowToStructuredD
 import { InteractiveReviewToolPreview } from '../../../components/shared/InteractiveReviewToolPreview';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
+import { SolutionBelowHero } from '../../../components/shared/SolutionBelowHero';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
@@ -263,12 +263,6 @@ export default function VideoProductionAnimationStudiosPage() {
         description={data.metaDescription}
         canonicalPath="/solutions/industry/video-production-animation-studios"
       />
-      <Head>
-        <meta
-          name="keywords"
-          content="video production software, animation studio tools, video review platform, frame-accurate feedback, video collaboration platform, post-production workflow, video project management, animation production pipeline"
-        />
-      </Head>
       <FAQStructuredData faqs={data.faqs} />
       <BreadcrumbStructuredData
         items={[
@@ -296,6 +290,7 @@ export default function VideoProductionAnimationStudiosPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -304,6 +299,21 @@ export default function VideoProductionAnimationStudiosPage() {
           </div>
         </div>
       </section>
+
+      <SolutionBelowHero>
+        <span>
+          Studios live on precise frames and versioned cuts—Kreatli keeps review, storage, and handoffs aligned with the
+          timeline. Explore{' '}
+          <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+            platform comparisons
+          </NextLink>{' '}
+          or the{' '}
+          <NextLink href="/guides/how-to-review-a-video" className="font-medium text-primary underline-offset-2 hover:underline">
+            video review guide
+          </NextLink>
+          .
+        </span>
+      </SolutionBelowHero>
 
       {/* Visual Workflow Section */}
       {data.workflowSteps && (
@@ -611,6 +621,7 @@ export default function VideoProductionAnimationStudiosPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

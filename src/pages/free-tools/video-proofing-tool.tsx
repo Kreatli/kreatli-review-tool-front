@@ -18,6 +18,7 @@ import { VideoProofingToolFAQ, videoProofingToolFaqs } from '../../components/vi
 import { VideoProofingToolGuide } from '../../components/video-proofing-tool/VideoProofingToolGuide';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function VideoProofingToolPage() {
   useSession();
@@ -30,11 +31,7 @@ export default function VideoProofingToolPage() {
           name="description"
           content="Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video proofing tool, video proofing, proof video online, frame-accurate proofing, video approval, video collaboration, creative proofing"
-        />
-        <meta property="og:title" content="Proof Videos Online – Free Video Proofing Tool | Kreatli" />
+<meta property="og:title" content="Proof Videos Online – Free Video Proofing Tool | Kreatli" />
         <meta
           property="og:description"
           content="Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients. Try free with a 7-day trial."
@@ -83,6 +80,10 @@ export default function VideoProofingToolPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Video Proofing Tool">
+          Video proofing is structured review of motion creative—comments, markup, and approvals on the timeline. A proofing tool keeps rounds disciplined so editors implement feedback once and stakeholders see resolution status.
+        </DefinitionBlock>
         {/* Interactive Tool Preview */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">

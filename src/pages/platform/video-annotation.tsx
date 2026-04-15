@@ -21,6 +21,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -150,6 +151,8 @@ export default function VideoAnnotationPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/video-annotation" />
       {/* How to Use Video Annotation in Kreatli (step-by-step) */}
       <VideoAnnotationGuide stepsSectionTitle="How to Use Video Annotation in Kreatli" />
 

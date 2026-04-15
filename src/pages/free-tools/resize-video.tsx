@@ -16,6 +16,7 @@ import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function ResizeVideoPage() {
   useSession();
@@ -28,11 +29,7 @@ export default function ResizeVideoPage() {
           name="description"
           content="Resize video to custom or preset dimensions in your browser. Runs locally, no upload required. Free to use."
         />
-        <meta
-          name="keywords"
-          content="resize video, video resizer, change video resolution, resize video online, free video resizer, 1080p 720p video, browser video tool"
-        />
-        <meta property="og:title" content="Resize Video Online – Free Video Resizer | Kreatli" />
+<meta property="og:title" content="Resize Video Online – Free Video Resizer | Kreatli" />
         <meta
           property="og:description"
           content="Resize video to custom or preset dimensions in your browser. Runs locally, no upload required. Free to use."
@@ -79,6 +76,10 @@ export default function ResizeVideoPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Resize Video Tool">
+          A resize video tool adjusts dimensions or aspect ratio so exports meet platform specs—social, broadcast, or web—without reopening an edit suite. Use it when you need a quick deliverable size check before upload or handoff.
+        </DefinitionBlock>
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
             <FreeToolsEntitlementSection

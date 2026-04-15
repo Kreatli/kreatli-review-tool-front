@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -138,6 +139,8 @@ export default function ManageVideosPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/manage-videos" />
       {/* Project Management Section */}
       <section className="relative overflow-hidden px-6 pb-16">
         <div className="relative z-10 mx-auto max-w-6xl">

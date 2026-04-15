@@ -7,6 +7,7 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
@@ -60,6 +61,12 @@ export default function CostCalculatorPage() {
           showHeroCta={true}
         />
       </FreeToolsEntitlementSection>
+
+      <DefinitionBlock term="Software Cost Calculator">
+        A software cost calculator totals what you pay across creative, review, storage, and project tools. Finance and
+        production leads use it to spot overlap and model consolidation—replacing several subscriptions with one
+        platform such as Kreatli for review, tasks, and files.
+      </DefinitionBlock>
 
       {/* Benefits Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

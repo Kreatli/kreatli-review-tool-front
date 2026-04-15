@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -139,6 +140,8 @@ export default function HighlightPdfPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/highlight-pdf" />
       <PlatformStepGuide
         stepsSectionTitle="How to highlight a PDF in Kreatli"
         stepsIntro="Follow these steps to upload your PDF, add highlights and annotations, and share for review—all in one place."

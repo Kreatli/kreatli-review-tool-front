@@ -118,6 +118,7 @@ export default function PricingPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -127,6 +128,18 @@ export default function PricingPage() {
         </div>
       </section>
       <TrustBar />
+
+      <section className="px-6 pb-8" aria-label="Customer quote">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.06] to-transparent px-6 py-8 sm:px-10 sm:py-10">
+          <p className="text-center font-sans text-base font-semibold leading-relaxed text-foreground-700 sm:text-lg">
+            &ldquo;We stopped losing feedback across email, Drive, and a separate review app. One workspace for cuts,
+            comments, and approvals made delivery predictable again.&rdquo;
+          </p>
+          <p className="mt-4 text-center text-sm text-foreground-500">
+            Head of post-production, independent studio (verified reference available on request)
+          </p>
+        </div>
+      </section>
 
       {/* Main Pricing Section */}
       <PricingSection
@@ -587,6 +600,7 @@ export default function PricingPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

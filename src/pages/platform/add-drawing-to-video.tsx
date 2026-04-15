@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -134,6 +135,8 @@ export default function AddDrawingToVideoPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/add-drawing-to-video" />
       {/* How to Add Drawing to Video in Kreatli (step-by-step) */}
       <PlatformStepGuide
         stepsSectionTitle="How to Add Drawing to Video in Kreatli"

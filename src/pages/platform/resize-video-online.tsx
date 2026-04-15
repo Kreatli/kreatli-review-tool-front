@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -126,6 +127,8 @@ export default function ResizeVideoOnlinePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/resize-video-online" />
       {/* Inline Resize Video Tool Section */}
       <section className="relative overflow-hidden px-6 pb-12">
         <div className="relative z-10 mx-auto max-w-6xl">

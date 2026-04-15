@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -139,6 +140,8 @@ export default function VideoFeedbackPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/video-feedback" />
       <PlatformStepGuide
         stepsSectionTitle="How to give video feedback in Kreatli"
         stepsIntro="Follow these steps to add frame-accurate video feedback to your videos—from upload to share and approval."

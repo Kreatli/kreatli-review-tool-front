@@ -21,6 +21,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -140,6 +141,8 @@ export default function DrawOnAVideoPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/draw-on-a-video" />
       {/* How to Draw on a Video in Kreatli (step-by-step) */}
       <PlatformStepGuide
         stepsSectionTitle="How to Draw on a Video in Kreatli"

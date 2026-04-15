@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -129,6 +130,8 @@ export default function CloudFileTransferPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/cloud-file-transfer" />
       {/* How Cloud File Transfer Works in Kreatli (step-by-step) */}
       <PlatformStepGuide
         stepsSectionTitle="How Cloud File Transfer Works in Kreatli"

@@ -61,6 +61,9 @@ export const HeroSection = () => {
                 Zero Chaos.
               </span>
             </h1>
+            <p className="max-w-xl text-base font-medium leading-relaxed text-foreground-600 sm:text-lg">
+              Video collaboration and review platform for creative teams
+            </p>
 
             <ul className="flex flex-col gap-3.5">
               {VALUE_BULLETS.map((item) => (

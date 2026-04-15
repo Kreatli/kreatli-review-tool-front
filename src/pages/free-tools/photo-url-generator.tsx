@@ -18,6 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -64,11 +65,7 @@ export default function PhotoUrlGeneratorPage() {
           name="description"
           content="Generate a shareable URL for your photo. Create a review link, collect feedback, and track versions. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="photo URL generator, photo to link, shareable photo link, photo review link, share photo online, photo url maker, photo collaboration, client review"
-        />
-        <meta property="og:title" content="Turn a Photo into a URL – Free Photo Link Generator | Kreatli" />
+<meta property="og:title" content="Turn a Photo into a URL – Free Photo Link Generator | Kreatli" />
         <meta
           property="og:description"
           content="Generate a shareable URL for your photo. Create a review link, collect feedback, and track versions. Try free with a 7-day trial."
@@ -127,6 +124,10 @@ export default function PhotoUrlGeneratorPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Photo URL Generator">
+          A photo URL generator produces a link to a photography or still asset so clients and retouchers can review selections or edits online. It keeps large raw or high-res files out of inboxes while preserving a clear review trail.
+        </DefinitionBlock>
         {/* How to turn your photo into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your photo into a link in Kreatli"

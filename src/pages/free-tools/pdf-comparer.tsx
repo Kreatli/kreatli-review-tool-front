@@ -18,6 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -64,11 +65,7 @@ export default function PdfComparerPage() {
           name="description"
           content="Compare two PDF versions side by side with comments and annotations. Spot revisions instantly. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF comparer, compare PDFs online, compare two PDFs, PDF comparison tool, PDF diff, compare PDF versions, PDF review, PDF collaboration"
-        />
-        <meta property="og:title" content="Compare PDFs Side by Side – Free PDF Comparer | Kreatli" />
+<meta property="og:title" content="Compare PDFs Side by Side – Free PDF Comparer | Kreatli" />
         <meta
           property="og:description"
           content="Compare two PDF versions side by side with comments and annotations. Spot revisions instantly. Try free with a 7-day trial."
@@ -127,6 +124,10 @@ export default function PdfComparerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="PDF Comparer">
+          A PDF comparer surfaces differences between two PDF versions—copy, layout, or annotations—so reviewers can approve changes with confidence. It complements side-by-side review when you need to validate legal or brand-controlled documents.
+        </DefinitionBlock>
         {/* How to compare PDF files guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to compare PDF files in Kreatli"

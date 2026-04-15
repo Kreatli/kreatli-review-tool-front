@@ -31,11 +31,7 @@ export default function PdfAnnotatorPage() {
           name="description"
           content="Add pinned comments, highlights, drawings, and markup to PDFs. Share annotated files with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF annotator, annotate PDF online, PDF annotation tool, comment on PDF, draw on PDF, PDF markup, PDF feedback, PDF collaboration"
-        />
-        <meta property="og:title" content="Annotate PDFs Online – Free PDF Annotator | Kreatli" />
+<meta property="og:title" content="Annotate PDFs Online – Free PDF Annotator | Kreatli" />
         <meta
           property="og:description"
           content="Add pinned comments, highlights, drawings, and markup to PDFs. Share annotated files with clients. Try free with a 7-day trial."

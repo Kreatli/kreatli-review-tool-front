@@ -31,11 +31,7 @@ export default function ImageReviewerPage() {
           name="description"
           content="Review images with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="image reviewer, online image review, image review tool, review image online, image approval software, image collaboration, comment on image, annotate image"
-        />
-        <meta property="og:title" content="Review Images Online – Free Image Reviewer | Kreatli" />
+<meta property="og:title" content="Review Images Online – Free Image Reviewer | Kreatli" />
         <meta
           property="og:description"
           content="Review images with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."

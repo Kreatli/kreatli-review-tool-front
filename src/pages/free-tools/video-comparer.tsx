@@ -65,11 +65,7 @@ export default function VideoComparerPage() {
           name="description"
           content="Compare two video versions side by side with frame-accurate comments and annotations. Spot changes instantly. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video comparer, compare videos online, compare two videos, video comparison tool, video diff, compare video versions, video review, video collaboration"
-        />
-        <meta property="og:title" content="Compare Videos Side by Side – Free Video Comparer | Kreatli" />
+<meta property="og:title" content="Compare Videos Side by Side – Free Video Comparer | Kreatli" />
         <meta
           property="og:description"
           content="Compare two video versions side by side with frame-accurate comments and annotations. Spot changes instantly. Try free with a 7-day trial."

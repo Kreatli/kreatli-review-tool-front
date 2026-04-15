@@ -13,7 +13,12 @@ import { HubPageIntro } from '../components/shared/HubPageIntro';
 import { SeoHead } from '../components/shared/SeoHead';
 import { TrustBar } from '../components/shared/TrustBar';
 import { Icon, IconType } from '../components/various/Icon';
-import { PLATFORM_FILTER_OPTIONS, PLATFORM_PAGES, type PlatformFilterTag } from '../data/platform-pages';
+import {
+  PLATFORM_FILTER_DESCRIPTIONS,
+  PLATFORM_FILTER_OPTIONS,
+  PLATFORM_PAGES,
+  type PlatformFilterTag,
+} from '../data/platform-pages';
 import { useSession } from '../hooks/useSession';
 
 const additionalFeatures = [
@@ -275,6 +280,13 @@ export default function PlatformPage() {
               })}
             </div>
           </div>
+
+          {selectedFilter !== 'All' && (
+            <p className="mx-auto max-w-3xl px-2 text-center text-sm leading-relaxed text-foreground-600 sm:text-base">
+              {PLATFORM_FILTER_DESCRIPTIONS[selectedFilter]}
+            </p>
+          )}
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredPages.length === 0 ? (
               <p className="col-span-full text-center text-foreground-500">No features match this filter.</p>

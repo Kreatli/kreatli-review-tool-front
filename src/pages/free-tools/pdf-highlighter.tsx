@@ -30,11 +30,7 @@ export default function PdfHighlighterPage() {
           name="description"
           content="Highlight text and regions in PDFs with pinned markup. Share highlighted files with your team. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF highlighter, highlight PDF online, PDF highlight tool, highlight text in PDF, PDF markup, PDF feedback, PDF collaboration"
-        />
-        <meta property="og:title" content="Highlight PDFs Online – Free PDF Highlighter | Kreatli" />
+<meta property="og:title" content="Highlight PDFs Online – Free PDF Highlighter | Kreatli" />
         <meta
           property="og:description"
           content="Highlight text and regions in PDFs with pinned markup. Share highlighted files with your team. Try free with a 7-day trial."

@@ -127,6 +127,15 @@ export default function HowToAnnotateAPictureGuidePage() {
             exact location you mean, and paired with clear intent—so revisions don’t bounce between screenshots and long
             message threads.
           </p>
+          <p>
+            This guide is written for <strong>designed pictures</strong>—ads, social layouts, posters, and UI-forward
+            graphics—where typography and composition drive most of the feedback. For retouching-heavy photography
+            stills, use the{' '}
+            <NextLink href="/guides/how-to-annotate-a-photo" className="font-medium text-primary underline-offset-2 hover:underline">
+              photo annotation guide
+            </NextLink>{' '}
+            instead.
+          </p>
 
           <KeyTakeaways
             items={[

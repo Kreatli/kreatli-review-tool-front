@@ -25,6 +25,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -140,6 +141,8 @@ export default function ImageToLinkPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/image-to-link" />
       <PlatformStepGuide
         stepsSectionTitle="How to turn your image into a link in Kreatli"
         stepsIntro="Follow these steps to upload your image, generate a shareable link, and collect feedback—recipients do not need a Kreatli account."

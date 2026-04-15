@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -141,6 +142,8 @@ export default function VideoVersioningPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/video-versioning" />
       <PlatformStepGuide
         stepsSectionTitle="How to use video versioning in Kreatli"
         stepsIntro="Follow these steps to upload video versions, compare them side by side, and upload new versions as your cut evolves."

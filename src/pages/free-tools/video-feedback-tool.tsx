@@ -32,11 +32,7 @@ export default function VideoFeedbackToolPage() {
           name="description"
           content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video feedback tool, video review tool, video annotation, frame-accurate feedback, video collaboration, video proofing, video markup, comment on video, review video online"
-        />
-        <meta property="og:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
+<meta property="og:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
         <meta
           property="og:description"
           content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."

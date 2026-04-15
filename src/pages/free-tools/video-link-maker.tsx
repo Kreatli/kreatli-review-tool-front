@@ -17,6 +17,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -63,11 +64,7 @@ export default function VideoLinkMakerPage() {
           name="description"
           content="Create secure, shareable video review links in seconds. Recipients watch, comment, and approve online. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video link maker, make video link, shareable video link, video review link, share video online, video link generator, video collaboration, client review"
-        />
-        <meta property="og:title" content="Create Video Review Links – Free Video Link Maker | Kreatli" />
+<meta property="og:title" content="Create Video Review Links – Free Video Link Maker | Kreatli" />
         <meta
           property="og:description"
           content="Create secure, shareable video review links in seconds. Recipients watch, comment, and approve online. Try free with a 7-day trial."
@@ -126,6 +123,10 @@ export default function VideoLinkMakerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Video Link Maker">
+          A video link maker creates a URL to a video file so reviewers can stream and comment without downloading. Agencies use it to share cuts, alt versions, and finals while keeping feedback frame-accurate.
+        </DefinitionBlock>
         {/* How to generate video links guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to Generate Video Links in Kreatli"

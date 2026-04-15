@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -142,6 +143,8 @@ export default function DrawOnDocumentsPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/draw-on-documents" />
       <PlatformStepGuide
         stepsSectionTitle="How to draw on documents in Kreatli"
         stepsIntro="Follow these steps to upload your document, draw directly on it, and share for review—all in one place."

@@ -125,6 +125,14 @@ export default function HowToCommentAPhotoGuidePage() {
             you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so “this area”
             is never vague and revisions don’t bounce between email threads and screenshots.
           </p>
+          <p>
+            Photo comments usually cover <strong>tonal, textural, or selection decisions</strong> on captured imagery.
+            When you are critiquing designed comps instead, use the{' '}
+            <NextLink href="/guides/how-to-comment-a-picture" className="font-medium text-primary underline-offset-2 hover:underline">
+              picture commenting guide
+            </NextLink>{' '}
+            so the examples match layout-heavy work.
+          </p>
 
           <KeyTakeaways
             items={[

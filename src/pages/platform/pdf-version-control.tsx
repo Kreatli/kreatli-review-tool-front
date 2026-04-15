@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -144,6 +145,8 @@ export default function PdfVersionControlPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/pdf-version-control" />
       <PlatformStepGuide
         stepsSectionTitle="How to use PDF version control in Kreatli"
         stepsIntro="Follow these steps to upload your first PDF, add new versions from the file menu, switch versions in the viewer, and compare two PDF versions side by side."

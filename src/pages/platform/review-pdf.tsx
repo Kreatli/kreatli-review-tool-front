@@ -25,6 +25,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -146,6 +147,8 @@ export default function ReviewPdfPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/review-pdf" />
       <PlatformStepGuide
         stepsSectionTitle="How to review a PDF in Kreatli"
         stepsIntro="Follow these steps to upload your PDF, collect feedback, and track approvals—all in one place."
