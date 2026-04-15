@@ -13,6 +13,7 @@ import { HowItWorksSection } from '../HowItWorks';
 import { KreatliForSection } from '../KreatliFor';
 import { PricingSection } from '../PricingSection';
 import { ResourcesSection } from '../Resources';
+import { TrustBar } from '../../shared/TrustBar';
 
 interface Props {
   comparisons?: ISbStoryData<PageStoryblok>[];
@@ -23,6 +24,7 @@ export const Home = ({ comparisons }: Props) => {
     <main className="w-full">
       <HeroSection />
       <HeroVideoSection />
+      <TrustBar />
       <FeaturesSection />
       <CostCalculatorSection />
       <KreatliForSection />

@@ -385,6 +385,18 @@ export default function VideoFeedbackPage() {
         description="Explore other Kreatli platform features to streamline your review and collaboration workflow."
       />
 
+      <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+        <p className="text-base text-foreground-500">
+          Wondering how Kreatli compares?{' '}
+          <NextLink
+            href="/comparisons/kreatli-vs-frameio"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            See Kreatli vs Frame.io for video feedback →
+          </NextLink>
+        </p>
+      </div>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Give Video Feedback with Clarity?"

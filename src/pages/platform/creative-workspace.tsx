@@ -343,6 +343,18 @@ export default function CreativeWorkspacePage() {
         description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />
 
+      <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+        <p className="text-base text-foreground-500">
+          Wondering how Kreatli compares?{' '}
+          <NextLink
+            href="/comparisons/kreatli-vs-vimeo"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            See Kreatli vs Vimeo for video collaboration →
+          </NextLink>
+        </p>
+      </div>
+
       {/* CTA Section */}
       <CTASection
         title="Ready to Unify Your Video Collaboration Workspace?"

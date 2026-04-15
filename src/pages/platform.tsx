@@ -10,6 +10,7 @@ import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { SeoHead } from '../components/shared/SeoHead';
+import { TrustBar } from '../components/shared/TrustBar';
 import { Icon, IconType } from '../components/various/Icon';
 import { PLATFORM_FILTER_OPTIONS, PLATFORM_PAGES, type PlatformFilterTag } from '../data/platform-pages';
 import { useSession } from '../hooks/useSession';
@@ -174,6 +175,43 @@ export default function PlatformPage() {
           </div>
         </div>
       </section>
+      <TrustBar />
+      {/* Editorial intro */}
+      <section className="px-6 pb-4">
+        <div className="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-foreground-500">
+          <p>
+            Kreatli replaces the patchwork of Google Drive, Frame.io, Slack, and standalone project management tools
+            with a single workspace purpose-built for video production. Every feature — from frame-accurate review to
+            board-driven task management — is designed around the way creative teams actually ship work.
+          </p>
+          <p>
+            The core workflow is simple: upload files, invite your team and clients, collect feedback pinned to exact
+            frames or page locations, compare versions side by side, track deliverables through customizable project
+            stages, and get approvals — all without leaving the platform. Guest review links let clients participate
+            with no signup, while encryption and access controls keep sensitive assets safe.
+          </p>
+          <p>
+            Below you will find every platform feature organized by category. Whether you are looking for{' '}
+            <NextLink href="/platform/video-annotation" className="font-medium text-primary underline-offset-2 hover:underline">
+              video annotation
+            </NextLink>
+            ,{' '}
+            <NextLink href="/platform/review-approval" className="font-medium text-primary underline-offset-2 hover:underline">
+              review &amp; approval workflows
+            </NextLink>
+            ,{' '}
+            <NextLink href="/platform/secure-asset-storage" className="font-medium text-primary underline-offset-2 hover:underline">
+              secure asset storage
+            </NextLink>
+            , or{' '}
+            <NextLink href="/platform/project-orchestration" className="font-medium text-primary underline-offset-2 hover:underline">
+              project orchestration
+            </NextLink>
+            , each page explains how that feature works and how it fits into your production workflow.
+          </p>
+        </div>
+      </section>
+
       {/* Platform Features Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">

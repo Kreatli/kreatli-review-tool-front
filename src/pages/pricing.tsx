@@ -9,6 +9,7 @@ import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { SeoHead } from '../components/shared/SeoHead';
+import { TrustBar } from '../components/shared/TrustBar';
 import { Icon } from '../components/various/Icon';
 import { useSession } from '../hooks/useSession';
 
@@ -125,6 +126,7 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+      <TrustBar />
 
       {/* Main Pricing Section */}
       <PricingSection

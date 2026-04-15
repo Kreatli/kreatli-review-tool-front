@@ -387,6 +387,15 @@ export default function HelpPage() {
             Find answers to frequently asked questions about Kreatli's video production platform, features, pricing, and
             more.
           </p>
+          <p className="mx-auto max-w-2xl text-center text-base text-foreground-500">
+            Find answers to common questions about Kreatli&apos;s features, billing, account settings, and creative
+            production workflows. Browse by category or search for a specific topic. Can&apos;t find what you need?
+            Contact our support team at{' '}
+            <a href="mailto:support@kreatli.com" className="font-medium text-primary underline-offset-2 hover:underline">
+              support@kreatli.com
+            </a>
+            .
+          </p>
           <div className="mx-auto mt-6 w-full max-w-2xl">
             <Input
               placeholder="Search for answers..."

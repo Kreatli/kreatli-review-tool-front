@@ -44,6 +44,15 @@ export default function ComparisonsPage({ stories }: Props) {
             Compare Kreatli with other creative production and media review platforms.
           </p>
         </div>
+        <div className="mx-auto max-w-3xl space-y-4 py-8 text-base leading-relaxed text-foreground-500">
+          <p>
+            Choosing the right platform for video review, creative collaboration, and production management is easier
+            when you see the features side by side. Each comparison below breaks down how Kreatli stacks up against
+            popular alternatives like Frame.io, Vimeo, and other review tools — covering pricing, feature sets,
+            collaboration workflows, and where each platform fits best. If you are evaluating options for your team,
+            start here.
+          </p>
+        </div>
         <div className="pb-16 backdrop-blur-lg">
           <div className="mx-auto max-w-6xl pt-6">
             <BlogArticles articles={stories} />

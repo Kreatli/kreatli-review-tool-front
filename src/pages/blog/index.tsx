@@ -44,6 +44,15 @@ export default function Blog({ stories }: Props) {
             and improve collaboration.
           </p>
         </div>
+        <div className="mx-auto max-w-3xl space-y-4 pb-8 text-base leading-relaxed text-foreground-500">
+          <p>
+            The Kreatli blog covers creative production workflows, video collaboration best practices, and practical
+            advice for agencies, studios, and in-house teams. Articles explore topics like scaling creative operations,
+            managing multi-channel campaigns, optimizing post-production handoffs, and choosing the right tools for
+            your team. Whether you produce video, design, or documents, you will find actionable strategies you can
+            apply right away.
+          </p>
+        </div>
         <div className="backdrop-blur-lg">
           <div className="mx-auto max-w-6xl pt-6">
             <BlogArticles articles={stories} />

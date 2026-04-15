@@ -121,6 +121,52 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
+      {/* Editorial intro */}
+      <section className="px-6 pb-4">
+        <div className="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-foreground-500">
+          <p>
+            Kreatli offers free browser-based tools built for video editors, creative teams, agencies, and freelancers
+            who review, annotate, and share media files every day. Use the review and annotation tools with a 7-day free
+            trial, or try the calculators and resizers at no cost with no account required.
+          </p>
+          <p>
+            Annotate videos with{' '}
+            <NextLink href="/free-tools/video-annotator" className="font-medium text-primary underline-offset-2 hover:underline">
+              frame-accurate markup
+            </NextLink>
+            , review PDFs with{' '}
+            <NextLink href="/free-tools/pdf-reviewer" className="font-medium text-primary underline-offset-2 hover:underline">
+              pinned comments
+            </NextLink>
+            , or compare two versions of an image{' '}
+            <NextLink href="/free-tools/image-comparer" className="font-medium text-primary underline-offset-2 hover:underline">
+              side by side
+            </NextLink>
+            . Each tool is designed to collect clear feedback and reduce revision cycles — whether you are working
+            solo or sharing review links with clients.
+          </p>
+          <p>
+            Planning a social campaign? Check your{' '}
+            <NextLink href="/safe-zone-checker" className="font-medium text-primary underline-offset-2 hover:underline">
+              safe zones for Reels, TikTok, and Shorts
+            </NextLink>
+            , resize your{' '}
+            <NextLink href="/free-tools/youtube-banner-resizer" className="font-medium text-primary underline-offset-2 hover:underline">
+              YouTube banner
+            </NextLink>
+            , or estimate transfer times with the{' '}
+            <NextLink href="/free-tools/data-transfer-calculator" className="font-medium text-primary underline-offset-2 hover:underline">
+              data transfer calculator
+            </NextLink>
+            . Need the full platform? All tools are included with every{' '}
+            <NextLink href="/pricing" className="font-medium text-primary underline-offset-2 hover:underline">
+              Kreatli plan
+            </NextLink>
+            .
+          </p>
+        </div>
+      </section>
+
       {/* Free Tools Section with filter */}
       <section className="relative overflow-hidden px-6 pb-16 pt-6 backdrop-blur-lg sm:pt-8">
         <div className="relative z-10 mx-auto max-w-6xl">

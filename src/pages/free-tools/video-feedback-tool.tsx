@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -110,6 +111,18 @@ export default function VideoFeedbackToolPage() {
           title="More Resources"
           description="Learn more about video feedback workflows, annotation tools, and team collaboration."
         />
+
+        <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+          <p className="text-base text-foreground-500">
+            Wondering how Kreatli compares?{' '}
+            <NextLink
+              href="/comparisons/kreatli-vs-frameio"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              See how Kreatli compares to Frame.io →
+            </NextLink>
+          </p>
+        </div>
 
         {/* CTA Section */}
         <CTASection
