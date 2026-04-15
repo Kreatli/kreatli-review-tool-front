@@ -22,6 +22,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -136,7 +137,7 @@ export default function ReviewApprovalPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -146,6 +147,8 @@ export default function ReviewApprovalPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/review-approval" />
       {/* Frame-Accurate Revisions Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
@@ -341,6 +344,18 @@ export default function ReviewApprovalPage() {
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />
+
+      <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+        <p className="text-base text-foreground-500">
+          Wondering how Kreatli compares?{' '}
+          <NextLink
+            href="/comparisons/kreatli-vs-frameio"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            See Kreatli vs Frame.io for video review →
+          </NextLink>
+        </p>
+      </div>
 
       {/* CTA Section */}
       <CTASection

@@ -21,6 +21,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -82,29 +83,29 @@ export default function VideoAnnotationPage() {
   return (
     <>
       <Head>
-        <title>Frame-Accurate Video Annotation | Kreatli</title>
+        <title>Video Annotation for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Add frame-accurate annotations, drawings, and markup directly to video frames. Pin comments to exact timestamps and collaborate with precise visual feedback. Perfect for video teams."
+          content="Frame-accurate video annotation with drawings, markup, and timestamped comments. Built for video production team workflows."
         />
         <link rel="canonical" href="https://kreatli.com/platform/video-annotation" />
         <meta property="og:url" content="https://kreatli.com/platform/video-annotation" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Video Annotation – Frame-Accurate Video Markup & Feedback" />
+        <meta property="og:title" content="Video Annotation for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Add frame-accurate annotations, drawings, and markup directly to video frames. Collaborate with precise visual feedback designed for video teams."
+          content="Frame-accurate video annotation with drawings, markup, and timestamped comments. Built for video production team workflows."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Video Annotation – Frame-Accurate Video Markup & Feedback" />
+        <meta property="og:image:alt" content="Video Annotation for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Video Annotation – Frame-Accurate Video Markup & Feedback" />
+        <meta name="twitter:title" content="Video Annotation for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Add frame-accurate annotations, drawings, and markup directly to video frames. Collaborate with precise visual feedback designed for video teams."
+          content="Frame-accurate video annotation with drawings, markup, and timestamped comments. Built for video production team workflows."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -138,7 +139,7 @@ export default function VideoAnnotationPage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -150,6 +151,8 @@ export default function VideoAnnotationPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/video-annotation" />
       {/* How to Use Video Annotation in Kreatli (step-by-step) */}
       <VideoAnnotationGuide stepsSectionTitle="How to Use Video Annotation in Kreatli" />
 
@@ -429,6 +432,18 @@ export default function VideoAnnotationPage() {
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />
+
+      <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+        <p className="text-base text-foreground-500">
+          Wondering how Kreatli compares?{' '}
+          <NextLink
+            href="/comparisons/kreatli-vs-frameio"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            See Kreatli vs Frame.io for video annotation →
+          </NextLink>
+        </p>
+      </div>
 
       {/* CTA Section */}
       <CTASection

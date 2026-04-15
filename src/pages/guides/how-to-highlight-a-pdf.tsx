@@ -9,6 +9,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -18,9 +19,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Highlight a PDF: Clear, Context-Pinned Feedback for Faster Reviews';
+const DOCUMENT_TITLE = 'How to Highlight a PDF: Flag Key Sections for Faster Review';
 const META_DESCRIPTION =
-  'Learn how to highlight a PDF with purpose: call out exact text and visual areas, add comments with context, and keep revisions organized across versions.';
+  'Learn how to highlight a PDF to flag specific text and regions for review — add context with comments and keep highlights organized across versions.';
 const PUBLISH_DATE = '2026-04-10 10:00';
 const READ_TIME = '9';
 const CANONICAL_PATH = '/guides/how-to-highlight-a-pdf';
@@ -124,6 +125,15 @@ export default function HowToHighlightAPdfGuidePage() {
             should mark the exact text or visual area that needs attention, then pair with a note that explains what to
             change. That combination keeps review cycles fast and avoids vague “please revise this” threads.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Highlight specific text or regions rather than entire pages to keep feedback focused.',
+              'Pair each highlight with a comment explaining what needs to change.',
+              "Use different colors or labels to separate categories like 'factual error' vs 'style suggestion.'",
+              'Review highlights across versions to confirm flagged sections were addressed.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -236,7 +246,7 @@ export default function HowToHighlightAPdfGuidePage() {
           <p>
             The interactive preview below mirrors a simple PDF highlight flow with location-pinned feedback. When you
             are ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

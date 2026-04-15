@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -133,6 +134,15 @@ export default function HowToProofreadAPdfGuidePage() {
             final, not “final-ish.”
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Run multiple focused passes (spelling, layout, brand compliance) rather than one catch-all scan.',
+              'Pin corrections to exact locations on the page so the designer can find them instantly.',
+              'Use a checklist to ensure every required check is completed before sign-off.',
+              'Compare the corrected version against the marked-up original to verify all fixes were applied.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             In creative workflows, proofreading happens on an exported PDF that represents what will ship. Comments
@@ -243,7 +253,7 @@ export default function HowToProofreadAPdfGuidePage() {
           <p>
             The interactive preview below mirrors leaving pinned feedback on a PDF during proofing. When you are ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -126,6 +127,15 @@ export default function HowToShareVideoGuidePage() {
             organized.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Choose between a watch link (stream only) and a file link (allows download) based on your use case.',
+              'Set expiration dates and password protection on links containing sensitive or pre-release content.',
+              'Use a review-ready link when you need feedback, comments, or approvals tied to the video.',
+              'Test the link in an incognito window before sending to confirm permissions work as expected.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>People say “share video” but mean different things:</p>
           <ul>
@@ -237,7 +247,7 @@ export default function HowToShareVideoGuidePage() {
             The interactive preview below mirrors a simple “share video by link” flow: add recipients, copy a share URL,
             and think through who should have access. When you are ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or book a{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               demo
             </a>
             .

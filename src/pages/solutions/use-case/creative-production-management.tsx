@@ -5,14 +5,18 @@ import React from 'react';
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../../components/shared/FAQStructuredData';
+import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
+import { SolutionBelowHero } from '../../../components/shared/SolutionBelowHero';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
 
 const data = {
-  title: 'Video Collaboration & Review',
+  title: 'Creative Production Management',
   intro:
     'Manage video work around the files themselves. Every file, version, comment, and approval connects directly to collaboration status.',
   metaDescription:
@@ -183,6 +187,18 @@ export default function CreativeProductionManagementPage() {
         description={data.metaDescription}
         canonicalPath="/solutions/use-case/creative-production-management"
       />
+      <FAQStructuredData faqs={data.faqs} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Creative Production Management', url: '/solutions/use-case/creative-production-management' },
+        ]}
+      />
+      <HowToStructuredData
+        name="How to manage creative production with Kreatli"
+        description={data.howItWorks.description}
+        steps={data.howItWorks.steps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <Header />
       <Decorations />
       {/* Hero Section */}
@@ -198,6 +214,7 @@ export default function CreativeProductionManagementPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -206,6 +223,25 @@ export default function CreativeProductionManagementPage() {
           </div>
         </div>
       </section>
+
+      <SolutionBelowHero>
+        <span>
+          Production management in Kreatli stays anchored to files and versions—not disconnected tickets. Pair this
+          page with{' '}
+          <NextLink href="/platform/project-orchestration" className="font-medium text-primary underline-offset-2 hover:underline">
+            project orchestration
+          </NextLink>{' '}
+          and the{' '}
+          <NextLink href="/guides/how-to-manage-videos" className="font-medium text-primary underline-offset-2 hover:underline">
+            video organization guide
+          </NextLink>
+          ; see{' '}
+          <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+            comparisons
+          </NextLink>{' '}
+          when you are evaluating tools.
+        </span>
+      </SolutionBelowHero>
 
       {/* How It Works Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -394,6 +430,7 @@ export default function CreativeProductionManagementPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

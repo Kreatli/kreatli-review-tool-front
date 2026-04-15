@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -17,9 +18,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Comment a Photo: Location-Pinned Feedback for Faster Revisions';
+const DOCUMENT_TITLE = 'How to Comment on a Photo: Location-Pinned Notes for Faster Edits';
 const META_DESCRIPTION =
-  'Learn how to comment a photo with location-pinned notes, clear context, and version-aware review—so teams can iterate without messy email threads.';
+  'Learn how to leave clear, location-pinned comments on photos so retouchers and photographers can act on feedback without guesswork.';
 const PUBLISH_DATE = '2026-04-09 00:20';
 const READ_TIME = '7';
 const CANONICAL_PATH = '/guides/how-to-comment-a-photo';
@@ -124,6 +125,23 @@ export default function HowToCommentAPhotoGuidePage() {
             you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so “this area”
             is never vague and revisions don’t bounce between email threads and screenshots.
           </p>
+          <p>
+            Photo comments usually cover <strong>tonal, textural, or selection decisions</strong> on captured imagery.
+            When you are critiquing designed comps instead, use the{' '}
+            <NextLink href="/guides/how-to-comment-a-picture" className="font-medium text-primary underline-offset-2 hover:underline">
+              picture commenting guide
+            </NextLink>{' '}
+            so the examples match layout-heavy work.
+          </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin comments to the exact area of the photo so retouchers know precisely where to work.',
+              "Use measurable language — 'brighten exposure +0.5 stop' beats 'make it pop.'",
+              'Keep one note per issue to avoid bundling unrelated changes.',
+              'Check the latest version before commenting to avoid duplicate feedback.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -236,7 +254,7 @@ export default function HowToCommentAPhotoGuidePage() {
           <p>
             The interactive preview below mirrors a simple image review flow: upload a photo, pin a comment, and add a
             note with clear intent. When you are ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

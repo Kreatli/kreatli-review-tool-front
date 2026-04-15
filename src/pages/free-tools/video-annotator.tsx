@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -7,6 +8,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -25,28 +27,24 @@ export default function VideoAnnotatorPage() {
   return (
     <>
       <Head>
-        <title>Video Annotator - Free Online Tool | Kreatli</title>
+        <title>Annotate Videos Online – Free Video Annotator | Kreatli</title>
         <meta
           name="description"
-          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video annotator, annotate video online, video annotation tool, frame-accurate annotation, draw on video, video markup, video feedback, video collaboration"
-        />
-        <meta property="og:title" content="Video Annotator - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Annotate Videos Online – Free Video Annotator | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-annotator" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Annotator - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Annotate Videos Online – Free Video Annotator | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video annotator for creative teams. Add frame-accurate comments, drawings, and markup to video. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-annotator" />
@@ -93,6 +91,10 @@ export default function VideoAnnotatorPage() {
           </div>
         </section>
 
+        <DefinitionBlock term="Video Annotator">
+          A video annotator is a tool for adding comments, drawings, and markup to specific frames in a video. Annotations are pinned to exact timestamps, letting editors and reviewers communicate visually rather than describing changes in text. Video annotators are essential for production teams that need frame-accurate feedback.
+        </DefinitionBlock>
+
         <VideoAnnotatorGuide />
 
         {/* Related tools */}
@@ -107,6 +109,18 @@ export default function VideoAnnotatorPage() {
           description="Explore other Kreatli platform features for video annotation, review, and collaboration."
         />
 
+        <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+          <p className="text-base text-foreground-500">
+            Wondering how Kreatli compares?{' '}
+            <NextLink
+              href="/comparisons/best-video-review-platforms"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              See the best video review platforms for creative teams →
+            </NextLink>
+          </p>
+        </div>
+
         {/* CTA Section */}
         <CTASection
           title="Ready to annotate videos with your team?"
@@ -119,4 +133,4 @@ export default function VideoAnnotatorPage() {
       <SignUpModal />
     </>
   );
-};
+}

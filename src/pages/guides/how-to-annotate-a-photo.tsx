@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -17,9 +18,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Annotate a Photo: Location-Pinned Notes for Faster Retouching and Approval';
+const DOCUMENT_TITLE = 'How to Annotate a Photo: Retouching Notes That Editors Can Act On';
 const META_DESCRIPTION =
-  'Learn how to annotate a photo with location-pinned comments and markup so retouching notes are unambiguous, revisions move faster, and approvals stay organized.';
+  'Learn how to annotate photos for retouching — pin comments to exact areas on headshots, product shots, and real estate photos so editors know exactly what to fix.';
 const PUBLISH_DATE = '2026-04-11 01:20';
 const READ_TIME = '8';
 const CANONICAL_PATH = '/guides/how-to-annotate-a-photo';
@@ -126,6 +127,24 @@ export default function HowToAnnotateAPhotoGuidePage() {
             image you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so
             “this corner” is never vague and revisions don’t bounce between email threads and screenshots.
           </p>
+          <p>
+            This guide focuses on <strong>photography deliverables</strong>—portraits, product shots, real-estate
+            frames, and catalog stills—where exposure, texture, and retouching notes dominate. If you are marking up
+            designed graphics or ad layouts, start with the{' '}
+            <NextLink href="/guides/how-to-annotate-a-picture" className="font-medium text-primary underline-offset-2 hover:underline">
+              picture annotation guide
+            </NextLink>
+            .
+          </p>
+
+          <KeyTakeaways
+            items={[
+              'Anchor retouching notes to the exact area of the photo so direction is precise.',
+              'Use highlights and shapes for spatial feedback; use text notes for tonal or color changes.',
+              'Keep one annotation per issue \u2014 bundled notes are harder to track and resolve.',
+              'Compare the annotated version against the original to confirm changes were applied.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -245,7 +264,7 @@ export default function HowToAnnotateAPhotoGuidePage() {
           <p>
             The interactive preview below mirrors a simple photo annotation flow. When you’re ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -17,9 +18,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Annotate a Picture: Mark Up What You Mean and Keep Feedback Organized';
+const DOCUMENT_TITLE = 'How to Annotate a Picture: Clear Markup for Design and Creative Feedback';
 const META_DESCRIPTION =
-  'Learn how to annotate a picture with location-pinned comments and markup so feedback is clear, revisions move faster, and approvals stay organized.';
+  'Learn how to annotate pictures in design reviews — pin feedback to exact spots on illustrations, social graphics, and ad creatives so revisions land right the first time.';
 const PUBLISH_DATE = '2026-04-11 01:30';
 const READ_TIME = '8';
 const CANONICAL_PATH = '/guides/how-to-annotate-a-picture';
@@ -126,6 +127,24 @@ export default function HowToAnnotateAPictureGuidePage() {
             exact location you mean, and paired with clear intent—so revisions don’t bounce between screenshots and long
             message threads.
           </p>
+          <p>
+            This guide is written for <strong>designed pictures</strong>—ads, social layouts, posters, and UI-forward
+            graphics—where typography and composition drive most of the feedback. For retouching-heavy photography
+            stills, use the{' '}
+            <NextLink href="/guides/how-to-annotate-a-photo" className="font-medium text-primary underline-offset-2 hover:underline">
+              photo annotation guide
+            </NextLink>{' '}
+            instead.
+          </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin feedback directly on the picture rather than describing locations in a separate message.',
+              'Use the lightest markup that makes the issue clear \u2014 a simple arrow often beats a paragraph.',
+              'Write one annotation per change to make resolution trackable.',
+              'Resolve each annotation after the designer addresses it so remaining work is visible.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -238,7 +257,7 @@ export default function HowToAnnotateAPictureGuidePage() {
           <p>
             The interactive preview below mirrors a simple picture annotation flow. When you’re ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

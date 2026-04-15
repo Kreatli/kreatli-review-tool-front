@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -128,6 +129,15 @@ export default function HowToAnnotateADocumentGuidePage() {
             (highlights, arrows, boxes) so reviewers and editors can act quickly without guessing.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Pin comments to specific locations on the page so reviewers know exactly what you mean.',
+              'Use markup (arrows, highlights, boxes) for spatial feedback and text notes for content-level changes.',
+              'Keep one comment per issue — bundling multiple changes into one note slows down resolution.',
+              'Resolve comments as they are addressed so the team can see remaining work at a glance.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             In a review workflow, document annotation means your feedback is anchored to a specific spot (text, page, or
@@ -245,7 +255,7 @@ export default function HowToAnnotateADocumentGuidePage() {
           <p>
             The interactive preview below mirrors a basic document annotation flow. When you’re ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

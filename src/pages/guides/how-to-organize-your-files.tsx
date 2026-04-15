@@ -9,6 +9,7 @@ import { HomeDashboardFeaturePreview } from '../../components/home/Features/Home
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -134,6 +135,15 @@ export default function HowToOrganizeYourFilesGuidePage() {
             approvals connect to the same project story.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Organize files by project first, then by deliverable or asset type within each project.',
+              'Use clear, consistent naming conventions \u2014 include version numbers and dates.',
+              "Keep one source of truth per file to avoid 'which version is final?' confusion.",
+              'Archive completed projects rather than deleting them so history remains accessible.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Good organization means anyone can answer three questions quickly: which file is current, where feedback
@@ -252,7 +262,7 @@ export default function HowToOrganizeYourFilesGuidePage() {
           </p>
           <p>
             When you are ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

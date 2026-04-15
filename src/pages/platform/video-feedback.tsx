@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -71,29 +72,29 @@ export default function VideoFeedbackPage() {
   return (
     <>
       <Head>
-        <title>Video Feedback | Kreatli</title>
+        <title>Video Feedback for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Give video feedback with frame-accurate comments and annotations. Video feedback in one place with your team and creative assets."
+          content="Collect frame-accurate video feedback with comments and annotations. Keep feedback tied to projects, versions, and approvals."
         />
         <link rel="canonical" href="https://kreatli.com/platform/video-feedback" />
         <meta property="og:url" content="https://kreatli.com/platform/video-feedback" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Video Feedback | Kreatli" />
+        <meta property="og:title" content="Video Feedback for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Give video feedback with frame-accurate comments and annotations. Review and collaborate in one place."
+          content="Collect frame-accurate video feedback with comments and annotations. Keep feedback tied to projects, versions, and approvals."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Video Feedback | Kreatli" />
+        <meta property="og:image:alt" content="Video Feedback for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Feedback | Kreatli" />
+        <meta name="twitter:title" content="Video Feedback for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Give video feedback with frame-accurate comments and annotations. Precise feedback your team and clients can act on."
+          content="Collect frame-accurate video feedback with comments and annotations. Keep feedback tied to projects, versions, and approvals."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -127,7 +128,7 @@ export default function VideoFeedbackPage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -139,6 +140,8 @@ export default function VideoFeedbackPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/video-feedback" />
       <PlatformStepGuide
         stepsSectionTitle="How to give video feedback in Kreatli"
         stepsIntro="Follow these steps to add frame-accurate video feedback to your videos—from upload to share and approval."
@@ -384,6 +387,18 @@ export default function VideoFeedbackPage() {
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your review and collaboration workflow."
       />
+
+      <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+        <p className="text-base text-foreground-500">
+          Wondering how Kreatli compares?{' '}
+          <NextLink
+            href="/comparisons/kreatli-vs-frameio"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            See Kreatli vs Frame.io for video feedback →
+          </NextLink>
+        </p>
+      </div>
 
       {/* CTA Section */}
       <CTASection

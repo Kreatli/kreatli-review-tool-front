@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -7,6 +8,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -25,28 +27,24 @@ export default function VideoReviewerPage() {
   return (
     <>
       <Head>
-        <title>Video Reviewer - Free Online Tool | Kreatli</title>
+        <title>Review Videos Online – Free Video Reviewer | Kreatli</title>
         <meta
           name="description"
-          content="Free online video reviewer for creative teams. Review videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video reviewer, online video review, video review tool, review video online, video approval software, video proofing, video collaboration, creative review"
-        />
-        <meta property="og:title" content="Video Reviewer - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video reviewer for creative teams. Review videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-reviewer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Reviewer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video reviewer for creative teams. Review videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-reviewer" />
@@ -92,6 +90,10 @@ export default function VideoReviewerPage() {
           </div>
         </section>
 
+        <DefinitionBlock term="Video Reviewer">
+          A video reviewer is an online tool that lets you watch a video and leave feedback pinned to exact frames and timestamps. Instead of writing &lsquo;fix the shot around the middle,&rsquo; reviewers click the precise frame and leave a note that stays linked to that moment. Video reviewers are used by production teams, agencies, and editors to collect clear, actionable feedback and speed up approval cycles.
+        </DefinitionBlock>
+
         <VideoReviewerGuide />
 
         {/* Related tools */}
@@ -105,6 +107,18 @@ export default function VideoReviewerPage() {
           title="More Resources"
           description="Learn more about video review workflows, approval processes, and team collaboration."
         />
+
+        <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+          <p className="text-base text-foreground-500">
+            Wondering how Kreatli compares?{' '}
+            <NextLink
+              href="/comparisons/best-video-review-platforms"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              See the best video review platforms for creative teams →
+            </NextLink>
+          </p>
+        </div>
 
         {/* CTA Section */}
         <CTASection

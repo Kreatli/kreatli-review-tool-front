@@ -13,6 +13,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -136,7 +137,7 @@ export default function ProjectOrchestrationPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -145,6 +146,8 @@ export default function ProjectOrchestrationPage() {
           </div>
         </div>
       </section>
+
+      <PlatformDefinitionBlock href="/platform/project-orchestration" />
 
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">

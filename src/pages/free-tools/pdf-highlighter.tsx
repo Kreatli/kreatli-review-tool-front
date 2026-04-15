@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -24,28 +25,24 @@ export default function PdfHighlighterPage() {
   return (
     <>
       <Head>
-        <title>PDF Highlighter - Free Online Tool | Kreatli</title>
+        <title>Highlight PDFs Online – Free PDF Highlighter | Kreatli</title>
         <meta
           name="description"
-          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Highlight text and regions in PDFs with pinned markup. Share highlighted files with your team. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF highlighter, highlight PDF online, PDF highlight tool, highlight text in PDF, PDF markup, PDF feedback, PDF collaboration"
-        />
-        <meta property="og:title" content="PDF Highlighter - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Highlight PDFs Online – Free PDF Highlighter | Kreatli" />
         <meta
           property="og:description"
-          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Highlight text and regions in PDFs with pinned markup. Share highlighted files with your team. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/pdf-highlighter" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="PDF Highlighter - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Highlight PDFs Online – Free PDF Highlighter | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online PDF highlighter for creative teams. Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Highlight text and regions in PDFs with pinned markup. Share highlighted files with your team. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/pdf-highlighter" />
@@ -90,6 +87,10 @@ export default function PdfHighlighterPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="PDF Highlighter">
+          A PDF highlighter is an online tool for selecting and highlighting text and regions in PDF documents for review. Highlights can be paired with comments to explain what needs attention. PDF highlighters help teams flag key sections without cluttering the document with markup.
+        </DefinitionBlock>
 
         <PdfAnnotatorGuide />
 

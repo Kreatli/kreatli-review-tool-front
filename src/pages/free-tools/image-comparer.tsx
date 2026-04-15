@@ -18,6 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -59,28 +60,24 @@ export default function ImageComparerPage() {
   return (
     <>
       <Head>
-        <title>Image Comparer - Free Online Tool | Kreatli</title>
+        <title>Compare Images Side by Side – Free Image Comparer | Kreatli</title>
         <meta
           name="description"
-          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two image versions side by side with comments and annotations. Spot changes at a glance. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="image comparer, compare images online, compare two images, image comparison tool, image diff, compare image versions, image review, image collaboration"
-        />
-        <meta property="og:title" content="Image Comparer - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Compare Images Side by Side – Free Image Comparer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two image versions side by side with comments and annotations. Spot changes at a glance. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/image-comparer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Image Comparer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Compare Images Side by Side – Free Image Comparer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online image comparer for creative teams. Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two image versions side by side with comments and annotations. Spot changes at a glance. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/image-comparer" />
@@ -127,6 +124,10 @@ export default function ImageComparerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Image Comparer">
+          An image comparer shows two still versions side by side so reviewers can spot layout, color, or retouching changes instantly. It is ideal for design revisions, photo rounds, and static creative approvals when you need feedback tied to exact regions of the image.
+        </DefinitionBlock>
         {/* How to compare images guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to compare images in Kreatli"

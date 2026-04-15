@@ -2,11 +2,13 @@ import { BreadcrumbItem, Breadcrumbs, ScrollShadow } from '@heroui/react';
 import { ISbStoryData, StoryblokComponent, useStoryblokState } from '@storyblok/react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { ArticleStructuredData } from '../../components/shared/ArticleStructuredData';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { SeoHead } from '../../components/shared/SeoHead';
 import { Icon } from '../../components/various/Icon';
 import { isLocalGuideSlug } from '../../data/local-guides';
@@ -64,6 +66,21 @@ export default function Page({ story, slug }: Props) {
         imageUrl={ogImage}
         imageAlt={articleTitle}
       />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Guides', url: '/guides' },
+          { name: articleTitle, url: slug },
+        ]}
+      />
+      <ArticleStructuredData
+        title={articleTitle}
+        description={description}
+        url={slug}
+        publishedTime={storyState?.content.publishDate}
+        modifiedTime={storyState?.updated_at}
+        imageUrl={ogImage}
+      />
       <Header />
       <Decorations />
       <div className="backdrop-blur-lg">
@@ -98,8 +115,23 @@ export default function Page({ story, slug }: Props) {
               )}
             </div>
             <div className="flex w-full flex-col gap-8">
-              {storyState?.content.body?.map((blok) => (
-                <StoryblokComponent key={blok._uid} blok={blok} />
+              {storyState?.content.body?.map((blok, index) => (
+                <React.Fragment key={blok._uid}>
+                  <StoryblokComponent blok={blok} />
+                  {index === 0 && storyState?.content.metaFields?.description && (
+                    <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.04] to-transparent p-6 sm:p-8">
+                      <div className="mb-3 flex items-center gap-3">
+                        <div className="flex-shrink-0 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 p-2">
+                          <Icon icon="checkCircle" size={18} className="text-primary" />
+                        </div>
+                        <p className="font-sans text-base font-bold">Article summary</p>
+                      </div>
+                      <p className="pl-1 text-sm leading-relaxed text-foreground-600 sm:text-base">
+                        {storyState.content.metaFields.description}
+                      </p>
+                    </div>
+                  )}
+                </React.Fragment>
               ))}
             </div>
           </div>

@@ -18,6 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -59,28 +60,24 @@ export default function DocumentComparerPage() {
   return (
     <>
       <Head>
-        <title>Document Comparer - Free Online Tool | Kreatli</title>
+        <title>Compare Documents Side by Side – Free Document Comparer | Kreatli</title>
         <meta
           name="description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="document comparer, compare documents online, compare two documents, document comparison tool, document diff, compare PDF versions, document review, document collaboration"
-        />
-        <meta property="og:title" content="Document Comparer - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Compare Documents Side by Side – Free Document Comparer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/document-comparer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Document Comparer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Compare Documents Side by Side – Free Document Comparer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/document-comparer" />
@@ -128,6 +125,10 @@ export default function DocumentComparerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Document Comparer">
+          A document comparer helps you review two versions of a document—layout, copy edits, or legal redlines—next to each other. It reduces back-and-forth when stakeholders need to see exactly what changed between drafts.
+        </DefinitionBlock>
         {/* How to compare documents guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to compare documents online in Kreatli"

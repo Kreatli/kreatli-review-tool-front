@@ -6,8 +6,12 @@ import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
 import { ArticlesSection } from '../../../components/shared/ArticlesSection';
+import { BreadcrumbStructuredData } from '../../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../../components/shared/FAQStructuredData';
+import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
+import { SolutionBelowHero } from '../../../components/shared/SolutionBelowHero';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { getUseCaseArticles } from '../../../data/use-case-articles';
@@ -190,6 +194,18 @@ export default function ClientApprovalsPage() {
   return (
     <>
       <SeoHead title={title} description={data.metaDescription} canonicalPath="/solutions/use-case/client-approvals" />
+      <FAQStructuredData faqs={data.faqs} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Client Approvals', url: '/solutions/use-case/client-approvals' },
+        ]}
+      />
+      <HowToStructuredData
+        name="How to manage client approvals with Kreatli"
+        description={data.howItWorks.description}
+        steps={data.howItWorks.steps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <Header />
       <Decorations />
       {/* Hero Section */}
@@ -205,6 +221,7 @@ export default function ClientApprovalsPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -213,6 +230,23 @@ export default function ClientApprovalsPage() {
           </div>
         </div>
       </section>
+
+      <SolutionBelowHero>
+        <span>
+          Approvals stay tied to the exact file version your client saw—not a buried email. Explore{' '}
+          <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+            how Kreatli compares
+          </NextLink>{' '}
+          to other review tools, or open the{' '}
+          <NextLink
+            href="/guides/how-to-review-a-video"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            step-by-step video review guide
+          </NextLink>
+          .
+        </span>
+      </SolutionBelowHero>
 
       {/* How It Works Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
@@ -412,6 +446,7 @@ export default function ClientApprovalsPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

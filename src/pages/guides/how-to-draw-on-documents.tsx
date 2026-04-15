@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -124,6 +125,15 @@ export default function HowToDrawOnDocumentsGuidePage() {
             implement feedback without interpretation gaps.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Use arrows, shapes, and freehand markup to point to exact areas that need changes.',
+              'Keep drawings clean and minimal \u2014 one markup per issue prevents visual clutter.',
+              'Combine drawings with short written notes to explain intent, not just location.',
+              "Check that drawings are visible at the recipient\u2019s screen size and zoom level.",
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Drawing on documents includes arrows, boxes, highlights, and freehand marks layered on the file during
@@ -234,7 +244,7 @@ export default function HowToDrawOnDocumentsGuidePage() {
           <p>
             The interactive preview below mirrors a document markup workflow. When you are ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

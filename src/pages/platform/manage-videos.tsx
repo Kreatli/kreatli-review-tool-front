@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -71,29 +72,29 @@ export default function ManageVideosPage() {
   return (
     <>
       <Head>
-        <title>Manage Videos | Kreatli</title>
+        <title>Video Asset Management for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Manage videos with secure storage, project management, and team collaboration. Organize, assign, track, and deliver video projects in one workspace."
+          content="Manage video assets with version control, feedback tracking, and approvals. Organize projects in one production workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/manage-videos" />
         <meta property="og:url" content="https://kreatli.com/platform/manage-videos" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Manage Videos | Kreatli" />
+        <meta property="og:title" content="Video Asset Management for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Manage videos with secure storage, project management, and team collaboration. Organize and deliver video projects in one workspace."
+          content="Manage video assets with version control, feedback tracking, and approvals. Organize projects in one production workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Manage Videos | Kreatli" />
+        <meta property="og:image:alt" content="Video Asset Management for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Manage Videos | Kreatli" />
+        <meta name="twitter:title" content="Video Asset Management for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Manage videos with secure storage, project management, and team collaboration. Organize and deliver video projects in one workspace."
+          content="Manage video assets with version control, feedback tracking, and approvals. Organize projects in one production workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -127,7 +128,7 @@ export default function ManageVideosPage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -138,6 +139,8 @@ export default function ManageVideosPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/manage-videos" />
       {/* Project Management Section */}
       <section className="relative overflow-hidden px-6 pb-16">
         <div className="relative z-10 mx-auto max-w-6xl">
@@ -438,6 +441,18 @@ export default function ManageVideosPage() {
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your video management and collaboration workflow."
       />
+
+      <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+        <p className="text-base text-foreground-500">
+          Wondering how Kreatli compares?{' '}
+          <NextLink
+            href="/comparisons/kreatli-vs-vimeo"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            See Kreatli vs Vimeo for video management →
+          </NextLink>
+        </p>
+      </div>
 
       {/* CTA Section */}
       <CTASection

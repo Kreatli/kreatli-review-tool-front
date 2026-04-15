@@ -6,6 +6,8 @@ import { formatDate } from '../../utils/dates';
 import { TableOfContent } from '../blog/TableOfContent/TableOfContent';
 import { Header } from '../layout/Header';
 import { Decorations } from '../layout/Storyblok/Decorations';
+import { ArticleStructuredData } from '../shared/ArticleStructuredData';
+import { BreadcrumbStructuredData } from '../shared/BreadcrumbStructuredData';
 import { SeoHead } from '../shared/SeoHead';
 import { Icon } from '../various/Icon';
 
@@ -41,6 +43,18 @@ export function GuidePageLayout({
   children,
 }: Props) {
   const title = `Kreatli | ${documentTitle}`;
+  const absoluteUrl = `https://kreatli.com${canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`}`;
+  let publishedIso: string | undefined;
+  let modifiedIso: string | undefined;
+  try {
+    const d = new Date(publishDate);
+    if (!Number.isNaN(d.getTime())) {
+      publishedIso = d.toISOString();
+      modifiedIso = publishedIso;
+    }
+  } catch {
+    publishedIso = undefined;
+  }
 
   return (
     <>
@@ -51,6 +65,24 @@ export function GuidePageLayout({
         ogType="article"
         imageUrl={ogImageUrl}
         imageAlt={ogImageAlt ?? documentTitle}
+        publishedTime={publishedIso}
+        modifiedTime={modifiedIso}
+      />
+      <ArticleStructuredData
+        title={documentTitle}
+        description={metaDescription}
+        url={absoluteUrl}
+        publishedTime={publishDate}
+        modifiedTime={publishDate}
+        imageUrl={ogImageUrl}
+        authorName="Kreatli"
+      />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Guides', url: '/guides' },
+          { name: breadcrumbLabel, url: canonicalPath },
+        ]}
       />
       <Header />
       <Decorations />

@@ -19,6 +19,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -115,7 +116,7 @@ export default function FileCloudStoragePage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -125,6 +126,8 @@ export default function FileCloudStoragePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/file-cloud-storage" />
       {/* Secure File Cloud Storage Preview Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">

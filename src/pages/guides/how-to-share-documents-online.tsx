@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -132,6 +133,15 @@ export default function HowToShareDocumentsOnlineGuidePage() {
             where the document lives—not in a parallel email chain with six conflicting attachments.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Share a link instead of an email attachment to avoid version confusion and file-size limits.',
+              'Set permissions (view, comment, download) before sharing to control what recipients can do.',
+              'Use a review-ready link when you need threaded feedback and approvals tied to the document.',
+              'Keep one canonical link per document so all stakeholders see the same version.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Online sharing means the file is stored in a workspace or cloud layer, and you distribute a URL.
@@ -243,7 +253,7 @@ export default function HowToShareDocumentsOnlineGuidePage() {
           <p>
             The interactive preview below mirrors copying a secure share link for a document. When you are ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

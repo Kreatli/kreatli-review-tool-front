@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -64,29 +65,29 @@ export default function CompareVideosPage() {
   return (
     <>
       <Head>
-        <title>Compare Videos | Kreatli</title>
+        <title>Compare Video Versions for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Compare videos side by side. Review two video versions in one place with frame-accurate comments and annotations. Perfect for cuts, revisions, and approvals."
+          content="Compare two video versions side by side with frame-accurate comments. Track changes across cuts and revisions in one workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/compare-videos" />
         <meta property="og:url" content="https://kreatli.com/platform/compare-videos" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Compare Videos | Kreatli" />
+        <meta property="og:title" content="Compare Video Versions for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Compare videos side by side. Review two video versions in one place with frame-accurate comments and annotations."
+          content="Compare two video versions side by side with frame-accurate comments. Track changes across cuts and revisions in one workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Compare Videos | Kreatli" />
+        <meta property="og:image:alt" content="Compare Video Versions for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Compare Videos | Kreatli" />
+        <meta name="twitter:title" content="Compare Video Versions for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Compare videos side by side. Review two video versions in one place with frame-accurate comments and annotations."
+          content="Compare two video versions side by side with frame-accurate comments. Track changes across cuts and revisions in one workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -120,7 +121,7 @@ export default function CompareVideosPage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -132,6 +133,8 @@ export default function CompareVideosPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/compare-videos" />
       <PlatformStepGuide
         stepsSectionTitle="How to compare videos in Kreatli"
         stepsIntro="Follow these steps to upload both video versions, open them in the review interface, use Compare, and share feedback—all in one place."

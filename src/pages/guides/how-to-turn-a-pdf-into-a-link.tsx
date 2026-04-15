@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -124,6 +125,15 @@ export default function HowToTurnAPdfIntoALinkGuidePage() {
             and can collect feedback in context.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Upload the PDF to a sharing platform to generate a shareable URL instead of emailing the file.',
+              'Set access controls (password, expiration) before sharing sensitive documents.',
+              'Use a review-ready link when recipients need to leave comments or approvals.',
+              'Keep one canonical link per document so all feedback lands in the same place.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             A PDF link points to a hosted file that recipients can open in browser. Depending on your sharing settings, it
@@ -234,7 +244,7 @@ export default function HowToTurnAPdfIntoALinkGuidePage() {
           <p>
             The interactive preview below mirrors a PDF sharing flow where one link is copied and sent to reviewers. When
             you are ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

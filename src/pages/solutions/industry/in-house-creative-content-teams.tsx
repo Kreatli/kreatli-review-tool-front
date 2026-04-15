@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Card, CardBody, Chip } from '@heroui/react';
-import Head from 'next/head';
 import NextLink from 'next/link';
 import React from 'react';
 
@@ -9,8 +8,12 @@ import { ShareFeaturePreview } from '../../../components/home/Features/ShareFeat
 import { FooterSection } from '../../../components/home/Footer/FooterSection';
 import { Header } from '../../../components/layout/Header';
 import { Decorations } from '../../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../../components/shared/FAQStructuredData';
+import { HowToStructuredData } from '../../../components/shared/HowToStructuredData';
 import { RelatedResourcesSection } from '../../../components/shared/RelatedResourcesSection';
 import { SeoHead } from '../../../components/shared/SeoHead';
+import { SolutionBelowHero } from '../../../components/shared/SolutionBelowHero';
 import { Icon, IconType } from '../../../components/various/Icon';
 import { getRelatedResources } from '../../../data/related-resources';
 import { useSession } from '../../../hooks/useSession';
@@ -232,12 +235,18 @@ export default function InHouseCreativeContentTeamsPage() {
         description={data.metaDescription}
         canonicalPath="/solutions/industry/in-house-creative-content-teams"
       />
-      <Head>
-        <meta
-          name="keywords"
-          content="in-house video teams, content production platform, brand asset management, video collaboration software, internal video teams, brand management platform, video collaboration tools"
-        />
-      </Head>
+      <FAQStructuredData faqs={data.faqs} />
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'In-House Creative & Content Teams', url: '/solutions/industry/in-house-creative-content-teams' },
+        ]}
+      />
+      <HowToStructuredData
+        name="How to run brand campaigns with Kreatli"
+        description="From brand asset organization to campaign delivery—organize assets, collaborate with partners, collect stakeholder feedback, and deliver faster."
+        steps={data.workflowSteps.map((step) => ({ name: step.title, text: step.description }))}
+      />
       <Header />
       <Decorations />
       {/* Hero Section */}
@@ -253,6 +262,7 @@ export default function InHouseCreativeContentTeamsPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -261,6 +271,21 @@ export default function InHouseCreativeContentTeamsPage() {
           </div>
         </div>
       </section>
+
+      <SolutionBelowHero>
+        <span>
+          In-house teams balance brand stakeholders and fast turnarounds—Kreatli ties feedback to files so marketing and
+          creative share one source of truth. Compare options on the{' '}
+          <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+            comparisons hub
+          </NextLink>{' '}
+          or read{' '}
+          <NextLink href="/guides/how-to-organize-your-files" className="font-medium text-primary underline-offset-2 hover:underline">
+            how to organize creative files
+          </NextLink>
+          .
+        </span>
+      </SolutionBelowHero>
 
       {/* Visual Workflow Section */}
       {data.workflowSteps && (
@@ -568,6 +593,7 @@ export default function InHouseCreativeContentTeamsPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >

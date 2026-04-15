@@ -24,6 +24,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -71,29 +72,29 @@ export default function PdfToLinkPage() {
   return (
     <>
       <Head>
-        <title>PDF to Link | Kreatli</title>
+        <title>PDF Sharing for Review Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Turn PDFs into secure review links. Collect feedback, track versions, and manage approvals in one production workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/pdf-to-link" />
         <meta property="og:url" content="https://kreatli.com/platform/pdf-to-link" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="PDF to Link | Kreatli" />
+        <meta property="og:title" content="PDF Sharing for Review Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Turn PDFs into secure review links. Collect feedback, track versions, and manage approvals in one production workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="PDF to Link | Kreatli" />
+        <meta property="og:image:alt" content="PDF Sharing for Review Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="PDF to Link | Kreatli" />
+        <meta name="twitter:title" content="PDF Sharing for Review Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Turn your PDF into a shareable link. PDF to link for secure review—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Turn PDFs into secure review links. Collect feedback, track versions, and manage approvals in one production workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -127,7 +128,7 @@ export default function PdfToLinkPage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -139,6 +140,8 @@ export default function PdfToLinkPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/pdf-to-link" />
       <PlatformStepGuide
         stepsSectionTitle="How to turn your PDF into a link in Kreatli"
         stepsIntro="Follow these steps to upload your PDF, generate a shareable link, and collect feedback—recipients do not need a Kreatli account."

@@ -2,16 +2,24 @@ import { ISbStoryData } from '@storyblok/react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
+import { homeFaqs } from '../components/home/Faq';
 import { Home } from '../components/home/Home';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { Projects } from '../components/project/Projects';
+import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../components/shared/FAQStructuredData';
+import { SeoHead } from '../components/shared/SeoHead';
 import { useSession } from '../hooks/useSession';
 import { getStoryblokApi } from '../lib/storyblok';
 import { PageStoryblok } from '../typings/storyblok';
 
 const DRAFT_REVALIDATE_TIME = 60;
 const PUBLISHED_REVALIDATE_TIME = 3600;
+
+const MARKETING_TITLE = 'Kreatli | Video Collaboration & Review Platform';
+const META_DESCRIPTION =
+  'Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place.';
 
 interface Props {
   comparisons: ISbStoryData<PageStoryblok>[];
@@ -20,37 +28,20 @@ interface Props {
 export default function HomePage({ comparisons }: Props) {
   const { isSignedIn } = useSession();
 
-  const title = `Kreatli | ${isSignedIn ? 'Projects' : 'Video Collaboration & Review Platform'}`;
-
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta
-          name="description"
-          content="Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place."
-        />
-        <link rel="canonical" href="https://kreatli.com" />
-        <meta property="og:url" content="https://kreatli.com" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={title} />
-        <meta
-          property="og:description"
-          content="Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place."
-        />
-        <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content={title} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta
-          name="twitter:description"
-          content="Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place."
-        />
-        <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
-      </Head>
+      <SeoHead
+        title={MARKETING_TITLE}
+        description={META_DESCRIPTION}
+        canonicalPath="/"
+      />
+      {isSignedIn && (
+        <Head>
+          <title key="title">Kreatli | Projects</title>
+        </Head>
+      )}
+      <BreadcrumbStructuredData items={[{ name: 'Home', url: '/' }]} />
+      <FAQStructuredData faqs={homeFaqs} />
       <Header />
       {!isSignedIn && <Decorations />}
       {isSignedIn ? <Projects /> : <Home comparisons={comparisons} />}

@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -132,6 +133,15 @@ export default function HowToShareImagesGuidePage() {
             the actual pixels together.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Generate a shareable link instead of attaching images to emails or chat messages.',
+              'Set access controls (password, expiration) for confidential or pre-release visuals.',
+              'Use a review-ready link when recipients need to leave pinned feedback on the image.',
+              'Share one link per image asset so feedback, versions, and approvals stay in one place.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Strong image sharing keeps resolution intact, shows the latest revision, and makes it obvious whether
@@ -243,7 +253,7 @@ export default function HowToShareImagesGuidePage() {
           <p>
             The interactive preview below shows copying a shareable link for an image asset. When you are ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

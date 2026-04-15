@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -130,7 +131,7 @@ export default function DrawOnImagePage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -142,6 +143,8 @@ export default function DrawOnImagePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/draw-on-image" />
       <PlatformStepGuide
         stepsSectionTitle="How to draw on an image in Kreatli"
         stepsIntro="Follow these steps to upload your image, draw directly on it, and share for review—all in one place."

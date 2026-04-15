@@ -6,6 +6,8 @@ import { CostCalculatorSection } from '../../components/home/CostCalculator';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
@@ -21,26 +23,33 @@ export default function CostCalculatorPage() {
   return (
     <>
       <Head>
-        <title>Software Cost Calculator - Calculate Tool Savings | Kreatli</title>
+        <title>Software Cost Calculator – See How Much You Could Save | Kreatli</title>
         <meta
           name="description"
-          content="Calculate your monthly and annual software costs. Compare your current tool stack with Kreatli and see potential savings. Free calculator for creative teams."
+          content="Calculate your team's total software spend and see how much you could save by consolidating tools with Kreatli. Free calculator."
         />
-        <meta property="og:title" content="Software Cost Calculator - Calculate Creative Tool Savings | Kreatli" />
+        <meta property="og:title" content="Software Cost Calculator – See How Much You Could Save | Kreatli" />
         <meta
           property="og:description"
-          content="Calculate your software costs and see potential savings. Free calculator for creative teams. Compare your tool stack with Kreatli's all-in-one platform."
+          content="Calculate your team's total software spend and see how much you could save by consolidating tools with Kreatli. Free calculator."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/cost-calculator" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Cost Calculator - Calculate Creative Tool Savings | Kreatli" />
+        <meta name="twitter:title" content="Software Cost Calculator – See How Much You Could Save | Kreatli" />
         <meta
           name="twitter:description"
-          content="Calculate your software costs and see potential savings. Free calculator for creative teams."
+          content="Calculate your team's total software spend and see how much you could save by consolidating tools with Kreatli. Free calculator."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/cost-calculator" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Free Tools', url: '/free-tools' },
+          { name: 'Software Cost Calculator', url: '/free-tools/cost-calculator' },
+        ]}
+      />
       <Header />
       <Decorations />
 
@@ -52,6 +61,12 @@ export default function CostCalculatorPage() {
           showHeroCta={true}
         />
       </FreeToolsEntitlementSection>
+
+      <DefinitionBlock term="Software Cost Calculator">
+        A software cost calculator totals what you pay across creative, review, storage, and project tools. Finance and
+        production leads use it to spot overlap and model consolidation—replacing several subscriptions with one
+        platform such as Kreatli for review, tasks, and files.
+      </DefinitionBlock>
 
       {/* Benefits Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

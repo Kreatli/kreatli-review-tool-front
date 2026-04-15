@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -133,6 +134,23 @@ export default function HowToReviewAVideoGuidePage() {
             editors moving instead of reconciling vague feedback.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Pin feedback to exact frames so editors can jump straight to the timecode without scrubbing.',
+              'State what needs to change and why — "trim 2 seconds before the logo reveal for pacing" beats "too long."',
+              'Review at the intended output resolution and on the target device when possible.',
+              'Use version comparison to verify that requested changes were applied correctly before approving.',
+            ]}
+          />
+
+          <p className="text-sm text-foreground-600">
+            Choosing a review stack for your team?{' '}
+            <NextLink href="/comparisons" className="font-medium text-primary underline-offset-2 hover:underline">
+              Browse Kreatli comparisons with other platforms
+            </NextLink>{' '}
+            before you trial.
+          </p>
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Strong video review balances creative direction with execution detail. Everyone should agree on pacing,
@@ -244,7 +262,7 @@ export default function HowToReviewAVideoGuidePage() {
           <p>
             The interactive preview below mirrors uploading a cut and leaving time-anchored feedback. When you are ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

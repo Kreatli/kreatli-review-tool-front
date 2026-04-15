@@ -19,6 +19,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -126,6 +127,8 @@ export default function InstagramReelsSafeZonePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/instagram-reels-safe-zone" />
       {/* How to Use Safe-Zone Checker (step-by-step) */}
       <SafeZoneScreenGuide
         platform="instagram"

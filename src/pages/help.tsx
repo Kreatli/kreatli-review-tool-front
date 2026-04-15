@@ -5,6 +5,8 @@ import { useMemo, useState } from 'react';
 import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../components/shared/FAQStructuredData';
 import { Icon, IconType } from '../components/various/Icon';
 import { useSession } from '../hooks/useSession';
 
@@ -341,6 +343,13 @@ export default function HelpPage() {
 
   return (
     <>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Help Center', url: '/help' },
+        ]}
+      />
+      <FAQStructuredData faqs={faqs.map(({ question, answer }) => ({ question, answer }))} />
       <Head>
         <title>Kreatli | Help Center – FAQs and Support Resources</title>
         <meta
@@ -377,6 +386,15 @@ export default function HelpPage() {
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Find answers to frequently asked questions about Kreatli's video production platform, features, pricing, and
             more.
+          </p>
+          <p className="mx-auto max-w-2xl text-center text-base text-foreground-500">
+            Find answers to common questions about Kreatli&apos;s features, billing, account settings, and creative
+            production workflows. Browse by category or search for a specific topic. Can&apos;t find what you need?
+            Contact our support team at{' '}
+            <a href="mailto:support@kreatli.com" className="font-medium text-primary underline-offset-2 hover:underline">
+              support@kreatli.com
+            </a>
+            .
           </p>
           <div className="mx-auto mt-6 w-full max-w-2xl">
             <Input

@@ -243,7 +243,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         if (isLocalGuideSlug(guideStorySegment(story))) {
           return;
         }
-        urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
+        urls.push(storyToSitemapUrl(story, 'weekly', '0.75'));
       });
     } else {
       // Log error in development, continue with partial sitemap in production
@@ -258,14 +258,14 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
         loc: `${BASE_URL}/${path}`,
         lastmod,
         changefreq: 'weekly',
-        priority: '0.8',
+        priority: '0.75',
       });
     });
 
     // Add blogs
     if (blogs.status === 'fulfilled') {
       blogs.value.forEach((story) => {
-        urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
+        urls.push(storyToSitemapUrl(story, 'weekly', '0.72'));
       });
     } else {
       // Log error in development, continue with partial sitemap in production
@@ -278,7 +278,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     // Add comparisons
     if (comparisons.status === 'fulfilled') {
       comparisons.value.forEach((story) => {
-        urls.push(storyToSitemapUrl(story, 'monthly', '0.8'));
+        urls.push(storyToSitemapUrl(story, 'monthly', '0.7'));
       });
     } else {
       // Log error in development, continue with partial sitemap in production

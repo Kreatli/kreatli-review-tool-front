@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -17,10 +18,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Add Notes to a PDF: Quick, Page-Anchored Context for Faster Fixes';
+const DOCUMENT_TITLE = 'How to Add Notes to a PDF: Quick, Contextual Feedback for Teams';
 const META_DESCRIPTION =
-  'Learn how to add notes to a PDF with page-pinned context, short actionable language, and version-aware review so ' +
-  'teams resolve feedback without losing the thread.';
+  'Learn how to add notes to a PDF with page-pinned context and concise language so teams resolve feedback efficiently across versions.';
 const PUBLISH_DATE = '2026-04-10 12:10';
 const READ_TIME = '9';
 const CANONICAL_PATH = '/guides/how-to-add-notes-to-a-pdf';
@@ -131,6 +131,15 @@ export default function HowToAddNotesToAPdfGuidePage() {
             high-signal sticky: it sits exactly where the issue lives, says what should change in plain language, and
             can be checked off when the PDF is updated—without a separate email novel.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Anchor each note to the relevant spot on the page so context is immediate.',
+              "Keep notes short and action-oriented \u2014 'Replace headline with approved copy from brief' beats 'fix this.'",
+              'Use @mentions to route each note to the right team member.',
+              'Resolve notes as changes are made so remaining work is always visible.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -243,7 +252,7 @@ export default function HowToAddNotesToAPdfGuidePage() {
           <p>
             The interactive preview below shows page-pinned feedback on a sample PDF. When you are ready,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

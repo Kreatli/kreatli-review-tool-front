@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -25,28 +26,24 @@ export default function PdfAnnotatorPage() {
   return (
     <>
       <Head>
-        <title>PDF Annotator - Free Online Tool | Kreatli</title>
+        <title>Annotate PDFs Online – Free PDF Annotator | Kreatli</title>
         <meta
           name="description"
-          content="Free online PDF annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add pinned comments, highlights, drawings, and markup to PDFs. Share annotated files with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF annotator, annotate PDF online, PDF annotation tool, comment on PDF, draw on PDF, PDF markup, PDF feedback, PDF collaboration"
-        />
-        <meta property="og:title" content="PDF Annotator - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Annotate PDFs Online – Free PDF Annotator | Kreatli" />
         <meta
           property="og:description"
-          content="Free online PDF annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add pinned comments, highlights, drawings, and markup to PDFs. Share annotated files with clients. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/pdf-annotator" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="PDF Annotator - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Annotate PDFs Online – Free PDF Annotator | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online PDF annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to PDFs. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add pinned comments, highlights, drawings, and markup to PDFs. Share annotated files with clients. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/pdf-annotator" />
@@ -92,6 +89,10 @@ export default function PdfAnnotatorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="PDF Annotator">
+          A PDF annotator is an online tool for adding comments, highlights, drawings, and markup to PDF documents. Notes are pinned to exact locations on the page so reviewers can point to precisely what needs to change. PDF annotators replace the need to print documents or juggle email attachments during review cycles.
+        </DefinitionBlock>
 
         <PdfAnnotatorGuide />
 

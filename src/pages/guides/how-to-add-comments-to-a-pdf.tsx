@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -125,6 +126,15 @@ export default function HowToAddCommentsToAPdfGuidePage() {
             to the exact spot—so designers, writers, and stakeholders can resolve feedback quickly without guessing.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Pin each comment to the exact location on the page so the recipient knows what you mean.',
+              'Write one issue per comment — bundling multiple changes slows down resolution.',
+              'Use @mentions or assignments to direct each note to the right person.',
+              'Resolve comments as they are addressed so the team can track remaining work.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             In a review workflow, “commenting on a PDF” means your note is anchored to a page (and often a specific
@@ -240,7 +250,7 @@ export default function HowToAddCommentsToAPdfGuidePage() {
             The interactive preview below is a lightweight example of the workflow: upload a PDF, think in page-pinned
             comments, and keep feedback in one place. When you’re ready, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
             or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

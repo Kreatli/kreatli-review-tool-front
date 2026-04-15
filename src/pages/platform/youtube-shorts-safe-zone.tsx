@@ -19,6 +19,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -125,6 +126,8 @@ export default function YouTubeShortsSafeZonePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/youtube-shorts-safe-zone" />
       {/* How to Use Safe-Zone Checker (step-by-step) */}
       <SafeZoneScreenGuide
         platform="youtube"

@@ -25,6 +25,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -77,32 +78,29 @@ export default function ReviewPdfPage() {
   return (
     <>
       <Head>
-        <title>Review PDF | Kreatli</title>
+        <title>PDF Review for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content={
-            'Review PDF files with comments, annotations, and approvals. Recipients on shared links do not need a ' +
-            'Kreatli account. Try without signing in, or with an active trial or plan if signed in.'
-          }
+          content="Review PDFs with pinned comments, annotations, and structured approvals. Built into Kreatli's production workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/review-pdf" />
         <meta property="og:url" content="https://kreatli.com/platform/review-pdf" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Review PDF | Kreatli" />
+        <meta property="og:title" content="PDF Review for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Review PDF files with comments, annotations, and approvals. Collaborate on PDFs with precise feedback in one place."
+          content="Review PDFs with pinned comments, annotations, and structured approvals. Built into Kreatli's production workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Review PDF | Kreatli" />
+        <meta property="og:image:alt" content="PDF Review for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Review PDF | Kreatli" />
+        <meta name="twitter:title" content="PDF Review for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Review PDF files with comments, annotations, and approvals. Collaborate on PDFs with precise feedback in one place."
+          content="Review PDFs with pinned comments, annotations, and structured approvals. Built into Kreatli's production workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -137,7 +135,7 @@ export default function ReviewPdfPage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -149,6 +147,8 @@ export default function ReviewPdfPage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/review-pdf" />
       <PlatformStepGuide
         stepsSectionTitle="How to review a PDF in Kreatli"
         stepsIntro="Follow these steps to upload your PDF, collect feedback, and track approvals—all in one place."

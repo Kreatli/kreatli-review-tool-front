@@ -8,9 +8,15 @@ import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
+import { HubPageIntro } from '../components/shared/HubPageIntro';
 import { SeoHead } from '../components/shared/SeoHead';
 import { Icon } from '../components/various/Icon';
-import { FREE_TOOLS, FREE_TOOLS_FILTER_OPTIONS, type FreeToolFilterTag } from '../data/free-tools';
+import {
+  FREE_TOOLS,
+  FREE_TOOLS_FILTER_DESCRIPTIONS,
+  FREE_TOOLS_FILTER_OPTIONS,
+  type FreeToolFilterTag,
+} from '../data/free-tools';
 import { useSession } from '../hooks/useSession';
 
 const faqs = [
@@ -111,7 +117,7 @@ export default function FreeToolsPage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -121,10 +127,64 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
-      {/* Free Tools Section with filter */}
+      {/* Tool catalog: intro explains the hub; filters and grid follow in one visual section */}
       <section className="relative overflow-hidden px-6 pb-16 pt-6 backdrop-blur-lg sm:pt-8">
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-10 flex justify-center">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-10">
+          <HubPageIntro
+            eyebrow="Free tools hub"
+            title="Browser tools for review, markup, and delivery"
+            icon="grid"
+            aside={
+              <>
+                <p className="text-xs font-semibold uppercase tracking-wide text-foreground-500">Jump in</p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    { href: '/free-tools/video-annotator', label: 'Video annotator' },
+                    { href: '/free-tools/pdf-reviewer', label: 'PDF reviewer' },
+                    { href: '/safe-zone-checker', label: 'Safe zone checker' },
+                    { href: '/free-tools/data-transfer-calculator', label: 'Data transfer calculator' },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <NextLink
+                        href={item.href}
+                        className="group flex items-center justify-between gap-2 rounded-lg py-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                      >
+                        <span>{item.label}</span>
+                        <Icon
+                          icon="arrowRight"
+                          size={14}
+                          className="flex-shrink-0 text-primary/60 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </NextLink>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+          >
+            <p>
+              Use these tools in the browser for everyday creative work: calculators and layout helpers are free with
+              no account; review and markup tools follow the same access rules as your Kreatli session (try a{' '}
+              <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
+                7-day trial
+              </NextLink>{' '}
+              when you need full access).
+            </p>
+            <p>
+              Pick a category below to narrow the list, or open any card for a dedicated page with the live tool and
+              context on how it fits solo work and client reviews. Everything here also ships inside{' '}
+              <NextLink href="/platform" className="font-medium text-primary underline-offset-2 hover:underline">
+                Kreatli&apos;s platform
+              </NextLink>{' '}
+              if you want projects, approvals, and storage in one place (
+              <NextLink href="/pricing" className="font-medium text-primary underline-offset-2 hover:underline">
+                see plans
+              </NextLink>
+              ).
+            </p>
+          </HubPageIntro>
+
+          <div className="flex justify-center">
             <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
               <button
                 type="button"
@@ -160,6 +220,12 @@ export default function FreeToolsPage() {
               })}
             </div>
           </div>
+
+          {selectedFilter !== 'All' && (
+            <p className="mx-auto max-w-3xl px-2 text-center text-sm leading-relaxed text-foreground-600 sm:text-base">
+              {FREE_TOOLS_FILTER_DESCRIPTIONS[selectedFilter]}
+            </p>
+          )}
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {filteredTools.length === 0 ? (
@@ -253,6 +319,7 @@ export default function FreeToolsPage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >

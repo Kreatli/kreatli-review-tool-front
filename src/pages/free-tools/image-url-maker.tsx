@@ -18,6 +18,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -59,28 +60,24 @@ export default function ImageUrlMakerPage() {
   return (
     <>
       <Head>
-        <title>Image URL Maker | Kreatli</title>
+        <title>Turn an Image into a URL – Free Image Link Maker | Kreatli</title>
         <meta
           name="description"
-          content="Turn your image into a shareable URL. Create secure image review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Convert your image into a shareable review URL in seconds. Collect feedback without email attachments. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="image URL maker, image to link, shareable image link, image review link, share image online, image url generator, image collaboration, client review"
-        />
-        <meta property="og:title" content="Image URL Maker | Kreatli" />
+<meta property="og:title" content="Turn an Image into a URL – Free Image Link Maker | Kreatli" />
         <meta
           property="og:description"
-          content="Turn your image into a shareable URL. Create secure image review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Convert your image into a shareable review URL in seconds. Collect feedback without email attachments. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/image-url-maker" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Image URL Maker | Kreatli" />
+        <meta name="twitter:title" content="Turn an Image into a URL – Free Image Link Maker | Kreatli" />
         <meta
           name="twitter:description"
-          content="Turn your image into a shareable URL. Create secure review links. Recipients open and comment in their browser without a Kreatli account."
+          content="Convert your image into a shareable review URL in seconds. Collect feedback without email attachments. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/image-url-maker" />
@@ -127,6 +124,10 @@ export default function ImageUrlMakerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Image URL Maker">
+          An image URL maker creates a shareable link to an image file so collaborators can open it in the browser without email attachments. Teams use it to route assets into review, collect comments, and keep a single source of truth for the latest image.
+        </DefinitionBlock>
         {/* How to turn your image into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your image into a link in Kreatli"

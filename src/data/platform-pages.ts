@@ -26,6 +26,20 @@ export const PLATFORM_FILTER_OPTIONS: { id: PlatformFilterTag; label: string }[]
   { id: 'Safe zones & resize', label: 'Safe zones & resize' },
 ];
 
+/** Shown on /platform when a filter chip is active — adds crawlable copy for each category */
+export const PLATFORM_FILTER_DESCRIPTIONS: Record<PlatformFilterTag, string> = {
+  Video:
+    'Video capabilities span review, annotation, proofing, versioning, and delivery—built for teams that live on timelines.',
+  'PDF & documents':
+    'PDF and document features connect markup, comparison, highlights, and approvals to the same projects as your video work.',
+  'Share & send':
+    'Share and send features cover links, hosting, and large-file delivery so reviewers get the right asset without friction.',
+  'Review & compare':
+    'Review and compare features keep feedback frame- or pixel-accurate across video, PDFs, images, and documents.',
+  'Safe zones & resize':
+    'Safe zones and resize tools align exports with platform rules for Shorts, Reels, TikTok, and YouTube channel art.',
+};
+
 /**
  * Platform page configuration interface
  * Defines metadata for platform feature pages used in navigation, sitemap, and related resources
@@ -838,6 +852,40 @@ export function getPlatformPageByHref(href: string): PlatformPage | undefined {
  * Get platform pages formatted for sitemap
  * @returns Array of sitemap entries with path, priority, and changefreq
  */
+/** Core commercial pages — higher crawl priority in sitemap */
+const PLATFORM_SITEMAP_HIGH_PRIORITY = new Set<string>([
+  '/platform/creative-workspace',
+  '/platform/review-approval',
+  '/platform/video-annotation',
+  '/platform/project-orchestration',
+  '/platform/deliverables',
+  '/platform/review-video',
+  '/platform/secure-asset-storage',
+]);
+
+/** Long-tail / utility feature URLs */
+const PLATFORM_SITEMAP_LOW_PRIORITY = new Set<string>([
+  '/platform/picture-into-url',
+  '/platform/share-mp4',
+  '/platform/add-timestamp-to-video',
+  '/platform/embed-video',
+  '/platform/image-to-link',
+  '/platform/pdf-to-link',
+  '/platform/cloud-file-transfer',
+  '/platform/cloud-sharing',
+  '/platform/video-cloud-storage',
+  '/platform/file-cloud-storage',
+  '/platform/document-version-control',
+  '/platform/pdf-version-control',
+  '/platform/video-versioning',
+]);
+
+function getPlatformSitemapPriority(href: string): string {
+  if (PLATFORM_SITEMAP_HIGH_PRIORITY.has(href)) return '0.9';
+  if (PLATFORM_SITEMAP_LOW_PRIORITY.has(href)) return '0.65';
+  return '0.75';
+}
+
 export function getPlatformPagesForSitemap(): Array<{
   path: string;
   priority: string;
@@ -845,7 +893,7 @@ export function getPlatformPagesForSitemap(): Array<{
 }> {
   return PLATFORM_PAGES.map((page) => ({
     path: page.href,
-    priority: page.sitemap?.priority || '0.8',
+    priority: getPlatformSitemapPriority(page.href),
     changefreq: page.sitemap?.changefreq || 'monthly',
   }));
 }

@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -24,28 +25,24 @@ export default function DocumentAnnotatorPage() {
   return (
     <>
       <Head>
-        <title>Document Annotator - Free Online Tool | Kreatli</title>
+        <title>Annotate Documents Online – Free Document Annotator | Kreatli</title>
         <meta
           name="description"
-          content="Free online document annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add pinned comments, highlights, drawings, and markup to documents. Share with clients for review. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="document annotator, annotate documents online, document annotation tool, comment on documents, draw on documents, document markup, document feedback, document collaboration"
-        />
-        <meta property="og:title" content="Document Annotator - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Annotate Documents Online – Free Document Annotator | Kreatli" />
         <meta
           property="og:description"
-          content="Free online document annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add pinned comments, highlights, drawings, and markup to documents. Share with clients for review. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/document-annotator" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Document Annotator - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Annotate Documents Online – Free Document Annotator | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online document annotator for creative teams. Add location-pinned comments, highlights, drawings, and markup to documents (e.g. PDFs). Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Add pinned comments, highlights, drawings, and markup to documents. Share with clients for review. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/document-annotator" />
@@ -91,6 +88,10 @@ export default function DocumentAnnotatorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Document Annotator">
+          A document annotator is an online tool for adding pinned comments, highlights, drawings, and markup to documents such as PDFs. Feedback stays attached to specific locations in the document so reviewers can communicate exact changes. Document annotators replace scattered email feedback with a single, organized review workspace.
+        </DefinitionBlock>
 
         <PdfAnnotatorGuide />
 

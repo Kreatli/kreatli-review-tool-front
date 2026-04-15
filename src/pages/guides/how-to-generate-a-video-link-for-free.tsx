@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -127,6 +128,15 @@ export default function HowToGenerateAVideoLinkForFreeGuidePage() {
             <strong>review-ready links</strong> so you pick the right format for your workflow.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Upload to a hosting platform (YouTube, Vimeo, Google Drive, or Kreatli) to get a shareable link.',
+              "A 'video link' can mean a watch-only URL, a download link, or a review-ready link — pick the right type.",
+              'Free hosts may compress video or add watermarks; check output quality before sharing with clients.',
+              'Use a review-ready link when you need comments, approvals, or version tracking tied to the video.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>People use “video link” to mean a few different things:</p>
           <ul>
@@ -239,7 +249,7 @@ export default function HowToGenerateAVideoLinkForFreeGuidePage() {
             The preview below mirrors a simple “generate and share a link” flow: add recipients, copy a share URL, and
             think through who should have access. To go further,{' '}
             <NextLink href="/sign-up">start a 7-day trial</NextLink> or book a{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               demo
             </a>
             .

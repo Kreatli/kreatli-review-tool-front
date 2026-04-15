@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -133,6 +134,15 @@ export default function HowToConvertAnImageIntoALinkGuidePage() {
             easier to collect structured feedback when review matters.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Upload to a hosting or review platform to generate a shareable URL for any image.',
+              'Control access with passwords and expiration dates for confidential visuals.',
+              'Use a review-ready link when you need location-pinned feedback, not just viewing.',
+              'Share one link per image version so all feedback stays centralized.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Converting an image to a link means the file lives in cloud storage or a review workspace, and you share a
@@ -246,7 +256,7 @@ export default function HowToConvertAnImageIntoALinkGuidePage() {
           <p>
             The interactive preview below shows a simple “copy shareable link” flow for an image asset. When you are
             ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

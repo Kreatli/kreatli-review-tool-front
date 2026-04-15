@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -124,6 +125,15 @@ export default function HowToCommentAVideoGuidePage() {
             at the exact moment it matters. The best workflow is <strong>timestamped comments</strong> (and optional
             frame drawings) so editors don’t have to guess which shot or second you meant.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin feedback to exact frames so editors can jump to the timecode without scrubbing.',
+              'State what needs to change and why — specific direction beats vague impressions.',
+              "Separate 'must-fix' notes from 'nice-to-have' suggestions so editors can prioritize.",
+              'Review the latest version before commenting to avoid flagging issues that were already fixed.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -242,7 +252,7 @@ export default function HowToCommentAVideoGuidePage() {
             The interactive preview below mirrors a simple review flow: upload a clip, scrub to a moment, and leave a
             timestamped comment (plus optional drawings). When you are ready, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
             or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

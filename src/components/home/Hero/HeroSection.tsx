@@ -61,6 +61,9 @@ export const HeroSection = () => {
                 Zero Chaos.
               </span>
             </h1>
+            <p className="max-w-xl text-base font-medium leading-relaxed text-foreground-600 sm:text-lg">
+              Video collaboration and review platform for creative teams
+            </p>
 
             <ul className="flex flex-col gap-3.5">
               {VALUE_BULLETS.map((item) => (
@@ -90,7 +93,7 @@ export const HeroSection = () => {
                   as="a"
                   href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer nofollow"
                   size="lg"
                   variant="bordered"
                   className="h-12 min-w-[200px] px-6 text-base"

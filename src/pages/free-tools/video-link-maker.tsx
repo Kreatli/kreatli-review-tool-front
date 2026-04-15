@@ -17,6 +17,7 @@ import { RelatedResourcesSection } from '../../components/shared/RelatedResource
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -58,28 +59,24 @@ export default function VideoLinkMakerPage() {
   return (
     <>
       <Head>
-        <title>Video Link Maker | Kreatli</title>
+        <title>Create Video Review Links – Free Video Link Maker | Kreatli</title>
         <meta
           name="description"
-          content="Free online video link maker for creative teams. Create secure, shareable video review links in seconds. Recipients watch and comment without a Kreatli account. Try this page without signing in, or with an active trial or plan if signed in."
+          content="Create secure, shareable video review links in seconds. Recipients watch, comment, and approve online. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video link maker, make video link, shareable video link, video review link, share video online, video link generator, video collaboration, client review"
-        />
-        <meta property="og:title" content="Video Link Maker | Kreatli" />
+<meta property="og:title" content="Create Video Review Links – Free Video Link Maker | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video link maker for creative teams. Create secure, shareable video review links in seconds. Recipients watch and comment without a Kreatli account. Try this page without signing in, or with an active trial or plan if signed in."
+          content="Create secure, shareable video review links in seconds. Recipients watch, comment, and approve online. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-link-maker" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Link Maker | Kreatli" />
+        <meta name="twitter:title" content="Create Video Review Links – Free Video Link Maker | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video link maker. Recipients review without a Kreatli account. Try this page without signing in, or with an active trial or plan if signed in."
+          content="Create secure, shareable video review links in seconds. Recipients watch, comment, and approve online. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-link-maker" />
@@ -126,6 +123,10 @@ export default function VideoLinkMakerPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Video Link Maker">
+          A video link maker creates a URL to a video file so reviewers can stream and comment without downloading. Agencies use it to share cuts, alt versions, and finals while keeping feedback frame-accurate.
+        </DefinitionBlock>
         {/* How to generate video links guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to Generate Video Links in Kreatli"

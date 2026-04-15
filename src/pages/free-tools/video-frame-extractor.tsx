@@ -5,6 +5,7 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
@@ -15,6 +16,7 @@ import { VideoFrameExtractorFAQ } from '../../components/video-frame-extractor/V
 import { VideoFrameExtractorGuide } from '../../components/video-frame-extractor/VideoFrameExtractorGuide';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function VideoFrameExtractorPage() {
   useSession();
@@ -22,30 +24,33 @@ export default function VideoFrameExtractorPage() {
   return (
     <>
       <Head>
-        <title>Video Frame Extractor - Free Tool | Kreatli</title>
+        <title>Extract Frames from Video – Free Frame Capture Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
         />
-        <meta
-          name="keywords"
-          content="video frame extractor, extract frames from video, capture video frame, screenshot video, export video stills, download frames png jpg, download frames zip, browser frame extractor, free video tool"
-        />
-        <meta property="og:title" content="Video Frame Extractor - Free Tool | Kreatli" />
+<meta property="og:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-frame-extractor" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Frame Extractor - Free Tool | Kreatli" />
+        <meta name="twitter:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-frame-extractor" />
       </Head>
+      <BreadcrumbStructuredData
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Free Tools', url: '/free-tools' },
+          { name: 'Video Frame Extractor', url: '/free-tools/video-frame-extractor' },
+        ]}
+      />
       <Header />
       <Decorations />
 
@@ -68,6 +73,10 @@ export default function VideoFrameExtractorPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Video Frame Extractor">
+          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
+        </DefinitionBlock>
         {/* Tool */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">

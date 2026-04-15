@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -25,28 +26,24 @@ export default function PdfReviewerPage() {
   return (
     <>
       <Head>
-        <title>PDF Reviewer - Free Online Tool | Kreatli</title>
+        <title>Review PDFs Online – Free PDF Reviewer | Kreatli</title>
         <meta
           name="description"
-          content="Free online PDF reviewer for creative teams. Review PDFs with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review PDFs with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="PDF reviewer, online PDF review, PDF review tool, review PDF online, PDF approval software, PDF collaboration, comment on PDF, annotate PDF"
-        />
-        <meta property="og:title" content="PDF Reviewer - Free Online Tool | Kreatli" />
+<meta property="og:title" content="Review PDFs Online – Free PDF Reviewer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online PDF reviewer for creative teams. Review PDFs with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review PDFs with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/pdf-reviewer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="PDF Reviewer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Review PDFs Online – Free PDF Reviewer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online PDF reviewer for creative teams. Review PDFs with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review PDFs with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/pdf-reviewer" />
@@ -91,6 +88,10 @@ export default function PdfReviewerPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="PDF Reviewer">
+          A PDF reviewer is a tool for reviewing PDF documents with location-pinned comments, annotations, and approval workflows. Reviewers add feedback directly on the PDF — no downloads or email attachments required. PDF reviewers help teams collect and track feedback in one place.
+        </DefinitionBlock>
 
         <PdfReviewerGuide />
 

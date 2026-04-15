@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -61,29 +62,29 @@ export default function ResizeVideoOnlinePage() {
   return (
     <>
       <Head>
-        <title>Resize Video Online | Kreatli</title>
+        <title>Video Resizing for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Resize video online for social and web formats, then manage versions, review, and approvals in Kreatli’s creative production workspace."
+          content="Resize video for social and web formats, then manage versions, review, and approvals in Kreatli’s production workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/resize-video-online" />
         <meta property="og:url" content="https://kreatli.com/platform/resize-video-online" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Resize Video Online | Kreatli" />
+        <meta property="og:title" content="Video Resizing for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Resize video online for Reels, TikTok, YouTube, and more—then keep resized versions, feedback, and approvals organized in Kreatli."
+          content="Resize video for social and web formats, then manage versions, review, and approvals in Kreatli’s production workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Resize Video Online | Kreatli" />
+        <meta property="og:image:alt" content="Video Resizing for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Resize Video Online | Kreatli" />
+        <meta name="twitter:title" content="Video Resizing for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Use Kreatli to resize video online and connect resized exports to secure storage, review, and approvals for creative teams."
+          content="Resize video for social and web formats, then manage versions, review, and approvals in Kreatli’s production workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -116,7 +117,7 @@ export default function ResizeVideoOnlinePage() {
               as="a"
               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               size="lg"
               variant="bordered"
             >
@@ -126,6 +127,8 @@ export default function ResizeVideoOnlinePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/resize-video-online" />
       {/* Inline Resize Video Tool Section */}
       <section className="relative overflow-hidden px-6 pb-12">
         <div className="relative z-10 mx-auto max-w-6xl">

@@ -23,6 +23,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -74,29 +75,29 @@ export default function AnnotateImagePage() {
   return (
     <>
       <Head>
-        <title>Annotate Image | Kreatli</title>
+        <title>Image Annotation for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Annotate images with comments, drawings, and markup. Review and collaborate on images with precise feedback in one place with your video and creative assets."
+          content="Annotate images with comments, drawings, and markup. Keep visual feedback tied to projects, versions, and approvals."
         />
         <link rel="canonical" href="https://kreatli.com/platform/annotate-image" />
         <meta property="og:url" content="https://kreatli.com/platform/annotate-image" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Annotate Image | Kreatli" />
+        <meta property="og:title" content="Image Annotation for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Annotate images with comments, drawings, and markup. Review and collaborate on images with precise feedback in one place."
+          content="Annotate images with comments, drawings, and markup. Keep visual feedback tied to projects, versions, and approvals."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Annotate Image | Kreatli" />
+        <meta property="og:image:alt" content="Image Annotation for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Annotate Image | Kreatli" />
+        <meta name="twitter:title" content="Image Annotation for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Annotate images with comments, drawings, and markup. Review and collaborate on images with precise feedback in one place."
+          content="Annotate images with comments, drawings, and markup. Keep visual feedback tied to projects, versions, and approvals."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -130,7 +131,7 @@ export default function AnnotateImagePage() {
                 as="a"
                 href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 size="lg"
                 variant="bordered"
               >
@@ -142,6 +143,8 @@ export default function AnnotateImagePage() {
         </div>
       </section>
 
+
+      <PlatformDefinitionBlock href="/platform/annotate-image" />
       <PlatformStepGuide
         stepsSectionTitle="How to annotate an image in Kreatli"
         stepsIntro="Follow these steps to upload your image, add annotations, and share for review—all in one place."

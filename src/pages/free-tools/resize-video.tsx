@@ -16,6 +16,7 @@ import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function ResizeVideoPage() {
   useSession();
@@ -23,28 +24,24 @@ export default function ResizeVideoPage() {
   return (
     <>
       <Head>
-        <title>Resize Video - Free Tool | Kreatli</title>
+        <title>Resize Video Online – Free Video Resizer | Kreatli</title>
         <meta
           name="description"
-          content="Resize video in your browser—no upload, runs locally. Try without signing in, or with an active Kreatli trial or plan if signed in. Output WebM for quick social or web use."
+          content="Resize video to custom or preset dimensions in your browser. Runs locally, no upload required. Free to use."
         />
-        <meta
-          name="keywords"
-          content="resize video, video resizer, change video resolution, resize video online, free video resizer, 1080p 720p video, browser video tool"
-        />
-        <meta property="og:title" content="Resize Video - Free Tool | Kreatli" />
+<meta property="og:title" content="Resize Video Online – Free Video Resizer | Kreatli" />
         <meta
           property="og:description"
-          content="Resize video in your browser—no upload, runs locally. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Resize video to custom or preset dimensions in your browser. Runs locally, no upload required. Free to use."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/resize-video" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Resize Video - Free Tool | Kreatli" />
+        <meta name="twitter:title" content="Resize Video Online – Free Video Resizer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Resize video in your browser—no upload, runs locally. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Resize video to custom or preset dimensions in your browser. Runs locally, no upload required. Free to use."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/resize-video" />
@@ -79,6 +76,10 @@ export default function ResizeVideoPage() {
           </div>
         </section>
 
+
+        <DefinitionBlock term="Resize Video Tool">
+          A resize video tool adjusts dimensions or aspect ratio so exports meet platform specs—social, broadcast, or web—without reopening an edit suite. Use it when you need a quick deliverable size check before upload or handoff.
+        </DefinitionBlock>
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
             <FreeToolsEntitlementSection

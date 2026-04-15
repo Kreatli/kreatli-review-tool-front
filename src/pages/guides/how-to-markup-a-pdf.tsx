@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -17,10 +18,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Markup a PDF: Highlights, Shapes, and Clear Review-Ready Feedback';
+const DOCUMENT_TITLE = 'How to Mark Up a PDF: Shapes, Arrows, and Visual Review Feedback';
 const META_DESCRIPTION =
-  'Learn how to markup a PDF with highlights, shapes, and notes so reviewers show exact changes and approvals move ' +
-  'faster without email threads.';
+  'Learn how to mark up a PDF with highlights, shapes, and drawings so reviewers communicate exact changes visually — faster than text-only comments.';
 const PUBLISH_DATE = '2026-04-10 12:00';
 const READ_TIME = '9';
 const CANONICAL_PATH = '/guides/how-to-markup-a-pdf';
@@ -131,6 +131,15 @@ export default function HowToMarkupAPdfGuidePage() {
             decoration—it is a shared visual language that says “this exact phrase,” “this margin,” or “this callout
             block” needs attention, backed by a short note that explains the outcome you want.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Use shapes, arrows, and highlights to point to exactly what needs to change.',
+              'Keep one markup per issue \u2014 dense overlapping marks become unreadable.',
+              'Pair visual markup with a short text note explaining the intended change.',
+              'Review markup at full zoom to ensure annotations are legible and precisely placed.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -244,7 +253,7 @@ export default function HowToMarkupAPdfGuidePage() {
           <p>
             The interactive preview below mirrors a simple PDF markup flow with location-pinned feedback. When you are
             ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

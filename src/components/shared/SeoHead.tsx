@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 const FALLBACK_SITE_URL = 'https://kreatli.com';
 const DEFAULT_OG_IMAGE_PATH = '/og-image.png';
+const OG_SITE_NAME = 'Kreatli';
 
 interface SeoHeadProps {
   title: string;
@@ -12,21 +13,14 @@ interface SeoHeadProps {
   imageUrl?: string;
   imageAlt?: string;
   noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 function getSiteUrl() {
-  if (typeof window !== 'undefined' && window.location?.origin) {
-    return window.location.origin;
-  }
-
   const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
   if (envSiteUrl) {
     return envSiteUrl;
-  }
-
-  const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL ?? process.env.VERCEL_URL;
-  if (vercelUrl) {
-    return `https://${vercelUrl}`;
   }
 
   return FALLBACK_SITE_URL;
@@ -66,6 +60,8 @@ export function SeoHead({
   imageUrl = DEFAULT_OG_IMAGE_PATH,
   imageAlt,
   noindex = false,
+  publishedTime,
+  modifiedTime,
 }: SeoHeadProps) {
   const resolvedCanonicalUrl = buildCanonicalUrl(canonicalPath, canonicalUrl);
   const resolvedImageAlt = imageAlt || title;
@@ -77,6 +73,7 @@ export function SeoHead({
       <title key="title">{title}</title>
       {description ? <meta key="description" name="description" content={description} /> : null}
       {resolvedCanonicalUrl ? <link key="canonical" rel="canonical" href={resolvedCanonicalUrl} /> : null}
+      <meta key="og:site_name" property="og:site_name" content={OG_SITE_NAME} />
       <meta key="og:type" property="og:type" content={ogType} />
       <meta key="og:title" property="og:title" content={title} />
       {description ? <meta key="og:description" property="og:description" content={description} /> : null}
@@ -86,6 +83,8 @@ export function SeoHead({
       <meta key="og:image:alt" property="og:image:alt" content={resolvedImageAlt} />
       <meta key="og:image:width" property="og:image:width" content="1200" />
       <meta key="og:image:height" property="og:image:height" content="630" />
+      {publishedTime ? <meta key="article:published_time" property="article:published_time" content={publishedTime} /> : null}
+      {modifiedTime ? <meta key="article:modified_time" property="article:modified_time" content={modifiedTime} /> : null}
       <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
       <meta key="twitter:title" name="twitter:title" content={title} />
       {description ? <meta key="twitter:description" name="twitter:description" content={description} /> : null}

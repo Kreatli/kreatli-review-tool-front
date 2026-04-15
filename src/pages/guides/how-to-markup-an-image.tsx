@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -132,6 +133,15 @@ export default function HowToMarkupAnImageGuidePage() {
             to—so retouchers spend time editing, not guessing.
           </p>
 
+          <KeyTakeaways
+            items={[
+              'Pin markup (arrows, highlights, shapes) to the exact area that needs attention.',
+              "Use the lightest tool that communicates the issue \u2014 don\u2019t overcrowd the image.",
+              'Add a brief text note alongside each mark explaining the expected change.',
+              'Compare the marked-up version with the revision to confirm all marks were addressed.',
+            ]}
+          />
+
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
             Image markup is any visual signal layered on the picture during review: a box around a logo lockup, an arrow
@@ -245,7 +255,7 @@ export default function HowToMarkupAnImageGuidePage() {
           <p>
             The interactive preview below mirrors a simple image review flow with location-pinned feedback. When you are
             ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .

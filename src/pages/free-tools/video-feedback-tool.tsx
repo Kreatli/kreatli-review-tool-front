@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -7,6 +8,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -25,28 +27,24 @@ export default function VideoFeedbackToolPage() {
   return (
     <>
       <Head>
-        <title>Video Feedback Tool - Free | Kreatli</title>
+        <title>Give Video Feedback Online – Free Feedback Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free video feedback tool to give frame-accurate comments, annotations, and markup on videos. Share review links; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
         />
-        <meta
-          name="keywords"
-          content="video feedback tool, video review tool, video annotation, frame-accurate feedback, video collaboration, video proofing, video markup, comment on video, review video online"
-        />
-        <meta property="og:title" content="Video Feedback Tool - Free | Kreatli" />
+<meta property="og:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free video feedback tool to give frame-accurate comments, annotations, and markup on videos. Share review links; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-feedback-tool" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Feedback Tool - Free | Kreatli" />
+        <meta name="twitter:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free video feedback tool to give frame-accurate comments, annotations, and markup on videos. Share review links; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-feedback-tool" />
@@ -92,6 +90,10 @@ export default function VideoFeedbackToolPage() {
           </div>
         </section>
 
+        <DefinitionBlock term="Video Feedback Tool">
+          A video feedback tool is software that lets reviewers comment directly on video frames with text, drawings, and markup. Feedback is attached to specific timestamps so editors see exactly where changes are needed. Teams use video feedback tools to replace vague email threads with precise, frame-accurate notes.
+        </DefinitionBlock>
+
         <VideoFeedbackToolGuide />
 
         {/* Related tools */}
@@ -105,6 +107,18 @@ export default function VideoFeedbackToolPage() {
           title="More Resources"
           description="Learn more about video feedback workflows, annotation tools, and team collaboration."
         />
+
+        <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+          <p className="text-base text-foreground-500">
+            Wondering how Kreatli compares?{' '}
+            <NextLink
+              href="/comparisons/kreatli-vs-frameio"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              See how Kreatli compares to Frame.io →
+            </NextLink>
+          </p>
+        </div>
 
         {/* CTA Section */}
         <CTASection

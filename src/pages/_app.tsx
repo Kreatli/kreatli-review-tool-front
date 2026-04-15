@@ -12,6 +12,7 @@ import Head from 'next/head';
 
 import { Layout } from '../components/layout/Layout';
 import { StoryblokProvider } from '../components/layout/Storyblok/StoryblokProvider';
+import { OrganizationStructuredData } from '../components/shared/OrganizationStructuredData';
 import { queryClient } from '../lib/queryClient';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -24,6 +25,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
       </Head>
+      <OrganizationStructuredData />
       <QueryClientProvider client={queryClient}>
         <HeroUIProvider id="heroUiProvider">
           <ToastProvider />

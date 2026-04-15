@@ -41,12 +41,15 @@ export function BreadcrumbStructuredData({
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: `${baseUrl}${item.url.startsWith('/') ? item.url : `/${item.url}`}`,
-    })),
+    itemListElement: items.map((item, index) => {
+      const path = item.url ?? '/';
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`,
+      };
+    }),
   };
 
   return (

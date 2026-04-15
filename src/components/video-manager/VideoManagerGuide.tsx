@@ -96,7 +96,7 @@ export const VideoManagerGuide = () => {
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
                               target="_blank"
-                              rel="noopener noreferrer"
+                              rel="noopener noreferrer nofollow"
                               size="lg"
                               variant="bordered"
                             >

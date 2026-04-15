@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -125,6 +126,15 @@ export default function HowToAddDrawingToVideoGuidePage() {
             screenshot: circle what matters, point with arrows, highlight text, and sketch over problem areas. The key
             is that those drawings stay <strong>frame-accurate</strong>, so “this part” is never ambiguous.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Draw on exact frames with arrows, boxes, and freehand markup to show editors precisely what to change.',
+              'Use the lightest markup that communicates the issue — a simple arrow often beats a paragraph of text.',
+              'Pair drawings with a short written note to explain intent, not just location.',
+              'Review drawings at the same resolution as the final output to catch details that disappear at lower quality.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
@@ -252,7 +262,7 @@ export default function HowToAddDrawingToVideoGuidePage() {
             The interactive preview below mirrors a real review flow: upload a clip, scrub to a frame, draw on it, and
             leave a comment. When you are ready to use this with clients, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
             or{' '}
-            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer">
+            <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
             .
