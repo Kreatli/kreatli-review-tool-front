@@ -31,18 +31,24 @@ export const Section = ({ blok }: Props) => {
           {text && <p className="text-lg text-foreground-500">{text}</p>}
           {buttons && buttons?.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-4">
-              {buttons.map((button) => (
-                <Button
-                  key={button._uid}
-                  as={NextLink}
-                  href={button.url.linktype === 'story' ? button.url.cached_url : button.url.url}
-                  target={button.url.target}
-                  className={cn({ 'bg-foreground text-content1': !button.variant || button.variant === 'solid' })}
-                  variant={button.variant || 'solid'}
-                >
-                  {button.label}
-                </Button>
-              ))}
+              {buttons.map((button) => {
+                const rawHref =
+                  button.url?.linktype === 'story' ? button.url?.cached_url : button.url?.url;
+                const href = typeof rawHref === 'string' && rawHref.length > 0 ? rawHref : '#';
+
+                return (
+                  <Button
+                    key={button._uid}
+                    as={NextLink}
+                    href={href}
+                    target={button.url?.target}
+                    className={cn({ 'bg-foreground text-content1': !button.variant || button.variant === 'solid' })}
+                    variant={button.variant || 'solid'}
+                  >
+                    {button.label}
+                  </Button>
+                );
+              })}
             </div>
           )}
         </div>

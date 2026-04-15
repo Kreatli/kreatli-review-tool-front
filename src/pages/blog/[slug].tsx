@@ -177,8 +177,15 @@ export const getStaticPaths = (async () => {
     per_page: 100,
   });
 
+  const paths = Object.values(data.links ?? {})
+    .map((link) => {
+      const slug = link.slug?.replace(/^blog\/?/, '') ?? '';
+      return slug ? { params: { slug } } : null;
+    })
+    .filter((p): p is { params: { slug: string } } => p !== null);
+
   return {
-    paths: Object.values(data.links ?? {}).map((link) => ({ params: { slug: link.slug?.replace('blog/', '') } })),
+    paths,
     fallback: process.env.STORYBLOK_STATUS === 'draft',
   };
 }) satisfies GetStaticPaths;

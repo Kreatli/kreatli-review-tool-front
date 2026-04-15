@@ -24,7 +24,8 @@ export function ArticleStructuredData({
   authorName = 'Kreatli',
 }: ArticleStructuredDataProps) {
   const baseUrl = 'https://kreatli.com';
-  const resolvedUrl = url.startsWith('http') ? url : `${baseUrl}${url.startsWith('/') ? url : `/${url}`}`;
+  const path = url ?? '/';
+  const resolvedUrl = path.startsWith('http') ? path : `${baseUrl}${path.startsWith('/') ? path : `/${path}`}`;
   const resolvedImage = imageUrl
     ? imageUrl.startsWith('http')
       ? imageUrl
