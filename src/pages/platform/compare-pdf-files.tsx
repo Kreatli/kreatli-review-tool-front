@@ -64,29 +64,29 @@ export default function ComparePdfFilesPage() {
   return (
     <>
       <Head>
-        <title>Compare PDF Files | Kreatli</title>
+        <title>Compare PDF Versions for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Compare PDF files side by side. Review two PDF versions in one place with comments and annotations. Perfect for drafts, revisions, and approvals."
+          content="Compare two PDF versions side by side with comments and annotations. Track revisions and approve changes in one workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/compare-pdf-files" />
         <meta property="og:url" content="https://kreatli.com/platform/compare-pdf-files" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Compare PDF Files | Kreatli" />
+        <meta property="og:title" content="Compare PDF Versions for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Compare PDF files side by side. Review two PDF versions in one place with comments and annotations."
+          content="Compare two PDF versions side by side with comments and annotations. Track revisions and approve changes in one workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Compare PDF Files | Kreatli" />
+        <meta property="og:image:alt" content="Compare PDF Versions for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Compare PDF Files | Kreatli" />
+        <meta name="twitter:title" content="Compare PDF Versions for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Compare PDF files side by side. Review two PDF versions in one place with comments and annotations."
+          content="Compare two PDF versions side by side with comments and annotations. Track revisions and approve changes in one workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

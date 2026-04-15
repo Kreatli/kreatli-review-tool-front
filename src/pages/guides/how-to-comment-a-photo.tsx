@@ -17,9 +17,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Comment a Photo: Location-Pinned Feedback for Faster Revisions';
+const DOCUMENT_TITLE = 'How to Comment on a Photo: Location-Pinned Notes for Faster Edits';
 const META_DESCRIPTION =
-  'Learn how to comment a photo with location-pinned notes, clear context, and version-aware review—so teams can iterate without messy email threads.';
+  'Learn how to leave clear, location-pinned comments on photos so retouchers and photographers can act on feedback without guesswork.';
 const PUBLISH_DATE = '2026-04-09 00:20';
 const READ_TIME = '7';
 const CANONICAL_PATH = '/guides/how-to-comment-a-photo';

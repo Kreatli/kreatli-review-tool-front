@@ -25,28 +25,28 @@ export default function VideoFeedbackToolPage() {
   return (
     <>
       <Head>
-        <title>Video Feedback Tool - Free | Kreatli</title>
+        <title>Give Video Feedback Online – Free Feedback Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free video feedback tool to give frame-accurate comments, annotations, and markup on videos. Share review links; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
         />
         <meta
           name="keywords"
           content="video feedback tool, video review tool, video annotation, frame-accurate feedback, video collaboration, video proofing, video markup, comment on video, review video online"
         />
-        <meta property="og:title" content="Video Feedback Tool - Free | Kreatli" />
+        <meta property="og:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free video feedback tool to give frame-accurate comments, annotations, and markup on videos. Share review links; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-feedback-tool" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Feedback Tool - Free | Kreatli" />
+        <meta name="twitter:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free video feedback tool to give frame-accurate comments, annotations, and markup on videos. Share review links; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-feedback-tool" />

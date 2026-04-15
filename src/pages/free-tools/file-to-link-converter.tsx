@@ -64,31 +64,31 @@ export default function FileToLinkConverterPage() {
   return (
     <>
       <Head>
-        <title>File to Link Converter | Kreatli</title>
+        <title>Turn Files into Shareable Links – Free File to Link Tool | Kreatli</title>
         <meta
           name="description"
-          content="Turn any file into a shareable link. Create secure file review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Convert any file into a secure shareable link. Send one URL, collect feedback and approvals. Try free with a 7-day trial."
         />
         <meta
           name="keywords"
           content="file to link converter, file to link, shareable file link, file review link, share file online, file url generator, file collaboration, client review"
         />
-        <meta property="og:title" content="File to Link Converter | Kreatli" />
+        <meta property="og:title" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Turn any file into a shareable link. Create secure file review links in seconds—send one link, collect feedback, recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Convert any file into a secure shareable link. Send one URL, collect feedback and approvals. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="File to Link Converter | Kreatli" />
+        <meta property="og:image:alt" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="File to Link Converter | Kreatli" />
+        <meta name="twitter:title" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Turn any file into a shareable link. Create secure review links. Recipients open and comment in their browser without a Kreatli account."
+          content="Convert any file into a secure shareable link. Send one URL, collect feedback and approvals. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href={CANONICAL_URL} />

@@ -62,29 +62,29 @@ export default function ExtractFramesFromVideoPage() {
   return (
     <>
       <Head>
-        <title>Extract Frames from Video | Kreatli</title>
+        <title>Video Frame Extraction for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Extract frames from video in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in. Use stills for thumbnails, proofs, and review."
+          content="Extract still frames from video for thumbnails, proofs, and review. Built into Kreatli's video production workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/extract-frames-from-video" />
         <meta property="og:url" content="https://kreatli.com/platform/extract-frames-from-video" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Extract Frames from Video | Kreatli" />
+        <meta property="og:title" content="Video Frame Extraction for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Extract and export frames from video for free. Capture still frames for thumbnails, proofs, and review. Use Kreatli’s free Video Frame Extractor—recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Extract still frames from video for thumbnails, proofs, and review. Built into Kreatli’s video production workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Extract Frames from Video | Kreatli" />
+        <meta property="og:image:alt" content="Video Frame Extraction for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Extract Frames from Video | Kreatli" />
+        <meta name="twitter:title" content="Video Frame Extraction for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Extract frames in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Extract still frames from video for thumbnails, proofs, and review. Built into Kreatli’s video production workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

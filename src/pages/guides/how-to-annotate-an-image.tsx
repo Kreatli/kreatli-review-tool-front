@@ -17,9 +17,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Annotate an Image: Pinned Comments, Markup, and Clear Revisions';
+const DOCUMENT_TITLE = 'How to Annotate an Image: Step-by-Step Guide to Visual Feedback';
 const META_DESCRIPTION =
-  'Learn how to annotate an image with pinned comments and visual markup so feedback is unambiguous, revisions move faster, and approvals stay organized.';
+  'Learn how to annotate any image type with pinned comments and markup. A step-by-step guide covering tools, workflows, and best practices for faster revisions.';
 const PUBLISH_DATE = '2026-04-11 01:10';
 const READ_TIME = '8';
 const CANONICAL_PATH = '/guides/how-to-annotate-an-image';

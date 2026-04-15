@@ -74,29 +74,29 @@ export default function AnnotatePdfPage() {
   return (
     <>
       <Head>
-        <title>Annotate PDF | Kreatli</title>
+        <title>PDF Annotation for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Annotate PDFs with comments, drawings, and markup. Review and collaborate on PDFs with precise feedback in one place with your video and creative assets."
+          content="Annotate PDFs with comments, drawings, and markup. Keep feedback tied to projects and versions in one workspace."
         />
         <link rel="canonical" href="https://kreatli.com/platform/annotate-pdf" />
         <meta property="og:url" content="https://kreatli.com/platform/annotate-pdf" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Annotate PDF | Kreatli" />
+        <meta property="og:title" content="PDF Annotation for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Annotate PDFs with comments, drawings, and markup. Review and collaborate on PDFs with precise feedback in one place."
+          content="Annotate PDFs with comments, drawings, and markup. Keep feedback tied to projects and versions in one workspace."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Annotate PDF | Kreatli" />
+        <meta property="og:image:alt" content="PDF Annotation for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Annotate PDF | Kreatli" />
+        <meta name="twitter:title" content="PDF Annotation for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Annotate PDFs with comments, drawings, and markup. Review and collaborate on PDFs with precise feedback in one place."
+          content="Annotate PDFs with comments, drawings, and markup. Keep feedback tied to projects and versions in one workspace."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

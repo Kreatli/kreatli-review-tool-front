@@ -22,23 +22,23 @@ export default function CostCalculatorPage() {
   return (
     <>
       <Head>
-        <title>Software Cost Calculator - Calculate Tool Savings | Kreatli</title>
+        <title>Software Cost Calculator – See How Much You Could Save | Kreatli</title>
         <meta
           name="description"
-          content="Calculate your monthly and annual software costs. Compare your current tool stack with Kreatli and see potential savings. Free calculator for creative teams."
+          content="Calculate your team's total software spend and see how much you could save by consolidating tools with Kreatli. Free calculator."
         />
-        <meta property="og:title" content="Software Cost Calculator - Calculate Creative Tool Savings | Kreatli" />
+        <meta property="og:title" content="Software Cost Calculator – See How Much You Could Save | Kreatli" />
         <meta
           property="og:description"
-          content="Calculate your software costs and see potential savings. Free calculator for creative teams. Compare your tool stack with Kreatli's all-in-one platform."
+          content="Calculate your team's total software spend and see how much you could save by consolidating tools with Kreatli. Free calculator."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/cost-calculator" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Software Cost Calculator - Calculate Creative Tool Savings | Kreatli" />
+        <meta name="twitter:title" content="Software Cost Calculator – See How Much You Could Save | Kreatli" />
         <meta
           name="twitter:description"
-          content="Calculate your software costs and see potential savings. Free calculator for creative teams."
+          content="Calculate your team's total software spend and see how much you could save by consolidating tools with Kreatli. Free calculator."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/cost-calculator" />
       </Head>

@@ -17,10 +17,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Markup a PDF: Highlights, Shapes, and Clear Review-Ready Feedback';
+const DOCUMENT_TITLE = 'How to Mark Up a PDF: Shapes, Arrows, and Visual Review Feedback';
 const META_DESCRIPTION =
-  'Learn how to markup a PDF with highlights, shapes, and notes so reviewers show exact changes and approvals move ' +
-  'faster without email threads.';
+  'Learn how to mark up a PDF with highlights, shapes, and drawings so reviewers communicate exact changes visually — faster than text-only comments.';
 const PUBLISH_DATE = '2026-04-10 12:00';
 const READ_TIME = '9';
 const CANONICAL_PATH = '/guides/how-to-markup-a-pdf';

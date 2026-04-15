@@ -77,32 +77,29 @@ export default function VideoProofingPage() {
   return (
     <>
       <Head>
-        <title>Video Proofing | Kreatli</title>
+        <title>Video Proofing for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content={
-            'Video proofing with frame-accurate comments, annotations, and approvals. Recipients on shared links do not ' +
-            'need a Kreatli account. Try without signing in, or with an active trial or plan if signed in.'
-          }
+          content="Video proofing with frame-accurate comments, version comparison, and approval workflows. Built for production teams."
         />
         <link rel="canonical" href="https://kreatli.com/platform/video-proofing" />
         <meta property="og:url" content="https://kreatli.com/platform/video-proofing" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Video Proofing | Kreatli" />
+        <meta property="og:title" content="Video Proofing for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Video proofing with frame-accurate comments, annotations, and approvals. Collaborate on video with precise feedback in one place."
+          content="Video proofing with frame-accurate comments, version comparison, and approval workflows. Built for production teams."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Video Proofing | Kreatli" />
+        <meta property="og:image:alt" content="Video Proofing for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Proofing | Kreatli" />
+        <meta name="twitter:title" content="Video Proofing for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Video proofing with frame-accurate comments, annotations, and approvals. Collaborate on video with precise feedback in one place."
+          content="Video proofing with frame-accurate comments, version comparison, and approval workflows. Built for production teams."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

@@ -23,27 +23,27 @@ export default function VideoFrameExtractorPage() {
   return (
     <>
       <Head>
-        <title>Video Frame Extractor - Free Tool | Kreatli</title>
+        <title>Extract Frames from Video – Free Frame Capture Tool | Kreatli</title>
         <meta
           name="description"
-          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
         />
         <meta
           name="keywords"
           content="video frame extractor, extract frames from video, capture video frame, screenshot video, export video stills, download frames png jpg, download frames zip, browser frame extractor, free video tool"
         />
-        <meta property="og:title" content="Video Frame Extractor - Free Tool | Kreatli" />
+        <meta property="og:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
         <meta
           property="og:description"
-          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-frame-extractor" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Frame Extractor - Free Tool | Kreatli" />
+        <meta name="twitter:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free video frame extractor: capture stills in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-frame-extractor" />
       </Head>

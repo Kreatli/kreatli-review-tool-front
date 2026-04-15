@@ -17,10 +17,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Add Notes to a PDF: Quick, Page-Anchored Context for Faster Fixes';
+const DOCUMENT_TITLE = 'How to Add Notes to a PDF: Quick, Contextual Feedback for Teams';
 const META_DESCRIPTION =
-  'Learn how to add notes to a PDF with page-pinned context, short actionable language, and version-aware review so ' +
-  'teams resolve feedback without losing the thread.';
+  'Learn how to add notes to a PDF with page-pinned context and concise language so teams resolve feedback efficiently across versions.';
 const PUBLISH_DATE = '2026-04-10 12:10';
 const READ_TIME = '9';
 const CANONICAL_PATH = '/guides/how-to-add-notes-to-a-pdf';

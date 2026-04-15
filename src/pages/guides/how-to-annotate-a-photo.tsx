@@ -17,9 +17,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Annotate a Photo: Location-Pinned Notes for Faster Retouching and Approval';
+const DOCUMENT_TITLE = 'How to Annotate a Photo: Retouching Notes That Editors Can Act On';
 const META_DESCRIPTION =
-  'Learn how to annotate a photo with location-pinned comments and markup so retouching notes are unambiguous, revisions move faster, and approvals stay organized.';
+  'Learn how to annotate photos for retouching — pin comments to exact areas on headshots, product shots, and real estate photos so editors know exactly what to fix.';
 const PUBLISH_DATE = '2026-04-11 01:20';
 const READ_TIME = '8';
 const CANONICAL_PATH = '/guides/how-to-annotate-a-photo';

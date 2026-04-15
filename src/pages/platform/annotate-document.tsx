@@ -74,29 +74,29 @@ export default function AnnotateDocumentPage() {
   return (
     <>
       <Head>
-        <title>Annotate Document | Kreatli</title>
+        <title>Document Annotation for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Annotate documents with comments, drawings, and markup. Review and collaborate on documents with precise feedback in one place with your video and creative assets."
+          content="Annotate documents with comments, drawings, and markup. Centralize feedback with projects and version history."
         />
         <link rel="canonical" href="https://kreatli.com/platform/annotate-document" />
         <meta property="og:url" content="https://kreatli.com/platform/annotate-document" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Annotate Document | Kreatli" />
+        <meta property="og:title" content="Document Annotation for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Annotate documents with comments, drawings, and markup. Review and collaborate on documents with precise feedback in one place."
+          content="Annotate documents with comments, drawings, and markup. Centralize feedback with projects and version history."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Annotate Document | Kreatli" />
+        <meta property="og:image:alt" content="Document Annotation for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Annotate Document | Kreatli" />
+        <meta name="twitter:title" content="Document Annotation for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Annotate documents with comments, drawings, and markup. Review and collaborate on documents with precise feedback in one place."
+          content="Annotate documents with comments, drawings, and markup. Centralize feedback with projects and version history."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

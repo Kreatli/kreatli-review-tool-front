@@ -71,29 +71,29 @@ export default function HighlightPdfPage() {
   return (
     <>
       <Head>
-        <title>Highlight PDF | Kreatli</title>
+        <title>PDF Highlighting for Review Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Highlight PDF text and regions for review. Highlight pdf with comments and markup in one place with your video and creative assets."
+          content="Highlight PDF text and regions for review. Add comments to highlights and track revisions across versions."
         />
         <link rel="canonical" href="https://kreatli.com/platform/highlight-pdf" />
         <meta property="og:url" content="https://kreatli.com/platform/highlight-pdf" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Highlight PDF | Kreatli" />
+        <meta property="og:title" content="PDF Highlighting for Review Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Highlight PDF text and regions for review. Highlight pdf with comments and markup in one place with your team and clients."
+          content="Highlight PDF text and regions for review. Add comments to highlights and track revisions across versions."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Highlight PDF | Kreatli" />
+        <meta property="og:image:alt" content="PDF Highlighting for Review Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Highlight PDF | Kreatli" />
+        <meta name="twitter:title" content="PDF Highlighting for Review Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Highlight PDF text and regions for review. Highlight pdf with comments and markup in one place with your team and clients."
+          content="Highlight PDF text and regions for review. Add comments to highlights and track revisions across versions."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

@@ -59,28 +59,28 @@ export default function DocumentComparerPage() {
   return (
     <>
       <Head>
-        <title>Document Comparer - Free Online Tool | Kreatli</title>
+        <title>Compare Documents Side by Side – Free Document Comparer | Kreatli</title>
         <meta
           name="description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
         />
         <meta
           name="keywords"
           content="document comparer, compare documents online, compare two documents, document comparison tool, document diff, compare PDF versions, document review, document collaboration"
         />
-        <meta property="og:title" content="Document Comparer - Free Online Tool | Kreatli" />
+        <meta property="og:title" content="Compare Documents Side by Side – Free Document Comparer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/document-comparer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Document Comparer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Compare Documents Side by Side – Free Document Comparer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online document comparer for creative teams. Compare two document versions (e.g. PDFs) side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/document-comparer" />

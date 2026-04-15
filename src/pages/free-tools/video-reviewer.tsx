@@ -25,28 +25,28 @@ export default function VideoReviewerPage() {
   return (
     <>
       <Head>
-        <title>Video Reviewer - Free Online Tool | Kreatli</title>
+        <title>Review Videos Online – Free Video Reviewer | Kreatli</title>
         <meta
           name="description"
-          content="Free online video reviewer for creative teams. Review videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta
           name="keywords"
           content="video reviewer, online video review, video review tool, review video online, video approval software, video proofing, video collaboration, creative review"
         />
-        <meta property="og:title" content="Video Reviewer - Free Online Tool | Kreatli" />
+        <meta property="og:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video reviewer for creative teams. Review videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-reviewer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Reviewer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video reviewer for creative teams. Review videos with frame-accurate comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-reviewer" />

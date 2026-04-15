@@ -207,9 +207,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-comment-a-photo',
     content: {
       metaFields: {
-        title: 'How to Comment a Photo: Location-Pinned Feedback for Faster Revisions',
+        title: 'How to Comment on a Photo: Location-Pinned Notes for Faster Edits',
         description:
-          'Learn how to comment a photo with location-pinned notes, clear context, and version-aware review—so teams can iterate without messy email threads.',
+          'Learn how to leave clear, location-pinned comments on photos so retouchers and photographers can act on feedback without guesswork.',
       },
       image: {
         filename: '/images/guides/how-to-comment-a-photo-cover.png',
@@ -227,9 +227,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-comment-a-picture',
     content: {
       metaFields: {
-        title: 'How to Comment a Picture: Clear Feedback Without Guesswork',
+        title: 'How to Comment on a Picture: Pins, Markup, and Organized Feedback',
         description:
-          'Learn how to comment a picture with location-pinned notes, clear intent, and version-aware review—so feedback stays organized and revisions move faster.',
+          'Learn when to pin, draw, or write on a picture — choose the right comment type for design reviews and keep feedback organized across revisions.',
       },
       image: {
         filename: '/images/guides/how-to-comment-a-picture-cover.png',
@@ -267,9 +267,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-annotate-an-image',
     content: {
       metaFields: {
-        title: 'How to Annotate an Image: Pinned Comments, Markup, and Clear Revisions',
+        title: 'How to Annotate an Image: Step-by-Step Guide to Visual Feedback',
         description:
-          'Learn how to annotate an image with pinned comments and visual markup so feedback is unambiguous, revisions move faster, and approvals stay organized.',
+          'Learn how to annotate any image type with pinned comments and markup. A step-by-step guide covering tools, workflows, and best practices for faster revisions.',
       },
       image: {
         filename: '/images/guides/how-to-annotate-an-image-cover.png',
@@ -287,9 +287,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-annotate-a-photo',
     content: {
       metaFields: {
-        title: 'How to Annotate a Photo: Location-Pinned Notes for Faster Retouching and Approval',
+        title: 'How to Annotate a Photo: Retouching Notes That Editors Can Act On',
         description:
-          'Learn how to annotate a photo with location-pinned comments and markup so retouching notes are unambiguous, revisions move faster, and approvals stay organized.',
+          'Learn how to annotate photos for retouching — pin comments to exact areas on headshots, product shots, and real estate photos so editors know exactly what to fix.',
       },
       image: {
         filename: '/images/guides/how-to-annotate-a-photo-cover.png',
@@ -307,9 +307,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-annotate-a-picture',
     content: {
       metaFields: {
-        title: 'How to Annotate a Picture: Mark Up What You Mean and Keep Feedback Organized',
+        title: 'How to Annotate a Picture: Clear Markup for Design and Creative Feedback',
         description:
-          'Learn how to annotate a picture with location-pinned comments and markup so feedback is clear, revisions move faster, and approvals stay organized.',
+          'Learn how to annotate pictures in design reviews — pin feedback to exact spots on illustrations, social graphics, and ad creatives so revisions land right the first time.',
       },
       image: {
         filename: '/images/guides/how-to-annotate-a-picture-cover.png',
@@ -327,9 +327,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-highlight-a-pdf',
     content: {
       metaFields: {
-        title: 'How to Highlight a PDF: Clear, Context-Pinned Feedback for Faster Reviews',
+        title: 'How to Highlight a PDF: Flag Key Sections for Faster Review',
         description:
-          'Learn how to highlight a PDF with purpose: call out exact text and visual areas, add comments with context, and keep revisions organized across versions.',
+          'Learn how to highlight a PDF to flag specific text and regions for review — add context with comments and keep highlights organized across versions.',
       },
       image: {
         filename: '/images/guides/how-to-highlight-a-pdf-cover.png',
@@ -509,9 +509,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-markup-a-pdf',
     content: {
       metaFields: {
-        title: 'How to Markup a PDF: Highlights, Shapes, and Clear Review-Ready Feedback',
+        title: 'How to Mark Up a PDF: Shapes, Arrows, and Visual Review Feedback',
         description:
-          'Learn how to markup a PDF with highlights, shapes, and notes so reviewers show exact changes and approvals move faster without email threads.',
+          'Learn how to mark up a PDF with highlights, shapes, and drawings so reviewers communicate exact changes visually — faster than text-only comments.',
       },
       image: {
         filename: '/images/guides/how-to-markup-a-pdf-cover.png',
@@ -529,9 +529,9 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-add-notes-to-a-pdf',
     content: {
       metaFields: {
-        title: 'How to Add Notes to a PDF: Quick, Page-Anchored Context for Faster Fixes',
+        title: 'How to Add Notes to a PDF: Quick, Contextual Feedback for Teams',
         description:
-          'Learn how to add notes to a PDF with page-pinned context, short actionable language, and version-aware review so teams resolve feedback without losing the thread.',
+          'Learn how to add notes to a PDF with page-pinned context and concise language so teams resolve feedback efficiently across versions.',
       },
       image: {
         filename: '/images/guides/how-to-add-notes-to-a-pdf-cover.png',

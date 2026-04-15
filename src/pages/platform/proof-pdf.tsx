@@ -77,32 +77,29 @@ export default function ProofPdfPage() {
   return (
     <>
       <Head>
-        <title>Proof PDF | Kreatli</title>
+        <title>PDF Proofing for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content={
-            'Proof PDF files with comments, annotations, and approvals. Recipients on shared links do not need a ' +
-            'Kreatli account. Try without signing in, or with an active trial or plan if signed in.'
-          }
+          content="Proof PDFs with pinned comments, annotations, and structured approvals. Track revisions and manage sign-offs in one place."
         />
         <link rel="canonical" href="https://kreatli.com/platform/proof-pdf" />
         <meta property="og:url" content="https://kreatli.com/platform/proof-pdf" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Proof PDF | Kreatli" />
+        <meta property="og:title" content="PDF Proofing for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Proof PDF files with comments, annotations, and approvals. Collaborate on PDFs with precise feedback in one place."
+          content="Proof PDFs with pinned comments, annotations, and structured approvals. Track revisions and manage sign-offs in one place."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Proof PDF | Kreatli" />
+        <meta property="og:image:alt" content="PDF Proofing for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Proof PDF | Kreatli" />
+        <meta name="twitter:title" content="PDF Proofing for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Proof PDF files with comments, annotations, and approvals. Collaborate on PDFs with precise feedback in one place."
+          content="Proof PDFs with pinned comments, annotations, and structured approvals. Track revisions and manage sign-offs in one place."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

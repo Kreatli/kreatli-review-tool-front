@@ -18,9 +18,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Highlight a PDF: Clear, Context-Pinned Feedback for Faster Reviews';
+const DOCUMENT_TITLE = 'How to Highlight a PDF: Flag Key Sections for Faster Review';
 const META_DESCRIPTION =
-  'Learn how to highlight a PDF with purpose: call out exact text and visual areas, add comments with context, and keep revisions organized across versions.';
+  'Learn how to highlight a PDF to flag specific text and regions for review — add context with comments and keep highlights organized across versions.';
 const PUBLISH_DATE = '2026-04-10 10:00';
 const READ_TIME = '9';
 const CANONICAL_PATH = '/guides/how-to-highlight-a-pdf';

@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+// eslint-disable-next-line simple-import-sort/imports
 import Head from 'next/head';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
@@ -25,28 +25,28 @@ export default function VideoManagerPage() {
   return (
     <>
       <Head>
-        <title>Video Manager - Free Online Tool | Kreatli</title>
+        <title>Manage Video Assets Online – Free Video Manager | Kreatli</title>
         <meta
           name="description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. Recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Organize, store, and track video assets with version control and share links. Manage feedback and approvals in one place. Try free."
         />
         <meta
           name="keywords"
           content="video manager, manage videos, video organization, video version control, video project management, video storage, video collaboration"
         />
-        <meta property="og:title" content="Video Manager - Free Online Tool | Kreatli" />
+        <meta property="og:title" content="Manage Video Assets Online – Free Video Manager | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. Recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Organize, store, and track video assets with version control and share links. Manage feedback and approvals in one place. Try free."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-manager" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Manager - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Manage Video Assets Online – Free Video Manager | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video manager for creative teams. Organize, store, and track video assets with version control and client share links. Recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          content="Organize, store, and track video assets with version control and share links. Manage feedback and approvals in one place. Try free."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-manager" />
@@ -98,7 +98,10 @@ export default function VideoManagerPage() {
         <VideoManagerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-manager')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-manager')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoManagerFAQ />
 
@@ -126,4 +129,4 @@ export default function VideoManagerPage() {
       <SignUpModal />
     </>
   );
-};
+}

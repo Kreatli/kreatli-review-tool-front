@@ -17,9 +17,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Comment a Picture: Clear Feedback Without Guesswork';
+const DOCUMENT_TITLE = 'How to Comment on a Picture: Pins, Markup, and Organized Feedback';
 const META_DESCRIPTION =
-  'Learn how to comment a picture with location-pinned notes, clear intent, and version-aware review—so feedback stays organized and revisions move faster.';
+  'Learn when to pin, draw, or write on a picture — choose the right comment type for design reviews and keep feedback organized across revisions.';
 const PUBLISH_DATE = '2026-04-09 00:30';
 const READ_TIME = '7';
 const CANONICAL_PATH = '/guides/how-to-comment-a-picture';

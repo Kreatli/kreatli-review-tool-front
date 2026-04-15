@@ -59,28 +59,28 @@ export default function VideoComparerPage() {
   return (
     <>
       <Head>
-        <title>Video Comparer - Free Online Tool | Kreatli</title>
+        <title>Compare Videos Side by Side – Free Video Comparer | Kreatli</title>
         <meta
           name="description"
-          content="Free online video comparer for creative teams. Compare two video versions side by side with frame-accurate comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two video versions side by side with frame-accurate comments and annotations. Spot changes instantly. Try free with a 7-day trial."
         />
         <meta
           name="keywords"
           content="video comparer, compare videos online, compare two videos, video comparison tool, video diff, compare video versions, video review, video collaboration"
         />
-        <meta property="og:title" content="Video Comparer - Free Online Tool | Kreatli" />
+        <meta property="og:title" content="Compare Videos Side by Side – Free Video Comparer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online video comparer for creative teams. Compare two video versions side by side with frame-accurate comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two video versions side by side with frame-accurate comments and annotations. Spot changes instantly. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-comparer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Comparer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Compare Videos Side by Side – Free Video Comparer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online video comparer for creative teams. Compare two video versions side by side with frame-accurate comments and annotations. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Compare two video versions side by side with frame-accurate comments and annotations. Spot changes instantly. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-comparer" />

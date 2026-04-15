@@ -23,10 +23,10 @@ export default function DataTransferCalculatorPage() {
   return (
     <>
       <Head>
-        <title>Data Transfer Calculator - Free Tool | Kreatli</title>
+        <title>Data Transfer Calculator – Estimate Upload and Download Times | Kreatli</title>
         <meta
           name="description"
-          content="Calculate upload and download times for large files instantly. Free tool for video editors, post-production teams, and creative professionals. Supports MB, GB, TB and Mbps/Gbps speeds."
+          content="Calculate how long large file uploads and downloads take. Enter file size and connection speed for instant results. Free calculator."
         />
         <meta
           name="keywords"
@@ -34,22 +34,22 @@ export default function DataTransferCalculatorPage() {
         />
         <meta
           property="og:title"
-          content="Data Transfer Calculator - Upload & Download Time Tool | Kreatli"
+          content="Data Transfer Calculator – Estimate Upload and Download Times | Kreatli"
         />
         <meta
           property="og:description"
-          content="Calculate upload and download times for large files instantly. Free tool for video editors and creative professionals."
+          content="Calculate how long large file uploads and downloads take. Enter file size and connection speed for instant results. Free calculator."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/data-transfer-calculator" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Data Transfer Calculator - Upload & Download Time Tool | Kreatli"
+          content="Data Transfer Calculator – Estimate Upload and Download Times | Kreatli"
         />
         <meta
           name="twitter:description"
-          content="Calculate upload and download times for large files instantly. Free tool for video editors and creative professionals."
+          content="Calculate how long large file uploads and downloads take. Enter file size and connection speed for instant results. Free calculator."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/data-transfer-calculator" />
       </Head>

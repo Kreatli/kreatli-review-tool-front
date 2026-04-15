@@ -64,29 +64,29 @@ export default function CompareDocumentsOnlinePage() {
   return (
     <>
       <Head>
-        <title>Compare Documents Online | Kreatli</title>
+        <title>Compare Documents for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Compare documents online side by side. Review two document versions (PDFs, decks, contracts) in one place with comments and annotations. Perfect for drafts and approvals."
+          content="Compare two document versions side by side with comments and annotations. Built for team review and approval workflows."
         />
         <link rel="canonical" href="https://kreatli.com/platform/compare-documents-online" />
         <meta property="og:url" content="https://kreatli.com/platform/compare-documents-online" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Compare Documents Online | Kreatli" />
+        <meta property="og:title" content="Compare Documents for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Compare documents online side by side. Review two document versions in one place with comments and annotations."
+          content="Compare two document versions side by side with comments and annotations. Built for team review and approval workflows."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Compare Documents Online | Kreatli" />
+        <meta property="og:image:alt" content="Compare Documents for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Compare Documents Online | Kreatli" />
+        <meta name="twitter:title" content="Compare Documents for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Compare documents online side by side. Review two document versions in one place with comments and annotations."
+          content="Compare two document versions side by side with comments and annotations. Built for team review and approval workflows."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

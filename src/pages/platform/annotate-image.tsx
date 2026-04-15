@@ -74,29 +74,29 @@ export default function AnnotateImagePage() {
   return (
     <>
       <Head>
-        <title>Annotate Image | Kreatli</title>
+        <title>Image Annotation for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Annotate images with comments, drawings, and markup. Review and collaborate on images with precise feedback in one place with your video and creative assets."
+          content="Annotate images with comments, drawings, and markup. Keep visual feedback tied to projects, versions, and approvals."
         />
         <link rel="canonical" href="https://kreatli.com/platform/annotate-image" />
         <meta property="og:url" content="https://kreatli.com/platform/annotate-image" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Annotate Image | Kreatli" />
+        <meta property="og:title" content="Image Annotation for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Annotate images with comments, drawings, and markup. Review and collaborate on images with precise feedback in one place."
+          content="Annotate images with comments, drawings, and markup. Keep visual feedback tied to projects, versions, and approvals."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Annotate Image | Kreatli" />
+        <meta property="og:image:alt" content="Image Annotation for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Annotate Image | Kreatli" />
+        <meta name="twitter:title" content="Image Annotation for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Annotate images with comments, drawings, and markup. Review and collaborate on images with precise feedback in one place."
+          content="Annotate images with comments, drawings, and markup. Keep visual feedback tied to projects, versions, and approvals."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

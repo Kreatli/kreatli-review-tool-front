@@ -17,9 +17,9 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE = 'How to Annotate a Picture: Mark Up What You Mean and Keep Feedback Organized';
+const DOCUMENT_TITLE = 'How to Annotate a Picture: Clear Markup for Design and Creative Feedback';
 const META_DESCRIPTION =
-  'Learn how to annotate a picture with location-pinned comments and markup so feedback is clear, revisions move faster, and approvals stay organized.';
+  'Learn how to annotate pictures in design reviews — pin feedback to exact spots on illustrations, social graphics, and ad creatives so revisions land right the first time.';
 const PUBLISH_DATE = '2026-04-11 01:30';
 const READ_TIME = '8';
 const CANONICAL_PATH = '/guides/how-to-annotate-a-picture';

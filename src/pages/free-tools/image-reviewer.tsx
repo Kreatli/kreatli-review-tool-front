@@ -25,28 +25,28 @@ export default function ImageReviewerPage() {
   return (
     <>
       <Head>
-        <title>Image Reviewer - Free Online Tool | Kreatli</title>
+        <title>Review Images Online – Free Image Reviewer | Kreatli</title>
         <meta
           name="description"
-          content="Free online image reviewer for creative teams. Review images with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review images with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta
           name="keywords"
           content="image reviewer, online image review, image review tool, review image online, image approval software, image collaboration, comment on image, annotate image"
         />
-        <meta property="og:title" content="Image Reviewer - Free Online Tool | Kreatli" />
+        <meta property="og:title" content="Review Images Online – Free Image Reviewer | Kreatli" />
         <meta
           property="og:description"
-          content="Free online image reviewer for creative teams. Review images with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review images with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/image-reviewer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Image Reviewer - Free Online Tool | Kreatli" />
+        <meta name="twitter:title" content="Review Images Online – Free Image Reviewer | Kreatli" />
         <meta
           name="twitter:description"
-          content="Free online image reviewer for creative teams. Review images with location-pinned comments, annotations, and approvals. Share with clients; recipients do not need a Kreatli account. Use this page without signing in, or with an active Kreatli trial or plan if you are signed in."
+          content="Review images with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/image-reviewer" />

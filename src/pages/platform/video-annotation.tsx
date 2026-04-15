@@ -82,29 +82,29 @@ export default function VideoAnnotationPage() {
   return (
     <>
       <Head>
-        <title>Frame-Accurate Video Annotation | Kreatli</title>
+        <title>Video Annotation for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Add frame-accurate annotations, drawings, and markup directly to video frames. Pin comments to exact timestamps and collaborate with precise visual feedback. Perfect for video teams."
+          content="Frame-accurate video annotation with drawings, markup, and timestamped comments. Built for video production team workflows."
         />
         <link rel="canonical" href="https://kreatli.com/platform/video-annotation" />
         <meta property="og:url" content="https://kreatli.com/platform/video-annotation" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kreatli | Video Annotation – Frame-Accurate Video Markup & Feedback" />
+        <meta property="og:title" content="Video Annotation for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Add frame-accurate annotations, drawings, and markup directly to video frames. Collaborate with precise visual feedback designed for video teams."
+          content="Frame-accurate video annotation with drawings, markup, and timestamped comments. Built for video production team workflows."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Kreatli | Video Annotation – Frame-Accurate Video Markup & Feedback" />
+        <meta property="og:image:alt" content="Video Annotation for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Kreatli | Video Annotation – Frame-Accurate Video Markup & Feedback" />
+        <meta name="twitter:title" content="Video Annotation for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Add frame-accurate annotations, drawings, and markup directly to video frames. Collaborate with precise visual feedback designed for video teams."
+          content="Frame-accurate video annotation with drawings, markup, and timestamped comments. Built for video production team workflows."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

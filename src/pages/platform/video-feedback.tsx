@@ -71,29 +71,29 @@ export default function VideoFeedbackPage() {
   return (
     <>
       <Head>
-        <title>Video Feedback | Kreatli</title>
+        <title>Video Feedback for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Give video feedback with frame-accurate comments and annotations. Video feedback in one place with your team and creative assets."
+          content="Collect frame-accurate video feedback with comments and annotations. Keep feedback tied to projects, versions, and approvals."
         />
         <link rel="canonical" href="https://kreatli.com/platform/video-feedback" />
         <meta property="og:url" content="https://kreatli.com/platform/video-feedback" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Video Feedback | Kreatli" />
+        <meta property="og:title" content="Video Feedback for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Give video feedback with frame-accurate comments and annotations. Review and collaborate in one place."
+          content="Collect frame-accurate video feedback with comments and annotations. Keep feedback tied to projects, versions, and approvals."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Video Feedback | Kreatli" />
+        <meta property="og:image:alt" content="Video Feedback for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Feedback | Kreatli" />
+        <meta name="twitter:title" content="Video Feedback for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Give video feedback with frame-accurate comments and annotations. Precise feedback your team and clients can act on."
+          content="Collect frame-accurate video feedback with comments and annotations. Keep feedback tied to projects, versions, and approvals."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>

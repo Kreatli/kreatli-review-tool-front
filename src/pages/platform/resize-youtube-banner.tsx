@@ -61,29 +61,29 @@ export default function ResizeYouTubeBannerPage() {
   return (
     <>
       <Head>
-        <title>Resize YouTube Banner | Kreatli</title>
+        <title>YouTube Banner Resizer for Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Resize your YouTube banner to 2560×1440px with safe area previews. Preview how channel art looks on mobile, desktop, tablet, and TV. Free tool."
+          content="Resize YouTube banners to correct dimensions with safe area previews. Manage channel art alongside your production workflow."
         />
         <link rel="canonical" href="https://kreatli.com/platform/resize-youtube-banner" />
         <meta property="og:url" content="https://kreatli.com/platform/resize-youtube-banner" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Resize YouTube Banner | Kreatli" />
+        <meta property="og:title" content="YouTube Banner Resizer for Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Resize your YouTube banner with our free tool. Apply correct dimensions and safe zone so channel art looks great on every device."
+          content="Resize YouTube banners to correct dimensions with safe area previews. Manage channel art alongside your production workflow."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Resize YouTube Banner | Kreatli" />
+        <meta property="og:image:alt" content="YouTube Banner Resizer for Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Resize YouTube Banner | Kreatli" />
+        <meta name="twitter:title" content="YouTube Banner Resizer for Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Resize your YouTube banner to the correct size with safe zone previews. Free tool."
+          content="Resize YouTube banners to correct dimensions with safe area previews. Manage channel art alongside your production workflow."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
