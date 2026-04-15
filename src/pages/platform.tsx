@@ -9,6 +9,7 @@ import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
+import { HubPageIntro } from '../components/shared/HubPageIntro';
 import { SeoHead } from '../components/shared/SeoHead';
 import { TrustBar } from '../components/shared/TrustBar';
 import { Icon, IconType } from '../components/various/Icon';
@@ -176,52 +177,69 @@ export default function PlatformPage() {
         </div>
       </section>
       <TrustBar />
-      {/* Editorial intro */}
-      <section className="px-6 pb-4">
-        <div className="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-foreground-500">
-          <p>
-            Kreatli replaces the patchwork of Google Drive, Frame.io, Slack, and standalone project management tools
-            with a single workspace purpose-built for video production. Every feature — from frame-accurate review to
-            board-driven task management — is designed around the way creative teams actually ship work.
-          </p>
-          <p>
-            The core workflow is simple: upload files, invite your team and clients, collect feedback pinned to exact
-            frames or page locations, compare versions side by side, track deliverables through customizable project
-            stages, and get approvals — all without leaving the platform. Guest review links let clients participate
-            with no signup, while encryption and access controls keep sensitive assets safe.
-          </p>
-          <p>
-            Below you will find every platform feature organized by category. Whether you are looking for{' '}
-            <NextLink href="/platform/video-annotation" className="font-medium text-primary underline-offset-2 hover:underline">
-              video annotation
-            </NextLink>
-            ,{' '}
-            <NextLink href="/platform/review-approval" className="font-medium text-primary underline-offset-2 hover:underline">
-              review &amp; approval workflows
-            </NextLink>
-            ,{' '}
-            <NextLink href="/platform/secure-asset-storage" className="font-medium text-primary underline-offset-2 hover:underline">
-              secure asset storage
-            </NextLink>
-            , or{' '}
-            <NextLink href="/platform/project-orchestration" className="font-medium text-primary underline-offset-2 hover:underline">
-              project orchestration
-            </NextLink>
-            , each page explains how that feature works and how it fits into your production workflow.
-          </p>
-        </div>
-      </section>
-
-      {/* Platform Features Section */}
+      {/* Platform Features Section — intro is part of the catalog, not a separate text island */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-8 text-center">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-10">
+          <div className="text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Platform Features</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Explore our core platform features designed for video collaboration and creative production workflows.
+              Browse everything Kreatli does in one place, then filter by the part of production you care about.
             </p>
           </div>
-          <div className="mb-10 flex justify-center">
+
+          <HubPageIntro
+            eyebrow="Platform overview"
+            title="One workspace from upload to approval"
+            icon="monitorPlay"
+            aside={
+              <>
+                <p className="text-xs font-semibold uppercase tracking-wide text-foreground-500">Deep dives</p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    { href: '/platform/video-annotation', label: 'Video annotation' },
+                    { href: '/platform/review-approval', label: 'Review & approval' },
+                    { href: '/platform/secure-asset-storage', label: 'Secure storage' },
+                    { href: '/platform/project-orchestration', label: 'Project orchestration' },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <NextLink
+                        href={item.href}
+                        className="group flex items-center justify-between gap-2 rounded-lg py-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                      >
+                        <span>{item.label}</span>
+                        <Icon
+                          icon="arrowRight"
+                          size={14}
+                          className="flex-shrink-0 text-primary/60 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </NextLink>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+          >
+            <p>
+              Kreatli replaces scattered storage, review, chat, and task tools with a single flow built for video and
+              rich media: upload to a project, invite collaborators, pin feedback to exact frames or coordinates, and
+              track deliverables through stages your team already uses.
+            </p>
+            <p>
+              Guest links let clients review without signing up; permissions and encryption keep sensitive work
+              contained. Use the category chips below to narrow the grid—each card opens a focused feature page with
+              workflow detail. New here?{' '}
+              <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
+                Start a 7-day trial
+              </NextLink>{' '}
+              or compare{' '}
+              <NextLink href="/pricing" className="font-medium text-primary underline-offset-2 hover:underline">
+                plans and pricing
+              </NextLink>
+              .
+            </p>
+          </HubPageIntro>
+
+          <div className="flex justify-center">
             <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
               <button
                 type="button"

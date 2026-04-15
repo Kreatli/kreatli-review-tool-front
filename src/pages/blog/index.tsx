@@ -1,12 +1,15 @@
 import { ISbStoryData } from '@storyblok/react';
 import { GetStaticProps } from 'next';
+import NextLink from 'next/link';
 
 import { BlogArticles } from '../../components/blog/Blog';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { HubPageIntro } from '../../components/shared/HubPageIntro';
 import { SeoHead } from '../../components/shared/SeoHead';
+import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
 import { PageStoryblok } from '../../typings/storyblok';
@@ -36,29 +39,68 @@ export default function Blog({ stories }: Props) {
       />
       <Header />
       <Decorations />
-      <div className="w-full px-6 py-8">
-        <div className="flex flex-col gap-6 py-8">
+      <section className="relative overflow-hidden px-6 py-16">
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
           <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Kreatli Blog</h1>
-          <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
-            Insights, tips, best practices and news for creative teams. Discover strategies to streamline your workflow
-            and improve collaboration.
+          <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+            Ideas for creative leads, producers, and operations—practical, not promotional.
           </p>
         </div>
-        <div className="mx-auto max-w-3xl space-y-4 pb-8 text-base leading-relaxed text-foreground-500">
-          <p>
-            The Kreatli blog covers creative production workflows, video collaboration best practices, and practical
-            advice for agencies, studios, and in-house teams. Articles explore topics like scaling creative operations,
-            managing multi-channel campaigns, optimizing post-production handoffs, and choosing the right tools for
-            your team. Whether you produce video, design, or documents, you will find actionable strategies you can
-            apply right away.
-          </p>
+      </section>
+
+      <section className="relative overflow-hidden px-6 pb-16">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-10 backdrop-blur-lg">
+          <HubPageIntro
+            eyebrow="Editorial"
+            title="Strategy, workflows, and lessons from the field"
+            icon="newsletter"
+            aside={
+              <>
+                <p className="text-xs font-semibold uppercase tracking-wide text-foreground-500">On the site</p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    { href: '/guides', label: 'How-to guides' },
+                    { href: '/platform', label: 'Platform features' },
+                    { href: '/free-tools', label: 'Free tools' },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <NextLink
+                        href={item.href}
+                        className="group flex items-center justify-between gap-2 rounded-lg py-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                      >
+                        <span>{item.label}</span>
+                        <Icon
+                          icon="arrowRight"
+                          size={14}
+                          className="flex-shrink-0 text-primary/60 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </NextLink>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+          >
+            <p>
+              We publish long-form pieces when they help teams ship: clearer handoffs between editorial and post,
+              tighter client review loops, and operations patterns that scale without burying creatives in process.
+            </p>
+            <p>
+              Read an article, then put it next to the{' '}
+              <NextLink href="/guides" className="font-medium text-primary underline-offset-2 hover:underline">
+                step-by-step guides
+              </NextLink>{' '}
+              or{' '}
+              <NextLink href="/platform" className="font-medium text-primary underline-offset-2 hover:underline">
+                product deep dives
+              </NextLink>{' '}
+              when you want to execute the same workflow inside Kreatli.
+            </p>
+          </HubPageIntro>
+
+          <BlogArticles articles={stories} />
         </div>
-        <div className="backdrop-blur-lg">
-          <div className="mx-auto max-w-6xl pt-6">
-            <BlogArticles articles={stories} />
-          </div>
-        </div>
-      </div>
+      </section>
       <FooterSection />
     </>
   );

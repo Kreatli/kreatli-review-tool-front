@@ -9,7 +9,9 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData, FAQItem } from '../../components/shared/FAQStructuredData';
+import { HubPageIntro } from '../../components/shared/HubPageIntro';
 import { SeoHead } from '../../components/shared/SeoHead';
+import { Icon } from '../../components/various/Icon';
 import { mergeGuidesForIndex } from '../../data/local-guides';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
@@ -75,36 +77,55 @@ export default function GuidesPage({ stories }: Props) {
         </div>
       </section>
 
-      {/* Editorial intro */}
-      <section className="px-6 pb-4">
-        <div className="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-foreground-500">
-          <p>
-            These guides cover the workflows creative teams deal with every day: reviewing video with frame-accurate
-            feedback, annotating PDFs and images, sharing large files with clients, and organizing assets across
-            projects. Each guide walks through the process step by step, explains best practices, and shows where
-            Kreatli fits in.
-          </p>
-          <p>
-            Start with a workflow you already run — like{' '}
-            <NextLink href="/guides/how-to-review-a-video" className="font-medium text-primary underline-offset-2 hover:underline">
-              reviewing a video
-            </NextLink>
-            ,{' '}
-            <NextLink href="/guides/how-to-annotate-a-pdf-online" className="font-medium text-primary underline-offset-2 hover:underline">
-              annotating a PDF
-            </NextLink>
-            , or{' '}
-            <NextLink href="/guides/how-to-share-video" className="font-medium text-primary underline-offset-2 hover:underline">
-              sharing video with clients
-            </NextLink>{' '}
-            — and use the category filters below to narrow by file type.
-          </p>
-        </div>
-      </section>
+      {/* Guide library: intro sits directly above the same filters/grid as the article cards */}
+      <section className="relative overflow-hidden px-6 pb-8">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-10 backdrop-blur-lg">
+          <HubPageIntro
+            eyebrow="Guides library"
+            title="Step-by-step workflows you can reuse"
+            icon="list"
+            aside={
+              <>
+                <p className="text-xs font-semibold uppercase tracking-wide text-foreground-500">Start here</p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    { href: '/guides/how-to-review-a-video', label: 'Review a video' },
+                    { href: '/guides/how-to-annotate-a-pdf-online', label: 'Annotate a PDF' },
+                    { href: '/guides/how-to-share-video', label: 'Share video with clients' },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <NextLink
+                        href={item.href}
+                        className="group flex items-center justify-between gap-2 rounded-lg py-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                      >
+                        <span>{item.label}</span>
+                        <Icon
+                          icon="arrowRight"
+                          size={14}
+                          className="flex-shrink-0 text-primary/60 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </NextLink>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+          >
+            <p>
+              Each guide is written for editors, producers, and account teams who need clear handoffs—not generic
+              software tips. We walk through the workflow, call out common pitfalls, and show how the same pattern
+              looks in Kreatli when you want to centralize feedback.
+            </p>
+            <p>
+              Browse the grid below—newest guides appear first. No account is required to read; when you want to try
+              the in-product steps, every plan includes a{' '}
+              <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
+                7-day trial
+              </NextLink>
+              .
+            </p>
+          </HubPageIntro>
 
-      {/* Guide articles */}
-      <section className="px-6 pb-8">
-        <div className="mx-auto max-w-6xl backdrop-blur-lg">
           <BlogArticles articles={stories} />
         </div>
       </section>

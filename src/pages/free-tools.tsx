@@ -8,6 +8,7 @@ import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../components/shared/BreadcrumbStructuredData';
 import { FAQStructuredData } from '../components/shared/FAQStructuredData';
+import { HubPageIntro } from '../components/shared/HubPageIntro';
 import { SeoHead } from '../components/shared/SeoHead';
 import { Icon } from '../components/various/Icon';
 import { FREE_TOOLS, FREE_TOOLS_FILTER_OPTIONS, type FreeToolFilterTag } from '../data/free-tools';
@@ -121,56 +122,64 @@ export default function FreeToolsPage() {
         </div>
       </section>
 
-      {/* Editorial intro */}
-      <section className="px-6 pb-4">
-        <div className="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-foreground-500">
-          <p>
-            Kreatli offers free browser-based tools built for video editors, creative teams, agencies, and freelancers
-            who review, annotate, and share media files every day. Use the review and annotation tools with a 7-day free
-            trial, or try the calculators and resizers at no cost with no account required.
-          </p>
-          <p>
-            Annotate videos with{' '}
-            <NextLink href="/free-tools/video-annotator" className="font-medium text-primary underline-offset-2 hover:underline">
-              frame-accurate markup
-            </NextLink>
-            , review PDFs with{' '}
-            <NextLink href="/free-tools/pdf-reviewer" className="font-medium text-primary underline-offset-2 hover:underline">
-              pinned comments
-            </NextLink>
-            , or compare two versions of an image{' '}
-            <NextLink href="/free-tools/image-comparer" className="font-medium text-primary underline-offset-2 hover:underline">
-              side by side
-            </NextLink>
-            . Each tool is designed to collect clear feedback and reduce revision cycles — whether you are working
-            solo or sharing review links with clients.
-          </p>
-          <p>
-            Planning a social campaign? Check your{' '}
-            <NextLink href="/safe-zone-checker" className="font-medium text-primary underline-offset-2 hover:underline">
-              safe zones for Reels, TikTok, and Shorts
-            </NextLink>
-            , resize your{' '}
-            <NextLink href="/free-tools/youtube-banner-resizer" className="font-medium text-primary underline-offset-2 hover:underline">
-              YouTube banner
-            </NextLink>
-            , or estimate transfer times with the{' '}
-            <NextLink href="/free-tools/data-transfer-calculator" className="font-medium text-primary underline-offset-2 hover:underline">
-              data transfer calculator
-            </NextLink>
-            . Need the full platform? All tools are included with every{' '}
-            <NextLink href="/pricing" className="font-medium text-primary underline-offset-2 hover:underline">
-              Kreatli plan
-            </NextLink>
-            .
-          </p>
-        </div>
-      </section>
-
-      {/* Free Tools Section with filter */}
+      {/* Tool catalog: intro explains the hub; filters and grid follow in one visual section */}
       <section className="relative overflow-hidden px-6 pb-16 pt-6 backdrop-blur-lg sm:pt-8">
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-10 flex justify-center">
+        <div className="relative z-10 mx-auto max-w-6xl space-y-10">
+          <HubPageIntro
+            eyebrow="Free tools hub"
+            title="Browser tools for review, markup, and delivery"
+            icon="grid"
+            aside={
+              <>
+                <p className="text-xs font-semibold uppercase tracking-wide text-foreground-500">Jump in</p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    { href: '/free-tools/video-annotator', label: 'Video annotator' },
+                    { href: '/free-tools/pdf-reviewer', label: 'PDF reviewer' },
+                    { href: '/safe-zone-checker', label: 'Safe zone checker' },
+                    { href: '/free-tools/data-transfer-calculator', label: 'Data transfer calculator' },
+                  ].map((item) => (
+                    <li key={item.href}>
+                      <NextLink
+                        href={item.href}
+                        className="group flex items-center justify-between gap-2 rounded-lg py-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                      >
+                        <span>{item.label}</span>
+                        <Icon
+                          icon="arrowRight"
+                          size={14}
+                          className="flex-shrink-0 text-primary/60 transition-transform group-hover:translate-x-0.5"
+                        />
+                      </NextLink>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+          >
+            <p>
+              Use these tools in the browser for everyday creative work: calculators and layout helpers are free with
+              no account; review and markup tools follow the same access rules as your Kreatli session (try a{' '}
+              <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
+                7-day trial
+              </NextLink>{' '}
+              when you need full access).
+            </p>
+            <p>
+              Pick a category below to narrow the list, or open any card for a dedicated page with the live tool and
+              context on how it fits solo work and client reviews. Everything here also ships inside{' '}
+              <NextLink href="/platform" className="font-medium text-primary underline-offset-2 hover:underline">
+                Kreatli&apos;s platform
+              </NextLink>{' '}
+              if you want projects, approvals, and storage in one place (
+              <NextLink href="/pricing" className="font-medium text-primary underline-offset-2 hover:underline">
+                see plans
+              </NextLink>
+              ).
+            </p>
+          </HubPageIntro>
+
+          <div className="flex justify-center">
             <div className="inline-flex flex-wrap items-center justify-center gap-2 rounded-2xl border border-foreground-200 bg-content1/60 px-4 py-3 shadow-sm backdrop-blur-sm">
               <button
                 type="button"
