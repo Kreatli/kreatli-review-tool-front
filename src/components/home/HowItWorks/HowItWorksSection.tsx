@@ -37,9 +37,21 @@ export const HowItWorksSection = () => {
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-16">
         <div className="flex w-full flex-col gap-4">
           <h2 className="text-center font-sans text-3xl font-bold sm:text-4xl">How Does Kreatli Work?</h2>
-          <p className="mx-auto max-w-2xl text-center text-lg text-foreground-500">
-            Get started in 4 simple steps. From project setup to final delivery, streamline your entire creative
-            workflow.
+          <div className="mx-auto max-w-2xl rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/[0.04] to-transparent px-6 py-5 sm:px-8 sm:py-6">
+            <div className="flex items-start gap-4">
+              <div className="mt-0.5 hidden flex-shrink-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 p-2.5 sm:flex">
+                <Icon icon="slides" size={20} className="text-primary" />
+              </div>
+              <p className="text-center text-base leading-relaxed text-foreground-500 sm:text-left sm:text-lg">
+                Kreatli is a Video Collaboration &amp; Review Platform that helps video teams manage production from
+                brief to delivery in one workspace. Upload files, get frame-accurate feedback, track tasks on visual
+                boards, and collect client approvals — without switching between storage, review, chat, and project
+                management tools.
+              </p>
+            </div>
+          </div>
+          <p className="text-center text-base font-medium text-foreground-400">
+            Get started in 4 simple steps:
           </p>
         </div>
         <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -75,7 +87,7 @@ export const HowItWorksSection = () => {
           <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
             Start For Free
           </Button>
-          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">
+          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow" size="lg" variant="light">
             Book a Demo
           </Button>
         </div>

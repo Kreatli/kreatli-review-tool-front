@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -124,6 +125,15 @@ export default function HowToCommentAPhotoGuidePage() {
             you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so “this area”
             is never vague and revisions don’t bounce between email threads and screenshots.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin comments to the exact area of the photo so retouchers know precisely where to work.',
+              "Use measurable language — 'brighten exposure +0.5 stop' beats 'make it pop.'",
+              'Keep one note per issue to avoid bundling unrelated changes.',
+              'Check the latest version before commenting to avoid duplicate feedback.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -92,6 +93,10 @@ export default function PdfAnnotatorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="PDF Annotator">
+          A PDF annotator is an online tool for adding comments, highlights, drawings, and markup to PDF documents. Notes are pinned to exact locations on the page so reviewers can point to precisely what needs to change. PDF annotators replace the need to print documents or juggle email attachments during review cycles.
+        </DefinitionBlock>
 
         <PdfAnnotatorGuide />
 

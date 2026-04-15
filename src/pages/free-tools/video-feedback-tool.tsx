@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -91,6 +92,10 @@ export default function VideoFeedbackToolPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Feedback Tool">
+          A video feedback tool is software that lets reviewers comment directly on video frames with text, drawings, and markup. Feedback is attached to specific timestamps so editors see exactly where changes are needed. Teams use video feedback tools to replace vague email threads with precise, frame-accurate notes.
+        </DefinitionBlock>
 
         <VideoFeedbackToolGuide />
 

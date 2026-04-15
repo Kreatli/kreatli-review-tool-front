@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -91,6 +92,10 @@ export default function ImageAnnotatorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Image Annotator">
+          An image annotator is an online tool for adding pinned comments, highlights, and markup to images. Feedback is attached to exact locations on the image so designers and retouchers know precisely what to change. Image annotators replace vague feedback like &lsquo;fix the colors&rsquo; with precise, visual direction.
+        </DefinitionBlock>
 
         <ImageAnnotatorGuide />
 

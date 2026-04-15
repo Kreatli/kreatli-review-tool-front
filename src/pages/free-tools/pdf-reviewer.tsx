@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -91,6 +92,10 @@ export default function PdfReviewerPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="PDF Reviewer">
+          A PDF reviewer is a tool for reviewing PDF documents with location-pinned comments, annotations, and approval workflows. Reviewers add feedback directly on the PDF — no downloads or email attachments required. PDF reviewers help teams collect and track feedback in one place.
+        </DefinitionBlock>
 
         <PdfReviewerGuide />
 

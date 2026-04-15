@@ -9,6 +9,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -126,6 +127,10 @@ export default function VideoComparerPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Comparer">
+          A video comparer is a tool that displays two video versions side by side so reviewers can spot differences between cuts. Frame-accurate playback lets you compare edits at the exact same moment in both versions. Video comparers help teams verify changes, catch regressions, and make informed approval decisions.
+        </DefinitionBlock>
 
         {/* How to compare videos guide */}
         <PlatformStepGuide

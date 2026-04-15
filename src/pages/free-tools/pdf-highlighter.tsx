@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -90,6 +91,10 @@ export default function PdfHighlighterPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="PDF Highlighter">
+          A PDF highlighter is an online tool for selecting and highlighting text and regions in PDF documents for review. Highlights can be paired with comments to explain what needs attention. PDF highlighters help teams flag key sections without cluttering the document with markup.
+        </DefinitionBlock>
 
         <PdfAnnotatorGuide />
 

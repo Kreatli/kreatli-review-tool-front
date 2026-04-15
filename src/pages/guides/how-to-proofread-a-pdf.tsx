@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -132,6 +133,15 @@ export default function HowToProofreadAPdfGuidePage() {
             language, facts, and presentation details while keeping feedback traceable—so the next export is genuinely
             final, not “final-ish.”
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Run multiple focused passes (spelling, layout, brand compliance) rather than one catch-all scan.',
+              'Pin corrections to exact locations on the page so the designer can find them instantly.',
+              'Use a checklist to ensure every required check is completed before sign-off.',
+              'Compare the corrected version against the marked-up original to verify all fixes were applied.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

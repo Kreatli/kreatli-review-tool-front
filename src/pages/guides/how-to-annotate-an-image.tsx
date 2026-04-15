@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -126,6 +127,15 @@ export default function HowToAnnotateAnImageGuidePage() {
             Instead of “make this better,” you want <strong>location-pinned comments</strong> plus optional markup so
             “this area” is never vague and revisions don’t bounce between screenshots and email threads.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin comments to exact locations so feedback is unambiguous.',
+              'Pair markup (arrows, highlights) with a short written note explaining the intent.',
+              'Review at full resolution to catch details that disappear in scaled-down previews.',
+              'Resolve annotations as changes are applied to keep the review status clear.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

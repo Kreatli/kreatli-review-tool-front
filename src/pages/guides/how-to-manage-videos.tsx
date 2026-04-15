@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -131,6 +132,15 @@ export default function HowToManageVideosGuidePage() {
             approve. When storage, naming, and review links work together, producers spend less time on logistics and
             more time on the cut.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Store all cuts in one library with clear version labels so the team always opens the right file.',
+              "Use predictable share links that don\u2019t break when new versions are uploaded.",
+              'Track review status (pending, changes requested, approved) alongside each version.',
+              'Archive completed projects with their full version history for future reference.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

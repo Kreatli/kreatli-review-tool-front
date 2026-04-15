@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -132,6 +133,15 @@ export default function HowToReviewAVideoGuidePage() {
             Timestamped notes, clear priorities, and honest separation between “must-fix” and “nice-to-have” keep
             editors moving instead of reconciling vague feedback.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin feedback to exact frames so editors can jump straight to the timecode without scrubbing.',
+              'State what needs to change and why — "trim 2 seconds before the logo reveal for pacing" beats "too long."',
+              'Review at the intended output resolution and on the target device when possible.',
+              'Use version comparison to verify that requested changes were applied correctly before approving.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

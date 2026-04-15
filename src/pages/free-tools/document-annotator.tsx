@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -91,6 +92,10 @@ export default function DocumentAnnotatorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Document Annotator">
+          A document annotator is an online tool for adding pinned comments, highlights, drawings, and markup to documents such as PDFs. Feedback stays attached to specific locations in the document so reviewers can communicate exact changes. Document annotators replace scattered email feedback with a single, organized review workspace.
+        </DefinitionBlock>
 
         <PdfAnnotatorGuide />
 

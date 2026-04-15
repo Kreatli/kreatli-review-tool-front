@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -125,6 +126,15 @@ export default function HowToAddDrawingToVideoGuidePage() {
             screenshot: circle what matters, point with arrows, highlight text, and sketch over problem areas. The key
             is that those drawings stay <strong>frame-accurate</strong>, so “this part” is never ambiguous.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Draw on exact frames with arrows, boxes, and freehand markup to show editors precisely what to change.',
+              'Use the lightest markup that communicates the issue — a simple arrow often beats a paragraph of text.',
+              'Pair drawings with a short written note to explain intent, not just location.',
+              'Review drawings at the same resolution as the final output to catch details that disappear at lower quality.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

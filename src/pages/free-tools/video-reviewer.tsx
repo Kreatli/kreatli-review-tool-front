@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -91,6 +92,10 @@ export default function VideoReviewerPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Reviewer">
+          A video reviewer is an online tool that lets you watch a video and leave feedback pinned to exact frames and timestamps. Instead of writing &lsquo;fix the shot around the middle,&rsquo; reviewers click the precise frame and leave a note that stays linked to that moment. Video reviewers are used by production teams, agencies, and editors to collect clear, actionable feedback and speed up approval cycles.
+        </DefinitionBlock>
 
         <VideoReviewerGuide />
 

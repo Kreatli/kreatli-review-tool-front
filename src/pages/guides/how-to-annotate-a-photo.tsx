@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -126,6 +127,15 @@ export default function HowToAnnotateAPhotoGuidePage() {
             image you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so
             “this corner” is never vague and revisions don’t bounce between email threads and screenshots.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Anchor retouching notes to the exact area of the photo so direction is precise.',
+              'Use highlights and shapes for spatial feedback; use text notes for tonal or color changes.',
+              'Keep one annotation per issue \u2014 bundled notes are harder to track and resolve.',
+              'Compare the annotated version against the original to confirm changes were applied.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

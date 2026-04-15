@@ -9,6 +9,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -124,6 +125,15 @@ export default function HowToHighlightAPdfGuidePage() {
             should mark the exact text or visual area that needs attention, then pair with a note that explains what to
             change. That combination keeps review cycles fast and avoids vague “please revise this” threads.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Highlight specific text or regions rather than entire pages to keep feedback focused.',
+              'Pair each highlight with a comment explaining what needs to change.',
+              "Use different colors or labels to separate categories like 'factual error' vs 'style suggestion.'",
+              'Review highlights across versions to confirm flagged sections were addressed.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

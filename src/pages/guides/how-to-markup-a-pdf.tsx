@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -130,6 +131,15 @@ export default function HowToMarkupAPdfGuidePage() {
             decoration—it is a shared visual language that says “this exact phrase,” “this margin,” or “this callout
             block” needs attention, backed by a short note that explains the outcome you want.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Use shapes, arrows, and highlights to point to exactly what needs to change.',
+              'Keep one markup per issue \u2014 dense overlapping marks become unreadable.',
+              'Pair visual markup with a short text note explaining the intended change.',
+              'Review markup at full zoom to ensure annotations are legible and precisely placed.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

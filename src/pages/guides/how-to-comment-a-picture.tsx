@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -124,6 +125,15 @@ export default function HowToCommentAPictureGuidePage() {
             off,” use <strong>location-pinned comments</strong> (and optional markup) so collaborators know exactly what
             you mean and can resolve changes quickly.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Choose between a pinned comment, markup (arrows/boxes), or a text-only note based on what\u2019s clearest.',
+              'Pin comments to the exact spot on the picture to remove guesswork.',
+              'One comment per issue keeps threads focused and resolution trackable.',
+              'Resolve comments after changes are made so the team sees remaining work at a glance.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

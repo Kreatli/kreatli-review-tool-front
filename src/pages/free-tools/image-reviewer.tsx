@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -91,6 +92,10 @@ export default function ImageReviewerPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Image Reviewer">
+          An image reviewer is an online tool for reviewing images with location-pinned comments, annotations, and approval workflows. Reviewers leave feedback directly on the image rather than describing changes in a separate message. Image reviewers are used by design teams, agencies, and photographers to streamline visual feedback.
+        </DefinitionBlock>
 
         <ImageReviewerGuide />
 

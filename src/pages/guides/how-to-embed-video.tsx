@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { EmbedVideoFeatureCardSections } from '../../components/shared/EmbedVideoFeatureCardSections';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
@@ -110,6 +111,15 @@ export default function HowToEmbedVideoGuidePage() {
             frame-accurate feedback—see{' '}
             <NextLink href="/platform/embed-video">Kreatli’s embed video workflow for review and approvals</NextLink>.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Use an iframe or CMS embed block to place video on any page — the embed code comes from the hosting platform.',
+              'Keep embeds responsive by using a 16:9 aspect-ratio wrapper or the hosting platform\'s responsive snippet.',
+              'For client review, use a review-ready embed link that supports comments, approvals, and version tracking.',
+              'Avoid auto-playing embedded video with sound — most browsers block it and it hurts user experience.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

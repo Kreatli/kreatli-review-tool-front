@@ -7,6 +7,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
@@ -92,6 +93,10 @@ export default function VideoAnnotatorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Annotator">
+          A video annotator is a tool for adding comments, drawings, and markup to specific frames in a video. Annotations are pinned to exact timestamps, letting editors and reviewers communicate visually rather than describing changes in text. Video annotators are essential for production teams that need frame-accurate feedback.
+        </DefinitionBlock>
 
         <VideoAnnotatorGuide />
 

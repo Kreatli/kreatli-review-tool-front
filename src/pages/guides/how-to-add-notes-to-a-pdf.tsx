@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -130,6 +131,15 @@ export default function HowToAddNotesToAPdfGuidePage() {
             high-signal sticky: it sits exactly where the issue lives, says what should change in plain language, and
             can be checked off when the PDF is updated—without a separate email novel.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Anchor each note to the relevant spot on the page so context is immediate.',
+              "Keep notes short and action-oriented \u2014 'Replace headline with approved copy from brief' beats 'fix this.'",
+              'Use @mentions to route each note to the right team member.',
+              'Resolve notes as changes are made so remaining work is always visible.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

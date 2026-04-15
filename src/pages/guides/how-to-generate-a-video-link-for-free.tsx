@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -126,6 +127,15 @@ export default function HowToGenerateAVideoLinkForFreeGuidePage() {
             This guide separates <strong>watch links</strong>, <strong>file links</strong>, and{' '}
             <strong>review-ready links</strong> so you pick the right format for your workflow.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Upload to a hosting platform (YouTube, Vimeo, Google Drive, or Kreatli) to get a shareable link.',
+              "A 'video link' can mean a watch-only URL, a download link, or a review-ready link — pick the right type.",
+              'Free hosts may compress video or add watermarks; check output quality before sharing with clients.',
+              'Use a review-ready link when you need comments, approvals, or version tracking tied to the video.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>People use “video link” to mean a few different things:</p>

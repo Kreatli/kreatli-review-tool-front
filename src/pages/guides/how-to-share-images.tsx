@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -131,6 +132,15 @@ export default function HowToShareImagesGuidePage() {
             and optional review tools mean designers, marketers, and clients stop chasing attachments and start judging
             the actual pixels together.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Generate a shareable link instead of attaching images to emails or chat messages.',
+              'Set access controls (password, expiration) for confidential or pre-release visuals.',
+              'Use a review-ready link when recipients need to leave pinned feedback on the image.',
+              'Share one link per image asset so feedback, versions, and approvals stay in one place.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

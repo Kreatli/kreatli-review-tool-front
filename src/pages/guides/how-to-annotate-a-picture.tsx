@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -126,6 +127,15 @@ export default function HowToAnnotateAPictureGuidePage() {
             exact location you mean, and paired with clear intent—so revisions don’t bounce between screenshots and long
             message threads.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin feedback directly on the picture rather than describing locations in a separate message.',
+              'Use the lightest markup that makes the issue clear \u2014 a simple arrow often beats a paragraph.',
+              'Write one annotation per change to make resolution trackable.',
+              'Resolve each annotation after the designer addresses it so remaining work is visible.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

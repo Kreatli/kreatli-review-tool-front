@@ -8,6 +8,7 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -131,6 +132,15 @@ export default function HowToMarkupAnImageGuidePage() {
             “tighten the crop” become actionable when they sit on the exact gradient, edge, or type block they refer
             to—so retouchers spend time editing, not guessing.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Pin markup (arrows, highlights, shapes) to the exact area that needs attention.',
+              "Use the lightest tool that communicates the issue \u2014 don\u2019t overcrowd the image.",
+              'Add a brief text note alongside each mark explaining the expected change.',
+              'Compare the marked-up version with the revision to confirm all marks were addressed.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>

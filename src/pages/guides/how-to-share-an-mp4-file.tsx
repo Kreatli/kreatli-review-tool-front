@@ -9,6 +9,7 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
@@ -126,6 +127,15 @@ export default function HowToShareAnMp4FileGuidePage() {
             able to download it, or the app may compress it. This guide shows when an attachment is fine—and when you
             should switch to a share link.
           </p>
+
+          <KeyTakeaways
+            items={[
+              'Email attachments fail above ~20–25 MB; use a cloud link for anything larger.',
+              'Choose between a watch link (stream only) and a file link (allows download) based on the recipient\u2019s needs.',
+              'Set expiration and password protection on links containing pre-release or confidential footage.',
+              'Use a review-ready link when the recipient needs to leave feedback, not just watch.',
+            ]}
+          />
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>When someone asks you to “share the MP4,” they typically mean one of these:</p>
