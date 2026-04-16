@@ -11,7 +11,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import {
   PROOF_PDF_STEPS,
@@ -143,7 +143,7 @@ export default function ProofPdfPage() {
               </Button>
             </div>
           </div>
-          <InteractiveReviewToolPreview variant="pdf" />
+          <PlatformInteractiveReviewPreview variant="pdf" />
         </div>
       </section>
 

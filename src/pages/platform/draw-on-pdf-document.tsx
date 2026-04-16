@@ -10,7 +10,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import {
   DRAW_ON_PDF_DOCUMENT_STEPS,
@@ -139,7 +139,7 @@ export default function DrawOnPdfDocumentPage() {
               </Button>
             </div>
           </div>
-          <InteractiveReviewToolPreview variant="pdf" />
+          <PlatformInteractiveReviewPreview variant="pdf" />
 
           {/* Related PDF & document features */}
           <div className="mx-auto mt-16 w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">

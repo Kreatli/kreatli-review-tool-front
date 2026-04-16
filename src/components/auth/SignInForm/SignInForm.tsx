@@ -19,10 +19,12 @@ const DEFAULT_VALUES = {
 interface Props {
   email?: string;
   showLinks?: boolean;
+  /** When set (e.g. `/sign-up?returnTo=...`), preserves standalone tool URL through sign-up. */
+  signUpHref?: string;
   onSuccess: (user: UserDto) => void;
 }
 
-export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
+export const SignInForm = ({ email, showLinks = true, signUpHref = '/sign-up', onSuccess }: Props) => {
   const {
     formState: { errors },
     register,
@@ -114,7 +116,7 @@ export const SignInForm = ({ email, showLinks = true, onSuccess }: Props) => {
         <div className="flex flex-col gap-2">
           <div className="text-center">
             Don&apos;t have an account?{' '}
-            <Link as={NextLink} href="/sign-up" color="foreground" underline="always">
+            <Link as={NextLink} href={signUpHref} color="foreground" underline="always">
               Sign up
             </Link>
           </div>

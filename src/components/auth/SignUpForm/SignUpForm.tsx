@@ -10,6 +10,10 @@ import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { getAxiosInstance } from '../../../services/config';
 import { usePostAuthSignUp, usePostAuthSsoGoogle } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
+import {
+  buildSignInHrefWithReturnTo,
+  getStandaloneToolPostAuthReplaceUrl,
+} from '../../../utils/standaloneMarketingToolAuth';
 import { Icon } from '../../various/Icon';
 import { SignUpThankYouMessage } from './SignUpThankYouMessage';
 
@@ -35,6 +39,10 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
   });
 
   const router = useRouter();
+  const signInHref = React.useMemo(
+    () => buildSignInHrefWithReturnTo(router.pathname, router.asPath),
+    [router.pathname, router.asPath],
+  );
 
   const { mutate, isPending, isSuccess } = usePostAuthSignUp();
   const { mutate: ssoSignUp, isPending: isSsoPending } = usePostAuthSsoGoogle();
@@ -70,6 +78,17 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
               return;
             }
 
+            const stayOnToolUrl = getStandaloneToolPostAuthReplaceUrl(
+              router.pathname,
+              router.asPath,
+              user.subscription.isActive,
+            );
+            if (stayOnToolUrl !== null) {
+              router.replace(stayOnToolUrl);
+
+              return;
+            }
+
             if (!user.subscription.isActive) {
               router.push('/?showPlansModal=true');
 
@@ -98,7 +117,7 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
   });
 
   if (isSuccess) {
-    return <SignUpThankYouMessage onClick={onSuccess} />;
+    return <SignUpThankYouMessage onClick={onSuccess} signInHref={signInHref} />;
   }
 
   return (
@@ -145,7 +164,7 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
       </div>
       <div className="text-center">
         Already have an account?{' '}
-        <Link as={NextLink} href="/sign-in" color="foreground" underline="always">
+        <Link as={NextLink} href={signInHref} color="foreground" underline="always">
           Sign in
         </Link>
       </div>
