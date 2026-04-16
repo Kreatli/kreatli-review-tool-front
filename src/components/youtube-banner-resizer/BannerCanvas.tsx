@@ -3,11 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 import { Icon } from '../various/Icon';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, getContainRect } from './bannerGeometry';
 import { PreviewMode } from './YouTubeBannerResizer';
 
-// Canvas dimensions (YouTube recommended)
-const CANVAS_WIDTH = 2560;
-const CANVAS_HEIGHT = 1440;
 const CANVAS_ASPECT_RATIO = CANVAS_WIDTH / CANVAS_HEIGHT; // 16:9
 
 // Safe area dimensions (centered)
@@ -42,16 +40,15 @@ function getContainDisplayDims(
   naturalHeight: number,
   displaySizeWidth: number,
 ) {
-  if (!naturalWidth || !naturalHeight) return null;
+  if (!naturalWidth || !naturalHeight || !displaySizeWidth) return null;
+  const r = getContainRect(CANVAS_WIDTH, CANVAS_HEIGHT, naturalWidth, naturalHeight);
+  if (!r) return null;
   const scaleCanvas = displaySizeWidth / CANVAS_WIDTH;
-  const scale = Math.min(CANVAS_WIDTH / naturalWidth, CANVAS_HEIGHT / naturalHeight);
-  const imgWidth = naturalWidth * scale;
-  const imgHeight = naturalHeight * scale;
   return {
-    width: imgWidth * scaleCanvas,
-    height: imgHeight * scaleCanvas,
-    x: (displaySizeWidth - imgWidth * scaleCanvas) / 2,
-    y: (displaySizeWidth / CANVAS_ASPECT_RATIO - imgHeight * scaleCanvas) / 2,
+    width: r.width * scaleCanvas,
+    height: r.height * scaleCanvas,
+    x: r.x * scaleCanvas,
+    y: r.y * scaleCanvas,
   };
 }
 
@@ -143,7 +140,7 @@ export const BannerCanvas = ({
               ref={imageRef}
               src={imageUrl}
               alt={`YouTube banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Canvas size: ${CANVAS_WIDTH} × ${CANVAS_HEIGHT} pixels.`}
-              className="absolute select-none"
+              className="absolute max-w-none select-none"
               style={{
                 width: dims.width,
                 height: dims.height,

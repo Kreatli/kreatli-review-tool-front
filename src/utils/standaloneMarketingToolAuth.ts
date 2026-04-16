@@ -10,7 +10,9 @@ const STANDALONE_EXACT_PATHNAMES = new Set<string>([
   '/free-tools/data-transfer-calculator',
   '/free-tools/youtube-banner-resizer',
   '/free-tools/resize-video',
+  '/free-tools/video-frame-extractor',
   '/platform/resize-video-online',
+  '/platform/extract-frames-from-video',
 ]);
 
 export function isStandaloneMarketingToolPathname(pathname: string): boolean {

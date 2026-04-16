@@ -17,7 +17,6 @@ import {
 } from '@heroui/react';
 import { zipSync } from 'fflate';
 import { AnimatePresence, motion } from 'framer-motion';
-import NextLink from 'next/link';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
@@ -789,51 +788,6 @@ export function VideoFrameExtractor() {
 
                 <div className="mt-4 rounded-lg bg-foreground-50 p-3 text-sm text-foreground-600">
                   Captures are saved at the video’s native resolution.
-                </div>
-              </CardBody>
-            </Card>
-
-            {/* CTA (always visible under Export) */}
-            <Card className="overflow-hidden">
-              <CardBody className="relative p-5">
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-foreground/5" />
-                <div className="relative flex flex-col gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15">
-                      <Icon icon="panorama" size={18} className="text-primary" />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-sm font-semibold">Turn frames into approvals</div>
-                      <div className="text-sm text-foreground-600">
-                        Review videos in Kreatli, collect feedback, and keep every comment tied to the exact moment.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-2 text-sm text-foreground-600">
-                    <div className="flex items-start gap-2">
-                      <Icon icon="time" size={16} className="mt-0.5 text-primary" />
-                      <span>Frame-accurate comments & timestamps</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Icon icon="download" size={16} className="mt-0.5 text-primary" />
-                      <span>Centralize versions, exports, and decisions</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Icon icon="arrowRight" size={16} className="mt-0.5 text-primary" />
-                      <span>Share a no-signup link with clients</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2 sm:flex-row">
-                    <Button
-                      as={NextLink}
-                      href={isSignedIn ? '/platform/creative-workspace' : '/sign-up'}
-                      className="bg-foreground text-content1"
-                    >
-                      Start 7-day trial
-                    </Button>
-                  </div>
                 </div>
               </CardBody>
             </Card>
