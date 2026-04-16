@@ -33,8 +33,8 @@ const softwareData = {
     'Video Collaboration & Review Platform for creative teams. Frame-accurate video review, project management, and approval workflows.',
   offers: {
     '@type': 'AggregateOffer',
-    lowPrice: '7',
-    highPrice: '19',
+    lowPrice: '14',
+    highPrice: '29',
     priceCurrency: 'USD',
     offerCount: '3',
   },

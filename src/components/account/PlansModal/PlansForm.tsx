@@ -18,7 +18,7 @@ const PLANS = [
       { label: 'Unlimited projects & reviewers' },
     ],
     uniqueFeatures: [{ label: 'Frame-accurate video review' }, { label: 'Shared asset libraries' }],
-    price: 7,
+    price: 14,
   },
   {
     id: 'team' as const,
@@ -34,7 +34,7 @@ const PLANS = [
       { label: 'Guest review links' },
       { label: 'Comment threads and annotations' },
     ],
-    price: 19,
+    price: 29,
   },
   {
     id: 'enterprise' as const,

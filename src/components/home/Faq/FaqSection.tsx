@@ -21,7 +21,7 @@ export const homeFaqs: FAQItem[] = [
   {
     question: 'Is there a limit to how many projects I can manage with Kreatli?',
     answer:
-      'No — all plans include unlimited projects. Limits apply only to team members and storage: Creator ($7/user/month) supports up to 3 members with 500 GB, Team ($19/user/month) supports up to 10 members with 2 TB, and Enterprise offers custom limits. Every plan includes a 7-day free trial.',
+      'No — all plans include unlimited projects. Limits apply only to team members and storage: Creator ($14/user/month) supports up to 3 members with 500 GB, Team ($29/user/month) supports up to 10 members with 2 TB, and Enterprise offers custom limits. Every plan includes a 7-day free trial.',
   },
   {
     question: 'Can multiple team members work on the same project in Kreatli?',
@@ -41,7 +41,7 @@ export const homeFaqs: FAQItem[] = [
   {
     question: 'Can I try Kreatli for free?',
     answer:
-      'Yes. Every plan includes a 7-day free trial with full access to all features. Choose a plan and add a payment method at checkout — you won\'t be charged during the trial. Cancel anytime before it ends to avoid billing.',
+      "Yes. Every plan includes a 7-day free trial with full access to all features. Choose a plan and add a payment method at checkout — you won't be charged during the trial. Cancel anytime before it ends to avoid billing.",
   },
   {
     question: 'How long is the Kreatli free trial?',

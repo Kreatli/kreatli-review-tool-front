@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { Accordion, AccordionItem, Alert, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 
@@ -7,8 +6,8 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
-import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -211,7 +210,7 @@ export default function CostCalculatorPage() {
                     <p className="mb-1 text-base">With Kreatli:</p>
                     <p className="font-sans text-2xl font-bold">$95/month</p>
                     <p className="text-base text-foreground-500">$1,140/year</p>
-                    <p className="text-xs text-foreground-400">Team plan ($19/user)</p>
+                    <p className="text-xs text-foreground-400">Team plan ($29/user)</p>
                   </div>
                   <Alert className="mt-2" color="success" icon={<Icon icon="dollar" />}>
                     <span>
@@ -250,7 +249,7 @@ export default function CostCalculatorPage() {
                     <p className="mb-1 text-base">With Kreatli:</p>
                     <p className="font-sans text-2xl font-bold">$285/month</p>
                     <p className="text-base">$3,420/year</p>
-                    <p className="text-xs text-foreground-400">Team plan ($19/user)</p>
+                    <p className="text-xs text-foreground-400">Team plan ($29/user)</p>
                   </div>
                   <Alert className="mt-2" color="success" icon={<Icon icon="dollar" />}>
                     <span>
@@ -452,8 +451,8 @@ export default function CostCalculatorPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user
-                  per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10
+                  Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $14 per
+                  user per month for teams up to 3 members. The Team plan is $29 per user per month for teams up to 10
                   members. Enterprise plans have custom pricing based on your organization's needs. All plans include
                   all core features: unlimited projects, file storage, frame-accurate video review, media review and
                   approval workflows, project management, team collaboration, guest review links, and cloud storage
@@ -578,8 +577,8 @@ export default function CostCalculatorPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli's pricing scales predictably with your team size. The Creator plan is $7 per user per month
-                  for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. For
+                  Kreatli's pricing scales predictably with your team size. The Creator plan is $14 per user per month
+                  for teams up to 3 members. The Team plan is $29 per user per month for teams up to 10 members. For
                   larger teams, Enterprise plans offer custom pricing. This simple model means you can easily calculate
                   costs as you grow, and there are no surprise fees when adding team members.
                 </p>
@@ -591,7 +590,7 @@ export default function CostCalculatorPage() {
                   members could cost $1,500+/month due to per-user pricing across multiple platforms.
                 </p>
                 <p>
-                  With Kreatli, you can choose the plan that fits your team size. The Team plan at $19/user/month for up
+                  With Kreatli, you can choose the plan that fits your team size. The Team plan at $29/user/month for up
                   to 10 members provides predictable costs. For larger teams, Enterprise plans offer custom pricing
                   tailored to your needs. You also get all features at every scale, so there's no need to upgrade to
                   premium tiers or add expensive add-ons as you grow. This predictable scaling makes budgeting easier

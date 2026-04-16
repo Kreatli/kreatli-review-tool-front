@@ -112,20 +112,23 @@ export const CostCalculatorSection = ({
 
   const kreatliCost = useMemo(() => {
     if (usersCount <= 3) {
-      // Creator plan: $7/user/month for up to 3 members
-      return 7 * usersCount;
+      // Creator plan: $14/user/month for up to 3 members
+      return 14 * usersCount;
     } else if (usersCount <= 10) {
-      // Team plan: $19/user/month for up to 10 members
-      return 19 * usersCount;
+      // Team plan: $29/user/month for up to 10 members
+      return 29 * usersCount;
     } else {
       // Enterprise plan: Custom pricing (using Team plan rate as conservative estimate)
       // Note: Actual Enterprise pricing is custom and may offer better rates for large teams
-      return 19 * usersCount;
+      return 29 * usersCount;
     }
   }, [usersCount]);
 
   return (
-    <section id="software-cost-calculator" className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:py-24 lg:mt-8">
+    <section
+      id="software-cost-calculator"
+      className="relative overflow-hidden px-6 py-16 backdrop-blur-lg lg:mt-8 lg:py-24"
+    >
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 sm:gap-12">
         <div className="flex w-full flex-col gap-4">
           {useH1 ? (
@@ -341,9 +344,9 @@ export const CostCalculatorSection = ({
                   <h3 className="font-sans text-lg font-bold sm:text-xl">Kreatli</h3>
                   <div className="mb-1 text-xs text-foreground-400">
                     {usersCount <= 3
-                      ? 'Creator plan ($7/user/month)'
+                      ? 'Creator plan ($14/user/month)'
                       : usersCount <= 10
-                        ? 'Team plan ($19/user/month)'
+                        ? 'Team plan ($29/user/month)'
                         : 'Enterprise plan (estimate - contact for custom pricing)'}
                   </div>
                   <div className="flex gap-3 md:flex-row lg:flex-col">

@@ -13,7 +13,7 @@ const PLANS_DATA = [
   {
     id: 'creator',
     name: 'Creator',
-    price: 7,
+    price: 14,
     description: 'Designed for solo creators and teams who want to organize projects, review work, and create faster.',
     previousPlan: null,
     limits: [
@@ -26,7 +26,7 @@ const PLANS_DATA = [
   {
     id: 'team',
     name: 'Team',
-    price: 19,
+    price: 29,
     description:
       'Built for established teams running multiple projects with shared assets, structured reviews, and consistent workflows.',
     previousPlan: 'Creator',
@@ -64,8 +64,7 @@ export const PricingSection = ({ titleClassName, hideViewPricingButton }: Pricin
             Choose the Perfect Plan for Your Creative Journey
           </h2>
           <p className="text-center text-lg text-foreground-500">
-            Choose a plan and start your 7-day free trial. Add a payment method at checkout; no charge during
-            the trial.
+            Choose a plan and start your 7-day free trial. Add a payment method at checkout; no charge during the trial.
           </p>
         </div>
         <div className="mx-auto grid w-full max-w-6xl items-center gap-8 md:grid-cols-2 lg:grid-cols-3">

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import NextLink from 'next/link';
 
@@ -22,7 +21,7 @@ const faqs = [
   {
     question: "How does Kreatli's per-user pricing work, and are there any hidden fees?",
     answer:
-      "Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10 members. Enterprise plans have custom pricing based on your organization's needs. All plans include all core features: unlimited projects, file storage, frame-accurate video review, video review and approval workflows, board-driven tasks on project stages, project management, team collaboration, guest review links, and cloud storage integrations. Unlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes everything in the base price. There are no per-project fees, no storage overage charges, no premium feature tiers, and no setup fees. You pay only for active users, making it easy to scale up or down based on your team size. This transparent pricing model means you can accurately calculate your costs without worrying about surprise fees. The per-user pricing model is straightforward: you're charged based on the number of active team members in your account. If you add a team member, you'll be charged for them in your next billing cycle. If you remove a team member, you'll see the cost reduction in your next billing cycle. This simplicity contrasts with complex pricing models that vary based on features, storage, or usage, making it difficult to predict total costs for your video collaboration needs.",
+      "Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $14 per user per month for teams up to 3 members. The Team plan is $29 per user per month for teams up to 10 members. Enterprise plans have custom pricing based on your organization's needs. All plans include all core features: unlimited projects, file storage, frame-accurate video review, video review and approval workflows, board-driven tasks on project stages, project management, team collaboration, guest review links, and cloud storage integrations. Unlike many tools that charge extra for storage, advanced features, or add-ons, Kreatli includes everything in the base price. There are no per-project fees, no storage overage charges, no premium feature tiers, and no setup fees. You pay only for active users, making it easy to scale up or down based on your team size. This transparent pricing model means you can accurately calculate your costs without worrying about surprise fees. The per-user pricing model is straightforward: you're charged based on the number of active team members in your account. If you add a team member, you'll be charged for them in your next billing cycle. If you remove a team member, you'll see the cost reduction in your next billing cycle. This simplicity contrasts with complex pricing models that vary based on features, storage, or usage, making it difficult to predict total costs for your video collaboration needs.",
   },
   {
     question: 'What payment methods do you accept, and how secure is the payment process?',
@@ -37,7 +36,7 @@ const faqs = [
   {
     question: 'How do I choose the right plan for my team size and needs?',
     answer:
-      "Choosing the right plan depends on your team size and storage needs. All plans include a 7-day free trial. To start the trial, you'll add a payment method at secure checkout and you won't be charged subscription fees during the trial.\n\nThe Creator plan ($7/user/month, up to 3 members, 500GB storage) is perfect for solo creators and teams who want to organize projects, review work, and create faster. The Team plan ($19/user/month, up to 10 members, 2TB storage) is ideal for established teams running multiple projects with shared assets, structured reviews, and consistent workflows. This plan works well for micro-teams, freelance teams, and small agencies that need more capacity and collaboration features.\n\nThe Enterprise plan (custom pricing) provides custom members, custom storage, Single Sign-On (SSO), a dedicated account manager, and custom integrations & features. This plan is tailored for enterprise organizations that need advanced controls, custom workflows, and dedicated support. If you're unsure which plan is right for your team, start with a 7-day trial and our support team can help you evaluate which plan best fits your video collaboration requirements.",
+      "Choosing the right plan depends on your team size and storage needs. All plans include a 7-day free trial. To start the trial, you'll add a payment method at secure checkout and you won't be charged subscription fees during the trial.\n\nThe Creator plan ($14/user/month, up to 3 members, 500GB storage) is perfect for solo creators and teams who want to organize projects, review work, and create faster. The Team plan ($29/user/month, up to 10 members, 2TB storage) is ideal for established teams running multiple projects with shared assets, structured reviews, and consistent workflows. This plan works well for micro-teams, freelance teams, and small agencies that need more capacity and collaboration features.\n\nThe Enterprise plan (custom pricing) provides custom members, custom storage, Single Sign-On (SSO), a dedicated account manager, and custom integrations & features. This plan is tailored for enterprise organizations that need advanced controls, custom workflows, and dedicated support. If you're unsure which plan is right for your team, start with a 7-day trial and our support team can help you evaluate which plan best fits your video collaboration requirements.",
   },
   {
     question: 'What happens to my data if I cancel my subscription?',
@@ -57,7 +56,7 @@ const faqs = [
   {
     question: 'How does pricing work when I add or remove team members?',
     answer:
-      "Kreatli's per-user pricing means your cost scales directly with your team size. When you add a team member, you'll be charged for them starting in your next billing cycle. If you're on monthly billing, you'll see the additional cost in your next monthly invoice. If you're on annual billing, you'll be charged a prorated amount for the remainder of your annual cycle. When you remove a team member, the cost reduction will be reflected in your next billing cycle. This means you only pay for active team members, making it easy to adjust costs as your team grows or changes. There are no penalties for adding or removing users, and you can make these changes as often as needed through your account settings. The pricing structure is straightforward: Creator plan is $7/user/month for teams up to 3 members, and Team plan is $19/user/month for teams up to 10 members. If your team grows beyond 10 members, you'll need to contact us for Enterprise pricing. This ensures pricing is fair and predictable based on your team size and needs.",
+      "Kreatli's per-user pricing means your cost scales directly with your team size. When you add a team member, you'll be charged for them starting in your next billing cycle. If you're on monthly billing, you'll see the additional cost in your next monthly invoice. If you're on annual billing, you'll be charged a prorated amount for the remainder of your annual cycle. When you remove a team member, the cost reduction will be reflected in your next billing cycle. This means you only pay for active team members, making it easy to adjust costs as your team grows or changes. There are no penalties for adding or removing users, and you can make these changes as often as needed through your account settings. The pricing structure is straightforward: Creator plan is $14/user/month for teams up to 3 members, and Team plan is $29/user/month for teams up to 10 members. If your team grows beyond 10 members, you'll need to contact us for Enterprise pricing. This ensures pricing is fair and predictable based on your team size and needs.",
   },
   {
     question: "What is your refund policy, and can I get a refund if I'm not satisfied?",
@@ -91,8 +90,8 @@ export default function PricingPage() {
             Simple, Transparent Pricing for Video Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Choose a plan and start your 7-day free trial. Add a payment method at checkout; you won't be charged
-            during the trial. Cancel anytime during the trial to avoid billing.
+            Choose a plan and start your 7-day free trial. Add a payment method at checkout; you won't be charged during
+            the trial. Cancel anytime during the trial to avoid billing.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
@@ -105,9 +104,7 @@ export default function PricingPage() {
             </div>
             <div className="flex flex-col items-center">
               <div className="font-sans text-2xl font-bold sm:text-3xl">7-Day Free Trial</div>
-              <div className="sm:text-md text-sm text-foreground-500">
-                Card at checkout; no charge until trial ends
-              </div>
+              <div className="sm:text-md text-sm text-foreground-500">Card at checkout; no charge until trial ends</div>
             </div>
           </div>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -308,8 +305,8 @@ export default function PricingPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $7 per user
-                  per month for teams up to 3 members. The Team plan is $19 per user per month for teams up to 10
+                  Kreatli uses simple, transparent per-user pricing with no hidden fees. The Creator plan is $14 per
+                  user per month for teams up to 3 members. The Team plan is $29 per user per month for teams up to 10
                   members. Enterprise plans have custom pricing based on your organization's needs. All plans include
                   all core features: unlimited projects, file storage, frame-accurate video review, video review and
                   approval workflows, board-driven tasks on project stages, project management, team collaboration,
@@ -376,18 +373,17 @@ export default function PricingPage() {
                 </p>
                 <p>
                   All plans include all core features during the trial: frame-accurate video review, video review and
-                  approval workflows, board-driven tasks on project stages, file organization, team collaboration,
-                  guest review links, cloud storage integrations, and project management. This means you can fully
-                  evaluate how Kreatli compares to your
-                  current tool stack before making any financial commitment. You get the complete experience, not a
-                  watered-down version.
+                  approval workflows, board-driven tasks on project stages, file organization, team collaboration, guest
+                  review links, cloud storage integrations, and project management. This means you can fully evaluate
+                  how Kreatli compares to your current tool stack before making any financial commitment. You get the
+                  complete experience, not a watered-down version.
                 </p>
                 <p>
                   After your 7-day trial ends, your paid subscription begins automatically unless you cancel before
                   then. If you don't continue, you'll lose access to your projects and data. This ensures you can try
-                  Kreatli with full access during the trial while making it clear that billing begins when the trial ends
-                  if you continue. Many teams use the trial period to onboard their team, run a pilot project, and see the
-                  value in consolidating their video collaboration tools.
+                  Kreatli with full access during the trial while making it clear that billing begins when the trial
+                  ends if you continue. Many teams use the trial period to onboard their team, run a pilot project, and
+                  see the value in consolidating their video collaboration tools.
                 </p>
               </div>
             </AccordionItem>
@@ -404,11 +400,11 @@ export default function PricingPage() {
                 <p>
                   Choosing the right plan depends on your team size and storage needs. All plans include a 7-day free
                   trial. To start the trial, you'll add a payment method at secure checkout and you won't be charged
-                  subscription fees during the trial. The Creator plan ($7/user/month, up to 3 members, 500GB storage)
+                  subscription fees during the trial. The Creator plan ($14/user/month, up to 3 members, 500GB storage)
                   is perfect for solo creators and teams who want to organize projects, review work, and create faster.
                 </p>
                 <p>
-                  The Team plan ($19/user/month, up to 10 members, 2TB storage) is ideal for established teams running
+                  The Team plan ($29/user/month, up to 10 members, 2TB storage) is ideal for established teams running
                   multiple projects with shared assets, structured reviews, and consistent workflows. This plan works
                   well for micro-teams, freelance teams, and small agencies that need more capacity and collaboration
                   features.
@@ -532,10 +528,10 @@ export default function PricingPage() {
                   as needed through your account settings.
                 </p>
                 <p>
-                  The pricing structure is straightforward: Creator plan is $7/user/month for teams up to 3 members, and
-                  Team plan is $19/user/month for teams up to 10 members. If your team grows beyond 10 members, you'll
-                  need to contact us for Enterprise pricing. This ensures pricing is fair and predictable based on your
-                  team size and needs.
+                  The pricing structure is straightforward: Creator plan is $14/user/month for teams up to 3 members,
+                  and Team plan is $29/user/month for teams up to 10 members. If your team grows beyond 10 members,
+                  you'll need to contact us for Enterprise pricing. This ensures pricing is fair and predictable based
+                  on your team size and needs.
                 </p>
               </div>
             </AccordionItem>
