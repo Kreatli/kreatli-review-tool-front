@@ -22,7 +22,7 @@ import { useDropzone } from 'react-dropzone';
 
 import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
-import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
+import { useSoftGate } from '../../hooks/useSoftGate';
 import { Icon } from '../various/Icon';
 
 type ExportFormat = 'png' | 'jpg';
@@ -263,7 +263,6 @@ function FrameCard({
 
 export function VideoFrameExtractor() {
   const { isSignedIn } = useSession();
-  const { openSignUpModal } = useSignUpModalVisibility();
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
 
   const [file, setFile] = useState<File | null>(null);
@@ -286,6 +285,16 @@ export function VideoFrameExtractor() {
   const successfulCaptureCountRef = useRef(0);
 
   const wasPlayingBeforeSeekRef = useRef(false);
+
+  const resetToolState = useCallback(() => {
+    setFile(null);
+    hasShownSignUpPromptRef.current = false;
+    successfulCaptureCountRef.current = 0;
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    onReset: resetToolState,
+  });
 
   const onDrop = useCallback((accepted: File[]) => {
     const next = accepted[0];
@@ -316,9 +325,9 @@ export function VideoFrameExtractor() {
 
     setFile(next);
 
-    // Soft gate: show sign-up popup for guests when they start using the tool.
-    if (!isSignedIn) openSignUpModal();
-  }, [isInactiveLocked, openInactivePlanModal, isSignedIn, openSignUpModal]);
+    // Soft gate: show sign-up popup for guests when they start using the tool; dismiss without sign-in clears upload.
+    triggerSoftGate();
+  }, [isInactiveLocked, openInactivePlanModal, triggerSoftGate]);
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
@@ -466,10 +475,10 @@ export function VideoFrameExtractor() {
       setFrames((prev) => [item, ...prev]);
       successfulCaptureCountRef.current += 1;
 
-      // Nudge sign-up once on the 2nd successful capture (without blocking the tool).
+      // Nudge sign-up once on the 2nd successful capture; dismiss without sign-in clears upload.
       if (!isSignedIn && !hasShownSignUpPromptRef.current && successfulCaptureCountRef.current === 2) {
         hasShownSignUpPromptRef.current = true;
-        openSignUpModal();
+        triggerSoftGate();
       }
       addToast({ title: 'Captured!', color: 'success', variant: 'flat' });
     } catch (_e) {
@@ -496,7 +505,7 @@ export function VideoFrameExtractor() {
       const outBlob = await convertBlobToFormat(frame.blob, exportFormat);
       const outName = fileNameForFrame(baseName, frame.timestampSeconds, exportFormat);
       downloadBlob(outBlob, outName);
-      if (!isSignedIn) openSignUpModal();
+      if (!isSignedIn) triggerSoftGate();
     } catch (_e) {
       addToast({ title: 'Download failed. Please try again.', color: 'danger', variant: 'flat' });
     }
@@ -524,7 +533,7 @@ export function VideoFrameExtractor() {
       const zipBlob = new Blob([uint8ArrayToArrayBuffer(zipped)], { type: 'application/zip' });
       downloadBlob(zipBlob, `${baseName}_frames.zip`);
       addToast({ title: 'ZIP downloaded!', color: 'success', variant: 'flat' });
-      if (!isSignedIn) openSignUpModal();
+      if (!isSignedIn) triggerSoftGate();
     } catch (_e) {
       addToast({ title: 'ZIP export failed. Please try again.', color: 'danger', variant: 'flat' });
     } finally {
@@ -558,7 +567,7 @@ export function VideoFrameExtractor() {
       const zipBlob = new Blob([uint8ArrayToArrayBuffer(zipped)], { type: 'application/zip' });
       downloadBlob(zipBlob, `${baseName}_selected_frames.zip`);
       addToast({ title: 'ZIP downloaded!', color: 'success', variant: 'flat' });
-      if (!isSignedIn) openSignUpModal();
+      if (!isSignedIn) triggerSoftGate();
     } catch (_e) {
       addToast({ title: 'ZIP export failed. Please try again.', color: 'danger', variant: 'flat' });
     } finally {

@@ -1174,6 +1174,8 @@ export interface SignInResultDto {
   token: string;
   user: UserDto;
   redirectToProjectId?: string;
+  /** Present after email verification when user signed up from a standalone marketing tool */
+  redirectAfterActivation?: string;
 }
 
 export interface SignUpBodyDto {
@@ -1181,6 +1183,8 @@ export interface SignUpBodyDto {
   name: string;
   password: string;
   sourceType?: 'safe-zone-checker';
+  /** Validated server-side; relative URL of standalone tool to return to after verifying email */
+  returnTo?: string;
 }
 
 export interface SignUpResultDto {

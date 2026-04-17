@@ -12,6 +12,7 @@ import { usePostAuthSignUp, usePostAuthSsoGoogle } from '../../../services/hooks
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import {
   buildSignInHrefWithReturnTo,
+  getSafeReturnToParam,
   getStandaloneToolPostAuthReplaceUrl,
 } from '../../../utils/standaloneMarketingToolAuth';
 import { Icon } from '../../various/Icon';
@@ -48,8 +49,15 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
   const { mutate: ssoSignUp, isPending: isSsoPending } = usePostAuthSsoGoogle();
 
   const onSubmit = (data: typeof DEFAULT_VALUES) => {
+    const returnTo = getSafeReturnToParam(router.asPath) ?? undefined;
     mutate(
-      { requestBody: { ...data, sourceType } },
+      {
+        requestBody: {
+          ...data,
+          sourceType,
+          ...(returnTo ? { returnTo } : {}),
+        },
+      },
       {
         onSuccess: () => {
           sendGTMEvent({ event: 'sign_up' });

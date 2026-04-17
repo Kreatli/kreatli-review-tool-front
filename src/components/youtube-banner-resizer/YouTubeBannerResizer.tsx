@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 
 import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
-import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
+import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
@@ -36,8 +36,19 @@ export const YouTubeBannerResizer = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const { isSignedIn } = useSession();
-  const openSignUpModal = useSignUpModalVisibility((s) => s.openSignUpModal);
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
+
+  const resetImageState = useCallback(() => {
+    setImageState((prev) => {
+      if (prev.imageUrl) URL.revokeObjectURL(prev.imageUrl);
+      return { file: null, imageUrl: null, naturalWidth: 0, naturalHeight: 0 };
+    });
+    setIsLoadingImage(false);
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    onReset: resetImageState,
+  });
 
   const loadImageFile = useCallback(
     (file: File) => {
@@ -81,7 +92,7 @@ export const YouTubeBannerResizer = () => {
         });
         setIsLoadingImage(false);
 
-        if (!isSignedIn) openSignUpModal();
+        if (!isSignedIn) triggerSoftGate();
       };
 
       void (async () => {
@@ -127,7 +138,7 @@ export const YouTubeBannerResizer = () => {
         });
       })();
     },
-    [imageState.imageUrl, isSignedIn, openSignUpModal, isInactiveLocked, openInactivePlanModal],
+    [imageState.imageUrl, isSignedIn, triggerSoftGate, isInactiveLocked, openInactivePlanModal],
   );
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -228,12 +239,12 @@ export const YouTubeBannerResizer = () => {
             exportFormat={exportFormat}
             onExportFormatChange={setExportFormat}
             onExportStart={() => {
-              if (!isSignedIn) {
-                openSignUpModal();
-                return false;
-              }
               if (isInactiveLocked) {
                 openInactivePlanModal();
+                return false;
+              }
+              if (!isSignedIn) {
+                triggerSoftGate();
                 return false;
               }
             }}
