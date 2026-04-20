@@ -114,9 +114,9 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/cloud-file-transfer': [
     '/free-tools/data-transfer-calculator',
+    '/free-tools/video-compressor',
     '/free-tools/video-feedback-tool',
     '/free-tools/video-reviewer',
-    '/free-tools/video-manager',
   ],
   '/platform/extract-frames-from-video': [
     '/free-tools/video-frame-extractor',
@@ -152,9 +152,9 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/send-large-video-files': [
     '/free-tools/data-transfer-calculator',
+    '/free-tools/video-compressor',
     '/free-tools/video-feedback-tool',
     '/free-tools/video-reviewer',
-    '/free-tools/video-manager',
   ],
   '/platform/free-video-link-generator': [
     '/free-tools/video-feedback-tool',
@@ -178,9 +178,15 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/resize-video-online': [
     '/free-tools/resize-video',
-    '/safe-zone-checker',
-    '/safe-zone-checker/youtube-safe-zone-checker',
+    '/free-tools/video-compressor',
     '/free-tools/video-frame-extractor',
+    '/safe-zone-checker',
+  ],
+  '/platform/compress-video-online': [
+    '/free-tools/video-compressor',
+    '/free-tools/resize-video',
+    '/free-tools/video-frame-extractor',
+    '/free-tools/data-transfer-calculator',
   ],
 
   // PDF cluster – vary which 4 across pages

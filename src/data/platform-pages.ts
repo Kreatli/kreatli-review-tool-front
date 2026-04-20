@@ -573,6 +573,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'secureAssetStorage'],
   },
   {
+    label: 'Compress Video Online',
+    href: '/platform/compress-video-online',
+    description: 'Compress video to a smaller file size for faster sharing and uploads',
+    icon: 'download',
+    section: 'Core Platform',
+    order: 28.6,
+    tags: ['Video', 'Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'secureAssetStorage'],
+  },
+  {
     label: 'Send Large Video Files',
     href: '/platform/send-large-video-files',
     description: 'Send large video files to clients without email limits',

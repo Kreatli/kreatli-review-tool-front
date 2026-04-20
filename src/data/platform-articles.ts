@@ -1918,6 +1918,44 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/compress-video-online': [
+    makeArticleCard({
+      id: 'platform-compress-video-online-guide',
+      full_slug: '/guides/how-to-compress-a-video',
+      title: 'How to Compress a Video for Smaller Files and Faster Delivery',
+      description:
+        'Learn how to reduce video file size for uploads and sharing, what trade-offs to expect, and how compressed cuts fit into review and approval workflows.',
+      tags: ['Video', 'Share Video'],
+      publishDate: '2026-04-20 00:00',
+      readTime: '9',
+      imageFilename: '/images/guides/how-to-compress-a-video-cover.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compress-video-online-comparison',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Video Delivery and Review Workflows',
+      description:
+        'Compare how Kreatli and Frame.io support teams sharing cuts, collecting feedback, and moving from compression to approval.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-compress-video-online-blog',
+      full_slug: '/blog/production-platform-for-creative-teams',
+      title: 'Why Creative Teams Need a Home for Every Video Cut',
+      description:
+        'See why teams pair file-size and delivery prep with a platform that keeps versions, feedback, and approvals in one place.',
+      tags: ['Production Management', 'Creative Teams'],
+      publishDate: '2025-12-10 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
+    }),
+  ],
+
   '/platform/add-timestamp-to-video': [
     makeArticleCard({
       id: 'platform-add-timestamp-to-video-guide-1',

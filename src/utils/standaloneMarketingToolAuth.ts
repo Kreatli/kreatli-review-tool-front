@@ -11,7 +11,9 @@ const STANDALONE_EXACT_PATHNAMES = new Set<string>([
   '/free-tools/youtube-banner-resizer',
   '/free-tools/resize-video',
   '/free-tools/video-frame-extractor',
+  '/free-tools/video-compressor',
   '/platform/resize-video-online',
+  '/platform/compress-video-online',
   '/platform/extract-frames-from-video',
 ]);
 
