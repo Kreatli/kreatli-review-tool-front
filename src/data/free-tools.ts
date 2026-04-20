@@ -288,6 +288,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['Video'],
   },
   {
+    title: 'Video Compressor',
+    description:
+      'Compress video to a target file size in your browser—no upload, processing runs locally. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
+    href: '/free-tools/video-compressor',
+    icon: 'download',
+    buttonText: 'Try Now',
+    ariaLabel: 'Compress video to a target file size',
+    tags: ['Video'],
+  },
+  {
     title: 'Data Transfer Calculator',
     description:
       'Calculate how long it takes to upload or download large files. Perfect for video editors and post-production teams.',

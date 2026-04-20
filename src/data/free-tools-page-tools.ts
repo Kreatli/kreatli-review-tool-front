@@ -66,6 +66,12 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
     '/free-tools/video-feedback-tool',
     '/free-tools/youtube-banner-resizer',
   ],
+  '/free-tools/video-compressor': [
+    '/free-tools/resize-video',
+    '/free-tools/video-frame-extractor',
+    '/free-tools/video-link-maker',
+    '/free-tools/data-transfer-calculator',
+  ],
 
   // PDF / document
   '/free-tools/pdf-reviewer': [
