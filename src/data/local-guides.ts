@@ -30,6 +30,7 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-markup-a-pdf',
   'how-to-add-notes-to-a-pdf',
   'how-to-markup-an-image',
+  'how-to-markup-a-video',
   'how-to-share-documents-online',
   'how-to-share-images',
 ] as const;
@@ -561,6 +562,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-10 00:00',
       readTime: '8',
       tags: { value: ['Image', 'Client Review'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-markup-a-video',
+    name: 'How to Markup a Video',
+    full_slug: '/guides/how-to-markup-a-video',
+    content: {
+      metaFields: {
+        title: 'How to Markup a Video: Frame-Accurate Notes, Drawings, and Faster Cuts',
+        description:
+          'Learn how to markup a video with frame-accurate pins, drawings, and short notes so editors know exactly what to change and revision rounds stay short.',
+      },
+      image: {
+        filename: '/images/guides/how-to-markup-a-video-cover.png',
+        alt: 'Kreatli Guide: How to markup a video',
+        title: 'How to markup a video — Kreatli guide',
+      },
+      publishDate: '2026-04-20 00:00',
+      readTime: '9',
+      tags: { value: ['Video', 'Client Review'] },
     },
   },
   {

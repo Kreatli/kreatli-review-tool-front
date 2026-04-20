@@ -76,6 +76,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-reviewer',
     '/free-tools/video-frame-extractor',
   ],
+  '/platform/video-markup': [
+    '/free-tools/video-markup-tool',
+    '/free-tools/video-annotator',
+    '/free-tools/video-feedback-tool',
+    '/free-tools/video-reviewer',
+  ],
   '/platform/manage-videos': [
     '/free-tools/video-manager',
     '/free-tools/video-reviewer',
@@ -196,6 +202,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/image-annotator',
     '/free-tools/video-annotator',
   ],
+  '/platform/pdf-markup': [
+    '/free-tools/pdf-markup-tool',
+    '/free-tools/pdf-annotator',
+    '/free-tools/pdf-reviewer',
+    '/free-tools/image-annotator',
+  ],
   '/platform/highlight-pdf': [
     '/free-tools/pdf-annotator',
     '/free-tools/pdf-reviewer',
@@ -251,6 +263,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/image-reviewer',
     '/free-tools/pdf-annotator',
     '/free-tools/video-annotator',
+  ],
+  '/platform/image-markup': [
+    '/free-tools/image-markup-tool',
+    '/free-tools/image-annotator',
+    '/free-tools/image-reviewer',
+    '/free-tools/pdf-annotator',
   ],
   '/platform/draw-on-image': [
     '/free-tools/image-annotator',

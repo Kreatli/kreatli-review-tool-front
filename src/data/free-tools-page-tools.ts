@@ -48,6 +48,12 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
     '/free-tools/video-frame-extractor',
     '/free-tools/video-proofing-tool',
   ],
+  '/free-tools/video-markup-tool': [
+    '/free-tools/video-annotator',
+    '/free-tools/video-feedback-tool',
+    '/free-tools/video-reviewer',
+    '/free-tools/video-proofing-tool',
+  ],
   '/free-tools/video-frame-extractor': [
     '/free-tools/video-annotator',
     '/free-tools/video-reviewer',
@@ -73,6 +79,12 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
     '/free-tools/pdf-highlighter',
     '/free-tools/document-annotator',
     '/free-tools/pdf-comparer',
+  ],
+  '/free-tools/pdf-markup-tool': [
+    '/free-tools/pdf-annotator',
+    '/free-tools/pdf-reviewer',
+    '/free-tools/pdf-highlighter',
+    '/free-tools/document-annotator',
   ],
   '/free-tools/pdf-highlighter': [
     '/free-tools/pdf-annotator',
@@ -117,6 +129,12 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
     '/free-tools/image-comparer',
     '/free-tools/pdf-annotator',
     '/free-tools/video-annotator',
+  ],
+  '/free-tools/image-markup-tool': [
+    '/free-tools/image-annotator',
+    '/free-tools/image-reviewer',
+    '/free-tools/image-comparer',
+    '/free-tools/pdf-annotator',
   ],
   '/free-tools/image-comparer': [
     '/free-tools/image-reviewer',

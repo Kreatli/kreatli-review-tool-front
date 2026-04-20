@@ -108,6 +108,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['PDF & documents'],
   },
   {
+    title: 'PDF Markup Tool',
+    description:
+      'Mark up PDFs online with pinned comments, highlights, drawings, and visual markup. Share with clients; recipients do not need a Kreatli account.',
+    href: '/free-tools/pdf-markup-tool',
+    icon: 'edit',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Markup Tool',
+    tags: ['PDF & documents'],
+  },
+  {
     title: 'PDF Highlighter',
     description:
       'Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account.',
@@ -178,6 +188,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['Images'],
   },
   {
+    title: 'Image Markup Tool',
+    description:
+      'Mark up images online with pinned comments, highlights, drawings, and visual markup. Share with clients; recipients do not need a Kreatli account.',
+    href: '/free-tools/image-markup-tool',
+    icon: 'panorama',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Image Markup Tool',
+    tags: ['Images'],
+  },
+  {
     title: 'Image Comparer',
     description:
       'Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account.',
@@ -235,6 +255,16 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'chat',
     buttonText: 'Try Now',
     ariaLabel: 'Try Video Annotator',
+    tags: ['Video'],
+  },
+  {
+    title: 'Video Markup Tool',
+    description:
+      'Mark up video with frame-accurate comments, drawings, and visual markup. Pin feedback to exact timestamps; share with clients without a Kreatli account.',
+    href: '/free-tools/video-markup-tool',
+    icon: 'paint',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Markup Tool',
     tags: ['Video'],
   },
   {
