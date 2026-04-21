@@ -587,6 +587,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'secureAssetStorage'],
   },
   {
+    label: 'Download TikTok Video',
+    href: '/platform/download-tiktok-video',
+    description: 'Download TikTok video from a public link (MP4)',
+    icon: 'tiktok',
+    section: 'Core Platform',
+    order: 28.65,
+    tags: ['Video', 'Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
+  {
     label: 'Send Large Video Files',
     href: '/platform/send-large-video-files',
     description: 'Send large video files to clients without email limits',

@@ -90,54 +90,51 @@ export function TikTokDownloaderTool() {
     }
   }, [url]);
 
-  const download = useCallback(
-    async () => {
-      if (!result) return;
-      // Use HD when available; otherwise fallback to standard.
-      const chosen = result.hdVideoUrl ?? result.videoUrl;
-      const name = safeFileName(result.title || 'tiktok_video');
-      setStatus('downloading');
-      try {
-        const res = await fetch('/api/tiktok/download', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: chosen, name }),
-        });
+  const download = useCallback(async () => {
+    if (!result) return;
+    // Use HD when available; otherwise fallback to standard.
+    const chosen = result.hdVideoUrl ?? result.videoUrl;
+    const name = safeFileName(result.title || 'tiktok_video');
+    setStatus('downloading');
+    try {
+      const res = await fetch('/api/tiktok/download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: chosen, name }),
+      });
 
-        if (!res.ok) {
-          let message = 'Download failed. Please try again.';
-          try {
-            const data = (await res.json()) as unknown;
-            if (
-              data &&
-              typeof data === 'object' &&
-              'message' in data &&
-              typeof (data as { message: unknown }).message === 'string'
-            ) {
-              message = (data as { message: string }).message;
-            }
-          } catch {
-            // ignore
+      if (!res.ok) {
+        let message = 'Download failed. Please try again.';
+        try {
+          const data = (await res.json()) as unknown;
+          if (
+            data &&
+            typeof data === 'object' &&
+            'message' in data &&
+            typeof (data as { message: unknown }).message === 'string'
+          ) {
+            message = (data as { message: string }).message;
           }
-          addToast({ title: message, color: 'danger', variant: 'flat' });
-          setStatus('ready');
-          return;
+        } catch {
+          // ignore
         }
-
-        const blob = await res.blob();
-        const objectUrl = URL.createObjectURL(blob);
-        downloadFromUrl(objectUrl, `${name}.mp4`);
-        // Revoke shortly after click so the download has time to start.
-        setTimeout(() => URL.revokeObjectURL(objectUrl), 10_000);
+        addToast({ title: message, color: 'danger', variant: 'flat' });
         setStatus('ready');
-      } catch (e) {
-        console.error('TikTok download request failed:', e);
-        addToast({ title: 'Download failed. Please try again.', color: 'danger', variant: 'flat' });
-        setStatus('ready');
+        return;
       }
-    },
-    [result],
-  );
+
+      const blob = await res.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      downloadFromUrl(objectUrl, `${name}.mp4`);
+      // Revoke shortly after click so the download has time to start.
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 10_000);
+      setStatus('ready');
+    } catch (e) {
+      console.error('TikTok download request failed:', e);
+      addToast({ title: 'Download failed. Please try again.', color: 'danger', variant: 'flat' });
+      setStatus('ready');
+    }
+  }, [result]);
 
   return (
     <Card shadow="sm" className="border border-foreground-200">
@@ -179,11 +176,6 @@ export function TikTokDownloaderTool() {
             >
               Find video
             </Button>
-          </div>
-
-          <div className="rounded-lg bg-foreground-50 p-3 text-sm text-foreground-600">
-            We’ll try to find a <span className="font-semibold">no-watermark</span> download first. If that isn’t
-            available, we’ll fall back to the standard video link.
           </div>
 
           {result && (
