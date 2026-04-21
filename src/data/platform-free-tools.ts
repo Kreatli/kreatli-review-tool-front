@@ -76,6 +76,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-reviewer',
     '/free-tools/video-frame-extractor',
   ],
+  '/platform/video-markup': [
+    '/free-tools/video-markup-tool',
+    '/free-tools/video-annotator',
+    '/free-tools/video-feedback-tool',
+    '/free-tools/video-reviewer',
+  ],
   '/platform/manage-videos': [
     '/free-tools/video-manager',
     '/free-tools/video-reviewer',
@@ -108,9 +114,9 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/cloud-file-transfer': [
     '/free-tools/data-transfer-calculator',
+    '/free-tools/video-compressor',
     '/free-tools/video-feedback-tool',
     '/free-tools/video-reviewer',
-    '/free-tools/video-manager',
   ],
   '/platform/extract-frames-from-video': [
     '/free-tools/video-frame-extractor',
@@ -146,9 +152,9 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/send-large-video-files': [
     '/free-tools/data-transfer-calculator',
+    '/free-tools/video-compressor',
     '/free-tools/video-feedback-tool',
     '/free-tools/video-reviewer',
-    '/free-tools/video-manager',
   ],
   '/platform/free-video-link-generator': [
     '/free-tools/video-feedback-tool',
@@ -172,9 +178,15 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/resize-video-online': [
     '/free-tools/resize-video',
-    '/safe-zone-checker',
-    '/safe-zone-checker/youtube-safe-zone-checker',
+    '/free-tools/video-compressor',
     '/free-tools/video-frame-extractor',
+    '/safe-zone-checker',
+  ],
+  '/platform/compress-video-online': [
+    '/free-tools/video-compressor',
+    '/free-tools/resize-video',
+    '/free-tools/video-frame-extractor',
+    '/free-tools/data-transfer-calculator',
   ],
 
   // PDF cluster – vary which 4 across pages
@@ -195,6 +207,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/pdf-reviewer',
     '/free-tools/image-annotator',
     '/free-tools/video-annotator',
+  ],
+  '/platform/pdf-markup': [
+    '/free-tools/pdf-markup-tool',
+    '/free-tools/pdf-annotator',
+    '/free-tools/pdf-reviewer',
+    '/free-tools/image-annotator',
   ],
   '/platform/highlight-pdf': [
     '/free-tools/pdf-annotator',
@@ -251,6 +269,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/image-reviewer',
     '/free-tools/pdf-annotator',
     '/free-tools/video-annotator',
+  ],
+  '/platform/image-markup': [
+    '/free-tools/image-markup-tool',
+    '/free-tools/image-annotator',
+    '/free-tools/image-reviewer',
+    '/free-tools/pdf-annotator',
   ],
   '/platform/draw-on-image': [
     '/free-tools/image-annotator',

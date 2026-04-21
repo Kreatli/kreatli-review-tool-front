@@ -17,13 +17,12 @@ import {
 } from '@heroui/react';
 import { zipSync } from 'fflate';
 import { AnimatePresence, motion } from 'framer-motion';
-import NextLink from 'next/link';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
-import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
+import { useSoftGate } from '../../hooks/useSoftGate';
 import { Icon } from '../various/Icon';
 
 type ExportFormat = 'png' | 'jpg';
@@ -264,7 +263,6 @@ function FrameCard({
 
 export function VideoFrameExtractor() {
   const { isSignedIn } = useSession();
-  const { openSignUpModal } = useSignUpModalVisibility();
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
 
   const [file, setFile] = useState<File | null>(null);
@@ -287,6 +285,16 @@ export function VideoFrameExtractor() {
   const successfulCaptureCountRef = useRef(0);
 
   const wasPlayingBeforeSeekRef = useRef(false);
+
+  const resetToolState = useCallback(() => {
+    setFile(null);
+    hasShownSignUpPromptRef.current = false;
+    successfulCaptureCountRef.current = 0;
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    onReset: resetToolState,
+  });
 
   const onDrop = useCallback((accepted: File[]) => {
     const next = accepted[0];
@@ -317,9 +325,9 @@ export function VideoFrameExtractor() {
 
     setFile(next);
 
-    // Soft gate: show sign-up popup for guests when they start using the tool.
-    if (!isSignedIn) openSignUpModal();
-  }, [isInactiveLocked, openInactivePlanModal, isSignedIn, openSignUpModal]);
+    // Soft gate: show sign-up popup for guests when they start using the tool; dismiss without sign-in clears upload.
+    triggerSoftGate();
+  }, [isInactiveLocked, openInactivePlanModal, triggerSoftGate]);
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
@@ -467,10 +475,10 @@ export function VideoFrameExtractor() {
       setFrames((prev) => [item, ...prev]);
       successfulCaptureCountRef.current += 1;
 
-      // Nudge sign-up once on the 2nd successful capture (without blocking the tool).
+      // Nudge sign-up once on the 2nd successful capture; dismiss without sign-in clears upload.
       if (!isSignedIn && !hasShownSignUpPromptRef.current && successfulCaptureCountRef.current === 2) {
         hasShownSignUpPromptRef.current = true;
-        openSignUpModal();
+        triggerSoftGate();
       }
       addToast({ title: 'Captured!', color: 'success', variant: 'flat' });
     } catch (_e) {
@@ -497,7 +505,7 @@ export function VideoFrameExtractor() {
       const outBlob = await convertBlobToFormat(frame.blob, exportFormat);
       const outName = fileNameForFrame(baseName, frame.timestampSeconds, exportFormat);
       downloadBlob(outBlob, outName);
-      if (!isSignedIn) openSignUpModal();
+      if (!isSignedIn) triggerSoftGate();
     } catch (_e) {
       addToast({ title: 'Download failed. Please try again.', color: 'danger', variant: 'flat' });
     }
@@ -525,7 +533,7 @@ export function VideoFrameExtractor() {
       const zipBlob = new Blob([uint8ArrayToArrayBuffer(zipped)], { type: 'application/zip' });
       downloadBlob(zipBlob, `${baseName}_frames.zip`);
       addToast({ title: 'ZIP downloaded!', color: 'success', variant: 'flat' });
-      if (!isSignedIn) openSignUpModal();
+      if (!isSignedIn) triggerSoftGate();
     } catch (_e) {
       addToast({ title: 'ZIP export failed. Please try again.', color: 'danger', variant: 'flat' });
     } finally {
@@ -559,7 +567,7 @@ export function VideoFrameExtractor() {
       const zipBlob = new Blob([uint8ArrayToArrayBuffer(zipped)], { type: 'application/zip' });
       downloadBlob(zipBlob, `${baseName}_selected_frames.zip`);
       addToast({ title: 'ZIP downloaded!', color: 'success', variant: 'flat' });
-      if (!isSignedIn) openSignUpModal();
+      if (!isSignedIn) triggerSoftGate();
     } catch (_e) {
       addToast({ title: 'ZIP export failed. Please try again.', color: 'danger', variant: 'flat' });
     } finally {
@@ -789,51 +797,6 @@ export function VideoFrameExtractor() {
 
                 <div className="mt-4 rounded-lg bg-foreground-50 p-3 text-sm text-foreground-600">
                   Captures are saved at the video’s native resolution.
-                </div>
-              </CardBody>
-            </Card>
-
-            {/* CTA (always visible under Export) */}
-            <Card className="overflow-hidden">
-              <CardBody className="relative p-5">
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-foreground/5" />
-                <div className="relative flex flex-col gap-4">
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15">
-                      <Icon icon="panorama" size={18} className="text-primary" />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-sm font-semibold">Turn frames into approvals</div>
-                      <div className="text-sm text-foreground-600">
-                        Review videos in Kreatli, collect feedback, and keep every comment tied to the exact moment.
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-2 text-sm text-foreground-600">
-                    <div className="flex items-start gap-2">
-                      <Icon icon="time" size={16} className="mt-0.5 text-primary" />
-                      <span>Frame-accurate comments & timestamps</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Icon icon="download" size={16} className="mt-0.5 text-primary" />
-                      <span>Centralize versions, exports, and decisions</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <Icon icon="arrowRight" size={16} className="mt-0.5 text-primary" />
-                      <span>Share a no-signup link with clients</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2 sm:flex-row">
-                    <Button
-                      as={NextLink}
-                      href={isSignedIn ? '/platform/creative-workspace' : '/sign-up'}
-                      className="bg-foreground text-content1"
-                    >
-                      Start 7-day trial
-                    </Button>
-                  </div>
                 </div>
               </CardBody>
             </Card>

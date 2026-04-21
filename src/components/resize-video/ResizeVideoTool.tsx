@@ -7,7 +7,7 @@ import { type FileRejection, useDropzone } from 'react-dropzone';
 
 import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
-import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
+import { useSoftGate } from '../../hooks/useSoftGate';
 import { Icon, type IconType } from '../various/Icon';
 
 type ExportFormat = 'mp4' | 'mov' | 'webm-vp9' | 'webm-vp8';
@@ -55,7 +55,6 @@ const MAX_FILE_SIZE_BYTES = 500 * 1024 * 1024; // 500MB
 
 export function ResizeVideoTool() {
   const { isSignedIn } = useSession();
-  const openSignUpModal = useSignUpModalVisibility((s) => s.openSignUpModal);
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
   const [file, setFile] = useState<File | null>(null);
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -83,6 +82,19 @@ export function ResizeVideoTool() {
   const hasTriggeredDownloadForDoneRef = useRef<boolean>(false);
   const cancelRequestedRef = useRef<boolean>(false);
 
+  const reset = useCallback(() => {
+    setFile(null);
+    setVideoUrl(null);
+    setOutputBlob(null);
+    setStatus('idle');
+    setProgress(0);
+    setUnsupported(false);
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    onReset: reset,
+  });
+
   const onDrop = useCallback((accepted: File[]) => {
     const next = accepted[0];
     if (!next) return;
@@ -104,9 +116,9 @@ export function ResizeVideoTool() {
     setOutputBlob(null);
     setProgress(0);
 
-    // Soft gate: show sign-up popup for guests when they start using the tool.
-    if (!isSignedIn) openSignUpModal();
-  }, [isInactiveLocked, openInactivePlanModal, isSignedIn, openSignUpModal]);
+    // Soft gate: show sign-up popup for guests when they start using the tool; dismiss without sign-in clears upload.
+    triggerSoftGate();
+  }, [isInactiveLocked, openInactivePlanModal, triggerSoftGate]);
 
   const onDropRejected = useCallback((fileRejections: FileRejection[]) => {
     const fileTooLarge = fileRejections.some((r) => r.errors.some((e) => e.code === 'file-too-large'));
@@ -226,9 +238,6 @@ export function ResizeVideoTool() {
       openInactivePlanModal();
       return;
     }
-
-    // Soft gate: encourage sign-up on first meaningful action (non-blocking).
-    if (!isSignedIn) openSignUpModal();
 
     const video = videoRef.current;
     const canvas = canvasRef.current;
@@ -383,8 +392,6 @@ export function ResizeVideoTool() {
     runFFmpegMP4OrMOV,
     isInactiveLocked,
     openInactivePlanModal,
-    isSignedIn,
-    openSignUpModal,
   ]);
 
   useEffect(() => {
@@ -435,18 +442,9 @@ export function ResizeVideoTool() {
     hasTriggeredDownloadForDoneRef.current = true;
     downloadRef.current?.();
     if (!isSignedIn) {
-      openSignUpModal();
+      triggerSoftGate();
     }
-  }, [status, outputBlob, file, isSignedIn, openSignUpModal, isInactiveLocked, openInactivePlanModal]);
-
-  const reset = useCallback(() => {
-    setFile(null);
-    setVideoUrl(null);
-    setOutputBlob(null);
-    setStatus('idle');
-    setProgress(0);
-    setUnsupported(false);
-  }, []);
+  }, [status, outputBlob, file, isSignedIn, triggerSoftGate, isInactiveLocked, openInactivePlanModal]);
 
   const hasVideo = !!file && !!videoUrl;
   const canResize = hasVideo && status === 'idle' && sourceWidth > 0 && sourceHeight > 0;

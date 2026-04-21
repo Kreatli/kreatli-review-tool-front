@@ -108,6 +108,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['PDF & documents'],
   },
   {
+    title: 'PDF Markup Tool',
+    description:
+      'Mark up PDFs online with pinned comments, highlights, drawings, and visual markup. Share with clients; recipients do not need a Kreatli account.',
+    href: '/free-tools/pdf-markup-tool',
+    icon: 'edit',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try PDF Markup Tool',
+    tags: ['PDF & documents'],
+  },
+  {
     title: 'PDF Highlighter',
     description:
       'Highlight PDF text and regions with location-pinned markup. Share with clients; recipients do not need a Kreatli account.',
@@ -178,6 +188,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['Images'],
   },
   {
+    title: 'Image Markup Tool',
+    description:
+      'Mark up images online with pinned comments, highlights, drawings, and visual markup. Share with clients; recipients do not need a Kreatli account.',
+    href: '/free-tools/image-markup-tool',
+    icon: 'panorama',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Image Markup Tool',
+    tags: ['Images'],
+  },
+  {
     title: 'Image Comparer',
     description:
       'Compare two image versions side by side with comments and annotations. Share with clients; recipients do not need a Kreatli account.',
@@ -238,6 +258,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['Video'],
   },
   {
+    title: 'Video Markup Tool',
+    description:
+      'Mark up video with frame-accurate comments, drawings, and visual markup. Pin feedback to exact timestamps; share with clients without a Kreatli account.',
+    href: '/free-tools/video-markup-tool',
+    icon: 'paint',
+    buttonText: 'Try Now',
+    ariaLabel: 'Try Video Markup Tool',
+    tags: ['Video'],
+  },
+  {
     title: 'Video Frame Extractor',
     description:
       'Scrub through a video, capture stills as PNG/JPG in your browser—no upload, no watermark. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
@@ -255,6 +285,16 @@ export const FREE_TOOLS: FreeTool[] = [
     icon: 'fullscreen',
     buttonText: 'Try Now',
     ariaLabel: 'Resize video',
+    tags: ['Video'],
+  },
+  {
+    title: 'Video Compressor',
+    description:
+      'Compress video to a target file size in your browser—no upload, processing runs locally. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
+    href: '/free-tools/video-compressor',
+    icon: 'download',
+    buttonText: 'Try Now',
+    ariaLabel: 'Compress video to a target file size',
     tags: ['Video'],
   },
   {

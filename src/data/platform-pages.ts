@@ -153,6 +153,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
   },
   {
+    label: 'Video Markup',
+    href: '/platform/video-markup',
+    description: 'Frame-accurate video markup with drawings and pinned notes',
+    icon: 'paint',
+    section: 'Core Platform',
+    order: 4.25,
+    tags: ['Video', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'videoAnnotation'],
+  },
+  {
     label: 'Add Drawing To Video',
     href: '/platform/add-drawing-to-video',
     description: 'Draw directly on video frames with markup and annotations',
@@ -307,6 +321,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'addCommentsToPdf', 'drawOnPdfDocument'],
   },
   {
+    label: 'PDF Markup',
+    href: '/platform/pdf-markup',
+    description: 'PDF markup with highlights, shapes, and page-pinned feedback',
+    icon: 'edit',
+    section: 'Core Platform',
+    order: 13.25,
+    tags: ['PDF & documents', 'Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'addCommentsToPdf', 'drawOnPdfDocument'],
+  },
+  {
     label: 'Add Comments to PDF',
     href: '/platform/add-comments-to-pdf',
     description: 'Add comments to PDF with location-pinned, threaded feedback',
@@ -327,6 +355,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     icon: 'addImage',
     section: 'Core Platform',
     order: 15,
+    tags: ['Review & compare'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'creativeProofing', 'annotatePdf'],
+  },
+  {
+    label: 'Image Markup',
+    href: '/platform/image-markup',
+    description: 'Image markup with pins, highlights, and drawing for pixel-accurate feedback',
+    icon: 'panorama',
+    section: 'Core Platform',
+    order: 15.25,
     tags: ['Review & compare'],
     sitemap: {
       priority: '0.8',
@@ -524,6 +566,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     section: 'Core Platform',
     order: 28.5,
     tags: ['Video', 'Safe zones & resize'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'secureAssetStorage'],
+  },
+  {
+    label: 'Compress Video Online',
+    href: '/platform/compress-video-online',
+    description: 'Compress video to a smaller file size for faster sharing and uploads',
+    icon: 'download',
+    section: 'Core Platform',
+    order: 28.6,
+    tags: ['Video', 'Share & send'],
     sitemap: {
       priority: '0.8',
       changefreq: 'monthly',

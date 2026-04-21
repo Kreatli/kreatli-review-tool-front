@@ -14,93 +14,96 @@ import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import {
-  REVIEW_VIDEO_STEPS,
   PlatformStepGuide,
+  VIDEO_ANNOTATION_STEPS,
 } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
-import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
-    question: 'What is video review?',
+    question: 'What is video markup?',
     answer:
-      'Video review is the process of watching video content and providing feedback, comments, and approval decisions. In Kreatli, video review is frame-accurate—comments and annotations are pinned to exact moments so editors know precisely what to change. This replaces vague email threads with actionable, visual feedback that speeds up revision cycles.',
-  },
-  FREE_TOOL_PAGE_ACCOUNT_FAQ,
-  {
-    question: 'How do I review a video in Kreatli?',
-    answer:
-      "Upload your video to a Kreatli project and open it in the review player. Scrub or play to any moment and click to add comments or drawings. Your feedback is pinned to the exact frame. When you are done, share a link so clients or collaborators can view the video and add their own feedback without creating an account.",
+      'Video markup is visual feedback on the picture at a specific time—drawings, shapes, arrows, highlights, and pinned comments tied to exact frames and timestamps. In Kreatli, video markup stays linked to the frame so editors and clients mean the same moment and region, not “somewhere around two minutes.”',
   },
   {
-    question: 'Can clients review videos without creating an account?',
+    question: 'How does frame-accurate video markup work in Kreatli?',
     answer:
-      'Yes. Kreatli offers no-signup guest review links for video. Send your client a secure link; they can watch the video, add frame-accurate comments and annotations, and submit feedback without signing up. This removes friction from the approval process and keeps all review in one thread.',
+      'Click the frame where you want to leave feedback and add markup or a note. Your marks stay attached to that frame and timecode so playback shows them at the right moment. Editors can jump straight to each mark and track what is resolved across versions.',
   },
   {
-    question: 'What feedback options are available when reviewing a video?',
+    question: 'What types of video markup can I add?',
     answer:
-      'In Kreatli you can add text comments pinned to specific frames, freehand drawings and shapes to highlight areas, arrows and markers to point to elements, and color-coded annotations for different types of feedback. Reviewers can also approve or request changes. All feedback is tied to the exact timestamp and frame number.',
+      'You can combine frame-accurate comments with freehand drawing, shapes, arrows, and color-coded feedback. Multiple reviewers can contribute with clear attribution, and you can filter or resolve items as new cuts arrive.',
   },
   {
-    question: 'How do I track feedback status on a video review?',
+    question: 'Can multiple team members markup the same video?',
     answer:
-      "Kreatli tracks resolution status for every comment on a video. You can mark items as resolved or unresolved and filter to show only what still needs attention. When you upload a new version of the video, you can resolve comments that have been addressed. The system keeps a clear record of what is done and what is pending across review rounds.",
+      'Yes. Multiple reviewers can markup the same video with real-time visibility, color coding, and timeline organization—ideal for directors, producers, editors, and clients in one review.',
   },
   {
-    question: 'Can multiple people review the same video at once?',
+    question: 'How do I track which markup has been addressed?',
     answer:
-      "Yes. Multiple reviewers can review the same video simultaneously. Each person's comments and annotations are visible to everyone, with color coding or user indicators to show who added which annotation. You can see all feedback on the timeline, filter by reviewer, and track which annotations have been addressed.",
+      'Mark feedback resolved or open, filter to unfinished work, and align markup with the version it was created on so nothing is misread after a new upload.',
   },
   {
-    question: 'Why review videos in Kreatli instead of email or standalone tools?',
+    question: 'Can clients markup video without creating an account?',
     answer:
-      'Reviewing videos in Kreatli keeps feedback frame-accurate and organized. Instead of vague descriptions like "around the 2-minute mark," comments are pinned to exact frames. You get a single project timeline, one set of review links for clients, and one approval workflow instead of juggling video tools, email, and separate review apps.',
+      'Yes. Secure guest links let clients watch, add frame-accurate markup, and reply without signing up—reducing friction in approvals.',
   },
   {
-    question: 'How does video review help video production workflows?',
+    question: 'How is video markup different from comments alone?',
     answer:
-      'Video review streamlines production workflows by making feedback visual and frame-accurate. Editors can jump directly to annotated frames, see visual markup indicating what to change, and track which annotations have been addressed. This reduces back-and-forth communication, speeds up revision cycles, and ensures nothing gets missed.',
+      'Comments describe intent; markup shows exactly where on the frame. Together they remove ambiguity for color, graphics, framing, and picture fixes.',
+  },
+  {
+    question: 'What video formats support markup in Kreatli?',
+    answer:
+      'Common professional formats including MP4, MOV, AVI, MKV, and more, across resolutions and frame rates supported by the platform player.',
+  },
+  {
+    question: 'How does video markup help production workflows?',
+    answer:
+      'Markup turns vague notes into actionable, visual direction. Editors scrub to the exact frame, see the mark, and close items as revisions land—fewer rounds and less back-and-forth.',
   },
 ];
 
-export default function ReviewVideoPage() {
+export default function VideoMarkupPage() {
   useSession();
-  const articles = getPlatformArticles('/platform/review-video');
+  const articles = getPlatformArticles('/platform/video-markup');
 
   return (
     <>
       <Head>
-        <title>Video Review for Creative Teams | Kreatli Platform</title>
+        <title>Video Markup for Creative Teams | Kreatli Platform</title>
         <meta
           name="description"
-          content="Review video with frame-accurate feedback, version tracking, and team approvals. Built into Kreatli's video collaboration platform."
+          content="Frame-accurate video markup: drawings, shapes, and pinned comments on exact frames. Built for video production and client review."
         />
-        <link rel="canonical" href="https://kreatli.com/platform/review-video" />
-        <meta property="og:url" content="https://kreatli.com/platform/review-video" />
+        <link rel="canonical" href="https://kreatli.com/platform/video-markup" />
+        <meta property="og:url" content="https://kreatli.com/platform/video-markup" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Video Review for Creative Teams | Kreatli Platform" />
+        <meta property="og:title" content="Video Markup for Creative Teams | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Review video with frame-accurate feedback, version tracking, and team approvals. Built into Kreatli's video collaboration platform."
+          content="Frame-accurate video markup: drawings, shapes, and pinned comments on exact frames. Built for video production and client review."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Video Review for Creative Teams | Kreatli Platform" />
+        <meta property="og:image:alt" content="Video Markup for Creative Teams | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Review for Creative Teams | Kreatli Platform" />
+        <meta name="twitter:title" content="Video Markup for Creative Teams | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Review video with frame-accurate feedback, version tracking, and team approvals. Built into Kreatli's video collaboration platform."
+          content="Frame-accurate video markup: drawings, shapes, and pinned comments on exact frames. Built for video production and client review."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -108,24 +111,22 @@ export default function ReviewVideoPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Review Video', url: '/platform/review-video' },
+          { name: 'Video Markup', url: '/platform/video-markup' },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
       <Header />
       <Decorations />
 
-      {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Review Video
+              Frame-Accurate Video Markup
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Review video with frame-accurate comments, annotations, and approvals. Recipients on shared links do not
-              need a Kreatli account. Try without signing in, or with an active Kreatli trial or plan if you are signed
-              in.
+              Add video markup on exact frames—drawings, shapes, arrows, and pinned notes—so editors and clients share
+              one clear picture of what to change.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -147,26 +148,24 @@ export default function ReviewVideoPage() {
         </div>
       </section>
 
-
-      <PlatformDefinitionBlock href="/platform/review-video" />
+      <PlatformDefinitionBlock href="/platform/video-markup" />
       <PlatformStepGuide
-        stepsSectionTitle="How to review a video in Kreatli"
-        stepsIntro="Follow these steps to upload your video, collect frame-accurate feedback, and track approvals—all in one place."
-        steps={REVIEW_VIDEO_STEPS}
+        stepsSectionTitle="How to add video markup in Kreatli"
+        stepsIntro="Follow these steps to add frame-accurate markup to your videos in Kreatli—from upload to share and approval."
+        steps={VIDEO_ANNOTATION_STEPS}
         completeGuide={{
-          href: '/guides/how-to-annotate-video',
+          href: '/guides/how-to-markup-a-video',
           description:
-            'Learn how to annotate video effectively to speed up feedback, reduce revisions, and improve collaboration.',
+            'Step-by-step: how to markup a video with frame-accurate pins, drawing, and clear feedback for editors.',
         }}
       />
 
-      {/* Review Features Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How Video Review Works</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Markup Tools on the Timeline</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Use frame-accurate comments, drawings, and annotations to give precise feedback on your video.
+              Combine drawing, pins, and notes so feedback is visual and actionable on every frame.
             </p>
           </div>
 
@@ -175,13 +174,12 @@ export default function ReviewVideoPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="upload" size={20} className="text-primary" />
+                    <Icon icon="paint" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Upload Your Video</h3>
+                  <h3 className="font-sans text-lg font-semibold">Drawings & shapes</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Add your video to a Kreatli project. The file is stored securely with version history so you can
-                  track every cut and review round.
+                  Freehand and shapes to highlight regions, motion, or picture issues on the frame.
                 </p>
               </CardBody>
             </Card>
@@ -192,11 +190,24 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="chat" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Frame-Accurate Comments</h3>
+                  <h3 className="font-sans text-lg font-semibold">Frame-pinned comments</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Pin comments to exact frames with timestamps. Every comment is linked to a specific frame number and
-                  moment in the video.
+                  Notes locked to exact frames and timecodes—not vague scrub ranges.
+                </p>
+              </CardBody>
+            </Card>
+
+            <Card>
+              <CardBody className="p-6">
+                <div className="mb-4 flex items-center gap-3">
+                  <div className="rounded-full bg-foreground-100 p-2">
+                    <Icon icon="arrowRight" size={20} className="text-primary" />
+                  </div>
+                  <h3 className="font-sans text-lg font-semibold">Arrows & markers</h3>
+                </div>
+                <p className="text-sm text-foreground-500">
+                  Point to talent, graphics, or UI elements that need attention.
                 </p>
               </CardBody>
             </Card>
@@ -207,26 +218,10 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="paint" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Drawings & Markup</h3>
+                  <h3 className="font-sans text-lg font-semibold">Color-coded feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Draw directly on video frames with freehand, shapes, and arrows. All markup stays pinned to the exact
-                  frame where you placed it.
-                </p>
-              </CardBody>
-            </Card>
-
-            <Card>
-              <CardBody className="p-6">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon icon="share" size={20} className="text-primary" />
-                  </div>
-                  <h3 className="font-sans text-lg font-semibold">Share for Review</h3>
-                </div>
-                <p className="text-sm text-foreground-500">
-                  Generate a secure review link and send it to clients or collaborators. They can review and comment
-                  without creating an account or downloading anything.
+                  Organize markup by reviewer, department, or priority.
                 </p>
               </CardBody>
             </Card>
@@ -237,11 +232,10 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Multi-Reviewer Support</h3>
+                  <h3 className="font-sans text-lg font-semibold">Multi-reviewer markup</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Multiple team members and clients can review the same video. See who added what with color coding
-                  and keep feedback in one thread.
+                  Everyone sees the same timeline of marks with clear attribution.
                 </p>
               </CardBody>
             </Card>
@@ -252,11 +246,10 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="checkCircle" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Track Approvals</h3>
+                  <h3 className="font-sans text-lg font-semibold">Resolution tracking</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Mark comments as resolved, track who approved which version, and keep a clear record of what is done
-                  and what is pending across review rounds.
+                  Resolve markup as new versions address feedback; keep open work visible.
                 </p>
               </CardBody>
             </Card>
@@ -267,13 +260,20 @@ export default function ReviewVideoPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mx-auto w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
-            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
-              Related video features
-            </h2>
+            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">Related video features</h2>
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
-              Give video feedback, comment on video, or add drawings. Explore these options:
+              Annotation, feedback, comments, and drawing workflows:
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                as={NextLink}
+                href="/platform/video-annotation"
+                size="md"
+                className="bg-foreground font-medium text-content1 hover:opacity-90"
+                endContent={<Icon icon="arrowRight" size={16} />}
+              >
+                Video Annotation
+              </Button>
               <Button
                 as={NextLink}
                 href="/platform/video-feedback"
@@ -294,26 +294,24 @@ export default function ReviewVideoPage() {
               </Button>
               <Button
                 as={NextLink}
-                href="/platform/video-annotation"
+                href="/platform/add-drawing-to-video"
                 size="md"
                 className="bg-foreground font-medium text-content1 hover:opacity-90"
                 endContent={<Icon icon="arrowRight" size={16} />}
               >
-                Video Annotation
+                Add Drawing To Video
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Review Videos in Kreatli</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Video Markup Matters</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Review videos with precise, frame-accurate feedback so your team and clients stay aligned and revisions
-              move faster.
+              Turn vague notes into precise, visual direction that speeds up post and client approvals.
             </p>
           </div>
 
@@ -324,11 +322,10 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="eye" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Eliminate Ambiguity</h3>
+                  <h3 className="font-sans text-lg font-semibold">Less ambiguity</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Instead of vague descriptions, comments point to the exact frame. No more guessing or back-and-forth
-                  clarification about which moment needs changes.
+                  Show the exact frame and region—not just a rough timecode.
                 </p>
               </CardBody>
             </Card>
@@ -339,11 +336,10 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="arrowRight" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Faster Revisions</h3>
+                  <h3 className="font-sans text-lg font-semibold">Faster revisions</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Editors can jump directly to annotated frames, see visual markup, and make changes immediately.
-                  Resolution tracking ensures nothing gets missed.
+                  Editors jump to marked frames and clear items as fixes land.
                 </p>
               </CardBody>
             </Card>
@@ -354,11 +350,10 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="group" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Better Collaboration</h3>
+                  <h3 className="font-sans text-lg font-semibold">Better collaboration</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Multiple reviewers can review simultaneously with visual feedback that everyone can see. Color coding
-                  helps organize feedback by reviewer or type.
+                  Teams and clients markup together with organized, color-aware feedback.
                 </p>
               </CardBody>
             </Card>
@@ -369,11 +364,10 @@ export default function ReviewVideoPage() {
                   <div className="rounded-full bg-foreground-100 p-2">
                     <Icon icon="smile" size={20} className="text-primary" />
                   </div>
-                  <h3 className="font-sans text-lg font-semibold">Client-Friendly</h3>
+                  <h3 className="font-sans text-lg font-semibold">Client-friendly</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Clients can review videos through no-signup guest links. They can draw, comment, and provide feedback
-                  without technical barriers or account creation.
+                  Guest links keep markup simple for stakeholders without new accounts.
                 </p>
               </CardBody>
             </Card>
@@ -381,29 +375,26 @@ export default function ReviewVideoPage() {
         </div>
       </section>
 
-      {/* Free Tools Section */}
       <MoreFreeToolsSection
         title="Free Tools for Video Teams"
-        description="Explore our collection of free tools designed to help video professionals work more efficiently."
-        tools={getFreeToolsForPlatform('/platform/review-video')}
+        description="Free tools for frame-accurate review, markup, and proofing."
+        tools={getFreeToolsForPlatform('/platform/video-markup')}
       />
 
-      {/* See How This Works Section */}
       <ResourcesArticlesPreviewSection
         articles={articles}
         title="See How This Works in Practice"
-        description="Explore guides and comparisons that show how teams review videos and manage approvals in Kreatli."
+        description="Guides and workflows that show frame-accurate video markup in action."
       />
 
       <PricingSection />
 
-      {/* FAQ Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about reviewing videos and approval workflows in Kreatli.
+              Answers about video markup for production and review teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -420,27 +411,37 @@ export default function ReviewVideoPage() {
           <div className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-4 text-center">
             <h3 className="font-sans text-xl font-bold">Still Have Questions?</h3>
             <p className="text-foreground-500">
-              If you did not find the answer you were looking for, contact our support team at{' '}
+              Contact{' '}
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              to learn how Kreatli can help you review videos and streamline your approval workflow.
+              for help with video markup and approvals.
             </p>
           </div>
         </div>
       </section>
 
-      {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'videoAnnotation', 'commentOnVideo'])}
+        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'projectOrchestration'])}
         title="More Resources"
-        description="Explore other Kreatli platform features to streamline your video review and collaboration workflow."
+        description="Explore other Kreatli platform features to streamline your video collaboration workflow."
       />
 
-      {/* CTA Section */}
+      <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+        <p className="text-base text-foreground-500">
+          Wondering how Kreatli compares?{' '}
+          <NextLink
+            href="/comparisons/kreatli-vs-frameio"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
+            See Kreatli vs Frame.io for video review →
+          </NextLink>
+        </p>
+      </div>
+
       <CTASection
-        title="Ready to Review Videos with Your Team?"
-        description="Review videos with frame-accurate comments, drawings, and approvals in one place with your team and clients. Start using Kreatli today."
+        title="Ready for frame-accurate video markup?"
+        description="Mark up video on exact frames with your team and clients. Start using Kreatli today."
       />
       <FooterSection hideCta={true} />
       <SignUpModal />

@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 
 import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
-import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
+import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
@@ -36,8 +36,19 @@ export const YouTubeBannerResizer = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const { isSignedIn } = useSession();
-  const openSignUpModal = useSignUpModalVisibility((s) => s.openSignUpModal);
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
+
+  const resetImageState = useCallback(() => {
+    setImageState((prev) => {
+      if (prev.imageUrl) URL.revokeObjectURL(prev.imageUrl);
+      return { file: null, imageUrl: null, naturalWidth: 0, naturalHeight: 0 };
+    });
+    setIsLoadingImage(false);
+  }, []);
+
+  const { triggerSoftGate } = useSoftGate({
+    onReset: resetImageState,
+  });
 
   const loadImageFile = useCallback(
     (file: File) => {
@@ -48,64 +59,86 @@ export const YouTubeBannerResizer = () => {
 
       setIsLoadingImage(true);
 
-      // Clean up previous image URL if exists
       if (imageState.imageUrl) {
         URL.revokeObjectURL(imageState.imageUrl);
       }
 
       const imageUrl = URL.createObjectURL(file);
-      const img = new Image();
 
-      img.onload = () => {
-        // Validate actual image content
-        if (img.naturalWidth === 0 || img.naturalHeight === 0) {
-          addToast({
-            title: 'Invalid image file. Please upload a valid PNG or JPG image.',
-            color: 'danger',
-            variant: 'flat',
-          });
-          URL.revokeObjectURL(imageUrl);
-          setIsLoadingImage(false);
+      const fail = (message: string) => {
+        URL.revokeObjectURL(imageUrl);
+        setIsLoadingImage(false);
+        addToast({ title: message, color: 'danger', variant: 'flat' });
+      };
+
+      const succeed = (naturalWidth: number, naturalHeight: number) => {
+        if (naturalWidth === 0 || naturalHeight === 0) {
+          fail('Invalid image file. Please upload a valid PNG or JPG image.');
           return;
         }
 
-        // Validate maximum dimensions
-        if (img.naturalWidth > MAX_IMAGE_DIMENSION || img.naturalHeight > MAX_IMAGE_DIMENSION) {
-          addToast({
-            title: `Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`,
-            color: 'danger',
-            variant: 'flat',
-          });
-          URL.revokeObjectURL(imageUrl);
-          setIsLoadingImage(false);
+        if (naturalWidth > MAX_IMAGE_DIMENSION || naturalHeight > MAX_IMAGE_DIMENSION) {
+          fail(
+            `Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`,
+          );
           return;
         }
 
         setImageState({
           file,
           imageUrl,
-          naturalWidth: img.naturalWidth,
-          naturalHeight: img.naturalHeight,
+          naturalWidth,
+          naturalHeight,
         });
         setIsLoadingImage(false);
 
-        // Soft gate: show sign-up popup for guests (no reset on dismiss).
-        if (!isSignedIn) openSignUpModal();
+        if (!isSignedIn) triggerSoftGate();
       };
 
-      img.onerror = () => {
-        addToast({
-          title: 'Failed to load image. The file may be corrupted or not a valid image. Please try a different file.',
-          color: 'danger',
-          variant: 'flat',
+      void (async () => {
+        if (typeof createImageBitmap === 'function') {
+          try {
+            const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+            const w = bitmap.width;
+            const h = bitmap.height;
+            bitmap.close();
+            if (w > 0 && h > 0) {
+              succeed(w, h);
+              return;
+            }
+          } catch {
+            /* try createImageBitmap without options, then <img> */
+          }
+
+          try {
+            const bitmap = await createImageBitmap(file);
+            const w = bitmap.width;
+            const h = bitmap.height;
+            bitmap.close();
+            if (w > 0 && h > 0) {
+              succeed(w, h);
+              return;
+            }
+          } catch {
+            /* <img> fallback */
+          }
+        }
+
+        await new Promise<void>((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            succeed(img.naturalWidth, img.naturalHeight);
+            resolve();
+          };
+          img.onerror = () => {
+            fail('Failed to load image. The file may be corrupted or not a valid image. Please try a different file.');
+            resolve();
+          };
+          img.src = imageUrl;
         });
-        URL.revokeObjectURL(imageUrl);
-        setIsLoadingImage(false);
-      };
-
-      img.src = imageUrl;
+      })();
     },
-    [imageState.imageUrl, isSignedIn, openSignUpModal, isInactiveLocked, openInactivePlanModal],
+    [imageState.imageUrl, isSignedIn, triggerSoftGate, isInactiveLocked, openInactivePlanModal],
   );
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -203,17 +236,15 @@ export const YouTubeBannerResizer = () => {
 
           <BannerExport
             imageUrl={imageState.imageUrl}
-            naturalWidth={imageState.naturalWidth}
-            naturalHeight={imageState.naturalHeight}
             exportFormat={exportFormat}
             onExportFormatChange={setExportFormat}
             onExportStart={() => {
-              if (!isSignedIn) {
-                openSignUpModal();
-                return false;
-              }
               if (isInactiveLocked) {
                 openInactivePlanModal();
+                return false;
+              }
+              if (!isSignedIn) {
+                triggerSoftGate();
                 return false;
               }
             }}

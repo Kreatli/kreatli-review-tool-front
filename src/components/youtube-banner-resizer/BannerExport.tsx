@@ -2,36 +2,18 @@ import { addToast, Button, Radio, RadioGroup } from '@heroui/react';
 import { useState } from 'react';
 
 import { Icon } from '../various/Icon';
-
-// Canvas dimensions (YouTube recommended)
-const CANVAS_WIDTH = 2560;
-const CANVAS_HEIGHT = 1440;
+import { CANVAS_HEIGHT, CANVAS_WIDTH, getContainRect } from './bannerGeometry';
 
 interface BannerExportProps {
   imageUrl: string | null;
-  naturalWidth: number;
-  naturalHeight: number;
   exportFormat: 'png' | 'jpg';
   onExportFormatChange: (format: 'png' | 'jpg') => void;
   /** Called when user clicks Export. Return false to cancel export (e.g. after opening a gate modal). */
   onExportStart?: () => boolean | void;
 }
 
-/** Fit image within canvas (contain), centered. No squeeze, no crop. */
-function getContainDimensions(naturalWidth: number, naturalHeight: number) {
-  if (!naturalWidth || !naturalHeight) return null;
-  const scale = Math.min(CANVAS_WIDTH / naturalWidth, CANVAS_HEIGHT / naturalHeight);
-  const imgWidth = naturalWidth * scale;
-  const imgHeight = naturalHeight * scale;
-  const x = (CANVAS_WIDTH - imgWidth) / 2;
-  const y = (CANVAS_HEIGHT - imgHeight) / 2;
-  return { x, y, imgWidth, imgHeight };
-}
-
 export const BannerExport = ({
   imageUrl,
-  naturalWidth,
-  naturalHeight,
   exportFormat,
   onExportFormatChange,
   onExportStart,
@@ -47,7 +29,6 @@ export const BannerExport = ({
     setIsExporting(true);
 
     try {
-      // Create offscreen canvas at full resolution
       const canvas = document.createElement('canvas');
       canvas.width = CANVAS_WIDTH;
       canvas.height = CANVAS_HEIGHT;
@@ -57,36 +38,39 @@ export const BannerExport = ({
         throw new Error('Failed to get canvas context');
       }
 
-      // Draw white background
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-      // Load and draw image
-      const img = new Image();
-      // Note: crossOrigin not needed for blob URLs from createObjectURL
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+        throw new Error('Failed to load image for export');
+      }
+      const blob = await response.blob();
 
-      await new Promise<void>((resolve, reject) => {
-        img.onload = () => {
-          try {
-            const dims = getContainDimensions(naturalWidth, naturalHeight);
-            if (!dims) {
-              reject(new Error('Failed to calculate image dimensions'));
-              return;
-            }
-            ctx.drawImage(img, dims.x, dims.y, dims.imgWidth, dims.imgHeight);
-            resolve();
-          } catch (error) {
-            reject(error);
-          }
-        };
-        img.onerror = () => reject(new Error('Failed to load image for export'));
-        img.src = imageUrl;
-      });
+      let bitmap: ImageBitmap;
+      try {
+        try {
+          bitmap = await createImageBitmap(blob, { imageOrientation: 'from-image' });
+        } catch {
+          bitmap = await createImageBitmap(blob);
+        }
+      } catch {
+        throw new Error('Failed to load image for export');
+      }
 
-      // Convert to blob and download
+      try {
+        const dims = getContainRect(CANVAS_WIDTH, CANVAS_HEIGHT, bitmap.width, bitmap.height);
+        if (!dims) {
+          throw new Error('Failed to calculate image dimensions');
+        }
+        ctx.drawImage(bitmap, dims.x, dims.y, dims.width, dims.height);
+      } finally {
+        bitmap.close();
+      }
+
       canvas.toBlob(
-        (blob) => {
-          if (!blob) {
+        (blobOut) => {
+          if (!blobOut) {
             setIsExporting(false);
             addToast({
               title: 'Failed to create image file. The image may be too large or corrupted.',
@@ -96,7 +80,7 @@ export const BannerExport = ({
             return;
           }
 
-          const url = URL.createObjectURL(blob);
+          const url = URL.createObjectURL(blobOut);
           const link = document.createElement('a');
           link.href = url;
           link.download = `youtube-banner-kreatli.${exportFormat}`;

@@ -30,8 +30,10 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-markup-a-pdf',
   'how-to-add-notes-to-a-pdf',
   'how-to-markup-an-image',
+  'how-to-markup-a-video',
   'how-to-share-documents-online',
   'how-to-share-images',
+  'how-to-compress-a-video',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -564,6 +566,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     },
   },
   {
+    id: 'local-guide-how-to-markup-a-video',
+    name: 'How to Markup a Video',
+    full_slug: '/guides/how-to-markup-a-video',
+    content: {
+      metaFields: {
+        title: 'How to Markup a Video: Frame-Accurate Notes, Drawings, and Faster Cuts',
+        description:
+          'Learn how to markup a video with frame-accurate pins, drawings, and short notes so editors know exactly what to change and revision rounds stay short.',
+      },
+      image: {
+        filename: '/images/guides/how-to-markup-a-video-cover.png',
+        alt: 'Kreatli Guide: How to markup a video',
+        title: 'How to markup a video — Kreatli guide',
+      },
+      publishDate: '2026-04-20 00:00',
+      readTime: '9',
+      tags: { value: ['Video', 'Client Review'] },
+    },
+  },
+  {
     id: 'local-guide-how-to-share-documents-online',
     name: 'How to Share Documents Online',
     full_slug: '/guides/how-to-share-documents-online',
@@ -601,6 +623,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-12 00:00',
       readTime: '9',
       tags: { value: ['Image', 'Share Image'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-compress-a-video',
+    name: 'How to Compress a Video',
+    full_slug: '/guides/how-to-compress-a-video',
+    content: {
+      metaFields: {
+        title: 'How to Compress a Video: Smaller Files for Upload, Share, and Delivery',
+        description:
+          'Learn how to compress a video for email limits, faster uploads, and client handoff—without losing clarity on what to change in review.',
+      },
+      image: {
+        filename: '/images/guides/how-to-compress-a-video-cover.png',
+        alt: 'Kreatli Guide: How to compress a video',
+        title: 'How to compress a video — Kreatli guide',
+      },
+      publishDate: '2026-04-20 00:00',
+      readTime: '9',
+      tags: { value: ['Video', 'Share Video'] },
     },
   },
 ];
