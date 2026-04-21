@@ -1,0 +1,246 @@
+'use client';
+
+import { addToast, Button, Card, CardBody, cn, Input } from '@heroui/react';
+import React, { useCallback, useMemo, useState } from 'react';
+
+import { downloadFromUrl } from '../../utils/download';
+import { Icon } from '../various/Icon';
+
+type ResolveResponse =
+  | {
+      ok: true;
+      source: 'tikwm' | 'opengraph';
+      videoUrl: string;
+      hdVideoUrl?: string;
+      thumbnailUrl?: string;
+      title?: string;
+      author?: string;
+      watermarked: boolean;
+    }
+  | { ok: false; code: string; message: string };
+
+const EXAMPLE_URL = 'https://www.tiktok.com/@tiktok/video/6829267836783971589';
+
+function isProbablyTikTokUrl(input: string) {
+  try {
+    const url = new URL(input);
+    const host = url.hostname.toLowerCase();
+    return (
+      url.protocol === 'https:' &&
+      (host === 'tiktok.com' ||
+        host === 'www.tiktok.com' ||
+        host === 'm.tiktok.com' ||
+        host === 'vm.tiktok.com' ||
+        host === 'vt.tiktok.com')
+    );
+  } catch {
+    return false;
+  }
+}
+
+function safeFileName(input: string) {
+  const base = input.replace(/[^a-zA-Z0-9_-]+/g, '_').replace(/^_+|_+$/g, '');
+  return base || 'tiktok_video';
+}
+
+export function TikTokDownloaderTool() {
+  const [url, setUrl] = useState<string>('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'ready' | 'downloading'>('idle');
+  const [result, setResult] = useState<Extract<ResolveResponse, { ok: true }> | null>(null);
+
+  const canSubmit = useMemo(
+    () => url.trim().length > 0 && isProbablyTikTokUrl(url.trim()) && status !== 'loading',
+    [status, url],
+  );
+
+  const resolve = useCallback(async () => {
+    const input = url.trim();
+    if (!isProbablyTikTokUrl(input)) {
+      addToast({ title: 'Please paste a valid TikTok link.', color: 'danger', variant: 'flat' });
+      return;
+    }
+
+    setStatus('loading');
+    setResult(null);
+    try {
+      const res = await fetch('/api/tiktok/resolve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: input }),
+      });
+      const data = (await res.json()) as ResolveResponse;
+      if (!data.ok) {
+        addToast({ title: data.message || 'Could not resolve this TikTok link.', color: 'danger', variant: 'flat' });
+        setStatus('idle');
+        return;
+      }
+      setResult(data);
+      setStatus('ready');
+      addToast({
+        title: data.watermarked
+          ? 'Link resolved. Watermark-free was not available for this video.'
+          : 'Link resolved. Ready to download.',
+        color: data.watermarked ? 'warning' : 'success',
+        variant: 'flat',
+      });
+    } catch (e) {
+      console.error('TikTok resolve request failed:', e);
+      addToast({ title: 'Something went wrong resolving that link. Try again.', color: 'danger', variant: 'flat' });
+      setStatus('idle');
+    }
+  }, [url]);
+
+  const download = useCallback(
+    async () => {
+      if (!result) return;
+      // Use HD when available; otherwise fallback to standard.
+      const chosen = result.hdVideoUrl ?? result.videoUrl;
+      const name = safeFileName(result.title || 'tiktok_video');
+      setStatus('downloading');
+      try {
+        const res = await fetch('/api/tiktok/download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: chosen, name }),
+        });
+
+        if (!res.ok) {
+          let message = 'Download failed. Please try again.';
+          try {
+            const data = (await res.json()) as unknown;
+            if (
+              data &&
+              typeof data === 'object' &&
+              'message' in data &&
+              typeof (data as { message: unknown }).message === 'string'
+            ) {
+              message = (data as { message: string }).message;
+            }
+          } catch {
+            // ignore
+          }
+          addToast({ title: message, color: 'danger', variant: 'flat' });
+          setStatus('ready');
+          return;
+        }
+
+        const blob = await res.blob();
+        const objectUrl = URL.createObjectURL(blob);
+        downloadFromUrl(objectUrl, `${name}.mp4`);
+        // Revoke shortly after click so the download has time to start.
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 10_000);
+        setStatus('ready');
+      } catch (e) {
+        console.error('TikTok download request failed:', e);
+        addToast({ title: 'Download failed. Please try again.', color: 'danger', variant: 'flat' });
+        setStatus('ready');
+      }
+    },
+    [result],
+  );
+
+  return (
+    <Card shadow="sm" className="border border-foreground-200">
+      <CardBody className="p-6">
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-2">
+            <Icon icon="tiktok" size={18} className="text-foreground-500" />
+            <h3 className="font-sans text-base font-semibold">TikTok video downloader</h3>
+          </div>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+            <div className="flex-1">
+              <Input
+                label="TikTok link"
+                value={url}
+                onValueChange={setUrl}
+                placeholder={EXAMPLE_URL}
+                description="Paste a public TikTok link (tiktok.com, vm.tiktok.com, vt.tiktok.com)."
+                isDisabled={status === 'loading' || status === 'downloading'}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && canSubmit && status !== 'downloading') {
+                    e.preventDefault();
+                    resolve();
+                  }
+                }}
+              />
+            </div>
+            <Button
+              color="primary"
+              className={cn(
+                // Align to the input control (not label/description) on >= sm screens.
+                'h-10 bg-foreground px-4 font-semibold text-content1 sm:min-w-[130px]',
+                status === 'loading' && 'opacity-90',
+              )}
+              onPress={resolve}
+              isLoading={status === 'loading'}
+              isDisabled={!canSubmit || status === 'downloading'}
+              startContent={!status.includes('loading') ? <Icon icon="search" size={16} /> : undefined}
+            >
+              Find video
+            </Button>
+          </div>
+
+          <div className="rounded-lg bg-foreground-50 p-3 text-sm text-foreground-600">
+            We’ll try to find a <span className="font-semibold">no-watermark</span> download first. If that isn’t
+            available, we’ll fall back to the standard video link.
+          </div>
+
+          {result && (
+            <div className="grid gap-4 md:grid-cols-[180px_1fr]">
+              <div className="overflow-hidden rounded-xl border border-foreground-200 bg-black/5">
+                {result.thumbnailUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={result.thumbnailUrl} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  <div className="flex h-[120px] items-center justify-center text-sm text-foreground-500">Preview</div>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <div className="text-sm text-foreground-700">
+                  <div className="font-semibold">{result.title || 'TikTok video'}</div>
+                  <div className="text-foreground-500">
+                    {result.watermarked ? 'Watermark-free not available for this video.' : 'Watermark-free link found.'}{' '}
+                    · Source: {result.source}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  <Button
+                    color="primary"
+                    className="bg-foreground font-semibold text-content1"
+                    onPress={download}
+                    isLoading={status === 'downloading'}
+                    isDisabled={status === 'downloading'}
+                    startContent={<Icon icon="download" size={16} />}
+                  >
+                    Download
+                  </Button>
+                  <Button
+                    variant="bordered"
+                    onPress={() => {
+                      setUrl('');
+                      setResult(null);
+                      setStatus('idle');
+                    }}
+                  >
+                    Reset
+                  </Button>
+                </div>
+
+                <div className="text-xs text-foreground-500">
+                  If the download doesn’t start, try the direct link and use “Save video as”.{' '}
+                  <a href={result.hdVideoUrl || result.videoUrl} target="_blank" rel="noreferrer" className="underline">
+                    Open direct link
+                  </a>
+                  .
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </CardBody>
+    </Card>
+  );
+}

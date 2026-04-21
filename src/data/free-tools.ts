@@ -298,6 +298,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['Video'],
   },
   {
+    title: 'TikTok Video Downloader',
+    description:
+      'Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available and fall back if not.',
+    href: '/free-tools/tiktok-video-downloader',
+    icon: 'tiktok',
+    buttonText: 'Try Now',
+    ariaLabel: 'Download TikTok videos from a link',
+    tags: ['Video', 'Share & links'],
+  },
+  {
     title: 'Data Transfer Calculator',
     description:
       'Calculate how long it takes to upload or download large files. Perfect for video editors and post-production teams.',
