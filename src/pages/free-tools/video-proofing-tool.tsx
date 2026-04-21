@@ -79,11 +79,6 @@ export default function VideoProofingToolPage() {
             <HeroCtaButtons />
           </div>
         </section>
-
-
-        <DefinitionBlock term="Video Proofing Tool">
-          Video proofing is structured review of motion creative—comments, markup, and approvals on the timeline. A proofing tool keeps rounds disciplined so editors implement feedback once and stakeholders see resolution status.
-        </DefinitionBlock>
         {/* Interactive Tool Preview */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
@@ -92,6 +87,10 @@ export default function VideoProofingToolPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Proofing Tool">
+          Video proofing is structured review of motion creative—comments, markup, and approvals on the timeline. A proofing tool keeps rounds disciplined so editors implement feedback once and stakeholders see resolution status.
+        </DefinitionBlock>
 
         <VideoProofingToolGuide />
 

@@ -72,11 +72,6 @@ export default function VideoFrameExtractorPage() {
             </p>
           </div>
         </section>
-
-
-        <DefinitionBlock term="Video Frame Extractor">
-          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
-        </DefinitionBlock>
         {/* Tool */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
@@ -88,6 +83,10 @@ export default function VideoFrameExtractorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Frame Extractor">
+          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
+        </DefinitionBlock>
 
         <VideoFrameExtractorGuide />
 

@@ -76,11 +76,6 @@ export default function VideoCompressorPage() {
           </div>
         </section>
 
-        <DefinitionBlock term="Video compressor">
-          A video compressor reduces file size so you can share, upload, or deliver a video faster. It works by
-          lowering bitrate (and sometimes resolution) while aiming to keep quality acceptable for review and approvals.
-        </DefinitionBlock>
-
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
             <FreeToolsEntitlementSection
@@ -91,6 +86,11 @@ export default function VideoCompressorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video compressor">
+          A video compressor reduces file size so you can share, upload, or deliver a video faster. It works by
+          lowering bitrate (and sometimes resolution) while aiming to keep quality acceptable for review and approvals.
+        </DefinitionBlock>
 
         <VideoCompressorGuide />
 

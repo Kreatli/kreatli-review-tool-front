@@ -75,11 +75,6 @@ export default function ResizeVideoPage() {
             </p>
           </div>
         </section>
-
-
-        <DefinitionBlock term="Resize Video Tool">
-          A resize video tool adjusts dimensions or aspect ratio so exports meet platform specs—social, broadcast, or web—without reopening an edit suite. Use it when you need a quick deliverable size check before upload or handoff.
-        </DefinitionBlock>
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
             <FreeToolsEntitlementSection
@@ -90,6 +85,10 @@ export default function ResizeVideoPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Resize Video Tool">
+          A resize video tool adjusts dimensions or aspect ratio so exports meet platform specs—social, broadcast, or web—without reopening an edit suite. Use it when you need a quick deliverable size check before upload or handoff.
+        </DefinitionBlock>
 
         <ResizeVideoGuide />
 

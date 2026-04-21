@@ -80,11 +80,6 @@ export default function DataTransferCalculatorPage() {
             <HeroCtaButtons />
           </div>
         </section>
-
-
-        <DefinitionBlock term="Data Transfer Calculator">
-          A data transfer calculator estimates upload or download time from file size and connection speed. Post teams use it when planning large raw transfers, client deliveries, or remote collaboration over constrained bandwidth.
-        </DefinitionBlock>
         {/* Calculator Section */}
         <section className="relative overflow-hidden px-6 pb-8">
           <div className="relative z-10 mx-auto max-w-6xl">
@@ -93,6 +88,10 @@ export default function DataTransferCalculatorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Data Transfer Calculator">
+          A data transfer calculator estimates upload or download time from file size and connection speed. Post teams use it when planning large raw transfers, client deliveries, or remote collaboration over constrained bandwidth.
+        </DefinitionBlock>
 
         {/* Information sections */}
         <InfoSection />
