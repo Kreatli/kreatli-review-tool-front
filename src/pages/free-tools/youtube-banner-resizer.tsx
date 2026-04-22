@@ -58,8 +58,8 @@ export default function YouTubeBannerResizerPage() {
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">YouTube Banner Resizer</h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
               Resize your YouTube channel banner in the perfect dimensions (2560x1440px). Preview safe areas for mobile,
-              desktop, tablet, and TV devices. Try without signing in, or with an active Kreatli trial or plan if you are
-              signed in.
+              desktop, tablet, and TV devices. Sign in to use the resizer; start a trial or choose a plan if your
+              subscription isn’t active.
             </p>
           </div>
           <FreeToolsEntitlementSection

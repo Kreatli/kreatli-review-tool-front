@@ -68,15 +68,11 @@ export default function VideoFrameExtractorPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Frame Extractor</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Scrub through a video, capture stills as PNG/JPG in your browser—no upload, no watermark. Try without signing in, or with an active Kreatli trial or plan if you are signed in.
+              Extract still frames from a video and download them as PNG or JPG. Sign in to use the tool; start a trial
+              or choose a plan if your subscription isn’t active.
             </p>
           </div>
         </section>
-
-
-        <DefinitionBlock term="Video Frame Extractor">
-          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
-        </DefinitionBlock>
         {/* Tool */}
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
@@ -88,6 +84,10 @@ export default function VideoFrameExtractorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Frame Extractor">
+          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
+        </DefinitionBlock>
 
         <VideoFrameExtractorGuide />
 

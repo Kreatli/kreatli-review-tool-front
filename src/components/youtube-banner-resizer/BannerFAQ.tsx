@@ -31,7 +31,7 @@ export const BannerFAQ = () => {
       key: 'free-to-use',
       title: 'Can I use this tool for free?',
       content:
-        'You can use this page without signing in—no watermarks on exports from this tool. If you are signed in to Kreatli without an active trial or plan, start a trial or choose a plan to continue. Upload your image, resize it, preview safe areas, and export your banner ready for YouTube.',
+        'Sign in to resize your YouTube banner and export clean results (no watermarks). If your trial or plan isn’t active, start a trial or choose a plan to continue. Upload your image, preview the safe area, and export your YouTube channel art at 2560 × 1440px.',
     },
     {
       key: 'file-formats',

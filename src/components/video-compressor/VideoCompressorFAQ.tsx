@@ -4,7 +4,7 @@ export const VIDEO_COMPRESSOR_FAQS = [
   {
     question: 'Is this video compressor really free?',
     answer:
-      'Yes. You can try the tool in your browser without signing in. If you are signed in but your trial or plan is not active, you may be asked to start a trial or choose a plan to continue.',
+      'You can compress video on this page after you sign in to Kreatli. If your trial or plan is not active, you may be asked to start a trial or choose a plan to continue.',
   },
   {
     question: 'Do you upload my video to Kreatli servers?',

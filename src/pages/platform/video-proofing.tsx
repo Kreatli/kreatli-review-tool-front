@@ -124,8 +124,8 @@ export default function VideoProofingPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
               Video proofing with frame-accurate comments, annotations, and approvals. Recipients on shared links do not
-              need a Kreatli account. Try without signing in, or with an active Kreatli trial or plan if you are signed
-              in.
+              need a Kreatli account. Sign in to proof and upload; start a trial or choose a plan if your subscription
+              isn’t active.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

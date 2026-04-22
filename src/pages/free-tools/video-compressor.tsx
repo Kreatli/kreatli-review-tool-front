@@ -70,16 +70,11 @@ export default function VideoCompressorPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Compressor</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Compress video to a target file size in your browser—no upload, processing runs locally. Try without
-              signing in, or with an active Kreatli trial or plan if you are signed in.
+              Compress video to a target file size for upload, email, or social posting. Sign in to use the tool; start
+              a trial or choose a plan if your subscription isn’t active.
             </p>
           </div>
         </section>
-
-        <DefinitionBlock term="Video compressor">
-          A video compressor reduces file size so you can share, upload, or deliver a video faster. It works by
-          lowering bitrate (and sometimes resolution) while aiming to keep quality acceptable for review and approvals.
-        </DefinitionBlock>
 
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
@@ -91,6 +86,11 @@ export default function VideoCompressorPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video compressor">
+          A video compressor reduces file size so you can share, upload, or deliver a video faster. It works by
+          lowering bitrate (and sometimes resolution) while aiming to keep quality acceptable for review and approvals.
+        </DefinitionBlock>
 
         <VideoCompressorGuide />
 

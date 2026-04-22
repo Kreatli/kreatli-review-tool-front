@@ -31,7 +31,7 @@ const faqs = [
   {
     question: 'How do I resize my YouTube banner?',
     answer:
-      'Use Kreatli’s free YouTube Banner Resizer. Upload or drag your image into the tool, and it applies YouTube’s recommended 2560 × 1440px canvas. You’ll see the safe zone overlay so you can keep logos and text where they’ll be visible on mobile, desktop, tablet, and TV. Adjust as needed, then export and download. Everything runs in your browser—try without signing in, or with an active Kreatli trial or plan if you are signed in.',
+      'Use Kreatli’s YouTube Banner Resizer. Upload or drag your image into the tool, and it applies YouTube’s recommended 2560 × 1440px canvas. You’ll see the safe zone overlay so you can keep logos and text where they’ll be visible on mobile, desktop, tablet, and TV. Adjust as needed, then export and download. Sign in to use the workflow; start a trial or choose a plan if your subscription isn’t active.',
   },
   {
     question: 'What is the YouTube banner safe zone?',
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'Is the YouTube Banner Resizer free?',
     answer:
-      'You can use the resizer on this page without signing in—no watermark on exports from this tool. If you are signed in to Kreatli without an active trial or plan, start a trial or choose a plan to continue. For full review workflows with client approval in Kreatli, use the platform with an active subscription.',
+      'Sign in to resize and export YouTube channel art—no watermark on exports from this tool. If your trial or plan isn’t active, start a trial or choose a plan to continue. For full review workflows with client approval in Kreatli, use the platform with an active subscription.',
   },
   {
     question: 'Why does my YouTube banner look cropped on mobile?',

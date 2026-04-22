@@ -39,8 +39,8 @@ export const VideoFrameExtractorFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            You can capture frames on this page without signing in. If you are signed in to Kreatli without an active
-            trial or plan, start a trial or choose a plan to continue.
+            Sign in to extract video frames and download stills as images. If your trial or plan isn’t active, start a
+            trial or choose a plan to continue.
           </p>
         </div>
       ),

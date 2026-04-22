@@ -124,8 +124,8 @@ export default function ReviewPdfPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
               Review PDF files with comments, annotations, and approvals alongside your video and creative assets.
-              Recipients on shared links do not need a Kreatli account. Try without signing in, or with an active trial
-              or plan if you are signed in.
+              Recipients on shared links do not need a Kreatli account. Sign in to review and upload; start a trial or
+              choose a plan if your subscription isn’t active.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

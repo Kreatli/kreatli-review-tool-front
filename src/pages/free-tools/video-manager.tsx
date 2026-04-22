@@ -79,11 +79,6 @@ export default function VideoManagerPage() {
             <HeroCtaButtons />
           </div>
         </section>
-
-
-        <DefinitionBlock term="Video Manager">
-          A video manager organizes clips, versions, and review status in one workspace instead of scattered folders. It helps producers track what is current, what is approved, and what still needs client input.
-        </DefinitionBlock>
         {/* Project / media storage feature preview */}
         <section className="relative px-6 pb-16 pt-6">
           <div className="relative z-10 mx-auto max-w-6xl">
@@ -95,6 +90,10 @@ export default function VideoManagerPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
+
+        <DefinitionBlock term="Video Manager">
+          A video manager organizes clips, versions, and review status in one workspace instead of scattered folders. It helps producers track what is current, what is approved, and what still needs client input.
+        </DefinitionBlock>
 
         <VideoManagerGuide />
 

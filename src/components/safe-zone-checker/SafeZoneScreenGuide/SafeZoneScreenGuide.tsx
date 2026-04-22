@@ -361,7 +361,7 @@ const getFAQItems = (platform?: Platform) => {
       key: 'sign-up-required',
       title: 'Do I need to sign up to use the Safe Zone Checker?',
       content:
-        'You can use this page without signing in. If you are signed in to Kreatli without an active trial or plan, start a trial or choose a plan to continue.',
+        'Yes. Sign in to use the Safe Zone Checker. If your trial or plan isn’t active, start a trial or choose a plan to continue.',
     },
     {
       key: 'multiple-platforms',

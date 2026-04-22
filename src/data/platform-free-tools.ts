@@ -168,6 +168,18 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-manager',
     '/safe-zone-checker',
   ],
+  '/platform/download-tiktok-video': [
+    '/free-tools/tiktok-video-downloader',
+    '/free-tools/resize-video',
+    '/free-tools/video-compressor',
+    '/free-tools/video-link-maker',
+  ],
+  '/platform/download-instagram-reels': [
+    '/free-tools/instagram-reel-downloader',
+    '/free-tools/resize-video',
+    '/free-tools/video-compressor',
+    '/free-tools/video-link-maker',
+  ],
 
   // YouTube banner
   '/platform/resize-youtube-banner': [
