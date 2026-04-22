@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 // eslint-disable-next-line simple-import-sort/imports
 import { Accordion, AccordionItem } from '@heroui/react';
 import Head from 'next/head';
@@ -176,8 +175,8 @@ export default function TikTokVideoDownloaderPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">TikTok Video Downloader</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available, and fall
-              back if it isn’t.
+              Download TikTok videos as MP4 from a public TikTok link. Paste a TikTok URL to download in HD when
+              available—no watermark, high quality.
             </p>
           </div>
         </section>

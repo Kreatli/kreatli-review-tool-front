@@ -131,7 +131,7 @@ export default function PhotoUrlGeneratorPage() {
         {/* How to turn your photo into a link guide */}
         <PlatformStepGuide
           stepsSectionTitle="How to turn your photo into a link in Kreatli"
-          stepsIntro="Follow these steps to upload your photo, generate a shareable link, and collect feedback—recipients do not need a Kreatli account. Try without signing in; signed-in users need an active trial or plan."
+          stepsIntro="Follow these steps to upload your photo, generate a shareable link, and collect feedback—recipients do not need a Kreatli account. Sign in to create links; start a trial or choose a plan if your subscription isn’t active."
           steps={IMAGE_TO_LINK_STEPS}
           completeGuide={{
             href: '/guides/what-is-proofing-software',

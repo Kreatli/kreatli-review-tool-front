@@ -23,7 +23,7 @@ interface MoreFreeToolsSectionProps {
 export function MoreFreeToolsSection({
   excludeHref,
   title = 'More Free Tools for Video Teams',
-  description = 'Try these in your browser without signing in, or use them when you have an active Kreatli trial or plan if you are signed in. Calculators stay free with no account.',
+  description = 'Explore free tools for video teams: calculators stay free with no account. For review and markup workflows, sign in to use the tool and start a trial or choose a plan if your subscription isn’t active.',
   tools,
   showViewAllButton = true,
   useBannerResizerInsteadOfCostCalculator = false,

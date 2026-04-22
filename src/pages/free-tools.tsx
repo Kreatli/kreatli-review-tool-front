@@ -23,12 +23,12 @@ const faqs = [
   {
     question: 'Are these tools really free to use?',
     answer:
-      'Yes—our calculators are completely free to use with no hidden costs and no account required, even if you are signed in to Kreatli without an active trial or plan. For the rest of the tools, you can use the on-page experience in your browser without signing in. If you are signed in without an active trial or subscription, you will need to start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial.',
+      'Yes—our calculators are completely free to use with no hidden costs and no account required, even if you are signed in to Kreatli without an active trial or plan. For the rest of the tools, sign in to use the on-page workflow. If your trial or subscription is not active, start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial.',
   },
   {
     question: 'Do I need to create an account to use these tools?',
     answer:
-      'No account is required for our calculators. For the other tools, you do not need to sign in to try them in your browser. If you are already signed in to Kreatli and your trial or subscription is not active, you will need to start a 7-day trial or choose a plan to use those tools (payment method at checkout; no subscription charges during the trial). People who open a review link you share still do not need a Kreatli account.',
+      'No account is required for our calculators. For the other tools, you’ll need to sign in to use the workflow on the tool page. If your trial or subscription is not active, start a 7-day trial or choose a plan to continue (payment method at checkout; no subscription charges during the trial). People who open a review link you share still do not need a Kreatli account.',
   },
   {
     question: 'What is the Data Transfer Calculator used for?',
@@ -63,7 +63,7 @@ const faqs = [
   {
     question: "How do these free tools relate to Kreatli's main platform?",
     answer:
-      "Many tools on this hub mirror workflows you also get inside Kreatli's Video Collaboration & Review Platform. You can try them in the browser without signing in; signed-in users need an active trial or plan for most tools (calculators stay free with no account). The full platform adds frame-accurate video review, project management, team collaboration, and secure file storage in one workspace.",
+      "Many tools on this hub mirror workflows you also get inside Kreatli's Video Collaboration & Review Platform. Calculators stay free with no account. For most tools, you sign in to use the workflow; if your trial or subscription is not active, start a trial or choose a plan to continue. The full platform adds frame-accurate video review, project management, team collaboration, and secure file storage in one workspace.",
   },
   {
     question: 'Can I share these tools with my team or clients?',
@@ -77,7 +77,7 @@ export default function FreeToolsPage() {
   const [selectedFilter, setSelectedFilter] = useState<'All' | FreeToolFilterTag>('All');
   const title = 'Kreatli | Free Tools for Video Teams';
   const description =
-    'Free tools for video teams: calculators, safe zone checker, YouTube banner resizer, and more. Calculators need no account; try other tools in your browser without signing in, or use them with an active Kreatli trial or plan when signed in.';
+    'Free tools for video teams: calculators, safe zone checker, YouTube banner resizer, and more. Calculators need no account; sign in to use the rest of the tools and start a trial or choose a plan if your subscription isn’t active.';
 
   const filteredTools = useMemo(() => {
     const list =

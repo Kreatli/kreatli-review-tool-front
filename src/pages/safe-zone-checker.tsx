@@ -18,12 +18,12 @@ export default function ProjectsPage() {
         <title>Free Safe Zone Checker - TikTok, Reels, Shorts | Kreatli</title>
         <meta
           name="description"
-          content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Sign in to use the checker; start a trial or choose a plan if your subscription isn’t active."
         />
         <meta property="og:title" content="Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
         <meta
           property="og:description"
-          content="Preview safe zones for TikTok, Reels, and Shorts. Try without signing in, or with an active Kreatli trial or plan if signed in."
+          content="Preview safe zones for TikTok, Reels, and Shorts. Sign in to use the checker; start a trial or choose a plan if your subscription isn’t active."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/safe-zone-checker" />

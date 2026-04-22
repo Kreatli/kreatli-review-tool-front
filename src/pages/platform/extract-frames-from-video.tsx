@@ -26,18 +26,18 @@ const faqs = [
   {
     question: 'What is a video frame extractor?',
     answer:
-      'A video frame extractor lets you capture a still image (a single frame) from a video at a specific moment. You scrub to the exact timestamp you want, capture the frame, and export it as an image file (e.g. JPG or PNG). Use extracted frames for thumbnails, client proofs, storyboards, or frame-accurate feedback in your review workflow. Kreatli’s Video Frame Extractor runs in your browser—no upload. Try without signing in, or with an active Kreatli trial or plan if you are signed in.',
+      'A video frame extractor lets you capture a still image (a single frame) from a video at a specific moment. You scrub to the exact timestamp you want, capture the frame, and export it as an image file (e.g. JPG or PNG). Use extracted frames for thumbnails, client proofs, storyboards, or frame-accurate feedback in your review workflow. Kreatli’s Video Frame Extractor runs in your browser—no upload. Sign in to use the workflow; start a trial or choose a plan if your subscription isn’t active.',
   },
   FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
     question: 'How do I export a frame from a video?',
     answer:
-      'With Kreatli’s Video Frame Extractor, you drag your video into the tool, scrub the timeline to the exact moment you want, and click to capture the frame. You can export single frames as JPG or PNG, or download multiple captured frames as a ZIP. Processing runs in your browser so your video stays on your device. No software to install. Try without signing in, or with an active trial or plan if you are signed in.',
+      'With Kreatli’s Video Frame Extractor, you drag your video into the tool, scrub the timeline to the exact moment you want, and click to capture the frame. You can export single frames as JPG or PNG, or download multiple captured frames as a ZIP. Processing runs in your browser so your video stays on your device. No software to install. Sign in to use the workflow; start a trial or choose a plan if your subscription isn’t active.',
   },
   {
     question: 'Is the Video Frame Extractor free?',
     answer:
-      'You can capture and export frames on this page without signing in—no watermark on exported images. If you are signed in to Kreatli without an active trial or plan, start a trial or choose a plan to continue. To bring frames into a full review workflow with comments and approvals, upload them to Kreatli with an active subscription.',
+      'Sign in to capture and export frames—no watermark on exported images. If your trial or plan isn’t active, start a trial or choose a plan to continue. To bring frames into a full review workflow with comments and approvals, upload them to Kreatli with an active subscription.',
   },
   {
     question: 'Can I use extracted frames in Kreatli for review?',
@@ -109,8 +109,9 @@ export default function ExtractFramesFromVideoPage() {
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
               Get and export still frames from any video for thumbnails, proofs, or review. Use Kreatli’s Video Frame
-              Extractor in your browser without signing in, or with an active trial or plan if you are signed in—or
-              bring extracted frames into Kreatli for frame-accurate feedback.
+              Extractor to capture images from video and download them. Sign in to use the workflow; start a trial or
+              choose a plan if your subscription isn’t active—or bring extracted frames into Kreatli for frame-accurate
+              feedback.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button

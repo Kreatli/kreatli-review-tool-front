@@ -305,8 +305,8 @@ export default function HowToDownloadATikTokVideoGuidePage() {
           description="Download for reference, then keep versions, comments, and approvals organized in one workspace."
           primaryButtonText="Start for Free"
           primaryButtonHref="/sign-up"
-          splitPromoImageSrc="/images/guides/how-to-download-a-tiktok-video-cover.png"
-          splitPromoImageAlt="Kreatli guide: How to download a TikTok video"
+          splitPromoImageSrc="/images/guides/embed-video-cta.png"
+          splitPromoImageAlt="Kreatli platform: tasks, video review with frame pins, media library, and version compare"
         />
       </GuidePageLayout>
       <SignUpModal />

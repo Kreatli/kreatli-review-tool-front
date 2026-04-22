@@ -270,7 +270,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Frame Extractor',
     description:
-      'Scrub through a video, capture stills as PNG/JPG in your browser—no upload, no watermark. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
+      'Extract still frames from a video and download them as PNG/JPG. Processing runs locally in your browser for fast exports. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',
     href: '/free-tools/video-frame-extractor',
     icon: 'filePng',
     buttonText: 'Try Now',
@@ -280,7 +280,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Resize Video',
     description:
-      'Resize video to custom or preset dimensions in your browser—no upload, processing runs locally. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
+      'Resize video online to custom or preset dimensions. Processing runs locally in your browser for quick previews and exports. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',
     href: '/free-tools/resize-video',
     icon: 'fullscreen',
     buttonText: 'Try Now',
@@ -290,7 +290,7 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'Video Compressor',
     description:
-      'Compress video to a target file size in your browser—no upload, processing runs locally. Use without signing in; if you are signed in without an active trial or plan, start a trial or choose a plan to continue.',
+      'Compress video to a target file size with browser-based encoding. Adjust quality and download the compressed file. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',
     href: '/free-tools/video-compressor',
     icon: 'download',
     buttonText: 'Try Now',

@@ -70,8 +70,8 @@ export default function VideoCompressorPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Compressor</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Compress video to a target file size in your browser—no upload, processing runs locally. Try without
-              signing in, or with an active Kreatli trial or plan if you are signed in.
+              Compress video to a target file size for upload, email, or social posting. Sign in to use the tool; start
+              a trial or choose a plan if your subscription isn’t active.
             </p>
           </div>
         </section>

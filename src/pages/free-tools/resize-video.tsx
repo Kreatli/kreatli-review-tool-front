@@ -70,8 +70,8 @@ export default function ResizeVideoPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Resize Video</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Resize video to custom or preset dimensions in your browser—no upload, runs locally. Try without signing
-              in, or with an active Kreatli trial or plan if you are signed in.
+              Resize video online to custom or preset dimensions in minutes. Sign in to use the tool; start a trial or
+              choose a plan if your subscription isn’t active.
             </p>
           </div>
         </section>
