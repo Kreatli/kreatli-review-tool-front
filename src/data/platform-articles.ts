@@ -1956,6 +1956,44 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/download-instagram-reels': [
+    makeArticleCard({
+      id: 'platform-download-instagram-reels-guide-1',
+      full_slug: '/guides/how-to-download-instagram-reels',
+      title: 'How to Download Instagram Reels: Save MP4s From a Public Link',
+      description:
+        'Learn how to download Instagram Reels from a public link: which URLs work, how to save the MP4, what to do when downloads fail, and why quality can vary.',
+      tags: ['Video', 'Share Video'],
+      publishDate: '2026-04-22 00:00',
+      readTime: '8',
+      imageFilename: '/images/guides/how-to-download-instagram-reels-cover.png',
+    }),
+    makeArticleCard({
+      id: 'platform-download-instagram-reels-guide-2',
+      full_slug: '/guides/instagram-reels-safe-zone',
+      title: 'Instagram Reels Safe Zone Guide (2026)',
+      description:
+        'Learn Instagram Reels safe zones, UI overlays, and text placement best practices so key visuals stay visible after upload.',
+      tags: ['Instagram Reels', 'Safe Zone', 'Short-Form Video'],
+      publishDate: '2026-01-11 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/762b429275/instagram-reels-safe-zone-guide-2026.png',
+    }),
+    makeArticleCard({
+      id: 'platform-download-instagram-reels-guide-3',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
+      description:
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
+    }),
+  ],
+
   '/platform/add-timestamp-to-video': [
     makeArticleCard({
       id: 'platform-add-timestamp-to-video-guide-1',

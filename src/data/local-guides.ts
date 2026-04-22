@@ -666,6 +666,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       tags: { value: ['Video', 'Share Video'] },
     },
   },
+  {
+    id: 'local-guide-how-to-download-instagram-reels',
+    name: 'How to Download Instagram Reels',
+    full_slug: '/guides/how-to-download-instagram-reels',
+    content: {
+      metaFields: {
+        title: 'How to Download Instagram Reels: Save MP4s From a Public Link',
+        description:
+          'Learn how to download Instagram Reels from a public link: which URLs work, how to save the MP4, what to do when downloads fail, and why quality can vary.',
+      },
+      image: {
+        filename: '/images/guides/how-to-download-instagram-reels-cover.png',
+        alt: 'Kreatli guide: How to download Instagram Reels',
+        title: 'How to download Instagram Reels — Kreatli guide',
+      },
+      publishDate: '2026-04-22 00:00',
+      readTime: '8',
+      tags: { value: ['Video', 'Share Video'] },
+    },
+  },
 ];
 
 /**
