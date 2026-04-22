@@ -6,13 +6,14 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
 import { useSignUpModalVisibility } from '../../hooks/useSignUpModalVisibility';
+import { decodeHtmlEntities } from '../../utils/decodeHtmlEntities';
 import { downloadFromUrl } from '../../utils/download';
 import { Icon } from '../various/Icon';
 
 type ResolveResponse =
   | {
       ok: true;
-      source: 'tikwm' | 'opengraph';
+      source: 'graphql' | 'embedded' | 'opengraph';
       videoUrl: string;
       hdVideoUrl?: string;
       thumbnailUrl?: string;
@@ -22,20 +23,21 @@ type ResolveResponse =
     }
   | { ok: false; code: string; message: string };
 
-const EXAMPLE_URL = 'https://www.tiktok.com/@tiktok/video/6829267836783971589';
+const EXAMPLE_URL = 'https://www.instagram.com/reel/C0ExampleShortcode/';
 
-function isProbablyTikTokUrl(input: string) {
+function reelShortcodeFromPath(pathname: string): string | null {
+  const path = pathname.replace(/\/+$/, '') || '/';
+  const m = path.match(/\/(?:reel|reels|p)\/([A-Za-z0-9_-]+)\/?$/);
+  return m?.[1] ?? null;
+}
+
+function isProbablyInstagramReelUrl(input: string) {
   try {
     const url = new URL(input);
     const host = url.hostname.toLowerCase();
-    return (
-      url.protocol === 'https:' &&
-      (host === 'tiktok.com' ||
-        host === 'www.tiktok.com' ||
-        host === 'm.tiktok.com' ||
-        host === 'vm.tiktok.com' ||
-        host === 'vt.tiktok.com')
-    );
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
+    if (host !== 'instagram.com' && host !== 'www.instagram.com' && host !== 'm.instagram.com') return false;
+    return reelShortcodeFromPath(url.pathname) !== null;
   } catch {
     return false;
   }
@@ -43,10 +45,10 @@ function isProbablyTikTokUrl(input: string) {
 
 function safeFileName(input: string) {
   const base = input.replace(/[^a-zA-Z0-9_-]+/g, '_').replace(/^_+|_+$/g, '');
-  return base || 'tiktok_video';
+  return base || 'instagram_reel';
 }
 
-export function TikTokDownloaderTool() {
+export function InstagramReelDownloaderTool() {
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
   const { isSignedIn } = useSession();
   const { openSignUpModal } = useSignUpModalVisibility();
@@ -55,7 +57,7 @@ export function TikTokDownloaderTool() {
   const [result, setResult] = useState<Extract<ResolveResponse, { ok: true }> | null>(null);
 
   const canSubmit = useMemo(
-    () => url.trim().length > 0 && isProbablyTikTokUrl(url.trim()) && status !== 'loading',
+    () => url.trim().length > 0 && isProbablyInstagramReelUrl(url.trim()) && status !== 'loading',
     [status, url],
   );
 
@@ -65,36 +67,37 @@ export function TikTokDownloaderTool() {
       return;
     }
     const input = url.trim();
-    if (!isProbablyTikTokUrl(input)) {
-      addToast({ title: 'Please paste a valid TikTok link.', color: 'danger', variant: 'flat' });
+    if (!isProbablyInstagramReelUrl(input)) {
+      addToast({ title: 'Please paste a valid Instagram Reel or post link.', color: 'danger', variant: 'flat' });
       return;
     }
 
     setStatus('loading');
     setResult(null);
     try {
-      const res = await fetch('/api/tiktok/resolve', {
+      const res = await fetch('/api/instagram/resolve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: input }),
       });
       const data = (await res.json()) as ResolveResponse;
       if (!data.ok) {
-        addToast({ title: data.message || 'Could not resolve this TikTok link.', color: 'danger', variant: 'flat' });
+        addToast({ title: data.message || 'Could not resolve this Instagram link.', color: 'danger', variant: 'flat' });
         setStatus('idle');
         return;
       }
       setResult(data);
       setStatus('ready');
       addToast({
-        title: data.watermarked
-          ? 'Link resolved. Watermark-free was not available for this video.'
-          : 'Link resolved. Ready to download.',
-        color: data.watermarked ? 'warning' : 'success',
+        title:
+          data.source === 'opengraph'
+            ? 'Link resolved from page preview metadata. Quality may be limited.'
+            : 'Link resolved. Ready to download.',
+        color: data.source === 'opengraph' ? 'warning' : 'success',
         variant: 'flat',
       });
     } catch (e) {
-      console.error('TikTok resolve request failed:', e);
+      console.error('Instagram resolve request failed:', e);
       addToast({ title: 'Something went wrong resolving that link. Try again.', color: 'danger', variant: 'flat' });
       setStatus('idle');
     }
@@ -110,12 +113,11 @@ export function TikTokDownloaderTool() {
       return;
     }
     if (!result) return;
-    // Use HD when available; otherwise fallback to standard.
     const chosen = result.hdVideoUrl ?? result.videoUrl;
-    const name = safeFileName(result.title || 'tiktok_video');
+    const name = safeFileName(decodeHtmlEntities(result.title || 'instagram_reel'));
     setStatus('downloading');
     try {
-      const res = await fetch('/api/tiktok/download', {
+      const res = await fetch('/api/instagram/download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: chosen, name }),
@@ -144,11 +146,10 @@ export function TikTokDownloaderTool() {
       const blob = await res.blob();
       const objectUrl = URL.createObjectURL(blob);
       downloadFromUrl(objectUrl, `${name}.mp4`);
-      // Revoke shortly after click so the download has time to start.
       setTimeout(() => URL.revokeObjectURL(objectUrl), 10_000);
       setStatus('ready');
     } catch (e) {
-      console.error('TikTok download request failed:', e);
+      console.error('Instagram download request failed:', e);
       addToast({ title: 'Download failed. Please try again.', color: 'danger', variant: 'flat' });
       setStatus('ready');
     }
@@ -159,18 +160,18 @@ export function TikTokDownloaderTool() {
       <CardBody className="p-6">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
-            <Icon icon="tiktok" size={18} className="text-foreground-500" />
-            <h3 className="font-sans text-base font-semibold">TikTok video downloader</h3>
+            <Icon icon="instagram" size={18} className="text-foreground-500" />
+            <h3 className="font-sans text-base font-semibold">Instagram Reel downloader</h3>
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
             <div className="flex-1">
               <Input
-                label="TikTok link"
+                label="Instagram Reel link"
                 value={url}
                 onValueChange={setUrl}
                 placeholder={EXAMPLE_URL}
-                description="Paste a public TikTok link (tiktok.com, vm.tiktok.com, vt.tiktok.com)."
+                description="Paste a public Reel or post link (instagram.com/reel/…, /reels/…, or /p/…)."
                 isDisabled={isInactiveLocked || status === 'loading' || status === 'downloading'}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && canSubmit && status !== 'downloading') {
@@ -183,7 +184,6 @@ export function TikTokDownloaderTool() {
             <Button
               color="primary"
               className={cn(
-                // Align to the input control (not label/description) on >= sm screens.
                 'h-10 bg-foreground px-4 font-semibold text-content1 sm:min-w-[130px]',
                 status === 'loading' && 'opacity-90',
               )}
@@ -209,9 +209,13 @@ export function TikTokDownloaderTool() {
 
               <div className="flex flex-col gap-2">
                 <div className="text-sm text-foreground-700">
-                  <div className="font-semibold">{result.title || 'TikTok video'}</div>
+                  <div className="font-semibold">{decodeHtmlEntities(result.title || 'Instagram Reel')}</div>
                   <div className="text-foreground-500">
-                    {result.watermarked ? 'Watermark-free not available for this video.' : 'Watermark-free link found.'}{' '}
+                    {result.source === 'opengraph'
+                      ? 'Resolved from page metadata; try again if quality is low.'
+                      : result.source === 'graphql'
+                        ? 'Resolved via Instagram API metadata.'
+                        : 'Video URL extracted from page HTML.'}{' '}
                     · Source: {result.source}
                   </div>
                 </div>

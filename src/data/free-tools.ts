@@ -300,11 +300,21 @@ export const FREE_TOOLS: FreeTool[] = [
   {
     title: 'TikTok Video Downloader',
     description:
-      'Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available and fall back if not.',
+      'Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available and fall back if not. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',
     href: '/free-tools/tiktok-video-downloader',
     icon: 'tiktok',
     buttonText: 'Try Now',
     ariaLabel: 'Download TikTok videos from a link',
+    tags: ['Video', 'Share & links'],
+  },
+  {
+    title: 'Instagram Reel Downloader',
+    description:
+      'Paste a public Instagram Reel or video post link and download the MP4. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',
+    href: '/free-tools/instagram-reel-downloader',
+    icon: 'instagram',
+    buttonText: 'Try Now',
+    ariaLabel: 'Download Instagram Reels from a link',
     tags: ['Video', 'Share & links'],
   },
   {

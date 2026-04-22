@@ -14,21 +14,21 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { TikTokDownloaderTool } from '../../components/tiktok-downloader/TikTokDownloaderTool';
+import { InstagramReelDownloaderTool } from '../../components/instagram-reel-downloader/InstagramReelDownloaderTool';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { useSession } from '../../hooks/useSession';
 
-const PAGE_PATH = '/free-tools/tiktok-video-downloader';
+const PAGE_PATH = '/free-tools/instagram-reel-downloader';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
 
-const TIKTOK_DOWNLOADER_STEPS: WorkflowStep[] = [
+const INSTAGRAM_DOWNLOADER_STEPS: WorkflowStep[] = [
   {
     step: 1,
-    title: 'Copy the TikTok link',
+    title: 'Copy the Instagram Reel link',
     description:
-      'Open the TikTok video you want to save, tap Share, and copy the link. This tool only works for public TikTok URLs.',
+      'Open the Reel in Instagram, tap Share, and copy the link. This tool only works for public posts you can open without logging in.',
     icon: 'link',
     image: null,
   },
@@ -36,7 +36,7 @@ const TIKTOK_DOWNLOADER_STEPS: WorkflowStep[] = [
     step: 2,
     title: 'Paste the link into the downloader',
     description:
-      'Paste the URL into the field above. We support standard TikTok links (tiktok.com) and common short links (vm.tiktok.com, vt.tiktok.com).',
+      'Paste the URL into the field above. We support instagram.com/reel/…, /reels/…, and many /p/… links that point to video.',
     icon: 'upload',
     image: null,
   },
@@ -44,7 +44,7 @@ const TIKTOK_DOWNLOADER_STEPS: WorkflowStep[] = [
     step: 3,
     title: 'Find the video',
     description:
-      'Click “Find video”. We’ll try to resolve an HD download and attempt a no-watermark version when available.',
+      'Click “Find video”. We fetch the public page and try to extract the best MP4 URL. If only preview metadata is available, quality may be limited.',
     icon: 'search',
     image: null,
   },
@@ -52,7 +52,7 @@ const TIKTOK_DOWNLOADER_STEPS: WorkflowStep[] = [
     step: 4,
     title: 'Download the MP4',
     description:
-      'Click “Download” to save the video file to your device. If no-watermark isn’t available for this post, the tool will fall back to a standard (watermarked) link.',
+      'Click “Download” to save the video file to your device. We proxy the file through Kreatli so your browser gets a clean attachment.',
     icon: 'download',
     image: null,
   },
@@ -68,84 +68,74 @@ const TIKTOK_DOWNLOADER_STEPS: WorkflowStep[] = [
 
 const faqs = [
   {
-    question: 'Can I download TikTok videos without a watermark?',
+    question: 'Does this Instagram Reel downloader work for private accounts?',
     answer:
-      'Sometimes. This tool attempts a no-watermark download first. If TikTok blocks it or the resolver cannot find a clean file, we fall back to the standard (watermarked) video link.',
+      'No. It only works for public Reels and posts. Private profiles, stories you are not logged in to view, and login-gated content cannot be resolved.',
   },
   {
-    question: 'Does this TikTok downloader work for private videos?',
+    question: 'Why is the video quality lower than in the app?',
     answer:
-      'No. This tool only works for public TikTok videos. It cannot access private accounts, age-restricted content, or videos behind a login wall.',
+      'Sometimes Instagram only exposes a preview stream in page metadata. When that happens, we still give you a downloadable file, but it may not be full resolution. Try resolving again later or use “Open direct link” if a better URL appears.',
   },
   {
-    question: 'Does this TikTok downloader support short links (vm.tiktok.com / vt.tiktok.com)?',
+    question: 'Does this support /p/ links as well as /reel/?',
     answer:
-      'Yes. Paste a standard TikTok link (tiktok.com) or a short link (vm.tiktok.com, vt.tiktok.com). If a link redirects multiple times, it may take a moment to resolve.',
-  },
-  {
-    question: 'Will I get HD quality?',
-    answer:
-      'When available, we’ll prefer an HD video URL. If HD isn’t exposed for that post, we download the best available standard link.',
+      'Yes, when the link points to a public video post. Profile links and non-video pages will not resolve to an MP4.',
   },
   {
     question: 'Why did the download fail or not start?',
     answer:
-      'Most failures are caused by browser download settings, TikTok rate limits, or the resolved link expiring. Try resolving the link again, then use “Open direct link” and save the file from the new tab. If you’re on mobile, a long-press may be required.',
+      'Common causes are browser download settings, expired CDN links, or Instagram rate limits. Click “Find video” again to refresh the URL, then try “Open direct link”. On mobile, you may need a long-press to save.',
   },
   {
-    question: 'Can I download TikTok videos on iPhone or Android?',
+    question: 'Can I download Instagram Reels on iPhone or Android?',
     answer:
-      'Yes—if the TikTok video is public. Copy the link from the TikTok app and paste it here. If your mobile browser won’t start the download, use “Open direct link” and then long-press the video to save it (options vary by browser).',
+      'Yes—for public links. Copy the link from the Instagram app and paste it here. If the download does not start in the browser, use “Open direct link” and save from the player (steps vary by browser).',
   },
   {
-    question: 'What TikTok links work with this downloader?',
-    answer:
-      'Use a direct link to a public TikTok video (tiktok.com) or a TikTok short link (vm.tiktok.com / vt.tiktok.com). Profile links and non-video pages won’t resolve to a downloadable MP4.',
-  },
-  {
-    question: 'Do I need to log in to TikTok or share my password?',
-    answer: 'No. Kreatli does not ask for TikTok credentials. This tool works with public links only.',
+    question: 'Do I need to log in to Instagram or share my password?',
+    answer: 'No. Kreatli does not ask for Instagram credentials. This tool uses public page URLs only.',
   },
   FREE_TOOL_PAGE_ACCOUNT_FAQ,
   {
-    question: 'Is it legal to download TikTok videos?',
+    question: 'Is it legal to download Instagram Reels?',
     answer:
-      'You should only download videos that you own or have permission to use, and you should follow TikTok’s Terms of Service and copyright laws. This tool is designed for legitimate workflows like saving your own posts or drafts shared publicly.',
+      'Only download content you own or have permission to use, and follow Instagram’s Terms and copyright law. This tool is meant for legitimate workflows such as saving your own exports or assets shared publicly with approval.',
   },
   {
     question: 'Do you store the video on Kreatli servers?',
     answer:
-      'No. This tool resolves a download URL and your browser downloads the file directly. Kreatli does not ask for TikTok login credentials.',
+      'No long-term storage. We resolve a download URL and stream bytes to your browser for the download. We do not ask for Instagram login credentials.',
   },
 ];
 
-export default function TikTokVideoDownloaderPage() {
+export default function InstagramReelDownloaderPage() {
   useSession();
 
   return (
     <>
       <Head>
-        <title>TikTok Video Downloader – Download TikTok Videos | Kreatli</title>
+        <title>Instagram Reel Downloader – Download Reels as MP4 | Kreatli</title>
         <meta
           name="description"
-          content="Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available and fall back if not. Free to use."
+          content="Paste a public Instagram Reel link and download the video as MP4. Works in the browser with a direct download and open-link fallback. Sign in to use."
         />
-        <meta property="og:title" content="TikTok Video Downloader – Download TikTok Videos | Kreatli" />
+        <meta property="og:title" content="Instagram Reel Downloader – Download Reels as MP4 | Kreatli" />
         <meta
           property="og:description"
-          content="Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available and fall back if not. Free to use."
+          content="Paste a public Instagram Reel link and download the video as MP4. Works in the browser with a direct download and open-link fallback."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="TikTok Video Downloader – Download TikTok Videos | Kreatli" />
+        <meta property="og:image:alt" content="Instagram Reel Downloader – Download Reels as MP4 | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TikTok Video Downloader – Download TikTok Videos | Kreatli" />
+        <meta name="twitter:title" content="Instagram Reel Downloader – Download Reels as MP4 | Kreatli" />
         <meta
           name="twitter:description"
-          content="Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available and fall back if not. Free to use."
+          content="Paste a public Instagram Reel link and download the video as MP4. Works in the browser with a direct download and open-link fallback."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href={CANONICAL_URL} />
@@ -155,7 +145,7 @@ export default function TikTokVideoDownloaderPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Free Tools', url: '/free-tools' },
-          { name: 'TikTok Video Downloader', url: PAGE_PATH },
+          { name: 'Instagram Reel Downloader', url: PAGE_PATH },
         ]}
       />
       <FAQStructuredData faqs={faqs} />
@@ -173,11 +163,10 @@ export default function TikTokVideoDownloaderPage() {
       <main id="main-content">
         <section className="relative overflow-hidden px-6 pb-4 pt-16">
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-            <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">TikTok Video Downloader</h1>
+            <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">Instagram Reel Downloader</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Download TikTok videos as MP4 from a public TikTok link. Paste a TikTok URL to download in HD when
-              available—no watermark, high quality. Sign in to use the tool; start a trial or choose a plan if your
-              subscription isn’t active.
+              Download public Instagram Reels as MP4 from a link. Paste a Reel or video post URL—we extract the best
+              available file and help you save it to your device.
             </p>
           </div>
         </section>
@@ -185,10 +174,10 @@ export default function TikTokVideoDownloaderPage() {
         <section className="relative overflow-hidden px-6 pb-12">
           <div className="relative z-10 mx-auto max-w-6xl">
             <FreeToolsEntitlementSection
-              lockedTitle="TikTok Video Downloader is available with an active trial or plan"
-              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to download videos from a public TikTok link on this page."
+              lockedTitle="Instagram Reel Downloader is available with an active trial or plan"
+              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to download Reels from a public Instagram link on this page."
             >
-              <TikTokDownloaderTool />
+              <InstagramReelDownloaderTool />
             </FreeToolsEntitlementSection>
           </div>
         </section>
@@ -196,23 +185,23 @@ export default function TikTokVideoDownloaderPage() {
         <section className="relative overflow-hidden px-6 pb-6">
           <div className="relative z-10 mx-auto max-w-6xl">
             <div className="rounded-xl border border-foreground-200 bg-content1/70 p-4 text-sm text-foreground-600">
-              <span className="font-semibold text-foreground">Rights &amp; usage:</span> only download content you own
-              or have permission to use. Respect TikTok’s Terms of Service and copyright laws. This tool does not
-              require TikTok login credentials.
+              <span className="font-semibold text-foreground">Rights &amp; usage:</span> only download content you own or
+              have permission to use. Respect Instagram’s Terms of Service and copyright laws. This tool does not require
+              Instagram login credentials.
             </div>
           </div>
         </section>
 
-        <DefinitionBlock term="TikTok video downloader">
-          A TikTok video downloader helps you save a TikTok video file to your device from a public TikTok link. It’s
-          useful for archiving your own posts, sharing clips in internal review, or keeping a backup for editing—only
-          when you have the rights to use the content.
+        <DefinitionBlock term="Instagram Reel downloader">
+          An Instagram Reel downloader saves the video file from a public Reel or video post link. It is useful for
+          archiving your own posts, internal review, or backups for editing—only when you have the rights to use the
+          content.
         </DefinitionBlock>
 
         <PlatformStepGuide
-          stepsSectionTitle="How to download a TikTok video"
-          stepsIntro="Follow these steps to save a TikTok video from a public link. We’ll attempt a no-watermark download when available and fall back if it isn’t."
-          steps={TIKTOK_DOWNLOADER_STEPS}
+          stepsSectionTitle="How to download an Instagram Reel"
+          stepsIntro="Follow these steps to save a Reel from a public link. If the page only exposes preview metadata, try again later or use the direct link."
+          steps={INSTAGRAM_DOWNLOADER_STEPS}
         />
 
         <section className="relative overflow-hidden px-6 py-16">
@@ -221,16 +210,16 @@ export default function TikTokVideoDownloaderPage() {
               <h2 className="mb-3 font-sans text-2xl font-bold">Common use cases</h2>
               <ul className="space-y-2 text-base text-foreground-600">
                 <li>
-                  <span className="font-semibold text-foreground">Archive your own posts:</span> keep backups of
-                  published videos for future edits or reposts.
+                  <span className="font-semibold text-foreground">Archive your own Reels:</span> keep MP4 backups of
+                  what you published for edits or repurposing.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Internal review:</span> share clips with your team for
-                  quick feedback before a longer edit.
+                  <span className="font-semibold text-foreground">Internal review:</span> share a file with your team
+                  for feedback outside the Instagram app (with permission).
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Reference in editing:</span> save a copy so you can
-                  study pacing, captions, or transitions (only with rights/permission).
+                  <span className="font-semibold text-foreground">Reference for editing:</span> save a copy to study
+                  pacing or captions—only when you have rights or approval.
                 </li>
               </ul>
             </div>
@@ -238,16 +227,16 @@ export default function TikTokVideoDownloaderPage() {
               <h2 className="mb-3 font-sans text-2xl font-bold">Troubleshooting</h2>
               <ul className="space-y-2 text-base text-foreground-600">
                 <li>
-                  <span className="font-semibold text-foreground">No-watermark isn’t available:</span> TikTok may block
-                  clean files for some posts. In that case, we fall back to the standard link.
+                  <span className="font-semibold text-foreground">Low quality:</span> Instagram may not expose full HD
+                  in the public page. Try resolving again or use “Open direct link”.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Private or restricted content:</span> this tool can’t
-                  access private accounts, age-restricted videos, or content behind a login wall.
+                  <span className="font-semibold text-foreground">Private or restricted content:</span> this tool cannot
+                  access private accounts or login-only media.
                 </li>
                 <li>
                   <span className="font-semibold text-foreground">Download doesn’t start:</span> use “Open direct link”
-                  and save from the new tab, or resolve the link again if it expired.
+                  and save from the new tab, or refresh the resolved link if it expired.
                 </li>
               </ul>
             </div>
@@ -259,10 +248,10 @@ export default function TikTokVideoDownloaderPage() {
             <div className="mb-12 text-center">
               <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
               <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-                Notes on watermark availability, private videos, and rights &amp; usage.
+                Public links, quality limits, rights, and what to do when a download fails.
               </p>
             </div>
-            <Accordion variant="splitted" aria-label="TikTok downloader FAQs" className="gap-2">
+            <Accordion variant="splitted" aria-label="Instagram Reel downloader FAQs" className="gap-2">
               {faqs.map((faq) => (
                 <AccordionItem
                   key={faq.question}
