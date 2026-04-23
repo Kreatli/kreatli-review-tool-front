@@ -23,17 +23,16 @@ export const AssetTask = ({ task }: Props) => {
         <Chip size="sm" variant="flat" className="h-auto p-0.5">
           {task.statusLabel || 'Unplaced'}
         </Chip>
-        {task.isHidden ||
-          (true && (
-            <Chip
-              size="sm"
-              variant="flat"
-              className="h-auto p-0.5"
-              startContent={<Icon icon="eyeCrossed" size={12} className="mx-1" />}
-            >
-              Only visible to you
-            </Chip>
-          ))}
+        {task.isHidden && (
+          <Chip
+            size="sm"
+            variant="flat"
+            className="h-auto p-0.5"
+            startContent={<Icon icon="eyeCrossed" size={12} className="mx-1" />}
+          >
+            Only visible to you
+          </Chip>
+        )}
       </div>
       <Link
         href={href}
