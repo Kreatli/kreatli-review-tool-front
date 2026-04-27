@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -164,7 +165,8 @@ export default function VideoFrameRateConverterPlatformPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why teams change video FPS in production</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Change video frame rate before upload, collaborative review, and final approval to keep delivery specs aligned.
+              Change video frame rate before upload, collaborative review, and final approval to keep delivery specs
+              aligned.
             </p>
           </div>
 

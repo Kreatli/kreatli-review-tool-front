@@ -32,7 +32,7 @@ const HERO_BLOK: SectionStoryblok = {
   component: 'section',
   title: 'How to Convert Video Frame Rate',
   titleTag: 'h1',
-  text: 'A practical guide to using a video frame rate converter and video FPS changer to change video frame rate and prepare clean delivery files.',
+  text: 'A practical guide to choosing target FPS, converting variable frame rate footage to constant frame rate, and preparing clean delivery files.',
   orientation: '',
   displaySocials: false,
   imageObjectFit: 'contain',
@@ -120,9 +120,9 @@ export default function HowToConvertVideoFrameRateGuidePage() {
 
         <div className={wysiwygStyles.wysiwyg}>
           <p>
-            <strong>Change video FPS</strong> workflows help you match delivery specs and keep edits predictable when
+            <strong>Video frame rate conversion</strong> helps you match delivery specs and keep edits predictable when
             source clips come from mixed devices. The goal is not “highest FPS” in every case - it is the right FPS for
-            your channel and workflow, whether you call it a video frame rate converter or a video FPS changer.
+            your channel and workflow.
           </p>
 
           <KeyTakeaways

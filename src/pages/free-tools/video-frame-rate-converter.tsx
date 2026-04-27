@@ -41,7 +41,8 @@ const FRAME_RATE_CONVERTER_STEPS: WorkflowStep[] = [
   {
     step: 3,
     title: 'Convert to constant FPS',
-    description: 'Click “Convert frame rate” to create a constant-frame-rate output for predictable playback and editing.',
+    description:
+      'Click “Convert frame rate” to create a constant-frame-rate output for predictable playback and editing.',
     icon: 'play',
     image: null,
   },
@@ -138,8 +139,8 @@ export default function VideoFrameRateConverterPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">Video Frame Rate Converter</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Change video FPS online and change video frame rate output for smoother playback compatibility. Sign in to
-              use this video frame rate converter; start a trial or choose a plan if your subscription isn’t active.
+              Convert video FPS online and export constant frame rate output for smoother playback compatibility. Sign
+              in to use the tool; start a trial or choose a plan if your subscription isn’t active.
             </p>
           </div>
         </section>
@@ -156,8 +157,8 @@ export default function VideoFrameRateConverterPage() {
         </section>
 
         <DefinitionBlock term="Video frame rate converter">
-          A video frame rate converter changes frames per second to match delivery requirements or normalize variable-FPS
-          footage into constant-FPS output for more predictable editing and playback.
+          A video frame rate converter changes frames per second to match delivery requirements or normalize
+          variable-FPS footage into constant-FPS output for more predictable editing and playback.
         </DefinitionBlock>
 
         <PlatformStepGuide
