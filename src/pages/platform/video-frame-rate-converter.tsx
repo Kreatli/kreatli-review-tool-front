@@ -85,29 +85,29 @@ export default function VideoFrameRateConverterPlatformPage() {
   return (
     <>
       <Head>
-        <title>Video Frame Rate Converter | Kreatli</title>
+        <title>Change Video FPS Online | Kreatli</title>
         <meta
           name="description"
-          content="Convert video frame rate for consistent delivery and smoother post workflows. Use a browser-based FPS converter, then manage review and approvals in Kreatli."
+          content="Change video FPS online for consistent delivery and smoother post workflows. Use a browser-based video FPS changer, then manage review and approvals in Kreatli."
         />
         <link rel="canonical" href={CANONICAL_URL} />
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Video Frame Rate Converter | Kreatli" />
+        <meta property="og:title" content="Change Video FPS Online | Kreatli" />
         <meta
           property="og:description"
-          content="Convert video frame rate for consistent delivery and smoother post workflows. Use a browser-based FPS converter, then manage review and approvals in Kreatli."
+          content="Change video FPS online for consistent delivery and smoother post workflows. Use a browser-based video FPS changer, then manage review and approvals in Kreatli."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Video Frame Rate Converter | Kreatli" />
+        <meta property="og:image:alt" content="Change Video FPS Online | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Frame Rate Converter | Kreatli" />
+        <meta name="twitter:title" content="Change Video FPS Online | Kreatli" />
         <meta
           name="twitter:description"
-          content="Convert video frame rate for consistent delivery and smoother post workflows. Use a browser-based FPS converter, then manage review and approvals in Kreatli."
+          content="Change video FPS online for consistent delivery and smoother post workflows. Use a browser-based video FPS changer, then manage review and approvals in Kreatli."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -116,7 +116,7 @@ export default function VideoFrameRateConverterPlatformPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Video Frame Rate Converter', url: PAGE_PATH },
+          { name: 'Change Video FPS', url: PAGE_PATH },
         ]}
       />
 
@@ -129,15 +129,15 @@ export default function VideoFrameRateConverterPlatformPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Video Frame Rate Converter
+              Change Video FPS
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Convert video FPS for cleaner handoffs, platform-ready exports, and more predictable post-production
-              workflows.
+              Change video FPS for cleaner handoffs, platform-ready exports, and more predictable post-production
+              workflows with a video frame rate converter and video FPS changer.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href={TOOL_PATH} size="lg" className="bg-foreground text-content1">
-                Use Video Frame Rate Converter
+                Change Video FPS Now
               </Button>
               <Button as={NextLink} href="/sign-up" size="lg" variant="bordered">
                 Start 7-day trial
@@ -162,9 +162,9 @@ export default function VideoFrameRateConverterPlatformPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why teams use FPS conversion in production</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why teams change video FPS in production</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Frame rate conversion is often the prep step before upload, collaborative review, and final approval.
+              Change video frame rate before upload, collaborative review, and final approval to keep delivery specs aligned.
             </p>
           </div>
 

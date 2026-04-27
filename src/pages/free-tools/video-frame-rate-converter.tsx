@@ -1,4 +1,4 @@
-// eslint-disable-next-line simple-import-sort/imports
+/* eslint-disable max-len */
 import { Accordion, AccordionItem } from '@heroui/react';
 import Head from 'next/head';
 
@@ -138,8 +138,8 @@ export default function VideoFrameRateConverterPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">Video Frame Rate Converter</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Convert video FPS online and export constant frame rate output for smoother playback compatibility. Sign in
-              to use the tool; start a trial or choose a plan if your subscription isn’t active.
+              Change video FPS online and change video frame rate output for smoother playback compatibility. Sign in to
+              use this video frame rate converter; start a trial or choose a plan if your subscription isn’t active.
             </p>
           </div>
         </section>

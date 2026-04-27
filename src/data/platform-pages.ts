@@ -601,9 +601,9 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
   {
-    label: 'Video Frame Rate Converter',
+    label: 'Change Video FPS',
     href: '/platform/video-frame-rate-converter',
-    description: 'Convert video FPS for consistent playback and delivery',
+    description: 'Change video FPS for consistent playback and delivery',
     icon: 'time',
     section: 'Core Platform',
     order: 28.655,
