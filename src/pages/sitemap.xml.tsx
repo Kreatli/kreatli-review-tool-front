@@ -37,6 +37,7 @@ const STATIC_PAGES: StaticPage[] = [
   { path: '/free-tools/video-link-maker', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-frame-extractor', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/video-compressor', priority: '0.8', changefreq: 'weekly' },
+  { path: '/free-tools/video-frame-rate-converter', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/tiktok-video-downloader', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/instagram-reel-downloader', priority: '0.8', changefreq: 'weekly' },
   { path: '/free-tools/pdf-reviewer', priority: '0.8', changefreq: 'weekly' },

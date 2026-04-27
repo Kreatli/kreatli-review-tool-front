@@ -200,6 +200,12 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
     '/free-tools/video-frame-extractor',
     '/free-tools/data-transfer-calculator',
   ],
+  '/platform/video-frame-rate-converter': [
+    '/free-tools/video-frame-rate-converter',
+    '/free-tools/video-compressor',
+    '/free-tools/resize-video',
+    '/free-tools/video-frame-extractor',
+  ],
 
   // PDF cluster – vary which 4 across pages
   '/platform/review-pdf': [

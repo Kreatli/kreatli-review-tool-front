@@ -72,6 +72,12 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
     '/free-tools/video-link-maker',
     '/free-tools/data-transfer-calculator',
   ],
+  '/free-tools/video-frame-rate-converter': [
+    '/free-tools/video-compressor',
+    '/free-tools/resize-video',
+    '/free-tools/video-frame-extractor',
+    '/free-tools/video-reviewer',
+  ],
   '/free-tools/tiktok-video-downloader': [
     '/free-tools/instagram-reel-downloader',
     '/free-tools/video-link-maker',

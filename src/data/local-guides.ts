@@ -35,6 +35,7 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-share-images',
   'how-to-compress-a-video',
   'how-to-download-a-tiktok-video',
+  'how-to-convert-video-frame-rate',
 ] as const;
 
 const LOCAL_SLUG_SET = new Set<string>(LOCAL_GUIDE_SLUGS);
@@ -684,6 +685,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
       publishDate: '2026-04-22 00:00',
       readTime: '8',
       tags: { value: ['Video', 'Share Video'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-convert-video-frame-rate',
+    name: 'How to Convert Video Frame Rate',
+    full_slug: '/guides/how-to-convert-video-frame-rate',
+    content: {
+      metaFields: {
+        title: 'How to Convert Video Frame Rate: Choose the Right FPS and Export Constant Frame Rate',
+        description:
+          'Learn how to convert video frame rate for delivery specs and post workflows, when to choose 24/25/30/60 FPS, and how to export constant-frame-rate video.',
+      },
+      image: {
+        filename: '/images/guides/how-to-convert-video-frame-rate-cover.png',
+        alt: 'Kreatli guide: how to convert video frame rate',
+        title: 'How to convert video frame rate — Kreatli guide',
+      },
+      publishDate: '2026-04-27 00:00',
+      readTime: '9',
+      tags: { value: ['Video', 'Workflow'] },
     },
   },
 ];
