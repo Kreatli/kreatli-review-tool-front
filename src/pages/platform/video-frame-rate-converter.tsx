@@ -166,7 +166,8 @@ export default function VideoFrameRateConverterPlatformPage() {
               Why teams use FPS conversion in production
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Frame rate conversion is often the prep step before upload, collaborative review, and final approval.
+              Change video frame rate before upload, collaborative review, and final approval to keep delivery specs
+              aligned.
             </p>
           </div>
 
