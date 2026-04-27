@@ -162,9 +162,11 @@ export default function VideoFrameRateConverterPlatformPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why teams change video FPS in production</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+              Why teams use FPS conversion in production
+            </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Change video frame rate before upload, collaborative review, and final approval to keep delivery specs aligned.
+              Frame rate conversion is often the prep step before upload, collaborative review, and final approval.
             </p>
           </div>
 
