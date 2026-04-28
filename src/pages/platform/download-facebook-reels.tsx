@@ -20,36 +20,41 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
-const PAGE_PATH = '/platform/video-frame-rate-converter';
+const PAGE_PATH = '/platform/download-facebook-reels';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
-const TOOL_PATH = '/free-tools/video-frame-rate-converter';
 
-const STEPS: WorkflowStep[] = [
+const TOOL_PATH = '/free-tools/facebook-reel-downloader';
+
+const DOWNLOAD_FACEBOOK_REELS_STEPS: WorkflowStep[] = [
   {
     step: 1,
-    title: 'Upload your source video',
-    description: 'Drop your source clip (MP4, MOV, or WebM) into the tool.',
-    icon: 'upload',
+    title: 'Copy the Facebook Reel link',
+    description:
+      'Open the Reel/video post you want to save, tap Share, and copy the public link. This only works for public content.',
+    icon: 'link',
     image: null,
   },
   {
     step: 2,
-    title: 'Pick a target FPS',
-    description: 'Choose the frame rate your editor, platform, or client delivery spec requires.',
-    icon: 'time',
+    title: 'Paste the link into the downloader',
+    description:
+      'Paste the URL into the downloader. Supported public formats include facebook.com/reel/..., facebook.com/watch?v=..., and fb.watch/... links.',
+    icon: 'upload',
     image: null,
   },
   {
     step: 3,
-    title: 'Convert to constant frame rate',
-    description: 'Generate a constant-FPS output for more consistent playback and timeline behavior.',
-    icon: 'play',
+    title: 'Resolve the best available download',
+    description:
+      'Click "Find video". We try to extract the best available public MP4 URL from page metadata.',
+    icon: 'search',
     image: null,
   },
   {
     step: 4,
-    title: 'Download and continue review',
-    description: 'Download the converted video and move it into review, comments, and approvals in Kreatli.',
+    title: 'Download the MP4',
+    description:
+      'Click "Download" to save the video file. If download fails, resolve again to refresh an expired link.',
     icon: 'download',
     image: null,
   },
@@ -57,57 +62,62 @@ const STEPS: WorkflowStep[] = [
 
 const faqs = [
   {
-    question: 'Why convert video frame rate before review or delivery?',
+    question: 'How do I download Facebook Reels?',
     answer:
-      'Converting frame rate helps standardize exports for platform specs and post-production workflows. Constant-FPS output can reduce playback inconsistencies and timeline sync issues in some editors.',
+      'Copy a public Facebook Reel/video link, paste it into the downloader, click "Find video", then click "Download".',
   },
   {
-    question: 'What target frame rate should I use?',
+    question: 'Can I download private Facebook videos?',
     answer:
-      'Use the FPS required by your destination: 24fps for cinematic delivery, 25fps for PAL regions, 30fps for many web workflows, and higher rates such as 50/60fps when smooth motion is required.',
+      'No. Downloading works only for public Facebook links. Private profiles, friends-only posts, and login-gated content cannot be resolved.',
   },
   {
-    question: 'Does frame rate conversion affect quality?',
+    question: 'Why did my Facebook Reel download fail?',
     answer:
-      'Potentially. Any re-encode can introduce quality changes. Lower FPS can look less smooth, while higher FPS may duplicate frames depending on the source.',
+      'Most failures come from expired direct links, browser restrictions, or temporary upstream limits. Resolve the URL again, then retry the download.',
   },
   {
-    question: 'Can I pair this with version review workflows?',
+    question: 'Do I need Facebook credentials?',
     answer:
-      'Yes. After converting frame rate, upload the output to Kreatli for frame-accurate comments, approvals, and version tracking in the same workspace.',
+      'No. Kreatli does not ask for Facebook login credentials. This workflow is built for public links only.',
+  },
+  {
+    question: 'Is it legal to download Facebook Reels?',
+    answer:
+      'Only download content you own or have permission to use, and follow Facebook terms plus local copyright law.',
   },
 ];
 
-export default function VideoFrameRateConverterPlatformPage() {
+export default function DownloadFacebookReelsPlatformPage() {
   useSession();
   const articles = getPlatformArticles(PAGE_PATH);
 
   return (
     <>
       <Head>
-        <title>Change Video FPS Online | Kreatli</title>
+        <title>Download Facebook Reels | Kreatli</title>
         <meta
           name="description"
-          content="Change video FPS online for consistent delivery and smoother post workflows. Use a browser-based video FPS changer, then manage review and approvals in Kreatli."
+          content="Download Facebook Reels from a public link. Paste a Facebook Reel/video URL, resolve the best available file, and save the MP4."
         />
         <link rel="canonical" href={CANONICAL_URL} />
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Change Video FPS Online | Kreatli" />
+        <meta property="og:title" content="Download Facebook Reels | Kreatli" />
         <meta
           property="og:description"
-          content="Change video FPS online for consistent delivery and smoother post workflows. Use a browser-based video FPS changer, then manage review and approvals in Kreatli."
+          content="Download Facebook Reels from a public link. Paste a Facebook Reel/video URL, resolve the best available file, and save the MP4."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Change Video FPS Online | Kreatli" />
+        <meta property="og:image:alt" content="Download Facebook Reels | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Change Video FPS Online | Kreatli" />
+        <meta name="twitter:title" content="Download Facebook Reels | Kreatli" />
         <meta
           name="twitter:description"
-          content="Change video FPS online for consistent delivery and smoother post workflows. Use a browser-based video FPS changer, then manage review and approvals in Kreatli."
+          content="Download Facebook Reels from a public link. Paste a Facebook Reel/video URL, resolve the best available file, and save the MP4."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -116,7 +126,7 @@ export default function VideoFrameRateConverterPlatformPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Change Video FPS', url: PAGE_PATH },
+          { name: 'Download Facebook Reels', url: PAGE_PATH },
         ]}
       />
 
@@ -129,15 +139,14 @@ export default function VideoFrameRateConverterPlatformPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Change Video FPS
+              Download Facebook Reels
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Change video FPS for cleaner handoffs, platform-ready exports, and more predictable post-production
-              workflows with a video frame rate converter and video FPS changer.
+              Paste a public Facebook Reel/video link to download the MP4. Works for Reel, watch, and fb.watch links.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href={TOOL_PATH} size="lg" className="bg-foreground text-content1">
-                Change Video FPS Now
+                Use Facebook Reel Downloader
               </Button>
               <Button as={NextLink} href="/sign-up" size="lg" variant="bordered">
                 Start 7-day trial
@@ -150,57 +159,57 @@ export default function VideoFrameRateConverterPlatformPage() {
       <PlatformDefinitionBlock href={PAGE_PATH} />
 
       <PlatformStepGuide
-        stepsSectionTitle="How to convert video frame rate"
-        stepsIntro="Use this workflow to convert FPS, normalize variable-frame-rate footage, and prep files for consistent delivery."
-        steps={STEPS}
+        stepsSectionTitle="How to download Facebook Reels"
+        stepsIntro="Follow these steps to download Facebook Reels from a public link."
+        steps={DOWNLOAD_FACEBOOK_REELS_STEPS}
         completeGuide={{
-          href: '/guides/how-to-convert-video-frame-rate',
-          description: 'Read the complete guide for FPS selection, conversion trade-offs, and troubleshooting.',
+          href: '/guides/how-to-download-facebook-reels',
+          description:
+            'A step-by-step guide with supported Facebook URL types, troubleshooting, and legal/rights reminders.',
         }}
       />
 
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Why teams use FPS conversion in production
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Download Reels for Real Workflows</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Change video frame rate before upload, collaborative review, and final approval to keep delivery specs
-              aligned.
+              Use this when you need a local copy of your own or approved public Facebook content for archive, editing,
+              and review.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Meet platform and delivery specs</h3>
+                <h3 className="font-sans text-lg font-semibold">Fast Save to Device</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Match required frame rates for ad platforms, broadcasters, social channels, and partner handoff specs.
+                  Paste a URL, resolve, and download. If link expiry causes issues, re-resolve for a fresh URL.
                 </p>
               </CardBody>
             </Card>
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Reduce timeline and sync surprises</h3>
+                <h3 className="font-sans text-lg font-semibold">Pair With Review + Approvals</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Converting to constant FPS can make editing timelines behave more predictably in downstream tools.
+                  After download, upload into Kreatli for frame-accurate comments, version tracking, and approvals.
                 </p>
               </CardBody>
             </Card>
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Keep review cycles clean</h3>
+                <h3 className="font-sans text-lg font-semibold">Prep for Multi-Platform Delivery</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Convert first, then review the same export everyone will discuss so comments and approvals align.
+                  Use resize/compress tools before publishing to optimize file size and framing for each channel.
                 </p>
               </CardBody>
             </Card>
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Bridge to full collaboration workflows</h3>
+                <h3 className="font-sans text-lg font-semibold">Respect Rights + Terms</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  After conversion, upload to Kreatli for frame-accurate feedback, version tracking, and sign-offs.
+                  Download only content you own or have permission to use. Public links only; no private/login-gated
+                  content.
                 </p>
               </CardBody>
             </Card>
@@ -208,29 +217,15 @@ export default function VideoFrameRateConverterPlatformPage() {
         </div>
       </section>
 
-      <MoreFreeToolsSection
-        title="Free Tools for Video Teams"
-        description="Explore complementary tools for delivery prep, review workflows, and publishing handoff."
-        tools={getFreeToolsForPlatform(PAGE_PATH)}
-      />
-
-      <ResourcesArticlesPreviewSection
-        articles={articles}
-        title="Related guides and workflows"
-        description="See how teams handle frame rate conversion, delivery prep, and collaborative approvals."
-      />
-
-      <PricingSection />
-
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Answers on FPS targets, quality trade-offs, and integrating conversion into review workflows.
+              Public links, rights, and what to do when downloads fail.
             </p>
           </div>
-          <Accordion variant="splitted" className="gap-2">
+          <Accordion variant="splitted" aria-label="Download Facebook Reels FAQs" className="gap-2">
             {faqs.map((faq) => (
               <AccordionItem
                 key={faq.question}
@@ -244,18 +239,29 @@ export default function VideoFrameRateConverterPlatformPage() {
         </div>
       </section>
 
-      <RelatedResourcesSection
-        resources={getRelatedResources(['creativeWorkspace', 'reviewApproval', 'videoAnnotation'])}
-        title="More Resources"
-        description="Explore platform capabilities that support prepared video delivery, collaborative review, and approvals."
+      <MoreFreeToolsSection tools={getFreeToolsForPlatform(PAGE_PATH)} title="More Free Tools" excludeHref={TOOL_PATH} />
+
+      <ResourcesArticlesPreviewSection
+        title="More guides on short-form video workflows"
+        description="Learn about downloads, safe framing, approvals, and ways to share files with clients and teams."
+        articles={articles}
       />
+
+      <RelatedResourcesSection
+        resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'secureAssetStorage'])}
+        title="More Resources"
+        description="Learn more about video collaboration workflows, asset review and approvals, and secure file delivery."
+      />
+
+      <PricingSection />
 
       <CTASection
-        title="Need approvals after converting frame rate?"
-        description="Use Kreatli to convert FPS, keep versions organized, and collect frame-accurate feedback in one workspace."
+        title="Need feedback and approvals on video assets?"
+        description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
+        primaryButtonText="Start 7-day trial"
       />
 
-      <FooterSection hideCta={true} />
+      <FooterSection hideCta />
       <SignUpModal />
     </>
   );

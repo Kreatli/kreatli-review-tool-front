@@ -18,10 +18,12 @@ const STANDALONE_EXACT_PATHNAMES = new Set<string>([
   '/free-tools/tiktok-downloader',
   '/free-tools/instagram-reel-downloader',
   '/free-tools/instagram-downloader',
+  '/free-tools/facebook-reel-downloader',
   '/platform/resize-video-online',
   '/platform/compress-video-online',
   '/platform/video-frame-rate-converter',
   '/platform/extract-frames-from-video',
+  '/platform/download-facebook-reels',
 ]);
 
 export function isStandaloneMarketingToolPathname(pathname: string): boolean {
