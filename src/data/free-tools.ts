@@ -298,6 +298,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['Video'],
   },
   {
+    title: 'Video Frame Rate Converter',
+    description:
+      'Convert video frame rate to constant 24fps, 25fps, 30fps, 50fps, or 60fps in your browser. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',
+    href: '/free-tools/video-frame-rate-converter',
+    icon: 'time',
+    buttonText: 'Try Now',
+    ariaLabel: 'Convert video frame rate online',
+    tags: ['Video'],
+  },
+  {
     title: 'TikTok Video Downloader',
     description:
       'Paste a TikTok link and download the video. We’ll attempt a no-watermark download when available and fall back if not. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',

@@ -601,6 +601,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
   {
+    label: 'Change Video FPS',
+    href: '/platform/video-frame-rate-converter',
+    description: 'Change video FPS for consistent playback and delivery',
+    icon: 'time',
+    section: 'Core Platform',
+    order: 28.655,
+    tags: ['Video'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['creativeWorkspace', 'reviewApproval', 'videoAnnotation'],
+  },
+  {
     label: 'Download Instagram Reels',
     href: '/platform/download-instagram-reels',
     description: 'Download Instagram Reels from a public link (MP4)',

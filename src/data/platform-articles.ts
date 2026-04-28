@@ -1956,6 +1956,44 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/video-frame-rate-converter': [
+    makeArticleCard({
+      id: 'platform-video-frame-rate-converter-guide',
+      full_slug: '/guides/how-to-convert-video-frame-rate',
+      title: 'How to Convert Video Frame Rate: Choose the Right FPS and Export Constant Frame Rate',
+      description:
+        'Learn when to convert video frame rate, how to choose target FPS, and how to export constant-frame-rate files for smoother post and delivery workflows.',
+      tags: ['Video', 'Workflow'],
+      publishDate: '2026-04-27 00:00',
+      readTime: '9',
+      imageFilename: '/images/guides/how-to-convert-video-frame-rate-cover.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-frame-rate-converter-comparison',
+      full_slug: '/comparisons/kreatli-vs-frameio-2026',
+      title: 'Kreatli vs Frame.io (2026): Workflow Consistency From Prep to Approval',
+      description:
+        'Compare how creative teams standardize prep steps like FPS conversion and move into organized review and approvals.',
+      tags: ['Creative Teams', 'Production Management'],
+      publishDate: '2025-12-12 00:00',
+      readTime: '12',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7b1d4796a1/kreatli-vs-frame-io-2026-the-freshest-most-practical-comparison-for-creative-teams.png',
+    }),
+    makeArticleCard({
+      id: 'platform-video-frame-rate-converter-blog',
+      full_slug: '/blog/production-platform-for-creative-teams',
+      title: 'Why Creative Teams Need a Home for Every Video Cut',
+      description:
+        'See why teams combine technical prep steps with a review platform that keeps versions, feedback, and approvals connected.',
+      tags: ['Production Management', 'Creative Teams'],
+      publishDate: '2025-12-10 00:00',
+      readTime: '10',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/7122ce61fe/why-creative-teams-are-moving-toward-unified-production-platforms.png',
+    }),
+  ],
+
   '/platform/download-instagram-reels': [
     makeArticleCard({
       id: 'platform-download-instagram-reels-guide-1',

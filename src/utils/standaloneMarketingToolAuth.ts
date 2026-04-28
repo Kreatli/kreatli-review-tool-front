@@ -12,12 +12,15 @@ const STANDALONE_EXACT_PATHNAMES = new Set<string>([
   '/free-tools/resize-video',
   '/free-tools/video-frame-extractor',
   '/free-tools/video-compressor',
+  '/free-tools/video-frame-rate-converter',
+  '/free-tools/frame-rate-converter',
   '/free-tools/tiktok-video-downloader',
   '/free-tools/tiktok-downloader',
   '/free-tools/instagram-reel-downloader',
   '/free-tools/instagram-downloader',
   '/platform/resize-video-online',
   '/platform/compress-video-online',
+  '/platform/video-frame-rate-converter',
   '/platform/extract-frames-from-video',
 ]);
 
