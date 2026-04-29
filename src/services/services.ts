@@ -31,6 +31,8 @@ import type {
   SubscriptionBodyDto,
   SubscriptionResponseDto,
   AddonBodyDto,
+  CancelSubscriptionFeedbackBodyDto,
+  CancelSubscriptionFeedbackResponseDto,
   SignUpBodyDto,
   SignUpResultDto,
   SignUpWithTokenBodyDto,
@@ -1431,6 +1433,22 @@ export const postUserSubscription = (
 
 /** Key is end point string without base url */
 postUserSubscription.key = '/user/subscription';
+
+export const postUserSubscriptionCancelFeedback = (
+  requestBody: CancelSubscriptionFeedbackBodyDto,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<CancelSubscriptionFeedbackResponseDto>> => {
+  return Http.postRequest(
+    postUserSubscriptionCancelFeedback.key,
+    undefined,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postUserSubscriptionCancelFeedback.key = '/user/subscription/cancel-feedback';
 
 export const putConversationId = (
   id: string,

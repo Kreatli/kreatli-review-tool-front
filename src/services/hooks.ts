@@ -30,6 +30,8 @@ import type {
   ChatDto,
   ChatEditBodyDto,
   ChatMessagesDto,
+  CancelSubscriptionFeedbackBodyDto,
+  CancelSubscriptionFeedbackResponseDto,
   CreateShareableLinkDto,
   DeliverableBodyDto,
   DeliverableDto,
@@ -195,6 +197,7 @@ import {
   postTaskIdMove,
   postTaskIdUnhide,
   postUserAddon,
+  postUserSubscriptionCancelFeedback,
   postUserSubscription,
   putConversationId,
   putNotificationId,
@@ -1994,6 +1997,21 @@ export const usePostUserSubscription = <TExtra,>(
     mutationFn: (_o) => {
       const { requestBody, configOverride } = _o || {};
       return postUserSubscription(requestBody, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostUserSubscriptionCancelFeedback = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    CancelSubscriptionFeedbackResponseDto,
+    { requestBody: CancelSubscriptionFeedbackBodyDto },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { requestBody, configOverride } = _o || {};
+      return postUserSubscriptionCancelFeedback(requestBody, configOverride);
     },
     ...options,
   });
