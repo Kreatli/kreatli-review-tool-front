@@ -328,6 +328,16 @@ export const FREE_TOOLS: FreeTool[] = [
     tags: ['Video', 'Share & links'],
   },
   {
+    title: 'Facebook Reel Downloader',
+    description:
+      'Paste a public Facebook Reel/video link and download the MP4. Sign in to use the tool; start a trial or choose a plan if your subscription isn’t active.',
+    href: '/free-tools/facebook-reel-downloader',
+    icon: 'facebook',
+    buttonText: 'Try Now',
+    ariaLabel: 'Download Facebook Reels from a link',
+    tags: ['Video', 'Share & links'],
+  },
+  {
     title: 'Data Transfer Calculator',
     description:
       'Calculate how long it takes to upload or download large files. Perfect for video editors and post-production teams.',

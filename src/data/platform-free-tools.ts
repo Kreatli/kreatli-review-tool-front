@@ -176,7 +176,14 @@ const PLATFORM_FREE_TOOL_HREFS: Record<string, string[]> = {
   ],
   '/platform/download-instagram-reels': [
     '/free-tools/instagram-reel-downloader',
+    '/free-tools/facebook-reel-downloader',
     '/free-tools/resize-video',
+    '/free-tools/video-compressor',
+    '/free-tools/video-link-maker',
+  ],
+  '/platform/download-facebook-reels': [
+    '/free-tools/facebook-reel-downloader',
+    '/free-tools/instagram-reel-downloader',
     '/free-tools/video-compressor',
     '/free-tools/video-link-maker',
   ],

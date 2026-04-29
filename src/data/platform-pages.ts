@@ -629,6 +629,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
   {
+    label: 'Download Facebook Reels',
+    href: '/platform/download-facebook-reels',
+    description: 'Download Facebook Reels from a public link (MP4)',
+    icon: 'facebook',
+    section: 'Core Platform',
+    order: 28.661,
+    tags: ['Video', 'Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
+  {
     label: 'Send Large Video Files',
     href: '/platform/send-large-video-files',
     description: 'Send large video files to clients without email limits',

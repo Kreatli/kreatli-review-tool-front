@@ -86,9 +86,16 @@ const FREE_TOOL_PAGE_HREFS: Record<string, string[]> = {
   ],
   '/free-tools/instagram-reel-downloader': [
     '/free-tools/tiktok-video-downloader',
+    '/free-tools/facebook-reel-downloader',
     '/free-tools/video-link-maker',
     '/free-tools/video-compressor',
     '/free-tools/resize-video',
+  ],
+  '/free-tools/facebook-reel-downloader': [
+    '/free-tools/instagram-reel-downloader',
+    '/free-tools/tiktok-video-downloader',
+    '/free-tools/video-link-maker',
+    '/free-tools/video-compressor',
   ],
 
   // PDF / document

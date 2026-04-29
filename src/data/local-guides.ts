@@ -35,6 +35,7 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-share-images',
   'how-to-compress-a-video',
   'how-to-download-a-tiktok-video',
+  'how-to-download-facebook-reels',
   'how-to-convert-video-frame-rate',
 ] as const;
 
@@ -663,6 +664,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
         title: 'How to download a TikTok video — Kreatli guide',
       },
       publishDate: '2026-04-21 00:00',
+      readTime: '8',
+      tags: { value: ['Video', 'Share Video'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-download-facebook-reels',
+    name: 'How to Download Facebook Reels',
+    full_slug: '/guides/how-to-download-facebook-reels',
+    content: {
+      metaFields: {
+        title: 'How to Download Facebook Reels: Save MP4s From a Public Link',
+        description:
+          'Learn how to download Facebook Reels from a public link: which URLs work, how to save the MP4, what to do when downloads fail, and rights best practices.',
+      },
+      image: {
+        filename: '/images/guides/how-to-download-facebook-reels.png',
+        alt: 'Kreatli guide: How to download Facebook Reels',
+        title: 'How to download Facebook Reels - Kreatli guide',
+      },
+      publishDate: '2026-04-27 00:00',
       readTime: '8',
       tags: { value: ['Video', 'Share Video'] },
     },
