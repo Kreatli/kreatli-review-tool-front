@@ -7,6 +7,7 @@ import { formatBytes } from '../../../utils/formatBytes';
 import { Icon } from '../../various/Icon';
 import { AddAddonModal } from './AddAddonModal';
 import { CancelAddonModal } from './CancelAddonModal';
+import { CancelSubscriptionFeedbackModal } from './CancelSubscriptionFeedbackModal';
 import { CancelSubscriptionModal } from './CancelSubscriptionModal';
 import { UpdateAddonModal } from './UpdateAddonModal';
 
@@ -17,6 +18,7 @@ interface Props {
 export const Subscription = ({ user }: Props) => {
   const [isUpdateAddonModalOpen, setIsUpdateAddonModalOpen] = useState(false);
   const [activeAddon, setActiveAddon] = useState<AddonDto | null>(null);
+  const [isCancelSubscriptionFeedbackModalOpen, setIsCancelSubscriptionFeedbackModalOpen] = useState(false);
   const [isCancelSubscriptionModalOpen, setIsCancelSubscriptionModalOpen] = useState(false);
   const [isCancelAddonModalOpen, setIsCancelAddonModalOpen] = useState(false);
   const [isAddAddonModalOpen, setIsAddAddonModalOpen] = useState(false);
@@ -49,7 +51,7 @@ export const Subscription = ({ user }: Props) => {
             </div>
             <div className="flex items-center gap-2">
               {user.subscription.isActive && (
-                <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionModalOpen(true)}>
+                <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionFeedbackModalOpen(true)}>
                   Cancel subscription
                 </Button>
               )}
@@ -138,6 +140,14 @@ export const Subscription = ({ user }: Props) => {
         addon={activeAddon}
         isOpen={isUpdateAddonModalOpen}
         onClose={() => setIsUpdateAddonModalOpen(false)}
+      />
+      <CancelSubscriptionFeedbackModal
+        isOpen={isCancelSubscriptionFeedbackModalOpen}
+        onClose={() => setIsCancelSubscriptionFeedbackModalOpen(false)}
+        onSuccess={() => {
+          setIsCancelSubscriptionFeedbackModalOpen(false);
+          setIsCancelSubscriptionModalOpen(true);
+        }}
       />
       <CancelSubscriptionModal
         isOpen={isCancelSubscriptionModalOpen}
