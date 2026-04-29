@@ -9,6 +9,14 @@ export interface AddonBodyDto {
   count: number;
 }
 
+export interface CancelSubscriptionFeedbackBodyDto {
+  feedback: string;
+}
+
+export interface CancelSubscriptionFeedbackResponseDto {
+  success: boolean;
+}
+
 export interface AddonDto {
   count: number;
   id: string;
