@@ -30,6 +30,24 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   async redirects() {
     return [
+      // Apex canonical host; parameterized homepage variants consolidate via canonical tag on /
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.kreatli.com' }],
+        destination: 'https://kreatli.com/:path*',
+        permanent: true,
+      },
+      // GSC: single winner per topic (avoid duplicate /comparisons/* URLs in index)
+      {
+        source: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
+        permanent: true,
+      },
+      {
+        source: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
+        permanent: true,
+      },
       {
         source: '/signup/professional',
         destination: '/sign-up',
@@ -112,7 +130,7 @@ const nextConfig = {
       },
       {
         source: '/kreatli-vs-frame-io-comparison-2025',
-        destination: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
         permanent: true,
       },
       {
@@ -162,7 +180,7 @@ const nextConfig = {
       },
       {
         source: '/best-frameio-alternatives-video-review-2025',
-        destination: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
         permanent: true,
       },
       {
@@ -249,7 +267,7 @@ const nextConfig = {
       },
       {
         source: '/blog/frameio-alternatives-why-teams-switch-to-kreatli',
-        destination: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
         permanent: true,
       },
       {
@@ -399,7 +417,7 @@ const nextConfig = {
       },
       {
         source: '/blog/kreatli-vs-frame-io-comparison-2026',
-        destination: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
         permanent: true,
       },
       {
@@ -509,7 +527,7 @@ const nextConfig = {
       },
       {
         source: '/blog/frameio-alternatives',
-        destination: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
         permanent: true,
       },
       {
@@ -619,7 +637,7 @@ const nextConfig = {
       },
       {
         source: '/blog/kreatli-vs-frameio',
-        destination: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
         permanent: true,
       },
       {

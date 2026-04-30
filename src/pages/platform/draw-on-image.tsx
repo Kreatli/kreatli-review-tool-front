@@ -387,9 +387,15 @@ export default function DrawOnImagePage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'videoAnnotation'])}
+        resources={getRelatedResources([
+          'reviewApproval',
+          'creativeProofing',
+          'videoAnnotation',
+          'freeToolImageAnnotator',
+          'annotateImage',
+        ])}
         title="More Resources"
-        description="Explore other Kreatli platform features to streamline your review and collaboration workflow."
+        description="Explore platform review features and the free image annotator for quick markup tests."
       />
 
       {/* CTA Section */}

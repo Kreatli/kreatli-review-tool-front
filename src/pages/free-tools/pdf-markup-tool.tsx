@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -92,6 +93,27 @@ export default function PdfMarkupToolPage() {
           precise, actionable feedback.
         </DefinitionBlock>
 
+        <section className="relative px-6 pb-10" aria-label="How this fits your workflow">
+          <div className="relative z-10 mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-foreground-600">
+            <p>
+              PDF markup is how agencies collect legal, brand, and client notes on scripts, storyboards, and one-pagers.
+              This free tool is ideal when you want a quick pass in the browser. When rounds stack up, switch to{' '}
+              <NextLink href="/platform/proof-pdf" className="font-medium text-primary underline-offset-2 hover:underline">
+                proof PDF
+              </NextLink>{' '}
+              on the platform and use{' '}
+              <NextLink href="/platform/compare-pdf-files" className="font-medium text-primary underline-offset-2 hover:underline">
+                compare PDF files
+              </NextLink>{' '}
+              to show what changed between versions. For a guided walkthrough, see{' '}
+              <NextLink href="/guides/how-to-markup-a-pdf" className="font-medium text-primary underline-offset-2 hover:underline">
+                how to mark up a PDF
+              </NextLink>
+              .
+            </p>
+          </div>
+        </section>
+
         <PdfAnnotatorGuide />
 
         <MoreFreeToolsSection
@@ -102,9 +124,16 @@ export default function PdfMarkupToolPage() {
         <PdfAnnotatorFAQ />
 
         <RelatedResourcesSection
-          resources={getRelatedResources(['annotatePdf', 'drawOnPdfDocument', 'addCommentsToPdf', 'secureAssetStorage'])}
+          resources={getRelatedResources([
+            'annotatePdf',
+            'drawOnPdfDocument',
+            'platformProofPdf',
+            'platformComparePdfFiles',
+            'guideMarkupPdf',
+            'helpCenter',
+          ])}
           title="More Resources"
-          description="Explore other Kreatli platform features for PDF markup, review, and collaboration."
+          description="Explore PDF proofing on the platform, comparison workflows, and step-by-step guides."
         />
 
         <CTASection

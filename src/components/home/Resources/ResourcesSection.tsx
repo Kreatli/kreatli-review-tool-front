@@ -30,7 +30,23 @@ export const ResourcesSection = ({ comparisons = [] }: Props) => {
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-sans text-3xl font-bold sm:text-4xl">Free Tools & Resources</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Access our free calculators and tools to optimize your creative workflow.
+              Access our free calculators and tools to optimize your creative workflow. Try the{' '}
+              <NextLink href="/free-tools/image-annotator" className="font-medium text-primary underline-offset-2 hover:underline">
+                image annotator
+              </NextLink>{' '}
+              or{' '}
+              <NextLink href="/free-tools/pdf-markup-tool" className="font-medium text-primary underline-offset-2 hover:underline">
+                PDF markup tool
+              </NextLink>
+              , then dive into{' '}
+              <NextLink href="/guides" className="font-medium text-primary underline-offset-2 hover:underline">
+                guides
+              </NextLink>{' '}
+              and{' '}
+              <NextLink href="/platform/manage-videos" className="font-medium text-primary underline-offset-2 hover:underline">
+                video management on the platform
+              </NextLink>
+              .
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">

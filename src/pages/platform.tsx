@@ -205,6 +205,12 @@ export default function PlatformPage() {
                     { href: '/platform/review-approval', label: 'Review & approval' },
                     { href: '/platform/secure-asset-storage', label: 'Secure storage' },
                     { href: '/platform/project-orchestration', label: 'Project orchestration' },
+                    { href: '/platform/draw-on-image', label: 'Draw on image' },
+                    { href: '/platform/proof-pdf', label: 'Proof PDF' },
+                    { href: '/platform/compare-pdf-files', label: 'Compare PDF files' },
+                    { href: '/platform/send-large-video-files', label: 'Send large video files' },
+                    { href: '/platform/manage-videos', label: 'Manage videos' },
+                    { href: '/platform/document-version-control', label: 'Document version control' },
                   ].map((item) => (
                     <li key={item.href}>
                       <NextLink
@@ -232,7 +238,15 @@ export default function PlatformPage() {
             <p>
               Guest links let clients review without signing up; permissions and encryption keep sensitive work
               contained. Use the category chips below to narrow the grid—each card opens a focused feature page with
-              workflow detail. New here?{' '}
+              workflow detail. For file-heavy reviews, pair platform pages with guides like{' '}
+              <NextLink href="/guides/share-large-video-files" className="font-medium text-primary underline-offset-2 hover:underline">
+                sharing large video files
+              </NextLink>{' '}
+              and{' '}
+              <NextLink href="/guides/how-to-markup-a-pdf" className="font-medium text-primary underline-offset-2 hover:underline">
+                PDF markup
+              </NextLink>
+              . New here?{' '}
               <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
                 Start a 7-day trial
               </NextLink>{' '}

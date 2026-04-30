@@ -193,6 +193,82 @@ export const RELATED_RESOURCES = {
     icon: 'monitorPlay' as IconType,
     buttonText: 'Try Now',
   },
+  platformProofPdf: {
+    title: 'Proof PDF',
+    description:
+      'Run client-ready PDF review with markup and approvals tied to each page—alongside your video and creative assets.',
+    href: '/platform/proof-pdf',
+    icon: 'filePdf' as IconType,
+    buttonText: 'Learn More',
+  },
+  platformComparePdfFiles: {
+    title: 'Compare PDF files',
+    description:
+      'Put two document versions side by side so reviewers can spot changes and approve with confidence.',
+    href: '/platform/compare-pdf-files',
+    icon: 'filePdf' as IconType,
+    buttonText: 'Learn More',
+  },
+  platformSendLargeVideoFiles: {
+    title: 'Send large video files',
+    description:
+      'Move heavy cuts and masters through review without breaking your production handoff workflow.',
+    href: '/platform/send-large-video-files',
+    icon: 'upload' as IconType,
+    buttonText: 'Learn More',
+  },
+  platformManageVideos: {
+    title: 'Manage videos',
+    description:
+      'Organize projects, versions, and review status so every cut stays traceable from upload to approval.',
+    href: '/platform/manage-videos',
+    icon: 'monitorPlay' as IconType,
+    buttonText: 'Learn More',
+  },
+  platformDocumentVersionControl: {
+    title: 'Document version control',
+    description:
+      'Keep PDFs and documents on a clear version line with comments and sign-offs on the current file.',
+    href: '/platform/document-version-control',
+    icon: 'folder' as IconType,
+    buttonText: 'Learn More',
+  },
+  guideShareLargeVideoFiles: {
+    title: 'Share large video files',
+    description:
+      'Practical guidance on delivering big video files to clients and reviewers while keeping quality and context.',
+    href: '/guides/share-large-video-files',
+    icon: 'upload' as IconType,
+    buttonText: 'Read guide',
+  },
+  guideMarkupPdf: {
+    title: 'How to mark up a PDF',
+    description: 'Step-by-step markup workflows for creative and client PDF review.',
+    href: '/guides/how-to-markup-a-pdf',
+    icon: 'filePdf' as IconType,
+    buttonText: 'Read guide',
+  },
+  helpCenter: {
+    title: 'Help center',
+    description: 'FAQs, workflows, and pointers to guides and platform features.',
+    href: '/help',
+    icon: 'helpCircle' as IconType,
+    buttonText: 'Visit help',
+  },
+  freeToolImageAnnotator: {
+    title: 'Free image annotator',
+    description: 'Try pinned comments and markup on images in your browser.',
+    href: '/free-tools/image-annotator',
+    icon: 'panorama' as IconType,
+    buttonText: 'Try tool',
+  },
+  freeToolPdfMarkup: {
+    title: 'Free PDF markup tool',
+    description: 'Add markup and comments on PDF pages, then share a review link.',
+    href: '/free-tools/pdf-markup-tool',
+    icon: 'filePdf' as IconType,
+    buttonText: 'Try tool',
+  },
 } as const;
 
 // Helper function to get resources by keys

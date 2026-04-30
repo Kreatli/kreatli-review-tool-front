@@ -1,5 +1,6 @@
 import { Accordion, AccordionItem, Button, Card, CardBody, Chip, Input } from '@heroui/react';
 import Head from 'next/head';
+import NextLink from 'next/link';
 import { useMemo, useState } from 'react';
 
 import { FooterSection } from '../components/home/Footer/FooterSection';
@@ -418,6 +419,40 @@ export default function HelpPage() {
                 Found {filteredFaqs.length} {filteredFaqs.length === 1 ? 'result' : 'results'}
               </div>
             )}
+          </div>
+          <div className="mx-auto mt-6 max-w-2xl rounded-2xl border border-foreground-200 bg-content1/60 p-5 text-left text-sm leading-relaxed text-foreground-600">
+            <p className="font-semibold text-foreground-800">Guides & workflow resources</p>
+            <p className="mt-2">
+              Production teams often start with{' '}
+              <NextLink href="/guides/share-large-video-files" className="font-medium text-primary underline-offset-2 hover:underline">
+                sharing large video files
+              </NextLink>
+              ,{' '}
+              <NextLink href="/guides/creative-production-management" className="font-medium text-primary underline-offset-2 hover:underline">
+                creative production management
+              </NextLink>
+              , or{' '}
+              <NextLink href="/guides/upwork-manage-projects" className="font-medium text-primary underline-offset-2 hover:underline">
+                Upwork-style project workflows
+              </NextLink>
+              . Browse the full{' '}
+              <NextLink href="/guides" className="font-medium text-primary underline-offset-2 hover:underline">
+                guides library
+              </NextLink>
+              , explore{' '}
+              <NextLink href="/platform" className="font-medium text-primary underline-offset-2 hover:underline">
+                platform features
+              </NextLink>
+              , or try free tools like the{' '}
+              <NextLink href="/free-tools/image-annotator" className="font-medium text-primary underline-offset-2 hover:underline">
+                image annotator
+              </NextLink>{' '}
+              and{' '}
+              <NextLink href="/free-tools/pdf-markup-tool" className="font-medium text-primary underline-offset-2 hover:underline">
+                PDF markup tool
+              </NextLink>
+              .
+            </p>
           </div>
         </div>
       </section>
