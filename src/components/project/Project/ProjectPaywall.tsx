@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import { ProjectDto, UserDto } from '../../../services/types';
 import { PlansForm } from '../../account/PlansModal/PlansForm';
+import { TrialReassuranceAlert } from '../../account/PlansModal/TrialReassuranceAlert';
 import { Header } from '../../layout/Header';
 import { ProjectSidebar } from './ProjectSidebar';
 
@@ -27,8 +28,8 @@ export const ProjectPaywall = ({ user, project }: Props) => {
       {isUserOwner ? (
         <Modal isOpen size="5xl" scrollBehavior="inside" hideCloseButton>
           <ModalContent>
-            <ModalBody className="py-6">
-              <h2 className="font-sans text-2xl font-bold">
+            <ModalBody className="gap-3 py-4 md:gap-4 md:py-6">
+              <h2 className="font-sans text-xl font-bold leading-tight md:text-2xl">
                 {isSafeZoneCheckerProject
                   ? 'Start your free trial to get started.'
                   : 'Your access to this project is currently paused.'}
@@ -39,6 +40,7 @@ export const ProjectPaywall = ({ user, project }: Props) => {
                   collaborating.
                 </p>
               )}
+              <TrialReassuranceAlert hasUsedTrial={user.subscription.hasUsedTrial} />
               <PlansForm user={user} />
             </ModalBody>
           </ModalContent>
