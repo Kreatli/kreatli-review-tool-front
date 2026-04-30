@@ -10,7 +10,9 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { ArticleStructuredData } from '../../components/shared/ArticleStructuredData';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { SeoHead } from '../../components/shared/SeoHead';
+import { StoryblokGuideAboveFoldExtras } from '../../components/guides/StoryblokGuideAboveFoldExtras';
 import { Icon } from '../../components/various/Icon';
+import { getStoryblokGuideSeoOverride } from '../../data/storyblok-guide-seo-overrides';
 import { isLocalGuideSlug } from '../../data/local-guides';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
@@ -50,8 +52,11 @@ export default function Page({ story, slug }: Props) {
   }, [slug]);
 
   const articleTitle = storyState?.content.metaFields?.title || storyState?.name || 'Guide';
-  const title = `Kreatli | ${articleTitle}`;
+  const seoOverride = getStoryblokGuideSeoOverride(slug);
+  const seoArticleTitle = seoOverride?.seoArticleTitle ?? articleTitle;
+  const title = `Kreatli | ${seoArticleTitle}`;
   const description =
+    seoOverride?.metaDescription ||
     storyState?.content.metaFields?.description ||
     'Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place.';
   const ogImage = storyState?.content.image?.filename || undefined;
@@ -64,7 +69,7 @@ export default function Page({ story, slug }: Props) {
         canonicalPath={slug}
         ogType="article"
         imageUrl={ogImage}
-        imageAlt={articleTitle}
+        imageAlt={seoArticleTitle}
       />
       <BreadcrumbStructuredData
         items={[
@@ -74,7 +79,7 @@ export default function Page({ story, slug }: Props) {
         ]}
       />
       <ArticleStructuredData
-        title={articleTitle}
+        title={seoArticleTitle}
         description={description}
         url={slug}
         publishedTime={storyState?.content.publishDate}
@@ -114,6 +119,7 @@ export default function Page({ story, slug }: Props) {
                 </div>
               )}
             </div>
+            <StoryblokGuideAboveFoldExtras slug={slug} />
             <div className="flex w-full flex-col gap-8">
               {storyState?.content.body?.map((blok, index) => (
                 <React.Fragment key={blok._uid}>

@@ -9,6 +9,7 @@ import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZone
 import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 import { getRelatedResources } from '../../data/related-resources';
 
 export default function YouTubeSafeZoneCheckerPage() {
@@ -18,7 +19,7 @@ export default function YouTubeSafeZoneCheckerPage() {
         <title>YouTube Shorts Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Preview YouTube Shorts UI overlays before publishing. See where channel name, subscribe button, like button, comments, and video controls appear. Free tool."
+          content="YouTube Shorts safe zone: preview UI before publish. YouTube channel banner size 2026: 2560×1440px, 1546×423px safe zone — use the banner resizer below. Free checker."
         />
         <meta property="og:title" content="YouTube Shorts Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
@@ -26,10 +27,7 @@ export default function YouTubeSafeZoneCheckerPage() {
           content="Preview YouTube Shorts UI overlays before publishing. See where channel name, subscribe button, like button, comments, and video controls appear. Free tool."
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://kreatli.com/safe-zone-checker/youtube-safe-zone-checker"
-        />
+        <meta property="og:url" content="https://kreatli.com/safe-zone-checker/youtube-safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="YouTube Shorts Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
@@ -57,6 +55,12 @@ export default function YouTubeSafeZoneCheckerPage() {
           >
             <SafeZoneScreen defaultPlatform="youtube" />
           </FreeToolsEntitlementSection>
+          <div className="mx-auto max-w-3xl pt-10">
+            <YouTubeBannerSpecsTable
+              toolHref="/free-tools/youtube-banner-resizer"
+              toolLabel="Open the YouTube banner resizer"
+            />
+          </div>
         </div>
       </div>
       <SafeZoneScreenGuide platform="youtube" />

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -93,6 +94,28 @@ export default function ImageAnnotatorPage() {
           An image annotator is an online tool for adding pinned comments, highlights, and markup to images. Feedback is attached to exact locations on the image so designers and retouchers know precisely what to change. Image annotators replace vague feedback like &lsquo;fix the colors&rsquo; with precise, visual direction.
         </DefinitionBlock>
 
+        <section className="relative px-6 pb-10" aria-label="How this fits your workflow">
+          <div className="relative z-10 mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-foreground-600">
+            <p>
+              Teams use a free image annotator in early rounds—styleframes, key art, and social stills—when you only
+              need fast markup without spinning up a full project. When feedback needs version history, approvals, and
+              the same pins on motion and PDFs, move work into Kreatli&apos;s platform: start with{' '}
+              <NextLink href="/platform/draw-on-image" className="font-medium text-primary underline-offset-2 hover:underline">
+                draw on image
+              </NextLink>{' '}
+              and tie markup to{' '}
+              <NextLink href="/platform/review-approval" className="font-medium text-primary underline-offset-2 hover:underline">
+                review &amp; approval
+              </NextLink>
+              . If you are handing off large cuts after review, pair this page with our guide on{' '}
+              <NextLink href="/guides/share-large-video-files" className="font-medium text-primary underline-offset-2 hover:underline">
+                sharing large video files
+              </NextLink>{' '}
+              so clients always open the right asset.
+            </p>
+          </div>
+        </section>
+
         <ImageAnnotatorGuide />
 
         {/* Related tools */}
@@ -102,9 +125,16 @@ export default function ImageAnnotatorPage() {
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'reviewApproval', 'secureAssetStorage'])}
+          resources={getRelatedResources([
+            'annotateImage',
+            'drawOnImage',
+            'platformManageVideos',
+            'platformSendLargeVideoFiles',
+            'guideShareLargeVideoFiles',
+            'helpCenter',
+          ])}
           title="More Resources"
-          description="Explore other Kreatli platform features for image annotation, review, and collaboration."
+          description="Explore platform capabilities, guides for large-file handoffs, and the help center."
         />
 
         {/* CTA Section */}

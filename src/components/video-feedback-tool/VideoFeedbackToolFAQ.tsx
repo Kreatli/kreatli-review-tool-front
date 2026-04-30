@@ -44,6 +44,11 @@ export const videoFeedbackToolFaqs = [
       'Email scatters feedback across threads, lacks visual context, and makes it hard to know which version someone is commenting on. A video feedback tool keeps all feedback frame-accurate, visual, and organized in one place. You can see exactly what reviewers mean, track resolution, compare versions, and maintain a complete audit trail.',
   },
   {
+    question: 'Is this a video review tool for video review and approval?',
+    answer:
+      'Yes. Teams use a video feedback tool as their hub for online video review and approval: frame-accurate comments, threaded discussion, optional markup, and sign-off on the right cut. For side-by-side versions use our video comparer; for still images use the frame extractor.',
+  },
+  {
     question: 'What video formats are supported?',
     answer:
       'Most video feedback tools support common formats like MP4, MOV, and WebM. Support may vary by browser and codec. For best compatibility, export videos as H.264 MP4. Some tools also support ProRes and other professional formats for post-production workflows.',
@@ -188,6 +193,33 @@ export const VideoFeedbackToolFAQ = () => {
             A video feedback tool keeps all feedback <strong>frame-accurate, visual, and organized</strong> in one
             place. You can see exactly what reviewers mean, track resolution, compare versions, and maintain a complete
             audit trail.
+          </p>
+        </div>
+      ),
+    },
+    {
+      key: 'video-review-approval',
+      title: 'Is this a video review tool for video review and approval?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            Yes — teams use a <strong>video feedback tool</strong> as their <strong>online video review and approval</strong>{' '}
+            hub: frame-accurate comments, threaded discussion, optional markup, and sign-off on the right version.
+          </p>
+          <p>
+            This page focuses on the feedback surface; for full project workflows explore{' '}
+            <NextLink href="/platform/review-approval" className="text-primary underline underline-offset-2">
+              review &amp; approval in Kreatli
+            </NextLink>
+            . To compare cuts side by side, use the{' '}
+            <NextLink href="/free-tools/video-comparer" className="text-primary underline underline-offset-2">
+              video comparer
+            </NextLink>
+            ; to pull stills, use the{' '}
+            <NextLink href="/free-tools/video-frame-extractor" className="text-primary underline underline-offset-2">
+              frame extractor
+            </NextLink>
+            .
           </p>
         </div>
       ),

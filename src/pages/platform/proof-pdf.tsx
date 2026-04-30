@@ -432,9 +432,17 @@ export default function ProofPdfPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'annotatePdf', 'addCommentsToPdf'])}
+        resources={getRelatedResources([
+          'reviewApproval',
+          'creativeProofing',
+          'annotatePdf',
+          'addCommentsToPdf',
+          'platformComparePdfFiles',
+          'freeToolPdfMarkup',
+          'guideMarkupPdf',
+        ])}
         title="More Resources"
-        description="Explore other Kreatli platform features to streamline your proofing and collaboration workflow."
+        description="Explore PDF proofing, comparison, markup guides, and the free PDF markup tool."
       />
 
       {/* CTA Section */}

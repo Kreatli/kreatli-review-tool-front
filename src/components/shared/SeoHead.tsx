@@ -18,7 +18,8 @@ interface SeoHeadProps {
 }
 
 function getSiteUrl() {
-  const envSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const envSiteUrl = 'https://kreatli.com';
+
   if (envSiteUrl) {
     return envSiteUrl;
   }
@@ -83,8 +84,12 @@ export function SeoHead({
       <meta key="og:image:alt" property="og:image:alt" content={resolvedImageAlt} />
       <meta key="og:image:width" property="og:image:width" content="1200" />
       <meta key="og:image:height" property="og:image:height" content="630" />
-      {publishedTime ? <meta key="article:published_time" property="article:published_time" content={publishedTime} /> : null}
-      {modifiedTime ? <meta key="article:modified_time" property="article:modified_time" content={modifiedTime} /> : null}
+      {publishedTime ? (
+        <meta key="article:published_time" property="article:published_time" content={publishedTime} />
+      ) : null}
+      {modifiedTime ? (
+        <meta key="article:modified_time" property="article:modified_time" content={modifiedTime} />
+      ) : null}
       <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
       <meta key="twitter:title" name="twitter:title" content={title} />
       {description ? <meta key="twitter:description" name="twitter:description" content={description} /> : null}

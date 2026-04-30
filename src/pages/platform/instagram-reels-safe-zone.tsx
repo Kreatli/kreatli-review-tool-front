@@ -20,6 +20,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 
 const faqs = [
   {
@@ -61,18 +62,18 @@ export default function InstagramReelsSafeZonePage() {
   return (
     <>
       <Head>
-        <title>Instagram Reels Safe Zone | Kreatli</title>
+        <title>Instagram Reels Safe Zone — Dimensions &amp; Checker (2026) | Kreatli</title>
         <meta
           name="description"
-          content="Check your Instagram Reels safe zone before posting. Preview where profile picture, username, like button, comment button, and music display appear. Free tool."
+          content="Instagram Reels safe zone: 1080×1920 vertical — preview profile, captions, and music UI. Instagram reel safe zone vs TikTok vs Shorts; YouTube channel banner 2026 (2560×1440, 1546×423) via our resizer."
         />
         <link rel="canonical" href="https://kreatli.com/platform/instagram-reels-safe-zone" />
         <meta property="og:url" content="https://kreatli.com/platform/instagram-reels-safe-zone" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Instagram Reels Safe Zone | Kreatli" />
+        <meta property="og:title" content="Instagram Reels Safe Zone — Dimensions &amp; Checker (2026) | Kreatli" />
         <meta
           property="og:description"
-          content="Check your Instagram Reels safe zone with our free tool. Preview UI overlays so your text, logos, and visuals stay visible."
+          content="Reels safe zone in pixels + free checker. Compare TikTok & Shorts overlays; link to YouTube banner specs."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
@@ -80,10 +81,10 @@ export default function InstagramReelsSafeZonePage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Instagram Reels Safe Zone | Kreatli" />
+        <meta name="twitter:title" content="Instagram Reels Safe Zone — Dimensions &amp; Checker (2026) | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your Instagram Reels safe zone before posting. Free tool to preview UI overlays."
+          content="1080×1920 Reels safe zone + free checker. Cross-check TikTok & Shorts; YouTube banner dimensions 2026."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -135,6 +136,45 @@ export default function InstagramReelsSafeZonePage() {
         stepsOnly
         stepsSectionTitle="How to Use the Safe-Zone Checker for Instagram Reels"
       />
+
+      <section className="relative overflow-hidden px-6 pb-8 pt-2">
+        <div className="relative z-10 mx-auto max-w-3xl space-y-10">
+          <div className="rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+            <h2 className="mb-3 text-center font-sans text-xl font-bold sm:text-2xl">Reels safe zone &amp; other platforms</h2>
+            <p className="text-center text-sm text-foreground-600">
+              Designing for <strong className="font-semibold text-foreground-700">instagram reel safe zone</strong> on a
+              1080×1920 canvas? Overlays differ from{' '}
+              <NextLink href="/safe-zone-checker/tiktok-safe-zone-checker" className="text-primary underline underline-offset-2">
+                TikTok
+              </NextLink>{' '}
+              and{' '}
+              <NextLink
+                href="/safe-zone-checker/youtube-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                YouTube Shorts
+              </NextLink>
+              — run each checker before you post. Need{' '}
+              <NextLink href="/free-tools/youtube-banner-resizer" className="text-primary underline underline-offset-2">
+                YouTube channel banner dimensions 2026
+              </NextLink>
+              ? Use the table below.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+            <h2 className="mb-3 font-sans text-xl font-bold sm:text-2xl">YouTube channel banner (not Reels)</h2>
+            <p className="mb-4 text-sm text-foreground-500">
+              Reels are vertical; channel art is wide. If your search landed you here for banner sizes, use the official
+              spec table and resizer.
+            </p>
+            <YouTubeBannerSpecsTable
+              showHeading={false}
+              toolHref="/free-tools/youtube-banner-resizer"
+              toolLabel="Open the free YouTube banner resizer"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

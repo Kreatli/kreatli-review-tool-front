@@ -49,6 +49,11 @@ const faqs = [
       'Yes. Every video you share through a Kreatli link is tied to full version history. When you upload a new cut, you can share it with the same stakeholders while keeping past versions and their comments intact. Approvals are always linked to a specific version, so you can see exactly which cut a client signed off on and what changed since. This protects both your team and your clients by removing ambiguity around which version was approved.',
   },
   {
+    question: 'Need a video frame extractor or deeper video review workflows?',
+    answer:
+      'If you need still frames from a video, use Kreatli’s Video Frame Extractor free tool. For full video review and approval with threaded comments and markup, use the Video Feedback Tool — both pair naturally with shareable review links from this page.',
+  },
+  {
     question: 'Is the video link generator really free?',
     answer:
       'Kreatli offers a free way to start generating video review links so you can experience the workflow before upgrading. On paid plans, the free video link generator is included as part of the broader review and approval platform, with higher limits, advanced permissions, and support for larger teams and libraries. This lets small teams get started at no cost while giving growing organizations room to scale into more robust collaboration workflows.',
@@ -62,15 +67,15 @@ export default function FreeVideoLinkGeneratorPage() {
   return (
     <>
       <Head>
-        <title>Free Video Link Generator | Kreatli</title>
+        <title>Free Video to Link Generator — Video Link Maker | Kreatli</title>
         <meta
           name="description"
-          content="Use Kreatli’s free video link generator to create secure, shareable video review links in seconds. Let clients watch, comment, and approve online—no downloads or accounts required."
+          content="Free video-to-link generator: create secure review links (video link maker / video to link workflow). Clients watch in-browser—no forced downloads. Pair with our video feedback tool or frame extractor when needed."
         />
         <link rel="canonical" href="https://kreatli.com/platform/free-video-link-generator" />
         <meta property="og:url" content="https://kreatli.com/platform/free-video-link-generator" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Free Video Link Generator | Kreatli" />
+        <meta property="og:title" content="Free Video to Link Generator — Video Link Maker | Kreatli" />
         <meta
           property="og:description"
           content="Generate secure video review links for clients and collaborators. Share videos online, collect frame-accurate feedback, and track approvals in one place."
@@ -81,7 +86,7 @@ export default function FreeVideoLinkGeneratorPage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Free Video Link Generator | Kreatli" />
+        <meta name="twitter:title" content="Free Video to Link Generator — Video Link Maker | Kreatli" />
         <meta
           name="twitter:description"
           content="Create secure, shareable video review links in seconds. Let clients review and comment in their browser with Kreatli’s free video link generator."
@@ -104,11 +109,18 @@ export default function FreeVideoLinkGeneratorPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Free Video Link Generator
+              Free video to link generator
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Generate secure, shareable video review links in seconds. Let clients watch, comment, and approve
-              online—no downloads, attachments, or account creation required.
+              Generate secure, shareable video review links in seconds — a practical <strong className="font-semibold text-foreground-700">video link maker</strong> for client review. Let people watch, comment, and approve online—no heavy attachments. Need stills from a cut? Use our{' '}
+              <NextLink href="/free-tools/video-frame-extractor" className="text-primary underline underline-offset-2">
+                video frame extractor
+              </NextLink>
+              . For threaded{' '}
+              <NextLink href="/free-tools/video-feedback-tool" className="text-primary underline underline-offset-2">
+                video review and approval
+              </NextLink>
+              , open the feedback tool.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

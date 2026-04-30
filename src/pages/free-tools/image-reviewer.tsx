@@ -17,6 +17,7 @@ import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ImageReviewerFAQ, imageReviewerFaqs } from '../../components/image-reviewer/ImageReviewerFAQ';
 import { ImageReviewerGuide } from '../../components/image-reviewer/ImageReviewerGuide';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -29,7 +30,7 @@ export default function ImageReviewerPage() {
         <title>Review Images Online – Free Image Reviewer | Kreatli</title>
         <meta
           name="description"
-          content="Review images with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
+          content="Review images online — pinned comments and markup. YouTube channel banner image size 2026 reference: 2560×1440px, 1546×423px safe zone (use our banner resizer to validate layouts)."
         />
 <meta property="og:title" content="Review Images Online – Free Image Reviewer | Kreatli" />
         <meta
@@ -92,6 +93,23 @@ export default function ImageReviewerPage() {
         <DefinitionBlock term="Image Reviewer">
           An image reviewer is an online tool for reviewing images with location-pinned comments, annotations, and approval workflows. Reviewers leave feedback directly on the image rather than describing changes in a separate message. Image reviewers are used by design teams, agencies, and photographers to streamline visual feedback.
         </DefinitionBlock>
+
+        <section className="relative overflow-hidden px-6 pb-8" aria-labelledby="image-reviewer-youtube-banner">
+          <div className="relative z-10 mx-auto max-w-3xl rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+            <h2 id="image-reviewer-youtube-banner" className="mb-3 font-sans text-lg font-bold sm:text-xl">
+              Resize image for YouTube banner?
+            </h2>
+            <p className="mb-4 text-sm text-foreground-600">
+              This page is for image <em>review</em>, not batch resizing — but teams often need the exact{' '}
+              <strong className="font-semibold text-foreground-700">YouTube banner image size requirements 2026</strong>{' '}
+              while reviewing creative. Use the specs below, then validate layouts in the resizer.
+            </p>
+            <YouTubeBannerSpecsTable
+              toolHref="/free-tools/youtube-banner-resizer"
+              toolLabel="Open the YouTube banner resizer"
+            />
+          </div>
+        </section>
 
         <ImageReviewerGuide />
 

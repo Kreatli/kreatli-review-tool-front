@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -18,7 +19,7 @@ export default function InstagramSafeZoneCheckerPage() {
         <title>Instagram Reels Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool."
+          content="Instagram Reels safe zone checker: 1080×1920 vertical video — preview profile, caption, and audio UI. Reels safe zone vs TikTok: compare with our TikTok checker. Free tool."
         />
         <meta property="og:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
@@ -26,10 +27,7 @@ export default function InstagramSafeZoneCheckerPage() {
           content="Preview Instagram Reels UI overlays before posting. See where profile picture, username, buttons, and music display appear. Free tool."
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://kreatli.com/safe-zone-checker/instagram-safe-zone-checker"
-        />
+        <meta property="og:url" content="https://kreatli.com/safe-zone-checker/instagram-safe-zone-checker" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
@@ -55,6 +53,36 @@ export default function InstagramSafeZoneCheckerPage() {
           >
             <SafeZoneScreen defaultPlatform="instagram" />
           </FreeToolsEntitlementSection>
+          <section
+            className="mx-auto mt-10 max-w-2xl px-2"
+            aria-labelledby="instagram-reels-safe-heading"
+          >
+            <h2 id="instagram-reels-safe-heading" className="mb-2 text-center font-sans text-lg font-bold sm:text-xl">
+              Reels safe zone
+            </h2>
+            <p className="text-center text-sm text-foreground-500">
+              Designing for <strong className="font-semibold text-foreground-700">instagram reel safe zone</strong>?
+              Reels use a 1080×1920 canvas — keep critical text centered and away from bottom UI. Also posting on{' '}
+              <NextLink
+                href="/safe-zone-checker/tiktok-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                TikTok
+              </NextLink>{' '}
+              or{' '}
+              <NextLink
+                href="/safe-zone-checker/youtube-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                YouTube Shorts
+              </NextLink>
+              ? Use each checker — overlays differ. For{' '}
+              <NextLink href="/free-tools/youtube-banner-resizer" className="text-primary underline underline-offset-2">
+                YouTube channel banner dimensions 2026
+              </NextLink>
+              , use the resizer (2560×1440, 1546×423 safe zone).
+            </p>
+          </section>
         </div>
       </div>
       <SafeZoneScreenGuide platform="instagram" />

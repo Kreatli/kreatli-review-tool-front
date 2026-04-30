@@ -31,6 +31,16 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
+        permanent: true,
+      },
+      {
+        source: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
+        permanent: true,
+      },
+      {
         source: '/signup/professional',
         destination: '/sign-up',
         permanent: true,
@@ -112,7 +122,7 @@ const nextConfig = {
       },
       {
         source: '/kreatli-vs-frame-io-comparison-2025',
-        destination: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
         permanent: true,
       },
       {
@@ -162,7 +172,7 @@ const nextConfig = {
       },
       {
         source: '/best-frameio-alternatives-video-review-2025',
-        destination: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
         permanent: true,
       },
       {
@@ -249,7 +259,7 @@ const nextConfig = {
       },
       {
         source: '/blog/frameio-alternatives-why-teams-switch-to-kreatli',
-        destination: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
         permanent: true,
       },
       {
@@ -399,7 +409,7 @@ const nextConfig = {
       },
       {
         source: '/blog/kreatli-vs-frame-io-comparison-2026',
-        destination: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
         permanent: true,
       },
       {
@@ -509,7 +519,7 @@ const nextConfig = {
       },
       {
         source: '/blog/frameio-alternatives',
-        destination: '/comparisons/frameio-alternatives',
+        destination: '/comparisons/frameio-alternatives-2026',
         permanent: true,
       },
       {
@@ -619,7 +629,7 @@ const nextConfig = {
       },
       {
         source: '/blog/kreatli-vs-frameio',
-        destination: '/comparisons/kreatli-vs-frameio',
+        destination: '/comparisons/kreatli-vs-frameio-2026',
         permanent: true,
       },
       {

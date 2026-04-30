@@ -11,6 +11,7 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { WebApplicationStructuredData } from '../../components/shared/WebApplicationStructuredData';
 import { VideoFrameExtractor } from '../../components/video-frame-extractor/VideoFrameExtractor';
 import { VideoFrameExtractorFAQ } from '../../components/video-frame-extractor/VideoFrameExtractorFAQ';
 import { VideoFrameExtractorGuide } from '../../components/video-frame-extractor/VideoFrameExtractorGuide';
@@ -24,26 +25,31 @@ export default function VideoFrameExtractorPage() {
   return (
     <>
       <Head>
-        <title>Extract Frames from Video – Free Frame Capture Tool | Kreatli</title>
+        <title>Free Video Frame Extractor — Capture Any Frame Instantly | Kreatli</title>
         <meta
           name="description"
-          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
+          content="Free video frame extractor: save any frame as PNG or JPG in your browser—fast, action-oriented workflow. For video review and approval, use our video feedback tool separately."
         />
-<meta property="og:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
+        <meta property="og:title" content="Free Video Frame Extractor — Capture Any Frame Instantly | Kreatli" />
         <meta
           property="og:description"
-          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
+          content="Extract still frames from video instantly. PNG/JPG export. Built for grabs, not generic review software snippets."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-frame-extractor" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Extract Frames from Video – Free Frame Capture Tool | Kreatli" />
+        <meta name="twitter:title" content="Free Video Frame Extractor — Capture Any Frame Instantly | Kreatli" />
         <meta
           name="twitter:description"
-          content="Capture still frames from video as PNG or JPG in your browser. No upload needed, no watermark. Free to use."
+          content="Extract still frames from video instantly. PNG/JPG export in the browser."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-frame-extractor" />
       </Head>
+      <WebApplicationStructuredData
+        name="Kreatli Video Frame Extractor"
+        description="Extract still frames from video and download PNG or JPG in the browser."
+        url="https://kreatli.com/free-tools/video-frame-extractor"
+      />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
