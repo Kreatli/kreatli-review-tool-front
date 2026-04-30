@@ -30,14 +30,6 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   async redirects() {
     return [
-      // Apex canonical host; parameterized homepage variants consolidate via canonical tag on /
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: 'www.kreatli.com' }],
-        destination: 'https://kreatli.com/:path*',
-        permanent: true,
-      },
-      // GSC: single winner per topic (avoid duplicate /comparisons/* URLs in index)
       {
         source: '/comparisons/kreatli-vs-frameio',
         destination: '/comparisons/kreatli-vs-frameio-2026',
@@ -661,7 +653,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        // SEO: legacy URLs from Search Console consolidate here. Keep permanent so external signals merge to /safe-zone-checker.
         source: '/social-media-safe-zone-checker',
         destination: '/safe-zone-checker',
         permanent: true,

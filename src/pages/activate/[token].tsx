@@ -1,4 +1,5 @@
 import { addToast } from '@heroui/react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 
@@ -65,5 +66,11 @@ export default function Activate() {
     }
   }, [router, mutate]);
 
-  return null;
+  return (
+    <>
+      <Head>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
+    </>
+  );
 }
