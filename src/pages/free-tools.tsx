@@ -146,6 +146,7 @@ export default function FreeToolsPage() {
                     { href: '/free-tools/tiktok-video-downloader', label: 'TikTok downloader' },
                     { href: '/free-tools/instagram-reel-downloader', label: 'Instagram Reel downloader' },
                     { href: '/free-tools/facebook-reel-downloader', label: 'Facebook Reel downloader' },
+                    { href: '/free-tools/youtube-shorts-downloader', label: 'YouTube Shorts downloader' },
                     { href: '/free-tools/data-transfer-calculator', label: 'Data transfer calculator' },
                   ].map((item) => (
                     <li key={item.href}>

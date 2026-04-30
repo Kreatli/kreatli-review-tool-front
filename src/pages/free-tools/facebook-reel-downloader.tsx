@@ -53,7 +53,7 @@ const FACEBOOK_REEL_DOWNLOADER_STEPS: WorkflowStep[] = [
     step: 4,
     title: 'Download the MP4',
     description:
-      'Click "Download" to save the video file to your device. If your browser blocks the download, open the direct link and save from the new tab.',
+      'Click "Download" to save the video file to your device. If nothing happens, click "Find video" again for a fresh URL and check your browser download settings.',
     icon: 'download',
     image: null,
   },
@@ -78,7 +78,7 @@ const faqs = [
   {
     question: 'Can I download Facebook Reels on iPhone or Android?',
     answer:
-      'Yes, for public links. Paste the Reel URL and resolve it first. If your mobile browser does not start download directly, open the direct link and long-press to save if supported.',
+      'Yes, for public links. Paste the Reel URL and resolve it first. If your mobile browser does not start the download, resolve again and retry, or adjust download and pop-up permissions.',
   },
   {
     question: 'Do I need to log in to Facebook or share my password?',

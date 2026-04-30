@@ -79,7 +79,7 @@ const GUIDE_FAQS = [
   {
     question: 'Why didn’t my download start?',
     answer:
-      'Browsers sometimes block auto-downloads, and resolved links can expire. Try resolving again, then use “Open direct link” and save the video from the new tab. On mobile, a long-press may be required depending on your browser.',
+      'Browsers sometimes block downloads, and resolved URLs can expire. Try resolving again with Find video and retry Download, or check pop-up blockers and your browser’s download permission for this site.',
   },
   {
     question: 'Do I need to log in to TikTok?',
@@ -134,7 +134,7 @@ export default function HowToDownloadATikTokVideoGuidePage() {
             items={[
               'Use a public TikTok video link; private or age-restricted posts won’t work.',
               'No-watermark is not guaranteed—when unavailable, a standard (watermarked) link may be the only option.',
-              'If downloads fail, open the direct link and save from the new tab; on mobile, long-press may be required.',
+              'If downloads fail, resolve the link again and retry Download; check pop-up blockers and browser download settings.',
               'After download, use a review workflow to collect frame-accurate feedback and approvals.',
             ]}
           />
@@ -169,8 +169,8 @@ export default function HowToDownloadATikTokVideoGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Short links:</strong> <code>vm.tiktok.com</code> or <code>vt.tiktok.com</code> (redirects to a
-                direct link).
+                <strong>Short links:</strong> <code>vm.tiktok.com</code> or <code>vt.tiktok.com</code> (redirect to the
+                full TikTok video URL).
               </p>
             </li>
           </ul>
@@ -199,7 +199,8 @@ export default function HowToDownloadATikTokVideoGuidePage() {
             </li>
             <li>
               <p>
-                If the download doesn’t start, use <strong>Open direct link</strong> and save from the new tab.
+                If the download doesn’t start, click <strong>Find video</strong> again for a fresh URL, then retry{' '}
+                <strong>Download</strong>.
               </p>
             </li>
           </ol>
@@ -221,13 +222,14 @@ export default function HowToDownloadATikTokVideoGuidePage() {
           <ul>
             <li>
               <p>
-                <strong>Download fails or doesn’t start:</strong> try resolving again; then open the direct link and
-                save from the new tab.
+                <strong>Download fails or doesn’t start:</strong> resolve again, then retry Download. Check that
+                pop-ups and downloads are allowed for this site.
               </p>
             </li>
             <li>
               <p>
-                <strong>Mobile browsers:</strong> some browsers require a long-press on the video in the new tab to save.
+                <strong>Mobile browsers:</strong> some browsers are stricter about file saves—retry after a fresh resolve
+                or adjust your browser’s download settings.
               </p>
             </li>
             <li>

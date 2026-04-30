@@ -58,9 +58,9 @@ const TIKTOK_DOWNLOADER_STEPS: WorkflowStep[] = [
   },
   {
     step: 5,
-    title: 'If it doesn’t download, open the direct link',
+    title: 'If the download doesn’t start',
     description:
-      'If your browser blocks the download, use “Open direct link” and then use “Save video as” (or long-press on mobile) to save the file.',
+      'Click “Find video” again to refresh the resolved URL, then retry Download. Check pop-up blockers and your browser’s download permission for this site.',
     icon: 'share',
     image: null,
   },
@@ -90,17 +90,17 @@ const faqs = [
   {
     question: 'Why did the download fail or not start?',
     answer:
-      'Most failures are caused by browser download settings, TikTok rate limits, or the resolved link expiring. Try resolving the link again, then use “Open direct link” and save the file from the new tab. If you’re on mobile, a long-press may be required.',
+      'Most failures are caused by browser download settings, TikTok rate limits, or the resolved link expiring. Try resolving the link again and retry Download. On mobile, check that downloads are allowed for your browser.',
   },
   {
     question: 'Can I download TikTok videos on iPhone or Android?',
     answer:
-      'Yes—if the TikTok video is public. Copy the link from the TikTok app and paste it here. If your mobile browser won’t start the download, use “Open direct link” and then long-press the video to save it (options vary by browser).',
+      'Yes—if the TikTok video is public. Copy the link from the TikTok app and paste it here. If your mobile browser won’t start the download, resolve again and retry, or adjust your browser’s download and pop-up settings.',
   },
   {
     question: 'What TikTok links work with this downloader?',
     answer:
-      'Use a direct link to a public TikTok video (tiktok.com) or a TikTok short link (vm.tiktok.com / vt.tiktok.com). Profile links and non-video pages won’t resolve to a downloadable MP4.',
+      'Use a link to a public TikTok video (tiktok.com) or a TikTok short link (vm.tiktok.com / vt.tiktok.com). Profile links and non-video pages won’t resolve to a downloadable MP4.',
   },
   {
     question: 'Do I need to log in to TikTok or share my password?',
@@ -246,8 +246,8 @@ export default function TikTokVideoDownloaderPage() {
                   access private accounts, age-restricted videos, or content behind a login wall.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Download doesn’t start:</span> use “Open direct link”
-                  and save from the new tab, or resolve the link again if it expired.
+                  <span className="font-semibold text-foreground">Download doesn’t start:</span> resolve the link again,
+                  retry Download, and check pop-up blockers or download restrictions in your browser.
                 </li>
               </ul>
             </div>

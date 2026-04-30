@@ -643,6 +643,20 @@ export const PLATFORM_PAGES: PlatformPage[] = [
     relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
   },
   {
+    label: 'Download YouTube Shorts',
+    href: '/platform/download-youtube-shorts',
+    description: 'Download YouTube Shorts from a public link when a progressive MP4 is available',
+    icon: 'youtube',
+    section: 'Core Platform',
+    order: 28.662,
+    tags: ['Video', 'Share & send'],
+    sitemap: {
+      priority: '0.8',
+      changefreq: 'monthly',
+    },
+    relatedResourceKeys: ['reviewApproval', 'videoAnnotation', 'secureAssetStorage'],
+  },
+  {
     label: 'Send Large Video Files',
     href: '/platform/send-large-video-files',
     description: 'Send large video files to clients without email limits',

@@ -58,9 +58,9 @@ const INSTAGRAM_DOWNLOADER_STEPS: WorkflowStep[] = [
   },
   {
     step: 5,
-    title: 'If it doesn’t download, open the direct link',
+    title: 'If the download doesn’t start',
     description:
-      'If your browser blocks the download, use “Open direct link” and then use “Save video as” (or long-press on mobile) to save the file.',
+      'Click “Find video” again to refresh the URL, retry Download, and check pop-up blockers or your browser’s download settings.',
     icon: 'share',
     image: null,
   },
@@ -75,7 +75,7 @@ const faqs = [
   {
     question: 'Why is the video quality lower than in the app?',
     answer:
-      'Sometimes Instagram only exposes a preview stream in page metadata. When that happens, we still give you a downloadable file, but it may not be full resolution. Try resolving again later or use “Open direct link” if a better URL appears.',
+      'Sometimes Instagram only exposes a preview stream in page metadata. When that happens, we still give you a downloadable file, but it may not be full resolution. Try resolving again later or from a desktop browser.',
   },
   {
     question: 'Does this support /p/ links as well as /reel/?',
@@ -85,12 +85,12 @@ const faqs = [
   {
     question: 'Why did the download fail or not start?',
     answer:
-      'Common causes are browser download settings, expired CDN links, or Instagram rate limits. Click “Find video” again to refresh the URL, then try “Open direct link”. On mobile, you may need a long-press to save.',
+      'Common causes are browser download settings, expired CDN links, or Instagram rate limits. Click “Find video” again to refresh the URL, then retry Download.',
   },
   {
     question: 'Can I download Instagram Reels on iPhone or Android?',
     answer:
-      'Yes—for public links. Copy the link from the Instagram app and paste it here. If the download does not start in the browser, use “Open direct link” and save from the player (steps vary by browser).',
+      'Yes—for public links. Copy the link from the Instagram app and paste it here. If the download does not start, resolve again and retry, or adjust your browser’s download and pop-up settings.',
   },
   {
     question: 'Do I need to log in to Instagram or share my password?',
@@ -200,7 +200,7 @@ export default function InstagramReelDownloaderPage() {
 
         <PlatformStepGuide
           stepsSectionTitle="How to download an Instagram Reel"
-          stepsIntro="Follow these steps to save a Reel from a public link. If the page only exposes preview metadata, try again later or use the direct link."
+          stepsIntro="Follow these steps to save a Reel from a public link. If the page only exposes preview metadata, try again later or from another network."
           steps={INSTAGRAM_DOWNLOADER_STEPS}
         />
 
@@ -228,15 +228,15 @@ export default function InstagramReelDownloaderPage() {
               <ul className="space-y-2 text-base text-foreground-600">
                 <li>
                   <span className="font-semibold text-foreground">Low quality:</span> Instagram may not expose full HD
-                  in the public page. Try resolving again or use “Open direct link”.
+                  in the public page. Try resolving again or downloading from desktop.
                 </li>
                 <li>
                   <span className="font-semibold text-foreground">Private or restricted content:</span> this tool cannot
                   access private accounts or login-only media.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Download doesn’t start:</span> use “Open direct link”
-                  and save from the new tab, or refresh the resolved link if it expired.
+                  <span className="font-semibold text-foreground">Download doesn’t start:</span> click “Find video” again
+                  and retry Download, or check pop-up blockers if your browser blocked the transfer.
                 </li>
               </ul>
             </div>
