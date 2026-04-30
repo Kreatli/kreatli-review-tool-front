@@ -20,6 +20,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 
 const faqs = [
   {
@@ -61,29 +62,29 @@ export default function TikTokSafeZonePage() {
   return (
     <>
       <Head>
-        <title>TikTok Safe Zone | Kreatli</title>
+        <title>TikTok Safe Zone — 1080×1920 Dimensions &amp; Checker (2026) | Kreatli</title>
         <meta
           name="description"
-          content="Check your TikTok safe zone before posting. Preview where profile picture, username, like button, comment button, and captions appear. Free tool."
+          content="TikTok safe zone on a 1080×1920 vertical canvas—preview the right-side stack, captions, and profile UI. Cross-check Instagram Reels & YouTube Shorts; YouTube channel banner 2026 (2560×1440, 1546×423) via our resizer."
         />
         <link rel="canonical" href="https://kreatli.com/platform/tiktok-safe-zone" />
         <meta property="og:url" content="https://kreatli.com/platform/tiktok-safe-zone" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="TikTok Safe Zone | Kreatli" />
+        <meta property="og:title" content="TikTok Safe Zone — 1080×1920 Dimensions &amp; Checker (2026) | Kreatli" />
         <meta
           property="og:description"
-          content="Check your TikTok safe zone with our free tool. Preview UI overlays so your text, logos, and visuals stay visible."
+          content="1080×1920 TikTok safe zone + free checker. Compare Reels & Shorts overlays; link to YouTube banner specs."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="TikTok Safe Zone | Kreatli" />
+        <meta property="og:image:alt" content="TikTok Safe Zone — 1080×1920 Dimensions &amp; Checker (2026) | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TikTok Safe Zone | Kreatli" />
+        <meta name="twitter:title" content="TikTok Safe Zone — 1080×1920 Dimensions &amp; Checker (2026) | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your TikTok safe zone before posting. Free tool to preview UI overlays."
+          content="TikTok 1080×1920 safe zone + checker. Cross-post? Run Reels & Shorts checkers too; banner specs below."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -134,6 +135,51 @@ export default function TikTokSafeZonePage() {
         stepsOnly
         stepsSectionTitle="How to Use the Safe-Zone Checker for TikTok"
       />
+
+      <section className="relative overflow-hidden px-6 pb-8 pt-2">
+        <div className="relative z-10 mx-auto max-w-3xl space-y-10">
+          <div className="rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+            <h2 className="mb-3 text-center font-sans text-xl font-bold sm:text-2xl">
+              Reels, Shorts &amp; TikTok — different overlays, same 9:16 canvas
+            </h2>
+            <p className="text-center text-sm text-foreground-600">
+              Vertical TikToks are commonly{' '}
+              <strong className="font-semibold text-foreground-700">1080×1920</strong> (9:16). The right-side engagement
+              stack and bottom caption strip are heavier on TikTok than on Shorts, so don’t assume one composition works
+              everywhere. Before you cross-post, run{' '}
+              <NextLink
+                href="/safe-zone-checker/instagram-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                Instagram Reels
+              </NextLink>{' '}
+              and{' '}
+              <NextLink
+                href="/safe-zone-checker/youtube-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                YouTube Shorts
+              </NextLink>{' '}
+              safe-zone checkers too. Looking for wide{' '}
+              <NextLink href="/free-tools/youtube-banner-resizer" className="text-primary underline underline-offset-2">
+                YouTube channel banner dimensions 2026
+              </NextLink>
+              ? See the table below — that’s channel art, not vertical video.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+            <h2 className="mb-3 font-sans text-xl font-bold sm:text-2xl">YouTube channel banner (not TikTok)</h2>
+            <p className="mb-4 text-sm text-foreground-500">
+              If your query mixed “TikTok safe area” with channel art, use the official banner spec table and resizer.
+            </p>
+            <YouTubeBannerSpecsTable
+              showHeading={false}
+              toolHref="/free-tools/youtube-banner-resizer"
+              toolLabel="Open the free YouTube banner resizer"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

@@ -5,6 +5,7 @@ import { FooterSection } from '../components/home/Footer/FooterSection';
 import { Header } from '../components/layout/Header';
 import { Decorations } from '../components/layout/Storyblok/Decorations';
 import { SafeZoneChecker } from '../components/safe-zone-checker/SafeZoneChecker';
+import { SafeZoneCheckerHubLinks } from '../components/safe-zone-checker/SafeZoneCheckerHubLinks';
 import { SafeZoneScreenGuide } from '../components/safe-zone-checker/SafeZoneScreenGuide';
 import { CTASection } from '../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../components/shared/FreeToolsEntitlementSection';
@@ -18,7 +19,7 @@ export default function ProjectsPage() {
         <title>Free Safe Zone Checker - TikTok, Reels, Shorts | Kreatli</title>
         <meta
           name="description"
-          content="Preview safe zones and UI overlays for TikTok, Instagram Reels, and YouTube Shorts. Sign in to use the checker; start a trial or choose a plan if your subscription isn’t active."
+          content="Free safe zone checker: TikTok 1080×1920, Reels 1080×1920, YouTube Shorts vertical — preview UI overlays. YouTube channel banner size 2026: 2560×1440px, 1546×423px safe area; use our banner resizer too. Sign in to use tools."
         />
         <meta property="og:title" content="Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
         <meta
@@ -47,6 +48,7 @@ export default function ProjectsPage() {
           </FreeToolsEntitlementSection>
         </div>
       </div>
+      <SafeZoneCheckerHubLinks />
       <SafeZoneScreenGuide />
 
       {/* More Resources Section */}

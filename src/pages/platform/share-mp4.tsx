@@ -45,6 +45,11 @@ const faqs = [
       'Yes. Because your shared MP4 lives inside Kreatli rather than in an attachment, you stay in control of access. You can update who is allowed to view or comment, share new versions to the same stakeholders, and keep an audit trail of approvals tied to specific cuts. This is much safer and clearer than sending static files or unmanaged links.',
   },
   {
+    question: 'How do I share MP4 files without breaking email limits?',
+    answer:
+      'Upload your MP4 to Kreatli once, then use it as an mp4 link generator: copy the secure review link and send that instead of attaching the file. Recipients open the MP4 in their browser with no download required, and feedback stays frame-accurate. See our guide on sharing large video files for more options.',
+  },
+  {
     question: 'What video formats can I share besides MP4?',
     answer:
       'Kreatli supports all common production formats, including MP4, MOV, and other standard containers used in video workflows. You upload the master once, then share it with clients and collaborators via secure links. They see a smooth playback experience in the browser, while your original file stays safely stored with version history.',
@@ -58,15 +63,15 @@ export default function ShareMp4Page() {
   return (
     <>
       <Head>
-        <title>Share MP4 Files | Kreatli</title>
+        <title>MP4 Link Generator — Share MP4 Files Online | Kreatli</title>
         <meta
           name="description"
-          content="Share MP4 files with clients and stakeholders for review in seconds. Secure links, no heavy attachments—let them watch, comment, and approve online with frame-accurate feedback."
+          content="MP4 link generator: share MP4 files online with secure review links. How to share MP4 files — upload once, send one URL, collect frame-accurate feedback. Try Kreatli."
         />
         <link rel="canonical" href="https://kreatli.com/platform/share-mp4" />
         <meta property="og:url" content="https://kreatli.com/platform/share-mp4" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Share MP4 Files | Kreatli" />
+        <meta property="og:title" content="MP4 Link Generator — Share MP4 Files Online | Kreatli" />
         <meta
           property="og:description"
           content="Share MP4 files with clients via secure links for fast, frame-accurate review. Collect comments, track versions, and manage approvals in one place with Kreatli."
@@ -77,7 +82,7 @@ export default function ShareMp4Page() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Share MP4 Files | Kreatli" />
+        <meta name="twitter:title" content="MP4 Link Generator — Share MP4 Files Online | Kreatli" />
         <meta
           name="twitter:description"
           content="Share MP4 files with clients and collaborators via secure links. Let them review, comment, and approve online with Kreatli."

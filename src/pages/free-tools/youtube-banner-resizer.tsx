@@ -11,9 +11,11 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { WebApplicationStructuredData } from '../../components/shared/WebApplicationStructuredData';
 import { BannerFAQ } from '../../components/youtube-banner-resizer/BannerFAQ';
 import { BannerGuide } from '../../components/youtube-banner-resizer/BannerGuide';
 import { YouTubeBannerResizer } from '../../components/youtube-banner-resizer/YouTubeBannerResizer';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -23,26 +25,34 @@ export default function YouTubeBannerResizerPage() {
   return (
     <>
       <Head>
-        <title>Resize YouTube Banner – Free Channel Art Resizer | Kreatli</title>
+        <title>YouTube Banner Resizer (2026) — Free, Instant Safe-Zone Preview | Kreatli</title>
         <meta
           name="description"
-          content="Resize YouTube banners to 2560×1440 with safe area previews for mobile, desktop, tablet, and TV. Free tool."
+          content="Free YouTube banner resizer for 2026 specs: 2560×1440px, 1546×423px safe zone, up to 6MB. Preview desktop, mobile, tablet, and TV. Resize channel art online."
         />
-        <meta property="og:title" content="Resize YouTube Banner – Free Channel Art Resizer | Kreatli" />
+        <meta property="og:title" content="YouTube Banner Resizer (2026) — Free, Instant Safe-Zone Preview | Kreatli" />
         <meta
           property="og:description"
-          content="Resize YouTube banners to 2560×1440 with safe area previews for mobile, desktop, tablet, and TV. Free tool."
+          content="Resize YouTube channel art to 2560×1440px with safe-zone previews. Free tool — 1546×423px safe area, max 6MB."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/youtube-banner-resizer" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Resize YouTube Banner – Free Channel Art Resizer | Kreatli" />
+        <meta
+          name="twitter:title"
+          content="YouTube Banner Resizer (2026) — Free, Instant Safe-Zone Preview | Kreatli"
+        />
         <meta
           name="twitter:description"
-          content="Resize YouTube banners to 2560×1440 with safe area previews for mobile, desktop, tablet, and TV. Free tool."
+          content="Resize YouTube channel art to 2560×1440px with safe-zone previews. Free tool — 1546×423px safe area, max 6MB."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/youtube-banner-resizer" />
       </Head>
+      <WebApplicationStructuredData
+        name="Kreatli YouTube Banner Resizer"
+        description="Resize YouTube channel banners to 2560×1440 with device safe-zone previews in the browser."
+        url="https://kreatli.com/free-tools/youtube-banner-resizer"
+      />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
@@ -68,6 +78,9 @@ export default function YouTubeBannerResizerPage() {
           >
             <YouTubeBannerResizer />
           </FreeToolsEntitlementSection>
+          <div className="mx-auto max-w-3xl pt-10">
+            <YouTubeBannerSpecsTable showHeading />
+          </div>
         </div>
       </div>
       <DefinitionBlock term="YouTube Banner Resizer">

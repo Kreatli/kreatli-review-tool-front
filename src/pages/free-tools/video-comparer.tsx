@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { Accordion, AccordionItem } from '@heroui/react';
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { CompareFeaturePreview } from '../../components/home/Features/CompareFeaturePreview';
@@ -48,6 +49,11 @@ const faqs = [
       'Yes. Send your client a secure Kreatli review link that includes both videos. They can open the project, switch between versions or view them side by side, add comments and markup on either file, and submit feedback without signing up. All comparisons and feedback stay in one place for your team.',
   },
   {
+    question: 'Is a video comparer part of video review and approval?',
+    answer:
+      'Yes. Comparing versions side by side is a common step in video review: reviewers spot picture, audio, and cut changes, then leave frame-accurate notes. For threaded feedback and approvals on a single timeline, pair the comparer with Kreatli’s video feedback tool.',
+  },
+  {
     question: 'How does comparing videos help video production workflows?',
     answer:
       'Comparing videos helps you catch changes between cuts, color grades, and VFX passes. When feedback is pinned to the exact frame and timestamp, editors and colorists know precisely what changed and what to fix. Keeping both versions in one Kreatli project with resolution tracking speeds up approvals and reduces revision cycles for spots, reels, and campaigns.',
@@ -63,7 +69,7 @@ export default function VideoComparerPage() {
         <title>Compare Videos Side by Side – Free Video Comparer | Kreatli</title>
         <meta
           name="description"
-          content="Compare two video versions side by side with frame-accurate comments and annotations. Spot changes instantly. Try free with a 7-day trial."
+          content="Compare two video versions side by side with frame-accurate comments. Spot changes for video review and approval — pair with our video feedback tool for full workflows."
         />
 <meta property="og:title" content="Compare Videos Side by Side – Free Video Comparer | Kreatli" />
         <meta
@@ -127,6 +133,25 @@ export default function VideoComparerPage() {
         <DefinitionBlock term="Video Comparer">
           A video comparer is a tool that displays two video versions side by side so reviewers can spot differences between cuts. Frame-accurate playback lets you compare edits at the exact same moment in both versions. Video comparers help teams verify changes, catch regressions, and make informed approval decisions.
         </DefinitionBlock>
+
+        <section className="relative overflow-hidden px-6 pb-4" aria-labelledby="video-comparer-review-workflows">
+          <div className="relative z-10 mx-auto max-w-3xl rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+            <h2 id="video-comparer-review-workflows" className="mb-3 font-sans text-lg font-bold sm:text-xl">
+              Video review workflows
+            </h2>
+            <p className="text-sm text-foreground-600 sm:text-base">
+              Comparing A/B cuts is one piece of <strong className="font-semibold text-foreground-700">video review</strong>.
+              When you need threaded feedback, drawings, and{' '}
+              <strong className="font-semibold text-foreground-700">video review and approval</strong> on a single
+              timeline, use Kreatli’s{' '}
+              <NextLink href="/free-tools/video-feedback-tool" className="text-primary underline underline-offset-2">
+                video feedback tool
+              </NextLink>{' '}
+              — reviewers stay frame-accurate without mixing comparer intent into generic “video review software”
+              searches.
+            </p>
+          </div>
+        </section>
 
         {/* How to compare videos guide */}
         <PlatformStepGuide

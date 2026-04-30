@@ -15,6 +15,7 @@ import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { IMAGE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { WebApplicationStructuredData } from '../../components/shared/WebApplicationStructuredData';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
@@ -60,28 +61,33 @@ export default function PhotoUrlGeneratorPage() {
   return (
     <>
       <Head>
-        <title>Turn a Photo into a URL – Free Photo Link Generator | Kreatli</title>
+        <title>Photo URL Generator — Create a Shareable Link for Images | Kreatli</title>
         <meta
           name="description"
-          content="Generate a shareable URL for your photo. Create a review link, collect feedback, and track versions. Try free with a 7-day trial."
+          content="Photo URL generator: turn images into secure review links in Kreatli. Share one URL, collect comments, track versions — Web-based creative review."
         />
-<meta property="og:title" content="Turn a Photo into a URL – Free Photo Link Generator | Kreatli" />
+        <meta property="og:title" content="Photo URL Generator — Create a Shareable Link for Images | Kreatli" />
         <meta
           property="og:description"
-          content="Generate a shareable URL for your photo. Create a review link, collect feedback, and track versions. Try free with a 7-day trial."
+          content="Photo URL generator: secure review links for images. Share one URL and collect feedback in Kreatli."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/photo-url-generator" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Turn a Photo into a URL – Free Photo Link Generator | Kreatli" />
+        <meta name="twitter:title" content="Photo URL Generator — Create a Shareable Link for Images | Kreatli" />
         <meta
           name="twitter:description"
-          content="Generate a shareable URL for your photo. Create a review link, collect feedback, and track versions. Try free with a 7-day trial."
+          content="Photo URL generator: secure review links for images. Share one URL and collect feedback in Kreatli."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/photo-url-generator" />
       </Head>
+      <WebApplicationStructuredData
+        name="Kreatli Photo URL Generator"
+        description="Generate secure shareable URLs for photos and collect review feedback in the browser."
+        url="https://kreatli.com/free-tools/photo-url-generator"
+      />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },

@@ -661,6 +661,7 @@ const nextConfig = {
         permanent: true,
       },
       {
+        // SEO: legacy URLs from Search Console consolidate here. Keep permanent so external signals merge to /safe-zone-checker.
         source: '/social-media-safe-zone-checker',
         destination: '/safe-zone-checker',
         permanent: true,

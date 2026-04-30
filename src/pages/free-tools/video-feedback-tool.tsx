@@ -16,6 +16,7 @@ import { InteractiveReviewToolPreview } from '../../components/shared/Interactiv
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { WebApplicationStructuredData } from '../../components/shared/WebApplicationStructuredData';
 import { VideoFeedbackToolFAQ, videoFeedbackToolFaqs } from '../../components/video-feedback-tool/VideoFeedbackToolFAQ';
 import { VideoFeedbackToolGuide } from '../../components/video-feedback-tool/VideoFeedbackToolGuide';
 import { getRelatedResources } from '../../data/related-resources';
@@ -27,28 +28,33 @@ export default function VideoFeedbackToolPage() {
   return (
     <>
       <Head>
-        <title>Give Video Feedback Online – Free Feedback Tool | Kreatli</title>
+        <title>Video Feedback Tool — Video Review &amp; Approval Online | Kreatli</title>
         <meta
           name="description"
-          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
+          content="Free video feedback tool for online video review and approval: frame-accurate comments, drawings, and shareable review links. A practical video review tool for teams — try Kreatli."
         />
-<meta property="og:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
+        <meta property="og:title" content="Video Feedback Tool — Video Review &amp; Approval Online | Kreatli" />
         <meta
           property="og:description"
-          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
+          content="Run video review and approval in one place: timestamped feedback, markup, and client-friendly links. Try Kreatli free."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-feedback-tool" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Give Video Feedback Online – Free Feedback Tool | Kreatli" />
+        <meta name="twitter:title" content="Video Feedback Tool — Video Review &amp; Approval Online | Kreatli" />
         <meta
           name="twitter:description"
-          content="Give frame-accurate video feedback with comments, drawings, and markup. Pin notes to exact frames. Try free with a 7-day trial."
+          content="Run video review and approval in one place: timestamped feedback, markup, and client-friendly links. Try Kreatli free."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-feedback-tool" />
       </Head>
+      <WebApplicationStructuredData
+        name="Kreatli Video Feedback Tool"
+        description="Frame-accurate video feedback, markup, and review links for video review and approval workflows."
+        url="https://kreatli.com/free-tools/video-feedback-tool"
+      />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
@@ -76,6 +82,13 @@ export default function VideoFeedbackToolPage() {
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Give frame-accurate feedback on videos with comments, annotations, and markup. Pin feedback to exact
               moments, share review links with clients, and keep all video feedback organized in one place.
+            </p>
+            <h2 className="mx-auto max-w-3xl font-sans text-lg font-semibold text-foreground-700 sm:text-xl">
+              Video review and approval — in one video review tool
+            </h2>
+            <p className="mx-auto max-w-3xl text-base text-foreground-500">
+              Use Kreatli for <strong className="font-semibold text-foreground-700">online video review and approval</strong>{' '}
+              workflows: threaded comments, visual markup, and clear ownership of who signed off on each cut.
             </p>
             <HeroCtaButtons />
           </div>

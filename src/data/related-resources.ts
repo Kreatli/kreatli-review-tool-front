@@ -180,7 +180,7 @@ export const RELATED_RESOURCES = {
   videoFeedbackTool: {
     title: 'Video Feedback Tool',
     description:
-      'Give frame-accurate feedback on videos with comments, annotations, and markup. Recipients do not need a Kreatli account on shared review links.',
+      'Video review and approval in one video review tool: frame-accurate comments, markup, and shareable review links for creative teams.',
     href: '/free-tools/video-feedback-tool',
     icon: 'play' as IconType,
     buttonText: 'Try Now',

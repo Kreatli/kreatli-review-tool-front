@@ -1,16 +1,26 @@
+import { ReactNode } from 'react';
+
 import { SafeZoneScreen } from './SafeZoneScreen/SafeZoneScreen';
 
-export const SafeZoneChecker = () => {
+type Props = {
+  /** Renders after the page hero, before the interactive checker (e.g. hub links). */
+  afterHero?: ReactNode;
+};
+
+export const SafeZoneChecker = ({ afterHero }: Props) => {
   return (
     <div className="p-6 pb-12">
       <div className="mx-auto max-w-5xl">
-        <div className="flex flex-col gap-4 pb-4 pt-8">
-          <h1 className="text-center font-sans text-2xl font-bold sm:text-4xl">Safe Zone Checker</h1>
+        <section className="flex flex-col gap-4 pb-4 pt-8" aria-labelledby="safe-zone-checker-hero-title">
+          <h1 id="safe-zone-checker-hero-title" className="text-center font-sans text-2xl font-bold sm:text-4xl">
+            Safe Zone Checker
+          </h1>
           <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
             Preview your content with platform-specific safe zones and UI overlays for TikTok, Instagram Reels, and
             YouTube Shorts.
           </p>
-        </div>
+        </section>
+        {afterHero}
         <SafeZoneScreen />
       </div>
     </div>

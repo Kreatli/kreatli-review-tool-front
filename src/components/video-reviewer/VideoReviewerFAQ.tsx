@@ -44,6 +44,11 @@ export const videoReviewerFaqs = [
       "Yes. Multiple reviewers can comment on the same video simultaneously. Each person's feedback is visible to everyone, with indicators showing who wrote each comment. You can filter by reviewer to see specific feedback.",
   },
   {
+    question: 'What is video review and approval in a video review tool?',
+    answer:
+      'Video review and approval is the process of collecting feedback on a cut (comments, drawings, decisions) and recording formal sign-off on a specific version. A video review tool centralizes that work with timestamps, threaded notes, and audit history instead of email.',
+  },
+  {
     question: 'What video formats do video reviewers support?',
     answer:
       'Most video reviewers support common formats like MP4, MOV, and WebM. Some also support professional formats like ProRes. For best compatibility, export videos as H.264 MP4. Browser-based reviewers depend on codec support in your browser.',
@@ -181,6 +186,26 @@ export const VideoReviewerFAQ = () => {
             to everyone, with indicators showing who wrote each comment.
           </p>
           <p>You can filter by reviewer to see specific feedback or view all comments together.</p>
+        </div>
+      ),
+    },
+    {
+      key: 'review-approval-definition',
+      title: 'What is video review and approval in a video review tool?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            <strong>Video review and approval</strong> is how teams collect feedback on a cut (comments, drawings,
+            decisions) and record formal sign-off on a specific version.
+          </p>
+          <p>
+            A dedicated <strong>video review tool</strong> keeps that work centralized with timestamps and history
+            instead of email. For threaded feedback-oriented workflows, see the{' '}
+            <NextLink href="/free-tools/video-feedback-tool" className="text-primary underline underline-offset-2">
+              video feedback tool
+            </NextLink>
+            .
+          </p>
         </div>
       ),
     },

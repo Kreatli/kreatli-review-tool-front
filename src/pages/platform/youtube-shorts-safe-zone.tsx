@@ -20,6 +20,7 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 
 const faqs = [
   {
@@ -61,18 +62,18 @@ export default function YouTubeShortsSafeZonePage() {
   return (
     <>
       <Head>
-        <title>YouTube Shorts Safe Zone | Kreatli</title>
+        <title>YouTube Shorts Safe Zone &amp; Channel Banner Specs (2026) | Kreatli</title>
         <meta
           name="description"
-          content="Check your YouTube Shorts safe zone before posting. Preview where channel name, like button, comment button, and title appear. Free tool."
+          content="YouTube Shorts safe zone checker + channel banner size 2026: 2560×1440px, 1546×423px safe zone. Preview Shorts UI overlays and resize channel art—free tools."
         />
         <link rel="canonical" href="https://kreatli.com/platform/youtube-shorts-safe-zone" />
         <meta property="og:url" content="https://kreatli.com/platform/youtube-shorts-safe-zone" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="YouTube Shorts Safe Zone | Kreatli" />
+        <meta property="og:title" content="YouTube Shorts Safe Zone &amp; Channel Banner Specs (2026) | Kreatli" />
         <meta
           property="og:description"
-          content="Check your YouTube Shorts safe zone with our free tool. Preview UI overlays so your text, logos, and visuals stay visible."
+          content="Check Shorts safe zones and YouTube banner dimensions 2026. Free checker + banner resizer with safe-area previews."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
@@ -80,10 +81,10 @@ export default function YouTubeShortsSafeZonePage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="YouTube Shorts Safe Zone | Kreatli" />
+        <meta name="twitter:title" content="YouTube Shorts Safe Zone &amp; Channel Banner Specs (2026) | Kreatli" />
         <meta
           name="twitter:description"
-          content="Check your YouTube Shorts safe zone before posting. Free tool to preview UI overlays."
+          content="Preview Shorts UI overlays + 2026 channel banner specs (2560×1440, 1546×423 safe zone). Free tools."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -126,7 +127,6 @@ export default function YouTubeShortsSafeZonePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/youtube-shorts-safe-zone" />
       {/* How to Use Safe-Zone Checker (step-by-step) */}
       <SafeZoneScreenGuide
@@ -134,6 +134,22 @@ export default function YouTubeShortsSafeZonePage() {
         stepsOnly
         stepsSectionTitle="How to Use the Safe-Zone Checker for YouTube Shorts"
       />
+
+      <section className="relative overflow-hidden px-6 pb-8 pt-2">
+        <div className="relative z-10 mx-auto max-w-3xl rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+          <h2 className="mb-3 font-sans text-xl font-bold sm:text-2xl">YouTube channel banner (not Shorts)</h2>
+          <p className="mb-4 text-sm text-foreground-500">
+            Searching for <strong className="font-semibold text-foreground-700">youtube banner resizer</strong> or{' '}
+            <strong className="font-semibold text-foreground-700">channel banner size 2026</strong>? Shorts use vertical
+            video; channel art uses a wide banner — preview both with the specs and resizer below.
+          </p>
+          <YouTubeBannerSpecsTable
+            showHeading={false}
+            toolHref="/free-tools/youtube-banner-resizer"
+            toolLabel="Open the free YouTube banner resizer"
+          />
+        </div>
+      </section>
 
       {/* Feature Section */}
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -18,7 +19,7 @@ export default function TikTokSafeZoneCheckerPage() {
         <title>TikTok Safe Zone Checker - Free Preview Tool | Kreatli</title>
         <meta
           name="description"
-          content="Preview TikTok UI overlays before posting. See where profile pictures, usernames, music tracks, and engagement buttons appear. Free tool."
+          content="TikTok safe zone checker: 1080×1920 video, text typically safe within ~1080×1420px — preview profile, captions, and buttons before posting. Reels safe zone differs — compare with Instagram Reels checker."
         />
         <meta property="og:title" content="TikTok Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
@@ -52,6 +53,30 @@ export default function TikTokSafeZoneCheckerPage() {
           >
             <SafeZoneScreen defaultPlatform="tiktok" />
           </FreeToolsEntitlementSection>
+          <section className="mx-auto mt-10 max-w-2xl px-2" aria-labelledby="tiktok-reels-cross-heading">
+            <h2 id="tiktok-reels-cross-heading" className="mb-2 text-center font-sans text-lg font-bold sm:text-xl">
+              Reels safe zone &amp; YouTube Shorts
+            </h2>
+            <p className="text-center text-sm text-foreground-500">
+              Queries for <strong className="font-semibold text-foreground-700">reels safe zone</strong> often apply to
+              vertical video on multiple apps. TikTok uses 1080×1920 with a narrower text-safe band than some Reels
+              layouts — preview both:{' '}
+              <NextLink
+                href="/safe-zone-checker/instagram-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                Instagram Reels checker
+              </NextLink>
+              ,{' '}
+              <NextLink
+                href="/safe-zone-checker/youtube-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                YouTube Shorts checker
+              </NextLink>
+              .
+            </p>
+          </section>
         </div>
       </div>
       <SafeZoneScreenGuide platform="tiktok" />

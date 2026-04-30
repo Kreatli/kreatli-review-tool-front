@@ -52,6 +52,11 @@ const faqs = [
       'When you upload a new version, you control who sees it. You can share the same or a new link so recipients see the updated PDF. Version history is kept in one place so you can compare versions and track which draft was approved.',
   },
   {
+    question: 'Is this useful for online PDF proofing?',
+    answer:
+      'Yes. When you share a PDF through Kreatli, reviewers open it in the browser with comments and markup—essentially an online PDF proofing flow. For video-led reviews, pair PDFs with video assets in the same project for one approval trail.',
+  },
+  {
     question: 'Why use a PDF link generator in Kreatli instead of WeTransfer or email?',
     answer:
       'A PDF link generator in Kreatli gives you one secure link that opens in the browser—no bulky attachments, no expiring WeTransfer links. Recipients can review and comment in one place, and you get a clear record of feedback and approvals. Everything stays in your project with your video, images, and other assets.',

@@ -16,6 +16,7 @@ import { InteractiveReviewToolPreview } from '../../components/shared/Interactiv
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { WebApplicationStructuredData } from '../../components/shared/WebApplicationStructuredData';
 import { VideoReviewerFAQ, videoReviewerFaqs } from '../../components/video-reviewer/VideoReviewerFAQ';
 import { VideoReviewerGuide } from '../../components/video-reviewer/VideoReviewerGuide';
 import { getRelatedResources } from '../../data/related-resources';
@@ -27,28 +28,33 @@ export default function VideoReviewerPage() {
   return (
     <>
       <Head>
-        <title>Review Videos Online – Free Video Reviewer | Kreatli</title>
+        <title>Video Reviewer — Video Review, Feedback &amp; Approval | Kreatli</title>
         <meta
           name="description"
-          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
+          content="Free video reviewer for video review and approval: frame-accurate comments, markup, and shareable review links. Online video review tool — try Kreatli."
         />
-<meta property="og:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
+<meta property="og:title" content="Video Reviewer — Video Review, Feedback &amp; Approval | Kreatli" />
         <meta
           property="og:description"
-          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
+          content="Review videos online with a video review tool built for approvals: timestamped notes, annotations, and client links."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/video-reviewer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Review Videos Online – Free Video Reviewer | Kreatli" />
+        <meta name="twitter:title" content="Video Reviewer — Video Review, Feedback &amp; Approval | Kreatli" />
         <meta
           name="twitter:description"
-          content="Review videos with frame-accurate comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
+          content="Review videos online with a video review tool built for approvals: timestamped notes, annotations, and client links."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
         <link rel="canonical" href="https://kreatli.com/free-tools/video-reviewer" />
       </Head>
+      <WebApplicationStructuredData
+        name="Kreatli Video Reviewer"
+        description="Online video review with frame-accurate comments, markup, and approval-friendly workflows."
+        url="https://kreatli.com/free-tools/video-reviewer"
+      />
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
@@ -76,6 +82,14 @@ export default function VideoReviewerPage() {
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Review videos online with frame-accurate comments, visual annotations, and approval workflows. Collect
               feedback from your team and clients in one place—no software installation required.
+            </p>
+            <h2 className="mx-auto max-w-3xl font-sans text-lg font-semibold text-foreground-700 sm:text-xl">
+              Video review tool for video review and approval
+            </h2>
+            <p className="mx-auto max-w-3xl text-base text-foreground-500">
+              Pair reviewer-mode clarity with structured{' '}
+              <strong className="font-semibold text-foreground-700">video review and approval</strong>: see exactly what
+              changed, who asked for it, and which version is cleared to ship.
             </p>
             <HeroCtaButtons />
           </div>

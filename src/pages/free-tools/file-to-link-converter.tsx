@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import { Accordion, AccordionItem } from '@heroui/react';
 import Head from 'next/head';
-
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -53,6 +52,11 @@ const faqs = [
       'When you upload a new version, you control who sees it. You can share the same or a new link so recipients see the updated file. Version history is kept in one place so you can compare versions and track which draft was approved.',
   },
   {
+    question: 'Does this work as a video to link generator or video link maker?',
+    answer:
+      'Yes. When your asset is a video file, the same workflow acts as a video to link generator: upload, generate a secure review link, and share one URL. Teams also describe this as a video link maker or video link creator—same outcome, less email attachment chaos.',
+  },
+  {
     question: 'Why use a file to link converter in Kreatli instead of WeTransfer or email?',
     answer:
       'A file to link converter in Kreatli gives you one secure link that opens in the browser—no bulky attachments, no expiring WeTransfer links. Recipients can review and comment in one place, and you get a clear record of feedback and approvals. Everything stays in your project with your video, images, PDFs, and other assets.',
@@ -68,7 +72,7 @@ export default function FileToLinkConverterPage() {
         <title>Turn Files into Shareable Links – Free File to Link Tool | Kreatli</title>
         <meta
           name="description"
-          content="Convert any file into a secure shareable link. Send one URL, collect feedback and approvals. Try free with a 7-day trial."
+          content="File to link converter: turn files into secure review URLs. Works as a video-to-link generator and video link maker / video link creator workflow — plus PDFs and images. Try Kreatli free."
         />
 <meta property="og:title" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
         <meta
@@ -112,8 +116,11 @@ export default function FileToLinkConverterPage() {
                 File to Link Converter
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-                Turn any file into a shareable link. Upload once, generate a secure review link, and send it to
-                clients—they open the file in their browser and comment without signing up.
+                Turn any file into a shareable link — including a <strong className="font-semibold text-foreground-700">video-to-link</strong> or{' '}
+                <strong className="font-semibold text-foreground-700">video link creator</strong> workflow for MP4/MOV reviews. Upload once,
+                generate a secure review link, and send it to clients—they open the file in their browser and comment
+                without signing up. Compare with point tools like Videy by keeping versions, comments, and approvals in one
+                workspace.
               </p>
               <HeroCtaButtons />
             </div>

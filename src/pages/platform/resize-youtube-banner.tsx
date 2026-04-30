@@ -20,6 +20,7 @@ import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-acces
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 
 const faqs = [
   {
@@ -62,29 +63,29 @@ export default function ResizeYouTubeBannerPage() {
   return (
     <>
       <Head>
-        <title>YouTube Banner Resizer for Teams | Kreatli Platform</title>
+        <title>Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform</title>
         <meta
           name="description"
-          content="Resize YouTube banners to correct dimensions with safe area previews. Manage channel art alongside your production workflow."
+          content="Resize YouTube channel art for 2026: 2560×1440px recommended, ~1546×423px safe zone for text & logos. Free resizer + TV/mobile/desktop previews; manage banner work with your team."
         />
         <link rel="canonical" href="https://kreatli.com/platform/resize-youtube-banner" />
         <meta property="og:url" content="https://kreatli.com/platform/resize-youtube-banner" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="YouTube Banner Resizer for Teams | Kreatli Platform" />
+        <meta property="og:title" content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform" />
         <meta
           property="og:description"
-          content="Resize YouTube banners to correct dimensions with safe area previews. Manage channel art alongside your production workflow."
+          content="Official-style 2026 banner specs (2560×1440, safe zone) + free resizer. Preview crop on mobile, desktop, tablet, and TV."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="YouTube Banner Resizer for Teams | Kreatli Platform" />
+        <meta property="og:image:alt" content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="YouTube Banner Resizer for Teams | Kreatli Platform" />
+        <meta name="twitter:title" content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform" />
         <meta
           name="twitter:description"
-          content="Resize YouTube banners to correct dimensions with safe area previews. Manage channel art alongside your production workflow."
+          content="Channel banner 2560×1440 + safe zone for logos/text. Free resizer with device previews."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -127,6 +128,14 @@ export default function ResizeYouTubeBannerPage() {
         </div>
       </section>
 
+      <section className="relative overflow-hidden px-6 pb-10">
+        <div className="relative z-10 mx-auto max-w-3xl">
+          <YouTubeBannerSpecsTable
+            toolHref="/free-tools/youtube-banner-resizer"
+            toolLabel="Open the free YouTube banner resizer"
+          />
+        </div>
+      </section>
 
       <PlatformDefinitionBlock href="/platform/resize-youtube-banner" />
       {/* Feature Section */}
