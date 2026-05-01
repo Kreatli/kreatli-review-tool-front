@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
 import { usePostAppSummoOauthActivate } from '../../../services/hooks';
+import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 const DEFAULT_VALUES = {
@@ -15,7 +16,7 @@ const DEFAULT_VALUES = {
 
 interface Props {
   appSummoLicenseKey: string;
-  onSuccess?: (data: { token: string }) => void;
+  onSuccess?: (data: { token: string; user: UserDto }) => void;
 }
 
 export const AppSummoSignUpForm = ({ appSummoLicenseKey, onSuccess }: Props) => {
@@ -34,9 +35,9 @@ export const AppSummoSignUpForm = ({ appSummoLicenseKey, onSuccess }: Props) => 
     mutate(
       { requestBody: data, queryParams: { appSummoLicenseKey } },
       {
-        onSuccess: ({ token }) => {
+        onSuccess: ({ token, user }) => {
           sendGTMEvent({ event: 'sign_up' });
-          onSuccess?.({ token });
+          onSuccess?.({ token, user });
         },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });

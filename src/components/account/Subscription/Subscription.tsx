@@ -45,19 +45,30 @@ export const Subscription = ({ user }: Props) => {
                   {!user.subscription.isActive && ' (inactive)'}
                 </span>
               </div>
-              {user.subscription.price > 0 && (
+              {user.subscription.price > 0 && !user.subscription.isAppSummo && (
                 <div className="text-sm text-foreground-500">${user.subscription.price} per user monthly</div>
               )}
             </div>
             <div className="flex items-center gap-2">
-              {user.subscription.isActive && (
+              {user.subscription.isActive && !user.subscription.isAppSummo && (
                 <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionFeedbackModalOpen(true)}>
                   Cancel subscription
                 </Button>
               )}
-              <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true)}>
-                Upgrade
-              </Button>
+              {user.subscription.isAppSummo ? (
+                <Button
+                  as="a"
+                  href="https://appsumo.com/account/products/"
+                  target="_blank"
+                  className="bg-foreground text-content1"
+                >
+                  Manage in AppSummo
+                </Button>
+              ) : (
+                <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true)}>
+                  Upgrade
+                </Button>
+              )}
             </div>
           </div>
           <div className="flex flex-col gap-1">
@@ -86,7 +97,7 @@ export const Subscription = ({ user }: Props) => {
           </Button>
         </div>
       )}
-      {user.subscription.isActive && !user.subscription.isTrial && (
+      {user.subscription.isActive && !user.subscription.isTrial && !user.subscription.isAppSummo && (
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-2">
             <div className="text-lg">Add-ons</div>

@@ -1256,6 +1256,7 @@ export interface SubscriptionDto {
   addons: AddonDto[];
   hasUsedTrial: boolean;
   isActive: boolean;
+  isAppSummo: boolean;
   isTrial: boolean;
   limits: LimitsDto;
   plan: 'creator' | 'team' | 'enterprise' | null;

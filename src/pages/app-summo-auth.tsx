@@ -1,4 +1,5 @@
 import { addToast, Spinner } from '@heroui/react';
+import { useQueryClient } from '@tanstack/react-query';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
@@ -8,8 +9,11 @@ import { StartPageLayout } from '../components/layout/StartPageLayout';
 import { useSession } from '../hooks/useSession';
 import { getAxiosInstance } from '../services/config';
 import { usePostAppSummoOauth } from '../services/hooks';
+import { getUser } from '../services/services';
+import { UserDto } from '../services/types';
 
 export default function AppSummoAuth() {
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { isSignedIn } = useSession();
   const sendCodeToApi = useRef(false);
@@ -36,10 +40,11 @@ export default function AppSummoAuth() {
     mutate(
       { queryParams: { code: code as string } },
       {
-        onSuccess: ({ token, license }) => {
+        onSuccess: ({ user, token, license }) => {
           if (token) {
             localStorage.setItem('token', token);
             getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
+            queryClient.setQueryData([getUser.key], user);
             router.push('/');
 
             return;
@@ -62,9 +67,10 @@ export default function AppSummoAuth() {
     );
   }, [router, isSignedIn, mutate]);
 
-  const handleSuccess = ({ token }: { token: string }) => {
+  const handleSuccess = ({ token, user }: { token: string; user: UserDto }) => {
     localStorage.setItem('token', token);
     getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
+    queryClient.setQueryData([getUser.key], user);
     router.push('/');
   };
 
