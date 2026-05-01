@@ -62,6 +62,12 @@ export default function AppSummoAuth() {
     );
   }, [router, isSignedIn, mutate]);
 
+  const handleSuccess = ({ token }: { token: string }) => {
+    localStorage.setItem('token', token);
+    getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
+    router.push('/');
+  };
+
   return (
     <>
       <Head>
@@ -72,7 +78,7 @@ export default function AppSummoAuth() {
         <StartPageLayout title="Activate your account by entering credentials." showAppSummoLogo>
           <div className="flex flex-col gap-4">
             <p>Provide your email address and password you will use.</p>
-            <AppSummoSignUpForm appSummoLicenseKey={appSummoLicenseKey} />
+            <AppSummoSignUpForm appSummoLicenseKey={appSummoLicenseKey} onSuccess={handleSuccess} />
           </div>
         </StartPageLayout>
       )}

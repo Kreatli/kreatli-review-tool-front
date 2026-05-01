@@ -15,7 +15,7 @@ const DEFAULT_VALUES = {
 
 interface Props {
   appSummoLicenseKey: string;
-  onSuccess?: () => void;
+  onSuccess?: (data: { token: string }) => void;
 }
 
 export const AppSummoSignUpForm = ({ appSummoLicenseKey, onSuccess }: Props) => {
@@ -34,9 +34,9 @@ export const AppSummoSignUpForm = ({ appSummoLicenseKey, onSuccess }: Props) => 
     mutate(
       { requestBody: data, queryParams: { appSummoLicenseKey } },
       {
-        onSuccess: () => {
+        onSuccess: ({ token }) => {
           sendGTMEvent({ event: 'sign_up' });
-          onSuccess?.();
+          onSuccess?.({ token });
         },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
