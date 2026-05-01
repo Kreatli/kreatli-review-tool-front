@@ -2,6 +2,7 @@ import { Button, Image } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 
+import AppSummoLogo from '../../../assets/images/app-summo-logo.svg';
 import LogoIcon from '../../../assets/images/logo-dark.svg';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { Layout } from '../../../typings/layout';
@@ -9,6 +10,7 @@ import { Icon } from '../../various/Icon';
 
 interface Props {
   title: string;
+  showAppSummoLogo?: boolean;
   backgroundUrl?: string;
   backgroundType?: 'dark' | 'light';
 }
@@ -21,6 +23,7 @@ const BACKGROUNDS = [
 export const StartPageLayout = ({
   backgroundUrl,
   backgroundType = 'dark',
+  showAppSummoLogo = false,
   children,
   title,
 }: React.PropsWithChildren<Props>) => {
@@ -44,9 +47,17 @@ export const StartPageLayout = ({
     <div className="md:mt-none mt-auto flex h-full md:flex-1">
       <div className="relative z-20 flex w-full shrink-0 flex-col items-center justify-center overflow-hidden rounded-t-xl bg-background md:max-w-[50%] lg:max-w-lg">
         <div className="w-full p-6 md:max-w-md">
-          <Link href="/" className="block w-fit">
-            <LogoIcon viewBox="0 0 90 22" width="135" height="33" className="mb-4" />
-          </Link>
+          <div className="mb-4 flex items-center gap-3">
+            <Link href="/" className="block w-fit">
+              <LogoIcon viewBox="0 0 90 22" width="135" height="33" className="mr-1" />
+            </Link>
+            {showAppSummoLogo && (
+              <>
+                <span className="text-xs font-semibold uppercase text-foreground-500">with</span>
+                <AppSummoLogo viewBox="0 0 650 120" width="178" height="33" />
+              </>
+            )}
+          </div>
           <h2 className="mb-6 text-3xl font-semibold">{title}</h2>
           <div className="w-full">{children}</div>
         </div>
@@ -66,6 +77,7 @@ export const StartPageLayout = ({
           src={backgroundUrl ?? (backgroundType === 'dark' ? BACKGROUNDS[0] : BACKGROUNDS[1])}
           radius="none"
           removeWrapper
+          alt=""
           className="absolute inset-0 h-full w-full object-cover"
         />
       </div>

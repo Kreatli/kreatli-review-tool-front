@@ -18,6 +18,7 @@ import { RequestError, SwaggerResponse } from './config';
 
 import type {
   AddonBodyDto,
+  AppSummoOAuthResponseDto,
   AssetCommentBodyDto,
   AssetCommentDto,
   AssetCommentEditDto,
@@ -26,12 +27,11 @@ import type {
   AssetRemoveBodyDto,
   AssetTasksDto,
   AssetsDto,
+  CancelSubscriptionFeedbackBodyDto,
   ChatBodyDto,
   ChatDto,
   ChatEditBodyDto,
   ChatMessagesDto,
-  CancelSubscriptionFeedbackBodyDto,
-  CancelSubscriptionFeedbackResponseDto,
   CreateShareableLinkDto,
   DeliverableBodyDto,
   DeliverableDto,
@@ -69,6 +69,8 @@ import type {
   NewPasswordBodyDto,
   NotificationDto,
   NotificationsDto,
+  PostAppSummoOauthActivateQueryParams,
+  PostAppSummoOauthQueryParams,
   PresignedUrlBodyDto,
   PresignedUrlDto,
   ProjectArchivedAssetsDto,
@@ -165,6 +167,9 @@ import {
   patchAssetFileIdCommentCommentId,
   patchDeliverableId,
   patchTaskId,
+  postAppSummoOauth,
+  postAppSummoOauthActivate,
+  postAppSummoWebhook,
   postAssetFileIdComment,
   postAssetsMultipartComplete,
   postAssetsMultipartStart,
@@ -197,8 +202,8 @@ import {
   postTaskIdMove,
   postTaskIdUnhide,
   postUserAddon,
-  postUserSubscriptionCancelFeedback,
   postUserSubscription,
+  postUserSubscriptionCancelFeedback,
   putConversationId,
   putNotificationId,
   putNotificationsMarkAllAsRead,
@@ -1590,6 +1595,45 @@ export const usePatchTaskId = <TExtra,>(
     ...options,
   });
 };
+export const usePostAppSummoOauth = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    AppSummoOAuthResponseDto,
+    { queryParams: PostAppSummoOauthQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { queryParams, configOverride } = _o || {};
+      return postAppSummoOauth(queryParams, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostAppSummoOauthActivate = <TExtra,>(
+  options?: SwaggerTypescriptUseMutationOptions<
+    SignInResultDto,
+    { requestBody: SignUpBodyDto; queryParams: PostAppSummoOauthActivateQueryParams },
+    TExtra
+  >,
+) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { requestBody, queryParams, configOverride } = _o || {};
+      return postAppSummoOauthActivate(requestBody, queryParams, configOverride);
+    },
+    ...options,
+  });
+};
+export const usePostAppSummoWebhook = <TExtra,>(options?: SwaggerTypescriptUseMutationOptionsVoid<any, TExtra>) => {
+  return useMutation({
+    mutationFn: (_o) => {
+      const { configOverride } = _o || {};
+      return postAppSummoWebhook(configOverride);
+    },
+    ...options,
+  });
+};
 export const usePostAssetFileIdComment = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
     AssetCommentDto,
@@ -2002,11 +2046,7 @@ export const usePostUserSubscription = <TExtra,>(
   });
 };
 export const usePostUserSubscriptionCancelFeedback = <TExtra,>(
-  options?: SwaggerTypescriptUseMutationOptions<
-    CancelSubscriptionFeedbackResponseDto,
-    { requestBody: CancelSubscriptionFeedbackBodyDto },
-    TExtra
-  >,
+  options?: SwaggerTypescriptUseMutationOptions<undefined, { requestBody: CancelSubscriptionFeedbackBodyDto }, TExtra>,
 ) => {
   return useMutation({
     mutationFn: (_o) => {

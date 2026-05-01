@@ -9,20 +9,18 @@ export interface AddonBodyDto {
   count: number;
 }
 
-export interface CancelSubscriptionFeedbackBodyDto {
-  feedback: string;
-}
-
-export interface CancelSubscriptionFeedbackResponseDto {
-  success: boolean;
-}
-
 export interface AddonDto {
   count: number;
   id: string;
   price: number;
   type: string;
   value: number;
+}
+
+export interface AppSummoOAuthResponseDto {
+  license?: string;
+  token?: string;
+  user?: UserDto;
 }
 
 export interface AssetAfterDetails {
@@ -264,6 +262,10 @@ export interface AssetsUploadedLogDto {
 
 export interface Blob {
   [(x in string) | number]: any;
+}
+
+export interface CancelSubscriptionFeedbackBodyDto {
+  feedback: string;
 }
 
 export interface ChatBodyDto {
@@ -803,6 +805,14 @@ export interface PartialTypeClass {
   subscription?: SubscriptionDto;
 }
 
+export interface PostAppSummoOauthActivateQueryParams {
+  appSummoLicenseKey: string;
+}
+
+export interface PostAppSummoOauthQueryParams {
+  code: string;
+}
+
 export interface PresignedUrlBodyDto {
   contentType: string;
   fileName: string;
@@ -1181,18 +1191,25 @@ export interface SignInBodyDto {
 export interface SignInResultDto {
   token: string;
   user: UserDto;
-  redirectToProjectId?: string;
-  /** Present after email verification when user signed up from a standalone marketing tool */
+  /**
+   *
+   * Relative URL to open after email verification (password sign-up from a standalone tool)
+   */
   redirectAfterActivation?: string;
+  redirectToProjectId?: string;
 }
 
 export interface SignUpBodyDto {
   email: string;
   name: string;
   password: string;
-  sourceType?: 'safe-zone-checker';
-  /** Validated server-side; relative URL of standalone tool to return to after verifying email */
+  appSummoLicenseKey?: string;
+  /**
+   *
+   * Relative URL (standalone marketing tool) to return to after email verification
+   */
   returnTo?: string;
+  sourceType?: 'safe-zone-checker';
 }
 
 export interface SignUpResultDto {

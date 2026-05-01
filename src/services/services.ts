@@ -23,6 +23,8 @@ import type {
   GetProjectIdTasksQueryParams,
   GetProjectIdTasksBoardQueryParams,
   GetProjectIdDeliverablesQueryParams,
+  PostAppSummoOauthQueryParams,
+  PostAppSummoOauthActivateQueryParams,
   UserDto,
   InvoiceDto,
   SettingsDto,
@@ -32,7 +34,6 @@ import type {
   SubscriptionResponseDto,
   AddonBodyDto,
   CancelSubscriptionFeedbackBodyDto,
-  CancelSubscriptionFeedbackResponseDto,
   SignUpBodyDto,
   SignUpResultDto,
   SignUpWithTokenBodyDto,
@@ -109,6 +110,7 @@ import type {
   DeliverableTasksBodyDto,
   DeliverableTasksDto,
   DeliverablesDto,
+  AppSummoOAuthResponseDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -891,6 +893,52 @@ export const patchTaskId = (
 /** Key is end point string without base url */
 patchTaskId.key = '/task/{id}';
 
+export const postAppSummoOauth = (
+  queryParams: PostAppSummoOauthQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<AppSummoOAuthResponseDto>> => {
+  return Http.postRequest(
+    postAppSummoOauth.key,
+    queryParams,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAppSummoOauth.key = '/app-summo/oauth';
+
+export const postAppSummoOauthActivate = (
+  requestBody: SignUpBodyDto,
+  queryParams: PostAppSummoOauthActivateQueryParams,
+  configOverride?: AxiosRequestConfig,
+): Promise<SwaggerResponse<SignInResultDto>> => {
+  return Http.postRequest(
+    postAppSummoOauthActivate.key,
+    queryParams,
+    requestBody,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAppSummoOauthActivate.key = '/app-summo/oauth/activate';
+
+export const postAppSummoWebhook = (configOverride?: AxiosRequestConfig): Promise<SwaggerResponse<any>> => {
+  return Http.postRequest(
+    postAppSummoWebhook.key,
+    undefined,
+    undefined,
+    undefined,
+    overrideConfig(_CONSTANT0, configOverride),
+  );
+};
+
+/** Key is end point string without base url */
+postAppSummoWebhook.key = '/app-summo/webhook';
+
 export const postAssetFileIdComment = (
   id: string,
   requestBody: AssetCommentBodyDto,
@@ -1437,7 +1485,7 @@ postUserSubscription.key = '/user/subscription';
 export const postUserSubscriptionCancelFeedback = (
   requestBody: CancelSubscriptionFeedbackBodyDto,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<CancelSubscriptionFeedbackResponseDto>> => {
+): Promise<SwaggerResponse<undefined>> => {
   return Http.postRequest(
     postUserSubscriptionCancelFeedback.key,
     undefined,
