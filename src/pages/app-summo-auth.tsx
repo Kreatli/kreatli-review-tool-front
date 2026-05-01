@@ -47,6 +47,8 @@ export default function AppSummoAuth() {
 
           if (license) {
             setAppSummoLicenseKey(license);
+
+            return;
           }
 
           router.push('/');
