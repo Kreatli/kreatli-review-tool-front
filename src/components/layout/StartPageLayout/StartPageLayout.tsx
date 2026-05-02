@@ -2,7 +2,7 @@ import { Button, Image } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
 
-import AppSummoLogo from '../../../assets/images/app-summo-logo.svg';
+import AppSumoLogo from '../../../assets/images/app-sumo-logo.svg';
 import LogoIcon from '../../../assets/images/logo-dark.svg';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { Layout } from '../../../typings/layout';
@@ -10,7 +10,7 @@ import { Icon } from '../../various/Icon';
 
 interface Props {
   title: string;
-  showAppSummoLogo?: boolean;
+  showAppSumoLogo?: boolean;
   backgroundUrl?: string;
   backgroundType?: 'dark' | 'light';
 }
@@ -23,7 +23,7 @@ const BACKGROUNDS = [
 export const StartPageLayout = ({
   backgroundUrl,
   backgroundType = 'dark',
-  showAppSummoLogo = false,
+  showAppSumoLogo = false,
   children,
   title,
 }: React.PropsWithChildren<Props>) => {
@@ -51,10 +51,10 @@ export const StartPageLayout = ({
             <Link href="/" className="block w-fit">
               <LogoIcon viewBox="0 0 90 22" width="135" height="33" className="mr-1" />
             </Link>
-            {showAppSummoLogo && (
+            {showAppSumoLogo && (
               <>
                 <span className="text-xs font-semibold uppercase text-foreground-500">with</span>
-                <AppSummoLogo viewBox="0 0 650 120" width="178" height="33" />
+                <AppSumoLogo viewBox="0 0 650 120" width="178" height="33" />
               </>
             )}
           </div>

@@ -18,7 +18,7 @@ import { RequestError, SwaggerResponse } from './config';
 
 import type {
   AddonBodyDto,
-  AppSummoOAuthResponseDto,
+  AppSumoOAuthResponseDto,
   AssetCommentBodyDto,
   AssetCommentDto,
   AssetCommentEditDto,
@@ -1597,7 +1597,7 @@ export const usePatchTaskId = <TExtra,>(
 };
 export const usePostAppSummoOauth = <TExtra,>(
   options?: SwaggerTypescriptUseMutationOptions<
-    AppSummoOAuthResponseDto,
+    AppSumoOAuthResponseDto,
     { queryParams: PostAppSummoOauthQueryParams },
     TExtra
   >,

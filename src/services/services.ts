@@ -110,7 +110,7 @@ import type {
   DeliverableTasksBodyDto,
   DeliverableTasksDto,
   DeliverablesDto,
-  AppSummoOAuthResponseDto,
+  AppSumoOAuthResponseDto,
 } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -896,7 +896,7 @@ patchTaskId.key = '/task/{id}';
 export const postAppSummoOauth = (
   queryParams: PostAppSummoOauthQueryParams,
   configOverride?: AxiosRequestConfig,
-): Promise<SwaggerResponse<AppSummoOAuthResponseDto>> => {
+): Promise<SwaggerResponse<AppSumoOAuthResponseDto>> => {
   return Http.postRequest(
     postAppSummoOauth.key,
     queryParams,

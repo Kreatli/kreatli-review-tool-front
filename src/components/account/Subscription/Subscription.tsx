@@ -40,29 +40,31 @@ export const Subscription = ({ user }: Props) => {
               <div className="text-lg">
                 Current plan:{' '}
                 <span className="font-semibold">
-                  {user.subscription.planName}
+                  {!user.subscription.isAppSumo && user.subscription.planName}
+                  {user.subscription.isAppSumo && user.subscription.plan === 'creator' && 'AppSumo License Tier 1'}
+                  {user.subscription.isAppSumo && user.subscription.plan === 'team' && 'AppSumo License Tier 2'}
                   {user.subscription.isTrial && ' (free trial)'}
                   {!user.subscription.isActive && ' (inactive)'}
                 </span>
               </div>
-              {user.subscription.price > 0 && !user.subscription.isAppSummo && (
+              {user.subscription.price > 0 && !user.subscription.isAppSumo && (
                 <div className="text-sm text-foreground-500">${user.subscription.price} per user monthly</div>
               )}
             </div>
             <div className="flex items-center gap-2">
-              {user.subscription.isActive && !user.subscription.isAppSummo && (
+              {user.subscription.isActive && !user.subscription.isAppSumo && (
                 <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionFeedbackModalOpen(true)}>
                   Cancel subscription
                 </Button>
               )}
-              {user.subscription.isAppSummo ? (
+              {user.subscription.isAppSumo ? (
                 <Button
                   as="a"
                   href="https://appsumo.com/account/products/"
                   target="_blank"
                   className="bg-foreground text-content1"
                 >
-                  Manage in AppSummo
+                  Manage in AppSumo
                 </Button>
               ) : (
                 <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true)}>
@@ -97,7 +99,7 @@ export const Subscription = ({ user }: Props) => {
           </Button>
         </div>
       )}
-      {user.subscription.isActive && !user.subscription.isTrial && !user.subscription.isAppSummo && (
+      {user.subscription.isActive && !user.subscription.isTrial && !user.subscription.isAppSumo && (
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-2">
             <div className="text-lg">Add-ons</div>

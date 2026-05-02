@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
-import { AppSummoSignUpForm } from '../components/auth/AppSummoSignUpForm';
+import { AppSumoSignUpForm } from '../components/auth/AppSumoSignUpForm';
 import { StartPageLayout } from '../components/layout/StartPageLayout';
 import { useSession } from '../hooks/useSession';
 import { getAxiosInstance } from '../services/config';
@@ -12,13 +12,13 @@ import { usePostAppSummoOauth } from '../services/hooks';
 import { getUser } from '../services/services';
 import { UserDto } from '../services/types';
 
-export default function AppSummoAuth() {
+export default function AppSumoAuth() {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { isSignedIn } = useSession();
   const sendCodeToApi = useRef(false);
 
-  const [appSummoLicenseKey, setAppSummoLicenseKey] = useState<string | undefined>();
+  const [appSumoLicenseKey, setAppSumoLicenseKey] = useState<string | undefined>();
 
   const { mutate } = usePostAppSummoOauth();
 
@@ -51,7 +51,7 @@ export default function AppSummoAuth() {
           }
 
           if (license) {
-            setAppSummoLicenseKey(license);
+            setAppSumoLicenseKey(license);
 
             return;
           }
@@ -77,18 +77,18 @@ export default function AppSummoAuth() {
   return (
     <>
       <Head>
-        <title>Kreatli | AppSummo Auth</title>
+        <title>Kreatli | AppSumo Auth</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      {appSummoLicenseKey && (
-        <StartPageLayout title="Activate your account by entering credentials." showAppSummoLogo>
+      {appSumoLicenseKey && (
+        <StartPageLayout title="Activate your account by entering credentials." showAppSumoLogo>
           <div className="flex flex-col gap-4">
             <p>Provide your email address and password you will use.</p>
-            <AppSummoSignUpForm appSummoLicenseKey={appSummoLicenseKey} onSuccess={handleSuccess} />
+            <AppSumoSignUpForm appSumoLicenseKey={appSumoLicenseKey} onSuccess={handleSuccess} />
           </div>
         </StartPageLayout>
       )}
-      {!appSummoLicenseKey && (
+      {!appSumoLicenseKey && (
         <div className="flex h-[calc(100dvh-100px)] items-center justify-center">
           <Spinner size="lg" color="current" />
         </div>

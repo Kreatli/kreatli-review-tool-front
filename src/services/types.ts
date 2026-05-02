@@ -17,7 +17,7 @@ export interface AddonDto {
   value: number;
 }
 
-export interface AppSummoOAuthResponseDto {
+export interface AppSumoOAuthResponseDto {
   license?: string;
   token?: string;
   user?: UserDto;
@@ -806,7 +806,7 @@ export interface PartialTypeClass {
 }
 
 export interface PostAppSummoOauthActivateQueryParams {
-  appSummoLicenseKey: string;
+  appSumoLicenseKey: string;
 }
 
 export interface PostAppSummoOauthQueryParams {
@@ -1203,7 +1203,7 @@ export interface SignUpBodyDto {
   email: string;
   name: string;
   password: string;
-  appSummoLicenseKey?: string;
+  appSumoLicenseKey?: string;
   /**
    *
    * Relative URL (standalone marketing tool) to return to after email verification
@@ -1256,7 +1256,7 @@ export interface SubscriptionDto {
   addons: AddonDto[];
   hasUsedTrial: boolean;
   isActive: boolean;
-  isAppSummo: boolean;
+  isAppSumo: boolean;
   isTrial: boolean;
   limits: LimitsDto;
   plan: 'creator' | 'team' | 'enterprise' | null;
