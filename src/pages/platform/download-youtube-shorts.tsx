@@ -11,8 +11,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { getPlatformArticles } from '../../data/platform-articles';
@@ -20,17 +20,17 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
-const PAGE_PATH = '/platform/download-tiktok-video';
+const PAGE_PATH = '/platform/download-youtube-shorts';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
 
-const TOOL_PATH = '/free-tools/tiktok-video-downloader';
+const TOOL_PATH = '/free-tools/youtube-shorts-downloader';
 
-const DOWNLOAD_TIKTOK_VIDEO_STEPS: WorkflowStep[] = [
+const DOWNLOAD_YOUTUBE_SHORTS_STEPS: WorkflowStep[] = [
   {
     step: 1,
-    title: 'Copy the TikTok video link',
+    title: 'Copy the YouTube Shorts or video link',
     description:
-      'Open the TikTok video you want to save, tap Share, and copy the URL. This workflow only works for public TikTok videos.',
+      'Open the Shorts or video you want to save, tap Share, and copy the link. This works best for public videos with a standard watch or /shorts/ URL.',
     icon: 'link',
     image: null,
   },
@@ -38,23 +38,23 @@ const DOWNLOAD_TIKTOK_VIDEO_STEPS: WorkflowStep[] = [
     step: 2,
     title: 'Paste the link into the downloader',
     description:
-      'Paste the URL into the downloader. We support direct TikTok links and common short links (vm.tiktok.com / vt.tiktok.com).',
+      'Paste the URL into the tool. We support youtube.com/shorts/… and youtube.com/watch?v=… links (plus youtu.be short links).',
     icon: 'upload',
     image: null,
   },
   {
     step: 3,
-    title: 'Resolve the best available download',
+    title: 'Resolve the best available MP4',
     description:
-      'Click “Find video”. We’ll attempt an HD link when available and try a no-watermark file first (then fall back if not available).',
+      'Click “Find video”. We look for a progressive MP4 stream when YouTube exposes one for that playback.',
     icon: 'search',
     image: null,
   },
   {
     step: 4,
-    title: 'Download the MP4',
+    title: 'Download the file',
     description:
-      'Click “Download” to save the file to your device. If the download doesn’t start, resolve the URL again with “Find video” and retry, and check browser pop-up or download settings.',
+      'Click “Download” to save through your browser. If the download doesn’t start, click “Find video” again for a fresh URL and retry, and check browser download settings.',
     icon: 'download',
     image: null,
   },
@@ -62,62 +62,62 @@ const DOWNLOAD_TIKTOK_VIDEO_STEPS: WorkflowStep[] = [
 
 const faqs = [
   {
-    question: 'How do I download a TikTok video?',
+    question: 'How do I download YouTube Shorts?',
     answer:
-      'Copy the TikTok link, paste it into the downloader, click “Find video”, then click “Download”. If the download doesn’t start, click “Find video” again for a fresh URL and retry.',
+      'Copy a public Shorts or watch link, paste it into the YouTube Shorts downloader, click “Find video”, then click “Download”. If the browser blocks the download, refresh the resolved URL with “Find video” and retry.',
   },
   {
-    question: 'Can I download TikTok videos without a watermark?',
+    question: 'Why does “Find video” fail for some YouTube links?',
     answer:
-      'Sometimes. The downloader attempts a no-watermark version first. If TikTok blocks it or the resolver cannot find a clean file, the tool falls back to the standard (watermarked) video link.',
+      'YouTube does not always expose a simple progressive MP4 URL for every video. Age-restricted, private, members-only, or heavily restricted playbacks may not resolve with a public link paste.',
   },
   {
-    question: 'Does it work for private or restricted TikTok videos?',
+    question: 'Can I download private or unlisted YouTube videos?',
     answer:
-      'No. Downloading is only supported for public TikTok videos. Private accounts, age-restricted content, or videos behind a login wall cannot be accessed.',
+      'No. This tool is built for public links only. It does not use your YouTube account and cannot access private libraries.',
   },
   {
-    question: 'Do I need to log in or share TikTok credentials?',
+    question: 'Do I need to log in to YouTube?',
     answer:
-      'No. Kreatli does not ask for TikTok passwords. The tool works with public links and resolves a download URL you can save from your browser.',
+      'No. Kreatli does not ask for YouTube credentials. The workflow is designed around public URLs you can share from the YouTube app or site.',
   },
   {
-    question: 'Is it legal to download TikTok videos?',
+    question: 'Is it legal to download YouTube Shorts?',
     answer:
-      'Only download content you own or have permission to use, and follow TikTok’s Terms of Service and copyright laws. This page is designed for legitimate workflows like archiving your own posts or saving approved content you’re allowed to reuse.',
+      'Only download content you own or have permission to use, and follow YouTube’s Terms of Service and copyright laws. This page is for legitimate workflows like archiving your own uploads or saving material you are allowed to reuse.',
   },
 ];
 
-export default function DownloadTikTokVideoPlatformPage() {
+export default function DownloadYouTubeShortsPlatformPage() {
   useSession();
   const articles = getPlatformArticles(PAGE_PATH);
 
   return (
     <>
       <Head>
-        <title>Download TikTok Video | Kreatli</title>
+        <title>Download YouTube Shorts | Kreatli</title>
         <meta
           name="description"
-          content="Download TikTok video from a public link. Paste a TikTok URL, resolve the best available file, and save the MP4. No-watermark when available."
+          content="Download YouTube Shorts from a public link. Paste a Shorts or watch URL, resolve a progressive MP4 when available, and save the file."
         />
         <link rel="canonical" href={CANONICAL_URL} />
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Download TikTok Video | Kreatli" />
+        <meta property="og:title" content="Download YouTube Shorts | Kreatli" />
         <meta
           property="og:description"
-          content="Download TikTok video from a public link. Paste a TikTok URL, resolve the best available file, and save the MP4. No-watermark when available."
+          content="Download YouTube Shorts from a public link. Paste a Shorts or watch URL, resolve a progressive MP4 when available, and save the file."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Download TikTok Video | Kreatli" />
+        <meta property="og:image:alt" content="Download YouTube Shorts | Kreatli" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Download TikTok Video | Kreatli" />
+        <meta name="twitter:title" content="Download YouTube Shorts | Kreatli" />
         <meta
           name="twitter:description"
-          content="Download TikTok video from a public link. Paste a TikTok URL, resolve the best available file, and save the MP4."
+          content="Download YouTube Shorts from a public link. Paste a Shorts or watch URL, resolve a progressive MP4 when available, and save the file."
         />
         <meta name="twitter:image" content="https://kreatli.com/og-image.png" />
       </Head>
@@ -126,7 +126,7 @@ export default function DownloadTikTokVideoPlatformPage() {
         items={[
           { name: 'Home', url: '/' },
           { name: 'Platform', url: '/platform' },
-          { name: 'Download TikTok Video', url: PAGE_PATH },
+          { name: 'Download YouTube Shorts', url: PAGE_PATH },
         ]}
       />
 
@@ -139,15 +139,14 @@ export default function DownloadTikTokVideoPlatformPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
-              Download TikTok Video
+              Download YouTube Shorts
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Paste a public TikTok link to download the MP4. We’ll attempt a no-watermark version when available and
-              fall back if it isn’t.
+              Paste a public YouTube Shorts or watch link to save an MP4 when a progressive download URL is available.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href={TOOL_PATH} size="lg" className="bg-foreground text-content1">
-                Use TikTok Video Downloader
+                Use YouTube Shorts Downloader
               </Button>
               <Button as={NextLink} href="/sign-up" size="lg" variant="bordered">
                 Start 7-day trial
@@ -160,60 +159,57 @@ export default function DownloadTikTokVideoPlatformPage() {
       <PlatformDefinitionBlock href={PAGE_PATH} />
 
       <PlatformStepGuide
-        stepsSectionTitle="How to download a TikTok video"
-        stepsIntro="Follow these steps to download a TikTok video from a public link. We’ll attempt no-watermark when available and fall back when it isn’t."
-        steps={DOWNLOAD_TIKTOK_VIDEO_STEPS}
+        stepsSectionTitle="How to download YouTube Shorts"
+        stepsIntro="Follow these steps to download a public Shorts or YouTube video when a direct MP4 stream is available."
+        steps={DOWNLOAD_YOUTUBE_SHORTS_STEPS}
         completeGuide={{
-          href: '/guides/how-to-download-a-tiktok-video',
+          href: '/guides/how-to-download-youtube-shorts',
           description:
-            'A step-by-step guide with common link types, troubleshooting, and what to do when watermark-free files aren’t available.',
+            'A step-by-step guide with supported URL types, troubleshooting, and what to do when YouTube does not expose a simple download URL.',
         }}
       />
 
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Download TikTok Videos for Real Workflows</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Download Shorts for Real Workflows</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Use this when you need a local copy of a public TikTok for archiving, editing reference, or internal
-              review—only when you have rights or permission to use the content.
+              Use this when you need a local copy of your own or approved public Shorts for archive, editing reference,
+              or internal review.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Frictionless Save to Device</h3>
+                <h3 className="font-sans text-lg font-semibold">Save from a public link</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Paste a link, resolve the best available file, and download. If your browser blocks a download, resolve
-                  again and retry, or adjust pop-up/download permissions for this site.
+                  Paste a URL, resolve, and download. If a resolved download URL expires, click “Find video” again for a fresh URL.
                 </p>
               </CardBody>
             </Card>
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Pair With Review + Approvals</h3>
+                <h3 className="font-sans text-lg font-semibold">Pair with review and approvals</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  After you download a TikTok, upload it into Kreatli to collect frame-accurate feedback, keep versions
-                  organized, and track approvals across stakeholders.
+                  After download, upload into Kreatli for frame-accurate comments, version tracking, and approvals.
                 </p>
               </CardBody>
             </Card>
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Prep for Publishing</h3>
+                <h3 className="font-sans text-lg font-semibold">Check the Shorts safe zone</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  For short-form content, pair downloads with safe-zone checks and resizing so captions, CTAs, and logos
-                  stay visible after TikTok UI overlays appear.
+                  Before publishing, preview where YouTube UI overlays sit so titles and CTAs stay visible.
                 </p>
               </CardBody>
             </Card>
             <Card>
               <CardBody className="p-6">
-                <h3 className="font-sans text-lg font-semibold">Respect Rights + Terms</h3>
+                <h3 className="font-sans text-lg font-semibold">Respect rights and terms</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Only download content you own or have permission to use. Kreatli does not require TikTok credentials
-                  and does not attempt to access private videos.
+                  Download only content you own or have permission to use. Public links only—we never ask for your
+                  password.
                 </p>
               </CardBody>
             </Card>
@@ -221,16 +217,12 @@ export default function DownloadTikTokVideoPlatformPage() {
         </div>
       </section>
 
-      <MoreFreeToolsSection
-        title="Free Tools for Video Teams"
-        description="Try more free tools that pair with TikTok downloads: resizing, compression, share links, and review workflows."
-        tools={getFreeToolsForPlatform(PAGE_PATH)}
-      />
+      <MoreFreeToolsSection tools={getFreeToolsForPlatform(PAGE_PATH)} title="More Free Tools" excludeHref={TOOL_PATH} />
 
       <ResourcesArticlesPreviewSection
+        title="More guides on short-form video workflows"
+        description="Learn about downloads, Shorts framing, approvals, and ways to share files with clients and teams."
         articles={articles}
-        title="More Guides and Workflows"
-        description="Explore guides and workflows for short-form video delivery, collaboration, and approvals."
       />
 
       <PricingSection />
@@ -240,11 +232,11 @@ export default function DownloadTikTokVideoPlatformPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Quick answers about link types, watermark availability, and what this page can and can’t do.
+              Supported links, resolver limits, rights, and download troubleshooting.
             </p>
           </div>
 
-          <Accordion variant="splitted" className="gap-2">
+          <Accordion variant="splitted" aria-label="Download YouTube Shorts FAQs" className="gap-2">
             {faqs.map((faq) => (
               <AccordionItem
                 key={faq.question}
@@ -263,7 +255,7 @@ export default function DownloadTikTokVideoPlatformPage() {
               <a href="mailto:support@kreatli.com" className="font-medium text-primary underline underline-offset-2">
                 support@kreatli.com
               </a>{' '}
-              and we’ll help you connect TikTok workflows to a review and approval process that fits your team.
+              and we’ll help you connect Shorts workflows to review and approvals in Kreatli.
             </p>
           </div>
         </div>
@@ -272,17 +264,16 @@ export default function DownloadTikTokVideoPlatformPage() {
       <RelatedResourcesSection
         resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'secureAssetStorage'])}
         title="More Resources"
-        description="Explore platform capabilities that support short-form video workflows: review, versioning, and secure storage."
+        description="Explore platform capabilities that support short-form workflows: review, versioning, and secure storage."
       />
 
       <CTASection
         title="Need feedback and approvals on short-form video?"
-        description="Upload TikToks to Kreatli, collect frame-accurate feedback, keep versions organized, and get approvals without messy threads."
+        description="Bring Shorts and cuts into one workspace—frame-accurate feedback, clear versions, and approvals without messy threads."
       />
 
-      <FooterSection hideCta={true} />
+      <FooterSection hideCta />
       <SignUpModal />
     </>
   );
 }
-

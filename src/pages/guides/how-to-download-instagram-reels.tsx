@@ -74,7 +74,7 @@ const GUIDE_FAQS = [
   {
     question: 'Why didn’t my download start?',
     answer:
-      'Browsers sometimes block auto-downloads, and resolved links can expire. Try resolving again, then use “Open direct link” and save the video from the new tab. On mobile, a long-press may be required depending on your browser.',
+      'Browsers sometimes block downloads, and resolved URLs can expire. Try resolving again with Find video and retry Download, or check pop-up blockers and your browser’s download permission for this site.',
   },
   {
     question: 'Why is the quality sometimes lower than in the app?',
@@ -134,7 +134,7 @@ export default function HowToDownloadInstagramReelsGuidePage() {
             items={[
               'Use a public Reel or post link; private or login-gated content won’t work.',
               'Quality can vary depending on what Instagram exposes publicly at that moment.',
-              'If downloads fail, open the direct link and save from the new tab; on mobile, long-press may be required.',
+              'If downloads fail, resolve the link again and retry Download; check pop-up blockers and browser download settings.',
               'After download, use a review workflow to collect frame-accurate feedback and approvals.',
             ]}
           />
@@ -191,7 +191,7 @@ export default function HowToDownloadInstagramReelsGuidePage() {
             </li>
             <li>
               <p>
-                If the download doesn’t start, use <strong>Open direct link</strong> and save from the new tab.
+                If the download doesn’t start, click <strong>Find video</strong> again, then retry <strong>Download</strong>.
               </p>
             </li>
           </ol>
@@ -211,8 +211,8 @@ export default function HowToDownloadInstagramReelsGuidePage() {
           <ul>
             <li>
               <p>
-                <strong>Download fails or doesn’t start:</strong> resolve again; then open the direct link and save from
-                the new tab.
+                <strong>Download fails or doesn’t start:</strong> resolve again, then retry Download. Check download and
+                pop-up permissions if your browser blocked the transfer.
               </p>
             </li>
             <li>

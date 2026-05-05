@@ -54,7 +54,7 @@ const DOWNLOAD_INSTAGRAM_REELS_STEPS: WorkflowStep[] = [
     step: 4,
     title: 'Download the MP4',
     description:
-      'Click “Download” to save the file. If the download doesn’t start, use “Open direct link” and save from the new tab.',
+      'Click “Download” to save the file. If the download doesn’t start, resolve again with “Find video” and retry, and check your browser’s download settings.',
     icon: 'download',
     image: null,
   },
@@ -64,7 +64,7 @@ const faqs = [
   {
     question: 'How do I download Instagram Reels?',
     answer:
-      'Copy the Instagram Reel link, paste it into the downloader, click “Find video”, then click “Download”. If the download doesn’t start, use “Open direct link” and save the video from the new tab.',
+      'Copy the Instagram Reel link, paste it into the downloader, click “Find video”, then click “Download”. If the download doesn’t start, refresh the URL by clicking “Find video” again, then retry Download.',
   },
   {
     question: 'Does it work for private Instagram accounts?',
@@ -161,7 +161,7 @@ export default function DownloadInstagramReelsPlatformPage() {
 
       <PlatformStepGuide
         stepsSectionTitle="How to download Instagram Reels"
-        stepsIntro="Follow these steps to download Instagram Reels from a public link. If your browser blocks the download, open the direct link and save from the new tab."
+        stepsIntro="Follow these steps to download Instagram Reels from a public link. If downloads fail, resolve the URL again or check browser download and pop-up settings."
         steps={DOWNLOAD_INSTAGRAM_REELS_STEPS}
         completeGuide={{
           href: '/guides/how-to-download-instagram-reels',
@@ -185,8 +185,8 @@ export default function DownloadInstagramReelsPlatformPage() {
               <CardBody className="p-6">
                 <h3 className="font-sans text-lg font-semibold">Frictionless Save to Device</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Paste a link, resolve the best available file, and download. If your browser blocks a direct download,
-                  open the direct link and save from the new tab.
+                  Paste a link, resolve the best available file, and download. If your browser blocks a download, click
+                  “Find video” again for a fresh URL and retry, or adjust pop-up or download permissions.
                 </p>
               </CardBody>
             </Card>

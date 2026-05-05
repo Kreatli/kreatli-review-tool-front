@@ -19,6 +19,8 @@ const STANDALONE_EXACT_PATHNAMES = new Set<string>([
   '/free-tools/instagram-reel-downloader',
   '/free-tools/instagram-downloader',
   '/free-tools/facebook-reel-downloader',
+  '/free-tools/youtube-shorts-downloader',
+  '/free-tools/youtube-downloader',
   '/platform/resize-video-online',
   '/platform/compress-video-online',
   '/platform/video-frame-rate-converter',

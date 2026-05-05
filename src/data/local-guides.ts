@@ -35,6 +35,7 @@ export const LOCAL_GUIDE_SLUGS = [
   'how-to-share-images',
   'how-to-compress-a-video',
   'how-to-download-a-tiktok-video',
+  'how-to-download-youtube-shorts',
   'how-to-download-facebook-reels',
   'how-to-convert-video-frame-rate',
 ] as const;
@@ -664,6 +665,26 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
         title: 'How to download a TikTok video — Kreatli guide',
       },
       publishDate: '2026-04-21 00:00',
+      readTime: '8',
+      tags: { value: ['Video', 'Share Video'] },
+    },
+  },
+  {
+    id: 'local-guide-how-to-download-youtube-shorts',
+    name: 'How to Download YouTube Shorts',
+    full_slug: '/guides/how-to-download-youtube-shorts',
+    content: {
+      metaFields: {
+        title: 'How to Download YouTube Shorts: Save MP4 Files From a Public Link',
+        description:
+          'Learn how to download YouTube Shorts with a public URL: which links work, resolver limits, download troubleshooting, and usage rights.',
+      },
+      image: {
+        filename: '/images/guides/how-to-download-youtube-shorts-cover.png',
+        alt: 'Kreatli guide: How to download YouTube Shorts',
+        title: 'How to download YouTube Shorts — Kreatli guide',
+      },
+      publishDate: '2026-04-30 00:00',
       readTime: '8',
       tags: { value: ['Video', 'Share Video'] },
     },

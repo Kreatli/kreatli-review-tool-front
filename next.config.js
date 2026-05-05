@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  /** Keep youtubei native/node resolution out of webpack (ESM `.js`, player cache, etc.). */
+  serverExternalPackages: ['youtubei.js'],
   reactStrictMode: false,
   images: {
     remotePatterns: [

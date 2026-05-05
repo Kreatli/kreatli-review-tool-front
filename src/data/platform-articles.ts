@@ -2069,6 +2069,43 @@ export const PLATFORM_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
     }),
   ],
 
+  '/platform/download-youtube-shorts': [
+    makeArticleCard({
+      id: 'platform-download-youtube-shorts-guide-1',
+      full_slug: '/guides/how-to-download-youtube-shorts',
+      title: 'How to Download YouTube Shorts: Save MP4 Files From a Public Link',
+      description:
+        'Learn how to download YouTube Shorts with a public URL: which links work, resolver limits, download troubleshooting, and usage rights.',
+      tags: ['Video', 'Share Video'],
+      publishDate: '2026-04-30 00:00',
+      readTime: '8',
+      imageFilename: '/images/guides/how-to-download-youtube-shorts-cover.png',
+    }),
+    makeArticleCard({
+      id: 'platform-download-youtube-shorts-guide-2',
+      full_slug: '/guides/share-large-video-files',
+      title: '7 Ways to Share Large Video Files with Clients for Review and Approval',
+      description:
+        'Need reliable, secure ways to send large video files to clients? This practical guide compares seven methods, lists pros and cons, and gives a step-by-step workflow.',
+      tags: ['Share Video', 'Client Approvals'],
+      publishDate: '2025-12-01 00:00',
+      readTime: '9',
+      imageFilename:
+        'https://a.storyblok.com/f/287637539865613/2250x750/4a0a44cd65/7-ways-to-share-large-video-files-with-clients-for-review-and-approval.png',
+    }),
+    makeArticleCard({
+      id: 'platform-download-youtube-shorts-guide-3',
+      full_slug: '/guides/how-to-review-a-video',
+      title: 'How to Review a Video: Timestamped Notes, Clear Intent, and Faster Cuts',
+      description:
+        'Learn how to review a video with timestamped feedback, visual markup, and version-aware workflows so editors can execute changes without long email threads.',
+      tags: ['Video', 'Client Review'],
+      publishDate: '2026-04-06 00:00',
+      readTime: '10',
+      imageFilename: '/images/guides/how-to-review-a-video-cover.png',
+    }),
+  ],
+
   '/platform/add-timestamp-to-video': [
     makeArticleCard({
       id: 'platform-add-timestamp-to-video-guide-1',

@@ -74,7 +74,7 @@ const faqs = [
   {
     question: 'Why did my Facebook Reel download fail?',
     answer:
-      'Most failures come from expired direct links, browser restrictions, or temporary upstream limits. Resolve the URL again, then retry the download.',
+      'Most failures come from expired download URLs, browser restrictions, or temporary upstream limits. Resolve the URL again, then retry the download.',
   },
   {
     question: 'Do I need Facebook credentials?',
