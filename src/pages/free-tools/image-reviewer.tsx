@@ -32,7 +32,7 @@ export default function ImageReviewerPage() {
           name="description"
           content="Review images online — pinned comments and markup. YouTube channel banner image size 2026 reference: 2560×1440px, 1546×423px safe zone (use our banner resizer to validate layouts)."
         />
-<meta property="og:title" content="Review Images Online – Free Image Reviewer | Kreatli" />
+        <meta property="og:title" content="Review Images Online – Free Image Reviewer | Kreatli" />
         <meta
           property="og:description"
           content="Review images with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
@@ -74,8 +74,11 @@ export default function ImageReviewerPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Image Reviewer</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Review images online with location-pinned comments, visual annotations, and approval workflows. Collect
-              feedback from your team and clients in one place—no software installation required.
+              <strong className="font-semibold text-foreground-700">Online image review</strong> for creative teams:
+              invite <strong className="font-semibold text-foreground-700">teammates</strong> to the same file, and
+              send <strong className="font-semibold text-foreground-700">clients</strong> no-signup guest links for{' '}
+              <strong className="font-semibold text-foreground-700">client review</strong>—location-pinned comments,
+              markup, and approvals in one project.
             </p>
             <HeroCtaButtons />
           </div>

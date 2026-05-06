@@ -101,6 +101,16 @@ export const BannerGuide = () => {
                       </div>
                       <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                        {item.step === 4 && (
+                          <p className="mt-4 text-base">
+                            <NextLink
+                              href="/safe-zone-checker/youtube-safe-zone-checker"
+                              className="font-semibold text-primary underline underline-offset-2"
+                            >
+                              Now check your vertical Shorts safe zone →
+                            </NextLink>
+                          </p>
+                        )}
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
                             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

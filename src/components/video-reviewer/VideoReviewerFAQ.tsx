@@ -49,6 +49,26 @@ export const videoReviewerFaqs = [
       'Video review and approval is the process of collecting feedback on a cut (comments, drawings, decisions) and recording formal sign-off on a specific version. A video review tool centralizes that work with timestamps, threaded notes, and audit history instead of email.',
   },
   {
+    question: 'What is a video feedback tool with timestamped comments?',
+    answer:
+      'A video feedback tool is software where reviewers leave timestamped (frame-accurate) notes and drawings on a cut. Kreatli’s video reviewer and related review flows pin each comment to an exact moment so editors know what to change without vague email threads.',
+  },
+  {
+    question: 'Is Kreatli a “video review tool free” option to try?',
+    answer:
+      'You can start with Kreatli’s trial to experience full video review and approval flows before committing to a paid plan. The interactive marketing preview on this page shows the kinds of tools your team gets after signing in.',
+  },
+  {
+    question: 'How does online video approval work in Kreatli?',
+    answer:
+      'Stakeholders open a secure review link, watch the cut, leave comments and drawings, and can record approvals on a specific version. Your team sees status, history, and who signed off—replacing scattered “approved” emails.',
+  },
+  {
+    question: 'Do agencies and production teams use Kreatli as video review software?',
+    answer:
+      'Yes. Agencies, post houses, and in-house creative teams use Kreatli to route client reviews, internal QC, and final sign-off in one workspace with version history and audit-friendly approvals.',
+  },
+  {
     question: 'What video formats do video reviewers support?',
     answer:
       'Most video reviewers support common formats like MP4, MOV, and WebM. Some also support professional formats like ProRes. For best compatibility, export videos as H.264 MP4. Browser-based reviewers depend on codec support in your browser.',
@@ -205,6 +225,55 @@ export const VideoReviewerFAQ = () => {
               video feedback tool
             </NextLink>
             .
+          </p>
+        </div>
+      ),
+    },
+    {
+      key: 'video-feedback-tool',
+      title: 'What is a video feedback tool with timestamped comments?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            A <strong>video feedback tool</strong> is where reviewers leave timestamped, frame-accurate notes and markup
+            on a cut. Kreatli pins each comment to an exact moment so editors know what to change—no vague “around
+            0:30” email chains.
+          </p>
+        </div>
+      ),
+    },
+    {
+      key: 'free-try',
+      title: 'Is Kreatli a “video review tool free” option to try?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            Start with a <strong>Kreatli trial</strong> to run full video review and approval workflows before paid
+            billing. This page’s preview illustrates the review experience you unlock after sign-in.
+          </p>
+        </div>
+      ),
+    },
+    {
+      key: 'online-approval',
+      title: 'How does online video approval work in Kreatli?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            Reviewers open a secure link, watch the cut, add timestamped comments, and record approval on a specific
+            version. Your team sees status and history in one project—cleaner than “approved” replies in email.
+          </p>
+        </div>
+      ),
+    },
+    {
+      key: 'agencies',
+      title: 'Do agencies use Kreatli as video review software?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            Yes—agencies and production companies use Kreatli for <strong>client reviews</strong>, QC rounds, and final
+            sign-off with audit-friendly version history.
           </p>
         </div>
       ),

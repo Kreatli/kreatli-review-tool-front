@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../components/home/Footer/FooterSection';
@@ -19,7 +20,7 @@ export default function ProjectsPage() {
         <title>Free Safe Zone Checker - TikTok, Reels, Shorts | Kreatli</title>
         <meta
           name="description"
-          content="Free safe zone checker: TikTok 1080×1920, Reels 1080×1920, YouTube Shorts vertical — preview UI overlays. YouTube channel banner size 2026: 2560×1440px, 1546×423px safe area; use our banner resizer too. Sign in to use tools."
+          content="Social media safe zone checker: transparent overlay / UI preview for TikTok, Instagram Reels, and YouTube Shorts—see where captions and buttons cover your video. Plus channel banner 2560×1440 / 1546×423 context. Sign in to upload."
         />
         <meta property="og:title" content="Safe Zone Checker - TikTok, Reels, Shorts | Kreatli" />
         <meta
@@ -39,6 +40,27 @@ export default function ProjectsPage() {
       <Header />
       <Decorations />
       <div className="px-6 pb-12">
+        <div className="mx-auto max-w-6xl pt-8 text-center">
+          <h1 className="font-sans text-3xl font-bold sm:text-4xl">Safe zone checker</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-foreground-500">
+            Preview{' '}
+            <strong className="font-semibold text-foreground-700">transparent safe zone overlays</strong> and real UI
+            chrome before you publish—ideal when people search for a safe zone marker or TikTok/Reels/Shorts overlay
+            preview. Prefer reading first? Use the{' '}
+            <NextLink href="/guides/tiktok-safe-zone" className="text-primary underline underline-offset-2">
+              TikTok safe zone guide
+            </NextLink>
+            ,{' '}
+            <NextLink href="/guides/instagram-reels-safe-zone" className="text-primary underline underline-offset-2">
+              Reels guide
+            </NextLink>
+            , or{' '}
+            <NextLink href="/guides/youtube-shorts-safe-zone" className="text-primary underline underline-offset-2">
+              Shorts guide
+            </NextLink>
+            .
+          </p>
+        </div>
         <div className="mx-auto max-w-6xl">
           <FreeToolsEntitlementSection
             lockedTitle="Safe Zone Checker is available inside Kreatli"

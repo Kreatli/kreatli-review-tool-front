@@ -27,10 +27,34 @@ export const VIDEO_FRAME_EXTRACTOR_FAQ_DEFS: VideoFrameExtractorFaqDef[] = [
       'Upload your video, scrub to the moment you need, and export that frame as a PNG or JPG (or capture multiple frames and download a ZIP). In Kreatli you sign in to use the tool; start a trial if your subscription isn’t active.',
   },
   {
+    key: 'video-to-frame',
+    title: 'What does “video to frame” or “video to frames” mean?',
+    answer:
+      'It means turning moments in a video file into still images—one frame at a time or a small set. In Kreatli, you scrub to the moment and export PNG or JPG (or multiple frames in a ZIP). Sign in to use the tool; start a trial if your subscription isn’t active.',
+  },
+  {
     key: 'frame-extractor-vs-screenshot',
     title: 'Is a frame extractor better than a screenshot for video stills?',
     answer:
       'Yes—an extractor grabs the decoded frame from the video file, avoiding OS scaling and player chrome. That gives you consistent pixels for thumbnails, QC, and reference stills.',
+  },
+  {
+    key: 'frame-extractor-from-video',
+    title: 'How is frame extractor from video different from a generic “videoframe extractor” search?',
+    answer:
+      'Searchers lump terms together—frame extractor from video, videoframe extractor, frame video extractor. They all point to the same workflow: pick a timecode, export a decoded still. Kreatli does it in the browser for MP4, MOV, and WebM after you sign in.',
+  },
+  {
+    key: 'last-frame',
+    title: 'Can I grab the last frame or final frame of a video?',
+    answer:
+      'Yes—scrub to the end of the timeline (or pause on the last moment), then capture that frame like any other. Export PNG or JPG for a crisp end-card or reference still.',
+  },
+  {
+    key: 'no-separate-app',
+    title: 'Do I need to download separate frame extractor software?',
+    answer:
+      'No separate desktop app is required for Kreatli’s workflow—it runs in your browser. You still download your exported PNG/JPG or ZIP files after capture, which is normal for saving stills.',
   },
   {
     key: 'download-frame-from-video',

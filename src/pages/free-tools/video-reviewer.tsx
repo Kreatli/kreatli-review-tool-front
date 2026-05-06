@@ -28,12 +28,12 @@ export default function VideoReviewerPage() {
   return (
     <>
       <Head>
-        <title>Video Reviewer — Video Review, Feedback &amp; Approval | Kreatli</title>
+        <title>Video Reviewer — Free Trial Video Review &amp; Feedback | Kreatli</title>
         <meta
           name="description"
-          content="Free video reviewer for video review and approval: frame-accurate comments, markup, and shareable review links. Online video review tool — try Kreatli."
+          content="Video reviewer and video feedback tool: timestamped comments, markup, online video review and approval—free trial. Teams and agencies replace email chaos with frame-accurate review links."
         />
-<meta property="og:title" content="Video Reviewer — Video Review, Feedback &amp; Approval | Kreatli" />
+        <meta property="og:title" content="Video Reviewer — Free Trial Video Review &amp; Feedback | Kreatli" />
         <meta
           property="og:description"
           content="Review videos online with a video review tool built for approvals: timestamped notes, annotations, and client links."
@@ -42,7 +42,7 @@ export default function VideoReviewerPage() {
         <meta property="og:url" content="https://kreatli.com/free-tools/video-reviewer" />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Video Reviewer — Video Review, Feedback &amp; Approval | Kreatli" />
+        <meta name="twitter:title" content="Video Reviewer — Free Trial Video Review &amp; Feedback | Kreatli" />
         <meta
           name="twitter:description"
           content="Review videos online with a video review tool built for approvals: timestamped notes, annotations, and client links."
@@ -80,8 +80,10 @@ export default function VideoReviewerPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Reviewer</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Review videos online with frame-accurate comments, visual annotations, and approval workflows. Collect
-              feedback from your team and clients in one place—no software installation required.
+              <strong className="font-semibold text-foreground-700">Video feedback tool</strong> for teams: leave{' '}
+              <strong className="font-semibold text-foreground-700">timestamped video feedback</strong>, markup, and
+              approvals in one workspace. Collect notes from your team and clients—no software installation for guests
+              on review links.
             </p>
             <h2 className="mx-auto max-w-3xl font-sans text-lg font-semibold text-foreground-700 sm:text-xl">
               Video review tool for video review and approval

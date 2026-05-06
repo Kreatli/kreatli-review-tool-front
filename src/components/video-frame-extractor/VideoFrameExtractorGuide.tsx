@@ -70,7 +70,7 @@ export const VideoFrameExtractorGuide = () => {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              How to Use the Video Frame Extractor
+              Extract frames from video — how it works
             </h2>
             <p className="mx-auto max-w-3xl text-base text-foreground-500">
               Extract still images from a video in minutes—perfect for thumbnails, storyboards, creative reviews, and

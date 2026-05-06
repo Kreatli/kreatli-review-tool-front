@@ -33,7 +33,7 @@ export default function VideoFrameExtractorPage() {
         <title>Free Video Frame Extractor — Extract Frames from Video | Kreatli</title>
         <meta
           name="description"
-          content="Free video frame extractor: extract frames from video as PNG or JPG, download stills or a ZIP in your browser—fast video-to-frame workflow. Sign in to use the tool; start a trial if needed."
+          content="Video frame extractor: extract frames from video in the browser—video-to-frame PNG/JPG or ZIP, no extra app required. Sign in to use the tool; start a trial if needed."
         />
         <meta
           property="og:title"
@@ -85,9 +85,12 @@ export default function VideoFrameExtractorPage() {
               Video frame extractor — extract frames from video
             </h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Pull exact stills from MP4, MOV, or WebM—<strong className="font-semibold text-foreground-700">PNG</strong>,{' '}
+              Your <strong className="font-semibold text-foreground-700">video-to-frame</strong> workflow in the browser:
+              decoded stills from MP4, MOV, or WebM—not screen grabs—so thumbnails and QC grabs stay pixel-consistent. Pull{' '}
+              <strong className="font-semibold text-foreground-700">PNG</strong>,{' '}
               <strong className="font-semibold text-foreground-700">JPG</strong>, or a{' '}
-              <strong className="font-semibold text-foreground-700">ZIP</strong> when you need multiple grabs. Sign in to extract; start a{' '}
+              <strong className="font-semibold text-foreground-700">ZIP</strong> when you need multiple grabs. No separate
+              desktop app required (you download exports as usual). Sign in to extract; start a{' '}
               <strong className="font-semibold text-foreground-700">7-day trial</strong> if your plan isn’t active yet.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
