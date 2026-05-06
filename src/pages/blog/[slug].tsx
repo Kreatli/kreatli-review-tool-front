@@ -7,9 +7,12 @@ import React, { useEffect, useState } from 'react';
 import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { StoryblokGuideSupplementaryFaqs } from '../../components/guides/StoryblokGuideSupplementaryFaqs';
 import { ArticleStructuredData } from '../../components/shared/ArticleStructuredData';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { SeoHead } from '../../components/shared/SeoHead';
+import { getStoryblokBlogSeoOverride } from '../../data/storyblok-blog-seo-overrides';
 import { Icon } from '../../components/various/Icon';
 import { useSession } from '../../hooks/useSession';
 import { getStoryblokApi } from '../../lib/storyblok';
@@ -49,11 +52,15 @@ export default function Page({ story, slug }: Props) {
   }, [slug]);
 
   const articleTitle = storyState?.content.metaFields?.title || storyState?.name || 'Article';
-  const title = `Kreatli | ${articleTitle}`;
+  const blogSeoOverride = getStoryblokBlogSeoOverride(slug);
+  const seoArticleTitle = blogSeoOverride?.seoArticleTitle ?? articleTitle;
+  const title = `Kreatli | ${seoArticleTitle}`;
   const description =
+    blogSeoOverride?.metaDescription ||
     storyState?.content.metaFields?.description ||
     'Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place.';
   const ogImage = storyState?.content.image?.filename || undefined;
+  const supplementaryFaqs = blogSeoOverride?.supplementaryFaqs ?? [];
 
   return (
     <>
@@ -63,7 +70,7 @@ export default function Page({ story, slug }: Props) {
         canonicalPath={slug}
         ogType="article"
         imageUrl={ogImage}
-        imageAlt={articleTitle}
+        imageAlt={seoArticleTitle}
       />
       <BreadcrumbStructuredData
         items={[
@@ -73,13 +80,14 @@ export default function Page({ story, slug }: Props) {
         ]}
       />
       <ArticleStructuredData
-        title={articleTitle}
+        title={seoArticleTitle}
         description={description}
         url={slug}
         publishedTime={storyState?.content.publishDate}
         modifiedTime={storyState?.updated_at}
         imageUrl={ogImage}
       />
+      {supplementaryFaqs.length > 0 ? <FAQStructuredData faqs={supplementaryFaqs} /> : null}
       <Header />
       <Decorations />
       <div className="backdrop-blur-lg">
@@ -113,6 +121,9 @@ export default function Page({ story, slug }: Props) {
                 </div>
               )}
             </div>
+            {supplementaryFaqs.length > 0 ? (
+              <StoryblokGuideSupplementaryFaqs faqs={supplementaryFaqs} ariaLabel="Quick answers for this article" />
+            ) : null}
             <div className="flex w-full flex-col gap-8">
               {storyState?.content.body?.map((blok, index) => (
                 <React.Fragment key={blok._uid}>

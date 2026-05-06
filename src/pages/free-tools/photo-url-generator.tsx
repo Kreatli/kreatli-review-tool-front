@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { Accordion, AccordionItem } from '@heroui/react';
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
@@ -52,6 +53,16 @@ const faqs = [
     question: 'Why use a photo URL generator in Kreatli instead of WeTransfer or email?',
     answer:
       'A photo URL generator in Kreatli gives you one secure link that opens in the browser—no bulky attachments, no expiring WeTransfer links. Recipients can review and comment in one place, and you get a clear record of feedback and approvals. Everything stays in your project with your video, PDFs, and other assets.',
+  },
+  {
+    question: 'Is “image to link” the same as a photo URL?',
+    answer:
+      'Yes—people search both phrases. An image-to-link (or photo-to-link) workflow means you upload a still asset once, then share a single review URL instead of attaching the file. In Kreatli that link opens the image in the browser with comments and approvals tied to your project.',
+  },
+  {
+    question: 'How do I turn a picture or image into a shareable link?',
+    answer:
+      'Upload the image to a Kreatli project, open the share menu on that file, and copy the secure review link—same flow as the photo URL steps above. Recipients open the link without signing up; you can re-use or revoke links per round.',
   },
 ];
 
@@ -116,8 +127,20 @@ export default function PhotoUrlGeneratorPage() {
                 Photo URL Generator
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-                Generate a shareable URL for your photo. Upload once, create a secure review link, and send it to
-                clients—they open the photo in their browser and comment without signing up.
+                Turn a <strong className="font-semibold text-foreground-700">photo or image into a link</strong> (
+                <strong className="font-semibold text-foreground-700">image to link</strong>): upload once, create a
+                secure review URL, and send it to clients—they open the asset in their browser and comment without
+                signing up.
+              </p>
+              <p className="mx-auto mt-3 max-w-2xl text-base text-foreground-500">
+                Need the same flow for video masters? See{' '}
+                <NextLink
+                  href="/platform/free-video-link-generator"
+                  className="text-primary underline underline-offset-2"
+                >
+                  free video link generator
+                </NextLink>
+                .
               </p>
               <HeroCtaButtons />
             </div>

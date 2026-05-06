@@ -25,6 +25,11 @@ import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinit
 
 const faqs = [
   {
+    question: 'How do you share MP4 files?',
+    answer:
+      'Upload your MP4 to Kreatli, generate a secure review link, and send that URL instead of attaching the file. Recipients stream it in the browser and leave frame-accurate comments; you keep versions and approvals in one project. For very large masters, see our guide on sharing large video files.',
+  },
+  {
     question: 'How do I share MP4 files with a client using Kreatli?',
     answer:
       'To share MP4 files with a client in Kreatli, you upload your MP4 once, generate a secure share link, and send that link to your client. They can open the MP4 in their browser, watch it in full quality, and leave frame-accurate comments without downloading anything. Every shared MP4 stays connected to the right project, file version, and feedback history so your team never loses context.',
@@ -108,8 +113,13 @@ export default function ShareMp4Page() {
               Share your MP4 Files Online
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Share MP4 files with clients and stakeholders via secure links—without downloads, heavy attachments, or
-              account creation. Every shared MP4 stays connected to comments, versions, and approvals.
+              Share MP4 files with clients and stakeholders via secure links—without heavy email attachments or forcing
+              account creation. Large MP4 masters live in your project storage; recipients open one URL in the browser
+              while feedback stays frame-accurate. (For transfer tips, see{' '}
+              <NextLink href="/guides/share-large-video-files" className="text-primary underline underline-offset-2">
+                share large video files
+              </NextLink>
+              .)
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">

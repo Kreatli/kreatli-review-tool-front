@@ -19,7 +19,7 @@ export default function InstagramSafeZoneCheckerPage() {
         <title>Instagram Reels Safe Zone Checker - Free Tool | Kreatli</title>
         <meta
           name="description"
-          content="Instagram Reels safe zone checker: 1080×1920 vertical video — preview profile, caption, and audio UI. Reels safe zone vs TikTok: compare with our TikTok checker. Free tool."
+          content="Instagram Reels safe zone checker: preview Reels UI overlay and safe margins on 1080×1920 uploads—Instagram Reels UI overlay &amp; safe margin visualization. Compare TikTok in our TikTok checker. Sign in to use the tool."
         />
         <meta property="og:title" content="Instagram Reels Safe Zone Checker - Free Tool | Kreatli" />
         <meta
@@ -41,10 +41,20 @@ export default function InstagramSafeZoneCheckerPage() {
       <div className="p-6 pb-12">
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-col gap-4 pb-4 pt-8">
-            <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Instagram Safe Zone Checker</h1>
+            <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">
+              Instagram Reels safe zone checker
+            </h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
-              Upload your Instagram Reels video to preview where UI overlays appear. Keep your text, logos, and visuals
-              in the safe zone so they won't be covered by Instagram's UI.
+              See the <strong className="font-semibold text-foreground-700">Instagram Reels UI overlay</strong> on your
+              video—profile, audio, captions, and safe margins—before you post. For TikTok comparisons, use the{' '}
+              <NextLink href="/safe-zone-checker/tiktok-safe-zone-checker" className="text-primary underline underline-offset-2">
+                TikTok checker
+              </NextLink>
+              . Pixels and theory:{' '}
+              <NextLink href="/guides/instagram-reels-safe-zone" className="text-primary underline underline-offset-2">
+                Instagram Reels safe zone guide
+              </NextLink>
+              .
             </p>
           </div>
           <FreeToolsEntitlementSection

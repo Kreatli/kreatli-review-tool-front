@@ -9,6 +9,11 @@ export const homeFaqs: FAQItem[] = [
       'Kreatli is a Video Collaboration & Review Platform that combines video review, project management, file storage, and team communication in one workspace. It replaces the need to juggle Google Drive, Frame.io, Slack, and separate PM tools. Features include frame-accurate video review, board-driven tasks, media approval workflows, and secure cloud storage — all purpose-built for video teams, agencies, and content creators.',
   },
   {
+    question: 'Is it spelled Kreatli or Kreatly?',
+    answer:
+      'The product name is spelled Kreatli (with an i). People sometimes type “Kreatly” in search—either spelling leads here.',
+  },
+  {
     question: 'How does Kreatli organize my files?',
     answer:
       'Files are organized by project with filtering by status, type, size, and tags. Every file keeps a full version history so you can track changes and revert if needed. Unlike basic storage, files stay linked to their project conversations, review comments, and approval status — so you always see the full context without digging through folders.',

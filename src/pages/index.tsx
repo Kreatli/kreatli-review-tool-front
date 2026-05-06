@@ -19,7 +19,7 @@ const PUBLISHED_REVALIDATE_TIME = 3600;
 
 const MARKETING_TITLE = 'Kreatli | Video Collaboration & Review Platform';
 const META_DESCRIPTION =
-  'Kreatli is a Video Collaboration & Review Platform that helps video teams streamline video production workflows. Get frame-accurate feedback, manage projects, collaborate in real-time, and deliver faster—all in one place.';
+  'Kreatli is a video review platform and Video Collaboration & Review workspace for production teams. Get frame-accurate feedback, manage projects, collaborate in real time, and deliver faster—all in one place.';
 
 interface Props {
   comparisons: ISbStoryData<PageStoryblok>[];

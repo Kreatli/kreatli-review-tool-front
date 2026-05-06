@@ -19,7 +19,7 @@ export default function TikTokSafeZoneCheckerPage() {
         <title>TikTok Safe Zone Checker - Free Preview Tool | Kreatli</title>
         <meta
           name="description"
-          content="TikTok safe zone checker: 1080×1920 video, text typically safe within ~1080×1420px — preview profile, captions, and buttons before posting. Reels safe zone differs — compare with Instagram Reels checker."
+          content="Use this TikTok safe zone checker tool to instantly preview 1080×1920 UI overlays—not just read specs. TikTok safe zone overlay on your upload. Want depth? Read the TikTok safe zone guide. Sign in to use the tool."
         />
         <meta property="og:title" content="TikTok Safe Zone Checker - Free Preview Tool | Kreatli" />
         <meta
@@ -43,8 +43,12 @@ export default function TikTokSafeZoneCheckerPage() {
           <div className="flex flex-col gap-4 pb-4 pt-8">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">TikTok Safe Zone Checker</h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
-              Upload your TikTok video to preview where profile info, music tracks, and engagement buttons appear. Keep
-              captions, text, and visuals in the safe zone to avoid UI overlays.
+              Upload your video to preview <strong className="font-semibold text-foreground-700">TikTok safe zone</strong>{' '}
+              overlays in seconds. New to the topic? Read the{' '}
+              <NextLink href="/guides/tiktok-safe-zone" className="text-primary underline underline-offset-2">
+                TikTok safe zone guide
+              </NextLink>{' '}
+              for pixels and templates—then validate here interactively.
             </p>
           </div>
           <FreeToolsEntitlementSection

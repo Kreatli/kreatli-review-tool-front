@@ -48,6 +48,16 @@ export const imageReviewerFaqs = [
     answer:
       'Image review streamlines creative workflows by making feedback visual and location-specific. Instead of describing "the top-right area," reviewers point directly to the spot and add a comment or highlight. Designers see exactly what to change, resolution tracking keeps rounds organized, and clients can review images via a link without accounts. That speeds up approvals and reduces revision cycles for photos, graphics, and visual assets.',
   },
+  {
+    question: 'How do I invite teammates to image review?',
+    answer:
+      'Add colleagues to your Kreatli workspace or project so they can open the same image, see every pin and comment in real time, and resolve feedback threads. For external stakeholders, use a guest review link—they can mark up and reply without creating an account.',
+  },
+  {
+    question: 'What is client image review with guest links?',
+    answer:
+      'Client image review in Kreatli means you share one secure URL to the still; your client marks up the exact pixels, leaves notes, and you keep approval history in the project. No installs and no account required on their side for basic review.',
+  },
 ];
 
 export const ImageReviewerFAQ = () => {
@@ -200,6 +210,32 @@ export const ImageReviewerFAQ = () => {
             Designers see exactly what to change, resolution tracking keeps rounds organized, and clients can review
             images via a link without accounts. That speeds up approvals and reduces revision cycles for photos,
             graphics, and visual assets.
+          </p>
+        </div>
+      ),
+    },
+    {
+      key: 'invite-teammates',
+      title: 'How do I invite teammates to image review?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            Add colleagues to your Kreatli workspace or project so everyone sees the same image, pins, and threads.
+            Internal teammates can filter and resolve comments; external reviewers can use a guest link without signing
+            up.
+          </p>
+        </div>
+      ),
+    },
+    {
+      key: 'client-guest-review',
+      title: 'What is client image review with guest links?',
+      content: (
+        <div className="space-y-3 text-base text-foreground-500">
+          <p>
+            Send clients a secure URL to your still. They open it in the browser, add location-specific markup and
+            notes, and you keep a clear record of feedback and approvals in the same project—no separate image markup
+            tool or email attachments.
           </p>
         </div>
       ),

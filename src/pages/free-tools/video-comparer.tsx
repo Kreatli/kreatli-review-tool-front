@@ -58,6 +58,11 @@ const faqs = [
     answer:
       'Comparing videos helps you catch changes between cuts, color grades, and VFX passes. When feedback is pinned to the exact frame and timestamp, editors and colorists know precisely what changed and what to fix. Keeping both versions in one Kreatli project with resolution tracking speeds up approvals and reduces revision cycles for spots, reels, and campaigns.',
   },
+  {
+    question: 'Can I use a video comparer for A/B testing cuts or before-and-after versions?',
+    answer:
+      'Yes. Upload both versions to one Kreatli project and review them side by side or switch between them with frame-accurate comments. This is ideal for A/B cut comparisons, before-and-after color, and any workflow where stakeholders need to see two masters at the same moment.',
+  },
 ];
 
 export default function VideoComparerPage() {
@@ -71,7 +76,7 @@ export default function VideoComparerPage() {
           name="description"
           content="Compare two video versions side by side with frame-accurate comments. Spot changes for video review and approval — pair with our video feedback tool for full workflows."
         />
-<meta property="og:title" content="Compare Videos Side by Side – Free Video Comparer | Kreatli" />
+        <meta property="og:title" content="Compare Videos Side by Side – Free Video Comparer | Kreatli" />
         <meta
           property="og:description"
           content="Compare two video versions side by side with frame-accurate comments and annotations. Spot changes instantly. Try free with a 7-day trial."
@@ -133,6 +138,46 @@ export default function VideoComparerPage() {
         <DefinitionBlock term="Video Comparer">
           A video comparer is a tool that displays two video versions side by side so reviewers can spot differences between cuts. Frame-accurate playback lets you compare edits at the exact same moment in both versions. Video comparers help teams verify changes, catch regressions, and make informed approval decisions.
         </DefinitionBlock>
+
+        <section className="relative overflow-hidden px-6 pb-4" aria-labelledby="video-comparer-use-cases">
+          <div className="relative z-10 mx-auto max-w-3xl rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
+            <h2 id="video-comparer-use-cases" className="mb-3 font-sans text-lg font-bold sm:text-xl">
+              Common ways teams use a video comparer
+            </h2>
+            <ul className="list-inside list-disc space-y-2 text-sm text-foreground-600 sm:text-base">
+              <li>
+                <strong className="font-semibold text-foreground-700">Before/after color grades</strong> — match two
+                exports at the same timecode to confirm contrast and hues.
+              </li>
+              <li>
+                <strong className="font-semibold text-foreground-700">A/B cut reviews</strong> — producers pick between two
+                assemblies without re-opening files in isolation.
+              </li>
+              <li>
+                <strong className="font-semibold text-foreground-700">Client revision rounds</strong> — show “v2 vs v3”
+                with comments tied to each moment.
+              </li>
+              <li>
+                <strong className="font-semibold text-foreground-700">VFX and finishing passes</strong> — spot
+                unintended picture changes between delivered versions.
+              </li>
+            </ul>
+            <p className="mt-4 text-sm text-foreground-600 sm:text-base">
+              Pair side-by-side compare with a full{' '}
+              <NextLink href="/free-tools/video-reviewer" className="text-primary underline underline-offset-2">
+                video reviewer
+              </NextLink>{' '}
+              workflow for threaded notes on a single timeline, or see{' '}
+              <NextLink
+                href="/guides/video-frame-extractor-guide"
+                className="text-primary underline underline-offset-2"
+              >
+                how to extract frames from video
+              </NextLink>{' '}
+              when you need stills for approvals.
+            </p>
+          </div>
+        </section>
 
         <section className="relative overflow-hidden px-6 pb-4" aria-labelledby="video-comparer-review-workflows">
           <div className="relative z-10 mx-auto max-w-3xl rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">

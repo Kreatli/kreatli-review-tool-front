@@ -28,7 +28,8 @@ export function YouTubeBannerSpecsTable({ toolHref, toolLabel, className = '', s
         <h2 className="mb-4 font-sans text-xl font-bold sm:text-2xl">YouTube channel banner dimensions (2026)</h2>
       ) : null}
       <p className="mb-4 text-sm text-foreground-500">
-        Use these specs when designing channel art. Always confirm current requirements in YouTube Studio before
+        Reference values for YouTube channel banner size dimensions 2026, recommended size and safe area, and file
+        requirements—aligned with common Studio uploads. Always confirm current requirements in YouTube Studio before
         publishing.
       </p>
       <div className="overflow-hidden rounded-xl border border-foreground-200 bg-content1/30">

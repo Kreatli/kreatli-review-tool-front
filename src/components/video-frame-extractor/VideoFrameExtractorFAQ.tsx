@@ -1,151 +1,41 @@
 /* eslint-disable max-len */
 import { Accordion, AccordionItem } from '@heroui/react';
 import NextLink from 'next/link';
-import { ReactNode } from 'react';
+import { Fragment } from 'react';
 
-import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
+import { VIDEO_FRAME_EXTRACTOR_FAQ_DEFS } from '../../data/video-frame-extractor-faq-content';
 
 export const VideoFrameExtractorFAQ = () => {
-  const faqItems: Array<{
-    key: string;
-    title: string;
-    content: ReactNode;
-  }> = [
-    {
-      key: 'what-is-frame-extractor',
-      title: 'What is a video frame extractor?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            A video frame extractor lets you capture a still image (a single frame) from a video at a specific moment
-            in time. It’s commonly used to create thumbnails, posters, storyboards, or to share an exact visual moment
-            for feedback and review.
-          </p>
-        </div>
-      ),
-    },
-    {
-      key: 'account-access',
-      title: FREE_TOOL_PAGE_ACCOUNT_FAQ.question,
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>{FREE_TOOL_PAGE_ACCOUNT_FAQ.answer}</p>
-        </div>
-      ),
-    },
-    {
-      key: 'is-free',
-      title: 'Is this Video Frame Extractor free to try?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            Sign in to extract video frames and download stills as images. If your trial or plan isn’t active, start a
-            trial or choose a plan to continue.
-          </p>
-        </div>
-      ),
-    },
-    {
-      key: 'privacy',
-      title: 'Is my video uploaded to a server?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            No. Frame capture runs locally in your browser as part of this tool’s workflow. Your file stays on your
-            device.
-          </p>
-          <p>
-            If you need secure cloud sharing, versioning, and approvals, check out{' '}
-            <NextLink href="/platform/secure-asset-storage" className="text-primary underline underline-offset-2">
-              secure asset storage
-            </NextLink>{' '}
-            and review workflows in Kreatli.
-          </p>
-        </div>
-      ),
-    },
-    {
-      key: 'supported-formats',
-      title: 'What video formats does it support?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            The tool supports <strong>MP4</strong>, <strong>MOV</strong>, and <strong>WebM</strong> files.
-          </p>
-          <p>
-            Note: playback support can vary by browser and codec. If a video won’t load, try exporting as H.264 MP4 from
-            your editor or testing in another modern browser.
-          </p>
-        </div>
-      ),
-    },
-    {
-      key: 'export-formats',
-      title: 'Can I export frames as PNG or JPG?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            Yes. Export as <strong>PNG</strong> for best quality (recommended) or <strong>JPG</strong> for smaller files.
-          </p>
-        </div>
-      ),
-    },
-    {
-      key: 'download-zip',
-      title: 'Can I download multiple frames at once?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            Yes. You can download your captured frames as a <strong>ZIP</strong>, including either all frames or only
-            selected frames.
-          </p>
-        </div>
-      ),
-    },
-    {
-      key: 'best-thumbnail',
-      title: 'How do I choose the best frame for a thumbnail?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            Capture a few frames around your target moment, then pick the clearest one—look for sharp focus, minimal
-            motion blur, readable text, and a strong facial expression if applicable.
-          </p>
-          <p>
-            A practical workflow is to export a small set as a ZIP and share it for quick feedback with your team or
-            client.
-          </p>
-        </div>
-      ),
-    },
-    {
-      key: 'mobile',
-      title: 'Does it work on mobile?',
-      content: (
-        <div className="space-y-3 text-base text-foreground-500">
-          <p>
-            It can work on modern mobile browsers, but large video files may be slower to decode and scrub on mobile
-            devices. For best performance, use a desktop browser when extracting many frames.
-          </p>
-        </div>
-      ),
-    },
-  ];
-
   return (
     <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
       <div className="relative z-10 mx-auto max-w-4xl">
         <div className="mb-8 text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
           <p className="mx-auto max-w-2xl text-foreground-500">
-            Common questions about extracting still frames from video, export formats, and privacy.
+            Common questions about extracting still frames from video, video-to-frame workflows, downloads, and privacy.
           </p>
         </div>
 
         <Accordion variant="splitted" aria-label="Video frame extractor FAQs">
-          {faqItems.map((item) => (
+          {VIDEO_FRAME_EXTRACTOR_FAQ_DEFS.map((item) => (
             <AccordionItem key={item.key} title={<span className="font-semibold">{item.title}</span>}>
-              {item.content}
+              <div className="space-y-3 text-base text-foreground-500">
+                {item.key === 'privacy' ? (
+                  <Fragment>
+                    <p>{item.answer}</p>
+                    <p>
+                      <NextLink
+                        href="/platform/secure-asset-storage"
+                        className="text-primary underline underline-offset-2"
+                      >
+                        Open secure asset storage in Kreatli
+                      </NextLink>
+                    </p>
+                  </Fragment>
+                ) : (
+                  <p>{item.answer}</p>
+                )}
+              </div>
             </AccordionItem>
           ))}
         </Accordion>
@@ -168,4 +58,3 @@ export const VideoFrameExtractorFAQ = () => {
     </section>
   );
 };
-

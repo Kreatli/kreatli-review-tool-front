@@ -1,4 +1,6 @@
+/* eslint-disable simple-import-sort/imports */
 import Head from 'next/head';
+import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
@@ -25,10 +27,10 @@ export default function YouTubeBannerResizerPage() {
   return (
     <>
       <Head>
-        <title>YouTube Banner Resizer (2026) — Free, Instant Safe-Zone Preview | Kreatli</title>
+        <title>YT &amp; YouTube Banner Resizer (2026) — 2560×1440, 1546×423 Safe Zone | Kreatli</title>
         <meta
           name="description"
-          content="Free YouTube banner resizer for 2026 specs: 2560×1440px, 1546×423px safe zone, up to 6MB. Preview desktop, mobile, tablet, and TV. Resize channel art online."
+          content="Resize channel art to exact 2560×1440px with 1546×423px safe-zone preview in browser—YT / YouTube banner resizer. Sign in to export; start a trial if needed."
         />
         <meta property="og:title" content="YouTube Banner Resizer (2026) — Free, Instant Safe-Zone Preview | Kreatli" />
         <meta
@@ -65,11 +67,22 @@ export default function YouTubeBannerResizerPage() {
       <div className="p-6 pb-12">
         <div className="mx-auto max-w-5xl">
           <div className="flex flex-col gap-4 pb-6 pt-8">
-            <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">YouTube Banner Resizer</h1>
+            <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">
+              YouTube banner resizer — 2560×1440px &amp; 1546×423px safe zone
+            </h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
-              Resize your YouTube channel banner in the perfect dimensions (2560x1440px). Preview safe areas for mobile,
-              desktop, tablet, and TV devices. Sign in to use the resizer; start a trial or choose a plan if your
-              subscription isn’t active.
+              YT / YouTube channel art at the recommended{' '}
+              <strong className="font-semibold text-foreground-700">2560×1440px</strong> with a visible{' '}
+              <strong className="font-semibold text-foreground-700">1546×423px</strong> safe area before upload. Preview
+              desktop, mobile, tablet, and TV. Sign in to use the resizer; start a trial or choose a plan if your
+              subscription isn’t active. After export,{' '}
+              <NextLink
+                href="/safe-zone-checker/youtube-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
+                check Shorts vertical safe zones
+              </NextLink>{' '}
+              when you also post 9:16.
             </p>
           </div>
           <FreeToolsEntitlementSection

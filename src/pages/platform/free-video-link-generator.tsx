@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { pushSignupCtaClick } from '../../lib/gtmDataLayer';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
@@ -54,6 +55,41 @@ const faqs = [
       'If you need still frames from a video, use Kreatli’s Video Frame Extractor free tool. For full video review and approval with threaded comments and markup, use the Video Feedback Tool — both pair naturally with shareable review links from this page.',
   },
   {
+    question: 'What is a video link creator / link maker for video in Kreatli?',
+    answer:
+      'Kreatli acts as your video link creator: you upload a source file (MP4, MOV, WebM, or other supported formats in the workspace), then generate a secure review link—same idea as a link maker for video, but with approvals and threaded notes instead of anonymous hosting.',
+  },
+  {
+    question: 'How do I create a link for a video (or create links for videos)?',
+    answer:
+      'Upload each cut to Kreatli, open the asset, and generate a shareable review link. You can create separate links per file or version so every stakeholder has the right context.',
+  },
+  {
+    question: 'Does Kreatli work as a YouTube video link generator?',
+    answer:
+      'Kreatli is built for videos you upload to your workspace—not for turning public YouTube watch URLs into new links. Export or deliver your master (MP4/MOV/WebM), upload to Kreatli, then share a secure review link for frame-accurate feedback.',
+  },
+  {
+    question: 'What if I searched “videy links free” or similar?',
+    answer:
+      'That is usually a typo or another brand. Kreatli is a video review platform: you upload your file and create secure review links—not a separate “videy” product. If you need free-trial access, start with a Kreatli trial and generate your first links there.',
+  },
+  {
+    question: 'How is a video to link generator different from a generic file host?',
+    answer:
+      'A video-to-link workflow in Kreatli is built for review: you get a watch URL tied to frame-accurate comments, approvals, and versions—not just a static download page.',
+  },
+  {
+    question: 'Can I use this as an MP4 link generator for client review?',
+    answer:
+      'Yes. Upload your MP4 to Kreatli and generate a secure review link so clients stream in the browser. It works well when people search for an MP4 link generator but need approvals, not just raw downloads.',
+  },
+  {
+    question: 'Do you support a video URL generator for shareable review pages?',
+    answer:
+      'Yes—each asset can expose a shareable video URL or invite flow so reviewers open a dedicated review player with permissions you control.',
+  },
+  {
     question: 'Is the video link generator really free?',
     answer:
       'Kreatli offers a free way to start generating video review links so you can experience the workflow before upgrading. On paid plans, the free video link generator is included as part of the broader review and approval platform, with higher limits, advanced permissions, and support for larger teams and libraries. This lets small teams get started at no cost while giving growing organizations room to scale into more robust collaboration workflows.',
@@ -70,7 +106,7 @@ export default function FreeVideoLinkGeneratorPage() {
         <title>Free Video to Link Generator — Video Link Maker | Kreatli</title>
         <meta
           name="description"
-          content="Free video-to-link generator: create secure review links (video link maker / video to link workflow). Clients watch in-browser—no forced downloads. Pair with our video feedback tool or frame extractor when needed."
+          content="Free video link creator and link maker for video teams: upload MP4/MOV/WebM, generate secure review links, clients comment in-browser. Not a YouTube-URL scraper—built for masters you upload to Kreatli."
         />
         <link rel="canonical" href="https://kreatli.com/platform/free-video-link-generator" />
         <meta property="og:url" content="https://kreatli.com/platform/free-video-link-generator" />
@@ -112,7 +148,11 @@ export default function FreeVideoLinkGeneratorPage() {
               Free video to link generator
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Generate secure, shareable video review links in seconds — a practical <strong className="font-semibold text-foreground-700">video link maker</strong> for client review. Let people watch, comment, and approve online—no heavy attachments. Need stills from a cut? Use our{' '}
+              Generate secure, shareable video review links in seconds — a practical{' '}
+              <strong className="font-semibold text-foreground-700">video link creator</strong> and{' '}
+              <strong className="font-semibold text-foreground-700">video link maker</strong> for client review. Upload your
+              masters (MP4, MOV, WebM — not pasted streaming URLs), then share one link per cut. Let people watch,
+              comment, and approve online—no heavy attachments. Need stills from a cut? Use our{' '}
               <NextLink href="/free-tools/video-frame-extractor" className="text-primary underline underline-offset-2">
                 video frame extractor
               </NextLink>
@@ -123,7 +163,13 @@ export default function FreeVideoLinkGeneratorPage() {
               , open the feedback tool.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              <Button
+                as={NextLink}
+                href="/sign-up"
+                size="lg"
+                className="bg-foreground text-content1"
+                onClick={() => pushSignupCtaClick({ location: 'free_video_link_generator_hero_primary' })}
+              >
                 Start 7-day trial
               </Button>
               <Button
@@ -144,6 +190,23 @@ export default function FreeVideoLinkGeneratorPage() {
 
 
       <PlatformDefinitionBlock href="/platform/free-video-link-generator" />
+
+      <section className="relative overflow-hidden px-6 py-10" aria-labelledby="video-link-creator-heading">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-foreground-200 bg-content1/30 px-6 py-8 text-center sm:text-left">
+          <h2 id="video-link-creator-heading" className="font-sans text-xl font-bold sm:text-2xl">
+            Video link creator, link maker for video, and how uploads work
+          </h2>
+          <p className="mt-3 text-sm text-foreground-600 sm:text-base">
+            Kreatli is built around files you upload to the workspace (exports from Premiere, DaVinci, After Effects, or
+            deliverables from your pipeline). Vimeo and YouTube are great for publishing — when you need client{' '}
+            <strong className="font-semibold text-foreground-700">approvals</strong> and{' '}
+            <strong className="font-semibold text-foreground-700">frame-accurate notes</strong>, upload the same master
+            here and use this page’s workflow as your{' '}
+            <strong className="font-semibold text-foreground-700">video link creator</strong>.
+          </p>
+        </div>
+      </section>
+
       {/* How to Generate Video Links in Kreatli (step-by-step) */}
       <PlatformStepGuide
         stepsSectionTitle="How to Generate Video Links in Kreatli"
