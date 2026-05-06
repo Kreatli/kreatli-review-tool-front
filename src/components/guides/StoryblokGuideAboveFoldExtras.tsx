@@ -30,8 +30,16 @@ export function StoryblokGuideAboveFoldExtras({ slug }: Props) {
           YouTube channel banner dimensions (2026)
         </h2>
         <p className="mb-4 text-sm text-foreground-600">
-          Searching for banner safe area and size? Those specs belong on channel art — add them here so you don’t lose
-          clicks to mismatched snippets.
+          Searching for banner safe area and size? Those specs belong on channel art—this table matches high-intent queries
+          like channel banner size dimensions 2026 and safe area without losing clicks to thin snippets.
+        </p>
+        <p className="mb-4 text-sm text-foreground-600">
+          Looking for a <strong className="font-semibold text-foreground-700">transparent overlay for safe zone marking</strong>{' '}
+          on vertical video? Use the platform checkers below, or build a 1080×1920 PNG guide in your editor—our{' '}
+          <NextLink href="/guides/safe-zone-guide" className="text-primary underline underline-offset-2">
+            safe zone hub
+          </NextLink>{' '}
+          summarizes Reels, TikTok, and Shorts in one place.
         </p>
         <YouTubeBannerSpecsTable
           showHeading={false}
@@ -66,11 +74,14 @@ export function StoryblokGuideAboveFoldExtras({ slug }: Props) {
   if (variant === 'instagramReelsCross') {
     return (
       <section className="mb-8 rounded-2xl border border-foreground-200 bg-content1/40 p-6 sm:p-8">
-        <h2 className="mb-2 font-sans text-lg font-bold sm:text-xl">Instagram reel safe zone &amp; other platforms</h2>
+        <h2 className="mb-2 font-sans text-lg font-bold sm:text-xl">
+          Instagram reel / reels safe zone (2026) &amp; other platforms
+        </h2>
         <p className="mb-4 text-sm text-foreground-600">
-          If you also post on TikTok or Shorts, UI overlays differ. Use each platform’s checker and keep{' '}
-          <strong className="font-semibold text-foreground-700">instagram reel safe zone</strong> wording when you
-          design single verticals for multiple apps.
+          Whether visitors search <strong className="font-semibold text-foreground-700">instagram reel safe zone</strong>,{' '}
+          <strong className="font-semibold text-foreground-700">instagram reels safe zone</strong>, or{' '}
+          <strong className="font-semibold text-foreground-700">ig reels safe zone</strong>, the goal is the same: keep
+          titles and logos out of UI-heavy edges on 1080×1920. If you also post on TikTok or Shorts, overlays differ.
         </p>
         <ul className="list-inside list-disc space-y-1 text-sm text-foreground-600">
           <li>
@@ -116,7 +127,9 @@ export function StoryblokGuideAboveFoldExtras({ slug }: Props) {
       <section className="mb-8 rounded-2xl border border-foreground-200 bg-content1/40 p-6 sm:p-8">
         <h2 className="mb-2 font-sans text-lg font-bold sm:text-xl">YouTube Shorts vs channel banner art</h2>
         <p className="mb-4 text-sm text-foreground-600">
-          This guide focuses on Shorts safe zones. If you need{' '}
+          This guide focuses on Shorts safe zones (vertical 9:16). Broad{' '}
+          <strong className="font-semibold text-foreground-700">youtube safe zone</strong> searches can mean Shorts or
+          channel banner—if you need{' '}
           <strong className="font-semibold text-foreground-700">YouTube channel banner size dimensions 2026</strong>, use
           the spec table below and the resizer to validate safe areas on every device.
         </p>

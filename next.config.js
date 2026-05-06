@@ -654,6 +654,8 @@ const nextConfig = {
         destination: '/platform',
         permanent: true,
       },
+      // Legacy marketing path → canonical safe-zone hub (301). GSC may still attribute clicks to the old URL briefly;
+      // verify coverage in URL Inspection as Google migrates signals to /safe-zone-checker.
       {
         source: '/social-media-safe-zone-checker',
         destination: '/safe-zone-checker',

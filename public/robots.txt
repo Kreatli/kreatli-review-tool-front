@@ -1,4 +1,8 @@
 # robots.txt for kreatli.com
+#
+# Crawl hygiene: `Disallow: /*?*` blocks every URL that includes a query string for all user-agents.
+# Use Google Search Console → Pages → "Blocked by robots.txt" to confirm nothing important is excluded.
+# Typical intent: strip duplicate indexing from UTMs and tracking params.
 
 User-agent: *
 Allow: /

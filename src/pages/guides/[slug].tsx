@@ -7,8 +7,10 @@ import React, { useEffect, useState } from 'react';
 import { TableOfContent } from '../../components/blog/TableOfContent/TableOfContent';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { StoryblokGuideSupplementaryFaqs } from '../../components/guides/StoryblokGuideSupplementaryFaqs';
 import { ArticleStructuredData } from '../../components/shared/ArticleStructuredData';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
+import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { SeoHead } from '../../components/shared/SeoHead';
 import { StoryblokGuideAboveFoldExtras } from '../../components/guides/StoryblokGuideAboveFoldExtras';
 import { Icon } from '../../components/various/Icon';
@@ -60,6 +62,7 @@ export default function Page({ story, slug }: Props) {
     storyState?.content.metaFields?.description ||
     'Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place.';
   const ogImage = storyState?.content.image?.filename || undefined;
+  const supplementaryFaqs = seoOverride?.supplementaryFaqs ?? [];
 
   return (
     <>
@@ -86,6 +89,7 @@ export default function Page({ story, slug }: Props) {
         modifiedTime={storyState?.updated_at}
         imageUrl={ogImage}
       />
+      {supplementaryFaqs.length > 0 ? <FAQStructuredData faqs={supplementaryFaqs} /> : null}
       <Header />
       <Decorations />
       <div className="backdrop-blur-lg">
@@ -120,6 +124,9 @@ export default function Page({ story, slug }: Props) {
               )}
             </div>
             <StoryblokGuideAboveFoldExtras slug={slug} />
+            {supplementaryFaqs.length > 0 ? (
+              <StoryblokGuideSupplementaryFaqs faqs={supplementaryFaqs} ariaLabel="Quick answers for this guide" />
+            ) : null}
             <div className="flex w-full flex-col gap-8">
               {storyState?.content.body?.map((blok, index) => (
                 <React.Fragment key={blok._uid}>

@@ -20,6 +20,7 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { pushSignupCtaClick } from '../../lib/gtmDataLayer';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
@@ -52,6 +53,21 @@ const faqs = [
     question: 'Need a video frame extractor or deeper video review workflows?',
     answer:
       'If you need still frames from a video, use Kreatli’s Video Frame Extractor free tool. For full video review and approval with threaded comments and markup, use the Video Feedback Tool — both pair naturally with shareable review links from this page.',
+  },
+  {
+    question: 'How is a video to link generator different from a generic file host?',
+    answer:
+      'A video-to-link workflow in Kreatli is built for review: you get a watch URL tied to frame-accurate comments, approvals, and versions—not just a static download page.',
+  },
+  {
+    question: 'Can I use this as an MP4 link generator for client review?',
+    answer:
+      'Yes. Upload your MP4 to Kreatli and generate a secure review link so clients stream in the browser. It works well when people search for an MP4 link generator but need approvals, not just raw downloads.',
+  },
+  {
+    question: 'Do you support a video URL generator for shareable review pages?',
+    answer:
+      'Yes—each asset can expose a shareable video URL or invite flow so reviewers open a dedicated review player with permissions you control.',
   },
   {
     question: 'Is the video link generator really free?',
@@ -123,7 +139,13 @@ export default function FreeVideoLinkGeneratorPage() {
               , open the feedback tool.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
+              <Button
+                as={NextLink}
+                href="/sign-up"
+                size="lg"
+                className="bg-foreground text-content1"
+                onClick={() => pushSignupCtaClick({ location: 'free_video_link_generator_hero_primary' })}
+              >
                 Start 7-day trial
               </Button>
               <Button
