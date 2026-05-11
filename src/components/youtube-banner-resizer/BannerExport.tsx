@@ -2,10 +2,14 @@ import { addToast, Button, Radio, RadioGroup } from '@heroui/react';
 import { useState } from 'react';
 
 import { Icon } from '../various/Icon';
-import { CANVAS_HEIGHT, CANVAS_WIDTH, getContainRect } from './bannerGeometry';
+import { BannerPlacement, getRenderRect } from './bannerPlacement';
 
 interface BannerExportProps {
+  file?: File | null;
   imageUrl: string | null;
+  placement: BannerPlacement;
+  canvasWidth: number;
+  canvasHeight: number;
   exportFormat: 'png' | 'jpg';
   onExportFormatChange: (format: 'png' | 'jpg') => void;
   /** Called when user clicks Export. Return false to cancel export (e.g. after opening a gate modal). */
@@ -13,7 +17,11 @@ interface BannerExportProps {
 }
 
 export const BannerExport = ({
+  file,
   imageUrl,
+  placement,
+  canvasWidth,
+  canvasHeight,
   exportFormat,
   onExportFormatChange,
   onExportStart,
@@ -21,7 +29,7 @@ export const BannerExport = ({
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExport = async () => {
-    if (!imageUrl) return;
+    if (!imageUrl && !file) return;
 
     const proceed = onExportStart?.() !== false;
     if (!proceed) return;
@@ -30,8 +38,8 @@ export const BannerExport = ({
 
     try {
       const canvas = document.createElement('canvas');
-      canvas.width = CANVAS_WIDTH;
-      canvas.height = CANVAS_HEIGHT;
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
       const ctx = canvas.getContext('2d');
 
       if (!ctx) {
@@ -39,31 +47,35 @@ export const BannerExport = ({
       }
 
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
-      const response = await fetch(imageUrl);
-      if (!response.ok) {
-        throw new Error('Failed to load image for export');
-      }
-      const blob = await response.blob();
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
       let bitmap: ImageBitmap;
       try {
-        try {
-          bitmap = await createImageBitmap(blob, { imageOrientation: 'from-image' });
-        } catch {
-          bitmap = await createImageBitmap(blob);
+        if (file) {
+          try {
+            bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+          } catch {
+            bitmap = await createImageBitmap(file);
+          }
+        } else {
+          if (!imageUrl) throw new Error('Missing image source for export');
+          const response = await fetch(imageUrl);
+          if (!response.ok) throw new Error('Failed to load image for export');
+          const blob = await response.blob();
+          try {
+            bitmap = await createImageBitmap(blob, { imageOrientation: 'from-image' });
+          } catch {
+            bitmap = await createImageBitmap(blob);
+          }
         }
       } catch {
         throw new Error('Failed to load image for export');
       }
 
       try {
-        const dims = getContainRect(CANVAS_WIDTH, CANVAS_HEIGHT, bitmap.width, bitmap.height);
-        if (!dims) {
-          throw new Error('Failed to calculate image dimensions');
-        }
-        ctx.drawImage(bitmap, dims.x, dims.y, dims.width, dims.height);
+        // Export must match preview placement exactly: contain + pan (no cropping).
+        const rect = getRenderRect(canvasWidth, canvasHeight, bitmap.width, bitmap.height, placement);
+        ctx.drawImage(bitmap, rect.x, rect.y, rect.width, rect.height);
       } finally {
         bitmap.close();
       }
@@ -108,8 +120,6 @@ export const BannerExport = ({
           errorMessage = 'Failed to initialize canvas. Please refresh the page and try again.';
         } else if (error.message.includes('load image')) {
           errorMessage = 'Failed to load image for export. The image may be corrupted.';
-        } else if (error.message.includes('dimensions')) {
-          errorMessage = 'Failed to calculate image dimensions. Please try a different image.';
         }
       }
 

@@ -37,31 +37,19 @@ export const BannerFAQ = () => {
       key: 'file-formats',
       title: 'What file formats are supported?',
       content:
-        "You can upload PNG or JPG/JPEG images up to 10MB. The tool will resize your image to YouTube's recommended dimensions (2560 × 1440px) and export it in PNG or JPG format.",
-    },
-    {
-      key: 'resize-modes',
-      title: "What's the difference between Cover and Contain modes?",
-      content:
-        'Cover mode scales your image to fill the entire canvas (2560 × 1440px), maintaining aspect ratio. Parts of the image may be cropped. Contain mode scales your image to fit within the canvas, maintaining aspect ratio. There may be empty space filled with white.',
+        "You can upload JPEG/JPG, PNG, or WebP images up to 40MB. The tool resizes your image to your chosen canvas dimensions (default 2560 × 1440px) and exports it in PNG or JPG format.",
     },
     {
       key: 'positioning',
       title: 'Can I adjust the position of my image?',
       content:
-        'Yes! After uploading your image, you can use the arrow buttons in the Position controls to move your image up, down, left, or right. You can also click and drag the image directly on the canvas to reposition it.',
-    },
-    {
-      key: 'device-preview',
-      title: 'What do the device previews show?',
-      content:
-        'The device previews (Desktop, Mobile, Tablet, TV) show you exactly how your banner will appear on different devices. Each device has different viewport dimensions, so content outside the safe area may be cropped. Use these previews to ensure your important content stays visible.',
+        'Yes. After uploading, click and drag the image directly on the canvas to reposition it. The image is always resized to fit inside the canvas without cropping.',
     },
     {
       key: 'export-resolution',
       title: 'What resolution is the exported banner?',
       content:
-        "The exported banner is always 2560 × 1440 pixels, which is YouTube's recommended size. This ensures your banner looks crisp on all devices, from mobile phones to large TV screens.",
+        'The exported banner is the exact width and height you set in the Dimensions controls (default 2560 × 1440 pixels).',
     },
     {
       key: 'privacy',

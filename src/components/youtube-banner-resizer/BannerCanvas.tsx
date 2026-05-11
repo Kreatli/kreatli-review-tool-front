@@ -1,63 +1,32 @@
 import { cn } from '@heroui/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 import { Icon } from '../various/Icon';
-import { CANVAS_HEIGHT, CANVAS_WIDTH, getContainRect } from './bannerGeometry';
-import { PreviewMode } from './YouTubeBannerResizer';
-
-const CANVAS_ASPECT_RATIO = CANVAS_WIDTH / CANVAS_HEIGHT; // 16:9
-
-// Safe area dimensions (centered)
-const SAFE_AREA_WIDTH = 1546;
-const SAFE_AREA_HEIGHT = 423;
-const SAFE_AREA_X = (CANVAS_WIDTH - SAFE_AREA_WIDTH) / 2; // 507
-const SAFE_AREA_Y = (CANVAS_HEIGHT - SAFE_AREA_HEIGHT) / 2; // 508.5
-
-// Device viewport dimensions (approximate)
-const DEVICE_VIEWPORTS = {
-  desktop: { width: CANVAS_WIDTH, height: CANVAS_HEIGHT, x: 0, y: 0 },
-  mobile: { width: 1280, height: 720, x: (CANVAS_WIDTH - 1280) / 2, y: (CANVAS_HEIGHT - 720) / 2 },
-  tablet: { width: 2048, height: 1152, x: (CANVAS_WIDTH - 2048) / 2, y: (CANVAS_HEIGHT - 1152) / 2 },
-  tv: { width: CANVAS_WIDTH, height: CANVAS_HEIGHT, x: 0, y: 0 },
-};
+import { BannerPlacement, getRenderRect } from './bannerPlacement';
 
 interface BannerCanvasProps {
   imageUrl: string | null;
   naturalWidth: number;
   naturalHeight: number;
-  showSafeAreas: boolean;
-  previewMode: PreviewMode;
+  canvasWidth: number;
+  canvasHeight: number;
+  placement: BannerPlacement;
+  onPlacementChange: (next: BannerPlacement) => void;
   getRootProps: () => DropzoneRootProps;
   getInputProps: () => DropzoneInputProps;
   isDragActive: boolean;
   isLoading?: boolean;
 }
 
-/** Fit image within canvas (contain), centered. Display dimensions only. */
-function getContainDisplayDims(
-  naturalWidth: number,
-  naturalHeight: number,
-  displaySizeWidth: number,
-) {
-  if (!naturalWidth || !naturalHeight || !displaySizeWidth) return null;
-  const r = getContainRect(CANVAS_WIDTH, CANVAS_HEIGHT, naturalWidth, naturalHeight);
-  if (!r) return null;
-  const scaleCanvas = displaySizeWidth / CANVAS_WIDTH;
-  return {
-    width: r.width * scaleCanvas,
-    height: r.height * scaleCanvas,
-    x: r.x * scaleCanvas,
-    y: r.y * scaleCanvas,
-  };
-}
-
 export const BannerCanvas = ({
   imageUrl,
   naturalWidth,
   naturalHeight,
-  showSafeAreas,
-  previewMode,
+  canvasWidth,
+  canvasHeight,
+  placement,
+  onPlacementChange,
   getRootProps,
   getInputProps,
   isDragActive,
@@ -66,13 +35,21 @@ export const BannerCanvas = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [displaySize, setDisplaySize] = useState({ width: 0, height: 0 });
+  const dragRef = useRef<{
+    isDragging: boolean;
+    startClientX: number;
+    startClientY: number;
+    startOffsetX: number;
+    startOffsetY: number;
+  }>({ isDragging: false, startClientX: 0, startClientY: 0, startOffsetX: 0, startOffsetY: 0 });
 
   // Calculate display size maintaining aspect ratio
   useEffect(() => {
     const updateDisplaySize = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const displayHeight = containerWidth / CANVAS_ASPECT_RATIO;
+        const aspect = canvasWidth && canvasHeight ? canvasWidth / canvasHeight : 16 / 9;
+        const displayHeight = containerWidth / aspect;
         setDisplaySize({ width: containerWidth, height: displayHeight });
       }
     };
@@ -80,17 +57,22 @@ export const BannerCanvas = ({
     updateDisplaySize();
     window.addEventListener('resize', updateDisplaySize);
     return () => window.removeEventListener('resize', updateDisplaySize);
-  }, []);
+  }, [canvasHeight, canvasWidth]);
 
-  const dims = getContainDisplayDims(naturalWidth, naturalHeight, displaySize.width);
-  const viewport = DEVICE_VIEWPORTS[previewMode];
-  const scale = displaySize.width / CANVAS_WIDTH;
+  const scale = displaySize.width / canvasWidth;
+
+  const renderRect = useMemo(() => {
+    if (!imageUrl || !naturalWidth || !naturalHeight) return null;
+    return getRenderRect(canvasWidth, canvasHeight, naturalWidth, naturalHeight, placement);
+  }, [canvasHeight, canvasWidth, imageUrl, naturalHeight, naturalWidth, placement]);
+
+  const isInteractive = !!imageUrl && !isLoading && displaySize.width > 0 && displaySize.height > 0;
 
   return (
     <div
       ref={containerRef}
       className="relative w-full overflow-hidden rounded-lg border border-foreground-200 bg-foreground-50"
-      style={{ aspectRatio: `${CANVAS_WIDTH} / ${CANVAS_HEIGHT}` }}
+      style={{ aspectRatio: `${canvasWidth} / ${canvasHeight}` }}
     >
       {/* Empty State / Upload Zone */}
       {!imageUrl && (
@@ -118,8 +100,8 @@ export const BannerCanvas = ({
               </p>
               <p className="text-sm text-foreground-500">or click to browse</p>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-foreground-400">
-                <span className="rounded-full bg-foreground-100 px-3 py-1">PNG, JPG</span>
-                <span className="rounded-full bg-foreground-100 px-3 py-1">Up to 10MB</span>
+                <span className="rounded-full bg-foreground-100 px-3 py-1">JPEG, PNG, WebP</span>
+                <span className="rounded-full bg-foreground-100 px-3 py-1">Less than 40MB</span>
                 <span className="rounded-full bg-foreground-100 px-3 py-1">2560×1440px output</span>
               </div>
             </div>
@@ -131,28 +113,84 @@ export const BannerCanvas = ({
       {/* Canvas with Image */}
       {imageUrl && (
         <div className="relative h-full w-full">
-          {/* Background (for contain mode) */}
+          {/* Background */}
           <div className="absolute inset-0 bg-white" />
 
           {/* Image */}
-          {dims && (
+          {renderRect && (
             <img
               ref={imageRef}
               src={imageUrl}
-              alt={`YouTube banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Canvas size: ${CANVAS_WIDTH} × ${CANVAS_HEIGHT} pixels.`}
+              alt={`Banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Canvas size: ${canvasWidth} × ${canvasHeight} pixels.`}
               className="absolute max-w-none select-none"
               style={{
-                width: dims.width,
-                height: dims.height,
-                left: dims.x,
-                top: dims.y,
-                objectFit: 'contain',
+                width: renderRect.width * scale,
+                height: renderRect.height * scale,
+                left: renderRect.x * scale,
+                top: renderRect.y * scale,
+                objectFit: 'fill',
+                cursor: isInteractive ? 'grab' : 'default',
               }}
               draggable={false}
               role="img"
               aria-label={`Banner image, ${naturalWidth} by ${naturalHeight} pixels`}
+              onPointerDown={(e) => {
+                if (!isInteractive) return;
+                // Only left click/touch.
+                if ('button' in e && typeof e.button === 'number' && e.button !== 0) return;
+                e.preventDefault();
+                (e.currentTarget as HTMLImageElement).setPointerCapture?.(e.pointerId);
+                dragRef.current = {
+                  isDragging: true,
+                  startClientX: e.clientX,
+                  startClientY: e.clientY,
+                  startOffsetX: placement.offsetX,
+                  startOffsetY: placement.offsetY,
+                };
+              }}
+              onPointerMove={(e) => {
+                if (!dragRef.current.isDragging || !isInteractive) return;
+                e.preventDefault();
+                const dx = (e.clientX - dragRef.current.startClientX) / scale;
+                const dy = (e.clientY - dragRef.current.startClientY) / scale;
+                onPlacementChange({
+                  ...placement,
+                  offsetX: dragRef.current.startOffsetX + dx,
+                  offsetY: dragRef.current.startOffsetY + dy,
+                });
+              }}
+              onPointerUp={(e) => {
+                if (!dragRef.current.isDragging) return;
+                e.preventDefault();
+                dragRef.current.isDragging = false;
+                (e.currentTarget as HTMLImageElement).releasePointerCapture?.(e.pointerId);
+              }}
+              onPointerCancel={(e) => {
+                if (!dragRef.current.isDragging) return;
+                e.preventDefault();
+                dragRef.current.isDragging = false;
+                (e.currentTarget as HTMLImageElement).releasePointerCapture?.(e.pointerId);
+              }}
             />
           )}
+
+          {/* Crop frame overlay (Adobe-like): border + 3x3 grid + corner handles */}
+          <div className="pointer-events-none absolute inset-0 z-10">
+            {/* Keep overlay purely informational so preview matches export */}
+            <div className="absolute inset-0 border-2 border-white/90" />
+            {/* 3x3 grid */}
+            <div className="absolute inset-0">
+              <div className="absolute inset-y-0 left-1/3 w-px bg-white/60" />
+              <div className="absolute inset-y-0 left-2/3 w-px bg-white/60" />
+              <div className="absolute inset-x-0 top-1/3 h-px bg-white/60" />
+              <div className="absolute inset-x-0 top-2/3 h-px bg-white/60" />
+            </div>
+            {/* Corner handles */}
+            <div className="absolute left-0 top-0 size-6 border-l-4 border-t-4 border-white/90" />
+            <div className="absolute right-0 top-0 size-6 border-r-4 border-t-4 border-white/90" />
+            <div className="absolute bottom-0 left-0 size-6 border-b-4 border-l-4 border-white/90" />
+            <div className="absolute bottom-0 right-0 size-6 border-b-4 border-r-4 border-white/90" />
+          </div>
 
           {/* Loading Overlay */}
           {isLoading && (
@@ -165,66 +203,8 @@ export const BannerCanvas = ({
             </div>
           )}
 
-          {/* Device Viewport Overlay */}
-          {previewMode !== 'desktop' && (
-            <div
-              className="pointer-events-none absolute border-2 border-dashed border-primary/60 bg-primary/10 transition-all duration-300"
-              style={{
-                left: viewport.x * scale,
-                top: viewport.y * scale,
-                width: viewport.width * scale,
-                height: viewport.height * scale,
-              }}
-            >
-              <div className="pointer-events-auto absolute -top-6 left-0 rounded-md bg-primary px-2 py-0.5 text-xs font-semibold text-white shadow-sm">
-                {previewMode.charAt(0).toUpperCase() + previewMode.slice(1)} View
-              </div>
-            </div>
-          )}
-
-          {/* Safe Area Overlay */}
-          {showSafeAreas && (
-            <>
-              <div
-                className="pointer-events-none absolute border-2 border-success bg-success/10 transition-all duration-300"
-                style={{
-                  left: SAFE_AREA_X * scale,
-                  top: SAFE_AREA_Y * scale,
-                  width: SAFE_AREA_WIDTH * scale,
-                  height: SAFE_AREA_HEIGHT * scale,
-                }}
-              >
-                <div className="pointer-events-auto absolute -top-6 left-0 rounded-md bg-success px-2 py-0.5 text-xs font-semibold text-white shadow-sm">
-                  Safe Area (All Devices)
-                </div>
-              </div>
-            </>
-          )}
-
           {/* Canvas Border */}
           <div className="pointer-events-none absolute inset-0 border-2 border-foreground-300" />
-        </div>
-      )}
-
-      {/* Info Overlay */}
-      {imageUrl && !isLoading && (
-        <div className="absolute bottom-2 left-2 z-10 rounded-lg bg-black/80 backdrop-blur-sm px-3 py-2 text-xs text-white shadow-lg">
-          <div className="flex flex-col gap-1">
-            <div className="font-medium">
-              Canvas: {CANVAS_WIDTH} × {CANVAS_HEIGHT}px
-            </div>
-            {naturalWidth > 0 && naturalHeight > 0 && (
-              <div className="flex items-center gap-2 text-foreground-300">
-                <span>Image: {naturalWidth} × {naturalHeight}px</span>
-                {Math.abs(naturalWidth / naturalHeight - CANVAS_WIDTH / CANVAS_HEIGHT) > 0.1 && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-warning/20 px-2 py-0.5 text-warning">
-                    <Icon icon="warning" size={12} />
-                    Aspect ratio differs
-                  </span>
-                )}
-              </div>
-            )}
-          </div>
         </div>
       )}
 
