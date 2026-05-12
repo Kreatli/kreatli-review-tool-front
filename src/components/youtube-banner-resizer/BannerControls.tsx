@@ -19,7 +19,10 @@ export const BannerControls = ({
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
           <h2 className="font-sans text-lg font-semibold text-foreground-900">Resize image</h2>
-          <p className="mt-1 text-xs text-foreground-500">Move the frame to choose what exports.</p>
+          <p className="mt-1 text-xs text-foreground-500">
+            Drag the frame to move it; drag corners to resize (always 16:9 like YouTube). Download is always{' '}
+            <strong className="font-medium text-foreground-700">2560×1440</strong> px.
+          </p>
         </div>
         {hasImage && onReupload && (
           <Button

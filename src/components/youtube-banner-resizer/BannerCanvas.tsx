@@ -5,19 +5,51 @@ import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 import { Icon } from '../various/Icon';
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
 import {
-  clampFrameAnchor,
-  FrameAnchor,
-  frameRectFromAnchor,
-  getDefaultFrameAnchor,
+  applyYoutubeAspectCornerResize,
+  clampFrameRelative,
+  CornerResizeHandle,
+  FrameRelative,
+  frameRectFromRelative,
   getNaturalCropRect,
+  relativeToImgLocal,
+  imgLocalToRelative,
 } from './bannerViewport';
+
+function clientToImgLocal(
+  clientX: number,
+  clientY: number,
+  stageEl: HTMLElement,
+  imgRect: { x: number; y: number; width: number; height: number },
+): { lx: number; ly: number } {
+  const r = stageEl.getBoundingClientRect();
+  return {
+    lx: clientX - r.left - imgRect.x,
+    ly: clientY - r.top - imgRect.y,
+  };
+}
+
+function cursorForHandle(h: CornerResizeHandle): string {
+  switch (h) {
+    case 'nw':
+    case 'se':
+      return 'nwse-resize';
+    case 'ne':
+    case 'sw':
+      return 'nesw-resize';
+    default:
+      return 'default';
+  }
+}
+
+const HANDLE =
+  'absolute z-30 box-border h-3.5 w-3.5 rounded-sm border-2 border-primary-600 bg-white shadow-sm touch-manipulation';
 
 interface BannerCanvasProps {
   imageUrl: string | null;
   naturalWidth: number;
   naturalHeight: number;
-  frameAnchor: FrameAnchor;
-  onFrameAnchorChange: (next: FrameAnchor) => void;
+  frameRelative: FrameRelative;
+  onFrameRelativeChange: (next: FrameRelative) => void;
   onCropRegionReady: (crop: { sx: number; sy: number; sw: number; sh: number } | null) => void;
   getRootProps: () => DropzoneRootProps;
   getInputProps: () => DropzoneInputProps;
@@ -29,8 +61,8 @@ export const BannerCanvas = ({
   imageUrl,
   naturalWidth,
   naturalHeight,
-  frameAnchor,
-  onFrameAnchorChange,
+  frameRelative,
+  onFrameRelativeChange,
   onCropRegionReady,
   getRootProps,
   getInputProps,
@@ -39,25 +71,18 @@ export const BannerCanvas = ({
 }: BannerCanvasProps) => {
   const stageRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const imgRectRef = useRef({ x: 0, y: 0, width: 0, height: 0 });
+  const onFrameRelativeChangeRef = useRef(onFrameRelativeChange);
+  onFrameRelativeChangeRef.current = onFrameRelativeChange;
+
+  const frameRelativeRef = useRef(frameRelative);
+  frameRelativeRef.current = frameRelative;
+
+  const dragListenersCleanupRef = useRef<(() => void) | null>(null);
 
   /** Image box in stage-local CSS pixels (object-fit: contain). */
   const [imgRect, setImgRect] = useState({ x: 0, y: 0, width: 0, height: 0 });
-
-  const dragRef = useRef<{
-    pointerId: number | null;
-    startAnchor: FrameAnchor;
-    startClientX: number;
-    startClientY: number;
-    rangeX: number;
-    rangeY: number;
-  }>({
-    pointerId: null,
-    startAnchor: getDefaultFrameAnchor(),
-    startClientX: 0,
-    startClientY: 0,
-    rangeX: 0,
-    rangeY: 0,
-  });
+  imgRectRef.current = imgRect;
 
   const measure = useCallback(() => {
     const stage = stageRef.current;
@@ -91,18 +116,21 @@ export const BannerCanvas = ({
     };
   }, [measure]);
 
-  const clampedAnchor = useMemo(
-    () => clampFrameAnchor(frameAnchor, imgRect.width, imgRect.height),
-    [frameAnchor, imgRect.height, imgRect.width],
+  useEffect(
+    () => () => {
+      dragListenersCleanupRef.current?.();
+      dragListenersCleanupRef.current = null;
+    },
+    [],
   );
 
   const frameRect = useMemo(
     () =>
-      frameRectFromAnchor(
+      frameRectFromRelative(
         { x: imgRect.x, y: imgRect.y, width: imgRect.width, height: imgRect.height },
-        clampedAnchor,
+        frameRelative,
       ),
-    [clampedAnchor, imgRect.height, imgRect.width, imgRect.x, imgRect.y],
+    [frameRelative, imgRect.height, imgRect.width, imgRect.x, imgRect.y],
   );
 
   useLayoutEffect(() => {
@@ -120,12 +148,97 @@ export const BannerCanvas = ({
 
   const isInteractive = !!imageUrl && !isLoading && imgRect.width > 0 && imgRect.height > 0;
 
+  const attachPointerDrag = useCallback(
+    (pointerId: number, onMove: (e: PointerEvent) => void, onEnd: (e: PointerEvent) => void) => {
+      dragListenersCleanupRef.current?.();
+      const move = (e: PointerEvent) => {
+        if (e.pointerId !== pointerId) return;
+        onMove(e);
+      };
+      const end = (e: PointerEvent) => {
+        if (e.pointerId !== pointerId) return;
+        window.removeEventListener('pointermove', move);
+        window.removeEventListener('pointerup', end);
+        window.removeEventListener('pointercancel', end);
+        dragListenersCleanupRef.current = null;
+        onEnd(e);
+      };
+      window.addEventListener('pointermove', move);
+      window.addEventListener('pointerup', end);
+      window.addEventListener('pointercancel', end);
+      dragListenersCleanupRef.current = () => {
+        window.removeEventListener('pointermove', move);
+        window.removeEventListener('pointerup', end);
+        window.removeEventListener('pointercancel', end);
+      };
+    },
+    [],
+  );
+
+  const beginMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (!isInteractive) return;
+      if (e.button !== 0) return;
+      e.preventDefault();
+      const stage = stageRef.current;
+      if (!stage) return;
+      const ir = imgRectRef.current;
+      const { fl, ft, fw, fh } = relativeToImgLocal(frameRelativeRef.current, ir.width, ir.height);
+      const { lx, ly } = clientToImgLocal(e.clientX, e.clientY, stage, ir);
+      const startLx = lx;
+      const startLy = ly;
+      attachPointerDrag(e.pointerId, (ev) => {
+        const ir2 = imgRectRef.current;
+        const st = stageRef.current;
+        if (!st) return;
+        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+        const nFl = fl + (cur.lx - startLx);
+        const nFt = ft + (cur.ly - startLy);
+        const clampedFl = Math.min(Math.max(0, nFl), ir2.width - fw);
+        const clampedFt = Math.min(Math.max(0, nFt), ir2.height - fh);
+        const next = clampFrameRelative(
+          imgLocalToRelative(clampedFl, clampedFt, fw, fh, ir2.width, ir2.height),
+          ir2.width,
+          ir2.height,
+        );
+        onFrameRelativeChangeRef.current(next);
+      }, () => {});
+    },
+    [attachPointerDrag, isInteractive],
+  );
+
+  const beginResize = useCallback(
+    (handle: CornerResizeHandle) => (e: React.PointerEvent) => {
+      if (!isInteractive) return;
+      if (e.button !== 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const stage = stageRef.current;
+      if (!stage) return;
+      const ir = imgRectRef.current;
+      const startRect = relativeToImgLocal(frameRelativeRef.current, ir.width, ir.height);
+      attachPointerDrag(e.pointerId, (ev) => {
+        const ir2 = imgRectRef.current;
+        const st = stageRef.current;
+        if (!st) return;
+        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+        const nextLocal = applyYoutubeAspectCornerResize(handle, startRect, cur.lx, cur.ly, ir2.width, ir2.height);
+        const next = clampFrameRelative(
+          imgLocalToRelative(nextLocal.fl, nextLocal.ft, nextLocal.fw, nextLocal.fh, ir2.width, ir2.height),
+          ir2.width,
+          ir2.height,
+        );
+        onFrameRelativeChangeRef.current(next);
+      }, () => {});
+    },
+    [attachPointerDrag, isInteractive],
+  );
+
   return (
     <div
       className="relative w-full overflow-hidden rounded-lg border border-foreground-200 bg-foreground-50"
       style={{ aspectRatio: `${CANVAS_WIDTH} / ${CANVAS_HEIGHT}` }}
     >
-      {/* Empty State / Upload Zone */}
       {!imageUrl && (
         <div
           {...getRootProps()}
@@ -163,7 +276,6 @@ export const BannerCanvas = ({
 
       {imageUrl && (
         <div ref={stageRef} className="relative h-full w-full bg-foreground-100">
-          {/* Layer 1 — static image (no CSS transform; only centered contain layout) */}
           <img
             ref={imageRef}
             src={imageUrl}
@@ -180,7 +292,6 @@ export const BannerCanvas = ({
             onLoad={measure}
           />
 
-          {/* Layer 2 — dim outside the export frame (viewport window) */}
           {isInteractive && (
             <div
               className="pointer-events-none absolute z-10"
@@ -194,13 +305,11 @@ export const BannerCanvas = ({
             />
           )}
 
-          {/* Layer 3 — draggable frame + Layer 4/5 guides inside frame */}
           {isInteractive && (
             <div
               className={cn(
                 'absolute z-20 touch-none rounded-sm border-2 border-dashed border-primary-500',
                 'shadow-[0_0_0_1px_rgba(59,130,246,0.35),0_0_24px_rgba(59,130,246,0.25)]',
-                'cursor-grab active:cursor-grabbing',
               )}
               style={{
                 left: frameRect.x,
@@ -208,68 +317,51 @@ export const BannerCanvas = ({
                 width: frameRect.width,
                 height: frameRect.height,
               }}
-              onPointerDown={(e) => {
-                if (!isInteractive) return;
-                if ('button' in e && typeof e.button === 'number' && e.button !== 0) return;
-                e.preventDefault();
-                e.stopPropagation();
-                const { width: fw, height: fh } = frameRect;
-                const rangeX = Math.max(0, imgRect.width - fw);
-                const rangeY = Math.max(0, imgRect.height - fh);
-                dragRef.current = {
-                  pointerId: e.pointerId,
-                  startAnchor: frameAnchor,
-                  startClientX: e.clientX,
-                  startClientY: e.clientY,
-                  rangeX,
-                  rangeY,
-                };
-                (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
-              }}
-              onPointerMove={(e) => {
-                const d = dragRef.current;
-                if (d.pointerId !== e.pointerId) return;
-                if (d.rangeX <= 0 && d.rangeY <= 0) return;
-                e.preventDefault();
-                const dx = e.clientX - d.startClientX;
-                const dy = e.clientY - d.startClientY;
-                const next: FrameAnchor = {
-                  x:
-                    d.rangeX > 0
-                      ? d.startAnchor.x + dx / d.rangeX
-                      : d.startAnchor.x,
-                  y:
-                    d.rangeY > 0
-                      ? d.startAnchor.y + dy / d.rangeY
-                      : d.startAnchor.y,
-                };
-                onFrameAnchorChange(clampFrameAnchor(next, imgRect.width, imgRect.height));
-              }}
-              onPointerUp={(e) => {
-                const d = dragRef.current;
-                if (d.pointerId !== e.pointerId) return;
-                e.preventDefault();
-                dragRef.current = { ...dragRef.current, pointerId: null };
-                (e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId);
-              }}
-              onPointerCancel={(e) => {
-                const d = dragRef.current;
-                if (d.pointerId !== e.pointerId) return;
-                dragRef.current = { ...dragRef.current, pointerId: null };
-                (e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId);
-              }}
               role="presentation"
-              aria-label="Drag to position the YouTube banner export frame"
+              aria-label="YouTube banner crop frame — drag to move, use handles to resize"
             >
-              {/* Rule of thirds */}
+              <div
+                className="absolute inset-[8px] z-10 cursor-grab active:cursor-grabbing"
+                onPointerDown={beginMove}
+              />
+
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute inset-y-0 left-1/3 w-px bg-white/55" />
                 <div className="absolute inset-y-0 left-2/3 w-px bg-white/55" />
                 <div className="absolute inset-x-0 top-1/3 h-px bg-white/55" />
                 <div className="absolute inset-x-0 top-2/3 h-px bg-white/55" />
               </div>
-              {/* Subtle grid */}
               <div className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:12px_12px]" />
+
+              {/* Corner resize handles (16:9 locked — no edge-only resize) */}
+              <button
+                type="button"
+                aria-label="Resize crop frame north-west"
+                className={cn(HANDLE, 'left-0 top-0 -translate-x-1/2 -translate-y-1/2')}
+                style={{ cursor: cursorForHandle('nw') }}
+                onPointerDown={beginResize('nw')}
+              />
+              <button
+                type="button"
+                aria-label="Resize crop frame north-east"
+                className={cn(HANDLE, 'right-0 top-0 translate-x-1/2 -translate-y-1/2')}
+                style={{ cursor: cursorForHandle('ne') }}
+                onPointerDown={beginResize('ne')}
+              />
+              <button
+                type="button"
+                aria-label="Resize crop frame south-east"
+                className={cn(HANDLE, 'right-0 bottom-0 translate-x-1/2 translate-y-1/2')}
+                style={{ cursor: cursorForHandle('se') }}
+                onPointerDown={beginResize('se')}
+              />
+              <button
+                type="button"
+                aria-label="Resize crop frame south-west"
+                className={cn(HANDLE, 'left-0 bottom-0 -translate-x-1/2 translate-y-1/2')}
+                style={{ cursor: cursorForHandle('sw') }}
+                onPointerDown={beginResize('sw')}
+              />
 
               <div className="pointer-events-none absolute left-0 top-0 size-7 border-l-[3px] border-t-[3px] border-primary-400" />
               <div className="pointer-events-none absolute right-0 top-0 size-7 border-r-[3px] border-t-[3px] border-primary-400" />

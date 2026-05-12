@@ -8,7 +8,7 @@ import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
-import { FrameAnchor, getDefaultFrameAnchor } from './bannerViewport';
+import { FrameRelative, getDefaultFrameRelative } from './bannerViewport';
 
 // Maximum image dimensions to prevent memory exhaustion
 const MAX_IMAGE_DIMENSION = 10000;
@@ -28,7 +28,7 @@ export const YouTubeBannerResizer = () => {
     naturalWidth: 0,
     naturalHeight: 0,
   });
-  const [frameAnchor, setFrameAnchor] = useState<FrameAnchor>(() => getDefaultFrameAnchor());
+  const [frameRelative, setFrameRelative] = useState<FrameRelative>(() => getDefaultFrameRelative(2560, 1440));
   const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png');
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -47,7 +47,7 @@ export const YouTubeBannerResizer = () => {
       if (prev.imageUrl) URL.revokeObjectURL(prev.imageUrl);
       return { file: null, imageUrl: null, naturalWidth: 0, naturalHeight: 0 };
     });
-    setFrameAnchor(getDefaultFrameAnchor());
+    setFrameRelative(getDefaultFrameRelative(2560, 1440));
     cropRef.current = null;
     setIsLoadingImage(false);
   }, []);
@@ -96,7 +96,7 @@ export const YouTubeBannerResizer = () => {
           naturalWidth,
           naturalHeight,
         });
-        setFrameAnchor(getDefaultFrameAnchor());
+        setFrameRelative(getDefaultFrameRelative(naturalWidth, naturalHeight));
         setIsLoadingImage(false);
         cropRef.current = null;
 
@@ -223,8 +223,8 @@ export const YouTubeBannerResizer = () => {
             imageUrl={imageState.imageUrl}
             naturalWidth={imageState.naturalWidth}
             naturalHeight={imageState.naturalHeight}
-            frameAnchor={frameAnchor}
-            onFrameAnchorChange={setFrameAnchor}
+            frameRelative={frameRelative}
+            onFrameRelativeChange={setFrameRelative}
             onCropRegionReady={onCropRegionReady}
             getRootProps={getRootProps}
             getInputProps={getInputProps}
@@ -238,7 +238,11 @@ export const YouTubeBannerResizer = () => {
           <BannerControls
             hasImage={!!imageState.imageUrl}
             onReupload={handleReupload}
-            onResetViewport={imageState.imageUrl ? () => setFrameAnchor(getDefaultFrameAnchor()) : undefined}
+            onResetViewport={
+              imageState.imageUrl
+                ? () => setFrameRelative(getDefaultFrameRelative(imageState.naturalWidth, imageState.naturalHeight))
+                : undefined
+            }
           />
 
           <BannerExport
