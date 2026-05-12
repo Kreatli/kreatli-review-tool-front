@@ -20,6 +20,7 @@ import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { useSession } from '../../hooks/useSession';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 
 const PAGE_PATH = '/free-tools/youtube-shorts-downloader';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
@@ -158,8 +159,8 @@ export default function YouTubeShortsDownloaderFreeToolPage() {
             <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">YouTube Shorts Downloader</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Paste a public YouTube Shorts or standard watch URL to grab an MP4 when a progressive download link is
-              available. Pair with approvals and safe-zone checks when you publish. Sign in to use the tool; start a trial
-              or choose a plan if your subscription isn’t active.
+              available. Pair with approvals and safe-zone checks when you publish. Sign in to use the tool; start a
+              trial or choose a plan if your subscription isn’t active.
             </p>
           </div>
         </section>
@@ -281,7 +282,8 @@ export default function YouTubeShortsDownloaderFreeToolPage() {
         <CTASection
           title="Need approvals after you download Shorts?"
           description="Bring files into one workspace—collect comments, proofs, approvals, and version history tied to teammates."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

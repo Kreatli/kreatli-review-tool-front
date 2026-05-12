@@ -1,13 +1,10 @@
-/* eslint-disable max-len */
+ 
 import Head from 'next/head';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
-import { VideoCompressorFAQ, VIDEO_COMPRESSOR_FAQS } from '../../components/video-compressor/VideoCompressorFAQ';
-import { VideoCompressorGuide } from '../../components/video-compressor/VideoCompressorGuide';
-import { VideoCompressorTool } from '../../components/video-compressor/VideoCompressorTool';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
@@ -15,6 +12,10 @@ import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { VIDEO_COMPRESSOR_FAQS,VideoCompressorFAQ } from '../../components/video-compressor/VideoCompressorFAQ';
+import { VideoCompressorGuide } from '../../components/video-compressor/VideoCompressorGuide';
+import { VideoCompressorTool } from '../../components/video-compressor/VideoCompressorTool';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
@@ -88,13 +89,16 @@ export default function VideoCompressorPage() {
         </section>
 
         <DefinitionBlock term="Video compressor">
-          A video compressor reduces file size so you can share, upload, or deliver a video faster. It works by
-          lowering bitrate (and sometimes resolution) while aiming to keep quality acceptable for review and approvals.
+          A video compressor reduces file size so you can share, upload, or deliver a video faster. It works by lowering
+          bitrate (and sometimes resolution) while aiming to keep quality acceptable for review and approvals.
         </DefinitionBlock>
 
         <VideoCompressorGuide />
 
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-compressor')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-compressor')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoCompressorFAQ />
 
@@ -107,7 +111,8 @@ export default function VideoCompressorPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 
@@ -116,4 +121,3 @@ export default function VideoCompressorPage() {
     </>
   );
 }
-

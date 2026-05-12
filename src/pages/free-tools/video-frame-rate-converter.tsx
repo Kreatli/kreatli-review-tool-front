@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+ 
 import { Accordion, AccordionItem } from '@heroui/react';
 import Head from 'next/head';
 
@@ -15,6 +15,7 @@ import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSecti
 import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoFrameRateConverterTool } from '../../components/video-frame-rate-converter/VideoFrameRateConverterTool';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
@@ -200,7 +201,8 @@ export default function VideoFrameRateConverterPage() {
         <CTASection
           title="Need feedback and approvals after frame rate conversion?"
           description="Upload converted cuts to Kreatli to collect frame-accurate feedback, keep versions organized, and move approvals faster."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

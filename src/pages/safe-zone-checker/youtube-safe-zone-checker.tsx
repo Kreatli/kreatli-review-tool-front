@@ -10,6 +10,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getRelatedResources } from '../../data/related-resources';
 
 export default function YouTubeSafeZoneCheckerPage() {
@@ -76,7 +77,8 @@ export default function YouTubeSafeZoneCheckerPage() {
       <CTASection
         title="Ready to Ensure Your Content Looks Perfect?"
         description="Use our safe zone checker tool to preview your content with accurate platform overlays. Ensure your videos, titles, logos, and CTAs stay visible across all devices and platforms."
-        primaryButtonText="Start 7-day trial"
+        primaryButtonText={OPEN_IN_KREATLI_LABEL}
+        primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
       />
       <FooterSection hideCta />
       <SignUpModal sourceType="safe-zone-checker" />

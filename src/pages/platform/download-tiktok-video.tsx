@@ -11,10 +11,11 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -185,8 +186,8 @@ export default function DownloadTikTokVideoPlatformPage() {
               <CardBody className="p-6">
                 <h3 className="font-sans text-lg font-semibold">Frictionless Save to Device</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Paste a link, resolve the best available file, and download. If your browser blocks a download, resolve
-                  again and retry, or adjust pop-up/download permissions for this site.
+                  Paste a link, resolve the best available file, and download. If your browser blocks a download,
+                  resolve again and retry, or adjust pop-up/download permissions for this site.
                 </p>
               </CardBody>
             </Card>
@@ -278,6 +279,8 @@ export default function DownloadTikTokVideoPlatformPage() {
       <CTASection
         title="Need feedback and approvals on short-form video?"
         description="Upload TikToks to Kreatli, collect frame-accurate feedback, keep versions organized, and get approvals without messy threads."
+        primaryButtonText={OPEN_IN_KREATLI_LABEL}
+        primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
       />
 
       <FooterSection hideCta={true} />
@@ -285,4 +288,3 @@ export default function DownloadTikTokVideoPlatformPage() {
     </>
   );
 }
-

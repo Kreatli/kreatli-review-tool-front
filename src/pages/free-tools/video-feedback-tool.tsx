@@ -14,11 +14,12 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { WebApplicationStructuredData } from '../../components/shared/WebApplicationStructuredData';
 import { VideoFeedbackToolFAQ, videoFeedbackToolFaqs } from '../../components/video-feedback-tool/VideoFeedbackToolFAQ';
 import { VideoFeedbackToolGuide } from '../../components/video-feedback-tool/VideoFeedbackToolGuide';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -137,7 +138,8 @@ export default function VideoFeedbackToolPage() {
         <CTASection
           title="Ready to streamline video feedback?"
           description="Kreatli is a Video Collaboration & Review Platform for creative teams. Upload videos, collect frame-accurate feedback, manage approvals, and move projects forward faster."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

@@ -14,10 +14,11 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { VideoAnnotatorFAQ, videoAnnotatorFaqs } from '../../components/video-annotator/VideoAnnotatorFAQ';
 import { VideoAnnotatorGuide } from '../../components/video-annotator/VideoAnnotatorGuide';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -125,7 +126,8 @@ export default function VideoAnnotatorPage() {
         <CTASection
           title="Ready to annotate videos with your team?"
           description="Kreatli offers frame-accurate video annotation, drawing on video, and approval workflows. Add comments and markup pinned to exact frames—all in one place."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

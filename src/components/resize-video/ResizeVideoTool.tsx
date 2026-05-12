@@ -1,14 +1,22 @@
 'use client';
 
-import { addToast, Button, Card, CardBody, Checkbox, cn, Progress, Radio, RadioGroup } from '@heroui/react';
+import { addToast, Button, Card, CardBody, cn, Progress, Radio, RadioGroup } from '@heroui/react';
 import NextLink from 'next/link';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { type FileRejection, useDropzone } from 'react-dropzone';
 
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
 import { useSession } from '../../hooks/useSession';
 import { useSoftGate } from '../../hooks/useSoftGate';
 import { Icon, type IconType } from '../various/Icon';
+import {
+  evenCropForH264,
+  getDefaultFrameRelative,
+  outputAspectFromTargets,
+  type VideoCropFrameRelative,
+} from './resizeVideoCropGeometry';
+import { ResizeVideoCropStage } from './ResizeVideoCropStage';
 
 type ExportFormat = 'mp4' | 'mov' | 'webm-vp9' | 'webm-vp8';
 
@@ -64,8 +72,8 @@ export function ResizeVideoTool() {
   const [targetWidth, setTargetWidth] = useState<number>(1920);
   const [targetHeight, setTargetHeight] = useState<number>(1080);
   const [selectedPresetId, setSelectedPresetId] = useState<string>('video-landscape');
-  const [maintainAspect, setMaintainAspect] = useState<boolean>(true);
   const [exportFormat, setExportFormat] = useState<ExportFormat>('mp4');
+  const [frameRelative, setFrameRelative] = useState<VideoCropFrameRelative>({ nx: 0, ny: 0, nw: 1, nh: 1 });
   const [status, setStatus] = useState<'idle' | 'loading' | 'processing' | 'done'>('idle');
   const [progress, setProgress] = useState<number>(0);
   const [outputBlob, setOutputBlob] = useState<Blob | null>(null);
@@ -81,6 +89,7 @@ export function ResizeVideoTool() {
   const downloadRef = useRef<() => void>(() => {});
   const hasTriggeredDownloadForDoneRef = useRef<boolean>(false);
   const cancelRequestedRef = useRef<boolean>(false);
+  const cropRef = useRef<{ sx: number; sy: number; sw: number; sh: number } | null>(null);
 
   const reset = useCallback(() => {
     setFile(null);
@@ -89,6 +98,8 @@ export function ResizeVideoTool() {
     setStatus('idle');
     setProgress(0);
     setUnsupported(false);
+    cropRef.current = null;
+    setFrameRelative({ nx: 0, ny: 0, nw: 1, nh: 1 });
   }, []);
 
   const { triggerSoftGate } = useSoftGate({
@@ -171,6 +182,32 @@ export function ResizeVideoTool() {
     setSelectedPresetId('custom');
   }, []);
 
+  const outputAspectKey = useMemo(
+    () => outputAspectFromTargets(targetWidth, targetHeight).toFixed(10),
+    [targetWidth, targetHeight],
+  );
+
+  useEffect(() => {
+    if (!sourceWidth || !sourceHeight) return;
+    const asp = outputAspectFromTargets(targetWidth, targetHeight);
+    setFrameRelative(getDefaultFrameRelative(sourceWidth, sourceHeight, asp));
+  }, [sourceWidth, sourceHeight, outputAspectKey]);
+
+  // ffmpeg.wasm load is heavy; start it while the user adjusts crop so first export often skips the wait.
+  useEffect(() => {
+    if (!file || !sourceWidth || !sourceHeight) return;
+    if (exportFormat !== 'mp4' && exportFormat !== 'mov') return;
+    let cancelled = false;
+    void import('./resizeVideoFfmpegSingleton')
+      .then(({ getSharedResizeVideoFfmpeg }) => getSharedResizeVideoFfmpeg())
+      .catch((err) => {
+        if (!cancelled) console.warn('Resize video: encoder preload failed (will retry on export)', err);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [file, sourceWidth, sourceHeight, exportFormat]);
+
   const applyPreset = useCallback((preset: PresetItem) => {
     setSelectedPresetId(preset.id);
     if (preset.id !== 'custom' && preset.width > 0 && preset.height > 0) {
@@ -184,11 +221,17 @@ export function ResizeVideoTool() {
       inputFile: File,
       w: number,
       h: number,
+      crop: { sx: number; sy: number; sw: number; sh: number },
+      sourceW: number,
+      sourceH: number,
       onProgressUpdate: (p: number) => void,
       outputFormat: 'mp4' | 'mov' = 'mp4',
     ) => {
-      const [{ FFmpeg }, { fetchFile }] = await Promise.all([import('@ffmpeg/ffmpeg'), import('@ffmpeg/util')]);
-      const ffmpeg = new FFmpeg();
+      const [{ fetchFile }, { getSharedResizeVideoFfmpeg }] = await Promise.all([
+        import('@ffmpeg/util'),
+        import('./resizeVideoFfmpegSingleton'),
+      ]);
+      const ffmpeg = await getSharedResizeVideoFfmpeg();
       const ext = getInputExtension(inputFile);
       const inputName = `input.${ext}`;
       const outputName = outputFormat === 'mov' ? 'output.mov' : 'output.mp4';
@@ -199,15 +242,21 @@ export function ResizeVideoTool() {
       };
       ffmpeg.on('progress', progressHandler);
 
-      await ffmpeg.load();
+      await Promise.all([
+        ffmpeg.deleteFile(inputName).catch(() => {}),
+        ffmpeg.deleteFile(outputName).catch(() => {}),
+      ]);
       const data = await fetchFile(inputFile);
       await ffmpeg.writeFile(inputName, data);
+
+      const ec = evenCropForH264(sourceW, sourceH, crop.sx, crop.sy, crop.sw, crop.sh);
+      const vf = `crop=${ec.sw}:${ec.sh}:${ec.sx}:${ec.sy},scale=${w}:${h}`;
 
       const args = [
         '-i',
         inputName,
         '-vf',
-        `scale=${w}:${h}:force_original_aspect_ratio=decrease,pad=${w}:${h}:(ow-iw)/2:(oh-ih)/2:black`,
+        vf,
         '-c:v',
         'libx264',
         '-preset',
@@ -246,6 +295,17 @@ export function ResizeVideoTool() {
     const w = even(targetWidth);
     const h = even(targetHeight);
 
+    const rawCrop = cropRef.current;
+    if (!rawCrop || rawCrop.sw < 2 || rawCrop.sh < 2 || !sourceWidth || !sourceHeight) {
+      addToast({
+        title: 'Could not read the crop region. Adjust the frame slightly, then try again.',
+        color: 'danger',
+        variant: 'flat',
+      });
+      return;
+    }
+    const cropSnap = evenCropForH264(sourceWidth, sourceHeight, rawCrop.sx, rawCrop.sy, rawCrop.sw, rawCrop.sh);
+
     if (exportFormat === 'mp4' || exportFormat === 'mov') {
       if (file.size > MAX_FILE_SIZE_BYTES) {
         addToast({
@@ -258,7 +318,20 @@ export function ResizeVideoTool() {
       setStatus('loading');
       setProgress(0);
       try {
-        const blob = await runFFmpegMP4OrMOV(file, w, h, setProgress, exportFormat);
+        const { getSharedResizeVideoFfmpeg } = await import('./resizeVideoFfmpegSingleton');
+        await getSharedResizeVideoFfmpeg();
+        setStatus('processing');
+        setProgress(0);
+        const blob = await runFFmpegMP4OrMOV(
+          file,
+          w,
+          h,
+          cropSnap,
+          sourceWidth,
+          sourceHeight,
+          setProgress,
+          exportFormat,
+        );
         setOutputBlob(blob);
         setOutputExtension(exportFormat);
         setStatus('done');
@@ -361,16 +434,9 @@ export function ResizeVideoTool() {
         recorderRef.current?.stop();
         return;
       }
-      const vw = v.videoWidth || 1;
-      const vh = v.videoHeight || 1;
-      const scale = Math.min(w / vw, h / vh);
-      const drawW = vw * scale;
-      const drawH = vh * scale;
-      const x = (w - drawW) / 2;
-      const y = (h - drawH) / 2;
       ctx.fillStyle = '#000';
       ctx.fillRect(0, 0, w, h);
-      ctx.drawImage(v, 0, 0, vw, vh, x, y, drawW, drawH);
+      ctx.drawImage(v, cropSnap.sx, cropSnap.sy, cropSnap.sw, cropSnap.sh, 0, 0, w, h);
       setProgress((v.currentTime / (duration || 1)) * 100);
       animationRef.current = requestAnimationFrame(draw);
     };
@@ -387,6 +453,8 @@ export function ResizeVideoTool() {
     videoUrl,
     targetWidth,
     targetHeight,
+    sourceWidth,
+    sourceHeight,
     duration,
     exportFormat,
     runFFmpegMP4OrMOV,
@@ -531,17 +599,21 @@ export function ResizeVideoTool() {
                   </Button>
                 </div>
 
-                <div className="relative overflow-hidden rounded-xl bg-black">
-                  <video
-                    ref={videoRef}
-                    src={videoUrl}
-                    className="aspect-video w-full"
-                    onLoadedMetadata={onLoadedMetadata}
-                    crossOrigin="anonymous"
-                    playsInline
-                    muted
-                  />
-                </div>
+                <ResizeVideoCropStage
+                  videoRef={videoRef}
+                  videoUrl={videoUrl}
+                  sourceWidth={sourceWidth}
+                  sourceHeight={sourceHeight}
+                  targetWidth={targetWidth}
+                  targetHeight={targetHeight}
+                  frameRelative={frameRelative}
+                  onFrameRelativeChange={setFrameRelative}
+                  onSourceCropReady={(c) => {
+                    cropRef.current = c;
+                  }}
+                  onLoadedMetadata={onLoadedMetadata}
+                  interactive={status === 'idle'}
+                />
 
                 {sourceWidth > 0 && (
                   <>
@@ -590,10 +662,10 @@ export function ResizeVideoTool() {
                               max={4096}
                               value={targetWidth}
                               onChange={(e) => {
-                                const val = even(Number(e.target.value) || 2);
+                                const val = even(Math.min(4096, Math.max(2, Number(e.target.value) || 2)));
                                 setTargetWidth(val);
-                                if (maintainAspect && sourceHeight > 0)
-                                  setTargetHeight(even(val / (sourceWidth / sourceHeight)));
+                                const ar = targetWidth / targetHeight || 1;
+                                setTargetHeight(even(val / ar));
                               }}
                               className="w-24 rounded-md border border-default-300 bg-transparent px-2 py-1.5 text-sm"
                             />
@@ -604,24 +676,18 @@ export function ResizeVideoTool() {
                               max={4096}
                               value={targetHeight}
                               onChange={(e) => {
-                                const val = even(Number(e.target.value) || 2);
+                                const val = even(Math.min(4096, Math.max(2, Number(e.target.value) || 2)));
                                 setTargetHeight(val);
-                                if (maintainAspect && sourceWidth > 0)
-                                  setTargetWidth(even(val * (sourceWidth / sourceHeight)));
+                                const ar = targetWidth / targetHeight || 1;
+                                setTargetWidth(even(val * ar));
                               }}
                               className="w-24 rounded-md border border-default-300 bg-transparent px-2 py-1.5 text-sm"
                             />
                             <span className="text-xs text-foreground-500">px</span>
                           </div>
-                          <label className="flex items-center gap-2 text-sm text-foreground-600">
-                            <Checkbox
-                              isSelected={maintainAspect}
-                              onValueChange={setMaintainAspect}
-                              size="sm"
-                              aria-label="Maintain aspect ratio"
-                            />
-                            Maintain aspect ratio
-                          </label>
+                          <p className="text-xs text-foreground-500">
+                            Width and height stay locked to the same aspect ratio as your export.
+                          </p>
                         </div>
                       </div>
                     )}
@@ -644,10 +710,11 @@ export function ResizeVideoTool() {
                         <Progress value={progress} color="primary" size="sm" aria-label="Encoding progress" />
                         <p className="text-center text-sm text-foreground-600">
                           {status === 'loading'
-                            ? `Loading video encoder… ${Math.round(progress)}%`
-                            : `Resizing… ${Math.round(progress)}%`}
+                            ? 'Preparing video encoder (one-time download per tab)…'
+                            : `Encoding video… ${Math.round(progress)}%`}
                         </p>
-                        {status === 'processing' && (
+                        {status === 'processing' &&
+                          (exportFormat === 'webm-vp9' || exportFormat === 'webm-vp8') && (
                           <Button
                             variant="flat"
                             size="sm"
@@ -685,6 +752,9 @@ export function ResizeVideoTool() {
                   <Icon icon="download" size={16} className="text-foreground-400" />
                   <h3 className="font-sans text-sm font-semibold">Export</h3>
                 </div>
+                <p className="mb-3 text-xs text-foreground-600">
+                  Output: {outW}×{outH}px (crop frame matches this aspect)
+                </p>
                 <RadioGroup
                   value={exportFormat}
                   onValueChange={(v) => setExportFormat(v as ExportFormat)}
@@ -750,10 +820,10 @@ export function ResizeVideoTool() {
                   <div className="flex flex-col gap-2 sm:flex-row">
                     <Button
                       as={NextLink}
-                      href={isSignedIn ? '/platform/creative-workspace' : '/sign-up'}
+                      href={KREATLI_PLATFORM_ENTRY_HREF}
                       className="bg-foreground text-content1"
                     >
-                      Start 7-day trial
+                      {OPEN_IN_KREATLI_LABEL}
                     </Button>
                   </div>
                 </div>

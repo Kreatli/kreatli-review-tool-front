@@ -15,6 +15,7 @@ import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinit
 import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -212,8 +213,8 @@ export default function DownloadInstagramReelsPlatformPage() {
               <CardBody className="p-6">
                 <h3 className="font-sans text-lg font-semibold">Respect Rights + Terms</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Only download content you own or have permission to use. Kreatli does not require Instagram credentials
-                  and does not attempt to access private content.
+                  Only download content you own or have permission to use. Kreatli does not require Instagram
+                  credentials and does not attempt to access private content.
                 </p>
               </CardBody>
             </Card>
@@ -225,7 +226,9 @@ export default function DownloadInstagramReelsPlatformPage() {
         <div className="relative z-10 mx-auto max-w-4xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
-            <p className="mx-auto max-w-2xl text-lg text-foreground-500">Public links, quality, rights, and what to do when a download fails.</p>
+            <p className="mx-auto max-w-2xl text-lg text-foreground-500">
+              Public links, quality, rights, and what to do when a download fails.
+            </p>
           </div>
           <Accordion variant="splitted" aria-label="Download Instagram Reels FAQs" className="gap-2">
             {faqs.map((faq) => (
@@ -241,7 +244,11 @@ export default function DownloadInstagramReelsPlatformPage() {
         </div>
       </section>
 
-      <MoreFreeToolsSection tools={getFreeToolsForPlatform(PAGE_PATH)} title="More Free Tools" excludeHref={TOOL_PATH} />
+      <MoreFreeToolsSection
+        tools={getFreeToolsForPlatform(PAGE_PATH)}
+        title="More Free Tools"
+        excludeHref={TOOL_PATH}
+      />
 
       <ResourcesArticlesPreviewSection
         title="More guides on short-form video workflows"
@@ -260,7 +267,8 @@ export default function DownloadInstagramReelsPlatformPage() {
       <CTASection
         title="Need feedback and approvals on video assets?"
         description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-        primaryButtonText="Start 7-day trial"
+        primaryButtonText={OPEN_IN_KREATLI_LABEL}
+        primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
       />
 
       <FooterSection hideCta />
@@ -268,4 +276,3 @@ export default function DownloadInstagramReelsPlatformPage() {
     </>
   );
 }
-

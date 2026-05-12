@@ -1,8 +1,10 @@
-/* eslint-disable max-len */
+ 
 import Head from 'next/head';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
+import { ImageAnnotatorFAQ, imageAnnotatorFaqs } from '../../components/image-annotator/ImageAnnotatorFAQ';
+import { ImageAnnotatorGuide } from '../../components/image-annotator/ImageAnnotatorGuide';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
@@ -13,10 +15,9 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { ImageAnnotatorFAQ, imageAnnotatorFaqs } from '../../components/image-annotator/ImageAnnotatorFAQ';
-import { ImageAnnotatorGuide } from '../../components/image-annotator/ImageAnnotatorGuide';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -109,7 +110,8 @@ export default function ImageMarkupToolPage() {
         <CTASection
           title="Ready to mark up images with your team?"
           description="Kreatli offers location-pinned image markup, drawing on images, and approval workflows in one workspace with your video and creative assets."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

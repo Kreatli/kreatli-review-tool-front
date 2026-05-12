@@ -8,16 +8,17 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { FREE_VIDEO_LINK_GENERATOR_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -125,7 +126,8 @@ export default function VideoLinkMakerPage() {
 
 
         <DefinitionBlock term="Video Link Maker">
-          A video link maker creates a URL to a video file so reviewers can stream and comment without downloading. Agencies use it to share cuts, alt versions, and finals while keeping feedback frame-accurate.
+          A video link maker creates a URL to a video file so reviewers can stream and comment without downloading.
+          Agencies use it to share cuts, alt versions, and finals while keeping feedback frame-accurate.
         </DefinitionBlock>
         {/* How to generate video links guide */}
         <PlatformStepGuide
@@ -176,7 +178,8 @@ export default function VideoLinkMakerPage() {
         <CTASection
           title="Ready to share your next video with a link?"
           description="Use Kreatli's video link maker to send secure, review-ready links to clients and collaborators in seconds."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 
