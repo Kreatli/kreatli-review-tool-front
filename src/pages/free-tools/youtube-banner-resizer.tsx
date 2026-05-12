@@ -30,12 +30,12 @@ export default function YouTubeBannerResizerPage() {
         <title>YouTube Banner Resizer (2560×1440) — Crop Channel Art Online | Kreatli</title>
         <meta
           name="description"
-          content="Resize and crop YouTube channel art online. Set custom dimensions (default 2560×1440), drag to position, zoom to crop, then download PNG/JPG. Upload JPG/PNG/WebP up to 40MB."
+          content="Crop YouTube channel art online to the exact 2560×1440 size. Upload an image, move the preview frame to choose what exports, then download PNG/JPG. Upload JPG/PNG/WebP up to 40MB."
         />
         <meta property="og:title" content="YouTube Banner Resizer (2560×1440) — Crop Channel Art Online | Kreatli" />
         <meta
           property="og:description"
-          content="Resize and crop YouTube channel art online. Set custom dimensions (default 2560×1440), drag to position, zoom to crop, then download PNG/JPG. Upload JPG/PNG/WebP up to 40MB."
+          content="Crop YouTube channel art online to the exact 2560×1440 size. Upload an image, move the preview frame to choose what exports, then download PNG/JPG. Upload JPG/PNG/WebP up to 40MB."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/youtube-banner-resizer" />
@@ -43,13 +43,13 @@ export default function YouTubeBannerResizerPage() {
         <meta name="twitter:title" content="YouTube Banner Resizer (2560×1440) — Crop Channel Art Online | Kreatli" />
         <meta
           name="twitter:description"
-          content="Resize and crop YouTube channel art online. Set custom dimensions (default 2560×1440), drag to position, zoom to crop, then download PNG/JPG. Upload JPG/PNG/WebP up to 40MB."
+          content="Crop YouTube channel art online to the exact 2560×1440 size. Upload an image, move the preview frame to choose what exports, then download PNG/JPG. Upload JPG/PNG/WebP up to 40MB."
         />
         <link rel="canonical" href="https://kreatli.com/free-tools/youtube-banner-resizer" />
       </Head>
       <WebApplicationStructuredData
         name="Kreatli YouTube Banner Resizer"
-        description="Resize and crop YouTube channel art online. Set custom dimensions (default 2560×1440), drag to position, zoom to crop, then download."
+        description="Crop YouTube channel art online to the exact 2560×1440 size. Upload an image, move the preview frame to choose what exports, then download."
         url="https://kreatli.com/free-tools/youtube-banner-resizer"
       />
       <BreadcrumbStructuredData
@@ -67,13 +67,13 @@ export default function YouTubeBannerResizerPage() {
             <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-3 text-center">
               <h1 className="font-sans text-3xl font-bold tracking-tight sm:text-4xl">YouTube Banner Resizer</h1>
               <p className="text-large text-foreground-500">
-                Crop to <strong className="font-semibold text-foreground-700">2560×1440</strong> (or any size). Drag to
-                position, zoom to crop, then download PNG/JPG.
+                Crop to <strong className="font-semibold text-foreground-700">2560×1440</strong>. Move the frame to choose
+                what exports, then download PNG/JPG.
               </p>
               <div className="mt-1 flex flex-wrap items-center justify-center gap-2 text-xs text-foreground-500">
-                <span className="rounded-full bg-foreground-100 px-3 py-1">Default 2560×1440</span>
-                <span className="rounded-full bg-foreground-100 px-3 py-1">Custom dimensions</span>
-                <span className="rounded-full bg-foreground-100 px-3 py-1">Drag + zoom</span>
+                <span className="rounded-full bg-foreground-100 px-3 py-1">Locked 2560×1440</span>
+                <span className="rounded-full bg-foreground-100 px-3 py-1">Drag preview frame</span>
+                <span className="rounded-full bg-foreground-100 px-3 py-1">Static image</span>
                 <span className="rounded-full bg-foreground-100 px-3 py-1">JPG/PNG/WebP (≤40MB)</span>
               </div>
               <p className="text-sm text-foreground-500">

@@ -8,9 +8,7 @@ import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
-import { BannerDimensionControls } from './BannerDimensionControls';
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
-import { BannerPlacement, clampPlacement, getDefaultPlacement } from './bannerPlacement';
+import { BannerViewport, clampViewport, getAutoImageScale, getDefaultViewport } from './bannerViewport';
 
 // Maximum image dimensions to prevent memory exhaustion
 const MAX_IMAGE_DIMENSION = 10000;
@@ -30,11 +28,11 @@ export const YouTubeBannerResizer = () => {
     naturalWidth: 0,
     naturalHeight: 0,
   });
-  const [placement, setPlacement] = useState<BannerPlacement>(getDefaultPlacement());
+  const [viewport, setViewport] = useState<BannerViewport>({ x: 0, y: 0 });
+  const imageScale = getAutoImageScale(imageState.naturalWidth, imageState.naturalHeight);
   const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png');
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [canvasSize, setCanvasSize] = useState({ width: CANVAS_WIDTH, height: CANVAS_HEIGHT });
 
   const { isSignedIn } = useSession();
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
@@ -44,8 +42,7 @@ export const YouTubeBannerResizer = () => {
       if (prev.imageUrl) URL.revokeObjectURL(prev.imageUrl);
       return { file: null, imageUrl: null, naturalWidth: 0, naturalHeight: 0 };
     });
-    setPlacement(getDefaultPlacement());
-    setCanvasSize({ width: CANVAS_WIDTH, height: CANVAS_HEIGHT });
+    setViewport({ x: 0, y: 0 });
     setIsLoadingImage(false);
   }, []);
 
@@ -93,7 +90,8 @@ export const YouTubeBannerResizer = () => {
           naturalWidth,
           naturalHeight,
         });
-        setPlacement(getDefaultPlacement());
+        const scale = getAutoImageScale(naturalWidth, naturalHeight);
+        setViewport(getDefaultViewport(naturalWidth, naturalHeight, scale));
         setIsLoadingImage(false);
 
         if (!isSignedIn) triggerSoftGate();
@@ -201,19 +199,11 @@ export const YouTubeBannerResizer = () => {
     fileInputRef.current?.click();
   };
 
-  const setCanvasSizeSafe = useCallback((next: { width: number; height: number }) => {
-    const width = Number.isFinite(next.width) ? Math.max(1, Math.min(MAX_IMAGE_DIMENSION, next.width)) : CANVAS_WIDTH;
-    const height = Number.isFinite(next.height) ? Math.max(1, Math.min(MAX_IMAGE_DIMENSION, next.height)) : CANVAS_HEIGHT;
-    setCanvasSize({ width, height });
-  }, []);
-
-  const setPlacementClamped = useCallback(
-    (next: BannerPlacement) => {
-      setPlacement(
-        clampPlacement(canvasSize.width, canvasSize.height, imageState.naturalWidth, imageState.naturalHeight, next),
-      );
+  const setViewportClamped = useCallback(
+    (next: BannerViewport) => {
+      setViewport(clampViewport(imageState.naturalWidth, imageState.naturalHeight, imageScale, next));
     },
-    [canvasSize.height, canvasSize.width, imageState.naturalHeight, imageState.naturalWidth],
+    [imageScale, imageState.naturalHeight, imageState.naturalWidth],
   );
 
   // Cleanup image URL on unmount
@@ -234,10 +224,9 @@ export const YouTubeBannerResizer = () => {
             imageUrl={imageState.imageUrl}
             naturalWidth={imageState.naturalWidth}
             naturalHeight={imageState.naturalHeight}
-            canvasWidth={canvasSize.width}
-            canvasHeight={canvasSize.height}
-            placement={placement}
-            onPlacementChange={setPlacementClamped}
+            imageScale={imageScale}
+            viewport={viewport}
+            onViewportChange={setViewportClamped}
             getRootProps={getRootProps}
             getInputProps={getInputProps}
             isDragActive={isDragActive}
@@ -250,32 +239,18 @@ export const YouTubeBannerResizer = () => {
           <BannerControls
             hasImage={!!imageState.imageUrl}
             onReupload={handleReupload}
-          />
-
-          <BannerDimensionControls
-            isDisabled={!imageState.imageUrl}
-            width={canvasSize.width}
-            height={canvasSize.height}
-            placement={placement}
-            onPlacementChange={setPlacementClamped}
-            onChange={(next) => {
-              setCanvasSizeSafe(next);
-              setPlacement((prev) =>
-                clampPlacement(next.width, next.height, imageState.naturalWidth, imageState.naturalHeight, prev),
-              );
-            }}
-            onReset={() => {
-              setCanvasSize({ width: CANVAS_WIDTH, height: CANVAS_HEIGHT });
-              setPlacement(getDefaultPlacement());
-            }}
+            onResetViewport={
+              imageState.imageUrl
+                ? () => setViewport(getDefaultViewport(imageState.naturalWidth, imageState.naturalHeight, imageScale))
+                : undefined
+            }
           />
 
           <BannerExport
             file={imageState.file}
             imageUrl={imageState.imageUrl}
-            placement={placement}
-            canvasWidth={canvasSize.width}
-            canvasHeight={canvasSize.height}
+            viewport={viewport}
+            imageScale={imageScale}
             exportFormat={exportFormat}
             onExportFormatChange={setExportFormat}
             onExportStart={() => {

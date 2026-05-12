@@ -2,14 +2,14 @@ import { addToast, Button, Radio, RadioGroup } from '@heroui/react';
 import { useState } from 'react';
 
 import { Icon } from '../various/Icon';
-import { BannerPlacement, getRenderRect } from './bannerPlacement';
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
+import { BannerViewport, clampViewport } from './bannerViewport';
 
 interface BannerExportProps {
   file?: File | null;
   imageUrl: string | null;
-  placement: BannerPlacement;
-  canvasWidth: number;
-  canvasHeight: number;
+  viewport: BannerViewport;
+  imageScale: number;
   exportFormat: 'png' | 'jpg';
   onExportFormatChange: (format: 'png' | 'jpg') => void;
   /** Called when user clicks Export. Return false to cancel export (e.g. after opening a gate modal). */
@@ -19,9 +19,8 @@ interface BannerExportProps {
 export const BannerExport = ({
   file,
   imageUrl,
-  placement,
-  canvasWidth,
-  canvasHeight,
+  viewport,
+  imageScale,
   exportFormat,
   onExportFormatChange,
   onExportStart,
@@ -38,8 +37,8 @@ export const BannerExport = ({
 
     try {
       const canvas = document.createElement('canvas');
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
+      canvas.width = CANVAS_WIDTH;
+      canvas.height = CANVAS_HEIGHT;
       const ctx = canvas.getContext('2d');
 
       if (!ctx) {
@@ -47,7 +46,7 @@ export const BannerExport = ({
       }
 
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+      ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
       let bitmap: ImageBitmap;
       try {
@@ -73,9 +72,18 @@ export const BannerExport = ({
       }
 
       try {
-        // Export must match preview placement exactly: contain + pan (no cropping).
-        const rect = getRenderRect(canvasWidth, canvasHeight, bitmap.width, bitmap.height, placement);
-        ctx.drawImage(bitmap, rect.x, rect.y, rect.width, rect.height);
+        const safeViewport = clampViewport(bitmap.width, bitmap.height, imageScale, viewport);
+        ctx.drawImage(
+          bitmap,
+          safeViewport.x / imageScale,
+          safeViewport.y / imageScale,
+          CANVAS_WIDTH / imageScale,
+          CANVAS_HEIGHT / imageScale,
+          0,
+          0,
+          CANVAS_WIDTH,
+          CANVAS_HEIGHT,
+        );
       } finally {
         bitmap.close();
       }

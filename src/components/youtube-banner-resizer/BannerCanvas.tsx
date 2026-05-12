@@ -3,16 +3,16 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 import { Icon } from '../various/Icon';
-import { BannerPlacement, getRenderRect } from './bannerPlacement';
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
+import { BannerViewport } from './bannerViewport';
 
 interface BannerCanvasProps {
   imageUrl: string | null;
   naturalWidth: number;
   naturalHeight: number;
-  canvasWidth: number;
-  canvasHeight: number;
-  placement: BannerPlacement;
-  onPlacementChange: (next: BannerPlacement) => void;
+  imageScale: number;
+  viewport: BannerViewport;
+  onViewportChange: (next: BannerViewport) => void;
   getRootProps: () => DropzoneRootProps;
   getInputProps: () => DropzoneInputProps;
   isDragActive: boolean;
@@ -23,32 +23,30 @@ export const BannerCanvas = ({
   imageUrl,
   naturalWidth,
   naturalHeight,
-  canvasWidth,
-  canvasHeight,
-  placement,
-  onPlacementChange,
+  imageScale,
+  viewport,
+  onViewportChange,
   getRootProps,
   getInputProps,
   isDragActive,
   isLoading = false,
 }: BannerCanvasProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
   const [displaySize, setDisplaySize] = useState({ width: 0, height: 0 });
   const dragRef = useRef<{
     isDragging: boolean;
     startClientX: number;
     startClientY: number;
-    startOffsetX: number;
-    startOffsetY: number;
-  }>({ isDragging: false, startClientX: 0, startClientY: 0, startOffsetX: 0, startOffsetY: 0 });
+    startViewportX: number;
+    startViewportY: number;
+  }>({ isDragging: false, startClientX: 0, startClientY: 0, startViewportX: 0, startViewportY: 0 });
 
   // Calculate display size maintaining aspect ratio
   useEffect(() => {
     const updateDisplaySize = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const aspect = canvasWidth && canvasHeight ? canvasWidth / canvasHeight : 16 / 9;
+        const aspect = CANVAS_WIDTH / CANVAS_HEIGHT;
         const displayHeight = containerWidth / aspect;
         setDisplaySize({ width: containerWidth, height: displayHeight });
       }
@@ -57,14 +55,19 @@ export const BannerCanvas = ({
     updateDisplaySize();
     window.addEventListener('resize', updateDisplaySize);
     return () => window.removeEventListener('resize', updateDisplaySize);
-  }, [canvasHeight, canvasWidth]);
+  }, []);
 
-  const scale = displaySize.width / canvasWidth;
+  const scale = displaySize.width > 0 ? displaySize.width / CANVAS_WIDTH : 1;
 
-  const renderRect = useMemo(() => {
+  const imgStyle = useMemo(() => {
     if (!imageUrl || !naturalWidth || !naturalHeight) return null;
-    return getRenderRect(canvasWidth, canvasHeight, naturalWidth, naturalHeight, placement);
-  }, [canvasHeight, canvasWidth, imageUrl, naturalHeight, naturalWidth, placement]);
+    return {
+      width: naturalWidth * imageScale * scale,
+      height: naturalHeight * imageScale * scale,
+      left: -viewport.x * scale,
+      top: -viewport.y * scale,
+    };
+  }, [imageScale, imageUrl, naturalHeight, naturalWidth, scale, viewport.x, viewport.y]);
 
   const isInteractive = !!imageUrl && !isLoading && displaySize.width > 0 && displaySize.height > 0;
 
@@ -72,7 +75,7 @@ export const BannerCanvas = ({
     <div
       ref={containerRef}
       className="relative w-full overflow-hidden rounded-lg border border-foreground-200 bg-foreground-50"
-      style={{ aspectRatio: `${canvasWidth} / ${canvasHeight}` }}
+      style={{ aspectRatio: `${CANVAS_WIDTH} / ${CANVAS_HEIGHT}` }}
     >
       {/* Empty State / Upload Zone */}
       {!imageUrl && (
@@ -112,84 +115,84 @@ export const BannerCanvas = ({
 
       {/* Canvas with Image */}
       {imageUrl && (
-        <div className="relative h-full w-full">
-          {/* Background */}
-          <div className="absolute inset-0 bg-white" />
+        <div className="relative h-full w-full bg-foreground-100">
+          {/* Stage background (light gray) */}
+          <div className="absolute inset-0 bg-foreground-100" />
 
           {/* Image */}
-          {renderRect && (
+          {imgStyle && (
             <img
-              ref={imageRef}
               src={imageUrl}
-              alt={`Banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Canvas size: ${canvasWidth} × ${canvasHeight} pixels.`}
+              alt={`Banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Export size: ${CANVAS_WIDTH} × ${CANVAS_HEIGHT} pixels.`}
               className="absolute max-w-none select-none"
               style={{
-                width: renderRect.width * scale,
-                height: renderRect.height * scale,
-                left: renderRect.x * scale,
-                top: renderRect.y * scale,
+                width: imgStyle.width,
+                height: imgStyle.height,
+                left: imgStyle.left,
+                top: imgStyle.top,
                 objectFit: 'fill',
-                cursor: isInteractive ? 'grab' : 'default',
               }}
               draggable={false}
               role="img"
               aria-label={`Banner image, ${naturalWidth} by ${naturalHeight} pixels`}
-              onPointerDown={(e) => {
-                if (!isInteractive) return;
-                // Only left click/touch.
-                if ('button' in e && typeof e.button === 'number' && e.button !== 0) return;
-                e.preventDefault();
-                (e.currentTarget as HTMLImageElement).setPointerCapture?.(e.pointerId);
-                dragRef.current = {
-                  isDragging: true,
-                  startClientX: e.clientX,
-                  startClientY: e.clientY,
-                  startOffsetX: placement.offsetX,
-                  startOffsetY: placement.offsetY,
-                };
-              }}
-              onPointerMove={(e) => {
-                if (!dragRef.current.isDragging || !isInteractive) return;
-                e.preventDefault();
-                const dx = (e.clientX - dragRef.current.startClientX) / scale;
-                const dy = (e.clientY - dragRef.current.startClientY) / scale;
-                onPlacementChange({
-                  ...placement,
-                  offsetX: dragRef.current.startOffsetX + dx,
-                  offsetY: dragRef.current.startOffsetY + dy,
-                });
-              }}
-              onPointerUp={(e) => {
-                if (!dragRef.current.isDragging) return;
-                e.preventDefault();
-                dragRef.current.isDragging = false;
-                (e.currentTarget as HTMLImageElement).releasePointerCapture?.(e.pointerId);
-              }}
-              onPointerCancel={(e) => {
-                if (!dragRef.current.isDragging) return;
-                e.preventDefault();
-                dragRef.current.isDragging = false;
-                (e.currentTarget as HTMLImageElement).releasePointerCapture?.(e.pointerId);
-              }}
             />
           )}
 
-          {/* Crop frame overlay (Adobe-like): border + 3x3 grid + corner handles */}
-          <div className="pointer-events-none absolute inset-0 z-10">
-            {/* Keep overlay purely informational so preview matches export */}
-            <div className="absolute inset-0 border-2 border-white/90" />
+          {/* Viewport overlay: draggable frame + guides */}
+          <div
+            className={cn('absolute inset-0 z-10', isInteractive ? 'cursor-grab' : 'cursor-default')}
+            onPointerDown={(e) => {
+              if (!isInteractive) return;
+              if ('button' in e && typeof e.button === 'number' && e.button !== 0) return;
+              e.preventDefault();
+              (e.currentTarget as HTMLDivElement).setPointerCapture?.(e.pointerId);
+              dragRef.current = {
+                isDragging: true,
+                startClientX: e.clientX,
+                startClientY: e.clientY,
+                startViewportX: viewport.x,
+                startViewportY: viewport.y,
+              };
+            }}
+            onPointerMove={(e) => {
+              if (!dragRef.current.isDragging || !isInteractive) return;
+              e.preventDefault();
+              const dx = (e.clientX - dragRef.current.startClientX) / scale;
+              const dy = (e.clientY - dragRef.current.startClientY) / scale;
+              onViewportChange({
+                x: dragRef.current.startViewportX + dx,
+                y: dragRef.current.startViewportY + dy,
+              });
+            }}
+            onPointerUp={(e) => {
+              if (!dragRef.current.isDragging) return;
+              e.preventDefault();
+              dragRef.current.isDragging = false;
+              (e.currentTarget as HTMLDivElement).releasePointerCapture?.(e.pointerId);
+            }}
+            onPointerCancel={(e) => {
+              if (!dragRef.current.isDragging) return;
+              e.preventDefault();
+              dragRef.current.isDragging = false;
+              (e.currentTarget as HTMLDivElement).releasePointerCapture?.(e.pointerId);
+            }}
+          >
+            {/* dotted outer guide */}
+            <div className="pointer-events-none absolute inset-2 rounded border border-dashed border-primary-400/50" />
+            {/* main frame */}
+            <div className="pointer-events-none absolute inset-0 rounded-sm border-2 border-primary-500" />
             {/* 3x3 grid */}
-            <div className="absolute inset-0">
+            <div className="pointer-events-none absolute inset-0">
               <div className="absolute inset-y-0 left-1/3 w-px bg-white/60" />
               <div className="absolute inset-y-0 left-2/3 w-px bg-white/60" />
               <div className="absolute inset-x-0 top-1/3 h-px bg-white/60" />
               <div className="absolute inset-x-0 top-2/3 h-px bg-white/60" />
             </div>
-            {/* Corner handles */}
-            <div className="absolute left-0 top-0 size-6 border-l-4 border-t-4 border-white/90" />
-            <div className="absolute right-0 top-0 size-6 border-r-4 border-t-4 border-white/90" />
-            <div className="absolute bottom-0 left-0 size-6 border-b-4 border-l-4 border-white/90" />
-            <div className="absolute bottom-0 right-0 size-6 border-b-4 border-r-4 border-white/90" />
+            {/* corner brackets (match screenshot vibe) */}
+            <div className="pointer-events-none absolute left-0 top-0 size-7 border-l-4 border-t-4 border-primary-400" />
+            <div className="pointer-events-none absolute right-0 top-0 size-7 border-r-4 border-t-4 border-primary-400" />
+            <div className="pointer-events-none absolute bottom-0 left-0 size-7 border-b-4 border-l-4 border-primary-400" />
+            <div className="pointer-events-none absolute bottom-0 right-0 size-7 border-b-4 border-r-4 border-primary-400" />
           </div>
 
           {/* Loading Overlay */}
