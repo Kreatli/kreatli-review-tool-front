@@ -1,39 +1,99 @@
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
 
-export interface BannerViewport {
-  /** Top-left of the 2560×1440 crop in virtual (scaled) image pixels. */
+/** User-chosen export window position, stable across resizes. */
+export interface FrameAnchor {
+  /** 0 = left end of valid range, 1 = right end (see clampFrameAnchor). */
   x: number;
-  /** Top-left of the 2560×1440 crop in virtual (scaled) image pixels. */
+  /** 0 = top, 1 = bottom. */
   y: number;
 }
 
-export function getAutoImageScale(imgW: number, imgH: number): number {
-  if (!imgW || !imgH) return 1;
-  // Auto-upscale so the 2560×1440 viewport always fits inside the image.
-  return Math.max(1, CANVAS_WIDTH / imgW, CANVAS_HEIGHT / imgH);
+const BANNER_ASPECT = CANVAS_WIDTH / CANVAS_HEIGHT;
+
+/** Largest 2560×1440-proportional rect fully inside the image display rect. */
+export function getInscribedFrameSize(imgRectW: number, imgRectH: number): { width: number; height: number } {
+  if (!imgRectW || !imgRectH || !Number.isFinite(imgRectW) || !Number.isFinite(imgRectH)) {
+    return { width: 0, height: 0 };
+  }
+  const imgAspect = imgRectW / imgRectH;
+  if (imgAspect > BANNER_ASPECT) {
+    const height = imgRectH;
+    const width = height * BANNER_ASPECT;
+    return { width, height };
+  }
+  const width = imgRectW;
+  const height = width / BANNER_ASPECT;
+  return { width, height };
 }
 
-export function getDefaultViewport(imgW: number, imgH: number, imageScale: number): BannerViewport {
-  const scaledW = imgW * imageScale;
-  const scaledH = imgH * imageScale;
-  const x = Math.max(0, Math.round((scaledW - CANVAS_WIDTH) / 2));
-  const y = Math.max(0, Math.round((scaledH - CANVAS_HEIGHT) / 2));
-  return clampViewport(imgW, imgH, imageScale, { x, y });
+export function getDefaultFrameAnchor(): FrameAnchor {
+  return { x: 0.5, y: 0.5 };
 }
 
-export function clampViewport(imgW: number, imgH: number, imageScale: number, viewport: BannerViewport): BannerViewport {
-  const scaledW = imgW * imageScale;
-  const scaledH = imgH * imageScale;
-  const maxX = Math.max(0, scaledW - CANVAS_WIDTH);
-  const maxY = Math.max(0, scaledH - CANVAS_HEIGHT);
+/**
+ * Keeps the anchor inside [0,1] when the frame has room to move; if range is 0, pins to 0.5.
+ */
+export function clampFrameAnchor(anchor: FrameAnchor, imgRectW: number, imgRectH: number): FrameAnchor {
+  const { width: fw, height: fh } = getInscribedFrameSize(imgRectW, imgRectH);
+  const rangeX = Math.max(0, imgRectW - fw);
+  const rangeY = Math.max(0, imgRectH - fh);
   return {
-    x: clamp(viewport.x, 0, maxX),
-    y: clamp(viewport.y, 0, maxY),
+    x: rangeX <= 0 ? 0.5 : clamp01(anchor.x),
+    y: rangeY <= 0 ? 0.5 : clamp01(anchor.y),
   };
 }
 
-function clamp(value: number, min: number, max: number): number {
-  if (!Number.isFinite(value)) return min;
-  return Math.min(max, Math.max(min, value));
+export function frameRectFromAnchor(
+  imgRect: { x: number; y: number; width: number; height: number },
+  anchor: FrameAnchor,
+): { x: number; y: number; width: number; height: number } {
+  const { width: fw, height: fh } = getInscribedFrameSize(imgRect.width, imgRect.height);
+  const rangeX = Math.max(0, imgRect.width - fw);
+  const rangeY = Math.max(0, imgRect.height - fh);
+  const ax = rangeX <= 0 ? 0.5 : anchor.x;
+  const ay = rangeY <= 0 ? 0.5 : anchor.y;
+  return {
+    x: imgRect.x + ax * rangeX,
+    y: imgRect.y + ay * rangeY,
+    width: fw,
+    height: fh,
+  };
 }
 
+/** Natural-image pixel crop for canvas export. */
+export function getNaturalCropRect(
+  naturalWidth: number,
+  naturalHeight: number,
+  imgRect: { x: number; y: number; width: number; height: number },
+  frameRect: { x: number; y: number; width: number; height: number },
+): { sx: number; sy: number; sw: number; sh: number } {
+  if (!naturalWidth || !naturalHeight || !imgRect.width || !imgRect.height) {
+    return { sx: 0, sy: 0, sw: 0, sh: 0 };
+  }
+  const relX = (frameRect.x - imgRect.x) / imgRect.width;
+  const relY = (frameRect.y - imgRect.y) / imgRect.height;
+  const relW = frameRect.width / imgRect.width;
+  const relH = frameRect.height / imgRect.height;
+
+  let sx = Math.round(relX * naturalWidth);
+  let sy = Math.round(relY * naturalHeight);
+  let sw = Math.round(relW * naturalWidth);
+  let sh = Math.round(relH * naturalHeight);
+
+  // Guard float / rounding drift against bitmap edges.
+  if (sx < 0) sx = 0;
+  if (sy < 0) sy = 0;
+  if (sw > naturalWidth) sw = naturalWidth;
+  if (sh > naturalHeight) sh = naturalHeight;
+  if (sx + sw > naturalWidth) sx = naturalWidth - sw;
+  if (sy + sh > naturalHeight) sy = naturalHeight - sh;
+  if (sx < 0) sx = 0;
+  if (sy < 0) sy = 0;
+
+  return { sx, sy, sw, sh };
+}
+
+function clamp01(n: number): number {
+  if (!Number.isFinite(n)) return 0;
+  return Math.min(1, Math.max(0, n));
+}

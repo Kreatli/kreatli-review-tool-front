@@ -8,7 +8,7 @@ import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
-import { BannerViewport, clampViewport, getAutoImageScale, getDefaultViewport } from './bannerViewport';
+import { FrameAnchor, getDefaultFrameAnchor } from './bannerViewport';
 
 // Maximum image dimensions to prevent memory exhaustion
 const MAX_IMAGE_DIMENSION = 10000;
@@ -28,11 +28,16 @@ export const YouTubeBannerResizer = () => {
     naturalWidth: 0,
     naturalHeight: 0,
   });
-  const [viewport, setViewport] = useState<BannerViewport>({ x: 0, y: 0 });
-  const imageScale = getAutoImageScale(imageState.naturalWidth, imageState.naturalHeight);
+  const [frameAnchor, setFrameAnchor] = useState<FrameAnchor>(() => getDefaultFrameAnchor());
   const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png');
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  /** Latest natural-pixel crop computed in BannerCanvas — read at export time only. */
+  const cropRef = useRef<{ sx: number; sy: number; sw: number; sh: number } | null>(null);
+  const onCropRegionReady = useCallback((crop: { sx: number; sy: number; sw: number; sh: number } | null) => {
+    cropRef.current = crop;
+  }, []);
 
   const { isSignedIn } = useSession();
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
@@ -42,7 +47,8 @@ export const YouTubeBannerResizer = () => {
       if (prev.imageUrl) URL.revokeObjectURL(prev.imageUrl);
       return { file: null, imageUrl: null, naturalWidth: 0, naturalHeight: 0 };
     });
-    setViewport({ x: 0, y: 0 });
+    setFrameAnchor(getDefaultFrameAnchor());
+    cropRef.current = null;
     setIsLoadingImage(false);
   }, []);
 
@@ -90,9 +96,9 @@ export const YouTubeBannerResizer = () => {
           naturalWidth,
           naturalHeight,
         });
-        const scale = getAutoImageScale(naturalWidth, naturalHeight);
-        setViewport(getDefaultViewport(naturalWidth, naturalHeight, scale));
+        setFrameAnchor(getDefaultFrameAnchor());
         setIsLoadingImage(false);
+        cropRef.current = null;
 
         if (!isSignedIn) triggerSoftGate();
       };
@@ -199,13 +205,6 @@ export const YouTubeBannerResizer = () => {
     fileInputRef.current?.click();
   };
 
-  const setViewportClamped = useCallback(
-    (next: BannerViewport) => {
-      setViewport(clampViewport(imageState.naturalWidth, imageState.naturalHeight, imageScale, next));
-    },
-    [imageScale, imageState.naturalHeight, imageState.naturalWidth],
-  );
-
   // Cleanup image URL on unmount
   useEffect(() => {
     return () => {
@@ -224,9 +223,9 @@ export const YouTubeBannerResizer = () => {
             imageUrl={imageState.imageUrl}
             naturalWidth={imageState.naturalWidth}
             naturalHeight={imageState.naturalHeight}
-            imageScale={imageScale}
-            viewport={viewport}
-            onViewportChange={setViewportClamped}
+            frameAnchor={frameAnchor}
+            onFrameAnchorChange={setFrameAnchor}
+            onCropRegionReady={onCropRegionReady}
             getRootProps={getRootProps}
             getInputProps={getInputProps}
             isDragActive={isDragActive}
@@ -239,18 +238,13 @@ export const YouTubeBannerResizer = () => {
           <BannerControls
             hasImage={!!imageState.imageUrl}
             onReupload={handleReupload}
-            onResetViewport={
-              imageState.imageUrl
-                ? () => setViewport(getDefaultViewport(imageState.naturalWidth, imageState.naturalHeight, imageScale))
-                : undefined
-            }
+            onResetViewport={imageState.imageUrl ? () => setFrameAnchor(getDefaultFrameAnchor()) : undefined}
           />
 
           <BannerExport
             file={imageState.file}
             imageUrl={imageState.imageUrl}
-            viewport={viewport}
-            imageScale={imageScale}
+            getCropRect={() => cropRef.current}
             exportFormat={exportFormat}
             onExportFormatChange={setExportFormat}
             onExportStart={() => {
