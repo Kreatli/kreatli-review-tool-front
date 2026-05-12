@@ -2,10 +2,13 @@ import { addToast, Button, Radio, RadioGroup } from '@heroui/react';
 import { useState } from 'react';
 
 import { Icon } from '../various/Icon';
-import { CANVAS_HEIGHT, CANVAS_WIDTH, getContainRect } from './bannerGeometry';
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
 
 interface BannerExportProps {
+  file?: File | null;
   imageUrl: string | null;
+  /** Natural-pixel crop of the uploaded image; must match the draggable frame. */
+  getCropRect: () => { sx: number; sy: number; sw: number; sh: number } | null | undefined;
   exportFormat: 'png' | 'jpg';
   onExportFormatChange: (format: 'png' | 'jpg') => void;
   /** Called when user clicks Export. Return false to cancel export (e.g. after opening a gate modal). */
@@ -13,7 +16,9 @@ interface BannerExportProps {
 }
 
 export const BannerExport = ({
+  file,
   imageUrl,
+  getCropRect,
   exportFormat,
   onExportFormatChange,
   onExportStart,
@@ -21,10 +26,20 @@ export const BannerExport = ({
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExport = async () => {
-    if (!imageUrl) return;
+    if (!imageUrl && !file) return;
 
     const proceed = onExportStart?.() !== false;
     if (!proceed) return;
+
+    const crop = getCropRect();
+    if (!crop || crop.sw <= 0 || crop.sh <= 0) {
+      addToast({
+        title: 'Could not read the banner crop. Try moving the frame slightly, then export again.',
+        color: 'danger',
+        variant: 'flat',
+      });
+      return;
+    }
 
     setIsExporting(true);
 
@@ -41,29 +56,43 @@ export const BannerExport = ({
       ctx.fillStyle = '#FFFFFF';
       ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-      const response = await fetch(imageUrl);
-      if (!response.ok) {
-        throw new Error('Failed to load image for export');
-      }
-      const blob = await response.blob();
-
       let bitmap: ImageBitmap;
       try {
-        try {
-          bitmap = await createImageBitmap(blob, { imageOrientation: 'from-image' });
-        } catch {
-          bitmap = await createImageBitmap(blob);
+        if (file) {
+          try {
+            bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+          } catch {
+            bitmap = await createImageBitmap(file);
+          }
+        } else {
+          if (!imageUrl) throw new Error('Missing image source for export');
+          const response = await fetch(imageUrl);
+          if (!response.ok) throw new Error('Failed to load image for export');
+          const blob = await response.blob();
+          try {
+            bitmap = await createImageBitmap(blob, { imageOrientation: 'from-image' });
+          } catch {
+            bitmap = await createImageBitmap(blob);
+          }
         }
       } catch {
         throw new Error('Failed to load image for export');
       }
 
       try {
-        const dims = getContainRect(CANVAS_WIDTH, CANVAS_HEIGHT, bitmap.width, bitmap.height);
-        if (!dims) {
-          throw new Error('Failed to calculate image dimensions');
+        const sx = Math.max(0, Math.min(crop.sx, bitmap.width - 1));
+        const sy = Math.max(0, Math.min(crop.sy, bitmap.height - 1));
+        let sw = crop.sw;
+        let sh = crop.sh;
+        if (sx + sw > bitmap.width) sw = bitmap.width - sx;
+        if (sy + sh > bitmap.height) sh = bitmap.height - sy;
+        if (sw <= 0 || sh <= 0) {
+          throw new Error('Invalid crop region');
         }
-        ctx.drawImage(bitmap, dims.x, dims.y, dims.width, dims.height);
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(bitmap, sx, sy, sw, sh, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
       } finally {
         bitmap.close();
       }
@@ -108,8 +137,6 @@ export const BannerExport = ({
           errorMessage = 'Failed to initialize canvas. Please refresh the page and try again.';
         } else if (error.message.includes('load image')) {
           errorMessage = 'Failed to load image for export. The image may be corrupted.';
-        } else if (error.message.includes('dimensions')) {
-          errorMessage = 'Failed to calculate image dimensions. Please try a different image.';
         }
       }
 
@@ -146,7 +173,7 @@ export const BannerExport = ({
           className="w-full bg-foreground font-semibold text-content1"
           size="lg"
         >
-          <span>{isExporting ? 'Exporting...' : 'Export Banner'}</span>
+          <span>{isExporting ? 'Exporting...' : 'Download banner'}</span>
         </Button>
       </div>
     </div>

@@ -8,12 +8,11 @@ import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
 import { BannerExport } from './BannerExport';
-import { BannerPreviewModes } from './BannerPreviewModes';
-
-export type PreviewMode = 'desktop' | 'mobile' | 'tablet' | 'tv';
+import { FrameRelative, getDefaultFrameRelative } from './bannerViewport';
 
 // Maximum image dimensions to prevent memory exhaustion
 const MAX_IMAGE_DIMENSION = 10000;
+const MAX_FILE_SIZE_BYTES = 40 * 1024 * 1024; // 40MB (match Adobe UX)
 
 interface ImageState {
   file: File | null;
@@ -29,11 +28,16 @@ export const YouTubeBannerResizer = () => {
     naturalWidth: 0,
     naturalHeight: 0,
   });
-  const [showSafeAreas, setShowSafeAreas] = useState(true);
-  const [previewMode, setPreviewMode] = useState<PreviewMode>('desktop');
+  const [frameRelative, setFrameRelative] = useState<FrameRelative>(() => getDefaultFrameRelative(2560, 1440));
   const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png');
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  /** Latest natural-pixel crop computed in BannerCanvas — read at export time only. */
+  const cropRef = useRef<{ sx: number; sy: number; sw: number; sh: number } | null>(null);
+  const onCropRegionReady = useCallback((crop: { sx: number; sy: number; sw: number; sh: number } | null) => {
+    cropRef.current = crop;
+  }, []);
 
   const { isSignedIn } = useSession();
   const { isInactiveLocked, openInactivePlanModal } = useFreeToolsInactiveGate();
@@ -43,6 +47,8 @@ export const YouTubeBannerResizer = () => {
       if (prev.imageUrl) URL.revokeObjectURL(prev.imageUrl);
       return { file: null, imageUrl: null, naturalWidth: 0, naturalHeight: 0 };
     });
+    setFrameRelative(getDefaultFrameRelative(2560, 1440));
+    cropRef.current = null;
     setIsLoadingImage(false);
   }, []);
 
@@ -90,7 +96,9 @@ export const YouTubeBannerResizer = () => {
           naturalWidth,
           naturalHeight,
         });
+        setFrameRelative(getDefaultFrameRelative(naturalWidth, naturalHeight));
         setIsLoadingImage(false);
+        cropRef.current = null;
 
         if (!isSignedIn) triggerSoftGate();
       };
@@ -146,14 +154,14 @@ export const YouTubeBannerResizer = () => {
     if (!file) return;
 
     // Validate file type
-    if (!file.type.match(/^image\/(png|jpeg|jpg)$/)) {
-      addToast({ title: 'Please upload a PNG or JPG image', color: 'danger', variant: 'flat' });
+    if (!file.type.match(/^image\/(png|jpeg|jpg|webp)$/)) {
+      addToast({ title: 'Please upload a JPEG, PNG, or WebP image', color: 'danger', variant: 'flat' });
       return;
     }
 
     // Validate file size
-    if (file.size > 10 * 1024 * 1024) {
-      addToast({ title: 'File size must be less than 10MB', color: 'danger', variant: 'flat' });
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      addToast({ title: 'File size must be less than 40MB', color: 'danger', variant: 'flat' });
       return;
     }
 
@@ -169,15 +177,16 @@ export const YouTubeBannerResizer = () => {
       'image/png': ['.png'],
       'image/jpeg': ['.jpg', '.jpeg'],
       'image/jpg': ['.jpg'],
+      'image/webp': ['.webp'],
     },
-    maxSize: 10 * 1024 * 1024, // 10MB
+    maxSize: MAX_FILE_SIZE_BYTES,
     onDrop: (acceptedFiles, rejectedFiles) => {
       if (rejectedFiles.length > 0) {
         const rejection = rejectedFiles[0];
         if (rejection.errors.some((e) => e.code === 'file-too-large')) {
-          addToast({ title: 'File size must be less than 10MB', color: 'danger', variant: 'flat' });
+          addToast({ title: 'File size must be less than 40MB', color: 'danger', variant: 'flat' });
         } else if (rejection.errors.some((e) => e.code === 'file-invalid-type')) {
-          addToast({ title: 'Please upload a PNG or JPG image', color: 'danger', variant: 'flat' });
+          addToast({ title: 'Please upload a JPEG, PNG, or WebP image', color: 'danger', variant: 'flat' });
         } else {
           addToast({ title: 'Failed to upload file. Please try again.', color: 'danger', variant: 'flat' });
         }
@@ -209,13 +218,14 @@ export const YouTubeBannerResizer = () => {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
         {/* Canvas Section */}
-        <div className="min-w-0 flex-1 lg:sticky lg:top-6">
+        <div className="min-w-0 flex-1 lg:sticky lg:top-6 lg:flex-[1.4]">
           <BannerCanvas
             imageUrl={imageState.imageUrl}
             naturalWidth={imageState.naturalWidth}
             naturalHeight={imageState.naturalHeight}
-            showSafeAreas={showSafeAreas}
-            previewMode={previewMode}
+            frameRelative={frameRelative}
+            onFrameRelativeChange={setFrameRelative}
+            onCropRegionReady={onCropRegionReady}
             getRootProps={getRootProps}
             getInputProps={getInputProps}
             isDragActive={isDragActive}
@@ -224,18 +234,21 @@ export const YouTubeBannerResizer = () => {
         </div>
 
         {/* Controls Section */}
-        <div className="flex flex-col gap-4 lg:w-80 lg:shrink-0">
+        <div className="flex flex-col gap-4 lg:w-96 lg:shrink-0">
           <BannerControls
-            showSafeAreas={showSafeAreas}
-            onShowSafeAreasChange={setShowSafeAreas}
             hasImage={!!imageState.imageUrl}
             onReupload={handleReupload}
+            onResetViewport={
+              imageState.imageUrl
+                ? () => setFrameRelative(getDefaultFrameRelative(imageState.naturalWidth, imageState.naturalHeight))
+                : undefined
+            }
           />
 
-          <BannerPreviewModes previewMode={previewMode} onPreviewModeChange={setPreviewMode} />
-
           <BannerExport
+            file={imageState.file}
             imageUrl={imageState.imageUrl}
+            getCropRect={() => cropRef.current}
             exportFormat={exportFormat}
             onExportFormatChange={setExportFormat}
             onExportStart={() => {
@@ -255,7 +268,7 @@ export const YouTubeBannerResizer = () => {
       <input
         ref={fileInputRef}
         type="file"
-        accept="image/png,image/jpeg,image/jpg"
+        accept="image/png,image/jpeg,image/jpg,image/webp"
         onChange={handleFileSelect}
         className="hidden"
         aria-label="Reupload image"

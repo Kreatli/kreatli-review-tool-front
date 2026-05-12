@@ -1,98 +1,244 @@
 import { cn } from '@heroui/react';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 import { Icon } from '../various/Icon';
-import { CANVAS_HEIGHT, CANVAS_WIDTH, getContainRect } from './bannerGeometry';
-import { PreviewMode } from './YouTubeBannerResizer';
+import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
+import {
+  applyYoutubeAspectCornerResize,
+  clampFrameRelative,
+  CornerResizeHandle,
+  FrameRelative,
+  frameRectFromRelative,
+  getNaturalCropRect,
+  relativeToImgLocal,
+  imgLocalToRelative,
+} from './bannerViewport';
 
-const CANVAS_ASPECT_RATIO = CANVAS_WIDTH / CANVAS_HEIGHT; // 16:9
+function clientToImgLocal(
+  clientX: number,
+  clientY: number,
+  stageEl: HTMLElement,
+  imgRect: { x: number; y: number; width: number; height: number },
+): { lx: number; ly: number } {
+  const r = stageEl.getBoundingClientRect();
+  return {
+    lx: clientX - r.left - imgRect.x,
+    ly: clientY - r.top - imgRect.y,
+  };
+}
 
-// Safe area dimensions (centered)
-const SAFE_AREA_WIDTH = 1546;
-const SAFE_AREA_HEIGHT = 423;
-const SAFE_AREA_X = (CANVAS_WIDTH - SAFE_AREA_WIDTH) / 2; // 507
-const SAFE_AREA_Y = (CANVAS_HEIGHT - SAFE_AREA_HEIGHT) / 2; // 508.5
+function cursorForHandle(h: CornerResizeHandle): string {
+  switch (h) {
+    case 'nw':
+    case 'se':
+      return 'nwse-resize';
+    case 'ne':
+    case 'sw':
+      return 'nesw-resize';
+    default:
+      return 'default';
+  }
+}
 
-// Device viewport dimensions (approximate)
-const DEVICE_VIEWPORTS = {
-  desktop: { width: CANVAS_WIDTH, height: CANVAS_HEIGHT, x: 0, y: 0 },
-  mobile: { width: 1280, height: 720, x: (CANVAS_WIDTH - 1280) / 2, y: (CANVAS_HEIGHT - 720) / 2 },
-  tablet: { width: 2048, height: 1152, x: (CANVAS_WIDTH - 2048) / 2, y: (CANVAS_HEIGHT - 1152) / 2 },
-  tv: { width: CANVAS_WIDTH, height: CANVAS_HEIGHT, x: 0, y: 0 },
-};
+const HANDLE =
+  'absolute z-30 box-border h-3.5 w-3.5 rounded-sm border-2 border-primary-600 bg-white shadow-sm touch-manipulation';
 
 interface BannerCanvasProps {
   imageUrl: string | null;
   naturalWidth: number;
   naturalHeight: number;
-  showSafeAreas: boolean;
-  previewMode: PreviewMode;
+  frameRelative: FrameRelative;
+  onFrameRelativeChange: (next: FrameRelative) => void;
+  onCropRegionReady: (crop: { sx: number; sy: number; sw: number; sh: number } | null) => void;
   getRootProps: () => DropzoneRootProps;
   getInputProps: () => DropzoneInputProps;
   isDragActive: boolean;
   isLoading?: boolean;
 }
 
-/** Fit image within canvas (contain), centered. Display dimensions only. */
-function getContainDisplayDims(
-  naturalWidth: number,
-  naturalHeight: number,
-  displaySizeWidth: number,
-) {
-  if (!naturalWidth || !naturalHeight || !displaySizeWidth) return null;
-  const r = getContainRect(CANVAS_WIDTH, CANVAS_HEIGHT, naturalWidth, naturalHeight);
-  if (!r) return null;
-  const scaleCanvas = displaySizeWidth / CANVAS_WIDTH;
-  return {
-    width: r.width * scaleCanvas,
-    height: r.height * scaleCanvas,
-    x: r.x * scaleCanvas,
-    y: r.y * scaleCanvas,
-  };
-}
-
 export const BannerCanvas = ({
   imageUrl,
   naturalWidth,
   naturalHeight,
-  showSafeAreas,
-  previewMode,
+  frameRelative,
+  onFrameRelativeChange,
+  onCropRegionReady,
   getRootProps,
   getInputProps,
   isDragActive,
   isLoading = false,
 }: BannerCanvasProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement | null>(null);
-  const [displaySize, setDisplaySize] = useState({ width: 0, height: 0 });
+  const stageRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const imgRectRef = useRef({ x: 0, y: 0, width: 0, height: 0 });
+  const onFrameRelativeChangeRef = useRef(onFrameRelativeChange);
+  onFrameRelativeChangeRef.current = onFrameRelativeChange;
 
-  // Calculate display size maintaining aspect ratio
+  const frameRelativeRef = useRef(frameRelative);
+  frameRelativeRef.current = frameRelative;
+
+  const dragListenersCleanupRef = useRef<(() => void) | null>(null);
+
+  /** Image box in stage-local CSS pixels (object-fit: contain). */
+  const [imgRect, setImgRect] = useState({ x: 0, y: 0, width: 0, height: 0 });
+  imgRectRef.current = imgRect;
+
+  const measure = useCallback(() => {
+    const stage = stageRef.current;
+    const img = imageRef.current;
+    if (!stage || !img || !naturalWidth || !naturalHeight) return;
+
+    const sw = stage.clientWidth;
+    const sh = stage.clientHeight;
+    if (!sw || !sh) return;
+
+    const containScale = Math.min(sw / naturalWidth, sh / naturalHeight);
+    const w = naturalWidth * containScale;
+    const h = naturalHeight * containScale;
+    const x = (sw - w) / 2;
+    const y = (sh - h) / 2;
+    setImgRect({ x, y, width: w, height: h });
+  }, [naturalHeight, naturalWidth]);
+
+  useLayoutEffect(() => {
+    measure();
+  }, [imageUrl, naturalWidth, naturalHeight, measure]);
+
   useEffect(() => {
-    const updateDisplaySize = () => {
-      if (containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        const displayHeight = containerWidth / CANVAS_ASPECT_RATIO;
-        setDisplaySize({ width: containerWidth, height: displayHeight });
-      }
+    const ro = new ResizeObserver(() => measure());
+    const stage = stageRef.current;
+    if (stage) ro.observe(stage);
+    window.addEventListener('resize', measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', measure);
     };
+  }, [measure]);
 
-    updateDisplaySize();
-    window.addEventListener('resize', updateDisplaySize);
-    return () => window.removeEventListener('resize', updateDisplaySize);
-  }, []);
+  useEffect(
+    () => () => {
+      dragListenersCleanupRef.current?.();
+      dragListenersCleanupRef.current = null;
+    },
+    [],
+  );
 
-  const dims = getContainDisplayDims(naturalWidth, naturalHeight, displaySize.width);
-  const viewport = DEVICE_VIEWPORTS[previewMode];
-  const scale = displaySize.width / CANVAS_WIDTH;
+  const frameRect = useMemo(
+    () =>
+      frameRectFromRelative(
+        { x: imgRect.x, y: imgRect.y, width: imgRect.width, height: imgRect.height },
+        frameRelative,
+      ),
+    [frameRelative, imgRect.height, imgRect.width, imgRect.x, imgRect.y],
+  );
+
+  useLayoutEffect(() => {
+    if (!imageUrl || !naturalWidth || !naturalHeight || imgRect.width <= 0 || imgRect.height <= 0) {
+      onCropRegionReady(null);
+      return;
+    }
+    const crop = getNaturalCropRect(naturalWidth, naturalHeight, imgRect, frameRect);
+    if (crop.sw <= 0 || crop.sh <= 0) {
+      onCropRegionReady(null);
+      return;
+    }
+    onCropRegionReady(crop);
+  }, [frameRect, imageUrl, imgRect, naturalHeight, naturalWidth, onCropRegionReady]);
+
+  const isInteractive = !!imageUrl && !isLoading && imgRect.width > 0 && imgRect.height > 0;
+
+  const attachPointerDrag = useCallback(
+    (pointerId: number, onMove: (e: PointerEvent) => void, onEnd: (e: PointerEvent) => void) => {
+      dragListenersCleanupRef.current?.();
+      const move = (e: PointerEvent) => {
+        if (e.pointerId !== pointerId) return;
+        onMove(e);
+      };
+      const end = (e: PointerEvent) => {
+        if (e.pointerId !== pointerId) return;
+        window.removeEventListener('pointermove', move);
+        window.removeEventListener('pointerup', end);
+        window.removeEventListener('pointercancel', end);
+        dragListenersCleanupRef.current = null;
+        onEnd(e);
+      };
+      window.addEventListener('pointermove', move);
+      window.addEventListener('pointerup', end);
+      window.addEventListener('pointercancel', end);
+      dragListenersCleanupRef.current = () => {
+        window.removeEventListener('pointermove', move);
+        window.removeEventListener('pointerup', end);
+        window.removeEventListener('pointercancel', end);
+      };
+    },
+    [],
+  );
+
+  const beginMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (!isInteractive) return;
+      if (e.button !== 0) return;
+      e.preventDefault();
+      const stage = stageRef.current;
+      if (!stage) return;
+      const ir = imgRectRef.current;
+      const { fl, ft, fw, fh } = relativeToImgLocal(frameRelativeRef.current, ir.width, ir.height);
+      const { lx, ly } = clientToImgLocal(e.clientX, e.clientY, stage, ir);
+      const startLx = lx;
+      const startLy = ly;
+      attachPointerDrag(e.pointerId, (ev) => {
+        const ir2 = imgRectRef.current;
+        const st = stageRef.current;
+        if (!st) return;
+        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+        const nFl = fl + (cur.lx - startLx);
+        const nFt = ft + (cur.ly - startLy);
+        const clampedFl = Math.min(Math.max(0, nFl), ir2.width - fw);
+        const clampedFt = Math.min(Math.max(0, nFt), ir2.height - fh);
+        const next = clampFrameRelative(
+          imgLocalToRelative(clampedFl, clampedFt, fw, fh, ir2.width, ir2.height),
+          ir2.width,
+          ir2.height,
+        );
+        onFrameRelativeChangeRef.current(next);
+      }, () => {});
+    },
+    [attachPointerDrag, isInteractive],
+  );
+
+  const beginResize = useCallback(
+    (handle: CornerResizeHandle) => (e: React.PointerEvent) => {
+      if (!isInteractive) return;
+      if (e.button !== 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const stage = stageRef.current;
+      if (!stage) return;
+      const ir = imgRectRef.current;
+      const startRect = relativeToImgLocal(frameRelativeRef.current, ir.width, ir.height);
+      attachPointerDrag(e.pointerId, (ev) => {
+        const ir2 = imgRectRef.current;
+        const st = stageRef.current;
+        if (!st) return;
+        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+        const nextLocal = applyYoutubeAspectCornerResize(handle, startRect, cur.lx, cur.ly, ir2.width, ir2.height);
+        const next = clampFrameRelative(
+          imgLocalToRelative(nextLocal.fl, nextLocal.ft, nextLocal.fw, nextLocal.fh, ir2.width, ir2.height),
+          ir2.width,
+          ir2.height,
+        );
+        onFrameRelativeChangeRef.current(next);
+      }, () => {});
+    },
+    [attachPointerDrag, isInteractive],
+  );
 
   return (
     <div
-      ref={containerRef}
       className="relative w-full overflow-hidden rounded-lg border border-foreground-200 bg-foreground-50"
       style={{ aspectRatio: `${CANVAS_WIDTH} / ${CANVAS_HEIGHT}` }}
     >
-      {/* Empty State / Upload Zone */}
       {!imageUrl && (
         <div
           {...getRootProps()}
@@ -118,8 +264,8 @@ export const BannerCanvas = ({
               </p>
               <p className="text-sm text-foreground-500">or click to browse</p>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-foreground-400">
-                <span className="rounded-full bg-foreground-100 px-3 py-1">PNG, JPG</span>
-                <span className="rounded-full bg-foreground-100 px-3 py-1">Up to 10MB</span>
+                <span className="rounded-full bg-foreground-100 px-3 py-1">JPEG, PNG, WebP</span>
+                <span className="rounded-full bg-foreground-100 px-3 py-1">Less than 40MB</span>
                 <span className="rounded-full bg-foreground-100 px-3 py-1">2560×1440px output</span>
               </div>
             </div>
@@ -128,106 +274,114 @@ export const BannerCanvas = ({
         </div>
       )}
 
-      {/* Canvas with Image */}
       {imageUrl && (
-        <div className="relative h-full w-full">
-          {/* Background (for contain mode) */}
-          <div className="absolute inset-0 bg-white" />
+        <div ref={stageRef} className="relative h-full w-full bg-foreground-100">
+          <img
+            ref={imageRef}
+            src={imageUrl}
+            alt={`YouTube banner source image. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels.`}
+            className="pointer-events-none absolute select-none"
+            draggable={false}
+            style={{
+              left: imgRect.x,
+              top: imgRect.y,
+              width: imgRect.width,
+              height: imgRect.height,
+              objectFit: 'fill',
+            }}
+            onLoad={measure}
+          />
 
-          {/* Image */}
-          {dims && (
-            <img
-              ref={imageRef}
-              src={imageUrl}
-              alt={`YouTube banner preview. Original dimensions: ${naturalWidth} × ${naturalHeight} pixels. Canvas size: ${CANVAS_WIDTH} × ${CANVAS_HEIGHT} pixels.`}
-              className="absolute max-w-none select-none"
+          {isInteractive && (
+            <div
+              className="pointer-events-none absolute z-10"
               style={{
-                width: dims.width,
-                height: dims.height,
-                left: dims.x,
-                top: dims.y,
-                objectFit: 'contain',
+                left: frameRect.x,
+                top: frameRect.y,
+                width: frameRect.width,
+                height: frameRect.height,
+                boxShadow: '0 0 0 9999px rgba(15, 23, 42, 0.58)',
               }}
-              draggable={false}
-              role="img"
-              aria-label={`Banner image, ${naturalWidth} by ${naturalHeight} pixels`}
             />
           )}
 
-          {/* Loading Overlay */}
+          {isInteractive && (
+            <div
+              className={cn(
+                'absolute z-20 touch-none rounded-sm border-2 border-dashed border-primary-500',
+                'shadow-[0_0_0_1px_rgba(59,130,246,0.35),0_0_24px_rgba(59,130,246,0.25)]',
+              )}
+              style={{
+                left: frameRect.x,
+                top: frameRect.y,
+                width: frameRect.width,
+                height: frameRect.height,
+              }}
+              role="presentation"
+              aria-label="YouTube banner crop frame — drag to move, use handles to resize"
+            >
+              <div
+                className="absolute inset-[8px] z-10 cursor-grab active:cursor-grabbing"
+                onPointerDown={beginMove}
+              />
+
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute inset-y-0 left-1/3 w-px bg-white/55" />
+                <div className="absolute inset-y-0 left-2/3 w-px bg-white/55" />
+                <div className="absolute inset-x-0 top-1/3 h-px bg-white/55" />
+                <div className="absolute inset-x-0 top-2/3 h-px bg-white/55" />
+              </div>
+              <div className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:12px_12px]" />
+
+              {/* Corner resize handles (16:9 locked — no edge-only resize) */}
+              <button
+                type="button"
+                aria-label="Resize crop frame north-west"
+                className={cn(HANDLE, 'left-0 top-0 -translate-x-1/2 -translate-y-1/2')}
+                style={{ cursor: cursorForHandle('nw') }}
+                onPointerDown={beginResize('nw')}
+              />
+              <button
+                type="button"
+                aria-label="Resize crop frame north-east"
+                className={cn(HANDLE, 'right-0 top-0 translate-x-1/2 -translate-y-1/2')}
+                style={{ cursor: cursorForHandle('ne') }}
+                onPointerDown={beginResize('ne')}
+              />
+              <button
+                type="button"
+                aria-label="Resize crop frame south-east"
+                className={cn(HANDLE, 'right-0 bottom-0 translate-x-1/2 translate-y-1/2')}
+                style={{ cursor: cursorForHandle('se') }}
+                onPointerDown={beginResize('se')}
+              />
+              <button
+                type="button"
+                aria-label="Resize crop frame south-west"
+                className={cn(HANDLE, 'left-0 bottom-0 -translate-x-1/2 translate-y-1/2')}
+                style={{ cursor: cursorForHandle('sw') }}
+                onPointerDown={beginResize('sw')}
+              />
+
+              <div className="pointer-events-none absolute left-0 top-0 size-7 border-l-[3px] border-t-[3px] border-primary-400" />
+              <div className="pointer-events-none absolute right-0 top-0 size-7 border-r-[3px] border-t-[3px] border-primary-400" />
+              <div className="pointer-events-none absolute bottom-0 left-0 size-7 border-b-[3px] border-l-[3px] border-primary-400" />
+              <div className="pointer-events-none absolute bottom-0 right-0 size-7 border-b-[3px] border-r-[3px] border-primary-400" />
+            </div>
+          )}
+
           {isLoading && (
-            <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+            <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/30 backdrop-blur-sm">
               <div className="flex flex-col items-center gap-3 rounded-lg bg-black/80 px-6 py-4">
                 <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-                <p className="text-sm font-medium text-white">Processing image...</p>
-                <p className="text-xs text-foreground-300">Please wait</p>
+                <p className="text-sm font-medium text-white">Loading image…</p>
               </div>
             </div>
           )}
 
-          {/* Device Viewport Overlay */}
-          {previewMode !== 'desktop' && (
-            <div
-              className="pointer-events-none absolute border-2 border-dashed border-primary/60 bg-primary/10 transition-all duration-300"
-              style={{
-                left: viewport.x * scale,
-                top: viewport.y * scale,
-                width: viewport.width * scale,
-                height: viewport.height * scale,
-              }}
-            >
-              <div className="pointer-events-auto absolute -top-6 left-0 rounded-md bg-primary px-2 py-0.5 text-xs font-semibold text-white shadow-sm">
-                {previewMode.charAt(0).toUpperCase() + previewMode.slice(1)} View
-              </div>
-            </div>
-          )}
-
-          {/* Safe Area Overlay */}
-          {showSafeAreas && (
-            <>
-              <div
-                className="pointer-events-none absolute border-2 border-success bg-success/10 transition-all duration-300"
-                style={{
-                  left: SAFE_AREA_X * scale,
-                  top: SAFE_AREA_Y * scale,
-                  width: SAFE_AREA_WIDTH * scale,
-                  height: SAFE_AREA_HEIGHT * scale,
-                }}
-              >
-                <div className="pointer-events-auto absolute -top-6 left-0 rounded-md bg-success px-2 py-0.5 text-xs font-semibold text-white shadow-sm">
-                  Safe Area (All Devices)
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* Canvas Border */}
-          <div className="pointer-events-none absolute inset-0 border-2 border-foreground-300" />
+          <div className="pointer-events-none absolute inset-0 z-[5] border-2 border-foreground-200" />
         </div>
       )}
-
-      {/* Info Overlay */}
-      {imageUrl && !isLoading && (
-        <div className="absolute bottom-2 left-2 z-10 rounded-lg bg-black/80 backdrop-blur-sm px-3 py-2 text-xs text-white shadow-lg">
-          <div className="flex flex-col gap-1">
-            <div className="font-medium">
-              Canvas: {CANVAS_WIDTH} × {CANVAS_HEIGHT}px
-            </div>
-            {naturalWidth > 0 && naturalHeight > 0 && (
-              <div className="flex items-center gap-2 text-foreground-300">
-                <span>Image: {naturalWidth} × {naturalHeight}px</span>
-                {Math.abs(naturalWidth / naturalHeight - CANVAS_WIDTH / CANVAS_HEIGHT) > 0.1 && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-warning/20 px-2 py-0.5 text-warning">
-                    <Icon icon="warning" size={12} />
-                    Aspect ratio differs
-                  </span>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
     </div>
   );
 };
