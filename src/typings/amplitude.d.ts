@@ -29,6 +29,9 @@ export type AmplitudeEvent =
   | 'invite_member_success'
   | 'invite_member_failure';
 
+/** Emitted by the API via Amplitude HTTP API (same project as browser SDK). Not used with `trackEvent` in the app. */
+export type AmplitudeServerEvent = 'account_signup_completed' | 'free_trial_started';
+
 export interface AmplitudeEventProperties {
   set_file_status_click: {
     status: string;
