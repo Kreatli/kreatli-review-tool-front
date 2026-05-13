@@ -9,16 +9,17 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { COMPARE_IMAGES_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 const faqs = [
   {
@@ -177,7 +178,8 @@ export default function ImageComparerPage() {
         <CTASection
           title="Ready to compare images with your team?"
           description="Kreatli lets you compare image versions side by side with comments and approval workflows. Keep all feedback in one place with your creative assets."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

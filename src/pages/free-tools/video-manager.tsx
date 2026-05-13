@@ -19,6 +19,7 @@ import { VideoManagerGuide } from '../../components/video-manager/VideoManagerGu
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 
 export default function VideoManagerPage() {
   useSession();
@@ -92,7 +93,8 @@ export default function VideoManagerPage() {
         </section>
 
         <DefinitionBlock term="Video Manager">
-          A video manager organizes clips, versions, and review status in one workspace instead of scattered folders. It helps producers track what is current, what is approved, and what still needs client input.
+          A video manager organizes clips, versions, and review status in one workspace instead of scattered folders. It
+          helps producers track what is current, what is approved, and what still needs client input.
         </DefinitionBlock>
 
         <VideoManagerGuide />
@@ -121,7 +123,8 @@ export default function VideoManagerPage() {
         <CTASection
           title="Ready to manage videos with your team?"
           description="Kreatli combines reliable media storage with project management. Organize, track, and deliver video projects in one secure workspace."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

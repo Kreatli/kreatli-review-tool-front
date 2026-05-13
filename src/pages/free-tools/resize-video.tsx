@@ -4,19 +4,20 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { RESIZE_VIDEO_FAQS,ResizeVideoFAQ } from '../../components/resize-video/ResizeVideoFAQ';
+import { ResizeVideoGuide } from '../../components/resize-video/ResizeVideoGuide';
+import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { ResizeVideoFAQ, RESIZE_VIDEO_FAQS } from '../../components/resize-video/ResizeVideoFAQ';
-import { ResizeVideoGuide } from '../../components/resize-video/ResizeVideoGuide';
-import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function ResizeVideoPage() {
   useSession();
@@ -29,7 +30,7 @@ export default function ResizeVideoPage() {
           name="description"
           content="Resize video to custom or preset dimensions in your browser. Runs locally, no upload required. Free to use."
         />
-<meta property="og:title" content="Resize Video Online – Free Video Resizer | Kreatli" />
+        <meta property="og:title" content="Resize Video Online – Free Video Resizer | Kreatli" />
         <meta
           property="og:description"
           content="Resize video to custom or preset dimensions in your browser. Runs locally, no upload required. Free to use."
@@ -87,7 +88,9 @@ export default function ResizeVideoPage() {
         </section>
 
         <DefinitionBlock term="Resize Video Tool">
-          A resize video tool adjusts dimensions or aspect ratio so exports meet platform specs—social, broadcast, or web—without reopening an edit suite. Use it when you need a quick deliverable size check before upload or handoff.
+          A resize video tool adjusts dimensions or aspect ratio so exports meet platform specs—social, broadcast, or
+          web—without reopening an edit suite. Use it when you need a quick deliverable size check before upload or
+          handoff.
         </DefinitionBlock>
 
         <ResizeVideoGuide />
@@ -108,7 +111,8 @@ export default function ResizeVideoPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

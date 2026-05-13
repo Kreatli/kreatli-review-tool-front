@@ -15,6 +15,7 @@ import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinit
 import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -45,8 +46,7 @@ const DOWNLOAD_YOUTUBE_SHORTS_STEPS: WorkflowStep[] = [
   {
     step: 3,
     title: 'Resolve the best available MP4',
-    description:
-      'Click “Find video”. We look for a progressive MP4 stream when YouTube exposes one for that playback.',
+    description: 'Click “Find video”. We look for a progressive MP4 stream when YouTube exposes one for that playback.',
     icon: 'search',
     image: null,
   },
@@ -184,7 +184,8 @@ export default function DownloadYouTubeShortsPlatformPage() {
               <CardBody className="p-6">
                 <h3 className="font-sans text-lg font-semibold">Save from a public link</h3>
                 <p className="mt-2 text-sm text-foreground-500">
-                  Paste a URL, resolve, and download. If a resolved download URL expires, click “Find video” again for a fresh URL.
+                  Paste a URL, resolve, and download. If a resolved download URL expires, click “Find video” again for a
+                  fresh URL.
                 </p>
               </CardBody>
             </Card>
@@ -217,7 +218,11 @@ export default function DownloadYouTubeShortsPlatformPage() {
         </div>
       </section>
 
-      <MoreFreeToolsSection tools={getFreeToolsForPlatform(PAGE_PATH)} title="More Free Tools" excludeHref={TOOL_PATH} />
+      <MoreFreeToolsSection
+        tools={getFreeToolsForPlatform(PAGE_PATH)}
+        title="More Free Tools"
+        excludeHref={TOOL_PATH}
+      />
 
       <ResourcesArticlesPreviewSection
         title="More guides on short-form video workflows"
@@ -270,6 +275,8 @@ export default function DownloadYouTubeShortsPlatformPage() {
       <CTASection
         title="Need feedback and approvals on short-form video?"
         description="Bring Shorts and cuts into one workspace—frame-accurate feedback, clear versions, and approvals without messy threads."
+        primaryButtonText={OPEN_IN_KREATLI_LABEL}
+        primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
       />
 
       <FooterSection hideCta />

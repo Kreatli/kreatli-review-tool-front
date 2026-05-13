@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+ 
 import Head from 'next/head';
 import NextLink from 'next/link';
 
@@ -6,6 +6,8 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { PdfAnnotatorFAQ, pdfAnnotatorFaqs } from '../../components/pdf-annotator/PdfAnnotatorFAQ';
+import { PdfAnnotatorGuide } from '../../components/pdf-annotator/PdfAnnotatorGuide';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
@@ -14,10 +16,9 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { PdfAnnotatorFAQ, pdfAnnotatorFaqs } from '../../components/pdf-annotator/PdfAnnotatorFAQ';
-import { PdfAnnotatorGuide } from '../../components/pdf-annotator/PdfAnnotatorGuide';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -139,7 +140,8 @@ export default function PdfMarkupToolPage() {
         <CTASection
           title="Ready to mark up PDFs with your team?"
           description="Kreatli offers location-pinned PDF markup, drawing on PDFs, and approval workflows in one workspace with your video and creative assets."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

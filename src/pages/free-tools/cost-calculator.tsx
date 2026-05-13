@@ -12,6 +12,7 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { Icon } from '../../components/various/Icon';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
@@ -657,6 +658,8 @@ export default function CostCalculatorPage() {
       <CTASection
         title="Ready to Start Saving on Software Costs?"
         description="Join teams that have consolidated their tools and reduced costs by 60% or more. Get started with Kreatli today."
+        primaryButtonText={OPEN_IN_KREATLI_LABEL}
+        primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
       />
       <FooterSection hideCta={true} />
     </>

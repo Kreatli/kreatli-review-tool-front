@@ -11,9 +11,9 @@ interface CTASectionProps {
   title: string;
   /** Description text (can be string or ReactNode for links) */
   description: string | ReactNode;
-  /** Custom primary button text (default: "Start 7-day trial") */
+  /** Primary CTA label (default trial copy; free tools often import `OPEN_IN_KREATLI_LABEL`). */
   primaryButtonText?: string;
-  /** Custom primary button href (default: "/sign-up") */
+  /** Primary CTA href (default `/sign-up`; “Open in Kreatli” uses `KREATLI_PLATFORM_ENTRY_HREF` → `/projects`). */
   primaryButtonHref?: string;
   /** Show secondary "Book a Demo" button (default: true) */
   showDemoButton?: boolean;

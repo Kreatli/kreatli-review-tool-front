@@ -19,6 +19,7 @@ import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { useSession } from '../../hooks/useSession';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 
 const PAGE_PATH = '/free-tools/tiktok-video-downloader';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
@@ -287,7 +288,8 @@ export default function TikTokVideoDownloaderPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

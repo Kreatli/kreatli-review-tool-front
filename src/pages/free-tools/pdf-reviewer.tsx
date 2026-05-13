@@ -5,6 +5,8 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { PdfReviewerFAQ, pdfReviewerFaqs } from '../../components/pdf-reviewer/PdfReviewerFAQ';
+import { PdfReviewerGuide } from '../../components/pdf-reviewer/PdfReviewerGuide';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
@@ -13,10 +15,9 @@ import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEn
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { PdfReviewerFAQ, pdfReviewerFaqs } from '../../components/pdf-reviewer/PdfReviewerFAQ';
-import { PdfReviewerGuide } from '../../components/pdf-reviewer/PdfReviewerGuide';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -111,7 +112,8 @@ export default function PdfReviewerPage() {
         <CTASection
           title="Ready to streamline PDF reviews?"
           description="Kreatli is a Video Collaboration & Review Platform for creative teams. Review PDFs, collect location-pinned feedback, manage approvals, and deliver projects faster."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

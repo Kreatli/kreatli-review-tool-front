@@ -20,6 +20,7 @@ import { YouTubeBannerResizer } from '../../components/youtube-banner-resizer/Yo
 import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 
 export default function YouTubeBannerResizerPage() {
   useSession();
@@ -122,7 +123,8 @@ export default function YouTubeBannerResizerPage() {
       <CTASection
         title="Working with YouTube videos, assets, and feedback at scale?"
         description="Kreatli is a Video Collaboration & Review Platform for video teams. Manage YouTube content, coordinate with team members, and streamline your workflow."
-        primaryButtonText="Start 7-day trial"
+        primaryButtonText={OPEN_IN_KREATLI_LABEL}
+        primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
       />
       <FooterSection hideCta />
       <SignUpModal />

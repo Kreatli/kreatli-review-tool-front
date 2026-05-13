@@ -19,6 +19,7 @@ import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { useSession } from '../../hooks/useSession';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 
 const PAGE_PATH = '/free-tools/instagram-reel-downloader';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
@@ -185,9 +186,9 @@ export default function InstagramReelDownloaderPage() {
         <section className="relative overflow-hidden px-6 pb-6">
           <div className="relative z-10 mx-auto max-w-6xl">
             <div className="rounded-xl border border-foreground-200 bg-content1/70 p-4 text-sm text-foreground-600">
-              <span className="font-semibold text-foreground">Rights &amp; usage:</span> only download content you own or
-              have permission to use. Respect Instagram’s Terms of Service and copyright laws. This tool does not require
-              Instagram login credentials.
+              <span className="font-semibold text-foreground">Rights &amp; usage:</span> only download content you own
+              or have permission to use. Respect Instagram’s Terms of Service and copyright laws. This tool does not
+              require Instagram login credentials.
             </div>
           </div>
         </section>
@@ -235,8 +236,8 @@ export default function InstagramReelDownloaderPage() {
                   access private accounts or login-only media.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Download doesn’t start:</span> click “Find video” again
-                  and retry Download, or check pop-up blockers if your browser blocked the transfer.
+                  <span className="font-semibold text-foreground">Download doesn’t start:</span> click “Find video”
+                  again and retry Download, or check pop-up blockers if your browser blocked the transfer.
                 </li>
               </ul>
             </div>
@@ -276,7 +277,8 @@ export default function InstagramReelDownloaderPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

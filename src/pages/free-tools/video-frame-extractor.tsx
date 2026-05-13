@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+ 
 import { Button } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
@@ -9,20 +9,21 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { WebApplicationStructuredData } from '../../components/shared/WebApplicationStructuredData';
 import { VideoFrameExtractor } from '../../components/video-frame-extractor/VideoFrameExtractor';
 import { VideoFrameExtractorFAQ } from '../../components/video-frame-extractor/VideoFrameExtractorFAQ';
 import { VideoFrameExtractorGuide } from '../../components/video-frame-extractor/VideoFrameExtractorGuide';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { getVideoFrameExtractorStructuredFaqs } from '../../data/video-frame-extractor-faq-content';
 import { useSession } from '../../hooks/useSession';
 import { pushSignupCtaClick } from '../../lib/gtmDataLayer';
-import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function VideoFrameExtractorPage() {
   useSession();
@@ -35,10 +36,7 @@ export default function VideoFrameExtractorPage() {
           name="description"
           content="Video frame extractor: extract frames from video in the browser—video-to-frame PNG/JPG or ZIP, no extra app required. Sign in to use the tool; start a trial if needed."
         />
-        <meta
-          property="og:title"
-          content="Free Video Frame Extractor — Extract Frames from Video | Kreatli"
-        />
+        <meta property="og:title" content="Free Video Frame Extractor — Extract Frames from Video | Kreatli" />
         <meta
           property="og:description"
           content="Extract still frames from video instantly—PNG/JPG or ZIP. Built for accurate grabs, not generic video review snippets."
@@ -85,12 +83,12 @@ export default function VideoFrameExtractorPage() {
               Video frame extractor — extract frames from video
             </h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Your <strong className="font-semibold text-foreground-700">video-to-frame</strong> workflow in the browser:
-              decoded stills from MP4, MOV, or WebM—not screen grabs—so thumbnails and QC grabs stay pixel-consistent. Pull{' '}
-              <strong className="font-semibold text-foreground-700">PNG</strong>,{' '}
+              Your <strong className="font-semibold text-foreground-700">video-to-frame</strong> workflow in the
+              browser: decoded stills from MP4, MOV, or WebM—not screen grabs—so thumbnails and QC grabs stay
+              pixel-consistent. Pull <strong className="font-semibold text-foreground-700">PNG</strong>,{' '}
               <strong className="font-semibold text-foreground-700">JPG</strong>, or a{' '}
-              <strong className="font-semibold text-foreground-700">ZIP</strong> when you need multiple grabs. No separate
-              desktop app required (you download exports as usual). Sign in to extract; start a{' '}
+              <strong className="font-semibold text-foreground-700">ZIP</strong> when you need multiple grabs. No
+              separate desktop app required (you download exports as usual). Sign in to extract; start a{' '}
               <strong className="font-semibold text-foreground-700">7-day trial</strong> if your plan isn’t active yet.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
@@ -122,7 +120,8 @@ export default function VideoFrameExtractorPage() {
         </section>
 
         <DefinitionBlock term="Video Frame Extractor">
-          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
+          A video frame extractor saves a still image from a specific moment in a clip—useful for thumbnails, reference
+          grabs, or legal frames. Editors use it to pull exact frames without exporting a full sequence.
         </DefinitionBlock>
 
         <VideoFrameExtractorGuide />
@@ -146,7 +145,8 @@ export default function VideoFrameExtractorPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

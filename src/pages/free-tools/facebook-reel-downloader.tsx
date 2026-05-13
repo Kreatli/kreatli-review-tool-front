@@ -20,6 +20,7 @@ import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { useSession } from '../../hooks/useSession';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 
 const PAGE_PATH = '/free-tools/facebook-reel-downloader';
 const CANONICAL_URL = 'https://kreatli.com' + PAGE_PATH;
@@ -163,7 +164,7 @@ export default function FacebookReelDownloaderPage() {
           <div className="relative z-10 mx-auto max-w-6xl">
             <FreeToolsEntitlementSection
               lockedTitle="Facebook Reel Downloader is available with an active trial or plan"
-              lockedDescription="Your trial or plan isn&apos;t active. Start a trial or choose a plan to download videos from a public Facebook link on this page."
+              lockedDescription="Your trial or plan isn't active. Start a trial or choose a plan to download videos from a public Facebook link on this page."
             >
               <FacebookReelDownloaderTool />
             </FreeToolsEntitlementSection>
@@ -173,16 +174,16 @@ export default function FacebookReelDownloaderPage() {
         <section className="relative overflow-hidden px-6 pb-6">
           <div className="relative z-10 mx-auto max-w-6xl">
             <div className="rounded-xl border border-foreground-200 bg-content1/70 p-4 text-sm text-foreground-600">
-              <span className="font-semibold text-foreground">Rights &amp; usage:</span> only download content you own or
-              have permission to use. Respect Facebook&apos;s terms and copyright laws. Public links only; no private or
-              login-gated content.
+              <span className="font-semibold text-foreground">Rights &amp; usage:</span> only download content you own
+              or have permission to use. Respect Facebook&apos;s terms and copyright laws. Public links only; no private
+              or login-gated content.
             </div>
           </div>
         </section>
 
         <DefinitionBlock term="Facebook Reel downloader">
-          A Facebook Reel downloader helps you save a video file from a public Facebook Reel/video link. It is useful for
-          archiving your own posts, internal review, or edit prep when you have the rights to use the content.
+          A Facebook Reel downloader helps you save a video file from a public Facebook Reel/video link. It is useful
+          for archiving your own posts, internal review, or edit prep when you have the rights to use the content.
         </DefinitionBlock>
 
         <PlatformStepGuide
@@ -228,16 +229,16 @@ export default function FacebookReelDownloaderPage() {
               <h2 className="mb-3 font-sans text-2xl font-bold">Troubleshooting</h2>
               <ul className="space-y-2 text-base text-foreground-600">
                 <li>
-                  <span className="font-semibold text-foreground">Private/restricted post:</span> this tool only supports
-                  public links accessible without login.
+                  <span className="font-semibold text-foreground">Private/restricted post:</span> this tool only
+                  supports public links accessible without login.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Download does not start:</span> resolve the link again,
-                  then retry.
+                  <span className="font-semibold text-foreground">Download does not start:</span> resolve the link
+                  again, then retry.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Quality varies:</span> quality depends on what Facebook
-                  exposes in public metadata for that post.
+                  <span className="font-semibold text-foreground">Quality varies:</span> quality depends on what
+                  Facebook exposes in public metadata for that post.
                 </li>
               </ul>
             </div>
@@ -277,7 +278,8 @@ export default function FacebookReelDownloaderPage() {
         <CTASection
           title="Need feedback and approvals on video assets?"
           description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

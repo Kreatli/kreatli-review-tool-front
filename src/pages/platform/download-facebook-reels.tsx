@@ -15,6 +15,7 @@ import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinit
 import { PlatformStepGuide, WorkflowStep } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -45,8 +46,7 @@ const DOWNLOAD_FACEBOOK_REELS_STEPS: WorkflowStep[] = [
   {
     step: 3,
     title: 'Resolve the best available download',
-    description:
-      'Click "Find video". We try to extract the best available public MP4 URL from page metadata.',
+    description: 'Click "Find video". We try to extract the best available public MP4 URL from page metadata.',
     icon: 'search',
     image: null,
   },
@@ -78,8 +78,7 @@ const faqs = [
   },
   {
     question: 'Do I need Facebook credentials?',
-    answer:
-      'No. Kreatli does not ask for Facebook login credentials. This workflow is built for public links only.',
+    answer: 'No. Kreatli does not ask for Facebook login credentials. This workflow is built for public links only.',
   },
   {
     question: 'Is it legal to download Facebook Reels?',
@@ -239,7 +238,11 @@ export default function DownloadFacebookReelsPlatformPage() {
         </div>
       </section>
 
-      <MoreFreeToolsSection tools={getFreeToolsForPlatform(PAGE_PATH)} title="More Free Tools" excludeHref={TOOL_PATH} />
+      <MoreFreeToolsSection
+        tools={getFreeToolsForPlatform(PAGE_PATH)}
+        title="More Free Tools"
+        excludeHref={TOOL_PATH}
+      />
 
       <ResourcesArticlesPreviewSection
         title="More guides on short-form video workflows"
@@ -258,7 +261,8 @@ export default function DownloadFacebookReelsPlatformPage() {
       <CTASection
         title="Need feedback and approvals on video assets?"
         description="Kreatli is a Video Collaboration & Review Platform for video teams. Upload videos, collect frame-accurate feedback, keep discussions organized, and move projects forward."
-        primaryButtonText="Start 7-day trial"
+        primaryButtonText={OPEN_IN_KREATLI_LABEL}
+        primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
       />
 
       <FooterSection hideCta />

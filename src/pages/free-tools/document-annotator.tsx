@@ -5,6 +5,8 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { PdfAnnotatorFAQ, pdfAnnotatorFaqs } from '../../components/pdf-annotator/PdfAnnotatorFAQ';
+import { PdfAnnotatorGuide } from '../../components/pdf-annotator/PdfAnnotatorGuide';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
@@ -14,8 +16,7 @@ import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { PdfAnnotatorFAQ, pdfAnnotatorFaqs } from '../../components/pdf-annotator/PdfAnnotatorFAQ';
-import { PdfAnnotatorGuide } from '../../components/pdf-annotator/PdfAnnotatorGuide';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 
@@ -111,7 +112,8 @@ export default function DocumentAnnotatorPage() {
         <CTASection
           title="Ready to annotate documents with your team?"
           description="Kreatli offers location-pinned document annotation, drawing on PDFs, and approval workflows. Add comments and markup in one place with your video and creative assets."
-          primaryButtonText="Start 7-day trial"
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 

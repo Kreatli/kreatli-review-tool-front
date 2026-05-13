@@ -9,14 +9,15 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
+import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
+import { getFreeToolsForFreeToolPage } from '../../data/free-tools-page-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { DefinitionBlock } from '../../components/shared/DefinitionBlock';
 
 export default function DataTransferCalculatorPage() {
   useSession();
@@ -90,7 +91,9 @@ export default function DataTransferCalculatorPage() {
         </section>
 
         <DefinitionBlock term="Data Transfer Calculator">
-          A data transfer calculator estimates upload or download time from file size and connection speed. Post teams use it when planning large raw transfers, client deliveries, or remote collaboration over constrained bandwidth.
+          A data transfer calculator estimates upload or download time from file size and connection speed. Post teams
+          use it when planning large raw transfers, client deliveries, or remote collaboration over constrained
+          bandwidth.
         </DefinitionBlock>
 
         {/* Information sections */}
@@ -116,6 +119,8 @@ export default function DataTransferCalculatorPage() {
         <CTASection
           title="Ready to Streamline Your Media Workflows?"
           description="Kreatli helps video teams manage large files, streamline approvals, and collaborate more efficiently. Get started today."
+          primaryButtonText={OPEN_IN_KREATLI_LABEL}
+          primaryButtonHref={KREATLI_PLATFORM_ENTRY_HREF}
         />
       </main>
 
