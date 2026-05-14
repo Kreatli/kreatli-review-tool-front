@@ -22,7 +22,7 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
       return;
     }
 
-    setIsVisible(true);
+    setIsVisible(true, 'query_param');
     const newSearchParams = new URLSearchParams(searchParams.toString());
     newSearchParams.delete('showPlansModal');
     router.replace(newSearchParams.size > 0 ? `${pathname}?${newSearchParams.toString()}` : pathname);

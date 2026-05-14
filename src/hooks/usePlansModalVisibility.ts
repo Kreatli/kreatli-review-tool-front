@@ -2,10 +2,17 @@ import { create } from 'zustand';
 
 interface State {
   isVisible: boolean;
-  setIsVisible: (isVisible: boolean) => void;
+  /** Last open source for `plans_modal_viewed` (set when opening). */
+  plansModalEntry: string;
+  setIsVisible: (isVisible: boolean, entry?: string) => void;
 }
 
 export const usePlansModalVisibility = create<State>((set) => ({
   isVisible: false,
-  setIsVisible: (isVisible: boolean) => set({ isVisible }),
+  plansModalEntry: 'in_app',
+  setIsVisible: (isVisible, entry) =>
+    set((s) => ({
+      isVisible,
+      plansModalEntry: isVisible ? entry ?? 'in_app' : s.plansModalEntry,
+    })),
 }));

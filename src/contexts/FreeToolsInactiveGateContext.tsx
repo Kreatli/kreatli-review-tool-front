@@ -24,7 +24,7 @@ export function FreeToolsInactiveGateProvider({
   const setPlansModalVisible = usePlansModalVisibility((s) => s.setIsVisible);
 
   const openInactivePlanModal = useCallback(() => {
-    setPlansModalVisible(true);
+    setPlansModalVisible(true, 'free_tool_gate');
   }, [setPlansModalVisible]);
 
   const value = useMemo(

@@ -3,6 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
+import { trackAccountSignupCompleted } from '../../../lib/amplitude';
 import { getAxiosInstance } from '../../../services/config';
 import { usePostAuthSignUpInvitation } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
@@ -35,6 +36,7 @@ export const InvitationSignUpForm = ({ email, token, onSuccess }: Props) => {
         onSuccess: (res) => {
           localStorage.setItem('token', res.token);
           getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${res.token}`;
+          trackAccountSignupCompleted(res.user.id, 'invitation');
           onSuccess();
         },
         onError: (error) => {

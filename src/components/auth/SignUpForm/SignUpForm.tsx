@@ -7,6 +7,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
+import { trackAccountSignupCompleted } from '../../../lib/amplitude';
 import { getAxiosInstance } from '../../../services/config';
 import { usePostAuthSignUp, usePostAuthSsoGoogle } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
@@ -59,8 +60,11 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
         },
       },
       {
-        onSuccess: () => {
+        onSuccess: (data) => {
           sendGTMEvent({ event: 'sign_up' });
+          if (data.user?.id) {
+            trackAccountSignupCompleted(data.user.id, 'email_password');
+          }
         },
         onError: (error) => {
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
@@ -77,6 +81,7 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
           onSuccess: ({ token, redirectToProjectId, user }) => {
             localStorage.setItem('token', token);
             getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
+            trackAccountSignupCompleted(user.id, 'google_sso');
             onSuccess?.();
             sendGTMEvent({ event: 'sign_up' });
 

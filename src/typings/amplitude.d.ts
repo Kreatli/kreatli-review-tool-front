@@ -27,13 +27,31 @@ export type AmplitudeEvent =
   | 'edit_project_overview_failure'
   | 'invite_member_click'
   | 'invite_member_success'
-  | 'invite_member_failure';
-
-/** Emitted by the API via Amplitude HTTP API (same project as browser SDK). Not used with `trackEvent` in the app. */
-export type AmplitudeServerEvent = 'account_signup_completed' | 'free_trial_started';
+  | 'invite_member_failure'
+  | 'account_signup_completed'
+  | 'plans_modal_viewed'
+  | 'trial_checkout_started'
+  | 'trial_checkout_redirect'
+  | 'free_trial_started';
 
 export interface AmplitudeEventProperties {
   set_file_status_click: {
     status: string;
+  };
+  account_signup_completed: {
+    signup_method: string;
+  };
+  plans_modal_viewed: {
+    entry: string;
+  };
+  trial_checkout_started: {
+    plan_id: string;
+  };
+  trial_checkout_redirect: {
+    plan_id: string;
+  };
+  free_trial_started: {
+    plan_key: string;
+    plan_name: string;
   };
 }

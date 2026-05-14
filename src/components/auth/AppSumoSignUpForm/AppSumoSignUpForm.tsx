@@ -4,6 +4,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 import { VALIDATION_RULES } from '../../../constants/validationRules';
+import { trackAccountSignupCompleted } from '../../../lib/amplitude';
 import { usePostAppSummoOauthActivate } from '../../../services/hooks';
 import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
@@ -37,6 +38,7 @@ export const AppSumoSignUpForm = ({ appSumoLicenseKey, onSuccess }: Props) => {
       {
         onSuccess: ({ token, user }) => {
           sendGTMEvent({ event: 'sign_up' });
+          trackAccountSignupCompleted(user.id, 'appsumo');
           onSuccess?.({ token, user });
         },
         onError: (error) => {
