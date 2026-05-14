@@ -1,6 +1,7 @@
 import { addToast } from '@heroui/react';
 import { useState } from 'react';
 
+import { trackEvent } from '../../../lib/amplitude';
 import { usePostUserSubscription } from '../../../services/hooks';
 import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
@@ -65,12 +66,15 @@ export const PlansForm = ({ user }: Props) => {
   const handleUpgradePlan = (plan: 'creator' | 'team' | 'enterprise') => {
     if (!plan) return;
 
+    trackEvent('trial_checkout_started', { plan_id: plan });
+
     upgradePlan(
       {
         requestBody: { plan },
       },
       {
         onSuccess: ({ url }) => {
+          trackEvent('trial_checkout_redirect', { plan_id: plan });
           location.href = url;
         },
         onError: (error) => {

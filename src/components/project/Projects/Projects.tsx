@@ -54,7 +54,7 @@ export const Projects = () => {
 
   const handleCreateProjectClick = () => {
     if (!user?.subscription.isActive) {
-      setIsPlansModalVisible(true);
+      setIsPlansModalVisible(true, 'projects_list');
 
       return;
     }

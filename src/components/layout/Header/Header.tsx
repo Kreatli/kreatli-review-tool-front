@@ -112,7 +112,7 @@ export const Header = () => {
                   </>
                 )}
               </div>
-              <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true)}>
+              <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true, 'header_cta')}>
                 <span>
                   Upgrade <span className="hidden xs:inline">now</span>
                 </span>

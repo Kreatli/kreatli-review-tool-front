@@ -67,7 +67,7 @@ export const Subscription = ({ user }: Props) => {
                   Manage in AppSumo
                 </Button>
               ) : (
-                <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true)}>
+                <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true, 'subscription_page')}>
                   Upgrade
                 </Button>
               )}
@@ -94,7 +94,7 @@ export const Subscription = ({ user }: Props) => {
         </div>
       ) : (
         <div className="mb-4">
-          <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true)}>
+          <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true, 'subscription_page')}>
             {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start a free trial'}
           </Button>
         </div>
