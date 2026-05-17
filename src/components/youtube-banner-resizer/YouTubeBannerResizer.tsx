@@ -7,6 +7,7 @@ import { useSession } from '../../hooks/useSession';
 import { useSoftGate } from '../../hooks/useSoftGate';
 import { BannerCanvas } from './BannerCanvas';
 import { BannerControls } from './BannerControls';
+import { BannerDevicePreview } from './BannerDevicePreview';
 import { BannerExport } from './BannerExport';
 import { FrameRelative, getDefaultFrameRelative } from './bannerViewport';
 
@@ -243,6 +244,13 @@ export const YouTubeBannerResizer = () => {
                 ? () => setFrameRelative(getDefaultFrameRelative(imageState.naturalWidth, imageState.naturalHeight))
                 : undefined
             }
+          />
+
+          <BannerDevicePreview
+            imageUrl={imageState.imageUrl}
+            frameRelative={frameRelative}
+            naturalWidth={imageState.naturalWidth}
+            naturalHeight={imageState.naturalHeight}
           />
 
           <BannerExport
