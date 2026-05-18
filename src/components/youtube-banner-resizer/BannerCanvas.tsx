@@ -3,7 +3,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 import { Icon } from '../various/Icon';
-import { CANVAS_HEIGHT, CANVAS_WIDTH } from './bannerGeometry';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, SAFE_ZONE } from './bannerGeometry';
 import {
   applyYoutubeAspectCornerResize,
   clampFrameRelative,
@@ -325,13 +325,136 @@ export const BannerCanvas = ({
                 onPointerDown={beginMove}
               />
 
-              <div className="pointer-events-none absolute inset-0">
-                <div className="absolute inset-y-0 left-1/3 w-px bg-white/55" />
-                <div className="absolute inset-y-0 left-2/3 w-px bg-white/55" />
-                <div className="absolute inset-x-0 top-1/3 h-px bg-white/55" />
-                <div className="absolute inset-x-0 top-2/3 h-px bg-white/55" />
+              {/* YouTube safe zones: stronger tints + high-contrast labels */}
+              <div className="pointer-events-none absolute inset-0 z-[5]">
+                {(() => {
+                  const dt = SAFE_ZONE.desktop.top;
+                  const db = SAFE_ZONE.desktop.bottom;
+                  const ml = SAFE_ZONE.mobile.left;
+                  const mr = SAFE_ZONE.mobile.right;
+                  const stripH = db - dt;
+                  const wingWLeft = ml;
+                  const wingWRight = 1 - mr;
+                  const stripMidY = (dt + stripH / 2) * 100;
+
+                  const tvFill = 'rgba(91, 33, 182, 0.58)';
+                  const desktopFill = 'rgba(217, 119, 6, 0.58)';
+                  const mobileFill = 'rgba(5, 120, 85, 0.55)';
+
+                  const zoneLabel =
+                    'pointer-events-none rounded-md border-2 px-2 py-1 text-[10px] font-extrabold leading-snug tracking-tight text-white sm:text-[11px] ';
+                  const zoneLabelShadow =
+                    'shadow-[0_0_0_1px_rgba(0,0,0,0.85),0_2px_16px_rgba(0,0,0,0.65)] [text-shadow:0_1px_2px_rgba(0,0,0,0.95)]';
+
+                  return (
+                    <>
+                      {/* TV-only: top + bottom bands */}
+                      <div
+                        className="absolute left-0 top-0 w-full border-b-2 border-violet-950/80"
+                        style={{ height: `${dt * 100}%`, backgroundColor: tvFill }}
+                      />
+                      <div
+                        className="absolute bottom-0 left-0 w-full border-t-2 border-violet-950/80"
+                        style={{ height: `${(1 - db) * 100}%`, backgroundColor: tvFill }}
+                      />
+                      <span
+                        className={cn(
+                          zoneLabel,
+                          zoneLabelShadow,
+                          'absolute left-1.5 top-1 z-[3] max-w-[min(46%,150px)] border-violet-200 bg-violet-950',
+                        )}
+                      >
+                        TV only — top & bottom stripes
+                      </span>
+
+                      {/* Desktop-only wings */}
+                      <div
+                        className="absolute left-0 border-r-[3px] border-r-amber-950"
+                        style={{
+                          top: `${dt * 100}%`,
+                          width: `${wingWLeft * 100}%`,
+                          height: `${stripH * 100}%`,
+                          backgroundColor: desktopFill,
+                        }}
+                      />
+                      <div
+                        className="absolute right-0 border-l-[3px] border-l-amber-950"
+                        style={{
+                          top: `${dt * 100}%`,
+                          width: `${wingWRight * 100}%`,
+                          height: `${stripH * 100}%`,
+                          backgroundColor: desktopFill,
+                        }}
+                      />
+                      <span
+                        className={cn(
+                          zoneLabel,
+                          zoneLabelShadow,
+                          'absolute z-[3] max-w-[min(44%,150px)] border-amber-200 bg-amber-950',
+                        )}
+                        style={{
+                          left: `${(ml / 2) * 100}%`,
+                          top: `${stripMidY}%`,
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                      >
+                        Desktop sides
+                      </span>
+                      <span
+                        className={cn(
+                          zoneLabel,
+                          zoneLabelShadow,
+                          'absolute z-[3] max-w-[min(44%,150px)] border-amber-200 bg-amber-950',
+                        )}
+                        style={{
+                          left: `${((mr + 1) / 2) * 100}%`,
+                          top: `${stripMidY}%`,
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                      >
+                        Desktop sides
+                      </span>
+
+                      {/* Mobile safe rectangle */}
+                      <div
+                        className="absolute ring-[3px] ring-inset ring-emerald-200"
+                        style={{
+                          left: `${ml * 100}%`,
+                          top: `${dt * 100}%`,
+                          width: `${(mr - ml) * 100}%`,
+                          height: `${stripH * 100}%`,
+                          backgroundColor: mobileFill,
+                          boxShadow: 'inset 0 0 0 2px rgba(6, 95, 70, 0.95)',
+                        }}
+                      />
+                      <span
+                        className={cn(
+                          zoneLabel,
+                          zoneLabelShadow,
+                          'absolute z-[4] max-w-[min(54%,200px)] border-emerald-200 bg-emerald-950 text-center',
+                        )}
+                        style={{
+                          left: `${((ml + mr) / 2) * 100}%`,
+                          top: `${stripMidY}%`,
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                      >
+                        Safe on all devices
+                      </span>
+
+                      {/* Strip edges (desktop banner crop) */}
+                      <div
+                        className="absolute inset-x-0 z-[2] h-0.5 bg-white/90 shadow-[0_0_0_1px_rgba(0,0,0,0.35)]"
+                        style={{ top: `${dt * 100}%` }}
+                      />
+                      <div
+                        className="absolute inset-x-0 z-[2] h-0.5 bg-white/90 shadow-[0_0_0_1px_rgba(0,0,0,0.35)]"
+                        style={{ top: `${db * 100}%` }}
+                      />
+                    </>
+                  );
+                })()}
               </div>
-              <div className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:12px_12px]" />
 
               {/* Corner resize handles (16:9 locked — no edge-only resize) */}
               <button
