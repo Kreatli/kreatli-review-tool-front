@@ -3,8 +3,6 @@
  * instead of sending users to `/` or `/?showPlansModal=true`.
  */
 
-const CALCULATOR_PATHNAMES = new Set(['/free-tools/cost-calculator', '/free-tools/data-transfer-calculator']);
-
 const STANDALONE_EXACT_PATHNAMES = new Set<string>([
   '/free-tools/cost-calculator',
   '/free-tools/data-transfer-calculator',
@@ -47,24 +45,15 @@ export function getSafeReturnToParam(returnTo: string): string | null {
 
 /**
  * `router.replace` target after auth on a standalone tool page (or null if this is not a standalone tool).
+ *
+ * Always returns the clean tool URL — the in-page gate handles the paywall when
+ * the user tries to use the tool, not immediately on landing after signup.
  */
-export function getStandaloneToolPostAuthReplaceUrl(
-  pathname: string,
-  asPath: string,
-  isSubscriptionActive: boolean,
-): string | null {
+export function getStandaloneToolPostAuthReplaceUrl(pathname: string, asPath: string): string | null {
   if (!isStandaloneMarketingToolPathname(pathname)) return null;
 
   const pathNoHash = asPath.split('#')[0];
-
-  if (isSubscriptionActive || CALCULATOR_PATHNAMES.has(pathname)) {
-    return pathNoHash || pathname;
-  }
-
-  const [path, query = ''] = pathNoHash.includes('?') ? pathNoHash.split('?') : [pathNoHash, ''];
-  const params = new URLSearchParams(query);
-  params.set('showPlansModal', 'true');
-  return `${path}?${params.toString()}`;
+  return pathNoHash || pathname;
 }
 
 export function buildSignInHrefWithReturnTo(pathname: string, asPath: string): string {

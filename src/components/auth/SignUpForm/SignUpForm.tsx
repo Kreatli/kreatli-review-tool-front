@@ -91,11 +91,7 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
               return;
             }
 
-            const stayOnToolUrl = getStandaloneToolPostAuthReplaceUrl(
-              router.pathname,
-              router.asPath,
-              user.subscription.isActive,
-            );
+            const stayOnToolUrl = getStandaloneToolPostAuthReplaceUrl(router.pathname, router.asPath);
             if (stayOnToolUrl !== null) {
               router.replace(stayOnToolUrl);
 

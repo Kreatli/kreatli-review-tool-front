@@ -296,38 +296,36 @@ export function VideoFrameExtractor() {
     onReset: resetToolState,
   });
 
-  const onDrop = useCallback((accepted: File[]) => {
-    const next = accepted[0];
-    if (!next) return;
+  const onDrop = useCallback(
+    (accepted: File[]) => {
+      const next = accepted[0];
+      if (!next) return;
 
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
+      if (
+        !(
+          next.type === 'video/mp4' ||
+          next.type === 'video/webm' ||
+          next.type === 'video/quicktime' ||
+          next.name.toLowerCase().endsWith('.mp4') ||
+          next.name.toLowerCase().endsWith('.webm') ||
+          next.name.toLowerCase().endsWith('.mov')
+        )
+      ) {
+        addToast({
+          title: 'Unsupported file type. Please upload an MP4, MOV, or WEBM.',
+          color: 'danger',
+          variant: 'flat',
+        });
+        return;
+      }
 
-    if (
-      !(
-        next.type === 'video/mp4' ||
-        next.type === 'video/webm' ||
-        next.type === 'video/quicktime' ||
-        next.name.toLowerCase().endsWith('.mp4') ||
-        next.name.toLowerCase().endsWith('.webm') ||
-        next.name.toLowerCase().endsWith('.mov')
-      )
-    ) {
-      addToast({
-        title: 'Unsupported file type. Please upload an MP4, MOV, or WEBM.',
-        color: 'danger',
-        variant: 'flat',
-      });
-      return;
-    }
+      setFile(next);
 
-    setFile(next);
-
-    // Soft gate: show sign-up popup for guests when they start using the tool; dismiss without sign-in clears upload.
-    triggerSoftGate();
-  }, [isInactiveLocked, openInactivePlanModal, triggerSoftGate]);
+      // Soft gate: show sign-up popup for guests when they start using the tool; dismiss without sign-in clears upload.
+      triggerSoftGate();
+    },
+    [triggerSoftGate],
+  );
 
   const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
     onDrop,
@@ -435,11 +433,6 @@ export function VideoFrameExtractor() {
   };
 
   const handleCapture = async () => {
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
-
     const v = videoRef.current;
     if (!v) return;
     if (!v.videoWidth || !v.videoHeight) {
@@ -636,12 +629,7 @@ export function VideoFrameExtractor() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button
-                      size="sm"
-                      variant="light"
-                      onPress={() => setFile(null)}
-                      aria-label="Choose another video"
-                    >
+                    <Button size="sm" variant="light" onPress={() => setFile(null)} aria-label="Choose another video">
                       Choose another video
                     </Button>
                   </div>

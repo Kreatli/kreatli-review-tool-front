@@ -106,30 +106,29 @@ export function ResizeVideoTool() {
     onReset: reset,
   });
 
-  const onDrop = useCallback((accepted: File[]) => {
-    const next = accepted[0];
-    if (!next) return;
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
-    if (!(next.type.startsWith('video/') || next.name.toLowerCase().match(/\.(mp4|webm|mov|ogg|avi|mkv)$/))) {
-      addToast({
-        title: 'Unsupported file type. Please use a video file (e.g. MP4, WebM, MOV).',
-        color: 'danger',
-        variant: 'flat',
-      });
-      return;
-    }
-    setUnsupported(false);
-    setFile(next);
-    setStatus('idle');
-    setOutputBlob(null);
-    setProgress(0);
+  const onDrop = useCallback(
+    (accepted: File[]) => {
+      const next = accepted[0];
+      if (!next) return;
+      if (!(next.type.startsWith('video/') || next.name.toLowerCase().match(/\.(mp4|webm|mov|ogg|avi|mkv)$/))) {
+        addToast({
+          title: 'Unsupported file type. Please use a video file (e.g. MP4, WebM, MOV).',
+          color: 'danger',
+          variant: 'flat',
+        });
+        return;
+      }
+      setUnsupported(false);
+      setFile(next);
+      setStatus('idle');
+      setOutputBlob(null);
+      setProgress(0);
 
-    // Soft gate: show sign-up popup for guests when they start using the tool; dismiss without sign-in clears upload.
-    triggerSoftGate();
-  }, [isInactiveLocked, openInactivePlanModal, triggerSoftGate]);
+      // Soft gate: show sign-up popup for guests when they start using the tool; dismiss without sign-in clears upload.
+      triggerSoftGate();
+    },
+    [triggerSoftGate],
+  );
 
   const onDropRejected = useCallback((fileRejections: FileRejection[]) => {
     const fileTooLarge = fileRejections.some((r) => r.errors.some((e) => e.code === 'file-too-large'));
@@ -242,10 +241,7 @@ export function ResizeVideoTool() {
       };
       ffmpeg.on('progress', progressHandler);
 
-      await Promise.all([
-        ffmpeg.deleteFile(inputName).catch(() => {}),
-        ffmpeg.deleteFile(outputName).catch(() => {}),
-      ]);
+      await Promise.all([ffmpeg.deleteFile(inputName).catch(() => {}), ffmpeg.deleteFile(outputName).catch(() => {})]);
       const data = await fetchFile(inputFile);
       await ffmpeg.writeFile(inputName, data);
 
@@ -287,7 +283,6 @@ export function ResizeVideoTool() {
       openInactivePlanModal();
       return;
     }
-
     const video = videoRef.current;
     const canvas = canvasRef.current;
     if (!file || !videoUrl) return;
@@ -471,10 +466,6 @@ export function ResizeVideoTool() {
   }, []);
 
   const download = useCallback(() => {
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
     if (!outputBlob || !file) return;
     const base = safeBaseName(file.name);
     const url = URL.createObjectURL(outputBlob);
@@ -485,7 +476,7 @@ export function ResizeVideoTool() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  }, [outputBlob, file, targetWidth, targetHeight, outputExtension, isInactiveLocked, openInactivePlanModal]);
+  }, [outputBlob, file, targetWidth, targetHeight, outputExtension]);
 
   useEffect(() => {
     downloadRef.current = download;
@@ -499,20 +490,12 @@ export function ResizeVideoTool() {
     }
     if (!outputBlob || !file || hasTriggeredDownloadForDoneRef.current) return;
 
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      setStatus('idle');
-      setOutputBlob(null);
-      setProgress(0);
-      return;
-    }
-
     hasTriggeredDownloadForDoneRef.current = true;
     downloadRef.current?.();
     if (!isSignedIn) {
       triggerSoftGate();
     }
-  }, [status, outputBlob, file, isSignedIn, triggerSoftGate, isInactiveLocked, openInactivePlanModal]);
+  }, [status, outputBlob, file, isSignedIn, triggerSoftGate]);
 
   const hasVideo = !!file && !!videoUrl;
   const canResize = hasVideo && status === 'idle' && sourceWidth > 0 && sourceHeight > 0;
@@ -551,10 +534,6 @@ export function ResizeVideoTool() {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  if (isInactiveLocked) {
-                    openInactivePlanModal();
-                    return;
-                  }
                   open();
                 }}
               >
@@ -587,10 +566,6 @@ export function ResizeVideoTool() {
                     size="sm"
                     variant="light"
                     onPress={() => {
-                      if (isInactiveLocked) {
-                        openInactivePlanModal();
-                        return;
-                      }
                       open();
                     }}
                     aria-label="Choose another video"
@@ -713,8 +688,7 @@ export function ResizeVideoTool() {
                             ? 'Preparing video encoder (one-time download per tab)…'
                             : `Encoding video… ${Math.round(progress)}%`}
                         </p>
-                        {status === 'processing' &&
-                          (exportFormat === 'webm-vp9' || exportFormat === 'webm-vp8') && (
+                        {status === 'processing' && (exportFormat === 'webm-vp9' || exportFormat === 'webm-vp8') && (
                           <Button
                             variant="flat"
                             size="sm"
@@ -818,11 +792,7 @@ export function ResizeVideoTool() {
                   </div>
 
                   <div className="flex flex-col gap-2 sm:flex-row">
-                    <Button
-                      as={NextLink}
-                      href={KREATLI_PLATFORM_ENTRY_HREF}
-                      className="bg-foreground text-content1"
-                    >
+                    <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} className="bg-foreground text-content1">
                       {OPEN_IN_KREATLI_LABEL}
                     </Button>
                   </div>
