@@ -84,10 +84,6 @@ export function VideoCompressorTool() {
     (accepted: File[]) => {
       const next = accepted[0];
       if (!next) return;
-      if (isInactiveLocked) {
-        openInactivePlanModal();
-        return;
-      }
       if (!(next.type.startsWith('video/') || next.name.toLowerCase().match(/\.(mp4|webm|mov|ogg|avi|mkv)$/))) {
         addToast({
           title: 'Unsupported file type. Please use a video file (e.g. MP4, WebM, MOV).',
@@ -105,7 +101,7 @@ export function VideoCompressorTool() {
 
       triggerSoftGate();
     },
-    [isInactiveLocked, openInactivePlanModal, triggerSoftGate],
+    [triggerSoftGate],
   );
 
   const onDropRejected = useCallback((fileRejections: FileRejection[]) => {
@@ -234,10 +230,6 @@ export function VideoCompressorTool() {
   );
 
   const startCompress = useCallback(async () => {
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
     if (!file || !videoUrl || !durationSeconds || !targetVideoKbps) return;
     if (file.size > MAX_FILE_SIZE_BYTES) {
       addToast({
@@ -290,8 +282,6 @@ export function VideoCompressorTool() {
   }, [
     durationSeconds,
     file,
-    isInactiveLocked,
-    openInactivePlanModal,
     outputFormat,
     runFFmpegCompress,
     targetSizeMb,
@@ -328,10 +318,8 @@ export function VideoCompressorTool() {
     if (!outputBlob || !file || hasTriggeredDownloadForDoneRef.current) return;
 
     if (isInactiveLocked) {
+      // Show gate but keep the output blob — auto-download fires once isInactiveLocked clears.
       openInactivePlanModal();
-      setStatus('idle');
-      setOutputBlob(null);
-      setProgress(0);
       return;
     }
 
@@ -504,7 +492,9 @@ export function VideoCompressorTool() {
                   <div className="w-full space-y-2" aria-live="polite" aria-atomic="true">
                     <Progress value={progress} color="primary" size="sm" aria-label="Compression progress" />
                     <p className="text-center text-sm text-foreground-600">
-                      {status === 'loading' ? `Loading video encoder… ${Math.round(progress)}%` : `Compressing… ${Math.round(progress)}%`}
+                      {status === 'loading'
+                        ? `Loading video encoder… ${Math.round(progress)}%`
+                        : `Compressing… ${Math.round(progress)}%`}
                     </p>
                     <Button
                       variant="flat"
@@ -527,12 +517,11 @@ export function VideoCompressorTool() {
 
                 {status === 'done' && outputBlob && (
                   <div className="flex flex-col gap-3">
-                    <p className="text-sm text-success-600">
-                      Done. Download started automatically.
-                    </p>
+                    <p className="text-sm text-success-600">Done. Download started automatically.</p>
                     {resultSummary && (
                       <p className="text-sm text-foreground-600">
-                        {formatBytes(resultSummary.before)} → {formatBytes(resultSummary.after)} ({resultSummary.pct}% smaller)
+                        {formatBytes(resultSummary.before)} → {formatBytes(resultSummary.after)} ({resultSummary.pct}%
+                        smaller)
                       </p>
                     )}
                     <div className="flex flex-wrap gap-2">
@@ -582,4 +571,3 @@ export function VideoCompressorTool() {
     </div>
   );
 }
-

@@ -74,10 +74,6 @@ export function YouTubeShortsDownloaderTool() {
   );
 
   const resolve = useCallback(async () => {
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
     const input = url.trim();
     if (!isProbablyYouTubeShortsOrVideoUrl(input)) {
       addToast({
@@ -109,7 +105,9 @@ export function YouTubeShortsDownloaderTool() {
       setResult(data);
       setStatus('ready');
       addToast({
-        title: data.hdVideoUrl ? 'Link resolved (HD available). Ready to download.' : 'Link resolved. Ready to download.',
+        title: data.hdVideoUrl
+          ? 'Link resolved (HD available). Ready to download.'
+          : 'Link resolved. Ready to download.',
         color: 'success',
         variant: 'flat',
       });
@@ -118,7 +116,7 @@ export function YouTubeShortsDownloaderTool() {
       addToast({ title: 'Something went wrong resolving that link. Try again.', color: 'danger', variant: 'flat' });
       setStatus('idle');
     }
-  }, [isInactiveLocked, openInactivePlanModal, url]);
+  }, [url]);
 
   const download = useCallback(async () => {
     if (isInactiveLocked) {
@@ -188,7 +186,7 @@ export function YouTubeShortsDownloaderTool() {
                 onValueChange={setUrl}
                 placeholder={EXAMPLE_URL}
                 description="Paste a public Shorts link (youtube.com/shorts/…) or a standard watch link (youtube.com/watch?v=…)."
-                isDisabled={isInactiveLocked || status === 'loading' || status === 'downloading'}
+                isDisabled={status === 'loading' || status === 'downloading'}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && canSubmit && status !== 'downloading') {
                     e.preventDefault();
@@ -205,7 +203,7 @@ export function YouTubeShortsDownloaderTool() {
               )}
               onPress={resolve}
               isLoading={status === 'loading'}
-              isDisabled={isInactiveLocked || !canSubmit || status === 'downloading'}
+              isDisabled={!canSubmit || status === 'downloading'}
               startContent={!status.includes('loading') ? <Icon icon="search" size={16} /> : undefined}
             >
               Find video

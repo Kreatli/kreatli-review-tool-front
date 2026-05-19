@@ -81,10 +81,6 @@ export function VideoFrameRateConverterTool() {
     (accepted: File[]) => {
       const next = accepted[0];
       if (!next) return;
-      if (isInactiveLocked) {
-        openInactivePlanModal();
-        return;
-      }
       if (!(next.type.startsWith('video/') || next.name.toLowerCase().match(/\.(mp4|webm|mov|ogg|avi|mkv)$/))) {
         addToast({
           title: 'Unsupported file type. Please use a video file (e.g. MP4, WebM, MOV).',
@@ -102,7 +98,7 @@ export function VideoFrameRateConverterTool() {
 
       triggerSoftGate();
     },
-    [isInactiveLocked, openInactivePlanModal, triggerSoftGate],
+    [triggerSoftGate],
   );
 
   const onDropRejected = useCallback((fileRejections: FileRejection[]) => {
@@ -259,10 +255,6 @@ export function VideoFrameRateConverterTool() {
   );
 
   const startConvert = useCallback(async () => {
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
     if (!file || !videoUrl || !durationSeconds) return;
     if (file.size > MAX_FILE_SIZE_BYTES) {
       addToast({
@@ -306,8 +298,6 @@ export function VideoFrameRateConverterTool() {
   }, [
     durationSeconds,
     file,
-    isInactiveLocked,
-    openInactivePlanModal,
     outputFormat,
     runFFmpegFpsConvert,
     targetFps,
@@ -343,10 +333,8 @@ export function VideoFrameRateConverterTool() {
     if (!outputBlob || !file || hasTriggeredDownloadForDoneRef.current) return;
 
     if (isInactiveLocked) {
+      // Show gate but keep the output blob — auto-download fires once isInactiveLocked clears.
       openInactivePlanModal();
-      setStatus('idle');
-      setOutputBlob(null);
-      setProgress(0);
       return;
     }
 
@@ -396,10 +384,6 @@ export function VideoFrameRateConverterTool() {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  if (isInactiveLocked) {
-                    openInactivePlanModal();
-                    return;
-                  }
                   open();
                 }}
               >
@@ -432,10 +416,6 @@ export function VideoFrameRateConverterTool() {
                     size="sm"
                     variant="light"
                     onPress={() => {
-                      if (isInactiveLocked) {
-                        openInactivePlanModal();
-                        return;
-                      }
                       open();
                     }}
                     aria-label="Choose another video"

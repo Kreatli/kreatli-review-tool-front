@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { isAvailableInKreatliPlatform } from '../data/free-tool-surface';
+
 import { useSession } from './useSession';
 
 type LockReason = 'inactive_subscription';
@@ -58,12 +60,14 @@ export function useFreeToolsEntitlementGate() {
       };
     }
 
+    const showWorkspaceCta = isAvailableInKreatliPlatform(pathname);
+
     return {
       isLocked: true,
       lockReason: 'inactive_subscription' as const,
       isSignedIn,
       isSubscriptionActive,
-      continueCta: { href: '/', label: 'Go to Projects' },
+      continueCta: showWorkspaceCta ? { href: '/', label: 'Go to Projects' } : null,
       upgradeCta: { href: '/?showPlansModal=true', label: 'Start trial / choose plan' },
     };
   }, [isSignedIn, router.pathname, user?.subscription?.isActive]);

@@ -19,7 +19,7 @@ export default function SignUp() {
 
     if (safeReturn) {
       const pathname = safeReturn.split('?')[0].split('#')[0];
-      const url = getStandaloneToolPostAuthReplaceUrl(pathname, safeReturn, user.subscription.isActive);
+      const url = getStandaloneToolPostAuthReplaceUrl(pathname, safeReturn);
       if (url !== null) {
         router.replace(url);
 

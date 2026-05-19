@@ -62,10 +62,6 @@ export function InstagramReelDownloaderTool() {
   );
 
   const resolve = useCallback(async () => {
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
     const input = url.trim();
     if (!isProbablyInstagramReelUrl(input)) {
       addToast({ title: 'Please paste a valid Instagram Reel or post link.', color: 'danger', variant: 'flat' });
@@ -101,7 +97,7 @@ export function InstagramReelDownloaderTool() {
       addToast({ title: 'Something went wrong resolving that link. Try again.', color: 'danger', variant: 'flat' });
       setStatus('idle');
     }
-  }, [isInactiveLocked, openInactivePlanModal, url]);
+  }, [url]);
 
   const download = useCallback(async () => {
     if (isInactiveLocked) {
@@ -172,7 +168,7 @@ export function InstagramReelDownloaderTool() {
                 onValueChange={setUrl}
                 placeholder={EXAMPLE_URL}
                 description="Paste a public Reel or post link (instagram.com/reel/…, /reels/…, or /p/…)."
-                isDisabled={isInactiveLocked || status === 'loading' || status === 'downloading'}
+                isDisabled={status === 'loading' || status === 'downloading'}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && canSubmit && status !== 'downloading') {
                     e.preventDefault();
@@ -189,7 +185,7 @@ export function InstagramReelDownloaderTool() {
               )}
               onPress={resolve}
               isLoading={status === 'loading'}
-              isDisabled={isInactiveLocked || !canSubmit || status === 'downloading'}
+              isDisabled={!canSubmit || status === 'downloading'}
               startContent={!status.includes('loading') ? <Icon icon="search" size={16} /> : undefined}
             >
               Find video

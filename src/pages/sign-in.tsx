@@ -24,7 +24,7 @@ export default function SignIn() {
 
     if (safeReturnTo) {
       const pathname = safeReturnTo.split('?')[0].split('#')[0];
-      const url = getStandaloneToolPostAuthReplaceUrl(pathname, safeReturnTo, user.subscription.isActive);
+      const url = getStandaloneToolPostAuthReplaceUrl(pathname, safeReturnTo);
       if (url !== null) {
         router.replace(url);
 
@@ -46,7 +46,7 @@ export default function SignIn() {
 
     if (safeReturnTo) {
       const pathname = safeReturnTo.split('?')[0].split('#')[0];
-      const url = getStandaloneToolPostAuthReplaceUrl(pathname, safeReturnTo, signedInUser.subscription.isActive);
+      const url = getStandaloneToolPostAuthReplaceUrl(pathname, safeReturnTo);
       if (url !== null) {
         router.push(url);
 

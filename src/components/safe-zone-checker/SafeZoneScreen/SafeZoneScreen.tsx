@@ -68,15 +68,11 @@ export const SafeZoneScreen = ({ defaultPlatform = 'instagram' }: SafeZoneScreen
   const handleUploadedFile = useCallback(
     (next: File | null | undefined) => {
       if (!next) return;
-      if (isInactiveLocked) {
-        openInactivePlanModal();
-        return;
-      }
       setFile(next);
       // Soft gate: once user uploads media, prompt sign up.
       triggerSoftGate();
     },
-    [isInactiveLocked, openInactivePlanModal, triggerSoftGate]
+    [triggerSoftGate],
   );
 
   const handleDownload = async () => {

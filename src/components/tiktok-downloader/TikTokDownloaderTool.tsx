@@ -60,10 +60,6 @@ export function TikTokDownloaderTool() {
   );
 
   const resolve = useCallback(async () => {
-    if (isInactiveLocked) {
-      openInactivePlanModal();
-      return;
-    }
     const input = url.trim();
     if (!isProbablyTikTokUrl(input)) {
       addToast({ title: 'Please paste a valid TikTok link.', color: 'danger', variant: 'flat' });
@@ -98,7 +94,7 @@ export function TikTokDownloaderTool() {
       addToast({ title: 'Something went wrong resolving that link. Try again.', color: 'danger', variant: 'flat' });
       setStatus('idle');
     }
-  }, [isInactiveLocked, openInactivePlanModal, url]);
+  }, [url]);
 
   const download = useCallback(async () => {
     if (isInactiveLocked) {
@@ -171,7 +167,7 @@ export function TikTokDownloaderTool() {
                 onValueChange={setUrl}
                 placeholder={EXAMPLE_URL}
                 description="Paste a public TikTok link (tiktok.com, vm.tiktok.com, vt.tiktok.com)."
-                isDisabled={isInactiveLocked || status === 'loading' || status === 'downloading'}
+                isDisabled={status === 'loading' || status === 'downloading'}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && canSubmit && status !== 'downloading') {
                     e.preventDefault();
@@ -189,7 +185,7 @@ export function TikTokDownloaderTool() {
               )}
               onPress={resolve}
               isLoading={status === 'loading'}
-              isDisabled={isInactiveLocked || !canSubmit || status === 'downloading'}
+              isDisabled={!canSubmit || status === 'downloading'}
               startContent={!status.includes('loading') ? <Icon icon="search" size={16} /> : undefined}
             >
               Find video

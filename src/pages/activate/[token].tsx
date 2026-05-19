@@ -37,11 +37,7 @@ export default function Activate() {
 
             if (redirectAfterActivation) {
               const pathname = redirectAfterActivation.split('?')[0].split('#')[0];
-              const url = getStandaloneToolPostAuthReplaceUrl(
-                pathname,
-                redirectAfterActivation,
-                user.subscription.isActive,
-              );
+              const url = getStandaloneToolPostAuthReplaceUrl(pathname, redirectAfterActivation);
               if (url) {
                 router.replace(url);
 

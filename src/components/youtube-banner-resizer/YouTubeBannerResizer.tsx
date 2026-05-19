@@ -59,11 +59,6 @@ export const YouTubeBannerResizer = () => {
 
   const loadImageFile = useCallback(
     (file: File) => {
-      if (isInactiveLocked) {
-        openInactivePlanModal();
-        return;
-      }
-
       setIsLoadingImage(true);
 
       if (imageState.imageUrl) {
@@ -85,9 +80,7 @@ export const YouTubeBannerResizer = () => {
         }
 
         if (naturalWidth > MAX_IMAGE_DIMENSION || naturalHeight > MAX_IMAGE_DIMENSION) {
-          fail(
-            `Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`,
-          );
+          fail(`Image dimensions too large. Maximum size is ${MAX_IMAGE_DIMENSION} × ${MAX_IMAGE_DIMENSION}px.`);
           return;
         }
 
@@ -147,7 +140,7 @@ export const YouTubeBannerResizer = () => {
         });
       })();
     },
-    [imageState.imageUrl, isSignedIn, triggerSoftGate, isInactiveLocked, openInactivePlanModal],
+    [imageState.imageUrl, isSignedIn, triggerSoftGate],
   );
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
