@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import {
   Button,
   cn,
@@ -18,6 +19,7 @@ import { getPlatformPagesBySection } from '../../../data/platform-pages';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import { isExploreMode } from '../../../utils/exploreMode';
 import { Layout } from '../../../typings/layout';
 import { ProjectUploadsButton } from '../../project/ProjectUploads';
 import { Icon } from '../../various/Icon';
@@ -41,6 +43,11 @@ export const Header = () => {
     defaultValue: null,
   });
 
+  const [exploreBannerClosedAt, setExploreBannerClosedAt] = useLocalStorage<Date | null>({
+    key: 'exploreBannerClosedAt',
+    defaultValue: null,
+  });
+
   React.useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -55,6 +62,13 @@ export const Header = () => {
     // eslint-disable-next-line react-hooks/purity
     return bannerClosedAt && new Date(bannerClosedAt).getTime() + DAY_IN_MILLISECONDS * 7 > Date.now();
   }, [bannerClosedAt]);
+
+  const isExploreBannerDismissed = React.useMemo(() => {
+    // eslint-disable-next-line react-hooks/purity
+    return exploreBannerClosedAt && new Date(exploreBannerClosedAt).getTime() + DAY_IN_MILLISECONDS > Date.now();
+  }, [exploreBannerClosedAt]);
+
+  const showExploreBanner = user && isSignedIn && isExploreMode(user);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -96,35 +110,70 @@ export const Header = () => {
 
   return (
     <>
-      {(user?.subscription.isTrial || (!user?.subscription.isActive && user?.subscription.hasUsedTrial)) &&
-        !isBannerDismissed && (
-          <div className="sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
-            <div />
-            <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
-              <div className="flex items-center gap-1.5">
-                <Icon icon="time" size={18} />
-                {user?.subscription.isTrial ? (
-                  `Free trial ends in ${freeTrialEndsInDays} day${freeTrialEndsInDays === 1 ? '' : 's'}`
-                ) : (
-                  <>
-                    Your trial has ended.{' '}
-                    <span className="hidden sm:inline">Select a plan to continue using Kreatli.</span>
-                  </>
-                )}
-              </div>
-              <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true, 'header_cta')}>
-                <span>
-                  Upgrade <span className="hidden xs:inline">now</span>
+      {showExploreBanner && !isExploreBannerDismissed && (
+        <div className="sticky top-0 z-50 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
+          <div />
+          <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
+            {user?.subscription.hasUsedTrial ? (
+              <>
+                <span className="hidden text-sm sm:inline">
+                  Your trial has ended. Continue exploring with limited access, or upgrade to unlock everything.
                 </span>
-              </Button>
-            </div>
-            <div>
-              <Button size="sm" variant="light" color="primary" isIconOnly radius="full" onClick={handleBannerClose}>
-                <Icon icon="cross" size={18} />
-              </Button>
-            </div>
+                <span className="text-sm sm:hidden">Trial ended — explore mode active.</span>
+              </>
+            ) : (
+              <>
+                <span className="hidden text-sm sm:inline">
+                  You&apos;re exploring Kreatli. Start a free 7-day trial to unlock unlimited uploads, projects, and
+                  collaboration.
+                </span>
+                <span className="text-sm sm:hidden">Explore mode active.</span>
+              </>
+            )}
+            <Button
+              size="sm"
+              variant="flat"
+              color="primary"
+              onClick={() => setIsPlansModalVisible(true, 'explore_mode_banner')}
+            >
+              {user?.subscription.hasUsedTrial ? 'Upgrade' : 'Start free trial'}
+            </Button>
           </div>
-        )}
+          <div>
+            <Button
+              size="sm"
+              variant="light"
+              color="primary"
+              isIconOnly
+              radius="full"
+              onClick={() => setExploreBannerClosedAt(new Date())}
+            >
+              <Icon icon="cross" size={18} />
+            </Button>
+          </div>
+        </div>
+      )}
+      {user?.subscription.isTrial && !isBannerDismissed && (
+        <div className="sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
+          <div />
+          <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
+            <div className="flex items-center gap-1.5">
+              <Icon icon="time" size={18} />
+              {`Free trial ends in ${freeTrialEndsInDays} day${freeTrialEndsInDays === 1 ? '' : 's'}`}
+            </div>
+            <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true, 'header_cta')}>
+              <span>
+                Upgrade <span className="hidden xs:inline">now</span>
+              </span>
+            </Button>
+          </div>
+          <div>
+            <Button size="sm" variant="light" color="primary" isIconOnly radius="full" onClick={handleBannerClose}>
+              <Icon icon="cross" size={18} />
+            </Button>
+          </div>
+        </div>
+      )}
       <Navbar
         ref={headerRef}
         isMenuOpen={isMenuOpen}

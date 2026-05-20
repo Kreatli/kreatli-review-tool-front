@@ -25,7 +25,7 @@ import { ProjectStack } from './ProjectStack';
 
 export const ProjectAssets = () => {
   const { project, search, filters } = useProjectContext();
-  const { inputRef, isDragActive, getRootProps } = useProjectUploadContext();
+  const { isDragActive, isUploadDisabled, getRootProps, openFileDialog } = useProjectUploadContext();
 
   const { data: assetsData, isPending: isLoadingAssets } = useGetProjectIdAssets(project.id, undefined, {
     params: filters,
@@ -270,10 +270,8 @@ export const ProjectAssets = () => {
         >
           <Button
             className="mt-4 bg-foreground text-content1"
-            isDisabled={project.status !== 'active'}
-            onClick={() => {
-              inputRef.current?.click();
-            }}
+            isDisabled={project.status !== 'active' || isUploadDisabled}
+            onClick={openFileDialog}
           >
             <Icon icon="plus" size={16} />
             Upload your first file

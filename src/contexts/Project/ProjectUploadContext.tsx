@@ -7,7 +7,8 @@ import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzo
 import { UpgradeModal } from '../../components/account/UpgradeModal';
 import { ContactOwnerModal } from '../../components/account/UpgradeModal/ContactOwnerModal';
 import { useMultipartUpload } from '../../hooks/useMultipartUpload';
-import { useProjectUploads } from '../../hooks/useProjectUploads';
+import { usePlansModalVisibility } from '../../hooks/usePlansModalVisibility';
+import { hasOngoingProjectUploads, useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
 import { trackEvent } from '../../lib/amplitude';
 import { usePostProjectIdFile } from '../../services/hooks';
@@ -19,7 +20,15 @@ import {
   getProjectId,
   getProjectIdAssets,
 } from '../../services/services';
-import { ProjectDto } from '../../services/types';
+import { ProjectAssetsResponseDto, ProjectDto } from '../../services/types';
+import {
+  collectProjectAssetsFromResponse,
+  countExploreModeAssets,
+  countIncomingExploreModeFiles,
+  getExploreModeUploadBlockReason,
+  hasFullPlatformAccess,
+  mergeExploreModeAssets,
+} from '../../utils/exploreMode';
 import { getErrorMessage } from '../../utils/getErrorMessage';
 import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
 
@@ -32,6 +41,7 @@ export interface ProjectAssetsFilters {
 
 interface Context {
   isDragActive: boolean;
+  isUploadDisabled: boolean;
   inputRef: React.RefObject<HTMLInputElement | null>;
   openFileDialog: () => void;
   getInputProps: () => DropzoneInputProps;
@@ -67,6 +77,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const queryClient = useQueryClient();
   const { user } = useSession();
   const isProjectOwner = project.createdBy?.id === user?.id;
+  const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
 
   const { mutateAsync } = usePostProjectIdFile({ mutationKey: ['files-upload'] });
 
@@ -79,6 +90,10 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const uploadsQueue = useProjectUploads((state) => state.uploadsQueue);
   const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
   const removeItemFromUploadQueue = useProjectUploads((state) => state.removeItemFromUploadQueue);
+  const hasOngoingUploads = useProjectUploads(hasOngoingProjectUploads);
+  const isExploreModeUser = !hasFullPlatformAccess(user);
+  // Block parallel uploads only in explore mode (prevents limit workarounds). Trial/paid can queue uploads.
+  const isUploadDisabled = isExploreModeUser && hasOngoingUploads;
 
   useEffect(() => {
     const isMutating = queryClient.isMutating({ mutationKey: ['files-upload'] }) > 0;
@@ -128,11 +143,39 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   }, [queryClient, uploadsQueue]);
 
   const onDrop = (files: File[]) => {
+    if (isUploadDisabled) {
+      return;
+    }
+
     if (!inputRef.current) {
       return;
     }
 
     inputRef.current.value = '';
+
+    // Explore mode only — trial and paid users skip asset-type caps and version limits.
+    if (!hasFullPlatformAccess(user)) {
+      const cachedAssetResponses = queryClient.getQueriesData<ProjectAssetsResponseDto>({
+        queryKey: [getProjectIdAssets.key, project.id],
+      });
+      const existingAssets = mergeExploreModeAssets(
+        cachedAssetResponses.map(([, data]) => collectProjectAssetsFromResponse(data)),
+      );
+      const existing = countExploreModeAssets(existingAssets);
+      const incoming = countIncomingExploreModeFiles(files);
+      const blockReason = getExploreModeUploadBlockReason({
+        isExploreModeUser: true,
+        isNewVersionUpload: !!(stackId || stackWithFileId),
+        existing,
+        incoming,
+      });
+
+      if (blockReason) {
+        setIsPlansModalVisible(true, 'explore_mode_upload_limit');
+
+        return;
+      }
+    }
 
     if (project.createdBy && !getIsValidSize(files)) {
       addToast({
@@ -228,6 +271,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   } = useDropzone({
     multiple: true,
     noClick: true,
+    disabled: isUploadDisabled,
     onDrop,
     onFileDialogCancel: () => {
       setStackId(undefined);
@@ -235,14 +279,23 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     },
   });
 
+  const handleOpenFileDialog = () => {
+    if (isUploadDisabled) {
+      return;
+    }
+
+    openFileDialog();
+  };
+
   return (
     <ProjectUploadContext.Provider
       value={{
         getInputProps,
         getRootProps,
         isDragActive,
+        isUploadDisabled,
         inputRef,
-        openFileDialog,
+        openFileDialog: handleOpenFileDialog,
         setStackId,
         setStackWithFileId,
       }}

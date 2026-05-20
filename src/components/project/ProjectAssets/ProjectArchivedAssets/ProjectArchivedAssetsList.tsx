@@ -3,7 +3,10 @@ import React from 'react';
 
 import { AssetContextProvider } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
+import { usePlansModalVisibility } from '../../../../hooks/usePlansModalVisibility';
+import { useSession } from '../../../../hooks/useSession';
 import { ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../../../services/types';
+import { blockIfExploreMode } from '../../../../utils/exploreMode';
 import { EmptyState } from '../../../various/EmptyState';
 import { Icon } from '../../../various/Icon';
 import { DeleteAssetsModal } from '../ProjectAssetsBulkEdit/DeleteAssetsModal';
@@ -21,6 +24,8 @@ interface Props {
 
 export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }: Props) => {
   const { project } = useProjectContext();
+  const { user } = useSession();
+  const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
   const [selectedAssetIds, setSelectedAssetIds] = React.useState<Set<string>>(new Set([]));
   const [selectedAssetId, setSelectedAssetId] = React.useState<string | null>(null);
 
@@ -89,7 +94,18 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
           <div className="-ml-2 text-foreground-500">
             {selectedAssetIds.size} item{selectedAssetIds.size === 1 ? '' : 's'} selected
           </div>
-          <Button variant="light" size="sm" isDisabled={!hasSelectedAssets} onPress={() => setIsRestoreModalOpen(true)}>
+          <Button
+            variant="light"
+            size="sm"
+            isDisabled={!hasSelectedAssets}
+            onPress={() => {
+              if (blockIfExploreMode(user, (entry) => setIsPlansModalVisible(true, entry), 'explore_mode_restore')) {
+                return;
+              }
+
+              setIsRestoreModalOpen(true);
+            }}
+          >
             <Icon icon="update" size={14} />
             Restore
           </Button>

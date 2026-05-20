@@ -9,8 +9,10 @@ import { LeaveProjectModal } from '../../components/project/ProjectModals/LeaveP
 import { RenameProjectModal } from '../../components/project/ProjectModals/RenameProjectModal';
 import { RestoreProjectModal } from '../../components/project/ProjectModals/RestoreProjectModal';
 import { IconType } from '../../components/various/Icon';
+import { usePlansModalVisibility } from '../../hooks/usePlansModalVisibility';
 import { useSession } from '../../hooks/useSession';
 import { ProjectDto } from '../../services/types';
+import { blockIfExploreMode } from '../../utils/exploreMode';
 
 export interface ProjectAssetsFilters {
   status?: string;
@@ -69,10 +71,15 @@ export const ProjectContextProvider = ({
   const [search, setSearch] = React.useState('');
   const [filters, setFilters] = React.useState<ProjectAssetsFilters>({});
   const { user } = useSession();
+  const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
 
   const isProjectOwner = selectedProject?.createdBy?.id === user?.id;
 
   const restoreProject = (project: ProjectDto) => {
+    if (blockIfExploreMode(user, (entry) => setIsPlansModalVisible(true, entry), 'explore_mode_restore')) {
+      return;
+    }
+
     setSelectedProjectId?.(project.id);
     setIsRestoreModalOpen(true);
   };

@@ -50,9 +50,7 @@ export const Asset = ({ fileId, projectId, compareFileId }: Props) => {
     return null;
   }
 
-  if (!isProjectLoading && !error && user && project && !project?.createdBy?.subscription.isActive) {
-    return <ProjectPaywall project={project} user={user} />;
-  }
+  // All inactive owners (pre-trial and expired-trial) are in explore mode — no hard paywall.
 
   if (isLoading || !project) {
     return (
