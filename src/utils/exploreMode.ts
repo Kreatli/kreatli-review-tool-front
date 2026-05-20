@@ -7,7 +7,16 @@ export type ExploreModeAssetCounts = {
 
 export type ExploreModeUploadBlockReason = 'new_version' | 'asset_limit';
 
-export const isExploreMode = (user: UserDto | null | undefined): boolean => !!user && !user.subscription.isActive;
+/**
+ * Full platform access: active paid subscription, in-trial, or AppSumo.
+ * API sets `isActive` for all of these; `isTrial` is an extra guard for in-trial users.
+ */
+export const hasFullPlatformAccess = (user: UserDto | null | undefined): boolean =>
+  !!user && (user.subscription.isActive || user.subscription.isTrial);
+
+/** Pre-trial or expired-trial users without an active subscription. */
+export const isExploreMode = (user: UserDto | null | undefined): boolean =>
+  !!user && !hasFullPlatformAccess(user);
 
 /** Opens the plans modal and returns true when the action should not proceed. */
 export const blockIfExploreMode = (
@@ -15,7 +24,7 @@ export const blockIfExploreMode = (
   openPlansModal: (entry: string) => void,
   entry: string,
 ): boolean => {
-  if (!isExploreMode(user)) {
+  if (hasFullPlatformAccess(user)) {
     return false;
   }
 

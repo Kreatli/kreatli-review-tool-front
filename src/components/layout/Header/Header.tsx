@@ -18,6 +18,7 @@ import { getPlatformPagesBySection } from '../../../data/platform-pages';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import { isExploreMode } from '../../../utils/exploreMode';
 import { Layout } from '../../../typings/layout';
 import { ProjectUploadsButton } from '../../project/ProjectUploads';
 import { Icon } from '../../various/Icon';
@@ -66,7 +67,7 @@ export const Header = () => {
     return exploreBannerClosedAt && new Date(exploreBannerClosedAt).getTime() + DAY_IN_MILLISECONDS > Date.now();
   }, [exploreBannerClosedAt]);
 
-  const isExploreMode = user && isSignedIn && !user.subscription.isActive;
+  const showExploreBanner = user && isSignedIn && isExploreMode(user);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -108,7 +109,7 @@ export const Header = () => {
 
   return (
     <>
-      {isExploreMode && !isExploreBannerDismissed && (
+      {showExploreBanner && !isExploreBannerDismissed && (
         <div className="sticky top-0 z-50 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
           <div />
           <div className="flex items-center justify-center gap-3 py-1.5 text-primary">

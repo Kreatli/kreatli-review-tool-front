@@ -8,6 +8,7 @@ import { Icon } from '../../../components/various/Icon';
 import { ChatProvider } from '../../../contexts/Chat';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import { isExploreMode } from '../../../utils/exploreMode';
 
 export default function ProjectChat() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function ProjectChat() {
   const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
 
   const projectId = router.query.id as string;
-  const isExploreMode = user && !user.subscription.isActive;
+  const exploreMode = isExploreMode(user);
 
   return (
     <>
@@ -25,14 +26,14 @@ export default function ProjectChat() {
       </Head>
       <div className="relative flex flex-1 flex-col">
         {/* Chat UI — non-interactive in explore mode */}
-        <div className={isExploreMode ? 'pointer-events-none select-none' : ''}>
+        <div className={exploreMode ? 'pointer-events-none select-none' : ''}>
           <ChatProvider key={projectId} projectId={projectId}>
             <Chat />
           </ChatProvider>
         </div>
 
         {/* Frosted-glass upgrade overlay for explore-mode users */}
-        {isExploreMode && (
+        {exploreMode && (
           <div className="absolute inset-0 flex items-center justify-center backdrop-blur-sm">
             <div className="mx-4 flex max-w-sm flex-col items-center gap-3 rounded-2xl border border-foreground-200 bg-content1/90 p-8 text-center shadow-lg">
               <div className="flex size-12 items-center justify-center rounded-full bg-foreground-100">

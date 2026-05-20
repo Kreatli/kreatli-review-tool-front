@@ -1,3 +1,4 @@
+import { useQueryClient } from '@tanstack/react-query';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
@@ -6,10 +7,20 @@ import { AccountLayout } from '../../components/account/Account';
 import { Subscription } from '../../components/account/Subscription';
 import { useSession } from '../../hooks/useSession';
 import { trackEvent } from '../../lib/amplitude';
+import { getUser } from '../../services/services';
 
 export default function SubscriptionPage() {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const { isSignedIn, user } = useSession();
+
+  useEffect(() => {
+    if (!router.isReady || router.query.paymentStatus !== 'success') {
+      return;
+    }
+
+    void queryClient.invalidateQueries({ queryKey: [getUser.key] });
+  }, [queryClient, router.isReady, router.query.paymentStatus]);
 
   useEffect(() => {
     if (!router.isReady || router.query.paymentStatus !== 'success' || !user) {

@@ -11,7 +11,8 @@ export const useSession = () => {
 
   const { data, isLoading, isError } = useGetUser({
     enabled: hasToken,
-    refetchOnMount: false,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   });
 
   React.useEffect(() => {

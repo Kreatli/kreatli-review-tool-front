@@ -16,6 +16,7 @@ import { ProjectLayout } from '../../../components/project/Project';
 import { useIsBreakpoint } from '../../../components/tiptap/hooks/use-is-breakpoint';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import { isExploreMode } from '../../../utils/exploreMode';
 import { Icon } from '../../../components/various/Icon';
 import { useGetProjectIdDeliverables } from '../../../services/hooks';
 
@@ -27,7 +28,7 @@ export default function DeliverablesPage() {
   const [isColumnsModalVisible, setIsStatusesModalVisible] = useState(false);
   const [isNewDeliverableModalVisible, setIsNewDeliverableModalVisible] = useState(false);
 
-  const isExploreMode = user && !user.subscription.isActive;
+  const exploreMode = isExploreMode(user);
 
   const isMobile = useIsBreakpoint('max', 768);
 
@@ -78,7 +79,7 @@ export default function DeliverablesPage() {
       </Head>
       <div className="relative flex flex-1 flex-col gap-1">
         {/* Page content — blurred and non-interactive in explore mode */}
-        <div className={isExploreMode ? 'pointer-events-none select-none' : ''}>
+        <div className={exploreMode ? 'pointer-events-none select-none' : ''}>
           <div className="flex items-center justify-between gap-2 p-3 px-3 pb-0 sm:px-4">
             <div className="flex items-center gap-2">
               <h2 className="text-2xl font-semibold">Deliverables</h2>
@@ -138,7 +139,7 @@ export default function DeliverablesPage() {
         </div>
 
         {/* Frosted-glass upgrade overlay for explore-mode users */}
-        {isExploreMode && (
+        {exploreMode && (
           <div className="absolute inset-0 flex items-center justify-center backdrop-blur-sm">
             <div className="mx-4 flex max-w-sm flex-col items-center gap-3 rounded-2xl border border-foreground-200 bg-content1/90 p-8 text-center shadow-lg">
               <div className="flex size-12 items-center justify-center rounded-full bg-foreground-100">
@@ -162,7 +163,7 @@ export default function DeliverablesPage() {
         )}
       </div>
 
-      {!isExploreMode && (
+      {!exploreMode && (
         <>
           <NewDeliverableModal
             projectId={id}

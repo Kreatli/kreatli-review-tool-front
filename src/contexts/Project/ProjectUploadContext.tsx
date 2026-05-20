@@ -26,7 +26,7 @@ import {
   countExploreModeAssets,
   countIncomingExploreModeFiles,
   getExploreModeUploadBlockReason,
-  isExploreMode,
+  hasFullPlatformAccess,
   mergeExploreModeAssets,
 } from '../../utils/exploreMode';
 import { getErrorMessage } from '../../utils/getErrorMessage';
@@ -90,7 +90,10 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const uploadsQueue = useProjectUploads((state) => state.uploadsQueue);
   const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
   const removeItemFromUploadQueue = useProjectUploads((state) => state.removeItemFromUploadQueue);
-  const isUploadDisabled = useProjectUploads(hasOngoingProjectUploads);
+  const hasOngoingUploads = useProjectUploads(hasOngoingProjectUploads);
+  const isExploreModeUser = !hasFullPlatformAccess(user);
+  // Block parallel uploads only in explore mode (prevents limit workarounds). Trial/paid can queue uploads.
+  const isUploadDisabled = isExploreModeUser && hasOngoingUploads;
 
   useEffect(() => {
     const isMutating = queryClient.isMutating({ mutationKey: ['files-upload'] }) > 0;
@@ -150,8 +153,8 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
 
     inputRef.current.value = '';
 
-    // Explore mode: 1 video asset + 1 image asset per project; new versions are not allowed.
-    if (isExploreMode(user)) {
+    // Explore mode only — trial and paid users skip asset-type caps and version limits.
+    if (!hasFullPlatformAccess(user)) {
       const cachedAssetResponses = queryClient.getQueriesData<ProjectAssetsResponseDto>({
         queryKey: [getProjectIdAssets.key, project.id],
       });
