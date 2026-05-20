@@ -7,7 +7,6 @@ import { useDebounce } from '../../../hooks/useDebounce';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
-import { isExploreMode } from '../../../utils/exploreMode';
 import { useGetProjects } from '../../../services/hooks';
 import { GetProjectsQueryParams } from '../../../services/types';
 import { useIsBreakpoint } from '../../tiptap/hooks/use-is-breakpoint';
@@ -54,8 +53,9 @@ export const Projects = () => {
   };
 
   const handleCreateProjectClick = () => {
-    // Explore-mode users can create 1 project; trial and paid users have no cap here.
-    if (isExploreMode(user) && (data?.totals.all ?? 0) >= 1) {
+    const projectsLimit = user?.subscription.limits.projectsCount;
+
+    if (projectsLimit && projectsLimit.used >= projectsLimit.max) {
       setIsPlansModalVisible(true, 'projects_list');
 
       return;
