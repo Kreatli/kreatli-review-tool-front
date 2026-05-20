@@ -8,7 +8,7 @@ import { UpgradeModal } from '../../components/account/UpgradeModal';
 import { ContactOwnerModal } from '../../components/account/UpgradeModal/ContactOwnerModal';
 import { useMultipartUpload } from '../../hooks/useMultipartUpload';
 import { usePlansModalVisibility } from '../../hooks/usePlansModalVisibility';
-import { useProjectUploads } from '../../hooks/useProjectUploads';
+import { hasOngoingProjectUploads, useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
 import { trackEvent } from '../../lib/amplitude';
 import { usePostProjectIdFile } from '../../services/hooks';
@@ -20,7 +20,15 @@ import {
   getProjectId,
   getProjectIdAssets,
 } from '../../services/services';
-import { ProjectAssetsResponseDto, ProjectDto, ProjectFileDto } from '../../services/types';
+import { ProjectAssetsResponseDto, ProjectDto } from '../../services/types';
+import {
+  collectProjectAssetsFromResponse,
+  countExploreModeAssets,
+  countIncomingExploreModeFiles,
+  getExploreModeUploadBlockReason,
+  isExploreMode,
+  mergeExploreModeAssets,
+} from '../../utils/exploreMode';
 import { getErrorMessage } from '../../utils/getErrorMessage';
 import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
 
@@ -33,6 +41,7 @@ export interface ProjectAssetsFilters {
 
 interface Context {
   isDragActive: boolean;
+  isUploadDisabled: boolean;
   inputRef: React.RefObject<HTMLInputElement | null>;
   openFileDialog: () => void;
   getInputProps: () => DropzoneInputProps;
@@ -81,6 +90,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const uploadsQueue = useProjectUploads((state) => state.uploadsQueue);
   const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
   const removeItemFromUploadQueue = useProjectUploads((state) => state.removeItemFromUploadQueue);
+  const isUploadDisabled = useProjectUploads(hasOngoingProjectUploads);
 
   useEffect(() => {
     const isMutating = queryClient.isMutating({ mutationKey: ['files-upload'] }) > 0;
@@ -130,33 +140,34 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   }, [queryClient, uploadsQueue]);
 
   const onDrop = (files: File[]) => {
+    if (isUploadDisabled) {
+      return;
+    }
+
     if (!inputRef.current) {
       return;
     }
 
     inputRef.current.value = '';
 
-    // Explore-mode upload limit: 1 video (any format) + 1 image (any format).
-    // Applies to all inactive users — pre-trial and expired-trial alike.
-    if (user && !user.subscription.isActive) {
-      const cachedAssets = queryClient.getQueryData<ProjectAssetsResponseDto>([getProjectIdAssets.key, project.id]);
-      const existingFiles = cachedAssets?.files ?? [];
+    // Explore mode: 1 video asset + 1 image asset per project; new versions are not allowed.
+    if (isExploreMode(user)) {
+      const cachedAssetResponses = queryClient.getQueriesData<ProjectAssetsResponseDto>({
+        queryKey: [getProjectIdAssets.key, project.id],
+      });
+      const existingAssets = mergeExploreModeAssets(
+        cachedAssetResponses.map(([, data]) => collectProjectAssetsFromResponse(data)),
+      );
+      const existing = countExploreModeAssets(existingAssets);
+      const incoming = countIncomingExploreModeFiles(files);
+      const blockReason = getExploreModeUploadBlockReason({
+        isExploreModeUser: true,
+        isNewVersionUpload: !!(stackId || stackWithFileId),
+        existing,
+        incoming,
+      });
 
-      let existingVideoCount = 0;
-      let existingImageCount = 0;
-      for (const asset of existingFiles) {
-        const fileType =
-          'type' in asset && asset.type === 'stack'
-            ? asset.active?.fileType ?? asset.files[0]?.fileType
-            : (asset as ProjectFileDto).fileType;
-        if (fileType?.startsWith('video')) existingVideoCount++;
-        else if (fileType?.startsWith('image')) existingImageCount++;
-      }
-
-      const incomingVideoCount = files.filter((f) => f.type.startsWith('video')).length;
-      const incomingImageCount = files.filter((f) => f.type.startsWith('image')).length;
-
-      if (existingVideoCount + incomingVideoCount > 1 || existingImageCount + incomingImageCount > 1) {
+      if (blockReason) {
         setIsPlansModalVisible(true, 'explore_mode_upload_limit');
 
         return;
@@ -257,6 +268,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   } = useDropzone({
     multiple: true,
     noClick: true,
+    disabled: isUploadDisabled,
     onDrop,
     onFileDialogCancel: () => {
       setStackId(undefined);
@@ -264,14 +276,23 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     },
   });
 
+  const handleOpenFileDialog = () => {
+    if (isUploadDisabled) {
+      return;
+    }
+
+    openFileDialog();
+  };
+
   return (
     <ProjectUploadContext.Provider
       value={{
         getInputProps,
         getRootProps,
         isDragActive,
+        isUploadDisabled,
         inputRef,
-        openFileDialog,
+        openFileDialog: handleOpenFileDialog,
         setStackId,
         setStackWithFileId,
       }}

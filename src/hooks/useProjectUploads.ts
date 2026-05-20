@@ -36,6 +36,9 @@ interface State {
   removeItemFromUploadQueue: (id: string) => void;
 }
 
+export const hasOngoingProjectUploads = (state: State) =>
+  state.uploads.some((upload) => !upload.isError && upload.progress < 100) || state.uploadsQueue.length > 0;
+
 export const useProjectUploads = create<State>((set) => ({
   uploads: [],
   uploadsQueue: [],

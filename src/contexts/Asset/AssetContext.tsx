@@ -8,10 +8,13 @@ import { MoveToModal } from '../../components/asset/AssetModals/MoveToModal';
 import { RenameAssetModal } from '../../components/asset/AssetModals/RenameAssetModal';
 import { RestoreAssetModal } from '../../components/asset/AssetModals/RestoreAssetModal';
 import { ShareAssetModal } from '../../components/asset/AssetModals/ShareAssetModal';
+import { usePlansModalVisibility } from '../../hooks/usePlansModalVisibility';
+import { useSession } from '../../hooks/useSession';
 import { IconType } from '../../components/various/Icon';
 import { getAssetFileIdDownload } from '../../services/services';
 import { ProjectDto, ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../services/types';
 import { downloadFromUrl } from '../../utils/download';
+import { blockIfExploreMode } from '../../utils/exploreMode';
 import { useProjectUploadContext } from '../Project/ProjectUploadContext';
 
 interface Context {
@@ -63,7 +66,13 @@ export const AssetContextProvider = ({
   const [isShareModalOpen, setIsShareModalOpen] = React.useState(false);
   const [isManageVersionsModalOpen, setIsManageVersionsModalOpen] = React.useState(false);
 
-  const { openFileDialog, setStackId, setStackWithFileId } = useProjectUploadContext();
+  const { user } = useSession();
+  const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
+  const { isUploadDisabled, openFileDialog, setStackId, setStackWithFileId } = useProjectUploadContext();
+
+  const openExploreModeGate = (entry: string) => {
+    setIsPlansModalVisible(true, entry);
+  };
 
   const getAssetActions = (asset: ProjectFolderDto | ProjectFileDto | ProjectStackDto) => {
     const shareAction = {
@@ -125,6 +134,10 @@ export const AssetContextProvider = ({
           label: 'Restore',
           icon: 'update' as const,
           onClick: () => {
+            if (blockIfExploreMode(user, openExploreModeGate, 'explore_mode_restore')) {
+              return;
+            }
+
             setSelectedAssetId?.(asset.id);
             setIsRestoreModalOpen(true);
           },
@@ -148,6 +161,14 @@ export const AssetContextProvider = ({
       icon: 'upload' as const,
       showDivider: asset.type === 'stack',
       onClick: () => {
+        if (blockIfExploreMode(user, openExploreModeGate, 'explore_mode_upload_limit')) {
+          return;
+        }
+
+        if (isUploadDisabled) {
+          return;
+        }
+
         if (asset.type === 'stack') {
           setStackId(asset.id);
         } else {

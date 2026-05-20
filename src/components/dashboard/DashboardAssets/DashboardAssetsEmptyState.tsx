@@ -5,7 +5,7 @@ import { EmptyState } from '../../various/EmptyState';
 import { Icon } from '../../various/Icon';
 
 export const DashboardAssetsEmptyState = () => {
-  const { inputRef, isDragActive, getRootProps, getInputProps } = useProjectUploadContext();
+  const { isDragActive, isUploadDisabled, getRootProps, getInputProps, openFileDialog } = useProjectUploadContext();
 
   return (
     <div className="relative" {...getRootProps()}>
@@ -13,9 +13,8 @@ export const DashboardAssetsEmptyState = () => {
         <Button
           size="sm"
           className="mt-4 bg-foreground text-content1"
-          onClick={() => {
-            inputRef.current?.click();
-          }}
+          isDisabled={isUploadDisabled}
+          onClick={openFileDialog}
         >
           <Icon icon="plus" size={14} />
           Upload your first file

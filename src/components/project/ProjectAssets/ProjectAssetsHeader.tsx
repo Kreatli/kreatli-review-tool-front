@@ -17,13 +17,11 @@ interface Props {
 
 export const ProjectAssetsHeader = ({ title = 'Media', folderId, fileCount, totalFileSize }: Props) => {
   const { project } = useProjectContext();
-  const { inputRef, getInputProps } = useProjectUploadContext();
+  const { getInputProps, isUploadDisabled, openFileDialog } = useProjectUploadContext();
 
   const [isFolderModalOpen, setIsFolderModalOpen] = React.useState(false);
 
-  const uploadAssets = () => {
-    inputRef.current?.click();
-  };
+  const canUpload = project.status === 'active' && !isUploadDisabled;
 
   return (
     <>
@@ -40,22 +38,23 @@ export const ProjectAssetsHeader = ({ title = 'Media', folderId, fileCount, tota
         <div>
           <div className="hidden sm:block">
             <ButtonGroup>
-              <Button
-                className="bg-foreground pr-1 text-content1"
-                isDisabled={project.status !== 'active'}
-                onClick={uploadAssets}
-              >
+              <Button className="bg-foreground pr-1 text-content1" isDisabled={!canUpload} onClick={openFileDialog}>
                 <Icon icon="upload" size={16} />
                 Upload
               </Button>
               <Dropdown>
                 <DropdownTrigger>
-                  <Button isIconOnly isDisabled={project.status !== 'active'} className="bg-foreground text-content1">
+                  <Button isIconOnly isDisabled={!canUpload} className="bg-foreground text-content1">
                     <Icon icon="chevronDown" size={20} />
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu variant="flat">
-                  <DropdownItem key="upload" startContent={<Icon icon="upload" size={18} />} onPress={uploadAssets}>
+                  <DropdownItem
+                    key="upload"
+                    isDisabled={!canUpload}
+                    startContent={<Icon icon="upload" size={18} />}
+                    onPress={openFileDialog}
+                  >
                     Upload files
                   </DropdownItem>
                   <DropdownItem
@@ -75,7 +74,7 @@ export const ProjectAssetsHeader = ({ title = 'Media', folderId, fileCount, tota
               <DropdownTrigger>
                 <Button
                   isIconOnly
-                  isDisabled={project.status !== 'active'}
+                  isDisabled={!canUpload}
                   size="sm"
                   radius="full"
                   className="bg-foreground text-content1"
@@ -84,7 +83,12 @@ export const ProjectAssetsHeader = ({ title = 'Media', folderId, fileCount, tota
                 </Button>
               </DropdownTrigger>
               <DropdownMenu variant="flat">
-                <DropdownItem key="upload" startContent={<Icon icon="upload" size={18} />} onPress={uploadAssets}>
+                <DropdownItem
+                  key="upload"
+                  isDisabled={!canUpload}
+                  startContent={<Icon icon="upload" size={18} />}
+                  onPress={openFileDialog}
+                >
                   Upload files
                 </DropdownItem>
                 <DropdownItem
