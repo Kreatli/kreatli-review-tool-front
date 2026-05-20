@@ -7,6 +7,7 @@ import { DropzoneInputProps, DropzoneRootProps, useDropzone } from 'react-dropzo
 import { UpgradeModal } from '../../components/account/UpgradeModal';
 import { ContactOwnerModal } from '../../components/account/UpgradeModal/ContactOwnerModal';
 import { useMultipartUpload } from '../../hooks/useMultipartUpload';
+import { usePlansModalVisibility } from '../../hooks/usePlansModalVisibility';
 import { useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
 import { trackEvent } from '../../lib/amplitude';
@@ -19,7 +20,7 @@ import {
   getProjectId,
   getProjectIdAssets,
 } from '../../services/services';
-import { ProjectDto } from '../../services/types';
+import { ProjectAssetsResponseDto, ProjectDto, ProjectFileDto } from '../../services/types';
 import { getErrorMessage } from '../../utils/getErrorMessage';
 import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
 
@@ -67,6 +68,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const queryClient = useQueryClient();
   const { user } = useSession();
   const isProjectOwner = project.createdBy?.id === user?.id;
+  const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
 
   const { mutateAsync } = usePostProjectIdFile({ mutationKey: ['files-upload'] });
 
@@ -133,6 +135,33 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     }
 
     inputRef.current.value = '';
+
+    // Explore-mode upload limit: 1 video (any format) + 1 image (any format).
+    // Applies to all inactive users — pre-trial and expired-trial alike.
+    if (user && !user.subscription.isActive) {
+      const cachedAssets = queryClient.getQueryData<ProjectAssetsResponseDto>([getProjectIdAssets.key, project.id]);
+      const existingFiles = cachedAssets?.files ?? [];
+
+      let existingVideoCount = 0;
+      let existingImageCount = 0;
+      for (const asset of existingFiles) {
+        const fileType =
+          'type' in asset && asset.type === 'stack'
+            ? asset.active?.fileType ?? asset.files[0]?.fileType
+            : (asset as ProjectFileDto).fileType;
+        if (fileType?.startsWith('video')) existingVideoCount++;
+        else if (fileType?.startsWith('image')) existingImageCount++;
+      }
+
+      const incomingVideoCount = files.filter((f) => f.type.startsWith('video')).length;
+      const incomingImageCount = files.filter((f) => f.type.startsWith('image')).length;
+
+      if (existingVideoCount + incomingVideoCount > 1 || existingImageCount + incomingImageCount > 1) {
+        setIsPlansModalVisible(true, 'explore_mode_upload_limit');
+
+        return;
+      }
+    }
 
     if (project.createdBy && !getIsValidSize(files)) {
       addToast({

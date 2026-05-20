@@ -58,9 +58,7 @@ export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
     );
   }
 
-  if (!isPending && !isError && user && !project.createdBy?.subscription.isActive) {
-    return <ProjectPaywall project={project} user={user} />;
-  }
+  // All inactive owners (pre-trial and expired-trial) are in explore mode — no hard paywall.
 
   return (
     <>

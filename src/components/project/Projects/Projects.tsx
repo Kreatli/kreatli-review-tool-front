@@ -53,7 +53,9 @@ export const Projects = () => {
   };
 
   const handleCreateProjectClick = () => {
-    if (!user?.subscription.isActive) {
+    // All inactive users (pre-trial and expired-trial) are in explore mode:
+    // they can create exactly 1 project; the 2nd attempt triggers the plans modal.
+    if (!user?.subscription.isActive && (data?.totals.all ?? 0) >= 1) {
       setIsPlansModalVisible(true, 'projects_list');
 
       return;

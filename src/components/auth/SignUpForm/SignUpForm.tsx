@@ -98,12 +98,7 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
               return;
             }
 
-            if (!user.subscription.isActive) {
-              router.push('/?showPlansModal=true');
-
-              return;
-            }
-
+            // All inactive users land in explore mode — no upfront plans modal.
             router.push('/');
           },
           onError: (error) => {

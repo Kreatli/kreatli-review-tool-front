@@ -14,15 +14,20 @@ import { DeliverablesStatusesModal } from '../../../components/deliverables/Deli
 import { DeliverablesTimeline } from '../../../components/deliverables/DeliverablesTimeline/DeliverablesTimeline';
 import { ProjectLayout } from '../../../components/project/Project';
 import { useIsBreakpoint } from '../../../components/tiptap/hooks/use-is-breakpoint';
-import { EmptyState } from '../../../components/various/EmptyState';
+import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
+import { useSession } from '../../../hooks/useSession';
 import { Icon } from '../../../components/various/Icon';
 import { useGetProjectIdDeliverables } from '../../../services/hooks';
 
 export default function DeliverablesPage() {
   const { id } = useParams<{ id: string }>();
+  const { user } = useSession();
+  const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
   const [filters, setFilters] = useState<DeliverablesFiltersType>({});
   const [isColumnsModalVisible, setIsStatusesModalVisible] = useState(false);
   const [isNewDeliverableModalVisible, setIsNewDeliverableModalVisible] = useState(false);
+
+  const isExploreMode = user && !user.subscription.isActive;
 
   const isMobile = useIsBreakpoint('max', 768);
 
@@ -40,25 +45,29 @@ export default function DeliverablesPage() {
 
   if (isError) {
     return (
-      <EmptyState
-        title="Something went wrong"
-        icon="error"
-        text="An unexpected error occurred. Please try loading the data again."
-      >
-        <Button size="sm" className="mt-4" variant="flat" onClick={refetch}>
-          <Icon icon="update" size={16} />
-          Reload
-        </Button>
-      </EmptyState>
+      <div className="flex flex-1 items-center justify-center p-8">
+        <div className="text-center">
+          <p className="font-semibold text-foreground">Something went wrong</p>
+          <p className="mt-1 text-foreground-500">An unexpected error occurred. Please try loading the data again.</p>
+          <Button size="sm" className="mt-4" variant="flat" onClick={refetch}>
+            <Icon icon="update" size={16} />
+            Reload
+          </Button>
+        </div>
+      </div>
     );
   }
 
   const noResultsFound = (
-    <EmptyState title="No deliverables found" text="Try changing or resetting your filters">
-      <Button className="mt-4 bg-foreground text-content1" onClick={() => setFilters({})}>
-        Reset filters
-      </Button>
-    </EmptyState>
+    <div className="flex flex-1 items-center justify-center py-16 text-center">
+      <div>
+        <p className="font-semibold text-foreground">No deliverables found</p>
+        <p className="mt-1 text-foreground-500">Try changing or resetting your filters</p>
+        <Button className="mt-4 bg-foreground text-content1" onClick={() => setFilters({})}>
+          Reset filters
+        </Button>
+      </div>
+    </div>
   );
 
   return (
@@ -67,81 +76,106 @@ export default function DeliverablesPage() {
         <title>Kreatli | Deliverables</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="flex flex-1 flex-col gap-1">
-        <div className="flex items-center justify-between gap-2 p-3 px-3 pb-0 sm:px-4">
-          <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Deliverables</h2>
-            <Button
-              size="sm"
-              variant="flat"
-              radius="full"
-              isIconOnly={isMobile}
-              onClick={() => setIsNewDeliverableModalVisible(true)}
-            >
-              <Icon icon="plus" size={14} />
-              {!isMobile && 'New'}
-            </Button>
+      <div className="relative flex flex-1 flex-col gap-1">
+        {/* Page content — blurred and non-interactive in explore mode */}
+        <div className={isExploreMode ? 'pointer-events-none select-none' : ''}>
+          <div className="flex items-center justify-between gap-2 p-3 px-3 pb-0 sm:px-4">
+            <div className="flex items-center gap-2">
+              <h2 className="text-2xl font-semibold">Deliverables</h2>
+              <Button size="sm" variant="flat" radius="full" isIconOnly={isMobile}>
+                <Icon icon="plus" size={14} />
+                {!isMobile && 'New'}
+              </Button>
+            </div>
+            <div className="flex items-center gap-2">
+              <DeliverablesFilters projectId={id} defaultFilters={filters} onFiltersChange={setFilters} />
+              <Button
+                className="bg-foreground text-content1"
+                startContent={<Icon icon="gear" size={16} />}
+              >
+                Manage statuses
+              </Button>
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <DeliverablesFilters projectId={id} defaultFilters={filters} onFiltersChange={setFilters} />
-            <Button
-              className="bg-foreground text-content1"
-              startContent={<Icon icon="gear" size={16} />}
-              onClick={() => setIsStatusesModalVisible(true)}
+          <Tabs size="sm" classNames={{ tab: 'p-1.5', panel: 'p-0 max-w-full', tabList: 'mx-3 sm:mx-4 mb-2' }}>
+            <Tab
+              key="list"
+              title={
+                <div className="flex items-center gap-1">
+                  <Icon icon="list" size={16} />
+                  List
+                </div>
+              }
             >
-              Manage statuses
-            </Button>
-          </div>
-        </div>
-        <Tabs size="sm" classNames={{ tab: 'p-1.5', panel: 'p-0 max-w-full', tabList: 'mx-3 sm:mx-4 mb-2' }}>
-          <Tab
-            key="list"
-            title={
-              <div className="flex items-center gap-1">
-                <Icon icon="list" size={16} />
-                List
+              <div className="p-3 pt-0 sm:px-4">
+                {isPending ? (
+                  <DeliverablesSkeleton />
+                ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
+                  noResultsFound
+                ) : (
+                  <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
+                )}
               </div>
-            }
-          >
-            <div className="p-3 pt-0 sm:px-4">
+            </Tab>
+            <Tab
+              key="timeline"
+              title={
+                <div className="flex items-center gap-1">
+                  <Icon icon="calendar" size={16} />
+                  Timeline
+                </div>
+              }
+            >
               {isPending ? (
                 <DeliverablesSkeleton />
               ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
                 noResultsFound
               ) : (
-                <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
+                <DeliverablesTimeline key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
               )}
-            </div>
-          </Tab>
-          <Tab
-            key="timeline"
-            title={
-              <div className="flex items-center gap-1">
-                <Icon icon="calendar" size={16} />
-                Timeline
+            </Tab>
+          </Tabs>
+        </div>
+
+        {/* Frosted-glass upgrade overlay for explore-mode users */}
+        {isExploreMode && (
+          <div className="absolute inset-0 flex items-center justify-center backdrop-blur-sm">
+            <div className="mx-4 flex max-w-sm flex-col items-center gap-3 rounded-2xl border border-foreground-200 bg-content1/90 p-8 text-center shadow-lg">
+              <div className="flex size-12 items-center justify-center rounded-full bg-foreground-100">
+                <Icon icon="slides" size={22} />
               </div>
-            }
-          >
-            {isPending ? (
-              <DeliverablesSkeleton />
-            ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
-              noResultsFound
-            ) : (
-              <DeliverablesTimeline key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
-            )}
-          </Tab>
-        </Tabs>
+              <div>
+                <p className="text-lg font-semibold text-foreground">Available on paid plans</p>
+                <p className="mt-1 text-sm text-foreground-500">
+                  Deliverables is available during your free trial and on all paid plans. Track outputs, set deadlines,
+                  and manage project deliverables.
+                </p>
+              </div>
+              <Button
+                className="bg-foreground text-content1"
+                onClick={() => setIsPlansModalVisible(true, 'explore_mode_deliverables')}
+              >
+                {user?.subscription.hasUsedTrial ? 'Upgrade to a plan' : 'Start free trial'}
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
-      <NewDeliverableModal
-        projectId={id}
-        isVisible={isNewDeliverableModalVisible}
-        onClose={() => setIsNewDeliverableModalVisible(false)}
-      />
-      <DeliverablesStatusesModal
-        projectId={id}
-        isOpen={isColumnsModalVisible}
-        onClose={() => setIsStatusesModalVisible(false)}
-      />
+
+      {!isExploreMode && (
+        <>
+          <NewDeliverableModal
+            projectId={id}
+            isVisible={isNewDeliverableModalVisible}
+            onClose={() => setIsNewDeliverableModalVisible(false)}
+          />
+          <DeliverablesStatusesModal
+            projectId={id}
+            isOpen={isColumnsModalVisible}
+            onClose={() => setIsStatusesModalVisible(false)}
+          />
+        </>
+      )}
     </>
   );
 }
