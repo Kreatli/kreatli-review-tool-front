@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import {
   Button,
   cn,
@@ -153,31 +154,26 @@ export const Header = () => {
         </div>
       )}
       {user?.subscription.isTrial && !isBannerDismissed && (
-          <div className="sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
-            <div />
-            <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
-              <div className="flex items-center gap-1.5">
-                <Icon icon="time" size={18} />
-                {`Free trial ends in ${freeTrialEndsInDays} day${freeTrialEndsInDays === 1 ? '' : 's'}`}
-              </div>
-              <Button
-                size="sm"
-                variant="flat"
-                color="primary"
-                onClick={() => setIsPlansModalVisible(true, 'header_cta')}
-              >
-                <span>
-                  Upgrade <span className="hidden xs:inline">now</span>
-                </span>
-              </Button>
+        <div className="sticky top-0 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
+          <div />
+          <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
+            <div className="flex items-center gap-1.5">
+              <Icon icon="time" size={18} />
+              {`Free trial ends in ${freeTrialEndsInDays} day${freeTrialEndsInDays === 1 ? '' : 's'}`}
             </div>
-            <div>
-              <Button size="sm" variant="light" color="primary" isIconOnly radius="full" onClick={handleBannerClose}>
-                <Icon icon="cross" size={18} />
-              </Button>
-            </div>
+            <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true, 'header_cta')}>
+              <span>
+                Upgrade <span className="hidden xs:inline">now</span>
+              </span>
+            </Button>
           </div>
-        )}
+          <div>
+            <Button size="sm" variant="light" color="primary" isIconOnly radius="full" onClick={handleBannerClose}>
+              <Icon icon="cross" size={18} />
+            </Button>
+          </div>
+        </div>
+      )}
       <Navbar
         ref={headerRef}
         isMenuOpen={isMenuOpen}
