@@ -8,15 +8,17 @@ import { Icon } from '../../../components/various/Icon';
 import { ChatProvider } from '../../../contexts/Chat';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
-import { isExploreMode } from '../../../utils/exploreMode';
+import { hasProjectAccess } from '../../../utils/exploreMode';
+import { useProjectContext } from '../../../contexts/Project';
 
 export default function ProjectChat() {
   const router = useRouter();
   const { user } = useSession();
+  const { project } = useProjectContext();
   const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
 
   const projectId = router.query.id as string;
-  const exploreMode = isExploreMode(user);
+  const exploreMode = !hasProjectAccess(user, project?.createdBy);
 
   return (
     <>

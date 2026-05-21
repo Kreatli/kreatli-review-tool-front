@@ -26,7 +26,7 @@ import {
   countExploreModeAssets,
   countIncomingExploreModeFiles,
   getExploreModeUploadBlockReason,
-  hasFullPlatformAccess,
+  hasProjectAccess,
   mergeExploreModeAssets,
 } from '../../utils/exploreMode';
 import { getErrorMessage } from '../../utils/getErrorMessage';
@@ -91,7 +91,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
   const removeItemFromUploadQueue = useProjectUploads((state) => state.removeItemFromUploadQueue);
   const hasOngoingUploads = useProjectUploads(hasOngoingProjectUploads);
-  const isExploreModeUser = !hasFullPlatformAccess(user);
+  const isExploreModeUser = !hasProjectAccess(user, project.createdBy);
   // Block parallel uploads only in explore mode (prevents limit workarounds). Trial/paid can queue uploads.
   const isUploadDisabled = isExploreModeUser && hasOngoingUploads;
 
@@ -153,8 +153,8 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
 
     inputRef.current.value = '';
 
-    // Explore mode only — trial and paid users skip asset-type caps and version limits.
-    if (!hasFullPlatformAccess(user)) {
+    // Explore mode only — trial/paid users and guests of paid-owner projects skip asset-type caps and version limits.
+    if (!hasProjectAccess(user, project.createdBy)) {
       const cachedAssetResponses = queryClient.getQueriesData<ProjectAssetsResponseDto>({
         queryKey: [getProjectIdAssets.key, project.id],
       });

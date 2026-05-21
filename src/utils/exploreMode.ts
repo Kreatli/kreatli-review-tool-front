@@ -33,6 +33,34 @@ export const blockIfExploreMode = (
   return true;
 };
 
+/**
+ * Within a project, an invited user has full access when the project owner has an active plan or trial.
+ * Always grants access if the session user themselves has full platform access.
+ */
+export const hasProjectAccess = (
+  user: UserDto | null | undefined,
+  projectOwner: UserDto | null | undefined,
+): boolean => hasFullPlatformAccess(user) || hasFullPlatformAccess(projectOwner);
+
+/**
+ * Project-aware gate: opens the plans modal and returns true when the action should not proceed,
+ * deferring to the project owner's subscription for invited users.
+ */
+export const blockIfNoProjectAccess = (
+  user: UserDto | null | undefined,
+  projectOwner: UserDto | null | undefined,
+  openPlansModal: (entry: string) => void,
+  entry: string,
+): boolean => {
+  if (hasProjectAccess(user, projectOwner)) {
+    return false;
+  }
+
+  openPlansModal(entry);
+
+  return true;
+};
+
 export const getExploreModeAssetFileType = (asset: ProjectFileDto | ProjectStackDto): string | undefined => {
   if (asset.type === 'stack') {
     return asset.active?.fileType ?? asset.files[0]?.fileType;

@@ -14,7 +14,7 @@ import { IconType } from '../../components/various/Icon';
 import { getAssetFileIdDownload } from '../../services/services';
 import { ProjectDto, ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../services/types';
 import { downloadFromUrl } from '../../utils/download';
-import { blockIfExploreMode } from '../../utils/exploreMode';
+import { blockIfNoProjectAccess } from '../../utils/exploreMode';
 import { useProjectUploadContext } from '../Project/ProjectUploadContext';
 
 interface Context {
@@ -134,7 +134,7 @@ export const AssetContextProvider = ({
           label: 'Restore',
           icon: 'update' as const,
           onClick: () => {
-            if (blockIfExploreMode(user, openExploreModeGate, 'explore_mode_restore')) {
+            if (blockIfNoProjectAccess(user, project.createdBy, openExploreModeGate, 'explore_mode_restore')) {
               return;
             }
 
@@ -161,7 +161,7 @@ export const AssetContextProvider = ({
       icon: 'upload' as const,
       showDivider: asset.type === 'stack',
       onClick: () => {
-        if (blockIfExploreMode(user, openExploreModeGate, 'explore_mode_upload_limit')) {
+        if (blockIfNoProjectAccess(user, project.createdBy, openExploreModeGate, 'explore_mode_upload_limit')) {
           return;
         }
 

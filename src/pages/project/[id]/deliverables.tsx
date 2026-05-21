@@ -16,19 +16,21 @@ import { ProjectLayout } from '../../../components/project/Project';
 import { useIsBreakpoint } from '../../../components/tiptap/hooks/use-is-breakpoint';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
-import { isExploreMode } from '../../../utils/exploreMode';
+import { hasProjectAccess } from '../../../utils/exploreMode';
+import { useProjectContext } from '../../../contexts/Project';
 import { Icon } from '../../../components/various/Icon';
 import { useGetProjectIdDeliverables } from '../../../services/hooks';
 
 export default function DeliverablesPage() {
   const { id } = useParams<{ id: string }>();
   const { user } = useSession();
+  const { project } = useProjectContext();
   const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
   const [filters, setFilters] = useState<DeliverablesFiltersType>({});
   const [isColumnsModalVisible, setIsStatusesModalVisible] = useState(false);
   const [isNewDeliverableModalVisible, setIsNewDeliverableModalVisible] = useState(false);
 
-  const exploreMode = isExploreMode(user);
+  const exploreMode = !hasProjectAccess(user, project?.createdBy);
 
   const isMobile = useIsBreakpoint('max', 768);
 

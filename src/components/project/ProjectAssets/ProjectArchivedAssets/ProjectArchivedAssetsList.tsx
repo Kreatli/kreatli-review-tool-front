@@ -6,7 +6,7 @@ import { useProjectContext } from '../../../../contexts/Project';
 import { usePlansModalVisibility } from '../../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../../hooks/useSession';
 import { ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../../../services/types';
-import { blockIfExploreMode } from '../../../../utils/exploreMode';
+import { blockIfNoProjectAccess } from '../../../../utils/exploreMode';
 import { EmptyState } from '../../../various/EmptyState';
 import { Icon } from '../../../various/Icon';
 import { DeleteAssetsModal } from '../ProjectAssetsBulkEdit/DeleteAssetsModal';
@@ -99,7 +99,7 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
             size="sm"
             isDisabled={!hasSelectedAssets}
             onPress={() => {
-              if (blockIfExploreMode(user, (entry) => setIsPlansModalVisible(true, entry), 'explore_mode_restore')) {
+              if (blockIfNoProjectAccess(user, project.createdBy, (entry) => setIsPlansModalVisible(true, entry), 'explore_mode_restore')) {
                 return;
               }
 
