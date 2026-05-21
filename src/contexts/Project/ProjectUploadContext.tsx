@@ -29,7 +29,7 @@ import {
   hasProjectAccess,
   mergeExploreModeAssets,
 } from '../../utils/exploreMode';
-import { getErrorMessage } from '../../utils/getErrorMessage';
+import { getErrorMessage, isLimitError } from '../../utils/getErrorMessage';
 import { getCanAddAssets, getIsValidSize } from '../../utils/limits';
 
 export interface ProjectAssetsFilters {
@@ -69,7 +69,7 @@ interface Props {
 
 export const ProjectUploadContextProvider = ({ children, project, folderId }: React.PropsWithChildren<Props>) => {
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
-  const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
+  const [contactOwnerModalType, setContactOwnerModalType] = React.useState<'storage' | 'limit' | null>(null);
 
   const [stackId, setStackId] = React.useState<string | undefined>(undefined);
   const [stackWithFileId, setStackWithFileId] = React.useState<string | undefined>(undefined);
@@ -132,7 +132,16 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
         trackEvent('upload_file_success');
       })
       .catch((error) => {
-        addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+        if (isLimitError(error)) {
+          if (isProjectOwner) {
+            setIsPlansModalVisible(true, 'upload_limit_error');
+          } else {
+            setContactOwnerModalType('limit');
+          }
+        } else {
+          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+        }
+
         setFileUploadError(id);
         trackEvent('upload_file_failure');
       })
@@ -171,7 +180,11 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       });
 
       if (blockReason) {
-        setIsPlansModalVisible(true, 'explore_mode_upload_limit');
+        if (isProjectOwner) {
+          setIsPlansModalVisible(true, 'explore_mode_upload_limit');
+        } else {
+          setContactOwnerModalType('limit');
+        }
 
         return;
       }
@@ -191,7 +204,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       if (isProjectOwner) {
         setIsUpgradeModalOpen(true);
       } else {
-        setIsContactOwnerModalOpen(true);
+        setContactOwnerModalType('storage');
       }
 
       return;
@@ -303,9 +316,9 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       {children}
       <UpgradeModal type="storage" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
       <ContactOwnerModal
-        type="storage"
-        isOpen={isContactOwnerModalOpen}
-        onClose={() => setIsContactOwnerModalOpen(false)}
+        type={contactOwnerModalType ?? 'storage'}
+        isOpen={contactOwnerModalType !== null}
+        onClose={() => setContactOwnerModalType(null)}
       />
     </ProjectUploadContext.Provider>
   );

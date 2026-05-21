@@ -36,3 +36,19 @@ export const getErrorMessage = (error: unknown) => {
 
   return 'Something went wrong';
 };
+
+/**
+ * Returns true when the API response is a 403 that signals a subscription
+ * limit has been hit (asset count, storage, etc.) rather than a plain
+ * permission-denied error.
+ */
+export const isLimitError = (error: unknown): boolean => {
+  if (!error || typeof error !== 'object') return false;
+
+  const status = 'status' in error ? (error as { status?: unknown }).status : undefined;
+  if (status !== 403) return false;
+
+  const message = getErrorMessage(error).toLowerCase();
+
+  return message.includes('limit reached') || message.includes('limit exceeded');
+};

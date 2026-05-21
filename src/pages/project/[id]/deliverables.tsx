@@ -2,6 +2,7 @@ import { Button, Tab, Tabs } from '@heroui/react';
 import Head from 'next/head';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
+import React from 'react';
 
 import { NewDeliverableModal } from '../../../components/deliverables/Deliverable/NewDeliverableModal';
 import { Deliverables } from '../../../components/deliverables/Deliverables/Deliverables';
@@ -31,6 +32,7 @@ export default function DeliverablesPage() {
   const [isNewDeliverableModalVisible, setIsNewDeliverableModalVisible] = useState(false);
 
   const exploreMode = !hasProjectAccess(user, project?.createdBy);
+  const isProjectOwner = project?.createdBy?.id === user?.id;
 
   const isMobile = useIsBreakpoint('max', 768);
 
@@ -140,26 +142,37 @@ export default function DeliverablesPage() {
           </Tabs>
         </div>
 
-        {/* Frosted-glass upgrade overlay for explore-mode users */}
+        {/* Frosted-glass overlay — upgrade CTA for the owner, contact message for invited users */}
         {exploreMode && (
           <div className="absolute inset-0 flex items-center justify-center backdrop-blur-sm">
             <div className="mx-4 flex max-w-sm flex-col items-center gap-3 rounded-2xl border border-foreground-200 bg-content1/90 p-8 text-center shadow-lg">
               <div className="flex size-12 items-center justify-center rounded-full bg-foreground-100">
                 <Icon icon="slides" size={22} />
               </div>
-              <div>
-                <p className="text-lg font-semibold text-foreground">Available on paid plans</p>
-                <p className="mt-1 text-sm text-foreground-500">
-                  Deliverables is available during your free trial and on all paid plans. Track outputs, set deadlines,
-                  and manage project deliverables.
-                </p>
-              </div>
-              <Button
-                className="bg-foreground text-content1"
-                onClick={() => setIsPlansModalVisible(true, 'explore_mode_deliverables')}
-              >
-                {user?.subscription.hasUsedTrial ? 'Upgrade to a plan' : 'Start free trial'}
-              </Button>
+              {isProjectOwner ? (
+                <>
+                  <div>
+                    <p className="text-lg font-semibold text-foreground">Available on paid plans</p>
+                    <p className="mt-1 text-sm text-foreground-500">
+                      Deliverables is available during your free trial and on all paid plans. Track outputs, set
+                      deadlines, and manage project deliverables.
+                    </p>
+                  </div>
+                  <Button
+                    className="bg-foreground text-content1"
+                    onClick={() => setIsPlansModalVisible(true, 'explore_mode_deliverables')}
+                  >
+                    {user?.subscription.hasUsedTrial ? 'Upgrade to a plan' : 'Start free trial'}
+                  </Button>
+                </>
+              ) : (
+                <div>
+                  <p className="text-lg font-semibold text-foreground">Contact project owner</p>
+                  <p className="mt-1 text-sm text-foreground-500">
+                    This feature requires an active plan. Please contact the project owner to upgrade their plan.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         )}

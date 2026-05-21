@@ -1,6 +1,8 @@
 import { addToast, MenuItemProps } from '@heroui/react';
 import React from 'react';
 
+import { ContactOwnerModal } from '../../components/account/UpgradeModal/ContactOwnerModal';
+
 import { ArchiveAssetModal } from '../../components/asset/AssetModals/ArchiveAssetModal';
 import { DeleteAssetModal } from '../../components/asset/AssetModals/DeleteAssetModal';
 import { ManageVersionsModal } from '../../components/asset/AssetModals/ManageVersionsModal/ManageVersionsModal';
@@ -65,13 +67,20 @@ export const AssetContextProvider = ({
   const [isRestoreModalOpen, setIsRestoreModalOpen] = React.useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = React.useState(false);
   const [isManageVersionsModalOpen, setIsManageVersionsModalOpen] = React.useState(false);
+  const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
 
   const { user } = useSession();
   const setIsPlansModalVisible = usePlansModalVisibility((state) => state.setIsVisible);
   const { isUploadDisabled, openFileDialog, setStackId, setStackWithFileId } = useProjectUploadContext();
 
+  const isProjectOwner = project.createdBy?.id === user?.id;
+
   const openExploreModeGate = (entry: string) => {
-    setIsPlansModalVisible(true, entry);
+    if (isProjectOwner) {
+      setIsPlansModalVisible(true, entry);
+    } else {
+      setIsContactOwnerModalOpen(true);
+    }
   };
 
   const getAssetActions = (asset: ProjectFolderDto | ProjectFileDto | ProjectStackDto) => {
@@ -251,6 +260,11 @@ export const AssetContextProvider = ({
         stack={selectedAsset?.type === 'stack' ? selectedAsset : undefined}
         isOpen={isManageVersionsModalOpen}
         onClose={() => setIsManageVersionsModalOpen(false)}
+      />
+      <ContactOwnerModal
+        type="limit"
+        isOpen={isContactOwnerModalOpen}
+        onClose={() => setIsContactOwnerModalOpen(false)}
       />
     </AssetContext.Provider>
   );

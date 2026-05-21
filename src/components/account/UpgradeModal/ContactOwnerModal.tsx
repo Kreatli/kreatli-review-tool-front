@@ -1,13 +1,14 @@
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
 
 interface ContactOwnerModalProps {
-  type: 'storage';
+  type: 'storage' | 'limit';
   isOpen: boolean;
   onClose: () => void;
 }
 
 const DESCRIPTION = {
   storage: "The project owner doesn't have enough storage space. Please contact them to add more storage.",
+  limit: "This feature requires an active plan. Please contact the project owner to upgrade their plan.",
 };
 
 export const ContactOwnerModal = ({ type, isOpen, onClose }: ContactOwnerModalProps) => {

@@ -34,13 +34,16 @@ export const blockIfExploreMode = (
 };
 
 /**
- * Within a project, an invited user has full access when the project owner has an active plan or trial.
- * Always grants access if the session user themselves has full platform access.
+ * Project feature access is determined solely by the project owner's subscription.
+ * An invited user — even one with their own paid plan — is subject to the owner's limits
+ * while inside that project. If the owner is in explore mode, everyone in the project
+ * is restricted to explore-mode features.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const hasProjectAccess = (
-  user: UserDto | null | undefined,
+  _user: UserDto | null | undefined,
   projectOwner: UserDto | null | undefined,
-): boolean => hasFullPlatformAccess(user) || hasFullPlatformAccess(projectOwner);
+): boolean => hasFullPlatformAccess(projectOwner);
 
 /**
  * Project-aware gate: opens the plans modal and returns true when the action should not proceed,

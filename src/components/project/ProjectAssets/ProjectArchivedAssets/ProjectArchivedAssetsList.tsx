@@ -1,6 +1,7 @@
 import { Button, Checkbox, cn, Spinner } from '@heroui/react';
 import React from 'react';
 
+import { ContactOwnerModal } from '../../../../components/account/UpgradeModal/ContactOwnerModal';
 import { AssetContextProvider } from '../../../../contexts/Asset';
 import { useProjectContext } from '../../../../contexts/Project';
 import { usePlansModalVisibility } from '../../../../hooks/usePlansModalVisibility';
@@ -31,6 +32,9 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
 
   const [isRestoreModalOpen, setIsRestoreModalOpen] = React.useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = React.useState(false);
+  const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
+
+  const isProjectOwner = project?.createdBy?.id === user?.id;
 
   const assets = React.useMemo(() => {
     return [...folders, ...files];
@@ -99,7 +103,20 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
             size="sm"
             isDisabled={!hasSelectedAssets}
             onPress={() => {
-              if (blockIfNoProjectAccess(user, project.createdBy, (entry) => setIsPlansModalVisible(true, entry), 'explore_mode_restore')) {
+              if (
+                blockIfNoProjectAccess(
+                  user,
+                  project.createdBy,
+                  (entry) => {
+                    if (isProjectOwner) {
+                      setIsPlansModalVisible(true, entry);
+                    } else {
+                      setIsContactOwnerModalOpen(true);
+                    }
+                  },
+                  'explore_mode_restore',
+                )
+              ) {
                 return;
               }
 
@@ -176,6 +193,11 @@ export const ProjectArchivedAssetsList = ({ folders, files, isError, isPending }
         assetIds={Array.from(selectedAssetIds)}
         onClose={() => setIsDeleteModalOpen(false)}
         onSuccess={() => setSelectedAssetIds(new Set())}
+      />
+      <ContactOwnerModal
+        type="limit"
+        isOpen={isContactOwnerModalOpen}
+        onClose={() => setIsContactOwnerModalOpen(false)}
       />
     </div>
   );
