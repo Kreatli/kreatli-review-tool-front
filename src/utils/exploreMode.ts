@@ -128,7 +128,10 @@ export const getExploreModeUploadBlockReason = ({
     return 'new_version';
   }
 
-  if (existing.video + incoming.video > 1 || existing.image + incoming.image > 1) {
+  const existingTotal = existing.video + existing.image;
+  const incomingTotal = incoming.video + incoming.image;
+
+  if (existingTotal + incomingTotal > 2) {
     return 'asset_limit';
   }
 
