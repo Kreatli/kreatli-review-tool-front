@@ -17,6 +17,27 @@ const DESCRIPTION = {
 export const UpgradeModal = ({ type, isOpen, onClose }: UpgradeModalProps) => {
   const { user } = useSession();
 
+  if (user?.subscription.plan === 'enterprise') {
+    return (
+      <Modal isOpen={isOpen} onOpenChange={onClose}>
+        <ModalContent>
+          <ModalHeader className="pb-0">You've reached the limits of your current plan</ModalHeader>
+          <ModalBody>
+            <div className="text-sm text-foreground-500">Contact out support team to adjust your plan.</div>
+          </ModalBody>
+          <ModalFooter>
+            <Button variant="light" onClick={onClose}>
+              Cancel
+            </Button>
+            <Button className="bg-foreground text-content1" as="a" href="mailto:support@kreatli.com">
+              Contact support
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    );
+  }
+
   if (user?.subscription.plan === 'team' && type === 'storage') {
     return (
       <Modal isOpen={isOpen} onOpenChange={onClose}>

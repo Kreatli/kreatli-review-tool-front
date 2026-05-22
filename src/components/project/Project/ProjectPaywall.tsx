@@ -26,7 +26,12 @@ export const ProjectPaywall = ({ user, project }: Props) => {
         <Skeleton className="h-full w-full flex-1" />
       </div>
       {isUserOwner ? (
-        <Modal isOpen size="5xl" scrollBehavior="inside" hideCloseButton>
+        <Modal
+          isOpen
+          size={user.subscription.plan === 'enterprise' ? 'lg' : '5xl'}
+          scrollBehavior="inside"
+          hideCloseButton
+        >
           <ModalContent>
             <ModalBody className="gap-3 py-4 md:gap-4 md:py-6">
               <h2 className="font-sans text-xl font-bold leading-tight md:text-2xl">
@@ -34,14 +39,30 @@ export const ProjectPaywall = ({ user, project }: Props) => {
                   ? 'Start your free trial to get started.'
                   : 'Your access to this project is currently paused.'}
               </h2>
-              {!isSafeZoneCheckerProject && (
+              {!isSafeZoneCheckerProject && user.subscription.plan !== 'enterprise' && (
                 <p className="mb-3 text-foreground-500">
                   Your access to this project is currently paused. Upgrade your plan to restore access and keep
                   collaborating.
                 </p>
               )}
-              <TrialReassuranceAlert hasUsedTrial={user.subscription.hasUsedTrial} />
-              <PlansForm user={user} />
+              {user.subscription.plan === 'enterprise' ? (
+                <>
+                  <p>Your access to this project is currently paused. Contact support team to restore the access.</p>
+                  <div className="mt-3 flex items-center justify-end gap-2">
+                    <Button variant="light" onClick={() => router.back()}>
+                      Go back
+                    </Button>
+                    <Button as="a" href="mailto:support@kreatli.com" className="bg-foreground text-content1">
+                      Contact support
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <TrialReassuranceAlert hasUsedTrial={user.subscription.hasUsedTrial} />
+                  <PlansForm user={user} />
+                </>
+              )}
             </ModalBody>
           </ModalContent>
         </Modal>

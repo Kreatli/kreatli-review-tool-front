@@ -68,9 +68,14 @@ export const Header = () => {
     setBannerClosedAt(new Date());
   };
 
+  const freeTrialPeriod = user?.subscription.plan === 'enterprise' ? 30 : 7;
+
   const freeTrialEndsIn = user?.subscription.startTrialDate
-    ? // eslint-disable-next-line react-hooks/purity
-      Math.max(0, new Date(user.subscription.startTrialDate).getTime() + DAY_IN_MILLISECONDS * 7 - Date.now())
+    ? Math.max(
+        0,
+        // eslint-disable-next-line react-hooks/purity
+        new Date(user.subscription.startTrialDate).getTime() + DAY_IN_MILLISECONDS * freeTrialPeriod - Date.now(),
+      )
     : null;
 
   const freeTrialEndsInDays = freeTrialEndsIn ? Math.ceil(freeTrialEndsIn / DAY_IN_MILLISECONDS) : null;
@@ -108,15 +113,26 @@ export const Header = () => {
                 ) : (
                   <>
                     Your trial has ended.{' '}
-                    <span className="hidden sm:inline">Select a plan to continue using Kreatli.</span>
+                    <span className="hidden sm:inline">
+                      {user.subscription.plan === 'enterprise'
+                        ? 'Contact support team to continue using Kreatli.'
+                        : 'Select a plan to continue using Kreatli.'}
+                    </span>
                   </>
                 )}
               </div>
-              <Button size="sm" variant="flat" color="primary" onClick={() => setIsPlansModalVisible(true, 'header_cta')}>
-                <span>
-                  Upgrade <span className="hidden xs:inline">now</span>
-                </span>
-              </Button>
+              {user.subscription.plan !== 'enterprise' && (
+                <Button
+                  size="sm"
+                  variant="flat"
+                  color="primary"
+                  onClick={() => setIsPlansModalVisible(true, 'header_cta')}
+                >
+                  <span>
+                    Upgrade <span className="hidden xs:inline">now</span>
+                  </span>
+                </Button>
+              )}
             </div>
             <div>
               <Button size="sm" variant="light" color="primary" isIconOnly radius="full" onClick={handleBannerClose}>

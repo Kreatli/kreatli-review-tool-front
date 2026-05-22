@@ -52,24 +52,33 @@ export const Subscription = ({ user }: Props) => {
               )}
             </div>
             <div className="flex items-center gap-2">
-              {user.subscription.isActive && !user.subscription.isAppSumo && (
-                <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionFeedbackModalOpen(true)}>
-                  Cancel subscription
-                </Button>
-              )}
-              {user.subscription.isAppSumo ? (
-                <Button
-                  as="a"
-                  href="https://appsumo.com/account/products/"
-                  target="_blank"
-                  className="bg-foreground text-content1"
-                >
-                  Manage in AppSumo
-                </Button>
-              ) : (
-                <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true, 'subscription_page')}>
-                  Upgrade
-                </Button>
+              {user.subscription.isActive &&
+                !user.subscription.isAppSumo &&
+                user.subscription.plan !== 'enterprise' && (
+                  <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionFeedbackModalOpen(true)}>
+                    Cancel subscription
+                  </Button>
+                )}
+              {user.subscription.plan !== 'enterprise' && (
+                <>
+                  {user.subscription.isAppSumo ? (
+                    <Button
+                      as="a"
+                      href="https://appsumo.com/account/products/"
+                      target="_blank"
+                      className="bg-foreground text-content1"
+                    >
+                      Manage in AppSumo
+                    </Button>
+                  ) : (
+                    <Button
+                      className="bg-foreground text-content1"
+                      onClick={() => setIsPlansModalVisible(true, 'subscription_page')}
+                    >
+                      Upgrade
+                    </Button>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -94,7 +103,10 @@ export const Subscription = ({ user }: Props) => {
         </div>
       ) : (
         <div className="mb-4">
-          <Button className="bg-foreground text-content1" onClick={() => setIsPlansModalVisible(true, 'subscription_page')}>
+          <Button
+            className="bg-foreground text-content1"
+            onClick={() => setIsPlansModalVisible(true, 'subscription_page')}
+          >
             {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start a free trial'}
           </Button>
         </div>
