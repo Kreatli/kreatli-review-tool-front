@@ -1,5 +1,4 @@
-import { addToast } from '@heroui/react';
-import { createContext, ReactNode, useCallback, useContext, useMemo, useRef } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useMemo } from 'react';
 
 import { FreeToolSurface } from '../data/free-tool-surface';
 import { usePlansModalVisibility } from '../hooks/usePlansModalVisibility';
@@ -18,7 +17,7 @@ const FreeToolsInactiveGateContext = createContext<FreeToolsInactiveGateContextV
 
 export function FreeToolsInactiveGateProvider({
   isInactiveLocked,
-  surface,
+  surface: _surface,
   children,
 }: {
   isInactiveLocked: boolean;
@@ -27,46 +26,18 @@ export function FreeToolsInactiveGateProvider({
 }) {
   const setPlansModalVisible = usePlansModalVisibility((s) => s.setIsVisible);
   const isModalVisible = usePlansModalVisibility((s) => s.isVisible);
-  const hasAutoShownModalRef = useRef(false);
 
   const showModal = useCallback(() => {
     setPlansModalVisible(true, 'free_tool_gate');
   }, [setPlansModalVisible]);
 
   const openInactivePlanModal = useCallback(
-    (options?: { force?: boolean }) => {
-      // Explicit intent (banner or toast CTA) — always open.
-      if (options?.force) {
-        showModal();
-        return;
-      }
-
-      // Platform previews: keep original behaviour — open modal on every blocked action.
-      if (surface !== 'browser_marketing') {
-        showModal();
-        return;
-      }
-
-      // Modal is already visible — nothing to do.
+    (_options?: { force?: boolean }) => {
+      // Always open the plans modal on every blocked action — no toast fallback.
       if (isModalVisible) return;
-
-      // First blocked action this page load — open modal.
-      if (!hasAutoShownModalRef.current) {
-        hasAutoShownModalRef.current = true;
-        showModal();
-        return;
-      }
-
-      // Repeat blocked action after dismiss — show a toast nudge.
-      // The locked banner on the page carries the explicit "Start trial" CTA.
-      addToast({
-        title: 'A trial or plan is needed to use this tool',
-        description: 'Click "Start trial / choose plan" above to continue.',
-        color: 'warning',
-        variant: 'flat',
-      });
+      showModal();
     },
-    [surface, isModalVisible, showModal],
+    [isModalVisible, showModal],
   );
 
   const value = useMemo(
