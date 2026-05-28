@@ -45,10 +45,7 @@ export function FAQStructuredData({ faqs }: FAQStructuredDataProps) {
 
   return (
     <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
     </Head>
   );
 }

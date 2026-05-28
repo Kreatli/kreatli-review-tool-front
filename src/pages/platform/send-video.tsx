@@ -132,7 +132,6 @@ export default function SendVideoPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/send-video" />
       {/* How to Send Your Video in Kreatli (step-by-step) */}
       <PlatformStepGuide

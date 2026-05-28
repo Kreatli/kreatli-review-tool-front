@@ -31,7 +31,7 @@ export default function DocumentAnnotatorPage() {
           name="description"
           content="Add pinned comments, highlights, drawings, and markup to documents. Share with clients for review. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Annotate Documents Online – Free Document Annotator | Kreatli" />
+        <meta property="og:title" content="Annotate Documents Online – Free Document Annotator | Kreatli" />
         <meta
           property="og:description"
           content="Add pinned comments, highlights, drawings, and markup to documents. Share with clients for review. Try free with a 7-day trial."
@@ -91,7 +91,10 @@ export default function DocumentAnnotatorPage() {
         </section>
 
         <DefinitionBlock term="Document Annotator">
-          A document annotator is an online tool for adding pinned comments, highlights, drawings, and markup to documents such as PDFs. Feedback stays attached to specific locations in the document so reviewers can communicate exact changes. Document annotators replace scattered email feedback with a single, organized review workspace.
+          A document annotator is an online tool for adding pinned comments, highlights, drawings, and markup to
+          documents such as PDFs. Feedback stays attached to specific locations in the document so reviewers can
+          communicate exact changes. Document annotators replace scattered email feedback with a single, organized
+          review workspace.
         </DefinitionBlock>
 
         <PdfAnnotatorGuide />

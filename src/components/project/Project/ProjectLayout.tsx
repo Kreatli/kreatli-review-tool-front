@@ -7,7 +7,6 @@ import { ProjectContextProvider } from '../../../contexts/Project';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
 import { useProtectedPage } from '../../../hooks/useProtectedPage';
-import { useSession } from '../../../hooks/useSession';
 import { useGetProjectId } from '../../../services/hooks';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { Header } from '../../layout/Header';
@@ -15,12 +14,10 @@ import { EmptyState } from '../../various/EmptyState';
 import { EditProjectStatusesModal } from '../ProjectModals/EditProjectStatusesModal';
 import { NotActiveProjectAlert } from './NotActiveProjectAlert';
 import { ProjectLoader } from './ProjectLoader';
-import { ProjectPaywall } from './ProjectPaywall';
 import { ProjectSidebar } from './ProjectSidebar';
 
 export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
   const { isSignedIn } = useProtectedPage();
-  const { user } = useSession();
   const router = useRouter();
   const {
     data: project,
@@ -56,10 +53,6 @@ export const ProjectLayout = ({ children }: React.PropsWithChildren) => {
         </EmptyState>
       </>
     );
-  }
-
-  if (!isPending && !isError && user && !project.createdBy?.subscription.isActive) {
-    return <ProjectPaywall project={project} user={user} />;
   }
 
   return (

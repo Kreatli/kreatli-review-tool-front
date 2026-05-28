@@ -1,9 +1,8 @@
 import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
-import { Icon, IconType } from '../various/Icon';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
-
+import { Icon, IconType } from '../various/Icon';
 
 const IMG = '/video-annotation-guide/step';
 
@@ -101,7 +100,14 @@ export const ImageAnnotatorGuide = () => {
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                            <Button
+                              as={NextLink}
+                              href={KREATLI_PLATFORM_ENTRY_HREF}
+                              size="lg"
+                              className="bg-foreground text-content1"
+                            >
+                              {OPEN_IN_KREATLI_LABEL}
+                            </Button>
                             <Button
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
@@ -143,8 +149,8 @@ export const ImageAnnotatorGuide = () => {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Image Annotator Features</h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Location-pinned comments, highlights, shapes, and drawings—everything you need to give precise feedback
-              on images.
+              Location-pinned comments, highlights, shapes, and drawings—everything you need to give precise feedback on
+              images.
             </p>
           </div>
 
@@ -158,8 +164,8 @@ export const ImageAnnotatorGuide = () => {
                   <h3 className="font-sans text-xl font-bold">Comments & Markup</h3>
                 </div>
                 <p className="text-foreground-500">
-                  Pin comments to exact spots on the image. Use highlights, shapes, arrows, and freehand drawing to
-                  mark regions and point to elements so designers and stakeholders know precisely what to change.
+                  Pin comments to exact spots on the image. Use highlights, shapes, arrows, and freehand drawing to mark
+                  regions and point to elements so designers and stakeholders know precisely what to change.
                 </p>
               </CardBody>
             </Card>
@@ -173,8 +179,8 @@ export const ImageAnnotatorGuide = () => {
                   <h3 className="font-sans text-xl font-bold">Guest Annotator Links</h3>
                 </div>
                 <p className="text-foreground-500">
-                  Share secure links so clients and stakeholders can open the image, add comments and markup, and
-                  submit feedback without creating an account.
+                  Share secure links so clients and stakeholders can open the image, add comments and markup, and submit
+                  feedback without creating an account.
                 </p>
               </CardBody>
             </Card>

@@ -12,6 +12,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -19,7 +20,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -126,7 +126,6 @@ export default function VideoCloudStoragePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/video-cloud-storage" />
       {/* Secure Cloud Storage Preview Section */}
       <section className="relative overflow-hidden px-6 py-16">
@@ -134,8 +133,8 @@ export default function VideoCloudStoragePage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Secure Video Cloud Storage</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Upload large video files to encrypted cloud storage designed for production work. Keep masters, work-in-progress
-              cuts, and archives safe—but always accessible to the right people.
+              Upload large video files to encrypted cloud storage designed for production work. Keep masters,
+              work-in-progress cuts, and archives safe—but always accessible to the right people.
             </p>
           </div>
           <StorageFeaturePreview />
@@ -146,12 +145,10 @@ export default function VideoCloudStoragePage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Cloud Storage That Knows Your Projects
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Cloud Storage That Knows Your Projects</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Instead of generic folders, Kreatli organizes video cloud storage around projects, status, and deliverables—so
-              files, feedback, and approvals always stay in sync.
+              Instead of generic folders, Kreatli organizes video cloud storage around projects, status, and
+              deliverables—so files, feedback, and approvals always stay in sync.
             </p>
           </div>
           <ProjectFeaturePreview />
@@ -178,8 +175,8 @@ export default function VideoCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Encrypted Cloud Storage</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Store video in encrypted cloud storage with enterprise-grade security. Files are protected at rest and in
-                  transit so you can safely host client work and internal projects.
+                  Store video in encrypted cloud storage with enterprise-grade security. Files are protected at rest and
+                  in transit so you can safely host client work and internal projects.
                 </p>
               </CardBody>
             </Card>
@@ -193,8 +190,8 @@ export default function VideoCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Large File Support</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Upload and store full-quality 4K/8K exports and heavy project files without worrying about email limits or
-                  expiring transfer links. Your cloud storage is built for real production sizes.
+                  Upload and store full-quality 4K/8K exports and heavy project files without worrying about email
+                  limits or expiring transfer links. Your cloud storage is built for real production sizes.
                 </p>
               </CardBody>
             </Card>
@@ -238,8 +235,8 @@ export default function VideoCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Built-In Review on Stored Video</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Every file you store opens in a frame-accurate review player. Collect comments, drawings, and approvals on
-                  top of your cloud storage without exporting to other tools.
+                  Every file you store opens in a frame-accurate review player. Collect comments, drawings, and
+                  approvals on top of your cloud storage without exporting to other tools.
                 </p>
               </CardBody>
             </Card>
@@ -282,8 +279,8 @@ export default function VideoCloudStoragePage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Learn how Kreatli handles video cloud storage, large files, and collaboration for production and post-production
-              teams.
+              Learn how Kreatli handles video cloud storage, large files, and collaboration for production and
+              post-production teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -312,7 +309,12 @@ export default function VideoCloudStoragePage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'reviewApproval', 'videoAnnotation'])}
+        resources={getRelatedResources([
+          'secureAssetStorage',
+          'creativeWorkspace',
+          'reviewApproval',
+          'videoAnnotation',
+        ])}
         title="More Resources"
         description="Explore other Kreatli platform features that complement video cloud storage—secure asset storage, production management, and frame-accurate review."
       />
@@ -327,4 +329,3 @@ export default function VideoCloudStoragePage() {
     </>
   );
 }
-

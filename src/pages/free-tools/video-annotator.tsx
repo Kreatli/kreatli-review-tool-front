@@ -33,7 +33,7 @@ export default function VideoAnnotatorPage() {
           name="description"
           content="Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Annotate Videos Online – Free Video Annotator | Kreatli" />
+        <meta property="og:title" content="Annotate Videos Online – Free Video Annotator | Kreatli" />
         <meta
           property="og:description"
           content="Add frame-accurate comments, drawings, and markup to video. Pin feedback to exact timestamps. Try free with a 7-day trial."
@@ -76,8 +76,7 @@ export default function VideoAnnotatorPage() {
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Annotator</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Add frame-accurate comments, drawings, and markup directly to video frames. Pin feedback to exact
-              timestamps and collaborate with precise visual annotation—no software installation required for
-              reviewers.
+              timestamps and collaborate with precise visual annotation—no software installation required for reviewers.
             </p>
             <HeroCtaButtons />
           </div>
@@ -93,13 +92,19 @@ export default function VideoAnnotatorPage() {
         </section>
 
         <DefinitionBlock term="Video Annotator">
-          A video annotator is a tool for adding comments, drawings, and markup to specific frames in a video. Annotations are pinned to exact timestamps, letting editors and reviewers communicate visually rather than describing changes in text. Video annotators are essential for production teams that need frame-accurate feedback.
+          A video annotator is a tool for adding comments, drawings, and markup to specific frames in a video.
+          Annotations are pinned to exact timestamps, letting editors and reviewers communicate visually rather than
+          describing changes in text. Video annotators are essential for production teams that need frame-accurate
+          feedback.
         </DefinitionBlock>
 
         <VideoAnnotatorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-annotator')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-annotator')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoAnnotatorFAQ />
 

@@ -27,7 +27,7 @@ export function calculateTransferTime(
   fileSizeUnit: 'MB' | 'GB' | 'TB',
   speed: number,
   speedUnit: 'Mbps' | 'Gbps',
-  fileCount: number = 1
+  fileCount: number = 1,
 ): number {
   // Validate inputs: check for NaN, Infinity, negative values, and extremely large values
   if (

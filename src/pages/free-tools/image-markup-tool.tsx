@@ -1,4 +1,3 @@
- 
 import Head from 'next/head';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';

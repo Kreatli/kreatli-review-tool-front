@@ -141,7 +141,6 @@ export default function ShareMp4Page() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/share-mp4" />
       {/* How to Share MP4 Files in Kreatli (step-by-step) */}
       <PlatformStepGuide

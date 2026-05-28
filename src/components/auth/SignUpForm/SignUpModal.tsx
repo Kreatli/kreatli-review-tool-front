@@ -22,11 +22,7 @@ export const SignUpModal = ({ sourceType }: Props) => {
   }, [isSignedIn, setIsSignUpModalOpen]);
 
   return (
-    <Modal
-      isOpen={isSignUpModalOpen && !isSignedIn}
-      onOpenChange={setIsSignUpModalOpen}
-      aria-label="Create an account"
-    >
+    <Modal isOpen={isSignUpModalOpen && !isSignedIn} onOpenChange={setIsSignUpModalOpen} aria-label="Create an account">
       <ModalContent>
         <ModalHeader className="text-xl">Create an account to get started!</ModalHeader>
         <ModalBody>

@@ -203,8 +203,9 @@ export const VideoFeedbackToolFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Yes — teams use a <strong>video feedback tool</strong> as their <strong>online video review and approval</strong>{' '}
-            hub: frame-accurate comments, threaded discussion, optional markup, and sign-off on the right version.
+            Yes — teams use a <strong>video feedback tool</strong> as their{' '}
+            <strong>online video review and approval</strong> hub: frame-accurate comments, threaded discussion,
+            optional markup, and sign-off on the right version.
           </p>
           <p>
             This page focuses on the feedback surface; for full project workflows explore{' '}

@@ -1,4 +1,3 @@
- 
 import Head from 'next/head';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
@@ -12,7 +11,7 @@ import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { FreeToolsEntitlementSection } from '../../components/shared/FreeToolsEntitlementSection';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
-import { VIDEO_COMPRESSOR_FAQS,VideoCompressorFAQ } from '../../components/video-compressor/VideoCompressorFAQ';
+import { VIDEO_COMPRESSOR_FAQS, VideoCompressorFAQ } from '../../components/video-compressor/VideoCompressorFAQ';
 import { VideoCompressorGuide } from '../../components/video-compressor/VideoCompressorGuide';
 import { VideoCompressorTool } from '../../components/video-compressor/VideoCompressorTool';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';

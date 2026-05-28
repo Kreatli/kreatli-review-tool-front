@@ -138,16 +138,14 @@ const YOUTUBE_SHORTS_SUPPLEMENTARY_FAQS: StoryblokGuideSupplementaryFaq[] = [
 
 export const STORYBLOK_GUIDE_SEO_OVERRIDES: Record<string, StoryblokGuideSeoOverride> = {
   '/guides/youtube-banner-resizer': {
-    seoArticleTitle:
-      'YouTube Channel Banner Size 2026 — Dimensions, Safe Area, Requirements & Best Practices',
+    seoArticleTitle: 'YouTube Channel Banner Size 2026 — Dimensions, Safe Area, Requirements & Best Practices',
     metaDescription:
       'YouTube channel banner size dimensions 2026: recommended 2560×1440px, safe area 1546×423px, minimum 2048×1152px, 6MB max, JPG/PNG/GIF/BMP. Requirements, best practices, and a free banner resizer with device preview.',
     aboveFoldVariant: 'youtubeBanner',
     supplementaryFaqs: YOUTUBE_BANNER_SUPPLEMENTARY_FAQS,
   },
   '/guides/safe-zone-guide': {
-    seoArticleTitle:
-      'Safe Zone Hub 2026 — Instagram Reels, TikTok, YouTube Shorts Dimensions, Overlays & Checkers',
+    seoArticleTitle: 'Safe Zone Hub 2026 — Instagram Reels, TikTok, YouTube Shorts Dimensions, Overlays & Checkers',
     metaDescription:
       'Definitive hub for Instagram Reels, TikTok, and YouTube Shorts safe zones: pixels, transparent overlay marking, templates, checker links, plus channel banner 2560×1440px / 1546×423px and internal links to each platform guide.',
     aboveFoldVariant: 'safeZoneHub',

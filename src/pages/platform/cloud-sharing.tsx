@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
-import { PlatformStepGuide, SHARE_VIDEO_STEPS } from '../../components/shared/PlatformStepGuide';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -13,6 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PlatformStepGuide, SHARE_VIDEO_STEPS } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -20,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -107,8 +107,8 @@ export default function CloudSharingPage() {
               Cloud Sharing for Creative Work in Seconds
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Use cloud sharing links instead of attachments or unmanaged folders. Let clients and teammates review work in
-              the browser while you keep control over files, feedback, and approvals.
+              Use cloud sharing links instead of attachments or unmanaged folders. Let clients and teammates review work
+              in the browser while you keep control over files, feedback, and approvals.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -130,7 +130,6 @@ export default function CloudSharingPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/cloud-sharing" />
       {/* How Cloud Sharing Works in Kreatli (step-by-step) */}
       <PlatformStepGuide
@@ -148,10 +147,12 @@ export default function CloudSharingPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Use Cloud Sharing Instead of Attachments</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+              Why Use Cloud Sharing Instead of Attachments
+            </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Cloud sharing links keep your work easier to access, faster to review, and safer to manage than sending files
-              around by email or ad-hoc drives.
+              Cloud sharing links keep your work easier to access, faster to review, and safer to manage than sending
+              files around by email or ad-hoc drives.
             </p>
           </div>
 
@@ -165,8 +166,8 @@ export default function CloudSharingPage() {
                   <h3 className="font-sans text-lg font-semibold">No Heavy Attachments</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Upload files once and send lightweight cloud sharing links instead of 10GB attachments. Reviewers open work
-                  instantly without downloading full exports.
+                  Upload files once and send lightweight cloud sharing links instead of 10GB attachments. Reviewers open
+                  work instantly without downloading full exports.
                 </p>
               </CardBody>
             </Card>
@@ -180,8 +181,8 @@ export default function CloudSharingPage() {
                   <h3 className="font-sans text-lg font-semibold">Feedback Tied to Files</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Every cloud sharing link opens a review view where comments, drawings, and approvals stay attached to the
-                  exact version of the file—no more lost threads.
+                  Every cloud sharing link opens a review view where comments, drawings, and approvals stay attached to
+                  the exact version of the file—no more lost threads.
                 </p>
               </CardBody>
             </Card>
@@ -195,8 +196,8 @@ export default function CloudSharingPage() {
                   <h3 className="font-sans text-lg font-semibold">Safer Than Ad-Hoc Links</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Manage access and revoke or update links from one place. Cloud sharing in Kreatli lets you control who can
-                  view or comment without exposing entire folders.
+                  Manage access and revoke or update links from one place. Cloud sharing in Kreatli lets you control who
+                  can view or comment without exposing entire folders.
                 </p>
               </CardBody>
             </Card>
@@ -226,7 +227,8 @@ export default function CloudSharingPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about cloud sharing in Kreatli and how it fits into your review and approval workflows.
+              Get detailed answers about cloud sharing in Kreatli and how it fits into your review and approval
+              workflows.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -270,4 +272,3 @@ export default function CloudSharingPage() {
     </>
   );
 }
-

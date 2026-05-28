@@ -26,7 +26,10 @@ export const MiniFileStorage = () => {
         </div>
         <div className="flex min-h-0 flex-1 flex-col gap-2">
           {files.map((f) => (
-            <div key={f.name} className="flex items-center gap-2 rounded border border-foreground-200 bg-content1 p-1.5">
+            <div
+              key={f.name}
+              className="flex items-center gap-2 rounded border border-foreground-200 bg-content1 p-1.5"
+            >
               <Icon
                 icon={f.done ? 'check' : 'file'}
                 size={12}

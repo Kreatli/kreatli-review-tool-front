@@ -425,7 +425,11 @@ export default function ClientApprovalsPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['creativeProductionManagement', 'creativeProofing', 'advertisingMarketingAgencies'])}
+        resources={getRelatedResources([
+          'creativeProductionManagement',
+          'creativeProofing',
+          'advertisingMarketingAgencies',
+        ])}
         title="More Resources"
         description="Explore other Kreatli solutions to streamline your video collaboration workflow."
       />

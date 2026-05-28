@@ -8,8 +8,8 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -134,13 +134,14 @@ export default function HowToCompressAVideoGuidePage() {
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
-            “Compressing” typically means reducing the amount of data used to represent your video. Common levers include:
+            “Compressing” typically means reducing the amount of data used to represent your video. Common levers
+            include:
           </p>
           <ul>
             <li>
               <p>
-                <strong>Bitrate:</strong> fewer bits per second usually means a smaller file and more visible compression
-                in some scenes.
+                <strong>Bitrate:</strong> fewer bits per second usually means a smaller file and more visible
+                compression in some scenes.
               </p>
             </li>
             <li>
@@ -174,22 +175,21 @@ export default function HowToCompressAVideoGuidePage() {
           <p>
             Kreatli offers a free <NextLink href="/free-tools/video-compressor">Video Compressor</NextLink> that runs in
             your browser: set a target output size, choose MP4 or MOV, and download the result. You can also explore the
-            same workflow on the{' '}
-            <NextLink href="/platform/compress-video-online">Compress Video Online</NextLink> platform page.
+            same workflow on the <NextLink href="/platform/compress-video-online">Compress Video Online</NextLink>{' '}
+            platform page.
           </p>
 
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[3])}>{TOC_SECTIONS[3]}</h2>
           <p>
             After you compress a file, upload it to Kreatli to keep <strong>versions</strong>,{' '}
-            <strong>frame-accurate feedback</strong>, and <strong>approvals</strong> in one place. That reduces confusion
-            about which file was approved for which channel—especially when you ship multiple sizes (16:9, 9:16, square
-            cuts).
+            <strong>frame-accurate feedback</strong>, and <strong>approvals</strong> in one place. That reduces
+            confusion about which file was approved for which channel—especially when you ship multiple sizes (16:9,
+            9:16, square cuts).
           </p>
           <p>
-            Learn more about platform capabilities on{' '}
-            <NextLink href="/platform/review-video">Review Video</NextLink> and{' '}
-            <NextLink href="/platform/creative-workspace">Creative Workspace</NextLink>.
+            Learn more about platform capabilities on <NextLink href="/platform/review-video">Review Video</NextLink>{' '}
+            and <NextLink href="/platform/creative-workspace">Creative Workspace</NextLink>.
           </p>
         </div>
 

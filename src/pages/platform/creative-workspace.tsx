@@ -146,7 +146,6 @@ export default function CreativeWorkspacePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/creative-workspace" />
       {/* Centralized Dashboard Section */}
       <section className="relative overflow-hidden px-6 py-16">

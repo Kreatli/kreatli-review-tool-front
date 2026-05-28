@@ -9,11 +9,7 @@ interface BannerControlsProps {
   onResetViewport?: () => void;
 }
 
-export const BannerControls = ({
-  hasImage,
-  onReupload,
-  onResetViewport,
-}: BannerControlsProps) => {
+export const BannerControls = ({ hasImage, onReupload, onResetViewport }: BannerControlsProps) => {
   return (
     <div className="rounded-lg border border-foreground-200 bg-content1 p-5 shadow-sm">
       <div className="mb-4 flex items-start justify-between gap-3">
@@ -25,12 +21,7 @@ export const BannerControls = ({
           </p>
         </div>
         {hasImage && onReupload && (
-          <Button
-            variant="light"
-            size="sm"
-            onPress={onReupload}
-            startContent={<Icon icon="upload" size={16} />}
-          >
+          <Button variant="light" size="sm" onPress={onReupload} startContent={<Icon icon="upload" size={16} />}>
             Replace
           </Button>
         )}

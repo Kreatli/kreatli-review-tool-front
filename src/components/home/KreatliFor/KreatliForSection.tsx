@@ -26,7 +26,7 @@ const industryCards = [
 
 export const KreatliForSection = () => {
   return (
-    <section id="for-whom" className="px-6 py-16 backdrop-blur-lg lg:py-24 lg:mt-8">
+    <section id="for-whom" className="px-6 py-16 backdrop-blur-lg lg:mt-8 lg:py-24">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 sm:gap-12">
         <div className="flex w-full flex-col gap-4">
           <h2 className="text-center font-sans text-3xl font-bold sm:text-4xl">Who is Kreatli for?</h2>

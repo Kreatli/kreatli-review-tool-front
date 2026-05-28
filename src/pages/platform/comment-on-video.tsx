@@ -10,9 +10,10 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { COMMENT_ON_VIDEO_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
-import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -20,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -139,7 +139,6 @@ export default function CommentOnVideoPage() {
           <PlatformInteractiveReviewPreview />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/comment-on-video" />
       {/* How to Comment on Video in Kreatli (step-by-step) */}
@@ -261,9 +260,7 @@ export default function CommentOnVideoPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mx-auto w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
-            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
-              Related video features
-            </h2>
+            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">Related video features</h2>
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
               Give video feedback, annotate with drawings, or share for review. Explore these options:
             </p>

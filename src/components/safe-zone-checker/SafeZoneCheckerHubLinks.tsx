@@ -1,6 +1,5 @@
-import NextLink from 'next/link';
-
 import { Card, CardBody } from '@heroui/react';
+import NextLink from 'next/link';
 
 import { Icon, IconType } from '../various/Icon';
 
@@ -48,17 +47,17 @@ export function SafeZoneCheckerHubLinks() {
       </p>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {links.map((item) => (
-          <Card key={item.href} className="border border-foreground-200/80 shadow-sm transition-colors hover:border-primary/30">
+          <Card
+            key={item.href}
+            className="border border-foreground-200/80 shadow-sm transition-colors hover:border-primary/30"
+          >
             <CardBody className="flex flex-col gap-3 p-5">
               <div className="flex items-center gap-2">
                 <Icon icon={item.icon} size={22} className="text-primary" />
                 <h3 className="font-sans text-base font-semibold">{item.title}</h3>
               </div>
               <p className="flex-1 text-sm text-foreground-500">{item.description}</p>
-              <NextLink
-                href={item.href}
-                className="text-sm font-medium text-primary underline underline-offset-2"
-              >
+              <NextLink href={item.href} className="text-sm font-medium text-primary underline underline-offset-2">
                 Open tool
               </NextLink>
             </CardBody>

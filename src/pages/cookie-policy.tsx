@@ -255,7 +255,9 @@ export default function Cookies() {
             impair their functioning.
           </div>
           <div>
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Do you use Flash cookies or Local Shared Objects?</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+              Do you use Flash cookies or Local Shared Objects?
+            </h2>
           </div>
           <div>
             Websites may also use so-called "Flash Cookies" (also known as Local Shared Objects or "LSOs") to, among
@@ -306,7 +308,9 @@ export default function Cookies() {
             that directly identify you unless you choose to provide these.
           </div>
           <div>
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How often will you update this Cookie Policy?</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+              How often will you update this Cookie Policy?
+            </h2>
           </div>
           <div>
             We may update&nbsp;this Cookie Policy from time to time in order to reflect, for example, changes to the

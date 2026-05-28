@@ -236,8 +236,8 @@ export const VideoReviewerFAQ = () => {
         <div className="space-y-3 text-base text-foreground-500">
           <p>
             A <strong>video feedback tool</strong> is where reviewers leave timestamped, frame-accurate notes and markup
-            on a cut. Kreatli pins each comment to an exact moment so editors know what to change—no vague “around
-            0:30” email chains.
+            on a cut. Kreatli pins each comment to an exact moment so editors know what to change—no vague “around 0:30”
+            email chains.
           </p>
         </div>
       ),

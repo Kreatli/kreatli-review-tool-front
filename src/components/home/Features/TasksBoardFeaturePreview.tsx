@@ -1,5 +1,4 @@
 import { Avatar, Card, CardBody, Chip } from '@heroui/react';
-
 import { useRef, useState } from 'react';
 
 import { useSession } from '../../../hooks/useSession';
@@ -155,9 +154,7 @@ export const TasksBoardFeaturePreview = () => {
               }}
             >
               <div className="flex items-center justify-between rounded-lg bg-foreground-50 px-3 py-2 dark:bg-foreground-100/30">
-                <span className="text-xs font-semibold uppercase tracking-wider text-foreground-500">
-                  {col.label}
-                </span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-foreground-500">{col.label}</span>
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-foreground-200/60 text-[10px] font-bold text-foreground-600">
                   {col.tasks.length}
                 </span>

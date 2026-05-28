@@ -17,11 +17,7 @@ export const MiniVersioning = () => {
               alt="Version 1 preview"
               className="aspect-video w-full object-cover opacity-80"
             />
-            <Chip
-              size="sm"
-              variant="flat"
-              className="absolute left-1 top-1 h-4 bg-content1/90 text-[9px] font-bold"
-            >
+            <Chip size="sm" variant="flat" className="absolute left-1 top-1 h-4 bg-content1/90 text-[9px] font-bold">
               v1
             </Chip>
           </div>
@@ -34,12 +30,7 @@ export const MiniVersioning = () => {
               alt="Version 2 preview"
               className="aspect-video w-full object-cover"
             />
-            <Chip
-              size="sm"
-              variant="flat"
-              color="primary"
-              className="absolute left-1 top-1 h-4 text-[9px] font-bold"
-            >
+            <Chip size="sm" variant="flat" color="primary" className="absolute left-1 top-1 h-4 text-[9px] font-bold">
               v2
             </Chip>
           </div>

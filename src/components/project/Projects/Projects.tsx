@@ -53,7 +53,9 @@ export const Projects = () => {
   };
 
   const handleCreateProjectClick = () => {
-    if (!user?.subscription.isActive) {
+    const projectsLimit = user?.subscription.limits.projectsCount;
+
+    if (projectsLimit && projectsLimit.used >= projectsLimit.max) {
       setIsPlansModalVisible(true, 'projects_list');
 
       return;
@@ -63,7 +65,7 @@ export const Projects = () => {
   };
 
   return (
-    <div className="xs:p-6 border-t border-foreground-200 p-3">
+    <div className="border-t border-foreground-200 p-3 xs:p-6">
       <div className="mb-2 flex justify-between gap-4">
         <h2 className="text-3xl font-semibold">Projects</h2>
         <Button className="bg-foreground text-content1" onClick={handleCreateProjectClick}>

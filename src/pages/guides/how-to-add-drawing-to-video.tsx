@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -260,8 +260,8 @@ export default function HowToAddDrawingToVideoGuidePage() {
           <h2 id={getHeadingId(TOC_SECTIONS[4])}>{TOC_SECTIONS[4]}</h2>
           <p>
             The interactive preview below mirrors a real review flow: upload a clip, scrub to a frame, draw on it, and
-            leave a comment. When you are ready to use this with clients, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
-            or{' '}
+            leave a comment. When you are ready to use this with clients,{' '}
+            <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
@@ -340,4 +340,3 @@ export default function HowToAddDrawingToVideoGuidePage() {
     </>
   );
 }
-

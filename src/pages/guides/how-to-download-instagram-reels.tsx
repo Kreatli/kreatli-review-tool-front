@@ -2,10 +2,10 @@ import { cn } from '@heroui/react';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
-import { InstagramReelDownloaderTool } from '../../components/instagram-reel-downloader/InstagramReelDownloaderTool';
 import { GuideArticleToolsResourcesSection } from '../../components/guides/GuideArticleToolsResourcesSection';
 import { GuidePageLayout } from '../../components/guides/GuidePageLayout';
 import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
+import { InstagramReelDownloaderTool } from '../../components/instagram-reel-downloader/InstagramReelDownloaderTool';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
@@ -153,7 +153,10 @@ export default function HowToDownloadInstagramReelsGuidePage() {
               </p>
             </li>
           </ul>
-          <p>If you’re saving your own posts for archiving, editing, or internal review, a public-link downloader is a straightforward workflow.</p>
+          <p>
+            If you’re saving your own posts for archiving, editing, or internal review, a public-link downloader is a
+            straightforward workflow.
+          </p>
 
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[1])}>{TOC_SECTIONS[1]}</h2>
@@ -191,7 +194,8 @@ export default function HowToDownloadInstagramReelsGuidePage() {
             </li>
             <li>
               <p>
-                If the download doesn’t start, click <strong>Find video</strong> again, then retry <strong>Download</strong>.
+                If the download doesn’t start, click <strong>Find video</strong> again, then retry{' '}
+                <strong>Download</strong>.
               </p>
             </li>
           </ol>
@@ -217,14 +221,14 @@ export default function HowToDownloadInstagramReelsGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Link expires:</strong> resolved CDN links can expire. Click <strong>Find video</strong> again
-                to refresh.
+                <strong>Link expires:</strong> resolved CDN links can expire. Click <strong>Find video</strong> again to
+                refresh.
               </p>
             </li>
             <li>
               <p>
-                <strong>Quality varies:</strong> sometimes only a preview stream is exposed publicly; try again later
-                if you need a higher-quality file.
+                <strong>Quality varies:</strong> sometimes only a preview stream is exposed publicly; try again later if
+                you need a higher-quality file.
               </p>
             </li>
           </ul>
@@ -236,8 +240,8 @@ export default function HowToDownloadInstagramReelsGuidePage() {
             getting clear feedback and sign-off on the right cut.
           </p>
           <p>
-            After you download, upload the MP4 into Kreatli to collect <strong>frame-accurate comments</strong> and track{' '}
-            <strong>approvals</strong> per version. If the Reel is headed for publishing, run an{' '}
+            After you download, upload the MP4 into Kreatli to collect <strong>frame-accurate comments</strong> and
+            track <strong>approvals</strong> per version. If the Reel is headed for publishing, run an{' '}
             <NextLink href="/platform/instagram-reels-safe-zone">Instagram Reels safe zone</NextLink> check so captions,
             CTAs, and logos stay visible under UI overlays.
           </p>
@@ -304,4 +308,3 @@ export default function HowToDownloadInstagramReelsGuidePage() {
     </>
   );
 }
-

@@ -7,13 +7,7 @@ import { useSignUpModalVisibility } from './useSignUpModalVisibility';
  * "Soft gate" helper: show sign-up modal after a trigger event (e.g. upload),
  * and if the modal is dismissed without signing in, reset local tool state.
  */
-export function useSoftGate({
-  enabled = true,
-  onReset,
-}: {
-  enabled?: boolean;
-  onReset: () => void;
-}) {
+export function useSoftGate({ enabled = true, onReset }: { enabled?: boolean; onReset: () => void }) {
   const { isSignedIn } = useSession();
   const { isSignUpModalOpen, openSignUpModal } = useSignUpModalVisibility();
 
@@ -48,4 +42,3 @@ export function useSoftGate({
     triggerSoftGate,
   };
 }
-

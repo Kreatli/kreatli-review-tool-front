@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { useSession } from '../../../hooks/useSession';
 
 interface UpgradeModalProps {
-  type: 'storage' | 'projects';
+  type: 'storage' | 'projects' | 'uploads';
   isOpen: boolean;
   onClose: () => void;
 }
@@ -12,6 +12,7 @@ interface UpgradeModalProps {
 const DESCRIPTION = {
   storage: "You don't have enough storage space. Please upgrade to a higher plan to continue.",
   projects: 'You have reached the projects limit of your current plan. Please upgrade to a higher plan to continue.',
+  uploads: 'You have reached the uploads limit of your current plan. Please upgrade to a higher plan to continue.',
 };
 
 export const UpgradeModal = ({ type, isOpen, onClose }: UpgradeModalProps) => {

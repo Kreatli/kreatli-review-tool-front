@@ -279,15 +279,7 @@ export function VideoCompressorTool() {
         variant: 'flat',
       });
     }
-  }, [
-    durationSeconds,
-    file,
-    outputFormat,
-    runFFmpegCompress,
-    targetSizeMb,
-    targetVideoKbps,
-    videoUrl,
-  ]);
+  }, [durationSeconds, file, outputFormat, runFFmpegCompress, targetSizeMb, targetVideoKbps, videoUrl]);
 
   const download = useCallback(() => {
     if (isInactiveLocked) {

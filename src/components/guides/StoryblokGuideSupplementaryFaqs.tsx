@@ -18,7 +18,10 @@ export function StoryblokGuideSupplementaryFaqs({ faqs, ariaLabel }: Props) {
   }
 
   return (
-    <section className="mb-10 rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8" aria-labelledby="guide-quick-faqs-heading">
+    <section
+      className="mb-10 rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8"
+      aria-labelledby="guide-quick-faqs-heading"
+    >
       <h2 id="guide-quick-faqs-heading" className="mb-4 font-sans text-xl font-bold sm:text-2xl">
         Quick answers
       </h2>

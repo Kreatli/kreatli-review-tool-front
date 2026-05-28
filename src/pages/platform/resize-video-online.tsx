@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem, Button, Card, CardBody } from '@heroui/react';
+import { Button, Card, CardBody } from '@heroui/react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 
@@ -6,21 +6,21 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { ResizeVideoFAQ } from '../../components/resize-video/ResizeVideoFAQ';
+import { ResizeVideoGuide } from '../../components/resize-video/ResizeVideoGuide';
+import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
-import { ResizeVideoFAQ, RESIZE_VIDEO_FAQS } from '../../components/resize-video/ResizeVideoFAQ';
-import { ResizeVideoGuide } from '../../components/resize-video/ResizeVideoGuide';
-import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -100,14 +100,14 @@ export default function ResizeVideoOnlinePage() {
       <Decorations />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden px-6 pt-16 pb-4">
+      <section className="relative overflow-hidden px-6 pb-4 pt-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
           <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold leading-tight sm:text-4xl sm:leading-tight">
             Resize Video Online for Every Channel
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-            Resize video online for Reels, TikTok, YouTube, and web in a few clicks—then keep resized versions, comments,
-            and approvals organized in a single creative production workspace.
+            Resize video online for Reels, TikTok, YouTube, and web in a few clicks—then keep resized versions,
+            comments, and approvals organized in a single creative production workspace.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -127,7 +127,6 @@ export default function ResizeVideoOnlinePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/resize-video-online" />
       {/* Inline Resize Video Tool Section */}
       <section className="relative overflow-hidden px-6 pb-12">
@@ -145,8 +144,8 @@ export default function ResizeVideoOnlinePage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Resize Video Online With Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Combine a fast online resizer with version-aware storage, frame-accurate review, and approvals so every export
-              fits your channels and your workflow.
+              Combine a fast online resizer with version-aware storage, frame-accurate review, and approvals so every
+              export fits your channels and your workflow.
             </p>
           </div>
 
@@ -160,8 +159,8 @@ export default function ResizeVideoOnlinePage() {
                   <h3 className="font-sans text-lg font-semibold">Resize for Every Format</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Use presets or custom sizes to resize video online for vertical, square, and landscape formats—covering
-                  Reels, TikTok, YouTube, and more from one workflow.
+                  Use presets or custom sizes to resize video online for vertical, square, and landscape
+                  formats—covering Reels, TikTok, YouTube, and more from one workflow.
                 </p>
               </CardBody>
             </Card>
@@ -233,4 +232,3 @@ export default function ResizeVideoOnlinePage() {
     </>
   );
 }
-

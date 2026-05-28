@@ -12,15 +12,15 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
-import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 
 const faqs = [
   {
@@ -77,7 +77,10 @@ export default function TikTokSafeZonePage() {
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="TikTok Safe Zone — 1080×1920 Dimensions &amp; Checker (2026) | Kreatli" />
+        <meta
+          property="og:image:alt"
+          content="TikTok Safe Zone — 1080×1920 Dimensions &amp; Checker (2026) | Kreatli"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -107,8 +110,8 @@ export default function TikTokSafeZonePage() {
               TikTok Safe Zone
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Check your TikTok safe zone before you post. Preview where profile picture, username, like button,
-              comment button, and captions appear—and keep your text, logos, and visuals visible. Free tool.
+              Check your TikTok safe zone before you post. Preview where profile picture, username, like button, comment
+              button, and captions appear—and keep your text, logos, and visuals visible. Free tool.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
@@ -127,7 +130,6 @@ export default function TikTokSafeZonePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/tiktok-safe-zone" />
       {/* How to Use Safe-Zone Checker (step-by-step) */}
       <SafeZoneScreenGuide
@@ -143,10 +145,9 @@ export default function TikTokSafeZonePage() {
               Reels, Shorts &amp; TikTok — different overlays, same 9:16 canvas
             </h2>
             <p className="text-center text-sm text-foreground-600">
-              Vertical TikToks are commonly{' '}
-              <strong className="font-semibold text-foreground-700">1080×1920</strong> (9:16). The right-side engagement
-              stack and bottom caption strip are heavier on TikTok than on Shorts, so don’t assume one composition works
-              everywhere. Before you cross-post, run{' '}
+              Vertical TikToks are commonly <strong className="font-semibold text-foreground-700">1080×1920</strong>{' '}
+              (9:16). The right-side engagement stack and bottom caption strip are heavier on TikTok than on Shorts, so
+              don’t assume one composition works everywhere. Before you cross-post, run{' '}
               <NextLink
                 href="/safe-zone-checker/instagram-safe-zone-checker"
                 className="text-primary underline underline-offset-2"
@@ -185,12 +186,10 @@ export default function TikTokSafeZonePage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              TikTok Safe Zone - Built for Video Teams
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">TikTok Safe Zone - Built for Video Teams</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              See where TikTok’s UI overlays sit on your video so you can keep headlines, CTAs, and branding in the
-              safe zone. Upload, preview, and export.
+              See where TikTok’s UI overlays sit on your video so you can keep headlines, CTAs, and branding in the safe
+              zone. Upload, preview, and export.
             </p>
           </div>
 

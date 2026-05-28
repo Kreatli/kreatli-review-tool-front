@@ -52,9 +52,7 @@ export function VideoCompressorGuide() {
               <ul className="space-y-2 text-sm text-foreground-600">
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground-400" />
-                  <span>
-                    If your output is still too big, reduce the target size a bit more and run it again.
-                  </span>
+                  <span>If your output is still too big, reduce the target size a bit more and run it again.</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground-400" />
@@ -64,9 +62,7 @@ export function VideoCompressorGuide() {
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-foreground-400" />
-                  <span>
-                    For the smallest files, consider trimming or resizing first, then compressing.
-                  </span>
+                  <span>For the smallest files, consider trimming or resizing first, then compressing.</span>
                 </li>
               </ul>
             </CardBody>
@@ -76,4 +72,3 @@ export function VideoCompressorGuide() {
     </section>
   );
 }
-

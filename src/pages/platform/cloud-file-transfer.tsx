@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
-import { PlatformStepGuide, SEND_VIDEO_STEPS } from '../../components/shared/PlatformStepGuide';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -13,6 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PlatformStepGuide, SEND_VIDEO_STEPS } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -20,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -130,7 +130,6 @@ export default function CloudFileTransferPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/cloud-file-transfer" />
       {/* How Cloud File Transfer Works in Kreatli (step-by-step) */}
       <PlatformStepGuide
@@ -152,8 +151,8 @@ export default function CloudFileTransferPage() {
               Why Use Cloud File Transfer Instead of Sending Files Directly
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Cloud file transfer links keep your work easier to access, faster to review, and safer to manage than sending
-              raw files via email or unmanaged shares.
+              Cloud file transfer links keep your work easier to access, faster to review, and safer to manage than
+              sending raw files via email or unmanaged shares.
             </p>
           </div>
 
@@ -167,8 +166,8 @@ export default function CloudFileTransferPage() {
                   <h3 className="font-sans text-lg font-semibold">Upload Once, Transfer Often</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Upload large creative files once and generate as many cloud transfer links as you need—without re-uploading
-                  the same export for every client or review round.
+                  Upload large creative files once and generate as many cloud transfer links as you need—without
+                  re-uploading the same export for every client or review round.
                 </p>
               </CardBody>
             </Card>
@@ -182,8 +181,8 @@ export default function CloudFileTransferPage() {
                   <h3 className="font-sans text-lg font-semibold">Feedback Attached to Every Transfer</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Each cloud file transfer link opens a review view where comments, drawings, and approvals stay attached to
-                  the exact version you sent—so nothing gets lost in email threads.
+                  Each cloud file transfer link opens a review view where comments, drawings, and approvals stay
+                  attached to the exact version you sent—so nothing gets lost in email threads.
                 </p>
               </CardBody>
             </Card>
@@ -273,4 +272,3 @@ export default function CloudFileTransferPage() {
     </>
   );
 }
-

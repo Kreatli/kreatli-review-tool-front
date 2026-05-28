@@ -8,8 +8,7 @@ export const VIDEO_COMPRESSOR_FAQS = [
   },
   {
     question: 'Do you upload my video to Kreatli servers?',
-    answer:
-      'No. Compression runs locally in your browser using a video encoder. Your file stays on your device.',
+    answer: 'No. Compression runs locally in your browser using a video encoder. Your file stays on your device.',
   },
   {
     question: 'Will the output file be exactly the target size I enter?',
@@ -58,4 +57,3 @@ export function VideoCompressorFAQ() {
     </section>
   );
 }
-

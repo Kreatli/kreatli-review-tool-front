@@ -148,7 +148,6 @@ export default function IntegrationsPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/integrations" />
       {/* Integration Cards Section */}
       <section className="relative overflow-hidden px-6 py-16">

@@ -20,7 +20,8 @@ export const RELATED_RESOURCES = {
   },
   deliverables: {
     title: 'Deliverables',
-    description: 'Track what needs to ship with due dates, ownership, and approval visibility—so delivery stays predictable.',
+    description:
+      'Track what needs to ship with due dates, ownership, and approval visibility—so delivery stays predictable.',
     href: '/platform/deliverables',
     icon: 'calendar' as IconType,
     buttonText: 'Learn More',
@@ -89,7 +90,8 @@ export const RELATED_RESOURCES = {
   },
   drawOnImage: {
     title: 'Draw on Image',
-    description: 'Draw and markup directly on images for precise feedback. Freehand, shapes, and annotations on images.',
+    description:
+      'Draw and markup directly on images for precise feedback. Freehand, shapes, and annotations on images.',
     href: '/platform/draw-on-image',
     icon: 'panorama' as IconType,
     buttonText: 'Learn More',
@@ -203,32 +205,28 @@ export const RELATED_RESOURCES = {
   },
   platformComparePdfFiles: {
     title: 'Compare PDF files',
-    description:
-      'Put two document versions side by side so reviewers can spot changes and approve with confidence.',
+    description: 'Put two document versions side by side so reviewers can spot changes and approve with confidence.',
     href: '/platform/compare-pdf-files',
     icon: 'filePdf' as IconType,
     buttonText: 'Learn More',
   },
   platformSendLargeVideoFiles: {
     title: 'Send large video files',
-    description:
-      'Move heavy cuts and masters through review without breaking your production handoff workflow.',
+    description: 'Move heavy cuts and masters through review without breaking your production handoff workflow.',
     href: '/platform/send-large-video-files',
     icon: 'upload' as IconType,
     buttonText: 'Learn More',
   },
   platformManageVideos: {
     title: 'Manage videos',
-    description:
-      'Organize projects, versions, and review status so every cut stays traceable from upload to approval.',
+    description: 'Organize projects, versions, and review status so every cut stays traceable from upload to approval.',
     href: '/platform/manage-videos',
     icon: 'monitorPlay' as IconType,
     buttonText: 'Learn More',
   },
   platformDocumentVersionControl: {
     title: 'Document version control',
-    description:
-      'Keep PDFs and documents on a clear version line with comments and sign-offs on the current file.',
+    description: 'Keep PDFs and documents on a clear version line with comments and sign-offs on the current file.',
     href: '/platform/document-version-control',
     icon: 'folder' as IconType,
     buttonText: 'Learn More',

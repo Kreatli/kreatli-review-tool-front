@@ -1,7 +1,7 @@
 import {
   OVERLAY_AND_SAFE_ZONE_MARKING_FAQS,
-  TRANSPARENT_OVERLAY_BLOG_SUPPLEMENT,
   type SupplementaryFaq,
+  TRANSPARENT_OVERLAY_BLOG_SUPPLEMENT,
 } from './safe-zone-supplementary-faqs';
 
 export type StoryblokBlogSeoOverride = {
@@ -19,8 +19,7 @@ export const STORYBLOK_BLOG_SEO_OVERRIDES: Record<string, StoryblokBlogSeoOverri
     supplementaryFaqs: OVERLAY_AND_SAFE_ZONE_MARKING_FAQS,
   },
   '/blog/safe-zone-guide-instagram-reels-youtube-shorts-tiktok': {
-    seoArticleTitle:
-      'Safe Zones for Instagram Reels, YouTube Shorts & TikTok — Dimensions, Overlays & Marking (2026)',
+    seoArticleTitle: 'Safe Zones for Instagram Reels, YouTube Shorts & TikTok — Dimensions, Overlays & Marking (2026)',
     metaDescription:
       'Create and use transparent safe zone overlays for Instagram, TikTok, and YouTube Shorts: 2026 pixel targets, overlay marking, template tips, and Kreatli checker links so titles and logos stay visible.',
     supplementaryFaqs: [...TRANSPARENT_OVERLAY_BLOG_SUPPLEMENT, ...OVERLAY_AND_SAFE_ZONE_MARKING_FAQS],

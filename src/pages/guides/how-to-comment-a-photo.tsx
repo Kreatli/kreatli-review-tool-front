@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -122,13 +122,16 @@ export default function HowToCommentAPhotoGuidePage() {
         <div className={wysiwygStyles.wysiwyg}>
           <p>
             <strong>How to comment a photo</strong> is about leaving feedback that points to the exact part of the image
-            you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so “this area”
-            is never vague and revisions don’t bounce between email threads and screenshots.
+            you mean. The best workflow is <strong>location-pinned comments</strong> (and optional markup) so “this
+            area” is never vague and revisions don’t bounce between email threads and screenshots.
           </p>
           <p>
             Photo comments usually cover <strong>tonal, textural, or selection decisions</strong> on captured imagery.
             When you are critiquing designed comps instead, use the{' '}
-            <NextLink href="/guides/how-to-comment-a-picture" className="font-medium text-primary underline-offset-2 hover:underline">
+            <NextLink
+              href="/guides/how-to-comment-a-picture"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
               picture commenting guide
             </NextLink>{' '}
             so the examples match layout-heavy work.
@@ -169,8 +172,8 @@ export default function HowToCommentAPhotoGuidePage() {
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[1])}>{TOC_SECTIONS[1]}</h2>
           <p>
-            Generic notes like “make this pop” slow teams down. Location pins reduce ambiguity—your collaborator sees the
-            exact area you’re referencing and can make the change without guessing.
+            Generic notes like “make this pop” slow teams down. Location pins reduce ambiguity—your collaborator sees
+            the exact area you’re referencing and can make the change without guessing.
           </p>
           <ul>
             <li>
@@ -239,7 +242,8 @@ export default function HowToCommentAPhotoGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Call out constraints:</strong> brand colors, product accuracy, legal requirements, or crop sizes.
+                <strong>Call out constraints:</strong> brand colors, product accuracy, legal requirements, or crop
+                sizes.
               </p>
             </li>
             <li>
@@ -280,11 +284,13 @@ export default function HowToCommentAPhotoGuidePage() {
           articlesMax={3}
           resourcesTitle="More resources"
           resourcesDescription="Capabilities that support image review, approvals, and secure storage."
-          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map((resource, index) => {
-            if (index === 0) return { ...resource, icon: 'panorama' };
-            if (index === 1) return { ...resource, icon: 'paint' };
-            return resource;
-          })}
+          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map(
+            (resource, index) => {
+              if (index === 0) return { ...resource, icon: 'panorama' };
+              if (index === 1) return { ...resource, icon: 'paint' };
+              return resource;
+            },
+          )}
         />
 
         <GuideSectionRule />
@@ -330,4 +336,3 @@ export default function HowToCommentAPhotoGuidePage() {
     </>
   );
 }
-

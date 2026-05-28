@@ -76,8 +76,8 @@ export default function ImageReviewerPage() {
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Image Reviewer</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               <strong className="font-semibold text-foreground-700">Online image review</strong> for creative teams:
-              invite <strong className="font-semibold text-foreground-700">teammates</strong> to the same file, and
-              send <strong className="font-semibold text-foreground-700">clients</strong> no-signup guest links for{' '}
+              invite <strong className="font-semibold text-foreground-700">teammates</strong> to the same file, and send{' '}
+              <strong className="font-semibold text-foreground-700">clients</strong> no-signup guest links for{' '}
               <strong className="font-semibold text-foreground-700">client review</strong>—location-pinned comments,
               markup, and approvals in one project.
             </p>
@@ -95,7 +95,10 @@ export default function ImageReviewerPage() {
         </section>
 
         <DefinitionBlock term="Image Reviewer">
-          An image reviewer is an online tool for reviewing images with location-pinned comments, annotations, and approval workflows. Reviewers leave feedback directly on the image rather than describing changes in a separate message. Image reviewers are used by design teams, agencies, and photographers to streamline visual feedback.
+          An image reviewer is an online tool for reviewing images with location-pinned comments, annotations, and
+          approval workflows. Reviewers leave feedback directly on the image rather than describing changes in a
+          separate message. Image reviewers are used by design teams, agencies, and photographers to streamline visual
+          feedback.
         </DefinitionBlock>
 
         <section className="relative overflow-hidden px-6 pb-8" aria-labelledby="image-reviewer-youtube-banner">
@@ -118,7 +121,10 @@ export default function ImageReviewerPage() {
         <ImageReviewerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/image-reviewer')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/image-reviewer')}
+          title="More Tools for Video Teams"
+        />
 
         <ImageReviewerFAQ />
 
@@ -142,4 +148,4 @@ export default function ImageReviewerPage() {
       <SignUpModal />
     </>
   );
-};
+}

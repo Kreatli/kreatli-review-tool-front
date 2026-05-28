@@ -33,7 +33,7 @@ export default function ImageAnnotatorPage() {
           name="description"
           content="Add pinned comments, highlights, drawings, and markup to images. Share annotated files with clients. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Annotate Images Online – Free Image Annotator | Kreatli" />
+        <meta property="og:title" content="Annotate Images Online – Free Image Annotator | Kreatli" />
         <meta
           property="og:description"
           content="Add pinned comments, highlights, drawings, and markup to images. Share annotated files with clients. Try free with a 7-day trial."
@@ -75,8 +75,8 @@ export default function ImageAnnotatorPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Image Annotator</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Add location-pinned comments, highlights, drawings, and markup directly to images. Pin feedback to
-              exact spots and collaborate with precise annotation—no software installation required for reviewers.
+              Add location-pinned comments, highlights, drawings, and markup directly to images. Pin feedback to exact
+              spots and collaborate with precise annotation—no software installation required for reviewers.
             </p>
             <HeroCtaButtons />
           </div>
@@ -92,7 +92,9 @@ export default function ImageAnnotatorPage() {
         </section>
 
         <DefinitionBlock term="Image Annotator">
-          An image annotator is an online tool for adding pinned comments, highlights, and markup to images. Feedback is attached to exact locations on the image so designers and retouchers know precisely what to change. Image annotators replace vague feedback like &lsquo;fix the colors&rsquo; with precise, visual direction.
+          An image annotator is an online tool for adding pinned comments, highlights, and markup to images. Feedback is
+          attached to exact locations on the image so designers and retouchers know precisely what to change. Image
+          annotators replace vague feedback like &lsquo;fix the colors&rsquo; with precise, visual direction.
         </DefinitionBlock>
 
         <section className="relative px-6 pb-10" aria-label="How this fits your workflow">
@@ -101,15 +103,24 @@ export default function ImageAnnotatorPage() {
               Teams use a free image annotator in early rounds—styleframes, key art, and social stills—when you only
               need fast markup without spinning up a full project. When feedback needs version history, approvals, and
               the same pins on motion and PDFs, move work into Kreatli&apos;s platform: start with{' '}
-              <NextLink href="/platform/draw-on-image" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/platform/draw-on-image"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 draw on image
               </NextLink>{' '}
               and tie markup to{' '}
-              <NextLink href="/platform/review-approval" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/platform/review-approval"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 review &amp; approval
               </NextLink>
               . If you are handing off large cuts after review, pair this page with our guide on{' '}
-              <NextLink href="/guides/share-large-video-files" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/guides/share-large-video-files"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 sharing large video files
               </NextLink>{' '}
               so clients always open the right asset.
@@ -120,7 +131,10 @@ export default function ImageAnnotatorPage() {
         <ImageAnnotatorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/image-annotator')} title="More Tools for Creative Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/image-annotator')}
+          title="More Tools for Creative Teams"
+        />
 
         <ImageAnnotatorFAQ />
 
@@ -151,4 +165,4 @@ export default function ImageAnnotatorPage() {
       <SignUpModal />
     </>
   );
-};
+}

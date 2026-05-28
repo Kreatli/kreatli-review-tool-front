@@ -1,15 +1,11 @@
 import { Card, CardBody, cn } from '@heroui/react';
 
-import {
-  EMBED_VIDEO_DESTINATION_CARDS,
-  EMBED_VIDEO_WHY_CARDS,
-} from '../../data/embed-video-marketing';
+import { EMBED_VIDEO_DESTINATION_CARDS, EMBED_VIDEO_WHY_CARDS } from '../../data/embed-video-marketing';
 import { getHeadingId } from '../../utils/storyblok';
 import wysiwygStyles from '../layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { Icon } from '../various/Icon';
 
-const platformHeadingClass =
-  'mb-4 scroll-mt-24 font-sans text-2xl font-bold sm:text-3xl md:mt-8 md:text-3xl';
+const platformHeadingClass = 'mb-4 scroll-mt-24 font-sans text-2xl font-bold sm:text-3xl md:mt-8 md:text-3xl';
 
 interface Props {
   /** Used for TOC anchor id (must match guide TOC label string). */
@@ -33,11 +29,8 @@ export function EmbedVideoFeatureCardSections({
   variant = 'platform',
 }: Props) {
   const outerDestinations =
-    variant === 'platform'
-      ? 'relative overflow-hidden px-6 py-16 backdrop-blur-lg'
-      : 'relative overflow-hidden';
-  const outerWhy =
-    variant === 'platform' ? 'relative overflow-hidden px-6 py-16' : 'relative overflow-hidden';
+    variant === 'platform' ? 'relative overflow-hidden px-6 py-16 backdrop-blur-lg' : 'relative overflow-hidden';
+  const outerWhy = variant === 'platform' ? 'relative overflow-hidden px-6 py-16' : 'relative overflow-hidden';
 
   const headerWrapClass = 'mb-8 text-center';
   const introClass = 'mx-auto max-w-2xl text-lg text-foreground-500';
@@ -45,18 +38,9 @@ export function EmbedVideoFeatureCardSections({
   return (
     <>
       <section className={outerDestinations}>
-        <div
-          className={
-            variant === 'guide' ? 'relative z-10 w-full' : 'relative z-10 mx-auto max-w-6xl'
-          }
-        >
+        <div className={variant === 'guide' ? 'relative z-10 w-full' : 'relative z-10 mx-auto max-w-6xl'}>
           {variant === 'guide' ? (
-            <div
-              className={cn(
-                wysiwygStyles.wysiwyg,
-                '[&>h2:first-of-type]:!mt-0',
-              )}
-            >
+            <div className={cn(wysiwygStyles.wysiwyg, '[&>h2:first-of-type]:!mt-0')}>
               <h2 id={getHeadingId(destinationsTocLabel)}>{destinationsHeading}</h2>
               <p>{destinationsIntro}</p>
               <ul>
@@ -98,18 +82,9 @@ export function EmbedVideoFeatureCardSections({
       </section>
 
       <section className={outerWhy}>
-        <div
-          className={
-            variant === 'guide' ? 'relative z-10 w-full' : 'relative z-10 mx-auto max-w-6xl'
-          }
-        >
+        <div className={variant === 'guide' ? 'relative z-10 w-full' : 'relative z-10 mx-auto max-w-6xl'}>
           {variant === 'guide' ? (
-            <div
-              className={cn(
-                wysiwygStyles.wysiwyg,
-                '[&>h2:first-of-type]:!mt-0',
-              )}
-            >
+            <div className={cn(wysiwygStyles.wysiwyg, '[&>h2:first-of-type]:!mt-0')}>
               <hr />
               <h2 id={getHeadingId(whyTocLabel)}>{whyHeading}</h2>
               <p>{whyIntro}</p>

@@ -12,10 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  COMPARE_VIDEOS_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { COMPARE_VIDEOS_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -23,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -133,7 +130,6 @@ export default function CompareVideosPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/compare-videos" />
       <PlatformStepGuide
         stepsSectionTitle="How to compare videos in Kreatli"
@@ -197,8 +193,8 @@ export default function CompareVideosPage() {
                   <h3 className="font-sans text-lg font-semibold">Any Length, Any Format</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Compare videos with different durations or resolutions. Annotations are linked to the specific file and
-                  timestamp, so reviewers can reference both versions clearly.
+                  Compare videos with different durations or resolutions. Annotations are linked to the specific file
+                  and timestamp, so reviewers can reference both versions clearly.
                 </p>
               </CardBody>
             </Card>

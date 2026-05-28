@@ -33,7 +33,7 @@ const steps = [
 
 export const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="px-6 py-16 backdrop-blur-lg lg:py-24 lg:mt-8">
+    <section id="how-it-works" className="px-6 py-16 backdrop-blur-lg lg:mt-8 lg:py-24">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-16">
         <div className="flex w-full flex-col gap-4">
           <h2 className="text-center font-sans text-3xl font-bold sm:text-4xl">How Does Kreatli Work?</h2>
@@ -50,9 +50,7 @@ export const HowItWorksSection = () => {
               </p>
             </div>
           </div>
-          <p className="text-center text-base font-medium text-foreground-400">
-            Get started in 4 simple steps:
-          </p>
+          <p className="text-center text-base font-medium text-foreground-400">Get started in 4 simple steps:</p>
         </div>
         <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
@@ -87,7 +85,14 @@ export const HowItWorksSection = () => {
           <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
             Start For Free
           </Button>
-          <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow" size="lg" variant="light">
+          <Button
+            as="a"
+            href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            size="lg"
+            variant="light"
+          >
             Book a Demo
           </Button>
         </div>

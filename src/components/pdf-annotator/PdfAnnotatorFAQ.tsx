@@ -15,7 +15,7 @@ export const pdfAnnotatorFaqs = [
   {
     question: 'How do I annotate a PDF online?',
     answer:
-      "Upload your PDF to a PDF annotator tool and open it in the review interface. Navigate page by page and click or select the area you want to comment on. Add a comment, highlight, or drawing—your annotation is attached to that exact location. Share a review link so clients or collaborators can view and add their own annotations without creating an account.",
+      'Upload your PDF to a PDF annotator tool and open it in the review interface. Navigate page by page and click or select the area you want to comment on. Add a comment, highlight, or drawing—your annotation is attached to that exact location. Share a review link so clients or collaborators can view and add their own annotations without creating an account.',
   },
   {
     question: 'Can clients annotate PDFs without creating an account?',
@@ -61,8 +61,8 @@ export const PdfAnnotatorFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            A PDF annotator is an online tool that lets you add comments, highlights, drawings, and markup directly
-            onto a PDF. Annotations are pinned to exact locations on the page, so feedback is precise and actionable.
+            A PDF annotator is an online tool that lets you add comments, highlights, drawings, and markup directly onto
+            a PDF. Annotations are pinned to exact locations on the page, so feedback is precise and actionable.
           </p>
           <p>
             Learn more about{' '}
@@ -90,8 +90,8 @@ export const PdfAnnotatorFAQ = () => {
         <div className="space-y-3 text-base text-foreground-500">
           <p>
             Upload your PDF and open it in the review interface. Navigate page by page and click or select the area you
-            want to comment on. Add a comment, highlight, or drawing pinned to that location. Share a link so others
-            can add their own annotations without creating an account.
+            want to comment on. Add a comment, highlight, or drawing pinned to that location. Share a link so others can
+            add their own annotations without creating an account.
           </p>
         </div>
       ),
@@ -118,8 +118,8 @@ export const PdfAnnotatorFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            You can add text comments, highlights, shapes, arrows, and freehand drawing—all pinned to specific spots on a
-            page. Explore{' '}
+            You can add text comments, highlights, shapes, arrows, and freehand drawing—all pinned to specific spots on
+            a page. Explore{' '}
             <NextLink href="/platform/draw-on-pdf-document" className="text-primary underline underline-offset-2">
               drawing on PDF in Kreatli
             </NextLink>
@@ -173,8 +173,8 @@ export const PdfAnnotatorFAQ = () => {
           <p>
             PDF annotation makes feedback visual and location-specific. Reviewers point directly to the spot and add a
             comment or highlight. Writers and designers see exactly what to change, resolution tracking keeps rounds
-            organized, and clients can annotate via a link without accounts—speeding up approvals and reducing
-            revision cycles.
+            organized, and clients can annotate via a link without accounts—speeding up approvals and reducing revision
+            cycles.
           </p>
         </div>
       ),

@@ -267,7 +267,10 @@ export default function AdvertisingMarketingAgenciesPage() {
             how we compare
           </NextLink>{' '}
           to other review stacks, or start with the{' '}
-          <NextLink href="/guides/how-to-review-a-video" className="font-medium text-primary underline-offset-2 hover:underline">
+          <NextLink
+            href="/guides/how-to-review-a-video"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
             video review playbook
           </NextLink>
           .
@@ -556,7 +559,11 @@ export default function AdvertisingMarketingAgenciesPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['inHouseCreativeContentTeams', 'videoProductionAnimationStudios', 'clientApprovals'])}
+        resources={getRelatedResources([
+          'inHouseCreativeContentTeams',
+          'videoProductionAnimationStudios',
+          'clientApprovals',
+        ])}
         title="More Resources"
         description="Explore other Kreatli solutions to streamline your video collaboration workflow."
       />

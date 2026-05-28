@@ -4,7 +4,6 @@ import NextLink from 'next/link';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { Icon, IconType } from '../various/Icon';
 
-
 export default function InfoSection() {
   const workflowSteps = [
     {
@@ -94,7 +93,14 @@ export default function InfoSection() {
                     )}
                     {item.step === 4 && (
                       <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                        <Button
+                          as={NextLink}
+                          href={KREATLI_PLATFORM_ENTRY_HREF}
+                          size="lg"
+                          className="bg-foreground text-content1"
+                        >
+                          {OPEN_IN_KREATLI_LABEL}
+                        </Button>
                         <Button
                           as="a"
                           href="https://calendar.app.google/NXbAeTAUwaBGh5x49"

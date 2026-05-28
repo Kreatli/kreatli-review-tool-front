@@ -11,7 +11,8 @@
     "swagger": "swag-ts",
     "proxy": "local-ssl-proxy --source 3010 --target 3001 --cert localhost.pem --key localhost-key.pem",
     "types": "storyblok components pull --space=287637539865613 && storyblok-generate-ts source=./.storyblok/components/287637539865613/components.json target=./src/typings/storyblok.d.ts",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "format": "prettier --write ."
   },
   "engines": {
     "node": ">=22.*"

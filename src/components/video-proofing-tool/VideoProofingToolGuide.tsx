@@ -1,9 +1,8 @@
 import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
-import { Icon, IconType } from '../various/Icon';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
-
+import { Icon, IconType } from '../various/Icon';
 
 const IMG = '/video-annotation-guide/step';
 
@@ -77,8 +76,8 @@ export const VideoProofingToolGuide = () => {
           <div className="mb-10 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How to Proof Videos Online</h2>
             <p className="mx-auto max-w-3xl text-base text-foreground-500">
-              Frame-accurate proofing with comments, annotations, and approvals—all in your browser. Follow these
-              steps to upload your video, collect feedback, and track approvals in one place.
+              Frame-accurate proofing with comments, annotations, and approvals—all in your browser. Follow these steps
+              to upload your video, collect feedback, and track approvals in one place.
             </p>
           </div>
 
@@ -101,7 +100,14 @@ export const VideoProofingToolGuide = () => {
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                            <Button
+                              as={NextLink}
+                              href={KREATLI_PLATFORM_ENTRY_HREF}
+                              size="lg"
+                              className="bg-foreground text-content1"
+                            >
+                              {OPEN_IN_KREATLI_LABEL}
+                            </Button>
                             <Button
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
@@ -187,8 +193,8 @@ export const VideoProofingToolGuide = () => {
                   <h3 className="font-sans text-xl font-bold">Guest Proofing Links</h3>
                 </div>
                 <p className="text-foreground-500">
-                  Share secure proofing links with clients and stakeholders. They can watch, comment, and approve without
-                  creating an account—keeping the approval process fast and friction-free.
+                  Share secure proofing links with clients and stakeholders. They can watch, comment, and approve
+                  without creating an account—keeping the approval process fast and friction-free.
                 </p>
               </CardBody>
             </Card>
@@ -257,8 +263,8 @@ export const VideoProofingToolGuide = () => {
               <CardBody className="p-6">
                 <h3 className="mb-3 font-sans text-lg font-bold">Agencies & Studios</h3>
                 <p className="text-foreground-500">
-                  Proof client deliverables with frame-accurate feedback. Share proofing links so clients can approve
-                  or request changes without installing software or creating accounts.
+                  Proof client deliverables with frame-accurate feedback. Share proofing links so clients can approve or
+                  request changes without installing software or creating accounts.
                 </p>
               </CardBody>
             </Card>

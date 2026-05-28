@@ -1,4 +1,3 @@
- 
 import { Accordion, AccordionItem } from '@heroui/react';
 import Head from 'next/head';
 

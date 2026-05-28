@@ -11,11 +11,13 @@ import {
 } from '../../../components/deliverables/Deliverables/DeliverablesFilter';
 import { DeliverablesSkeleton } from '../../../components/deliverables/Deliverables/DeliverablesSkeleton';
 import { DeliverablesStatusesModal } from '../../../components/deliverables/Deliverables/DeliverablesStatusesModal';
+import { DeliverablesPaywall } from '../../../components/deliverables/DeliverablesPaywall';
 import { DeliverablesTimeline } from '../../../components/deliverables/DeliverablesTimeline/DeliverablesTimeline';
 import { ProjectLayout } from '../../../components/project/Project';
 import { useIsBreakpoint } from '../../../components/tiptap/hooks/use-is-breakpoint';
 import { EmptyState } from '../../../components/various/EmptyState';
 import { Icon } from '../../../components/various/Icon';
+import { useProjectContext } from '../../../contexts/Project';
 import { useGetProjectIdDeliverables } from '../../../services/hooks';
 
 export default function DeliverablesPage() {
@@ -23,6 +25,8 @@ export default function DeliverablesPage() {
   const [filters, setFilters] = useState<DeliverablesFiltersType>({});
   const [isColumnsModalVisible, setIsStatusesModalVisible] = useState(false);
   const [isNewDeliverableModalVisible, setIsNewDeliverableModalVisible] = useState(false);
+
+  const { project } = useProjectContext();
 
   const isMobile = useIsBreakpoint('max', 768);
 
@@ -61,13 +65,15 @@ export default function DeliverablesPage() {
     </EmptyState>
   );
 
+  const shouldShowPaywall = !project.createdBy?.subscription.isActive;
+
   return (
     <>
       <Head>
         <title>Kreatli | Deliverables</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <div className="flex flex-1 flex-col gap-1">
+      <div className="relative flex flex-1 flex-col gap-1">
         <div className="flex items-center justify-between gap-2 p-3 px-3 pb-0 sm:px-4">
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-semibold">Deliverables</h2>
@@ -93,44 +99,47 @@ export default function DeliverablesPage() {
             </Button>
           </div>
         </div>
-        <Tabs size="sm" classNames={{ tab: 'p-1.5', panel: 'p-0 max-w-full', tabList: 'mx-3 sm:mx-4 mb-2' }}>
-          <Tab
-            key="list"
-            title={
-              <div className="flex items-center gap-1">
-                <Icon icon="list" size={16} />
-                List
+        {!shouldShowPaywall && (
+          <Tabs size="sm" classNames={{ tab: 'p-1.5', panel: 'p-0 max-w-full', tabList: 'mx-3 sm:mx-4 mb-2' }}>
+            <Tab
+              key="list"
+              title={
+                <div className="flex items-center gap-1">
+                  <Icon icon="list" size={16} />
+                  List
+                </div>
+              }
+            >
+              <div className="p-3 pt-0 sm:px-4">
+                {isPending ? (
+                  <DeliverablesSkeleton />
+                ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
+                  noResultsFound
+                ) : (
+                  <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
+                )}
               </div>
-            }
-          >
-            <div className="p-3 pt-0 sm:px-4">
+            </Tab>
+            <Tab
+              key="timeline"
+              title={
+                <div className="flex items-center gap-1">
+                  <Icon icon="calendar" size={16} />
+                  Timeline
+                </div>
+              }
+            >
               {isPending ? (
                 <DeliverablesSkeleton />
               ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
                 noResultsFound
               ) : (
-                <Deliverables key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
+                <DeliverablesTimeline key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
               )}
-            </div>
-          </Tab>
-          <Tab
-            key="timeline"
-            title={
-              <div className="flex items-center gap-1">
-                <Icon icon="calendar" size={16} />
-                Timeline
-              </div>
-            }
-          >
-            {isPending ? (
-              <DeliverablesSkeleton />
-            ) : hasFilters && deliverablesData?.deliverables.length === 0 ? (
-              noResultsFound
-            ) : (
-              <DeliverablesTimeline key={id} projectId={id} deliverables={deliverablesData?.deliverables ?? []} />
-            )}
-          </Tab>
-        </Tabs>
+            </Tab>
+          </Tabs>
+        )}
+        {shouldShowPaywall && <DeliverablesPaywall projectOwner={project.createdBy} />}
       </div>
       <NewDeliverableModal
         projectId={id}

@@ -37,7 +37,7 @@ export const BannerFAQ = () => {
       key: 'file-formats',
       title: 'What file formats are supported?',
       content:
-        "You can upload JPEG/JPG, PNG, or WebP images up to 40MB. The tool resizes your image to your chosen canvas dimensions (default 2560 × 1440px) and exports it in PNG or JPG format.",
+        'You can upload JPEG/JPG, PNG, or WebP images up to 40MB. The tool resizes your image to your chosen canvas dimensions (default 2560 × 1440px) and exports it in PNG or JPG format.',
     },
     {
       key: 'positioning',

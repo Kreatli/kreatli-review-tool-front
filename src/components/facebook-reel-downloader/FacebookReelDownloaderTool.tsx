@@ -31,10 +31,7 @@ function isProbablyFacebookReelUrl(input: string) {
     const host = url.hostname.toLowerCase();
     if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
     const allowedHost =
-      host === 'facebook.com' ||
-      host === 'www.facebook.com' ||
-      host === 'm.facebook.com' ||
-      host === 'fb.watch';
+      host === 'facebook.com' || host === 'www.facebook.com' || host === 'm.facebook.com' || host === 'fb.watch';
     if (!allowedHost) return false;
 
     const path = url.pathname.toLowerCase();

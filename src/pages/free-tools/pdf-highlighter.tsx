@@ -31,7 +31,7 @@ export default function PdfHighlighterPage() {
           name="description"
           content="Highlight text and regions in PDFs with pinned markup. Share highlighted files with your team. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Highlight PDFs Online – Free PDF Highlighter | Kreatli" />
+        <meta property="og:title" content="Highlight PDFs Online – Free PDF Highlighter | Kreatli" />
         <meta
           property="og:description"
           content="Highlight text and regions in PDFs with pinned markup. Share highlighted files with your team. Try free with a 7-day trial."
@@ -90,7 +90,9 @@ export default function PdfHighlighterPage() {
         </section>
 
         <DefinitionBlock term="PDF Highlighter">
-          A PDF highlighter is an online tool for selecting and highlighting text and regions in PDF documents for review. Highlights can be paired with comments to explain what needs attention. PDF highlighters help teams flag key sections without cluttering the document with markup.
+          A PDF highlighter is an online tool for selecting and highlighting text and regions in PDF documents for
+          review. Highlights can be paired with comments to explain what needs attention. PDF highlighters help teams
+          flag key sections without cluttering the document with markup.
         </DefinitionBlock>
 
         <PdfAnnotatorGuide />

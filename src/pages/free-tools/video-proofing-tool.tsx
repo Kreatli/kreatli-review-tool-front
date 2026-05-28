@@ -32,7 +32,7 @@ export default function VideoProofingToolPage() {
           name="description"
           content="Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Proof Videos Online – Free Video Proofing Tool | Kreatli" />
+        <meta property="og:title" content="Proof Videos Online – Free Video Proofing Tool | Kreatli" />
         <meta
           property="og:description"
           content="Proof videos with frame-accurate comments, annotations, and approvals. Share proofing links with clients. Try free with a 7-day trial."
@@ -90,24 +90,24 @@ export default function VideoProofingToolPage() {
         </section>
 
         <DefinitionBlock term="Video Proofing Tool">
-          Video proofing is structured review of motion creative—comments, markup, and approvals on the timeline. A proofing tool keeps rounds disciplined so editors implement feedback once and stakeholders see resolution status.
+          Video proofing is structured review of motion creative—comments, markup, and approvals on the timeline. A
+          proofing tool keeps rounds disciplined so editors implement feedback once and stakeholders see resolution
+          status.
         </DefinitionBlock>
 
         <VideoProofingToolGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-proofing-tool')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-proofing-tool')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoProofingToolFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources([
-            'reviewApproval',
-            'creativeProofing',
-            'videoAnnotation',
-            'commentOnVideo',
-          ])}
+          resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'videoAnnotation', 'commentOnVideo'])}
           title="More Resources"
           description="Explore other Kreatli platform features to streamline your video proofing and collaboration workflow."
         />
@@ -125,4 +125,4 @@ export default function VideoProofingToolPage() {
       <SignUpModal />
     </>
   );
-};
+}

@@ -47,7 +47,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const src =
     req.method === 'GET'
-      ? (typeof req.query.url === 'string' ? req.query.url : '')
+      ? typeof req.query.url === 'string'
+        ? req.query.url
+        : ''
       : (() => {
           const parsed = parseBody(req);
           return parsed.ok ? parsed.url : '';
@@ -55,7 +57,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const name =
     req.method === 'GET'
-      ? (typeof req.query.name === 'string' ? req.query.name : 'instagram_reel')
+      ? typeof req.query.name === 'string'
+        ? req.query.name
+        : 'instagram_reel'
       : (() => {
           const parsed = parseBody(req);
           return parsed.ok ? parsed.name : 'instagram_reel';

@@ -252,11 +252,7 @@ export const ShareFeaturePreview = ({ variant = 'video' }: { variant?: ShareVari
             <div
               className={`relative max-h-64 overflow-hidden rounded-lg border border-foreground-200 ${config.aspectClass}`}
             >
-              <img
-                src={config.previewSrc}
-                alt={config.previewAlt}
-                className="absolute h-full w-full object-cover"
-              />
+              <img src={config.previewSrc} alt={config.previewAlt} className="absolute h-full w-full object-cover" />
             </div>
             <div className="flex justify-end">
               <Button

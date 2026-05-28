@@ -8,11 +8,11 @@ import {
   applyYoutubeAspectCornerResize,
   clampFrameRelative,
   CornerResizeHandle,
-  FrameRelative,
   frameRectFromRelative,
+  FrameRelative,
   getNaturalCropRect,
-  relativeToImgLocal,
   imgLocalToRelative,
+  relativeToImgLocal,
 } from './bannerViewport';
 
 function clientToImgLocal(
@@ -187,22 +187,26 @@ export const BannerCanvas = ({
       const { lx, ly } = clientToImgLocal(e.clientX, e.clientY, stage, ir);
       const startLx = lx;
       const startLy = ly;
-      attachPointerDrag(e.pointerId, (ev) => {
-        const ir2 = imgRectRef.current;
-        const st = stageRef.current;
-        if (!st) return;
-        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
-        const nFl = fl + (cur.lx - startLx);
-        const nFt = ft + (cur.ly - startLy);
-        const clampedFl = Math.min(Math.max(0, nFl), ir2.width - fw);
-        const clampedFt = Math.min(Math.max(0, nFt), ir2.height - fh);
-        const next = clampFrameRelative(
-          imgLocalToRelative(clampedFl, clampedFt, fw, fh, ir2.width, ir2.height),
-          ir2.width,
-          ir2.height,
-        );
-        onFrameRelativeChangeRef.current(next);
-      }, () => {});
+      attachPointerDrag(
+        e.pointerId,
+        (ev) => {
+          const ir2 = imgRectRef.current;
+          const st = stageRef.current;
+          if (!st) return;
+          const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+          const nFl = fl + (cur.lx - startLx);
+          const nFt = ft + (cur.ly - startLy);
+          const clampedFl = Math.min(Math.max(0, nFl), ir2.width - fw);
+          const clampedFt = Math.min(Math.max(0, nFt), ir2.height - fh);
+          const next = clampFrameRelative(
+            imgLocalToRelative(clampedFl, clampedFt, fw, fh, ir2.width, ir2.height),
+            ir2.width,
+            ir2.height,
+          );
+          onFrameRelativeChangeRef.current(next);
+        },
+        () => {},
+      );
     },
     [attachPointerDrag, isInteractive],
   );
@@ -217,19 +221,23 @@ export const BannerCanvas = ({
       if (!stage) return;
       const ir = imgRectRef.current;
       const startRect = relativeToImgLocal(frameRelativeRef.current, ir.width, ir.height);
-      attachPointerDrag(e.pointerId, (ev) => {
-        const ir2 = imgRectRef.current;
-        const st = stageRef.current;
-        if (!st) return;
-        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
-        const nextLocal = applyYoutubeAspectCornerResize(handle, startRect, cur.lx, cur.ly, ir2.width, ir2.height);
-        const next = clampFrameRelative(
-          imgLocalToRelative(nextLocal.fl, nextLocal.ft, nextLocal.fw, nextLocal.fh, ir2.width, ir2.height),
-          ir2.width,
-          ir2.height,
-        );
-        onFrameRelativeChangeRef.current(next);
-      }, () => {});
+      attachPointerDrag(
+        e.pointerId,
+        (ev) => {
+          const ir2 = imgRectRef.current;
+          const st = stageRef.current;
+          if (!st) return;
+          const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+          const nextLocal = applyYoutubeAspectCornerResize(handle, startRect, cur.lx, cur.ly, ir2.width, ir2.height);
+          const next = clampFrameRelative(
+            imgLocalToRelative(nextLocal.fl, nextLocal.ft, nextLocal.fw, nextLocal.fh, ir2.width, ir2.height),
+            ir2.width,
+            ir2.height,
+          );
+          onFrameRelativeChangeRef.current(next);
+        },
+        () => {},
+      );
     },
     [attachPointerDrag, isInteractive],
   );
@@ -320,10 +328,7 @@ export const BannerCanvas = ({
               role="presentation"
               aria-label="YouTube banner crop frame — drag to move, use handles to resize"
             >
-              <div
-                className="absolute inset-[8px] z-10 cursor-grab active:cursor-grabbing"
-                onPointerDown={beginMove}
-              />
+              <div className="absolute inset-[8px] z-10 cursor-grab active:cursor-grabbing" onPointerDown={beginMove} />
 
               {/* YouTube safe zones: stronger tints + high-contrast labels */}
               <div className="pointer-events-none absolute inset-0 z-[5]">
@@ -467,21 +472,21 @@ export const BannerCanvas = ({
               <button
                 type="button"
                 aria-label="Resize crop frame north-east"
-                className={cn(HANDLE, 'right-0 top-0 translate-x-1/2 -translate-y-1/2')}
+                className={cn(HANDLE, 'right-0 top-0 -translate-y-1/2 translate-x-1/2')}
                 style={{ cursor: cursorForHandle('ne') }}
                 onPointerDown={beginResize('ne')}
               />
               <button
                 type="button"
                 aria-label="Resize crop frame south-east"
-                className={cn(HANDLE, 'right-0 bottom-0 translate-x-1/2 translate-y-1/2')}
+                className={cn(HANDLE, 'bottom-0 right-0 translate-x-1/2 translate-y-1/2')}
                 style={{ cursor: cursorForHandle('se') }}
                 onPointerDown={beginResize('se')}
               />
               <button
                 type="button"
                 aria-label="Resize crop frame south-west"
-                className={cn(HANDLE, 'left-0 bottom-0 -translate-x-1/2 translate-y-1/2')}
+                className={cn(HANDLE, 'bottom-0 left-0 -translate-x-1/2 translate-y-1/2')}
                 style={{ cursor: cursorForHandle('sw') }}
                 onPointerDown={beginResize('sw')}
               />

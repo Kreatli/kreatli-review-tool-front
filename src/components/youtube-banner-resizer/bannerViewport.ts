@@ -135,7 +135,11 @@ export function getDefaultFrameRelative(naturalWidth: number, naturalHeight: num
   const { width: fw, height: fh } = getInscribedFrameSize(naturalWidth, naturalHeight);
   const fl = (naturalWidth - fw) / 2;
   const ft = (naturalHeight - fh) / 2;
-  return clampFrameRelative(imgLocalToRelative(fl, ft, fw, fh, naturalWidth, naturalHeight), naturalWidth, naturalHeight);
+  return clampFrameRelative(
+    imgLocalToRelative(fl, ft, fw, fh, naturalWidth, naturalHeight),
+    naturalWidth,
+    naturalHeight,
+  );
 }
 
 export function frameRectFromRelative(

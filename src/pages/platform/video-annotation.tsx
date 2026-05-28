@@ -151,7 +151,6 @@ export default function VideoAnnotationPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/video-annotation" />
       {/* How to Use Video Annotation in Kreatli (step-by-step) */}
       <VideoAnnotationGuide stepsSectionTitle="How to Use Video Annotation in Kreatli" />
@@ -263,9 +262,7 @@ export default function VideoAnnotationPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mx-auto w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
-            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
-              Related video features
-            </h2>
+            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">Related video features</h2>
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
               Give video feedback, comment on video, or add drawings. Explore these options:
             </p>

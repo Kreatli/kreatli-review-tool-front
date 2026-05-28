@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
-import { FREE_VIDEO_LINK_GENERATOR_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -13,6 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { FREE_VIDEO_LINK_GENERATOR_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -21,7 +22,6 @@ import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
 import { pushSignupCtaClick } from '../../lib/gtmDataLayer';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -150,8 +150,8 @@ export default function FreeVideoLinkGeneratorPage() {
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
               Generate secure, shareable video review links in seconds — a practical{' '}
               <strong className="font-semibold text-foreground-700">video link creator</strong> and{' '}
-              <strong className="font-semibold text-foreground-700">video link maker</strong> for client review. Upload your
-              masters (MP4, MOV, WebM — not pasted streaming URLs), then share one link per cut. Let people watch,
+              <strong className="font-semibold text-foreground-700">video link maker</strong> for client review. Upload
+              your masters (MP4, MOV, WebM — not pasted streaming URLs), then share one link per cut. Let people watch,
               comment, and approve online—no heavy attachments. Need stills from a cut? Use our{' '}
               <NextLink href="/free-tools/video-frame-extractor" className="text-primary underline underline-offset-2">
                 video frame extractor
@@ -187,7 +187,6 @@ export default function FreeVideoLinkGeneratorPage() {
           <ShareFeaturePreview />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/free-video-link-generator" />
 

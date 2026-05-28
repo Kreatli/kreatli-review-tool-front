@@ -36,7 +36,9 @@ function sanitizeErrorMessage(message: string) {
   return message.replace(/https?:\/\/\S+/g, '[url]').slice(0, 240);
 }
 
-function isAllowedTikTokUrl(input: string): { ok: true; url: URL } | { ok: false; code: ResolveErrorResponse['code']; message: string } {
+function isAllowedTikTokUrl(
+  input: string,
+): { ok: true; url: URL } | { ok: false; code: ResolveErrorResponse['code']; message: string } {
   let url: URL;
   try {
     url = new URL(input);
@@ -146,7 +148,10 @@ async function resolveViaOpenGraph(originalUrl: string) {
   };
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ResolveOkResponse | ResolveErrorResponse>) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ResolveOkResponse | ResolveErrorResponse>,
+) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return json(res, 405, { ok: false, code: 'METHOD_NOT_ALLOWED', message: 'Use POST.' });
@@ -175,12 +180,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return json(res, 200, { ok: true, ...resolved });
   } catch (e) {
     if ((e as any)?.name === 'AbortError') {
-      return json(res, 504, { ok: false, code: 'UPSTREAM_TIMEOUT', message: 'TikTok took too long to respond. Try again.' });
+      return json(res, 504, {
+        ok: false,
+        code: 'UPSTREAM_TIMEOUT',
+        message: 'TikTok took too long to respond. Try again.',
+      });
     }
     const message = sanitizeErrorMessage((e as Error)?.message || 'Could not resolve this TikTok link.');
     // Log server-side for debugging; keep client response safe.
     console.error('TikTok resolve failed:', message);
-    return json(res, 502, { ok: false, code: 'RESOLVE_FAILED', message: 'Could not resolve this TikTok link. Try a different public video.' });
+    return json(res, 502, {
+      ok: false,
+      code: 'RESOLVE_FAILED',
+      message: 'Could not resolve this TikTok link. Try a different public video.',
+    });
   }
 }
-

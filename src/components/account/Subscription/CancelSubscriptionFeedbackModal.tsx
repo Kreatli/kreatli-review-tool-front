@@ -49,8 +49,8 @@ export const CancelSubscriptionFeedbackModal = ({ isOpen, onClose, onSuccess }: 
         <ModalHeader className="pb-0">Before you cancel</ModalHeader>
         <ModalBody>
           <p>
-            We'd really value your feedback before you go. Please share what made you want to cancel so the founders
-            can learn from it.
+            We'd really value your feedback before you go. Please share what made you want to cancel so the founders can
+            learn from it.
           </p>
           <Textarea
             label="What made you decide to cancel?"

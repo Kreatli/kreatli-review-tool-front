@@ -11,16 +11,16 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
+import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
-import { FREE_TOOL_PAGE_ACCOUNT_FAQ } from '../../data/marketing-free-tool-access';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
-import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 
 const faqs = [
   {
@@ -71,18 +71,27 @@ export default function ResizeYouTubeBannerPage() {
         <link rel="canonical" href="https://kreatli.com/platform/resize-youtube-banner" />
         <meta property="og:url" content="https://kreatli.com/platform/resize-youtube-banner" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform" />
+        <meta
+          property="og:title"
+          content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform"
+        />
         <meta
           property="og:description"
           content="Official-style 2026 banner specs (2560×1440, safe zone) + free resizer. Preview crop on mobile, desktop, tablet, and TV."
         />
         <meta property="og:image" content="https://kreatli.com/og-image.png" />
         <meta property="og:image:secure_url" content="https://kreatli.com/og-image.png" />
-        <meta property="og:image:alt" content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform" />
+        <meta
+          property="og:image:alt"
+          content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform" />
+        <meta
+          name="twitter:title"
+          content="Resize YouTube Banner (2026) — 2560×1440 &amp; Safe Zone | Kreatli Platform"
+        />
         <meta
           name="twitter:description"
           content="Channel banner 2560×1440 + safe zone for logos/text. Free resizer with device previews."
@@ -313,8 +322,8 @@ export default function ResizeYouTubeBannerPage() {
                   <h3 className="font-sans text-lg font-semibold">Fit Into Your Creative Workflow</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Resize in seconds, then move to Kreatli for review and approval if you work with clients or teams. Keep
-                  channel art validation and feedback in one workflow.
+                  Resize in seconds, then move to Kreatli for review and approval if you work with clients or teams.
+                  Keep channel art validation and feedback in one workflow.
                 </p>
               </CardBody>
             </Card>

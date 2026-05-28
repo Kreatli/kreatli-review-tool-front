@@ -9,8 +9,8 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -136,8 +136,8 @@ export default function HowToTurnAPdfIntoALinkGuidePage() {
 
           <h2 id={getHeadingId(TOC_SECTIONS[0])}>{TOC_SECTIONS[0]}</h2>
           <p>
-            A PDF link points to a hosted file that recipients can open in browser. Depending on your sharing settings, it
-            can be view-only, downloadable, or review-enabled with comments.
+            A PDF link points to a hosted file that recipients can open in browser. Depending on your sharing settings,
+            it can be view-only, downloadable, or review-enabled with comments.
           </p>
           <ul>
             <li>
@@ -160,8 +160,8 @@ export default function HowToTurnAPdfIntoALinkGuidePage() {
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[1])}>{TOC_SECTIONS[1]}</h2>
           <p>
-            Attachments can fail due to file size, blocked inbox policies, or version confusion. Link-based sharing avoids
-            these problems and makes review cycles easier to manage.
+            Attachments can fail due to file size, blocked inbox policies, or version confusion. Link-based sharing
+            avoids these problems and makes review cycles easier to manage.
           </p>
           <ul>
             <li>
@@ -242,8 +242,8 @@ export default function HowToTurnAPdfIntoALinkGuidePage() {
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[4])}>{TOC_SECTIONS[4]}</h2>
           <p>
-            The interactive preview below mirrors a PDF sharing flow where one link is copied and sent to reviewers. When
-            you are ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
+            The interactive preview below mirrors a PDF sharing flow where one link is copied and sent to reviewers.
+            When you are ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>

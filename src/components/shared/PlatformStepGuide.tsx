@@ -6,7 +6,6 @@ import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../consta
 import { Icon, IconType } from '../various/Icon';
 import { HowToStructuredData } from './HowToStructuredData';
 
-
 export interface WorkflowStep {
   step: number;
   title: string;
@@ -72,7 +71,14 @@ export const PlatformStepGuide = ({
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
                         {item.step === steps.length && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                            <Button
+                              as={NextLink}
+                              href={KREATLI_PLATFORM_ENTRY_HREF}
+                              size="lg"
+                              className="bg-foreground text-content1"
+                            >
+                              {OPEN_IN_KREATLI_LABEL}
+                            </Button>
                             <Button
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"

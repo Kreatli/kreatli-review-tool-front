@@ -12,10 +12,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
-import {
-  IMAGE_TO_LINK_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { IMAGE_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -37,7 +34,7 @@ const faqs = [
   {
     question: 'How do I turn an image into a link in Kreatli?',
     answer:
-      "Upload your image to a Kreatli project, open the file menu (⋯) on the asset, and choose Share to create a secure review link. Copy the link or send it via the share modal (email, Slack, etc.). Recipients click the link to open the image in their browser. You can generate different links for different people or review rounds, and revoke or update access anytime.",
+      'Upload your image to a Kreatli project, open the file menu (⋯) on the asset, and choose Share to create a secure review link. Copy the link or send it via the share modal (email, Slack, etc.). Recipients click the link to open the image in their browser. You can generate different links for different people or review rounds, and revoke or update access anytime.',
   },
   {
     question: 'Do recipients need to create an account to view the image link?',
@@ -140,7 +137,6 @@ export default function ImageToLinkPage() {
           <ShareFeaturePreview variant="image" />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/image-to-link" />
       <PlatformStepGuide

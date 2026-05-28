@@ -66,7 +66,7 @@ export default function DocumentComparerPage() {
           name="description"
           content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Compare Documents Side by Side – Free Document Comparer | Kreatli" />
+        <meta property="og:title" content="Compare Documents Side by Side – Free Document Comparer | Kreatli" />
         <meta
           property="og:description"
           content="Compare two document versions side by side with comments and annotations. Catch every revision. Try free with a 7-day trial."
@@ -126,9 +126,9 @@ export default function DocumentComparerPage() {
           </div>
         </section>
 
-
         <DefinitionBlock term="Document Comparer">
-          A document comparer helps you review two versions of a document—layout, copy edits, or legal redlines—next to each other. It reduces back-and-forth when stakeholders need to see exactly what changed between drafts.
+          A document comparer helps you review two versions of a document—layout, copy edits, or legal redlines—next to
+          each other. It reduces back-and-forth when stakeholders need to see exactly what changed between drafts.
         </DefinitionBlock>
         {/* How to compare documents guide */}
         <PlatformStepGuide

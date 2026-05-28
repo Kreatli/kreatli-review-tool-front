@@ -27,7 +27,13 @@ type ResolveErrorResponse = {
   message: string;
 };
 
-const ALLOWED_HOSTS = new Set(['facebook.com', 'www.facebook.com', 'm.facebook.com', 'mbasic.facebook.com', 'fb.watch']);
+const ALLOWED_HOSTS = new Set([
+  'facebook.com',
+  'www.facebook.com',
+  'm.facebook.com',
+  'mbasic.facebook.com',
+  'fb.watch',
+]);
 
 function json(res: NextApiResponse, status: number, body: ResolveOkResponse | ResolveErrorResponse) {
   res.status(status).setHeader('Content-Type', 'application/json; charset=utf-8').json(body);
@@ -56,7 +62,10 @@ function isAllowedFacebookUrl(
 
   const path = url.pathname.toLowerCase();
   const isKnownShape =
-    host === 'fb.watch' || path.startsWith('/reel/') || (path.startsWith('/watch') && Boolean(url.searchParams.get('v'))) || /\/videos\/\d+/.test(path);
+    host === 'fb.watch' ||
+    path.startsWith('/reel/') ||
+    (path.startsWith('/watch') && Boolean(url.searchParams.get('v'))) ||
+    /\/videos\/\d+/.test(path);
   if (!isKnownShape) {
     return {
       ok: false,

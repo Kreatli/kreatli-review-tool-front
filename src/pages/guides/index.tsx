@@ -8,7 +8,7 @@ import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
-import { FAQStructuredData, FAQItem } from '../../components/shared/FAQStructuredData';
+import { FAQItem, FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { HubPageIntro } from '../../components/shared/HubPageIntro';
 import { SeoHead } from '../../components/shared/SeoHead';
 import { Icon } from '../../components/various/Icon';
@@ -113,12 +113,12 @@ export default function GuidesPage({ stories }: Props) {
           >
             <p>
               Each guide is written for editors, producers, and account teams who need clear handoffs—not generic
-              software tips. We walk through the workflow, call out common pitfalls, and show how the same pattern
-              looks in Kreatli when you want to centralize feedback.
+              software tips. We walk through the workflow, call out common pitfalls, and show how the same pattern looks
+              in Kreatli when you want to centralize feedback.
             </p>
             <p>
-              Browse the grid below—newest guides appear first. No account is required to read; when you want to try
-              the in-product steps, every plan includes a{' '}
+              Browse the grid below—newest guides appear first. No account is required to read; when you want to try the
+              in-product steps, every plan includes a{' '}
               <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
                 7-day trial
               </NextLink>

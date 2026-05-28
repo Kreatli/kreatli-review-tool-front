@@ -139,7 +139,6 @@ export default function PictureIntoUrlPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/picture-into-url" />
       <PlatformStepGuide
         stepsSectionTitle="How to turn your picture into a URL in Kreatli"

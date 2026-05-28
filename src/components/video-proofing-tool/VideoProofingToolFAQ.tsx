@@ -16,7 +16,7 @@ export const videoProofingToolFaqs = [
   {
     question: 'How do I proof a video in Kreatli?',
     answer:
-      "Upload your video to a Kreatli project and open it in the proofing player. Scrub or play to any moment and click to add comments, drawings, or annotations. Your feedback is pinned to the exact frame. When you are done, share a link so clients or stakeholders can view the video and add their own feedback without creating an account.",
+      'Upload your video to a Kreatli project and open it in the proofing player. Scrub or play to any moment and click to add comments, drawings, or annotations. Your feedback is pinned to the exact frame. When you are done, share a link so clients or stakeholders can view the video and add their own feedback without creating an account.',
   },
   {
     question: 'Can clients proof videos without creating an account?',
@@ -31,7 +31,7 @@ export const videoProofingToolFaqs = [
   {
     question: 'How do I track proofing status on a video?',
     answer:
-      "Kreatli tracks resolution status for every comment on a video. You can mark items as resolved or unresolved and filter to show only what still needs attention. When you upload a new version of the video, you can resolve comments that have been addressed. The system keeps a clear record of what is done and what is pending across proofing rounds.",
+      'Kreatli tracks resolution status for every comment on a video. You can mark items as resolved or unresolved and filter to show only what still needs attention. When you upload a new version of the video, you can resolve comments that have been addressed. The system keeps a clear record of what is done and what is pending across proofing rounds.',
   },
   {
     question: 'Can multiple people proof the same video at once?',
@@ -62,9 +62,9 @@ export const VideoProofingToolFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Video proofing is the process of reviewing video content for accuracy, quality, and alignment with
-            project requirements before final approval. In Kreatli, video proofing is frame-accurate—feedback and
-            annotations are pinned to exact moments so editors know precisely what to change.
+            Video proofing is the process of reviewing video content for accuracy, quality, and alignment with project
+            requirements before final approval. In Kreatli, video proofing is frame-accurate—feedback and annotations
+            are pinned to exact moments so editors know precisely what to change.
           </p>
           <p>
             Learn more about{' '}
@@ -95,8 +95,8 @@ export const VideoProofingToolFAQ = () => {
             click to add comments, drawings, or annotations. Your feedback is pinned to the exact frame.
           </p>
           <p>
-            When you&apos;re done, share a link so clients or stakeholders can view the video and add their own
-            feedback without creating an account.
+            When you&apos;re done, share a link so clients or stakeholders can view the video and add their own feedback
+            without creating an account.
           </p>
         </div>
       ),
@@ -166,7 +166,10 @@ export const VideoProofingToolFAQ = () => {
             Yes. Multiple reviewers can proof the same video simultaneously. Each person&apos;s comments and annotations
             are visible to everyone, with color coding or user indicators to show who added which annotation.
           </p>
-          <p>You can see all feedback on the timeline, filter by reviewer, and track which annotations have been addressed.</p>
+          <p>
+            You can see all feedback on the timeline, filter by reviewer, and track which annotations have been
+            addressed.
+          </p>
         </div>
       ),
     },
@@ -197,8 +200,8 @@ export const VideoProofingToolFAQ = () => {
             annotations have been addressed.
           </p>
           <p>
-            This reduces back-and-forth communication, speeds up revision cycles, and ensures nothing gets missed
-            before final delivery.
+            This reduces back-and-forth communication, speeds up revision cycles, and ensures nothing gets missed before
+            final delivery.
           </p>
         </div>
       ),

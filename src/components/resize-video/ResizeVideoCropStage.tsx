@@ -84,10 +84,7 @@ export function ResizeVideoCropStage({
   const [scrubTime, setScrubTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  const outputAspect = useMemo(
-    () => outputAspectFromTargets(targetWidth, targetHeight),
-    [targetWidth, targetHeight],
-  );
+  const outputAspect = useMemo(() => outputAspectFromTargets(targetWidth, targetHeight), [targetWidth, targetHeight]);
 
   const measure = useCallback(() => {
     const stage = stageRef.current;
@@ -149,8 +146,7 @@ export function ResizeVideoCropStage({
     onSourceCropReady(crop);
   }, [frameRect, imgRect, onSourceCropReady, sourceHeight, sourceWidth]);
 
-  const isInteractive =
-    interactive && sourceWidth > 0 && sourceHeight > 0 && imgRect.width > 0 && imgRect.height > 0;
+  const isInteractive = interactive && sourceWidth > 0 && sourceHeight > 0 && imgRect.width > 0 && imgRect.height > 0;
 
   const attachPointerDrag = useCallback(
     (pointerId: number, onMove: (e: PointerEvent) => void, onEnd: (e: PointerEvent) => void) => {
@@ -191,23 +187,27 @@ export function ResizeVideoCropStage({
       const { lx, ly } = clientToImgLocal(e.clientX, e.clientY, stage, ir);
       const startLx = lx;
       const startLy = ly;
-      attachPointerDrag(e.pointerId, (ev) => {
-        const ir2 = imgRectRef.current;
-        const st = stageRef.current;
-        if (!st) return;
-        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
-        const nFl = fl + (cur.lx - startLx);
-        const nFt = ft + (cur.ly - startLy);
-        const clampedFl = Math.min(Math.max(0, nFl), ir2.width - fw);
-        const clampedFt = Math.min(Math.max(0, nFt), ir2.height - fh);
-        const next = clampFrameRelative(
-          imgLocalToRelative(clampedFl, clampedFt, fw, fh, ir2.width, ir2.height),
-          ir2.width,
-          ir2.height,
-          outputAspect,
-        );
-        onFrameRelativeChangeRef.current(next);
-      }, () => {});
+      attachPointerDrag(
+        e.pointerId,
+        (ev) => {
+          const ir2 = imgRectRef.current;
+          const st = stageRef.current;
+          if (!st) return;
+          const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+          const nFl = fl + (cur.lx - startLx);
+          const nFt = ft + (cur.ly - startLy);
+          const clampedFl = Math.min(Math.max(0, nFl), ir2.width - fw);
+          const clampedFt = Math.min(Math.max(0, nFt), ir2.height - fh);
+          const next = clampFrameRelative(
+            imgLocalToRelative(clampedFl, clampedFt, fw, fh, ir2.width, ir2.height),
+            ir2.width,
+            ir2.height,
+            outputAspect,
+          );
+          onFrameRelativeChangeRef.current(next);
+        },
+        () => {},
+      );
     },
     [attachPointerDrag, imgRect, isInteractive, outputAspect],
   );
@@ -222,20 +222,32 @@ export function ResizeVideoCropStage({
       if (!stage) return;
       const ir = imgRect;
       const startRect = relativeToImgLocal(frameRelativeRef.current, ir.width, ir.height, outputAspect);
-      attachPointerDrag(e.pointerId, (ev) => {
-        const ir2 = imgRectRef.current;
-        const st = stageRef.current;
-        if (!st) return;
-        const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
-        const nextLocal = applyAspectCornerResize(handle, startRect, cur.lx, cur.ly, ir2.width, ir2.height, outputAspect);
-        const next = clampFrameRelative(
-          imgLocalToRelative(nextLocal.fl, nextLocal.ft, nextLocal.fw, nextLocal.fh, ir2.width, ir2.height),
-          ir2.width,
-          ir2.height,
-          outputAspect,
-        );
-        onFrameRelativeChangeRef.current(next);
-      }, () => {});
+      attachPointerDrag(
+        e.pointerId,
+        (ev) => {
+          const ir2 = imgRectRef.current;
+          const st = stageRef.current;
+          if (!st) return;
+          const cur = clientToImgLocal(ev.clientX, ev.clientY, st, ir2);
+          const nextLocal = applyAspectCornerResize(
+            handle,
+            startRect,
+            cur.lx,
+            cur.ly,
+            ir2.width,
+            ir2.height,
+            outputAspect,
+          );
+          const next = clampFrameRelative(
+            imgLocalToRelative(nextLocal.fl, nextLocal.ft, nextLocal.fw, nextLocal.fh, ir2.width, ir2.height),
+            ir2.width,
+            ir2.height,
+            outputAspect,
+          );
+          onFrameRelativeChangeRef.current(next);
+        },
+        () => {},
+      );
     },
     [attachPointerDrag, imgRect, isInteractive, outputAspect],
   );
@@ -347,21 +359,21 @@ export function ResizeVideoCropStage({
             <button
               type="button"
               aria-label="Resize north-east"
-              className={cn(HANDLE, 'right-0 top-0 translate-x-1/2 -translate-y-1/2')}
+              className={cn(HANDLE, 'right-0 top-0 -translate-y-1/2 translate-x-1/2')}
               style={{ cursor: cursorForHandle('ne') }}
               onPointerDown={beginResize('ne')}
             />
             <button
               type="button"
               aria-label="Resize south-east"
-              className={cn(HANDLE, 'right-0 bottom-0 translate-x-1/2 translate-y-1/2')}
+              className={cn(HANDLE, 'bottom-0 right-0 translate-x-1/2 translate-y-1/2')}
               style={{ cursor: cursorForHandle('se') }}
               onPointerDown={beginResize('se')}
             />
             <button
               type="button"
               aria-label="Resize south-west"
-              className={cn(HANDLE, 'left-0 bottom-0 -translate-x-1/2 translate-y-1/2')}
+              className={cn(HANDLE, 'bottom-0 left-0 -translate-x-1/2 translate-y-1/2')}
               style={{ cursor: cursorForHandle('sw') }}
               onPointerDown={beginResize('sw')}
             />

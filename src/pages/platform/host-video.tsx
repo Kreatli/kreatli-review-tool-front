@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { ShareFeaturePreview } from '../../components/home/Features/ShareFeaturePreview';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
-import { PlatformStepGuide, HOST_VIDEO_STEPS } from '../../components/shared/PlatformStepGuide';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
@@ -13,6 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { HOST_VIDEO_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -20,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -130,7 +130,6 @@ export default function HostVideoPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/host-video" />
       {/* How to Host Video in Kreatli (step-by-step) */}
       <PlatformStepGuide
@@ -150,8 +149,8 @@ export default function HostVideoPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Turn Kreatli Into Your Hosted Video Hub</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Host active projects and archives in Kreatli so every video, version, and approval lives in one secure place
-              instead of scattered across tools.
+              Host active projects and archives in Kreatli so every video, version, and approval lives in one secure
+              place instead of scattered across tools.
             </p>
           </div>
 
@@ -195,8 +194,8 @@ export default function HostVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Streamlined Review on Hosted Video</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Every hosted video opens in a frame-accurate review player. Reviewers can leave comments, drawings, and
-                  approvals directly on the hosted asset without downloading files.
+                  Every hosted video opens in a frame-accurate review player. Reviewers can leave comments, drawings,
+                  and approvals directly on the hosted asset without downloading files.
                 </p>
               </CardBody>
             </Card>
@@ -288,7 +287,8 @@ export default function HostVideoPage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Get detailed answers about hosting video in Kreatli and how it fits into your review and approval workflows.
+              Get detailed answers about hosting video in Kreatli and how it fits into your review and approval
+              workflows.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -317,7 +317,12 @@ export default function HostVideoPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['secureAssetStorage', 'creativeWorkspace', 'reviewApproval', 'videoAnnotation'])}
+        resources={getRelatedResources([
+          'secureAssetStorage',
+          'creativeWorkspace',
+          'reviewApproval',
+          'videoAnnotation',
+        ])}
         title="More Resources"
         description="Explore other Kreatli platform features that help you manage hosted videos, collect precise feedback, and keep approvals organized."
       />
@@ -332,4 +337,3 @@ export default function HostVideoPage() {
     </>
   );
 }
-

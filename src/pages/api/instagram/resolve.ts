@@ -61,7 +61,9 @@ function extractShortcodeFromPath(pathname: string): string | null {
 
 function isAllowedInstagramReelUrl(
   input: string,
-): { ok: true; shortcode: string; displayUrl: URL } | { ok: false; code: ResolveErrorResponse['code']; message: string } {
+):
+  | { ok: true; shortcode: string; displayUrl: URL }
+  | { ok: false; code: ResolveErrorResponse['code']; message: string } {
   let url: URL;
   try {
     url = new URL(input);
@@ -238,7 +240,8 @@ function mergeVideoCandidates(html: string): { videoUrl: string; hdVideoUrl?: st
 
 const DESKTOP_UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
-const MOBILE_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1';
+const MOBILE_UA =
+  'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1';
 
 function browserHeaders(): HeadersInit {
   return {

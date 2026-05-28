@@ -1,9 +1,8 @@
 import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
-import { Icon, IconType } from '../various/Icon';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
-
+import { Icon, IconType } from '../various/Icon';
 
 export const VideoFrameExtractorGuide = () => {
   const workflowSteps: Array<{
@@ -71,9 +70,7 @@ export const VideoFrameExtractorGuide = () => {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Extract frames from video — how it works
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Extract frames from video — how it works</h2>
             <p className="mx-auto max-w-3xl text-base text-foreground-500">
               Extract still images from a video in minutes—perfect for thumbnails, storyboards, creative reviews, and
               documenting exact moments.
@@ -99,7 +96,14 @@ export const VideoFrameExtractorGuide = () => {
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                            <Button
+                              as={NextLink}
+                              href={KREATLI_PLATFORM_ENTRY_HREF}
+                              size="lg"
+                              className="bg-foreground text-content1"
+                            >
+                              {OPEN_IN_KREATLI_LABEL}
+                            </Button>
                             <Button
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
@@ -117,7 +121,9 @@ export const VideoFrameExtractorGuide = () => {
                     {item.image && (
                       <div className="mt-6 flex justify-center lg:mt-8">
                         <div
-                          className={item.imageVariant === 'contain' ? 'relative w-full max-w-4xl' : 'relative max-w-full'}
+                          className={
+                            item.imageVariant === 'contain' ? 'relative w-full max-w-4xl' : 'relative max-w-full'
+                          }
                         >
                           <Image
                             src={item.image}
@@ -144,9 +150,7 @@ export const VideoFrameExtractorGuide = () => {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              Video Frame Extraction Explained
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Video Frame Extraction Explained</h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               A video frame extractor helps you turn a specific moment in a video into a still image you can download.
               Use it for thumbnails, keyframes, storyboards, or sharing a precise moment with teammates and clients.
@@ -173,7 +177,8 @@ export const VideoFrameExtractorGuide = () => {
                     <strong className="text-foreground">Creative review:</strong> Share a specific frame for feedback.
                   </li>
                   <li>
-                    <strong className="text-foreground">QA & bug reports:</strong> Document a glitch at an exact timecode.
+                    <strong className="text-foreground">QA & bug reports:</strong> Document a glitch at an exact
+                    timecode.
                   </li>
                 </ul>
               </CardBody>
@@ -189,8 +194,8 @@ export const VideoFrameExtractorGuide = () => {
                 </div>
                 <div className="space-y-3 text-foreground-500">
                   <p>
-                    <strong className="text-foreground">PNG</strong> is best when you want maximum quality and sharp text
-                    edges (recommended for thumbnails and UI captures).
+                    <strong className="text-foreground">PNG</strong> is best when you want maximum quality and sharp
+                    text edges (recommended for thumbnails and UI captures).
                   </p>
                   <p>
                     <strong className="text-foreground">JPG</strong> creates smaller files, which is helpful when you’re
@@ -231,7 +236,10 @@ export const VideoFrameExtractorGuide = () => {
                   </p>
                   <p>
                     For structured review, versioning, and secure sharing, explore{' '}
-                    <NextLink href="/platform/secure-asset-storage" className="text-primary underline underline-offset-2">
+                    <NextLink
+                      href="/platform/secure-asset-storage"
+                      className="text-primary underline underline-offset-2"
+                    >
                       secure asset storage
                     </NextLink>{' '}
                     in Kreatli.
@@ -264,4 +272,3 @@ export const VideoFrameExtractorGuide = () => {
     </div>
   );
 };
-

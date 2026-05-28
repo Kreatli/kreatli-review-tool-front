@@ -280,7 +280,10 @@ export default function InHouseCreativeContentTeamsPage() {
             comparisons hub
           </NextLink>{' '}
           or read{' '}
-          <NextLink href="/guides/how-to-organize-your-files" className="font-medium text-primary underline-offset-2 hover:underline">
+          <NextLink
+            href="/guides/how-to-organize-your-files"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
             how to organize creative files
           </NextLink>
           .
@@ -573,7 +576,11 @@ export default function InHouseCreativeContentTeamsPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['advertisingMarketingAgencies', 'videoProductionAnimationStudios', 'creativeProductionManagement'])}
+        resources={getRelatedResources([
+          'advertisingMarketingAgencies',
+          'videoProductionAnimationStudios',
+          'creativeProductionManagement',
+        ])}
         title="More Resources"
         description="Explore other Kreatli solutions to streamline your video collaboration workflow."
       />

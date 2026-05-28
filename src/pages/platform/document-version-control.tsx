@@ -10,20 +10,17 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import {
-  DOCUMENT_VERSION_CONTROL_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { VersioningFeaturePreview } from '../../components/shared/VersioningFeaturePreview';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { DOCUMENT_VERSION_CONTROL_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
+import { VersioningFeaturePreview } from '../../components/shared/VersioningFeaturePreview';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -34,7 +31,7 @@ const faqs = [
   {
     question: 'How do I manage document version control in Kreatli?',
     answer:
-      "Upload your first document to a Kreatli project. When you have a revised draft, open the file menu (⋯) on that asset and choose Upload new version. The new file appears in the same project with full version history. You can compare two document versions side by side by selecting both in the Media view and clicking Compare. Document version control in Kreatli keeps every draft in one place so you and your clients always see the latest or compare past versions.",
+      'Upload your first document to a Kreatli project. When you have a revised draft, open the file menu (⋯) on that asset and choose Upload new version. The new file appears in the same project with full version history. You can compare two document versions side by side by selecting both in the Media view and clicking Compare. Document version control in Kreatli keeps every draft in one place so you and your clients always see the latest or compare past versions.',
   },
   {
     question: 'Can I compare two document versions side by side?',
@@ -145,7 +142,6 @@ export default function DocumentVersionControlPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/document-version-control" />
       <PlatformStepGuide
         stepsSectionTitle="How to use document version control in Kreatli"
@@ -179,8 +175,8 @@ export default function DocumentVersionControlPage() {
                   <h3 className="font-sans text-lg font-semibold">Version History</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Every document you upload as a new version stays in the same project. Document version control keeps
-                  a clear history so you always know which draft is current and can compare or revert as needed.
+                  Every document you upload as a new version stays in the same project. Document version control keeps a
+                  clear history so you always know which draft is current and can compare or revert as needed.
                 </p>
               </CardBody>
             </Card>
@@ -267,7 +263,9 @@ export default function DocumentVersionControlPage() {
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Use Document Version Control in Kreatli</h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+              Why Use Document Version Control in Kreatli
+            </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Document version control with version history and comparison keeps your drafts organized and your team
               aligned.
@@ -389,12 +387,7 @@ export default function DocumentVersionControlPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources([
-          'reviewApproval',
-          'creativeProofing',
-          'annotatePdf',
-          'secureAssetStorage',
-        ])}
+        resources={getRelatedResources(['reviewApproval', 'creativeProofing', 'annotatePdf', 'secureAssetStorage'])}
         title="More Resources"
         description="Explore other Kreatli platform features to streamline your review and collaboration workflow."
       />

@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -136,7 +136,7 @@ export default function HowToMarkupAnImageGuidePage() {
           <KeyTakeaways
             items={[
               'Pin markup (arrows, highlights, shapes) to the exact area that needs attention.',
-              "Use the lightest tool that communicates the issue \u2014 don\u2019t overcrowd the image.",
+              'Use the lightest tool that communicates the issue \u2014 don\u2019t overcrowd the image.',
               'Add a brief text note alongside each mark explaining the expected change.',
               'Compare the marked-up version with the revision to confirm all marks were addressed.',
             ]}
@@ -281,11 +281,13 @@ export default function HowToMarkupAnImageGuidePage() {
           articlesMax={3}
           resourcesTitle="More resources"
           resourcesDescription="Capabilities that support image review, drawing tools, and secure storage."
-          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map((resource, index) => {
-            if (index === 0) return { ...resource, icon: 'panorama' };
-            if (index === 1) return { ...resource, icon: 'paint' };
-            return resource;
-          })}
+          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map(
+            (resource, index) => {
+              if (index === 0) return { ...resource, icon: 'panorama' };
+              if (index === 1) return { ...resource, icon: 'paint' };
+              return resource;
+            },
+          )}
         />
 
         <GuideSectionRule />

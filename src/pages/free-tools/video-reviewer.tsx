@@ -108,19 +108,30 @@ export default function VideoReviewerPage() {
         </section>
 
         <DefinitionBlock term="Video Reviewer">
-          A video reviewer is an online tool that lets you watch a video and leave feedback pinned to exact frames and timestamps. Instead of writing &lsquo;fix the shot around the middle,&rsquo; reviewers click the precise frame and leave a note that stays linked to that moment. Video reviewers are used by production teams, agencies, and editors to collect clear, actionable feedback and speed up approval cycles.
+          A video reviewer is an online tool that lets you watch a video and leave feedback pinned to exact frames and
+          timestamps. Instead of writing &lsquo;fix the shot around the middle,&rsquo; reviewers click the precise frame
+          and leave a note that stays linked to that moment. Video reviewers are used by production teams, agencies, and
+          editors to collect clear, actionable feedback and speed up approval cycles.
         </DefinitionBlock>
 
         <VideoReviewerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-reviewer')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-reviewer')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoReviewerFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['reviewApproval', 'videoAnnotation', 'clientApprovals', 'secureAssetStorage'])}
+          resources={getRelatedResources([
+            'reviewApproval',
+            'videoAnnotation',
+            'clientApprovals',
+            'secureAssetStorage',
+          ])}
           title="More Resources"
           description="Learn more about video review workflows, approval processes, and team collaboration."
         />

@@ -15,7 +15,7 @@ export const imageAnnotatorFaqs = [
   {
     question: 'How do I annotate an image online?',
     answer:
-      "Upload your image (JPG, PNG, GIF, WebP, etc.) to an image annotator tool and open it in the review interface. Click or select the area you want to comment on, then add a comment, highlight, or drawing—your annotation is attached to that exact location. Share a review link so clients or collaborators can view and add their own annotations without creating an account.",
+      'Upload your image (JPG, PNG, GIF, WebP, etc.) to an image annotator tool and open it in the review interface. Click or select the area you want to comment on, then add a comment, highlight, or drawing—your annotation is attached to that exact location. Share a review link so clients or collaborators can view and add their own annotations without creating an account.',
   },
   {
     question: 'Can clients annotate images without creating an account?',
@@ -90,8 +90,8 @@ export const ImageAnnotatorFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Upload your image and open it in the review interface. Click or select the area you want to comment on,
-            then add a comment, highlight, or drawing pinned to that location. Share a link so others can add their own
+            Upload your image and open it in the review interface. Click or select the area you want to comment on, then
+            add a comment, highlight, or drawing pinned to that location. Share a link so others can add their own
             annotations without creating an account.
           </p>
         </div>
@@ -159,8 +159,8 @@ export const ImageAnnotatorFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Keeping image annotation in a collaboration tool gives you one project timeline, one set of review links
-            for clients, and one approval workflow—instead of juggling image tools, email, and separate review apps.
+            Keeping image annotation in a collaboration tool gives you one project timeline, one set of review links for
+            clients, and one approval workflow—instead of juggling image tools, email, and separate review apps.
           </p>
         </div>
       ),

@@ -413,8 +413,7 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-convert-an-image-into-a-link',
     content: {
       metaFields: {
-        title:
-          'How to Convert an Image into a Link: Share, Review, and Approve Without Heavy Attachments',
+        title: 'How to Convert an Image into a Link: Share, Review, and Approve Without Heavy Attachments',
         description:
           'Learn how to convert an image into a link, control who can open it, and share one URL so feedback stays centralized and versions stay clear.',
       },
@@ -434,8 +433,7 @@ export const LOCAL_GUIDE_ARTICLE_CARDS: ArticleCard[] = [
     full_slug: '/guides/how-to-organize-your-files',
     content: {
       metaFields: {
-        title:
-          'How to Organize Your Files: Projects, Versions, and One Place for Creative Assets',
+        title: 'How to Organize Your Files: Projects, Versions, and One Place for Creative Assets',
         description:
           'Learn how to organize your files around projects and deliverables, name versions clearly, and keep video, images, and documents easy to find for your whole team.',
       },

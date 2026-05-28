@@ -75,8 +75,7 @@ export default function PdfAnnotatorPage() {
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">PDF Annotator</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Add location-pinned comments, highlights, drawings, and markup directly to PDFs. Pin feedback to exact
-              spots on the page and collaborate with precise annotation—no software installation required for
-              reviewers.
+              spots on the page and collaborate with precise annotation—no software installation required for reviewers.
             </p>
             <HeroCtaButtons />
           </div>
@@ -92,19 +91,29 @@ export default function PdfAnnotatorPage() {
         </section>
 
         <DefinitionBlock term="PDF Annotator">
-          A PDF annotator is an online tool for adding comments, highlights, drawings, and markup to PDF documents. Notes are pinned to exact locations on the page so reviewers can point to precisely what needs to change. PDF annotators replace the need to print documents or juggle email attachments during review cycles.
+          A PDF annotator is an online tool for adding comments, highlights, drawings, and markup to PDF documents.
+          Notes are pinned to exact locations on the page so reviewers can point to precisely what needs to change. PDF
+          annotators replace the need to print documents or juggle email attachments during review cycles.
         </DefinitionBlock>
 
         <PdfAnnotatorGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/pdf-annotator')} title="More Tools for Creative Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/pdf-annotator')}
+          title="More Tools for Creative Teams"
+        />
 
         <PdfAnnotatorFAQ />
 
         {/* Related resources */}
         <RelatedResourcesSection
-          resources={getRelatedResources(['annotatePdf', 'drawOnPdfDocument', 'addCommentsToPdf', 'secureAssetStorage'])}
+          resources={getRelatedResources([
+            'annotatePdf',
+            'drawOnPdfDocument',
+            'addCommentsToPdf',
+            'secureAssetStorage',
+          ])}
           title="More Resources"
           description="Explore other Kreatli platform features for PDF annotation, review, and collaboration."
         />
@@ -122,4 +131,4 @@ export default function PdfAnnotatorPage() {
       <SignUpModal />
     </>
   );
-};
+}

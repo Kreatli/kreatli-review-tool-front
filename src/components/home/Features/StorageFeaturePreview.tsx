@@ -1,5 +1,5 @@
 import { Button, Card, CardBody, Chip, CircularProgress, Image, Progress } from '@heroui/react';
-import { useEffect, useRef,useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useIsTouchScreen } from '../../../hooks/useIsTouchScreen';
 import { useSession } from '../../../hooks/useSession';

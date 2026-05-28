@@ -32,7 +32,7 @@ export default function PdfReviewerPage() {
           name="description"
           content="Review PDFs with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Review PDFs Online – Free PDF Reviewer | Kreatli" />
+        <meta property="og:title" content="Review PDFs Online – Free PDF Reviewer | Kreatli" />
         <meta
           property="og:description"
           content="Review PDFs with pinned comments, annotations, and approvals. Share review links with clients. Try free with a 7-day trial."
@@ -91,13 +91,18 @@ export default function PdfReviewerPage() {
         </section>
 
         <DefinitionBlock term="PDF Reviewer">
-          A PDF reviewer is a tool for reviewing PDF documents with location-pinned comments, annotations, and approval workflows. Reviewers add feedback directly on the PDF — no downloads or email attachments required. PDF reviewers help teams collect and track feedback in one place.
+          A PDF reviewer is a tool for reviewing PDF documents with location-pinned comments, annotations, and approval
+          workflows. Reviewers add feedback directly on the PDF — no downloads or email attachments required. PDF
+          reviewers help teams collect and track feedback in one place.
         </DefinitionBlock>
 
         <PdfReviewerGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/pdf-reviewer')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/pdf-reviewer')}
+          title="More Tools for Video Teams"
+        />
 
         <PdfReviewerFAQ />
 
@@ -121,4 +126,4 @@ export default function PdfReviewerPage() {
       <SignUpModal />
     </>
   );
-};
+}

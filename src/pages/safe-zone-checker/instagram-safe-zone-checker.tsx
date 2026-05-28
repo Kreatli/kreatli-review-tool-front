@@ -48,7 +48,10 @@ export default function InstagramSafeZoneCheckerPage() {
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
               See the <strong className="font-semibold text-foreground-700">Instagram Reels UI overlay</strong> on your
               video—profile, audio, captions, and safe margins—before you post. For TikTok comparisons, use the{' '}
-              <NextLink href="/safe-zone-checker/tiktok-safe-zone-checker" className="text-primary underline underline-offset-2">
+              <NextLink
+                href="/safe-zone-checker/tiktok-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
                 TikTok checker
               </NextLink>
               . Pixels and theory:{' '}
@@ -64,10 +67,7 @@ export default function InstagramSafeZoneCheckerPage() {
           >
             <SafeZoneScreen defaultPlatform="instagram" />
           </FreeToolsEntitlementSection>
-          <section
-            className="mx-auto mt-10 max-w-2xl px-2"
-            aria-labelledby="instagram-reels-safe-heading"
-          >
+          <section className="mx-auto mt-10 max-w-2xl px-2" aria-labelledby="instagram-reels-safe-heading">
             <h2 id="instagram-reels-safe-heading" className="mb-2 text-center font-sans text-lg font-bold sm:text-xl">
               Reels safe zone
             </h2>

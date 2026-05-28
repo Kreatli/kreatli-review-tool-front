@@ -20,4 +20,3 @@ export function HeroCtaButtons({ className }: { className?: string }) {
     </div>
   );
 }
-

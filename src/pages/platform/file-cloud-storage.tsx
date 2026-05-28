@@ -12,6 +12,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -19,7 +20,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -126,7 +126,6 @@ export default function FileCloudStoragePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/file-cloud-storage" />
       {/* Secure File Cloud Storage Preview Section */}
       <section className="relative overflow-hidden px-6 py-16">
@@ -150,8 +149,8 @@ export default function FileCloudStoragePage() {
               File Cloud Storage That Knows Your Projects
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Instead of generic folders, Kreatli organizes file cloud storage around projects, status, and deliverables—so
-              files, feedback, and approvals stay connected across media types.
+              Instead of generic folders, Kreatli organizes file cloud storage around projects, status, and
+              deliverables—so files, feedback, and approvals stay connected across media types.
             </p>
           </div>
           <ProjectFeaturePreview />
@@ -178,8 +177,8 @@ export default function FileCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Encrypted Cloud Storage</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Store creative files in encrypted cloud storage with enterprise-grade security. Protect client work and
-                  internal assets without sacrificing speed or accessibility.
+                  Store creative files in encrypted cloud storage with enterprise-grade security. Protect client work
+                  and internal assets without sacrificing speed or accessibility.
                 </p>
               </CardBody>
             </Card>
@@ -193,8 +192,8 @@ export default function FileCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Smart Organization Across File Types</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Organize video, images, PDFs, and decks by project, status, and tags. Filter quickly to find anything in
-                  your file cloud storage without digging through disconnected drives.
+                  Organize video, images, PDFs, and decks by project, status, and tags. Filter quickly to find anything
+                  in your file cloud storage without digging through disconnected drives.
                 </p>
               </CardBody>
             </Card>
@@ -208,8 +207,8 @@ export default function FileCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Version History for Every Asset</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Keep every revision of a file in a clear version stack. Switch versions, compare changes, and know exactly
-                  which export or document was approved.
+                  Keep every revision of a file in a clear version stack. Switch versions, compare changes, and know
+                  exactly which export or document was approved.
                 </p>
               </CardBody>
             </Card>
@@ -238,8 +237,8 @@ export default function FileCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Built-In Review on Stored Files</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Open stored assets in a review experience tailored to the file type—frame-accurate for video, page- and
-                  spot-based for PDFs and images—without exporting to extra tools.
+                  Open stored assets in a review experience tailored to the file type—frame-accurate for video, page-
+                  and spot-based for PDFs and images—without exporting to extra tools.
                 </p>
               </CardBody>
             </Card>
@@ -253,8 +252,8 @@ export default function FileCloudStoragePage() {
                   <h3 className="font-sans text-lg font-semibold">Secure Sharing Links</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Share stored files through secure links instead of raw folder access. Give reviewers a simple way to see
-                  work and respond while keeping your file cloud storage under control.
+                  Share stored files through secure links instead of raw folder access. Give reviewers a simple way to
+                  see work and respond while keeping your file cloud storage under control.
                 </p>
               </CardBody>
             </Card>
@@ -282,7 +281,8 @@ export default function FileCloudStoragePage() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Frequently Asked Questions</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Learn how Kreatli handles file cloud storage, large creative assets, and collaboration for production teams.
+              Learn how Kreatli handles file cloud storage, large creative assets, and collaboration for production
+              teams.
             </p>
           </div>
           <Accordion variant="splitted" className="gap-2">
@@ -326,4 +326,3 @@ export default function FileCloudStoragePage() {
     </>
   );
 }
-

@@ -5,11 +5,9 @@ import { useEffect, useMemo } from 'react';
 import { FileStateContextProvider } from '../../../contexts/File';
 import { ProjectUploadContextProvider } from '../../../contexts/Project/ProjectUploadContext';
 import { useProjectStatusesModal } from '../../../hooks/useProjectStatusesModal';
-import { useSession } from '../../../hooks/useSession';
 import { useGetAssetFileId, useGetAssetStackId } from '../../../services/hooks';
 import { useGetProjectId } from '../../../services/hooks';
 import { FileDto } from '../../../services/types';
-import { ProjectPaywall } from '../../project/Project/ProjectPaywall';
 import { EditProjectStatusesModal } from '../../project/ProjectModals/EditProjectStatusesModal';
 import { AssetPanel } from '../AssetPanel';
 import { ReviewTool } from '../ReviewTool';
@@ -23,7 +21,6 @@ interface Props {
 export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { user } = useSession();
 
   const { data: stack, isPending: isAssetLoading, error } = useGetAssetStackId(stackId);
   const { data: compareFile, isLoading: isCompareAssetLoading } = useGetAssetFileId(compareFileId ?? '', {
@@ -67,10 +64,6 @@ export const Stack = ({ stackId, projectId, compareFileId }: Props) => {
 
   if (error && 'status' in error && error.status === 404) {
     return null;
-  }
-
-  if (!isProjectLoading && !error && user && project && !project?.createdBy?.subscription.isActive) {
-    return <ProjectPaywall project={project} user={user} />;
   }
 
   if (isLoading || !project || !selectedFile) {

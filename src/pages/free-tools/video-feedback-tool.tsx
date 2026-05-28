@@ -88,8 +88,9 @@ export default function VideoFeedbackToolPage() {
               Video review and approval — in one video review tool
             </h2>
             <p className="mx-auto max-w-3xl text-base text-foreground-500">
-              Use Kreatli for <strong className="font-semibold text-foreground-700">online video review and approval</strong>{' '}
-              workflows: threaded comments, visual markup, and clear ownership of who signed off on each cut.
+              Use Kreatli for{' '}
+              <strong className="font-semibold text-foreground-700">online video review and approval</strong> workflows:
+              threaded comments, visual markup, and clear ownership of who signed off on each cut.
             </p>
             <HeroCtaButtons />
           </div>
@@ -105,13 +106,18 @@ export default function VideoFeedbackToolPage() {
         </section>
 
         <DefinitionBlock term="Video Feedback Tool">
-          A video feedback tool is software that lets reviewers comment directly on video frames with text, drawings, and markup. Feedback is attached to specific timestamps so editors see exactly where changes are needed. Teams use video feedback tools to replace vague email threads with precise, frame-accurate notes.
+          A video feedback tool is software that lets reviewers comment directly on video frames with text, drawings,
+          and markup. Feedback is attached to specific timestamps so editors see exactly where changes are needed. Teams
+          use video feedback tools to replace vague email threads with precise, frame-accurate notes.
         </DefinitionBlock>
 
         <VideoFeedbackToolGuide />
 
         {/* Related tools */}
-        <MoreFreeToolsSection tools={getFreeToolsForFreeToolPage('/free-tools/video-feedback-tool')} title="More Tools for Video Teams" />
+        <MoreFreeToolsSection
+          tools={getFreeToolsForFreeToolPage('/free-tools/video-feedback-tool')}
+          title="More Tools for Video Teams"
+        />
 
         <VideoFeedbackToolFAQ />
 

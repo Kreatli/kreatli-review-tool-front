@@ -149,7 +149,6 @@ export default function SecureAssetStoragePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/secure-asset-storage" />
       {/* Secure Storage Preview Section */}
       <section className="relative overflow-hidden px-6 py-16">

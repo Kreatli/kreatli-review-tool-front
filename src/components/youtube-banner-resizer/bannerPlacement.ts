@@ -13,7 +13,13 @@ export function getCoverScale(canvasW: number, canvasH: number, imgW: number, im
   return Math.max(canvasW / imgW, canvasH / imgH);
 }
 
-export function getEffectiveScale(canvasW: number, canvasH: number, imgW: number, imgH: number, placement: BannerPlacement): number {
+export function getEffectiveScale(
+  canvasW: number,
+  canvasH: number,
+  imgW: number,
+  imgH: number,
+  placement: BannerPlacement,
+): number {
   const cover = getCoverScale(canvasW, canvasH, imgW, imgH);
   const zoom = Number.isFinite(placement.zoom) && placement.zoom > 0 ? placement.zoom : 1;
   return cover * zoom;
@@ -80,4 +86,3 @@ function clamp(value: number, min: number, max: number): number {
   if (!Number.isFinite(value)) return 0;
   return Math.min(max, Math.max(min, value));
 }
-

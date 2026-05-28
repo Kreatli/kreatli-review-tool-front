@@ -295,14 +295,7 @@ export function VideoFrameRateConverterTool() {
         variant: 'flat',
       });
     }
-  }, [
-    durationSeconds,
-    file,
-    outputFormat,
-    runFFmpegFpsConvert,
-    targetFps,
-    videoUrl,
-  ]);
+  }, [durationSeconds, file, outputFormat, runFFmpegFpsConvert, targetFps, videoUrl]);
 
   const download = useCallback(() => {
     if (isInactiveLocked) {

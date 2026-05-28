@@ -1,9 +1,8 @@
 import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
-import { Icon, IconType } from '../various/Icon';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
-
+import { Icon, IconType } from '../various/Icon';
 
 const IMG = '/video-annotation-guide/step';
 
@@ -101,7 +100,14 @@ export const ImageReviewerGuide = () => {
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                            <Button
+                              as={NextLink}
+                              href={KREATLI_PLATFORM_ENTRY_HREF}
+                              size="lg"
+                              className="bg-foreground text-content1"
+                            >
+                              {OPEN_IN_KREATLI_LABEL}
+                            </Button>
                             <Button
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
@@ -157,8 +163,8 @@ export const ImageReviewerGuide = () => {
                   <h3 className="font-sans text-xl font-bold">Location-Pinned Comments</h3>
                 </div>
                 <p className="text-foreground-500">
-                  Every comment is tied to the exact spot on the image. Designers and stakeholders see precisely what
-                  to change—no more guessing which area you mean.
+                  Every comment is tied to the exact spot on the image. Designers and stakeholders see precisely what to
+                  change—no more guessing which area you mean.
                 </p>
               </CardBody>
             </Card>
@@ -276,8 +282,8 @@ export const ImageReviewerGuide = () => {
               <CardBody className="p-6">
                 <h3 className="mb-3 font-sans text-lg font-bold">Design & Photo</h3>
                 <p className="text-foreground-500">
-                  Review images with location-pinned comments and visual markup. Designers and photographers see
-                  exactly what to change, reducing revision cycles and missed feedback.
+                  Review images with location-pinned comments and visual markup. Designers and photographers see exactly
+                  what to change, reducing revision cycles and missed feedback.
                 </p>
               </CardBody>
             </Card>
@@ -288,7 +294,9 @@ export const ImageReviewerGuide = () => {
       {/* CTA to Platform */}
       <section className="relative overflow-hidden bg-foreground-50 px-6 py-12">
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Explore Kreatli&apos;s Image Review Features</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+            Explore Kreatli&apos;s Image Review Features
+          </h2>
           <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground-500">
             Learn more about image annotation, review, and approval workflows in Kreatli.
           </p>

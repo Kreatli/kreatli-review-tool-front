@@ -44,8 +44,9 @@ export default function TikTokSafeZoneCheckerPage() {
           <div className="flex flex-col gap-4 pb-4 pt-8">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">TikTok Safe Zone Checker</h1>
             <p className="mx-auto max-w-2xl text-center text-large text-foreground-500">
-              Upload your video to preview <strong className="font-semibold text-foreground-700">TikTok safe zone</strong>{' '}
-              overlays in seconds. New to the topic? Read the{' '}
+              Upload your video to preview{' '}
+              <strong className="font-semibold text-foreground-700">TikTok safe zone</strong> overlays in seconds. New
+              to the topic? Read the{' '}
               <NextLink href="/guides/tiktok-safe-zone" className="text-primary underline underline-offset-2">
                 TikTok safe zone guide
               </NextLink>{' '}
