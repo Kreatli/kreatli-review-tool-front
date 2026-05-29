@@ -77,7 +77,12 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const setIsUploadedToS3 = useProjectUploads((state) => state.setIsUploadedToS3);
   const uploadFile = useMultipartUpload({ projectId: project.id });
 
-  const uploadsCount = useProjectUploads((state) => state.uploads.length + state.uploadsQueue.length);
+  const uploadsCount = useProjectUploads(
+    (state) =>
+      state.uploads.reduce((acc, upload) => acc + (upload.isUploadedToS3 || upload.isError ? 0 : 1), 0) +
+      state.uploadsQueue.length,
+  );
+
   const uploadsQueue = useProjectUploads((state) => state.uploadsQueue);
   const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
   const removeItemFromUploadQueue = useProjectUploads((state) => state.removeItemFromUploadQueue);
