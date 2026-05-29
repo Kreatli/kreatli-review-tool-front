@@ -152,7 +152,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     }
 
     const hasEnoughSpace = project.createdBy && getCanAddAssets(project.createdBy, files);
-    const hasEnoughLimits = project.fileCount + uploadsCount < 2;
+    const hasEnoughLimits = user?.subscription.isActive || project.fileCount + uploadsCount < 2;
 
     if (!hasEnoughSpace || !hasEnoughLimits) {
       setLimitType(hasEnoughSpace ? 'uploads' : 'storage');
