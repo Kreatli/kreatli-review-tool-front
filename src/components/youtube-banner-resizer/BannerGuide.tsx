@@ -1,9 +1,8 @@
 import { Button, Card, CardBody, Image } from '@heroui/react';
 import NextLink from 'next/link';
 
-import { Icon, IconType } from '../various/Icon';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
-
+import { Icon, IconType } from '../various/Icon';
 
 export const BannerGuide = () => {
   const workflowSteps: Array<{
@@ -77,9 +76,7 @@ export const BannerGuide = () => {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-10 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              How to Use the YouTube Banner Resizer
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How to Use the YouTube Banner Resizer</h2>
             <p className="mx-auto max-w-2xl text-base text-foreground-500">
               Follow this step-by-step process to resize your YouTube banner correctly and avoid cropping issues across
               all devices.
@@ -115,7 +112,14 @@ export const BannerGuide = () => {
                         )}
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                            <Button
+                              as={NextLink}
+                              href={KREATLI_PLATFORM_ENTRY_HREF}
+                              size="lg"
+                              className="bg-foreground text-content1"
+                            >
+                              {OPEN_IN_KREATLI_LABEL}
+                            </Button>
                             <Button
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
@@ -162,9 +166,7 @@ export const BannerGuide = () => {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              YouTube Banner Size & Safe Area Explained
-            </h2>
+            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">YouTube Banner Size & Safe Area Explained</h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
               Understanding YouTube banner dimensions and safe areas ensures your channel art looks perfect on all
               devices. This guide covers everything you need to know about creating effective YouTube banners that work

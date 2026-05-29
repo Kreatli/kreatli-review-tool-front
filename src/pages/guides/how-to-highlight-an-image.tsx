@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -160,8 +160,8 @@ export default function HowToHighlightAnImageGuidePage() {
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[1])}>{TOC_SECTIONS[1]}</h2>
           <p>
-            Vague feedback creates multiple interpretations. Highlights reduce ambiguity by making the target area visible
-            without extra screenshots or explanatory threads.
+            Vague feedback creates multiple interpretations. Highlights reduce ambiguity by making the target area
+            visible without extra screenshots or explanatory threads.
           </p>
           <ul>
             <li>

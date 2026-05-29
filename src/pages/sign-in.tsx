@@ -6,7 +6,6 @@ import React from 'react';
 import { SignInForm } from '../components/auth/SignInForm';
 import { StartPageLayout } from '../components/layout/StartPageLayout';
 import { useSession } from '../hooks/useSession';
-import { UserDto } from '../services/types';
 import { getSafeReturnToParam, getStandaloneToolPostAuthReplaceUrl } from '../utils/standaloneMarketingToolAuth';
 
 export default function SignIn() {
@@ -16,8 +15,7 @@ export default function SignIn() {
 
   const returnToRaw = searchParams.get('returnTo');
   const safeReturnTo = returnToRaw ? getSafeReturnToParam(returnToRaw) : null;
-  const signUpHref =
-    safeReturnTo !== null ? `/sign-up?returnTo=${encodeURIComponent(safeReturnTo)}` : '/sign-up';
+  const signUpHref = safeReturnTo !== null ? `/sign-up?returnTo=${encodeURIComponent(safeReturnTo)}` : '/sign-up';
 
   React.useEffect(() => {
     if (!isSignedIn || !user) return;
@@ -35,7 +33,7 @@ export default function SignIn() {
     router.replace('/');
   }, [isSignedIn, user, router, safeReturnTo]);
 
-  const handleSuccess = (signedInUser: UserDto) => {
+  const handleSuccess = () => {
     const redirectToProjectId = searchParams.get('redirectToProjectId');
 
     if (redirectToProjectId) {

@@ -40,11 +40,7 @@ export const DeliverableStartEndDate = ({
       isOpen={isOpen}
       autoFocus={autoFocus}
       size={size}
-      value={
-        startIsoDate && endIsoDate
-          ? { start: parseDate(startIsoDate), end: parseDate(endIsoDate) }
-          : null
-      }
+      value={startIsoDate && endIsoDate ? { start: parseDate(startIsoDate), end: parseDate(endIsoDate) } : null}
       isInvalid={!!startDateFieldState.error || !!endDateFieldState.error}
       selectorButtonPlacement="start"
       visibleMonths={2}

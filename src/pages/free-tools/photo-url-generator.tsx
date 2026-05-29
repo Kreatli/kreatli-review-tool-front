@@ -154,9 +154,10 @@ export default function PhotoUrlGeneratorPage() {
           </div>
         </section>
 
-
         <DefinitionBlock term="Photo URL Generator">
-          A photo URL generator produces a link to a photography or still asset so clients and retouchers can review selections or edits online. It keeps large raw or high-res files out of inboxes while preserving a clear review trail.
+          A photo URL generator produces a link to a photography or still asset so clients and retouchers can review
+          selections or edits online. It keeps large raw or high-res files out of inboxes while preserving a clear
+          review trail.
         </DefinitionBlock>
         {/* How to turn your photo into a link guide */}
         <PlatformStepGuide

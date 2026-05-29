@@ -30,11 +30,7 @@ export default function HomePage({ comparisons }: Props) {
 
   return (
     <>
-      <SeoHead
-        title={MARKETING_TITLE}
-        description={META_DESCRIPTION}
-        canonicalPath="/"
-      />
+      <SeoHead title={MARKETING_TITLE} description={META_DESCRIPTION} canonicalPath="/" />
       {isSignedIn && (
         <Head>
           <title key="title">Kreatli | Projects</title>

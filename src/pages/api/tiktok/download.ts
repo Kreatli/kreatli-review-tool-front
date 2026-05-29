@@ -1,6 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-type ErrorResponse = { ok: false; code: 'METHOD_NOT_ALLOWED' | 'INVALID_URL' | 'UNSUPPORTED_HOST' | 'UPSTREAM_ERROR'; message: string };
+type ErrorResponse = {
+  ok: false;
+  code: 'METHOD_NOT_ALLOWED' | 'INVALID_URL' | 'UNSUPPORTED_HOST' | 'UPSTREAM_ERROR';
+  message: string;
+};
 
 function json(res: NextApiResponse, status: number, body: ErrorResponse) {
   res.status(status).setHeader('Content-Type', 'application/json; charset=utf-8').json(body);
@@ -46,7 +50,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const src =
     req.method === 'GET'
-      ? (typeof req.query.url === 'string' ? req.query.url : '')
+      ? typeof req.query.url === 'string'
+        ? req.query.url
+        : ''
       : (() => {
           const parsed = parseBody(req);
           return parsed.ok ? parsed.url : '';
@@ -54,7 +60,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
   const name =
     req.method === 'GET'
-      ? (typeof req.query.name === 'string' ? req.query.name : 'tiktok_video')
+      ? typeof req.query.name === 'string'
+        ? req.query.name
+        : 'tiktok_video'
       : (() => {
           const parsed = parseBody(req);
           return parsed.ok ? parsed.name : 'tiktok_video';
@@ -106,4 +114,3 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return json(res, 502, { ok: false, code: 'UPSTREAM_ERROR', message: 'Failed to download from upstream.' });
   }
 }
-

@@ -1,8 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
 import { Readable } from 'node:stream';
-import type { ReadableStream as WebReadableStream } from 'node:stream/web';
 import { pipeline } from 'node:stream/promises';
+import type { ReadableStream as WebReadableStream } from 'node:stream/web';
+
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getYouTubeInnerTube } from '../../../server/youtube-innertube';
 
@@ -161,12 +161,7 @@ async function proxyGoogleVideo(urlStr: string, name: string, referer: string | 
     };
     const upstream = await fetch(url.toString(), { redirect: 'follow', headers: upstreamHeaders });
     if (!upstream.ok || !upstream.body) {
-      console.warn(
-        'YouTube download upstream proxy failed:',
-        upstream.status,
-        upstream.statusText,
-        url.hostname,
-      );
+      console.warn('YouTube download upstream proxy failed:', upstream.status, upstream.statusText, url.hostname);
       return json(res, 502, { ok: false, code: 'UPSTREAM_ERROR', message: 'Failed to download from upstream.' });
     }
 

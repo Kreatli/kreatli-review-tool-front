@@ -39,8 +39,7 @@ export const MiniActivityFeed = () => {
             <Avatar size="sm" src={e.avatar} className="mt-0.5 h-4 w-4 flex-shrink-0" />
             <div className="min-w-0 flex-1">
               <p className="text-[10px] leading-tight">
-                <span className="font-semibold">{e.user}</span>{' '}
-                <span className="text-foreground-500">{e.action}</span>
+                <span className="font-semibold">{e.user}</span> <span className="text-foreground-500">{e.action}</span>
               </p>
               <span className="text-[8px] text-foreground-400">{e.time}</span>
             </div>

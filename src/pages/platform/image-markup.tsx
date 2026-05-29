@@ -10,12 +10,10 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  ANNOTATE_IMAGE_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
+import { ANNOTATE_IMAGE_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -23,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -34,7 +31,7 @@ const faqs = [
   {
     question: 'How do I add image markup in Kreatli?',
     answer:
-      "Upload your image to a Kreatli project and open it in review. Select the area to mark up, then add a comment, highlight, or drawing. Everything attaches to that location. Share a review link so clients can add markup without creating an account.",
+      'Upload your image to a Kreatli project and open it in review. Select the area to mark up, then add a comment, highlight, or drawing. Everything attaches to that location. Share a review link so clients can add markup without creating an account.',
   },
   {
     question: 'Can clients markup images without creating an account?',
@@ -119,8 +116,8 @@ export default function ImageMarkupPage() {
               Image Markup
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-              Mark up images with comments, highlights, and drawing tools. Give pixel-level feedback in one workspace with
-              your video and creative assets.
+              Mark up images with comments, highlights, and drawing tools. Give pixel-level feedback in one workspace
+              with your video and creative assets.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
@@ -185,9 +182,7 @@ export default function ImageMarkupPage() {
                   </div>
                   <h3 className="font-sans text-lg font-semibold">Highlights & shapes</h3>
                 </div>
-                <p className="text-sm text-foreground-500">
-                  Mark regions, crops, and layout areas that need changes.
-                </p>
+                <p className="text-sm text-foreground-500">Mark regions, crops, and layout areas that need changes.</p>
               </CardBody>
             </Card>
 
@@ -213,9 +208,7 @@ export default function ImageMarkupPage() {
                   </div>
                   <h3 className="font-sans text-lg font-semibold">Color-coded feedback</h3>
                 </div>
-                <p className="text-sm text-foreground-500">
-                  Keep markup organized by reviewer, priority, or category.
-                </p>
+                <p className="text-sm text-foreground-500">Keep markup organized by reviewer, priority, or category.</p>
               </CardBody>
             </Card>
 
@@ -227,9 +220,7 @@ export default function ImageMarkupPage() {
                   </div>
                   <h3 className="font-sans text-lg font-semibold">Multi-reviewer markup</h3>
                 </div>
-                <p className="text-sm text-foreground-500">
-                  See everyone’s marks in one view with clear attribution.
-                </p>
+                <p className="text-sm text-foreground-500">See everyone’s marks in one view with clear attribution.</p>
               </CardBody>
             </Card>
 

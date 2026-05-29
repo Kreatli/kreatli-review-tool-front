@@ -8,7 +8,7 @@ import { useIsBreakpoint } from '../../../hooks/use-is-breakpoint';
 // --- Hooks ---
 import { useTiptapEditor } from '../../../hooks/use-tiptap-editor';
 // --- Lib ---
-import { isExtensionAvailable,isMarkInSchema, isNodeTypeSelected } from '../../../lib/tiptap-utils';
+import { isExtensionAvailable, isMarkInSchema, isNodeTypeSelected } from '../../../lib/tiptap-utils';
 // --- Icons ---
 import { HighlighterIcon } from '../../tiptap-icons/highlighter-icon';
 

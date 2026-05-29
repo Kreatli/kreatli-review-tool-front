@@ -68,8 +68,8 @@ export default function YouTubeBannerResizerPage() {
             <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-3 text-center">
               <h1 className="font-sans text-3xl font-bold tracking-tight sm:text-4xl">YouTube Banner Resizer</h1>
               <p className="text-large text-foreground-500">
-                Crop to <strong className="font-semibold text-foreground-700">2560×1440</strong>. Move the frame to choose
-                what exports, then download PNG/JPG.
+                Crop to <strong className="font-semibold text-foreground-700">2560×1440</strong>. Move the frame to
+                choose what exports, then download PNG/JPG.
               </p>
               <div className="mt-1 flex flex-wrap items-center justify-center gap-2 text-xs text-foreground-500">
                 <span className="rounded-full bg-foreground-100 px-3 py-1">Locked 2560×1440</span>

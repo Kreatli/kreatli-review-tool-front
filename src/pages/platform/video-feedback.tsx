@@ -10,8 +10,9 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { COMMENT_ON_VIDEO_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
@@ -20,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -139,7 +139,6 @@ export default function VideoFeedbackPage() {
           <PlatformInteractiveReviewPreview />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/video-feedback" />
       <PlatformStepGuide

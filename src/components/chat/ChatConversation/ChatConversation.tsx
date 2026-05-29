@@ -8,11 +8,22 @@ import { ChatConversationSearchMessages } from './ChatConversationSearchMessages
 
 interface Props {
   chat: ChatDto;
+  shouldShowPaywall?: boolean;
   isDisabled?: boolean;
 }
 
-export const ChatConversation = ({ chat, isDisabled = false }: Props) => {
+export const ChatConversation = ({ chat, shouldShowPaywall = false, isDisabled = false }: Props) => {
   const [search, setSearch] = React.useState('');
+
+  if (shouldShowPaywall) {
+    return (
+      <div key={chat.id} className="grid grid-rows-[auto_1fr_auto]">
+        <ChatConversationHeader chat={chat} isDisabled={isDisabled} search={search} onSearchChange={setSearch} />
+        <div />
+        <div />
+      </div>
+    );
+  }
 
   return (
     <div key={chat.id} className="grid grid-rows-[auto_1fr_auto]">

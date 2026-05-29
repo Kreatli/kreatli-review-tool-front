@@ -38,10 +38,7 @@ export function HowToStructuredData({ name, description, steps }: HowToStructure
 
   return (
     <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
     </Head>
   );
 }

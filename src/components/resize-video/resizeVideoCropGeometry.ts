@@ -161,7 +161,12 @@ export function getDefaultFrameRelative(
   const { width: fw, height: fh } = getInscribedFrameSizeForAspect(naturalWidth, naturalHeight, outputAspect);
   const fl = (naturalWidth - fw) / 2;
   const ft = (naturalHeight - fh) / 2;
-  return clampFrameRelative(imgLocalToRelative(fl, ft, fw, fh, naturalWidth, naturalHeight), naturalWidth, naturalHeight, outputAspect);
+  return clampFrameRelative(
+    imgLocalToRelative(fl, ft, fw, fh, naturalWidth, naturalHeight),
+    naturalWidth,
+    naturalHeight,
+    outputAspect,
+  );
 }
 
 export function frameRectFromRelative(
@@ -388,10 +393,10 @@ export function evenCropForH264(
   let esx = Math.max(0, Math.floor(sx) & ~1);
   let esy = Math.max(0, Math.floor(sy) & ~1);
 
-  if (esx + esw > iw) esw = Math.max(2, ((iw - esx) & ~1) || 2);
-  if (esy + esh > ih) esh = Math.max(2, ((ih - esy) & ~1) || 2);
-  if (esx + esw > iw) esx = Math.max(0, ((iw - esw) & ~1));
-  if (esy + esh > ih) esy = Math.max(0, ((ih - esh) & ~1));
+  if (esx + esw > iw) esw = Math.max(2, (iw - esx) & ~1 || 2);
+  if (esy + esh > ih) esh = Math.max(2, (ih - esy) & ~1 || 2);
+  if (esx + esw > iw) esx = Math.max(0, (iw - esw) & ~1);
+  if (esy + esh > ih) esy = Math.max(0, (ih - esh) & ~1);
 
   return { sx: esx, sy: esy, sw: esw, sh: esh };
 }

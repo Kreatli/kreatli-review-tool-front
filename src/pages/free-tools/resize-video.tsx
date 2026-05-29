@@ -4,7 +4,7 @@ import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
-import { RESIZE_VIDEO_FAQS,ResizeVideoFAQ } from '../../components/resize-video/ResizeVideoFAQ';
+import { RESIZE_VIDEO_FAQS, ResizeVideoFAQ } from '../../components/resize-video/ResizeVideoFAQ';
 import { ResizeVideoGuide } from '../../components/resize-video/ResizeVideoGuide';
 import { ResizeVideoTool } from '../../components/resize-video/ResizeVideoTool';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';

@@ -83,14 +83,12 @@ export const VIDEO_FRAME_EXTRACTOR_FAQ_DEFS: VideoFrameExtractorFaqDef[] = [
   {
     key: 'export-formats',
     title: 'Can I export frames as PNG or JPG?',
-    answer:
-      'Yes. Export as PNG for best quality (recommended) or JPG for smaller files.',
+    answer: 'Yes. Export as PNG for best quality (recommended) or JPG for smaller files.',
   },
   {
     key: 'download-zip',
     title: 'Can I download multiple frames at once?',
-    answer:
-      'Yes. You can download your captured frames as a ZIP, including either all frames or only selected frames.',
+    answer: 'Yes. You can download your captured frames as a ZIP, including either all frames or only selected frames.',
   },
   {
     key: 'best-thumbnail',

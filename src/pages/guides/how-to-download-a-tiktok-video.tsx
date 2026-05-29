@@ -125,9 +125,9 @@ export default function HowToDownloadATikTokVideoGuidePage() {
         <div className={wysiwygStyles.wysiwyg}>
           <p>
             <strong>How to download a TikTok video</strong> usually comes down to one thing: you need a{' '}
-            <strong>public TikTok link</strong> that resolves to a downloadable file. The rest is troubleshooting—browser
-            download behavior, link redirects, and whether TikTok exposes a <strong>watermark-free</strong> file for that
-            post.
+            <strong>public TikTok link</strong> that resolves to a downloadable file. The rest is
+            troubleshooting—browser download behavior, link redirects, and whether TikTok exposes a{' '}
+            <strong>watermark-free</strong> file for that post.
           </p>
 
           <KeyTakeaways
@@ -174,17 +174,13 @@ export default function HowToDownloadATikTokVideoGuidePage() {
               </p>
             </li>
           </ul>
-          <p>
-            If you paste a profile URL or a non-video page, you usually won’t get a downloadable MP4.
-          </p>
+          <p>If you paste a profile URL or a non-video page, you usually won’t get a downloadable MP4.</p>
 
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[2])}>{TOC_SECTIONS[2]}</h2>
           <ol>
             <li>
-              <p>
-                Copy the TikTok video URL from the Share menu.
-              </p>
+              <p>Copy the TikTok video URL from the Share menu.</p>
             </li>
             <li>
               <p>
@@ -210,9 +206,7 @@ export default function HowToDownloadATikTokVideoGuidePage() {
             <NextLink href="/platform/download-tiktok-video">Download TikTok Video</NextLink>.
           </p>
 
-          <p className="mb-2">
-            Below is the tool itself (interactive) so you can test the workflow immediately.
-          </p>
+          <p className="mb-2">Below is the tool itself (interactive) so you can test the workflow immediately.</p>
           <div className="my-4 w-full">
             <TikTokDownloaderTool />
           </div>
@@ -222,14 +216,14 @@ export default function HowToDownloadATikTokVideoGuidePage() {
           <ul>
             <li>
               <p>
-                <strong>Download fails or doesn’t start:</strong> resolve again, then retry Download. Check that
-                pop-ups and downloads are allowed for this site.
+                <strong>Download fails or doesn’t start:</strong> resolve again, then retry Download. Check that pop-ups
+                and downloads are allowed for this site.
               </p>
             </li>
             <li>
               <p>
-                <strong>Mobile browsers:</strong> some browsers are stricter about file saves—retry after a fresh resolve
-                or adjust your browser’s download settings.
+                <strong>Mobile browsers:</strong> some browsers are stricter about file saves—retry after a fresh
+                resolve or adjust your browser’s download settings.
               </p>
             </li>
             <li>
@@ -247,8 +241,8 @@ export default function HowToDownloadATikTokVideoGuidePage() {
             getting clear feedback and sign-off on the right cut.
           </p>
           <p>
-            After you download, upload the MP4 into Kreatli to collect <strong>frame-accurate comments</strong> and track{' '}
-            <strong>approvals</strong> per version. If the TikTok is headed for publishing, run a{' '}
+            After you download, upload the MP4 into Kreatli to collect <strong>frame-accurate comments</strong> and
+            track <strong>approvals</strong> per version. If the TikTok is headed for publishing, run a{' '}
             <NextLink href="/platform/tiktok-safe-zone">TikTok safe zone</NextLink> check so CTAs and captions stay
             visible under UI overlays.
           </p>
@@ -315,4 +309,3 @@ export default function HowToDownloadATikTokVideoGuidePage() {
     </>
   );
 }
-

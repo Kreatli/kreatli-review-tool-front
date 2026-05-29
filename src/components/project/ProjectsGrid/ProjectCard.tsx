@@ -46,7 +46,6 @@ export const ProjectCard = ({ project, onSelectProjectId }: Props) => {
                 size="sm"
                 isIconOnly
                 radius="full"
-                isDisabled={!project.createdBy?.subscription.isActive}
                 className="pointer-events-auto mt-1"
                 variant="faded"
                 aria-label={`Open project ${project.name} options`}

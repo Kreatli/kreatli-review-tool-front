@@ -267,7 +267,10 @@ export default function VideoProductionAnimationStudiosPage() {
       <BreadcrumbStructuredData
         items={[
           { name: 'Home', url: '/' },
-          { name: 'Video Production & Animation Studios', url: '/solutions/industry/video-production-animation-studios' },
+          {
+            name: 'Video Production & Animation Studios',
+            url: '/solutions/industry/video-production-animation-studios',
+          },
         ]}
       />
       <HowToStructuredData
@@ -308,7 +311,10 @@ export default function VideoProductionAnimationStudiosPage() {
             platform comparisons
           </NextLink>{' '}
           or the{' '}
-          <NextLink href="/guides/how-to-review-a-video" className="font-medium text-primary underline-offset-2 hover:underline">
+          <NextLink
+            href="/guides/how-to-review-a-video"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
             video review guide
           </NextLink>
           .
@@ -601,7 +607,11 @@ export default function VideoProductionAnimationStudiosPage() {
 
       {/* More Resources Section */}
       <RelatedResourcesSection
-        resources={getRelatedResources(['advertisingMarketingAgencies', 'inHouseCreativeContentTeams', 'creativeProofing'])}
+        resources={getRelatedResources([
+          'advertisingMarketingAgencies',
+          'inHouseCreativeContentTeams',
+          'creativeProofing',
+        ])}
         title="More Resources"
         description="Explore other Kreatli solutions to streamline your video collaboration workflow."
       />

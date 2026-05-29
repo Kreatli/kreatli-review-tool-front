@@ -62,8 +62,8 @@ export const VideoManagerFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Managing videos in Kreatli means organizing, storing, versioning, and tracking all your video assets in
-            one place. You can upload videos, organize them into projects, track versions, collect feedback, and manage
+            Managing videos in Kreatli means organizing, storing, versioning, and tracking all your video assets in one
+            place. You can upload videos, organize them into projects, track versions, collect feedback, and manage
             approvals—all without switching between multiple tools.
           </p>
           <p>
@@ -124,12 +124,12 @@ export const VideoManagerFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            All feedback on a video is stored in one thread with the asset. Comments are pinned to exact frames,
-            tracked as resolved or unresolved, and visible across versions.
+            All feedback on a video is stored in one thread with the asset. Comments are pinned to exact frames, tracked
+            as resolved or unresolved, and visible across versions.
           </p>
           <p>
-            You can filter by reviewer, jump to any comment, and see what still needs attention—no digging through
-            email or chat.
+            You can filter by reviewer, jump to any comment, and see what still needs attention—no digging through email
+            or chat.
           </p>
         </div>
       ),
@@ -175,8 +175,8 @@ export const VideoManagerFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            File storage tools like Dropbox or Google Drive do not track versions, feedback, or approvals. Email
-            threads get lost and lack context.
+            File storage tools like Dropbox or Google Drive do not track versions, feedback, or approvals. Email threads
+            get lost and lack context.
           </p>
           <p>
             Kreatli gives you version control, frame-accurate feedback, approval tracking, and client-friendly review
@@ -191,8 +191,8 @@ export const VideoManagerFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Managing videos in Kreatli reduces tool-switching, keeps feedback organized, and speeds up approvals.
-            Teams spend less time searching for files, clarifying feedback, or tracking versions manually.
+            Managing videos in Kreatli reduces tool-switching, keeps feedback organized, and speeds up approvals. Teams
+            spend less time searching for files, clarifying feedback, or tracking versions manually.
           </p>
           <p>
             Everything lives in one project with a clear timeline from first upload to final approval. Explore{' '}

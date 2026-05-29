@@ -32,7 +32,7 @@ export default function VideoManagerPage() {
           name="description"
           content="Organize, store, and track video assets with version control and share links. Manage feedback and approvals in one place. Try free."
         />
-<meta property="og:title" content="Manage Video Assets Online – Free Video Manager | Kreatli" />
+        <meta property="og:title" content="Manage Video Assets Online – Free Video Manager | Kreatli" />
         <meta
           property="og:description"
           content="Organize, store, and track video assets with version control and share links. Manage feedback and approvals in one place. Try free."

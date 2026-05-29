@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -128,7 +128,10 @@ export default function HowToCommentAPictureGuidePage() {
           <p>
             Picture comments here assume <strong>creative-direction feedback</strong> on layouts, campaign art, and
             branded statics. For photographer–client selection rounds or deep retouch notes, follow the{' '}
-            <NextLink href="/guides/how-to-comment-a-photo" className="font-medium text-primary underline-offset-2 hover:underline">
+            <NextLink
+              href="/guides/how-to-comment-a-photo"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
               photo commenting guide
             </NextLink>
             .
@@ -194,7 +197,8 @@ export default function HowToCommentAPictureGuidePage() {
           <ol>
             <li>
               <p>
-                <strong>Open the picture</strong> in a review tool that supports pinned comments (and optionally markup).
+                <strong>Open the picture</strong> in a review tool that supports pinned comments (and optionally
+                markup).
               </p>
             </li>
             <li>
@@ -278,11 +282,13 @@ export default function HowToCommentAPictureGuidePage() {
           articlesMax={3}
           resourcesTitle="More resources"
           resourcesDescription="Capabilities that support image review, approvals, and secure storage."
-          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map((resource, index) => {
-            if (index === 0) return { ...resource, icon: 'panorama' };
-            if (index === 1) return { ...resource, icon: 'paint' };
-            return resource;
-          })}
+          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map(
+            (resource, index) => {
+              if (index === 0) return { ...resource, icon: 'panorama' };
+              if (index === 1) return { ...resource, icon: 'paint' };
+              return resource;
+            },
+          )}
         />
 
         <GuideSectionRule />
@@ -328,4 +334,3 @@ export default function HowToCommentAPictureGuidePage() {
     </>
   );
 }
-

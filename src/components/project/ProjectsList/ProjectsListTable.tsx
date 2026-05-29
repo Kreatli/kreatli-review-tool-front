@@ -127,7 +127,6 @@ export const ProjectsListTable = ({
                       isIconOnly
                       aria-label={`Open project ${project.name} options`}
                       radius="full"
-                      isDisabled={!project.createdBy?.subscription.isActive}
                       variant="light"
                       onClick={() => {
                         onSelectProjectId?.(project.id);

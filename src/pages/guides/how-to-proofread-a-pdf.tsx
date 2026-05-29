@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -18,8 +18,7 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE =
-  'How to Proofread a PDF: Catch Errors, Resolve Comments, and Ship Clean Finals';
+const DOCUMENT_TITLE = 'How to Proofread a PDF: Catch Errors, Resolve Comments, and Ship Clean Finals';
 const META_DESCRIPTION =
   'Learn how to proofread a PDF with a repeatable pass order, page-pinned notes, and version-aware review so finals are ' +
   'accurate and approvals stay auditable.';
@@ -322,9 +321,7 @@ export default function HowToProofreadAPdfGuidePage() {
           layout="split"
           splitTone="guide"
           title="Ready to proof PDFs without losing corrections?"
-          description={
-            'Keep page-pinned notes, resolve what is fixed, and ship finals with a clear approval trail.'
-          }
+          description={'Keep page-pinned notes, resolve what is fixed, and ship finals with a clear approval trail.'}
           primaryButtonText="Start for Free"
           primaryButtonHref="/sign-up"
           splitPromoImageSrc="/images/guides/embed-video-cta.png"

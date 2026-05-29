@@ -395,5 +395,7 @@ export function getFreeToolsForPlatform(path: string): FreeTool[] {
       tools.push(tool);
     }
   }
-  return tools.length >= 4 ? tools.slice(0, 4) : [...tools, ...FREE_TOOLS.filter((t) => !tools.some((x) => x.href === t.href))].slice(0, 4);
+  return tools.length >= 4
+    ? tools.slice(0, 4)
+    : [...tools, ...FREE_TOOLS.filter((t) => !tools.some((x) => x.href === t.href))].slice(0, 4);
 }

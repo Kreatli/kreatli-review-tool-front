@@ -25,8 +25,8 @@ export default function FAQSection() {
                 overhead. On a faster 1 Gbps connection, the same file would take about <strong>17 minutes</strong>.
               </p>
               <p>
-                However, most home and office connections have slower upload speeds than download speeds. If your
-                upload speed is 50 Mbps (common for many broadband plans), uploading 100GB would take approximately{' '}
+                However, most home and office connections have slower upload speeds than download speeds. If your upload
+                speed is 50 Mbps (common for many broadband plans), uploading 100GB would take approximately{' '}
                 <strong>5 hours and 40 minutes</strong>. This is why understanding your actual upload speed is crucial
                 for planning file transfers.
               </p>
@@ -44,13 +44,13 @@ export default function FAQSection() {
             <div className="space-y-3 text-base text-foreground-500">
               <p>
                 For professional video work, especially with remote collaboration, you'll want at least{' '}
-                <strong>100 Mbps upload speed</strong> for efficient workflows. This allows you to upload a 10GB file
-                in about 17 minutes, which is reasonable for most production timelines.
+                <strong>100 Mbps upload speed</strong> for efficient workflows. This allows you to upload a 10GB file in
+                about 17 minutes, which is reasonable for most production timelines.
               </p>
               <p>
                 For teams working with larger files (50GB+ projects) or requiring faster turnarounds,{' '}
-                <strong>500 Mbps to 1 Gbps upload speeds</strong> are recommended. These speeds enable same-day
-                delivery of large projects and support real-time collaboration without significant transfer delays.
+                <strong>500 Mbps to 1 Gbps upload speeds</strong> are recommended. These speeds enable same-day delivery
+                of large projects and support real-time collaboration without significant transfer delays.
               </p>
               <p>
                 Keep in mind that download speeds are typically faster than upload speeds on most internet plans. For
@@ -66,9 +66,9 @@ export default function FAQSection() {
           >
             <div className="space-y-3 text-base text-foreground-500">
               <p>
-                Most internet service providers offer <strong>asymmetric connections</strong>, where download speeds
-                are significantly faster than upload speeds. This is because typical internet usage (browsing,
-                streaming, downloading) requires more download bandwidth than upload bandwidth.
+                Most internet service providers offer <strong>asymmetric connections</strong>, where download speeds are
+                significantly faster than upload speeds. This is because typical internet usage (browsing, streaming,
+                downloading) requires more download bandwidth than upload bandwidth.
               </p>
               <p>
                 For example, a common broadband plan might offer 500 Mbps download but only 50 Mbps upload - a 10:1
@@ -76,10 +76,10 @@ export default function FAQSection() {
                 regularly upload large video files, project archives, and media assets.
               </p>
               <p>
-                If you're working with large files frequently, consider upgrading to a plan with faster upload speeds
-                or a symmetric connection (equal upload and download speeds). Business-grade internet plans often
-                offer better upload speeds, which can dramatically improve your workflow efficiency when transferring
-                large media files.
+                If you're working with large files frequently, consider upgrading to a plan with faster upload speeds or
+                a symmetric connection (equal upload and download speeds). Business-grade internet plans often offer
+                better upload speeds, which can dramatically improve your workflow efficiency when transferring large
+                media files.
               </p>
             </div>
           </AccordionItem>
@@ -92,8 +92,8 @@ export default function FAQSection() {
               <p>
                 Yes, this data transfer calculator is completely <strong>free to use</strong>. No account is required,
                 including if you are signed in to Kreatli without an active trial or plan. There are no hidden fees. You
-                can use it as often as you need to calculate
-                transfer times for any file size and internet speed combination.
+                can use it as often as you need to calculate transfer times for any file size and internet speed
+                combination.
               </p>
               <p>
                 The calculator runs entirely in your browser - no data is sent to our servers, and all calculations
@@ -136,13 +136,13 @@ export default function FAQSection() {
             <div className="space-y-3 text-base text-foreground-500">
               <p>
                 Internet speeds are typically measured in <strong>Mbps</strong> (megabits per second), while file sizes
-                are measured in <strong>MB</strong> (megabytes) or <strong>GB</strong> (gigabytes). There is an important
-                distinction: <strong>1 byte = 8 bits</strong>, so <strong>1 MB/s = 8 Mbps</strong>.
+                are measured in <strong>MB</strong> (megabytes) or <strong>GB</strong> (gigabytes). There is an
+                important distinction: <strong>1 byte = 8 bits</strong>, so <strong>1 MB/s = 8 Mbps</strong>.
               </p>
               <p>
-                This means a 100 Mbps connection can transfer approximately 12.5 MB per second (100 ÷ 8 = 12.5). A 1 Gbps
-                (1000 Mbps) connection can transfer approximately 125 MB per second. Understanding this difference is
-                crucial for accurately calculating file transfer times.
+                This means a 100 Mbps connection can transfer approximately 12.5 MB per second (100 ÷ 8 = 12.5). A 1
+                Gbps (1000 Mbps) connection can transfer approximately 125 MB per second. Understanding this difference
+                is crucial for accurately calculating file transfer times.
               </p>
               <p>
                 Many people confuse these units, which leads to incorrect time estimates. When using our calculator,
@@ -158,10 +158,10 @@ export default function FAQSection() {
           >
             <div className="space-y-3 text-base text-foreground-500">
               <p>
-                Upload time for a 10GB video file depends on your upload speed. On a <strong>100 Mbps connection</strong>
-                , uploading 10GB takes approximately <strong>17 minutes</strong>, accounting for network overhead. On
-                a <strong>50 Mbps connection</strong> (common for many broadband plans), it would take about{' '}
-                <strong>34 minutes</strong>.
+                Upload time for a 10GB video file depends on your upload speed. On a{' '}
+                <strong>100 Mbps connection</strong>, uploading 10GB takes approximately <strong>17 minutes</strong>,
+                accounting for network overhead. On a <strong>50 Mbps connection</strong> (common for many broadband
+                plans), it would take about <strong>34 minutes</strong>.
               </p>
               <p>
                 On a faster <strong>1 Gbps connection</strong>, the same 10GB file would take about{' '}
@@ -169,8 +169,8 @@ export default function FAQSection() {
                 file transfers in video production workflows.
               </p>
               <p>
-                For video production teams working with multiple files or larger projects, these transfer times can
-                add up quickly. Consider using optimized file transfer solutions or{' '}
+                For video production teams working with multiple files or larger projects, these transfer times can add
+                up quickly. Consider using optimized file transfer solutions or{' '}
                 <NextLink href="/platform/secure-asset-storage" className="text-primary underline underline-offset-2">
                   professional asset management platforms
                 </NextLink>{' '}

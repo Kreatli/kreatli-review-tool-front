@@ -3,6 +3,7 @@ import React from 'react';
 
 import { PageStoryblok } from '../../../typings/storyblok';
 import { SignUpModal } from '../../auth/SignUpForm/SignUpModal';
+import { TrustBar } from '../../shared/TrustBar';
 import { CostCalculatorSection } from '../CostCalculator';
 import { FaqSection } from '../Faq';
 import { FeaturesSection } from '../Features';
@@ -13,7 +14,6 @@ import { HowItWorksSection } from '../HowItWorks';
 import { KreatliForSection } from '../KreatliFor';
 import { PricingSection } from '../PricingSection';
 import { ResourcesSection } from '../Resources';
-import { TrustBar } from '../../shared/TrustBar';
 
 interface Props {
   comparisons?: ISbStoryData<PageStoryblok>[];

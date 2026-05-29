@@ -74,7 +74,7 @@ const faqs = [
   {
     question: 'What is a video review and approval workflow, and how does Kreatli handle it?',
     answer:
-      "A review workflow is the process of collecting feedback and sign-offs on creative assets. In Kreatli, you upload files to a project, invite reviewers, and they comment directly on the media. The system tracks every note and approval status so you always know where a deliverable stands. Guest review links let clients participate without creating an account.",
+      'A review workflow is the process of collecting feedback and sign-offs on creative assets. In Kreatli, you upload files to a project, invite reviewers, and they comment directly on the media. The system tracks every note and approval status so you always know where a deliverable stands. Guest review links let clients participate without creating an account.',
   },
   {
     question: 'How does creative proofing work in Kreatli compared to other tools?',
@@ -239,11 +239,17 @@ export default function PlatformPage() {
               Guest links let clients review without signing up; permissions and encryption keep sensitive work
               contained. Use the category chips below to narrow the grid—each card opens a focused feature page with
               workflow detail. For file-heavy reviews, pair platform pages with guides like{' '}
-              <NextLink href="/guides/share-large-video-files" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/guides/share-large-video-files"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 sharing large video files
               </NextLink>{' '}
               and{' '}
-              <NextLink href="/guides/how-to-markup-a-pdf" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/guides/how-to-markup-a-pdf"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 PDF markup
               </NextLink>
               . New here?{' '}
@@ -474,12 +480,12 @@ export default function PlatformPage() {
             >
               <div className="space-y-3 text-foreground-500">
                 <p>
-                  Files are organized by project with filtering by status, type, size, and tags. Every file keeps a
-                  full version history so you can track changes and revert when needed.
+                  Files are organized by project with filtering by status, type, size, and tags. Every file keeps a full
+                  version history so you can track changes and revert when needed.
                 </p>
                 <p>
-                  Unlike basic cloud storage, files stay connected to their review comments, conversations, and
-                  approval status — giving you full context without leaving the workspace.
+                  Unlike basic cloud storage, files stay connected to their review comments, conversations, and approval
+                  status — giving you full context without leaving the workspace.
                 </p>
               </div>
             </AccordionItem>
@@ -638,9 +644,7 @@ export default function PlatformPage() {
                   You get instant alerts for new comments, approval requests, project updates, and file uploads. Every
                   notification links to the specific asset and project so you can jump straight to what needs attention.
                 </p>
-                <p>
-                  This keeps approvals and feedback requests from getting missed.
-                </p>
+                <p>This keeps approvals and feedback requests from getting missed.</p>
               </div>
             </AccordionItem>
           </Accordion>

@@ -15,7 +15,7 @@ export const RESIZE_VIDEO_FAQS: Array<{ question: string; answer: string }> = [
   {
     question: 'Is my video uploaded to a server?',
     answer:
-      'No. Resizing runs locally in your browser. Your video is not uploaded to a server. For secure cloud storage, versioning, and review workflows, you can use Kreatli\'s secure asset storage and review features.',
+      "No. Resizing runs locally in your browser. Your video is not uploaded to a server. For secure cloud storage, versioning, and review workflows, you can use Kreatli's secure asset storage and review features.",
   },
   {
     question: 'What video formats are supported?',
@@ -30,7 +30,7 @@ export const RESIZE_VIDEO_FAQS: Array<{ question: string; answer: string }> = [
   {
     question: 'What is the difference between WebM and MP4/MOV?',
     answer:
-      'MP4 and MOV are encoded using FFmpeg in your browser and offer broad compatibility. WebM (VP9 or VP8) uses the browser\'s canvas recording—it can be faster for large files and produces smaller outputs, and is well suited for web and social. Choose based on where you will use the resized video.',
+      "MP4 and MOV are encoded using FFmpeg in your browser and offer broad compatibility. WebM (VP9 or VP8) uses the browser's canvas recording—it can be faster for large files and produces smaller outputs, and is well suited for web and social. Choose based on where you will use the resized video.",
   },
   {
     question: 'What is the maximum file size?',
@@ -63,8 +63,8 @@ function faqContent(index: number, answer: string): ReactNode {
         ) : isFormats ? (
           <>
             The tool accepts <strong>MP4</strong>, <strong>MOV</strong>, and <strong>WebM</strong> and can export to
-            MP4, MOV, or WebM (VP9/VP8). Playback and encoding support can vary by browser and codec. If a video
-            won’t load or encode, try another format or a modern desktop browser.
+            MP4, MOV, or WebM (VP9/VP8). Playback and encoding support can vary by browser and codec. If a video won’t
+            load or encode, try another format or a modern desktop browser.
           </>
         ) : (
           answer

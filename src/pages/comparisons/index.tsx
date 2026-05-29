@@ -61,7 +61,7 @@ export default function ComparisonsPage({ stories }: Props) {
                   {[
                     { href: '/pricing', label: 'Plans & pricing' },
                     { href: '/platform', label: 'Platform tour' },
-                    { href: '/sign-up', label: 'Start a free trial' },
+                    { href: '/sign-up', label: 'Start free trial' },
                   ].map((item) => (
                     <li key={item.href}>
                       <NextLink

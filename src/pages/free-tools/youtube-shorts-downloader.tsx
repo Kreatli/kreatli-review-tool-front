@@ -29,16 +29,14 @@ const YOUTUBE_SHORTS_DOWNLOADER_STEPS: WorkflowStep[] = [
   {
     step: 1,
     title: 'Copy the YouTube Shorts or video link',
-    description:
-      'Open YouTube (or Shorts), use Share, and copy the public link.',
+    description: 'Open YouTube (or Shorts), use Share, and copy the public link.',
     icon: 'link',
     image: null,
   },
   {
     step: 2,
     title: 'Paste the link into this page',
-    description:
-      'Paste a youtube.com/shorts/… or youtube.com/watch?v=… URL (youtu.be links work too).',
+    description: 'Paste a youtube.com/shorts/… or youtube.com/watch?v=… URL (youtu.be links work too).',
     icon: 'upload',
     image: null,
   },
@@ -186,11 +184,17 @@ export default function YouTubeShortsDownloaderFreeToolPage() {
           <div className="relative z-10 mx-auto mt-4 max-w-6xl">
             <p className="text-center text-sm text-foreground-500">
               Prefer a guided walk-through?{' '}
-              <NextLink href="/guides/how-to-download-youtube-shorts" className="font-semibold text-primary underline underline-offset-2">
+              <NextLink
+                href="/guides/how-to-download-youtube-shorts"
+                className="font-semibold text-primary underline underline-offset-2"
+              >
                 Read how to download YouTube Shorts
               </NextLink>{' '}
               or browse the{' '}
-              <NextLink href="/platform/download-youtube-shorts" className="font-semibold text-primary underline underline-offset-2">
+              <NextLink
+                href="/platform/download-youtube-shorts"
+                className="font-semibold text-primary underline underline-offset-2"
+              >
                 download YouTube Shorts platform overview
               </NextLink>
               .
@@ -233,16 +237,16 @@ export default function YouTubeShortsDownloaderFreeToolPage() {
               <h2 className="mb-3 font-sans text-2xl font-bold">Limitations worth knowing</h2>
               <ul className="space-y-2 text-base text-foreground-600">
                 <li>
-                  <span className="font-semibold text-foreground">Adaptive streams:</span> Shorts relying solely on segmented
-                  streams might not expose a downloadable MP4.
+                  <span className="font-semibold text-foreground">Adaptive streams:</span> Shorts relying solely on
+                  segmented streams might not expose a downloadable MP4.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Live &amp; members:</span> broadcasts or members-only uploads
-                  may not expose public URLs.
+                  <span className="font-semibold text-foreground">Live &amp; members:</span> broadcasts or members-only
+                  uploads may not expose public URLs.
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Link expiry:</span> regenerate the download URL by clicking
-                  “Find video” again if uploads age out overnight.
+                  <span className="font-semibold text-foreground">Link expiry:</span> regenerate the download URL by
+                  clicking “Find video” again if uploads age out overnight.
                 </li>
               </ul>
             </div>

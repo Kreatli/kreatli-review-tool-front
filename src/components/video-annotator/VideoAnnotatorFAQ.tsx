@@ -15,7 +15,7 @@ export const videoAnnotatorFaqs = [
   {
     question: 'How do I annotate a video online?',
     answer:
-      "Upload your video to a video annotator tool, open it in the player, and scrub to the frame you want to comment on. Add text comments, draw on the frame with shapes or freehand tools, and use arrows or markers to point to elements. Your annotations stay pinned to that exact moment. Share a link so others can view the video and add their own annotations without creating an account.",
+      'Upload your video to a video annotator tool, open it in the player, and scrub to the frame you want to comment on. Add text comments, draw on the frame with shapes or freehand tools, and use arrows or markers to point to elements. Your annotations stay pinned to that exact moment. Share a link so others can view the video and add their own annotations without creating an account.',
   },
   {
     question: 'What is frame-accurate video annotation?',
@@ -89,9 +89,9 @@ export const VideoAnnotatorFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Upload your video, open it in the player, and scrub to the frame you want to comment on. Add text
-            comments, draw on the frame with shapes or freehand tools, and use arrows or markers. Share a link so
-            others can add their own annotations without creating an account.
+            Upload your video, open it in the player, and scrub to the frame you want to comment on. Add text comments,
+            draw on the frame with shapes or freehand tools, and use arrows or markers. Share a link so others can add
+            their own annotations without creating an account.
           </p>
         </div>
       ),
@@ -170,8 +170,8 @@ export const VideoAnnotatorFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Yes. Multiple reviewers can annotate the same video. Each person’s annotations are visible to everyone,
-            with indicators for who added what. You can filter by reviewer and track resolution status.
+            Yes. Multiple reviewers can annotate the same video. Each person’s annotations are visible to everyone, with
+            indicators for who added what. You can filter by reviewer and track resolution status.
           </p>
         </div>
       ),

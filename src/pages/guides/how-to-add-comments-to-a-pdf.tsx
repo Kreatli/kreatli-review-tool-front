@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -214,7 +214,8 @@ export default function HowToAddCommentsToAPdfGuidePage() {
             </li>
           </ol>
           <p>
-            If you want the platform overview, see <NextLink href="/platform/add-comments-to-pdf">Add Comments to PDF</NextLink>.
+            If you want the platform overview, see{' '}
+            <NextLink href="/platform/add-comments-to-pdf">Add Comments to PDF</NextLink>.
           </p>
 
           <hr />
@@ -248,8 +249,8 @@ export default function HowToAddCommentsToAPdfGuidePage() {
           <h2 id={getHeadingId(TOC_SECTIONS[4])}>{TOC_SECTIONS[4]}</h2>
           <p>
             The interactive preview below is a lightweight example of the workflow: upload a PDF, think in page-pinned
-            comments, and keep feedback in one place. When you’re ready, <NextLink href="/sign-up">start a 7-day trial</NextLink>{' '}
-            or{' '}
+            comments, and keep feedback in one place. When you’re ready,{' '}
+            <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
@@ -276,11 +277,13 @@ export default function HowToAddCommentsToAPdfGuidePage() {
           articlesMax={3}
           resourcesTitle="More resources"
           resourcesDescription="Capabilities that support PDF commenting, versioning, secure storage, and approvals."
-          resources={getRelatedResources(['addCommentsToPdf', 'annotatePdf', 'secureAssetStorage']).map((resource, index) => {
-            if (index === 0) return { ...resource, icon: 'chat' };
-            if (index === 1) return { ...resource, icon: 'filePdf' };
-            return resource;
-          })}
+          resources={getRelatedResources(['addCommentsToPdf', 'annotatePdf', 'secureAssetStorage']).map(
+            (resource, index) => {
+              if (index === 0) return { ...resource, icon: 'chat' };
+              if (index === 1) return { ...resource, icon: 'filePdf' };
+              return resource;
+            },
+          )}
         />
 
         <GuideSectionRule />
@@ -326,4 +329,3 @@ export default function HowToAddCommentsToAPdfGuidePage() {
     </>
   );
 }
-

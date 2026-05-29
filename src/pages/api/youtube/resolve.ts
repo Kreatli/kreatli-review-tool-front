@@ -302,7 +302,10 @@ async function resolveInnertubeWatchPage(videoId: string): Promise<Omit<ResolveO
   };
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ResolveOkResponse | ResolveErrorResponse>) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ResolveOkResponse | ResolveErrorResponse>,
+) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return json(res, 405, { ok: false, code: 'METHOD_NOT_ALLOWED', message: 'Use POST.' });
@@ -315,8 +318,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return json(res, 400, { ok: false, code: 'INVALID_JSON', message: 'Invalid JSON body.' });
   }
 
-  const urlInput =
-    typeof (body as { url?: unknown })?.url === 'string' ? (body as { url: string }).url.trim() : '';
+  const urlInput = typeof (body as { url?: unknown })?.url === 'string' ? (body as { url: string }).url.trim() : '';
   if (!urlInput) {
     return json(res, 400, { ok: false, code: 'INVALID_URL', message: 'Enter a YouTube or Shorts link.' });
   }
@@ -352,9 +354,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       return json(res, 400, {
         ok: false,
         code: 'NOT_AVAILABLE',
-        message:
-          sanitizeErrorMessage(msg) ||
-          'This video cannot be accessed as a simple public progressive download.',
+        message: sanitizeErrorMessage(msg) || 'This video cannot be accessed as a simple public progressive download.',
       });
     }
 

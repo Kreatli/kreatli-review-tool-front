@@ -4,7 +4,6 @@ import NextLink from 'next/link';
 import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../constants/kreatliPlatformCta';
 import { Icon, IconType } from '../various/Icon';
 
-
 const IMG = '/video-annotation-guide/step';
 
 export const PdfAnnotatorGuide = () => {
@@ -77,8 +76,8 @@ export const PdfAnnotatorGuide = () => {
           <div className="mb-10 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">How to Annotate PDFs Online</h2>
             <p className="mx-auto max-w-3xl text-base text-foreground-500">
-              Add location-pinned comments, highlights, drawings, and markup to your PDFs. Follow these steps to
-              upload, annotate, and share with your team or clients—all in your browser.
+              Add location-pinned comments, highlights, drawings, and markup to your PDFs. Follow these steps to upload,
+              annotate, and share with your team or clients—all in your browser.
             </p>
           </div>
 
@@ -101,7 +100,14 @@ export const PdfAnnotatorGuide = () => {
                         <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
                         {item.step === 5 && (
                           <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
+                            <Button
+                              as={NextLink}
+                              href={KREATLI_PLATFORM_ENTRY_HREF}
+                              size="lg"
+                              className="bg-foreground text-content1"
+                            >
+                              {OPEN_IN_KREATLI_LABEL}
+                            </Button>
                             <Button
                               as="a"
                               href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
@@ -143,8 +149,8 @@ export const PdfAnnotatorGuide = () => {
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">PDF Annotator Features</h2>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Location-pinned comments, highlights, shapes, and drawings—everything you need to give precise feedback
-              on PDFs.
+              Location-pinned comments, highlights, shapes, and drawings—everything you need to give precise feedback on
+              PDFs.
             </p>
           </div>
 

@@ -11,8 +11,9 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { EmbedVideoFeatureCardSections } from '../../components/shared/EmbedVideoFeatureCardSections';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { EMBED_VIDEO_PLATFORM_FAQS } from '../../data/embed-video-marketing';
@@ -20,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 export default function EmbedVideoPage() {
   useSession();
@@ -100,7 +100,6 @@ export default function EmbedVideoPage() {
           <PlatformInteractiveReviewPreview />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/embed-video" />
       <EmbedVideoFeatureCardSections

@@ -27,10 +27,7 @@ export const BlogArticle = ({ article }: Props) => {
           </div>
         ) : null}
         <div className="flex flex-col gap-2">
-          <Link
-            href={href}
-            className="line-clamp-2 font-sans text-large font-bold after:absolute after:inset-0"
-          >
+          <Link href={href} className="line-clamp-2 font-sans text-large font-bold after:absolute after:inset-0">
             {title}
           </Link>
           {article.content.image && (

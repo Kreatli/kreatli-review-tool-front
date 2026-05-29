@@ -21,11 +21,7 @@ export const MiniMediaLibrary = () => {
       <div className="grid grid-cols-3 gap-1.5">
         {items.map((item, i) => (
           <div key={i} className="relative overflow-hidden rounded border border-foreground-200">
-            <img
-              src={item.src}
-              alt={`Media asset ${i + 1}`}
-              className="aspect-video w-full object-cover"
-            />
+            <img src={item.src} alt={`Media asset ${i + 1}`} className="aspect-video w-full object-cover" />
             <div className="absolute bottom-0.5 left-0.5">
               <Chip size="sm" variant="dot" color={item.color} className="h-4 bg-content1/90 text-[8px]">
                 {item.status}

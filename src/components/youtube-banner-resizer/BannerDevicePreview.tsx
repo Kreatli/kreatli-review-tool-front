@@ -2,8 +2,6 @@ import { cn } from '@heroui/react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import {
-  CANVAS_HEIGHT,
-  CANVAS_WIDTH,
   DESKTOP_SAFE_HEIGHT,
   DESKTOP_SAFE_WIDTH,
   MOBILE_SAFE_HEIGHT,
@@ -181,11 +179,7 @@ function DesktopMockup({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasEle
 
       {/* Banner */}
       <div style={{ aspectRatio: `${DESKTOP_SAFE_WIDTH} / ${DESKTOP_SAFE_HEIGHT}` }}>
-        <canvas
-          ref={canvasRef}
-          className="h-full w-full"
-          style={{ imageRendering: 'auto' }}
-        />
+        <canvas ref={canvasRef} className="h-full w-full" style={{ imageRendering: 'auto' }} />
       </div>
 
       {/* Channel info */}
@@ -204,13 +198,7 @@ function DesktopMockup({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasEle
       {/* Navigation tabs */}
       <div className="flex gap-4 border-t border-white/10 px-4 py-1.5">
         {['Home', 'Videos', 'Shorts', 'Live', 'Community'].map((tab, i) => (
-          <span
-            key={tab}
-            className={cn(
-              'text-[9px]',
-              i === 0 ? 'font-medium text-white/90' : 'text-white/40',
-            )}
-          >
+          <span key={tab} className={cn('text-[9px]', i === 0 ? 'font-medium text-white/90' : 'text-white/40')}>
             {tab}
           </span>
         ))}
@@ -242,11 +230,7 @@ function MobileMockup({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElem
 
       {/* Banner */}
       <div style={{ aspectRatio: `${MOBILE_SAFE_WIDTH} / ${MOBILE_SAFE_HEIGHT}` }}>
-        <canvas
-          ref={canvasRef}
-          className="h-full w-full"
-          style={{ imageRendering: 'auto' }}
-        />
+        <canvas ref={canvasRef} className="h-full w-full" style={{ imageRendering: 'auto' }} />
       </div>
 
       {/* Channel info (mobile layout) */}
@@ -260,13 +244,7 @@ function MobileMockup({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElem
       {/* Navigation tabs */}
       <div className="flex justify-center gap-3 border-t border-white/10 px-3 py-1.5">
         {['Home', 'Videos', 'Shorts', 'Live'].map((tab, i) => (
-          <span
-            key={tab}
-            className={cn(
-              'text-[8px]',
-              i === 0 ? 'font-medium text-white/90' : 'text-white/40',
-            )}
-          >
+          <span key={tab} className={cn('text-[8px]', i === 0 ? 'font-medium text-white/90' : 'text-white/40')}>
             {tab}
           </span>
         ))}
@@ -277,12 +255,7 @@ function MobileMockup({ canvasRef }: { canvasRef: React.RefObject<HTMLCanvasElem
 
 function YoutubeLogo({ className }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 90 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className={className} viewBox="0 0 90 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="2" width="16" height="16" rx="3" fill="#FF0000" />
       <path d="M6.5 6.5L12 10L6.5 13.5V6.5Z" fill="white" />
       <text x="19" y="14.5" fill="white" fontSize="11" fontFamily="Arial, sans-serif" fontWeight="600">

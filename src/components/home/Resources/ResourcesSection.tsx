@@ -31,11 +31,17 @@ export const ResourcesSection = ({ comparisons = [] }: Props) => {
             <h2 className="font-sans text-3xl font-bold sm:text-4xl">Free Tools & Resources</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
               Access our free calculators and tools to optimize your creative workflow. Try the{' '}
-              <NextLink href="/free-tools/image-annotator" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/free-tools/image-annotator"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 image annotator
               </NextLink>{' '}
               or{' '}
-              <NextLink href="/free-tools/pdf-markup-tool" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/free-tools/pdf-markup-tool"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 PDF markup tool
               </NextLink>
               , then dive into{' '}
@@ -43,7 +49,10 @@ export const ResourcesSection = ({ comparisons = [] }: Props) => {
                 guides
               </NextLink>{' '}
               and{' '}
-              <NextLink href="/platform/manage-videos" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/platform/manage-videos"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 video management on the platform
               </NextLink>
               .

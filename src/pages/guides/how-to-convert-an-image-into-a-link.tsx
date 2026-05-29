@@ -9,8 +9,8 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -18,8 +18,7 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE =
-  'How to Convert an Image into a Link: Share, Review, and Approve Without Heavy Attachments';
+const DOCUMENT_TITLE = 'How to Convert an Image into a Link: Share, Review, and Approve Without Heavy Attachments';
 const META_DESCRIPTION =
   'Learn how to convert an image into a link, control who can open it, and share one URL so feedback stays centralized ' +
   'and versions stay clear.';

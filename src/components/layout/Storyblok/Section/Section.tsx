@@ -32,8 +32,7 @@ export const Section = ({ blok }: Props) => {
           {buttons && buttons?.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-4">
               {buttons.map((button) => {
-                const rawHref =
-                  button.url?.linktype === 'story' ? button.url?.cached_url : button.url?.url;
+                const rawHref = button.url?.linktype === 'story' ? button.url?.cached_url : button.url?.url;
                 const href = typeof rawHref === 'string' && rawHref.length > 0 ? rawHref : '#';
 
                 return (

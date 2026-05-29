@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -127,8 +127,8 @@ export default function HowToMarkupAVideoGuidePage() {
         <div className={wysiwygStyles.wysiwyg}>
           <p>
             <strong>How to markup a video</strong> is how teams stop debating “which frame?” Markup ties direction to
-            the exact pixels at a timecode—so editors scrub once, see the shape or arrow, and execute instead of decoding
-            long paragraphs.
+            the exact pixels at a timecode—so editors scrub once, see the shape or arrow, and execute instead of
+            decoding long paragraphs.
           </p>
 
           <KeyTakeaways
@@ -278,11 +278,13 @@ export default function HowToMarkupAVideoGuidePage() {
           articlesMax={3}
           resourcesTitle="More resources"
           resourcesDescription="Capabilities that support video review, drawing tools, and secure storage."
-          resources={getRelatedResources(['videoAnnotation', 'reviewApproval', 'commentOnVideo']).map((resource, index) => {
-            if (index === 0) return { ...resource, icon: 'monitorPlay' };
-            if (index === 1) return { ...resource, icon: 'checkCircle' };
-            return { ...resource, icon: 'reply' };
-          })}
+          resources={getRelatedResources(['videoAnnotation', 'reviewApproval', 'commentOnVideo']).map(
+            (resource, index) => {
+              if (index === 0) return { ...resource, icon: 'monitorPlay' };
+              if (index === 1) return { ...resource, icon: 'checkCircle' };
+              return { ...resource, icon: 'reply' };
+            },
+          )}
         />
 
         <GuideSectionRule />

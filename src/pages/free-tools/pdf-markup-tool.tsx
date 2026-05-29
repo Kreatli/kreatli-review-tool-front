@@ -1,4 +1,3 @@
- 
 import Head from 'next/head';
 import NextLink from 'next/link';
 
@@ -99,15 +98,24 @@ export default function PdfMarkupToolPage() {
             <p>
               PDF markup is how agencies collect legal, brand, and client notes on scripts, storyboards, and one-pagers.
               This free tool is ideal when you want a quick pass in the browser. When rounds stack up, switch to{' '}
-              <NextLink href="/platform/proof-pdf" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/platform/proof-pdf"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 proof PDF
               </NextLink>{' '}
               on the platform and use{' '}
-              <NextLink href="/platform/compare-pdf-files" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/platform/compare-pdf-files"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 compare PDF files
               </NextLink>{' '}
               to show what changed between versions. For a guided walkthrough, see{' '}
-              <NextLink href="/guides/how-to-markup-a-pdf" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/guides/how-to-markup-a-pdf"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 how to mark up a PDF
               </NextLink>
               .

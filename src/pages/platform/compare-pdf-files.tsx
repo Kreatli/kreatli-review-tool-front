@@ -12,10 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  COMPARE_PDF_FILES_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { COMPARE_PDF_FILES_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -23,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -132,7 +129,6 @@ export default function ComparePdfFilesPage() {
           <CompareFeaturePreview variant="pdf" />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/compare-pdf-files" />
       <PlatformStepGuide

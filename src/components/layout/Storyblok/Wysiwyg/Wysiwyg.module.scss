@@ -1,27 +1,27 @@
 .wysiwyg {
   hr {
-    @apply my-6 mx-0 border-foreground-300;
+    @apply mx-0 my-6 border-foreground-300;
   }
 
   h1,
   h2 {
-    @apply text-3xl font-sans font-bold mb-2 mt-8 scroll-mt-24;
+    @apply mb-2 mt-8 scroll-mt-24 font-sans text-3xl font-bold;
   }
 
   h3 {
-    @apply text-2xl font-sans font-bold mb-2 mt-6;
+    @apply mb-2 mt-6 font-sans text-2xl font-bold;
   }
 
   h4 {
-    @apply text-xl font-sans font-bold mb-1 mt-6;
+    @apply mb-1 mt-6 font-sans text-xl font-bold;
   }
 
   h5 {
-    @apply text-lg font-sans font-bold mb-1 mt-4;
+    @apply mb-1 mt-4 font-sans text-lg font-bold;
   }
 
   p {
-    @apply text-lg mb-4;
+    @apply mb-4 text-lg;
   }
 
   a {
@@ -29,7 +29,7 @@
   }
 
   img {
-    @apply max-h-[450px] mx-auto rounded-medium shadow-medium outline outline-1 outline-offset-2 outline-foreground-300;
+    @apply mx-auto max-h-[450px] rounded-medium shadow-medium outline outline-1 outline-offset-2 outline-foreground-300;
   }
 
   ol,
@@ -50,7 +50,7 @@
   }
 
   .tableWrapper {
-    @apply shadow-medium p-3 w-full rounded-medium mt-4 overflow-auto;
+    @apply mt-4 w-full overflow-auto rounded-medium p-3 shadow-medium;
   }
 
   table {
@@ -64,7 +64,7 @@
       @apply bg-foreground-100 px-4 py-2;
 
       p {
-        @apply text-sm font-semibold text-start uppercase text-foreground-500 font-sans;
+        @apply text-start font-sans text-sm font-semibold uppercase text-foreground-500;
       }
     }
 

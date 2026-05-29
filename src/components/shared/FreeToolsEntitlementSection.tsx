@@ -4,11 +4,7 @@ import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 
 import { FreeToolsInactiveGateProvider, useFreeToolsInactiveGate } from '../../contexts/FreeToolsInactiveGateContext';
-import {
-  FreeToolSurface,
-  getFreeToolSurface,
-  isAvailableInKreatliPlatform,
-} from '../../data/free-tool-surface';
+import { FreeToolSurface, getFreeToolSurface, isAvailableInKreatliPlatform } from '../../data/free-tool-surface';
 import { useFreeToolsEntitlementGate } from '../../hooks/useFreeToolsEntitlementGate';
 
 const DEFAULT_PLATFORM_LOCKED_DESCRIPTION =
@@ -30,8 +26,7 @@ function getLockedBannerCopy(
   }
 
   // Browser-only tools: drop misleading "inside Kreatli" headlines from page props.
-  const title =
-    lockedTitle && !/available inside Kreatli/i.test(lockedTitle) ? lockedTitle : undefined;
+  const title = lockedTitle && !/available inside Kreatli/i.test(lockedTitle) ? lockedTitle : undefined;
   const description =
     lockedDescription && !/in Kreatli/i.test(lockedDescription)
       ? lockedDescription
@@ -126,12 +121,10 @@ export function FreeToolsEntitlementSection(props: {
           <Card className="border border-foreground-200 bg-content1/70 shadow-sm">
             <CardBody className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="text-sm text-foreground-600">
-                {lockedCopy.title ? (
-                  <p className="mb-1 font-medium text-foreground">{lockedCopy.title}</p>
-                ) : null}
+                {lockedCopy.title ? <p className="mb-1 font-medium text-foreground">{lockedCopy.title}</p> : null}
                 <p>{lockedCopy.description}</p>
               </div>
-              <div className="flex flex-col gap-2 sm:flex-row sm:shrink-0">
+              <div className="flex flex-col gap-2 sm:shrink-0 sm:flex-row">
                 {gate.upgradeCta ? (
                   <LockedBannerUpgradeCta label={gate.upgradeCta.label} surface={surface} href={gate.upgradeCta.href} />
                 ) : null}
@@ -159,7 +152,7 @@ export function FreeToolsEntitlementSection(props: {
                 ? 'Need review & feedback on your work? Upload it to Kreatli for frame-accurate comments, approvals, and team collaboration.'
                 : "You're signed in. Keep using this tool here, or continue in your Kreatli workspace."}
             </div>
-            <div className="flex flex-col gap-2 sm:flex-row sm:shrink-0">
+            <div className="flex flex-col gap-2 sm:shrink-0 sm:flex-row">
               <Button as={NextLink} href={gate.continueCta.href} size="sm" className="bg-foreground text-content1">
                 {gate.continueCta.label}
               </Button>

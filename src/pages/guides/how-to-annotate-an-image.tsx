@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -130,11 +130,17 @@ export default function HowToAnnotateAnImageGuidePage() {
           <p>
             Treat this page as the <strong>general playbook</strong> for any still asset. When your work is mostly
             designed graphics, follow the{' '}
-            <NextLink href="/guides/how-to-annotate-a-picture" className="font-medium text-primary underline-offset-2 hover:underline">
+            <NextLink
+              href="/guides/how-to-annotate-a-picture"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
               picture-focused guide
             </NextLink>
             ; when it is mostly photography or retouching, use the{' '}
-            <NextLink href="/guides/how-to-annotate-a-photo" className="font-medium text-primary underline-offset-2 hover:underline">
+            <NextLink
+              href="/guides/how-to-annotate-a-photo"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
               photo-focused guide
             </NextLink>{' '}
             so examples match your workflow.
@@ -291,11 +297,13 @@ export default function HowToAnnotateAnImageGuidePage() {
           articlesMax={3}
           resourcesTitle="More resources"
           resourcesDescription="Capabilities that support image review, markup, approvals, and secure storage."
-          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map((resource, index) => {
-            if (index === 0) return { ...resource, icon: 'panorama' };
-            if (index === 1) return { ...resource, icon: 'paint' };
-            return resource;
-          })}
+          resources={getRelatedResources(['annotateImage', 'drawOnImage', 'secureAssetStorage']).map(
+            (resource, index) => {
+              if (index === 0) return { ...resource, icon: 'panorama' };
+              if (index === 1) return { ...resource, icon: 'paint' };
+              return resource;
+            },
+          )}
         />
 
         <GuideSectionRule />
@@ -341,4 +349,3 @@ export default function HowToAnnotateAnImageGuidePage() {
     </>
   );
 }
-

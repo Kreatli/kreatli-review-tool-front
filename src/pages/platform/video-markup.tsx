@@ -13,10 +13,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  PlatformStepGuide,
-  VIDEO_ANNOTATION_STEPS,
-} from '../../components/shared/PlatformStepGuide';
+import { PlatformStepGuide, VIDEO_ANNOTATION_STEPS } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -220,9 +217,7 @@ export default function VideoMarkupPage() {
                   </div>
                   <h3 className="font-sans text-lg font-semibold">Color-coded feedback</h3>
                 </div>
-                <p className="text-sm text-foreground-500">
-                  Organize markup by reviewer, department, or priority.
-                </p>
+                <p className="text-sm text-foreground-500">Organize markup by reviewer, department, or priority.</p>
               </CardBody>
             </Card>
 

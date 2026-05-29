@@ -40,4 +40,3 @@ export const SpeedPresets = ({ onPresetSelect }: SpeedPresetsProps) => {
     </div>
   );
 };
-

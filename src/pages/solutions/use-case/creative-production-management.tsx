@@ -116,7 +116,7 @@ const data = {
     {
       question: 'What is video collaboration for video teams?',
       answer:
-        "Video collaboration means managing work around actual video files—videos, images, and related assets. In Kreatli, review and approval status lives on files and versions, while execution uses board-driven tasks on customizable project stages. Producers see both asset state (approved, changes requested) and pipeline progress (which stage each task is in) at a glance.",
+        'Video collaboration means managing work around actual video files—videos, images, and related assets. In Kreatli, review and approval status lives on files and versions, while execution uses board-driven tasks on customizable project stages. Producers see both asset state (approved, changes requested) and pipeline progress (which stage each task is in) at a glance.',
     },
     {
       question: 'How does production management differ from project management?',
@@ -136,7 +136,7 @@ const data = {
     {
       question: 'Can I track tasks and ownership in Kreatli?',
       answer:
-        "Yes. Each task has one responsible person (accountable owner) and one or more contributors. Tasks can link to media assets and sit on a board where columns represent your project stages. Move tasks between columns to represent progress. You can also create tasks from a media view, turning review feedback directly into tracked execution.",
+        'Yes. Each task has one responsible person (accountable owner) and one or more contributors. Tasks can link to media assets and sit on a board where columns represent your project stages. Move tasks between columns to represent progress. You can also create tasks from a media view, turning review feedback directly into tracked execution.',
     },
     {
       question: 'How does Kreatli prevent tool sprawl for production teams?',
@@ -171,7 +171,7 @@ const data = {
     {
       question: 'How is video collaboration different from project management?',
       answer:
-        "Video collaboration in Kreatli keeps assets at the center: review, approvals, and versions live on files. Execution uses board-driven tasks on project stages—columns you customize to match your real pipeline. Tasks can link to media, so feedback becomes tracked work without leaving the context of the files your team is reviewing.",
+        'Video collaboration in Kreatli keeps assets at the center: review, approvals, and versions live on files. Execution uses board-driven tasks on project stages—columns you customize to match your real pipeline. Tasks can link to media, so feedback becomes tracked work without leaving the context of the files your team is reviewing.',
     },
   ],
 };
@@ -226,13 +226,19 @@ export default function CreativeProductionManagementPage() {
 
       <SolutionBelowHero>
         <span>
-          Production management in Kreatli stays anchored to files and versions—not disconnected tickets. Pair this
-          page with{' '}
-          <NextLink href="/platform/project-orchestration" className="font-medium text-primary underline-offset-2 hover:underline">
+          Production management in Kreatli stays anchored to files and versions—not disconnected tickets. Pair this page
+          with{' '}
+          <NextLink
+            href="/platform/project-orchestration"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
             project orchestration
           </NextLink>{' '}
           and the{' '}
-          <NextLink href="/guides/how-to-manage-videos" className="font-medium text-primary underline-offset-2 hover:underline">
+          <NextLink
+            href="/guides/how-to-manage-videos"
+            className="font-medium text-primary underline-offset-2 hover:underline"
+          >
             video organization guide
           </NextLink>
           ; see{' '}
@@ -417,7 +423,9 @@ export default function CreativeProductionManagementPage() {
       {/* CTA Section */}
       <section className="overflow-hidden bg-foreground-50 px-6 py-16 lg:py-24">
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Manage Video Collaboration Around Your Files?</h2>
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+            Ready to Manage Video Collaboration Around Your Files?
+          </h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
             Experience how Kreatli combines video review and video collaboration in one system. Start using Kreatli
             today.

@@ -13,10 +13,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  VIDEO_PROOFING_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { VIDEO_PROOFING_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -37,7 +34,7 @@ const faqs = [
   {
     question: 'How do I proof a video in Kreatli?',
     answer:
-      "Upload your video to a Kreatli project and open it in the proofing player. Scrub or play to any moment and click to add comments, drawings, or annotations. Your feedback is pinned to the exact frame. When you are done, share a link so clients or stakeholders can view the video and add their own feedback without creating an account.",
+      'Upload your video to a Kreatli project and open it in the proofing player. Scrub or play to any moment and click to add comments, drawings, or annotations. Your feedback is pinned to the exact frame. When you are done, share a link so clients or stakeholders can view the video and add their own feedback without creating an account.',
   },
   {
     question: 'Can clients proof videos without creating an account?',
@@ -52,7 +49,7 @@ const faqs = [
   {
     question: 'How do I track proofing status on a video?',
     answer:
-      "Kreatli tracks resolution status for every comment on a video. You can mark items as resolved or unresolved and filter to show only what still needs attention. When you upload a new version of the video, you can resolve comments that have been addressed. The system keeps a clear record of what is done and what is pending across proofing rounds.",
+      'Kreatli tracks resolution status for every comment on a video. You can mark items as resolved or unresolved and filter to show only what still needs attention. When you upload a new version of the video, you can resolve comments that have been addressed. The system keeps a clear record of what is done and what is pending across proofing rounds.',
   },
   {
     question: 'Can multiple people proof the same video at once?',
@@ -147,7 +144,6 @@ export default function VideoProofingPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/video-proofing" />
       <PlatformStepGuide
         stepsSectionTitle="How to proof a video in Kreatli"
@@ -180,8 +176,8 @@ export default function VideoProofingPage() {
                   <h3 className="font-sans text-lg font-semibold">Upload Your Video</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Add your video to a Kreatli project. The file is stored securely with version history so you can
-                  track every cut and proofing round.
+                  Add your video to a Kreatli project. The file is stored securely with version history so you can track
+                  every cut and proofing round.
                 </p>
               </CardBody>
             </Card>
@@ -240,8 +236,8 @@ export default function VideoProofingPage() {
                   <h3 className="font-sans text-lg font-semibold">Multi-Reviewer Support</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Multiple team members and clients can proof the same video. See who added what with color coding
-                  and keep feedback in one thread.
+                  Multiple team members and clients can proof the same video. See who added what with color coding and
+                  keep feedback in one thread.
                 </p>
               </CardBody>
             </Card>
@@ -267,9 +263,7 @@ export default function VideoProofingPage() {
       <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="mx-auto w-fit max-w-full rounded-2xl border border-foreground-200 bg-content1/60 px-6 py-8 shadow-sm backdrop-blur-sm">
-            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">
-              Related video features
-            </h2>
+            <h2 className="text-center font-sans text-lg font-semibold text-foreground-700">Related video features</h2>
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-foreground-500">
               Give video feedback, review video, or add annotations. Explore these options:
             </p>

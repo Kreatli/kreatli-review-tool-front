@@ -132,7 +132,9 @@ export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePrevi
     };
 
     const runAnimationSequence = () => {
-      const rightComment1 = isPdf ? 'Great improvements on the revised copy!' : 'Great improvements on the transitions!';
+      const rightComment1 = isPdf
+        ? 'Great improvements on the revised copy!'
+        : 'Great improvements on the transitions!';
       const leftComment1 = isPdf ? 'The layout on page 2 looks good.' : 'The color grading is perfect here.';
       const rightComment2 = isPdf ? 'Can we tweak the wording on page 4?' : 'Can we adjust the timing slightly?';
       const leftComment2 = 'This version is ready for approval.';
@@ -267,7 +269,9 @@ export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePrevi
             >
               <img
                 src={isPdf ? 'https://picsum.photos/400/533?random=doc1' : 'https://picsum.photos/600/400?random=1'}
-                alt={isPdf ? 'PDF draft preview - proposal_draft.pdf' : 'Video file version 2 preview - walkthrough_v2.mp4'}
+                alt={
+                  isPdf ? 'PDF draft preview - proposal_draft.pdf' : 'Video file version 2 preview - walkthrough_v2.mp4'
+                }
                 className="absolute inset-0 h-full w-full object-contain"
               />
             </div>
@@ -308,7 +312,11 @@ export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePrevi
             >
               <img
                 src={isPdf ? 'https://picsum.photos/400/533?random=doc2' : 'https://picsum.photos/600/400?random=2'}
-                alt={isPdf ? 'PDF revised preview - proposal_revised.pdf' : 'Video file version 3 preview - walkthrough_v3.mp4'}
+                alt={
+                  isPdf
+                    ? 'PDF revised preview - proposal_revised.pdf'
+                    : 'Video file version 3 preview - walkthrough_v3.mp4'
+                }
                 className="absolute inset-0 h-full w-full object-contain"
               />
             </div>
@@ -347,9 +355,7 @@ export const CompareFeaturePreview = ({ variant = 'video' }: CompareFeaturePrevi
                     userName="Peter R."
                     date="Jul 25"
                     comment={
-                      isPdf
-                        ? 'The revised layout on page 2 works well.'
-                        : 'This version has better transitions.'
+                      isPdf ? 'The revised layout on page 2 works well.' : 'This version has better transitions.'
                     }
                     timestamp={isPdf ? 'p. 2' : '00:08'}
                   />

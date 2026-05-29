@@ -9,8 +9,8 @@ import { HomeDashboardFeaturePreview } from '../../components/home/Features/Home
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -18,8 +18,7 @@ import { useSession } from '../../hooks/useSession';
 import { SectionStoryblok } from '../../typings/storyblok';
 import { getHeadingId } from '../../utils/storyblok';
 
-const DOCUMENT_TITLE =
-  'How to Organize Your Files: Projects, Versions, and One Place for Creative Assets';
+const DOCUMENT_TITLE = 'How to Organize Your Files: Projects, Versions, and One Place for Creative Assets';
 const META_DESCRIPTION =
   'Learn how to organize your files around projects and deliverables, name versions clearly, and keep video, images, ' +
   'and documents easy to find for your whole team.';
@@ -192,8 +191,7 @@ export default function HowToOrganizeYourFilesGuidePage() {
             </li>
           </ul>
           <p>
-            For platform context, see{' '}
-            <NextLink href="/platform/file-cloud-storage">File Cloud Storage</NextLink>.
+            For platform context, see <NextLink href="/platform/file-cloud-storage">File Cloud Storage</NextLink>.
           </p>
 
           <hr />

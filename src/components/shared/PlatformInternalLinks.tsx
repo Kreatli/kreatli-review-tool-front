@@ -1,6 +1,5 @@
-import { Button, Card, CardBody } from '@heroui/react';
+import { Card, CardBody } from '@heroui/react';
 import NextLink from 'next/link';
-import React from 'react';
 
 import { RelatedResource } from '../../data/related-resources';
 import { Icon } from '../various/Icon';
@@ -32,9 +31,7 @@ export function PlatformInternalLinks({
       <div className="relative z-10 mx-auto max-w-6xl">
         <div className="mb-8 text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{title}</h2>
-          {description && (
-            <p className="mx-auto max-w-2xl text-lg text-foreground-500">{description}</p>
-          )}
+          {description && <p className="mx-auto max-w-2xl text-lg text-foreground-500">{description}</p>}
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

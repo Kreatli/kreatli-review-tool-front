@@ -13,6 +13,6 @@ export const usePlansModalVisibility = create<State>((set) => ({
   setIsVisible: (isVisible, entry) =>
     set((s) => ({
       isVisible,
-      plansModalEntry: isVisible ? entry ?? 'in_app' : s.plansModalEntry,
+      plansModalEntry: isVisible ? (entry ?? 'in_app') : s.plansModalEntry,
     })),
 }));

@@ -13,10 +13,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  PROOF_PDF_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { PROOF_PDF_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -147,7 +144,6 @@ export default function ProofPdfPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/proof-pdf" />
       <PlatformStepGuide
         stepsSectionTitle="How to proof a PDF in Kreatli"
@@ -195,8 +191,8 @@ export default function ProofPdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Add Comments</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Pin text comments to exact spots on any page. Every comment is linked to a specific location so
-                  there is no guesswork about what to change.
+                  Pin text comments to exact spots on any page. Every comment is linked to a specific location so there
+                  is no guesswork about what to change.
                 </p>
               </CardBody>
             </Card>
@@ -240,8 +236,8 @@ export default function ProofPdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Multi-Reviewer Support</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Multiple team members and clients can proof the same PDF. See who added what with clear indicators
-                  and keep feedback in one thread.
+                  Multiple team members and clients can proof the same PDF. See who added what with clear indicators and
+                  keep feedback in one thread.
                 </p>
               </CardBody>
             </Card>
@@ -312,8 +308,8 @@ export default function ProofPdfPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Proof PDFs in Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Proof PDFs with precise, location-based feedback so your team and clients stay aligned and revisions
-              move faster.
+              Proof PDFs with precise, location-based feedback so your team and clients stay aligned and revisions move
+              faster.
             </p>
           </div>
 
@@ -327,8 +323,8 @@ export default function ProofPdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Clearer Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Instead of vague email notes, comments point to the exact spot. No more back-and-forth
-                  to clarify what to change.
+                  Instead of vague email notes, comments point to the exact spot. No more back-and-forth to clarify what
+                  to change.
                 </p>
               </CardBody>
             </Card>
@@ -372,8 +368,8 @@ export default function ProofPdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Client-Friendly PDF Proofing</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Clients can proof PDFs through no-signup guest links. They add comments and markup without creating
-                  an account, so approvals move faster.
+                  Clients can proof PDFs through no-signup guest links. They add comments and markup without creating an
+                  account, so approvals move faster.
                 </p>
               </CardBody>
             </Card>

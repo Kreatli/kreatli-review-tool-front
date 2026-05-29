@@ -10,9 +10,10 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { COMMENT_ON_VIDEO_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
-import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -20,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -130,7 +130,6 @@ export default function AddTimestampToVideoPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/add-timestamp-to-video" />
       {/* How to Add Timestamp to Video in Kreatli (step-by-step) */}
       <PlatformStepGuide
@@ -150,8 +149,8 @@ export default function AddTimestampToVideoPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ways to Use Timestamped Video Comments</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Use timestamped comments to capture precise feedback on edits, cuts, and scenes—without guesswork or long email
-              threads.
+              Use timestamped comments to capture precise feedback on edits, cuts, and scenes—without guesswork or long
+              email threads.
             </p>
           </div>
 
@@ -165,8 +164,8 @@ export default function AddTimestampToVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Frame-Accurate Timestamps</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Pin comments to exact frames and timestamps so editors know precisely which moment needs a trim, fix, or
-                  substitution.
+                  Pin comments to exact frames and timestamps so editors know precisely which moment needs a trim, fix,
+                  or substitution.
                 </p>
               </CardBody>
             </Card>
@@ -180,8 +179,8 @@ export default function AddTimestampToVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Threaded Discussions at Each Timecode</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Keep all back-and-forth about a moment in one place, directly on the timeline, instead of scattered across
-                  chats and emails.
+                  Keep all back-and-forth about a moment in one place, directly on the timeline, instead of scattered
+                  across chats and emails.
                 </p>
               </CardBody>
             </Card>
@@ -195,8 +194,8 @@ export default function AddTimestampToVideoPage() {
                   <h3 className="font-sans text-lg font-semibold">Multi-Reviewer Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Let producers, clients, and internal teams all add timestamped comments to the same video and see who said
-                  what at each timecode.
+                  Let producers, clients, and internal teams all add timestamped comments to the same video and see who
+                  said what at each timecode.
                 </p>
               </CardBody>
             </Card>
@@ -271,4 +270,3 @@ export default function AddTimestampToVideoPage() {
     </>
   );
 }
-

@@ -12,10 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  PDF_TO_LINK_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PDF_TO_LINK_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -24,7 +22,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -36,7 +33,7 @@ const faqs = [
   {
     question: 'How do I turn a PDF into a link in Kreatli?',
     answer:
-      "Upload your PDF to a Kreatli project, open the asset, and create a secure review link. Copy the link or send it via the share modal (email, Slack, etc.). Recipients click the link to open the PDF in their browser. You can generate different links for different people or review rounds, and revoke or update access anytime.",
+      'Upload your PDF to a Kreatli project, open the asset, and create a secure review link. Copy the link or send it via the share modal (email, Slack, etc.). Recipients click the link to open the PDF in their browser. You can generate different links for different people or review rounds, and revoke or update access anytime.',
   },
   {
     question: 'Do recipients need to create an account to view the PDF link?',
@@ -139,7 +136,6 @@ export default function PdfToLinkPage() {
           <ShareFeaturePreview variant="pdf" />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/pdf-to-link" />
       <PlatformStepGuide
@@ -304,11 +300,7 @@ export default function PdfToLinkPage() {
               <CardBody className="p-6">
                 <div className="mb-4 flex items-center gap-3">
                   <div className="rounded-full bg-foreground-100 p-2">
-                    <Icon
-                      icon="smile"
-                      size={20}
-                      className="text-primary"
-                    />
+                    <Icon icon="smile" size={20} className="text-primary" />
                   </div>
                   <h3 className="font-sans text-lg font-semibold">Client-Friendly Review</h3>
                 </div>

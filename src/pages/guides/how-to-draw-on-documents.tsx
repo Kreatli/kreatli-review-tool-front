@@ -8,9 +8,9 @@ import { GuideSectionRule } from '../../components/guides/GuideSectionRule';
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { InteractiveReviewToolPreview } from '../../components/shared/InteractiveReviewToolPreview';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -130,7 +130,7 @@ export default function HowToDrawOnDocumentsGuidePage() {
               'Use arrows, shapes, and freehand markup to point to exact areas that need changes.',
               'Keep drawings clean and minimal \u2014 one markup per issue prevents visual clutter.',
               'Combine drawings with short written notes to explain intent, not just location.',
-              "Check that drawings are visible at the recipient\u2019s screen size and zoom level.",
+              'Check that drawings are visible at the recipient\u2019s screen size and zoom level.',
             ]}
           />
 

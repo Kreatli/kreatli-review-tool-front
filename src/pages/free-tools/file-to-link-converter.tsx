@@ -76,7 +76,7 @@ export default function FileToLinkConverterPage() {
           name="description"
           content="File to link converter: turn files into secure review URLs. Works as a video-to-link generator and video link maker / video link creator workflow — plus PDFs and images. Try Kreatli free."
         />
-<meta property="og:title" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
+        <meta property="og:title" content="Turn Files into Shareable Links – Free File to Link Tool | Kreatli" />
         <meta
           property="og:description"
           content="Convert any file into a secure shareable link. Send one URL, collect feedback and approvals. Try free with a 7-day trial."
@@ -118,11 +118,12 @@ export default function FileToLinkConverterPage() {
                 File to Link Converter
               </h1>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-foreground-500">
-                Turn any file into a shareable link — including a <strong className="font-semibold text-foreground-700">video-to-link</strong> or{' '}
-                <strong className="font-semibold text-foreground-700">video link creator</strong> workflow for MP4/MOV reviews. Upload once,
-                generate a secure review link, and send it to clients—they open the file in their browser and comment
-                without signing up. Compare with point tools like Videy by keeping versions, comments, and approvals in one
-                workspace.
+                Turn any file into a shareable link — including a{' '}
+                <strong className="font-semibold text-foreground-700">video-to-link</strong> or{' '}
+                <strong className="font-semibold text-foreground-700">video link creator</strong> workflow for MP4/MOV
+                reviews. Upload once, generate a secure review link, and send it to clients—they open the file in their
+                browser and comment without signing up. Compare with point tools like Videy by keeping versions,
+                comments, and approvals in one workspace.
               </p>
               <HeroCtaButtons />
             </div>
@@ -135,9 +136,9 @@ export default function FileToLinkConverterPage() {
           </div>
         </section>
 
-
         <DefinitionBlock term="File to Link Converter">
-          A file-to-link converter uploads a file and returns a URL you can share for review or delivery. Creative teams use it to move large media out of email and into a controlled, comment-ready workspace.
+          A file-to-link converter uploads a file and returns a URL you can share for review or delivery. Creative teams
+          use it to move large media out of email and into a controlled, comment-ready workspace.
         </DefinitionBlock>
         {/* How to turn your file into a link guide */}
         <PlatformStepGuide

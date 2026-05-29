@@ -83,10 +83,7 @@ export function CTASection({
 
   const defaultSplitAside = (
     <div
-      className={cn(
-        'relative overflow-hidden rounded-2xl bg-black p-8 text-white shadow-xl',
-        'ring-1 ring-white/10',
-      )}
+      className={cn('relative overflow-hidden rounded-2xl bg-black p-8 text-white shadow-xl', 'ring-1 ring-white/10')}
     >
       <p className="font-sans text-xl font-bold leading-tight sm:text-2xl">{splitPromoTitle}</p>
       <div className="mt-4 text-sm leading-relaxed text-white/80 sm:text-base">
@@ -107,13 +104,7 @@ export function CTASection({
     const isGuideTone = splitTone === 'guide';
 
     return (
-      <section
-        className={cn(
-          'relative overflow-hidden',
-          isGuideTone ? 'bg-transparent' : 'bg-background',
-          className,
-        )}
-      >
+      <section className={cn('relative overflow-hidden', isGuideTone ? 'bg-transparent' : 'bg-background', className)}>
         {isGuideTone ? null : (
           <>
             <div
@@ -138,18 +129,11 @@ export function CTASection({
               : 'max-w-7xl gap-12 py-20 lg:grid-cols-2 lg:gap-16 lg:py-24',
           )}
         >
-          <div
-            className={cn(
-              'flex max-w-xl flex-col justify-center text-left',
-              isGuideTone && 'max-w-lg lg:max-w-xl',
-            )}
-          >
+          <div className={cn('flex max-w-xl flex-col justify-center text-left', isGuideTone && 'max-w-lg lg:max-w-xl')}>
             <h2
               className={cn(
                 'scroll-mt-24 font-sans font-bold leading-tight text-foreground',
-                isGuideTone
-                  ? 'mb-3 text-3xl sm:text-4xl'
-                  : 'mb-4 text-3xl tracking-tight sm:text-4xl',
+                isGuideTone ? 'mb-3 text-3xl sm:text-4xl' : 'mb-4 text-3xl tracking-tight sm:text-4xl',
               )}
             >
               {title}
@@ -205,16 +189,10 @@ export function CTASection({
   if (layout === 'article') {
     return (
       <section className={cn('relative overflow-hidden', className)}>
-        <div
-          className={cn(
-            wysiwygStyles.wysiwyg,
-            '[&>h2:first-child]:!mt-0',
-          )}
-        >
+        <div className={cn(wysiwygStyles.wysiwyg, '[&>h2:first-child]:!mt-0')}>
           <h2>{title}</h2>
           <p>
-            {description}{' '}
-            <NextLink href={primaryButtonHref}>{primaryButtonText}</NextLink>
+            {description} <NextLink href={primaryButtonHref}>{primaryButtonText}</NextLink>
             {showDemoButton ? (
               <>
                 {' '}

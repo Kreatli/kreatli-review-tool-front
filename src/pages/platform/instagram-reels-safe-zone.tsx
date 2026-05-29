@@ -3,24 +3,24 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { SignUpModal } from '../../components/auth/SignUpForm/SignUpModal';
-import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { FooterSection } from '../../components/home/Footer/FooterSection';
 import { PricingSection } from '../../components/home/PricingSection/PricingSection';
 import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
+import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
+import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
-import { YouTubeBannerSpecsTable } from '../../components/youtube-banner-resizer/YouTubeBannerSpecsTable';
 
 const faqs = [
   {
@@ -128,7 +128,6 @@ export default function InstagramReelsSafeZonePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/instagram-reels-safe-zone" />
       {/* How to Use Safe-Zone Checker (step-by-step) */}
       <SafeZoneScreenGuide
@@ -140,11 +139,16 @@ export default function InstagramReelsSafeZonePage() {
       <section className="relative overflow-hidden px-6 pb-8 pt-2">
         <div className="relative z-10 mx-auto max-w-3xl space-y-10">
           <div className="rounded-2xl border border-foreground-200 bg-content1/30 p-6 sm:p-8">
-            <h2 className="mb-3 text-center font-sans text-xl font-bold sm:text-2xl">Reels safe zone &amp; other platforms</h2>
+            <h2 className="mb-3 text-center font-sans text-xl font-bold sm:text-2xl">
+              Reels safe zone &amp; other platforms
+            </h2>
             <p className="text-center text-sm text-foreground-600">
               Designing for <strong className="font-semibold text-foreground-700">instagram reel safe zone</strong> on a
               1080×1920 canvas? Overlays differ from{' '}
-              <NextLink href="/safe-zone-checker/tiktok-safe-zone-checker" className="text-primary underline underline-offset-2">
+              <NextLink
+                href="/safe-zone-checker/tiktok-safe-zone-checker"
+                className="text-primary underline underline-offset-2"
+              >
                 TikTok
               </NextLink>{' '}
               and{' '}
@@ -215,8 +219,8 @@ export default function InstagramReelsSafeZonePage() {
                   <h3 className="font-sans text-lg font-semibold">Upload & Check Before You Post</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Drag and drop your Reels video into the free tool. No watermark. Preview the safe zone,
-                  adjust your design if needed, and export a reference so your team keeps content in the right place.
+                  Drag and drop your Reels video into the free tool. No watermark. Preview the safe zone, adjust your
+                  design if needed, and export a reference so your team keeps content in the right place.
                 </p>
               </CardBody>
             </Card>

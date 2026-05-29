@@ -1,9 +1,7 @@
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { useRouter } from 'next/router';
-
 import { isAvailableInKreatliPlatform } from '../data/free-tool-surface';
-
 import { useSession } from './useSession';
 
 type LockReason = 'inactive_subscription';

@@ -424,15 +424,24 @@ export default function HelpPage() {
             <p className="font-semibold text-foreground-800">Guides & workflow resources</p>
             <p className="mt-2">
               Production teams often start with{' '}
-              <NextLink href="/guides/share-large-video-files" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/guides/share-large-video-files"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 sharing large video files
               </NextLink>
               ,{' '}
-              <NextLink href="/guides/creative-production-management" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/guides/creative-production-management"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 creative production management
               </NextLink>
               , or{' '}
-              <NextLink href="/guides/upwork-manage-projects" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/guides/upwork-manage-projects"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 Upwork-style project workflows
               </NextLink>
               . Browse the full{' '}
@@ -444,11 +453,17 @@ export default function HelpPage() {
                 platform features
               </NextLink>
               , or try free tools like the{' '}
-              <NextLink href="/free-tools/image-annotator" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/free-tools/image-annotator"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 image annotator
               </NextLink>{' '}
               and{' '}
-              <NextLink href="/free-tools/pdf-markup-tool" className="font-medium text-primary underline-offset-2 hover:underline">
+              <NextLink
+                href="/free-tools/pdf-markup-tool"
+                className="font-medium text-primary underline-offset-2 hover:underline"
+              >
                 PDF markup tool
               </NextLink>
               .

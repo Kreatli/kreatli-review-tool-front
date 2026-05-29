@@ -47,7 +47,7 @@ export const USE_CASE_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
       full_slug: '/comparisons/proofing-software',
       title: "Proofing vs Production Management: What's Best for Creative Teams",
       description:
-        "Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases.",
+        'Proofing tools accelerate review and approvals, production management platforms orchestrate the entire workflow. Learn the key differences, best-fit use cases.',
       tags: ['Production Management', 'Proofing Software'],
       publishDate: '2025-12-05 00:00',
       readTime: '10',
@@ -111,4 +111,3 @@ export const USE_CASE_ARTICLES_BY_PATH: Record<string, ArticleCard[]> = {
 export function getUseCaseArticles(path: string): ArticleCard[] {
   return USE_CASE_ARTICLES_BY_PATH[path] ?? [];
 }
-

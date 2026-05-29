@@ -91,9 +91,8 @@ export const PdfReviewerFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Upload your PDF to a Kreatli project and open it in the review interface. Navigate page by page and click
-            or select the area you want to comment on. Add comments, highlights, or drawings pinned to that exact
-            location.
+            Upload your PDF to a Kreatli project and open it in the review interface. Navigate page by page and click or
+            select the area you want to comment on. Add comments, highlights, or drawings pinned to that exact location.
           </p>
           <p>
             When you&apos;re done reviewing, share a link so clients or collaborators can view and add their own
@@ -127,9 +126,10 @@ export const PdfReviewerFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            You can add <strong>text comments</strong> pinned to specific spots on a page, <strong>highlights</strong> and{' '}
-            <strong>shapes</strong> to mark regions, <strong>arrows</strong> and <strong>markers</strong> to point to
-            elements, and <strong>freehand drawing</strong> where needed. Reviewers can also approve or request changes.
+            You can add <strong>text comments</strong> pinned to specific spots on a page, <strong>highlights</strong>{' '}
+            and <strong>shapes</strong> to mark regions, <strong>arrows</strong> and <strong>markers</strong> to point
+            to elements, and <strong>freehand drawing</strong> where needed. Reviewers can also approve or request
+            changes.
           </p>
           <p>
             Explore{' '}
@@ -151,8 +151,8 @@ export const PdfReviewerFAQ = () => {
       content: (
         <div className="space-y-3 text-base text-foreground-500">
           <p>
-            Kreatli tracks <strong>resolution status</strong> for every comment on a PDF. You can mark items as
-            resolved or unresolved and filter to show only what still needs attention.
+            Kreatli tracks <strong>resolution status</strong> for every comment on a PDF. You can mark items as resolved
+            or unresolved and filter to show only what still needs attention.
           </p>
           <p>
             When you upload a new version of the PDF, you can resolve comments that have been addressed. The system

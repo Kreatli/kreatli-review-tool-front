@@ -11,6 +11,7 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -18,7 +19,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -112,19 +112,13 @@ export default function SendLargeVideoFilesPage() {
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
                 Start 7-day trial
               </Button>
-              <Button
-                as={NextLink}
-                href="/platform/free-video-link-generator"
-                size="lg"
-                variant="bordered"
-              >
+              <Button as={NextLink} href="/platform/free-video-link-generator" size="lg" variant="bordered">
                 Use Free Video Link Generator
               </Button>
             </div>
           </div>
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/send-large-video-files" />
       {/* Feature Section */}
@@ -226,8 +220,7 @@ export default function SendLargeVideoFilesPage() {
                 </div>
                 <p className="text-sm text-foreground-500">
                   Stop compressing videos to fit email or splitting files. Upload the full-quality version, send the
-                  link, and let clients watch as intended. Large video files are handled by the platform—not your
-                  inbox.
+                  link, and let clients watch as intended. Large video files are handled by the platform—not your inbox.
                 </p>
               </CardBody>
             </Card>

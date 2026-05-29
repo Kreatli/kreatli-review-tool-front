@@ -16,9 +16,7 @@ const columns = [
   },
   {
     label: 'Client Review',
-    tasks: [
-      { title: 'Final cut sign-off', user: 'https://i.pravatar.cc/150?u=mini-taylor', name: 'Taylor' },
-    ],
+    tasks: [{ title: 'Final cut sign-off', user: 'https://i.pravatar.cc/150?u=mini-taylor', name: 'Taylor' }],
   },
 ];
 
@@ -38,15 +36,10 @@ export const MiniTasksBoard = () => {
         {columns.map((col) => (
           <div key={col.label} className="flex flex-col gap-1">
             <div className="rounded bg-foreground-50 px-1.5 py-1 dark:bg-foreground-100/30">
-              <span className="text-[9px] font-semibold uppercase tracking-wider text-foreground-500">
-                {col.label}
-              </span>
+              <span className="text-[9px] font-semibold uppercase tracking-wider text-foreground-500">{col.label}</span>
             </div>
             {col.tasks.map((task) => (
-              <div
-                key={task.title}
-                className="rounded border border-foreground-200 bg-content1 p-1.5"
-              >
+              <div key={task.title} className="rounded border border-foreground-200 bg-content1 p-1.5">
                 <p className="text-[10px] font-medium leading-tight">{task.title}</p>
                 <div className="mt-1 flex items-center gap-1">
                   <Avatar size="sm" src={task.user} className="h-3.5 w-3.5" />

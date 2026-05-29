@@ -30,10 +30,7 @@ export default function DataTransferCalculatorPage() {
           name="description"
           content="Calculate how long large file uploads and downloads take. Enter file size and connection speed for instant results. Free calculator."
         />
-<meta
-          property="og:title"
-          content="Data Transfer Calculator – Estimate Upload and Download Times | Kreatli"
-        />
+        <meta property="og:title" content="Data Transfer Calculator – Estimate Upload and Download Times | Kreatli" />
         <meta
           property="og:description"
           content="Calculate how long large file uploads and downloads take. Enter file size and connection speed for instant results. Free calculator."
@@ -41,10 +38,7 @@ export default function DataTransferCalculatorPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://kreatli.com/free-tools/data-transfer-calculator" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Data Transfer Calculator – Estimate Upload and Download Times | Kreatli"
-        />
+        <meta name="twitter:title" content="Data Transfer Calculator – Estimate Upload and Download Times | Kreatli" />
         <meta
           name="twitter:description"
           content="Calculate how long large file uploads and downloads take. Enter file size and connection speed for instant results. Free calculator."

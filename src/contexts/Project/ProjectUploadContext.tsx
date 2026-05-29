@@ -60,6 +60,7 @@ interface Props {
 export const ProjectUploadContextProvider = ({ children, project, folderId }: React.PropsWithChildren<Props>) => {
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = React.useState(false);
   const [isContactOwnerModalOpen, setIsContactOwnerModalOpen] = React.useState(false);
+  const [limitType, setLimitType] = React.useState<'storage' | 'uploads'>('storage');
 
   const [stackId, setStackId] = React.useState<string | undefined>(undefined);
   const [stackWithFileId, setStackWithFileId] = React.useState<string | undefined>(undefined);
@@ -75,6 +76,12 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const updateFileUploadProgress = useProjectUploads((state) => state.updateFileUploadProgress);
   const setIsUploadedToS3 = useProjectUploads((state) => state.setIsUploadedToS3);
   const uploadFile = useMultipartUpload({ projectId: project.id });
+
+  const uploadsCount = useProjectUploads(
+    (state) =>
+      state.uploads.reduce((acc, upload) => acc + (upload.isUploadedToS3 || upload.isError ? 0 : 1), 0) +
+      state.uploadsQueue.length,
+  );
 
   const uploadsQueue = useProjectUploads((state) => state.uploadsQueue);
   const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
@@ -144,7 +151,12 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       return;
     }
 
-    if (project.createdBy && !getCanAddAssets(project.createdBy, files)) {
+    const hasEnoughSpace = project.createdBy && getCanAddAssets(project.createdBy, files);
+    const hasEnoughLimits = project.createdBy?.subscription.isActive || project.fileCount + uploadsCount < 2;
+
+    if (!hasEnoughSpace || !hasEnoughLimits) {
+      setLimitType(hasEnoughSpace ? 'uploads' : 'storage');
+
       if (isProjectOwner) {
         setIsUpgradeModalOpen(true);
       } else {
@@ -248,9 +260,9 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       }}
     >
       {children}
-      <UpgradeModal type="storage" isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
+      <UpgradeModal type={limitType} isOpen={isUpgradeModalOpen} onClose={() => setIsUpgradeModalOpen(false)} />
       <ContactOwnerModal
-        type="storage"
+        type={limitType}
         isOpen={isContactOwnerModalOpen}
         onClose={() => setIsContactOwnerModalOpen(false)}
       />

@@ -73,8 +73,8 @@ export default function VideoMarkupToolPage() {
           <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
             <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Video Markup Tool</h1>
             <p className="mx-auto max-w-3xl text-lg text-foreground-500">
-              Mark up video with frame-accurate pins, drawings, and notes on the picture. Editors see exactly which frame
-              and region you mean—no install required for reviewers.
+              Mark up video with frame-accurate pins, drawings, and notes on the picture. Editors see exactly which
+              frame and region you mean—no install required for reviewers.
             </p>
             <HeroCtaButtons />
           </div>

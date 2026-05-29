@@ -142,7 +142,7 @@ export default function FreeToolsPage() {
                     { href: '/free-tools/video-annotator', label: 'Video annotator' },
                     { href: '/free-tools/pdf-reviewer', label: 'PDF reviewer' },
                     { href: '/safe-zone-checker', label: 'Safe zone checker' },
-                      { href: '/free-tools/video-frame-rate-converter', label: 'Frame rate converter' },
+                    { href: '/free-tools/video-frame-rate-converter', label: 'Frame rate converter' },
                     { href: '/free-tools/tiktok-video-downloader', label: 'TikTok downloader' },
                     { href: '/free-tools/instagram-reel-downloader', label: 'Instagram Reel downloader' },
                     { href: '/free-tools/facebook-reel-downloader', label: 'Facebook Reel downloader' },
@@ -168,8 +168,8 @@ export default function FreeToolsPage() {
             }
           >
             <p>
-              Use these tools in the browser for everyday creative work: calculators and layout helpers are free with
-              no account; review and markup tools follow the same access rules as your Kreatli session (try a{' '}
+              Use these tools in the browser for everyday creative work: calculators and layout helpers are free with no
+              account; review and markup tools follow the same access rules as your Kreatli session (try a{' '}
               <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
                 7-day trial
               </NextLink>{' '}

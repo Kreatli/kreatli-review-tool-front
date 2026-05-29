@@ -30,10 +30,7 @@ interface BreadcrumbStructuredDataProps {
  * ]} />
  * ```
  */
-export function BreadcrumbStructuredData({
-  items,
-  baseUrl = 'https://kreatli.com',
-}: BreadcrumbStructuredDataProps) {
+export function BreadcrumbStructuredData({ items, baseUrl = 'https://kreatli.com' }: BreadcrumbStructuredDataProps) {
   if (!items || items.length === 0) {
     return null;
   }
@@ -54,10 +51,7 @@ export function BreadcrumbStructuredData({
 
   return (
     <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
     </Head>
   );
 }

@@ -98,12 +98,6 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
               return;
             }
 
-            if (!user.subscription.isActive) {
-              router.push('/?showPlansModal=true');
-
-              return;
-            }
-
             router.push('/');
           },
           onError: (error) => {

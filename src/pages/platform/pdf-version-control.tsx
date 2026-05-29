@@ -10,20 +10,17 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
-import {
-  PDF_VERSION_CONTROL_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import { VersioningFeaturePreview } from '../../components/shared/VersioningFeaturePreview';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { PDF_VERSION_CONTROL_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
+import { VersioningFeaturePreview } from '../../components/shared/VersioningFeaturePreview';
 import { Icon } from '../../components/various/Icon';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -34,7 +31,7 @@ const faqs = [
   {
     question: 'How do I manage PDF version control in Kreatli?',
     answer:
-      "Upload your first PDF to a Kreatli project. When you have a revised draft, open the file menu (⋯) on that asset and choose Upload new version. The new file appears in the same project with full version history. You can compare two PDF versions side by side by selecting both in the Media view and clicking Compare. PDF version control in Kreatli keeps every draft in one place so you and your clients always see the latest or compare past versions.",
+      'Upload your first PDF to a Kreatli project. When you have a revised draft, open the file menu (⋯) on that asset and choose Upload new version. The new file appears in the same project with full version history. You can compare two PDF versions side by side by selecting both in the Media view and clicking Compare. PDF version control in Kreatli keeps every draft in one place so you and your clients always see the latest or compare past versions.',
   },
   {
     question: 'Can I compare two PDF versions side by side?',
@@ -59,7 +56,7 @@ const faqs = [
   {
     question: 'Why use PDF version control in Kreatli instead of folder renames or email?',
     answer:
-      "PDF version control in Kreatli keeps every draft in one place with the same asset, so you don't rely on \"proposal_v2_final_FINAL.pdf\" or email chains to track what changed. You compare versions side by side, feedback is tied to the right version, and uploading a new version is one click. That reduces confusion and speeds up review and approval.",
+      'PDF version control in Kreatli keeps every draft in one place with the same asset, so you don\'t rely on "proposal_v2_final_FINAL.pdf" or email chains to track what changed. You compare versions side by side, feedback is tied to the right version, and uploading a new version is one click. That reduces confusion and speeds up review and approval.',
   },
   {
     question: 'How does PDF version control help creative and legal workflows?',
@@ -144,7 +141,6 @@ export default function PdfVersionControlPage() {
           </div>
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/pdf-version-control" />
       <PlatformStepGuide

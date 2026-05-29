@@ -65,7 +65,7 @@ export default function VideoLinkMakerPage() {
           name="description"
           content="Create secure, shareable video review links in seconds. Recipients watch, comment, and approve online. Try free with a 7-day trial."
         />
-<meta property="og:title" content="Create Video Review Links – Free Video Link Maker | Kreatli" />
+        <meta property="og:title" content="Create Video Review Links – Free Video Link Maker | Kreatli" />
         <meta
           property="og:description"
           content="Create secure, shareable video review links in seconds. Recipients watch, comment, and approve online. Try free with a 7-day trial."
@@ -123,7 +123,6 @@ export default function VideoLinkMakerPage() {
             </FreeToolsEntitlementSection>
           </div>
         </section>
-
 
         <DefinitionBlock term="Video Link Maker">
           A video link maker creates a URL to a video file so reviewers can stream and comment without downloading.

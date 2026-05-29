@@ -5,7 +5,6 @@ import { KREATLI_PLATFORM_ENTRY_HREF, OPEN_IN_KREATLI_LABEL } from '../../../con
 import { MoreFreeToolsSection } from '../../shared/MoreFreeToolsSection';
 import { Icon, IconType } from '../../various/Icon';
 
-
 interface SafeZoneScreenGuideProps {
   platform?: 'youtube' | 'instagram' | 'tiktok';
   /**
@@ -438,75 +437,86 @@ export const SafeZoneScreenGuide = ({
 
   const stepsSection = (
     <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mb-10 text-center">
-            <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
-              {stepsSectionTitle ?? 'How to Use Safe-Zone Checker in Your Workflow'}
-            </h2>
-            <p className="mx-auto max-w-2xl text-base text-foreground-500">
-              Use the safe zone checker inside Kreatli so you can preview platform overlays, get feedback, and get
-              approvals in one place. Follow these steps to ensure your {contentLabels.content} looks perfect on{' '}
-              {contentLabels.platformName}.
-            </p>
-          </div>
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="mb-10 text-center">
+          <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">
+            {stepsSectionTitle ?? 'How to Use Safe-Zone Checker in Your Workflow'}
+          </h2>
+          <p className="mx-auto max-w-2xl text-base text-foreground-500">
+            Use the safe zone checker inside Kreatli so you can preview platform overlays, get feedback, and get
+            approvals in one place. Follow these steps to ensure your {contentLabels.content} looks perfect on{' '}
+            {contentLabels.platformName}.
+          </p>
+        </div>
 
-          <div className="flex flex-col gap-6">
-            {workflowSteps.map((item) => (
-              <Card key={item.step} className="scroll-mt-36">
-                <CardBody className="p-6 lg:p-8">
-                  <div className="flex flex-col gap-6">
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-                      <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
-                        <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                          <Icon icon={item.icon as IconType} size={24} className="text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
-                          <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
-                        </div>
+        <div className="flex flex-col gap-6">
+          {workflowSteps.map((item) => (
+            <Card key={item.step} className="scroll-mt-36">
+              <CardBody className="p-6 lg:p-8">
+                <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
+                    <div className="flex items-start gap-4 lg:w-80 lg:shrink-0">
+                      <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                        <Icon icon={item.icon as IconType} size={24} className="text-primary" />
                       </div>
-                      <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
-                        <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
-                        {item.step === 5 && (
-                          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
-                            <Button as={NextLink} href={KREATLI_PLATFORM_ENTRY_HREF} size="lg" className="bg-foreground text-content1">{OPEN_IN_KREATLI_LABEL}</Button>
-                            <Button
-                              as="a"
-                              href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                              target="_blank"
-                              size="lg"
-                              variant="bordered"
-                            >
-                              Book a Demo
-                            </Button>
-                          </div>
-                        )}
+                      <div className="flex-1">
+                        <div className="mb-1.5 text-sm font-medium text-primary">Step {item.step}</div>
+                        <h3 className="font-sans text-xl font-bold leading-tight">{item.title}</h3>
                       </div>
                     </div>
-                    {item.image && (
-                      <div className="mt-6 flex justify-center lg:mt-8">
-                        <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
-                          <div
-                            className={`overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg ${item.imageContainerClass ? 'max-h-[65vh]' : ''}`}
+                    <div className="flex-1 border-foreground-200 lg:border-l lg:pl-8">
+                      <p className="text-base leading-relaxed text-foreground-500">{item.description}</p>
+                      {item.step === 5 && (
+                        <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:items-start">
+                          <Button
+                            as={NextLink}
+                            href={KREATLI_PLATFORM_ENTRY_HREF}
+                            size="lg"
+                            className="bg-foreground text-content1"
                           >
-                            <Image
-                              src={item.image}
-                              alt={item.altText || `${item.title} - Social media safe zone checker screenshot`}
-                              loading="lazy"
-                              removeWrapper
-                              className={item.imageContainerClass ? 'h-auto w-full max-h-[65vh] object-contain' : 'h-auto w-full object-contain'}
-                            />
-                          </div>
+                            {OPEN_IN_KREATLI_LABEL}
+                          </Button>
+                          <Button
+                            as="a"
+                            href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
+                            target="_blank"
+                            size="lg"
+                            variant="bordered"
+                          >
+                            Book a Demo
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  {item.image && (
+                    <div className="mt-6 flex justify-center lg:mt-8">
+                      <div className={`w-full ${item.imageContainerClass ?? 'max-w-4xl'}`}>
+                        <div
+                          className={`overflow-hidden rounded-2xl border border-foreground-200 bg-content1 shadow-lg ${item.imageContainerClass ? 'max-h-[65vh]' : ''}`}
+                        >
+                          <Image
+                            src={item.image}
+                            alt={item.altText || `${item.title} - Social media safe zone checker screenshot`}
+                            loading="lazy"
+                            removeWrapper
+                            className={
+                              item.imageContainerClass
+                                ? 'h-auto max-h-[65vh] w-full object-contain'
+                                : 'h-auto w-full object-contain'
+                            }
+                          />
                         </div>
                       </div>
-                    )}
-                  </div>
-                </CardBody>
-              </Card>
-            ))}
-          </div>
+                    </div>
+                  )}
+                </div>
+              </CardBody>
+            </Card>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
   );
 
   if (stepsOnly) {

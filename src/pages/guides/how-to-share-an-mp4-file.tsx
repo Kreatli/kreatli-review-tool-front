@@ -9,8 +9,8 @@ import { ShareFeaturePreview } from '../../components/home/Features/ShareFeature
 import { Section } from '../../components/layout/Storyblok/Section/Section';
 import wysiwygStyles from '../../components/layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 import { CTASection } from '../../components/shared/CTASection';
-import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { KeyTakeaways } from '../../components/shared/KeyTakeaways';
 import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
@@ -123,8 +123,8 @@ export default function HowToShareAnMp4FileGuidePage() {
         <div className={wysiwygStyles.wysiwyg}>
           <p>
             <strong>How to share an MP4 file</strong> usually comes down to one constraint: most email and chat tools
-            were not built for large media. If you try to attach a big MP4, the upload may fail, the recipient may not be
-            able to download it, or the app may compress it. This guide shows when an attachment is fine—and when you
+            were not built for large media. If you try to attach a big MP4, the upload may fail, the recipient may not
+            be able to download it, or the app may compress it. This guide shows when an attachment is fine—and when you
             should switch to a share link.
           </p>
 
@@ -177,13 +177,14 @@ export default function HowToShareAnMp4FileGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Recipient friction:</strong> Downloads may require logins, permissions, or enough device storage.
+                <strong>Recipient friction:</strong> Downloads may require logins, permissions, or enough device
+                storage.
               </p>
             </li>
           </ul>
           <p>
-            If you care about “it opens first try,” treat attachments as a convenience and links as the default for
-            real delivery.
+            If you care about “it opens first try,” treat attachments as a convenience and links as the default for real
+            delivery.
           </p>
 
           <hr />
@@ -256,8 +257,8 @@ export default function HowToShareAnMp4FileGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Expiry:</strong> expiring links reduce risk, but can break later approvals—set a window that fits
-                your timeline.
+                <strong>Expiry:</strong> expiring links reduce risk, but can break later approvals—set a window that
+                fits your timeline.
               </p>
             </li>
             <li>
@@ -272,8 +273,8 @@ export default function HowToShareAnMp4FileGuidePage() {
           <p>
             If the MP4 is being shared for review, a link built for feedback is usually faster than email threads. A
             review-ready link keeps comments tied to timecode and versions—similar to our{' '}
-            <NextLink href="/platform/free-video-link-generator">free video link generator</NextLink> workflow: share one
-            URL, collect frame-accurate notes, and keep approvals tied to the file.
+            <NextLink href="/platform/free-video-link-generator">free video link generator</NextLink> workflow: share
+            one URL, collect frame-accurate notes, and keep approvals tied to the file.
           </p>
           <p>
             The interactive preview below mirrors a simple “share by link” flow. When you are ready,{' '}
@@ -351,10 +352,8 @@ export default function HowToShareAnMp4FileGuidePage() {
           splitPromoImageSrc="/images/guides/embed-video-cta.png"
           splitPromoImageAlt="Kreatli platform: tasks, video review with frame pins, media library, and version compare"
         />
-
       </GuidePageLayout>
       <SignUpModal />
     </>
   );
 }
-

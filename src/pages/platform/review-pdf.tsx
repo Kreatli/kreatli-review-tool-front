@@ -13,10 +13,7 @@ import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { PlatformInteractiveReviewPreview } from '../../components/shared/PlatformInteractiveReviewPreview';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  REVIEW_PDF_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { REVIEW_PDF_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -146,7 +143,6 @@ export default function ReviewPdfPage() {
           <PlatformInteractiveReviewPreview variant="pdf" />
         </div>
       </section>
-
 
       <PlatformDefinitionBlock href="/platform/review-pdf" />
       <PlatformStepGuide
@@ -312,8 +308,8 @@ export default function ReviewPdfPage() {
           <div className="mb-8 text-center">
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Why Review PDFs in Kreatli</h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-              Review PDFs with precise, location-based feedback so your team and clients stay aligned and revisions
-              move faster.
+              Review PDFs with precise, location-based feedback so your team and clients stay aligned and revisions move
+              faster.
             </p>
           </div>
 
@@ -327,8 +323,8 @@ export default function ReviewPdfPage() {
                   <h3 className="font-sans text-lg font-semibold">Clearer Feedback</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Instead of "fix the headline on page 3," comments point to the exact spot. No more back-and-forth
-                  to clarify what to change.
+                  Instead of "fix the headline on page 3," comments point to the exact spot. No more back-and-forth to
+                  clarify what to change.
                 </p>
               </CardBody>
             </Card>

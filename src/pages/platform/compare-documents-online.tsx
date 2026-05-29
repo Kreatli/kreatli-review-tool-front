@@ -12,10 +12,8 @@ import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStru
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
-import {
-  COMPARE_DOCUMENTS_ONLINE_STEPS,
-  PlatformStepGuide,
-} from '../../components/shared/PlatformStepGuide';
+import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
+import { COMPARE_DOCUMENTS_ONLINE_STEPS, PlatformStepGuide } from '../../components/shared/PlatformStepGuide';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
 import { ResourcesArticlesPreviewSection } from '../../components/shared/ResourcesArticlesPreviewSection';
 import { Icon } from '../../components/various/Icon';
@@ -23,7 +21,6 @@ import { getPlatformArticles } from '../../data/platform-articles';
 import { getFreeToolsForPlatform } from '../../data/platform-free-tools';
 import { getRelatedResources } from '../../data/related-resources';
 import { useSession } from '../../hooks/useSession';
-import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 
 const faqs = [
   {
@@ -133,7 +130,6 @@ export default function CompareDocumentsOnlinePage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/compare-documents-online" />
       <PlatformStepGuide
         stepsSectionTitle="How to compare documents online in Kreatli"
@@ -214,8 +210,8 @@ export default function CompareDocumentsOnlinePage() {
                   <h3 className="font-sans text-lg font-semibold">Resolution Tracking</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Mark comments as resolved or unresolved. Track which feedback has been addressed across both
-                  documents and keep rounds organized.
+                  Mark comments as resolved or unresolved. Track which feedback has been addressed across both documents
+                  and keep rounds organized.
                 </p>
               </CardBody>
             </Card>
@@ -244,8 +240,8 @@ export default function CompareDocumentsOnlinePage() {
                   <h3 className="font-sans text-lg font-semibold">Documents With Video and Other Assets</h3>
                 </div>
                 <p className="text-sm text-foreground-500">
-                  Compare documents in the same project as your video, images, and other deliverables. One workflow
-                  for creative review, contracts, and approvals.
+                  Compare documents in the same project as your video, images, and other deliverables. One workflow for
+                  creative review, contracts, and approvals.
                 </p>
               </CardBody>
             </Card>

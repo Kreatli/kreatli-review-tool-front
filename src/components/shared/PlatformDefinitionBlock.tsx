@@ -1,5 +1,4 @@
 import { PLATFORM_PAGES } from '../../data/platform-pages';
-
 import { DefinitionBlock } from './DefinitionBlock';
 
 function displayTerm(label: string): string {

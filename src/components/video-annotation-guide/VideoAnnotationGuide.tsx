@@ -1,7 +1,4 @@
-import {
-  PlatformStepGuide,
-  VIDEO_ANNOTATION_STEPS,
-} from '../shared/PlatformStepGuide';
+import { PlatformStepGuide, VIDEO_ANNOTATION_STEPS } from '../shared/PlatformStepGuide';
 
 interface VideoAnnotationGuideProps {
   stepsSectionTitle?: string;

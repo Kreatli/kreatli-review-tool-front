@@ -141,7 +141,6 @@ export default function DrawOnAVideoPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/draw-on-a-video" />
       {/* How to Draw on a Video in Kreatli (step-by-step) */}
       <PlatformStepGuide

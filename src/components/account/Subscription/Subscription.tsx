@@ -102,13 +102,37 @@ export const Subscription = ({ user }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="mb-4">
-          <Button
-            className="bg-foreground text-content1"
-            onClick={() => setIsPlansModalVisible(true, 'subscription_page')}
-          >
-            {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start a free trial'}
-          </Button>
+        <div className="mb-4 flex flex-col gap-2">
+          <div className="flex flex-col justify-between gap-2 md:flex-row">
+            <div className="flex items-center gap-2">
+              {user.subscription.plan !== 'enterprise' && (
+                <Button
+                  className="bg-foreground text-content1"
+                  onClick={() => setIsPlansModalVisible(true, 'subscription_page')}
+                >
+                  {user.subscription.hasUsedTrial ? 'Select plan' : 'Start free trial'}
+                </Button>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between gap-2">
+              <div className="text-sm">Active users</div>
+              <div className="text-sm text-foreground-500">
+                {usersCount.used}/{usersCount.max}
+              </div>
+            </div>
+            <Progress value={(usersCount.used / usersCount.max) * 100} size="sm" color="default" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between gap-2">
+              <div className="text-sm">Storage</div>
+              <div className="text-sm text-foreground-500">
+                {formatBytes(storage.used)}/{formatBytes(storage.max)}
+              </div>
+            </div>
+            <Progress value={(storage.used / storage.max) * 100} size="sm" color="default" />
+          </div>
         </div>
       )}
       {user.subscription.isActive && !user.subscription.isTrial && !user.subscription.isAppSumo && (

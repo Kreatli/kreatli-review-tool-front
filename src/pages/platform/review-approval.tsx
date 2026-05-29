@@ -147,7 +147,6 @@ export default function ReviewApprovalPage() {
         </div>
       </section>
 
-
       <PlatformDefinitionBlock href="/platform/review-approval" />
       {/* Frame-Accurate Revisions Section */}
       <section className="relative overflow-hidden px-6 py-16">

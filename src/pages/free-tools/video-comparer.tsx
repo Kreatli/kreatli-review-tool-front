@@ -137,7 +137,9 @@ export default function VideoComparerPage() {
         </section>
 
         <DefinitionBlock term="Video Comparer">
-          A video comparer is a tool that displays two video versions side by side so reviewers can spot differences between cuts. Frame-accurate playback lets you compare edits at the exact same moment in both versions. Video comparers help teams verify changes, catch regressions, and make informed approval decisions.
+          A video comparer is a tool that displays two video versions side by side so reviewers can spot differences
+          between cuts. Frame-accurate playback lets you compare edits at the exact same moment in both versions. Video
+          comparers help teams verify changes, catch regressions, and make informed approval decisions.
         </DefinitionBlock>
 
         <section className="relative overflow-hidden px-6 pb-4" aria-labelledby="video-comparer-use-cases">
@@ -151,8 +153,8 @@ export default function VideoComparerPage() {
                 exports at the same timecode to confirm contrast and hues.
               </li>
               <li>
-                <strong className="font-semibold text-foreground-700">A/B cut reviews</strong> — producers pick between two
-                assemblies without re-opening files in isolation.
+                <strong className="font-semibold text-foreground-700">A/B cut reviews</strong> — producers pick between
+                two assemblies without re-opening files in isolation.
               </li>
               <li>
                 <strong className="font-semibold text-foreground-700">Client revision rounds</strong> — show “v2 vs v3”
@@ -186,8 +188,9 @@ export default function VideoComparerPage() {
               Video review workflows
             </h2>
             <p className="text-sm text-foreground-600 sm:text-base">
-              Comparing A/B cuts is one piece of <strong className="font-semibold text-foreground-700">video review</strong>.
-              When you need threaded feedback, drawings, and{' '}
+              Comparing A/B cuts is one piece of{' '}
+              <strong className="font-semibold text-foreground-700">video review</strong>. When you need threaded
+              feedback, drawings, and{' '}
               <strong className="font-semibold text-foreground-700">video review and approval</strong> on a single
               timeline, use Kreatli’s{' '}
               <NextLink href="/free-tools/video-feedback-tool" className="text-primary underline underline-offset-2">

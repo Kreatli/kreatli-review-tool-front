@@ -120,9 +120,10 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
 
         <div className={wysiwygStyles.wysiwyg}>
           <p>
-            Learning <strong>how to download YouTube Shorts</strong> comes down to pairing a <strong>public link</strong>{' '}
-            with a downloader that can expose a <strong>progressive MP4</strong>. YouTube often serves adaptive streams too,
-            which means not every clip will offer a single-file download from a paste-the-link flow.
+            Learning <strong>how to download YouTube Shorts</strong> comes down to pairing a{' '}
+            <strong>public link</strong> with a downloader that can expose a <strong>progressive MP4</strong>. YouTube
+            often serves adaptive streams too, which means not every clip will offer a single-file download from a
+            paste-the-link flow.
           </p>
 
           <KeyTakeaways
@@ -164,7 +165,8 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Standard watch URLs:</strong> <code>youtube.com/watch?v=VIDEO_ID</code> (works for vertical Shorts too)
+                <strong>Standard watch URLs:</strong> <code>youtube.com/watch?v=VIDEO_ID</code> (works for vertical
+                Shorts too)
               </p>
             </li>
             <li>
@@ -184,7 +186,9 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
             <li>
               <p>
                 Paste the URL into{' '}
-                <NextLink href="/free-tools/youtube-shorts-downloader">Kreatli&apos;s YouTube Shorts downloader</NextLink>{' '}
+                <NextLink href="/free-tools/youtube-shorts-downloader">
+                  Kreatli&apos;s YouTube Shorts downloader
+                </NextLink>{' '}
                 and confirm you are signed in so downloads can start.
               </p>
             </li>
@@ -196,15 +200,17 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
             </li>
             <li>
               <p>
-                If the download stalls, click <strong>Find video</strong> again, then retry <strong>Download</strong>, and
-                review your browser&apos;s download and pop-up permissions.
+                If the download stalls, click <strong>Find video</strong> again, then retry <strong>Download</strong>,
+                and review your browser&apos;s download and pop-up permissions.
               </p>
             </li>
           </ol>
 
           <p>
             Prefer the marketing overview? Jump to{' '}
-            <NextLink href="/platform/download-youtube-shorts">Download YouTube Shorts on the Kreatli platform hub</NextLink>
+            <NextLink href="/platform/download-youtube-shorts">
+              Download YouTube Shorts on the Kreatli platform hub
+            </NextLink>
             .
           </p>
 
@@ -218,8 +224,8 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
           <ul>
             <li>
               <p>
-                <strong>No progressive MP4 found:</strong> the upload may rely entirely on segmented streams — try exporting
-                from YouTube Studio if you’re the creator, or coordinate with whoever owns the file.
+                <strong>No progressive MP4 found:</strong> the upload may rely entirely on segmented streams — try
+                exporting from YouTube Studio if you’re the creator, or coordinate with whoever owns the file.
               </p>
             </li>
             <li>
@@ -230,8 +236,8 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
             </li>
             <li>
               <p>
-                <strong>Stale URLs:</strong> CDN tokens expire quickly. Click <strong>Find video</strong> again whenever the
-                error mentions upstream failures.
+                <strong>Stale URLs:</strong> CDN tokens expire quickly. Click <strong>Find video</strong> again whenever
+                the error mentions upstream failures.
               </p>
             </li>
           </ul>
@@ -239,8 +245,8 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
           <hr />
           <h2 id={getHeadingId(TOC_SECTIONS[4])}>{TOC_SECTIONS[4]}</h2>
           <p>
-            After you archive a Short, drag it into Kreatli Review to annotate frame-accurate notes, organize versions, and
-            route approvals faster than spreadsheets or chat threads alone.
+            After you archive a Short, drag it into Kreatli Review to annotate frame-accurate notes, organize versions,
+            and route approvals faster than spreadsheets or chat threads alone.
           </p>
           <p>
             If you intend to publish on additional channels, run{' '}
@@ -288,8 +294,8 @@ export default function HowToDownloadYouTubeShortsGuidePage() {
             <div className={cn(wysiwygStyles.wysiwyg, 'mt-10 [&>h3:first-child]:!mt-0')}>
               <h3>Still have questions?</h3>
               <p>
-                Email <a href="mailto:support@kreatli.com">support@kreatli.com</a> — we&apos;ll route you toward the safest
-                review workflow once your clips are offline.
+                Email <a href="mailto:support@kreatli.com">support@kreatli.com</a> — we&apos;ll route you toward the
+                safest review workflow once your clips are offline.
               </p>
             </div>
           </div>
