@@ -74,6 +74,7 @@ export const ProjectFolder = ({ isSelected, isDisabled, isReadonly, folder, onSe
                     <DropdownItem
                       key={action.label}
                       color={action.color}
+                      isDisabled={action.isDisabled}
                       showDivider={action.showDivider}
                       startContent={<Icon icon={action.icon} size={16} />}
                       onPress={action.onClick}

@@ -101,6 +101,7 @@ export const ProjectFile = ({ isSelected, isDisabled, isReadonly, index, file, o
             <DropdownItem
               key={action.label}
               color={action.color}
+              isDisabled={action.isDisabled}
               showDivider={action.showDivider}
               startContent={<Icon icon={action.icon} size={16} />}
               onPress={action.onClick}

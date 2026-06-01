@@ -112,6 +112,7 @@ export const ProjectStack = ({ isSelected, isDisabled, isReadonly, index, stack,
               <DropdownItem
                 key={action.key}
                 color={action.color}
+                isDisabled={action.isDisabled}
                 showDivider={action.showDivider}
                 startContent={<Icon icon={action.icon} size={16} />}
                 onPress={action.onClick}

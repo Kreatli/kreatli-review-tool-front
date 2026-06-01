@@ -77,11 +77,7 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
   const setIsUploadedToS3 = useProjectUploads((state) => state.setIsUploadedToS3);
   const uploadFile = useMultipartUpload({ projectId: project.id });
 
-  const uploadsCount = useProjectUploads(
-    (state) =>
-      state.uploads.reduce((acc, upload) => acc + (upload.isUploadedToS3 || upload.isError ? 0 : 1), 0) +
-      state.uploadsQueue.length,
-  );
+  const uploadsCount = useProjectUploads((state) => state.uploads.filter((upload) => upload.progress < 100).length);
 
   const uploadsQueue = useProjectUploads((state) => state.uploadsQueue);
   const addItemToUploadQueue = useProjectUploads((state) => state.addItemToUploadQueue);
@@ -152,7 +148,8 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
     }
 
     const hasEnoughSpace = project.createdBy && getCanAddAssets(project.createdBy, files);
-    const hasEnoughLimits = project.createdBy?.subscription.isActive || project.fileCount + uploadsCount < 2;
+    const hasEnoughLimits =
+      project.createdBy?.subscription.isActive || project.fileCount + uploadsCount + files.length <= 2;
 
     if (!hasEnoughSpace || !hasEnoughLimits) {
       setLimitType(hasEnoughSpace ? 'uploads' : 'storage');

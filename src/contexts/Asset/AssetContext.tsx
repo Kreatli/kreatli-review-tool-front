@@ -9,6 +9,7 @@ import { RenameAssetModal } from '../../components/asset/AssetModals/RenameAsset
 import { RestoreAssetModal } from '../../components/asset/AssetModals/RestoreAssetModal';
 import { ShareAssetModal } from '../../components/asset/AssetModals/ShareAssetModal';
 import { IconType } from '../../components/various/Icon';
+import { useSession } from '../../hooks/useSession';
 import { getAssetFileIdDownload } from '../../services/services';
 import { ProjectDto, ProjectFileDto, ProjectFolderDto, ProjectStackDto } from '../../services/types';
 import { downloadFromUrl } from '../../utils/download';
@@ -20,6 +21,7 @@ interface Context {
     label: string;
     icon: IconType;
     showDivider?: boolean;
+    isDisabled?: boolean;
     color?: MenuItemProps['color'];
     onClick: () => void;
   }[];
@@ -64,6 +66,8 @@ export const AssetContextProvider = ({
   const [isManageVersionsModalOpen, setIsManageVersionsModalOpen] = React.useState(false);
 
   const { openFileDialog, setStackId, setStackWithFileId } = useProjectUploadContext();
+
+  const { user } = useSession();
 
   const getAssetActions = (asset: ProjectFolderDto | ProjectFileDto | ProjectStackDto) => {
     const shareAction = {
@@ -124,6 +128,7 @@ export const AssetContextProvider = ({
           key: 'restore',
           label: 'Restore',
           icon: 'update' as const,
+          isDisabled: !user?.subscription.isActive,
           onClick: () => {
             setSelectedAssetId?.(asset.id);
             setIsRestoreModalOpen(true);
