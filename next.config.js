@@ -33,6 +33,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/terms-of-use',
+        destination: '/terms-and-conditions',
+        permanent: true,
+      },
+      {
         source: '/comparisons/kreatli-vs-frameio',
         destination: '/comparisons/kreatli-vs-frameio-2026',
         permanent: true,

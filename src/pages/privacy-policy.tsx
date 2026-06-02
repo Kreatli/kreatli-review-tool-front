@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@heroui/react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { Header } from '../components/layout/Header';
 import { useSession } from '../hooks/useSession';
@@ -11,15 +13,14 @@ export default function PrivacyPolicy() {
     <>
       <Head>
         <title>Kreatli | Privacy Policy</title>
-        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       <div className="border-t border-foreground-200 p-6">
         <div className="mx-auto max-w-5xl">
           <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Privacy Policy</h1>
-          <p className="mb-6 text-foreground-500">Last updated July 20, 2025</p>
+          <p className="mb-6 text-foreground-500">Last updated June 2, 2026</p>
           <div>
-            This Privacy Notice for Kreatli ("<span className="font-semibold">we</span>," "
+            This Privacy Notice for Kreatli, Inc. ("<span className="font-semibold">we</span>," "
             <span className="font-semibold">us</span>," or "<span className="font-semibold">our</span>"), describes how
             and why we might access, collect, store, use, and/or share ("<span className="font-semibold">process</span>
             ") your personal information when you use our services ("<span className="font-semibold">Services</span>"),
@@ -80,8 +81,18 @@ export default function PrivacyPolicy() {
               information.
             </div>
             <div className="mt-2">
-              <span className="font-semibold">Do we collect any information from third parties?</span> We do not collect
-              any information from third parties.
+              <span className="font-semibold">Do we collect any information from third parties?</span> We may receive
+              limited information from third-party service providers when you use certain features of our Services, such
+              as when you sign in with Google, make a payment through Stripe, or when analytics providers collect usage
+              data on our behalf. Learn more in the sections on{' '}
+              <a href="#whoshare" className="text-primary underline underline-offset-2">
+                when and with whom we share personal information
+              </a>{' '}
+              and{' '}
+              <a href="#sociallogins" className="text-primary underline underline-offset-2">
+                social logins
+              </a>
+              .
             </div>
             <div className="mt-2">
               <span className="font-semibold">How do we process your information?</span> We process your information to
@@ -125,6 +136,15 @@ export default function PrivacyPolicy() {
               .
             </div>
             <div className="mt-2">
+              <span className="font-semibold">Do we sell your content or personal information?</span> We do not sell
+              your personal information. We do not sell, license, or commercially exploit the creative files, designs,
+              videos, or other materials you upload to the Services. Learn more about{' '}
+              <a href="#customercontent" className="text-primary underline underline-offset-2">
+                Customer Content you upload
+              </a>
+              .
+            </div>
+            <div className="mt-2">
               <span className="font-semibold">How do you exercise your rights?</span> The easiest way to exercise your
               rights is by contacting us. We will consider and act upon any request in accordance with applicable data
               protection laws.
@@ -145,6 +165,11 @@ export default function PrivacyPolicy() {
               <li>
                 <a href="#infocollect" className="text-primary underline underline-offset-2">
                   What information do we collect?
+                </a>
+              </li>
+              <li>
+                <a href="#customercontent" className="text-primary underline underline-offset-2">
+                  Customer Content you upload
                 </a>
               </li>
               <li>
@@ -248,11 +273,11 @@ export default function PrivacyPolicy() {
               with your payment instrument. All payment data is handled and stored by Stripe. You may find their privacy
               notice link(s) here:{' '}
               <a
-                href="https://stripe.com/en-de/privacy"
+                href="https://stripe.com/privacy"
                 target="_blank"
                 className="text-primary underline underline-offset-2"
               >
-                https://stripe.com/en-de/privacy
+                https://stripe.com/privacy
               </a>
               .
             </div>
@@ -336,6 +361,42 @@ export default function PrivacyPolicy() {
                 Limited Use requirements
               </a>
               .<br />
+            </div>
+            <div>
+              <h2 id="customercontent" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
+                Customer Content you upload
+              </h2>
+              In Short: You own the creative files you upload. We store and process them only to provide the Services,
+              and we do not sell them.
+            </div>
+            <div className="mt-2">
+              When you use Kreatli, you may upload or create files, designs, videos, images, comments, and other
+              materials (&ldquo;<span className="font-semibold">Customer Content</span>&rdquo;).{' '}
+              <span className="font-semibold">You retain ownership of your Customer Content.</span> Kreatli, Inc. does
+              not claim ownership of your Customer Content and does not acquire any rights to sell, license, or
+              commercially exploit your Customer Content to third parties.
+            </div>
+            <div className="mt-2">
+              We process and store Customer Content solely to provide, maintain, and improve the Services for you and
+              your authorized collaborators—for example, to host files, enable review and approval workflows, generate
+              share links, and display content within your projects. We do not use your Customer Content for advertising,
+              marketing to third parties, or training machine-learning models.
+            </div>
+            <div className="mt-2">
+              Customer Content is stored using secure cloud infrastructure operated by our service providers. Access is
+              limited to personnel and systems that need it to operate the Services, troubleshoot issues, or comply
+              with law. We do not disclose Customer Content to third parties except (a) to subprocessors that help us
+              host and deliver the Services under contractual confidentiality obligations, (b) when you choose to share
+              content via review links or collaboration features, or (c) when required by law.
+            </div>
+            <div className="mt-2">
+              When you delete Customer Content or close your account, we delete or anonymize it from active systems within
+              a reasonable period, subject to backup retention and legal obligations. You may export your content before
+              closing your account. For more detail on ownership and licensing, see our{' '}
+              <Link href="/terms-and-conditions#license" className="text-primary underline underline-offset-2">
+                Terms of Service
+              </Link>
+              .
             </div>
             <div>
               <h2 id="infouse" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
@@ -477,6 +538,13 @@ export default function PrivacyPolicy() {
               </div>
               <div className="mt-2">We may need to share your personal information in the following situations:</div>
               <ul className="mt-2 list-inside list-disc">
+                <li data-custom-class="body_text">
+                  <span className="font-semibold">Service Providers (Subprocessors).</span> We share personal
+                  information with vendors that help us operate the Services, including payment processing (Stripe),
+                  authentication and sign-in (Google), analytics (Google Analytics), cloud hosting and file storage
+                  (Amazon Web Services), and media delivery (Cloudinary). These providers process data on our behalf
+                  under contractual obligations and only as needed to perform their services.
+                </li>
                 <li data-custom-class="body_text">
                   <span className="font-semibold">Business Transfers.</span> We may share or transfer your information
                   in connection with, or during negotiations of, any merger, sale of company assets, financing, or
@@ -835,12 +903,12 @@ export default function PrivacyPolicy() {
                         Browsing history, search history, online behavior, interest data, and interactions with our and
                         other websites, applications, systems, and advertisements
                       </TableCell>
-                      <TableCell>NO</TableCell>
+                      <TableCell>YES</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>G. Geolocation data</TableCell>
                       <TableCell>Device location</TableCell>
-                      <TableCell>NO</TableCell>
+                      <TableCell>YES</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>H. Audio, electronic, sensory, or similar information</TableCell>
@@ -889,6 +957,8 @@ export default function PrivacyPolicy() {
                 <ul className="mt-2 list-inside list-disc">
                   <li data-custom-class="body_text">Category A - As long as the user has an account with us</li>
                   <li data-custom-class="body_text">Category D - As long as the user has an account with us</li>
+                  <li data-custom-class="body_text">Category F - As long as the user has an account with us</li>
+                  <li data-custom-class="body_text">Category G - As long as the user has an account with us</li>
                 </ul>
                 <div>
                   <h3 className="mb-1 mt-4 text-xl font-semibold">Sources of Personal Information</h3>
@@ -1048,13 +1118,22 @@ export default function PrivacyPolicy() {
                   of how we are protecting your information.
                 </div>
                 <h2 id="contact" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
-                  14. How can you contact us about this notice?
-                </h2>
-                If you have questions or comments about this notice, you may email us at{' '}
-                <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
-                  support@kreatli.com
-                </a>
-                .
+                    14. How can you contact us about this notice?
+                  </h2>
+                  If you have questions or comments about this notice, you may contact us at:
+                  <div className="mt-2 pl-4">
+                    <div>
+                      <span className="font-semibold">Kreatli, Inc.</span>
+                    </div>
+                    <div>131 Continental Dr Suite 305</div>
+                    <div>Newark, Delaware 19713</div>
+                    <div>
+                      Email:{' '}
+                      <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
+                        support@kreatli.com
+                      </a>
+                    </div>
+                  </div>
                 <div>
                   <h2 id="request" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
                     15. How can you review, update, or delete the data we collect from you?

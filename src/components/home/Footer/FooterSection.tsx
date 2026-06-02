@@ -270,7 +270,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
                     href="/terms-and-conditions"
                     className="text-sm text-foreground-500 underline-offset-2 hover:text-foreground hover:underline"
                   >
-                    Terms and Conditions
+                    Terms of Service
                   </Link>
                 </li>
                 <li>

@@ -11,15 +11,14 @@ export default function Cookies() {
     <>
       <Head>
         <title>Kreatli | Cookie Policy</title>
-        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Header />
       <div className="border-t border-foreground-200 p-6">
         <div className="mx-auto max-w-5xl">
           <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Cookies Policy</h1>
-          <p className="mb-6 text-foreground-500">Last updated July 20, 2025</p>
+          <p className="mb-6 text-foreground-500">Last updated June 2, 2026</p>
           <div>
-            This Cookie Policy explains how Kreatli ("<span className="font-semibold">Company</span>," "
+            This Cookie Policy explains how Kreatli, Inc. ("<span className="font-semibold">Company</span>," "
             <span className="font-semibold">we</span>," "<span className="font-semibold">us</span>
             ," and "<span className="font-semibold">our</span>") uses cookies and similar technologies to recognize you
             when you visit our website at&nbsp;
@@ -42,7 +41,7 @@ export default function Cookies() {
             as well as to provide reporting information.
           </div>
           <div className="mt-2">
-            Cookies set by the website owner (in this case, Kreatli) are called "first-party cookies." Cookies set by
+            Cookies set by the website owner (in this case, Kreatli, Inc.) are called "first-party cookies." Cookies set by
             parties other than the website owner are called "third-party cookies." Third-party cookies enable
             third-party features or functionality to be provided on or through the website (e.g., advertising,
             interactive content, and analytics). The parties that set these third-party cookies can recognize your
@@ -322,10 +321,20 @@ export default function Cookies() {
             <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Where can I get further information?</h2>
           </div>
           <div>
-            If you have any questions about our use of cookies or other technologies, please contact us at:{' '}
-            <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
-              support@kreatli.com
-            </a>
+            If you have any questions about our use of cookies or other technologies, please contact us at:
+          </div>
+          <div className="mt-2 pl-4">
+            <div>
+              <span className="font-semibold">Kreatli, Inc.</span>
+            </div>
+            <div>131 Continental Dr Suite 305</div>
+            <div>Newark, Delaware 19713</div>
+            <div>
+              Email:{' '}
+              <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
+                support@kreatli.com
+              </a>
+            </div>
           </div>
         </div>
       </div>
