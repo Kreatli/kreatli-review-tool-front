@@ -159,7 +159,7 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
         <Button type="submit" className="bg-foreground text-content1" isLoading={isPending} fullWidth>
           <span>Sign up</span>
         </Button>
-        <Button variant="bordered" isLoading={isSsoPending} fullWidth onClick={() => googleLogin()}>
+        <Button variant="bordered" isLoading={isSsoPending} fullWidth onPress={() => googleLogin()}>
           <span className="inline-flex items-center gap-1.5">
             Sign up with <Icon icon="google" size={18} className="shrink-0" />
           </span>
@@ -171,6 +171,31 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
           Sign in
         </Link>
       </div>
+      <p className="text-center text-xs leading-relaxed text-foreground-500">
+        By signing up, you agree to our{' '}
+        <Link
+          as={NextLink}
+          href="/terms-and-conditions"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-foreground-500"
+          underline="always"
+        >
+          Terms of Service
+        </Link>{' '}
+        and{' '}
+        <Link
+          as={NextLink}
+          href="/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-foreground-500"
+          underline="always"
+        >
+          Privacy Policy
+        </Link>
+        .
+      </p>
     </form>
   );
 };

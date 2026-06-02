@@ -9,19 +9,25 @@ export default function TermsAndConditions() {
   return (
     <>
       <Head>
-        <title>Kreatli | Terms and Conditions</title>
-        <meta name="robots" content="noindex, nofollow" />
+        <title>Kreatli | Terms of Service</title>
       </Head>
       <Header />
       <div className="border-t border-foreground-200 p-6">
         <div className="mx-auto max-w-5xl">
           <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Terms of Service</h1>
-          <p className="mb-6 text-foreground-500">Last updated July 21, 2025</p>
+          <p className="mb-6 text-foreground-500">Last updated June 2, 2026</p>
+          <div className="mb-6 rounded-lg border border-foreground-200 bg-foreground-50 p-4 text-sm">
+            <span className="font-semibold">Please read carefully:</span> Section 15 contains provisions governing how
+            disputes between you and Kreatli, Inc. are resolved, including an agreement to binding arbitration and a
+            class action waiver. Unless you opt out within 30 days of first accepting these Terms, you agree to resolve
+            disputes through individual arbitration rather than in court, and you waive your right to participate in
+            class actions.
+          </div>
           <h2 className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">Agreement to our Legal Terms</h2>
           <div className="mt-2">
-            We are Kreatli ("<span className="font-semibold">Company</span>," "<span className="font-semibold">we</span>
-            ," "<span className="font-semibold">us</span>," "<span className="font-semibold">our</span>"), a company
-            registered in Germany at Sch&ouml;nflie&szlig;er Str. 2, Berlin 10439.
+            We are Kreatli, Inc. ("<span className="font-semibold">Company</span>," "<span className="font-semibold">we</span>
+            ," "<span className="font-semibold">us</span>," "<span className="font-semibold">our</span>"), a Delaware
+            corporation with its principal office at 131 Continental Dr Suite 305, Newark, Delaware 19713.
           </div>
           <div className="mt-2">
             We operate the website{' '}
@@ -51,7 +57,7 @@ export default function TermsAndConditions() {
           </div>
           <div className="mt-2">
             These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf
-            of an entity ("<span className="font-semibold">you</span>"), and Kreatli, concerning your access to and use
+            of an entity ("<span className="font-semibold">you</span>"), and Kreatli, Inc., concerning your access to and use
             of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound
             by all of these Legal Terms. If you do not agree with all of these Legal Terms, then you are expressly
             prohibited from using the Services and you must discontinue use immediately.
@@ -111,7 +117,7 @@ export default function TermsAndConditions() {
             </li>
             <li>
               <a className="text-primary underline underline-offset-2" href="#license" data-custom-class="link">
-                Contribution License
+                Customer Content License
               </a>
             </li>
             <li>
@@ -172,6 +178,11 @@ export default function TermsAndConditions() {
             <li>
               <a className="text-primary underline underline-offset-2" href="#electronic" data-custom-class="link">
                 Electronic Communications, Transactions, and Signatures
+              </a>
+            </li>
+            <li>
+              <a className="text-primary underline underline-offset-2" href="#dmca" data-custom-class="link">
+                Copyright Policy (DMCA)
               </a>
             </li>
             <li>
@@ -270,55 +281,48 @@ export default function TermsAndConditions() {
             your right to use our Services will terminate immediately.
           </div>
           <div data-custom-class="heading_2">
-            <h3 className="mb-1 mt-4 text-xl font-semibold">Your submissions and contributions</h3>
+            <h3 className="mb-1 mt-4 text-xl font-semibold">Your Customer Content</h3>
           </div>
           <div className="mt-2">
-            Please review this section and the{' '}
-            <a className="text-primary underline underline-offset-2" href="#prohibited" data-custom-class="link">
-              Prohibited Activities
-            </a>{' '}
-            section carefully prior to using our Services to understand the (a) rights you give us and (b) obligations
-            you have when you post or upload any content through the Services.
+            Please review this section carefully to understand (a) your ownership of content you upload or create
+            through the Services, (b) the limited rights you grant us to operate the Services, and (c) your obligations
+            when using the Services.
           </div>
           <div className="mt-2">
-            <span className="font-semibold">Submissions:</span> By directly sending us any question, comment,
-            suggestion, idea, feedback, or other information about the Services ("Submissions"), you agree to assign to
-            us all intellectual property rights in such Submission. You agree that we shall own this Submission and be
-            entitled to its unrestricted use and dissemination for any lawful purpose, commercial or otherwise, without
-            acknowledgment or compensation to you.
+            <span className="font-semibold">Your Content is Your Content.</span> As between you and Kreatli, you retain
+            all right, title, and interest in and to any files, designs, projects, images, videos, documents, or other
+            materials you upload or create through the Services (&ldquo;
+            <span className="font-semibold">Customer Content</span>&rdquo;). Kreatli does not claim any ownership
+            rights over your Customer Content, and nothing in these Legal Terms transfers any intellectual property
+            rights in your Customer Content to Kreatli.
           </div>
           <div className="mt-2">
-            <span className="font-semibold">Contributions:</span> The Services may invite you to chat, contribute to, or
-            participate in blogs, message boards, online forums, and other functionality during which you may create,
-            submit, post, display, transmit, publish, distribute, or broadcast content and materials to us or through
-            the Services, including but not limited to text, writings, video, audio, photographs, music, graphics,
-            comments, reviews, rating suggestions, personal information, or other material ("Contributions"). Any
-            Submission that is publicly posted shall also be treated as a Contribution.
+            <span className="font-semibold">Limited License to Operate the Services.</span> You grant Kreatli a
+            limited, non-exclusive, worldwide, royalty-free license to host, store, copy, transmit, cache, and display
+            your Customer Content solely to the extent necessary to provide the Services to you and your authorized
+            collaborators. Kreatli will not use your Customer Content for any commercial purpose beyond the operation of
+            the Services, and Kreatli has no right to sell, sublicense, or otherwise commercially exploit your Customer
+            Content to any third party.
           </div>
-          <div className="mt-2">You understand that Contributions may be viewable by other users of the Services.</div>
           <div className="mt-2">
+            <span className="font-semibold">No Sale of Customer Content.</span>{' '}
             <span className="font-semibold">
-              When you post Contributions, you grant us a license (including use of your name, trademarks, and
-              logos):&nbsp;
-            </span>
-            By posting any Contributions, you grant us an unrestricted, unlimited, irrevocable, perpetual,
-            non-exclusive, transferable, royalty-free, fully-paid, worldwide right, and license to: use, copy,
-            reproduce, distribute, sell, resell, publish, broadcast, retitle, store, publicly perform, publicly display,
-            reformat, translate, excerpt (in whole or in part), and exploit your Contributions (including, without
-            limitation, your image, name, and voice) for any purpose, commercial, advertising, or otherwise, to prepare
-            derivative works of, or incorporate into other works, your Contributions, and to sublicense the licenses
-            granted in this section. Our use and distribution may occur in any media formats and through any media
-            channels.
+              Kreatli will never sell your Customer Content or provide it to any third party for commercial
+              exploitation. Your Customer Content is used exclusively to provide and improve the Services for you.
+            </span>{' '}
+            We expressly disclaim any right, title, or interest to sell, resell, license, or otherwise transfer your
+            Customer Content to third parties for any commercial purpose.
           </div>
           <div className="mt-2">
-            This license includes our use of your name, company name, and franchise name, as applicable, and any of the
-            trademarks, service marks, trade names, logos, and personal and commercial images you provide.
+            <span className="font-semibold">Feedback.</span> If you directly send us any question, comment, suggestion,
+            idea, or feedback about the Services (&ldquo;<span className="font-semibold">Feedback</span>&rdquo;), you
+            agree that we may use such Feedback to improve the Services without any obligation to you. Feedback is
+            distinct from your Customer Content and does not include the files or creative materials you store or create
+            in the Services.
           </div>
           <div className="mt-2">
-            <span className="font-semibold">You are responsible for what you post or upload:</span> By sending us
-            Submissions and/or posting Contributions through any part of the Services or making Contributions accessible
-            through the Services by linking your account through the Services to any of your social networking accounts,
-            you:
+            <span className="font-semibold">You are responsible for what you upload:</span> By uploading or sharing
+            Customer Content through the Services, you:
           </div>
           <ul className="mt-2 list-inside list-disc pl-2">
             <li>
@@ -326,36 +330,29 @@ export default function TermsAndConditions() {
               <a className="text-primary underline underline-offset-2" href="#prohibited" data-custom-class="link">
                 Prohibited Activities
               </a>{' '}
-              and will not post, send, publish, upload, or transmit through the Services any Submission nor post any
-              Contribution that is illegal, harassing, hateful, harmful, defamatory, obscene, bullying, abusive,
-              discriminatory, threatening to any person or group, sexually explicit, false, inaccurate, deceitful, or
-              misleading;
+              and will not upload, transmit, or share through the Services any content that is illegal, harassing,
+              hateful, harmful, defamatory, obscene, bullying, abusive, discriminatory, threatening to any person or
+              group, sexually explicit, false, inaccurate, deceitful, or misleading;
             </li>
             <li>
-              to the extent permissible by applicable law, waive any and all moral rights to any such Submission and/or
-              Contribution;
+              warrant that your Customer Content is original to you or that you have the necessary rights, licenses,
+              consents, and permissions to upload it and grant us the limited operational license described above;
             </li>
             <li>
-              warrant that any such Submission and/or Contributions are original to you or that you have the necessary
-              rights and licenses to submit such Submissions and/or Contributions and that you have full authority to
-              grant us the above-mentioned rights in relation to your Submissions and/or Contributions; and
+              warrant that your Customer Content does not infringe the intellectual property rights, privacy rights, or
+              other rights of any third party; and
             </li>
             <li>
-              warrant and represent that your Submissions and/or Contributions do not constitute confidential
-              information.
+              acknowledge that you are solely responsible for your Customer Content and agree to indemnify us for any
+              losses arising from your breach of the representations in this section.
             </li>
           </ul>
           <div className="mt-2">
-            You are solely responsible for your Submissions and/or Contributions and you expressly agree to reimburse us
-            for any and all losses that we may suffer because of your breach of (a) this section, (b) any third
-            party&rsquo;s intellectual property rights, or (c) applicable law.
-          </div>
-          <div className="mt-2">
-            <span className="font-semibold">We may remove or edit your Content:</span> Although we have no obligation to
-            monitor any Contributions, we shall have the right to remove or edit any Contributions at any time without
-            notice if in our reasonable opinion we consider such Contributions harmful or in breach of these Legal
-            Terms. If we remove or edit any such Contributions, we may also suspend or disable your account and report
-            you to the authorities.
+            <span className="font-semibold">We may remove your Content:</span> Although we have no obligation to
+            monitor any Customer Content, we reserve the right to remove or disable access to any Customer Content at
+            any time without notice if in our reasonable opinion we consider such content harmful or in breach of these
+            Legal Terms. If we remove or disable any such content, we may also suspend or disable your account and
+            report you to the authorities.
           </div>
           <h2 id="userreps" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             3. User Representations
@@ -524,14 +521,13 @@ export default function TermsAndConditions() {
             8. User Generated Contributions
           </h2>
           <div className="mt-2">
-            The Services may invite you to chat, contribute to, or participate in blogs, message boards, online forums,
-            and other functionality, and may provide you with the opportunity to create, submit, post, display,
-            transmit, perform, publish, distribute, or broadcast content and materials to us or on the Services,
-            including but not limited to text, writings, video, audio, photographs, graphics, comments, suggestions, or
-            personal information or other material (collectively, "Contributions"). Contributions may be viewable by
-            other users of the Services and through third-party websites. As such, any Contributions you transmit may be
-            treated as non-confidential and non-proprietary. When you create or make available any Contributions, you
-            thereby represent and warrant that:
+            The Services may provide you with the opportunity to create, submit, post, display, transmit, publish,
+            distribute, or broadcast content and materials to us or on the Services, including but not limited to text,
+            writings, video, audio, photographs, graphics, comments, suggestions, or other material (collectively,
+            &ldquo;<span className="font-semibold">Contributions</span>&rdquo;). Contributions may be viewable by other
+            authorized users of the Services. As stated in Section 9 below, you retain ownership of your Contributions
+            and Customer Content at all times. When you create or make available any Contributions, you represent and
+            warrant that:
           </div>
           <ul className="mt-2 list-inside list-disc pl-2">
             <li>
@@ -584,38 +580,45 @@ export default function TermsAndConditions() {
             other things, termination or suspension of your rights to use the Services.
           </div>
           <h2 id="license" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
-            9. Contribution License
+            9. Customer Content License
           </h2>
           <div className="mt-2">
-            By posting your Contributions to any part of the Services, you automatically grant, and you represent and
-            warrant that you have the right to grant, to us an unrestricted, unlimited, irrevocable, perpetual,
-            non-exclusive, transferable, royalty-free, fully-paid, worldwide right, and license to host, use, copy,
-            reproduce, disclose, sell, resell, publish, broadcast, retitle, archive, store, cache, publicly perform,
-            publicly display, reformat, translate, transmit, excerpt (in whole or in part), and distribute such
-            Contributions (including, without limitation, your image and voice) for any purpose, commercial,
-            advertising, or otherwise, and to prepare derivative works of, or incorporate into other works, such
-            Contributions, and grant and authorize sublicenses of the foregoing. The use and distribution may occur in
-            any media formats and through any media channels.
+            <span className="font-semibold">You own your Customer Content.</span> Kreatli does not claim ownership of
+            any Customer Content you upload or create through the Services. You retain full ownership of all Customer
+            Content and all intellectual property rights and other proprietary rights associated with it.
           </div>
           <div className="mt-2">
-            This license will apply to any form, media, or technology now known or hereafter developed, and includes our
-            use of your name, company name, and franchise name, as applicable, and any of the trademarks, service marks,
-            trade names, logos, and personal and commercial images you provide. You waive all moral rights in your
-            Contributions, and you warrant that moral rights have not otherwise been asserted in your Contributions.
+            <span className="font-semibold">Limited operational license.</span> By uploading or creating Customer
+            Content through the Services, you grant Kreatli a limited, non-exclusive, worldwide, royalty-free license
+            to host, store, cache, copy, transmit, and display your Customer Content solely as necessary to provide and
+            maintain the Services for you and your authorized collaborators. This license does not permit Kreatli to use
+            your Customer Content for any other purpose, and expressly excludes any right to sell, resell, sublicense,
+            rent, lease, transfer, or otherwise commercially exploit your Customer Content to any third party.
           </div>
           <div className="mt-2">
-            We do not assert any ownership over your Contributions. You retain full ownership of all of your
-            Contributions and any intellectual property rights or other proprietary rights associated with your
-            Contributions. We are not liable for any statements or representations in your Contributions provided by you
-            in any area on the Services. You are solely responsible for your Contributions to the Services and you
-            expressly agree to exonerate us from any and all responsibility and to refrain from any legal action against
-            us regarding your Contributions.
+            <span className="font-semibold">No commercial exploitation of your content.</span>{' '}
+            <span className="font-semibold">
+              Kreatli will not sell, license, or otherwise transfer your Customer Content to third parties for
+              commercial gain. We will not use your Customer Content for advertising, marketing, or any purpose outside
+              the direct operation of the Services.
+            </span>{' '}
+            We will process your Customer Content only in accordance with our{' '}
+            <a href="/privacy-policy" target="_blank" className="text-primary underline underline-offset-2">
+              Privacy Policy
+            </a>{' '}
+            and applicable law.
           </div>
           <div className="mt-2">
-            We have the right, in our sole and absolute discretion, (1) to edit, redact, or otherwise change any
-            Contributions; (2) to re-categorize any Contributions to place them in more appropriate locations on the
-            Services; and (3) to pre-screen or delete any Contributions at any time and for any reason, without notice.
-            We have no obligation to monitor your Contributions.
+            <span className="font-semibold">Termination and data return.</span> Upon termination of your account, we
+            will make your Customer Content available for export or download for a period of thirty (30) days following
+            termination, after which we may delete it from our systems. We are not liable for any loss of Customer
+            Content resulting from termination if you did not export it within that period.
+          </div>
+          <div className="mt-2">
+            We have the right, in our sole and absolute discretion, (1) to re-categorize any Customer Content to place
+            it in more appropriate locations on the Services; and (2) to pre-screen or delete any Customer Content that
+            violates these Legal Terms at any time and for any reason, without notice. We have no obligation to monitor
+            your Customer Content.
           </div>
           <h2 id="sitemanage" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             10. Services Management
@@ -640,10 +643,11 @@ export default function TermsAndConditions() {
               https://kreatli.com/privacy-policy
             </a>
             . By using the Services, you agree to be bound by our Privacy Policy, which is incorporated into these Legal
-            Terms. Please be advised the Services are hosted in Poland. If you access the Services from any other region
-            of the world with laws or other requirements governing personal data collection, use, or disclosure that
-            differ from applicable laws in Poland, then through your continued use of the Services, you are transferring
-            your data to Poland, and you expressly consent to have your data transferred to and processed in Poland.
+            Terms. Please be advised the Services are hosted in the United States. If you access the Services from any
+            other region of the world with laws or other requirements governing personal data collection, use, or
+            disclosure that differ from applicable laws in the United States, then through your continued use of the
+            Services, you are transferring your data to the United States, and you expressly consent to have your data
+            transferred to and processed in the United States.
           </div>
           <h2 id="terms" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             12. Term and Termination
@@ -687,29 +691,54 @@ export default function TermsAndConditions() {
             14. Governing Law
           </h2>
           <div className="mt-2">
-            These Legal Terms are governed by and interpreted following the laws of Poland, and the use of the United
-            Nations Convention of Contracts for the International Sales of Goods is expressly excluded. If your habitual
-            residence is in the EU, and you are a consumer, you additionally possess the protection provided to you by
-            obligatory provisions of the law in your country to residence. Kreatli and yourself both agree to submit to
-            the non-exclusive jurisdiction of the courts of Warsaw, which means that you may make a claim to defend your
-            consumer protection rights in regards to these Legal Terms in Poland, or in the EU country in which you
-            reside.
+            These Legal Terms are governed by and construed in accordance with the laws of the State of Delaware,
+            without regard to its conflict of law principles. The use of the United Nations Convention of Contracts for
+            the International Sales of Goods is expressly excluded. To the extent that any dispute is not subject to
+            arbitration as set forth in Section 15, you and Kreatli agree to submit to the exclusive jurisdiction of
+            the state and federal courts located in the State of Delaware for resolution of any such dispute.
           </div>
           <h2 id="disputes" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
             15. Dispute Resolution
           </h2>
           <div className="mt-2">
-            The European Commission provides an&nbsp;
-            <a
-              className="text-primary underline underline-offset-2"
-              href="https://ec.europa.eu/consumers/odr"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-custom-class="link"
-            >
-              online dispute resolution platform
+            <span className="font-semibold">Informal Resolution.</span> Before initiating any formal dispute, you agree
+            to contact us at{' '}
+            <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
+              support@kreatli.com
+            </a>{' '}
+            and attempt to resolve the issue informally. We will try to resolve the dispute within thirty (30) days of
+            receiving your notice.
+          </div>
+          <div className="mt-2">
+            <span className="font-semibold">Binding Arbitration.</span> EXCEPT FOR DISPUTES THAT QUALIFY FOR SMALL
+            CLAIMS COURT, ALL DISPUTES ARISING OUT OF OR RELATED TO THESE LEGAL TERMS OR THE SERVICES WILL BE RESOLVED
+            THROUGH BINDING INDIVIDUAL ARBITRATION ADMINISTERED BY JAMS IN ACCORDANCE WITH ITS STREAMLINED ARBITRATION
+            RULES AND PROCEDURES. THE ARBITRATION WILL BE CONDUCTED IN ENGLISH. THE ARBITRATOR&rsquo;S AWARD SHALL BE
+            FINAL AND BINDING AND MAY BE ENTERED AS A JUDGMENT IN ANY COURT OF COMPETENT JURISDICTION. BY AGREEING TO
+            THESE LEGAL TERMS, YOU ARE WAIVING YOUR RIGHT TO A TRIAL BY JURY AND YOUR RIGHT TO PARTICIPATE IN A CLASS
+            ACTION LAWSUIT.
+          </div>
+          <div className="mt-2">
+            <span className="font-semibold">Class Action Waiver.</span> ALL CLAIMS MUST BE BROUGHT IN THE PARTIES&rsquo;
+            INDIVIDUAL CAPACITY, AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE
+            PROCEEDING. THE ARBITRATOR MAY NOT CONSOLIDATE MORE THAN ONE PERSON&rsquo;S CLAIMS, AND MAY NOT OTHERWISE
+            PRESIDE OVER ANY FORM OF A REPRESENTATIVE OR CLASS PROCEEDING.
+          </div>
+          <div className="mt-2">
+            <span className="font-semibold">30-Day Right to Opt Out.</span> You have the right to opt out of the
+            binding arbitration provisions above by sending a written notice of your decision to opt out to the
+            following address: 131 Continental Dr Suite 305, Newark, Delaware 19713, or by email to{' '}
+            <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
+              support@kreatli.com
             </a>
-            , which you can access. If you would like to bring this subject to our attention, please contact us.
+            , within thirty (30) days after first becoming subject to these Legal Terms. Your notice must include your
+            name and address and a clear statement that you want to opt out of this arbitration agreement. If you opt
+            out, all other parts of these Legal Terms will continue to apply to you.
+          </div>
+          <div className="mt-2">
+            <span className="font-semibold">Exceptions.</span> Nothing in this section shall limit either party&rsquo;s
+            right to seek injunctive or other equitable relief from a court for matters relating to data security,
+            intellectual property, or unauthorized access to the Services.
           </div>
           <div data-custom-class="heading_1">
             <h2 id="corrections" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
@@ -812,8 +841,62 @@ export default function TermsAndConditions() {
             credits by any means other than electronic means.
           </div>
           <div data-custom-class="heading_1">
+            <h2 id="dmca" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
+              22. Copyright Policy (DMCA)
+            </h2>
+          </div>
+          <div className="mt-2">
+            Kreatli respects the intellectual property rights of others and expects users of the Services to do the
+            same. In accordance with the Digital Millennium Copyright Act (&ldquo;<span className="font-semibold">DMCA</span>
+            &rdquo;), we will respond to notices of alleged copyright infringement that comply with applicable law and
+            are properly provided to us.
+          </div>
+          <div className="mt-2">
+            If you believe that your copyrighted work has been copied in a way that constitutes copyright infringement
+            and is accessible through the Services, please notify our designated copyright agent by providing all of
+            the following information:
+          </div>
+          <ul className="mt-2 list-inside list-disc pl-2">
+            <li>A physical or electronic signature of the copyright owner or authorized agent;</li>
+            <li>Identification of the copyrighted work claimed to have been infringed;</li>
+            <li>
+              Identification of the material that is claimed to be infringing and information reasonably sufficient to
+              permit us to locate the material on the Services;
+            </li>
+            <li>
+              Your contact information, including address, telephone number, and email address;
+            </li>
+            <li>
+              A statement that you have a good faith belief that the use of the material is not authorized by the
+              copyright owner, its agent, or applicable law; and
+            </li>
+            <li>
+              A statement, made under penalty of perjury, that the information in your notification is accurate and
+              that you are the copyright owner or authorized to act on behalf of the copyright owner.
+            </li>
+          </ul>
+          <div className="mt-2">
+            Our designated copyright agent for notice of alleged copyright infringement is:
+          </div>
+          <div className="mt-2 pl-4">
+            <div>Kreatli, Inc.</div>
+            <div>Attn: Copyright Agent</div>
+            <div>131 Continental Dr Suite 305</div>
+            <div>Newark, Delaware 19713</div>
+            <div>
+              Email:{' '}
+              <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
+                support@kreatli.com
+              </a>
+            </div>
+          </div>
+          <div className="mt-2">
+            We will disable and remove access to content claimed to be infringing upon receiving a valid DMCA notice,
+            and will terminate the accounts of repeat infringers in appropriate circumstances.
+          </div>
+          <div data-custom-class="heading_1">
             <h2 id="california" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
-              22. California Users and Residents
+              23. California Users and Residents
             </h2>
           </div>
           <div className="mt-2">
@@ -823,7 +906,7 @@ export default function TermsAndConditions() {
           </div>
           <div data-custom-class="heading_1">
             <h2 id="misc" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
-              23. Miscellaneous
+              24. Miscellaneous
             </h2>
           </div>
           <div className="mt-2">
@@ -843,16 +926,25 @@ export default function TermsAndConditions() {
           </div>
           <div data-custom-class="heading_1">
             <h2 id="contact" className="mb-4 scroll-m-24 font-sans text-2xl font-bold sm:text-3xl">
-              24. Contact Us
+              25. Contact Us
             </h2>
           </div>
           <div className="mt-2">
             In order to resolve a complaint regarding the Services or to receive further information regarding use of
-            the Services, please contact us using this email address{' '}
-            <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
-              support@kreatli.com
-            </a>
-            .
+            the Services, please contact us at:
+          </div>
+          <div className="mt-2 pl-4">
+            <div>
+              <span className="font-semibold">Kreatli, Inc.</span>
+            </div>
+            <div>131 Continental Dr Suite 305</div>
+            <div>Newark, Delaware 19713</div>
+            <div>
+              Email:{' '}
+              <a href="mailto:support@kreatli.com" className="text-primary underline underline-offset-2">
+                support@kreatli.com
+              </a>
+            </div>
           </div>
         </div>
       </div>
