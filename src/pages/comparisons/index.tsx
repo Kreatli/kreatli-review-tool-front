@@ -27,8 +27,8 @@ export default function ComparisonsPage({ stories }: Props) {
   return (
     <>
       <SeoHead
-        title="Kreatli | Comparisons – Video Production Platform Comparisons"
-        description="Compare Kreatli with other creative production and media review platforms. See how Kreatli stacks up against Frame.io, Vimeo, and other alternatives."
+        title="Frame.io Alternatives & Video Review Platform Comparisons | Kreatli"
+        description="Compare Kreatli with Frame.io, Vimeo Review, Wipster, and other video review tools. Side-by-side breakdowns of features, pricing, and workflows to help you choose the right platform for your creative team."
         canonicalPath="/comparisons"
       />
       <BreadcrumbStructuredData
@@ -41,9 +41,12 @@ export default function ComparisonsPage({ stories }: Props) {
       <Decorations />
       <section className="relative overflow-hidden px-6 py-16">
         <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 text-center">
-          <h1 className="mx-auto max-w-lg font-sans text-3xl font-bold sm:text-4xl">Comparisons</h1>
+          <h1 className="mx-auto max-w-2xl font-sans text-3xl font-bold sm:text-4xl">
+            Video Review Platform Comparisons
+          </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Side-by-side context for video review and creative collaboration platforms.
+            Frame.io alternatives, Vimeo Review comparisons, and side-by-side breakdowns of the top video review
+            platforms for creative teams.
           </p>
         </div>
       </section>

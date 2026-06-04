@@ -326,6 +326,18 @@ export default function HowToReviewAVideoGuidePage() {
           </div>
         </section>
 
+        <div className="mx-auto max-w-4xl px-6 pb-8 text-center">
+          <p className="text-base text-foreground-500">
+            Evaluating your options?{' '}
+            <NextLink
+              href="/comparisons"
+              className="font-medium text-primary underline-offset-2 hover:underline"
+            >
+              Compare Kreatli with Frame.io, Vimeo Review, and other video review platforms →
+            </NextLink>
+          </p>
+        </div>
+
         <CTASection
           layout="split"
           splitTone="guide"

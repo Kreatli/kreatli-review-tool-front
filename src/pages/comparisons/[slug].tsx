@@ -49,7 +49,7 @@ export default function Page({ story, slug }: Props) {
   }, [slug]);
 
   const articleTitle = storyState?.content.metaFields?.title || storyState?.name || 'Comparison';
-  const title = `Kreatli | ${articleTitle}`;
+  const title = `${articleTitle} | Kreatli`;
   const description =
     storyState?.content.metaFields?.description ||
     'Kreatli helps content teams and creators streamline creative production. Upload media, manage projects, get precise feedback, chat, and share - in one place.';
