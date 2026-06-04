@@ -287,7 +287,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     // Add comparisons
     if (comparisons.status === 'fulfilled') {
       comparisons.value.forEach((story) => {
-        urls.push(storyToSitemapUrl(story, 'monthly', '0.7'));
+        urls.push(storyToSitemapUrl(story, 'weekly', '0.8'));
       });
     } else {
       // Log error in development, continue with partial sitemap in production

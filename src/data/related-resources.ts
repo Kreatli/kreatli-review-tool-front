@@ -267,6 +267,14 @@ export const RELATED_RESOURCES = {
     icon: 'filePdf' as IconType,
     buttonText: 'Try tool',
   },
+  comparisons: {
+    title: 'Platform Comparisons',
+    description:
+      'See how Kreatli compares to Frame.io, Vimeo Review, Wipster, and other video review platforms—features, pricing, and workflows side by side.',
+    href: '/comparisons',
+    icon: 'compare' as IconType,
+    buttonText: 'Compare platforms',
+  },
 } as const;
 
 // Helper function to get resources by keys
