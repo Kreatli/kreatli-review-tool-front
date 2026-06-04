@@ -2,6 +2,7 @@ import { Button, Progress } from '@heroui/react';
 import { useState } from 'react';
 
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
+import { trackEvent } from '../../../lib/amplitude';
 import { AddonDto, UserDto } from '../../../services/types';
 import { formatBytes } from '../../../utils/formatBytes';
 import { Icon } from '../../various/Icon';
@@ -55,7 +56,18 @@ export const Subscription = ({ user }: Props) => {
               {user.subscription.isActive &&
                 !user.subscription.isAppSumo &&
                 user.subscription.plan !== 'enterprise' && (
-                  <Button variant="flat" color="danger" onClick={() => setIsCancelSubscriptionFeedbackModalOpen(true)}>
+                  <Button
+                    variant="flat"
+                    color="danger"
+                    onClick={() => {
+                      trackEvent('subscription_cancel_started', {
+                        plan_key: user.subscription.plan ?? '',
+                        plan_name: user.subscription.planName ?? '',
+                        price_usd: user.subscription.price,
+                      });
+                      setIsCancelSubscriptionFeedbackModalOpen(true);
+                    }}
+                  >
                     Cancel subscription
                   </Button>
                 )}
@@ -191,6 +203,7 @@ export const Subscription = ({ user }: Props) => {
         onClose={() => setIsUpdateAddonModalOpen(false)}
       />
       <CancelSubscriptionFeedbackModal
+        user={user}
         isOpen={isCancelSubscriptionFeedbackModalOpen}
         onClose={() => setIsCancelSubscriptionFeedbackModalOpen(false)}
         onSuccess={() => {
@@ -199,6 +212,7 @@ export const Subscription = ({ user }: Props) => {
         }}
       />
       <CancelSubscriptionModal
+        user={user}
         isOpen={isCancelSubscriptionModalOpen}
         onClose={() => setIsCancelSubscriptionModalOpen(false)}
       />

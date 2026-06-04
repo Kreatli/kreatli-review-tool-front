@@ -6,26 +6,83 @@ import { AccountLayout } from '../../components/account/Account';
 import { Subscription } from '../../components/account/Subscription';
 import { useSession } from '../../hooks/useSession';
 import { trackEvent } from '../../lib/amplitude';
+import {
+  buildPlanEventProperties,
+  clearCheckoutAnalyticsContext,
+  consumeTrialConversionFlag,
+  markUserWasTrialing,
+  readCheckoutAnalyticsContext,
+  shouldTrackOncePerSession,
+  syncUserSubscriptionTraits,
+} from '../../lib/amplitudeUser';
 
 export default function SubscriptionPage() {
   const router = useRouter();
   const { isSignedIn, user } = useSession();
 
   useEffect(() => {
-    if (!router.isReady || router.query.paymentStatus !== 'success' || !user) {
+    if (!user) {
       return;
     }
 
-    if (user.subscription.isTrial) {
-      const dedupeKey = `amplitude_free_trial_started_${user.id}`;
-      if (!sessionStorage.getItem(dedupeKey)) {
-        sessionStorage.setItem(dedupeKey, '1');
-        trackEvent('free_trial_started', {
-          plan_key: user.subscription.plan ?? '',
-          plan_name: user.subscription.planName ?? '',
+    syncUserSubscriptionTraits(user);
+
+    if (user.subscription.isActive && !user.subscription.isTrial && user.subscription.plan && consumeTrialConversionFlag(user.id)) {
+      const checkoutContext = readCheckoutAnalyticsContext();
+      const planProps = buildPlanEventProperties(user, checkoutContext);
+
+      if (shouldTrackOncePerSession(`subscription_converted_trial_end_${user.id}`)) {
+        trackEvent('subscription_converted', {
+          ...planProps,
+          conversion_source: 'trial_ended',
+        });
+      }
+
+      clearCheckoutAnalyticsContext();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (!router.isReady || !user) {
+      return;
+    }
+
+    const paymentStatus = router.query.paymentStatus;
+
+    if (paymentStatus !== 'success' && paymentStatus !== 'cancel') {
+      return;
+    }
+
+    syncUserSubscriptionTraits(user);
+
+    const checkoutContext = readCheckoutAnalyticsContext();
+    const planProps = buildPlanEventProperties(user, checkoutContext);
+
+    if (paymentStatus === 'success') {
+      if (user.subscription.isTrial) {
+        if (shouldTrackOncePerSession(`free_trial_started_${user.id}`)) {
+          markUserWasTrialing(user.id);
+          trackEvent('free_trial_started', planProps);
+        }
+      } else if (user.subscription.isActive && user.subscription.plan) {
+        if (shouldTrackOncePerSession(`subscription_converted_checkout_${user.id}`)) {
+          trackEvent('subscription_converted', {
+            ...planProps,
+            conversion_source: 'checkout_success',
+          });
+        }
+      }
+    } else if (paymentStatus === 'cancel') {
+      if (shouldTrackOncePerSession(`subscription_checkout_cancelled_${user.id}`)) {
+        trackEvent('subscription_checkout_cancelled', {
+          plan_id: checkoutContext?.plan_id ?? planProps.plan_key,
+          plans_modal_entry: planProps.plans_modal_entry,
+          plan_price_usd: checkoutContext?.plan_price_usd ?? planProps.price_usd,
         });
       }
     }
+
+    clearCheckoutAnalyticsContext();
 
     const planReady = user.subscription.plan != null;
     if (planReady || user.subscription.hasUsedTrial || user.subscription.isTrial) {

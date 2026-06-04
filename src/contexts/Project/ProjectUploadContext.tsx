@@ -10,6 +10,7 @@ import { useMultipartUpload } from '../../hooks/useMultipartUpload';
 import { useProjectUploads } from '../../hooks/useProjectUploads';
 import { useSession } from '../../hooks/useSession';
 import { trackEvent } from '../../lib/amplitude';
+import { getSubscriptionLifecycle } from '../../lib/amplitudeUser';
 import { usePostProjectIdFile } from '../../services/hooks';
 import {
   getAssetFileId,
@@ -152,7 +153,17 @@ export const ProjectUploadContextProvider = ({ children, project, folderId }: Re
       project.createdBy?.subscription.isActive || project.fileCount + uploadsCount + files.length <= 2;
 
     if (!hasEnoughSpace || !hasEnoughLimits) {
-      setLimitType(hasEnoughSpace ? 'uploads' : 'storage');
+      const resolvedLimitType = hasEnoughSpace ? 'uploads' : 'storage';
+      setLimitType(resolvedLimitType);
+
+      if (user) {
+        trackEvent('subscription_limit_hit', {
+          limit_type: resolvedLimitType,
+          surface: 'project_upload',
+          is_project_owner: isProjectOwner,
+          subscription_lifecycle: getSubscriptionLifecycle(user),
+        });
+      }
 
       if (isProjectOwner) {
         setIsUpgradeModalOpen(true);

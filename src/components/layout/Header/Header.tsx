@@ -18,6 +18,8 @@ import { getPlatformPagesBySection } from '../../../data/platform-pages';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import { trackEvent } from '../../../lib/amplitude';
+import { getSubscriptionLifecycle, shouldTrackOncePerSession } from '../../../lib/amplitudeUser';
 import { Layout } from '../../../typings/layout';
 import { ProjectUploadsButton } from '../../project/ProjectUploads';
 import { Icon } from '../../various/Icon';
@@ -65,6 +67,21 @@ export const Header = () => {
     // eslint-disable-next-line react-hooks/purity
     return exploreBannerClosedAt && new Date(exploreBannerClosedAt).getTime() + DAY_IN_MILLISECONDS > Date.now();
   }, [exploreBannerClosedAt]);
+
+  const showExploreBanner = Boolean(user && !user.subscription.isActive && !isExploreBannerDismissed);
+
+  React.useEffect(() => {
+    if (!user || !showExploreBanner) {
+      return;
+    }
+
+    if (shouldTrackOncePerSession('explore_mode_banner_viewed')) {
+      trackEvent('explore_mode_banner_viewed', {
+        subscription_lifecycle: getSubscriptionLifecycle(user),
+        has_used_trial: user.subscription.hasUsedTrial,
+      });
+    }
+  }, [user, showExploreBanner]);
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -139,7 +156,7 @@ export const Header = () => {
           </div>
         </div>
       )}
-      {user && !user?.subscription.isActive && !isExploreBannerDismissed && (
+      {showExploreBanner && (
         <div className="sticky top-0 z-50 flex h-auto items-center justify-between bg-primary-50 px-3 xs:px-6">
           <div />
           <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
