@@ -10,6 +10,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
 import { RelatedResourcesSection } from '../../components/shared/RelatedResourcesSection';
@@ -108,14 +109,14 @@ export default function SendLargeVideoFilesPage() {
               Send large video files to clients without email limits. Upload once, share a secure link—they watch and
               comment in the browser. No download required. Free to get started.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Start 7-day trial
-              </Button>
-              <Button as={NextLink} href="/platform/free-video-link-generator" size="lg" variant="bordered">
-                Use Free Video Link Generator
-              </Button>
-            </div>
+            <HeroCtaButtons
+              className="mt-8"
+              trailing={
+                <Button as={NextLink} href="/platform/free-video-link-generator" size="lg" variant="bordered">
+                  Use Free Video Link Generator
+                </Button>
+              }
+            />
           </div>
         </div>
       </section>

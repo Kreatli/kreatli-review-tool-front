@@ -9,6 +9,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
@@ -120,19 +121,20 @@ export default function ResizeYouTubeBannerPage() {
               Resize your YouTube channel banner to the correct dimensions (2560×1440px) and preview the safe zone for
               mobile, desktop, tablet, and TV. Keep logos and text visible on every device. Free tool.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
+            <HeroCtaButtons
+              className="mt-8"
+              leading={
+              
+                <Button
                 as={NextLink}
                 href="/free-tools/youtube-banner-resizer"
                 size="lg"
                 className="bg-foreground text-content1"
-              >
+                >
                 Use Free YouTube Banner Resizer
-              </Button>
-              <Button as={NextLink} href="/sign-up" size="lg" variant="bordered">
-                Start 7-day trial
-              </Button>
-            </div>
+                </Button>
+              }
+            />
           </div>
         </div>
       </section>
