@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'What happens to my data if I cancel my subscription?',
     answer:
-      "If you cancel your paid plan, your data remains accessible for 30 days after cancellation. During this period, you can continue to access all your projects, files, and data. This gives you time to export your files, download projects, and ensure you have everything you need before your access ends. You can export all your files and projects during the 30-day grace period. Kreatli provides tools to help you download files in bulk, export project data, and save your work. If you decide to return to Kreatli within 30 days, you can reactivate your account and all your data will still be there - nothing is deleted immediately upon cancellation. After 30 days, if you don't reactivate your account, your data may be archived. Since there's no free plan available, you'll need to select a paid plan to continue accessing your projects. We recommend exporting your important files and projects before canceling to ensure you have backups of your creative work. Our support team can help you with the export process if needed.",
+      "If you cancel your paid plan, your data remains accessible for 30 days after cancellation. During this period, you can continue to access all your projects, files, and data. This gives you time to export your files, download projects, and ensure you have everything you need before your access ends. You can export all your files and projects during the 30-day grace period. Kreatli provides tools to help you download files in bulk, export project data, and save your work. If you decide to return to Kreatli within 30 days, you can reactivate your account and all your data will still be there - nothing is deleted immediately upon cancellation. After 30 days, if you don't reactivate your account, your data may be archived. Your account will remain in free Exploration Mode, giving you limited access (1 project, 2 files) — no credit card required to stay. To restore full access, simply choose a paid plan. We recommend exporting your important files and projects before canceling to ensure you have backups of your creative work. Our support team can help you with the export process if needed.",
   },
   {
     question: "Do you offer enterprise plans, and what's included in custom enterprise solutions?",
@@ -90,8 +90,8 @@ export default function PricingPage() {
             Simple, Transparent Pricing for Video Teams
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Choose a plan and start your 7-day free trial. Add a payment method at checkout; you won't be charged during
-            the trial. Cancel anytime during the trial to avoid billing.
+            Sign up free — no credit card required. Explore Kreatli with 1 project and 2 files, then upgrade to a paid
+            plan when you&apos;re ready for full access.
           </p>
           <div className="mt-4 flex flex-wrap justify-center gap-6">
             <div className="flex flex-col items-center">
@@ -103,13 +103,13 @@ export default function PricingPage() {
               <div className="sm:text-md text-sm text-foreground-500">No Long-Term Contracts</div>
             </div>
             <div className="flex flex-col items-center">
-              <div className="font-sans text-2xl font-bold sm:text-3xl">7-Day Free Trial</div>
-              <div className="sm:text-md text-sm text-foreground-500">Card at checkout; no charge until trial ends</div>
+              <div className="font-sans text-2xl font-bold sm:text-3xl">Free to explore</div>
+              <div className="sm:text-md text-sm text-foreground-500">No credit card required</div>
             </div>
           </div>
           <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start 7-day trial
+              Explore free — no card required
             </Button>
             <Button
               as="a"
@@ -585,12 +585,12 @@ export default function PricingPage() {
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col gap-6 text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">Ready to Get Started?</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">
-            Join video teams who have simplified their collaboration process. Start your 7-day free trial—add a payment
-            method at checkout (no charge until the trial ends)—or book a demo to see how Kreatli works for your team.
+            Join video teams who have simplified their collaboration process. Sign up free — no credit card required —
+            and explore Kreatli today.
           </p>
           <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start 7-day trial
+              Explore free — no card required
             </Button>
             <Button
               as="a"

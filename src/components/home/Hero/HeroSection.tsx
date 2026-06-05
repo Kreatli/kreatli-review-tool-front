@@ -86,7 +86,7 @@ export const HeroSection = () => {
                   size="lg"
                   className="h-12 min-w-[200px] bg-foreground px-6 text-base text-content1"
                 >
-                  Try free for 7 days
+                  Explore free — no card required
                   <Icon icon="arrowRight" size={20} />
                 </Button>
                 <Button

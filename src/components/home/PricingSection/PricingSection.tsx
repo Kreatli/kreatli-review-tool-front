@@ -64,7 +64,7 @@ export const PricingSection = ({ titleClassName, hideViewPricingButton }: Pricin
             Choose the Perfect Plan for Your Creative Journey
           </h2>
           <p className="text-center text-lg text-foreground-500">
-            Choose a plan and start your 7-day free trial. Add a payment method at checkout; no charge during the trial.
+            Sign up free — no credit card required. Upgrade to any plan when you&apos;re ready for full access.
           </p>
         </div>
         <div className="mx-auto grid w-full max-w-6xl items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -135,7 +135,7 @@ export const PricingSection = ({ titleClassName, hideViewPricingButton }: Pricin
                         className={plan.id === 'team' ? 'bg-foreground text-content1' : ''}
                         variant={plan.id === 'team' ? 'solid' : 'bordered'}
                       >
-                        Start 7-day trial
+                        Explore free — no card required
                       </Button>
                     </div>
                   ) : (

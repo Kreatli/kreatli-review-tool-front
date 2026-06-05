@@ -23,12 +23,12 @@ const faqs = [
   {
     question: 'Are these tools really free to use?',
     answer:
-      'Yes—our calculators are completely free to use with no hidden costs and no account required, even if you are signed in to Kreatli without an active trial or plan. For the rest of the tools, sign in to use the on-page workflow. If your trial or subscription is not active, start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial.',
+      'Yes — our calculators are completely free with no account required. For the review and annotation tools, sign in to use them. If you have a free Exploration account (no credit card required), you can use the tools within your exploration limits (1 project, 2 files). If your trial or paid subscription has expired, start a new 7-day free trial or choose a plan to continue — a payment method is added at secure checkout and you are not charged subscription fees during the trial.',
   },
   {
     question: 'Do I need to create an account to use these tools?',
     answer:
-      'No account is required for our calculators. For the other tools, you’ll need to sign in to use the workflow on the tool page. If your trial or subscription is not active, start a 7-day trial or choose a plan to continue (payment method at checkout; no subscription charges during the trial). People who open a review link you share still do not need a Kreatli account.',
+      "No account is required for our calculators. For the review and annotation tools, you need to sign in. If you don’t have an account, sign up for free — no credit card required — and immediately access the tools in Exploration Mode (1 project, 2 files). When you want full access, start a 7-day free trial (payment method at checkout; no charges during the trial). People who open a review link you share do not need a Kreatli account.",
   },
   {
     question: 'What is the Data Transfer Calculator used for?',
@@ -63,7 +63,7 @@ const faqs = [
   {
     question: "How do these free tools relate to Kreatli's main platform?",
     answer:
-      "Many tools on this hub mirror workflows you also get inside Kreatli's Video Collaboration & Review Platform. Calculators stay free with no account. For most tools, you sign in to use the workflow; if your trial or subscription is not active, start a trial or choose a plan to continue. The full platform adds frame-accurate video review, project management, team collaboration, and secure file storage in one workspace.",
+      "Many tools on this hub mirror workflows you also get inside Kreatli's Video Collaboration & Review Platform. Calculators stay free with no account. For the review and annotation tools, sign in to use them — a free Exploration account (no credit card) gives you limited access, and a 7-day free trial unlocks everything. The full platform adds frame-accurate video review, project management, team collaboration, and secure file storage in one workspace.",
   },
   {
     question: 'Can I share these tools with my team or clients?',
@@ -111,7 +111,7 @@ export default function FreeToolsPage() {
             aria-label="Start a trial or book a demo"
           >
             <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start 7-day trial
+              Explore free — no card required
             </Button>
             <Button
               as="a"
@@ -318,7 +318,7 @@ export default function FreeToolsPage() {
             </p>
             <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Start 7-day trial
+                Explore free — no card required
               </Button>
               <Button
                 as="a"

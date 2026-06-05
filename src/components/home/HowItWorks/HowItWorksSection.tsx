@@ -83,7 +83,7 @@ export const HowItWorksSection = () => {
         </div>
         <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row">
           <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
-            Start For Free
+            Explore free — no card required
           </Button>
           <Button
             as="a"

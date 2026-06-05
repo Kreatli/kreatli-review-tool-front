@@ -46,7 +46,7 @@ export const homeFaqs: FAQItem[] = [
   {
     question: 'Can I try Kreatli for free?',
     answer:
-      "Yes. Every plan includes a 7-day free trial with full access to all features. Choose a plan and add a payment method at checkout — you won't be charged during the trial. Cancel anytime before it ends to avoid billing.",
+      "Yes — two ways. First, you can sign up for a free Exploration account with no credit card required. Exploration mode gives you limited access (1 project, 2 files, 3 collaborators) so you can see the platform before committing. When you're ready for full access, start a 7-day free trial on any paid plan: choose a plan, add a payment method at checkout, and you won't be charged during the trial. Cancel anytime before it ends to avoid billing.",
   },
   {
     question: 'How long is the Kreatli free trial?',

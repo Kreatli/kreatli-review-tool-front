@@ -64,7 +64,7 @@ export default function ComparisonsPage({ stories }: Props) {
                   {[
                     { href: '/pricing', label: 'Plans & pricing' },
                     { href: '/platform', label: 'Platform tour' },
-                    { href: '/sign-up', label: 'Start free trial' },
+                    { href: '/sign-up', label: 'Explore free' },
                   ].map((item) => (
                     <li key={item.href}>
                       <NextLink
@@ -89,9 +89,9 @@ export default function ComparisonsPage({ stories }: Props) {
               model, storage and delivery, security, and total cost of ownership—not a feature checklist in isolation.
             </p>
             <p>
-              Open the comparison that matches the tool you are replacing, then validate the workflow with a{' '}
+              Open the comparison that matches the tool you are replacing, then validate the workflow by{' '}
               <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
-                trial
+                signing up free
               </NextLink>{' '}
               or walk through{' '}
               <NextLink href="/platform" className="font-medium text-primary underline-offset-2 hover:underline">

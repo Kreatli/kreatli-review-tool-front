@@ -68,7 +68,7 @@ export const KreatliForSection = () => {
         </div>
         <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row">
           <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
-            Start For Free
+            Explore free — no card required
           </Button>
           <Button as="a" href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" size="lg" variant="light">
             Book a Demo

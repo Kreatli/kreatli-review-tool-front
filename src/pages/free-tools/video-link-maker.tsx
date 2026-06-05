@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'Is the video link maker free?',
     answer:
-      'To create video review links, sign in to Kreatli. If your trial or subscription is not active, you will need to start a 7-day trial or choose a plan to continue—you add a payment method during secure checkout and are not charged subscription fees during the trial. Paid plans include the full review and approval platform with team limits, permissions, and storage that scale with your organization.',
+      'Sign up for a free Kreatli account — no credit card required — to create video review links. You can explore Kreatli in free Exploration Mode (1 project, 2 files) right away. To unlock unlimited video sharing, upgrade to a paid plan at any time from inside your workspace.',
   },
 ];
 
