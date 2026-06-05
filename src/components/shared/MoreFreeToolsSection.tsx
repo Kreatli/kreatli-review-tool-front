@@ -18,15 +18,22 @@ interface MoreFreeToolsSectionProps {
   showViewAllButton?: boolean;
   /** When true, show YouTube Banner Resizer instead of Software Cost Calculator in the first 4 tools (used on platform pages) */
   useBannerResizerInsteadOfCostCalculator?: boolean;
+  /**
+   * When provided, shows a prominent "Try [tool] free" CTA banner above the tool grid,
+   * linking directly to the most relevant free-tool page. Pass the href of the primary
+   * free tool (e.g. "/free-tools/video-annotator").
+   */
+  primaryToolHref?: string;
 }
 
 export function MoreFreeToolsSection({
   excludeHref,
   title = 'More Free Tools for Video Teams',
-  description = 'Explore free tools for video teams: calculators stay free with no account. For review and markup workflows, sign in to use the tool and start a trial or choose a plan if your subscription isn’t active.',
+  description = "Sign up free — no credit card required — and try these tools in Exploration Mode. Start a 7-day free trial when you’re ready for unlimited access.",
   tools,
   showViewAllButton = true,
   useBannerResizerInsteadOfCostCalculator = false,
+  primaryToolHref,
 }: MoreFreeToolsSectionProps) {
   // Filter out the current page tool if excludeHref is provided
   let displayTools = tools ? tools : FREE_TOOLS.filter((tool) => !excludeHref || tool.href !== excludeHref);
@@ -46,9 +53,29 @@ export function MoreFreeToolsSection({
     return null;
   }
 
+  const primaryTool = primaryToolHref ? FREE_TOOLS.find((t) => t.href === primaryToolHref) : null;
+
   return (
     <section className="relative overflow-hidden px-6 py-16 backdrop-blur-lg">
       <div className="relative z-10 mx-auto max-w-6xl">
+        {primaryTool && (
+          <div className="mb-10 flex flex-col items-center gap-3 rounded-2xl border border-primary-200 bg-primary-50/50 px-6 py-6 text-center dark:border-primary-800 dark:bg-primary-950/20 sm:flex-row sm:text-left">
+            <div className="flex-1">
+              <p className="font-semibold text-foreground">Try {primaryTool.title} — free</p>
+              <p className="mt-0.5 text-sm text-foreground-500">
+                Sign up in seconds, no credit card required. Use in Exploration Mode immediately.
+              </p>
+            </div>
+            <Button
+              as={NextLink}
+              href="/sign-up"
+              size="sm"
+              className="shrink-0 bg-foreground text-content1"
+            >
+              Try free — no card
+            </Button>
+          </div>
+        )}
         <div className="mb-12 text-center">
           <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{title}</h2>
           <p className="mx-auto max-w-2xl text-lg text-foreground-500">{description}</p>
