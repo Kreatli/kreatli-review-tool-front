@@ -252,7 +252,7 @@ export default function HowToCommentAVideoGuidePage() {
           <p>
             The interactive preview below mirrors a simple review flow: upload a clip, scrub to a moment, and leave a
             timestamped comment (plus optional drawings). When you are ready,{' '}
-            <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
+            <NextLink href="/sign-up">sign up free</NextLink> or{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>

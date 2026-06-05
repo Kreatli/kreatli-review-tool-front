@@ -118,11 +118,11 @@ export default function GuidesPage({ stories }: Props) {
             </p>
             <p>
               Browse the grid below—newest guides appear first. No account is required to read; when you want to try the
-              in-product steps, every plan includes a{' '}
+              in-product steps,{' '}
               <NextLink href="/sign-up" className="font-medium text-primary underline-offset-2 hover:underline">
-                7-day trial
-              </NextLink>
-              .
+                sign up free
+              </NextLink>{' '}
+              — no credit card required.
             </p>
           </HubPageIntro>
 

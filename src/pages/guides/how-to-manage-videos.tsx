@@ -252,7 +252,7 @@ export default function HowToManageVideosGuidePage() {
           <p>
             Managing videos well means sharing the right cut with the right people. The preview below shows a simple
             copy-link flow for a video asset. When you are ready,{' '}
-            <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
+            <NextLink href="/sign-up">sign up free</NextLink> or{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>
