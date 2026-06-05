@@ -10,6 +10,7 @@ import { Icon } from '../../various/Icon';
 
 interface Props {
   title: string;
+  subtitle?: string;
   showAppSumoLogo?: boolean;
   backgroundUrl?: string;
   backgroundType?: 'dark' | 'light';
@@ -26,6 +27,7 @@ export const StartPageLayout = ({
   showAppSumoLogo = false,
   children,
   title,
+  subtitle,
 }: React.PropsWithChildren<Props>) => {
   const [theme, setTheme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });
 
@@ -58,7 +60,8 @@ export const StartPageLayout = ({
               </>
             )}
           </div>
-          <h2 className="mb-6 text-3xl font-semibold">{title}</h2>
+          <h2 className="mb-2 text-3xl font-semibold">{title}</h2>
+          {subtitle && <p className="mb-5 text-sm text-foreground-500">{subtitle}</p>}
           <div className="w-full">{children}</div>
         </div>
         <Button

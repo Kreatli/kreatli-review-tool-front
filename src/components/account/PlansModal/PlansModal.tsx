@@ -50,7 +50,7 @@ export const PlansModal = ({ user, isOpen, onClose }: Props) => {
       <ModalContent>
         <ModalBody className="gap-3 py-4 md:gap-4 md:py-6">
           <h2 className="font-sans text-xl font-bold leading-tight md:text-2xl">
-            {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start your free trial to get started.'}
+            {user.subscription.hasUsedTrial ? 'Select a plan' : 'Start your free trial — unlock everything.'}
           </h2>
           <TrialReassuranceAlert hasUsedTrial={user.subscription.hasUsedTrial} />
           <PlansForm user={user} />

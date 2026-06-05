@@ -40,7 +40,10 @@ export default function SignUp() {
         <title>Kreatli | Sign up</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <StartPageLayout title="Create an account to get started!">
+      <StartPageLayout
+        title="Create your free account"
+        subtitle="Start a free trial anytime from your workspace."
+      >
         <SignUpForm />
       </StartPageLayout>
     </>

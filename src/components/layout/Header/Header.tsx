@@ -146,16 +146,16 @@ export const Header = () => {
             {user?.subscription.hasUsedTrial ? (
               <>
                 <span className="hidden text-sm md:inline">
-                  Your trial has ended. Continue exploring with limited access, or upgrade to unlock everything.
+                  Your trial has ended. Upgrade to restore full access.
                 </span>
                 <span className="text-sm md:hidden">Trial ended — explore mode active.</span>
               </>
             ) : (
               <>
                 <span className="hidden text-sm md:inline">
-                  You're exploring Kreatli. Start a free 7-day trial to lift the limits
+                  Exploration Mode: 1 project · 2 files · 3 collaborators — Start a free trial to unlock everything.
                 </span>
-                <span className="text-sm md:hidden">Explore mode active.</span>
+                <span className="text-sm md:hidden">Exploration Mode active.</span>
               </>
             )}
             <Button
@@ -392,7 +392,7 @@ export const Header = () => {
               </NavbarItem>
               <NavbarItem>
                 <Button as={NextLink} href="/sign-up" className="bg-foreground text-content1">
-                  <span className="hidden sm:inline">Start 7-day trial</span>
+                  <span className="hidden sm:inline">Explore free</span>
                   <span className="sm:hidden">Sign up</span>
                 </Button>
               </NavbarItem>
