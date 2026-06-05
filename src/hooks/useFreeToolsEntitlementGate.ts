@@ -25,12 +25,14 @@ export function useFreeToolsEntitlementGate() {
         lockReason: null as LockReason | null,
         isSignedIn,
         isSubscriptionActive: null as boolean | null,
+        isExploreMode: false,
         continueCta: null as null | { href: string; label: string },
         upgradeCta: null as null | { href: string; label: string },
       };
     }
 
     const isSubscriptionActive = !!user?.subscription?.isActive;
+    const hasUsedTrial = !!user?.subscription?.hasUsedTrial;
 
     // Signed in + active => allow, but encourage continuing in app.
     if (isSubscriptionActive) {
@@ -39,6 +41,7 @@ export function useFreeToolsEntitlementGate() {
         lockReason: null as LockReason | null,
         isSignedIn,
         isSubscriptionActive,
+        isExploreMode: false,
         continueCta: { href: '/', label: 'Continue in Kreatli' },
         upgradeCta: null as null | { href: string; label: string },
       };
@@ -53,11 +56,28 @@ export function useFreeToolsEntitlementGate() {
         lockReason: null as LockReason | null,
         isSignedIn,
         isSubscriptionActive,
+        isExploreMode: !hasUsedTrial,
         continueCta: { href: '/', label: 'Continue in Kreatli' },
         upgradeCta: { href: '/?showPlansModal=true', label: 'Start trial / choose plan' },
       };
     }
 
+    // Exploration mode: signed in, never started a trial — unlock the tool with a soft strip.
+    // The upload gate in ProjectUploadContext enforces the 2-asset limit inside the app.
+    if (!hasUsedTrial) {
+      const showWorkspaceCta = isAvailableInKreatliPlatform(pathname);
+      return {
+        isLocked: false,
+        lockReason: null as LockReason | null,
+        isSignedIn,
+        isSubscriptionActive,
+        isExploreMode: true,
+        continueCta: showWorkspaceCta ? { href: '/', label: 'Open in Kreatli' } : null,
+        upgradeCta: { href: '/?showPlansModal=true', label: 'Start free trial' },
+      };
+    }
+
+    // Expired trial: hard lock.
     const showWorkspaceCta = isAvailableInKreatliPlatform(pathname);
 
     return {
@@ -65,8 +85,9 @@ export function useFreeToolsEntitlementGate() {
       lockReason: 'inactive_subscription' as const,
       isSignedIn,
       isSubscriptionActive,
+      isExploreMode: false,
       continueCta: showWorkspaceCta ? { href: '/', label: 'Go to Projects' } : null,
       upgradeCta: { href: '/?showPlansModal=true', label: 'Start trial / choose plan' },
     };
-  }, [isSignedIn, router.pathname, user?.subscription?.isActive]);
+  }, [isSignedIn, router.pathname, user?.subscription?.isActive, user?.subscription?.hasUsedTrial]);
 }

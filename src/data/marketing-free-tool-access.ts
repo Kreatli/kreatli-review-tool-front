@@ -8,5 +8,5 @@
 export const FREE_TOOL_PAGE_ACCOUNT_FAQ = {
   question: 'Do I need a Kreatli account to use this page?',
   answer:
-    'Yes. To use this tool, sign in to Kreatli. If you are signed in to Kreatli and your trial or subscription is not active, you will need to start a 7-day trial or choose a plan to use the tool here—you add a payment method during secure checkout and are not charged subscription fees during the trial. People who open a review link you share still do not need a Kreatli account.',
+    'Yes. Sign up for a free Kreatli account — no credit card required. You can explore Kreatli with 1 project and 2 files in free Exploration Mode. To unlock full access to this tool, upgrade to a paid plan at any time from inside your workspace.',
 } as const;

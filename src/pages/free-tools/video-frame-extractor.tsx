@@ -33,7 +33,7 @@ export default function VideoFrameExtractorPage() {
         <title>Free Video Frame Extractor — Extract Frames from Video | Kreatli</title>
         <meta
           name="description"
-          content="Video frame extractor: extract frames from video in the browser—video-to-frame PNG/JPG or ZIP, no extra app required. Sign in to use the tool; start a trial if needed."
+          content="Video frame extractor: extract frames from video in the browser—video-to-frame PNG/JPG or ZIP, no extra app required. Sign up free, no credit card required — or sign in to extract."
         />
         <meta property="og:title" content="Free Video Frame Extractor — Extract Frames from Video | Kreatli" />
         <meta
@@ -87,8 +87,7 @@ export default function VideoFrameExtractorPage() {
               pixel-consistent. Pull <strong className="font-semibold text-foreground-700">PNG</strong>,{' '}
               <strong className="font-semibold text-foreground-700">JPG</strong>, or a{' '}
               <strong className="font-semibold text-foreground-700">ZIP</strong> when you need multiple grabs. No
-              separate desktop app required (you download exports as usual). Sign in to extract; start a{' '}
-              <strong className="font-semibold text-foreground-700">7-day trial</strong> if your plan isn’t active yet.
+              separate desktop app required (you download exports as usual). Sign up free — no credit card required — or sign in to extract.
             </p>
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
               <Button
@@ -98,7 +97,7 @@ export default function VideoFrameExtractorPage() {
                 className="bg-foreground text-content1"
                 onClick={() => pushSignupCtaClick({ location: 'video_frame_extractor_hero_primary' })}
               >
-                Start 7-day trial to use the tool
+                Explore free — no card required to use the tool
               </Button>
               <Button as={NextLink} href="/sign-in" size="lg" variant="bordered">
                 Sign in
@@ -111,7 +110,7 @@ export default function VideoFrameExtractorPage() {
           <div className="relative z-10 mx-auto max-w-6xl">
             <FreeToolsEntitlementSection
               lockedTitle="Video Frame Extractor is available inside Kreatli"
-              lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to extract frames in Kreatli."
+              lockedDescription="Sign up free to get started, or upgrade to a paid plan for full access."
             >
               <VideoFrameExtractor />
             </FreeToolsEntitlementSection>

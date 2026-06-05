@@ -260,7 +260,7 @@ export default function HowToReviewAVideoGuidePage() {
           <h2 id={getHeadingId(TOC_SECTIONS[4])}>{TOC_SECTIONS[4]}</h2>
           <p>
             The interactive preview below mirrors uploading a cut and leaving time-anchored feedback. When you are
-            ready, <NextLink href="/sign-up">start a 7-day trial</NextLink> or{' '}
+            ready, <NextLink href="/sign-up">sign up free</NextLink> or{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>

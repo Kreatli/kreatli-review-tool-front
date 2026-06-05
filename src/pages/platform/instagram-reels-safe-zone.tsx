@@ -10,6 +10,7 @@ import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { SafeZoneScreenGuide } from '../../components/safe-zone-checker/SafeZoneScreenGuide';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
@@ -111,19 +112,20 @@ export default function InstagramReelsSafeZonePage() {
               button, comment button, and music display appear—and keep your text, logos, and visuals visible. Free
               tool.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button
+            <HeroCtaButtons
+              className="mt-8"
+              leading={
+              
+                <Button
                 as={NextLink}
                 href="/safe-zone-checker/instagram-safe-zone-checker"
                 size="lg"
                 className="bg-foreground text-content1"
-              >
+                >
                 Use Free Instagram Reels Safe Zone Checker
-              </Button>
-              <Button as={NextLink} href="/sign-up" size="lg" variant="bordered">
-                Start 7-day trial
-              </Button>
-            </div>
+                </Button>
+              }
+            />
           </div>
         </div>
       </section>

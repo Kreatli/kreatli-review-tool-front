@@ -246,7 +246,7 @@ export default function HowToShareVideoGuidePage() {
           <p>
             The interactive preview below mirrors a simple “share video by link” flow: add recipients, copy a share URL,
             and think through who should have access. When you are ready,{' '}
-            <NextLink href="/sign-up">start a 7-day trial</NextLink> or book a{' '}
+            <NextLink href="/sign-up">sign up free</NextLink> or book a{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               demo
             </a>

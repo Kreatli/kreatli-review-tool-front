@@ -41,7 +41,7 @@ export function FreeToolsInactiveGateProvider({
   );
 
   const value = useMemo(
-    () => (isInactiveLocked ? { isInactiveLocked: true, openInactivePlanModal } : defaultValue),
+    () => ({ isInactiveLocked, openInactivePlanModal }),
     [isInactiveLocked, openInactivePlanModal],
   );
 

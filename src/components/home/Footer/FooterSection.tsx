@@ -135,7 +135,7 @@ export const FooterSection = ({ hideCta = false }: Props) => {
           </p>
           <div className="flex items-center gap-4">
             <Button as={Link} href="/sign-up" size="lg" className="bg-foreground text-content1">
-              Start For Free
+              Explore free — no card required
             </Button>
             <Button
               as="a"

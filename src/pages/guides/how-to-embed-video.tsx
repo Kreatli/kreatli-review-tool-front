@@ -205,7 +205,7 @@ export default function HowToEmbedVideoGuidePage() {
           <p>
             The interactive preview below uses the same review UI as our platform page: upload a clip, scrub the
             timeline, and leave frame-accurate comments. When you are ready to go further,{' '}
-            <NextLink href="/sign-up">start a 7-day trial</NextLink>,{' '}
+            <NextLink href="/sign-up">sign up free</NextLink>,{' '}
             <a href="https://calendar.app.google/NXbAeTAUwaBGh5x49" target="_blank" rel="noopener noreferrer nofollow">
               book a demo
             </a>

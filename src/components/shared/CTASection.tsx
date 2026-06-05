@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import React, { ReactNode } from 'react';
 
 import LogoIcon from '../../assets/images/logo.svg';
+import { useSession } from '../../hooks/useSession';
 import wysiwygStyles from '../layout/Storyblok/Wysiwyg/Wysiwyg.module.scss';
 
 interface CTASectionProps {
@@ -39,12 +40,18 @@ interface CTASectionProps {
    * `marketing`: stronger glows and padding (default for split).
    */
   splitTone?: 'marketing' | 'guide';
+  /**
+   * When true, shows "Explore free — no card required" text link below the primary CTA for
+   * logged-out visitors. Also personalises CTAs for signed-in users (active, explore mode,
+   * expired trial). Defaults to false to avoid changing non-platform pages.
+   */
+  showExploreCta?: boolean;
 }
 
 export function CTASection({
   title,
   description,
-  primaryButtonText = 'Start 7-day trial',
+  primaryButtonText = 'Explore free — no card required',
   primaryButtonHref = '/sign-up',
   showDemoButton = true,
   secondaryButtonText = 'Book a Demo',
@@ -57,8 +64,27 @@ export function CTASection({
   splitPromoImageSrc,
   splitPromoImageAlt,
   splitTone = 'marketing',
+  showExploreCta,
 }: CTASectionProps) {
+  const { isSignedIn, user } = useSession();
   const isSplitGuideTone = layout === 'split' && splitTone === 'guide';
+
+  // Auto-enable explore CTA when primary button goes to /sign-up, unless explicitly disabled.
+  const exploreCtaEnabled = showExploreCta ?? primaryButtonHref.startsWith('/sign-up');
+
+  // Auth-aware CTA resolution (only when exploreCtaEnabled)
+  const resolvedPrimaryText = React.useMemo(() => {
+    if (!exploreCtaEnabled || !isSignedIn) return primaryButtonText;
+    if (user?.subscription.isActive) return 'Open in Kreatli';
+    if (!user?.subscription.hasUsedTrial) return 'Continue in workspace';
+    return 'Upgrade to restore access';
+  }, [exploreCtaEnabled, isSignedIn, user, primaryButtonText]);
+
+  const resolvedPrimaryHref = React.useMemo(() => {
+    if (!exploreCtaEnabled || !isSignedIn) return primaryButtonHref;
+    return '/';
+  }, [exploreCtaEnabled, isSignedIn, primaryButtonHref]);
+
 
   const imageAside =
     splitPromoImageSrc != null && splitPromoImageSrc !== '' ? (
@@ -149,7 +175,7 @@ export function CTASection({
             <div className={cn('flex flex-wrap items-center', isGuideTone ? 'gap-5' : 'gap-6')}>
               <Button
                 as={NextLink}
-                href={primaryButtonHref}
+                href={resolvedPrimaryHref}
                 radius={isGuideTone ? 'lg' : 'full'}
                 size="lg"
                 className={cn(
@@ -157,9 +183,9 @@ export function CTASection({
                   isGuideTone ? 'h-11 px-7' : 'h-12 px-8',
                 )}
               >
-                {primaryButtonText}
+                {resolvedPrimaryText}
               </Button>
-              {showDemoButton ? (
+              {showDemoButton && !isSignedIn ? (
                 <a
                   href={secondaryButtonHref}
                   target="_blank"
@@ -215,10 +241,10 @@ export function CTASection({
         <h2 className="mb-4 font-sans text-2xl font-bold sm:text-3xl">{title}</h2>
         <p className="mx-auto max-w-xl text-lg text-foreground-500">{description}</p>
         <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Button as={NextLink} href={primaryButtonHref} size="lg" className="bg-foreground text-content1">
-            {primaryButtonText}
+          <Button as={NextLink} href={resolvedPrimaryHref} size="lg" className="bg-foreground text-content1">
+            {resolvedPrimaryText}
           </Button>
-          {showDemoButton && (
+          {showDemoButton && !isSignedIn && (
             <Button
               as="a"
               href={secondaryButtonHref}

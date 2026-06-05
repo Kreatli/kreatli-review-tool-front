@@ -9,6 +9,7 @@ import { Header } from '../../components/layout/Header';
 import { Decorations } from '../../components/layout/Storyblok/Decorations';
 import { BreadcrumbStructuredData } from '../../components/shared/BreadcrumbStructuredData';
 import { CTASection } from '../../components/shared/CTASection';
+import { HeroCtaButtons } from '../../components/shared/HeroCtaButtons';
 import { FAQStructuredData } from '../../components/shared/FAQStructuredData';
 import { MoreFreeToolsSection } from '../../components/shared/MoreFreeToolsSection';
 import { PlatformDefinitionBlock } from '../../components/shared/PlatformDefinitionBlock';
@@ -115,21 +116,7 @@ export default function AddDrawingToVideoPage() {
               Use Kreatli as your video drawing tool. Draw directly on video frames, highlight details with arrows and
               boxes, and turn vague comments into clear, frame-accurate visual feedback.
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button as={NextLink} href="/sign-up" size="lg" className="bg-foreground text-content1">
-                Start 7-day trial
-              </Button>
-              <Button
-                as="a"
-                href="https://calendar.app.google/NXbAeTAUwaBGh5x49"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                size="lg"
-                variant="bordered"
-              >
-                Book a Demo
-              </Button>
-            </div>
+            <HeroCtaButtons className="mt-8" />
           </div>
           <PlatformInteractiveReviewPreview />
         </div>

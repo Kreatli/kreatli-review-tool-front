@@ -86,6 +86,8 @@ export const SignUpForm = ({ sourceType, onSuccess }: Props) => {
             sendGTMEvent({ event: 'sign_up' });
 
             if (redirectToProjectId) {
+              // Invited user — skip the exploration welcome modal
+              localStorage.setItem('explorationWelcomeShown', 'true');
               router.push(`/project/${redirectToProjectId}/assets`);
 
               return;
