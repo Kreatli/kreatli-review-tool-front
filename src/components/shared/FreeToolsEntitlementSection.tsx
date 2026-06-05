@@ -7,6 +7,46 @@ import { FreeToolsInactiveGateProvider, useFreeToolsInactiveGate } from '../../c
 import { FreeToolSurface, getFreeToolSurface, isAvailableInKreatliPlatform } from '../../data/free-tool-surface';
 import { useFreeToolsEntitlementGate } from '../../hooks/useFreeToolsEntitlementGate';
 
+/**
+ * Soft non-blocking strip for exploration mode users (signed in, never trialed).
+ * Shown above the tool UI; the tool itself is fully accessible within explore limits.
+ */
+function ExploreModeStrip({
+  continueCta,
+  upgradeCta,
+}: {
+  continueCta: { href: string; label: string } | null;
+  upgradeCta: { href: string; label: string } | null;
+}) {
+  const { openInactivePlanModal } = useFreeToolsInactiveGate();
+
+  return (
+    <Card className="border border-primary-200 bg-primary-50/60 shadow-sm dark:border-primary-800 dark:bg-primary-950/30">
+      <CardBody className="flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-foreground-600">
+          <span className="font-medium text-foreground">Exploration Mode</span> — 1 project · 2 files · 3
+          collaborators.{' '}
+          <span className="hidden sm:inline">Start a free trial to unlock unlimited access.</span>
+        </p>
+        <div className="flex shrink-0 flex-row gap-2">
+          <Button
+            size="sm"
+            className="bg-foreground text-content1"
+            onPress={() => openInactivePlanModal({ force: true })}
+          >
+            {upgradeCta?.label ?? 'Start free trial'}
+          </Button>
+          {continueCta && (
+            <Button as={NextLink} href={continueCta.href} size="sm" variant="bordered">
+              {continueCta.label}
+            </Button>
+          )}
+        </div>
+      </CardBody>
+    </Card>
+  );
+}
+
 const DEFAULT_PLATFORM_LOCKED_DESCRIPTION =
   "You're signed in without an active trial or plan. Start a trial or choose a plan to use this tool here, or go to your workspace.";
 
@@ -94,11 +134,27 @@ export function FreeToolsEntitlementSection(props: {
   children: ReactNode;
   lockedTitle?: string;
   lockedDescription?: string;
+  /** Where to render the explore/locked strip relative to the tool. Default: 'above'. */
+  stripPosition?: 'above' | 'below';
 }) {
-  const { children, lockedTitle, lockedDescription } = props;
+  const { children, lockedTitle, lockedDescription, stripPosition = 'above' } = props;
   const gate = useFreeToolsEntitlementGate();
   const { pathname } = useRouter();
   const surface = getFreeToolSurface(pathname);
+
+  // Exploration mode: unlocked but show a soft informational strip with upgrade nudge.
+  if (gate.isExploreMode) {
+    const strip = <ExploreModeStrip continueCta={gate.continueCta} upgradeCta={gate.upgradeCta} />;
+    return (
+      <FreeToolsInactiveGateProvider isInactiveLocked={false} surface={surface}>
+        <div className="space-y-3">
+          {stripPosition === 'above' && strip}
+          {children}
+          {stripPosition === 'below' && strip}
+        </div>
+      </FreeToolsInactiveGateProvider>
+    );
+  }
 
   if (gate.isLocked) {
     // Browser marketing tools: soft non-blocking strip — tool is fully interactive.
@@ -113,7 +169,7 @@ export function FreeToolsEntitlementSection(props: {
       );
     }
 
-    // Platform previews + others: hard locked banner (existing behaviour).
+    // Platform previews + others: hard locked banner (expired trial).
     const lockedCopy = getLockedBannerCopy(pathname, lockedTitle, lockedDescription);
     return (
       <FreeToolsInactiveGateProvider isInactiveLocked surface={surface}>

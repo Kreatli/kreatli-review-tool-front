@@ -53,6 +53,7 @@ export default function YouTubeSafeZoneCheckerPage() {
           <FreeToolsEntitlementSection
             lockedTitle="YouTube Shorts Safe Zone Checker is available inside Kreatli"
             lockedDescription="Your trial or plan isn’t active. Start a trial or choose a plan to upload and check safe zones in Kreatli."
+            stripPosition="below"
           >
             <SafeZoneScreen defaultPlatform="youtube" />
           </FreeToolsEntitlementSection>
