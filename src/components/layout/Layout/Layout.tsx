@@ -6,6 +6,7 @@ import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility'
 import { useSession } from '../../../hooks/useSession';
 import { PlansModal } from '../../account/PlansModal';
 import { DeliverableModal } from '../../deliverables/Deliverable/DeliverableModal';
+import { ExplorationWelcomeModal } from '../../exploration/ExplorationWelcomeModal';
 import { TaskModal } from '../../tasks/Task';
 import { AppLoader } from '../AppLoader';
 
@@ -47,6 +48,7 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
     <AppLoader>
       {children}
       {isSignedIn && user && <PlansModal user={user} isOpen={isVisible} onClose={() => setIsVisible(false)} />}
+      {isSignedIn && <ExplorationWelcomeModal />}
       {isSignedIn && (
         <>
           <TaskModal />
