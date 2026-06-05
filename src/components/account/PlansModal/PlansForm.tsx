@@ -1,7 +1,9 @@
 import { addToast } from '@heroui/react';
 import { useState } from 'react';
 
+import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { trackEvent } from '../../../lib/amplitude';
+import { saveCheckoutAnalyticsContext } from '../../../lib/amplitudeUser';
 import { usePostUserSubscription } from '../../../services/hooks';
 import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
@@ -61,12 +63,26 @@ export const PlansForm = ({ user }: Props) => {
     user?.subscription.plan ?? null,
   );
 
+  const plansModalEntry = usePlansModalVisibility((state) => state.plansModalEntry);
   const { mutate: upgradePlan, isPending: isUpgradingPlan } = usePostUserSubscription();
 
   const handleUpgradePlan = (plan: 'creator' | 'team' | 'enterprise') => {
     if (!plan) return;
 
-    trackEvent('trial_checkout_started', { plan_id: plan });
+    const planConfig = PLANS.find((p) => p.id === plan);
+    const checkoutContext = {
+      plan_id: plan,
+      plans_modal_entry: plansModalEntry,
+      plan_price_usd: planConfig && 'price' in planConfig ? planConfig.price : undefined,
+    };
+
+    trackEvent('trial_checkout_started', {
+      plan_id: plan,
+      plans_modal_entry: plansModalEntry,
+      plan_price_usd: checkoutContext.plan_price_usd,
+    });
+
+    saveCheckoutAnalyticsContext(checkoutContext);
 
     upgradePlan(
       {
@@ -74,10 +90,19 @@ export const PlansForm = ({ user }: Props) => {
       },
       {
         onSuccess: ({ url }) => {
-          trackEvent('trial_checkout_redirect', { plan_id: plan });
+          trackEvent('trial_checkout_redirect', {
+            plan_id: plan,
+            plans_modal_entry: plansModalEntry,
+            plan_price_usd: checkoutContext.plan_price_usd,
+          });
           location.href = url;
         },
         onError: (error) => {
+          trackEvent('trial_checkout_failed', {
+            plan_id: plan,
+            plans_modal_entry: plansModalEntry,
+            error_message: getErrorMessage(error).slice(0, 200),
+          });
           addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
         },
       },

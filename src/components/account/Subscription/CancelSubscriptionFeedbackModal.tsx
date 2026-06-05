@@ -1,16 +1,19 @@
 import { addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Textarea } from '@heroui/react';
 import { useState } from 'react';
 
+import { trackEvent } from '../../../lib/amplitude';
 import { usePostUserSubscriptionCancelFeedback } from '../../../services/hooks';
+import { UserDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
+  user: UserDto;
 }
 
-export const CancelSubscriptionFeedbackModal = ({ isOpen, onClose, onSuccess }: Props) => {
+export const CancelSubscriptionFeedbackModal = ({ isOpen, onClose, onSuccess, user }: Props) => {
   const [feedback, setFeedback] = useState('');
   const { mutate: sendFeedback, isPending } = usePostUserSubscriptionCancelFeedback();
 
@@ -32,6 +35,10 @@ export const CancelSubscriptionFeedbackModal = ({ isOpen, onClose, onSuccess }: 
       { requestBody: { feedback: trimmedFeedback } },
       {
         onSuccess: () => {
+          trackEvent('subscription_cancel_feedback_submitted', {
+            plan_key: user.subscription.plan ?? '',
+            feedback_length: trimmedFeedback.length,
+          });
           addToast({ title: 'Feedback sent', color: 'success', variant: 'flat' });
           setFeedback('');
           onSuccess();

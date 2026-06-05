@@ -1,6 +1,7 @@
 import { addToast, Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
 import { useQueryClient } from '@tanstack/react-query';
 
+import { trackEvent } from '../../../lib/amplitude';
 import { useDeleteUserSubscription } from '../../../services/hooks';
 import { getUser } from '../../../services/services';
 import { UserDto } from '../../../services/types';
@@ -9,18 +10,24 @@ import { getErrorMessage } from '../../../utils/getErrorMessage';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
+  user: UserDto;
 }
 
-export const CancelSubscriptionModal = ({ isOpen, onClose }: Props) => {
+export const CancelSubscriptionModal = ({ isOpen, onClose, user }: Props) => {
   const queryClient = useQueryClient();
   const { mutate: cancelSubscription, isPending } = useDeleteUserSubscription();
 
   const handleCancelSubscription = () => {
     cancelSubscription(undefined, {
-      onSuccess: (user: UserDto) => {
+      onSuccess: (updatedUser: UserDto) => {
+        trackEvent('subscription_cancelled', {
+          plan_key: user.subscription.plan ?? '',
+          plan_name: user.subscription.planName ?? '',
+          price_usd: user.subscription.price,
+        });
         addToast({ title: 'Subscription cancelled', color: 'success', variant: 'flat' });
         onClose();
-        queryClient.setQueryData([getUser.key], user);
+        queryClient.setQueryData([getUser.key], updatedUser);
       },
       onError: (error) => {
         addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });

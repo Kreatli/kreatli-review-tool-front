@@ -12,6 +12,8 @@ export const trackAccountSignupCompleted = (userId: string, signupMethod: string
   trackEvent('account_signup_completed', { signup_method: signupMethod });
 };
 
+export { syncUserSubscriptionTraits } from './amplitudeUser';
+
 export const trackEvent = <T extends AmplitudeEvent>(
   event: T,
   properties?: T extends keyof AmplitudeEventProperties ? AmplitudeEventProperties[T] : never,

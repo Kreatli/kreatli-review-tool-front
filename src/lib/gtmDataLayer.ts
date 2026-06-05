@@ -1,3 +1,5 @@
+import { trackEvent } from './amplitude';
+
 /**
  * Push custom events for GTM → GA4 explorations (e.g. organic landing → signup CTA).
  * Requires GTM_ID in env (_app loads GoogleTagManager). In GTM, map `signupCtaClick` to GA4.
@@ -12,5 +14,10 @@ export function pushSignupCtaClick(payload: { location: string; label?: string }
     event: 'signupCtaClick',
     signup_cta_location: payload.location,
     ...(payload.label ? { signup_cta_label: payload.label } : {}),
+  });
+
+  trackEvent('signup_cta_clicked', {
+    location: payload.location,
+    ...(payload.label ? { label: payload.label } : {}),
   });
 }

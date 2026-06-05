@@ -4,6 +4,14 @@ import React, { useEffect } from 'react';
 
 import { usePlansModalVisibility } from '../../../hooks/usePlansModalVisibility';
 import { useSession } from '../../../hooks/useSession';
+import {
+  buildPlanEventProperties,
+  consumeTrialConversionFlag,
+  readCheckoutAnalyticsContext,
+  shouldTrackOncePerSession,
+  syncUserSubscriptionTraits,
+} from '../../../lib/amplitudeUser';
+import { trackEvent } from '../../../lib/amplitude';
 import { PlansModal } from '../../account/PlansModal';
 import { DeliverableModal } from '../../deliverables/Deliverable/DeliverableModal';
 import { TaskModal } from '../../tasks/Task';
@@ -36,10 +44,24 @@ export const Layout = ({ children }: React.PropsWithChildren) => {
     if (window && 'amplitude' in window) {
       window.amplitude.setUserId(user.id);
       window.amplitude.add(engagementPlugin());
+      syncUserSubscriptionTraits(user);
 
-      const identifyEvent = new window.amplitude.Identify();
-      identifyEvent.set('name', user.name).set('email', user.email).set('sourceType', user.sourceType);
-      window.amplitude.identify(identifyEvent);
+      if (
+        user.subscription.isActive &&
+        !user.subscription.isTrial &&
+        user.subscription.plan &&
+        consumeTrialConversionFlag(user.id)
+      ) {
+        const checkoutContext = readCheckoutAnalyticsContext();
+        const planProps = buildPlanEventProperties(user, checkoutContext);
+
+        if (shouldTrackOncePerSession(`subscription_converted_trial_end_${user.id}`)) {
+          trackEvent('subscription_converted', {
+            ...planProps,
+            conversion_source: 'trial_ended',
+          });
+        }
+      }
     }
   }, [user]);
 
