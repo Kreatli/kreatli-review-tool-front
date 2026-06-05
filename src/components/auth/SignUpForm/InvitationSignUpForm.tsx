@@ -35,6 +35,8 @@ export const InvitationSignUpForm = ({ email, token, onSuccess }: Props) => {
       {
         onSuccess: (res) => {
           localStorage.setItem('token', res.token);
+          // Invited users skip the exploration welcome modal — they land directly in a project
+          localStorage.setItem('explorationWelcomeShown', 'true');
           getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${res.token}`;
           trackAccountSignupCompleted(res.user.id, 'invitation');
           onSuccess();

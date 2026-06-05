@@ -46,6 +46,8 @@ export default function Activate() {
             }
 
             if (redirectToProjectId) {
+              // Invited user — skip the exploration welcome modal
+              localStorage.setItem('explorationWelcomeShown', 'true');
               router.replace(`/project/${redirectToProjectId}/assets`);
 
               return;
