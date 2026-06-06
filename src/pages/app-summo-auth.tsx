@@ -43,6 +43,8 @@ export default function AppSumoAuth() {
         onSuccess: ({ user, token, license }) => {
           if (token) {
             localStorage.setItem('token', token);
+            // AppSumo users skip the exploration welcome modal — they have a paid license
+            localStorage.setItem('explorationWelcomeShown', 'true');
             getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
             queryClient.setQueryData([getUser.key], user);
             router.push('/');
@@ -69,6 +71,8 @@ export default function AppSumoAuth() {
 
   const handleSuccess = ({ token, user }: { token: string; user: UserDto }) => {
     localStorage.setItem('token', token);
+    // AppSumo users skip the exploration welcome modal — they have a paid license
+    localStorage.setItem('explorationWelcomeShown', 'true');
     getAxiosInstance(undefined).defaults.headers.Authorization = `Bearer ${token}`;
     queryClient.setQueryData([getUser.key], user);
     router.push('/');

@@ -25,7 +25,11 @@ export const ExplorationWelcomeModal = () => {
   });
 
   const isExploreMode =
-    isSignedIn && user && !user.subscription.isActive && !user.subscription.hasUsedTrial;
+    isSignedIn &&
+    user &&
+    !user.subscription.isActive &&
+    !user.subscription.hasUsedTrial &&
+    !user.subscription.isAppSumo;
 
   const isOpen = !!isExploreMode && !hasShown;
 
