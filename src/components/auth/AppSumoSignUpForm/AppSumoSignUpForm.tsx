@@ -37,6 +37,8 @@ export const AppSumoSignUpForm = ({ appSumoLicenseKey, onSuccess }: Props) => {
       { requestBody: data, queryParams: { appSumoLicenseKey } },
       {
         onSuccess: ({ token, user }) => {
+          // AppSumo users skip the exploration welcome modal — they have a paid license
+          localStorage.setItem('explorationWelcomeShown', 'true');
           sendGTMEvent({ event: 'sign_up' });
           trackAccountSignupCompleted(user.id, 'appsumo');
           onSuccess?.({ token, user });
