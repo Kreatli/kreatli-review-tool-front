@@ -15,6 +15,7 @@ import { ReviewToolAudio } from './ReviewToolAudio';
 import styles from './ReviewToolCanvas.module.scss';
 import { ReviewToolCanvasShapes } from './ReviewToolCanvasShapes';
 import { ReviewToolImage } from './ReviewToolImage';
+import { ReviewToolPdf } from './ReviewToolPdf';
 import { ReviewToolUnsupportedFile } from './ReviewToolUnsupportedFile';
 import { ReviewToolVideo } from './ReviewToolVideo';
 
@@ -307,8 +308,9 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
       })}
       onClick={onClick}
     >
-      {(file.fileType.startsWith('image') || file.fileType.includes('pdf')) && (
-        <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />
+      {file.fileType.startsWith('image') && <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />}
+      {file.fileType.includes('pdf') && (
+        <ReviewToolPdf shareableLinkId={shareableLinkId} file={file} onLoad={handleFileLoad} />
       )}
       {file.fileType.startsWith('video') && (
         <ReviewToolVideo shareableLinkId={shareableLinkId} videoFile={file} onLoad={handleFileLoad} />

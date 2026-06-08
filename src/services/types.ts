@@ -59,6 +59,7 @@ export interface AssetCommentBodyDto {
   canvas?: AssetCommentCanvas;
   content?: { [x in string | number]: any };
   name?: string;
+  page?: number;
   parent?: string;
   shareableLinkId?: string;
   timestamp?: number[];
@@ -92,6 +93,7 @@ export interface AssetCommentDto {
   id: string;
   isResolved: boolean;
   message: string;
+  page: number;
   replies: AssetCommentDto[];
   canvas?: AssetCommentCanvas;
   content?: { [x in string | number]: any };

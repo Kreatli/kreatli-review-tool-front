@@ -30,7 +30,7 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
   const { createdBy, id, content, message, createdAt, timestamp, canvas } = comment;
   const { mutate: updateComment, isPending: isUpdatingComment } = usePatchAssetFileIdCommentCommentId();
   const { mutate: removeComment, isPending: isRemoving } = useDeleteAssetFileIdCommentCommentId();
-  const { activeComment, replyingComment, setActiveComment, setReplyingComment } = useFileStateContext();
+  const { activeComment, replyingComment, setActiveComment, setReplyingComment, setActivePage } = useFileStateContext();
 
   const isMdScreen = useIsBreakpoint('max', 768);
 
@@ -90,6 +90,7 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
       return;
     }
 
+    setActivePage(comment.page ?? 0);
     setActiveComment(comment);
     setReplyingComment(null);
   };
@@ -162,6 +163,7 @@ export const AssetComment = ({ fileId, project, comment, isResolvable = true, on
         onClick={handleClick}
       >
         {(canvas?.shapes?.length ?? 0) > 0 && <Icon icon="paint" size={16} className="mr-1 inline text-primary" />}
+        {!!comment.page && <span className="text-foreground-500">Page {comment.page + 1} </span>}
         {timestamp?.[0] !== undefined && <span className="text-foreground-500">{formatDuration(timestamp[0])} </span>}
         {content ? (
           <div
