@@ -42,6 +42,14 @@ export const ReviewToolPdf = ({ file, shareableLinkId, onLoad }: Props) => {
     }));
   }, [pages, activePageIndex, commentsData]);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowLeft') {
+      setActivePage(activePageIndex - 1);
+    } else if (event.key === 'ArrowRight') {
+      setActivePage(activePageIndex + 1);
+    }
+  };
+
   return (
     <>
       <div className="absolute -inset-12">
@@ -65,36 +73,41 @@ export const ReviewToolPdf = ({ file, shareableLinkId, onLoad }: Props) => {
         onLoad={onLoad}
       />
       {buttons.length && (
-        <div className="no-scrollbar z-10 flex max-w-full gap-2 overflow-auto p-4">
+        <div
+          className="no-scrollbar relative z-10 flex max-w-full shrink-0 gap-2 overflow-auto p-4"
+          onKeyDown={handleKeyDown}
+        >
           {buttons.map(({ url, index, isActive, commentsCount }) => (
             <Badge
               key={url}
               color="default"
               content={commentsCount}
-              className={cn('text-[10px] leading-4', {
+              isInvisible={commentsCount === 0}
+              className={cn('py-0.5 text-[10px] leading-4', {
                 'bg-black text-white': isActive,
               })}
-              isInvisible={commentsCount === 0}
             >
               <button
                 type="button"
                 ref={isActive ? activeButtonRef : undefined}
                 className={cn(
-                  'size-12 shrink-0 scroll-mx-2 rounded-medium shadow-medium outline outline-1 outline-offset-2 outline-white transition-all',
+                  'relative flex w-12 shrink-0 scroll-mx-2 flex-col gap-0.5 overflow-hidden rounded-medium bg-foreground-100 shadow-medium outline outline-1 outline-offset-2 outline-white transition-all dark:shadow-none dark:outline-foreground-600',
                   {
-                    'outline-black': isActive,
+                    'outline-black dark:outline-black': isActive,
                   },
                 )}
                 onClick={() => setActivePage(index)}
               >
                 <span
-                  className={cn('flex size-full opacity-35 transition-opacity', {
+                  className={cn('flex h-12 w-full opacity-50 transition-opacity', {
                     'opacity-100': isActive,
                   })}
                 >
                   <Image removeWrapper src={url} alt="" className="size-full object-contain" />
                 </span>
-                {/* {commentsCount > 0 && <Chip>ff</Chip>} */}
+                <span className={cn('text-[10px] font-bold', { 'font-medium text-foreground-500': !isActive })}>
+                  {index + 1}
+                </span>
               </button>
             </Badge>
           ))}

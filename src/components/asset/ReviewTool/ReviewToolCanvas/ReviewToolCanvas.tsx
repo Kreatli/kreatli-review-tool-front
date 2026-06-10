@@ -22,10 +22,11 @@ import { ReviewToolVideo } from './ReviewToolVideo';
 interface Props {
   file: FileDto;
   shareableLinkId?: string;
+  isBordered?: boolean;
   onClick?: () => void;
 }
 
-export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
+export const ReviewToolCanvas = ({ file, shareableLinkId, isBordered = false, onClick }: Props) => {
   const { activeFile, compareFile } = useFileStateContext();
   const { activeTool, activeColor, canvasRef, fileRef, compareFileRef } = useReviewToolContext();
   const { shapes, isReadOnly, setShapes, pushHistory } = useReviewToolCanvasShapesContext();
@@ -305,6 +306,7 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
     <div
       className={cn('relative flex flex-1 flex-col items-center justify-center overflow-hidden', {
         '[&>*]:pointer-events-none': activeFile?.id !== file.id && activeTool,
+        'border-r': isBordered,
       })}
       onClick={onClick}
     >
