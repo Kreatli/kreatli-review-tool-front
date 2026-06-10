@@ -85,6 +85,7 @@ export const ReviewTool = ({ stack, stackSelectedFile, project, isLoading, onSwi
           <div className="flex flex-1 overflow-hidden">
             <ReviewToolCanvas
               file={file}
+              isBordered={!!compareFile}
               onClick={() => {
                 setActiveFileId(file.id);
                 setActiveComment(null);

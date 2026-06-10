@@ -15,16 +15,18 @@ import { ReviewToolAudio } from './ReviewToolAudio';
 import styles from './ReviewToolCanvas.module.scss';
 import { ReviewToolCanvasShapes } from './ReviewToolCanvasShapes';
 import { ReviewToolImage } from './ReviewToolImage';
+import { ReviewToolPdf } from './ReviewToolPdf';
 import { ReviewToolUnsupportedFile } from './ReviewToolUnsupportedFile';
 import { ReviewToolVideo } from './ReviewToolVideo';
 
 interface Props {
   file: FileDto;
   shareableLinkId?: string;
+  isBordered?: boolean;
   onClick?: () => void;
 }
 
-export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
+export const ReviewToolCanvas = ({ file, shareableLinkId, isBordered = false, onClick }: Props) => {
   const { activeFile, compareFile } = useFileStateContext();
   const { activeTool, activeColor, canvasRef, fileRef, compareFileRef } = useReviewToolContext();
   const { shapes, isReadOnly, setShapes, pushHistory } = useReviewToolCanvasShapesContext();
@@ -304,11 +306,13 @@ export const ReviewToolCanvas = ({ file, shareableLinkId, onClick }: Props) => {
     <div
       className={cn('relative flex flex-1 flex-col items-center justify-center overflow-hidden', {
         '[&>*]:pointer-events-none': activeFile?.id !== file.id && activeTool,
+        'border-r': isBordered,
       })}
       onClick={onClick}
     >
-      {(file.fileType.startsWith('image') || file.fileType.includes('pdf')) && (
-        <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />
+      {file.fileType.startsWith('image') && <ReviewToolImage imageFile={file} onLoad={handleFileLoad} />}
+      {file.fileType.includes('pdf') && (
+        <ReviewToolPdf shareableLinkId={shareableLinkId} file={file} onLoad={handleFileLoad} />
       )}
       {file.fileType.startsWith('video') && (
         <ReviewToolVideo shareableLinkId={shareableLinkId} videoFile={file} onLoad={handleFileLoad} />

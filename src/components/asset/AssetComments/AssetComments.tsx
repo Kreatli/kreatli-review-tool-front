@@ -99,17 +99,13 @@ export const AssetComments = ({ fileId, project, shareableLinkId }: Props) => {
             selectedKeys={[commentsStatus]}
             onSelectionChange={(keys) => setCommentsStatus(keys.currentKey as CommentsStatus)}
           >
-            <DropdownItem key="all" title="All" description={`${comments.length} comments`}></DropdownItem>
-            <DropdownItem
-              key="unresolved"
-              title="Unresolved"
-              description={`${unresolvedCommentsCount} comments`}
-            ></DropdownItem>
+            <DropdownItem key="all" title="All" description={`${comments.length} comments`} />
+            <DropdownItem key="unresolved" title="Unresolved" description={`${unresolvedCommentsCount} comments`} />
             <DropdownItem
               key="resolved"
               title="Resolved"
               description={`${comments.length - unresolvedCommentsCount} comments`}
-            ></DropdownItem>
+            />
           </DropdownMenu>
         </Dropdown>
       </div>

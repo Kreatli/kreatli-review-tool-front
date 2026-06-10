@@ -38,7 +38,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
   const { mutate } = usePostAssetFileIdComment();
 
   const { fileRef, compareFileRef, setActiveTool } = useReviewToolContext();
-  const { activeFile, compareFile, replyingComment, commentsRef, setActiveComment, setReplyingComment } =
+  const { activeFile, activePage, compareFile, replyingComment, commentsRef, setActiveComment, setReplyingComment } =
     useFileStateContext();
   const { shapes, resetCanvas } = useReviewToolCanvasShapesContext();
 
@@ -173,6 +173,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
       isResolved: false,
       replies: [],
       parent,
+      page: activePage,
       canvas: { shapes },
       timestamp: getIsMediaHtmlElement(activeRef.current)
         ? [activeRef.current.currentTime, activeRef.current.currentTime]
@@ -222,6 +223,7 @@ export const ReviewToolEditor = ({ shareableLinkId, isDisabled = false, project 
           parent,
           name,
           shareableLinkId,
+          page: activePage,
           timestamp: getIsMediaHtmlElement(activeRef.current)
             ? [activeRef.current.currentTime, activeRef.current.currentTime]
             : undefined,

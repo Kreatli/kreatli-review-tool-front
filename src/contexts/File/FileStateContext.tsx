@@ -6,10 +6,12 @@ interface Context {
   file: FileDto | undefined;
   activeFile: FileDto | undefined;
   activeComment: AssetCommentDto | null;
+  activePage: number;
   replyingComment: AssetCommentDto | null;
   commentsRef: React.RefObject<HTMLDivElement | null>;
   isCompareMode: boolean;
   compareFile: FileDto | undefined;
+  setActivePage: (page: number) => void;
   setActiveFileId: (id: string) => void;
   setActiveComment: (comment: AssetCommentDto | null) => void;
   setReplyingComment: (comment: AssetCommentDto | null) => void;
@@ -37,6 +39,7 @@ export const FileStateContextProvider = ({ children, fileId, file, compareFile }
   const commentsRef = useRef<HTMLDivElement>(null);
 
   const [activeFileId, setActiveFileId] = React.useState(fileId);
+  const [activePage, setActivePage] = React.useState<number>(0);
   const [activeComment, setActiveComment] = React.useState<AssetCommentDto | null>(null);
   const [replyingComment, setReplyingComment] = React.useState<AssetCommentDto | null>(null);
 
@@ -48,8 +51,10 @@ export const FileStateContextProvider = ({ children, fileId, file, compareFile }
         compareFile,
         isCompareMode: !!compareFile,
         activeComment,
+        activePage,
         replyingComment,
         commentsRef,
+        setActivePage,
         setActiveComment,
         setReplyingComment,
         setActiveFileId,
