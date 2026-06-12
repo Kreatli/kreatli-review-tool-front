@@ -1,4 +1,4 @@
-import { addToast, Button } from '@heroui/react';
+import { addToast, Button, cn } from '@heroui/react';
 import { useState } from 'react';
 
 import { useFileStateContext } from '../../../contexts/File';
@@ -18,9 +18,11 @@ import { ReviewToolSafeZonesModal } from '../ReviewTool/ReviewToolSafeZonesModal
 interface Props {
   file: FileDto;
   shareableLinkId: string;
+  downloadDisabled?: boolean;
+  headerHidden?: boolean;
 }
 
-export const ShareableAsset = ({ file, shareableLinkId }: Props) => {
+export const ShareableAsset = ({ file, shareableLinkId, downloadDisabled = false, headerHidden = false }: Props) => {
   const { commentsRef } = useFileStateContext();
 
   const [isSafeZonesModalOpen, setIsSafeZonesModalOpen] = useState(false);
@@ -45,20 +47,27 @@ export const ShareableAsset = ({ file, shareableLinkId }: Props) => {
   };
 
   return (
-    <div className="border-t border-foreground-300">
+    <div className={cn(!headerHidden && 'border-t border-foreground-300')}>
       <div className="flex items-center gap-2 border-b border-foreground-300 px-6 py-1">
         <div className="text-md truncate font-semibold">{file.name}</div>
         <div className="whitespace-nowrap text-sm text-foreground-500">{formatBytes(file.fileSize)}</div>
-        <Button size="sm" variant="flat" color="primary" onClick={handleDownload}>
-          <Icon icon="download" size={16} />
-          <span className="font-medium">Download</span>
-        </Button>
+        {!downloadDisabled && (
+          <Button size="sm" variant="flat" color="primary" onClick={handleDownload}>
+            <Icon icon="download" size={16} />
+            <span className="font-medium">Download</span>
+          </Button>
+        )}
         <Button size="sm" variant="flat" onClick={openSafeZoneCheckerModal}>
           <Icon icon="mobile" size={18} />
           Safe Zones
         </Button>
       </div>
-      <div className="grid-cols-[1fr,350px] md:grid md:h-[calc(100vh-106px)]">
+      <div
+        className={cn(
+          'grid-cols-[1fr,350px] md:grid',
+          headerHidden ? 'md:h-[calc(100vh-42px)]' : 'md:h-[calc(100vh-106px)]',
+        )}
+      >
         <div className="flex flex-col overflow-hidden">
           <ReviewToolContextProvider>
             <ReviewToolCanvasShapesContextProvider>

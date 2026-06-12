@@ -15,6 +15,8 @@ export default function SharePage() {
 
   const { data, isPending, isError } = useGetShareableLinkAssetId(shareableLinkId?.toString() ?? '', {
     enabled: !!shareableLinkId,
+    staleTime: 0,
+    refetchOnMount: 'always',
   });
 
   useEffect(() => {
@@ -29,15 +31,9 @@ export default function SharePage() {
     }
   }, [isError, router]);
 
-  useEffect(() => {
-    if (data?.hasAccessToProject) {
-      router.replace(`/project/${data.projectId}/assets/${data.file.id}`);
-    }
-  }, [data?.hasAccessToProject]);
-
   const title = `Kreatli | ${data?.file?.name}`;
 
-  if (isError || !data || !shareableLinkId || data.hasAccessToProject) {
+  if (isError || !data || !shareableLinkId) {
     return null;
   }
 
@@ -47,9 +43,14 @@ export default function SharePage() {
         <title>{title}</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <Header />
+      {!data.shareableLinkHeaderHidden && <Header />}
       <FileStateContextProvider fileId={data.file.id ?? ''} file={data.file}>
-        <ShareableAsset file={data.file} shareableLinkId={shareableLinkId.toString()} />
+        <ShareableAsset
+          file={data.file}
+          shareableLinkId={shareableLinkId.toString()}
+          downloadDisabled={data.shareableLinkDownloadDisabled}
+          headerHidden={data.shareableLinkHeaderHidden}
+        />
       </FileStateContextProvider>
     </div>
   );

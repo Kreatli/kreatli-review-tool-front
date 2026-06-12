@@ -1,11 +1,11 @@
-import { addToast, Button } from '@heroui/react';
+import { addToast, Button, Switch } from '@heroui/react';
 import { JSONContent } from '@tiptap/react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { DEFAULT_PROJECT_CONTENT } from '../../../constants/tiptap';
 import { queryClient } from '../../../lib/queryClient';
 import { usePutUserSettings } from '../../../services/hooks';
-import { getUserSettings } from '../../../services/services';
+import { getShareableLinkAssetId, getUserSettings } from '../../../services/services';
 import { SettingsDto } from '../../../services/types';
 import { getErrorMessage } from '../../../utils/getErrorMessage';
 import { EditorRef, SimpleEditor } from '../../tiptap/components/tiptap-templates/simple/simple-editor';
@@ -23,7 +23,47 @@ export const SettingsForm = ({ settings }: Props) => {
 
   const [isTouched, setIsTouched] = useState(false);
 
-  const { mutate, isPending } = usePutUserSettings();
+  const [shareableLinkDownloadDisabled, setShareableLinkDownloadDisabled] = useState(
+    settings.shareableLinkDownloadDisabled,
+  );
+  const [shareableLinkHeaderHidden, setShareableLinkHeaderHidden] = useState(settings.shareableLinkHeaderHidden);
+
+  const { mutate: saveDescription, isPending: isSavingDescription } = usePutUserSettings();
+  const { mutate: saveShareSettings } = usePutUserSettings();
+
+  useEffect(() => {
+    setShareableLinkDownloadDisabled(settings.shareableLinkDownloadDisabled);
+    setShareableLinkHeaderHidden(settings.shareableLinkHeaderHidden);
+  }, [settings.shareableLinkDownloadDisabled, settings.shareableLinkHeaderHidden]);
+
+  const handleShareSettingChange = (
+    field: 'shareableLinkDownloadDisabled' | 'shareableLinkHeaderHidden',
+    value: boolean,
+  ) => {
+    if (field === 'shareableLinkDownloadDisabled') {
+      setShareableLinkDownloadDisabled(value);
+    } else {
+      setShareableLinkHeaderHidden(value);
+    }
+
+    saveShareSettings(
+      { requestBody: { [field]: value } },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries({ queryKey: [getShareableLinkAssetId.key] });
+          addToast({ title: 'Shareable link settings saved', color: 'success', variant: 'flat' });
+        },
+        onError: (error) => {
+          if (field === 'shareableLinkDownloadDisabled') {
+            setShareableLinkDownloadDisabled(settings.shareableLinkDownloadDisabled);
+          } else {
+            setShareableLinkHeaderHidden(settings.shareableLinkHeaderHidden);
+          }
+          addToast({ title: getErrorMessage(error), color: 'danger', variant: 'flat' });
+        },
+      },
+    );
+  };
 
   const handleUpdate = (editorJson: Record<string, unknown>) => {
     editorJsonRef.current = editorJson;
@@ -43,7 +83,7 @@ export const SettingsForm = ({ settings }: Props) => {
     const isContentEmpty = getIsContentEmpty(editorJsonRef.current);
     const sanitizedContent = getSanitizedContent(editorJsonRef.current);
 
-    mutate(
+    saveDescription(
       {
         requestBody: { defaultProjectContent: isContentEmpty ? DEFAULT_PROJECT_CONTENT : sanitizedContent },
       },
@@ -82,14 +122,45 @@ export const SettingsForm = ({ settings }: Props) => {
       </div>
       <div className="flex justify-end gap-2">
         {isTouched && (
-          <Button variant="flat" isDisabled={isPending} onClick={handleReset}>
+          <Button variant="flat" isDisabled={isSavingDescription} onClick={handleReset}>
             <Icon icon="update" size={18} />
             Reset
           </Button>
         )}
-        <Button className="bg-foreground text-content1" isLoading={isPending} onClick={handleSave}>
+        <Button className="bg-foreground text-content1" isLoading={isSavingDescription} onClick={handleSave}>
           <span>Save changes</span>
         </Button>
+      </div>
+
+      <div className="flex w-full flex-col gap-4 border-t border-foreground-200 pt-6">
+        <div>
+          <div className="text-lg font-semibold">Shareable links</div>
+          <div className="text-sm text-foreground-500">
+            These preferences apply to all shareable links on projects you own.
+          </div>
+        </div>
+        <Switch
+          isSelected={shareableLinkDownloadDisabled}
+          onValueChange={(value) => handleShareSettingChange('shareableLinkDownloadDisabled', value)}
+        >
+          <div className="flex flex-col gap-0.5">
+            <span className="text-sm font-medium">Disable download on shareable links</span>
+            <span className="text-sm text-foreground-500">
+              People who open shareable links on your projects cannot download files.
+            </span>
+          </div>
+        </Switch>
+        <Switch
+          isSelected={shareableLinkHeaderHidden}
+          onValueChange={(value) => handleShareSettingChange('shareableLinkHeaderHidden', value)}
+        >
+          <div className="flex flex-col gap-0.5">
+            <span className="text-sm font-medium">Hide Kreatli header on shareable links</span>
+            <span className="text-sm text-foreground-500">
+              Shareable links on your projects will not show the Kreatli site header.
+            </span>
+          </div>
+        </Switch>
       </div>
     </div>
   );

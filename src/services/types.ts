@@ -1149,10 +1149,14 @@ export interface ResetPasswordBodyDto {
 
 export interface SettingsBodyDto {
   defaultProjectContent?: { [x in string | number]: any };
+  shareableLinkDownloadDisabled?: boolean;
+  shareableLinkHeaderHidden?: boolean;
 }
 
 export interface SettingsDto {
   defaultProjectContent: { [x in string | number]: any };
+  shareableLinkDownloadDisabled: boolean;
+  shareableLinkHeaderHidden: boolean;
 }
 
 export interface ShareableAssetDto {
@@ -1178,6 +1182,8 @@ export interface ShareableLinkDto {
   file: ShareableAssetDto;
   hasAccessToProject: boolean;
   projectId?: string;
+  shareableLinkDownloadDisabled: boolean;
+  shareableLinkHeaderHidden: boolean;
 }
 
 export interface ShareableLinkSendEmailBodyDto {
