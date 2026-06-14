@@ -329,6 +329,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
           ref={compareFile?.id === videoFile.id ? compareFileRef : fileRef}
           controls={false}
           playsInline
+          controlsList="nodownload"
           muted={videoFile.id !== activeFile?.id}
           className="relative z-10 h-auto max-h-full max-w-full cursor-pointer"
           onPlay={handlePlay}
@@ -336,6 +337,7 @@ export const ReviewToolVideo = ({ videoFile, shareableLinkId, onLoad }: Props) =
           onTimeUpdate={handleTimeUpdate}
           onLoadedMetadata={handleLoadedMetadata}
           onClick={handleVideoClick}
+          onContextMenu={(e) => e.preventDefault()}
         >
           <source src={videoFile.url} />
         </video>
