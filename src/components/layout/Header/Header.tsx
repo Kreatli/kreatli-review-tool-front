@@ -29,7 +29,7 @@ import { UserWidget } from './UserWidget';
 
 const DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000;
 
-export const Header = () => {
+export const Header = ({ isMinimal = false }: { isMinimal?: boolean }) => {
   const { isSignedIn, user } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useLocalStorage<Layout.Theme>({ key: 'theme', defaultValue: 'light' });
@@ -162,9 +162,7 @@ export const Header = () => {
           <div className="flex items-center justify-center gap-3 py-1.5 text-primary">
             {user?.subscription.hasUsedTrial ? (
               <>
-                <span className="hidden text-sm md:inline">
-                  Your trial has ended. Upgrade to restore full access.
-                </span>
+                <span className="hidden text-sm md:inline">Your trial has ended. Upgrade to restore full access.</span>
                 <span className="text-sm md:hidden">Trial ended — explore mode active.</span>
               </>
             ) : (
@@ -206,7 +204,7 @@ export const Header = () => {
         classNames={{ wrapper: 'px-3 xs:px-6' }}
       >
         <NavbarContent className="xl:gap-12">
-          {!isSignedIn && (
+          {!isSignedIn && !isMinimal && (
             <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="xl:hidden" />
           )}
           <NavbarItem>
@@ -216,7 +214,7 @@ export const Header = () => {
               </NextLink>
             </NavbarBrand>
           </NavbarItem>
-          {!isSignedIn && (
+          {!isSignedIn && !isMinimal && (
             <NavbarContent className="hidden xl:flex" justify="center">
               <NavbarItem>
                 <NavigationDropdown
@@ -400,7 +398,7 @@ export const Header = () => {
               <UserWidget />
             </NavbarItem>
           )}
-          {!isSignedIn && (
+          {!isSignedIn && !isMinimal && (
             <>
               <NavbarItem>
                 <Link as={NextLink} href="/sign-in" color="foreground">
@@ -409,8 +407,7 @@ export const Header = () => {
               </NavbarItem>
               <NavbarItem>
                 <Button as={NextLink} href="/sign-up" className="bg-foreground text-content1">
-                  <span className="hidden sm:inline">Explore free</span>
-                  <span className="sm:hidden">Sign up</span>
+                  Sign up
                 </Button>
               </NavbarItem>
             </>

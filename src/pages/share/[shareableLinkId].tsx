@@ -47,9 +47,13 @@ export default function SharePage() {
         <title>{title}</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
-      <Header />
+      <Header isMinimal={data.shareableLinkHeaderHidden} />
       <FileStateContextProvider fileId={data.file.id ?? ''} file={data.file}>
-        <ShareableAsset file={data.file} shareableLinkId={shareableLinkId.toString()} />
+        <ShareableAsset
+          file={data.file}
+          shareableLinkDownloadDisabled={data.shareableLinkDownloadDisabled}
+          shareableLinkId={shareableLinkId.toString()}
+        />
       </FileStateContextProvider>
     </div>
   );
